@@ -16,12 +16,16 @@ class CVEInfo:
         self.title = ''
         self.info = ''
 
+
+    def is_vaild(self):
+        return not not self.title
+
     def __str__(self):
         return self.__repr__()
 
     def __repr__(self):
         return '\n'.join([
-            "==============================================",
+            # "==============================================",
             "[ CVE   ] %s" % self.id,
             "[ SRC   ] %s" % self.src,
             "[ URL   ] %s" % self.url,

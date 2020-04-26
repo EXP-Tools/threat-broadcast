@@ -13,6 +13,7 @@ from src.crawler._base_crawler import BaseCrawler
 import requests
 import json
 import re
+import time
 
 
 class Cert360(BaseCrawler):
@@ -42,7 +43,8 @@ class Cert360(BaseCrawler):
             json_obj = json.loads(response.text)
             for obj in json_obj.get('data'):
                 cve = self.to_cve(obj)
-                cves.append(cve)
+                if cve.is_vaild():
+                    cves.append(cve)
         else :
             print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
 
@@ -52,14 +54,18 @@ class Cert360(BaseCrawler):
     def to_cve(self, json_obj):
         cve = CVEInfo()
         cve.src = self.soure
-        cve.url = self.url_cve + json_obj.get('id')
-        cve.time = json_obj.get('add_time')
-        cve.title = json_obj.get('title')
-        cve.info = json_obj.get('description')
+        cve.url = self.url_cve + json_obj.get('id') or ''
+        cve.time = self.to_datetime(json_obj.get('add_time') or 0)
+        cve.title = json_obj.get('title') or ''
+        cve.info = (json_obj.get('description') or '').strip().replace('\n\n', '\n')
 
         rst = re.findall(r'(CVE-\d+-\d+)', cve.title)
         cve.id = rst[0] if rst else ''
+        return cve
 
-        print(cve)
+
+    def to_datetime(self, seconds):
+        localtime = time.localtime(seconds)
+        return time.strftime('%Y-%m-%d %H:%M:%S', localtime)
 
 
