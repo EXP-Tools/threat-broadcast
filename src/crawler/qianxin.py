@@ -7,9 +7,9 @@
 # 奇安信：https://ti.qianxin.com/advisory/
 # -----------------------------------------------
 
-from src.bean._base import Base
+from src.crawler._base_crawler import BaseCrawler
 
-class QiAnXin(Base):
+class QiAnXin(BaseCrawler):
 
     def __init__(self):
         pass

@@ -10,6 +10,7 @@ class CVEInfo:
 
     def __init__(self):
         self.id = ''
+        self.src = ''
         self.url = ''
         self.time = ''
         self.title = ''
@@ -21,11 +22,12 @@ class CVEInfo:
     def __repr__(self):
         return '\n'.join([
             "==============================================",
-            "[CVE]   %s" % self.id,
-            "[URL]   %s" % self.url,
-            "[TIME]  %s" % self.time,
-            "[TITLE] %s" % self.title,
-            "[INFO]  %s" % self.info,
+            "[ CVE   ] %s" % self.id,
+            "[ SRC   ] %s" % self.src,
+            "[ URL   ] %s" % self.url,
+            "[ TIME  ] %s" % self.time,
+            "[ TITLE ] %s" % self.title,
+            "[ INFO  ] %s" % self.info,
         ])
 
 

@@ -2,15 +2,14 @@
 # -*- coding: utf-8 -*-
 # @Author : EXP
 # @Time   : 2020/4/25 22:17
-# @File   : cert360.py
+# @File   : nsfocus.py
 # -----------------------------------------------
-# 360：https://cert.360.cn/warning
+# 绿盟：http://www.nsfocus.net/vulndb
 # -----------------------------------------------
 
-from src.bean._base import Base
+from src.crawler._base_crawler import BaseCrawler
 
-class Cert360(Base):
+class Nsfocus(BaseCrawler):
 
     def __init__(self):
         pass
-

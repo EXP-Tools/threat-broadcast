@@ -7,9 +7,9 @@
 # 红后：https://redqueen.tj-un.com/IntelHome.html
 # -----------------------------------------------
 
-from src.bean._base import Base
+from src.crawler._base_crawler import BaseCrawler
 
-class RedQueen(Base):
+class RedQueen(BaseCrawler):
 
     def __init__(self):
         pass
