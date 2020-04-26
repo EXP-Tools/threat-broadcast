@@ -8,6 +8,7 @@
 # TODO: logging
 import sys
 
+from src.crawler.cert360 import Cert360
 
 def init():
     reload(sys)
@@ -15,7 +16,8 @@ def init():
 
 
 def main():
-    pass
+    cert360 = Cert360()
+    cert360.get_cves()
 
 
 if __name__ == '__main__':

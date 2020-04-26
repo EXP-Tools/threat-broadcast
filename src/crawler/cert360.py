@@ -12,11 +12,14 @@ from src.crawler._base_crawler import BaseCrawler
 
 import requests
 import json
+import re
 
 
 class Cert360(BaseCrawler):
 
     def __init__(self):
+        BaseCrawler.__init__(self)
+        self.soure = '奇虎 360'
         self.url_list = 'https://cert.360.cn/warning/searchbypage'
         self.url_cve = 'https://cert.360.cn/warning/detail?id='
 
@@ -37,20 +40,26 @@ class Cert360(BaseCrawler):
         cves = []
         if response.status_code == 200:
             json_obj = json.loads(response.text)
-
-            for o in json_obj.get('data'):
-                cve = CVEInfo()
-                cve.url = self.url_cve + o.get('id')
-                cve.time = o.get('add_time')
-                cve.title = o.get('title')
-                cve.id = cve.title
-                cve.info = o.get('description')
-                cve.src = '奇虎 360'
-
+            for obj in json_obj.get('data'):
+                cve = self.to_cve(obj)
                 cves.append(cve)
-                print(cve)
         else :
-            print()
+            print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
 
         return cves
+
+
+    def to_cve(self, json_obj):
+        cve = CVEInfo()
+        cve.src = self.soure
+        cve.url = self.url_cve + json_obj.get('id')
+        cve.time = json_obj.get('add_time')
+        cve.title = json_obj.get('title')
+        cve.info = json_obj.get('description')
+
+        rst = re.findall(r'(CVE-\d+-\d+)', cve.title)
+        cve.id = rst[0] if rst else ''
+
+        print(cve)
+
 

@@ -8,8 +8,9 @@
 
 class BaseCrawler:
 
-    def __init__(self):
-        self.timeout = 60
+    def __init__(self, timeout = 60, charset = 'utf-8'):
+        self.timeout = timeout or 60
+        self.charset = charset or 'utf-8'
 
 
     def headers(self):
