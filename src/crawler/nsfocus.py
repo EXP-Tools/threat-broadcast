@@ -9,6 +9,7 @@
 
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
+
 import requests
 import re
 
@@ -39,7 +40,7 @@ class Nsfocus(BaseCrawler):
                     if cve.is_vaild():
                         cves.append(cve)
                         print(cve)
-        else :
+        else:
             print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
         return cves
 

@@ -46,7 +46,7 @@ class Cert360(BaseCrawler):
                 if cve.is_vaild():
                     cves.append(cve)
                     print(cve)
-        else :
+        else:
             print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
         return cves
 
