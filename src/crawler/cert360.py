@@ -45,21 +45,23 @@ class Cert360(BaseCrawler):
                 cve = self.to_cve(obj)
                 if cve.is_vaild():
                     cves.append(cve)
+                    print(cve)
         else :
             print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
-
         return cves
 
 
     def to_cve(self, json_obj):
         cve = CVEInfo()
         cve.src = self.soure
-        cve.url = self.url_cve + json_obj.get('id') or ''
+        cve.url = self.url_cve + (json_obj.get('id') or '')
         cve.time = self.to_datetime(json_obj.get('add_time') or 0)
-        cve.title = json_obj.get('title') or ''
         cve.info = (json_obj.get('description') or '').strip().replace('\n\n', '\n')
 
-        rst = re.findall(r'(CVE-\d+-\d+)', cve.title)
+        title = json_obj.get('title') or ''
+        cve.title =  re.sub(r'CVE-\d+-\d+:', '', title).strip()
+
+        rst = re.findall(r'(CVE-\d+-\d+)', title)
         cve.id = rst[0] if rst else ''
         return cve
 
