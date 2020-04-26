@@ -8,7 +8,7 @@
 import sys
 from src.utils import log
 from src.crawler.cert360 import Cert360
-
+from src.crawler.nsfocus import Nsfocus
 
 def init():
     reload(sys)
@@ -19,6 +19,9 @@ def init():
 def main(a, b, c):
     cert360 = Cert360()
     cert360.get_cves()
+
+    nsfocus = Nsfocus()
+    nsfocus.get_cves()
 
 
 def get_sys_args(sys_args) :
