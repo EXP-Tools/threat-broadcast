@@ -23,14 +23,14 @@ def init():
 import re
 
 def main(a, b, c):
-    # cert360 = Cert360()
-    # cert360.get_cves()
-    #
-    # nsfocus = Nsfocus()
-    # nsfocus.get_cves()
+    cert360 = Cert360()
+    cert360.get_cves()
 
-    # qianxin = QiAnXin()
-    # qianxin.get_cves()
+    nsfocus = Nsfocus()
+    nsfocus.get_cves()
+
+    qianxin = QiAnXin()
+    qianxin.get_cves()
 
     redqueen = RedQueen()
     redqueen.get_cves()
