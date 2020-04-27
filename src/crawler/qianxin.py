@@ -9,7 +9,7 @@
 
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
-
+from src.utils import log
 import requests
 import json
 import re
@@ -43,9 +43,9 @@ class QiAnXin(BaseCrawler):
                 idx += 1
                 if cve.is_vaild():
                     cves.append(cve)
-                    print(cve)
+                    log.debug(cve)
         else:
-            print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
+            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
         return cves
 
 

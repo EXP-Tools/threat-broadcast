@@ -9,7 +9,7 @@
 
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
-
+from src.utils import log
 import requests
 import json
 import re
@@ -48,9 +48,9 @@ class RedQueen(BaseCrawler):
                 cve = self.to_cve(obj)
                 if cve.is_vaild():
                     cves.append(cve)
-                    print(cve)
+                    log.debug(cve)
         else:
-            print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
+            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
         return cves
 
 
@@ -61,7 +61,7 @@ class RedQueen(BaseCrawler):
         cve.time = json_obj.get('pub_time')
 
         title = json_obj.get('title')
-        cve.title = re.sub(r'CVE-\d+\d+', '', title).strip()
+        cve.title = re.sub(r'CVE-\d+-\d+', '', title).strip()
 
         rst = re.findall(r'(CVE-\d+-\d+)', title)
         cve.id = rst[0] if rst else ''
