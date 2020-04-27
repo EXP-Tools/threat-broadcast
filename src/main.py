@@ -11,6 +11,7 @@ from src.utils import log
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus
 from src.crawler.qianxin import QiAnXin
+from src.crawler.redqueen import RedQueen
 
 
 def init():
@@ -28,8 +29,11 @@ def main(a, b, c):
     # nsfocus = Nsfocus()
     # nsfocus.get_cves()
 
-    qianxin = QiAnXin()
-    qianxin.get_cves()
+    # qianxin = QiAnXin()
+    # qianxin.get_cves()
+
+    redqueen = RedQueen()
+    redqueen.get_cves()
 
 
 def get_sys_args(sys_args) :
