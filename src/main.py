@@ -19,6 +19,8 @@ def init():
     log.init()
 
 
+import re
+
 def main(a, b, c):
     # cert360 = Cert360()
     # cert360.get_cves()
@@ -26,8 +28,12 @@ def main(a, b, c):
     # nsfocus = Nsfocus()
     # nsfocus.get_cves()
 
-    qianxin = QiAnXin()
-    qianxin.get_cves()
+    # qianxin = QiAnXin()
+    # qianxin.get_cves()
+
+    s = 'tags:["CVE-2020-6819","CVE-2020-6820",k]'
+    json_str = re.sub(r"tags:(.*?\]),", '"tags":\'\1\',', s)
+    print(json_str)
 
 
 def get_sys_args(sys_args) :

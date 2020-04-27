@@ -53,7 +53,7 @@ class QiAnXin(BaseCrawler):
     def to_json(self, html):
         json_str = '{ "msg": [] }'
         rst = re.findall(r'(\{success:e,msg:.*?\],pageTotal)', html, re.DOTALL)
-        if not rst:
+        if rst:
             json_str = rst[0]
             json_str = re.sub(r"content:'.*?',", "", json_str)
             json_str = re.sub(r'success:[\w\$]+,', '', json_str)
@@ -72,7 +72,13 @@ class QiAnXin(BaseCrawler):
             json_str = re.sub(r'area:\[.*?\],', '', json_str)
             json_str = re.sub(r'industries:\[.*?\],', '', json_str)
             json_str = re.sub(r'aggressor_type:\[.*?\],', '', json_str)
-            json_str = re.sub(r"tags:(\[.*?\]),", '"tags":"\1",', json_str)
+            json_str = json_str.replace('msg:', '"msg":')
+            json_str = json_str.replace('readableId:', '"readableId":')
+            json_str = json_str.replace('abstract:', '"abstract":')
+            json_str = json_str.replace('publish_time:', '"publish_time":')
+            json_str = json_str.replace('permlink:', '"permlink":')
+
+            # json_str = re.sub(r"tags:(\[.*?\]),", '"tags":\'\1\',', json_str)
             json_str = json_str.replace(',pageTotal', '}')
 
         print(json_str)
