@@ -55,8 +55,11 @@ class Cert360(BaseCrawler):
         cve = CVEInfo()
         cve.src = self.soure
         cve.url = self.url_cve + (json_obj.get('id') or '')
-        cve.time = self.to_datetime(json_obj.get('add_time') or 0)
         cve.info = (json_obj.get('description') or '').strip().replace('\n\n', '\n')
+
+        seconds = json_obj.get('add_time') or 0
+        localtime = time.localtime(seconds)
+        cve.time = time.strftime('%Y-%m-%d %H:%M:%S', localtime)
 
         title = json_obj.get('title') or ''
         cve.title =  re.sub(r'CVE-\d+-\d+:', '', title).strip()
@@ -65,9 +68,5 @@ class Cert360(BaseCrawler):
         cve.id = rst[0] if rst else ''
         return cve
 
-
-    def to_datetime(self, seconds):
-        localtime = time.localtime(seconds)
-        return time.strftime('%Y-%m-%d %H:%M:%S', localtime)
 
 

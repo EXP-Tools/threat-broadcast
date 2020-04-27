@@ -33,21 +33,25 @@ class QiAnXin(BaseCrawler):
         cves = []
         if response.status_code == 200:
             html = response.content
+            titles = self.get_titles(html)
             json_str = self.to_json(html)
             json_obj = json.loads(json_str)
-            for obj in json_obj.get('msg'):
-                print(obj)
 
-            # if vul_list:
-            #     vuls =  re.findall(r"<li><span>(.*?)</span> <a href='/vulndb/(\d+)'>(.*?)</a></li>", vul_list[0])
-            #     for vul in vuls:
-            #         cve = self.to_cve(vul)
-            #         if cve.is_vaild():
-            #             cves.append(cve)
-            #             print(cve)
+            idx = 0
+            for obj in json_obj.get('msg'):
+                cve = self.to_cve(obj, titles[idx])
+                idx += 1
+                if cve.is_vaild():
+                    cves.append(cve)
+                    print(cve)
         else:
             print('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
         return cves
+
+
+    def get_titles(self, html):
+        titles = re.findall(r'<a tag="div" target="_blank" data-v-4e3604fb>(.*?)<!---->', html, re.DOTALL)
+        return titles
 
 
     def to_json(self, html):
@@ -55,7 +59,8 @@ class QiAnXin(BaseCrawler):
         rst = re.findall(r'(\{success:e,msg:.*?\],pageTotal)', html, re.DOTALL)
         if rst:
             json_str = rst[0]
-            json_str = re.sub(r"content:'.*?',", "", json_str)
+            json_str = json_str.replace('"', '')
+            json_str = json_str.replace(',pageTotal', '}')
             json_str = re.sub(r'success:[\w\$]+,', '', json_str)
             json_str = re.sub(r'_id:[\w\$]+,', '', json_str)
             json_str = re.sub(r'title:[\w\$]+,', '', json_str)
@@ -73,27 +78,37 @@ class QiAnXin(BaseCrawler):
             json_str = re.sub(r'industries:\[.*?\],', '', json_str)
             json_str = re.sub(r'aggressor_type:\[.*?\],', '', json_str)
             json_str = json_str.replace('msg:', '"msg":')
-            json_str = json_str.replace('readableId:', '"readableId":')
-            json_str = json_str.replace('abstract:', '"abstract":')
-            json_str = json_str.replace('publish_time:', '"publish_time":')
-            json_str = json_str.replace('permlink:', '"permlink":')
-
-            # json_str = re.sub(r"tags:(\[.*?\]),", '"tags":\'\1\',', json_str)
-            json_str = json_str.replace(',pageTotal', '}')
-
-        print(json_str)
+            json_str = json_str.replace('readableId:', '"readableId":"')
+            json_str = json_str.replace(',content:', '","content":"')
+            json_str = json_str.replace(',abstract:', '","abstract":"')
+            json_str = json_str.replace(',tags:', '","tags":"')
+            json_str = json_str.replace(',publish_time:', '","publish_time":"')
+            json_str = json_str.replace(',permlink:', '","permlink":"')
+            json_str = json_str.replace('}', '"}')
+            json_str = json_str.replace(']"}', ']}')
         return json_str
 
 
-    def to_cve(self, vul):
+    def to_cve(self, json_obj, title):
         cve = CVEInfo()
         cve.src = self.soure
-        cve.url = self.url + vul[1]
-        cve.time = vul[0] + ' --:--:--'
-        cve.title = re.sub(r'\(CVE-\d+-\d+\)', '', vul[2])
+        cve.url = json_obj.get('permlink') or ''
+        cve.info = (json_obj.get('abstract') or '').strip().replace('\n\n', '\n')
+        cve.title = title.strip()
 
-        rst = re.findall(r'(CVE-\d+-\d+)', vul[2])
-        cve.id = rst[0] if rst else ''
+        utc_time = json_obj.get('publish_time') or ''   # utc_time to datetime
+        cve.time = utc_time.replace('T', ' ').replace('.000Z', '')
+
+        content = json_obj.get('content')
+        rst = re.findall(r'ID(</strong>)?</td>\n<td>(.*?)</td>', content)
+        if rst:
+            if  '<br>' in rst[0][1]:
+                ids = rst[0][1].split('<br>')
+            else:
+                ids = rst[0][1].split(' ')
+            cve.id = ', '.join(ids)
         return cve
+
+
 
 
