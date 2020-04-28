@@ -5,13 +5,11 @@
 # @File   : log.py
 # -----------------------------------------------
 
-import os
 import traceback
 import logging
 from logging.handlers import TimedRotatingFileHandler
+from src.cfg.env import PRJ_DIR
 
-
-PRJ_DIR = os.path.dirname(os.path.abspath(__file__)).replace(r'/src/utils', '').replace(r'\src\utils', '')
 RUN_LOG = '%s/log/run.log' % PRJ_DIR
 ERR_LOG = '%s/log/err.log' % PRJ_DIR
 

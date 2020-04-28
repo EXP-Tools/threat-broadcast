@@ -19,9 +19,18 @@ class RedQueen(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name = '红后'
+        self.name_ch = '红后'
+        self.name_en = 'RedQueen'
         self.url_list = 'https://redqueen.tj-un.com/Json/intelHomeVulnIntelList.json'
         self.url_cve = 'https://redqueen.tj-un.com/IntelDetails.html?id='
+
+
+    def NAME_CH(self):
+        return self.name_ch
+
+
+    def NAME_EN(self):
+        return self.name_en
 
 
     def to_headers(self):
@@ -48,15 +57,15 @@ class RedQueen(BaseCrawler):
                 cve = self.to_cve(obj)
                 if cve.is_vaild():
                     cves.append(cve)
-                    log.debug(cve)
+                    # log.debug(cve)
         else:
-            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.name, response.status_code))
+            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.name_ch, response.status_code))
         return cves
 
 
     def to_cve(self, json_obj):
         cve = CVEInfo()
-        cve.src = self.name
+        cve.src = self.name_ch
         cve.url = self.url_cve + json_obj.get('id')
         cve.time = json_obj.get('pub_time')
 

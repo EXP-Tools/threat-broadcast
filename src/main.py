@@ -26,7 +26,6 @@ def main(a, b, c):
         src.cve_msgs()
 
 
-
 def get_sys_args(sys_args) :
     a = ''
     b = ''

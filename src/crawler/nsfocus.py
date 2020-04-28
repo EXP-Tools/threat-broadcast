@@ -18,8 +18,18 @@ class Nsfocus(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name = '绿盟'
+        self.name_ch = '绿盟'
+        self.name_en = 'Nsfocus'
         self.url = 'http://www.nsfocus.net/vulndb/'
+
+
+    def NAME_CH(self):
+        return self.name_ch
+
+
+    def NAME_EN(self):
+        return self.name_en
+
 
 
     def get_cves(self):
@@ -39,15 +49,15 @@ class Nsfocus(BaseCrawler):
                     cve = self.to_cve(vul)
                     if cve.is_vaild():
                         cves.append(cve)
-                        log.debug(cve)
+                        # log.debug(cve)
         else:
-            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.name, response.status_code))
+            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.NAME_CH(), response.status_code))
         return cves
 
 
     def to_cve(self, vul):
         cve = CVEInfo()
-        cve.src = self.name
+        cve.src = self.name_ch
         cve.url = self.url + vul[1]
         cve.time = vul[0] + ' --:--:--'
         cve.title = re.sub(r'\(CVE-\d+-\d+\)', '', vul[2])
