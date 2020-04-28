@@ -28,6 +28,7 @@ def main(a, b, c):
         map(lambda msg : log.info(msg), msgs)
 
 
+
 def get_sys_args(sys_args) :
     a = ''
     b = ''

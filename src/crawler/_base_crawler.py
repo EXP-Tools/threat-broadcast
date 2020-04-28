@@ -81,6 +81,12 @@ class BaseCrawler:
         with open(self.CACHE_PATH(), 'r+') as file:
             lines = file.readlines()
             lines = map(lambda line: line.strip(), lines)
+
+        # 缓存超过 200 时，保留最后的 100 条缓存
+        if len(lines) > 200:
+            lines = lines[100:]
+            with open(self.CACHE_PATH(), 'w+') as file:
+                file.write('\n'.join(lines) + '\n')
         return set(lines)
 
 
@@ -88,3 +94,7 @@ class BaseCrawler:
         with open(self.CACHE_PATH(), 'a+') as file:
             file.write(cve.MD5() + '\n')
 
+
+    def to_db(self, cve):
+        pass
+        # 用于生成 html top 10 播报
