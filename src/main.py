@@ -23,7 +23,7 @@ def init():
 def main(a, b, c):
     srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen() ]
     for src in srcs:
-        src.get_cves()
+        src.cve_msgs()
 
 
 

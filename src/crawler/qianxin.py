@@ -19,7 +19,7 @@ class QiAnXin(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.soure = '奇安信'
+        self.name = '奇安信'
         self.url = 'https://ti.qianxin.com/advisory/'
 
 
@@ -45,7 +45,7 @@ class QiAnXin(BaseCrawler):
                     cves.append(cve)
                     log.debug(cve)
         else:
-            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.soure, response.status_code))
+            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.name, response.status_code))
         return cves
 
 
@@ -91,7 +91,7 @@ class QiAnXin(BaseCrawler):
 
     def to_cve(self, json_obj, title):
         cve = CVEInfo()
-        cve.src = self.soure
+        cve.src = self.name
         cve.url = json_obj.get('permlink') or ''
         cve.info = (json_obj.get('abstract') or '').strip().replace('\n\n', '\n')
         cve.title = title.strip()

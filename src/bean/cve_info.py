@@ -18,7 +18,7 @@ class CVEInfo:
         self.time = ''
         self.title = ''
         self.info = ''
-        self.md5 = ''
+        self.MD5 = ''
 
 
     def is_vaild(self):
@@ -26,10 +26,10 @@ class CVEInfo:
 
 
     def md5(self):
-        if not self.md5:
+        if not self.MD5:
             data = '%s%s%s' % (self.id, self.title, self.url)
-            self.md5 = hashlib.md5(data.encode(encoding='UTF-8')).hexdigest()
-        return self.md5
+            self.MD5 = hashlib.md5(data.encode(encoding='UTF-8')).hexdigest()
+        return self.MD5
 
 
     def to_msg(self):
