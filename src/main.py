@@ -23,7 +23,8 @@ def init():
 def main(a, b, c):
     srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen() ]
     for src in srcs:
-        src.cve_msgs()
+        msgs = src.cve_msgs()
+        map(lambda msg : log.info(msg), msgs)
 
 
 def get_sys_args(sys_args) :
