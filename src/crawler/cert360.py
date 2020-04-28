@@ -25,6 +25,15 @@ class Cert360(BaseCrawler):
         self.url_cve = 'https://cert.360.cn/warning/detail?id='
 
 
+
+    def cve_news(self):
+        old_cves = []
+        try:
+            new_cves = self.get_cves()
+        except:
+            log.error('获取 [%s] 威胁情报异常' % self.soure)
+
+
     def get_cves(self, limit = 6):
         params = {
             'length': limit,

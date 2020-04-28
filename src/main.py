@@ -20,20 +20,11 @@ def init():
     log.init()
 
 
-import re
-
 def main(a, b, c):
-    cert360 = Cert360()
-    cert360.get_cves()
+    srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen() ]
+    for src in srcs:
+        src.get_cves()
 
-    nsfocus = Nsfocus()
-    nsfocus.get_cves()
-
-    qianxin = QiAnXin()
-    qianxin.get_cves()
-
-    redqueen = RedQueen()
-    redqueen.get_cves()
 
 
 def get_sys_args(sys_args) :
