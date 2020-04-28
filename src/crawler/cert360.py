@@ -56,13 +56,13 @@ class Cert360(BaseCrawler):
                     cves.append(cve)
                     # log.debug(cve)
         else:
-            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.name_ch, response.status_code))
+            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.NAME_CH(), response.status_code))
         return cves
 
 
     def to_cve(self, json_obj):
         cve = CVEInfo()
-        cve.src = self.name_ch
+        cve.src = self.NAME_CH()
         cve.url = self.url_cve + (json_obj.get('id') or '')
         cve.info = (json_obj.get('description') or '').strip().replace('\n\n', '\n')
 

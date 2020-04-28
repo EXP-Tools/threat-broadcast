@@ -57,7 +57,7 @@ class Nsfocus(BaseCrawler):
 
     def to_cve(self, vul):
         cve = CVEInfo()
-        cve.src = self.name_ch
+        cve.src = self.NAME_CH()
         cve.url = self.url + vul[1]
         cve.time = vul[0] + ' --:--:--'
         cve.title = re.sub(r'\(CVE-\d+-\d+\)', '', vul[2])
