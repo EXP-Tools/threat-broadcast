@@ -23,8 +23,7 @@ def init():
 
 
 def main(a, b, c):
-    # srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
-    srcs = [ Vas()]
+    srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
     for src in srcs:
         msgs = src.cve_msgs()
         map(lambda msg : log.info(msg), msgs)

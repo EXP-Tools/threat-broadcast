@@ -23,6 +23,7 @@ class Vas(BaseCrawler):
         self.name_ch = '斗象'
         self.name_en = 'vas'
         self.url_list = 'https://console.riskivy.com/vas'
+        self.url_details = ' https://console.riskivy.com/vas/'
         self.url_cve = 'https://vas.riskivy.com/vuln-detail?id='
 
 
@@ -45,7 +46,7 @@ class Vas(BaseCrawler):
             'has_repair': '',
             'bug_level': '',
             'page': 1,
-            'per - page': limit,
+            'per-page': limit,
         }
 
         response = requests.get(
@@ -58,12 +59,11 @@ class Vas(BaseCrawler):
         cves = []
         if response.status_code == 200:
             json_obj = json.loads(response.text)
-            print(response.text)
-            # for obj in json_obj.get('data'):
-            #     cve = self.to_cve(obj)
-            #     if cve.is_vaild():
-            #         cves.append(cve)
-            #         # log.debug(cve)
+            for obj in json_obj.get('data').get('items'):
+                cve = self.to_cve(obj)
+                if cve.is_vaild():
+                    cves.append(cve)
+                    # log.debug(cve)
         else:
             log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.NAME_CH(), response.status_code))
         return cves
@@ -72,18 +72,32 @@ class Vas(BaseCrawler):
     def to_cve(self, json_obj):
         cve = CVEInfo()
         cve.src = self.NAME_CH()
-        # cve.url = self.url_cve + (json_obj.get('id') or '')
-        # cve.info = (json_obj.get('description') or '').strip().replace('\n\n', '\n')
-        #
-        # seconds = json_obj.get('add_time') or 0
-        # localtime = time.localtime(seconds)
-        # cve.time = time.strftime('%Y-%m-%d %H:%M:%S', localtime)
-        #
-        # title = json_obj.get('title') or ''
-        # cve.title =  re.sub(r'CVE-\d+-\d+:', '', title).strip()
-        #
-        # rst = re.findall(r'(CVE-\d+-\d+)', title)
-        # cve.id = rst[0] if rst else ''
+
+        id = str(json_obj.get('id')) or ''
+        cve.url = self.url_cve + id
+        cve.title =  json_obj.get('bug_title') or ''
+
+        seconds = json_obj.get('found_at') or 0
+        localtime = time.localtime(seconds)
+        cve.time = time.strftime('%Y-%m-%d %H:%M:%S', localtime)
+
+        self.get_cve_info(cve, id)
         return cve
 
+
+    def get_cve_info(self, cve, id):
+        url = self.url_details + id
+        response = requests.get(
+            url,
+            headers = self.headers(),
+            timeout = self.timeout
+        )
+
+        if response.status_code == 200:
+            json_obj = json.loads(response.text)
+            cve.id = json_obj.get('data').get('bug_cve').replace(',', ', ')
+            cve.info = json_obj.get('data').get('detail').get('bug_description')
+            cve.info = re.sub(r'<.*?>', '', cve.info)
+
+        time.sleep(0.1)
 
