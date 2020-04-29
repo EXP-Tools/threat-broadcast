@@ -68,7 +68,7 @@ class AnQuanKe(BaseCrawler):
 
         rst = re.findall(r'</i>(\d\d\d\d-\d\d-\d\d)', xml)
         if rst:
-            cve.time = rst[0] + ' 00:00:00'
+            cve.time = rst[1] + ' 00:00:00'
 
         return cve
 

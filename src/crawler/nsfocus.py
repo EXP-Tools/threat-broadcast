@@ -55,7 +55,7 @@ class Nsfocus(BaseCrawler):
                     cve = self.to_cve(vul)
                     if cve.is_vaild():
                         cves.append(cve)
-                        log.debug(cve)
+                        # log.debug(cve)
         else:
             log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.NAME_CH(), response.status_code))
         return cves

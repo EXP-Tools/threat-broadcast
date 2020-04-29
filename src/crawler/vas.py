@@ -77,7 +77,7 @@ class Vas(BaseCrawler):
         cve.url = self.url_cve + id
         cve.title =  json_obj.get('bug_title') or ''
 
-        seconds = json_obj.get('found_at') or 0
+        seconds = json_obj.get('updated_at') or 0
         localtime = time.localtime(seconds)
         cve.time = time.strftime('%Y-%m-%d %H:%M:%S', localtime)
 
