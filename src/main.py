@@ -8,7 +8,7 @@
 import sys
 from src.cfg import env
 from src.utils import log
-from src.utils.sdbc import SqliteSDBC
+from src.utils._sqlite import SqliteSDBC
 
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus

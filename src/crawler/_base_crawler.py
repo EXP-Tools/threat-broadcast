@@ -6,9 +6,13 @@
 # -----------------------------------------------
 
 import os
-from src.utils import log
 from abc import ABCMeta, abstractmethod     # python不存在抽象类的概念， 需要引入abc模块实现
-from src.cfg.env import PRJ_DIR
+from src.cfg import env
+from src.utils import log
+from src.utils._sqlite import SqliteSDBC
+from src.bean.t_cves import TCves
+from src.dao.t_cves import TCvesDao
+
 
 
 class BaseCrawler:
@@ -31,7 +35,7 @@ class BaseCrawler:
 
 
     def CACHE_PATH(self):
-        return '%s/cache/%s.dat' % (PRJ_DIR, self.NAME_EN())
+        return '%s/cache/%s.dat' % (env.PRJ_DIR, self.NAME_EN())
 
 
     def headers(self):
@@ -55,11 +59,17 @@ class BaseCrawler:
             new_cves = []
             log.error('获取 [%s] 威胁情报异常' % self.NAME_CH())
 
+        dao = TCvesDao()
+        sdbc = SqliteSDBC(env.DB_PATH)
+        conn = sdbc.conn()
         msgs = []
         for cve in new_cves:
             if cve.MD5() not in old_cves:
                 msgs.append(cve.to_msg())
                 self.to_cache(cve)
+                self.to_db(conn, dao, cve)
+        sdbc.close()
+
         log.info('得到 [%s] 最新威胁情报 [%s] 条' % (self.NAME_CH(), len(msgs)))
         log.info('--------------------------------------------')
         return msgs
@@ -95,6 +105,13 @@ class BaseCrawler:
             file.write(cve.MD5() + '\n')
 
 
-    def to_db(self, cve):
-        pass
-        # 用于生成 html top 10 播报
+    def to_db(self, conn, dao, cve):
+        tcve = TCves()
+        tcve.md5 = cve.MD5()
+        tcve.src = cve.src
+        tcve.cves = cve.id
+        tcve.title = cve.title
+        tcve.info = cve.info
+        tcve.time = cve.time
+        tcve.url = cve.url
+        dao.insert(conn, tcve)

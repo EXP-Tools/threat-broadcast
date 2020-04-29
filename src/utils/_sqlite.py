@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Author : EXP
 # @Time   : 2020/4/29 22:14
-# @File   : sdbc.py
+# @File   : _sqlite.py
 # -----------------------------------------------
 # Sqlite 数据库接口
 # -----------------------------------------------
@@ -32,9 +32,8 @@ class SqliteSDBC:
         """
         if not self._conn:
             try:
-                self._conn = sqlite3.connect(
-                    database = self.dbpath
-                )
+                self._conn = sqlite3.connect(database = self.dbpath)
+                self._conn.text_factory = str
             except:
                 log.error("连接数据库 [%s] 失败" % self.dbpath)
         return self._conn
