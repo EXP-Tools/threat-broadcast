@@ -27,7 +27,7 @@ class CVEInfo:
 
     def MD5(self):
         if not self.md5:
-            data = '%s%s%s' % (self.id, self.title, self.url)
+            data = '%s%s%s%s' % (self.id, self.title, self.time, self.url)
             self.md5 = hashlib.md5(data.encode(encoding='UTF-8')).hexdigest()
         return self.md5
 

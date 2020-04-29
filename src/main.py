@@ -6,7 +6,9 @@
 # -----------------------------------------------
 
 import sys
+from src.cfg import env
 from src.utils import log
+from src.utils.sdbc import SqliteSDBC
 
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus
@@ -18,8 +20,13 @@ from src.crawler.vas import Vas
 
 def init():
     reload(sys)
-    sys.setdefaultencoding('utf-8')
+    sys.setdefaultencoding(env.CHARSET)
+
     log.init()
+
+    sdbc = SqliteSDBC(env.DB_PATH)
+    sdbc.init(env.SQL_PATH)
+
 
 
 def main(a, b, c):
@@ -60,9 +67,5 @@ if __name__ == '__main__':
     init()
     main(*get_sys_args(sys.argv))
 
-    # import sqlite3
-    #
-    # conn = sqlite3.connect('test.db')
-    #
-    # print "Opened database successfully"
+
 
