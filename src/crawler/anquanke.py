@@ -11,9 +11,7 @@ from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
 from src.utils import log
 import requests
-import json
 import re
-import time
 
 
 class AnQuanKe(BaseCrawler):
@@ -70,7 +68,7 @@ class AnQuanKe(BaseCrawler):
 
         rst = re.findall(r'</i>(\d\d\d\d-\d\d-\d\d)', xml)
         if rst:
-            cve.time = rst[0] + ' --:--:--'
+            cve.time = rst[0] + ' 00:00:00'
 
         return cve
 

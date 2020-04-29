@@ -13,6 +13,7 @@ from src.crawler.nsfocus import Nsfocus
 from src.crawler.qianxin import QiAnXin
 from src.crawler.redqueen import RedQueen
 from src.crawler.anquanke import AnQuanKe
+from src.crawler.vas import Vas
 
 
 def init():
@@ -22,7 +23,8 @@ def init():
 
 
 def main(a, b, c):
-    srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe() ]
+    # srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
+    srcs = [ Vas()]
     for src in srcs:
         msgs = src.cve_msgs()
         map(lambda msg : log.info(msg), msgs)

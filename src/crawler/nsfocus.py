@@ -59,7 +59,7 @@ class Nsfocus(BaseCrawler):
         cve = CVEInfo()
         cve.src = self.NAME_CH()
         cve.url = self.url + vul[1]
-        cve.time = vul[0] + ' --:--:--'
+        cve.time = vul[0] + ' 00:00:00'
         cve.title = re.sub(r'\(CVE-\d+-\d+\)', '', vul[2])
 
         rst = re.findall(r'(CVE-\d+-\d+)', vul[2])
