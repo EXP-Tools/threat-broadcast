@@ -13,17 +13,19 @@ TODO:
 - 绿盟：http://www.nsfocus.net/vulndb
 - 安全客：https://www.anquanke.com/vul
 - 斗象：https://vas.riskivy.com/vuln
-- vulhub：http://vulhub.org.cn/vulns?view=global
 
 
 暂时用不了：
 
+- exploit：https://www.exploit-db.com/
+- vulhub：http://vulhub.org.cn/vulns?view=global
 - https://blog.csdn.net/qq_29277155/article/details/79830927
 - http://netlab.360.com/
 - https://otx.alienvault.com/
 - https://isc.sans.edu/
 - https://www.venuseye.com.cn/
 - https://exchange.xforce.ibmcloud.com/
+
 
 
 归档：

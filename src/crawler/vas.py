@@ -35,7 +35,7 @@ class Vas(BaseCrawler):
         return self.name_en
 
 
-    def get_cves(self, limit = 10):
+    def get_cves(self, limit = 5):
         params = {
             'title': '',
             'cve' : '',
