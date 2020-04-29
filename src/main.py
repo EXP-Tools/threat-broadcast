@@ -60,3 +60,9 @@ if __name__ == '__main__':
     init()
     main(*get_sys_args(sys.argv))
 
+    # import sqlite3
+    #
+    # conn = sqlite3.connect('test.db')
+    #
+    # print "Opened database successfully"
+
