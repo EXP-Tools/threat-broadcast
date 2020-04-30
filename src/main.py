@@ -43,7 +43,7 @@ def to_log(msgs):
     map(lambda msg : log.info(msg), msgs)
 
 
-def to_page(msgs, top_limit = 5):
+def to_page(msgs, top_limit = 10):
     if msgs:
         page.to_page(top_limit)
 

@@ -18,7 +18,7 @@ TABLE_TPL_PATH = '%s/tpl/table.tpl' % env.PRJ_DIR
 ROW_TPL_PATH = '%s/tpl/row.tpl' % env.PRJ_DIR
 
 
-def to_page(top_limit = 5):
+def to_page(top_limit = 10):
     with open(HTML_TPL_PATH, 'r') as file:
         html_tpl = file.read()
 
@@ -49,6 +49,7 @@ def to_page(top_limit = 5):
 
         table = table_tpl % {
             'src': cves[0].src,
+            'top': top_limit,
             'rows': '\n'.join(rows)
         }
         tables.append(table)
