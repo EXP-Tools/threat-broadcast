@@ -10,6 +10,7 @@
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
 from src.utils import log
+import time
 import requests
 import re
 
@@ -65,7 +66,7 @@ class Nsfocus(BaseCrawler):
         cve = CVEInfo()
         cve.src = self.NAME_CH()
         cve.url = self.url_cve + vul[1]
-        cve.time = vul[0] + ' 00:00:00'
+        cve.time = vul[0] + time.strftime(" %H:%M:%S", time.localtime())
         cve.title = re.sub(r'\(CVE-\d+-\d+\)', '', vul[2])
 
         rst = re.findall(r'(CVE-\d+-\d+)', vul[2])

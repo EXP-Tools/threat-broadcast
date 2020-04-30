@@ -10,6 +10,7 @@
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
 from src.utils import log
+import time
 import requests
 import re
 
@@ -68,7 +69,7 @@ class AnQuanKe(BaseCrawler):
 
         rst = re.findall(r'</i>(\d\d\d\d-\d\d-\d\d)', xml)
         if rst:
-            cve.time = rst[1] + ' 00:00:00'
+            cve.time = rst[1] + time.strftime(" %H:%M:%S", time.localtime())
 
         return cve
 
