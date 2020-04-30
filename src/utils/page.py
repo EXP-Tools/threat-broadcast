@@ -82,7 +82,7 @@ def query_srcs(conn):
 
 def query_some(conn, src, limit):
     dao = TCvesDao()
-    where = "and %s = '%s' order by rowid desc limit %d" % (TCves.s_src, src, limit)
+    where = "and %s = '%s' order by %s desc limit %d" % (TCves.s_src, src, TCves.s_time, limit)
     sql = TCvesDao.SQL_SELECT + where
 
     beans = []
