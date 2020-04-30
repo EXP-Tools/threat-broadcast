@@ -23,7 +23,7 @@ class BaseDao:
     SQL_DELETE = ""
     SQL_UPDATE = ""
     SQL_SELECT = ""
-    CHARSET = "utf8"
+    CHARSET = "utf-8"
 
     def __init__(self):
         pass
@@ -157,6 +157,7 @@ class BaseDao:
         """
         return self.query_some(conn)
 
+
     def query_some(self, conn, wheres={}):
         """
         查询表中部分数据
@@ -210,7 +211,7 @@ class BaseDao:
         _sql = sql
         if keys:
             for key in keys:
-                _sql = " ".join((_sql, "and", key, " %s"))  # %s 是 sql 占位符，目的是防注入
+                _sql = " ".join((_sql, "and", key, " ?"))  # ? 是 sql 占位符，目的是防注入
         return _sql
 
 
@@ -235,7 +236,7 @@ class BaseDao:
         try:
             val = row[idx]
             if val is not None and isinstance(val, unicode):
-                val = val.encode(CHARSET)
+                val = val.encode(self.CHARSET)
         except:
             pass
         return val

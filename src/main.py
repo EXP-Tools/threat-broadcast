@@ -9,6 +9,7 @@ import sys
 from src.cfg import env
 from src.utils import log
 from src.utils._sqlite import SqliteSDBC
+import src.utils.page as page
 
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus
@@ -33,7 +34,21 @@ def main(a, b, c):
     srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
     for src in srcs:
         msgs = src.cve_msgs()
-        map(lambda msg : log.info(msg), msgs)
+        to_log(msgs)
+        to_page()
+        to_notice(msgs)
+
+
+def to_log(msgs):
+    map(lambda msg : log.info(msg), msgs)
+
+
+def to_page():
+    page.to_page()
+
+
+def to_notice(msgs):
+    pass
 
 
 
@@ -66,6 +81,7 @@ def get_sys_args(sys_args) :
 if __name__ == '__main__':
     init()
     main(*get_sys_args(sys.argv))
+    # page.to_page()
 
 
 
