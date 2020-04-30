@@ -5,6 +5,7 @@
 # @File   : page.py
 # -----------------------------------------------
 
+import time
 from src.cfg import env
 from src.utils import log
 from src.utils._sqlite import SqliteSDBC
@@ -12,22 +13,54 @@ from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
 
 HTML_PATH = '%s/docs/index.html' % env.PRJ_DIR
-HTML_TPL_PATH = '%s/tpl/page.tpl' % env.PRJ_DIR
+HTML_TPL_PATH = '%s/tpl/html.tpl' % env.PRJ_DIR
 TABLE_TPL_PATH = '%s/tpl/table.tpl' % env.PRJ_DIR
 ROW_TPL_PATH = '%s/tpl/row.tpl' % env.PRJ_DIR
 
 
-def to_page():
+def to_page(top_limit = 5):
+    with open(HTML_TPL_PATH, 'r') as file:
+        html_tpl = file.read()
+
+    with open(TABLE_TPL_PATH, 'r') as file:
+        table_tpl = file.read()
+
+    with open(ROW_TPL_PATH, 'r') as file:
+        row_tpl = file.read()
+
     sdbc = SqliteSDBC(env.DB_PATH)
     conn = sdbc.conn()
 
+    tables = []
     srcs = query_srcs(conn)
     for src in srcs:
-        cves = query_some(conn, src, 5)
+        cves = query_some(conn, src, top_limit)
 
+        rows = []
+        for cve in cves:
+            row = row_tpl % {
+                'md5': cve.md5,
+                'id': cve.cves,
+                'time': cve.time,
+                'title': cve.title,
+                'url': cve.url
+            }
+            rows.append(row)
 
+        table = table_tpl % {
+            'src': cves[0].src,
+            'rows': '\n'.join(rows)
+        }
+        tables.append(table)
 
+    html = html_tpl % {
+        'datetime': time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) ,
+        'table': '\n\n'.join(tables)
+    }
     sdbc.close()
+
+    with open(HTML_PATH, 'w') as file:
+        file.write(html)
 
 
 

@@ -35,7 +35,7 @@ def main(a, b, c):
     for src in srcs:
         msgs = src.cve_msgs()
         to_log(msgs)
-        to_page()
+        to_page(msgs)
         to_notice(msgs)
 
 
@@ -43,8 +43,9 @@ def to_log(msgs):
     map(lambda msg : log.info(msg), msgs)
 
 
-def to_page():
-    page.to_page()
+def to_page(msgs, top_limit = 5):
+    if msgs:
+        page.to_page(top_limit)
 
 
 def to_notice(msgs):
@@ -81,7 +82,5 @@ def get_sys_args(sys_args) :
 if __name__ == '__main__':
     init()
     main(*get_sys_args(sys.argv))
-    # page.to_page()
-
 
 
