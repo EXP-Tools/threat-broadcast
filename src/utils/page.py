@@ -4,6 +4,8 @@
 # @Time   : 2020/4/30 9:37
 # @File   : page.py
 # -----------------------------------------------
+# GitHub CVE 播报页面
+# -----------------------------------------------
 
 import time
 from src.cfg import env
@@ -19,22 +21,14 @@ ROW_TPL_PATH = '%s/tpl/row.tpl' % env.PRJ_DIR
 
 
 def to_page(top_limit = 10):
-    with open(HTML_TPL_PATH, 'r') as file:
-        html_tpl = file.read()
-
-    with open(TABLE_TPL_PATH, 'r') as file:
-        table_tpl = file.read()
-
-    with open(ROW_TPL_PATH, 'r') as file:
-        row_tpl = file.read()
-
+    html_tpl, table_tpl, row_tpl = load_tpl()
     sdbc = SqliteSDBC(env.DB_PATH)
     conn = sdbc.conn()
 
     tables = []
     srcs = query_srcs(conn)
     for src in srcs:
-        cves = query_some(conn, src, top_limit)
+        cves = query_cves(conn, src, top_limit)
 
         rows = []
         for cve in cves:
@@ -60,6 +54,25 @@ def to_page(top_limit = 10):
     }
     sdbc.close()
 
+    create_html(html)
+
+
+
+def load_tpl():
+    with open(HTML_TPL_PATH, 'r') as file:
+        html_tpl = file.read()
+
+    with open(TABLE_TPL_PATH, 'r') as file:
+        table_tpl = file.read()
+
+    with open(ROW_TPL_PATH, 'r') as file:
+        row_tpl = file.read()
+
+    return html_tpl, table_tpl, row_tpl
+
+
+
+def create_html(html):
     with open(HTML_PATH, 'w') as file:
         file.write(html)
 
@@ -67,7 +80,6 @@ def to_page(top_limit = 10):
 
 def query_srcs(conn):
     sql = 'select %s from %s group by %s' % (TCves.s_src, TCves.table_name, TCves.s_src)
-
     srcs = []
     try:
         cursor = conn.cursor()
@@ -81,11 +93,11 @@ def query_srcs(conn):
     return srcs
 
 
-def query_some(conn, src, limit):
+
+def query_cves(conn, src, limit):
     dao = TCvesDao()
     where = "and %s = '%s' order by %s desc limit %d" % (TCves.s_src, src, TCves.s_time, limit)
     sql = TCvesDao.SQL_SELECT + where
-
     beans = []
     try:
         cursor = conn.cursor()

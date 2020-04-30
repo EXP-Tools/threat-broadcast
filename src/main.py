@@ -67,6 +67,10 @@ def to_notice(msgs):
 def get_sys_args(sys_args) :
     help = False
     top = 10
+    mail_user = ''
+    mail_pass = ''
+    qq_user = ''
+    qq_pass = ''
 
     idx = 1
     size = len(sys_args)
@@ -78,6 +82,22 @@ def get_sys_args(sys_args) :
             elif sys_args[idx] == '-top' :
                 idx += 1
                 top = int(sys_args[idx])
+
+            elif sys_args[idx] == '-mu' :
+                idx += 1
+                mail_user = sys_args[idx]
+
+            elif sys_args[idx] == '-mp' :
+                idx += 1
+                mail_pass = sys_args[idx]
+
+            elif sys_args[idx] == '-qu' :
+                idx += 1
+                qq_user = sys_args[idx]
+
+            elif sys_args[idx] == '-qp' :
+                idx += 1
+                qq_pass = sys_args[idx]
 
         except :
             pass
