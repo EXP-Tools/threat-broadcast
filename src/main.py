@@ -67,9 +67,9 @@ def to_notice(msgs):
 def get_sys_args(sys_args) :
     help = False
     top = 10
-    mail_user = ''
+    mail_user = 'threat-broadcast@foxmail.com'
     mail_pass = ''
-    qq_user = ''
+    qq_user = '564712547'
     qq_pass = ''
 
     idx = 1

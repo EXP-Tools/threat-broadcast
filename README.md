@@ -38,6 +38,10 @@ TODO:
 - QQ(群) API
 - Github 页面自动刷新（仅适用master分支）
 
+- mail： threat-broadcast@foxmail.com
+- QQ： 564712547
+- 群号：283212984
+
 
 TODO:
 若漏洞时间没有时分秒，则取爬虫当前时间
