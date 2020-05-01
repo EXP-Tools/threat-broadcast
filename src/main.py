@@ -9,7 +9,6 @@ import sys
 from src.cfg import env
 from src.utils import log
 from src.utils._sqlite import SqliteSDBC
-import src.utils.page as page
 
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus
@@ -18,11 +17,20 @@ from src.crawler.redqueen import RedQueen
 from src.crawler.anquanke import AnQuanKe
 from src.crawler.vas import Vas
 
+import src.notice.page as page
+import src.notice.mail as mail
+import src.notice.qq as qq
+
+
 
 def help_info():
     return '''
     -h                帮助信息
-    -top <number>     播报时每个来源最多取最新的前 N 个 CVE （默认 10）
+    -top <number>     播报时每个来源最多取最新的前 N 个 CVE（默认 10）
+    -mu  <mail-user>  用于发送播报信息的邮箱账号（默认 threat-broadcast@foxmail.com）
+    -mp  <mail-pass>  用于发送播报信息的邮箱密码
+    -qu  <qq-user>    用于向 QQ 群发送播报信息的 QQ 账号（默认 564712547）
+    -qp  <qq-pass>    用于发送播报信息的 QQ 密码
 '''
 
 
@@ -37,7 +45,7 @@ def init():
 
 
 
-def main(help, top):
+def main(help, top, mail_user, mail_pass, qq_user, qq_pass):
     if help:
         log.info(help_info())
 
@@ -47,7 +55,7 @@ def main(help, top):
             msgs = src.cve_msgs()
             to_log(msgs)
             to_page(msgs, top)
-            to_notice(msgs)
+            to_notice(msgs, mail_user, mail_pass, qq_user, qq_pass)
 
 
 def to_log(msgs):
@@ -59,8 +67,10 @@ def to_page(msgs, top):
         page.to_page(top)
 
 
-def to_notice(msgs):
-    pass
+def to_notice(msgs, mail_user, mail_pass, qq_user, qq_pass):
+    if msgs:
+        mail.to_mail(msgs, mail_user, mail_pass)
+        qq.to_group(msgs, qq_user, qq_pass)
 
 
 
@@ -102,7 +112,7 @@ def get_sys_args(sys_args) :
         except :
             pass
         idx += 1
-    return help, top
+    return help, top, mail_user, mail_pass, qq_user, qq_pass
 
 
 if __name__ == '__main__':
