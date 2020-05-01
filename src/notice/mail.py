@@ -15,7 +15,6 @@ from src.cfg import env
 from src.utils import log
 
 
-
 MAIL_TPL_PATH = '%s/tpl/mail.tpl' % env.PRJ_DIR
 RECV_DIR = '%s/recv' % env.PRJ_DIR
 
@@ -44,7 +43,39 @@ def to_mail(cves, smtp, sender, password):
 
 
 def format_content(cves):
-    return '测试2'
+    src_tpl = '    <li><font color="red">%(cnt)d</font>条由 [%(src)s] 提供</li>'
+    mail_tpl =  '''
+<h3>发现最新威胁情报<font color="red">%(total)d</font>条：</h3>
+<ul>
+%(src_infos)s
+</ul>
+<h3>详细漏洞清单如下：</h3>
+<br/>
+%(cve_infos)s
+
+<br/><br/>
+++++++++++++++++++++++++++++++++++++++++++++++
+<br/>
+<font color="red">【情报收集与播报支持】</font> https://lyy289065406.github.io/threat-broadcast/
+'''
+    src_infos = []
+    cve_infos = []
+    total = 0
+    for src, _cves in cves.iteritems():
+        cnt = len(_cves)
+        total += cnt
+        src_infos.append(src_tpl % {
+            'cnt': cnt,
+            'src': src.NAME_CH()
+        })
+        map(lambda cve: cve_infos.append(cve.to_html()), _cves)
+
+    content = mail_tpl % {
+        'total': total,
+        'src_infos': '\n'.join(src_infos),
+        'cve_infos': '\n'.join(cve_infos)
+    }
+    return content
 
 
 def load_receivers():

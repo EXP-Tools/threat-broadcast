@@ -47,24 +47,22 @@ def init():
 
 
 def main(help, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
-    mail.to_mail('', mail_smtp, mail_user, mail_pass)
+    if help:
+        log.info(help_info())
 
-    # if help:
-    #     log.info(help_info())
-    #
-    # else:
-    #     all_cves = []
-    #     srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
-    #     for src in srcs:
-    #         cves = src.cves()
-    #         if cves:
-    #             to_log(cves)
-    #             all_cves.extend(cves)
-    #
-    #     if all_cves:
-    #         page.to_page(top)
-    #         mail.to_mail(all_cves, mail_smtp, mail_user, mail_pass)
-    #         qq.to_group(all_cves, qq_user, qq_pass)
+    else:
+        all_cves = {}
+        srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
+        for src in srcs:
+            cves = src.cves()
+            if cves:
+                to_log(cves)
+                all_cves[src] = cves
+
+        if all_cves:
+            page.to_page(top)
+            mail.to_mail(all_cves, mail_smtp, mail_user, mail_pass)
+            qq.to_group(all_cves, qq_user, qq_pass)
 
 
 
