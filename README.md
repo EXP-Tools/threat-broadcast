@@ -59,6 +59,90 @@
 - 保存 crontab 配置文件后会自动生效，查看日志： `tail -10f /var/log/cron`
 
 
+'''
+.
+├── README.md
+├── cache
+│   ├── 360.dat
+│   ├── AnQuanKe.dat
+│   ├── Nsfocus.dat
+│   ├── QiAnXin.dat
+│   ├── RedQueen.dat
+│   └── vas.dat
+├── data
+│   └── cves.db
+├── docs
+│   ├── css
+│   │   └── page.css
+│   └── index.html
+├── log
+│   ├── err.log
+│   ├── run.log
+│   └── run.log.2020-04-27
+├── main.py
+├── recv
+│   ├── mail.dat
+│   └── qq_group.dat
+├── script
+│   ├── cves-create.sql
+│   └── cves-rollback.sql
+├── src
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── bean
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── cve_info.py
+│   │   ├── cve_info.pyc
+│   │   ├── t_cves.py
+│   │   └── t_cves.pyc
+│   ├── cfg
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── env.py
+│   │   └── env.pyc
+│   ├── crawler
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── _base_crawler.py
+│   │   ├── _base_crawler.pyc
+│   │   ├── anquanke.py
+│   │   ├── anquanke.pyc
+│   │   ├── cert360.py
+│   │   ├── cert360.pyc
+│   │   ├── nsfocus.py
+│   │   ├── nsfocus.pyc
+│   │   ├── qianxin.py
+│   │   ├── qianxin.pyc
+│   │   ├── redqueen.py
+│   │   ├── redqueen.pyc
+│   │   ├── vas.py
+│   │   └── vas.pyc
+│   ├── dao
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── _base.py
+│   │   ├── _base.pyc
+│   │   ├── t_cves.py
+│   │   └── t_cves.pyc
+│   ├── notice
+│   │   ├── __init__.py
+│   │   ├── mail.py
+│   │   ├── page.py
+│   │   └── qq.py
+│   └── utils
+│       ├── __init__.py
+│       ├── __init__.pyc
+│       ├── _sqlite.py
+│       ├── _sqlite.pyc
+│       ├── log.py
+│       └── log.pyc
+└── tpl
+    ├── html.tpl
+    ├── row.tpl
+    └── table.tpl
+'''
+
 
 ## 版权声明
 
