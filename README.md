@@ -62,7 +62,7 @@
 ## 配置定时任务
 
 - 修改 crontab 配置文件，设置定时任务： `vim /etc/crontab`
-- 设置定时任务命令（每小时）： `0 * * * * root python ${workspace}/threat-broadcast/main.py`
+- 设置定时任务命令（每小时）： `0 * * * * root python ${workspace}/threat-broadcast/main.py [-any_args]`
 - 注意脚本位置需使用绝对路径，根据实际 checkout 的位置修改即可
 - 保存 crontab 配置文件后会自动生效，查看日志： `tail -10f /var/log/cron`
 
