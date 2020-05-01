@@ -13,6 +13,8 @@ from src.cfg import env
 from src.utils import log
 
 
+# 需要手动把仓库的 HTTPS 协议修改成 SSH
+# git remote set-url origin git@github.com:lyy289065406/threat-broadcast.git
 def auto_commit():
     log.info('正在提交变更...')
     try:

@@ -38,7 +38,7 @@
 </details>
 
 
-## 情报推送源
+## 推送源
 
 - ~QQ 群： 283212984~
 - 邮箱： ThreatBroadcast@126.com，threatbroadcast@qq.com，threatbroadcast@foxmail.com
@@ -79,7 +79,7 @@
 - [`main.py`](main.py) 添加运行参数 `-ac` 可自动提交变更到仓库
 
 
-> 只要爬取到新的威胁情报则会刷新 [`docs/index.html`]，将其提交到仓库会自动更新 Github Page
+> 只要爬取到新的威胁情报则会刷新 [`docs/index.html`](docs/index.html)，将其提交到仓库会自动更新 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
 
 
 ## 目录说明
