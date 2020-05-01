@@ -22,12 +22,20 @@
 爬取到的 CVE 情报会作如下处理：
 
 - ~【实时播报】 接收播报信息的 QQ 群： 283212984~
-- 【邮件播报】 接受播报信息的邮箱配置： [recv/mail_*.dat](recv)
+- 【邮件播报】 接受播报信息的邮箱配置： [recv/mail_*.dat](recv/mail.dat)
 - 【页面播报】 最新的 TOP10 威胁情报会更新到 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
 - 【情报归档】 所有威胁情报会归档到 [sqlite](data/cves.db)
 
 
 > 因 Smart QQ 已停止服务，暂无法实现 QQ 群推送
+
+<details>
+<summary>播报效果</summary>
+<br/>
+
+![](docs/email.png)
+
+</details>
 
 
 ## 情报推送源
@@ -44,104 +52,54 @@
 
 ## 开发者部署
 
+### 安装
+
 - 任意找一台 Linux 服务器
 - 安装 python 2.7
-- 安装 GitPython 模块： `sudo pip install GitPython`
-- 安装 git 客户端
-- 在 Github Fork 这个仓库： [https://github.com/lyy289065406/auto-planting](https://github.com/lyy289065406/auto-planting)
-- 把仓库 checkout 到服务器本地： `git clone https://github.com/{{your_repo}}/auto-planting`
-- checkout 的位置任意即可，如： `/tmp/auto-planting`
-- 设置使用 SSH 与 Github 连接（避免提交内容时要输入账密），详见 [这里](https://help.github.com/en/articles/connecting-to-github-with-ssh)
-- 若设置 SSH 后还要输入密码才能提交，则还需要把仓库的 https 协议改成 ssh，详见 [这里](https://help.github.com/en/articles/changing-a-remotes-url#switching-remote-urls-from-https-to-ssh)
+- 把仓库 checkout 到服务器本地： `git clone https://github.com/lyy289065406/threat-broadcast`
+
+
+## 配置定时任务
+
 - 修改 crontab 配置文件，设置定时任务： `vim /etc/crontab`
-- 设置定时任务命令（每小时）： `0 * * * * root python /tmp/auto-planting/plant.py >> /tmp/err.log 2>&1`
+- 设置定时任务命令（每小时）： `0 * * * * root python ${workspace}/threat-broadcast/main.py`
 - 注意脚本位置需使用绝对路径，根据实际 checkout 的位置修改即可
 - 保存 crontab 配置文件后会自动生效，查看日志： `tail -10f /var/log/cron`
 
+> 程序运行参数可通过 [`main.py -h`](main.py) 查看帮助文档
 
-'''
-.
-├── README.md
-├── cache
-│   ├── 360.dat
-│   ├── AnQuanKe.dat
-│   ├── Nsfocus.dat
-│   ├── QiAnXin.dat
-│   ├── RedQueen.dat
-│   └── vas.dat
+
+## 自动生成 Github Page 播报页面
+
+- 安装 git 命令行客户端
+- 安装 GitPython 模块： `sudo pip install GitPython`
+- 打开项目目录： `cd ${workspace}/threat-broadcast`
+- 设置使用 SSH 与 Github 连接（避免提交内容时要输入账密），详见 [这里](https://help.github.com/en/articles/connecting-to-github-with-ssh)
+- 若设置 SSH 后还要输入密码才能提交，则还需要把仓库的 https 协议改成 ssh，详见 [这里](https://help.github.com/en/articles/changing-a-remotes-url#switching-remote-urls-from-https-to-ssh)
+- [`main.py`](main.py) 添加运行参数 `-ac` 可自动提交变更到仓库
+
+
+> 只要爬取到新的威胁情报则会刷新 [`docs/index.html`]，将其提交到仓库会自动更新 Github Page
+
+
+## 目录说明
+
+```
+threat-broadcast
+├── README.md ............................... [项目说明]
+├── main.py ................................. [程序运行入口]
+├── cache ................................... [威胁情报缓存]
 ├── data
-│   └── cves.db
-├── docs
-│   ├── css
-│   │   └── page.css
-│   └── index.html
-├── log
-│   ├── err.log
-│   ├── run.log
-│   └── run.log.2020-04-27
-├── main.py
+│   └── cves.db ............................. [sqlite: 威胁情报归档]
+├── docs .................................... [Github Page 威胁情报总览]
 ├── recv
-│   ├── mail.dat
-│   └── qq_group.dat
-├── script
-│   ├── cves-create.sql
-│   └── cves-rollback.sql
-├── src
-│   ├── __init__.py
-│   ├── __init__.pyc
-│   ├── bean
-│   │   ├── __init__.py
-│   │   ├── __init__.pyc
-│   │   ├── cve_info.py
-│   │   ├── cve_info.pyc
-│   │   ├── t_cves.py
-│   │   └── t_cves.pyc
-│   ├── cfg
-│   │   ├── __init__.py
-│   │   ├── __init__.pyc
-│   │   ├── env.py
-│   │   └── env.pyc
-│   ├── crawler
-│   │   ├── __init__.py
-│   │   ├── __init__.pyc
-│   │   ├── _base_crawler.py
-│   │   ├── _base_crawler.pyc
-│   │   ├── anquanke.py
-│   │   ├── anquanke.pyc
-│   │   ├── cert360.py
-│   │   ├── cert360.pyc
-│   │   ├── nsfocus.py
-│   │   ├── nsfocus.pyc
-│   │   ├── qianxin.py
-│   │   ├── qianxin.pyc
-│   │   ├── redqueen.py
-│   │   ├── redqueen.pyc
-│   │   ├── vas.py
-│   │   └── vas.pyc
-│   ├── dao
-│   │   ├── __init__.py
-│   │   ├── __init__.pyc
-│   │   ├── _base.py
-│   │   ├── _base.pyc
-│   │   ├── t_cves.py
-│   │   └── t_cves.pyc
-│   ├── notice
-│   │   ├── __init__.py
-│   │   ├── mail.py
-│   │   ├── page.py
-│   │   └── qq.py
-│   └── utils
-│       ├── __init__.py
-│       ├── __init__.pyc
-│       ├── _sqlite.py
-│       ├── _sqlite.pyc
-│       ├── log.py
-│       └── log.pyc
-└── tpl
-    ├── html.tpl
-    ├── row.tpl
-    └── table.tpl
-'''
+│   ├── mail.dat ............................ [接收威胁情报的邮箱]
+│   └── qq_group.dat ........................ [接收威胁情报的 QQ 群]
+├── src ..................................... [项目源码]
+├── script .................................. [数据库脚本]
+├── tpl ..................................... [模板文件]
+└── log ..................................... [项目日志]
+```
 
 
 ## 版权声明
