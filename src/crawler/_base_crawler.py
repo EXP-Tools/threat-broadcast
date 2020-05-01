@@ -48,7 +48,7 @@ class BaseCrawler:
         }
 
 
-    def cve_msgs(self):
+    def cves(self):
         log.info('++++++++++++++++++++++++++++++++++++++++++++')
         log.info('正在获取 [%s] 威胁情报...' % self.NAME_CH())
         old_cves = self.load_cache()
@@ -62,17 +62,17 @@ class BaseCrawler:
         dao = TCvesDao()
         sdbc = SqliteSDBC(env.DB_PATH)
         conn = sdbc.conn()
-        msgs = []
+        _cves = []
         for cve in new_cves:
             if cve.MD5() not in old_cves:
-                msgs.append(cve.to_msg())
+                _cves.append(cve)
                 self.to_cache(cve)
                 self.to_db(conn, dao, cve)
         sdbc.close()
 
-        log.info('得到 [%s] 最新威胁情报 [%s] 条' % (self.NAME_CH(), len(msgs)))
+        log.info('得到 [%s] 最新威胁情报 [%s] 条' % (self.NAME_CH(), len(_cves)))
         log.info('--------------------------------------------')
-        return msgs
+        return _cves
 
 
     @abstractmethod

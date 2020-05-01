@@ -27,9 +27,10 @@ def help_info():
     return '''
     -h                帮助信息
     -top <number>     播报时每个来源最多取最新的前 N 个 CVE（默认 10）
-    -mu  <mail-user>  用于发送播报信息的邮箱账号（默认 threat-broadcast@foxmail.com）
-    -mp  <mail-pass>  用于发送播报信息的邮箱密码
-    -qu  <qq-user>    用于向 QQ 群发送播报信息的 QQ 账号（默认 564712547）
+    -ms  <mail-smtp>  用于发送播报信息的邮箱 SMTP 服务器（默认 smtp.126.com）
+    -mu  <mail-user>  用于发送播报信息的邮箱账号（默认 ThreatBroadcast@126.com）
+    -mp  <mail-pass>  用于发送播报信息的邮箱密码（部分邮箱为授权码）
+    -qu  <qq-user>    用于向 QQ 群发送播报信息的 QQ 账号
     -qp  <qq-pass>    用于发送播报信息的 QQ 密码
 '''
 
@@ -45,41 +46,40 @@ def init():
 
 
 
-def main(help, top, mail_user, mail_pass, qq_user, qq_pass):
-    if help:
-        log.info(help_info())
+def main(help, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
+    mail.to_mail('', mail_smtp, mail_user, mail_pass)
 
-    else:
-        srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
-        for src in srcs:
-            msgs = src.cve_msgs()
-            to_log(msgs)
-            to_page(msgs, top)
-            to_notice(msgs, mail_user, mail_pass, qq_user, qq_pass)
+    # if help:
+    #     log.info(help_info())
+    #
+    # else:
+    #     all_cves = []
+    #     srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas() ]
+    #     for src in srcs:
+    #         cves = src.cves()
+    #         if cves:
+    #             to_log(cves)
+    #             all_cves.extend(cves)
+    #
+    #     if all_cves:
+    #         page.to_page(top)
+    #         mail.to_mail(all_cves, mail_smtp, mail_user, mail_pass)
+    #         qq.to_group(all_cves, qq_user, qq_pass)
 
 
-def to_log(msgs):
-    map(lambda msg : log.info(msg), msgs)
 
-
-def to_page(msgs, top):
-    if msgs:
-        page.to_page(top)
-
-
-def to_notice(msgs, mail_user, mail_pass, qq_user, qq_pass):
-    if msgs:
-        mail.to_mail(msgs, mail_user, mail_pass)
-        qq.to_group(msgs, qq_user, qq_pass)
+def to_log(cves):
+    map(lambda cve : log.info(cve.to_msg()), cves)
 
 
 
 def get_sys_args(sys_args) :
     help = False
     top = 10
-    mail_user = 'threat-broadcast@foxmail.com'
+    mail_smtp = 'smtp.126.com'
+    mail_user = 'ThreatBroadcast@126.com'
     mail_pass = ''
-    qq_user = '564712547'
+    qq_user = ''
     qq_pass = ''
 
     idx = 1
@@ -92,6 +92,10 @@ def get_sys_args(sys_args) :
             elif sys_args[idx] == '-top' :
                 idx += 1
                 top = int(sys_args[idx])
+
+            elif sys_args[idx] == '-ms' :
+                idx += 1
+                mail_smtp = sys_args[idx]
 
             elif sys_args[idx] == '-mu' :
                 idx += 1
@@ -112,12 +116,15 @@ def get_sys_args(sys_args) :
         except :
             pass
         idx += 1
-    return help, top, mail_user, mail_pass, qq_user, qq_pass
+    return help, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass
 
 
 if __name__ == '__main__':
     init()
     main(*get_sys_args(sys.argv))
+
+
+
 
 
 

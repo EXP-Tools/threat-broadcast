@@ -32,6 +32,17 @@ class CVEInfo:
         return self.md5
 
 
+    def to_html(self):
+        return '\n'.join([
+            "\n==============================================",
+            "[ TITLE ] %s" % self.title,
+            "[ TIME  ] %s" % self.time,
+            "[ CVE   ] %s" % self.id,
+            "[ SRC   ] %s" % self.src,
+            "[ URL   ] %s" % self.url
+        ])
+
+
     def to_msg(self):
         return '\n'.join([
             "\n==============================================",
