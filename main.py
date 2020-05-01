@@ -20,12 +20,14 @@ from src.crawler.vas import Vas
 import src.notice.page as page
 import src.notice.mail as mail
 import src.notice.qq as qq
+import src.utils._git as git
 
 
 
 def help_info():
     return '''
     -h                帮助信息
+    -ac               自动提交变更到仓库（可自动归档、生成 Github Page，默认关闭）
     -top <number>     播报时每个来源最多取最新的前 N 个 CVE（默认 10）
     -ms  <mail-smtp>  用于发送播报信息的邮箱 SMTP 服务器（默认 smtp.126.com）
     -mu  <mail-user>  用于发送播报信息的邮箱账号（默认 ThreatBroadcast@126.com）
@@ -46,7 +48,7 @@ def init():
 
 
 
-def main(help, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
+def main(help, auto_commit, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
     if help:
         log.info(help_info())
 
@@ -64,6 +66,9 @@ def main(help, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
             mail.to_mail(all_cves, mail_smtp, mail_user, mail_pass)
             qq.to_group(all_cves, qq_user, qq_pass)
 
+            if auto_commit:
+                git.auto_commit()
+
 
 
 def to_log(cves):
@@ -73,6 +78,7 @@ def to_log(cves):
 
 def get_sys_args(sys_args) :
     help = False
+    auto_commit = False
     top = 10
     mail_smtp = 'smtp.126.com'
     mail_user = 'ThreatBroadcast@126.com'
@@ -85,7 +91,12 @@ def get_sys_args(sys_args) :
     while idx < size :
         try :
             if sys_args[idx] == '-h' :
+                idx += 1
                 help = True
+
+            elif sys_args[idx] == '-ac' :
+                idx += 1
+                auto_commit = True
 
             elif sys_args[idx] == '-top' :
                 idx += 1
@@ -114,12 +125,13 @@ def get_sys_args(sys_args) :
         except :
             pass
         idx += 1
-    return help, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass
+    return help, auto_commit, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pass
 
 
 if __name__ == '__main__':
     init()
-    main(*get_sys_args(sys.argv))
+    # main(*get_sys_args(sys.argv))
+    git.auto_commit()
 
 
 

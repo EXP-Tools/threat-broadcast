@@ -72,7 +72,7 @@
 ## 自动生成 Github Page 播报页面
 
 - 安装 git 命令行客户端
-- 安装 GitPython 模块： `sudo pip install GitPython`
+- 安装 GitPython 模块： `pip install GitPython`
 - 打开项目目录： `cd ${workspace}/threat-broadcast`
 - 设置使用 SSH 与 Github 连接（避免提交内容时要输入账密），详见 [这里](https://help.github.com/en/articles/connecting-to-github-with-ssh)
 - 若设置 SSH 后还要输入密码才能提交，则还需要把仓库的 https 协议改成 ssh，详见 [这里](https://help.github.com/en/articles/changing-a-remotes-url#switching-remote-urls-from-https-to-ssh)
