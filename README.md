@@ -5,9 +5,7 @@
 
 ## 运行环境
 
-![](https://img.shields.io/badge/Python-2.7%2B-brightgreen.svg)
-
-![](https://img.shields.io/badge/PyCharm-4.0.4%2B-brightgreen.svg)
+![](https://img.shields.io/badge/Python-2.7%2B-brightgreen.svg)  ![](https://img.shields.io/badge/PyCharm-4.0.4%2B-brightgreen.svg)
 
 
 ## 项目介绍
@@ -29,6 +27,9 @@
 - 【情报归档】 所有威胁情报会归档到 [sqlite](data/cves.db)
 
 
+> 因 Smart QQ 已停止服务，暂无法实现 QQ 群推送
+
+
 ## 情报推送源
 
 - ~QQ 群： 283212984~
@@ -37,7 +38,7 @@
 
 ## 订阅方式
 
-- 个人订阅： 加入 QQ 群 283212984 即可
+- ~个人订阅： 加入 QQ 群 283212984 即可~
 - 开发者订阅： 因该项目运行在私人服务器，不对所有人开放邮箱订阅；开发者可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
 
 
