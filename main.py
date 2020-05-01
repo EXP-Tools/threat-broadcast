@@ -130,8 +130,7 @@ def get_sys_args(sys_args) :
 
 if __name__ == '__main__':
     init()
-    # main(*get_sys_args(sys.argv))
-    git.auto_commit()
+    main(*get_sys_args(sys.argv))
 
 
 
