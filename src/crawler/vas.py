@@ -23,7 +23,7 @@ class Vas(BaseCrawler):
         self.name_ch = '斗象'
         self.name_en = 'vas'
         self.url_list = 'https://console.riskivy.com/vas'
-        self.url_details = ' https://console.riskivy.com/vas/'
+        self.url_details = 'https://console.riskivy.com/vas/'
         self.url_cve = 'https://vas.riskivy.com/vuln-detail?id='
 
 
