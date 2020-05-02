@@ -34,7 +34,7 @@
 <summary>播报效果</summary>
 <br/>
 
-![](imgs/email.png)
+![](https://github.com/lyy289065406/threat-broadcast/blob/master/imgs/email.png)
 
 </details>
 
@@ -42,11 +42,12 @@
 ## 威胁情报推送源
 
 - ~QQ 群： 283212984~
+- ~WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)~
 - 邮箱： 
 <br/>　　ThreatBroadcast@126.com
 <br/>　　threatbroadcast@qq.com
 <br/>　　threatbroadcast@foxmail.com
-- ~WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)~
+
 
 > 认准我的推送源，勿点击来历不明链接，慎防钓鱼
 
@@ -54,12 +55,12 @@
 ## 订阅方式
 
 - 【开发者订阅】 可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
-- 【个人订阅】 在 [Issues](issues) 留下你接收情报用的邮箱，我会不定时处理
+- 【个人订阅】 在 [Issues](https://github.com/lyy289065406/threat-broadcast/issues) 留下你接收情报用的邮箱，我会不定时处理
 - ~【个人订阅】 加入 QQ 群： 283212984~
 - ~【个人订阅】 关注 WeChat 公众号~： 
 <br/>　　名称： EXP技术
 <br/>　　微信号： exp-blog
-<br/>![](imgs/wechat.png)
+<br/>![](https://github.com/lyy289065406/threat-broadcast/blob/master/imgs/wechat.png)
 
 
 ## 开发者部署
