@@ -65,7 +65,7 @@
 - 把仓库 checkout 到服务器本地： `git clone https://github.com/lyy289065406/threat-broadcast`
 
 
-## 配置定时任务
+### 配置定时任务
 
 - 修改 crontab 配置文件，设置定时任务： `vim /etc/crontab`
 - 设置定时任务命令（每小时）： `0 * * * * root python ${workspace}/threat-broadcast/main.py [-any_args]`
@@ -75,7 +75,7 @@
 > 程序运行参数可通过 [`main.py -h`](main.py) 查看帮助文档
 
 
-## 自动生成 Github Page 播报页面
+### 自动生成 Github Page 播报页面
 
 - 安装 git 命令行客户端
 - 安装 GitPython 模块： `pip install GitPython`
