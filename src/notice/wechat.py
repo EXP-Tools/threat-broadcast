@@ -1,13 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Author : EXP
-# @Time   : 2020/5/1 0:37
-# @File   : qq.py
+# @Time   : 2020/5/2 14:53
+# @File   : wechat.py
 # -----------------------------------------------
-# 通过 QQ 发送威胁情报
+# 通过 微信公众号 发送威胁情报
 # -----------------------------------------------
 
-
-
-def to_group(cves, username, password):
+def to_wechat(cves, username, password):
     pass

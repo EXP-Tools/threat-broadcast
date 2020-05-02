@@ -20,6 +20,7 @@ from src.crawler.vas import Vas
 import src.notice.page as page
 import src.notice.mail as mail
 import src.notice.qq as qq
+import src.notice.wechat as wechat
 import src.utils._git as git
 
 
@@ -65,6 +66,7 @@ def main(help, auto_commit, top, mail_smtp, mail_user, mail_pass, qq_user, qq_pa
             page.to_page(top)
             mail.to_mail(all_cves, mail_smtp, mail_user, mail_pass)
             qq.to_group(all_cves, qq_user, qq_pass)
+            wechat.to_wechat(all_cves)
 
             if auto_commit:
                 git.auto_commit()
