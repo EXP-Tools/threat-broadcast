@@ -7,5 +7,5 @@
 # 通过 微信公众号 发送威胁情报
 # -----------------------------------------------
 
-def to_wechat(cves, username, password):
+def to_wechat(cves):
     pass
