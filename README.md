@@ -34,26 +34,34 @@
 <summary>播报效果</summary>
 <br/>
 
-![](docs/email.png)
+![](imgs/email.png)
 
 </details>
 
 
-## 推送源
+## 威胁情报推送源
 
 - ~QQ 群： 283212984~
 - 邮箱： 
 <br/>　　ThreatBroadcast@126.com
 <br/>　　threatbroadcast@qq.com
 <br/>　　threatbroadcast@foxmail.com
+- ~WeChat 公众号~： 
+<br/>　　名称：EXP技术
+<br/>　　微信号：exp-blog
+
+> 认准我的推送源，勿点击来历不明链接，慎防钓鱼
 
 
 ## 订阅方式
 
+- 【开发者订阅】 可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
 - ~【个人订阅】 加入 QQ 群： 283212984~
-- ~【个人订阅】 加入微信公众号： EXP技术分享平台~
 - 【个人订阅】 在 [Issues](issues) 留下你接收情报用的邮箱，我会不定时处理
-- 【开发者订阅】 因该项目运行在私人服务器，不对所有人开放邮箱订阅；开发者可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
+- ~【个人订阅】 关注 WeChat 公众号~： 
+<br/>　　名称：EXP技术
+<br/>　　微信号：exp-blog
+<br/>![](imgs/wechat.png)
 
 
 ## 开发者部署
