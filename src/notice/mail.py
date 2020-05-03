@@ -90,4 +90,4 @@ def load_receivers():
                         if (not line) or line.startswith('#'):
                             continue
                         recvs.append(line)
-    return recvs
+    return ','.join(set(recvs))
