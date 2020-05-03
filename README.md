@@ -47,8 +47,8 @@
 - 【个人订阅】 在 [Issues](https://github.com/lyy289065406/threat-broadcast/issues) 留下你接收情报用的邮箱，我会不定时处理
 - 【个人订阅】 加入 QQ 群： 283212984
 - 【个人订阅】 关注 WeChat 公众号：
-<br/>　　名称： EXP技术
-<br/>　　微信号： exp-blog
+<br/>　　**名称**： EXP技术
+<br/>　　**微信号**： exp-blog
 <br/>![](https://github.com/lyy289065406/threat-broadcast/blob/master/imgs/wechat.png)
 
 
