@@ -29,7 +29,7 @@
 
 
 > 目前最有效的推送方式是邮件推送（建议使用手机邮箱，如 [139](https://appmail.mail.10086.cn) 可触发短信通知）
-<br/> 因 Smart QQ 已停止服务，暂无法实现 QQ 群自动推送（TODO： [QQ 群 API](https://qun.qq.com/doc.html)）
+<br/> 因 Smart QQ 已停止服务，暂无法实现 QQ 群自动推送（*TODO： [QQ 群 API](https://qun.qq.com/doc.html)*）
 <br/> 因 WeChat 公众号停止个人号群发服务，现只能用户自己手动获取推送
 
 <details>
