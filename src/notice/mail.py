@@ -37,7 +37,6 @@ def to_mail(cves, smtp, sender, password):
         smtpObj.login(sender, password)
         smtpObj.sendmail(sender, receivers, email.as_string())
         log.info('[邮件] 推送威胁情报成功')
-
     except:
         log.error('[邮件] 推送威胁情报失败')
 
@@ -91,4 +90,4 @@ def load_receivers():
                         if (not line) or line.startswith('#'):
                             continue
                         recvs.append(line)
-    return ';'.join(set(recvs))
+    return recvs
