@@ -54,7 +54,7 @@
 
 ## 威胁情报推送源
 
-- ~QQ 群： 283212984~
+- QQ 群： 283212984
 - WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)
 - 邮箱： 
 <br/>　　ThreatBroadcast@126.com
