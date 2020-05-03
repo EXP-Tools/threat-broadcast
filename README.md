@@ -21,14 +21,16 @@
 
 爬取到的 CVE 情报会作如下处理：
 
-- ~【实时播报】 接收播报信息的 QQ 群： `283212984`~
-- ~【实时播报】 接收播报信息的 WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)~
+- 【实时播报】 接收播报信息的 QQ 群： `283212984`
+- 【实时播报】 接收播报信息的 WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)
 - 【邮件播报】 接受播报信息的邮箱配置： [recv/mail_*.dat](recv/mail.dat)
 - 【页面播报】 最新的 TOP10 威胁情报会更新到 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
 - 【情报归档】 所有威胁情报会归档到 [sqlite](data/cves.db)
 
 
-> 因 Smart QQ 已停止服务，暂无法实现 QQ 群推送
+> 目前最有效的推送方式是邮件推送。
+<br/>　因 Smart QQ 已停止服务，暂无法实现 QQ 群自动推送
+<br/>　因 WeChat 公众号停止个人号群发服务，现只能用户自己手动获取推送
 
 <details>
 <summary>播报效果</summary>
@@ -43,7 +45,7 @@
 
 - 【开发者订阅】 可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
 - 【个人订阅】 在 [Issues](https://github.com/lyy289065406/threat-broadcast/issues) 留下你接收情报用的邮箱，我会不定时处理
-- ~【个人订阅】 加入 QQ 群： 283212984~
+- 【个人订阅】 加入 QQ 群： 283212984
 - 【个人订阅】 关注 WeChat 公众号：
 <br/>　　名称： EXP技术
 <br/>　　微信号： exp-blog
@@ -53,7 +55,7 @@
 ## 威胁情报推送源
 
 - ~QQ 群： 283212984~
-- ~WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)~
+- WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)
 - 邮箱： 
 <br/>　　ThreatBroadcast@126.com
 <br/>　　threatbroadcast@qq.com
