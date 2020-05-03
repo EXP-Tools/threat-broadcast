@@ -82,8 +82,8 @@ def get_sys_args(sys_args) :
     help = False
     auto_commit = False
     top = 10
-    mail_smtp = 'smtp.qq.com'
-    mail_user = 'threatbroadcast@qq.com'
+    mail_smtp = 'smtp.126.com'
+    mail_user = 'ThreatBroadcast@126.com'
     mail_pass = ''
     qq_user = ''
     qq_pass = ''
@@ -93,11 +93,9 @@ def get_sys_args(sys_args) :
     while idx < size :
         try :
             if sys_args[idx] == '-h' :
-                idx += 1
                 help = True
 
             elif sys_args[idx] == '-ac' :
-                idx += 1
                 auto_commit = True
 
             elif sys_args[idx] == '-top' :
