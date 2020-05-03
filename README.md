@@ -74,6 +74,8 @@
 - 安装 python 2.7
 - 把仓库 checkout 到服务器本地： `git clone https://github.com/lyy289065406/threat-broadcast`
 
+> 国内的云主机（阿里云/腾讯云等）为了避免滥发邮件默认关闭了对 SMTP 25 端口的出口流量，直接导致邮件无法发送。 解封需要到控制台申请，例如 《[腾讯云 25 端口解封](https://cloud.tencent.com/document/product/213/40436)》
+
 
 ### 配置定时任务
 
