@@ -36,13 +36,13 @@ def init(runlog = RUN_LOG, errlog = ERR_LOG):
     logger.addHandler(ch)
 
     # 输出到运行日志文件的 handler
-    fh = TimedRotatingFileHandler(filename=runlog, when="D", interval=1, backupCount=7)
+    fh = TimedRotatingFileHandler(filename=runlog, when="MIDNIGHT", interval=1, backupCount=7)
     fh.setFormatter(formatter)
     fh.setLevel("INFO")
     logger.addHandler(fh)
 
     # 输出到异常日志文件的 handler
-    exfh = TimedRotatingFileHandler(filename=errlog, when="D", interval=1, backupCount=7)
+    exfh = TimedRotatingFileHandler(filename=errlog, when="MIDNIGHT", interval=1, backupCount=7)
     exfh.setLevel("ERROR")
     exfh.setFormatter(formatter)
     logger.addHandler(exfh)
