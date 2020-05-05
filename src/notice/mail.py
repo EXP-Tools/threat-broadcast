@@ -65,7 +65,7 @@ def format_content(cves):
         total += cnt
         src_infos.append(src_tpl % {
             'cnt': cnt,
-            'url': src.NAME_CH(),
+            'url': src.HOME_PAGE(),
             'src': src.NAME_CH()
         })
         map(lambda cve: cve_infos.append(cve.to_html()), _cves)
