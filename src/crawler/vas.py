@@ -22,6 +22,7 @@ class Vas(BaseCrawler):
         BaseCrawler.__init__(self)
         self.name_ch = '斗象'
         self.name_en = 'vas'
+        self.home_page = 'https://vas.riskivy.com/vuln'
         self.url_list = 'https://console.riskivy.com/vas'
         self.url_details = 'https://console.riskivy.com/vas/'
         self.url_cve = 'https://vas.riskivy.com/vuln-detail?id='
@@ -33,6 +34,10 @@ class Vas(BaseCrawler):
 
     def NAME_EN(self):
         return self.name_en
+
+
+    def HOME_PAGE(self):
+        return self.home_page
 
 
     def get_cves(self, limit = 5):

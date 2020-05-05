@@ -21,6 +21,7 @@ class RedQueen(BaseCrawler):
         BaseCrawler.__init__(self)
         self.name_ch = '红后'
         self.name_en = 'RedQueen'
+        self.home_page = 'https://redqueen.tj-un.com/IntelHome.html'
         self.url_list = 'https://redqueen.tj-un.com/Json/intelHomeVulnIntelList.json'
         self.url_cve = 'https://redqueen.tj-un.com/IntelDetails.html?id='
 
@@ -31,6 +32,10 @@ class RedQueen(BaseCrawler):
 
     def NAME_EN(self):
         return self.name_en
+
+
+    def HOME_PAGE(self):
+        return self.home_page
 
 
     def to_headers(self):

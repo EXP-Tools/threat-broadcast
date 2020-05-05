@@ -34,6 +34,11 @@ class BaseCrawler:
         return 'unknow'
 
 
+    @abstractmethod
+    def HOME_PAGE(self):
+        return 'https://exp-blog.com'
+
+
     def CACHE_PATH(self):
         return '%s/cache/%s.dat' % (env.PRJ_DIR, self.NAME_EN())
 

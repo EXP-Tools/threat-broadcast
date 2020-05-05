@@ -42,7 +42,7 @@ def to_mail(cves, smtp, sender, password):
 
 
 def format_content(cves):
-    src_tpl = '    <li><font color="red">%(cnt)d</font>条由 [%(src)s] 提供</li>'
+    src_tpl = '    <li><font color="red">%(cnt)d</font>条由 [<a href="%(url)s">%(src)s</a>] 提供</li>'
     mail_tpl =  '''
 <h3>发现最新威胁情报<font color="red">%(total)d</font>条：</h3>
 <ul>
@@ -65,6 +65,7 @@ def format_content(cves):
         total += cnt
         src_infos.append(src_tpl % {
             'cnt': cnt,
+            'url': src.NAME_CH(),
             'src': src.NAME_CH()
         })
         map(lambda cve: cve_infos.append(cve.to_html()), _cves)

@@ -21,6 +21,7 @@ class QiAnXin(BaseCrawler):
         BaseCrawler.__init__(self)
         self.name_ch = '奇安信'
         self.name_en = 'QiAnXin'
+        self.home_page = 'https://ti.qianxin.com/advisory/'
         self.url = 'https://ti.qianxin.com/advisory/'
 
 
@@ -30,6 +31,10 @@ class QiAnXin(BaseCrawler):
 
     def NAME_EN(self):
         return self.name_en
+
+
+    def HOME_PAGE(self):
+        return self.home_page
 
 
     def get_cves(self):

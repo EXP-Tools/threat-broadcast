@@ -21,6 +21,7 @@ class AnQuanKe(BaseCrawler):
         BaseCrawler.__init__(self)
         self.name_ch = '安全客'
         self.name_en = 'AnQuanKe'
+        self.home_page = 'https://www.anquanke.com/vul'
         self.url = 'https://www.anquanke.com/vul/'
 
 
@@ -30,6 +31,10 @@ class AnQuanKe(BaseCrawler):
 
     def NAME_EN(self):
         return self.name_en
+
+
+    def HOME_PAGE(self):
+        return self.home_page
 
 
     def get_cves(self):

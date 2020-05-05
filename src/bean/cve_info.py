@@ -39,7 +39,7 @@ class CVEInfo:
             "[<b>漏洞编号</b>] <font color='blue'>%s</font>" % self.id,
             "[<b>披露时间</b>] %s" % self.time,
             "[<b>漏洞描述</b>] %s" % self.title,
-            "[<b>相关链接</b>] %s" % self.url
+            "[<b>相关链接</b>] <a href='%s'>%s</a>" % (self.url, self.url)
         ])
 
 

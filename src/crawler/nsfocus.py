@@ -21,6 +21,7 @@ class Nsfocus(BaseCrawler):
         BaseCrawler.__init__(self)
         self.name_ch = '绿盟'
         self.name_en = 'Nsfocus'
+        self.home_page = 'http://www.nsfocus.net/index.php'
         self.url_list = 'http://www.nsfocus.net/index.php'
         self.url_cve = 'http://www.nsfocus.net/vulndb/'
 
@@ -32,6 +33,9 @@ class Nsfocus(BaseCrawler):
     def NAME_EN(self):
         return self.name_en
 
+
+    def HOME_PAGE(self):
+        return self.home_page
 
 
     def get_cves(self):
