@@ -15,7 +15,7 @@
 - 360：https://cert.360.cn/warning
 - 奇安信：https://ti.qianxin.com/advisory/
 - 红后：https://redqueen.tj-un.com/IntelHome.html
-- 绿盟：http://www.nsfocus.net/vulndb
+- 绿盟：http://www.nsfocus.net/index.php
 - 安全客：https://www.anquanke.com/vul
 - 斗象：https://vas.riskivy.com/vuln
 
