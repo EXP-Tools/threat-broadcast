@@ -69,28 +69,29 @@
 ## 开发者部署
 
 <details>
-<summary>无服务器方式（推荐）</summary>
+<summary><b>无服务器方式（推荐）</b></summary>
 <br/>
 
 本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松两步即可实现部署：
 
 - [Fork](https://github.com/lyy289065406/threat-broadcast) 本项目到你的代码仓库
-- 通过 Settings --> Secrets 配置 3 个环境变量：
-<br/>　　`MAIL_SMTP`： 用于发送威胁情报邮件的 SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
-<br/>　　`MAIL_USER`： 用于发送威胁情报邮件的邮箱账号，如 `threatbroadcast@qq.com`
-<br/>　　`MAIL_PASS`： 用于发送威胁情报邮件的邮箱密码
+- 通过 Settings --> Secrets 配置用于 **发送** 威胁情报邮件 3 个环境变量：
+<br/>　　`MAIL_SMTP`： SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
+<br/>　　`MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
+<br/>　　`MAIL_PASS`： 邮箱密码
+- 编辑 [`recv/mail_*.dat`](recv/mail.dat) 文件即可，按需增删改用于 **接收** 威胁情报邮件的邮箱
 
-[](imgs/secrets.png)
+![](imgs/secrets.png)
 
-此后程序便会在每小时的 15 分执行一次（若要调整执行频率，可修改 [`.github/workflow/autorun.yml`](.github/workflow/autorun.yml) 的 `schedule` 触发时点）
+此后程序便会在每小时的 15 分执行一次（若要调整执行频率，可修改 [`.github/workflow/autorun.yml`](.github/workflow/autorun.yml) 的 `schedule` 触发时点），同时自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面。
 
-若需增删改接收威胁情报邮件的邮箱，只需修改 [`recv/mail_*.dat`](recv/mail.dat) 文件即可。
+
 
 </details>
 
 
 <details>
-<summary>有服务器方式</summary>
+<summary><b>有服务器方式</b></summary>
 <br/>
 
 ### 安装
