@@ -16,29 +16,33 @@ from src.utils import log
 
 
 MAIL_TPL_PATH = '%s/tpl/mail.tpl' % env.PRJ_DIR
+MAIL_CACHE_PATH = '%s/cache/mail.dat' % env.PRJ_DIR
 RECV_DIR = '%s/recv' % env.PRJ_DIR
 
 
-def to_mail(cves, smtp, sender, password):
-    log.info('[邮件] 正在推送威胁情报...')
-
+def to_mail(mail_by_github, cves, smtp, sender, password):
     content = format_content(cves)
-    email = MIMEText(content, 'html', env.CHARSET)     # 以 html 格式发送邮件内容
-    email['From'] = sender
-    receivers = load_receivers()
-    email['To'] = ', '.join(receivers)                  # 此处收件人列表必须为逗号分隔的 str
-    log.info('[邮件] 收件人清单： %s' % receivers)
+    if mail_by_github:
+        to_cache(content)
 
-    subject = '威胁情报播报'
-    email['Subject'] = Header(subject, 'utf-8')
+    else:
+        log.info('[邮件] 正在推送威胁情报...')
+        email = MIMEText(content, 'html', env.CHARSET)     # 以 html 格式发送邮件内容
+        email['From'] = sender
+        receivers = load_receivers()
+        email['To'] = ', '.join(receivers)                  # 此处收件人列表必须为逗号分隔的 str
+        log.info('[邮件] 收件人清单： %s' % receivers)
 
-    try:
-        smtpObj = smtplib.SMTP(smtp)
-        smtpObj.login(sender, password)
-        smtpObj.sendmail(sender, receivers, email.as_string())  # 此处收件人列表必须为 list
-        log.info('[邮件] 推送威胁情报成功')
-    except:
-        log.error('[邮件] 推送威胁情报失败')
+        subject = '威胁情报播报'
+        email['Subject'] = Header(subject, 'utf-8')
+
+        try:
+            smtpObj = smtplib.SMTP(smtp)
+            smtpObj.login(sender, password)
+            smtpObj.sendmail(sender, receivers, email.as_string())  # 此处收件人列表必须为 list
+            log.info('[邮件] 推送威胁情报成功')
+        except:
+            log.error('[邮件] 推送威胁情报失败')
 
 
 def format_content(cves):
@@ -92,3 +96,8 @@ def load_receivers():
                             continue
                         recvs.append(line)
     return recvs
+
+
+def to_cache(mail_content):
+    with open(MAIL_CACHE_PATH, 'w+') as file:
+        file.write(mail_content)

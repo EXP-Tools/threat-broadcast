@@ -69,7 +69,7 @@
 ## 开发者部署
 
 <details>
-<summary><b>无服务器方式（推荐）</b></summary>
+<summary><b>无服务器方式</b></summary>
 <br/>
 
 本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松两步即可实现部署：
@@ -83,8 +83,7 @@
 
 ![](imgs/secrets.png)
 
-> 此后程序便会在每小时的 15 分执行一次（若要调整执行频率，可修改 [`.github/workflows/autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 触发时点），同时自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面。
-
+此后程序便会在每小时的 15 分执行一次（若要调整执行频率，可修改 [`.github/workflows/autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 触发时点），同时自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面。
 
 </details>
 

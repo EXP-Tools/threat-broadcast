@@ -5,7 +5,7 @@ on:
 
 
 jobs:
-  crawler:
+  init-env:
     runs-on: ubuntu-latest
     steps:
 
@@ -28,14 +28,25 @@ jobs:
       run: |
         python -m pip install -r requirements.txt
 
-    - name: Crawl CVEs and deploy to Github Page
-      env:
-        MAIL_SMTP: ${{ secrets.MAIL_SMTP }}
-        MAIL_USER: ${{ secrets.MAIL_USER }}
-        MAIL_PASS: ${{ secrets.MAIL_PASS }}
+  crawler:
+    - name: Crawl CVEs
       run: |-
-        python main.py -ms $MAIL_SMTP -mu $MAIL_USER -mp $MAIL_PASS
+        python main.py -mg
 
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: ${{ secrets.MAIL_SMTP }}
+        server_port: 465
+        username: ${{secrets.MAIL_USER}}
+        password: ${{secrets.MAIL_PASS}}
+        subject: 威胁情报播报
+        body: file://cache/mail.dat
+        to: ${{ secrets.MAIL_RECV }}
+        from: ${{secrets.MAIL_USER}}
+        content_type: text/html
+
+  deploy:
     - name: Commit and push if changed
       run: |-
         git diff
