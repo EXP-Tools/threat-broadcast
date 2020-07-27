@@ -34,6 +34,7 @@ jobs:
 
     # 若该时间段没有 CVE， 则会因 file://cache/mail.dat 文件不存在而报错，使得运行中止，此属于正常
     # 由于此 action 不存在条件判断方式，为了避免没有新增 CVE 时重复发送相同内容的邮件，这里反过来利用了异常
+    # 但毕竟是 action 异常，为了避免频繁邮件通知，可以在账号 Settings -> Notifications -> GitHub Actions 取消邮件通知
     - name: Send mail
       uses: dawidd6/action-send-mail@v2
       with:
