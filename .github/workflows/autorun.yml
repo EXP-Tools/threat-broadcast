@@ -31,7 +31,9 @@ jobs:
     # 本项目已通过 -ac 参数内置了自动提交变更到 Github 的功能，无需额外再在 workflow 添加类似的 job/step
     - name: Crawl CVEs and deploy to Github Page
       env:
-        MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+        MAIL_SMTP: ${{ secrets.MAIL_SMTP }}
+        MAIL_USER: ${{ secrets.MAIL_USER }}
+        MAIL_PASS: ${{ secrets.MAIL_PASS }}
       run: |-
-        python main.py -ac -mp $MAIL_PASSWORD
+        python main.py -ac -ms $MAIL_SMTP -mu $MAIL_USER -mp $MAIL_PASS
 

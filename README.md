@@ -68,9 +68,24 @@
 
 ## 开发者部署
 
+<details>
+<summary>无服务器方式（推荐）</summary>
+<br/>
+
+本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松几步即可实现部署：
+
+
+
+</details>
+
+
+<details>
+<summary>有服务器方式</summary>
+<br/>
+
 ### 安装
 
-- 任意找一台 Linux 服务器
+- 任意找一台 Linux 服务器（阿里云、腾讯云等）
 - 安装 python 2.7
 - 把仓库 checkout 到服务器本地： `git clone https://github.com/lyy289065406/threat-broadcast`
 
@@ -99,6 +114,7 @@
 
 > 只要爬取到新的威胁情报则会刷新 [`docs/index.html`](docs/index.html)，将其提交到仓库会自动更新 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
 
+</details>
 
 ## 目录说明
 
