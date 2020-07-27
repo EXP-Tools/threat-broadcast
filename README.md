@@ -82,9 +82,10 @@
 - 通过 Settings --> Secrets 配置用于 **接收** 威胁情报邮件的 1 个环境变量：
 <br/>　　`MAIL_RECV`： 邮箱账号，若有多个则用英文逗号分隔，如 `abc@foxmail.com,xyz@gmail.com`
 
+> 尔后程序便会每小时执行一次，并自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面（若要调整执行频率，可修改 [`autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 触发时点）
+
 ![](imgs/secrets.png)
 
-此后程序便会在每小时的 15 分执行一次（若要调整执行频率，可修改 [`.github/workflows/autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 触发时点），同时自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面。
 
 </details>
 
