@@ -23,6 +23,7 @@ RECV_DIR = '%s/recv' % env.PRJ_DIR
 def to_mail(mail_by_github, cves, smtp, sender, password):
     content = format_content(cves)
     if mail_by_github:
+        log.info('[邮件] 正在通过 Github Actions 推送威胁情报...')
         to_cache(content)
 
     else:
