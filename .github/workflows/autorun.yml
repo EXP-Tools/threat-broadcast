@@ -1,5 +1,7 @@
 name: Automatically crawl CVEs 
-on: push
+on:
+  schedule:
+    - cron:  '15 * * * *'
 
 
 jobs:
@@ -32,7 +34,7 @@ jobs:
         MAIL_USER: ${{ secrets.MAIL_USER }}
         MAIL_PASS: ${{ secrets.MAIL_PASS }}
       run: |-
-        python main.py -ac -ms $MAIL_SMTP -mu $MAIL_USER -mp $MAIL_PASS
+        python main.py -ms $MAIL_SMTP -mu $MAIL_USER -mp $MAIL_PASS
 
     - name: Commit and push if changed
       run: |-
