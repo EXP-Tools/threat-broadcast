@@ -1,7 +1,5 @@
 name: Automatically crawl CVEs 
-on:
-  schedule:
-    - cron:  '15 * * * *'
+on: push
 
 
 jobs:
@@ -28,7 +26,6 @@ jobs:
       run: |
         python -m pip install -r requirements.txt
 
-    # 本项目已通过 -ac 参数内置了自动提交变更到 Github 的功能，无需额外再在 workflow 添加类似的 job/step
     - name: Crawl CVEs and deploy to Github Page
       env:
         MAIL_SMTP: ${{ secrets.MAIL_SMTP }}
@@ -36,4 +33,13 @@ jobs:
         MAIL_PASS: ${{ secrets.MAIL_PASS }}
       run: |-
         python main.py -ac -ms $MAIL_SMTP -mu $MAIL_USER -mp $MAIL_PASS
+
+    - name: Commit and push if changed
+      run: |-
+        git diff
+        git config --global user.email "readme-bot@example.com"
+        git config --global user.name "README-bot"
+        git add -A
+        git commit -m "Updated content" || exit 0
+        git push
 
