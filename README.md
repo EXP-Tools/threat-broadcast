@@ -80,7 +80,7 @@
 <br/>　　`MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
 <br/>　　`MAIL_PASS`： 邮箱密码
 - 通过 Settings --> Secrets 配置用于 **接收** 威胁情报邮件的 1 个环境变量：
-<br/>　　`MAIL_RECV`： 邮箱账号，多个用英文逗号分隔，如 `abc@foxmail.com,xyz@gmail.com`
+<br/>　　`MAIL_RECV`： 邮箱账号，若有多个则用英文逗号分隔，如 `abc@foxmail.com,xyz@gmail.com`
 
 ![](imgs/secrets.png)
 
