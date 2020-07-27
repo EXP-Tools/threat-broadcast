@@ -1,5 +1,7 @@
 name: Automatically crawl CVEs 
-on: push
+on:
+  schedule:
+    - cron:  '15 * * * *'
 
 
 jobs:
@@ -13,7 +15,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: 2.7
     - uses: actions/cache@v2
       name: Configure pip caching
       with:
