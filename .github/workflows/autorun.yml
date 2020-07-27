@@ -5,7 +5,7 @@ on:
 
 
 jobs:
-  init-env:
+  crawler:
     runs-on: ubuntu-latest
     steps:
 
@@ -28,7 +28,6 @@ jobs:
       run: |
         python -m pip install -r requirements.txt
 
-  crawler:
     - name: Crawl CVEs
       run: |-
         python main.py -mg
@@ -46,7 +45,6 @@ jobs:
         from: ${{secrets.MAIL_USER}}
         content_type: text/html
 
-  deploy:
     - name: Commit and push if changed
       run: |-
         git diff
