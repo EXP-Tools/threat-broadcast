@@ -39,11 +39,11 @@ def help_info():
 
 
 def init():
-    reload(sys)
-    sys.setdefaultencoding(env.CHARSET)
+    if sys.version_info.major <= 2 :
+        reload(sys)
+        sys.setdefaultencoding(env.CHARSET)
 
     log.init()
-
     sdbc = SqliteSDBC(env.DB_PATH)
     sdbc.init(env.SQL_PATH)
 
