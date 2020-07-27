@@ -75,11 +75,12 @@
 本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松两步即可实现部署：
 
 - [Fork 本项目](https://github.com/lyy289065406/threat-broadcast) 到你的代码仓库
-- 通过 Settings --> Secrets 配置用于 **发送** 威胁情报邮件 3 个环境变量：
+- 通过 Settings --> Secrets 配置用于 **发送** 威胁情报邮件的 3 个环境变量：
 <br/>　　`MAIL_SMTP`： SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
 <br/>　　`MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
 <br/>　　`MAIL_PASS`： 邮箱密码
-- 编辑 [`recv/mail_*.dat`](recv/mail.dat) 文件，按需增删改用于 **接收** 威胁情报邮件的邮箱
+- 通过 Settings --> Secrets 配置用于 **接收** 威胁情报邮件的 1 个环境变量：
+<br/>　　`MAIL_RECV`： 邮箱账号，多个用英文逗号分隔，如 `abc@foxmail.com,xyz@gmail.com`
 
 ![](imgs/secrets.png)
 
