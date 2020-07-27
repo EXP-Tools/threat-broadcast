@@ -15,7 +15,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 2.7
+        python-version: 3.8
     - uses: actions/cache@v2
       name: Configure pip caching
       with:
@@ -28,7 +28,7 @@ jobs:
       run: |
         python -m pip install -r requirements.txt
 
-    # 本项目通过 -ac 参数内置了自动提交变更到 Github 的功能，不需额外再在 workflow 添加 job/step
+    # 本项目已通过 -ac 参数内置了自动提交变更到 Github 的功能，无需额外再在 workflow 添加类似的 job/step
     - name: Crawl CVEs and deploy to Github Page
       env:
         MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
