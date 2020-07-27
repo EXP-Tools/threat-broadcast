@@ -72,9 +72,19 @@
 <summary>无服务器方式（推荐）</summary>
 <br/>
 
-本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松几步即可实现部署：
+本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松两步即可实现部署：
 
+- [Fork](https://github.com/lyy289065406/threat-broadcast) 本项目到你的代码仓库
+- 通过 Settings --> Secrets 配置 3 个环境变量：
+<br/>　　`MAIL_SMTP`： 用于发送威胁情报邮件的 SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
+<br/>　　`MAIL_USER`： 用于发送威胁情报邮件的邮箱账号，如 `threatbroadcast@qq.com`
+<br/>　　`MAIL_PASS`： 用于发送威胁情报邮件的邮箱密码
 
+[](imgs/secrets.png)
+
+此后程序便会在每小时的 15 分执行一次（若要调整执行频率，可修改 [`.github/workflow/autorun.yml`](.github/workflow/autorun.yml) 的 `schedule` 触发时点）
+
+若需增删改接收威胁情报邮件的邮箱，只需修改 [`recv/mail_*.dat`](recv/mail.dat) 文件即可。
 
 </details>
 
