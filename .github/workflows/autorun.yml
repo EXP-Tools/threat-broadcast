@@ -5,7 +5,7 @@ on:
 
 
 jobs:
-  crawler:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
 
@@ -47,7 +47,8 @@ jobs:
         from: ${{ secrets.MAIL_USER }}
         content_type: text/html
 
-    - name: Commit and push if changed
+    # readme-bot 是 Github runner 的固定账号，不用改
+    - name: Commit and push Github page (if changed)
       run: |-
         git diff
         git config --global user.email "readme-bot@example.com"
