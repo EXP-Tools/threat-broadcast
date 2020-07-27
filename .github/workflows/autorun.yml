@@ -1,0 +1,36 @@
+name: Automatically crawl CVEs 
+on:
+  schedule:
+    - cron:  '30 * * * *'
+
+
+jobs:
+  crawler:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Check out repo
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 2.7
+    - uses: actions/cache@v2
+      name: Configure pip caching
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install -r requirements.txt
+        
+    - name: Crawl CVEs and deploy to Github Page
+      env:
+        MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
+      run: |-
+        python main.py -ac -mp $MAIL_PASSWORD
+
