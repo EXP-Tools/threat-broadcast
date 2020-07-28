@@ -1,5 +1,7 @@
 name: Automatically crawl CVEs 
-on: push
+on:
+  schedule:
+    - cron:  '15 * * * *'
 
 
 jobs:
@@ -53,3 +55,4 @@ jobs:
         git add -A
         git commit -m "Updated by Github Robot" || exit 0
         git push
+
