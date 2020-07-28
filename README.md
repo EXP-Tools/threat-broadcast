@@ -72,7 +72,7 @@
 <summary><b>无服务器方式（推荐）</b></summary>
 <br/>
 
-本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松两步即可实现部署：
+本项目已配置 [Github workflow](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松几步即可实现部署：
 
 - [Fork 本项目](https://github.com/lyy289065406/threat-broadcast) 到你的代码仓库
 - 通过 Settings --> Secrets 配置用于 **发送** 威胁情报邮件的 3 个环境变量：
