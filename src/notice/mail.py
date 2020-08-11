@@ -22,6 +22,7 @@ RECV_DIR = '%s/recv' % env.PRJ_DIR
 
 def to_mail(mail_by_github, cves, smtp, sender, password):
     content = format_content(cves)
+    receivers = load_receivers()
     if mail_by_github:
         log.info('[邮件] 正在通过 Github Actions 推送威胁情报...')
         to_cache(content)
@@ -30,10 +31,9 @@ def to_mail(mail_by_github, cves, smtp, sender, password):
         log.info('[邮件] 正在推送威胁情报...')
         email = MIMEText(content, 'html', env.CHARSET)     # 以 html 格式发送邮件内容
         email['From'] = sender
-        receivers = load_receivers()
+        
         email['To'] = ', '.join(receivers)                  # 此处收件人列表必须为逗号分隔的 str
         log.info('[邮件] 收件人清单： %s' % receivers)
-
         subject = '威胁情报播报'
         email['Subject'] = Header(subject, 'utf-8')
 

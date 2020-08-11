@@ -7,10 +7,15 @@
 # git 自动提交变更
 # -----------------------------------------------
 
+import os
+import sys
+import json
 import time
 import git
+from python_graphql_client import GraphqlClient
 from src.cfg import env
 from src.utils import log
+
 
 
 # 需要手动把仓库的 HTTPS 协议修改成 SSH
@@ -29,3 +34,41 @@ def auto_commit():
 
 
 
+def _to_graphql(owner='', repo='', iter=100, after_cursor=None):
+    return """
+query {
+    repository(owner: "lyy289065406", name: "threat-broadcast") {
+        issues(orderBy:{field: UPDATED_AT, direction: DESC} , labels: null, first: 100, after: AFTER) {
+            edges {
+                node {
+                    title
+                }
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+        }
+    }
+}
+""".replace(
+        "AFTER", '"{}"'.format(after_cursor) if after_cursor else "null"
+    )
+
+
+def query_issues(owner, repo, iter, oauth_token):
+    issues = []
+    has_next_page = True
+    after_cursor = None
+    while has_next_page:
+        data = client.execute(
+            query=_to_graphql(after_cursor),
+            headers={ "Authorization": "Bearer {}".format(oauth_token) },
+        )
+        log.debug(json.dumps(data))
+
+        # TODO 
+
+        has_next_page = data["data"]["repository"]["issues"]["pageInfo"]["hasNextPage"]
+        after_cursor = data["data"]["repository"]["issues"]["pageInfo"]["endCursor"]
+    return issues

@@ -30,7 +30,7 @@ def help_info():
     -h                帮助信息
     -top <number>     播报时每个来源最多取最新的前 N 个 CVE（默认 10）
     -ac               自动提交变更到仓库（可自动归档、生成 Github Page，默认关闭）
-    -mg               使用 Github workflows Actions 发送邮件（默认关闭）
+    -mg               使用 Github Actions 发送邮件（默认关闭）
     -ms  <mail-smtp>  用于发送播报信息的邮箱 SMTP 服务器（默认 smtp.126.com）
     -mu  <mail-user>  用于发送播报信息的邮箱账号（默认 ThreatBroadcast@126.com）
     -mp  <mail-pass>  用于发送播报信息的邮箱密码（部分邮箱为授权码）
