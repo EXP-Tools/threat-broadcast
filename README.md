@@ -5,7 +5,7 @@
 
 ## 运行环境
 
-![](https://img.shields.io/badge/Python-2.7%2B-brightgreen.svg)  ![](https://img.shields.io/badge/PyCharm-4.0.4%2B-brightgreen.svg)
+![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
 
 
 ## 项目介绍
@@ -98,7 +98,7 @@
 ### 安装
 
 - 任意找一台 Linux 服务器（阿里云、腾讯云等）
-- 安装 python 2.7
+- 安装 python 3.8
 - 把仓库 checkout 到服务器本地： `git clone https://github.com/lyy289065406/threat-broadcast`
 
 > 国内的云主机（阿里云/腾讯云等）为了避免滥发邮件默认关闭了对 SMTP 25 端口的出口流量，直接导致邮件无法发送。 解封需要到控制台申请，例如 《[阿里云 25 端口解封](https://help.aliyun.com/knowledge_detail/56130.html?spm=a2c4e.11153940.0.0.50664791wrBD3D&source=5176.11533457&userCode=r3yteowb&type=copy)》、 《[腾讯云 25 端口解封](https://cloud.tencent.com/document/product/213/40436)》
