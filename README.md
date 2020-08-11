@@ -21,15 +21,16 @@
 
 爬取到的 CVE 情报会作如下处理：
 
+- 【邮件播报】 接收播报信息的邮箱配置： [recv/mail_*.dat](recv/mail.dat)
+- 【邮件播报】 在 <a href="https://github.com/timburgan/timburgan/issues/new?title=Your+Email&amp;body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">Issues</a> 标题留下邮箱地址，即可接收播报信息
 - 【实时播报】 接收播报信息的 QQ 群： `283212984`
 - 【实时播报】 接收播报信息的 WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)
-- 【邮件播报】 接受播报信息的邮箱配置： [recv/mail_*.dat](recv/mail.dat)
 - 【页面播报】 最新的 TOP10 威胁情报会更新到 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
 - 【情报归档】 所有威胁情报会归档到 [sqlite](data/cves.db)
 
 
 > 目前最有效的推送方式是邮件推送（建议使用手机邮箱，如 [139](https://appmail.mail.10086.cn) 可触发短信通知）
-<br/> 因 Smart QQ 已停止服务，暂无法实现 QQ 群自动推送（*TODO： [QQ 群 API](https://qun.qq.com/doc.html)*）
+<br/> 因 QQ 机器人已停止服务，暂无法实现 QQ 群自动推送
 <br/> 因 WeChat 公众号停止个人号群发服务，现只能用户自己手动获取推送
 
 <details>
@@ -44,7 +45,7 @@
 ## 订阅方式
 
 - 【开发者订阅】 可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
-- 【个人订阅】 在 [Issues](https://github.com/lyy289065406/threat-broadcast/issues) 留下你接收情报用的邮箱，我会不定时处理
+- 【个人订阅】 在 <a href="https://github.com/timburgan/timburgan/issues/new?title=Your+Email&amp;body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">Issues</a> 标题留下你的邮箱即可，实时生效
 - 【个人订阅】 加入 QQ 群： 283212984
 - 【个人订阅】 关注 WeChat 公众号：
 <br/>　　**名称**： EXP技术
@@ -79,8 +80,6 @@
 <br/>　　`MAIL_SMTP`： SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
 <br/>　　`MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
 <br/>　　`MAIL_PASS`： 邮箱密码
-- 通过 Settings --> Secrets 配置用于 **接收** 威胁情报邮件的 1 个环境变量：
-<br/>　　`MAIL_RECV`： 邮箱账号，若有多个则用英文逗号分隔，如 `abc@foxmail.com,xyz@gmail.com`
 - 启用 Settings --> Actions 功能
 
 > 尔后程序便会每小时执行一次，并自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面（若要调整执行频率，可修改 [`autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 触发时点）
@@ -139,7 +138,7 @@ threat-broadcast
 │   └── cves.db ............................. [sqlite: 威胁情报归档]
 ├── docs .................................... [Github Page 威胁情报总览]
 ├── recv
-│   ├── mail.dat ............................ [接收威胁情报的邮箱]
+│   ├── mail_*.dat .......................... [接收威胁情报的邮箱]
 │   └── qq_group.dat ........................ [接收威胁情报的 QQ 群]
 ├── src ..................................... [项目源码]
 ├── script .................................. [数据库脚本]
