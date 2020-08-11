@@ -34,11 +34,36 @@ def auto_commit():
 
 
 
-def _to_graphql(owner='', repo='', iter=100, after_cursor=None):
-    return """
+# https://developer.github.com/v4/object/repository/
+# issues (IssueConnection!)
+def query_issues(github_token, owner=env.GITHUB_REPO_OWNER, repo=env.GITHUB_REPO, iter=100):
+    titles = []
+    client = GraphqlClient(endpoint=env.GITHUB_GRAPHQL)
+    has_next_page = True
+    next_cursor = None
+    while has_next_page:
+        data = client.execute(
+            query=_to_graphql(next_cursor, owner, repo, iter),
+            headers={ "Authorization": "Bearer {}".format(github_token) },
+        )
+        # log.debug(json.dumps(data))
+
+        issues = data["data"]["repository"]["issues"]
+        for issue in issues["edges"] :
+            title = issue["node"]["title"]
+            titles.append(title)
+
+        has_next_page = issues["pageInfo"]["hasNextPage"]
+        next_cursor = issues["pageInfo"]["endCursor"]
+    return titles
+
+
+
+def _to_graphql(next_cursor, owner, repo, iter):
+    return ("""
 query {
-    repository(owner: "lyy289065406", name: "threat-broadcast") {
-        issues(orderBy:{field: UPDATED_AT, direction: DESC} , labels: null, first: 100, after: AFTER) {
+    repository(owner: "%s", name: "%s") {
+        issues(orderBy:{field: UPDATED_AT, direction: DESC}, labels: null, first: %i, after: NEXT) {
             edges {
                 node {
                     title
@@ -51,24 +76,6 @@ query {
         }
     }
 }
-""".replace(
-        "AFTER", '"{}"'.format(after_cursor) if after_cursor else "null"
+""" % (owner, repo, iter)).replace(
+        "NEXT", '"{}"'.format(next_cursor) if next_cursor else "null"
     )
-
-
-def query_issues(owner, repo, iter, oauth_token):
-    issues = []
-    has_next_page = True
-    after_cursor = None
-    while has_next_page:
-        data = client.execute(
-            query=_to_graphql(after_cursor),
-            headers={ "Authorization": "Bearer {}".format(oauth_token) },
-        )
-        log.debug(json.dumps(data))
-
-        # TODO 
-
-        has_next_page = data["data"]["repository"]["issues"]["pageInfo"]["hasNextPage"]
-        after_cursor = data["data"]["repository"]["issues"]["pageInfo"]["endCursor"]
-    return issues
