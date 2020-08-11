@@ -19,9 +19,9 @@ class BaseCrawler:
 
     __metaclass__ = ABCMeta # 定义为抽象类
 
-    def __init__(self, timeout = 60, charset = 'utf-8'):
+    def __init__(self, timeout = 60, charset = env.CHARSET):
         self.timeout = timeout or 60
-        self.charset = charset or 'utf-8'
+        self.charset = charset or env.CHARSET
 
 
     @abstractmethod
@@ -95,7 +95,7 @@ class BaseCrawler:
         lines = []
         with open(self.CACHE_PATH(), 'r+') as file:
             lines = file.readlines()
-            lines = map(lambda line: line.strip(), lines)
+            lines = list(map(lambda line: line.strip(), lines))
 
         # 缓存超过 200 时，保留最后的 100 条缓存
         if len(lines) > 200:

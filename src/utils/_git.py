@@ -34,6 +34,7 @@ def auto_commit():
 
 
 
+# 通过 GraphQL 接口查询所有 Issue 标题
 # https://developer.github.com/v4/object/repository/
 # issues (IssueConnection!)
 def query_issues(github_token, owner=env.GITHUB_REPO_OWNER, repo=env.GITHUB_REPO, iter=100):

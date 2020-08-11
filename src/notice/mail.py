@@ -106,12 +106,15 @@ def load_local_receivers():
 
 def load_issue_receivers(gtk):
     recvs = set()
-    issues = _git.query_issues('lyy289065406', 'threat-broadcast', 100, gtk)
-    for issue in issues :
-        ptn = re.compile(r'([a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+)')
-        emails = ptn.findall(issue)
-        for email in emails:
-            recvs.add(email[0])
+    try: 
+        issues = _git.query_issues(gtk)
+        for issue in issues :
+            ptn = re.compile(r'([a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+)')
+            emails = ptn.findall(issue)
+            for email in emails:
+                recvs.add(email[0])
+    except:
+        log.error('获取 Issue 的邮箱失败（国内 GraphQL 接口不稳定）')
     return recvs
 
 
