@@ -46,7 +46,7 @@ class QiAnXin(BaseCrawler):
 
         cves = []
         if response.status_code == 200:
-            html = response.content
+            html = response.content.decode(self.charset)
             titles = self.get_titles(html)
             json_str = self.to_json(html)
             json_obj = json.loads(json_str)

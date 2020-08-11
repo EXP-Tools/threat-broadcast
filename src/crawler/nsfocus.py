@@ -52,7 +52,7 @@ class Nsfocus(BaseCrawler):
 
         cves = []
         if response.status_code == 200:
-            html = response.content
+            html = response.content.decode(self.charset)
             vul_list = re.findall(r'<div class="vulbar">(.*?)</div>', html, re.DOTALL)
             if vul_list:
                 vuls =  re.findall(r"<li><span>(.*?)</span> <a href='/vulndb/(\d+)'>(.*?)</a>", vul_list[0])

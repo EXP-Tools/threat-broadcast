@@ -46,7 +46,7 @@ class AnQuanKe(BaseCrawler):
 
         cves = []
         if response.status_code == 200:
-            html = response.content
+            html = response.content.decode(self.charset)
             vul_table = re.findall(r'<tr>(.*?)</tr>', html, re.DOTALL)
             if vul_table:
                 for vul in vul_table:

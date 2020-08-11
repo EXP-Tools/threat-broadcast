@@ -30,7 +30,7 @@ def help_info():
     -h                帮助信息
     -top <number>     播报时每个来源最多取最新的前 N 个 CVE（默认 10）
     -ac               自动提交变更到仓库（可自动归档、生成 Github Page，默认关闭）
-    -mg               使用 Github Actions 发送邮件（默认关闭）
+    -gtk              Github Token，若非空值则使用 Github Actions 发送播报邮件
     -ms  <mail-smtp>  用于发送播报信息的邮箱 SMTP 服务器（默认 smtp.126.com）
     -mu  <mail-user>  用于发送播报信息的邮箱账号（默认 ThreatBroadcast@126.com）
     -mp  <mail-pass>  用于发送播报信息的邮箱密码（部分邮箱为授权码）
@@ -40,17 +40,13 @@ def help_info():
 
 
 def init():
-    reload(sys)
-    sys.setdefaultencoding(env.CHARSET)
-
     log.init()
-
     sdbc = SqliteSDBC(env.DB_PATH)
     sdbc.init(env.SQL_PATH)
 
 
 
-def main(help, top, auto_commit, mail_by_github, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
+def main(help, top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
     if help:
         log.info(help_info())
 
@@ -65,7 +61,7 @@ def main(help, top, auto_commit, mail_by_github, mail_smtp, mail_user, mail_pass
 
         if all_cves:
             page.to_page(top)
-            mail.to_mail(mail_by_github, all_cves, mail_smtp, mail_user, mail_pass)
+            mail.to_mail(gtk, all_cves, mail_smtp, mail_user, mail_pass)
             qq.to_group(all_cves, qq_user, qq_pass)
             wechat.to_wechat(all_cves)
 
@@ -83,7 +79,7 @@ def get_sys_args(sys_args) :
     help = False
     top = 10
     auto_commit = False
-    mail_by_github = False
+    gtk = ''
     mail_smtp = 'smtp.qq.com'
     mail_user = 'threatbroadcast@qq.com'
     mail_pass = ''
@@ -104,8 +100,9 @@ def get_sys_args(sys_args) :
             elif sys_args[idx] == '-ac' :
                 auto_commit = True
 
-            elif sys_args[idx] == '-mg' :
-                mail_by_github = True
+            elif sys_args[idx] == '-gtk' :
+                idx += 1
+                gtk = sys_args[idx]
 
             elif sys_args[idx] == '-ms' :
                 idx += 1
@@ -130,15 +127,12 @@ def get_sys_args(sys_args) :
         except :
             pass
         idx += 1
-    return help, top, auto_commit, mail_by_github, mail_smtp, mail_user, mail_pass, qq_user, qq_pass
+    return help, top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pass
 
 
 if __name__ == '__main__':
     init()
     main(*get_sys_args(sys.argv))
-
-
-
 
 
 

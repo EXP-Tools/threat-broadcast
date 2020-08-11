@@ -12,3 +12,7 @@ CHARSET = 'utf-8'
 
 SQL_PATH = '%s/script/cves-create.sql' % PRJ_DIR
 DB_PATH =  '%s/data/cves.db' % PRJ_DIR
+
+GITHUB_GRAPHQL = 'https://api.github.com/graphql'
+GITHUB_REPO = 'threat-broadcast'
+GITHUB_REPO_OWNER = 'lyy289065406'
