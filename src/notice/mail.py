@@ -78,7 +78,8 @@ def format_content(cves):
             'url': src.HOME_PAGE(),
             'src': src.NAME_CH()
         })
-        map(lambda cve: cve_infos.append(cve.to_html()), _cves)
+        for cve in _cves:
+            cve_infos.append(cve.to_html())
 
     content = mail_tpl % {
         'total': total,
