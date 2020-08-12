@@ -71,7 +71,8 @@ def main(help, top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, 
 
 
 def to_log(cves):
-    map(lambda cve : log.info(cve.to_msg()), cves)
+    for cve in cves :
+        log.info(cve.to_msg())
 
 
 
@@ -133,6 +134,7 @@ def get_sys_args(sys_args) :
 if __name__ == '__main__':
     init()
     main(*get_sys_args(sys.argv))
+
 
 
 
