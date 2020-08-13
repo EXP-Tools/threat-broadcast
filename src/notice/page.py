@@ -37,7 +37,7 @@ def to_page(top_limit = 10):
                 'md5': cve.md5,
                 'id': cve.cves,
                 'time': cve.time,
-                'new_flag': ' <img src="imgs/new.gif" />' if cve.time.startswith(today) else ''
+                'new_flag': ' <img src="imgs/new.gif" />' if cve.time.startswith(today) else '', 
                 'title': cve.title,
                 'url': cve.url
             }
