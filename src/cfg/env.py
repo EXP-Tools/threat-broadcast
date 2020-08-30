@@ -6,8 +6,13 @@
 # -----------------------------------------------
 
 import os
-PRJ_DIR = os.path.dirname(os.path.abspath(__file__)).replace(r'/src/cfg', '').replace(r'\src\cfg', '')
-
+PRJ_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.dirname(
+            os.path.abspath(__file__)
+        )
+    )
+)
 CHARSET = 'utf-8'
 
 SQL_PATH = '%s/script/cves-create.sql' % PRJ_DIR
