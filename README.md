@@ -18,6 +18,7 @@
 - 绿盟：http://www.nsfocus.net/index.php
 - 安全客：https://www.anquanke.com/vul
 - 斗象：https://vas.riskivy.com/vuln
+- CNVD：https://www.cnvd.org.cn/flaw/list.htm
 
 爬取到的 CVE 情报会作如下处理：
 
