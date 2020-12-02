@@ -91,7 +91,7 @@ class CNVD(BaseCrawler):
                     id = re.findall(r'>(.*?)</a>', val)[0].strip()
                     cve.id = "%s (%s)" % (cve.id, id)
 
-                elif key == '报送时间' :
+                elif key == '公开日期' :
                     cve.time = val + time.strftime(" %H:%M:%S", time.localtime())
 
                 elif key == '漏洞描述' :
