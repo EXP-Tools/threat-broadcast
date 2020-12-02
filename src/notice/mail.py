@@ -95,7 +95,7 @@ def load_local_receivers():
         for fileName in fileNames:
             if fileName.startswith('mail') and fileName.endswith('.dat'):
                 filePath = '%s/%s' % (MAIL_RECV_DIR, fileName)
-                with open(filePath, 'r') as file:
+                with open(filePath, 'r', encoding=env.CHARSET) as file:
                     lines = file.readlines()
                     for line in lines:
                         line = line.strip()
@@ -120,5 +120,5 @@ def load_issue_receivers(gtk):
 
 
 def to_cache(date, filepath):
-    with open(filepath, 'w+') as file:
+    with open(filepath, 'w+', encoding=env.CHARSET) as file:
         file.write(date)

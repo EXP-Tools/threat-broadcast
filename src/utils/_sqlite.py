@@ -7,6 +7,7 @@
 # Sqlite 数据库接口
 # -----------------------------------------------
 
+from src.cfg import env
 from src.utils import log
 import sqlite3
 
@@ -88,7 +89,7 @@ class SqliteSDBC:
         if self.conn():
             try:
                 data = ""
-                with open(sql_script, "r") as file:
+                with open(sql_script, "r", encoding=env.CHARSET) as file:
                     data = file.read()
 
                 if data:
