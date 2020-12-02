@@ -61,13 +61,13 @@ def to_page(top_limit = 10):
 
 
 def load_tpl():
-    with open(HTML_TPL_PATH, 'r') as file:
+    with open(HTML_TPL_PATH, 'r', encoding=env.CHARSET) as file:
         html_tpl = file.read()
 
-    with open(TABLE_TPL_PATH, 'r') as file:
+    with open(TABLE_TPL_PATH, 'r', encoding=env.CHARSET) as file:
         table_tpl = file.read()
 
-    with open(ROW_TPL_PATH, 'r') as file:
+    with open(ROW_TPL_PATH, 'r', encoding=env.CHARSET) as file:
         row_tpl = file.read()
 
     return html_tpl, table_tpl, row_tpl
@@ -75,7 +75,7 @@ def load_tpl():
 
 
 def create_html(html):
-    with open(HTML_PATH, 'w') as file:
+    with open(HTML_PATH, 'w', encoding=env.CHARSET) as file:
         file.write(html)
 
 
