@@ -79,7 +79,7 @@ def to_log(cves):
 
 def get_sys_args(sys_args) :
     help = False
-    top = 10
+    top = 30
     auto_commit = False
     gtk = ''
     mail_smtp = 'smtp.qq.com'
