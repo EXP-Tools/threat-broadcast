@@ -55,6 +55,7 @@ class RedQueen(BaseCrawler):
             timeout = self.timeout
         )
 
+        print(response.text)
         cves = []
         if response.status_code == 200:
             json_obj = json.loads(response.text)
