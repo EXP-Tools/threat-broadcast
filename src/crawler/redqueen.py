@@ -73,7 +73,8 @@ class RedQueen(BaseCrawler):
         cve = CVEInfo()
         cve.src = self.NAME_CH()
         cve.url = self.url_cve + json_obj.get('id')
-        cve.time = json_obj.get('pub_time')
+        # cve.time = json_obj.get('pub_time')
+        cve.time = json_obj.get('upd_time')
 
         title = json_obj.get('title')
         cve.title = re.sub(r'CVE-\d+-\d+', '', title).strip()
