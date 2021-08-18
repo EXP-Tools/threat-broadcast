@@ -1,6 +1,6 @@
 name: Automatically crawl CVEs 
 on:
-  pull_request:
+  workflow_dispatch:
     branches:
       - master
   schedule:
@@ -58,5 +58,5 @@ jobs:
         git config --global user.name "Github-Bot"
         git add -A
         git commit -m "Updated by Github Bot" || exit 0
-        git push origin master
+        git push
 
