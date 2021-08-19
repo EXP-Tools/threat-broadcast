@@ -17,7 +17,6 @@ from src.crawler.redqueen import RedQueen
 from src.crawler.anquanke import AnQuanKe
 from src.crawler.vas import Vas
 from src.crawler.cnvd import CNVD
-from src.crawler.cnnvd import CNNVD
 
 import src.notice.page as page
 import src.notice.mail as mail
@@ -54,7 +53,7 @@ def main(help, top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, 
 
     else:
         all_cves = {}
-        srcs = [  CNNVD() ]
+        srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas(), CNVD() ]
         for src in srcs:
             cves = src.cves()
             if cves:
