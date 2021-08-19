@@ -4,7 +4,7 @@
 # @Time   : 2020/12/01 23:21
 # @File   : cnvd.py
 # -----------------------------------------------
-# cnvd://www.cnvd.org.cn/
+# cnvd: https://www.cnvd.org.cn/
 # -----------------------------------------------
 
 from src.bean.cve_info import CVEInfo
@@ -23,7 +23,7 @@ class CNVD(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name_ch = 'CNVD'
+        self.name_ch = '国家信息安全漏洞共享平台（CNVD）'
         self.name_en = 'CNVD'
         self.home_page = 'https://www.cnvd.org.cn/'
         self.url_list = 'https://www.cnvd.org.cn/flaw/list.htm'
@@ -43,14 +43,6 @@ class CNVD(BaseCrawler):
 
     def HOME_PAGE(self):
         return self.home_page
-
-
-    def to_headers(self):
-        headers = self.headers()
-        headers['Host'] = 'www.cnvd.org.cn'
-        headers['Accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-        headers['Referer'] = self.url_list
-        return headers
 
 
     # CNVD 采用加速乐反爬机制
@@ -108,7 +100,6 @@ class CNVD(BaseCrawler):
         cves = []
         if response.status_code == 200:
             ids = re.findall(r'\thref="/flaw/show/([^"]+)"', response.text)
-            print(ids)
             for id in ids :
                 cve = self.to_cve(id)
                 if cve.is_vaild():
