@@ -92,8 +92,6 @@ class CNNVD(BaseCrawler):
                 p_list = div5[0].xpath("./p[@style='text-indent:2em']")
                 for p in p_list :
                     cve.info += p.text.strip()
-
-                print(cve.info)
                 
                 cve.id = "%s (%s)" % (cve.id, re.findall(r'cvename\.cgi\?name=([^"]*)"', response.text)[0].strip())
                 cve.time = "%s 00:00:00" % re.findall(r'qstartdateXq=([^"]*)"', response.text)[0].strip()
