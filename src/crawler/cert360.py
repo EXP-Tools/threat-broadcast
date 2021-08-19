@@ -20,8 +20,8 @@ class Cert360(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name_ch = '360'
-        self.name_en = '360'
+        self.name_ch = '360 网络安全响应中心'
+        self.name_en = 'Cert 360'
         self.home_page = 'https://cert.360.cn/warning'
         self.url_list = 'https://cert.360.cn/warning/searchbypage'
         self.url_cve = 'https://cert.360.cn/warning/detail?id='

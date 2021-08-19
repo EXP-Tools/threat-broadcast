@@ -23,7 +23,7 @@ class CNVD(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name_ch = 'CNVD'
+        self.name_ch = '国家信息安全漏洞共享平台'
         self.name_en = 'CNVD'
         self.home_page = 'https://www.cnvd.org.cn/'
         self.url_list = 'https://www.cnvd.org.cn/flaw/list.htm'
@@ -100,7 +100,6 @@ class CNVD(BaseCrawler):
         cves = []
         if response.status_code == 200:
             ids = re.findall(r'\thref="/flaw/show/([^"]+)"', response.text)
-            print(ids)
             for id in ids :
                 cve = self.to_cve(id)
                 if cve.is_vaild():

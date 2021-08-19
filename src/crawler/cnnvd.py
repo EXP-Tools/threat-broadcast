@@ -11,26 +11,20 @@ from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
 from src.utils import log
 import requests
-from requests.utils import add_dict_to_cookiejar
-import execjs
-import hashlib
 import json
 import re
 import time
 
 
-class CNVD(BaseCrawler):
+class CNNVD(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name_ch = 'CNVD'
-        self.name_en = 'CNVD'
-        self.home_page = ''
-        self.url_list = ''
-        self.url_cve = ''
-
-        self.session = requests.session()
-        self._set_cookie(self.home_page)
+        self.name_ch = '国家信息安全漏洞库'
+        self.name_en = 'CNNVD'
+        self.home_page = 'http://www.cnnvd.org.cn/'
+        self.url_list = 'http://www.cnnvd.org.cn/web/vulnerability/querylist.tag'
+        self.url_cve = 'http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD='
 
 
     def NAME_CH(self):
@@ -46,22 +40,16 @@ class CNVD(BaseCrawler):
 
 
     def get_cves(self, limit = 6):
-        params = {
-            'length': limit,
-            'start' : 0
-        }
-
-        response = self.session.get(
+        response = requests.get(
             self.url_list,
-            params = params,
+            headers = self.headers(), 
             timeout = self.timeout
         )
         response.encoding = 'utf-8'
 
         cves = []
         if response.status_code == 200:
-            ids = re.findall(r'\thref="/flaw/show/([^"]+)"', response.text)
-            print(ids)
+            ids = re.findall(r'ldxqById\.tag\?CNNVD=([^"]+)">', response.text)
             for id in ids :
                 cve = self.to_cve(id)
                 if cve.is_vaild():
