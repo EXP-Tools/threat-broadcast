@@ -20,7 +20,7 @@ class CNNVD(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name_ch = '国家信息安全漏洞库'
+        self.name_ch = '国家信息安全漏洞库（CNNVD）'
         self.name_en = 'CNNVD'
         self.home_page = 'http://www.cnnvd.org.cn/'
         self.url_list = 'http://www.cnnvd.org.cn/web/vulnerability/querylist.tag'

@@ -23,7 +23,7 @@ class CNVD(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name_ch = '国家信息安全漏洞共享平台'
+        self.name_ch = '国家信息安全漏洞共享平台（CNVD）'
         self.name_en = 'CNVD'
         self.home_page = 'https://www.cnvd.org.cn/'
         self.url_list = 'https://www.cnvd.org.cn/flaw/list.htm'
