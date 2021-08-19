@@ -19,6 +19,7 @@
 - 安全客：https://www.anquanke.com/vul
 - 斗象：https://vas.riskivy.com/vuln
 - CNVD：https://www.cnvd.org.cn/flaw/list.htm
+- CNNVD：http://www.cnnvd.org.cn/web/vulnerability/querylist.tag
 
 爬取到的 CVE 情报会作如下处理：
 
