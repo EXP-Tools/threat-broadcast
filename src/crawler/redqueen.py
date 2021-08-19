@@ -40,7 +40,6 @@ class RedQueen(BaseCrawler):
 
     def to_headers(self):
         headers = self.headers()
-        headers['Accept-Encoding'] = 'gzip, deflate'
         headers['Host'] = 'redqueen.tj-un.com'
         headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
         return headers
