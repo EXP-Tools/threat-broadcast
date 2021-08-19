@@ -11,9 +11,9 @@ from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
 from src.utils import log
 import requests
-import json
 import re
 import time
+from lxml import etree
 
 
 class CNNVD(BaseCrawler):
@@ -54,7 +54,7 @@ class CNNVD(BaseCrawler):
                 cve = self.to_cve(id)
                 if cve.is_vaild():
                     cves.append(cve)
-                    log.debug(cve)
+                    # log.debug(cve)
         else:
             log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.NAME_CH(), response.status_code))
         return cves
@@ -71,28 +71,32 @@ class CNNVD(BaseCrawler):
 
     def get_cve_info(self, cve, url) :
         try :
-            response = self.session.get(
+            response = requests.get(
                 url,
+                headers = self.headers(), 
                 timeout = self.timeout
             )
             response.encoding = 'utf-8'
 
             if response.status_code == 200:
-                cve.title = re.findall(r'>(.*?)</h1>', response.text)[0].strip()
-                kvs = re.findall(r'<td class="alignRight">(.*?)</td>.*?<td>(.*?)</td>', response.text, re.DOTALL)
-                for kv in kvs :
-                    key = kv[0].replace('\t', '').strip()
-                    val = kv[1].replace('\t', '').strip()
-                    
-                    if key == 'CVE ID' :
-                        id = re.findall(r'>(.*?)</a>', val)[0].strip()
-                        cve.id = "%s (%s)" % (cve.id, id)
+                html = etree.HTML(response.text)
+                body = html.xpath("./body")
+                div1 = body[0].xpath("./div[contains(@class, 'container') and contains(@class, 'm_t_10')]")
+                div2 = div1[0].xpath("./div[contains(@class, 'container') and contains(@class, 'm_t_20')]")
+                div3 = div2[0].xpath("./div[contains(@class, 'fl') and contains(@class, 'w770')]")
+                div4 = div3[0].xpath("./div[contains(@class, 'detail_xq') and contains(@class, 'w770')]")
+                title = div4[0].xpath("./h2")[0].text.strip()
+                cve.title = title
 
-                    elif key == '公开日期' :
-                        cve.time = val + time.strftime(" %H:%M:%S", time.localtime())
+                div5 = div3[0].xpath("./div[@class='d_ldjj']")
+                p_list = div5[0].xpath("./p[@style='text-indent:2em']")
+                for p in p_list :
+                    cve.info += p.text.strip()
 
-                    elif key == '漏洞描述' :
-                        cve.info = val.replace('\r', '').replace('\n', '').replace('<br/>', '')
+                print(cve.info)
+                
+                cve.id = "%s (%s)" % (cve.id, re.findall(r'cvename\.cgi\?name=([^"]*)"', response.text)[0].strip())
+                cve.time = "%s 00:00:00" % re.findall(r'qstartdateXq=([^"]*)"', response.text)[0].strip()
         except :
             pass  # 漏洞信息页面不存在
 
