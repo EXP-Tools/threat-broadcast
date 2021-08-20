@@ -71,7 +71,7 @@ class Nsfocus(BaseCrawler):
         cve.src = self.NAME_CH()
         cve.url = self.url_cve + vul[1]
         cve.time = vul[0] + time.strftime(" %H:%M:%S", time.localtime())
-        cve.title = re.sub(r'\(CVE-\d+-\d+\)', '', vul[2])
+        cve.title = re.sub(r'\(CVE-\d+-\d+\)|（CVE-\d+-\d+）', '', vul[2])
 
         rst = re.findall(r'(CVE-\d+-\d+)', vul[2])
         cve.id = rst[0] if rst else ''
