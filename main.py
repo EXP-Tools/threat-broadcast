@@ -16,6 +16,7 @@ from src.crawler.qianxin import QiAnXin
 from src.crawler.redqueen import RedQueen
 from src.crawler.anquanke import AnQuanKe
 from src.crawler.vas import Vas
+from src.crawler.nvd import NVD
 from src.crawler.cnvd import CNVD
 from src.crawler.cnnvd import CNNVD
 from src.crawler.tenable import Tenable
@@ -55,7 +56,7 @@ def main(help, top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, 
 
     else:
         all_cves = {}
-        srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas(), CNVD(), CNNVD(), Tenable() ]
+        srcs = [ Cert360(), Nsfocus(), QiAnXin(), RedQueen(), AnQuanKe(), Vas(), NVD(), CNVD(), CNNVD(), Tenable() ]
         for src in srcs:
             cves = src.cves()
             if cves:
