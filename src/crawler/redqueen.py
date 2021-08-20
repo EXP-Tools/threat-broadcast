@@ -76,11 +76,7 @@ class RedQueen(BaseCrawler):
         cve.time = json_obj.get('upd_time')
 
         title = json_obj.get('title')
-        cve.title = re.sub(r'CVE-\d+-\d+', '', title).strip()
-        cve.title = re.sub(r'CNVD-\d+-\d+', '', title).strip()
-
-        rst = re.findall(r'(CVE-\d+-\d+)', title)
-        if not rst :
-            rst = re.findall(r'(CNVD-\d+-\d+)', title)
+        rst = re.findall(r'CVE-\d+-\d+|CNVD-\d+-\d+', title)
         cve.id = rst[0] if rst else ''
+        cve.title = re.sub(r'CVE-\d+-\d+|CNVD-\d+-\d+', '', title).strip()
         return cve
