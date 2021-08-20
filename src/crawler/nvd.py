@@ -4,7 +4,7 @@
 # @Time   : 2020/4/25 22:17
 # @File   : redqueen.py
 # -----------------------------------------------
-# Tenable：https://www.tenable.com/cve/feeds?sort=newest
+# NVD：https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml
 # -----------------------------------------------
 
 from src.bean.cve_info import CVEInfo
@@ -13,17 +13,17 @@ from src.utils import log
 import requests
 import re
 from lxml import etree
-from datetime import datetime
 
 
-class Tenable(BaseCrawler):
+class NVD(BaseCrawler):
 
     def __init__(self):
         BaseCrawler.__init__(self)
-        self.name_ch = '美国国家漏洞数据库'
+        self.name_ch = '美国国家漏洞数据库（NVD）'
         self.name_en = 'NVD'
-        self.home_page = 'https://www.tenable.com/'
-        self.url = 'https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml'
+        self.home_page = 'https://nvd.nist.gov/'
+        self.url_list = 'https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml'
+        self.url_cve = 'https://web.nvd.nist.gov/view/vuln/detail?vulnId='
 
 
     def NAME_CH(self):
@@ -40,7 +40,7 @@ class Tenable(BaseCrawler):
 
     def get_cves(self, limit = 10):
         response = requests.get(
-            self.url,
+            self.url_list,
             headers = self.headers(),
             timeout = self.timeout
         )
@@ -48,8 +48,9 @@ class Tenable(BaseCrawler):
         cves = []
         if response.status_code == 200:
             data = ''.join(response.text.split('\n')[1:])
-            rss = etree.XML(data)
-            items = rss.xpath("//item")
+            data = re.sub(r'dc:date', 'dc_date', data)
+            rdf = etree.HTML(data)
+            items = rdf.xpath("//item")
 
             cnt = 0
             for item in items :
@@ -67,14 +68,14 @@ class Tenable(BaseCrawler):
     def to_cve(self, item):
         cve = CVEInfo()
         cve.src = self.NAME_CH()
-        cve.id = item.xpath("./title")[0].text
-        cve.url = item.xpath("./link")[0].text
 
-        _time = item.xpath("./pubDate")[0].text
-        cve.time = datetime.strptime(_time, '%a, %d %b %Y %H:%M:%S GMT')
+        _id = item.xpath("./title")[0].text 
+        cve.id = re.sub(r' \(.*?\)', '', _id)
+        cve.url = self.url_cve + cve.id
 
-        _desc = item.xpath("./description")[0].text
-        _desc = _desc.replace('\r', '').replace('\n', '')
-        cve.info = re.findall(r'Description</h3>\s*<p>(.*?)</p>', _desc, re.DOTALL)[0].strip()
+        _time = item.xpath("./dc_date")[0].text
+        cve.time = _time.replace('T', ' ').replace('Z', ' ')
+
+        cve.info = item.xpath("./description")[0].text
         cve.title = cve.info
         return cve

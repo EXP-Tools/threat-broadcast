@@ -18,9 +18,11 @@
 - 绿盟：http://www.nsfocus.net/index.php
 - 安全客：https://www.anquanke.com/vul
 - 斗象：https://vas.riskivy.com/vuln
+- NVD：https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml
 - CNVD：https://www.cnvd.org.cn/flaw/list.htm
 - CNNVD：http://www.cnnvd.org.cn/web/vulnerability/querylist.tag
 - Tenable (Nessus)：https://www.tenable.com/cve/feeds?sort=newest
+
 
 爬取到的 CVE 情报会作如下处理：
 
