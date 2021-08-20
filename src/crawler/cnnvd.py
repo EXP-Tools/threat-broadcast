@@ -94,7 +94,7 @@ class CNNVD(BaseCrawler):
                     cve.info += p.text.strip()
                 
                 cve.id = "%s (%s)" % (cve.id, re.findall(r'cvename\.cgi\?name=([^"]*)"', response.text)[0].strip())
-                cve.time = "%s 00:00:00" % re.findall(r'qstartdateXq=([^"]*)"', response.text)[0].strip()
+                cve.time = re.findall(r'qstartdateXq=([^"]*)"', response.text)[0].strip() + time.strftime(" %H:%M:%S", time.localtime())
         except :
             pass  # 漏洞信息页面不存在
 

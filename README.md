@@ -20,6 +20,7 @@
 - 斗象：https://vas.riskivy.com/vuln
 - CNVD：https://www.cnvd.org.cn/flaw/list.htm
 - CNNVD：http://www.cnnvd.org.cn/web/vulnerability/querylist.tag
+- Tenable (Nessus)：https://www.tenable.com/cve/feeds?sort=newest
 
 爬取到的 CVE 情报会作如下处理：
 
