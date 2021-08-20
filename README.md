@@ -153,6 +153,16 @@ threat-broadcast
 ```
 
 
+
+## 注意
+
+本程序只收录国内外安全厂商已收录并分析的 CVE，并不收录所有 CVE，需要全量 CVE 的同学可自行去以下站点下载：
+
+- CVEs 官网： https://cve.mitre.org/
+- GitHub（CVEs 实时同步）： https://github.com/CVEProject/cvelist
+- CIRCL（CVEs 实时同步）： https://cve.circl.lu/ 或 https://cve.circl.lu/api/browse
+- 每日 CVE： https://cassandra.cerias.purdue.edu/CVE_changes/today.html
+
 ## 版权声明
 
 　[![Copyright (C) EXP,2016](https://img.shields.io/badge/Copyright%20(C)-EXP%202016-blue.svg)](http://exp-blog.com)　[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
