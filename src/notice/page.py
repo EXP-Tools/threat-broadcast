@@ -8,6 +8,7 @@
 # -----------------------------------------------
 
 import time
+from datetime import datetime, timedelta
 from src.cfg import env
 from src.utils import log
 from src.utils._sqlite import SqliteSDBC
@@ -22,6 +23,9 @@ ROW_TPL_PATH = '%s/tpl/row.tpl' % env.PRJ_DIR
 
 def to_page(top_limit = 10):
     today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
+    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+    tormorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d') 
+
     html_tpl, table_tpl, row_tpl = load_tpl()
     sdbc = SqliteSDBC(env.DB_PATH)
     conn = sdbc.conn()
@@ -37,7 +41,7 @@ def to_page(top_limit = 10):
                 'md5': cve.md5,
                 'id': cve.cves,
                 'time': cve.time,
-                'new_flag': ' <img src="imgs/new.gif" />' if cve.time.startswith(today) else '', 
+                'new_flag': ' <img src="imgs/new.gif" />' if (cve.time.startswith(today) or cve.time.startswith(yesterday) or cve.time.startswith(tormorrow)) else '', 
                 'title': cve.title,
                 'url': cve.url
             }

@@ -23,6 +23,19 @@
 - CNNVD：http://www.cnnvd.org.cn/web/vulnerability/querylist.tag
 - Tenable (Nessus)：https://www.tenable.com/cve/feeds?sort=newest
 
+<details>
+<summary><b>关于 CVE 收录的完整性问题说明</b></summary>
+<br/>
+
+
+本程序只收录国内外安全厂商已收录并分析的 CVE，并不收录所有 CVE，需要全量 CVE 的同学可自行去以下站点下载：
+
+- CVEs 官网： https://cve.mitre.org/
+- GitHub（CVEs 实时同步）： https://github.com/CVEProject/cvelist
+- CIRCL（CVEs 实时同步）： https://cve.circl.lu/ 或 https://cve.circl.lu/api/browse
+- 每日 CVE： https://cassandra.cerias.purdue.edu/CVE_changes/today.html
+
+</details>
 
 爬取到的 CVE 情报会作如下处理：
 
@@ -152,16 +165,6 @@ threat-broadcast
 └── log ..................................... [项目日志]
 ```
 
-
-
-## 注意
-
-本程序只收录国内外安全厂商已收录并分析的 CVE，并不收录所有 CVE，需要全量 CVE 的同学可自行去以下站点下载：
-
-- CVEs 官网： https://cve.mitre.org/
-- GitHub（CVEs 实时同步）： https://github.com/CVEProject/cvelist
-- CIRCL（CVEs 实时同步）： https://cve.circl.lu/ 或 https://cve.circl.lu/api/browse
-- 每日 CVE： https://cassandra.cerias.purdue.edu/CVE_changes/today.html
 
 ## 版权声明
 
