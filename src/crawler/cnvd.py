@@ -128,7 +128,8 @@ class CNVD(BaseCrawler):
             response.encoding = 'utf-8'
 
             if response.status_code == 200:
-                cve.title = re.findall(r'>(.*?)</h1>', response.text)[0].strip()
+                _title = re.findall(r'>(.*?)</h1>', response.text)[0].strip()
+                cve.title = re.sub(r'（CNVD-\d+-\d+）', '', _title).strip()
                 kvs = re.findall(r'<td class="alignRight">(.*?)</td>.*?<td>(.*?)</td>', response.text, re.DOTALL)
                 for kv in kvs :
                     key = kv[0].replace('\t', '').strip()
