@@ -53,7 +53,7 @@ class NVD(BaseCrawler):
             items = rdf.xpath("//item")
 
             cnt = 0
-            for item in items :
+            for item in reversed(items) :
                 cve = self.to_cve(item)
                 if cve.is_vaild():
                     if cnt < limit :
@@ -69,7 +69,7 @@ class NVD(BaseCrawler):
         cve = CVEInfo()
         cve.src = self.NAME_CH()
 
-        _id = item.xpath("./title")[0].text 
+        _id = item.xpath("./title")[0].text
         cve.id = re.sub(r' \(.*?\)', '', _id)
         cve.url = self.url_cve + cve.id
 
