@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-08-24 17:31:51 -->
+<!-- RELEASE TIME : 2021-08-24 18:31:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,41 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f16f8032260bf5e6cc1efe16624d7165</td>
+       <td>CVE-2021-3712</td>
+       <td>2021-08-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>ASN.1 strings are represented internally within OpenSSL as an ASN1_STRING structure which contains a buffer holding the string data and a field holding the buffer length. This contrasts with normal C strings which are repesented as a buffer for the string data which is terminated with a NUL (0) byte. Although not a strict requirement, ASN.1 strings that are parsed using OpenSSL's own "d2i" functions (and other similar parsing functions) as well as any string whose value has been set with the ASN1_STRING_set() function will additionally NUL terminate the byte array in the ASN1_STRING structure. However, it is possible for applications to directly construct valid ASN1_STRING structures which do not NUL terminate the byte array by directly setting the "data" and "length" fields in the ASN1_STRING array. This can also happen by using the ASN1_STRING_set0() function. Numerous OpenSSL functions that print ASN.1 data have been found to assume that the ASN1_STRING byte array will be NUL terminated, even though this is not guaranteed for strings that have been directly constructed. Where an application requests an ASN.1 structure to be printed, and where that ASN.1 structure contains ASN1_STRINGs that have been directly constructed by the application without NUL terminating the "data" field, then a read buffer overrun can occur. The same thing can also occur during name constraints processing of certificates (for example if a certificate has been directly constructed by the application instead of loading it via the OpenSSL parsing functions, and the certificate contains non NUL terminated ASN1_STRING structures). It can also occur in the X509_get1_email(), X509_REQ_get1_email() and X509_get1_ocsp() functions. If a malicious actor can cause an application to directly construct an ASN1_STRING and then process it through one of the affected OpenSSL functions then this issue could be hit. This might result in a crash (causing a Denial of Service attack). It could also result in the disclosure of private memory contents (such as private keys, or sensitive plaintext). Fixed in OpenSSL 1.1.1j (Affected 1.1.1-1.1.1k). Fixed in OpenSSL 1.0.2za (Affected 1.0.2-1.0.2y).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3712">详情</a></td>
+      </tr>
+      <tr>
+       <td>cbe8181f730c5aeab1504aa8369b218c</td>
+       <td>CVE-2021-3711</td>
+       <td>2021-08-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>In order to decrypt SM2 encrypted data an application is expected to call the API function EVP_PKEY_decrypt(). Typically an application will call this function twice. The first time, on entry, the "out" parameter can be NULL and, on exit, the "outlen" parameter is populated with the buffer size required to hold the decrypted plaintext. The application can then allocate a sufficiently sized buffer and call EVP_PKEY_decrypt() again, but this time passing a non-NULL value for the "out" parameter. A bug in the implementation of the SM2 decryption code means that the calculation of the buffer size required to hold the plaintext returned by the first call to EVP_PKEY_decrypt() can be smaller than the actual size required by the second call. This can lead to a buffer overflow when EVP_PKEY_decrypt() is called by the application a second time with a buffer that is too small. A malicious attacker who is able present SM2 content for decryption to an application could cause attacker chosen data to overflow the buffer by up to a maximum of 62 bytes altering the contents of other data held after the buffer, possibly changing application behaviour or causing the application to crash. The location of the buffer is application dependent but is typically heap allocated. Fixed in OpenSSL 1.1.1l (Affected 1.1.1-1.1.1k).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3711">详情</a></td>
+      </tr>
+      <tr>
+       <td>fc87f97531e4827abea056257821cc21</td>
+       <td>CVE-2021-26040</td>
+       <td>2021-08-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Joomla! 4.0.0. The media manager does not correctly check the user's permissions before executing a file deletion command.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-26040">详情</a></td>
+      </tr>
+      <tr>
+       <td>eccc3294a0c0c2776546d6174527da64</td>
+       <td>CVE-2021-38714</td>
+       <td>2021-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Plib through 1.85, there is an integer overflow vulnerability that could result in arbitrary code execution. The vulnerability is found in ssgLoadTGA() function in src/ssg/ssgLoadTGA.cxx file.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-38714">详情</a></td>
+      </tr>
+      <tr>
+       <td>54c815a85ccd3c1a6b24ea4ea5990e85</td>
+       <td>CVE-2021-36690</td>
+       <td>2021-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Segmentation fault vulnerability in SQLite sqlite3 3.36.0 via the idxGetTableInfo function, in which a crafted SQL query can cause a denial of service</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-36690">详情</a></td>
+      </tr>
+      <tr>
        <td>142b66a348abc631ec2573f8d2c26368</td>
        <td>CVE-2021-39376</td>
        <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
@@ -427,41 +462,6 @@
        <td>In Libav 12.3, there is a heap-based buffer over-read in vc1_decode_b_mb_intfi in vc1_block.c that allows an attacker to cause denial-of-service via a crafted file.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2020-18775">详情</a></td>
       </tr>
-      <tr>
-       <td>e4d7851b9b2dbfd850f0b4569d728fee</td>
-       <td>CVE-2021-39609</td>
-       <td>2021-08-23 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross Site Scripting (XSS) vulnerability exiss in FlatCore-CMS 2.0.7 via the upload image function.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39609">详情</a></td>
-      </tr>
-      <tr>
-       <td>ba79c5bad569c51bc8fc91e58a6f9e95</td>
-       <td>CVE-2021-39608</td>
-       <td>2021-08-23 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Remote Code Execution (RCE) vulnerabilty exists in FlatCore-CMS 2.0.7 via the upload addon plugin, which could let a remote malicious user exeuct arbitrary php code.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39608">详情</a></td>
-      </tr>
-      <tr>
-       <td>994a20ff8a5447f9f363e52679b7017c</td>
-       <td>CVE-2021-39158</td>
-       <td>2021-08-23 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>NVCaffe's python required dependencies list used to contain `gfortran`version prior to 0.17.4, entry which does not exist in the repository pypi.org. An attacker could potentially have posted malicious files to pypi.org causing a user to install it within NVCaffe.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39158">详情</a></td>
-      </tr>
-      <tr>
-       <td>c63a4cd2d9e10b450d2659c627c25310</td>
-       <td>CVE-2020-18735</td>
-       <td>2021-08-23 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A heap buffer overflow in /src/dds_stream.c of Eclipse IOT Cyclone DDS Project v0.1.0 causes the DDS subscriber server to crash.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-18735">详情</a></td>
-      </tr>
-      <tr>
-       <td>4b8e53a0459a8451825537a71b556027</td>
-       <td>CVE-2020-18734</td>
-       <td>2021-08-23 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A stack buffer overflow in /ddsi/q_bitset.h of Eclipse IOT Cyclone DDS Project v0.1.0 causes the DDS subscriber server to crash.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-18734">详情</a></td>
-      </tr>
      </tbody>
     </table>
    </div>
@@ -477,6 +477,13 @@
        <th width="15%">TIME</th>
        <th width="43%">TITLE</th>
        <th width="5%">URL</th>
+      </tr>
+      <tr>
+       <td>65d5826dde65430d0ade1d6113cda629</td>
+       <td>CNVD-2021-52386</td>
+       <td>2021-08-25 18:30:57 <img src="imgs/new.gif" /></td>
+       <td>广州图创计算机软件开发有限公司图书馆集群管理系统存在文件上传漏洞</td>
+       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-52386">详情</a></td>
       </tr>
       <tr>
        <td>be1ec6d27a194b5d37995d93bf1de3b0</td>
@@ -680,13 +687,6 @@
        <td>2021-08-24 07:24:31 <img src="imgs/new.gif" /></td>
        <td>TOTOLINK A3002R跨站脚本漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-64485">详情</a></td>
-      </tr>
-      <tr>
-       <td>d2a18b2a679fe0ea6915aff57aa12abc</td>
-       <td>CNVD-2021-56875</td>
-       <td>2021-08-23 21:23:24 <img src="imgs/new.gif" /></td>
-       <td>万通CMS存在任意文件删除漏洞</td>
-       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-56875">详情</a></td>
       </tr>
      </tbody>
     </table>
