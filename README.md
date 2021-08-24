@@ -95,9 +95,10 @@
 
 - [Fork 本项目](https://github.com/lyy289065406/threat-broadcast) 到你的代码仓库
 - 通过 Settings --> Secrets 配置用于 **发送** 威胁情报邮件的 3 个环境变量：
-<br/>　　`MAIL_SMTP`： SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
-<br/>　　`MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
-<br/>　　`MAIL_PASS`： 邮箱密码
+    - `MAIL_SMTP`： SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
+    - `MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
+    - `MAIL_PASS`： 邮箱密码
+    - `GRAPAQL_TOKEN`： 用于调用 Github GraphQL 接口加载收件人，可于个人 `Settings` 生成
 - 启用 Settings --> Actions 功能
 
 > 尔后程序便会每小时执行一次，并自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面（若要调整执行频率，可修改 [`autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 触发时点）
