@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-08-24 23:26:28 -->
+<!-- RELEASE TIME : 2021-08-25 01:17:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -29,7 +29,7 @@
       <tr>
        <td>d78009bcb8c3a411c54e017ab2c76516</td>
        <td></td>
-       <td>2021-08-23 07:23:50 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 07:23:50</td>
        <td>2021-08: XStream 多个高危漏洞通告</td>
        <td><a href="https://cert.360.cn/warning/detail?id=dadde9fa3abff298795916a6f6ee7c8e">详情</a></td>
       </tr>
@@ -253,6 +253,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d638b23766ea83d9b01bcc4579b00450</td>
+       <td>CVE-2021-32781</td>
+       <td>2021-08-24 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source L7 proxy and communication bus designed for large modern service oriented architectures. In affected versions after Envoy sends a locally generated response it must stop further processing of request or response data. However when local response is generated due the internal buffer overflow while request or response is processed by the filter chain the operation may not be stopped completely and result in accessing a freed memory block. A specifically constructed request delivered by an untrusted downstream or upstream peer in the presence of extensions that modify and increase the size of request or response bodies resulting in a Denial of Service when using extensions that modify and increase the size of request or response bodies, such as decompressor filter. Envoy versions 1.19.1, 1.18.4, 1.17.4, 1.16.5 contain fixes to address incomplete termination of request processing after locally generated response. As a workaround disable Envoy's decompressor, json-transcoder or grpc-web extensions or proprietary extensions that modify and increase the size of request or response bodies, if feasible.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-32781">详情</a></td>
+      </tr>
+      <tr>
+       <td>60de52614ee4aa47d946e739864b2af3</td>
+       <td>CVE-2021-32780</td>
+       <td>2021-08-24 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source L7 proxy and communication bus designed for large modern service oriented architectures. In affected versions Envoy transitions a H/2 connection to the CLOSED state when it receives a GOAWAY frame without any streams outstanding. The connection state is transitioned to DRAINING when it receives a SETTING frame with the SETTINGS_MAX_CONCURRENT_STREAMS parameter set to 0. Receiving these two frames in the same I/O event results in abnormal termination of the Envoy process due to invalid state transition from CLOSED to DRAINING. A sequence of H/2 frames delivered by an untrusted upstream server will result in Denial of Service in the presence of untrusted **upstream** servers. Envoy versions 1.19.1, 1.18.4 contain fixes to stop processing of pending H/2 frames after connection transition to the CLOSED state.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-32780">详情</a></td>
+      </tr>
+      <tr>
+       <td>ac266165961e2f9f4588e7d38b952240</td>
+       <td>CVE-2021-32779</td>
+       <td>2021-08-24 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source L7 proxy and communication bus designed for large modern service oriented architectures. In affected versions envoy incorrectly handled a URI '#fragment' element as part of the path element. Envoy is configured with an RBAC filter for authorization or similar mechanism with an explicit case of a final "/admin" path element, or is using a negative assertion with final path element of "/admin". The client sends request to "/app1/admin#foo". In Envoy prior to 1.18.0, or 1.18.0+ configured with path_normalization=false. Envoy treats fragment as a suffix of the query string when present, or as a suffix of the path when query string is absent, so it evaluates the final path element as "/admin#foo" and mismatches with the configured "/admin" path element. In Envoy 1.18.0+ configured with path_normalization=true. Envoy transforms this to /app1/admin%23foo and mismatches with the configured /admin prefix. The resulting URI is sent to the next server-agent with the offending "#foo" fragment which violates RFC3986 or with the nonsensical "%23foo" text appended. A specifically constructed request with URI containing '#fragment' element delivered by an untrusted client in the presence of path based request authorization resulting in escalation of Privileges when path based request authorization extensions. Envoy versions 1.19.1, 1.18.4, 1.17.4, 1.16.5 contain fixes that removes fragment from URI path in incoming requests.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-32779">详情</a></td>
+      </tr>
+      <tr>
+       <td>490686c12aa5247a8da2b1826e9ae7af</td>
+       <td>CVE-2021-32778</td>
+       <td>2021-08-24 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source L7 proxy and communication bus designed for large modern service oriented architectures. In affected versions envoy’s procedure for resetting a HTTP/2 stream has O(N^2) complexity, leading to high CPU utilization when a large number of streams are reset. Deployments are susceptible to Denial of Service when Envoy is configured with high limit on H/2 concurrent streams. An attacker wishing to exploit this vulnerability would require a client opening and closing a large number of H/2 streams. Envoy versions 1.19.1, 1.18.4, 1.17.4, 1.16.5 contain fixes to reduce time complexity of resetting HTTP/2 streams. As a workaround users may limit the number of simultaneous HTTP/2 dreams for upstream and downstream peers to a low number, i.e. 100.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-32778">详情</a></td>
+      </tr>
+      <tr>
+       <td>b4ad7b6caa48bfe3988dadf69ae0d071</td>
+       <td>CVE-2021-32777</td>
+       <td>2021-08-24 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source L7 proxy and communication bus designed for large modern service oriented architectures. In affected versions when ext-authz extension is sending request headers to the external authorization service it must merge multiple value headers according to the HTTP spec. However, only the last header value is sent. This may allow specifically crafted requests to bypass authorization. Attackers may be able to escalate privileges when using ext-authz extension or back end service that uses multiple value headers for authorization. A specifically constructed request may be delivered by an untrusted downstream peer in the presence of ext-authz extension. Envoy versions 1.19.1, 1.18.4, 1.17.4, 1.16.5 contain fixes to the ext-authz extension to correctly merge multiple request header values, when sending request for authorization.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-32777">详情</a></td>
+      </tr>
+      <tr>
+       <td>87923c2af6210fac02d8f434d1a2d982</td>
+       <td>CVE-2021-31151</td>
+       <td>2021-08-24 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by the CVE program. Notes: none.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-31151">详情</a></td>
+      </tr>
+      <tr>
+       <td>41692bba9812310df44b64ff578d9eec</td>
+       <td>CVE-2020-18917</td>
+       <td>2021-08-24 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>The plus/search.php component in DedeCMS 5.7 SP2 allows remote attackers to execute arbitrary PHP code via the typename parameter because the contents of typename.inc are under an attacker's control.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-18917">详情</a></td>
+      </tr>
+      <tr>
+       <td>7b52328d979daf136232cd99a75974e0</td>
+       <td>CVE-2020-18913</td>
+       <td>2021-08-24 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>EARCLINK ESPCMS-P8 was discovered to contain a SQL injection vulnerability in the espcms_web/Search.php component via the attr_array parameter. This vulnerability allows attackers to access sensitive database information.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-18913">详情</a></td>
+      </tr>
+      <tr>
        <td>546ae5f392c52fe65e06abc5a499c3e2</td>
        <td>CVE-2021-39510</td>
        <td>2021-08-24 19:15:00 <img src="imgs/new.gif" /></td>
@@ -405,62 +461,6 @@
        <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
        <td>Multiple SQL injection vulnerabilities in SmartDataSoft SmartBlog for PrestaShop before 4.06 allow a remote unauthenticated attacker to execute arbitrary SQL commands via the day, month, or year parameter to the controllers/front/archive.php archive controller, or the id_category parameter to the controllers/front/category.php category controller.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-37538">详情</a></td>
-      </tr>
-      <tr>
-       <td>cf2889886472564b8931b8e43565e64a</td>
-       <td>CVE-2021-38613</td>
-       <td>2021-08-24 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The assets/index.php Image Upload feature of the NASCENT RemKon Device Manager 4.0.0.0 allows attackers to upload any code to the target system and achieve remote code execution.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38613">详情</a></td>
-      </tr>
-      <tr>
-       <td>36c6eab7cdec1ed2142b0f8671bff69d</td>
-       <td>CVE-2021-38612</td>
-       <td>2021-08-24 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>In NASCENT RemKon Device Manager 4.0.0.0, a Directory Traversal vulnerability in a log-reading function in maintenance/readLog.php allows an attacker to read any file via a specialized URL.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38612">详情</a></td>
-      </tr>
-      <tr>
-       <td>54099ec4f38f840e93d65ce97b99169a</td>
-       <td>CVE-2021-38611</td>
-       <td>2021-08-24 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A command-injection vulnerability in the Image Upload function of the NASCENT RemKon Device Manager 4.0.0.0 allows attackers to execute arbitrary commands, as root, via shell metacharacters in the filename parameter to assets/index.php.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38611">详情</a></td>
-      </tr>
-      <tr>
-       <td>c3466a2e791451e6d55007e9e4620057</td>
-       <td>CVE-2021-36385</td>
-       <td>2021-08-24 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A SQL Injection vulnerability in Cerner Mobile Care 5.0.0 allows remote unauthenticated attackers to execute arbitrary SQL commands via a Fullwidth Apostrophe (aka U+FF07) in the default.aspx User ID field. Arbitrary system commands can be executed through the use of xp_cmdshell.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36385">详情</a></td>
-      </tr>
-      <tr>
-       <td>93c13895d5271639ac551e1fe80d41b3</td>
-       <td>CVE-2021-23432</td>
-       <td>2021-08-24 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>This affects all versions of package mootools. This is due to the ability to pass untrusted input to Object.merge()</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-23432">详情</a></td>
-      </tr>
-      <tr>
-       <td>ffd35ab59bbc85401e72d6ce24bd0f64</td>
-       <td>CVE-2021-23431</td>
-       <td>2021-08-24 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>The package joplin before 2.3.2 are vulnerable to Cross-site Request Forgery (CSRF) due to missing CSRF checks in various forms.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-23431">详情</a></td>
-      </tr>
-      <tr>
-       <td>5e97c560e86643bd84f73940e933f1f7</td>
-       <td>CVE-2021-23430</td>
-       <td>2021-08-24 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>All versions of package startserver are vulnerable to Directory Traversal due to missing sanitization.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-23430">详情</a></td>
-      </tr>
-      <tr>
-       <td>57d459b6d2424766c057115828d29461</td>
-       <td>CVE-2021-23429</td>
-       <td>2021-08-24 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>All versions of package transpile are vulnerable to Denial of Service (DoS) due to a lack of input sanitization or whitelisting, coupled with improper exception handling in the .to() function.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-23429">详情</a></td>
       </tr>
      </tbody>
     </table>
@@ -707,84 +707,84 @@
       <tr>
        <td>2eed614cc474cbc49cb49888f3050571</td>
        <td>CNNVD-202108-1841 (CVE-2021-20298)</td>
-       <td>2021-08-23 13:30:05 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:30:05</td>
        <td>OpenEXR安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1841">详情</a></td>
       </tr>
       <tr>
        <td>7d9a999de610e79f28e0cb897feeff54</td>
        <td>CNNVD-202108-1842 (CVE-2021-20304)</td>
-       <td>2021-08-23 13:30:02 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:30:02</td>
        <td>OpenEXR安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1842">详情</a></td>
       </tr>
       <tr>
        <td>689426a7fba55064df45a36567b10650</td>
        <td>CNNVD-202108-1917 (CVE-2020-18774)</td>
-       <td>2021-08-23 12:42:43 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:43</td>
        <td>Exiv2 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1917">详情</a></td>
       </tr>
       <tr>
        <td>245573db82123e0c34acef9a10c36a3e</td>
        <td>CNNVD-202108-1918 (CVE-2020-18776)</td>
-       <td>2021-08-23 12:42:40 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:40</td>
        <td>Libav 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1918">详情</a></td>
       </tr>
       <tr>
        <td>28c5b7e218c1f185c2d2ca3f140f7934</td>
        <td>CNNVD-202108-1919 (CVE-2020-18775)</td>
-       <td>2021-08-23 12:42:38 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:38</td>
        <td>Libav 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1919">详情</a></td>
       </tr>
       <tr>
        <td>c8b373c3f10d98aa36f0692b59e0b792</td>
        <td>CNNVD-202108-1920 (CVE-2021-39613)</td>
-       <td>2021-08-23 12:42:35 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:35</td>
        <td>D-Link DVG-3104MS 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1920">详情</a></td>
       </tr>
       <tr>
        <td>5be5a3c0494e50deeed6fcf49071bb8c</td>
        <td>CNNVD-202108-1921 (CVE-2020-18778)</td>
-       <td>2021-08-23 12:42:33 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:33</td>
        <td>Libav 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1921">详情</a></td>
       </tr>
       <tr>
        <td>186e894bb5ae65f4903a9073275fbb76</td>
        <td>CNNVD-202108-1922 (CVE-2021-39615)</td>
-       <td>2021-08-23 12:42:31 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:31</td>
        <td>D-Link DSR-500N 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1922">详情</a></td>
       </tr>
       <tr>
        <td>17b9559b17c37436c432a7b051fee611</td>
        <td>CNNVD-202108-1923 (CVE-2021-39614)</td>
-       <td>2021-08-23 12:42:29 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:29</td>
        <td>D-Link DVX-2000MS 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1923">详情</a></td>
       </tr>
       <tr>
        <td>ea6b5c0b4ff835cdeb9f6ae34c635268</td>
        <td>CNNVD-202108-1924 (CVE-2021-39602)</td>
-       <td>2021-08-23 12:42:26 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:26</td>
        <td>Miniftpd 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1924">详情</a></td>
       </tr>
       <tr>
        <td>625d5b6c0a3e7894d0ef853da6da0cb4</td>
        <td>CNNVD-202108-1925 (CVE-2020-18771)</td>
-       <td>2021-08-23 12:42:24 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:24</td>
        <td>Exiv2 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1925">详情</a></td>
       </tr>
       <tr>
        <td>1bd0bfde9bfe778386d2909f7978cc9c</td>
        <td>CNNVD-202108-1926 (CVE-2021-39599)</td>
-       <td>2021-08-23 12:42:21 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 12:42:21</td>
        <td>Cxuucms 跨站脚本漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202108-1926">详情</a></td>
       </tr>
@@ -1252,7 +1252,7 @@
       <tr>
        <td>68ee7b98acb8ba2e45c3638a078d9535</td>
        <td>CVE-2021-39139, CVE-2021-39140, CVE-2021-39141, CVE-2021-39144, CVE-2021-39145, CVE-2021-39146, CVE-2021-39147, CVE-2021-39148, CVE-2021-39149, CVE-2021-39150, CVE-2021-39151, CVE-2021-39152, CVE-2021-39153, CVE-2021-39154</td>
-       <td>2021-08-23 06:14:35 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 06:14:35</td>
        <td>XStream 多个反序列化漏洞</td>
        <td><a href="https://vas.riskivy.com/vuln-detail?id=94">详情</a></td>
       </tr>
@@ -1548,70 +1548,70 @@
       <tr>
        <td>7dc84f366f7bdf304c8883e49621e1cb</td>
        <td>CVE-2020-14754</td>
-       <td>2021-08-23 13:25:48 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:48</td>
        <td>Oracle Solaris Filesystem 授权问题漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=e2a58cebd8f146eb920fecd997fe0db3">详情</a></td>
       </tr>
       <tr>
        <td>3a34b5050255046a8393a0ddc7170423</td>
        <td>CVE-2020-14753</td>
-       <td>2021-08-23 13:25:45 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:45</td>
        <td>Oracle Hospitality Reporting and Analytics Installation 权限许可和访问控制问题漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=805b17b2acee4c12bc6b069eb2eae26d">详情</a></td>
       </tr>
       <tr>
        <td>acdd4ed68f30aa85eea43ca552fb8c3b</td>
        <td>CVE-2020-14757</td>
-       <td>2021-08-23 13:25:43 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:43</td>
        <td>oracle weblogic server web services 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=fd4c8b44a8cc43c0a8b8c18646444569">详情</a></td>
       </tr>
       <tr>
        <td>8005865d625709322ab9858cc08a4e0f</td>
        <td>CVE-2020-14672</td>
-       <td>2021-08-23 13:25:40 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:40</td>
        <td>Oracle MySQL 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=88d6c56dd0f94b0ab354d1d09ee92e1c">详情</a></td>
       </tr>
       <tr>
        <td>723d4749379c25b61023948c4cb78cd1</td>
        <td>CVE-2020-14731</td>
-       <td>2021-08-23 13:25:38 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:38</td>
        <td>Oracle Retail Customer Management and Segmentation Foundation Segment 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=f44358d1147a4cfcbd1faf5eb5375f35">详情</a></td>
       </tr>
       <tr>
        <td>cc3c5619a4cf79630eea943b691ec64c</td>
        <td>CVE-2020-7369</td>
-       <td>2021-08-23 13:25:35 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:35</td>
        <td>Yandex Browser 访问控制错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=bef3d7b6cab14cbe91801e4db16631cb">详情</a></td>
       </tr>
       <tr>
        <td>2c139678089995d5e9435d57019944ab</td>
        <td>CVE-2020-9113</td>
-       <td>2021-08-23 13:25:33 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:33</td>
        <td>Huawei Mate 20 缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=d5b31148e17d44e6bd020464fb078e56">详情</a></td>
       </tr>
       <tr>
        <td>78f2eb526baf65f5767d4af41ffe1941</td>
        <td>CVE-2020-7195</td>
-       <td>2021-08-23 13:25:30 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:30</td>
        <td>HPE Intelligent Management Center 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=3de5b31d7ddd4925887b9fc61d663acd">详情</a></td>
       </tr>
       <tr>
        <td>021069ed011ad30a791f7f78beb2ea95</td>
        <td>CVE-2020-9092</td>
-       <td>2021-08-23 13:25:30 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:30</td>
        <td>HUAWEI Mate20 注入漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=39d56fd875a041f590bd775abd6ba9fa">详情</a></td>
       </tr>
       <tr>
        <td>ab0985ab53bdd2679db8340e1364c8bb</td>
        <td>CVE-2020-7194</td>
-       <td>2021-08-23 13:25:25 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 13:25:25</td>
        <td>HPE Intelligent Management Center 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=ec18b891b52a4fe185439a28785f3e26">详情</a></td>
       </tr>
@@ -1900,14 +1900,14 @@
       <tr>
        <td>c052eb0f4b4a94551499afaf8d829b39</td>
        <td>CVE-2021-21849</td>
-       <td>2021-08-23 09:26:11 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 09:26:11</td>
        <td>GPAC Project on Advanced Content整数溢出漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58048">详情</a></td>
       </tr>
       <tr>
        <td>90ddfffd71414f31bd8a7c5ac0a316fe</td>
        <td>CVE-2021-21848</td>
-       <td>2021-08-23 09:26:11 <img src="imgs/new.gif" /></td>
+       <td>2021-08-23 09:26:11</td>
        <td>GPAC Project on Advanced Content整数溢出漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58047">详情</a></td>
       </tr>
