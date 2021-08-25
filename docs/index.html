@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-08-25 02:34:59 -->
+<!-- RELEASE TIME : 2021-08-25 06:33:10 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,55 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>09696f5792075c62c3af2b83bd5dbb40</td>
+       <td>CVE-2021-39112</td>
+       <td>2021-08-25 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>Affected versions of Atlassian Jira Server and Data Center allow remote attackers to redirect users to a malicious URL via a reverse tabnapping vulnerability in the Project Shortcuts feature. The affected versions are before version 8.5.15, from version 8.6.0 before 8.13.7, from version 8.14.0 before 8.17.1, and from version 8.18.0 before 8.18.1.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39112">详情</a></td>
+      </tr>
+      <tr>
+       <td>faa0ebf92583dc077192ade3c0d4643a</td>
+       <td>CVE-2021-40089</td>
+       <td>2021-08-25 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in PrimeKey EJBCA before 7.6.0. The General Purpose Custom Publisher, which is normally run to invoke a local script upon a publishing operation, was still able to run if the System Configuration setting Enable External Script Access was disabled. With this setting disabled it's not possible to create new such publishers, but existing publishers would continue to run.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40089">详情</a></td>
+      </tr>
+      <tr>
+       <td>ae8c8360664c97ce4b04f900ebd90340</td>
+       <td>CVE-2021-40088</td>
+       <td>2021-08-25 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in PrimeKey EJBCA before 7.6.0. CMP RA Mode can be configured to use a known client certificate to authenticate enrolling clients. The same RA client certificate is used for revocation requests as well. While enrollment enforces multi tenancy constraints (by verifying that the client certificate has access to the CA and Profiles being enrolled against), this check was not performed when authenticating revocation operations, allowing a known tenant to revoke a certificate belonging to another tenant.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40088">详情</a></td>
+      </tr>
+      <tr>
+       <td>90e8110b15b80f541c125702cdb65b2b</td>
+       <td>CVE-2021-40087</td>
+       <td>2021-08-25 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in PrimeKey EJBCA before 7.6.0. When audit logging changes to the alias configurations of various protocols that use an enrollment secret, any modifications to the secret were logged in cleartext in the audit log (that can only be viewed by an administrator). This affects use of any of the following protocols: SCEP, CMP, or EST.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40087">详情</a></td>
+      </tr>
+      <tr>
+       <td>4aba9617bbfe051003957a05b14c42cd</td>
+       <td>CVE-2021-40086</td>
+       <td>2021-08-25 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in PrimeKey EJBCA before 7.6.0. As part of the configuration of the aliases for SCEP, CMP, EST, and Auto-enrollment, the enrollment secret was reflected on a page (that can only be viewed by an administrator). While hidden from direct view, checking the page source would reveal the secret.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40086">详情</a></td>
+      </tr>
+      <tr>
+       <td>42f26f6f2e6838c03a08ad070aeb8b46</td>
+       <td>CVE-2021-40084</td>
+       <td>2021-08-25 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>opensysusers through 0.6 does not safely use eval on files in sysusers.d that may contain shell metacharacters. For example, it allows command execution via a crafted GECOS field whereas systemd-sysusers (a program with the same specification) does not do that.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40084">详情</a></td>
+      </tr>
+      <tr>
+       <td>ebbba43207deab4663bbf1f58b651bf9</td>
+       <td>CVE-2021-40083</td>
+       <td>2021-08-25 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Knot Resolver before 5.3.2 is prone to an assertion failure, triggerable by a remote attacker in an edge case (NSEC3 with too many iterations used for a positive wildcard proof).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40083">详情</a></td>
+      </tr>
+      <tr>
        <td>4b0e3e86f15ea9309a681ac2b1021cd2</td>
        <td>CVE-2021-39156</td>
        <td>2021-08-24 23:15:00 <img src="imgs/new.gif" /></td>
@@ -412,55 +461,6 @@
        <td>2021-08-24 15:15:00 <img src="imgs/new.gif" /></td>
        <td>In order to decrypt SM2 encrypted data an application is expected to call the API function EVP_PKEY_decrypt(). Typically an application will call this function twice. The first time, on entry, the "out" parameter can be NULL and, on exit, the "outlen" parameter is populated with the buffer size required to hold the decrypted plaintext. The application can then allocate a sufficiently sized buffer and call EVP_PKEY_decrypt() again, but this time passing a non-NULL value for the "out" parameter. A bug in the implementation of the SM2 decryption code means that the calculation of the buffer size required to hold the plaintext returned by the first call to EVP_PKEY_decrypt() can be smaller than the actual size required by the second call. This can lead to a buffer overflow when EVP_PKEY_decrypt() is called by the application a second time with a buffer that is too small. A malicious attacker who is able present SM2 content for decryption to an application could cause attacker chosen data to overflow the buffer by up to a maximum of 62 bytes altering the contents of other data held after the buffer, possibly changing application behaviour or causing the application to crash. The location of the buffer is application dependent but is typically heap allocated. Fixed in OpenSSL 1.1.1l (Affected 1.1.1-1.1.1k).</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-3711">详情</a></td>
-      </tr>
-      <tr>
-       <td>fc87f97531e4827abea056257821cc21</td>
-       <td>CVE-2021-26040</td>
-       <td>2021-08-24 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Joomla! 4.0.0. The media manager does not correctly check the user's permissions before executing a file deletion command.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-26040">详情</a></td>
-      </tr>
-      <tr>
-       <td>eccc3294a0c0c2776546d6174527da64</td>
-       <td>CVE-2021-38714</td>
-       <td>2021-08-24 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Plib through 1.85, there is an integer overflow vulnerability that could result in arbitrary code execution. The vulnerability is found in ssgLoadTGA() function in src/ssg/ssgLoadTGA.cxx file.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38714">详情</a></td>
-      </tr>
-      <tr>
-       <td>54c815a85ccd3c1a6b24ea4ea5990e85</td>
-       <td>CVE-2021-36690</td>
-       <td>2021-08-24 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Segmentation fault vulnerability in SQLite sqlite3 3.36.0 via the idxGetTableInfo function, in which a crafted SQL query can cause a denial of service</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36690">详情</a></td>
-      </tr>
-      <tr>
-       <td>142b66a348abc631ec2573f8d2c26368</td>
-       <td>CVE-2021-39376</td>
-       <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Philips Healthcare Tasy Electronic Medical Record (EMR) 3.06 allows SQL injection via the CorCad_F2/executaConsultaEspecifico IE_CORPO_ASSIST or CD_USUARIO_CONVENIO parameter.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39376">详情</a></td>
-      </tr>
-      <tr>
-       <td>546b39e61eb03564935c7c1e972070b9</td>
-       <td>CVE-2021-39375</td>
-       <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Philips Healthcare Tasy Electronic Medical Record (EMR) 3.06 allows SQL injection via the WAdvancedFilter/getDimensionItemsByCode FilterValue parameter.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39375">详情</a></td>
-      </tr>
-      <tr>
-       <td>4a1f2ecc617393830d2d13ed849e0917</td>
-       <td>CVE-2021-38557</td>
-       <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>raspap-webgui in RaspAP 2.6.6 allows attackers to execute commands as root because of the insecure sudoers permissions. The www-data account can execute /etc/raspap/hostapd/enablelog.sh as root with no password; however, the www-data account can also overwrite /etc/raspap/hostapd/enablelog.sh with any executable content.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38557">详情</a></td>
-      </tr>
-      <tr>
-       <td>e219a3ba00eb1f9cdcae3e54872b4fd1</td>
-       <td>CVE-2021-38556</td>
-       <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>includes/configure_client.php in RaspAP 2.6.6 allows attackers to execute commands via command injection.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38556">详情</a></td>
       </tr>
      </tbody>
     </table>
