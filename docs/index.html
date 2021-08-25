@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-08-25 01:17:02 -->
+<!-- RELEASE TIME : 2021-08-25 02:34:59 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,20 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4b0e3e86f15ea9309a681ac2b1021cd2</td>
+       <td>CVE-2021-39156</td>
+       <td>2021-08-24 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Istio is an open source platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data. Istio 1.11.0, 1.10.3 and below, and 1.9.7 and below contain a remotely exploitable vulnerability where an HTTP request with `#fragment` in the path may bypass Istioâ€™s URI path based authorization policies. Patches are available in Istio 1.11.1, Istio 1.10.4 and Istio 1.9.8. As a work around a Lua filter may be written to normalize the path.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39156">详情</a></td>
+      </tr>
+      <tr>
+       <td>d759318d1968ff0026691db12af5a267</td>
+       <td>CVE-2021-39155</td>
+       <td>2021-08-24 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Istio is an open source platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data. According to [RFC 4343](https://datatracker.ietf.org/doc/html/rfc4343), Istio authorization policy should compare the hostname in the HTTP Host header in a case insensitive way, but currently the comparison is case sensitive. The proxy will route the request hostname in a case-insensitive way which means the authorization policy could be bypassed. As an example, the user may have an authorization policy that rejects request with hostname "httpbin.foo" for some source IPs, but the attacker can bypass this by sending the request with hostname "Httpbin.Foo". Patches are available in Istio 1.11.1, Istio 1.10.4 and Istio 1.9.8. As a work around a Lua filter may be written to normalize Host header before the authorization check. This is similar to the Path normalization presented in the [Security Best Practices](https://istio.io/latest/docs/ops/best-practices/security/#case-normalization) guide.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39155">详情</a></td>
+      </tr>
+      <tr>
        <td>d638b23766ea83d9b01bcc4579b00450</td>
        <td>CVE-2021-32781</td>
        <td>2021-08-24 21:15:00 <img src="imgs/new.gif" /></td>
@@ -447,20 +461,6 @@
        <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
        <td>includes/configure_client.php in RaspAP 2.6.6 allows attackers to execute commands via command injection.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-38556">详情</a></td>
-      </tr>
-      <tr>
-       <td>0b7a5e30e6bb09ed4c72e5585060aced</td>
-       <td>CVE-2021-38306</td>
-       <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Network Attached Storage on LG N1T1*** 10124 devices allows an unauthenticated attacker to gain root access via OS command injection in the en/ajp/plugins/access.ssh/checkInstall.php destServer parameter.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38306">详情</a></td>
-      </tr>
-      <tr>
-       <td>ba5fbd50d63bbc9009fa343e90aebad0</td>
-       <td>CVE-2021-37538</td>
-       <td>2021-08-24 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiple SQL injection vulnerabilities in SmartDataSoft SmartBlog for PrestaShop before 4.06 allow a remote unauthenticated attacker to execute arbitrary SQL commands via the day, month, or year parameter to the controllers/front/archive.php archive controller, or the id_category parameter to the controllers/front/category.php category controller.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-37538">详情</a></td>
       </tr>
      </tbody>
     </table>
