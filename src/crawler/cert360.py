@@ -71,7 +71,7 @@ class Cert360(BaseCrawler):
         cve.url = self.url_cve + (json_obj.get('id') or '')
         cve.info = (json_obj.get('description') or '').strip().replace('\n\n', '\n')
 
-        seconds = json_obj.get('update_time') or 0
+        seconds = json_obj.get('update_time') or json_obj.get('add_time') or 0
         localtime = time.localtime(seconds)
         cve.time = time.strftime('%Y-%m-%d %H:%M:%S', localtime)
 
