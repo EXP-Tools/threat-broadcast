@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-08-27 20:28:33 -->
+<!-- RELEASE TIME : 2021-08-27 21:24:34 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9a504a20617a90bebf4615df9c3bd85c</td>
+       <td>CVE-2021-3264</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL Injection vulnerability in cxuucms 3.1 ivia the pid parameter in public/admin.php.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3264">详情</a></td>
+      </tr>
+      <tr>
+       <td>22098302a625cee9e3e46a0778f5faae</td>
+       <td>CVE-2021-28700</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>xen/arm: No memory limit for dom0less domUs The dom0less feature allows an administrator to create multiple unprivileged domains directly from Xen. Unfortunately, the memory limit from them is not set. This allow a domain to allocate memory beyond what an administrator originally configured.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28700">详情</a></td>
+      </tr>
+      <tr>
+       <td>8c29f71f86e979492207801cd6e02ff9</td>
+       <td>CVE-2021-28699</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>inadequate grant-v2 status frames array bounds check The v2 grant table interface separates grant attributes from grant status. That is, when operating in this mode, a guest has two tables. As a result, guests also need to be able to retrieve the addresses that the new status tracking table can be accessed through. For 32-bit guests on x86, translation of requests has to occur because the interface structure layouts commonly differ between 32- and 64-bit. The translation of the request to obtain the frame numbers of the grant status table involves translating the resulting array of frame numbers. Since the space used to carry out the translation is limited, the translation layer tells the core function the capacity of the array within translation space. Unfortunately the core function then only enforces array bounds to be below 8 times the specified value, and would write past the available space if enough frame numbers needed storing.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28699">详情</a></td>
+      </tr>
+      <tr>
+       <td>973a5ddba4a5d61535fced9bdd7b4865</td>
+       <td>CVE-2021-28698</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>long running loops in grant table handling In order to properly monitor resource use, Xen maintains information on the grant mappings a domain may create to map grants offered by other domains. In the process of carrying out certain actions, Xen would iterate over all such entries, including ones which aren't in use anymore and some which may have been created but never used. If the number of entries for a given domain is large enough, this iterating of the entire table may tie up a CPU for too long, starving other domains or causing issues in the hypervisor itself. Note that a domain may map its own grants, i.e. there is no need for multiple domains to be involved here. A pair of "cooperating" guests may, however, cause the effects to be more severe.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28698">详情</a></td>
+      </tr>
+      <tr>
+       <td>2f32794348c71a2f017e03b055c7a786</td>
+       <td>CVE-2021-28697</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>grant table v2 status pages may remain accessible after de-allocation Guest get permitted access to certain Xen-owned pages of memory. The majority of such pages remain allocated / associated with a guest for its entire lifetime. Grant table v2 status pages, however, get de-allocated when a guest switched (back) from v2 to v1. The freeing of such pages requires that the hypervisor know where in the guest these pages were mapped. The hypervisor tracks only one use within guest space, but racing requests from the guest to insert mappings of these pages may result in any of them to become mapped in multiple locations. Upon switching back from v2 to v1, the guest would then retain access to a page that was freed and perhaps re-used for other purposes.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28697">详情</a></td>
+      </tr>
+      <tr>
+       <td>53635dcccbc976a8514ff3c561e8a768</td>
+       <td>CVE-2021-28696</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IOMMU page mapping issues on x86 T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Both AMD and Intel allow ACPI tables to specify regions of memory which should be left untranslated, which typically means these addresses should pass the translation phase unaltered. While these are typically device specific ACPI properties, they can also be specified to apply to a range of devices, or even all devices. On all systems with such regions Xen failed to prevent guests from undoing/replacing such mappings (CVE-2021-28694). On AMD systems, where a discontinuous range is specified by firmware, the supposedly-excluded middle range will also be identity-mapped (CVE-2021-28695). Further, on AMD systems, upon de-assigment of a physical device from a guest, the identity mappings would be left in place, allowing a guest continued access to ranges of memory which it shouldn't have access to anymore (CVE-2021-28696).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28696">详情</a></td>
+      </tr>
+      <tr>
+       <td>1377e0bf09aada5a551476c4478a36af</td>
+       <td>CVE-2021-28695</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IOMMU page mapping issues on x86 T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Both AMD and Intel allow ACPI tables to specify regions of memory which should be left untranslated, which typically means these addresses should pass the translation phase unaltered. While these are typically device specific ACPI properties, they can also be specified to apply to a range of devices, or even all devices. On all systems with such regions Xen failed to prevent guests from undoing/replacing such mappings (CVE-2021-28694). On AMD systems, where a discontinuous range is specified by firmware, the supposedly-excluded middle range will also be identity-mapped (CVE-2021-28695). Further, on AMD systems, upon de-assigment of a physical device from a guest, the identity mappings would be left in place, allowing a guest continued access to ranges of memory which it shouldn't have access to anymore (CVE-2021-28696).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28695">详情</a></td>
+      </tr>
+      <tr>
+       <td>4a34d68c23e5ecf44b5f76fa40e11979</td>
+       <td>CVE-2021-28694</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IOMMU page mapping issues on x86 T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Both AMD and Intel allow ACPI tables to specify regions of memory which should be left untranslated, which typically means these addresses should pass the translation phase unaltered. While these are typically device specific ACPI properties, they can also be specified to apply to a range of devices, or even all devices. On all systems with such regions Xen failed to prevent guests from undoing/replacing such mappings (CVE-2021-28694). On AMD systems, where a discontinuous range is specified by firmware, the supposedly-excluded middle range will also be identity-mapped (CVE-2021-28695). Further, on AMD systems, upon de-assigment of a physical device from a guest, the identity mappings would be left in place, allowing a guest continued access to ranges of memory which it shouldn't have access to anymore (CVE-2021-28696).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28694">详情</a></td>
+      </tr>
+      <tr>
+       <td>71bf1c3c5c7c0822963f52da02df1be9</td>
+       <td>CVE-2021-28233</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Heap-based Buffer Overflow vulnerability exists in ok-file-formats 1 via the ok_jpg_generate_huffman_table function in ok_jpg.c.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28233">详情</a></td>
+      </tr>
+      <tr>
+       <td>61984249aa784a58ed8a1fdfa91ba858</td>
+       <td>CVE-2020-19002</td>
+       <td>2021-08-27 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting (XSS) in Mezzanine v4.3.1 allows remote attackers to execute arbitrary code via the 'Description' field of the component 'admin/blog/blogpost/add/'. This issue is different than CVE-2018-16632.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-19002">详情</a></td>
+      </tr>
+      <tr>
        <td>6b0ae72f6ff9a8ed2a49b0e7cfe54df3</td>
        <td>CVE-2021-23434</td>
        <td>2021-08-27 17:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-08-26 19:15:00 <img src="imgs/new.gif" /></td>
        <td>octobercms in a CMS platform based on the Laravel PHP Framework. In affected versions of the october/system package an attacker can request an account password reset and then gain access to the account using a specially crafted request. The issue has been patched in Build 472 and v1.1.5.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-32648">详情</a></td>
-      </tr>
-      <tr>
-       <td>605894f3e9efc0cdaad7f3bb6a29bc60</td>
-       <td>CVE-2021-29487</td>
-       <td>2021-08-26 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>octobercms in a CMS platform based on the Laravel PHP Framework. In affected versions of the october/system package an attacker can exploit this vulnerability to bypass authentication and takeover of and user account on an October CMS server. The vulnerability is exploitable by unauthenticated users via a specially crafted request. This only affects frontend users and the attacker must obtain a Laravel secret key for cookie encryption and signing in order to exploit this vulnerability. The issue has been patched in Build 472 and v1.1.5.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-29487">详情</a></td>
-      </tr>
-      <tr>
-       <td>ae431ba6a487effd2bba4c70ac3ebe9c</td>
-       <td>CVE-2021-36931</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Edge (Chromium-based) Elevation of Privilege Vulnerability This CVE ID is unique from CVE-2021-36928.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36931">详情</a></td>
-      </tr>
-      <tr>
-       <td>5543feb35e65b0f13462c144dd8d6e16</td>
-       <td>CVE-2021-36929</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Edge (Chromium-based) Information Disclosure Vulnerability</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36929">详情</a></td>
-      </tr>
-      <tr>
-       <td>6a4f6873e7250913d5f10a283157dc1a</td>
-       <td>CVE-2021-36928</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Edge (Chromium-based) Elevation of Privilege Vulnerability This CVE ID is unique from CVE-2021-36931.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36928">详情</a></td>
-      </tr>
-      <tr>
-       <td>1c99ca6406f1ff08c535fde18661b2d4</td>
-       <td>CVE-2021-30604</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use after free in ANGLE in Google Chrome prior to 92.0.4515.159 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-30604">详情</a></td>
-      </tr>
-      <tr>
-       <td>a1494863655a49aaac2216d50a408024</td>
-       <td>CVE-2021-30603</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Data race in WebAudio in Google Chrome prior to 92.0.4515.159 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-30603">详情</a></td>
-      </tr>
-      <tr>
-       <td>03ff893eaeb0bbd1639f6dc680d4d436</td>
-       <td>CVE-2021-30602</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use after free in WebRTC in Google Chrome prior to 92.0.4515.159 allowed an attacker who convinced a user to visit a malicious website to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-30602">详情</a></td>
-      </tr>
-      <tr>
-       <td>38869a40eaa87caa8c5bca422051907f</td>
-       <td>CVE-2021-30601</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use after free in Extensions API in Google Chrome prior to 92.0.4515.159 allowed an attacker who convinced a user to install a malicious extension to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-30601">详情</a></td>
-      </tr>
-      <tr>
-       <td>9b611e4f0591e12ad3b99b93196437c6</td>
-       <td>CVE-2021-30600</td>
-       <td>2021-08-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use after free in Printing in Google Chrome prior to 92.0.4515.159 allowed a remote attacker who had compromised the renderer process to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-30600">详情</a></td>
-      </tr>
-      <tr>
-       <td>67a1db60b59bec3080a940031666f6d4</td>
-       <td>CVE-2021-40147</td>
-       <td>2021-08-26 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>EmTec ZOC before 8.02.2 allows \e[201~ pastes, a different vulnerability than CVE-2021-32198.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-40147">详情</a></td>
       </tr>
      </tbody>
     </table>
