@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-08-30 12:43:22 -->
+<!-- RELEASE TIME : 2021-08-30 13:29:58 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,13 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d549dc60f1f6016c6517e935a161ac8c</td>
+       <td>CVE-2020-15744</td>
+       <td>2021-08-30 10:15:00 <img src="imgs/new.gif" /></td>
+       <td>Stack-based Buffer Overflow vulnerability in the ONVIF server component of Victure PC420 smart camera allows an attacker to execute remote code on the target device. This issue affects: Victure PC420 firmware version 1.2.2 and prior versions.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-15744">详情</a></td>
+      </tr>
+      <tr>
        <td>973b002f3307c560a0db9ee4a3cf2ea0</td>
        <td>CVE-2021-39117</td>
        <td>2021-08-30 07:15:00 <img src="imgs/new.gif" /></td>
@@ -454,13 +461,6 @@
        <td>2021-08-27 19:15:00</td>
        <td>long running loops in grant table handling In order to properly monitor resource use, Xen maintains information on the grant mappings a domain may create to map grants offered by other domains. In the process of carrying out certain actions, Xen would iterate over all such entries, including ones which aren't in use anymore and some which may have been created but never used. If the number of entries for a given domain is large enough, this iterating of the entire table may tie up a CPU for too long, starving other domains or causing issues in the hypervisor itself. Note that a domain may map its own grants, i.e. there is no need for multiple domains to be involved here. A pair of "cooperating" guests may, however, cause the effects to be more severe.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-28698">详情</a></td>
-      </tr>
-      <tr>
-       <td>2f32794348c71a2f017e03b055c7a786</td>
-       <td>CVE-2021-28697</td>
-       <td>2021-08-27 19:15:00</td>
-       <td>grant table v2 status pages may remain accessible after de-allocation Guest get permitted access to certain Xen-owned pages of memory. The majority of such pages remain allocated / associated with a guest for its entire lifetime. Grant table v2 status pages, however, get de-allocated when a guest switched (back) from v2 to v1. The freeing of such pages requires that the hypervisor know where in the guest these pages were mapped. The hypervisor tracks only one use within guest space, but racing requests from the guest to insert mappings of these pages may result in any of them to become mapped in multiple locations. Upon switching back from v2 to v1, the guest would then retain access to a page that was freed and perhaps re-used for other purposes.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-28697">详情</a></td>
       </tr>
      </tbody>
     </table>
