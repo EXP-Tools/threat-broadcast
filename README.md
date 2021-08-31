@@ -171,7 +171,7 @@ threat-broadcast
 
 | 支付宝 | 微信 |
 |:---:|:---:|
-| ![](imgs/donate_alipay.png) | ![](imgs/donate_wechat.png) |
+| ![](docs/imgs/alipay.png) | ![](docs/imgs/wechat.png) |
 
 
 ## 版权声明
