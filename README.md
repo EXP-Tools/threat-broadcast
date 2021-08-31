@@ -167,6 +167,13 @@ threat-broadcast
 ```
 
 
+## 赞助途径
+
+| 支付宝 | 微信 |
+|:---:|:---:|
+| ![](imgs/alipay.png) | ![](imgs/wechat.png) |
+
+
 ## 版权声明
 
 　[![Copyright (C) EXP,2016](https://img.shields.io/badge/Copyright%20(C)-EXP%202016-blue.svg)](http://exp-blog.com)　[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
