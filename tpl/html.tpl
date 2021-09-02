@@ -29,8 +29,8 @@
     <table id="donate" style="margin: auto;">
       <tbody>
         <tr>
-          <th width="50%"><img src="imgs/alipay.png"/></th>
-          <th width="50%"><img src="imgs/wechat.png"/></th>
+          <th><img src="imgs/alipay.png"/></th>
+          <th><img src="imgs/wechat.png"/></th>
         </tr>
         <tr>
           <td style="text-align: center;">支付宝</td>
