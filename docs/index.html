@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-09-07 20:28:27 -->
+<!-- RELEASE TIME : 2021-09-07 21:24:13 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,55 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f69b2bf35dd4980cfe3bb5c81ccee89b</td>
+       <td>CVE-2021-39199</td>
+       <td>2021-09-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>remark-html is an open source nodejs library which compiles Markdown to HTML. In affected versions the documentation of remark-html has mentioned that it was safe by default. In practice the default was never safe and had to be opted into. That is, user input was not sanitized. This means arbitrary HTML can be passed through leading to potential XSS attacks. The problem has been patched in 13.0.2 and 14.0.1: `remark-html` is now safe by default, and the implementation matches the documentation. On older affected versions, pass `sanitize: true` if you cannot update.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39199">详情</a></td>
+      </tr>
+      <tr>
+       <td>644f220f52b65c453c43ba1c94905eb3</td>
+       <td>CVE-2021-39196</td>
+       <td>2021-09-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>pcapture is an open source dumpcap web service interface . In affected versions this vulnerability allows an authenticated but unprivileged user to use the REST API to capture and download packets with no capture filter and without adequate permissions. This is important because the capture filters can effectively limit the scope of information that a user can see in the data captures. If no filter is present, then all data on the local network segment where the program is running can be captured and downloaded. v3.12 fixes this problem. There is no workaround, you must upgrade to v3.12 or greater.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39196">详情</a></td>
+      </tr>
+      <tr>
+       <td>a4ebd9f1439991e47e40729c0535d54a</td>
+       <td>CVE-2021-39195</td>
+       <td>2021-09-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Misskey is an open source, decentralized microblogging platform. In affected versions a Server-Side Request Forgery vulnerability exists in "Upload from URL" and remote attachment handling. This could result in the disclosure of non-public information within the internal network. This has been fixed in 12.90.0. However, if you are using a proxy, you will need to take additional measures. As a workaround this exploit may be avoided by appropriately restricting access to private networks from the host where the application is running.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39195">详情</a></td>
+      </tr>
+      <tr>
+       <td>85c60a598ff5f7541bec24cae43da57b</td>
+       <td>CVE-2021-35949</td>
+       <td>2021-09-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The shareinfo controller in the ownCloud Server before 10.8.0 allows an attacker to bypass the permission checks for upload only shares and list metadata about the share.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35949">详情</a></td>
+      </tr>
+      <tr>
+       <td>8b864a3801383cb8d68cc80f3e5bc9a5</td>
+       <td>CVE-2021-35947</td>
+       <td>2021-09-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The public share controller in the ownCloud server before version 10.8.0 allows a remote attacker to see the internal path and the username of a public share by including invalid characters in the URL.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35947">详情</a></td>
+      </tr>
+      <tr>
+       <td>fc153c2bdfb1603f750daf7a482f1ded</td>
+       <td>CVE-2021-39197</td>
+       <td>2021-09-07 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>better_errors is an open source replacement for the standard Rails error page with more information rich error pages. It is also usable outside of Rails in any Rack app as Rack middleware. better_errors prior to 2.8.0 did not implement CSRF protection for its internal requests. It also did not enforce the correct "Content-Type" header for these requests, which allowed a cross-origin "simple request" to be made without CORS protection. These together left an application with better_errors enabled open to cross-origin attacks. As a developer tool, better_errors documentation strongly recommends addition only to the `development` bundle group, so this vulnerability should only affect development environments. Please ensure that your project limits better_errors to the `development` group (or the non-Rails equivalent). Starting with release 2.8.x, CSRF protection is enforced. It is recommended that you upgrade to the latest release, or minimally to "~> 2.8.3". There are no known workarounds to mitigate the risk of using older releases of better_errors.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39197">详情</a></td>
+      </tr>
+      <tr>
+       <td>1e8218755cec2769e13530f54fca918b</td>
+       <td>CVE-2021-38142</td>
+       <td>2021-09-07 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Barco MirrorOp Windows Sender before 2.5.3.65 uses cleartext HTTP and thus allows rogue software upgrades. An attacker on the local network can achieve remote code execution on any computer that tries to update Windows Sender due to the fact that the upgrade mechanism is not secured (is not protected with TLS).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-38142">详情</a></td>
+      </tr>
+      <tr>
        <td>4c8d0ebb377687f5dd6ac949f407907a</td>
        <td>CVE-2021-40539</td>
        <td>2021-09-07 17:15:00 <img src="imgs/new.gif" /></td>
@@ -412,55 +461,6 @@
        <td>2021-09-07 11:15:00 <img src="imgs/new.gif" /></td>
        <td>Deskpro cloud and on-premise Deskpro 2021.1.6 and fixed in Deskpro 2021.1.7 contains a cross-site scripting (XSS) vulnerability in social media links on a user profile due to lack of input validation.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-36696">详情</a></td>
-      </tr>
-      <tr>
-       <td>cd332acc18596fdbf81c4bfad4ec7742</td>
-       <td>CVE-2021-36163</td>
-       <td>2021-09-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Apache Dubbo, users may choose to use the Hessian protocol. The Hessian protocol is implemented on top of HTTP and passes the body of a POST request directly to a HessianSkeleton: New HessianSkeleton are created without any configuration of the serialization factory and therefore without applying the dubbo properties for applying allowed or blocked type lists. In addition, the generic service is always exposed and therefore attackers do not need to figure out a valid service/method name pair. This is fixed in 2.7.13, 2.6.10.1</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36163">详情</a></td>
-      </tr>
-      <tr>
-       <td>a6dd0b47494f81553fe031976901e8bf</td>
-       <td>CVE-2021-36162</td>
-       <td>2021-09-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Apache Dubbo supports various rules to support configuration override or traffic routing (called routing in Dubbo). These rules are loaded into the configuration center (eg: Zookeeper, Nacos, ...) and retrieved by the customers when making a request in order to find the right endpoint. When parsing these YAML rules, Dubbo customers will use SnakeYAML library to load the rules which by default will enable calling arbitrary constructors. An attacker with access to the configuration center he will be able to poison the rule so when retrieved by the consumers, it will get RCE on all of them. This was fixed in Dubbo 2.7.13, 3.0.2</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36162">详情</a></td>
-      </tr>
-      <tr>
-       <td>7b38cfce7e1e366bb5b14372d5043e3e</td>
-       <td>CVE-2021-34149</td>
-       <td>2021-09-07 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Bluetooth Classic implementation on the Texas Instruments CC256XCQFN-EM does not properly handle the reception of continuous LMP_AU_Rand packets, allowing attackers in radio range to trigger a denial of service (deadlock) of the device by flooding it with LMP_AU_Rand packets after the paging procedure.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34149">详情</a></td>
-      </tr>
-      <tr>
-       <td>8bc2d1863c3e1adbc072cfa23655876c</td>
-       <td>CVE-2021-34148</td>
-       <td>2021-09-07 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Bluetooth Classic implementation in the Cypress WICED BT stack through 2.9.0 for CYW20735B1 devices does not properly handle the reception of LMP_max_slot with a greater ACL Length after completion of the LMP setup procedure, allowing attackers in radio range to trigger a denial of service (firmware crash) via a crafted LMP packet.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34148">详情</a></td>
-      </tr>
-      <tr>
-       <td>cd52b2f4ee4f436cb6b0420c735a4112</td>
-       <td>CVE-2021-34147</td>
-       <td>2021-09-07 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Bluetooth Classic implementation in the Cypress WICED BT stack through 2.9.0 for CYW20735B1 does not properly handle the reception of a malformed LMP timing accuracy response followed by multiple reconnections to the link slave, allowing attackers to exhaust device BT resources and eventually trigger a crash via multiple attempts of sending a crafted LMP timing accuracy response followed by a sudden reconnection with a random BDAddress.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34147">详情</a></td>
-      </tr>
-      <tr>
-       <td>3f2ccf841d63ef694b7a4f19255f0caf</td>
-       <td>CVE-2021-34146</td>
-       <td>2021-09-07 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Bluetooth Classic implementation in the Cypress CYW920735Q60EVB does not properly handle the reception of continuous unsolicited LMP responses, allowing attackers in radio range to trigger a denial of service and restart (crash) of the device by flooding it with LMP_AU_Rand packets after the paging procedure.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34146">详情</a></td>
-      </tr>
-      <tr>
-       <td>6d8dd1a4827780e4eee41a97e11291bf</td>
-       <td>CVE-2021-34145</td>
-       <td>2021-09-07 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Bluetooth Classic implementation in the Cypress WICED BT stack through 2.9.0 for CYW20735B1 devices does not properly handle the reception of LMP_max_slot with an invalid Baseband packet type (and LT_ADDRESS and LT_ADDR) after completion of the LMP setup procedure, allowing attackers in radio range to trigger a denial of service (firmware crash) via a crafted LMP packet.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34145">详情</a></td>
       </tr>
      </tbody>
     </table>
