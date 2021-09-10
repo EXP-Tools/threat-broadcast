@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-09-10 05:24:15 -->
+<!-- RELEASE TIME : 2021-09-10 06:32:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -1949,6 +1949,13 @@
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39278">详情</a></td>
       </tr>
       <tr>
+       <td>090b46bf41915655799dc9c98b23ce1b</td>
+       <td>CVE-2021-38840</td>
+       <td>2021-09-07 06:15:08 </td>
+       <td>SQL Injection can occur in Simple Water Refilling Station Management System 1.0 via the water_refilling/classes/Login.php username parameter.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-38840">详情</a></td>
+      </tr>
+      <tr>
        <td>f30d690fd7488950b2dc2fc0a934b304</td>
        <td>CVE-2021-40516</td>
        <td>2021-09-05 18:15:07 </td>
@@ -2061,6 +2068,34 @@
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39176">详情</a></td>
       </tr>
       <tr>
+       <td>a95f2d9b34666e1a8fb4ed9d1f0f8700</td>
+       <td>CVE-2021-39164</td>
+       <td>2021-08-31 17:15:08 </td>
+       <td>Matrix is an ecosystem for open federated Instant Messaging and Voice over IP. In versions 1.41.0 and prior, unauthorised users can access the membership (list of members, with their display names) of a room if they know the ID of the room. The vulnerability is limited to rooms with `shared` history visibility. Furthermore, the unauthorised user must be using an account on a vulnerable homeserver that is in the room. Server administrators should upgrade to 1.41.1 or later in order to receive the patch. One workaround is available. Administrators of servers that use a reverse proxy could, with potentially unacceptable loss of functionality, block the endpoints: `/_matrix/client/r0/rooms/{room_id}/members` with `at` query parameter, and `/_matrix/client/unstable/rooms/{room_id}/members` with `at` query parameter.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39164">详情</a></td>
+      </tr>
+      <tr>
+       <td>a40848813832e33a9c92dc2b96e71ed6</td>
+       <td>CVE-2021-39135</td>
+       <td>2021-08-31 17:15:08 </td>
+       <td>`@npmcli/arborist`, the library that calculates dependency trees and manages the node_modules folder hierarchy for the npm command line interface, aims to guarantee that package dependency contracts will be met, and the extraction of package contents will always be performed into the expected folder. This is accomplished by extracting package contents into a project's `node_modules` folder. If the `node_modules` folder of the root project or any of its dependencies is somehow replaced with a symbolic link, it could allow Arborist to write package dependencies to any arbitrary location on the file system. Note that symbolic links contained within package artifact contents are filtered out, so another means of creating a `node_modules` symbolic link would have to be employed. 1. A `preinstall` script could replace `node_modules` with a symlink. (This is prevented by using `--ignore-scripts`.) 2. An attacker could supply the target with a git repository, instructing them to run `npm install --ignore-scripts` in the root. This may be successful, because `npm install --ignore-scripts` is typically not capable of making changes outside of the project directory, so it may be deemed safe. This is patched in @npmcli/arborist 2.8.2 which is included in npm v7.20.7 and above. For more information including workarounds please see the referenced GHSA-gmw6-94gg-2rc2.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39135">详情</a></td>
+      </tr>
+      <tr>
+       <td>2e96fa16bc8223bb22d5562f61bd5667</td>
+       <td>CVE-2021-39134</td>
+       <td>2021-08-31 17:15:08 </td>
+       <td>`@npmcli/arborist`, the library that calculates dependency trees and manages the `node_modules` folder hierarchy for the npm command line interface, aims to guarantee that package dependency contracts will be met, and the extraction of package contents will always be performed into the expected folder. This is, in part, accomplished by resolving dependency specifiers defined in `package.json` manifests for dependencies with a specific name, and nesting folders to resolve conflicting dependencies. When multiple dependencies differ only in the case of their name, Arborist's internal data structure saw them as separate items that could coexist within the same level in the `node_modules` hierarchy. However, on case-insensitive file systems (such as macOS and Windows), this is not the case. Combined with a symlink dependency such as `file:/some/path`, this allowed an attacker to create a situation in which arbitrary contents could be written to any location on the filesystem. For example, a package `pwn-a` could define a dependency in their `package.json` file such as `&quot;foo&quot;: &quot;file:/some/path&quot;`. Another package, `pwn-b` could define a dependency such as `FOO: &quot;file:foo.tgz&quot;`. On case-insensitive file systems, if `pwn-a` was installed, and then `pwn-b` was installed afterwards, the contents of `foo.tgz` would be written to `/some/path`, and any existing contents of `/some/path` would be removed. Anyone using npm v7.20.6 or earlier on a case-insensitive filesystem is potentially affected. This is patched in @npmcli/arborist 2.8.2 which is included in npm v7.20.7 and above.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39134">详情</a></td>
+      </tr>
+      <tr>
+       <td>3aa9556177e919d0111775e49de15b40</td>
+       <td>CVE-2021-39163</td>
+       <td>2021-08-31 16:15:07 </td>
+       <td>Matrix is an ecosystem for open federated Instant Messaging and Voice over IP. In versions 1.41.0 and prior, unauthorised users can access the name, avatar, topic and number of members of a room if they know the ID of the room. This vulnerability is limited to homeservers where the vulnerable homeserver is in the room and untrusted users are permitted to create groups (communities). By default, only homeserver administrators can create groups. However, homeserver administrators can already access this information in the database or using the admin API. As a result, only homeservers where the configuration setting `enable_group_creation` has been set to `true` are impacted. Server administrators should upgrade to 1.41.1 or higher to patch the vulnerability. There are two potential workarounds. Server administrators can set `enable_group_creation` to `false` in their homeserver configuration (this is the default value) to prevent creation of groups by non-administrators. Administrators that are using a reverse proxy could, with partial loss of group functionality, block the endpoints `/_matrix/client/r0/groups/{group_id}/rooms` and `/_matrix/client/unstable/groups/{group_id}/rooms`.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39163">详情</a></td>
+      </tr>
+      <tr>
        <td>4543016aa47291e3fea80f91bb59f332</td>
        <td>CVE-2021-39316</td>
        <td>2021-08-31 12:15:07 </td>
@@ -2082,60 +2117,25 @@
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39178">详情</a></td>
       </tr>
       <tr>
+       <td>3047ccf8e7505de3d08137059310466f</td>
+       <td>CVE-2021-39133</td>
+       <td>2021-08-30 20:15:07 </td>
+       <td>Rundeck is an open source automation service with a web console, command line tools and a WebAPI. Prior to version 3.3.14 and version 3.4.3, a user with `admin` access to the `system` resource type is potentially vulnerable to a CSRF attack that could cause the server to run untrusted code on all Rundeck editions. Patches are available in Rundeck versions 3.4.3 and 3.3.14.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39133">详情</a></td>
+      </tr>
+      <tr>
+       <td>97af98a495ede3ec74623b7d4a86fc32</td>
+       <td>CVE-2021-39132</td>
+       <td>2021-08-30 20:15:07 </td>
+       <td>Rundeck is an open source automation service with a web console, command line tools and a WebAPI. Prior to version 3.3.14 and version 3.4.3, an authorized user can upload a zip-format plugin with a crafted plugin.yaml, or a crafted aclpolicy yaml file, or upload an untrusted project archive with a crafted aclpolicy yaml file, that can cause the server to run untrusted code on Rundeck Community or Enterprise Edition. An authenticated user can make a POST request, that can cause the server to run untrusted code on Rundeck Enterprise Edition. The zip-format plugin issues requires authentication and authorization to these access levels, and affects all Rundeck editions:`admin` level access to the `system` resource type. The ACL Policy yaml file upload issues requires authentication and authorization to these access levels, and affects all Rundeck editions: `create` `update` or `admin` level access to a `project_acl` resource, and/or`create` `update` or `admin` level access to the `system_acl` resource. The unauthorized POST request requires authentication, but no specific authorization, and affects Rundeck Enterprise only. Patches are available in versions 3.4.3, 3.3.14</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-39132">详情</a></td>
+      </tr>
+      <tr>
        <td>cb7da6d820d162d294ef4515404c52a5</td>
        <td>CVE-2021-38343</td>
        <td>2021-08-30 19:15:09 </td>
        <td>The Nested Pages WordPress plugin &lt;= 3.1.15 was vulnerable to an Open Redirect via the `page` POST parameter in the `npBulkActions`, `npBulkEdit`, `npListingSort`, and `npCategoryFilter` `admin_post` actions.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-38343">详情</a></td>
-      </tr>
-      <tr>
-       <td>3d21d5838786fdb0bbf248acc94f9431</td>
-       <td>CVE-2021-38342</td>
-       <td>2021-08-30 19:15:09 </td>
-       <td>The Nested Pages WordPress plugin &lt;= 3.1.15 was vulnerable to Cross-Site Request Forgery via the `npBulkAction`s and `npBulkEdit` `admin_post` actions, which allowed attackers to trash or permanently purge arbitrary posts as well as changing their status, reassigning their ownership, and editing other metadata.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-38342">详情</a></td>
-      </tr>
-      <tr>
-       <td>b50a68c288d75c9afbf58cd35f070d04</td>
-       <td>CVE-2021-37421</td>
-       <td>2021-08-30 19:15:09 </td>
-       <td>Zoho ManageEngine ADSelfService Plus 6103 and prior is vulnerable to admin portal access-restriction bypass.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-37421">详情</a></td>
-      </tr>
-      <tr>
-       <td>7ca6f018116d5ebcb3716407e67f0882</td>
-       <td>CVE-2021-37417</td>
-       <td>2021-08-30 19:15:09 </td>
-       <td>Zoho ManageEngine ADSelfService Plus version 6103 and prior allows CAPTCHA bypass due to improper parameter validation.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-37417">详情</a></td>
-      </tr>
-      <tr>
-       <td>cabc104c66e2ff3b530f34f296c458a5</td>
-       <td>CVE-2021-37416</td>
-       <td>2021-08-30 19:15:08 </td>
-       <td>Zoho ManageEngine ADSelfService Plus version 6103 and prior is vulnerable to reflected XSS on the loadframe page.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-37416">详情</a></td>
-      </tr>
-      <tr>
-       <td>90afd2f8409d5e6f0c932b176894c935</td>
-       <td>CVE-2021-38393</td>
-       <td>2021-08-30 18:15:09 </td>
-       <td>A Blind SQL injection vulnerability exists in the /DataHandler/HandlerAlarmGroup.ashx endpoint of Delta Electronics DIAEnergie Version 1.7.5 and prior. The application does not properly validate the user-controlled value supplied through the parameter agid before using it as part of an SQL query. A remote, unauthenticated attacker can exploit this issue to execute arbitrary code in the context of NT SERVICE\MSSQLSERVER.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-38393">详情</a></td>
-      </tr>
-      <tr>
-       <td>a780b4b0982c630c83fb3c317a41f19e</td>
-       <td>CVE-2021-38391</td>
-       <td>2021-08-30 18:15:09 </td>
-       <td>A Blind SQL injection vulnerability exists in the /DataHandler/AM/AM_Handler.ashx endpoint of Delta Electronics DIAEnergie Version 1.7.5 and prior. The application does not properly validate the user-controlled value supplied through the parameter type before using it as part of an SQL query. A remote, unauthenticated attacker can exploit this issue to execute arbitrary code in the context of NT SERVICE\MSSQLSERVER.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-38391">详情</a></td>
-      </tr>
-      <tr>
-       <td>3f428f6c5e3c0db1888cb898500f135e</td>
-       <td>CVE-2021-38390</td>
-       <td>2021-08-30 18:15:09 </td>
-       <td>A Blind SQL injection vulnerability exists in the /DataHandler/HandlerEnergyType.ashx endpoint of Delta Electronics DIAEnergie Version 1.7.5 and prior. The application does not properly validate the user-controlled value supplied through the parameter egyid before using it as part of an SQL query. A remote, unauthenticated attacker can exploit this issue to execute arbitrary code in the context of NT SERVICE\MSSQLSERVER.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-38390">详情</a></td>
       </tr>
      </tbody>
     </table>
