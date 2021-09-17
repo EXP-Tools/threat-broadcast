@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-09-17 22:26:39 -->
+<!-- RELEASE TIME : 2021-09-17 23:26:56 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>94f367bff9f6d156d4117961aebfa097</td>
+       <td>CVE-2021-41391</td>
+       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Ericsson ECM before 18.0, it was observed that Security Management Endpoint in User Profile Management Section is vulnerable to stored XSS via a name, leading to session hijacking and full account takeover.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41391">详情</a></td>
+      </tr>
+      <tr>
+       <td>b0fa686163f60a935b84fe014080cb73</td>
+       <td>CVE-2021-41390</td>
+       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Ericsson ECM before 18.0, it was observed that Security Provider Endpoint in the User Profile Management Section is vulnerable to CSV Injection.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41390">详情</a></td>
+      </tr>
+      <tr>
+       <td>80edcef8c5f457fe71dfae78128c95d5</td>
+       <td>CVE-2021-41387</td>
+       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>seatd-launch in seatd 0.6.x before 0.6.2 allows privilege escalation because it uses execlp and may be installed setuid root.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41387">详情</a></td>
+      </tr>
+      <tr>
+       <td>fa6a1d9224b80b653415199d9825ec52</td>
+       <td>CVE-2021-39218</td>
+       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wasmtime is an open source runtime for WebAssembly & WASI. In Wasmtime from version 0.26.0 and before version 0.30.0 is affected by a memory unsoundness vulnerability. There was an invalid free and out-of-bounds read and write bug when running Wasm that uses `externref`s in Wasmtime. To trigger this bug, Wasmtime needs to be running Wasm that uses `externref`s, the host creates non-null `externrefs`, Wasmtime performs a garbage collection (GC), and there has to be a Wasm frame on the stack that is at a GC safepoint where there are no live references at this safepoint, and there is a safepoint with live references earlier in this frame's function. Under this scenario, Wasmtime would incorrectly use the GC stack map for the safepoint from earlier in the function instead of the empty safepoint. This would result in Wasmtime treating arbitrary stack slots as `externref`s that needed to be rooted for GC. At the *next* GC, it would be determined that nothing was referencing these bogus `externref`s (because nothing could ever reference them, because they are not really `externref`s) and then Wasmtime would deallocate them and run `<ExternRef as Drop>::drop` on them. This results in a free of memory that is not necessarily on the heap (and shouldn't be freed at this moment even if it was), as well as potential out-of-bounds reads and writes. Even though support for `externref`s (via the reference types proposal) is enabled by default, unless you are creating non-null `externref`s in your host code or explicitly triggering GCs, you cannot be affected by this bug. We have reason to believe that the effective impact of this bug is relatively small because usage of `externref` is currently quite rare. This bug has been patched and users should upgrade to Wasmtime version 0.30.0. If you cannot upgrade Wasmtime at this time, you can avoid this bug by disabling the reference types proposal by passing `false` to `wasmtime::Config::wasm_reference_types`.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39218">详情</a></td>
+      </tr>
+      <tr>
+       <td>910517b443ac1bb5d7e7f4bdb492f331</td>
+       <td>CVE-2020-21548</td>
+       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Libsixel 1.8.3 contains a heap-based buffer overflow in the sixel_encode_highcolor function in tosixel.c.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21548">详情</a></td>
+      </tr>
+      <tr>
+       <td>dd2fefbae4d1d38284d175c9eff7d9be</td>
+       <td>CVE-2020-21547</td>
+       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Libsixel 1.8.2 contains a heap-based buffer overflow in the dither_func_fs function in tosixel.c.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21547">详情</a></td>
+      </tr>
+      <tr>
+       <td>f2653cb9f988528969ce4539218f8445</td>
+       <td>CVE-2021-41383</td>
+       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>setup.cgi on NETGEAR R6020 1.0.0.48 devices allows an admin to execute arbitrary shell commands via shell metacharacters in the ntp_server field.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41383">详情</a></td>
+      </tr>
+      <tr>
+       <td>cbbca0307e7d48dc3912fc726be4f898</td>
+       <td>CVE-2021-41380</td>
+       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>RealVNC Viewer 6.21.406 allows remote VNC servers to cause a denial of service (application crash) via crafted RFB protocol data.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41380">详情</a></td>
+      </tr>
+      <tr>
+       <td>95ff92c24003b0a25d37d7c3b1d32d63</td>
+       <td>CVE-2021-39219</td>
+       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wasmtime is an open source runtime for WebAssembly & WASI. Wasmtime before version 0.30.0 is affected by a type confusion vulnerability. As a Rust library the `wasmtime` crate clearly marks which functions are safe and which are `unsafe`, guaranteeing that if consumers never use `unsafe` then it should not be possible to have memory unsafety issues in their embeddings of Wasmtime. An issue was discovered in the safe API of `Linker::func_*` APIs. These APIs were previously not sound when one `Engine` was used to create the `Linker` and then a different `Engine` was used to create a `Store` and then the `Linker` was used to instantiate a module into that `Store`. Cross-`Engine` usage of functions is not supported in Wasmtime and this can result in type confusion of function pointers, resulting in being able to safely call a function with the wrong type. Triggering this bug requires using at least two `Engine` values in an embedding and then additionally using two different values with a `Linker` (one at the creation time of the `Linker` and another when instantiating a module with the `Linker`). It's expected that usage of more-than-one `Engine` in an embedding is relatively rare since an `Engine` is intended to be a globally shared resource, so the expectation is that the impact of this issue is relatively small. The fix implemented is to change this behavior to `panic!()` in Rust instead of silently allowing it. Using different `Engine` instances with a `Linker` is a programmer bug that `wasmtime` catches at runtime. This bug has been patched and users should upgrade to Wasmtime version 0.30.0. If you cannot upgrade Wasmtime and are using more than one `Engine` in your embedding it's recommended to instead use only one `Engine` for the entire program if possible. An `Engine` is designed to be a globally shared resource that is suitable to have only one for the lifetime of an entire process. If using multiple `Engine`s is required then code should be audited to ensure that `Linker` is only used with one `Engine`.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39219">详情</a></td>
+      </tr>
+      <tr>
+       <td>23324749b6beb71a46f2c9e8c6a06d1b</td>
+       <td>CVE-2021-39216</td>
+       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wasmtime is an open source runtime for WebAssembly & WASI. In Wasmtime from version 0.19.0 and before version 0.30.0 there was a use-after-free bug when passing `externref`s from the host to guest Wasm content. To trigger the bug, you have to explicitly pass multiple `externref`s from the host to a Wasm instance at the same time, either by passing multiple `externref`s as arguments from host code to a Wasm function, or returning multiple `externref`s to Wasm from a multi-value return function defined in the host. If you do not have host code that matches one of these shapes, then you are not impacted. If Wasmtime's `VMExternRefActivationsTable` became filled to capacity after passing the first `externref` in, then passing in the second `externref` could trigger a garbage collection. However the first `externref` is not rooted until we pass control to Wasm, and therefore could be reclaimed by the collector if nothing else was holding a reference to it or otherwise keeping it alive. Then, when control was passed to Wasm after the garbage collection, Wasm could use the first `externref`, which at this point has already been freed. We have reason to believe that the effective impact of this bug is relatively small because usage of `externref` is currently quite rare. The bug has been fixed, and users should upgrade to Wasmtime 0.30.0. If you cannot upgrade Wasmtime yet, you can avoid the bug by disabling reference types support in Wasmtime by passing `false` to `wasmtime::Config::wasm_reference_types`.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39216">详情</a></td>
+      </tr>
+      <tr>
        <td>9b5a34f04e26677a41d09770e9cc17b3</td>
        <td>CVE-2021-38406</td>
        <td>2021-09-17 19:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
        <td>XML Entity Expansion injection vulnerability in McAfee Endpoint Security (ENS) for Windows prior to 10.7.0 September 2021 Update allows a local user to initiate high CPU and memory consumption resulting in a Denial of Service attack through carefully editing the EPDeploy.xml file and then executing the setup process.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-31842">详情</a></td>
-      </tr>
-      <tr>
-       <td>ecb01ac446f918ff63b62285f327d033</td>
-       <td>CVE-2021-39327</td>
-       <td>2021-09-17 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The BulletProof Security WordPress plugin is vulnerable to sensitive information disclosure due to a file path disclosure in the publicly accessible ~/db_backup_log.txt file which grants attackers the full path of the site, in addition to the path of database backup files. This affects versions up to, and including, 5.1.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39327">详情</a></td>
-      </tr>
-      <tr>
-       <td>48c60aa10a59c448e7141af5bb07bce6</td>
-       <td>CVE-2021-23442</td>
-       <td>2021-09-17 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>This affects all versions of package @cookiex/deep. The global proto object can be polluted using the __proto__ object.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-23442">详情</a></td>
-      </tr>
-      <tr>
-       <td>ab866011cc5148cfa50a8bc98f94e776</td>
-       <td>CVE-2021-41303</td>
-       <td>2021-09-17 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Apache Shiro before 1.8.0, when using Apache Shiro with Spring Boot, a specially crafted HTTP request may cause an authentication bypass. Users should update to Apache Shiro 1.8.0.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41303">详情</a></td>
-      </tr>
-      <tr>
-       <td>f6fff134b9827a395e06ed7e58c8ed42</td>
-       <td>CVE-2021-3812</td>
-       <td>2021-09-17 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>adminlte is vulnerable to Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-3812">详情</a></td>
-      </tr>
-      <tr>
-       <td>b8dfc8b2cca86642603373e4c4f49809</td>
-       <td>CVE-2021-3811</td>
-       <td>2021-09-17 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>adminlte is vulnerable to Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-3811">详情</a></td>
-      </tr>
-      <tr>
-       <td>8f30c172bb650513637f5807860352b7</td>
-       <td>CVE-2021-3810</td>
-       <td>2021-09-17 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>code-server is vulnerable to Inefficient Regular Expression Complexity</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-3810">详情</a></td>
-      </tr>
-      <tr>
-       <td>5ea5ffeef2a0806913c67252bfdf1fc2</td>
-       <td>CVE-2021-3807</td>
-       <td>2021-09-17 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>ansi-regex is vulnerable to Inefficient Regular Expression Complexity</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-3807">详情</a></td>
-      </tr>
-      <tr>
-       <td>0c28d6b341c4f0ce6e18575da31da60f</td>
-       <td>CVE-2021-3804</td>
-       <td>2021-09-17 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>taro is vulnerable to Inefficient Regular Expression Complexity</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-3804">详情</a></td>
-      </tr>
-      <tr>
-       <td>036b7ddaca8fb00e84d3a30c00309cac</td>
-       <td>CVE-2021-3803</td>
-       <td>2021-09-17 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>nth-check is vulnerable to Inefficient Regular Expression Complexity</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-3803">详情</a></td>
-      </tr>
-      <tr>
-       <td>47513f2ca9641ba464cc25cd009a6ae3</td>
-       <td>CVE-2021-30261</td>
-       <td>2021-09-17 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>Possible integer and heap overflow due to lack of input command size validation while handling beacon template update command from HLOS in Snapdragon Auto, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon IoT, Snapdragon Mobile, Snapdragon Voice & Music, Snapdragon Wearables</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-30261">详情</a></td>
       </tr>
      </tbody>
     </table>
