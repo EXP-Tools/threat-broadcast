@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-09-17 16:45:20 -->
+<!-- RELEASE TIME : 2021-09-17 17:29:53 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>dd037055fb40275cb689d162109dc999</td>
+       <td>CVE-2021-41316</td>
+       <td>2021-09-17 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Device42 Main Appliance before 17.05.01 does not sanitize user input in its Nmap Discovery utility. An attacker (with permissions to add or edit jobs run by this utility) can inject an extra argument to overwrite arbitrary files as the root user on the Remote Collector.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41316">详情</a></td>
+      </tr>
+      <tr>
+       <td>bd5d1150f8e69b6ca776af8a1f3397e6</td>
+       <td>CVE-2021-41315</td>
+       <td>2021-09-17 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Device42 Remote Collector before 17.05.01 does not sanitize user input in its SNMP Connectivity utility. This allows an authenticated attacker (with access to the console application) to execute arbitrary OS commands and escalate privileges.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41315">详情</a></td>
+      </tr>
+      <tr>
+       <td>81fcc98957a52869cf073e405a0da299</td>
+       <td>CVE-2021-39228</td>
+       <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tremor is an event processing system for unstructured data. A vulnerability exists between versions 0.7.2 and 0.11.6. This vulnerability is a memory safety Issue when using `patch` or `merge` on `state` and assign the result back to `state`. In this case, affected versions of Tremor and the tremor-script crate maintains references to memory that might have been freed already. And these memory regions can be accessed by retrieving the `state`, e.g. send it over TCP or HTTP. This requires the Tremor server (or any other program using tremor-script) to execute a tremor-script script that uses the mentioned language construct. The issue has been patched in version 0.11.6 by removing the optimization and always cloning the target expression of a Merge or Patch. If an upgrade is not possible, a possible workaround is to avoid the optimization by introducing a temporary variable and not immediately reassigning to `state`.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39228">详情</a></td>
+      </tr>
+      <tr>
+       <td>06ccbbf84ec6307afe61c7462f99f1fa</td>
+       <td>CVE-2021-39227</td>
+       <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>ZRender is a lightweight graphic library providing 2d draw for Apache ECharts. In versions prior to 5.2.1, using `merge` and `clone` helper methods in the `src/core/util.ts` module results in prototype pollution. It affects the popular data visualization library Apache ECharts, which uses and exports these two methods directly. The GitHub Security Advisory page for this vulnerability contains a proof of concept. This issue is patched in ZRender version 5.2.1. One workaround is available: Check if there is `__proto__` in the object keys. Omit it before using it as an parameter in these affected methods. Or in `echarts.util.merge` and `setOption` if project is using ECharts.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39227">详情</a></td>
+      </tr>
+      <tr>
+       <td>220d9aa21a0c4b14658dd3e272720c1d</td>
+       <td>CVE-2021-31845</td>
+       <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A buffer overflow vulnerability in McAfee Data Loss Prevention (DLP) Discover prior to 11.6.100 allows an attacker in the same network as the DLP Discover to execute arbitrary code through placing carefully constructed Ami Pro (.sam) files onto a machine and having DLP Discover scan it, leading to remote code execution with elevated privileges. This is caused by the destination buffer being of fixed size and incorrect checks being made on the source size.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-31845">详情</a></td>
+      </tr>
+      <tr>
+       <td>071602899c4c5f4961a4915d96636da8</td>
+       <td>CVE-2021-31844</td>
+       <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A buffer overflow vulnerability in McAfee Data Loss Prevention (DLP) Endpoint for Windows prior to 11.6.200 allows a local attacker to execute arbitrary code with elevated privileges through placing carefully constructed Ami Pro (.sam) files onto the local system and triggering a DLP Endpoint scan through accessing a file. This is caused by the destination buffer being of fixed size and incorrect checks being made on the source size.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-31844">详情</a></td>
+      </tr>
+      <tr>
+       <td>7cc1e2ce9079acf5665c99798bc0e002</td>
+       <td>CVE-2021-31843</td>
+       <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper privileges management vulnerability in McAfee Endpoint Security (ENS) Windows prior to 10.7.0 September 2021 Update allows local users to access files which they would otherwise not have access to via manipulating junction links to redirect McAfee folder operations to an unintended location.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-31843">详情</a></td>
+      </tr>
+      <tr>
+       <td>f2551f8da11c274db2ed790491c884b7</td>
+       <td>CVE-2021-31842</td>
+       <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>XML Entity Expansion injection vulnerability in McAfee Endpoint Security (ENS) for Windows prior to 10.7.0 September 2021 Update allows a local user to initiate high CPU and memory consumption resulting in a Denial of Service attack through carefully editing the EPDeploy.xml file and then executing the setup process.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-31842">详情</a></td>
+      </tr>
+      <tr>
        <td>ecb01ac446f918ff63b62285f327d033</td>
        <td>CVE-2021-39327</td>
        <td>2021-09-17 11:15:00 <img src="imgs/new.gif" /></td>
@@ -405,62 +461,6 @@
        <td>2021-09-16 22:15:00 <img src="imgs/new.gif" /></td>
        <td>libde265 v1.0.4 contains a heap buffer overflow in the put_weighted_bipred_16_fallback function, which can be exploited via a crafted a file.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2020-21602">详情</a></td>
-      </tr>
-      <tr>
-       <td>500eee3e15e4ae142c5e78ad8f05dca7</td>
-       <td>CVE-2020-21601</td>
-       <td>2021-09-16 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>libde265 v1.0.4 contains a stack buffer overflow in the put_qpel_fallback function, which can be exploited via a crafted a file.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21601">详情</a></td>
-      </tr>
-      <tr>
-       <td>bbce3e52369ab5c96589babed04523f9</td>
-       <td>CVE-2020-21600</td>
-       <td>2021-09-16 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>libde265 v1.0.4 contains a heap buffer overflow in the put_weighted_pred_avg_16_fallback function, which can be exploited via a crafted a file.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21600">详情</a></td>
-      </tr>
-      <tr>
-       <td>ce4dcfe91ed6e108bab487b4c1ff8486</td>
-       <td>CVE-2020-21599</td>
-       <td>2021-09-16 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>libde265 v1.0.4 contains a heap buffer overflow in the de265_image::available_zscan function, which can be exploited via a crafted a file.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21599">详情</a></td>
-      </tr>
-      <tr>
-       <td>2753133a062052699e3b05226efaa0a6</td>
-       <td>CVE-2020-21598</td>
-       <td>2021-09-16 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>libde265 v1.0.4 contains a heap buffer overflow in the ff_hevc_put_unweighted_pred_8_sse function, which can be exploited via a crafted a file.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21598">详情</a></td>
-      </tr>
-      <tr>
-       <td>b06626125f5c7c72e8327ba7e66ac2f8</td>
-       <td>CVE-2020-21535</td>
-       <td>2021-09-16 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>fig2dev 3.2.7b contains a segmentation fault in the gencgm_start function in gencgm.c.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21535">详情</a></td>
-      </tr>
-      <tr>
-       <td>58ee0540cf60c5b93deeeae0f40eaf28</td>
-       <td>CVE-2020-21534</td>
-       <td>2021-09-16 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>fig2dev 3.2.7b contains a global buffer overflow in the get_line function in read.c.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21534">详情</a></td>
-      </tr>
-      <tr>
-       <td>9d655cd40ebcbeba27a56204ab201522</td>
-       <td>CVE-2020-21533</td>
-       <td>2021-09-16 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>fig2dev 3.2.7b contains a stack buffer overflow in the read_textobject function in read.c.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21533">详情</a></td>
-      </tr>
-      <tr>
-       <td>0218521d90f51ede9cf288e07979f92a</td>
-       <td>CVE-2020-21532</td>
-       <td>2021-09-16 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>fig2dev 3.2.7b contains a global buffer overflow in the setfigfont function in genepic.c.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21532">详情</a></td>
       </tr>
      </tbody>
     </table>
