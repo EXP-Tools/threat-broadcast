@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-09-18 19:20:00 -->
+<!-- RELEASE TIME : 2021-09-19 05:23:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -283,182 +283,182 @@
       <tr>
        <td>88fc8952f394d5bfd90591a176c3e91f</td>
        <td>CVE-2021-41392</td>
-       <td>2021-09-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 22:15:00</td>
        <td>static/main-preload.js in Boost Note through 0.22.0 allows remote command execution. A remote attacker may send a crafted IPC message to the exposed vulnerable ipcRenderer IPC interface, which invokes the dangerous openExternal Electron API.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41392">详情</a></td>
       </tr>
       <tr>
        <td>94f367bff9f6d156d4117961aebfa097</td>
        <td>CVE-2021-41391</td>
-       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 21:15:00</td>
        <td>In Ericsson ECM before 18.0, it was observed that Security Management Endpoint in User Profile Management Section is vulnerable to stored XSS via a name, leading to session hijacking and full account takeover.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41391">详情</a></td>
       </tr>
       <tr>
        <td>b0fa686163f60a935b84fe014080cb73</td>
        <td>CVE-2021-41390</td>
-       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 21:15:00</td>
        <td>In Ericsson ECM before 18.0, it was observed that Security Provider Endpoint in the User Profile Management Section is vulnerable to CSV Injection.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41390">详情</a></td>
       </tr>
       <tr>
        <td>80edcef8c5f457fe71dfae78128c95d5</td>
        <td>CVE-2021-41387</td>
-       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 21:15:00</td>
        <td>seatd-launch in seatd 0.6.x before 0.6.2 allows privilege escalation because it uses execlp and may be installed setuid root.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41387">详情</a></td>
       </tr>
       <tr>
        <td>fa6a1d9224b80b653415199d9825ec52</td>
        <td>CVE-2021-39218</td>
-       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 21:15:00</td>
        <td>Wasmtime is an open source runtime for WebAssembly & WASI. In Wasmtime from version 0.26.0 and before version 0.30.0 is affected by a memory unsoundness vulnerability. There was an invalid free and out-of-bounds read and write bug when running Wasm that uses `externref`s in Wasmtime. To trigger this bug, Wasmtime needs to be running Wasm that uses `externref`s, the host creates non-null `externrefs`, Wasmtime performs a garbage collection (GC), and there has to be a Wasm frame on the stack that is at a GC safepoint where there are no live references at this safepoint, and there is a safepoint with live references earlier in this frame's function. Under this scenario, Wasmtime would incorrectly use the GC stack map for the safepoint from earlier in the function instead of the empty safepoint. This would result in Wasmtime treating arbitrary stack slots as `externref`s that needed to be rooted for GC. At the *next* GC, it would be determined that nothing was referencing these bogus `externref`s (because nothing could ever reference them, because they are not really `externref`s) and then Wasmtime would deallocate them and run `<ExternRef as Drop>::drop` on them. This results in a free of memory that is not necessarily on the heap (and shouldn't be freed at this moment even if it was), as well as potential out-of-bounds reads and writes. Even though support for `externref`s (via the reference types proposal) is enabled by default, unless you are creating non-null `externref`s in your host code or explicitly triggering GCs, you cannot be affected by this bug. We have reason to believe that the effective impact of this bug is relatively small because usage of `externref` is currently quite rare. This bug has been patched and users should upgrade to Wasmtime version 0.30.0. If you cannot upgrade Wasmtime at this time, you can avoid this bug by disabling the reference types proposal by passing `false` to `wasmtime::Config::wasm_reference_types`.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-39218">详情</a></td>
       </tr>
       <tr>
        <td>910517b443ac1bb5d7e7f4bdb492f331</td>
        <td>CVE-2020-21548</td>
-       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 21:15:00</td>
        <td>Libsixel 1.8.3 contains a heap-based buffer overflow in the sixel_encode_highcolor function in tosixel.c.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2020-21548">详情</a></td>
       </tr>
       <tr>
        <td>dd2fefbae4d1d38284d175c9eff7d9be</td>
        <td>CVE-2020-21547</td>
-       <td>2021-09-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 21:15:00</td>
        <td>Libsixel 1.8.2 contains a heap-based buffer overflow in the dither_func_fs function in tosixel.c.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2020-21547">详情</a></td>
       </tr>
       <tr>
        <td>f2653cb9f988528969ce4539218f8445</td>
        <td>CVE-2021-41383</td>
-       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 20:15:00</td>
        <td>setup.cgi on NETGEAR R6020 1.0.0.48 devices allows an admin to execute arbitrary shell commands via shell metacharacters in the ntp_server field.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41383">详情</a></td>
       </tr>
       <tr>
        <td>cbbca0307e7d48dc3912fc726be4f898</td>
        <td>CVE-2021-41380</td>
-       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 20:15:00</td>
        <td>RealVNC Viewer 6.21.406 allows remote VNC servers to cause a denial of service (application crash) via crafted RFB protocol data.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41380">详情</a></td>
       </tr>
       <tr>
        <td>95ff92c24003b0a25d37d7c3b1d32d63</td>
        <td>CVE-2021-39219</td>
-       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 20:15:00</td>
        <td>Wasmtime is an open source runtime for WebAssembly & WASI. Wasmtime before version 0.30.0 is affected by a type confusion vulnerability. As a Rust library the `wasmtime` crate clearly marks which functions are safe and which are `unsafe`, guaranteeing that if consumers never use `unsafe` then it should not be possible to have memory unsafety issues in their embeddings of Wasmtime. An issue was discovered in the safe API of `Linker::func_*` APIs. These APIs were previously not sound when one `Engine` was used to create the `Linker` and then a different `Engine` was used to create a `Store` and then the `Linker` was used to instantiate a module into that `Store`. Cross-`Engine` usage of functions is not supported in Wasmtime and this can result in type confusion of function pointers, resulting in being able to safely call a function with the wrong type. Triggering this bug requires using at least two `Engine` values in an embedding and then additionally using two different values with a `Linker` (one at the creation time of the `Linker` and another when instantiating a module with the `Linker`). It's expected that usage of more-than-one `Engine` in an embedding is relatively rare since an `Engine` is intended to be a globally shared resource, so the expectation is that the impact of this issue is relatively small. The fix implemented is to change this behavior to `panic!()` in Rust instead of silently allowing it. Using different `Engine` instances with a `Linker` is a programmer bug that `wasmtime` catches at runtime. This bug has been patched and users should upgrade to Wasmtime version 0.30.0. If you cannot upgrade Wasmtime and are using more than one `Engine` in your embedding it's recommended to instead use only one `Engine` for the entire program if possible. An `Engine` is designed to be a globally shared resource that is suitable to have only one for the lifetime of an entire process. If using multiple `Engine`s is required then code should be audited to ensure that `Linker` is only used with one `Engine`.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-39219">详情</a></td>
       </tr>
       <tr>
        <td>23324749b6beb71a46f2c9e8c6a06d1b</td>
        <td>CVE-2021-39216</td>
-       <td>2021-09-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 20:15:00</td>
        <td>Wasmtime is an open source runtime for WebAssembly & WASI. In Wasmtime from version 0.19.0 and before version 0.30.0 there was a use-after-free bug when passing `externref`s from the host to guest Wasm content. To trigger the bug, you have to explicitly pass multiple `externref`s from the host to a Wasm instance at the same time, either by passing multiple `externref`s as arguments from host code to a Wasm function, or returning multiple `externref`s to Wasm from a multi-value return function defined in the host. If you do not have host code that matches one of these shapes, then you are not impacted. If Wasmtime's `VMExternRefActivationsTable` became filled to capacity after passing the first `externref` in, then passing in the second `externref` could trigger a garbage collection. However the first `externref` is not rooted until we pass control to Wasm, and therefore could be reclaimed by the collector if nothing else was holding a reference to it or otherwise keeping it alive. Then, when control was passed to Wasm after the garbage collection, Wasm could use the first `externref`, which at this point has already been freed. We have reason to believe that the effective impact of this bug is relatively small because usage of `externref` is currently quite rare. The bug has been fixed, and users should upgrade to Wasmtime 0.30.0. If you cannot upgrade Wasmtime yet, you can avoid the bug by disabling reference types support in Wasmtime by passing `false` to `wasmtime::Config::wasm_reference_types`.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-39216">详情</a></td>
       </tr>
       <tr>
        <td>9b5a34f04e26677a41d09770e9cc17b3</td>
        <td>CVE-2021-38406</td>
-       <td>2021-09-17 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 19:15:00</td>
        <td>Delta Electronic DOPSoft 2 (Version 2.00.07 and prior) lacks proper validation of user-supplied data when parsing specific project files. This could result in multiple out-of-bounds write instances. An attacker could leverage this vulnerability to execute code in the context of the current process.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-38406">详情</a></td>
       </tr>
       <tr>
        <td>8d768831605e6212fdfb9652980efa4e</td>
        <td>CVE-2021-38404</td>
-       <td>2021-09-17 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 19:15:00</td>
        <td>Delta Electronic DOPSoft 2 (Version 2.00.07 and prior) lacks proper validation of user-supplied data when parsing specific project files. This could result in a heap-based buffer overflow. An attacker could leverage this vulnerability to execute code in the context of the current process.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-38404">详情</a></td>
       </tr>
       <tr>
        <td>3a111b7d74ef45131603039e57105e85</td>
        <td>CVE-2021-38402</td>
-       <td>2021-09-17 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 19:15:00</td>
        <td>Delta Electronic DOPSoft 2 (Version 2.00.07 and prior) lacks proper validation of user-supplied data when parsing specific project files. This could lead to a stack-based buffer overflow while trying to copy to a buffer during font string handling. An attacker could leverage this vulnerability to execute code in the context of the current process.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-38402">详情</a></td>
       </tr>
       <tr>
        <td>cd7d47a0343855f81c3493d084c6c4e5</td>
        <td>CVE-2018-20686</td>
-       <td>2021-09-17 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 19:15:00</td>
        <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2018-20686">详情</a></td>
       </tr>
       <tr>
        <td>4ee375f36d6f4ba7ce77599c20ddf5e5</td>
        <td>CVE-2021-41326</td>
-       <td>2021-09-17 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 18:15:00</td>
        <td>In MISP before 2.4.148, app/Lib/Export/OpendataExport.php mishandles parameter data that is used in a shell_exec call.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41326">详情</a></td>
       </tr>
       <tr>
        <td>2605b1a9a2932cf059216a6f3752ba08</td>
        <td>CVE-2020-12083</td>
-       <td>2021-09-17 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 18:15:00</td>
        <td>An elevated privileges issue related to Spring MVC calls impacts Code Insight v7.x releases up to and including 2020 R1 (7.11.0-64).</td>
        <td><a href="https://www.tenable.com/cve/CVE-2020-12083">详情</a></td>
       </tr>
       <tr>
        <td>227ac508e09728c86bcb23b3dc09b67d</td>
        <td>CVE-2020-12082</td>
-       <td>2021-09-17 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 18:15:00</td>
        <td>A stored cross-site scripting issue impacts certain areas of the Web UI for Code Insight v7.x releases up to and including 2020 R1 (7.11.0-64).</td>
        <td><a href="https://www.tenable.com/cve/CVE-2020-12082">详情</a></td>
       </tr>
       <tr>
        <td>972129dbe7a189f6ea311dccfa08b643</td>
        <td>CVE-2020-12080</td>
-       <td>2021-09-17 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 18:15:00</td>
        <td>A Denial of Service vulnerability has been identified in FlexNet Publisher's lmadmin.exe version 11.16.6. A certain message protocol can be exploited to cause lmadmin to crash.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2020-12080">详情</a></td>
       </tr>
       <tr>
        <td>1d05ec9f279d48cf0f4bc12d286be5a3</td>
        <td>CVE-2021-40825</td>
-       <td>2021-09-17 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 17:15:00</td>
        <td>nLight ECLYPSE (nECY) system Controllers running software prior to 1.17.21245.754 contain a default key vulnerability. The nECY does not force a change to the key upon the initial configuration of an affected device. nECY system controllers utilize an encrypted channel to secure SensorViewTM configuration and monitoring software and nECY to nECY communications. Impacted devices are at risk of exploitation. A remote attacker with IP access to an impacted device could submit lighting control commands to the nECY by leveraging the default key. A successful attack may result in the attacker gaining the ability to modify lighting conditions or gain the ability to update the software on lighting devices. The impacted key is referred to as the SensorView Password in the nECY nLight Explorer Interface and the Gateway Password in the SensorView application. An attacker cannot authenticate to or modify the configuration or software of the nECY system controller.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-40825">详情</a></td>
       </tr>
       <tr>
        <td>3af831e311713517c988bdf1f6c98bf5</td>
        <td>CVE-2021-41317</td>
-       <td>2021-09-17 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 16:15:00</td>
        <td>XSS Hunter Express before 2021-09-17 does not properly enforce authentication requirements for paths.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41317">详情</a></td>
       </tr>
       <tr>
        <td>77b21be2e0d61a747280631daa63290e</td>
        <td>CVE-2021-38304</td>
-       <td>2021-09-17 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 16:15:00</td>
        <td>Improper input validation in the National Instruments NI-PAL driver in versions 20.0.0 and prior may allow a privileged user to potentially enable escalation of privilege via local access.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-38304">详情</a></td>
       </tr>
       <tr>
        <td>0fef59f795cf5412798368735d1d55ea</td>
        <td>CVE-2019-9060</td>
-       <td>2021-09-17 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 16:15:00</td>
        <td>An issue was discovered in CMS Made Simple 2.2.8. It is possible to achieve unauthenticated path traversal in the CGExtensions module (in the file action.setdefaulttemplate.php) with the m1_filename parameter; and through the action.showmessage.php file, it is possible to read arbitrary file content (by using that path traversal with m1_prefname set to cg_errormsg and m1_resettodefault=1).</td>
        <td><a href="https://www.tenable.com/cve/CVE-2019-9060">详情</a></td>
       </tr>
       <tr>
        <td>dd037055fb40275cb689d162109dc999</td>
        <td>CVE-2021-41316</td>
-       <td>2021-09-17 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 15:15:00</td>
        <td>The Device42 Main Appliance before 17.05.01 does not sanitize user input in its Nmap Discovery utility. An attacker (with permissions to add or edit jobs run by this utility) can inject an extra argument to overwrite arbitrary files as the root user on the Remote Collector.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41316">详情</a></td>
       </tr>
       <tr>
        <td>bd5d1150f8e69b6ca776af8a1f3397e6</td>
        <td>CVE-2021-41315</td>
-       <td>2021-09-17 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 15:15:00</td>
        <td>The Device42 Remote Collector before 17.05.01 does not sanitize user input in its SNMP Connectivity utility. This allows an authenticated attacker (with access to the console application) to execute arbitrary OS commands and escalate privileges.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41315">详情</a></td>
       </tr>
       <tr>
        <td>81fcc98957a52869cf073e405a0da299</td>
        <td>CVE-2021-39228</td>
-       <td>2021-09-17 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 14:15:00</td>
        <td>Tremor is an event processing system for unstructured data. A vulnerability exists between versions 0.7.2 and 0.11.6. This vulnerability is a memory safety Issue when using `patch` or `merge` on `state` and assign the result back to `state`. In this case, affected versions of Tremor and the tremor-script crate maintains references to memory that might have been freed already. And these memory regions can be accessed by retrieving the `state`, e.g. send it over TCP or HTTP. This requires the Tremor server (or any other program using tremor-script) to execute a tremor-script script that uses the mentioned language construct. The issue has been patched in version 0.11.6 by removing the optimization and always cloning the target expression of a Merge or Patch. If an upgrade is not possible, a possible workaround is to avoid the optimization by introducing a temporary variable and not immediately reassigning to `state`.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-39228">详情</a></td>
       </tr>
@@ -600,63 +600,63 @@
       <tr>
        <td>129fd77a543cbec6c93b79a7823223c7</td>
        <td>CNVD-2021-57770</td>
-       <td>2021-09-17 09:25:54 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 09:25:54</td>
        <td>免费小说大全软件存在命令执行漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-57770">详情</a></td>
       </tr>
       <tr>
        <td>6e1c1ee21ee1f2660894cdda0533f23c</td>
        <td>CNVD-2021-57940</td>
-       <td>2021-09-17 07:24:09 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 07:24:09</td>
        <td>华为SVN2230存在弱口令漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-57940">详情</a></td>
       </tr>
       <tr>
        <td>ecca303ccc5bb18e7380a0f647ea8287</td>
        <td>CNVD-2021-71660 (CVE-2020-36218)</td>
-       <td>2021-09-17 04:35:16 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 04:35:16</td>
        <td>Mozilla Rust内存破坏漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-71660">详情</a></td>
       </tr>
       <tr>
        <td>b3be699e165d72173e55e137a0eb01cb</td>
        <td>CNVD-2021-71659 (CVE-2020-36217)</td>
-       <td>2021-09-17 04:35:15 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 04:35:15</td>
        <td>Mozilla Rust内存破坏漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-71659">详情</a></td>
       </tr>
       <tr>
        <td>7aebb659227903ff3e1a7b6fa8d9e6dc</td>
        <td>CNVD-2021-71658 (CVE-2020-36216)</td>
-       <td>2021-09-17 04:35:14 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 04:35:14</td>
        <td>Mozilla Rust内存破坏漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-71658">详情</a></td>
       </tr>
       <tr>
        <td>7ddb557a243ced4f50f744225a88f260</td>
        <td>CNVD-2021-71657 (CVE-2020-36215)</td>
-       <td>2021-09-17 04:35:13 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 04:35:13</td>
        <td>Mozilla Rust内存破坏漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-71657">详情</a></td>
       </tr>
       <tr>
        <td>b86932d24b8850a01d1fae723b0579bc</td>
        <td>CNVD-2021-71655 (CVE-2020-36213)</td>
-       <td>2021-09-17 04:35:11 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 04:35:11</td>
        <td>Mozilla Rust内存破坏漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-71655">详情</a></td>
       </tr>
       <tr>
        <td>49b4f562b53d16e15ff1542c1e0dbd92</td>
        <td>CNVD-2021-71653 (CVE-2020-36209)</td>
-       <td>2021-09-17 04:35:10 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 04:35:10</td>
        <td>Mozilla Rust内存破坏漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-71653">详情</a></td>
       </tr>
       <tr>
        <td>0daf9ae10d19f19bab5e077e80b3ca98</td>
        <td>CNVD-2021-71651 (CVE-2020-36207)</td>
-       <td>2021-09-17 04:35:09 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 04:35:09</td>
        <td>Mozilla Rust内存破坏漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-71651">详情</a></td>
       </tr>
@@ -707,84 +707,84 @@
       <tr>
        <td>7ccd0343b5e3d49e5d35ab5aef4290ed</td>
        <td>CNNVD-202109-1139 (CVE-2021-3733)</td>
-       <td>2021-09-17 12:43:18 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:43:18</td>
        <td>Python代码问题漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1139">详情</a></td>
       </tr>
       <tr>
        <td>d8089af6d9e8c156df1d296017d2f2ba</td>
        <td>CNNVD-202109-1140 (CVE-2021-3737)</td>
-       <td>2021-09-17 12:43:15 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:43:15</td>
        <td>Python代码问题漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1140">详情</a></td>
       </tr>
       <tr>
        <td>a66104f52e9df08723a59fd0bd544a72</td>
        <td>CNNVD-202109-1251 (CVE-2020-21547)</td>
-       <td>2021-09-17 12:41:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:22</td>
        <td>Libsixel 缓冲区错误漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1251">详情</a></td>
       </tr>
       <tr>
        <td>34db5d409cb88db8a294f31f931e52fd</td>
        <td>CNNVD-202109-1252 (CVE-2021-41380)</td>
-       <td>2021-09-17 12:41:20 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:20</td>
        <td>RealVNC Viewer 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1252">详情</a></td>
       </tr>
       <tr>
        <td>e30c201cc480a4d6867f40cf7bb7e679</td>
        <td>CNNVD-202109-1253 (CVE-2021-39218)</td>
-       <td>2021-09-17 12:41:18 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:18</td>
        <td>Wasmtime 缓冲区错误漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1253">详情</a></td>
       </tr>
       <tr>
        <td>2de4a1ced594003d6dfd0419a07c0065</td>
        <td>CNNVD-202109-1254 (CVE-2020-21548)</td>
-       <td>2021-09-17 12:41:16 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:16</td>
        <td>Libsixel 缓冲区错误漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1254">详情</a></td>
       </tr>
       <tr>
        <td>305b0234e11720666c56d04e8d83f745</td>
        <td>CNNVD-202109-1255 (CVE-2021-41387)</td>
-       <td>2021-09-17 12:41:14 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:14</td>
        <td>Seatd 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1255">详情</a></td>
       </tr>
       <tr>
        <td>99e0305f048e21d71018b960bd4330c4</td>
        <td>CNNVD-202109-1256 (CVE-2021-41383)</td>
-       <td>2021-09-17 12:41:11 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:11</td>
        <td>Netgear NETGEAR R6020 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1256">详情</a></td>
       </tr>
       <tr>
        <td>bc21eacd9596fc77aba65e15a8c4a875</td>
        <td>CNNVD-202109-1257 (CVE-2021-41390)</td>
-       <td>2021-09-17 12:41:09 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:09</td>
        <td>Ericsson ECM 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1257">详情</a></td>
       </tr>
       <tr>
        <td>7755e7c8209a974bf78517f1770aea13</td>
        <td>CNNVD-202109-1258 (CVE-2021-41391)</td>
-       <td>2021-09-17 12:41:07 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:07</td>
        <td>Ericsson ECM 跨站脚本漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1258">详情</a></td>
       </tr>
       <tr>
        <td>247d2ab7fb0a5dc6dea8a4cf7a9d57a7</td>
        <td>CNNVD-202109-1259 (CVE-2021-40690)</td>
-       <td>2021-09-17 12:41:05 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:05</td>
        <td>Apache Santuario 信息泄露漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1259">详情</a></td>
       </tr>
       <tr>
        <td>e8be078a482effce30f7458f3a42f288</td>
        <td>CNNVD-202109-1260 (CVE-2021-41392)</td>
-       <td>2021-09-17 12:41:03 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 12:41:03</td>
        <td>Boost Note 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202109-1260">详情</a></td>
       </tr>
@@ -1555,70 +1555,70 @@
       <tr>
        <td>2845f1c78420c2af036ce2f158506ac2</td>
        <td>CVE-2021-1183</td>
-       <td>2021-09-17 13:29:12 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:29:12</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=3991125c769c4d07b9ef69fcf2c7ac55">详情</a></td>
       </tr>
       <tr>
        <td>3f552bffb4257c8bbeccc80f7003f398</td>
        <td>CVE-2021-1182</td>
-       <td>2021-09-17 13:29:11 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:29:11</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=678fd92d64df4f9c839f5fa90265d2ea">详情</a></td>
       </tr>
       <tr>
        <td>016a306b1c563dd5b3b825cd90adaed9</td>
        <td>CVE-2021-1180</td>
-       <td>2021-09-17 13:29:09 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:29:09</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=1754f4f0205b4c429cbebe8453b40ea6">详情</a></td>
       </tr>
       <tr>
        <td>b012a24507bac57b459f2ff6c7568241</td>
        <td>CVE-2021-1179</td>
-       <td>2021-09-17 13:29:05 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:29:05</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=65be38ca69c4452eaa2960a8ea14ffb4">详情</a></td>
       </tr>
       <tr>
        <td>ebb9dced84e03abaf88f0ad45424c8a5</td>
        <td>CVE-2021-1175</td>
-       <td>2021-09-17 13:29:04 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:29:04</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=d743b70835854c23835dfff8ba7687f7">详情</a></td>
       </tr>
       <tr>
        <td>57eac4a5b7f6b9ec0c03b889faa785dc</td>
        <td>CVE-2021-1178</td>
-       <td>2021-09-17 13:29:00 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:29:00</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=c81b7d81072941f89a13787d8f2ede35">详情</a></td>
       </tr>
       <tr>
        <td>80cfdc0e03517fc959ab077cbba49db8</td>
        <td>CVE-2021-1173</td>
-       <td>2021-09-17 13:28:59 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:28:59</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=9b6b17fcf64f481eba2c8ab9a5787a47">详情</a></td>
       </tr>
       <tr>
        <td>7aaeb3086462273a756d234fb580a8b9</td>
        <td>CVE-2021-1171</td>
-       <td>2021-09-17 13:28:53 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:28:53</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=a820014eb8124a308b392218fc184652">详情</a></td>
       </tr>
       <tr>
        <td>a8d065e93c0a25e9ff8b6bcdfaca4fa0</td>
        <td>CVE-2021-1174</td>
-       <td>2021-09-17 13:28:53 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:28:53</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=654885be0fde402f932ba1503889b46a">详情</a></td>
       </tr>
       <tr>
        <td>8280892c6bcb6a933699c1190d3cfe6e</td>
        <td>CVE-2021-1184</td>
-       <td>2021-09-17 13:28:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 13:28:51</td>
        <td>多款Cisco产品缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=b8f819da910247d3993f5422d10abc0f">详情</a></td>
       </tr>
@@ -1711,182 +1711,182 @@
       <tr>
        <td>d56f07f434e1cdd22f9d555b842b44f0</td>
        <td>CVE-2021-38150</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>SAP Business Client信息泄露漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58980">详情</a></td>
       </tr>
       <tr>
        <td>0f9e335a45e0c0b45663bcd32bf89eb7</td>
        <td>CVE-2021-24217</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Facebook远程代码执行漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58961">详情</a></td>
       </tr>
       <tr>
        <td>31aa56b7ab773058da8ae457757eb65e</td>
        <td>CVE-2021-24549</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress AceIDE路径遍历漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58960">详情</a></td>
       </tr>
       <tr>
        <td>9ebbfa89249750ebbc4e27168e975c86</td>
        <td>CVE-2021-24218</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Facebook跨站请求伪造漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58959">详情</a></td>
       </tr>
       <tr>
        <td>ad3e0bfa8bc6e7728631b3f641f88ef0</td>
        <td>CVE-2021-24232</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Advanced Booking Calendar跨站脚本漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58958">详情</a></td>
       </tr>
       <tr>
        <td>c9b236ae715ac1e18fa9a47a2c0ad018</td>
        <td>CVE-2021-242</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Quiz And Survey Master Best Quiz, Exam and Survey SQL注入漏洞（CVE-2021-242</td>
        <td><a href="http://www.nsfocus.net/vulndb/58957">详情</a></td>
       </tr>
       <tr>
        <td>11e290951ae539311efffde6ba46a092</td>
        <td>CVE-2021-24272</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Fitness Calculators跨站请求伪造漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58956">详情</a></td>
       </tr>
       <tr>
        <td>ad8becb6bb5c64cadcdb6545568f20a5</td>
        <td>CVE-2021-24229</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Patreon跨站脚本漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58955">详情</a></td>
       </tr>
       <tr>
        <td>2fc63f6591e3fef6bc4cf26e40f942d6</td>
        <td>CVE-2021-24227</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Patreon信息泄露漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58954">详情</a></td>
       </tr>
       <tr>
        <td>a9297b4afbd086ff57dc943208f36808</td>
        <td>CVE-2021-24188</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress WP Content Copy Protection &amp; No Right Click远程代码执行漏洞（CVE-2021-24188</td>
        <td><a href="http://www.nsfocus.net/vulndb/58953">详情</a></td>
       </tr>
       <tr>
        <td>c08c4bcce834658ebe243d6160923896</td>
        <td>CVE-2021-24285</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Car Seller-Auto Classifieds Script SQL注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58952">详情</a></td>
       </tr>
       <tr>
        <td>ac4337c9ceb6461de8fdd86a0e0cf807</td>
        <td>CVE-2021-24224</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Easy Form Builder远程代码执行漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58951">详情</a></td>
       </tr>
       <tr>
        <td>4f48c64900a0f57c717516fea66e3a2f</td>
        <td>CVE-2021-241</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Business Directory &amp; Easy Listing Directories跨站请求伪造漏洞（CVE-2021-241</td>
        <td><a href="http://www.nsfocus.net/vulndb/58950">详情</a></td>
       </tr>
       <tr>
        <td>eaeeabae4d4f70f62cc4eb9da98a7433</td>
        <td>CVE-2021-241</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress Business Directory &amp; Easy Listing Directories跨站请求伪造漏洞（CVE-2021-241</td>
        <td><a href="http://www.nsfocus.net/vulndb/58949">详情</a></td>
       </tr>
       <tr>
        <td>834edb5ad1670def8ce278a479162db1</td>
        <td>CVE-2021-24226</td>
-       <td>2021-09-17 11:22:22 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 11:22:22</td>
        <td>WordPress AccessAlly信息泄露漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58948">详情</a></td>
       </tr>
       <tr>
        <td>29fe483852626f0b9ac335e27dd6301a</td>
        <td>CVE-2021-33544</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2命令注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59007">详情</a></td>
       </tr>
       <tr>
        <td>db889c9954b6c359e6c70027dae80cac</td>
        <td>CVE-2021-33554</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2命令注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59006">详情</a></td>
       </tr>
       <tr>
        <td>4e5cb9c12058003431b80cf372c898b9</td>
        <td>CVE-2021-33553</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2命令注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59005">详情</a></td>
       </tr>
       <tr>
        <td>ba7ca242cf55a66e671d1726ec3f0957</td>
        <td>CVE-2021-33552</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2命令注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59004">详情</a></td>
       </tr>
       <tr>
        <td>d35abd4f3afdcb2bd035e440a95e165a</td>
        <td>CVE-2021-33551</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2命令注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59003">详情</a></td>
       </tr>
       <tr>
        <td>67364325c9c5b9e43adfaf595bc05cfe</td>
        <td>CVE-2021-33550</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2命令注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59002">详情</a></td>
       </tr>
       <tr>
        <td>fcee5851b29effa4a79602cdd33b00fd</td>
        <td>CVE-2021-33549</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2堆栈缓冲区溢出漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59001">详情</a></td>
       </tr>
       <tr>
        <td>7833ad48c7975ed7a3e59daef717ae29</td>
        <td>CVE-2021-33548</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2命令注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/59000">详情</a></td>
       </tr>
       <tr>
        <td>8dd54d77da6c5939307e450e446b16c8</td>
        <td>CVE-2021-33547</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2堆栈缓冲区溢出漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58999">详情</a></td>
       </tr>
       <tr>
        <td>6a1229c2c1f1e4496b74512df811d776</td>
        <td>CVE-2021-33546</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2堆栈缓冲区溢出漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58998">详情</a></td>
       </tr>
       <tr>
        <td>e578b3857816d696e148b398140e5c19</td>
        <td>CVE-2021-33545</td>
-       <td>2021-09-17 03:26:51 <img src="imgs/new.gif" /></td>
+       <td>2021-09-17 03:26:51</td>
        <td>Geutebrück G-Cam E2堆栈缓冲区溢出漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/58997">详情</a></td>
       </tr>
