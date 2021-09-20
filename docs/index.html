@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-09-20 15:29:16 -->
+<!-- RELEASE TIME : 2021-09-20 17:28:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,34 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d7938947c13681cb5ae0925a177f1211</td>
+       <td>CVE-2021-40674</td>
+       <td>2021-09-20 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>An SQL injection vulnerability exists in Wuzhi CMS v4.1.0 via the KeyValue parameter in coreframe/app/order/admin/index.php.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40674">详情</a></td>
+      </tr>
+      <tr>
+       <td>8be0fa151cf42fcf95f8e58671b32682</td>
+       <td>CVE-2021-39402</td>
+       <td>2021-09-20 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>MaianAffiliate v.1.0 is suffers from code injection by adding a new product via the admin panel. The injected payload is reflected on the affiliate main page for all authenticated and unauthenticated visitors.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39402">详情</a></td>
+      </tr>
+      <tr>
+       <td>ccd307620dd5eb251b4c2cb66266ee39</td>
+       <td>CVE-2020-21913</td>
+       <td>2021-09-20 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>International Components for Unicode (ICU-20850) v66.1 was discovered to contain a use after free bug in the pkg_createWithAssemblyCode function in the file tools/pkgdata/pkgdata.cpp.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21913">详情</a></td>
+      </tr>
+      <tr>
+       <td>de456720d424c3d7157310749afb74c6</td>
+       <td>CVE-2019-16651</td>
+       <td>2021-09-20 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered on Virgin Media Super Hub 3 (based on ARRIS TG2492) devices. Because their SNMP commands have insufficient protection mechanisms, it is possible to use JavaScript and DNS rebinding to leak the WAN IP address of a user (if they are using certain VPN implementations, this would decloak them).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2019-16651">详情</a></td>
+      </tr>
+      <tr>
        <td>401db635ef8a940b90fef1d323b8fc7c</td>
        <td>CVE-2021-24741</td>
        <td>2021-09-20 10:15:00 <img src="imgs/new.gif" /></td>
@@ -433,34 +461,6 @@
        <td>2021-09-17 20:15:00</td>
        <td>setup.cgi on NETGEAR R6020 1.0.0.48 devices allows an admin to execute arbitrary shell commands via shell metacharacters in the ntp_server field.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41383">详情</a></td>
-      </tr>
-      <tr>
-       <td>cbbca0307e7d48dc3912fc726be4f898</td>
-       <td>CVE-2021-41380</td>
-       <td>2021-09-17 20:15:00</td>
-       <td>RealVNC Viewer 6.21.406 allows remote VNC servers to cause a denial of service (application crash) via crafted RFB protocol data.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41380">详情</a></td>
-      </tr>
-      <tr>
-       <td>95ff92c24003b0a25d37d7c3b1d32d63</td>
-       <td>CVE-2021-39219</td>
-       <td>2021-09-17 20:15:00</td>
-       <td>Wasmtime is an open source runtime for WebAssembly & WASI. Wasmtime before version 0.30.0 is affected by a type confusion vulnerability. As a Rust library the `wasmtime` crate clearly marks which functions are safe and which are `unsafe`, guaranteeing that if consumers never use `unsafe` then it should not be possible to have memory unsafety issues in their embeddings of Wasmtime. An issue was discovered in the safe API of `Linker::func_*` APIs. These APIs were previously not sound when one `Engine` was used to create the `Linker` and then a different `Engine` was used to create a `Store` and then the `Linker` was used to instantiate a module into that `Store`. Cross-`Engine` usage of functions is not supported in Wasmtime and this can result in type confusion of function pointers, resulting in being able to safely call a function with the wrong type. Triggering this bug requires using at least two `Engine` values in an embedding and then additionally using two different values with a `Linker` (one at the creation time of the `Linker` and another when instantiating a module with the `Linker`). It's expected that usage of more-than-one `Engine` in an embedding is relatively rare since an `Engine` is intended to be a globally shared resource, so the expectation is that the impact of this issue is relatively small. The fix implemented is to change this behavior to `panic!()` in Rust instead of silently allowing it. Using different `Engine` instances with a `Linker` is a programmer bug that `wasmtime` catches at runtime. This bug has been patched and users should upgrade to Wasmtime version 0.30.0. If you cannot upgrade Wasmtime and are using more than one `Engine` in your embedding it's recommended to instead use only one `Engine` for the entire program if possible. An `Engine` is designed to be a globally shared resource that is suitable to have only one for the lifetime of an entire process. If using multiple `Engine`s is required then code should be audited to ensure that `Linker` is only used with one `Engine`.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39219">详情</a></td>
-      </tr>
-      <tr>
-       <td>23324749b6beb71a46f2c9e8c6a06d1b</td>
-       <td>CVE-2021-39216</td>
-       <td>2021-09-17 20:15:00</td>
-       <td>Wasmtime is an open source runtime for WebAssembly & WASI. In Wasmtime from version 0.19.0 and before version 0.30.0 there was a use-after-free bug when passing `externref`s from the host to guest Wasm content. To trigger the bug, you have to explicitly pass multiple `externref`s from the host to a Wasm instance at the same time, either by passing multiple `externref`s as arguments from host code to a Wasm function, or returning multiple `externref`s to Wasm from a multi-value return function defined in the host. If you do not have host code that matches one of these shapes, then you are not impacted. If Wasmtime's `VMExternRefActivationsTable` became filled to capacity after passing the first `externref` in, then passing in the second `externref` could trigger a garbage collection. However the first `externref` is not rooted until we pass control to Wasm, and therefore could be reclaimed by the collector if nothing else was holding a reference to it or otherwise keeping it alive. Then, when control was passed to Wasm after the garbage collection, Wasm could use the first `externref`, which at this point has already been freed. We have reason to believe that the effective impact of this bug is relatively small because usage of `externref` is currently quite rare. The bug has been fixed, and users should upgrade to Wasmtime 0.30.0. If you cannot upgrade Wasmtime yet, you can avoid the bug by disabling reference types support in Wasmtime by passing `false` to `wasmtime::Config::wasm_reference_types`.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39216">详情</a></td>
-      </tr>
-      <tr>
-       <td>9b5a34f04e26677a41d09770e9cc17b3</td>
-       <td>CVE-2021-38406</td>
-       <td>2021-09-17 19:15:00</td>
-       <td>Delta Electronic DOPSoft 2 (Version 2.00.07 and prior) lacks proper validation of user-supplied data when parsing specific project files. This could result in multiple out-of-bounds write instances. An attacker could leverage this vulnerability to execute code in the context of the current process.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38406">详情</a></td>
       </tr>
      </tbody>
     </table>
