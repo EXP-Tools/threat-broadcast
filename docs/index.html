@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-04 19:20:46 -->
+<!-- RELEASE TIME : 2021-10-04 21:24:04 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d91f8839ff1a5ef865390c0c8fceccc3</td>
+       <td>CVE-2021-41651</td>
+       <td>2021-10-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A blind SQL injection vulnerability exists in the Raymart DG / Ahmed Helal Hotel-mgmt-system. A malicious attacker can retrieve sensitive database information and interact with the database using the vulnerable cid parameter in process_update_profile.php.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41651">详情</a></td>
+      </tr>
+      <tr>
+       <td>715ce420137b6d72433a3709f04a64b0</td>
+       <td>CVE-2021-41118</td>
+       <td>2021-10-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The DynamicPageList3 extension is a reporting tool for MediaWiki, listing category members and intersections with various formats and details. In affected versions unsanitised input of regular expression date within the parameters of the DPL parser function, allowed for the possibility of ReDoS (Regex Denial of Service). This has been resolved in version 3.3.6. If you are unable to update you may also set `$wgDplSettings['functionalRichness'] = 0;` or disable DynamicPageList3 to mitigate.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41118">详情</a></td>
+      </tr>
+      <tr>
+       <td>1d83f50bd57bc2b39bd7e5335be21f9b</td>
+       <td>CVE-2021-41100</td>
+       <td>2021-10-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wire-server is the backing server for the open source wire secure messaging application. In affected versions it is possible to trigger email address change of a user with only the short-lived session token in the `Authorization` header. As the short-lived token is only meant as means of authentication by the client for less critical requests to the backend, the ability to change the email address with a short-lived token constitutes a privilege escalation attack. Since the attacker can change the password after setting the email address to one that they control, changing the email address can result in an account takeover by the attacker. Short-lived tokens can be requested from the backend by Wire clients using the long lived tokens, after which the long lived tokens can be stored securely, for example on the devices key chain. The short lived tokens can then be used to authenticate the client towards the backend for frequently performed actions such as sending and receiving messages. While short-lived tokens should not be available to an attacker per-se, they are used more often and in the shape of an HTTP header, increasing the risk of exposure to an attacker relative to the long-lived tokens, which are stored and transmitted in cookies. If you are running an on-prem instance and provision all users with SCIM, you are not affected by this issue (changing email is blocked for SCIM users). SAML single-sign-on is unaffected by this issue, and behaves identically before and after this update. The reason is that the email address used as SAML NameID is stored in a different location in the databse from the one used to contact the user outside wire. Version 2021-08-16 and later provide a new end-point that requires both the long-lived client cookie and `Authorization` header. The old end-point has been removed. If you are running an on-prem instance with at least some of the users invited or provisioned via SAML SSO and you cannot update then you can block `/self/email` on nginz (or in any other proxies or firewalls you may have set up). You don't need to discriminate by verb: `/self/email` only accepts `PUT` and `DELETE`, and `DELETE` is almost never used.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41100">详情</a></td>
+      </tr>
+      <tr>
+       <td>b35c3be7660b4a358149dc050110de47</td>
+       <td>CVE-2021-41094</td>
+       <td>2021-10-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wire is an open source secure messenger. Users of Wire by Bund may bypass the mandatory encryption at rest feature by simply disabling their device passcode. Upon launching, the app will attempt to enable encryption at rest by generating encryption keys via the Secure Enclave, however it will fail silently if no device passcode is set. The user has no indication that encryption at rest is not active since the feature is hidden to them. This issue has been resolved in version 3.70</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41094">详情</a></td>
+      </tr>
+      <tr>
+       <td>54ace84c6da7d09ba990549d550a3602</td>
+       <td>CVE-2021-41093</td>
+       <td>2021-10-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wire is an open source secure messenger. In affected versions if the an attacker gets an old but valid access token they can take over an account by changing the email. This issue has been resolved in version 3.86 which uses a new endpoint which additionally requires an authentication cookie. See wire-ios-sync-engine and wire-ios-transport references. This is the root advisory that pulls the changes together.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41093">详情</a></td>
+      </tr>
+      <tr>
+       <td>40790c8150bac6451baae3e47ac3833f</td>
+       <td>CVE-2021-41579</td>
+       <td>2021-10-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>LCDS LAquis SCADA through 4.3.1.1085 is vulnerable to a control bypass and path traversal. If an attacker can get a victim to load a malicious els project file and use the play feature, then the attacker can bypass a consent popup and write arbitrary files to OS locations where the user has permission, leading to code execution.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41579">详情</a></td>
+      </tr>
+      <tr>
+       <td>64cede32af0e8726664177060a51500f</td>
+       <td>CVE-2021-41578</td>
+       <td>2021-10-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>mySCADA myDESIGNER 8.20.0 and below allows Directory Traversal attacks when importing project files. If an attacker can trick a victim into importing a malicious mep file, then they gain the ability to write arbitrary files to OS locations where the user has permission. This would typically lead to code execution.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41578">详情</a></td>
+      </tr>
+      <tr>
+       <td>4c504f05c49dc84400428623b912c147</td>
+       <td>CVE-2021-41099</td>
+       <td>2021-10-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Redis is an open source, in-memory database that persists on disk. An integer overflow bug in the underlying string library can be used to corrupt the heap and potentially result with denial of service or remote code execution. The vulnerability involves changing the default proto-max-bulk-len configuration parameter to a very large value and constructing specially crafted network payloads or commands. The problem is fixed in Redis versions 6.2.6, 6.0.16 and 5.0.14. An additional workaround to mitigate the problem without patching the redis-server executable is to prevent users from modifying the proto-max-bulk-len configuration parameter. This can be done using ACL to restrict unprivileged users from using the CONFIG SET command.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41099">详情</a></td>
+      </tr>
+      <tr>
+       <td>66bee1cf09e82d7d8945ae914b46afbf</td>
+       <td>CVE-2021-39347</td>
+       <td>2021-10-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Stripe for WooCommerce WordPress plugin is missing a capability check on the save() function found in the ~/includes/admin/class-wc-stripe-admin-user-edit.php file that makes it possible for attackers to configure their account to use other site users unique STRIPE identifier and make purchases with their payment accounts. This affects versions 3.0.0 - 3.3.9.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39347">详情</a></td>
+      </tr>
+      <tr>
+       <td>451f43e2bfc01824a2017eccf7733de5</td>
+       <td>CVE-2021-38618</td>
+       <td>2021-10-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In GFOS Workforce Management 4.8.272.1, the login page of application is prone to authentication bypass, allowing anyone (who knows a user's credentials except the password) to get access to an account. This occurs because of JSESSIONID mismanagement.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-38618">详情</a></td>
+      </tr>
+      <tr>
        <td>6cba54ca7003e0fcabe589fc9f129615</td>
        <td>CVE-2021-41596</td>
        <td>2021-10-04 17:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
        <td>Laravel Booking System Booking Core 2.0 is vulnerable to Cross Site Scripting (XSS). The Avatar upload in the My Profile section could be exploited to upload a malicious SVG file which contains Javascript. Now if another user/admin views the profile and clicks to view his avatar, an XSS will trigger.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-37330">详情</a></td>
-      </tr>
-      <tr>
-       <td>58a7c65987c64e8eb0712c122eab2bc8</td>
-       <td>CVE-2021-41511</td>
-       <td>2021-10-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The username and password field of login in Lodging Reservation Management System V1 can give access to any user by using SQL injection to bypass authentication.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41511">详情</a></td>
-      </tr>
-      <tr>
-       <td>adb0e8095b833443061bb371237630bb</td>
-       <td>CVE-2021-41878</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A reflected cross-site scripting (XSS) vulnerability exists in the i-Panel Administration System Version 2.0 that enables a remote attacker to execute arbitrary JavaScript code in the browser-based web console.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41878">详情</a></td>
-      </tr>
-      <tr>
-       <td>f39897a70ef6864c7afcc1c41d1a8c18</td>
-       <td>CVE-2021-24687</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Modern Events Calendar Lite WordPress plugin before 5.22.2 does not escape some of its settings before outputting them in attributes, allowing high privilege users to perform Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24687">详情</a></td>
-      </tr>
-      <tr>
-       <td>e44043631a06fa1cf7d1377ae25c8f39</td>
-       <td>CVE-2021-24679</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Bitcoin / AltCoin Payment Gateway for WooCommerce WordPress plugin before 1.6.1 does not escape the 's' GET parameter before outputting back in the All Masking Rules page, leading to a Reflected Cross-Site Scripting issue</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24679">详情</a></td>
-      </tr>
-      <tr>
-       <td>d819ac8e63907650774cdc70ae26b421</td>
-       <td>CVE-2021-24678</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The CM Tooltip Glossary WordPress plugin before 3.9.21 does not escape some glossary_tooltip shortcode attributes, which could allow users a role as low as Contributor to perform Stored Cross-Site Scripting attacks</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24678">详情</a></td>
-      </tr>
-      <tr>
-       <td>2db614277f68bf2679cefcdfbfbf0573</td>
-       <td>CVE-2021-24676</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Better Find and Replace WordPress plugin before 1.2.9 does not escape the 's' GET parameter before outputting back in the All Masking Rules page, leading to a Reflected Cross-Site Scripting issue</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24676">详情</a></td>
-      </tr>
-      <tr>
-       <td>b25636af604630b5bcb717149673ae50</td>
-       <td>CVE-2021-24673</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Appointment Hour Booking WordPress plugin before 1.3.16 does not escape some of the Calendar Form settings, allowing high privilege users to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24673">详情</a></td>
-      </tr>
-      <tr>
-       <td>2b60628fa4583e065f9de41cbf8420b8</td>
-       <td>CVE-2021-24654</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The User Registration WordPress plugin before 2.0.2 does not properly sanitise the user_registration_profile_pic_url value when submitted directly via the user_registration_update_profile_details AJAX action. This could allow any authenticated user, such as subscriber, to perform Stored Cross-Site attacks when their profile is viewed</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24654">详情</a></td>
-      </tr>
-      <tr>
-       <td>c319740463365b949a45b80151911fc9</td>
-       <td>CVE-2021-24465</td>
-       <td>2021-10-04 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Meow Gallery WordPress plugin before 4.1.9 does not sanitise, validate or escape the ids attribute of its gallery shortcode (available for users as low as Contributor) before using it in an SQL statement, leading to an authenticated SQL Injection issue. The injection also allows the returned values to be manipulated in a way that could lead to data disclosure and arbitrary objects to be deserialized.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24465">详情</a></td>
-      </tr>
-      <tr>
-       <td>12e14a201735a179dbacea90f2981840</td>
-       <td>CVE-2021-22557</td>
-       <td>2021-10-04 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>SLO generator allows for loading of YAML files that if crafted in a specific format can allow for code execution within the context of the SLO Generator. We recommend upgrading SLO Generator past https://github.com/google/slo-generator/pull/173</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-22557">详情</a></td>
       </tr>
      </tbody>
     </table>
