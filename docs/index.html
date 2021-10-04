@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-04 21:24:04 -->
+<!-- RELEASE TIME : 2021-10-04 23:23:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>62961ee7ed11ebc8a66e3525103609c3</td>
+       <td>CVE-2021-41091</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Moby is an open-source project created by Docker to enable software containerization. A bug was found in Moby (Docker Engine) where the data directory (typically `/var/lib/docker`) contained subdirectories with insufficiently restricted permissions, allowing otherwise unprivileged Linux users to traverse directory contents and execute programs. When containers included executable programs with extended permission bits (such as `setuid`), unprivileged Linux users could discover and execute those programs. When the UID of an unprivileged Linux user on the host collided with the file owner or group inside a container, the unprivileged Linux user on the host could discover, read, and modify those files. This bug has been fixed in Moby (Docker Engine) 20.10.9. Users should update to this version as soon as possible. Running containers should be stopped and restarted for the permissions to be fixed. For users unable to upgrade limit access to the host to trusted users. Limit access to host volumes to trusted containers.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41091">详情</a></td>
+      </tr>
+      <tr>
+       <td>e5ebd59f3e0f082421cc5d4ebae3cb86</td>
+       <td>CVE-2021-41089</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Moby is an open-source project created by Docker to enable software containerization. A bug was found in Moby (Docker Engine) where attempting to copy files using `docker cp` into a specially-crafted container can result in Unix file permission changes for existing files in the hostâ€™s filesystem, widening access to others. This bug does not directly allow files to be read, modified, or executed without an additional cooperating process. This bug has been fixed in Moby (Docker Engine) 20.10.9. Users should update to this version as soon as possible. Running containers do not need to be restarted.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41089">详情</a></td>
+      </tr>
+      <tr>
+       <td>145923200e036d821752fa8785f42026</td>
+       <td>CVE-2021-32765</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Hiredis is a minimalistic C client library for the Redis database. In affected versions Hiredis is vulnurable to integer overflow if provided maliciously crafted or corrupted `RESP` `mult-bulk` protocol data. When parsing `multi-bulk` (array-like) replies, hiredis fails to check if `count * sizeof(redisReply*)` can be represented in `SIZE_MAX`. If it can not, and the `calloc()` call doesn't itself make this check, it would result in a short allocation and subsequent buffer overflow. Users of hiredis who are unable to update may set the [maxelements](https://github.com/redis/hiredis#reader-max-array-elements) context option to a value small enough that no overflow is possible.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-32765">详情</a></td>
+      </tr>
+      <tr>
+       <td>3d65576bfa590de48e7fc155e362c125</td>
+       <td>CVE-2020-21496</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A cross-site scripting (XSS) vulnerability in the component /admin/?setting-base.htm of Xiuno BBS 4.0.4 allows attackers to execute arbitrary web scripts or HTML via the sitebrief parameter.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21496">详情</a></td>
+      </tr>
+      <tr>
+       <td>5229a288a499657e26c746ae843b7ca9</td>
+       <td>CVE-2020-21495</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A cross-site scripting (XSS) vulnerability in the component /admin/?setting-base.htm of Xiuno BBS 4.0.4 allows attackers to execute arbitrary web scripts or HTML via the sitename parameter.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21495">详情</a></td>
+      </tr>
+      <tr>
+       <td>8554319cebf68c067890551cb7436b64</td>
+       <td>CVE-2020-21494</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A cross-site scripting (XSS) vulnerability in the component install\install.sql of Xiuno BBS 4.0.4 allows attackers to execute arbitrary web scripts or HTML via changing the doctype value to 0.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21494">详情</a></td>
+      </tr>
+      <tr>
+       <td>842c21b0753ac5a702b1984b051be9b3</td>
+       <td>CVE-2020-21493</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in the component route\user.php of Xiuno BBS v4.0.4 allows attackers to enumerate usernames.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21493">详情</a></td>
+      </tr>
+      <tr>
+       <td>3b140c098e7136704ad276d46d3af581</td>
+       <td>CVE-2020-21434</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Maccms 10 contains a cross-site scripting (XSS) vulnerability in the Editing function under the Member module. This vulnerability is exploited via a crafted payload in the nickname text field.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21434">详情</a></td>
+      </tr>
+      <tr>
+       <td>d9d7200737bab35adbbc25a86e0634b4</td>
+       <td>CVE-2020-21431</td>
+       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>HongCMS v3.0 contains an arbitrary file read and write vulnerability in the component /admin/index.php/template/edit.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-21431">详情</a></td>
+      </tr>
+      <tr>
+       <td>46a1d9e3f4168824d3213349c8381b56</td>
+       <td>CVE-2021-41092</td>
+       <td>2021-10-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Docker CLI is the command line interface for the docker container runtime. A bug was found in the Docker CLI where running `docker login my-private-registry.example.com` with a misconfigured configuration file (typically `~/.docker/config.json`) listing a `credsStore` or `credHelpers` that could not be executed would result in any provided credentials being sent to `registry-1.docker.io` rather than the intended private registry. This bug has been fixed in Docker CLI 20.10.9. Users should update to this version as soon as possible. For users unable to update ensure that any configured credsStore or credHelpers entries in the configuration file reference an installed credential helper that is executable and on the PATH.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41092">详情</a></td>
+      </tr>
+      <tr>
        <td>d91f8839ff1a5ef865390c0c8fceccc3</td>
        <td>CVE-2021-41651</td>
        <td>2021-10-04 19:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-10-04 17:15:00 <img src="imgs/new.gif" /></td>
        <td>In all versions of GitLab CE/EE, an attacker with physical access to a user’s machine may brute force the user’s password via the change password function. There is a rate limit in place, but the attack may still be conducted by stealing the session id from the physical compromise of the account and splitting the attack over several IP addresses and passing in the compromised session value from these various locations.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-39899">详情</a></td>
-      </tr>
-      <tr>
-       <td>df8f648737e6cdab2742ba815a2570c6</td>
-       <td>CVE-2021-25964</td>
-       <td>2021-10-04 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>In “Calibre-web” application, v0.6.0 to v0.6.12, are vulnerable to Stored XSS in “Metadata”. An attacker that has access to edit the metadata information, can inject JavaScript payload in the description field. When a victim tries to open the file, XSS will be triggered.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-25964">详情</a></td>
-      </tr>
-      <tr>
-       <td>a0ce828f758a6d0c42c8fa2c11a50338</td>
-       <td>CVE-2021-41868</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>OnionShare 2.3 before 2.4 allows remote unauthenticated attackers to upload files on a non-public node when using the --receive functionality.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41868">详情</a></td>
-      </tr>
-      <tr>
-       <td>ab011c3788e1b18a3f749a24f1080f0e</td>
-       <td>CVE-2021-41867</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>An information disclosure vulnerability in OnionShare 2.3 before 2.4 allows remote unauthenticated attackers to retrieve the full list of participants of a non-public OnionShare node via the --chat feature.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41867">详情</a></td>
-      </tr>
-      <tr>
-       <td>cc53dfac2032bc5e210c1150bab35037</td>
-       <td>CVE-2021-39486</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Stored XSS via Malicious File Upload exists in Gila CMS version 2.2.0. An attacker can use this to steal cookies, passwords or to run arbitrary code on a victim's browser.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39486">详情</a></td>
-      </tr>
-      <tr>
-       <td>25d3d77ffae21f46f2f1b91b83a298cd</td>
-       <td>CVE-2021-38823</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>The IceHrm 30.0.0 OS website was found vulnerable to Session Management Issue. A signout from an admin account does not invalidate an admin session that is opened in a different browser.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38823">详情</a></td>
-      </tr>
-      <tr>
-       <td>373e814b647c0359d1d8c326f68efb58</td>
-       <td>CVE-2021-38822</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Stored Cross Site Scripting vulnerability via Malicious File Upload exists in multiple pages of IceHrm 30.0.0.OS that allows for arbitrary execution of JavaScript commands.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38822">详情</a></td>
-      </tr>
-      <tr>
-       <td>e74221ec6973f32e5bd7dbfbd76d05f9</td>
-       <td>CVE-2021-37777</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Gila CMS 2.2.0 is vulnerable to Insecure Direct Object Reference (IDOR). Thumbnails uploaded by one site owner are visible by another site owner just by knowing the other site name and fuzzing for picture names. This leads to sensitive information disclosure.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-37777">详情</a></td>
-      </tr>
-      <tr>
-       <td>aeb1383b77eb7d9d6282a3e482cc9ea2</td>
-       <td>CVE-2021-37333</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Laravel Booking System Booking Core 2.0 is vulnerable to Session Management. A password change at sandbox.bookingcore.org/user/profile/change-password does not invalidate a session that is opened in a different browser.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-37333">详情</a></td>
-      </tr>
-      <tr>
-       <td>cb17c517ef8e42b9dcde945ffc204f42</td>
-       <td>CVE-2021-37331</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Laravel Booking System Booking Core 2.0 is vulnerable to Incorrect Access Control. On the Verifications page, after uploading an ID Card or Trade License and viewing it, ID Cards and Trade Licenses of other vendors/users can be viewed by changing the URL.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-37331">详情</a></td>
-      </tr>
-      <tr>
-       <td>17a7d9c5883ca5803b37ac60e1656086</td>
-       <td>CVE-2021-37330</td>
-       <td>2021-10-04 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Laravel Booking System Booking Core 2.0 is vulnerable to Cross Site Scripting (XSS). The Avatar upload in the My Profile section could be exploited to upload a malicious SVG file which contains Javascript. Now if another user/admin views the profile and clicks to view his avatar, an XSS will trigger.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-37330">详情</a></td>
       </tr>
      </tbody>
     </table>
