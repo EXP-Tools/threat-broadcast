@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-05 19:20:56 -->
+<!-- RELEASE TIME : 2021-10-05 21:24:48 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,41 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9bee5ad62930f03bb08446c2891aeec4</td>
+       <td>CVE-2021-41116</td>
+       <td>2021-10-05 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Composer is an open source dependency manager for the PHP language. In affected versions windows users running Composer to install untrusted dependencies are subject to command injection and should upgrade their composer version. Other OSs and WSL are not affected. The issue has been resolved in composer versions 1.10.23 and 2.1.9. There are no workarounds for this issue.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41116">详情</a></td>
+      </tr>
+      <tr>
+       <td>af39585bace92205a83b061ab8249ad9</td>
+       <td>CVE-2021-41114</td>
+       <td>2021-10-05 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>TYPO3 is an open source PHP based web content management system released under the GNU GPL. It has been discovered that TYPO3 CMS is susceptible to host spoofing due to improper validation of the HTTP Host header. TYPO3 uses the HTTP Host header, for example, to generate absolute URLs during the frontend rendering process. Since the host header itself is provided by the client, it can be forged to any value, even in a name-based virtual hosts environment. This vulnerability is the same as described in TYPO3-CORE-SA-2014-001 (CVE-2014-3941). A regression, introduced during TYPO3 v11 development, led to this situation. The already existing setting $GLOBALS['TYPO3_CONF_VARS']['SYS']['trustedHostsPattern'] (used as an effective mitigation strategy in previous TYPO3 versions) was not evaluated anymore, and reintroduced the vulnerability.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41114">详情</a></td>
+      </tr>
+      <tr>
+       <td>e02a5dfde25cbe394626ac515f771fb6</td>
+       <td>CVE-2021-41113</td>
+       <td>2021-10-05 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>TYPO3 is an open source PHP based web content management system released under the GNU GPL. It has been discovered that the new TYPO3 v11 feature that allows users to create and share deep links in the backend user interface is vulnerable to cross-site-request-forgery. The impact is the same as described in TYPO3-CORE-SA-2020-006 (CVE-2020-11069). However, it is not limited to the same site context and does not require the attacker to be authenticated. In a worst case scenario, the attacker could create a new admin user account to compromise the system. To successfully carry out an attack, an attacker must trick his victim to access a compromised system. The victim must have an active session in the TYPO3 backend at that time. The following Same-Site cookie settings in $GLOBALS[TYPO3_CONF_VARS][BE][cookieSameSite] are required for an attack to be successful: SameSite=strict: malicious evil.example.org invoking TYPO3 application at good.example.org and SameSite=lax or none: malicious evil.com invoking TYPO3 application at example.org. Update your instance to TYPO3 version 11.5.0 which addresses the problem described.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41113">详情</a></td>
+      </tr>
+      <tr>
+       <td>f719e2075310a2f5c31005e359b7a609</td>
+       <td>CVE-2021-39226</td>
+       <td>2021-10-05 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Grafana is an open source data visualization platform. In affected versions unauthenticated and authenticated users are able to view the snapshot with the lowest database key by accessing the literal paths: /dashboard/snapshot/:key, or /api/snapshots/:key. If the snapshot "public_mode" configuration setting is set to true (vs default of false), unauthenticated users are able to delete the snapshot with the lowest database key by accessing the literal path: /api/snapshots-delete/:deleteKey. Regardless of the snapshot "public_mode" setting, authenticated users are able to delete the snapshot with the lowest database key by accessing the literal paths: /api/snapshots/:key, or /api/snapshots-delete/:deleteKey. The combination of deletion and viewing enables a complete walk through all snapshot data while resulting in complete snapshot data loss. This issue has been resolved in versions 8.1.6 and 7.5.11. If for some reason you cannot upgrade you can use a reverse proxy or similar to block access to the literal paths: /api/snapshots/:key, /api/snapshots-delete/:deleteKey, /dashboard/snapshot/:key, and /api/snapshots/:key. They have no normal function and can be disabled without side effects.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39226">详情</a></td>
+      </tr>
+      <tr>
+       <td>61e41c769e85ac526879812e45f5936c</td>
+       <td>CVE-2021-35497</td>
+       <td>2021-10-05 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The FTL Server (tibftlserver) and Docker images containing tibftlserver components of TIBCO Software Inc.'s TIBCO ActiveSpaces - Community Edition, TIBCO ActiveSpaces - Developer Edition, TIBCO ActiveSpaces - Enterprise Edition, TIBCO FTL - Community Edition, TIBCO FTL - Developer Edition, TIBCO FTL - Enterprise Edition, TIBCO eFTL - Community Edition, TIBCO eFTL - Developer Edition, and TIBCO eFTL - Enterprise Edition contain a vulnerability that theoretically allows a non-administrative, authenticated FTL user to trick the affected components into creating illegitimate certificates. These maliciously generated certificates can be used to enable man-in-the-middle attacks or to escalate privileges so that the malicious user has administrative privileges. Affected releases are TIBCO Software Inc.'s TIBCO ActiveSpaces - Community Edition: versions 4.3.0, 4.4.0, 4.5.0, 4.6.0, 4.6.1, and 4.6.2, TIBCO ActiveSpaces - Developer Edition: versions 4.3.0, 4.4.0, 4.5.0, 4.6.0, 4.6.1, and 4.6.2, TIBCO ActiveSpaces - Enterprise Edition: versions 4.3.0, 4.4.0, 4.5.0, 4.6.0, 4.6.1, and 4.6.2, TIBCO FTL - Community Edition: versions 6.2.0, 6.3.0, 6.3.1, 6.4.0, 6.5.0, 6.6.0, 6.6.1, and 6.7.0, TIBCO FTL - Developer Edition: versions 6.2.0, 6.3.0, 6.3.1, 6.4.0, 6.5.0, 6.6.0, 6.6.1, and 6.7.0, TIBCO FTL - Enterprise Edition: versions 6.2.0, 6.3.0, 6.3.1, 6.4.0, 6.5.0, 6.6.0, 6.6.1, and 6.7.0, TIBCO eFTL - Community Edition: versions 6.2.0, 6.3.0, 6.3.1, 6.4.0, 6.5.0, 6.6.0, 6.6.1, and 6.7.0, TIBCO eFTL - Developer Edition: versions 6.2.0, 6.3.0, 6.3.1, 6.4.0, 6.5.0, 6.6.0, 6.6.1, and 6.7.0, and TIBCO eFTL - Enterprise Edition: versions 6.2.0, 6.3.0, 6.3.1, 6.4.0, 6.5.0, 6.6.0, 6.6.1, and 6.7.0.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35497">详情</a></td>
+      </tr>
+      <tr>
        <td>eac517a0fd20db92050ecaeda74b6c1b</td>
        <td>CVE-2021-41553</td>
        <td>2021-10-05 16:15:00 <img src="imgs/new.gif" /></td>
@@ -426,41 +461,6 @@
        <td>2021-10-05 09:15:00 <img src="imgs/new.gif" /></td>
        <td>A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49. An attacker could use a path traversal attack to map URLs to files outside the expected document root. If files outside of the document root are not protected by "require all denied" these requests can succeed. Additionally this flaw could leak the source of interpreted files like CGI scripts. This issue is known to be exploited in the wild. This issue only affects Apache 2.4.49 and not earlier versions.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41773">详情</a></td>
-      </tr>
-      <tr>
-       <td>bf982b6a171bd7003c295adb74f724f8</td>
-       <td>CVE-2021-41524</td>
-       <td>2021-10-05 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>While fuzzing the 2.4.49 httpd, a new null pointer dereference was detected during HTTP/2 request processing, allowing an external source to DoS the server. This requires a specially crafted request. The vulnerability was recently introduced in version 2.4.49. No exploit is known to the project.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41524">详情</a></td>
-      </tr>
-      <tr>
-       <td>62e00a81442158ceef8461f28e54eeee</td>
-       <td>CVE-2021-42008</td>
-       <td>2021-10-05 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>The decode_data function in drivers/net/hamradio/6pack.c in the Linux kernel before 5.13.13 has a slab out-of-bounds write. Input from a process that has the CAP_NET_ADMIN capability can lead to root access.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42008">详情</a></td>
-      </tr>
-      <tr>
-       <td>6eb59e0ea322dc23cc3d9cf3975733e8</td>
-       <td>CVE-2021-42006</td>
-       <td>2021-10-04 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>An out-of-bounds access in GffLine::GffLine in gff.cpp in GCLib 0.12.7 allows an attacker to cause a segmentation fault or possibly have unspecified other impact via a crafted GFF file.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42006">详情</a></td>
-      </tr>
-      <tr>
-       <td>918537c9bccf21769a7a9dee7e654579</td>
-       <td>CVE-2021-41123</td>
-       <td>2021-10-04 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Survey Solutions is a survey management and data collection system. In affected versions the Headquarters application publishes /metrics endpoint available to any user. None of the survey answers are ever exposed, only the aggregate counters, including count of interviews, or count of assignments. Starting from version 21.09.1 the endpoint is turned off by default.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41123">详情</a></td>
-      </tr>
-      <tr>
-       <td>62961ee7ed11ebc8a66e3525103609c3</td>
-       <td>CVE-2021-41091</td>
-       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Moby is an open-source project created by Docker to enable software containerization. A bug was found in Moby (Docker Engine) where the data directory (typically `/var/lib/docker`) contained subdirectories with insufficiently restricted permissions, allowing otherwise unprivileged Linux users to traverse directory contents and execute programs. When containers included executable programs with extended permission bits (such as `setuid`), unprivileged Linux users could discover and execute those programs. When the UID of an unprivileged Linux user on the host collided with the file owner or group inside a container, the unprivileged Linux user on the host could discover, read, and modify those files. This bug has been fixed in Moby (Docker Engine) 20.10.9. Users should update to this version as soon as possible. Running containers should be stopped and restarted for the permissions to be fixed. For users unable to upgrade limit access to the host to trusted users. Limit access to host volumes to trusted containers.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41091">详情</a></td>
       </tr>
      </tbody>
     </table>
