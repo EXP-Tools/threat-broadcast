@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-05 22:27:14 -->
+<!-- RELEASE TIME : 2021-10-05 23:26:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,55 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e39067079ebc1f585d7caa7b3543a999</td>
+       <td>CVE-2021-41124</td>
+       <td>2021-10-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Scrapy-splash is a library which provides Scrapy and JavaScript integration. In affected versions users who use [`HttpAuthMiddleware`](http://doc.scrapy.org/en/latest/topics/downloader-middleware.html#module-scrapy.downloadermiddlewares.httpauth) (i.e. the `http_user` and `http_pass` spider attributes) for Splash authentication will have any non-Splash request expose your credentials to the request target. This includes `robots.txt` requests sent by Scrapy when the `ROBOTSTXT_OBEY` setting is set to `True`. Upgrade to scrapy-splash 0.8.0 and use the new `SPLASH_USER` and `SPLASH_PASS` settings instead to set your Splash authentication credentials safely. If you cannot upgrade, set your Splash request credentials on a per-request basis, [using the `splash_headers` request parameter](https://github.com/scrapy-plugins/scrapy-splash/tree/0.8.x#http-basic-auth), instead of defining them globally using the [`HttpAuthMiddleware`](http://doc.scrapy.org/en/latest/topics/downloader-middleware.html#module-scrapy.downloadermiddlewares.httpauth). Alternatively, make sure all your requests go through Splash. That includes disabling the [robots.txt middleware](https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#topics-dlmw-robots).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41124">详情</a></td>
+      </tr>
+      <tr>
+       <td>f6bc778c2c24d22113e72e84a9a50925</td>
+       <td>CVE-2021-41120</td>
+       <td>2021-10-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>sylius/paypal-plugin is a paypal plugin for the Sylius development platform. In affected versions the URL to the payment page done after checkout was created with autoincremented payment id (/pay-with-paypal/{id}) and therefore it was easy to predict. The problem is that the Credit card form has prefilled "credit card holder" field with the Customer's first and last name and hence this can lead to personally identifiable information exposure. Additionally, the mentioned form did not require authentication. The problem has been patched in Sylius/PayPalPlugin 1.2.4 and 1.3.1. If users are unable to update they can override a sylius_paypal_plugin_pay_with_paypal_form route and change its URL parameters to (for example) {orderToken}/{paymentId}, then override the Sylius\PayPalPlugin\Controller\PayWithPayPalFormAction service, to operate on the payment taken from the repository by these 2 values. It would also require usage of custom repository method. Additionally, one could override the @SyliusPayPalPlugin/payWithPaypal.html.twig template, to add contingencies: ['SCA_ALWAYS'] line in hostedFields.submit(...) function call (line 421). It would then have to be handled in the function callback.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41120">详情</a></td>
+      </tr>
+      <tr>
+       <td>cad7241d3d15c6601d59e50953a89148</td>
+       <td>CVE-2021-3625</td>
+       <td>2021-10-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Buffer overflow in Zephyr USB DFU DNLOAD. Zephyr versions >= v2.5.0 contain Heap-based Buffer Overflow (CWE-122). For more information, see https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-c3gr-hgvr-f363</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3625">详情</a></td>
+      </tr>
+      <tr>
+       <td>7dfa713ad2fb27628576bcf748292965</td>
+       <td>CVE-2021-3581</td>
+       <td>2021-10-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Buffer Access with Incorrect Length Value in zephyr. Zephyr versions >= >=2.5.0 contain Buffer Access with Incorrect Length Value (CWE-805). For more information, see https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-8q65-5gqf-fmw5</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3581">详情</a></td>
+      </tr>
+      <tr>
+       <td>0c1692a984c8833f3475087cd798c8ee</td>
+       <td>CVE-2021-3510</td>
+       <td>2021-10-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zephyr JSON decoder incorrectly decodes array of array. Zephyr versions >= >1.14.0, >= >2.5.0 contain Attempt to Access Child of a Non-structure Pointer (CWE-588). For more information, see https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-289f-7mw3-2qf4</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3510">详情</a></td>
+      </tr>
+      <tr>
+       <td>12472e5810a185258165ec47d8502322</td>
+       <td>CVE-2021-3436</td>
+       <td>2021-10-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>BT: Possible to overwrite an existing bond during keys distribution phase when the identity address of the bond is known. Zephyr versions >= 1.14.2, >= 2.4.0, >= 2.5.0 contain Use of Multiple Resources with Duplicate Identifier (CWE-694). For more information, see https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-j76f-35mc-4h63</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3436">详情</a></td>
+      </tr>
+      <tr>
+       <td>d97b0e0b432b54825c9fa48fac42e654</td>
+       <td>CVE-2021-3319</td>
+       <td>2021-10-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>DOS: Incorrect 802154 Frame Validation for Omitted Source / Dest Addresses. Zephyr versions >= > v2.4.0 contain NULL Pointer Dereference (CWE-476), Attempt to Access Child of a Non-structure Pointer (CWE-588). For more information, see https://github.com/zephyrproject-rtos/zephyr/security/advisories/GHSA-94jg-2p6q-5364</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-3319">详情</a></td>
+      </tr>
+      <tr>
        <td>9bee5ad62930f03bb08446c2891aeec4</td>
        <td>CVE-2021-41116</td>
        <td>2021-10-05 18:15:00 <img src="imgs/new.gif" /></td>
@@ -412,55 +461,6 @@
        <td>2021-10-05 13:15:00 <img src="imgs/new.gif" /></td>
        <td>In all versions of GitLab EE since version 8.13, an endpoint discloses names of private groups that have access to a project to low privileged users that are part of that project.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-39884">详情</a></td>
-      </tr>
-      <tr>
-       <td>112a6cadc66d8ac0bd8edc45c1230d8b</td>
-       <td>CVE-2021-39882</td>
-       <td>2021-10-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In all versions of GitLab CE/EE, provided a user ID, anonymous users can use a few endpoints to retrieve information about any GitLab user.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39882">详情</a></td>
-      </tr>
-      <tr>
-       <td>0ea8dcb7acfc7c11732ebfa961ebb69f</td>
-       <td>CVE-2021-39878</td>
-       <td>2021-10-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A stored Reflected Cross-Site Scripting vulnerability in the Jira integration in GitLab version 13.0 up to 14.3.1 allowed an attacker to execute arbitrary javascript code.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39878">详情</a></td>
-      </tr>
-      <tr>
-       <td>bf2dc2acfbfb943374eeed3928c0ed6a</td>
-       <td>CVE-2021-39875</td>
-       <td>2021-10-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In all versions of GitLab CE/EE since version 13.6, it is possible to see pending invitations of any public group or public project by visiting an API endpoint.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39875">详情</a></td>
-      </tr>
-      <tr>
-       <td>987144877f25b098514c55a9c50ee8a6</td>
-       <td>CVE-2021-39872</td>
-       <td>2021-10-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In all versions of GitLab CE/EE since version 14.1, an improper access control vulnerability allows users with expired password to still access GitLab through git and API through access tokens acquired before password expiration.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39872">详情</a></td>
-      </tr>
-      <tr>
-       <td>199b8eedff0ec54b3c9eeea7b7719c86</td>
-       <td>CVE-2021-39869</td>
-       <td>2021-10-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In all versions of GitLab CE/EE since version 8.9, project exports may expose trigger tokens configured on that project.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39869">详情</a></td>
-      </tr>
-      <tr>
-       <td>9dcbcd882c33b512c648efacf0f1c67e</td>
-       <td>CVE-2021-39867</td>
-       <td>2021-10-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In all versions of GitLab CE/EE since version 8.15, a DNS rebinding vulnerability in Gitea Importer may be exploited by an attacker to trigger Server Side Request Forgery (SSRF) attacks.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39867">详情</a></td>
-      </tr>
-      <tr>
-       <td>5601982a9a38f98b316aedfab50b4d9c</td>
-       <td>CVE-2021-41773</td>
-       <td>2021-10-05 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49. An attacker could use a path traversal attack to map URLs to files outside the expected document root. If files outside of the document root are not protected by "require all denied" these requests can succeed. Additionally this flaw could leak the source of interpreted files like CGI scripts. This issue is known to be exploited in the wild. This issue only affects Apache 2.4.49 and not earlier versions.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41773">详情</a></td>
       </tr>
      </tbody>
     </table>
