@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-05 18:31:43 -->
+<!-- RELEASE TIME : 2021-10-05 19:20:56 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,34 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>eac517a0fd20db92050ecaeda74b6c1b</td>
+       <td>CVE-2021-41553</td>
+       <td>2021-10-05 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>** UNSUPPORTED WHEN ASSIGNED ** In ARCHIBUS Web Central 21.3.3.815 (a version from 2014), the Web Application in /archibus/login.axvw assign a session token that could be already in use by another user. It was therefore possible to access the application through a user whose credentials were not known, without any attempt by the testers to modify the application logic. It is also possible to set the value of the session token, client-side, simply by making an unauthenticated GET Request to the Home Page and adding an arbitrary value to the JSESSIONID field. The application, following the login, does not assign a new token, continuing to keep the inserted one, as the identifier of the entire session. This is fixed in all recent versions, such as version 26. NOTE: This vulnerability only affects products that are no longer supported by the maintainer.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41553">详情</a></td>
+      </tr>
+      <tr>
+       <td>ef0dc3fd5642f91ff72671d54cd1e010</td>
+       <td>CVE-2021-41286</td>
+       <td>2021-10-05 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Omikron MultiCash Desktop 4.00.008.SP5 relies on a client-side authentication mechanism. When a user logs into the application, the validity of the password is checked locally. All communication to the database backend is made via the same technical account. Consequently, an attacker can attach a debugger to the process or create a patch that manipulates the behavior of the login function. When the function always returns the success value (corresponding to a correct password), an attacker can login with any desired account, such as the administrative account of the application.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41286">详情</a></td>
+      </tr>
+      <tr>
+       <td>665747b8cd4658a2e2fa465fb86f250a</td>
+       <td>CVE-2021-35492</td>
+       <td>2021-10-05 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wowza Streaming Engine through 4.8.11+5 could allow an authenticated, remote attacker to exhaust filesystem resources via the /enginemanager/server/vhost/historical.jsdata vhost parameter. This is due to the insufficient management of available filesystem resources. An attacker could exploit this vulnerability through the Virtual Host Monitoring section by requesting random virtual-host historical data and exhausting available filesystem resources. A successful exploit could allow the attacker to cause database errors and cause the device to become unresponsive to web-based management. (Manual intervention is required to free filesystem resources and return the application to an operational state.)</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35492">详情</a></td>
+      </tr>
+      <tr>
+       <td>2fc5d4931fbee6f4205189eb8f34490b</td>
+       <td>CVE-2021-35491</td>
+       <td>2021-10-05 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Cross-Site Request Forgery (CSRF) vulnerability in Wowza Streaming Engine through 4.8.11+5 allows a remote attacker to delete a user account via the /enginemanager/server/user/delete.htm userName parameter. The application does not implement a CSRF token for the GET request.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35491">详情</a></td>
+      </tr>
+      <tr>
        <td>3adf2a361458e6a41b412df9baf3d699</td>
        <td>CVE-2021-41555</td>
        <td>2021-10-05 15:15:00 <img src="imgs/new.gif" /></td>
@@ -433,34 +461,6 @@
        <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
        <td>Moby is an open-source project created by Docker to enable software containerization. A bug was found in Moby (Docker Engine) where the data directory (typically `/var/lib/docker`) contained subdirectories with insufficiently restricted permissions, allowing otherwise unprivileged Linux users to traverse directory contents and execute programs. When containers included executable programs with extended permission bits (such as `setuid`), unprivileged Linux users could discover and execute those programs. When the UID of an unprivileged Linux user on the host collided with the file owner or group inside a container, the unprivileged Linux user on the host could discover, read, and modify those files. This bug has been fixed in Moby (Docker Engine) 20.10.9. Users should update to this version as soon as possible. Running containers should be stopped and restarted for the permissions to be fixed. For users unable to upgrade limit access to the host to trusted users. Limit access to host volumes to trusted containers.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41091">详情</a></td>
-      </tr>
-      <tr>
-       <td>e5ebd59f3e0f082421cc5d4ebae3cb86</td>
-       <td>CVE-2021-41089</td>
-       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Moby is an open-source project created by Docker to enable software containerization. A bug was found in Moby (Docker Engine) where attempting to copy files using `docker cp` into a specially-crafted container can result in Unix file permission changes for existing files in the hostâ€™s filesystem, widening access to others. This bug does not directly allow files to be read, modified, or executed without an additional cooperating process. This bug has been fixed in Moby (Docker Engine) 20.10.9. Users should update to this version as soon as possible. Running containers do not need to be restarted.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41089">详情</a></td>
-      </tr>
-      <tr>
-       <td>145923200e036d821752fa8785f42026</td>
-       <td>CVE-2021-32765</td>
-       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Hiredis is a minimalistic C client library for the Redis database. In affected versions Hiredis is vulnurable to integer overflow if provided maliciously crafted or corrupted `RESP` `mult-bulk` protocol data. When parsing `multi-bulk` (array-like) replies, hiredis fails to check if `count * sizeof(redisReply*)` can be represented in `SIZE_MAX`. If it can not, and the `calloc()` call doesn't itself make this check, it would result in a short allocation and subsequent buffer overflow. Users of hiredis who are unable to update may set the [maxelements](https://github.com/redis/hiredis#reader-max-array-elements) context option to a value small enough that no overflow is possible.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-32765">详情</a></td>
-      </tr>
-      <tr>
-       <td>3d65576bfa590de48e7fc155e362c125</td>
-       <td>CVE-2020-21496</td>
-       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site scripting (XSS) vulnerability in the component /admin/?setting-base.htm of Xiuno BBS 4.0.4 allows attackers to execute arbitrary web scripts or HTML via the sitebrief parameter.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21496">详情</a></td>
-      </tr>
-      <tr>
-       <td>5229a288a499657e26c746ae843b7ca9</td>
-       <td>CVE-2020-21495</td>
-       <td>2021-10-04 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site scripting (XSS) vulnerability in the component /admin/?setting-base.htm of Xiuno BBS 4.0.4 allows attackers to execute arbitrary web scripts or HTML via the sitename parameter.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-21495">详情</a></td>
       </tr>
      </tbody>
     </table>
