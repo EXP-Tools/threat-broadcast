@@ -51,8 +51,10 @@ def query_issues(github_token, owner=env.GITHUB_REPO_OWNER, repo=env.GITHUB_REPO
 
         issues = data["data"]["repository"]["issues"]
         for issue in issues["edges"] :
-            title = issue["node"]["title"]
-            titles.append(title)
+            is_closed = issue["node"]["closed"]
+            if not is_closed :
+                title = issue["node"]["title"]
+                titles.append(title)
 
         has_next_page = issues["pageInfo"]["hasNextPage"]
         next_cursor = issues["pageInfo"]["endCursor"]
@@ -68,6 +70,7 @@ query {
             edges {
                 node {
                     title
+                    closed
                 }
             }
             pageInfo {
