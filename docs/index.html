@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-11 17:31:13 -->
+<!-- RELEASE TIME : 2021-10-11 19:20:48 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5f2a4b9fd2150c70ef629edf424facc9</td>
+       <td>CVE-2021-41117</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>keypair is a a RSA PEM key generator written in javascript. keypair implements a lot of cryptographic primitives on its own or by borrowing from other libraries where possible, including node-forge. An issue was discovered where this library was generating identical RSA keys used in SSH. This would mean that the library is generating identical P, Q (and thus N) values which, in practical terms, is impossible with RSA-2048 keys. Generating identical values, repeatedly, usually indicates an issue with poor random number generation, or, poor handling of CSPRNG output. Issue 1: Poor random number generation (`GHSL-2021-1012`). The library does not rely entirely on a platform provided CSPRNG, rather, it uses it's own counter-based CMAC approach. Where things go wrong is seeding the CMAC implementation with "true" random data in the function `defaultSeedFile`. In order to seed the AES-CMAC generator, the library will take two different approaches depending on the JavaScript execution environment. In a browser, the library will use [`window.crypto.getRandomValues()`](https://github.com/juliangruber/keypair/blob/87c62f255baa12c1ec4f98a91600f82af80be6db/index.js#L971). However, in a nodeJS execution environment, the `window` object is not defined, so it goes down a much less secure solution, also of which has a bug in it. It does look like the library tries to use node's CSPRNG when possible unfortunately, it looks like the `crypto` object is null because a variable was declared with the same name, and set to `null`. So the node CSPRNG path is never taken. However, when `window.crypto.getRandomValues()` is not available, a Lehmer LCG random number generator is used to seed the CMAC counter, and the LCG is seeded with `Math.random`. While this is poor and would likely qualify in a security bug in itself, it does not explain the extreme frequency in which duplicate keys occur. The main flaw: The output from the Lehmer LCG is encoded incorrectly. The specific [line][https://github.com/juliangruber/keypair/blob/87c62f255baa12c1ec4f98a91600f82af80be6db/index.js#L1008] with the flaw is: `b.putByte(String.fromCharCode(next & 0xFF))` The [definition](https://github.com/juliangruber/keypair/blob/87c62f255baa12c1ec4f98a91600f82af80be6db/index.js#L350-L352) of `putByte` is `util.ByteBuffer.prototype.putByte = function(b) {this.data += String.fromCharCode(b);};`. Simplified, this is `String.fromCharCode(String.fromCharCode(next & 0xFF))`. The double `String.fromCharCode` is almost certainly unintentional and the source of weak seeding. Unfortunately, this does not result in an error. Rather, it results most of the buffer containing zeros. Since we are masking with 0xFF, we can determine that 97% of the output from the LCG are converted to zeros. The only outputs that result in meaningful values are outputs 48 through 57, inclusive. The impact is that each byte in the RNG seed has a 97% chance of being 0 due to incorrect conversion. When it is not, the bytes are 0 through 9. In summary, there are three immediate concerns: 1. The library has an insecure random number fallback path. Ideally the library would require a strong CSPRNG instead of attempting to use a LCG and `Math.random`. 2. The library does not correctly use a strong random number generator when run in NodeJS, even though a strong CSPRNG is available. 3. The fallback path has an issue in the implementation where a majority of the seed data is going to effectively be zero. Due to the poor random number generation, keypair generates RSA keys that are relatively easy to guess. This could enable an attacker to decrypt confidential messages or gain authorized access to an account belonging to the victim.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41117">详情</a></td>
+      </tr>
+      <tr>
+       <td>45f22278664f4dfcd5af448144df5efa</td>
+       <td>CVE-2021-32028</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in postgresql. Using an INSERT ... ON CONFLICT ... DO UPDATE command on a purpose-crafted table, an authenticated database user could read arbitrary bytes of server memory. The highest threat from this vulnerability is to data confidentiality.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-32028">详情</a></td>
+      </tr>
+      <tr>
+       <td>626aad1cac26cfdef7bfaec7b426ca2c</td>
+       <td>CVE-2021-27002</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>NetApp Cloud Manager versions prior to 3.9.10 are susceptible to a vulnerability which could allow a remote unauthenticated attacker to retrieve sensitive data via the web proxy.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-27002">详情</a></td>
+      </tr>
+      <tr>
+       <td>47698527cdb174e07d04e79ba9404b01</td>
+       <td>CVE-2021-26588</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>A potential security vulnerability has been identified in HPE 3PAR StoreServ, HPE Primera Storage and HPE Alletra 9000 Storage array firmware. An unauthenticated user could remotely exploit the low complexity issue to execute code as administrator. This vulnerability impacts completely the confidentiality, integrity, availability of the array. HPE has made the following software updates and mitigation information to resolve the vulnerability in 3PAR, Primera and Alletra 9000 firmware.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-26588">详情</a></td>
+      </tr>
+      <tr>
+       <td>e513485a5ec4589a397074648157c22e</td>
+       <td>CVE-2021-25633</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>LibreOffice supports digital signatures of ODF documents and macros within documents, presenting visual aids that no alteration of the document occurred since the last signing and that the signature is valid. An Improper Certificate Validation vulnerability in LibreOffice allowed an attacker to create a digitally signed ODF document, by manipulating the documentsignatures.xml or macrosignatures.xml stream within the document to combine multiple certificate data, which when opened caused LibreOffice to display a validly signed indicator but whose content was unrelated to the signature shown. This issue affects: The Document Foundation LibreOffice 7-0 versions prior to 7.0.6; 7-1 versions prior to 7.1.2.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-25633">详情</a></td>
+      </tr>
+      <tr>
+       <td>4cced66eecb2c7eb03a02fb5935b02f1</td>
+       <td>CVE-2021-22263</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue has been discovered in GitLab affecting all versions starting from 13.0 before 14.0.9, all versions starting from 14.1 before 14.1.4, all versions starting from 14.2 before 14.2.2. A user account with 'external' status which is granted 'Maintainer' role on any project on the GitLab instance where 'project tokens' are allowed may elevate its privilege to 'Internal' and access Internal projects.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-22263">详情</a></td>
+      </tr>
+      <tr>
+       <td>39f1b023828ed74d7e1d82ee8b384356</td>
+       <td>CVE-2021-20122</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Telus Wi-Fi Hub (PRV65B444A-S-TS) with firmware version 3.00.20 is affected by an authenticated command injection vulnerability in multiple parameters passed to tr69_cmd.cgi. A remote attacker connected to the router's LAN and authenticated with a super user account, or using a bypass authentication vulnerability like CVE-2021-20090 could leverage this issue to run commands or gain a shell as root on the target device.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-20122">详情</a></td>
+      </tr>
+      <tr>
+       <td>39e7d51c98ec141e56e9dcd742b69239</td>
+       <td>CVE-2021-20121</td>
+       <td>2021-10-11 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Telus Wi-Fi Hub (PRV65B444A-S-TS) with firmware version 3.00.20 is vulnerable to an authenticated arbitrary file read. An authenticated user with physical access to the device can read arbitrary files from the device by preparing and connecting a specially prepared USB drive to the device, and making a series of crafted requests to the device's web interface.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-20121">详情</a></td>
+      </tr>
+      <tr>
+       <td>dd26957ee6f58342755228a18a59b4ca</td>
+       <td>CVE-2021-39317</td>
+       <td>2021-10-11 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Versions up to, and including, 1.0.6, of the Access Demo Importer WordPress plugin are vulnerable to arbitrary file uploads via the plugin_offline_installer AJAX action due to a missing capability check in the plugin_offline_installer_callback function found in the ~/inc/demo-functions.php.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39317">详情</a></td>
+      </tr>
+      <tr>
+       <td>589bc2fe5ceecbdd797eec765658bd1a</td>
+       <td>CVE-2021-37123</td>
+       <td>2021-10-11 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>There is an improper authentication vulnerability in Hero-CT060 before 1.0.0.200. The vulnerability is due to that when an user wants to do certain operation, the software does not insufficiently validate the user's identity. Successful exploit could allow the attacker to do certain operations which the user are supposed not to do.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-37123">详情</a></td>
+      </tr>
+      <tr>
        <td>f3f8bcb9e9fc7ee81bb7ad66dba751f8</td>
        <td>CVE-2021-40541</td>
        <td>2021-10-11 14:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-10-11 08:15:00 <img src="imgs/new.gif" /></td>
        <td>It is possible for an attacker to manipulate documents to appear to be signed by a trusted source. All versions of Apache OpenOffice up to 4.1.10 are affected. Users are advised to update to version 4.1.11. See CVE-2021-25635 for the LibreOffice advisory.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41832">详情</a></td>
-      </tr>
-      <tr>
-       <td>505e524d6012a0ef9c97a1684fe151c8</td>
-       <td>CVE-2021-41831</td>
-       <td>2021-10-11 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>It is possible for an attacker to manipulate the timestamp of signed documents. All versions of Apache OpenOffice up to 4.1.10 are affected. Users are advised to update to version 4.1.11. See CVE-2021-25634 for the LibreOffice advisory.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41831">详情</a></td>
-      </tr>
-      <tr>
-       <td>038dc74d6c409f7afccadeda72720e79</td>
-       <td>CVE-2021-41830</td>
-       <td>2021-10-11 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>It is possible for an attacker to manipulate signed documents and macros to appear to come from a trusted source. All versions of Apache OpenOffice up to 4.1.10 are affected. Users are advised to update to version 4.1.11. See CVE-2021-25633 for the LibreOffice advisory.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41830">详情</a></td>
-      </tr>
-      <tr>
-       <td>214686151e99f7f3bd4a68faf3f9e632</td>
-       <td>CVE-2021-41801</td>
-       <td>2021-10-11 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>The ReplaceText extension through 1.41 for MediaWiki has Incorrect Access Control. When a user is blocked after submitting a replace job, the job is still run, even if it may be run at a later time (due to the job queue backlog)</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41801">详情</a></td>
-      </tr>
-      <tr>
-       <td>391d52e43706fe66b1c711bfe3947166</td>
-       <td>CVE-2021-41800</td>
-       <td>2021-10-11 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>MediaWiki before 1.36.2 allows a denial of service (resource consumption because of lengthy query processing time). Visiting Special:Contributions can sometimes result in a long running SQL query because PoolCounter protection is mishandled.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41800">详情</a></td>
-      </tr>
-      <tr>
-       <td>0fd94ad1316e12a87c4bc45c46bf30c5</td>
-       <td>CVE-2021-41799</td>
-       <td>2021-10-11 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>MediaWiki before 1.36.2 allows a denial of service (resource consumption because of lengthy query processing time). ApiQueryBacklinks (action=query&list=backlinks) can cause a full table scan.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41799">详情</a></td>
-      </tr>
-      <tr>
-       <td>d585536bc002763d61579964feb98ff6</td>
-       <td>CVE-2021-41798</td>
-       <td>2021-10-11 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>MediaWiki before 1.36.2 allows XSS. Month related MediaWiki messages are not escaped before being used on the Special:Search results page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41798">详情</a></td>
-      </tr>
-      <tr>
-       <td>d88b6576bb47da5723b08393950f0d6a</td>
-       <td>CVE-2021-42139</td>
-       <td>2021-10-11 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Deno before 0.107.0 allows Code Injection via an untrusted YAML file in certain configurations.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42139">详情</a></td>
-      </tr>
-      <tr>
-       <td>7d89ae2685b3d7c83e837e7f9bbb810c</td>
-       <td>CVE-2021-42135</td>
-       <td>2021-10-11 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>HashiCorp Vault and Vault Enterprise 1.8.x through 1.8.4 may have an unexpected interaction between glob-related policies and the Google Cloud secrets engine. Users may, in some situations, have more privileges than intended, e.g., a user with read permission for the /gcp/roleset/* path may be able to issue Google Cloud service account credentials.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42135">详情</a></td>
-      </tr>
-      <tr>
-       <td>ea864e001c7314da5c6281ae032cc3ea</td>
-       <td>CVE-2021-41055</td>
-       <td>2021-10-11 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Gajim 1.2.x and 1.3.x before 1.3.3 allows remote attackers to cause a denial of service (crash) via a crafted XMPP Last Message Correction (XEP-0308) message in multi-user chat, where the message ID equals the correction ID.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41055">详情</a></td>
-      </tr>
-      <tr>
-       <td>d0c002970b29655d91c2a77102eaa6bc</td>
-       <td>CVE-2021-42134</td>
-       <td>2021-10-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Unicorn framework before 0.36.1 for Django allows XSS via a component. NOTE: this issue exists because of an incomplete fix for CVE-2021-42053.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42134">详情</a></td>
       </tr>
      </tbody>
     </table>
