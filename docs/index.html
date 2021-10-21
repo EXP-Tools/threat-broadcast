@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-21 20:28:34 -->
+<!-- RELEASE TIME : 2021-10-21 22:27:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>79ea645b7a6624e6f167948518d9723c</td>
+       <td>CVE-2021-42716</td>
+       <td>2021-10-21 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in stb stb_image.h 2.27. The PNM loader incorrectly interpreted 16-bit PGM files as 8-bit when converting to RGBA, leading to a buffer overflow when later reinterpreting the result as a 16-bit buffer. An attacker could potentially have crashed a service using stb_image, or read up to 1024 bytes of non-consecutive heap data without control over the read location.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-42716">详情</a></td>
+      </tr>
+      <tr>
+       <td>8af615c2887d1514d54ba537487a5291</td>
+       <td>CVE-2021-42715</td>
+       <td>2021-10-21 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in stb stb_image.h 1.33 through 2.27. The HDR loader parsed truncated end-of-file RLE scanlines as an infinite sequence of zero-length runs. An attacker could potentially have caused denial of service in applications using stb_image by submitting crafted HDR files.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-42715">详情</a></td>
+      </tr>
+      <tr>
+       <td>44ff6b04aee1b2d4643c102648d46c39</td>
+       <td>CVE-2021-41160</td>
+       <td>2021-10-21 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>FreeRDP is a free implementation of the Remote Desktop Protocol (RDP), released under the Apache license. In affected versions a malicious server might trigger out of bound writes in a connected client. Connections using GDI or SurfaceCommands to send graphics updates to the client might send `0` width/height or out of bound rectangles to trigger out of bound writes. With `0` width or heigth the memory allocation will be `0` but the missing bounds checks allow writing to the pointer at this (not allocated) region. This issue has been patched in FreeRDP 2.4.1.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41160">详情</a></td>
+      </tr>
+      <tr>
+       <td>27bd0f287dc37163d00ef96d8c71a948</td>
+       <td>CVE-2021-41159</td>
+       <td>2021-10-21 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>FreeRDP is a free implementation of the Remote Desktop Protocol (RDP), released under the Apache license. All FreeRDP clients prior to version 2.4.1 using gateway connections (`/gt:rpc`) fail to validate input data. A malicious gateway might allow client memory to be written out of bounds. This issue has been resolved in version 2.4.1. If you are unable to update then use `/gt:http` rather than /gt:rdp connections if possible or use a direct connection without a gateway.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41159">详情</a></td>
+      </tr>
+      <tr>
+       <td>9125fdb7d5f660c0e89764efec51faab</td>
+       <td>CVE-2021-41146</td>
+       <td>2021-10-21 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>qutebrowser is an open source keyboard-focused browser with a minimal GUI. Starting with qutebrowser v1.7.0, the Windows installer for qutebrowser registers a `qutebrowserurl:` URL handler. With certain applications, opening a specially crafted `qutebrowserurl:...` URL can lead to execution of qutebrowser commands, which in turn allows arbitrary code execution via commands such as `:spawn` or `:debug-pyeval`. Only Windows installs where qutebrowser is registered as URL handler are affected. The issue has been fixed in qutebrowser v2.4.0. The fix also adds additional hardening for potential similar issues on Linux (by adding the new --untrusted-args flag to the .desktop file), though no such vulnerabilities are known.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41146">详情</a></td>
+      </tr>
+      <tr>
+       <td>3cb380d099977f7ae24c3507274dfbac</td>
+       <td>CVE-2021-35228</td>
+       <td>2021-10-21 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>This vulnerability occurred due to missing input sanitization for one of the output fields that is extracted from headers on specific section of page causing a reflective cross site scripting attack. An attacker would need to perform a Man in the Middle attack in order to change header for a remote victim.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35228">详情</a></td>
+      </tr>
+      <tr>
+       <td>9226f8c12535518d6d567a3c5349877a</td>
+       <td>CVE-2021-35227</td>
+       <td>2021-10-21 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The HTTP interface was enabled for RabbitMQ Plugin in ARM 2020.2.6 and the ability to configure HTTPS was not available.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35227">详情</a></td>
+      </tr>
+      <tr>
+       <td>8e201a899d9313baab2e973a4edba25d</td>
+       <td>CVE-2021-35225</td>
+       <td>2021-10-21 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Each authenticated Orion Platform user in a MSP (Managed Service Provider) environment can view and browse all NetPath Services from all that MSP's customers. This can lead to any user having a limited insight into other customer's infrastructure and potential data cross-contamination.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-35225">详情</a></td>
+      </tr>
+      <tr>
        <td>3f39242c2aab5b57a685492a73308447</td>
        <td>CVE-2021-42327</td>
        <td>2021-10-21 17:15:00 <img src="imgs/new.gif" /></td>
@@ -405,62 +461,6 @@
        <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability in an API of the Call Bridge feature of Cisco Meeting Server could allow an unauthenticated, remote attacker to cause a denial of service (DoS) condition. This vulnerability is due to improper handling of large series of message requests. An attacker could exploit this vulnerability by sending a series of messages to the vulnerable API. A successful exploit could allow the attacker to cause the affected device to reload, dropping all ongoing calls and resulting in a DoS condition.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-40122">详情</a></td>
-      </tr>
-      <tr>
-       <td>874e11d86450551b078de37efbb0db55</td>
-       <td>CVE-2021-40121</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiple vulnerabilities in the web-based management interface of Cisco Identity Services Engine (ISE) Software could allow an attacker to conduct a cross-site scripting (XSS) attack against a user of the interface. For more information about these vulnerabilities, see the Details section of this advisory.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-40121">详情</a></td>
-      </tr>
-      <tr>
-       <td>dffd31e684d9f7e05b6c0d8e7c0f8e25</td>
-       <td>CVE-2021-39127</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Affected versions of Atlassian Jira Server and Data Center allow anonymous remote attackers to the query component JQL endpoint via a Broken Access Control vulnerability (BAC) vulnerability. The affected versions are before version 8.5.10, and from version 8.6.0 before 8.13.1.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39127">详情</a></td>
-      </tr>
-      <tr>
-       <td>6f6e76560ed05aec4d23fd13875d03a6</td>
-       <td>CVE-2021-39126</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Affected versions of Atlassian Jira Server and Data Center allow remote attackers to modify various resources via a Cross-Site Request Forgery (CSRF) vulnerability, following an Information Disclosure vulnerability in the referrer headers which discloses a user's CSRF token. The affected versions are before version 8.5.10, and from version 8.6.0 before 8.13.2.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39126">详情</a></td>
-      </tr>
-      <tr>
-       <td>0cddf54e6c239993a5daba2cd902cfa8</td>
-       <td>CVE-2021-34789</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the web-based management interface of Cisco Tetration could allow an authenticated, remote attacker to perform a stored cross-site scripting (XSS) attack on an affected system. This vulnerability exists because the web-based management interface does not sufficiently validate user-supplied input. An attacker could exploit this vulnerability by injecting malicious code into specific pages of the interface. A successful exploit could allow the attacker to execute arbitrary script code in the context of the affected interface or access sensitive, browser-based information. To exploit this vulnerability, the attacker would need valid administrative credentials.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34789">详情</a></td>
-      </tr>
-      <tr>
-       <td>04bc851655b82c4cd3d19ad815298f4a</td>
-       <td>CVE-2021-34760</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the web-based management interface of Cisco TelePresence Management Suite (TMS) Software could allow an authenticated, remote attacker to conduct a cross-site scripting (XSS) attack against a user of the interface. This vulnerability is due to insufficient input validation by the web-based management interface. An attacker could exploit this vulnerability by inserting malicious data in a specific data field in the interface. A successful exploit could allow the attacker to execute arbitrary script code in the context of the affected interface or access sensitive, browser-based information.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34760">详情</a></td>
-      </tr>
-      <tr>
-       <td>36b62322ba34b733fb54cce74650c4da</td>
-       <td>CVE-2021-34743</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the application integration feature of Cisco Webex Software could allow an unauthenticated, remote attacker to authorize an external application to integrate with and access a user's account without that user's express consent. This vulnerability is due to improper validation of cross-site request forgery (CSRF) tokens. An attacker could exploit this vulnerability by convincing a targeted user who is currently authenticated to Cisco Webex Software to follow a link designed to pass malicious input to the Cisco Webex Software application authorization interface. A successful exploit could allow the attacker to cause Cisco Webex Software to authorize an application on the user's behalf without the express consent of the user, possibly allowing external applications to read data from that user's profile.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34743">详情</a></td>
-      </tr>
-      <tr>
-       <td>a6e471d913613fe2e05a60c8920984ed</td>
-       <td>CVE-2021-34738</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiple vulnerabilities in the web-based management interface of Cisco Identity Services Engine (ISE) Software could allow an attacker to conduct a cross-site scripting (XSS) attack against a user of the interface. For more information about these vulnerabilities, see the Details section of this advisory.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34738">详情</a></td>
-      </tr>
-      <tr>
-       <td>b8f228daa4aea00f1158d7c2d1b84544</td>
-       <td>CVE-2021-34736</td>
-       <td>2021-10-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the web-based management interface of Cisco Integrated Management Controller (IMC) Software could allow an unauthenticated, remote attacker to cause the web-based management interface to unexpectedly restart. The vulnerability is due to insufficient input validation on the web-based management interface. An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to cause the interface to restart, resulting in a denial of service (DoS) condition.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-34736">详情</a></td>
       </tr>
      </tbody>
     </table>
@@ -1935,6 +1935,13 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9727170e1dce51a00626f1553e042fa1</td>
+       <td>CVE-2021-42098</td>
+       <td>2021-10-18 14:15:10 </td>
+       <td>An incomplete permission check on entries in Devolutions Remote Desktop Manager before 2021.2.16 allows attackers to bypass permissions via batch custom PowerShell.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42098">详情</a></td>
+      </tr>
+      <tr>
        <td>9b2b30e3ad15d89954939b5a137e31b3</td>
        <td>CVE-2021-42566</td>
        <td>2021-10-18 08:15:07 </td>
@@ -2136,13 +2143,6 @@
        <td>2021-10-12 20:15:07 </td>
        <td>Froxlor through 0.10.29.1 allows SQL injection in Database/Manager/DbManagerMySQL.php via a custom DB name.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42325">详情</a></td>
-      </tr>
-      <tr>
-       <td>876ec7c5488b2b52655b672e47c6aca2</td>
-       <td>CVE-2021-42326</td>
-       <td>2021-10-12 19:15:08 </td>
-       <td>Redmine before 4.1.5 and 4.2.x before 4.2.3 may disclose the names of users on activity views due to an insufficient access filter.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42326">详情</a></td>
       </tr>
      </tbody>
     </table>
