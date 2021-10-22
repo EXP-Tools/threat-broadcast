@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-10-22 20:28:10 -->
+<!-- RELEASE TIME : 2021-10-22 22:27:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,41 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c5e3d88b75cf4a1c01d44e24a58342d4</td>
+       <td>CVE-2021-42840</td>
+       <td>2021-10-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>SuiteCRM before 7.11.19 allows remote code execution via the system settings Log File Name setting. In certain circumstances involving admin account takeover, logger_file_name can refer to an attacker-controlled PHP file under the web root, because only the all-lowercase PHP file extensions were blocked. NOTE: this issue exists because of an incomplete fix for CVE-2020-28328.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-42840">详情</a></td>
+      </tr>
+      <tr>
+       <td>65c5c11a7466c045147582a39314d74b</td>
+       <td>CVE-2021-42556</td>
+       <td>2021-10-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Rasa X before 0.42.4 allows Directory Traversal during archive extraction. In the functionality that allows a user to load a trained model archive, an attacker has arbitrary write capability within specific directories via a crafted archive file.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-42556">详情</a></td>
+      </tr>
+      <tr>
+       <td>0e25ab9ff61366d1cc4df559bca1f19d</td>
+       <td>CVE-2021-41171</td>
+       <td>2021-10-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>eLabFTW is an open source electronic lab notebook manager for research teams. In versions of eLabFTW before 4.1.0, it allows attackers to bypass a brute-force protection mechanism by using many different forged PHPSESSID values in HTTP Cookie header. This issue has been addressed by implementing brute force login protection, as recommended by Owasp with Device Cookies. This mechanism will not impact users and will effectively thwart any brute-force attempts at guessing passwords. The only correct way to address this is to upgrade to version 4.1.0. Adding rate limitation upstream of the eLabFTW service is of course a valid option, with or without upgrading.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41171">详情</a></td>
+      </tr>
+      <tr>
+       <td>34abd80801abe217194a12b09c6d523c</td>
+       <td>CVE-2021-29835</td>
+       <td>2021-10-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM Business Automation Workflow 18.0, 19.0, 20.0, and 21.0 is vulnerable to cross-site scripting.  This vulnerability allows users to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session.  IBM X-Force ID:  204833.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-29835">详情</a></td>
+      </tr>
+      <tr>
+       <td>76c6d5e099d23e10568cdb886a64409c</td>
+       <td>CVE-2021-42836</td>
+       <td>2021-10-22 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GJSON before 1.9.3 allows a ReDoS (regular expression denial of service) attack.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-42836">详情</a></td>
+      </tr>
+      <tr>
        <td>ef67a8dbe69e7a252f941990143ac348</td>
        <td>CVE-2021-42542</td>
        <td>2021-10-22 14:15:00 <img src="imgs/new.gif" /></td>
@@ -426,41 +461,6 @@
        <td>2021-10-21 21:15:00 <img src="imgs/new.gif" /></td>
        <td>Rasa is an open source machine learning framework to automate text-and voice-based conversations. In affected versions a vulnerability exists in the functionality that loads a trained model `tar.gz` file which allows a malicious actor to craft a `model.tar.gz` file which can overwrite or replace bot files in the bot directory. The vulnerability is fixed in Rasa 2.8.10. For users unable to update ensure that users do not upload untrusted model files, and restrict CLI or API endpoint access where a malicious actor could target a deployed Rasa instance.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41127">详情</a></td>
-      </tr>
-      <tr>
-       <td>7731a6c3cc1cda41d71217597d6e75ba</td>
-       <td>CVE-2021-36869</td>
-       <td>2021-10-21 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Reflected Cross-Site Scripting (XSS) vulnerability in WordPress Ivory Search plugin (versions <= 4.6.6). Vulnerable parameter: &post.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-36869">详情</a></td>
-      </tr>
-      <tr>
-       <td>053136942154f45a29d03661efa7f97e</td>
-       <td>CVE-2021-27746</td>
-       <td>2021-10-21 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>"HCL Connections Security Update for Reflected Cross-Site Scripting (XSS) Vulnerability"</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-27746">详情</a></td>
-      </tr>
-      <tr>
-       <td>2768f5ccecd8c8ed6b9ffc3f176bffee</td>
-       <td>CVE-2021-41168</td>
-       <td>2021-10-21 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Snudown is a reddit-specific fork of the Sundown Markdown parser used by GitHub, with Python integration added. In affected versions snudown was found to be vulnerable to denial of service attacks to its reference table implementation. References written in markdown ` [reference_name]: https://www.example.com` are inserted into a hash table which was found to have a weak hash function, meaning that an attacker can reliably generate a large number of collisions for it. This makes the hash table vulnerable to a hash-collision DoS attack, a type of algorithmic complexity attack. Further the hash table allowed for duplicate entries resulting in long retrieval times. Proofs of concept and further discussion of the hash collision issue are discussed on the snudown GHSA(https://github.com/reddit/snudown/security/advisories/GHSA-6gvv-9q92-w5f6). Users are advised to update to version 1.7.0.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41168">详情</a></td>
-      </tr>
-      <tr>
-       <td>d50d5bf1868f7ec66de901d87dc057f1</td>
-       <td>CVE-2021-40719</td>
-       <td>2021-10-21 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Adobe Connect version 11.2.2 (and earlier) is affected by a Deserialization of Untrusted Data vulnerability to achieve arbitrary method invocation when AMF messages are deserialized on an Adobe Connect server. An attacker can leverage this to execute remote code execution on the server.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-40719">详情</a></td>
-      </tr>
-      <tr>
-       <td>87f8bd48f11149f07e4aea09811592ea</td>
-       <td>CVE-2021-39357</td>
-       <td>2021-10-21 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Leaky Paywall WordPress plugin is vulnerable to Stored Cross-Site Scripting due to insufficient input validation and sanitization via the ~/class.php file which allowed attackers with administrative user access to inject arbitrary web scripts, in versions up to and including 4.16.5. This affects multi-site installations where unfiltered_html is disabled for administrators, and sites where unfiltered_html is disabled.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-39357">详情</a></td>
       </tr>
      </tbody>
     </table>
@@ -1935,6 +1935,27 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6277be0b298c24b41803a587009e2440</td>
+       <td>CVE-2021-38911</td>
+       <td>2021-10-19 16:15:07 </td>
+       <td>IBM Security Risk Manager on CP4S 1.7.0.0 stores user credentials in plain clear text which can be read by a an authenticatedl privileged user. IBM X-Force ID: 209940.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-38911">详情</a></td>
+      </tr>
+      <tr>
+       <td>39e1bb393b521bb0558a673604dcdb70</td>
+       <td>CVE-2021-3879</td>
+       <td>2021-10-19 13:15:11 </td>
+       <td>snipe-it is vulnerable to Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3879">详情</a></td>
+      </tr>
+      <tr>
+       <td>a2d82bcb8394b171e16d3bb0269b44db</td>
+       <td>CVE-2021-3872</td>
+       <td>2021-10-19 13:15:11 </td>
+       <td>vim is vulnerable to Heap-based Buffer Overflow</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3872">详情</a></td>
+      </tr>
+      <tr>
        <td>c6471502b8ccc6b3961ea6f06532b5c3</td>
        <td>CVE-2021-41153</td>
        <td>2021-10-18 21:15:08 </td>
@@ -2047,6 +2068,34 @@
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41147">详情</a></td>
       </tr>
       <tr>
+       <td>7664202720a8446322ee6f6af749f9be</td>
+       <td>CVE-2021-3881</td>
+       <td>2021-10-15 14:15:07 </td>
+       <td>libmobi is vulnerable to Out-of-bounds Read</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3881">详情</a></td>
+      </tr>
+      <tr>
+       <td>c69fbb8a8c398fbf73f0a21f287ad026</td>
+       <td>CVE-2021-3878</td>
+       <td>2021-10-15 14:15:07 </td>
+       <td>corenlp is vulnerable to Improper Restriction of XML External Entity Reference</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3878">详情</a></td>
+      </tr>
+      <tr>
+       <td>85563b75ee834f955191fac18ef3913e</td>
+       <td>CVE-2021-3875</td>
+       <td>2021-10-15 14:15:07 </td>
+       <td>vim is vulnerable to Heap-based Buffer Overflow</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3875">详情</a></td>
+      </tr>
+      <tr>
+       <td>0edeaf99ce2d4edc93481f2ed138e81b</td>
+       <td>CVE-2021-3874</td>
+       <td>2021-10-15 14:15:07 </td>
+       <td>bookstack is vulnerable to Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-3874">详情</a></td>
+      </tr>
+      <tr>
        <td>539af6a476783afa76b69aeeee49a83a</td>
        <td>CVE-2021-42336</td>
        <td>2021-10-15 12:15:08 </td>
@@ -2094,55 +2143,6 @@
        <td>2021-10-15 12:15:07 </td>
        <td>The &acirc;&euro;&oelig;List View&acirc;&euro;&#65533; function of ShinHer StudyOnline System is not under authority control. After logging in with user&acirc;&euro;&trade;s privilege, remote attackers can access the content of other users&acirc;&euro;&trade; message boards by crafting URL parameters.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42332">详情</a></td>
-      </tr>
-      <tr>
-       <td>f043654c19dfca5f2bb64e26c0dda8a3</td>
-       <td>CVE-2021-42331</td>
-       <td>2021-10-15 12:15:07 </td>
-       <td>The &acirc;&euro;&oelig;Study Edit&acirc;&euro;&#65533; function of ShinHer StudyOnline System does not perform permission control. After logging in with user&acirc;&euro;&trade;s privilege, remote attackers can access and edit other users&acirc;&euro;&trade; tutorial schedule by crafting URL parameters.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42331">详情</a></td>
-      </tr>
-      <tr>
-       <td>e5a41eb2494e54972091f742e6112cec</td>
-       <td>CVE-2021-42340</td>
-       <td>2021-10-14 20:15:09 </td>
-       <td>The fix for bug 63362 present in Apache Tomcat 10.1.0-M1 to 10.1.0-M5, 10.0.0-M1 to 10.0.11, 9.0.40 to 9.0.53 and 8.5.60 to 8.5.71 introduced a memory leak. The object introduced to collect metrics for HTTP upgrade connections was not released for WebSocket connections once the connection was closed. This created a memory leak that, over time, could lead to a denial of service via an OutOfMemoryError.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42340">详情</a></td>
-      </tr>
-      <tr>
-       <td>0be80bde17f0651096fa58012f970653</td>
-       <td>CVE-2021-42369</td>
-       <td>2021-10-14 18:15:12 </td>
-       <td>Imagicle Application Suite (for Cisco UC) before 2021.Summer.2 allows SQL injection. A low-privileged user could inject a SQL statement through the &quot;Export to CSV&quot; feature of the Contact Manager web GUI.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42369">详情</a></td>
-      </tr>
-      <tr>
-       <td>81df7be9eab9341533c4f7fe97694a55</td>
-       <td>CVE-2021-42228</td>
-       <td>2021-10-14 17:15:08 </td>
-       <td>A Cross Site Request Forgery (CSRF) vulnerability exists in KindEditor 4.1.x, as demonstrated by examples/uploadbutton.html.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42228">详情</a></td>
-      </tr>
-      <tr>
-       <td>ac128b8389587791e80781eefc22b9c1</td>
-       <td>CVE-2021-42227</td>
-       <td>2021-10-14 17:15:08 </td>
-       <td>Cross SIte Scripting (XSS) vulnerability exists in KindEditor 4.1.x via a Google search inurl:/examples/uploadbutton.html and then the .html file on the website that uses this editor (the file suffix is allowed).</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42227">详情</a></td>
-      </tr>
-      <tr>
-       <td>f2aaccba31ef0c518e0d8b6b5f943405</td>
-       <td>CVE-2021-41142</td>
-       <td>2021-10-14 16:15:09 </td>
-       <td>Tuleap Open ALM is a libre and open source tool for end to end traceability of application and system developments. There is a cross-site scripting vulnerability in Tuleap Community Edition prior to 12.11.99.25 and Tuleap Enterprise Edition 12.11-2. A malicious user with the capability to add and remove attachment to an artifact could force a victim to execute uncontrolled code. Tuleap Community Edition 11.17.99.146 and Tuleap Enterprise Edition 12.11-2 contain a fix for the issue.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41142">详情</a></td>
-      </tr>
-      <tr>
-       <td>09303a09cbab3fc0b6a4210aebf392aa</td>
-       <td>CVE-2021-42342</td>
-       <td>2021-10-14 06:15:07 </td>
-       <td>An issue was discovered in GoAhead 4.x and 5.x before 5.1.5. In the file upload filter, user form variables can be passed to CGI scripts without being prefixed with the CGI prefix. This permits tunneling untrusted environment variables into vulnerable CGI scripts.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42342">详情</a></td>
       </tr>
      </tbody>
     </table>
