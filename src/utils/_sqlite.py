@@ -12,7 +12,7 @@ from src.utils import log
 import sqlite3
 
 
-class SqliteSDBC:
+class SqliteDBC:
     """
     Sqlite 数据库封装类
     """

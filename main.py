@@ -8,7 +8,7 @@
 import sys
 from src.cfg import env
 from src.utils import log
-from src.utils._sqlite import SqliteSDBC
+from src.utils._sqlite import SqliteDBC
 
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus
@@ -45,7 +45,7 @@ def help_info():
 
 def init():
     log.init()
-    sdbc = SqliteSDBC(env.DB_PATH)
+    sdbc = SqliteDBC(env.DB_PATH)
     sdbc.init(env.SQL_PATH)
 
 
