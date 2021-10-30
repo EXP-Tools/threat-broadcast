@@ -9,7 +9,7 @@ import os
 from abc import ABCMeta, abstractmethod     # python不存在抽象类的概念， 需要引入abc模块实现
 from src.cfg import env
 from src.utils import log
-from src.utils._sqlite import SqliteSDBC
+from src.utils._sqlite import SqliteDBC
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
 
@@ -65,7 +65,7 @@ class BaseCrawler:
             log.error('获取 [%s] 威胁情报异常' % self.NAME_CH())
 
         dao = TCvesDao()
-        sdbc = SqliteSDBC(env.DB_PATH)
+        sdbc = SqliteDBC(env.DB_PATH)
         conn = sdbc.conn()
         _cves = []
         for cve in new_cves:

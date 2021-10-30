@@ -11,7 +11,7 @@ import time
 from datetime import datetime, timedelta
 from src.cfg import env
 from src.utils import log
-from src.utils._sqlite import SqliteSDBC
+from src.utils._sqlite import SqliteDBC
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
 
@@ -27,7 +27,7 @@ def to_page(top_limit = 10):
     tormorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d') 
 
     html_tpl, table_tpl, row_tpl = load_tpl()
-    sdbc = SqliteSDBC(env.DB_PATH)
+    sdbc = SqliteDBC(env.DB_PATH)
     conn = sdbc.conn()
 
     tables = []
