@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-05 17:33:10 -->
+<!-- RELEASE TIME : 2021-11-05 18:32:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -479,6 +479,27 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4546cae9a67c95c46c72bf4f34405667</td>
+       <td>CNVD-2021-72347</td>
+       <td>2021-11-06 18:31:57 <img src="imgs/new.gif" /></td>
+       <td>东软NetEye VPN网关系统存在弱口令漏洞</td>
+       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-72347">详情</a></td>
+      </tr>
+      <tr>
+       <td>2a0d5e9e14c014863ab7cc67be26b62b</td>
+       <td>CNVD-2021-72386</td>
+       <td>2021-11-06 18:31:56 <img src="imgs/new.gif" /></td>
+       <td>上海纽盾科技股份有限公司Reporter组件存在任意文件下载漏洞</td>
+       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-72386">详情</a></td>
+      </tr>
+      <tr>
+       <td>971f7d179558b1074d9a45266410adab</td>
+       <td>CNVD-2021-72399</td>
+       <td>2021-11-06 18:31:54 <img src="imgs/new.gif" /></td>
+       <td>北京网御星云信息技术有限公司网御安全管理平台存在命令执行漏洞</td>
+       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-72399">详情</a></td>
+      </tr>
+      <tr>
        <td>5d22397a7f54415d400f15a9cb15e90a</td>
        <td>CNVD-2021-84502</td>
        <td>2021-11-05 12:42:50 <img src="imgs/new.gif" /></td>
@@ -666,27 +687,6 @@
        <td>2021-11-01 14:24:46</td>
        <td>Huawei Emui和Magic UI竞争条件漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-83530">详情</a></td>
-      </tr>
-      <tr>
-       <td>50bb8f7ca4a665164257cf76938f4376</td>
-       <td>CNVD-2021-83531 (CVE-2021-36996)</td>
-       <td>2021-11-01 14:24:45</td>
-       <td>Huawei Emui和Magic UI不正确验证漏洞</td>
-       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-83531">详情</a></td>
-      </tr>
-      <tr>
-       <td>51382f866e18f56e4dd01a691d6fd77e</td>
-       <td>CNVD-2021-70748</td>
-       <td>2021-10-29 16:44:16</td>
-       <td>纽盾科技NDF7000 Series存在弱口令漏洞</td>
-       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-70748">详情</a></td>
-      </tr>
-      <tr>
-       <td>6b473621a0a863675b7b920e73064262</td>
-       <td>CNVD-2021-70754</td>
-       <td>2021-10-29 16:44:15</td>
-       <td>PublicCMS存在命令执行漏洞</td>
-       <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-70754">详情</a></td>
       </tr>
      </tbody>
     </table>
@@ -1935,6 +1935,20 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>477ba88be7c8785044bd8b53d85e2db0</td>
+       <td>CVE-2021-41174</td>
+       <td>2021-11-03 18:15:08 </td>
+       <td>Grafana is an open-source platform for monitoring and observability. In affected versions if an attacker is able to convince a victim to visit a URL referencing a vulnerable page, arbitrary JavaScript content may be executed within the context of the victim's browser. The user visiting the malicious link must be unauthenticated and the link must be for a page that contains the login button in the menu bar. The url has to be crafted to exploit AngularJS rendering and contain the interpolation binding for AngularJS expressions. AngularJS uses double curly braces for interpolation binding: {{ }} ex: {{constructor.constructor(&Atilde;&cent;&acirc;&sbquo;&not;&Euml;&oelig;alert(1)&Atilde;&cent;&acirc;&sbquo;&not;&acirc;&bdquo;&cent;)()}}. When the user follows the link and the page renders, the login button will contain the original link with a query parameter to force a redirect to the login page. The URL is not validated and the AngularJS rendering engine will execute the JavaScript expression contained in the URL. Users are advised to upgrade as soon as possible. If for some reason you cannot upgrade, you can use a reverse proxy or similar to block access to block the literal string {{ in the path.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41174">详情</a></td>
+      </tr>
+      <tr>
+       <td>3592fc097d8c986a51d3ea0999fb403a</td>
+       <td>CVE-2021-41134</td>
+       <td>2021-11-03 18:15:08 </td>
+       <td>nbdime provides tools for diffing and merging of Jupyter Notebooks. In affected versions a stored cross-site scripting (XSS) issue exists within the Jupyter-owned nbdime project. It appears that when reading the file name and path from disk, the extension does not sanitize the string it constructs before returning it to be displayed. The diffNotebookCheckpoint function within nbdime causes this issue. When attempting to display the name of the local notebook (diffNotebookCheckpoint), nbdime appears to simply append .ipynb to the name of the input file. The NbdimeWidget is then created, and the base string is passed through to the request API function. From there, the frontend simply renders the HTML tag and anything along with it. Users are advised to patch to the most recent version of the affected product.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41134">详情</a></td>
+      </tr>
+      <tr>
        <td>4f125769cf09025187f91736548d1313</td>
        <td>CVE-2021-43324</td>
        <td>2021-11-03 15:15:07 </td>
@@ -1947,6 +1961,13 @@
        <td>2021-11-03 15:15:07 </td>
        <td>An SQL Injection vulnerability exists in Sourcecodester Customer Relationship Management System (CRM) 1.0 via the username parameter in customer/login.php.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43130">详情</a></td>
+      </tr>
+      <tr>
+       <td>20111a5188f751cc599004aae81b57a7</td>
+       <td>CVE-2021-41036</td>
+       <td>2021-11-03 00:15:08 </td>
+       <td>In versions prior to 1.1 of the Eclipse Paho MQTT C Client, the client does not check rem_len size in readpacket.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41036">详情</a></td>
       </tr>
       <tr>
        <td>5474b1aa9991397d79088d787b188699</td>
@@ -2005,6 +2026,13 @@
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43058">详情</a></td>
       </tr>
       <tr>
+       <td>1b0b486333fb1e8ad00a69dd4f048144</td>
+       <td>CVE-2021-41187</td>
+       <td>2021-11-01 22:15:07 </td>
+       <td>DHIS 2 is an information system for data capture, management, validation, analytics and visualization. A SQL injection security vulnerability has been found in specific versions of DHIS2. This vulnerability affects the API endpoints for /api/trackedEntityInstances and api/events in DHIS2. The system is vulnerable to attack only from users that are logged in to DHIS2, and there is no known way of exploiting the vulnerability without first being logged in as a DHIS2 user. A successful exploit of this vulnerability could allow the malicious user to read, edit and delete data in the DHIS2 instance. There are no known exploits of the security vulnerabilities addressed by these patch releases. However, we strongly recommend that all DHIS2 implementations using versions 2.32, 2.33, 2.34, 2.35 and 2.36 install these patches as soon as possible. There is no straightforward known workaround for DHIS2 instances using the Tracker functionality other than upgrading the affected DHIS2 server to one of the patches in which this vulnerability has been fixed. For implementations which do NOT use Tracker functionality, it may be possible to block all network access to POST to the /api/trackedEntityInstance and /api/events endpoints as a temporary workaround while waiting to upgrade.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41187">详情</a></td>
+      </tr>
+      <tr>
        <td>e9c55a8591affb83460affb0780723e5</td>
        <td>CVE-2021-42917</td>
        <td>2021-11-01 19:15:07 </td>
@@ -2047,11 +2075,25 @@
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41748">详情</a></td>
       </tr>
       <tr>
+       <td>f3b51d7d6ad494d40305fd4ed12e4e9f</td>
+       <td>CVE-2021-41189</td>
+       <td>2021-10-29 18:15:08 </td>
+       <td>DSpace is an open source turnkey repository application. In version 7.0, any community or collection administrator can escalate their permission up to become system administrator. This vulnerability only exists in 7.0 and does not impact 6.x or below. This issue is patched in version 7.1. As a workaround, users of 7.0 may temporarily disable the ability for community or collection administrators to manage permissions or workflows settings.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41189">详情</a></td>
+      </tr>
+      <tr>
        <td>50c9302896431ab1427c225ca7b70c13</td>
        <td>CVE-2021-41676</td>
        <td>2021-10-29 16:15:07 </td>
        <td>An SQL Injection vulnerabilty exists in the oretnom23 Pharmacy Point of Sale System 1.0 in the login function in actions.php.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41676">详情</a></td>
+      </tr>
+      <tr>
+       <td>22446dc666055954ff90873382192dad</td>
+       <td>CVE-2021-41186</td>
+       <td>2021-10-29 14:15:07 </td>
+       <td>Fluentd collects events from various data sources and writes them to files to help unify logging infrastructure. The parser_apache2 plugin in Fluentd v0.14.14 to v1.14.1 suffers from a regular expression denial of service (ReDoS) vulnerability. A broken apache log with a certain pattern of string can spend too much time in a regular expression, resulting in the potential for a DoS attack. This issue is patched in version 1.14.2 There are two workarounds available. Either don't use parser_apache2 for parsing logs (which cannot guarantee generated by Apache), or put patched version of parser_apache2.rb into /etc/fluent/plugin directory (or any other directories specified by the environment variable `FLUENT_PLUGIN` or `--plugin` option of fluentd).</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41186">详情</a></td>
       </tr>
       <tr>
        <td>eabc9556181d3f7905f4b8bb360b836c</td>
@@ -2075,6 +2117,13 @@
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43056">详情</a></td>
       </tr>
       <tr>
+       <td>cf3c03fd6bf89bbe0a4c8acb3c9eb2ef</td>
+       <td>CVE-2021-41191</td>
+       <td>2021-10-27 21:15:08 </td>
+       <td>Roblox-Purchasing-Hub is an open source Roblox product purchasing hub. A security risk in versions 1.0.1 and prior allowed people who have someone's API URL to get product files without an API key. This issue is fixed in version 1.0.2. As a workaround, add `@require_apikey` in `BOT/lib/cogs/website.py` under the route for `/v1/products`.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41191">详情</a></td>
+      </tr>
+      <tr>
        <td>6a433c893ff730c31a76638575116fd8</td>
        <td>CVE-2021-41872</td>
        <td>2021-10-27 13:15:07 </td>
@@ -2094,55 +2143,6 @@
        <td>2021-10-26 15:15:10 </td>
        <td>jQuery-UI is the official jQuery user interface library. Prior to version 1.13.0, accepting the value of the `altField` option of the Datepicker widget from untrusted sources may execute untrusted code. The issue is fixed in jQuery UI 1.13.0. Any string value passed to the `altField` option is now treated as a CSS selector. A workaround is to not accept the value of the `altField` option from untrusted sources.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41182">详情</a></td>
-      </tr>
-      <tr>
-       <td>85ceb541afc16b6799d46a3a8e1ad13a</td>
-       <td>CVE-2021-41175</td>
-       <td>2021-10-26 14:15:08 </td>
-       <td>Pi-hole's Web interface (based on AdminLTE) provides a central location to manage one's Pi-hole and review the statistics generated by FTLDNS. Prior to version 5.8, cross-site scripting is possible when adding a client via the groups-clients management page. This issue was patched in version 5.8.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41175">详情</a></td>
-      </tr>
-      <tr>
-       <td>42de9c3ec8c06b6c4fe7bcdb31031175</td>
-       <td>CVE-2021-41173</td>
-       <td>2021-10-26 14:15:08 </td>
-       <td>Go Ethereum is the official Golang implementation of the Ethereum protocol. Prior to version 1.10.9, a vulnerable node is susceptible to crash when processing a maliciously crafted message from a peer. Version v1.10.9 contains patches to the vulnerability. There are no known workarounds aside from upgrading.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41173">详情</a></td>
-      </tr>
-      <tr>
-       <td>9cdb31fee8584fa85fdae05915ac9908</td>
-       <td>CVE-2021-41172</td>
-       <td>2021-10-26 14:15:08 </td>
-       <td>AS_Redis is an AntSword plugin for Redis. The Redis Manage plugin for AntSword prior to version 0.5 is vulnerable to Self-XSS due to due to insufficient input validation and sanitization via redis server configuration. Self-XSS in the plugin configuration leads to code execution. This issue is patched in version 0.5.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41172">详情</a></td>
-      </tr>
-      <tr>
-       <td>b229c1e7ac8a67f856c9faa12d083ea9</td>
-       <td>CVE-2021-41873</td>
-       <td>2021-10-26 12:15:07 </td>
-       <td>Penguin Aurora TV Box 41502 is a high-end network HD set-top box produced by Tencent Video and Skyworth Digital. An unauthorized access vulnerability exists in the Penguin Aurora Box. An attacker can use the vulnerability to gain unauthorized access to a specific link to remotely control the TV.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41873">详情</a></td>
-      </tr>
-      <tr>
-       <td>f8653efab9b52ea119bcb4a6518fb115</td>
-       <td>CVE-2021-42343</td>
-       <td>2021-10-26 11:15:07 </td>
-       <td>An issue was discovered in Dask (aka python-dask) through 2021.09.1. Single machine Dask clusters started with dask.distributed.LocalCluster or dask.distributed.Client (which defaults to using LocalCluster) would mistakenly configure their respective Dask workers to listen on external interfaces (typically with a randomly selected high port) rather than only on localhost. A Dask cluster created using this method (when running on a machine that has an applicable port exposed) could be used by a sophisticated attacker to achieve remote code execution.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42343">详情</a></td>
-      </tr>
-      <tr>
-       <td>738d88d135771321dea5a0a78f6c1235</td>
-       <td>CVE-2021-41308</td>
-       <td>2021-10-26 05:15:07 </td>
-       <td>Affected versions of Atlassian Jira Server and Data Center allow authenticated yet non-administrator remote attackers to edit the File Replication settings via a Broken Access Control vulnerability in the `ReplicationSettings!default.jspa` endpoint. The affected versions are before version 8.6.0, from version 8.7.0 before 8.13.12, and from version 8.14.0 before 8.20.1.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41308">详情</a></td>
-      </tr>
-      <tr>
-       <td>12a73863692c4b24298a3c298d08e7b2</td>
-       <td>CVE-2021-41307</td>
-       <td>2021-10-26 05:15:07 </td>
-       <td>Affected versions of Atlassian Jira Server and Data Center allow unauthenticated remote attackers to view the names of private projects and private filters via an Insecure Direct Object References (IDOR) vulnerability in the Workload Pie Chart Gadget. The affected versions are before version 8.13.12, and from version 8.14.0 before 8.20.0.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-41307">详情</a></td>
       </tr>
      </tbody>
     </table>
