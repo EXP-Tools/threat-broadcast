@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-05 22:27:31 -->
+<!-- RELEASE TIME : 2021-11-05 23:27:30 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c723b9ac8b7ec42667ea66ced56b7013</td>
+       <td>CVE-2021-42359</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>WP DSGVO Tools (GDPR) <= 3.1.23 had an AJAX action, ‘admin-dismiss-unsubscribe‘, which lacked a capability check and a nonce check and was available to unauthenticated users, and did not check the post type when deleting unsubscription requests. As such, it was possible for an attacker to permanently delete an arbitrary post or page on the site by sending an AJAX request with the “action” parameter set to “admin-dismiss-unsubscribe” and the “id” parameter set to the post to be deleted. Sending such a request would move the post to the trash, and repeating the request would permanently delete the post in question.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-42359">详情</a></td>
+      </tr>
+      <tr>
+       <td>ec63089fdaf9b06f56d63f9c0d05d9b0</td>
+       <td>CVE-2021-41226</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the implementation of `SparseBinCount` is vulnerable to a heap OOB access. This is because of missing validation between the elements of the `values` argument and the shape of the sparse output. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41226">详情</a></td>
+      </tr>
+      <tr>
+       <td>37e3c95af42a2187d60a483a938e4082</td>
+       <td>CVE-2021-41224</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the implementation of `SparseFillEmptyRows` can be made to trigger a heap OOB access. This occurs whenever the size of `indices` does not match the size of `values`. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41224">详情</a></td>
+      </tr>
+      <tr>
+       <td>2fdfb793cbcd74bd8b45adf36c6ef455</td>
+       <td>CVE-2021-41223</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the implementation of `FusedBatchNorm` kernels is vulnerable to a heap OOB access. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41223">详情</a></td>
+      </tr>
+      <tr>
+       <td>f012c4f6a3a71f55d0da008ed663e4b4</td>
+       <td>CVE-2021-41219</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the code for sparse matrix multiplication is vulnerable to undefined behavior via binding a reference to `nullptr`. This occurs whenever the dimensions of `a` or `b` are 0 or less. In the case on one of these is 0, an empty output tensor should be allocated (to conserve the invariant that output tensors are always allocated when the operation is successful) but nothing should be written to it (that is, we should return early from the kernel implementation). Otherwise, attempts to write to this empty tensor would result in heap OOB access. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41219">详情</a></td>
+      </tr>
+      <tr>
+       <td>4cadf3eddf2e08d5bc514b8c6b98481a</td>
+       <td>CVE-2021-41217</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the process of building the control flow graph for a TensorFlow model is vulnerable to a null pointer exception when nodes that should be paired are not. This occurs because the code assumes that the first node in the pairing (e.g., an `Enter` node) always exists when encountering the second node (e.g., an `Exit` node). When this is not the case, `parent` is `nullptr` so dereferencing it causes a crash. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41217">详情</a></td>
+      </tr>
+      <tr>
+       <td>e237203a56ac13a149f1037ca90a7c8f</td>
+       <td>CVE-2021-41215</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the shape inference code for `DeserializeSparse` can trigger a null pointer dereference. This is because the shape inference function assumes that the `serialize_sparse` tensor is a tensor with positive rank (and having `3` as the last dimension). The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41215">详情</a></td>
+      </tr>
+      <tr>
+       <td>142d6004dd432bff12a5376b589d27fe</td>
+       <td>CVE-2021-41214</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the shape inference code for `tf.ragged.cross` has an undefined behavior due to binding a reference to `nullptr`. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41214">详情</a></td>
+      </tr>
+      <tr>
+       <td>39a0e5862743c139cc7c4bb30cce608c</td>
+       <td>CVE-2021-41212</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the shape inference code for `tf.ragged.cross` can trigger a read outside of bounds of heap allocated array. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41212">详情</a></td>
+      </tr>
+      <tr>
+       <td>504b84072741e210893c4d6c1b59f359</td>
+       <td>CVE-2021-41211</td>
+       <td>2021-11-05 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. In affected versions the shape inference code for `QuantizeV2` can trigger a read outside of bounds of heap allocated array. This occurs whenever `axis` is a negative value less than `-1`. In this case, we are accessing data before the start of a heap buffer. The code allows `axis` to be an optional argument (`s` would contain an `error::NOT_FOUND` error code). Otherwise, it assumes that `axis` is a valid index into the dimensions of the `input` tensor. If `axis` is less than `-1` then this results in a heap OOB read. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, as this version is the only one that is also affected.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41211">详情</a></td>
+      </tr>
+      <tr>
        <td>16996e815aff5fbb346ad4fb29cfc5ad</td>
        <td>CVE-2021-43406</td>
        <td>2021-11-05 18:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-11-05 15:15:00 <img src="imgs/new.gif" /></td>
        <td>grav is vulnerable to Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-3924">详情</a></td>
-      </tr>
-      <tr>
-       <td>4cb02b71988c9cbde14927252f30cf2c</td>
-       <td>CVE-2021-3916</td>
-       <td>2021-11-05 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>bookstack is vulnerable to Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-3916">详情</a></td>
-      </tr>
-      <tr>
-       <td>fddac88958e7ae462ebc0d04df621897</td>
-       <td>CVE-2021-42671</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>An incorrect access control vulnerability exists in Sourcecodester Engineers Online Portal in PHP in nia_munoz_monitoring_system/admin/uploads. An attacker can leverage this vulnerability in order to bypass access controls and access all the files uploaded to the web server without the need of authentication or authorization.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42671">详情</a></td>
-      </tr>
-      <tr>
-       <td>1d3447bea9d42114f51be9291a077d46</td>
-       <td>CVE-2021-42670</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A SQL injection vulnerability exists in Sourcecodester Engineers Online Portal in PHP via the id parameter to the announcements_student.php web page. As a result a malicious user can extract sensitive data from the web server and in some cases use this vulnerability in order to get a remote code execution on the remote web server.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42670">详情</a></td>
-      </tr>
-      <tr>
-       <td>1be4faf7c0ee667f16f5a50b7cf9c1a1</td>
-       <td>CVE-2021-42669</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A file upload vulnerability exists in Sourcecodester Engineers Online Portal in PHP via dashboard_teacher.php, which allows changing the avatar through teacher_avatar.php. Once an avatar gets uploaded it is getting uploaded to the /admin/uploads/ directory, and is accessible by all users. By uploading a php webshell containing "<?php system($_GET["cmd"]); ?>" the attacker can execute commands on the web server with - /admin/uploads/php-webshell?cmd=id.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42669">详情</a></td>
-      </tr>
-      <tr>
-       <td>6d3200e13b40b3128d2e3bef926f5746</td>
-       <td>CVE-2021-42668</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A SQL Injection vulnerability exists in Sourcecodester Engineers Online Portal in PHP via the id parameter in the my_classmates.php web page.. As a result, an attacker can extract sensitive data from the web server and in some cases can use this vulnerability in order to get a remote code execution on the remote web server.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42668">详情</a></td>
-      </tr>
-      <tr>
-       <td>8b931a1bcf5dfccad7ff3e8ce9d5247b</td>
-       <td>CVE-2021-42667</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A SQL Injection vulnerability exists in Sourcecodester Online Event Booking and Reservation System in PHP in event-management/views. An attacker can leverage this vulnerability in order to manipulate the sql query performed. As a result he can extract sensitive data from the web server and in some cases he can use this vulnerability in order to get a remote code execution on the remote web server.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42667">详情</a></td>
-      </tr>
-      <tr>
-       <td>6a924b82218067d50c04a4c58d98d409</td>
-       <td>CVE-2021-42666</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A SQL Injection vulnerability exists in Sourcecodester Engineers Online Portal in PHP via the id parameter to quiz_question.php, which could let a malicious user extract sensitive data from the web server and in some cases use this vulnerability in order to get a remote code execution on the remote web server.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42666">详情</a></td>
-      </tr>
-      <tr>
-       <td>79e3c2dc46febfc6e0254912bdd6b0ec</td>
-       <td>CVE-2021-42665</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>An SQL Injection vulnerability exists in Sourcecodester Engineers Online Portal in PHP via the login form inside of index.php, which can allow an attacker to bypass authentication.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42665">详情</a></td>
-      </tr>
-      <tr>
-       <td>2545975e67a38ec435495c700c8e7bf1</td>
-       <td>CVE-2021-42664</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Stored Cross Site Scripting (XSS) Vulneraibiilty exists in Sourcecodester Engineers Online Portal in PHP via the (1) Quiz title and (2) quiz description parameters to add_quiz.php. An attacker can leverage this vulnerability in order to run javascript commands on the web server surfers behalf, which can lead to cookie stealing and more.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42664">详情</a></td>
-      </tr>
-      <tr>
-       <td>deb13757448d253efb2f5c2743e7f386</td>
-       <td>CVE-2021-42663</td>
-       <td>2021-11-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>An HTML injection vulnerability exists in Sourcecodester Online Event Booking and Reservation System in PHP/MySQL via the msg parameter to /event-management/index.php. An attacker can leverage this vulnerability in order to change the visibility of the website. Once the target user clicks on a given link he will display the content of the HTML code of the attacker's choice.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42663">详情</a></td>
       </tr>
      </tbody>
     </table>
