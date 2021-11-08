@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-08 19:21:41 -->
+<!-- RELEASE TIME : 2021-11-08 22:27:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d2fa1a5ed7ef7f1da706f37fd5561c8c</td>
+       <td>CVE-2021-41170</td>
+       <td>2021-11-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>### Impact Versions prior 1.1.1 have allowed for passing in closures directly into the template engine. As a result values that are callable are executed by the template engine. The issue arises if a value has the same name as a method or function in scope and can therefore be executed either by mistake or maliciously. In theory all users of the package are affected as long as they either deal with direct user input or database values. A multi-step attack on is therefore plausible. ### Patches Version 1.1.1 has addressed this vulnerability. ```php $params = [ 'reverse' => fn($input) => strrev($input), // <-- no longer possible with version ~1.1.1 'value' => 'My website' ] TemplateFunctions::registerClosure('reverse', fn($input) => strrev($input)); // <-- still possible (and nicely isolated) Template::embrace('<h1>{{reverse(value)}}</h1>', $params); ``` ### Workarounds Unfortunately only working with hardcoded values is safe in prior versions. As this likely defeats the purpose of a template engine, please upgrade. ### References As a possible exploit is relatively easy to achieve, I will not share steps to reproduce the issue for now. ### For more information If you have any questions or comments about this advisory: * Open an issue in [our repo](https://github.com/sroehrl/neoan3-template)</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41170">详情</a></td>
+      </tr>
+      <tr>
+       <td>6f20d42eb5acb1f75234f944330ee197</td>
+       <td>CVE-2021-39420</td>
+       <td>2021-11-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple Cross Site Scripting (XSS) vulnerabilities exist in VFront 0.99.5 via the (1) s parameter in search_all.php and the (2) msg parameter in add.attach.php.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-39420">详情</a></td>
+      </tr>
+      <tr>
+       <td>2a5d0a6865d2d94c95dd472ff5bbffb3</td>
+       <td>CVE-2021-40577</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Stored Cross Site Scripting (XSS) vulnerability exists in Sourcecodester Online Enrollment Management System in PHP and PayPal Free Source Code 1.0 in the Add-Users page via the Name parameter.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40577">详情</a></td>
+      </tr>
+      <tr>
+       <td>2168400bf182e98c290d1b0a9612b1f1</td>
+       <td>CVE-2021-24844</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Affiliates Manager WordPress plugin before 2.8.7 does not validate the orderby parameter before using it in an SQL statement in the admin dashboard, leading to an SQL Injection issue</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-24844">详情</a></td>
+      </tr>
+      <tr>
+       <td>d5ce7b1050d85fae71577c6618a1666e</td>
+       <td>CVE-2021-24840</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Squaretype WordPress theme before 3.0.4 allows unauthenticated users to manipulate the query_vars used to retrieve the posts to display in one of its REST endpoint, without any validation. As a result, private and scheduled posts could be retrieved via a crafted request.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-24840">详情</a></td>
+      </tr>
+      <tr>
+       <td>b3719116c0c9079aa05954c9dbfdd06d</td>
+       <td>CVE-2021-24835</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The WCFM â€“ Frontend Manager for WooCommerce along with Bookings Subscription Listings Compatible WordPress plugin before 6.5.12, when used in combination with another WCFM - WooCommerce Multivendor plugin such as WCFM - WooCommerce Multivendor Marketplace, does not escape the withdrawal_vendor parameter before using it in a SQL statement, allowing low privilege users such as Subscribers to perform SQL injection attacks</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-24835">详情</a></td>
+      </tr>
+      <tr>
+       <td>e9a0799472bd921fa3b1f83ad7571dba</td>
+       <td>CVE-2021-24832</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The WP SEO Redirect 301 WordPress plugin before 2.3.2 does not have CSRF in place when deleting redirects, which could allow attackers to make a logged in admin delete them via a CSRF attack</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-24832">详情</a></td>
+      </tr>
+      <tr>
+       <td>d4591e5bfe34c5e0ec199b9aaca8b2b1</td>
+       <td>CVE-2021-24829</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Visitor Traffic Real Time Statistics WordPress plugin before 3.9 does not validate and escape user input passed to the today_traffic_index AJAX action (available to any authenticated users) before using it in a SQL statement, leading to an SQL injection issue</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-24829">详情</a></td>
+      </tr>
+      <tr>
+       <td>87a7bf1a3c8e3ca659b12f80947a79c6</td>
+       <td>CVE-2021-24827</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Asgaros Forum WordPress plugin before 1.15.13 does not validate and escape user input when subscribing to a topic before using it in a SQL statement, leading to an unauthenticated SQL injection issue</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-24827">详情</a></td>
+      </tr>
+      <tr>
+       <td>c400ea4b352b120b4925917adaccc3f6</td>
+       <td>CVE-2021-24816</td>
+       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Phoenix Media Rename WordPress plugin before 3.4.4 does not have capability checks in its phoenix_media_rename AJAX action, which could allow users with Author roles to rename any uploaded media files, including ones they do not own.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-24816">详情</a></td>
+      </tr>
+      <tr>
        <td>1d371b38864740738d9c029c6cbed380</td>
        <td>CVE-2021-42770</td>
        <td>2021-11-08 16:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-11-08 04:15:00 <img src="imgs/new.gif" /></td>
        <td>An issue was discovered in Barrier before 2.3.4. An unauthenticated attacker can cause a segmentation fault in the barriers component (aka the server-side implementation of Barrier) by quickly opening and closing TCP connections while sending a Hello message for each TCP session.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-42074">详情</a></td>
-      </tr>
-      <tr>
-       <td>8dce4999ce3638a9f6ea1c21477c2121</td>
-       <td>CVE-2021-42073</td>
-       <td>2021-11-08 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Barrier before 2.4.0. An attacker can enter an active session state with the barriers component (aka the server-side implementation of Barrier) simply by supplying a client label that identifies a valid client configuration. This label is "Unnamed" by default but could instead be guessed from hostnames or other publicly available information. In the active session state, an attacker can capture input device events from the server, and also modify the clipboard content on the server.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42073">详情</a></td>
-      </tr>
-      <tr>
-       <td>13ce227cce96a8062f3d367a18ee6f68</td>
-       <td>CVE-2021-42072</td>
-       <td>2021-11-08 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Barrier before 2.4.0. The barriers component (aka the server-side implementation of Barrier) does not sufficiently verify the identify of connecting clients. Clients can thus exploit weaknesses in the provided protocol to cause denial-of-service or stage further attacks that could lead to information leaks or integrity corruption.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42072">详情</a></td>
-      </tr>
-      <tr>
-       <td>e9104ffd5f5c12bda3b60ce019cc8429</td>
-       <td>CVE-2021-43414</td>
-       <td>2021-11-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in GNU Hurd before 0.9 20210404-9. The use of an authentication protocol in the proc server is vulnerable to man-in-the-middle attacks, which can be exploited for local privilege escalation to get full root access.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43414">详情</a></td>
-      </tr>
-      <tr>
-       <td>a8c1331bacb4ce3c95230ea654f1c00d</td>
-       <td>CVE-2021-43413</td>
-       <td>2021-11-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in GNU Hurd before 0.9 20210404-9. A single pager port is shared among everyone who mmaps a file, allowing anyone to modify any files that they can read. This can be trivially exploited to get full root access.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43413">详情</a></td>
-      </tr>
-      <tr>
-       <td>cd1e19e22ffc3d6bb7f7589caf87c6c3</td>
-       <td>CVE-2021-43412</td>
-       <td>2021-11-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in GNU Hurd before 0.9 20210404-9. libports accepts fake notification messages from any client on any port, which can lead to port use-after-free. This can be exploited for local privilege escalation to get full root access.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43412">详情</a></td>
-      </tr>
-      <tr>
-       <td>7ea7cb48d2c9dfeaa2ef43eac2346204</td>
-       <td>CVE-2021-43411</td>
-       <td>2021-11-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in GNU Hurd before 0.9 20210404-9. When trying to exec a setuid executable, there's a window of time when the process already has the new privileges, but still refers to the old task and is accessible through the old process port. This can be exploited to get full root access.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43411">详情</a></td>
-      </tr>
-      <tr>
-       <td>9315bafa4a0bb773c662cf53b7709d35</td>
-       <td>CVE-2021-25978</td>
-       <td>2021-11-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Apostrophe CMS versions between 2.63.0 to 3.3.1 are vulnerable to Stored XSS where an editor uploads an SVG file that contains malicious JavaScript onto the Images module, which triggers XSS once viewed.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-25978">详情</a></td>
-      </tr>
-      <tr>
-       <td>89891760b1fa95ee2b39db4d6859f936</td>
-       <td>CVE-2021-37471</td>
-       <td>2021-11-07 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A restricted shell escape sequence is possible on Cradlepoint IBR900-600 7.2.60 devices that can lead to an attacker denying the availability of all console or SSH command-line access.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-37471">详情</a></td>
-      </tr>
-      <tr>
-       <td>b746a320128ecf1935d01c0c81518c84</td>
-       <td>CVE-2020-23130</td>
-       <td>2021-11-07 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-23130">详情</a></td>
-      </tr>
-      <tr>
-       <td>196093b36cd87cedde36004c3d76a3e5</td>
-       <td>CVE-2020-23129</td>
-       <td>2021-11-07 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2020-23129">详情</a></td>
       </tr>
      </tbody>
     </table>
