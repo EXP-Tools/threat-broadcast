@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-08 23:27:29 -->
+<!-- RELEASE TIME : 2021-11-09 01:19:51 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,34 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>15450a139bb93dc4ab6cb75ccfd2922f</td>
+       <td>CVE-2021-41253</td>
+       <td>2021-11-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zydis is an x86/x86-64 disassembler library. Users of Zydis versions v3.2.0 and older that use the string functions provided in `zycore` in order to append untrusted user data to the formatter buffer within their custom formatter hooks can run into heap buffer overflows. Older versions of Zydis failed to properly initialize the string object within the formatter buffer, forgetting to initialize a few fields, leaving their value to chance. This could then in turn cause zycore functions like `ZyanStringAppend` to make incorrect calculations for the new target size, resulting in heap memory corruption. This does not affect the regular uncustomized Zydis formatter, because Zydis internally doesn't use the string functions in zycore that act upon these fields. However, because the zycore string functions are the intended way to work with the formatter buffer for users of the library that wish to extend the formatter, we still consider this to be a vulnerability in Zydis. This bug is patched starting in version 3.2.1. As a workaround, users may refrain from using zycore string functions in their formatter hooks until updating to a patched version.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41253">详情</a></td>
+      </tr>
+      <tr>
+       <td>0b127d2efb4ceb18c7b75ec764b657e3</td>
+       <td>CVE-2021-40261</td>
+       <td>2021-11-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple Cross Site Scripting (XSS) vulnerabilities exist in SourceCodester CASAP Automated Enrollment System 1.0 via the (1) user_username and (2) category parameters in save_class.php, the (3) firstname, (4) class, and (5) status parameters in student_table.php, the (6) category and (7) class_name parameters in add_class1.php, the (8) fname, (9) mname,(10) lname, (11) address, (12) class, (13) gfname, (14) gmname, (15) glname, (16) rship, (17) status, (18) transport, and (19) route parameters in add_student.php, the (20) fname, (21) mname, (22) lname, (23) address, (24) class, (25) fgname, (26) gmname, (27) glname, (28) rship, (29) status, (30) transport, and (31) route parameters in save_stud.php,the (32) status, (33) fname, and (34) lname parameters in add_user.php, the (35) username, (36) firstname, and (37) status parameters in users.php, the (38) fname, (39) lname, and (40) status parameters in save_user.php, and the (41) activity_log, (42) aprjun, (43) class, (44) janmar, (45) Julsep,(46) octdec, (47) Students and (48) users parameters in table_name.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40261">详情</a></td>
+      </tr>
+      <tr>
+       <td>77cde38801a5257f685baa71bdac76ae</td>
+       <td>CVE-2021-40260</td>
+       <td>2021-11-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple Cross Site Scripting (XSS) vulnerabilities exist in SourceCodester Tailor Management 1.0 via the (1) eid parameter in (a) partedit.php and (b) customeredit.php, the (2) id parameter in (a) editmeasurement.php and (b) addpayment.php, and the (3) error parameter in index.php.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40260">详情</a></td>
+      </tr>
+      <tr>
+       <td>1512e1f1cccef85b0b06c8bbee953620</td>
+       <td>CVE-2020-23572</td>
+       <td>2021-11-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>BEESCMS v4.0 was discovered to contain an arbitrary file upload vulnerability via the component /admin/upload.php. This vulnerability allows attackers to execute arbitrary code via a crafted image file.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-23572">详情</a></td>
+      </tr>
+      <tr>
        <td>d2fa1a5ed7ef7f1da706f37fd5561c8c</td>
        <td>CVE-2021-41170</td>
        <td>2021-11-08 19:15:00 <img src="imgs/new.gif" /></td>
@@ -434,34 +462,6 @@
        <td>PHP Event Calendar through 2021-11-04 allows persistent cross-site scripting (XSS), as demonstrated by the /server/ajax/events_manager.php title parameter. This can be exploited by an adversary in multiple ways, e.g., to perform actions on the page in the context of other users, or to deface the site.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-42078">详情</a></td>
       </tr>
-      <tr>
-       <td>55c7f9a1a66a6b9717cd67f6f83e9cc0</td>
-       <td>CVE-2021-42077</td>
-       <td>2021-11-08 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>PHP Event Calendar before 2021-09-03 allows SQL injection, as demonstrated by the /server/ajax/user_manager.php username parameter. This can be used to execute SQL statements directly on the database, allowing an adversary in some cases to completely compromise the database system. It can also be used to bypass the login form.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42077">详情</a></td>
-      </tr>
-      <tr>
-       <td>bc401c6e899016d2ef5a8c0a14589977</td>
-       <td>CVE-2021-42076</td>
-       <td>2021-11-08 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Barrier before 2.3.4. An attacker can cause memory exhaustion in the barriers component (aka the server-side implementation of Barrier) and barrierc by sending long TCP messages.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42076">详情</a></td>
-      </tr>
-      <tr>
-       <td>a981a773928c238f9f819013ba5e254a</td>
-       <td>CVE-2021-42075</td>
-       <td>2021-11-08 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Barrier before 2.3.4. The barriers component (aka the server-side implementation of Barrier) does not correctly close file descriptors for established TCP connections. An unauthenticated remote attacker can thus cause file descriptor exhaustion in the server process, leading to denial of service.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42075">详情</a></td>
-      </tr>
-      <tr>
-       <td>df5f5d695c9345b50f3a607da1c9cd2f</td>
-       <td>CVE-2021-42074</td>
-       <td>2021-11-08 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Barrier before 2.3.4. An unauthenticated attacker can cause a segmentation fault in the barriers component (aka the server-side implementation of Barrier) by quickly opening and closing TCP connections while sending a Hello message for each TCP session.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42074">详情</a></td>
-      </tr>
      </tbody>
     </table>
    </div>
@@ -600,14 +600,14 @@
       <tr>
        <td>3011708333470719bc77c6ce806f2816</td>
        <td>CNVD-2021-72772</td>
-       <td>2021-11-07 16:42:59 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 16:42:59</td>
        <td>海南赞赞网络科技有限公司EyouCms存在文件上传漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-72772">详情</a></td>
       </tr>
       <tr>
        <td>2c5454b5abd660b8a860d19e478ff620</td>
        <td>CNVD-2021-72795</td>
-       <td>2021-11-07 16:42:58 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 16:42:58</td>
        <td>上海泛微网络科技股份有限公司e-cology存在逻辑缺陷漏洞</td>
        <td><a href="https://www.cnvd.org.cn/flaw/show/CNVD-2021-72795">详情</a></td>
       </tr>
@@ -707,42 +707,42 @@
       <tr>
        <td>d970ebe90ed9b70ee8891e16d55075d2</td>
        <td>CNNVD-202111-565 (CVE-2021-37471)</td>
-       <td>2021-11-07 12:43:52 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 12:43:52</td>
        <td>Cradlepoint IBR900-600 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-565">详情</a></td>
       </tr>
       <tr>
        <td>124ea014857e97f951cfbc7383027cab</td>
        <td>CNNVD-202111-566 (CVE-2021-43413)</td>
-       <td>2021-11-07 12:43:49 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 12:43:49</td>
        <td>GNU Hurd 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-566">详情</a></td>
       </tr>
       <tr>
        <td>6ea997440b46f883caafdc957db89c3e</td>
        <td>CNNVD-202111-567 (CVE-2021-25978)</td>
-       <td>2021-11-07 12:43:47 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 12:43:47</td>
        <td>Apostrophe 跨站脚本漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-567">详情</a></td>
       </tr>
       <tr>
        <td>388507b1846170df77171d1490648010</td>
        <td>CNNVD-202111-568 (CVE-2021-43411)</td>
-       <td>2021-11-07 12:43:43 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 12:43:43</td>
        <td>GNU Hurd 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-568">详情</a></td>
       </tr>
       <tr>
        <td>4ad0a98f52543143e7af28ef79f627e7</td>
        <td>CNNVD-202111-569 (CVE-2021-43412)</td>
-       <td>2021-11-07 12:43:40 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 12:43:40</td>
        <td>GNU Hurd 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-569">详情</a></td>
       </tr>
       <tr>
        <td>74dc95ee277bddcb73828a523a32c723</td>
        <td>CNNVD-202111-570 (CVE-2021-43414)</td>
-       <td>2021-11-07 12:43:37 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 12:43:37</td>
        <td>GNU Hurd 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-570">详情</a></td>
       </tr>
@@ -1555,70 +1555,70 @@
       <tr>
        <td>6c2bb42a15a21e7cdbb4627c3cdd74ed</td>
        <td>CVE-2020-0765</td>
-       <td>2021-11-07 13:37:06 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:37:06</td>
        <td>Microsoft Remote Desktop Connection Manager 信息泄露漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=991af084f1e74b86a5e4c1df50df18ed">详情</a></td>
       </tr>
       <tr>
        <td>a07cfe824c2506492211c011ae891214</td>
        <td>CVE-2020-0768</td>
-       <td>2021-11-07 13:37:03 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:37:03</td>
        <td>Microsoft ChakraCore、Internet Explorer和Edge 缓冲区错误漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=9e73ccf59c974c4f84dc0705b9ae831d">详情</a></td>
       </tr>
       <tr>
        <td>428289d541edbd2cdc164c1a462d711f</td>
        <td>CVE-2020-0758</td>
-       <td>2021-11-07 13:37:00 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:37:00</td>
        <td>Microsoft Azure DevOps Server和Microsoft Team Foundation Server 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=b029c389ff1b48a38409458f50e3b116">详情</a></td>
       </tr>
       <tr>
        <td>1e581093fe2c174702c87ba02f9904a6</td>
        <td>CVE-2020-0762</td>
-       <td>2021-11-07 13:36:57 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:36:57</td>
        <td>Microsoft Windows Defender Security Center 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=ba55ffd7819f418d988e5353096b7989">详情</a></td>
       </tr>
       <tr>
        <td>b3187175508f044018363b58dd0a9850</td>
        <td>CVE-2020-9044</td>
-       <td>2021-11-07 13:36:54 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:36:54</td>
        <td>多款Johnson Controls产品代码问题漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=d038b049278443b09c4d40d3c75fc2f3">详情</a></td>
       </tr>
       <tr>
        <td>ae2988ecbd129c713fb0a712242a8399</td>
        <td>CVE-2020-0775</td>
-       <td>2021-11-07 13:36:51 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:36:51</td>
        <td>Microsoft Windows Error Reporting 信息泄露漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=d0086e0c25fe46338dbe570ab0cf0311">详情</a></td>
       </tr>
       <tr>
        <td>397edc83ecc614cd42c002b3f372f1de</td>
        <td>CVE-2020-0690</td>
-       <td>2021-11-07 13:36:48 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:36:48</td>
        <td>Microsoft DirectX 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=f40ed9ab3ade40ed9641b6838d22c975">详情</a></td>
       </tr>
       <tr>
        <td>b792d880a5939d1308aab48dfa1480c0</td>
        <td>CVE-2020-6210</td>
-       <td>2021-11-07 13:36:45 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:36:45</td>
        <td>SAP Fiori Launchpad 跨站脚本漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=d53878bf2f4640179e3194b4f17fb2fd">详情</a></td>
       </tr>
       <tr>
        <td>71ba64ba49fe6fbb0247ebf0f9376a52</td>
        <td>CVE-2020-0763</td>
-       <td>2021-11-07 13:36:42 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:36:42</td>
        <td>Microsoft Windows Defender Security Center 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=795b63088e5b4b8685871a694fd646a5">详情</a></td>
       </tr>
       <tr>
        <td>4df9d2fffcae698dce06cd2f8f3530c6</td>
        <td>CVE-2020-6206</td>
-       <td>2021-11-07 13:36:39 <img src="imgs/new.gif" /></td>
+       <td>2021-11-07 13:36:39</td>
        <td>SAP Cloud Platform Integration for Data Services 跨站请求伪造漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=82ef1483dc554ca5b3f5e9e1536ce44c">详情</a></td>
       </tr>
