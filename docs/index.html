@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-09 19:21:41 -->
+<!-- RELEASE TIME : 2021-11-09 20:28:38 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,27 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e6834a4d375e94d4babde9ab5ad2d186</td>
+       <td>CVE-2021-43174</td>
+       <td>2021-11-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>NLnet Labs Routinator versions 0.9.0 up to and including 0.10.1, support the gzip transfer encoding when querying RRDP repositories. This encoding can be used by an RRDP repository to cause an out-of-memory crash in these versions of Routinator. RRDP uses XML which allows arbitrary amounts of white space in the encoded data. The gzip scheme compresses such white space extremely well, leading to very small compressed files that become huge when being decompressed for further processing, big enough that Routinator runs out of memory when parsing input data waiting for the next XML element.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-43174">详情</a></td>
+      </tr>
+      <tr>
+       <td>235e8fc80234002397e381dd1b99de20</td>
+       <td>CVE-2021-43173</td>
+       <td>2021-11-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>In NLnet Labs Routinator prior to 0.10.2, a validation run can be delayed significantly by an RRDP repository by not answering but slowly drip-feeding bytes to keep the connection alive. This can be used to effectively stall validation. While Routinator has a configurable time-out value for RRDP connections, this time-out was only applied to individual read or write operations rather than the complete request. Thus, if an RRDP repository sends a little bit of data before that time-out expired, it can continuously extend the time it takes for the request to finish. Since validation will only continue once the update of an RRDP repository has concluded, this delay will cause validation to stall, leading to Routinator continuing to serve the old data set or, if in the initial validation run directly after starting, never serve any data at all.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-43173">详情</a></td>
+      </tr>
+      <tr>
+       <td>bd76524ae099362392e7373a0db64bd2</td>
+       <td>CVE-2021-43172</td>
+       <td>2021-11-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>NLnet Labs Routinator prior to 0.10.2 happily processes a chain of RRDP repositories of infinite length causing it to never finish a validation run. In RPKI, a CA can choose the RRDP repository it wishes to publish its data in. By continuously generating a new child CA that only consists of another CA using a different RRDP repository, a malicious CA can create a chain of CAs of de-facto infinite length. Routinator prior to version 0.10.2 did not contain a limit on the length of such a chain and will therefore continue to process this chain forever. As a result, the validation run will never finish, leading to Routinator continuing to serve the old data set or, if in the initial validation run directly after starting, never serve any data at all.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-43172">详情</a></td>
+      </tr>
+      <tr>
        <td>d019414619ccbf6ebc06649b945933f7</td>
        <td>CVE-2021-43182</td>
        <td>2021-11-09 16:15:00 <img src="imgs/new.gif" /></td>
@@ -440,27 +461,6 @@
        <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
        <td>A Stored Cross Site Scripting (XSS) vulnerability exists in Sourcecodester Online Enrollment Management System in PHP and PayPal Free Source Code 1.0 in the Add-Users page via the Name parameter.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-40577">详情</a></td>
-      </tr>
-      <tr>
-       <td>2168400bf182e98c290d1b0a9612b1f1</td>
-       <td>CVE-2021-24844</td>
-       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Affiliates Manager WordPress plugin before 2.8.7 does not validate the orderby parameter before using it in an SQL statement in the admin dashboard, leading to an SQL Injection issue</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24844">详情</a></td>
-      </tr>
-      <tr>
-       <td>d5ce7b1050d85fae71577c6618a1666e</td>
-       <td>CVE-2021-24840</td>
-       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Squaretype WordPress theme before 3.0.4 allows unauthenticated users to manipulate the query_vars used to retrieve the posts to display in one of its REST endpoint, without any validation. As a result, private and scheduled posts could be retrieved via a crafted request.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24840">详情</a></td>
-      </tr>
-      <tr>
-       <td>b3719116c0c9079aa05954c9dbfdd06d</td>
-       <td>CVE-2021-24835</td>
-       <td>2021-11-08 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>The WCFM â€“ Frontend Manager for WooCommerce along with Bookings Subscription Listings Compatible WordPress plugin before 6.5.12, when used in combination with another WCFM - WooCommerce Multivendor plugin such as WCFM - WooCommerce Multivendor Marketplace, does not escape the withdrawal_vendor parameter before using it in a SQL statement, allowing low privilege users such as Subscribers to perform SQL injection attacks</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24835">详情</a></td>
       </tr>
      </tbody>
     </table>
