@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-12 21:23:06 -->
+<!-- RELEASE TIME : 2021-11-12 22:27:20 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,34 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>1b51a8d46e70f90df998081bce39be5f</td>
+       <td>CVE-2021-41972</td>
+       <td>2021-11-12 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Apache Superset up to and including 1.3.1 allowed for database connections password leak for authenticated users. This information could be accessed in a non-trivial way.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41972">详情</a></td>
+      </tr>
+      <tr>
+       <td>38fc1107c17ae27a8e4e75c57b679c98</td>
+       <td>CVE-2021-41264</td>
+       <td>2021-11-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenZeppelin Contracts is a library for smart contract development. In affected versions upgradeable contracts using `UUPSUpgradeable` may be vulnerable to an attack affecting uninitialized implementation contracts. A fix is included in version 4.3.2 of `@openzeppelin/contracts` and `@openzeppelin/contracts-upgradeable`. For users unable to upgrade; initialize implementation contracts using `UUPSUpgradeable` by invoking the initializer function (usually called `initialize`). An example is provided [in the forum](https://forum.openzeppelin.com/t/security-advisory-initialize-uups-implementation-contracts/15301).</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41264">详情</a></td>
+      </tr>
+      <tr>
+       <td>1e3c7fb678f64d12cd418dd455b7e45f</td>
+       <td>CVE-2021-41259</td>
+       <td>2021-11-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nim is a systems programming language with a focus on efficiency, expressiveness, and elegance. In affected versions the uri.parseUri function which may be used to validate URIs accepts null bytes in the input URI. This behavior could be used to bypass URI validation. For example: parseUri("http://localhost\0hello").hostname is set to "localhost\0hello". Additionally, httpclient.getContent accepts null bytes in the input URL and ignores any data after the first null byte. Example: getContent("http://localhost\0hello") makes a request to localhost:80. An attacker can use a null bytes to bypass the check and mount a SSRF attack.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41259">详情</a></td>
+      </tr>
+      <tr>
+       <td>8b38f0801fd2d21aebaf665fad5bba95</td>
+       <td>CVE-2021-41254</td>
+       <td>2021-11-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>kustomize-controller is a Kubernetes operator, specialized in running continuous delivery pipelines for infrastructure and workloads defined with Kubernetes manifests and assembled with Kustomize. Users that can create Kubernetes Secrets, Service Accounts and Flux Kustomization objects, could execute commands inside the kustomize-controller container by embedding a shell script in a Kubernetes Secret. This can be used to run `kubectl` commands under the Service Account of kustomize-controller, thus allowing an authenticated Kubernetes user to gain cluster admin privileges. In affected versions multitenant environments where non-admin users have permissions to create Flux Kustomization objects are affected by this issue. This vulnerability was fixed in kustomize-controller v0.15.0 (included in flux2 v0.18.0) released on 2021-10-08. Starting with v0.15, the kustomize-controller no longer executes shell commands on the container OS and the `kubectl` binary has been removed from the container image. To prevent the creation of Kubernetes Service Accounts with `secrets` in namespaces owned by tenants, a Kubernetes validation webhook such as Gatekeeper OPA or Kyverno can be used.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41254">详情</a></td>
+      </tr>
+      <tr>
        <td>df6c170ab5a8d2c3d0952b7a127f7a41</td>
        <td>CVE-2021-38985</td>
        <td>2021-11-12 16:15:00 <img src="imgs/new.gif" /></td>
@@ -433,34 +461,6 @@
        <td>2021-11-12 07:15:00 <img src="imgs/new.gif" /></td>
        <td>Possible denial of service scenario due to improper input validation of received NAS OTA message in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon Mobile</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-1982">详情</a></td>
-      </tr>
-      <tr>
-       <td>ca011cc9017d18c1a172125af9c1bf99</td>
-       <td>CVE-2021-42775</td>
-       <td>2021-11-12 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Broadcom Emulex HBA Manager/One Command Manager versions before 11.4.425.0 and 12.8.542.31, if not installed in Strictly Local Management mode, have a vulnerability in the remote firmware download feature that could allow a user to place or replace an arbitrary file on the remote host. In non-secure mode, the user is unauthenticated.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42775">详情</a></td>
-      </tr>
-      <tr>
-       <td>782a8cba2585487e83ca834055198021</td>
-       <td>CVE-2021-42774</td>
-       <td>2021-11-12 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Broadcom Emulex HBA Manager/One Command Manager versions before 11.4.425.0 and 12.8.542.31, if not installed in Strictly Local Management mode, have a buffer overflow vulnerability in the remote firmware download feature that could allow remote unauthenticated users to perform various attacks. In non-secure mode, the user is unauthenticated.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42774">详情</a></td>
-      </tr>
-      <tr>
-       <td>ffccc0da29874791997378929ccae19e</td>
-       <td>CVE-2021-42773</td>
-       <td>2021-11-12 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Broadcom Emulex HBA Manager/One Command Manager versions before 11.4.425.0 and 12.8.542.31, if not installed in Strictly Local Management mode, could allow a user to retrieve an arbitrary file from a remote host with the GetDumpFile command. In non-secure mode, the user is unauthenticated.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42773">详情</a></td>
-      </tr>
-      <tr>
-       <td>9e5b698d3017f1083082d72929b2766b</td>
-       <td>CVE-2021-37910</td>
-       <td>2021-11-12 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>ASUS routers Wi-Fi protected access protocol (WPA2 and WPA3-SAE) has improper control of Interaction frequency vulnerability, an unauthenticated attacker can remotely disconnect other users' connections by sending specially crafted SAE authentication frames.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-37910">详情</a></td>
       </tr>
      </tbody>
     </table>
