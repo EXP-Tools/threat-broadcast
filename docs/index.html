@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-17 21:24:20 -->
+<!-- RELEASE TIME : 2021-11-17 22:27:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,76 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>69501155f4de6d93f11eebbdc97d4c05</td>
+       <td>CVE-2021-43996</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Ignition component before 1.16.15, and 2.0.x before 2.0.6, for Laravel has a "fix variable names" feature that can lead to incorrect access control.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-43996">详情</a></td>
+      </tr>
+      <tr>
+       <td>d7bc155068e5a3d76fc52cc85e88a4d1</td>
+       <td>CVE-2021-41277</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Metabase is an open source data analytics platform. In affected versions a security issue has been discovered with the custom GeoJSON map (`admin->settings->maps->custom maps->add a map`) support and potential local file inclusion (including environment variables). URLs were not validated prior to being loaded. This issue is fixed in a new maintenance release (0.40.5 and 1.40.5), and any subsequent release after that. If youâ€™re unable to upgrade immediately, you can mitigate this by including rules in your reverse proxy or load balancer or WAF to provide a validation filter before the application.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41277">详情</a></td>
+      </tr>
+      <tr>
+       <td>8454b4653d245e7c55e9c6d7963d3fd4</td>
+       <td>CVE-2021-41275</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>spree_auth_devise is an open source library which provides authentication and authorization services for use with the Spree storefront framework by using an underlying Devise authentication framework. In affected versions spree_auth_devise is subject to a CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of spree_auth_devise are affected if protect_from_forgery method is both: Executed whether as: A before_action callback (the default). A prepend_before_action (option prepend: true given) before the :load_object hook in Spree::UserController (most likely order to find). Configured to use :null_session or :reset_session strategies (:null_session is the default in case the no strategy is given, but rails --new generated skeleton use :exception). Users are advised to update their spree_auth_devise gem. For users unable to update it may be possible to change your strategy to :exception. Please see the linked GHSA for more workaround details. ### Impact CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of `spree_auth_devise` are affected if `protect_from_forgery` method is both: * Executed whether as: * A before_action callback (the default) * A prepend_before_action (option prepend: true given) before the :load_object hook in Spree::UserController (most likely order to find). * Configured to use :null_session or :reset_session strategies (:null_session is the default in case the no strategy is given, but rails --new generated skeleton use :exception). That means that applications that haven't been configured differently from what it's generated with Rails aren't affected. Thanks @waiting-for-dev for reporting and providing a patch ? ### Patches Spree 4.3 users should update to spree_auth_devise 4.4.1 Spree 4.2 users should update to spree_auth_devise 4.2.1 ### Workarounds If possible, change your strategy to :exception: ```ruby class ApplicationController < ActionController::Base protect_from_forgery with: :exception end ``` Add the following to`config/application.rb `to at least run the `:exception` strategy on the affected controller: ```ruby config.after_initialize do Spree::UsersController.protect_from_forgery with: :exception end ``` ### References https://github.com/solidusio/solidus_auth_devise/security/advisories/GHSA-xm34-v85h-9pg2</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41275">详情</a></td>
+      </tr>
+      <tr>
+       <td>bb0fe1bcb2565858f08426460a37d878</td>
+       <td>CVE-2021-41274</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>solidus_auth_devise provides authentication services for the Solidus webstore framework, using the Devise gem. In affected versions solidus_auth_devise is subject to a CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of `solidus_auth_devise` are affected if `protect_from_forgery` method is both: Executed whether as: A `before_action` callback (the default) or A `prepend_before_action` (option `prepend: true` given) before the `:load_object` hook in `Spree::UserController` (most likely order to find). Configured to use `:null_session` or `:reset_session` strategies (`:null_session` is the default in case the no strategy is given, but `rails --new` generated skeleton use `:exception`). Users should promptly update to `solidus_auth_devise` version `2.5.4`. Users unable to update should if possible, change their strategy to `:exception`. Please see the linked GHSA for more workaround details.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41274">详情</a></td>
+      </tr>
+      <tr>
+       <td>bd13f040cbf97a967e9d72642a509a48</td>
+       <td>CVE-2021-41273</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Pterodactyl is an open-source game server management panel built with PHP 7, React, and Go. Due to improperly configured CSRF protections on two routes, a malicious user could execute a CSRF-based attack against the following endpoints: Sending a test email and Generating a node auto-deployment token. At no point would any data be exposed to the malicious user, this would simply trigger email spam to an administrative user, or generate a single auto-deployment token unexpectedly. This token is not revealed to the malicious user, it is simply created unexpectedly in the system. This has been addressed in release `1.6.6`. Users may optionally manually apply the fixes released in v1.6.6 to patch their own systems.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41273">详情</a></td>
+      </tr>
+      <tr>
+       <td>63754a844a17a1102c746d5c68c52f3e</td>
+       <td>CVE-2021-41190</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>The OCI Distribution Spec project defines an API protocol to facilitate and standardize the distribution of content. In the OCI Distribution Specification version 1.0.0 and prior, the Content-Type header alone was used to determine the type of document during push and pull operations. Documents that contain both â€œmanifestsâ€? and â€œlayersâ€? fields could be interpreted as either a manifest or an index in the absence of an accompanying Content-Type header. If a Content-Type header changed between two pulls of the same digest, a client may interpret the resulting content differently. The OCI Distribution Specification has been updated to require that a mediaType value present in a manifest or index match the Content-Type header used during the push and pull operations. Clients pulling from a registry may distrust the Content-Type header and reject an ambiguous document that contains both â€œmanifestsâ€? and â€œlayersâ€? fields or â€œmanifestsâ€? and â€œconfigâ€? fields if they are unable to update to version 1.0.1 of the spec.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41190">详情</a></td>
+      </tr>
+      <tr>
+       <td>d057a2d861187479822d1229d292ab2a</td>
+       <td>CVE-2021-41165</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>CKEditor4 is an open source WYSIWYG HTML editor. In affected version a vulnerability has been discovered in the core HTML processing module and may affect all plugins used by CKEditor 4. The vulnerability allowed to inject malformed comments HTML bypassing content sanitization, which could result in executing JavaScript code. It affects all users using the CKEditor 4 at version < 4.17.0. The problem has been recognized and patched. The fix will be available in version 4.17.0.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41165">详情</a></td>
+      </tr>
+      <tr>
+       <td>d4923240304e6bcb993a8959f25e13eb</td>
+       <td>CVE-2021-33118</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper access control in the software installer for the Intel(R) Serial IO driver for Intel(R) NUC 11 Gen before version 30.100.2104.1 may allow an authenticated user to potentially enable escalation of privilege via local access.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-33118">详情</a></td>
+      </tr>
+      <tr>
+       <td>c598ffdd14653a33817d978785de3b3b</td>
+       <td>CVE-2021-33098</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper input validation in the Intel(R) Ethernet ixgbe driver for Linux before version 3.17.3 may allow an authenticated user to potentially enable denial of service via local access.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-33098">详情</a></td>
+      </tr>
+      <tr>
+       <td>61ec5f425335bafd248a7f19f0117e52</td>
+       <td>CVE-2021-33097</td>
+       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Time-of-check time-of-use vulnerability in the Crypto API Toolkit for Intel(R) SGX may allow a privileged user to potentially enable escalation of privilege via network access.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-33097">详情</a></td>
+      </tr>
+      <tr>
        <td>555b118212195f00ce983831809e9270</td>
        <td>CVE-2021-42362</td>
        <td>2021-11-17 18:15:00 <img src="imgs/new.gif" /></td>
@@ -391,76 +461,6 @@
        <td>2021-11-17 13:15:00 <img src="imgs/new.gif" /></td>
        <td>Zoho Remote Access Plus Server Windows Desktop Binary fixed from 10.1.2121.1 is affected by incorrect access control. The installation directory is vulnerable to weak file permissions by allowing full control for Windows Everyone user group (non-admin or any guest users), thereby allowing privilege escalation, unauthorized password reset, stealing of sensitive data, access to credentials in plaintext, access to registry values, tampering with configuration files, etc.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-42954">详情</a></td>
-      </tr>
-      <tr>
-       <td>2d85dec3fceb9f810e2efd0478bb8508</td>
-       <td>CVE-2021-42956</td>
-       <td>2021-11-17 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Zoho Remote Access Plus Server Windows Desktop Binary fixed in 10.1.2132.6 is affected by a sensitive information disclosure vulnerability. Due to improper privilege management, the process launches as the logged in user, so memory dump can be done by non-admin also. Remotely, an attacker can dump all sensitive information including DB Connection string, entire IT infrastructure details, commands executed by IT admin including credentials, secrets, private keys and more.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42956">详情</a></td>
-      </tr>
-      <tr>
-       <td>2a77ac215b225e96e51efbecf6ca0ed2</td>
-       <td>CVE-2021-41931</td>
-       <td>2021-11-17 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Company's Recruitment Management System in id=2 of the parameter from view_vacancy app on-page appears to be vulnerable to SQL injection. The payloads 19424269' or '1309'='1309 and 39476597' or '2917'='2923 were each submitted in the id parameter. These two requests resulted in different responses, indicating that the input is being incorporated into a SQL query in an unsafe way.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41931">详情</a></td>
-      </tr>
-      <tr>
-       <td>8a74caf69342adbeb1d78cb78a16272f</td>
-       <td>CVE-2021-32600</td>
-       <td>2021-11-17 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>An exposure of sensitive information to an unauthorized actor vulnerability in FortiOS CLI 7.0.0, 6.4.0 through 6.4.6, 6.2.0 through 6.2.9, 6.0.x and 5.6.x may allow a local and authenticated user assigned to a specific VDOM to retrieve other VDOMs information such as the admin account list and the network interface list.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-32600">详情</a></td>
-      </tr>
-      <tr>
-       <td>0d97501620cc42c640b8e864fd732d02</td>
-       <td>CVE-2021-24856</td>
-       <td>2021-11-17 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Shared Files WordPress plugin before 1.6.61 does not sanitise and escape the Download Counter Text settings, which could allow high privilege users to perform Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24856">详情</a></td>
-      </tr>
-      <tr>
-       <td>6fcb3f70c46d59006b01cdada64986ba</td>
-       <td>CVE-2021-24854</td>
-       <td>2021-11-17 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The QR Redirector WordPress plugin before 1.6.1 does not sanitise and escape some of the QR Redirect fields, which could allow users with a role as low as Contributor perform Stored Cross-Site Scripting attacks.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24854">详情</a></td>
-      </tr>
-      <tr>
-       <td>738404fba9c9771fc30e1f0996ebaeb8</td>
-       <td>CVE-2021-42839</td>
-       <td>2021-11-15 10:15:00</td>
-       <td>Grand Vice info Co. webopac7 file upload function fails to filter special characters. While logging in with general user’s permission, remote attackers can upload malicious script and execute arbitrary code to control the system or interrupt services.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42839">详情</a></td>
-      </tr>
-      <tr>
-       <td>ea56c96acabe41aefe8ff98f51eb7a70</td>
-       <td>CVE-2021-42838</td>
-       <td>2021-11-15 10:15:00</td>
-       <td>Grand Vice info Co. webopac7 book search field parameter does not properly restrict the input of special characters, thus unauthenticated attackers can inject JavaScript syntax remotely, and further perform reflective XSS attacks.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-42838">详情</a></td>
-      </tr>
-      <tr>
-       <td>618d06d7c682e410db0bf4134009f5a9</td>
-       <td>CVE-2021-41289</td>
-       <td>2021-11-15 10:15:00</td>
-       <td>ASUS P453UJ contains the Improper Restriction of Operations within the Bounds of a Memory Buffer vulnerability. With a general user’s permission, local attackers can modify the BIOS by replacing or filling in the content of the designated Memory DataBuffer, which causing a failure of integrity verification and further resulting in a failure to boot.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41289">详情</a></td>
-      </tr>
-      <tr>
-       <td>bba104bfb0aee72e3fee569fdf33a426</td>
-       <td>CVE-2021-43620</td>
-       <td>2021-11-15 05:15:00</td>
-       <td>An issue was discovered in the fruity crate through 0.2.0 for Rust. Security-relevant validation of filename extensions is plausibly affected. Methods of NSString for conversion to a string may return a partial result. Because they call CStr::from_ptr on a pointer to the string buffer, the string is terminated at the first '\0' byte, which might not be the end of the string.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43620">详情</a></td>
-      </tr>
-      <tr>
-       <td>823b79662edc1f456e21c127440fa93d</td>
-       <td>CVE-2021-43618</td>
-       <td>2021-11-15 04:15:00</td>
-       <td>GNU Multiple Precision Arithmetic Library (GMP) through 6.2.1 has an mpz/inp_raw.c integer overflow and resultant buffer overflow via crafted input, leading to a segmentation fault on 32-bit platforms.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43618">详情</a></td>
       </tr>
      </tbody>
     </table>
