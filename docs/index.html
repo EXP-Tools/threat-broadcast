@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-19 01:20:02 -->
+<!-- RELEASE TIME : 2021-11-19 02:40:11 -->
 <html lang="zh-cn">
 
  <head>
@@ -253,6 +253,34 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5a1545bb1df1446dbcb9200f30e867eb</td>
+       <td>CVE-2021-41278</td>
+       <td>2021-11-19 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Functions SDK for EdgeX is meant to provide all the plumbing necessary for developers to get started in processing/transforming/exporting data out of the EdgeX IoT platform. In affected versions broken encryption in app-functions-sdk “AES” transform in EdgeX Foundry releases prior to Jakarta allows attackers to decrypt messages via unspecified vectors. The app-functions-sdk exports an “aes” transform that user scripts can optionally call to encrypt data in the processing pipeline. No decrypt function is provided. Encryption is not enabled by default, but if used, the level of protection may be less than the user may expects due to a broken implementation. Version v2.1.0 (EdgeX Foundry Jakarta release and later) of app-functions-sdk-go/v2 deprecates the “aes” transform and provides an improved “aes256” transform in its place. The broken implementation will remain in a deprecated state until it is removed in the next EdgeX major release to avoid breakage of existing software that depends on the broken implementation. As the broken transform is a library function that is not invoked by default, users who do not use the AES transform in their processing pipelines are unaffected. Those that are affected are urged to upgrade to the Jakarta EdgeX release and modify processing pipelines to use the new "aes256" transform.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41278">详情</a></td>
+      </tr>
+      <tr>
+       <td>fe3c3acf9b74b13000bac31123227fe6</td>
+       <td>CVE-2021-40131</td>
+       <td>2021-11-19 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the web-based management interface of Cisco Common Services Platform Collector (CSPC) could allow an authenticated, remote attacker to conduct a cross-site scripting (XSS) attack against a user of the interface. This vulnerability is due to insufficient validation of user-supplied input that is processed by the web-based management interface. An attacker could exploit this vulnerability by adding malicious code to the configuration by using the web-based management interface. A successful exploit could allow the attacker to execute arbitrary code in the context of the interface or access sensitive, browser-based information.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40131">详情</a></td>
+      </tr>
+      <tr>
+       <td>d234baf8f742ff23cf732dafc30320b6</td>
+       <td>CVE-2021-40130</td>
+       <td>2021-11-19 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the web application of Cisco Common Services Platform Collector (CSPC) could allow an authenticated, remote attacker to specify non-log files as sources for syslog reporting. This vulnerability is due to improper restriction of the syslog configuration. An attacker could exploit this vulnerability by configuring non-log files as sources for syslog reporting through the web application. A successful exploit could allow the attacker to read non-log files on the CSPC.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40130">详情</a></td>
+      </tr>
+      <tr>
+       <td>420e7261b6efd1bc61fd15351b9f6974</td>
+       <td>CVE-2021-40129</td>
+       <td>2021-11-19 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the configuration dashboard of Cisco Common Services Platform Collector (CSPC) could allow an authenticated, remote attacker to submit a SQL query through the CSPC configuration dashboard. This vulnerability is due to insufficient input validation of uploaded files. An attacker could exploit this vulnerability by uploading a file containing a SQL query to the configuration dashboard. A successful exploit could allow the attacker to read restricted information from the CSPC SQL database.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40129">详情</a></td>
+      </tr>
+      <tr>
        <td>a21c0e7a46999de820e53257a9bb607d</td>
        <td>CVE-2021-37322</td>
        <td>2021-11-18 22:15:00 <img src="imgs/new.gif" /></td>
@@ -433,34 +461,6 @@
        <td>2021-11-18 15:15:00 <img src="imgs/new.gif" /></td>
        <td>A flaw was divered in Puppet Enterprise and other Puppet products where sensitive plan parameters may be logged</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-27026">详情</a></td>
-      </tr>
-      <tr>
-       <td>a4912caff53f1c88fbb105ec093476dd</td>
-       <td>CVE-2021-43997</td>
-       <td>2021-11-17 21:15:00</td>
-       <td>Amazon FreeRTOS 10.2.0 through 10.4.5 on the ARMv7-M and ARMv8-M MPU platforms does not prevent non-kernel code from calling the xPortRaisePrivilege and vPortResetPrivilege internal functions. This is fixed in 10.4.6 and in 10.4.3-LTS Patch 2.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43997">详情</a></td>
-      </tr>
-      <tr>
-       <td>69501155f4de6d93f11eebbdc97d4c05</td>
-       <td>CVE-2021-43996</td>
-       <td>2021-11-17 20:15:00</td>
-       <td>The Ignition component before 1.16.15, and 2.0.x before 2.0.6, for Laravel has a "fix variable names" feature that can lead to incorrect access control.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43996">详情</a></td>
-      </tr>
-      <tr>
-       <td>d7bc155068e5a3d76fc52cc85e88a4d1</td>
-       <td>CVE-2021-41277</td>
-       <td>2021-11-17 20:15:00</td>
-       <td>Metabase is an open source data analytics platform. In affected versions a security issue has been discovered with the custom GeoJSON map (`admin->settings->maps->custom maps->add a map`) support and potential local file inclusion (including environment variables). URLs were not validated prior to being loaded. This issue is fixed in a new maintenance release (0.40.5 and 1.40.5), and any subsequent release after that. If youâ€™re unable to upgrade immediately, you can mitigate this by including rules in your reverse proxy or load balancer or WAF to provide a validation filter before the application.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41277">详情</a></td>
-      </tr>
-      <tr>
-       <td>8454b4653d245e7c55e9c6d7963d3fd4</td>
-       <td>CVE-2021-41275</td>
-       <td>2021-11-17 20:15:00</td>
-       <td>spree_auth_devise is an open source library which provides authentication and authorization services for use with the Spree storefront framework by using an underlying Devise authentication framework. In affected versions spree_auth_devise is subject to a CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of spree_auth_devise are affected if protect_from_forgery method is both: Executed whether as: A before_action callback (the default). A prepend_before_action (option prepend: true given) before the :load_object hook in Spree::UserController (most likely order to find). Configured to use :null_session or :reset_session strategies (:null_session is the default in case the no strategy is given, but rails --new generated skeleton use :exception). Users are advised to update their spree_auth_devise gem. For users unable to update it may be possible to change your strategy to :exception. Please see the linked GHSA for more workaround details. ### Impact CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of `spree_auth_devise` are affected if `protect_from_forgery` method is both: * Executed whether as: * A before_action callback (the default) * A prepend_before_action (option prepend: true given) before the :load_object hook in Spree::UserController (most likely order to find). * Configured to use :null_session or :reset_session strategies (:null_session is the default in case the no strategy is given, but rails --new generated skeleton use :exception). That means that applications that haven't been configured differently from what it's generated with Rails aren't affected. Thanks @waiting-for-dev for reporting and providing a patch ? ### Patches Spree 4.3 users should update to spree_auth_devise 4.4.1 Spree 4.2 users should update to spree_auth_devise 4.2.1 ### Workarounds If possible, change your strategy to :exception: ```ruby class ApplicationController < ActionController::Base protect_from_forgery with: :exception end ``` Add the following to`config/application.rb `to at least run the `:exception` strategy on the affected controller: ```ruby config.after_initialize do Spree::UsersController.protect_from_forgery with: :exception end ``` ### References https://github.com/solidusio/solidus_auth_devise/security/advisories/GHSA-xm34-v85h-9pg2</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41275">详情</a></td>
       </tr>
      </tbody>
     </table>
