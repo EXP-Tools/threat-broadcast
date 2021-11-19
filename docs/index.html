@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-18 23:27:31 -->
+<!-- RELEASE TIME : 2021-11-19 01:20:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -29,7 +29,7 @@
       <tr>
        <td>c3564bfbac4c6c088ea8709c8f22689e</td>
        <td></td>
-       <td>2021-11-17 08:15:46 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 08:15:46</td>
        <td>npm多个高危漏洞通告</td>
        <td><a href="https://cert.360.cn/warning/detail?id=2eee663c0747d4f3a210752303b22f4a">详情</a></td>
       </tr>
@@ -253,6 +253,13 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a21c0e7a46999de820e53257a9bb607d</td>
+       <td>CVE-2021-37322</td>
+       <td>2021-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>GCC c++filt v2.26 was discovered to contain a use-after-free vulnerability via the component cplus-dem.c.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-37322">详情</a></td>
+      </tr>
+      <tr>
        <td>1629a6a04c146101dbacf300d0694af9</td>
        <td>CVE-2021-43017</td>
        <td>2021-11-18 19:15:00 <img src="imgs/new.gif" /></td>
@@ -430,37 +437,30 @@
       <tr>
        <td>a4912caff53f1c88fbb105ec093476dd</td>
        <td>CVE-2021-43997</td>
-       <td>2021-11-17 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 21:15:00</td>
        <td>Amazon FreeRTOS 10.2.0 through 10.4.5 on the ARMv7-M and ARMv8-M MPU platforms does not prevent non-kernel code from calling the xPortRaisePrivilege and vPortResetPrivilege internal functions. This is fixed in 10.4.6 and in 10.4.3-LTS Patch 2.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-43997">详情</a></td>
       </tr>
       <tr>
        <td>69501155f4de6d93f11eebbdc97d4c05</td>
        <td>CVE-2021-43996</td>
-       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 20:15:00</td>
        <td>The Ignition component before 1.16.15, and 2.0.x before 2.0.6, for Laravel has a "fix variable names" feature that can lead to incorrect access control.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-43996">详情</a></td>
       </tr>
       <tr>
        <td>d7bc155068e5a3d76fc52cc85e88a4d1</td>
        <td>CVE-2021-41277</td>
-       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 20:15:00</td>
        <td>Metabase is an open source data analytics platform. In affected versions a security issue has been discovered with the custom GeoJSON map (`admin->settings->maps->custom maps->add a map`) support and potential local file inclusion (including environment variables). URLs were not validated prior to being loaded. This issue is fixed in a new maintenance release (0.40.5 and 1.40.5), and any subsequent release after that. If youâ€™re unable to upgrade immediately, you can mitigate this by including rules in your reverse proxy or load balancer or WAF to provide a validation filter before the application.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41277">详情</a></td>
       </tr>
       <tr>
        <td>8454b4653d245e7c55e9c6d7963d3fd4</td>
        <td>CVE-2021-41275</td>
-       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 20:15:00</td>
        <td>spree_auth_devise is an open source library which provides authentication and authorization services for use with the Spree storefront framework by using an underlying Devise authentication framework. In affected versions spree_auth_devise is subject to a CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of spree_auth_devise are affected if protect_from_forgery method is both: Executed whether as: A before_action callback (the default). A prepend_before_action (option prepend: true given) before the :load_object hook in Spree::UserController (most likely order to find). Configured to use :null_session or :reset_session strategies (:null_session is the default in case the no strategy is given, but rails --new generated skeleton use :exception). Users are advised to update their spree_auth_devise gem. For users unable to update it may be possible to change your strategy to :exception. Please see the linked GHSA for more workaround details. ### Impact CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of `spree_auth_devise` are affected if `protect_from_forgery` method is both: * Executed whether as: * A before_action callback (the default) * A prepend_before_action (option prepend: true given) before the :load_object hook in Spree::UserController (most likely order to find). * Configured to use :null_session or :reset_session strategies (:null_session is the default in case the no strategy is given, but rails --new generated skeleton use :exception). That means that applications that haven't been configured differently from what it's generated with Rails aren't affected. Thanks @waiting-for-dev for reporting and providing a patch ? ### Patches Spree 4.3 users should update to spree_auth_devise 4.4.1 Spree 4.2 users should update to spree_auth_devise 4.2.1 ### Workarounds If possible, change your strategy to :exception: ```ruby class ApplicationController < ActionController::Base protect_from_forgery with: :exception end ``` Add the following to`config/application.rb `to at least run the `:exception` strategy on the affected controller: ```ruby config.after_initialize do Spree::UsersController.protect_from_forgery with: :exception end ``` ### References https://github.com/solidusio/solidus_auth_devise/security/advisories/GHSA-xm34-v85h-9pg2</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-41275">详情</a></td>
-      </tr>
-      <tr>
-       <td>bb0fe1bcb2565858f08426460a37d878</td>
-       <td>CVE-2021-41274</td>
-       <td>2021-11-17 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>solidus_auth_devise provides authentication services for the Solidus webstore framework, using the Devise gem. In affected versions solidus_auth_devise is subject to a CSRF vulnerability that allows user account takeover. All applications using any version of the frontend component of `solidus_auth_devise` are affected if `protect_from_forgery` method is both: Executed whether as: A `before_action` callback (the default) or A `prepend_before_action` (option `prepend: true` given) before the `:load_object` hook in `Spree::UserController` (most likely order to find). Configured to use `:null_session` or `:reset_session` strategies (`:null_session` is the default in case the no strategy is given, but `rails --new` generated skeleton use `:exception`). Users should promptly update to `solidus_auth_devise` version `2.5.4`. Users unable to update should if possible, change their strategy to `:exception`. Please see the linked GHSA for more workaround details.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41274">详情</a></td>
       </tr>
      </tbody>
     </table>
@@ -707,70 +707,70 @@
       <tr>
        <td>0673b05197233d414f2646af8f481bda</td>
        <td>CNNVD-202111-1559 (CVE-2021-41165)</td>
-       <td>2021-11-17 12:44:34 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:34</td>
        <td>CKEditor 跨站脚本漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1559">详情</a></td>
       </tr>
       <tr>
        <td>57f9f077fa680b572c5b4e9d0f00e38c</td>
        <td>CNNVD-202111-1560 (CVE-2021-41190)</td>
-       <td>2021-11-17 12:44:32 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:32</td>
        <td>Oci Distribution-Spec 代码问题漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1560">详情</a></td>
       </tr>
       <tr>
        <td>d2c907fb070fd00e7ea9bbabc686768b</td>
        <td>CNNVD-202111-1561 (CVE-2021-41273)</td>
-       <td>2021-11-17 12:44:29 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:29</td>
        <td>Pterodactyl 跨站请求伪造漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1561">详情</a></td>
       </tr>
       <tr>
        <td>3db857c1e7047407dd8a9f32cc3c26ef</td>
        <td>CNNVD-202111-1562 (CVE-2021-21900)</td>
-       <td>2021-11-17 12:44:27 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:27</td>
        <td>LibreCad 资源管理错误漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1562">详情</a></td>
       </tr>
       <tr>
        <td>b756de0244d6f1dca32d9ff9a4420898</td>
        <td>CNNVD-202111-1563 (CVE-2021-41274)</td>
-       <td>2021-11-17 12:44:25 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:25</td>
        <td>Solidus 跨站请求伪造漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1563">详情</a></td>
       </tr>
       <tr>
        <td>1ffa113e2522992b4f2cfb2dc671b6f5</td>
        <td>CNNVD-202111-1564 (CVE-2021-41275)</td>
-       <td>2021-11-17 12:44:22 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:22</td>
        <td>Spree 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1564">详情</a></td>
       </tr>
       <tr>
        <td>ba0558e1a15bfab89e9cfe35f7871afe</td>
        <td>CNNVD-202111-1565 (CVE-2021-41277)</td>
-       <td>2021-11-17 12:44:19 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:19</td>
        <td>Metabase 信息泄露漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1565">详情</a></td>
       </tr>
       <tr>
        <td>6c1507c85d7d76b4d2edbb0c06d5bc4b</td>
        <td>CNNVD-202111-1566 (CVE-2021-43996)</td>
-       <td>2021-11-17 12:44:17 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:17</td>
        <td>Facade Ignition for Laravel 访问控制错误漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1566">详情</a></td>
       </tr>
       <tr>
        <td>30f534dba13b661329de80c7acf1e8df</td>
        <td>CNNVD-202111-1567 (CVE-2021-43997)</td>
-       <td>2021-11-17 12:44:15 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:15</td>
        <td>Amazon FreeRTOS 代码问题漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1567">详情</a></td>
       </tr>
       <tr>
        <td>5ea25b1b423f43445365650f2253f054</td>
        <td>CNNVD-202111-1568 (CVE-2021-42306)</td>
-       <td>2021-11-17 12:44:12 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 12:44:12</td>
        <td>Microsoft Azure 安全漏洞</td>
        <td><a href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202111-1568">详情</a></td>
       </tr>
@@ -1555,70 +1555,70 @@
       <tr>
        <td>0fa472c4cf05184611586cf5533d342b</td>
        <td>CVE-2020-2855</td>
-       <td>2021-11-17 13:36:38 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:38</td>
        <td>Oracle E-Business Suite iSupport 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=5547adaed6354f109809bd2982fdc888">详情</a></td>
       </tr>
       <tr>
        <td>8d8ef5496634fd2003cd5b3c88f644de</td>
        <td>CVE-2020-2849</td>
-       <td>2021-11-17 13:36:35 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:35</td>
        <td>Oracle E-Business Suite Depot Repair 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=a3b197f9506345c7a7c0874ad4180e76">详情</a></td>
       </tr>
       <tr>
        <td>cb2fd7522dbdb43ecd3edb68f3e02820</td>
        <td>CVE-2020-2854</td>
-       <td>2021-11-17 13:36:35 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:35</td>
        <td>Oracle E-Business Suite Advanced Outbound Telephony 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=db5182ba9cdb4279a38914d73e0e68f0">详情</a></td>
       </tr>
       <tr>
        <td>55bd5fb08a0d5ed20f4536c46ab387dc</td>
        <td>CVE-2020-2847</td>
-       <td>2021-11-17 13:36:29 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:29</td>
        <td>Oracle E-Business Suite Depot Repair 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=e73690d0cef64f5fbe5c82db1cf5fc11">详情</a></td>
       </tr>
       <tr>
        <td>069b911843e90ec7f9f80e0c27be7278</td>
        <td>CVE-2020-2852</td>
-       <td>2021-11-17 13:36:29 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:29</td>
        <td>Oracle E-Business Suite Advanced Outbound Telephony 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=6cebfbbb744e47368ac7e574610c347a">详情</a></td>
       </tr>
       <tr>
        <td>bcc27a5b1400a936aecc95893586e2a9</td>
        <td>CVE-2020-2842</td>
-       <td>2021-11-17 13:36:24 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:24</td>
        <td>Oracle E-Business Suite Depot Repair 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=832891b739394542907202596350e415">详情</a></td>
       </tr>
       <tr>
        <td>4f4a998d328d1452647eae0ce6ef74f6</td>
        <td>CVE-2020-2848</td>
-       <td>2021-11-17 13:36:23 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:23</td>
        <td>Oracle E-Business Suite Depot Repair 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=bfc8c9c3040b47ccaa91cd3dfde7cd9d">详情</a></td>
       </tr>
       <tr>
        <td>ce0c3841cc4da751a343d5a1a0d70bb7</td>
        <td>CVE-2020-2846</td>
-       <td>2021-11-17 13:36:17 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:17</td>
        <td>Oracle E-Business Suite Depot Repair 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=9df860caa0d845eb953222a060de1768">详情</a></td>
       </tr>
       <tr>
        <td>727cbf6958381026889dbd3e4b2ad415</td>
        <td>CVE-2020-2843</td>
-       <td>2021-11-17 13:36:13 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:13</td>
        <td>Oracle E-Business Suite iSupport 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=c33cf632c5ea4c36a418e0e151255e20">详情</a></td>
       </tr>
       <tr>
        <td>b470550718fb6edea09339e3b672b405</td>
        <td>CVE-2020-2841</td>
-       <td>2021-11-17 13:36:10 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 13:36:10</td>
        <td>Oracle E-Business Suite Knowledge Management 安全漏洞</td>
        <td><a href="https://redqueen.tj-un.com/IntelDetails.html?id=f60ec345e64549ee923f361b58ee3e4b">详情</a></td>
       </tr>
@@ -1711,119 +1711,119 @@
       <tr>
        <td>9821f7e62a30cfc4775f9f77687dbce2</td>
        <td>CVE-2021-20834</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Nike APP授权错误漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61511">详情</a></td>
       </tr>
       <tr>
        <td>aba5a7a777dbb53208b994224d515fe6</td>
        <td>CVE-2021-41137</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Minio限制绕过漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61510">详情</a></td>
       </tr>
       <tr>
        <td>5e4013dbf24cb211a2f6195754319b26</td>
        <td>CVE-2021-20833</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Soda Inc. Snkrdunk Market Place App证书验证错误漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61509">详情</a></td>
       </tr>
       <tr>
        <td>44d1353066a5c0fd4764fb951285dc69</td>
        <td>CVE-2021-20832</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>InBody信息泄露漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61508">详情</a></td>
       </tr>
       <tr>
        <td>6e6bc943f9c0366faefaffadf610d033</td>
        <td>CVE-2021-37372</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Online Student Admission System任意文件上传漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61507">详情</a></td>
       </tr>
       <tr>
        <td>d771b181befb3bcf8fc426125a5da384</td>
        <td>CVE-2021-37371</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Online Student Admission System SQL注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61506">详情</a></td>
       </tr>
       <tr>
        <td>8fc2a21b63c1285377697b6ba58a0b57</td>
        <td>CVE-2021-21319</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Galette跨站脚本漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61505">详情</a></td>
       </tr>
       <tr>
        <td>d8f183bd4614016fbe3bac7e7531d26c</td>
        <td>CVE-2021-0613</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>MediaTek asf extractor越界读取漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61504">详情</a></td>
       </tr>
       <tr>
        <td>f07f6762b06431d5438b18166e958cb5</td>
        <td>CVE-2021-33609</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Vaadin-server资源管理错误漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61503">详情</a></td>
       </tr>
       <tr>
        <td>88b89b2594de779e591d388e88e24a30</td>
        <td>CVE-2021-24885</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>WordPress YOP Poll跨站脚本漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61502">详情</a></td>
       </tr>
       <tr>
        <td>b1157a539c3065a3b3886788b512756a</td>
        <td>CVE-2021-41078</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Nameko任意代码执行漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61501">详情</a></td>
       </tr>
       <tr>
        <td>bafc363f279c7ff50c891a5e410acfcd</td>
        <td>CVE-2021-0614</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>MediaTek asf extractor越界读取漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61500">详情</a></td>
       </tr>
       <tr>
        <td>b3adeeaa19bb7a258dfd282dbc332da7</td>
        <td>CVE-2021-39184</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Electron信息泄露漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61499">详情</a></td>
       </tr>
       <tr>
        <td>08bcead166600cff52207516fb41f3c6</td>
        <td>CVE-2020-20908</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Akaunting跨站脚本漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61498">详情</a></td>
       </tr>
       <tr>
        <td>85f4dfc898459e4c2648b1b04e996f5a</td>
        <td>CVE-2021-42325</td>
-       <td>2021-11-17 09:27:14 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 09:27:14</td>
        <td>Froxlor SQL注入漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61497">详情</a></td>
       </tr>
       <tr>
        <td>00b61d23fd28a67aede09c5c68012f9e</td>
        <td>CVE-2021-20797</td>
-       <td>2021-11-17 07:24:50 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 07:24:50</td>
        <td>Cybozu Remote Service跨站脚本漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61453">详情</a></td>
       </tr>
       <tr>
        <td>2d88505e3896ac6acb4ee781fa5e79ce</td>
        <td>CVE-2021-20795</td>
-       <td>2021-11-17 07:24:50 <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 07:24:50</td>
        <td>Cybozu Remote Service跨站请求伪造漏洞</td>
        <td><a href="http://www.nsfocus.net/vulndb/61452">详情</a></td>
       </tr>
@@ -1937,7 +1937,7 @@
       <tr>
        <td>3c4b5700a61e41aa1767326ccccf63d0</td>
        <td>CVE-2021-43977</td>
-       <td>2021-11-17 17:15:08  <img src="imgs/new.gif" /></td>
+       <td>2021-11-17 17:15:08 </td>
        <td>SmarterTools SmarterMail 16.x through 100.x before 100.0.7803 allows XSS.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43977">详情</a></td>
       </tr>
