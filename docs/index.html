@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-21 15:29:21 -->
+<!-- RELEASE TIME : 2021-11-21 18:31:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -254,6 +254,13 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6d7bac9059a781ffa611cf4e368876c2</td>
+       <td>CVE-2021-28710</td>
+       <td>2021-11-21 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>certain VT-d IOMMUs may not work in shared page table mode For efficiency reasons, address translation control structures (page tables) may (and, on suitable hardware, by default will) be shared between CPUs, for second-level translation (EPT), and IOMMUs. These page tables are presently set up to always be 4 levels deep. However, an IOMMU may require the use of just 3 page table levels. In such a configuration the lop level table needs to be stripped before inserting the root table's address into the hardware pagetable base register. When sharing page tables, Xen erroneously skipped this stripping. Consequently, the guest is able to write to leaf page table entries.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28710">详情</a></td>
+      </tr>
+      <tr>
        <td>5002b4328c4dea400383df00c46dbd88</td>
        <td>CVE-2021-34400</td>
        <td>2021-11-20 15:15:00 <img src="imgs/new.gif" /></td>
@@ -455,13 +462,6 @@
        <td>2021-11-19 19:15:00</td>
        <td>Philips MRI 1.5T and MRI 3T Version 5.x.x does not restrict or incorrectly restricts access to a resource from an unauthorized actor.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-26262">详情</a></td>
-      </tr>
-      <tr>
-       <td>516515e137de88bcee9cd06cd4d6c87f</td>
-       <td>CVE-2021-41569</td>
-       <td>2021-11-19 18:15:00</td>
-       <td>SAS/Intrnet 9.4 build 1520 and earlier allows Local File Inclusion. The samples library (included by default) in the appstart.sas file, allows end-users of the application to access the sample.webcsf1.sas program, which contains user-controlled macro variables that are passed to the DS2CSF macro. Users can escape the context of the configured user-controllable variable and append additional functions native to the macro but not included as variables within the library. This includes a function that retrieves files from the host OS.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-41569">详情</a></td>
       </tr>
      </tbody>
     </table>
