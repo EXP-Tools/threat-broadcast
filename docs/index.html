@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-23 01:19:39 -->
+<!-- RELEASE TIME : 2021-11-23 02:39:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -254,6 +254,41 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ccb504cf34842290b06ab81ed3fa78d2</td>
+       <td>CVE-2021-40831</td>
+       <td>2021-11-23 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>The AWS IoT Device SDK v2 for Java, Python, C++ and Node.js appends a user supplied Certificate Authority (CA) to the root CAs instead of overriding it on macOS systems. Additionally, SNI validation is also not enabled when the CA has been “overridden”. TLS handshakes will thus succeed if the peer can be verified either from the user-supplied CA or the system’s default trust-store. Attackers with access to a host’s trust stores or are able to compromise a certificate authority already in the host's trust store (note: the attacker must also be able to spoof DNS in this case) may be able to use this issue to bypass CA pinning. An attacker could then spoof the MQTT broker, and either drop traffic and/or respond with the attacker's data, but they would not be able to forward this data on to the MQTT broker because the attacker would still need the user's private keys to authenticate against the MQTT broker. The 'aws_tls_ctx_options_override_default_trust_store_*' function within the aws-c-io submodule has been updated to address this behavior. This issue affects: Amazon Web Services AWS IoT Device SDK v2 for Java versions prior to 1.5.0 on macOS. Amazon Web Services AWS IoT Device SDK v2 for Python versions prior to 1.7.0 on macOS. Amazon Web Services AWS IoT Device SDK v2 for C++ versions prior to 1.14.0 on macOS. Amazon Web Services AWS IoT Device SDK v2 for Node.js versions prior to 1.6.0 on macOS. Amazon Web Services AWS-C-IO 0.10.7 on macOS.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40831">详情</a></td>
+      </tr>
+      <tr>
+       <td>17b21bab8b7577fbce6d852732aca33b</td>
+       <td>CVE-2021-40830</td>
+       <td>2021-11-23 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>The AWS IoT Device SDK v2 for Java, Python, C++ and Node.js appends a user supplied Certificate Authority (CA) to the root CAs instead of overriding it on Unix systems. TLS handshakes will thus succeed if the peer can be verified either from the user-supplied CA or the system’s default trust-store. Attackers with access to a host’s trust stores or are able to compromise a certificate authority already in the host's trust store (note: the attacker must also be able to spoof DNS in this case) may be able to use this issue to bypass CA pinning. An attacker could then spoof the MQTT broker, and either drop traffic and/or respond with the attacker's data, but they would not be able to forward this data on to the MQTT broker because the attacker would still need the user's private keys to authenticate against the MQTT broker. The 'aws_tls_ctx_options_override_default_trust_store_*' function within the aws-c-io submodule has been updated to override the default trust store. This corrects this issue. This issue affects: Amazon Web Services AWS IoT Device SDK v2 for Java versions prior to 1.5.0 on Linux/Unix. Amazon Web Services AWS IoT Device SDK v2 for Python versions prior to 1.6.1 on Linux/Unix. Amazon Web Services AWS IoT Device SDK v2 for C++ versions prior to 1.12.7 on Linux/Unix. Amazon Web Services AWS IoT Device SDK v2 for Node.js versions prior to 1.5.3 on Linux/Unix. Amazon Web Services AWS-C-IO 0.10.4 on Linux/Unix.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40830">详情</a></td>
+      </tr>
+      <tr>
+       <td>c62c93e043da8a181cdfc589c8de3abb</td>
+       <td>CVE-2021-40829</td>
+       <td>2021-11-23 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Connections initialized by the AWS IoT Device SDK v2 for Java (versions prior to 1.4.2), Python (versions prior to 1.6.1), C++ (versions prior to 1.12.7) and Node.js (versions prior to 1.5.3) did not verify server certificate hostname during TLS handshake when overriding Certificate Authorities (CA) in their trust stores on MacOS. This issue has been addressed in aws-c-io submodule versions 0.10.5 onward. This issue affects: Amazon Web Services AWS IoT Device SDK v2 for Java versions prior to 1.4.2 on macOS. Amazon Web Services AWS IoT Device SDK v2 for Python versions prior to 1.6.1 on macOS. Amazon Web Services AWS IoT Device SDK v2 for C++ versions prior to 1.12.7 on macOS. Amazon Web Services AWS IoT Device SDK v2 for Node.js versions prior to 1.5.3 on macOS. Amazon Web Services AWS-C-IO 0.10.4 on macOS.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40829">详情</a></td>
+      </tr>
+      <tr>
+       <td>dc405b38ba9ec984b525ef6a2e563d07</td>
+       <td>CVE-2021-40828</td>
+       <td>2021-11-23 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Connections initialized by the AWS IoT Device SDK v2 for Java (versions prior to 1.3.3), Python (versions prior to 1.5.18), C++ (versions prior to 1.12.7) and Node.js (versions prior to 1.5.1) did not verify server certificate hostname during TLS handshake when overriding Certificate Authorities (CA) in their trust stores on Windows. This issue has been addressed in aws-c-io submodule versions 0.9.13 onward. This issue affects: Amazon Web Services AWS IoT Device SDK v2 for Java versions prior to 1.3.3 on Microsoft Windows. Amazon Web Services AWS IoT Device SDK v2 for Python versions prior to 1.5.18 on Microsoft Windows. Amazon Web Services AWS IoT Device SDK v2 for C++ versions prior to 1.12.7 on Microsoft Windows. Amazon Web Services AWS IoT Device SDK v2 for Node.js versions prior to 1.5.3 on Microsoft Windows.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-40828">详情</a></td>
+      </tr>
+      <tr>
+       <td>9c46efac076a38cd1802f76df2c9279d</td>
+       <td>CVE-2020-22719</td>
+       <td>2021-11-22 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Shimo Document v2.0.1 contains a cross-site scripting (XSS) vulnerability which allows attackers to execute arbitrary web scripts or HTML via a crafted payload inserted into the table content text field.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2020-22719">详情</a></td>
+      </tr>
+      <tr>
        <td>61ce30cf28ee323dbfd1991c812baa97</td>
        <td>CVE-2021-44150</td>
        <td>2021-11-22 22:15:00 <img src="imgs/new.gif" /></td>
@@ -427,41 +462,6 @@
        <td>2021-11-22 09:15:00 <img src="imgs/new.gif" /></td>
        <td>The uri-block plugin in Apache APISIX before 2.10.2 uses $request_uri without verification. The $request_uri is the full original request URI without normalization. This makes it possible to construct a URI to bypass the block list on some occasions. For instance, when the block list contains "^/internal/", a URI like `//internal/` can be used to bypass it. Some other plugins also have the same issue. And it may affect the developer's custom plugin.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-43557">详情</a></td>
-      </tr>
-      <tr>
-       <td>b20a16f77224dd6a9c7232c777f9c17d</td>
-       <td>CVE-2021-38378</td>
-       <td>2021-11-22 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>OX App Suite 7.10.5 allows Information Exposure because a caching mechanism can caused a Modified By response to show a person's name.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38378">详情</a></td>
-      </tr>
-      <tr>
-       <td>87fd950e90b21598661083d329e1f993</td>
-       <td>CVE-2021-38377</td>
-       <td>2021-11-22 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>OX App Suite through 7.10.5 allows XSS via JavaScript code in an anchor HTML comment within truncated e-mail, because there is a predictable UUID with HTML transformation results.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38377">详情</a></td>
-      </tr>
-      <tr>
-       <td>86d288122383719292afb7649024bbcf</td>
-       <td>CVE-2021-38376</td>
-       <td>2021-11-22 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>OX App Suite through 7.10.5 has Incorrect Access Control for retrieval of session information via the rampup action of the login API call.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38376">详情</a></td>
-      </tr>
-      <tr>
-       <td>018cc070bda9be00c0b5b531cbcb44de</td>
-       <td>CVE-2021-38375</td>
-       <td>2021-11-22 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>OX App Suite through 7.10.5 allows XSS via the alt attribute of an IMG element in a truncated e-mail message.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38375">详情</a></td>
-      </tr>
-      <tr>
-       <td>c8dd6ec7e5981b2fb3013582a1900ca8</td>
-       <td>CVE-2021-38374</td>
-       <td>2021-11-22 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>OX App Suite through through 7.10.5 allows XSS via a crafted snippet that has an app loader reference within an app loader URL.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38374">详情</a></td>
       </tr>
      </tbody>
     </table>
