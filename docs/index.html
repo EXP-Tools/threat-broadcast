@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-24 20:28:33 -->
+<!-- RELEASE TIME : 2021-11-24 22:27:21 -->
 <html lang="zh-cn">
 
  <head>
@@ -254,6 +254,41 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>81aca258399e7de429b67e1649cb13e4</td>
+       <td>CVE-2021-43778</td>
+       <td>2021-11-24 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Barcode is a GLPI plugin for printing barcodes and QR codes. GLPI instances version 2.x prior to version 2.6.1 with the barcode plugin installed are vulnerable to a path traversal vulnerability. This issue was patched in version 2.6.1. As a workaround, delete the `front/send.php` file.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-43778">详情</a></td>
+      </tr>
+      <tr>
+       <td>f055d53599c5424e0608a06c5631bb90</td>
+       <td>CVE-2021-41270</td>
+       <td>2021-11-24 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Symfony/Serializer handles serializing and deserializing data structures for Symfony, a PHP framework for web and console applications and a set of reusable PHP components. Symfony versions 4.1.0 before 4.4.35 and versions 5.0.0 before 5.3.12 are vulnerable to CSV injection, also known as formula injection. In Symfony 4.1, maintainers added the opt-in `csv_escape_formulas` option in the `CsvEncoder`, to prefix all cells starting with `=`, `+`, `-` or `@` with a tab `\t`. Since then, OWASP added 2 chars in that list: Tab (0x09) and Carriage return (0x0D). This makes the previous prefix char (Tab `\t`) part of the vulnerable characters, and OWASP suggests using the single quote `'` for prefixing the value. Starting with versions 4.4.34 and 5.3.12, Symfony now follows the OWASP recommendations and uses the single quote `'` to prefix formulas and add the prefix to cells starting by `\t`, `\r` as well as `=`, `+`, `-` and `@`.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41270">详情</a></td>
+      </tr>
+      <tr>
+       <td>ca34d32c5845bbe4ab5451cd2c203fd4</td>
+       <td>CVE-2021-41268</td>
+       <td>2021-11-24 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Symfony/SecurityBundle is the security system for Symfony, a PHP framework for web and console applications and a set of reusable PHP components. Since the rework of the Remember me cookie in version 5.3.0, the cookie is not invalidated when the user changes their password. Attackers can therefore maintain their access to the account even if the password is changed as long as they have had the chance to login once and get a valid remember me cookie. Starting with version 5.3.12, Symfony makes the password part of the signature by default. In that way, when the password changes, then the cookie is not valid anymore.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41268">详情</a></td>
+      </tr>
+      <tr>
+       <td>b047e0694e29bb2bf59ce58ad49ca4b6</td>
+       <td>CVE-2021-41267</td>
+       <td>2021-11-24 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Symfony/Http-Kernel is the HTTP kernel component for Symfony, a PHP framework for web and console applications and a set of reusable PHP components. Headers that are not part of the "trusted_headers" allowed list are ignored and protect users from "Cache poisoning" attacks. In Symfony 5.2, maintainers added support for the `X-Forwarded-Prefix` headers, but this header was accessible in SubRequest, even if it was not part of the "trusted_headers" allowed list. An attacker could leverage this opportunity to forge requests containing a `X-Forwarded-Prefix` header, leading to a web cache poisoning issue. Versions 5.3.12 and later have a patch to ensure that the `X-Forwarded-Prefix` header is not forwarded to subrequests when it is not trusted.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-41267">详情</a></td>
+      </tr>
+      <tr>
+       <td>afb327a560604584bb684e0125143815</td>
+       <td>CVE-2021-22957</td>
+       <td>2021-11-24 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Cross-Origin Resource Sharing (CORS) vulnerability found in UniFi Protect application Version 1.19.2 and earlier allows a malicious actor who has convinced a privileged user to access a URL with malicious code to take over said user’s account.This vulnerability is fixed in UniFi Protect application Version 1.20.0 and later.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-22957">详情</a></td>
+      </tr>
+      <tr>
        <td>e483a8ef72e5e7dad2c312534868ba86</td>
        <td>CVE-2021-43268</td>
        <td>2021-11-24 17:15:00 <img src="imgs/new.gif" /></td>
@@ -427,41 +462,6 @@
        <td>2021-11-23 22:15:00 <img src="imgs/new.gif" /></td>
        <td>Missing Authentication for Critical Function vulnerability in debug_post_set.cgi of D-Link DWR-932C E1 firmware allows an unauthenticated attacker to execute administrative actions.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-42783">详情</a></td>
-      </tr>
-      <tr>
-       <td>8d8e096a13c8b60c9858f0d51489e77e</td>
-       <td>CVE-2021-38004</td>
-       <td>2021-11-23 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient policy enforcement in Autofill in Google Chrome prior to 95.0.4638.69 allowed a remote attacker to leak cross-origin data via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38004">详情</a></td>
-      </tr>
-      <tr>
-       <td>f4da9f5ae6c8d48fb9668b7d960e673a</td>
-       <td>CVE-2021-38003</td>
-       <td>2021-11-23 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in V8 in Google Chrome prior to 95.0.4638.69 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38003">详情</a></td>
-      </tr>
-      <tr>
-       <td>046eac0cce0563f5ac2a1eb35f5c57c7</td>
-       <td>CVE-2021-38002</td>
-       <td>2021-11-23 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use after free in Web Transport in Google Chrome prior to 95.0.4638.69 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38002">详情</a></td>
-      </tr>
-      <tr>
-       <td>599872d03909bb45380f283fa1500e1b</td>
-       <td>CVE-2021-38001</td>
-       <td>2021-11-23 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Type confusion in V8 in Google Chrome prior to 95.0.4638.69 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38001">详情</a></td>
-      </tr>
-      <tr>
-       <td>0f1ad70f1397c5665381318cb061ca10</td>
-       <td>CVE-2021-38000</td>
-       <td>2021-11-23 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient validation of untrusted input in Intents in Google Chrome on Android prior to 95.0.4638.69 allowed a remote attacker to arbitrarily browser to a malicious URL via a crafted HTML page.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-38000">详情</a></td>
       </tr>
      </tbody>
     </table>
