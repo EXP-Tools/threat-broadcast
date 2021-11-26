@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-11-26 20:28:28 -->
+<!-- RELEASE TIME : 2021-11-26 22:27:34 -->
 <html lang="zh-cn">
 
  <head>
@@ -254,6 +254,27 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2ba83cd04643238bef8cf42bc5aac8a1</td>
+       <td>CVE-2021-23654</td>
+       <td>2021-11-26 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>This affects all versions of package html-to-csv. When there is a formula embedded in a HTML page, it gets accepted without any validation and the same would be pushed while converting it into a CSV file. Through this a malicious actor can embed or generate a malicious link or execute commands via CSV files.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-23654">详情</a></td>
+      </tr>
+      <tr>
+       <td>6f51057b25b206c79fe7efb343c0a126</td>
+       <td>CVE-2021-43785</td>
+       <td>2021-11-26 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>@joeattardi/emoji-button is a Vanilla JavaScript emoji picker component. In affected versions there are two vectors for XSS attacks: a URL for a custom emoji, and an i18n string. In both of these cases, a value can be crafted such that it can insert a `script` tag into the page and execute malicious code.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-43785">详情</a></td>
+      </tr>
+      <tr>
+       <td>932653350716775ee14a452c7894fbf2</td>
+       <td>CVE-2021-43776</td>
+       <td>2021-11-26 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Backstage is an open platform for building developer portals. In affected versions the auth-backend plugin allows a malicious actor to trick another user into visiting a vulnerable URL that executes an XSS attack. This attack can potentially allow the attacker to exfiltrate access tokens or other secrets from the user's browser. The default CSP does prevent this attack, but it is expected that some deployments have these policies disabled due to incompatibilities. This is vulnerability is patched in version `0.4.9` of `@backstage/plugin-auth-backend`.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-43776">详情</a></td>
+      </tr>
+      <tr>
        <td>5d0dd6b80683b756e5ad5a4f7dbeac85</td>
        <td>CVE-2021-41279</td>
        <td>2021-11-26 18:15:00 <img src="imgs/new.gif" /></td>
@@ -441,27 +462,6 @@
        <td>2021-11-24 17:15:00</td>
        <td>A buffer overflow vulnerability was discovered in Zoom Client for Meetings (for Android, iOS, Linux, macOS, and Windows) before version 5.8.4, Zoom Client for Meetings for Blackberry (for Android and iOS) before version 5.8.1, Zoom Client for Meetings for intune (for Android and iOS) before version 5.8.4, Zoom Client for Meetings for Chrome OS before version 5.0.1, Zoom Rooms for Conference Room (for Android, AndroidBali, macOS, and Windows) before version 5.8.3, Controllers for Zoom Rooms (for Android, iOS, and Windows) before version 5.8.3, Zoom VDI before version 5.8.4, Zoom Meeting SDK for Android before version 5.7.6.1922, Zoom Meeting SDK for iOS before version 5.7.6.1082, Zoom Meeting SDK for macOS before version 5.7.6.1340, Zoom Meeting SDK for Windows before version 5.7.6.1081, Zoom Video SDK (for Android, iOS, macOS, and Windows) before version 1.1.2, Zoom On-Premise Meeting Connector Controller before version 4.8.12.20211115, Zoom On-Premise Meeting Connector MMR before version 4.8.12.20211115, Zoom On-Premise Recording Connector before version 5.1.0.65.20211116, Zoom On-Premise Virtual Room Connector before version 4.4.7266.20211117, Zoom On-Premise Virtual Room Connector Load Balancer before version 2.5.5692.20211117, Zoom Hybrid Zproxy before version 1.0.1058.20211116, and Zoom Hybrid MMR before version 4.6.20211116.131_x86-64. This can potentially allow a malicious actor to crash the service or application, or leverage this vulnerability to execute arbitrary code.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-34423">详情</a></td>
-      </tr>
-      <tr>
-       <td>28c3c002e1677f63dba238965c652dd4</td>
-       <td>CVE-2021-22049</td>
-       <td>2021-11-24 17:15:00</td>
-       <td>The vSphere Web Client (FLEX/Flash) contains an SSRF (Server Side Request Forgery) vulnerability in the vSAN Web Client (vSAN UI) plug-in. A malicious actor with network access to port 443 on vCenter Server may exploit this issue by accessing a URL request outside of vCenter Server or accessing an internal service.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-22049">详情</a></td>
-      </tr>
-      <tr>
-       <td>ca16d13034719ea7b0876a12145b578f</td>
-       <td>CVE-2021-21980</td>
-       <td>2021-11-24 17:15:00</td>
-       <td>The vSphere Web Client (FLEX/Flash) contains an unauthorized arbitrary file read vulnerability. A malicious actor with network access to port 443 on vCenter Server may exploit this issue to gain access to sensitive information.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-21980">详情</a></td>
-      </tr>
-      <tr>
-       <td>9bdc4d471396b15834c2a856f2204b71</td>
-       <td>CVE-2021-43780</td>
-       <td>2021-11-24 16:15:00</td>
-       <td>Redash is a package for data visualization and sharing. In versions 10.0 and priorm the implementation of URL-loading data sources like JSON, CSV, or Excel is vulnerable to advanced methods of Server Side Request Forgery (SSRF). These vulnerabilities are only exploitable on installations where a URL-loading data source is enabled. As of time of publication, the `master` and `release/10.x.x` branches address this by applying the Advocate library for making http requests instead of the requests library directly. Users should upgrade to version 10.0.1 to receive this patch. There are a few workarounds for mitigating the vulnerability without upgrading. One can disable the vulnerable data sources entirely, by adding the following env variable to one's configuration, making them unavailable inside the webapp. One can switch any data source of certain types (viewable in the GitHub Security Advisory) to be `View Only` for all groups on the Settings > Groups > Data Sources screen. For users unable to update an admin may modify Redash's configuration through environment variables to mitigate this issue. Depending on the version of Redash, an admin may also need to run a CLI command to re-encrypt some fields in the database. The `master` and `release/10.x.x` branches as of time of publication have removed the default value for `REDASH_COOKIE_SECRET`. All future releases will also require this to be set explicitly. For existing installations, one will need to ensure that explicit values are set for the `REDASH_COOKIE_SECRET` and `REDASH_SECRET_KEY `variables.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-43780">详情</a></td>
       </tr>
      </tbody>
     </table>
