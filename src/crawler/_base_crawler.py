@@ -7,9 +7,9 @@
 
 import os
 from abc import ABCMeta, abstractmethod     # python不存在抽象类的概念， 需要引入abc模块实现
-from src.cfg import env
+import src.config as config
 from src.utils import log
-from src.utils._sqlite import SqliteDBC
+from pypdm.dbc._sqlite import SqliteDBC
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
 
@@ -19,9 +19,9 @@ class BaseCrawler:
 
     __metaclass__ = ABCMeta # 定义为抽象类
 
-    def __init__(self, timeout = 60, charset = env.CHARSET):
+    def __init__(self, timeout = 60, charset = config.CHARSET):
         self.timeout = timeout or 60
-        self.charset = charset or env.CHARSET
+        self.charset = charset or config.CHARSET
 
 
     @abstractmethod
@@ -40,7 +40,7 @@ class BaseCrawler:
 
 
     def CACHE_PATH(self):
-        return '%s/cache/%s.dat' % (env.PRJ_DIR, self.NAME_EN())
+        return '%s/cache/%s.dat' % (config.PRJ_DIR, self.NAME_EN())
 
 
     def headers(self):
@@ -65,7 +65,7 @@ class BaseCrawler:
             log.error('获取 [%s] 威胁情报异常' % self.NAME_CH())
 
         dao = TCvesDao()
-        sdbc = SqliteDBC(env.DB_PATH)
+        sdbc = SqliteDBC(options=config.settings.database)
         conn = sdbc.conn()
         _cves = []
         for cve in new_cves:

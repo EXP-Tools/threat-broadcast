@@ -7,13 +7,10 @@
 # git 自动提交变更
 # -----------------------------------------------
 
-import os
-import sys
-import json
 import time
 import git
 from python_graphql_client import GraphqlClient
-from src.cfg import env
+import src.config as config
 from src.utils import log
 
 
@@ -23,7 +20,7 @@ from src.utils import log
 def auto_commit():
     log.info('正在提交变更...')
     try:
-        repo = git.Repo(env.PRJ_DIR)
+        repo = git.Repo(config.PRJ_DIR)
         repo.git.add('*')
         repo.git.commit(m='[Threat-Broadcast] %s' % time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
         repo.git.push()
@@ -37,9 +34,9 @@ def auto_commit():
 # 通过 GraphQL 接口查询所有 Issue 标题
 # https://developer.github.com/v4/object/repository/
 # issues (IssueConnection!)
-def query_issues(github_token, owner=env.GITHUB_REPO_OWNER, repo=env.GITHUB_REPO, iter=100):
+def query_issues(github_token, owner=config.github['owner'], repo=config.github['repo'], iter=100):
     titles = []
-    client = GraphqlClient(endpoint=env.GITHUB_GRAPHQL)
+    client = GraphqlClient(endpoint=config.github['graphql'])
     has_next_page = True
     next_cursor = None
     while has_next_page:

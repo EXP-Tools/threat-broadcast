@@ -1,0 +1,22 @@
+database:
+  dbtype: 'sqlite'
+  dbpath: './data/cves.db'
+  sqlpath: './script/cves-create.sql'
+
+github:
+  graphql: 'https://api.github.com/graphql'
+  repo: 'threat-broadcast'
+  owner: 'lyy289065406'
+  gtk: "<%= ENV['GTK'] %>"                # Github Token，若非空值则使用 Github Actions 发送播报邮件
+  auto_commit: False                      # 使用 Github Actions 时不需要开启：自动提交变更到仓库（可自动归档、生成 Github Page）
+  
+crawler:
+  top: 30                                 # 播报时每个来源最多取最新的前 top 个 CVE
+
+notify:
+  mail_smtp: 'smtp.qq.com'
+  mail_user: 'threatbroadcast@qq.com'     # 用于发送播报信息的邮箱账号
+  mail_pass: "<%= ENV['MAIL_PASS'] %>"
+  qq_user: '123742030'                    # 用于向 QQ 群发送播报信息的 QQ 账号
+  qq_pass: "<%= ENV['QQ_PASS'] %>"
+

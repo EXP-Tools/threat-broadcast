@@ -9,16 +9,16 @@
 
 import time
 from datetime import datetime, timedelta
-from src.cfg import env
+import src.config as config
 from src.utils import log
-from src.utils._sqlite import SqliteDBC
+from pypdm.dbc._sqlite import SqliteDBC
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
 
-HTML_PATH = '%s/docs/index.html' % env.PRJ_DIR
-HTML_TPL_PATH = '%s/tpl/html.tpl' % env.PRJ_DIR
-TABLE_TPL_PATH = '%s/tpl/table.tpl' % env.PRJ_DIR
-ROW_TPL_PATH = '%s/tpl/row.tpl' % env.PRJ_DIR
+HTML_PATH = '%s/docs/index.html' % config.PRJ_DIR
+HTML_TPL_PATH = '%s/tpl/html.tpl' % config.PRJ_DIR
+TABLE_TPL_PATH = '%s/tpl/table.tpl' % config.PRJ_DIR
+ROW_TPL_PATH = '%s/tpl/row.tpl' % config.PRJ_DIR
 
 
 def to_page(top_limit = 10):
@@ -27,7 +27,7 @@ def to_page(top_limit = 10):
     tormorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d') 
 
     html_tpl, table_tpl, row_tpl = load_tpl()
-    sdbc = SqliteDBC(env.DB_PATH)
+    sdbc = SqliteDBC(options=config.settings.database)
     conn = sdbc.conn()
 
     tables = []
@@ -65,13 +65,13 @@ def to_page(top_limit = 10):
 
 
 def load_tpl():
-    with open(HTML_TPL_PATH, 'r', encoding=env.CHARSET) as file:
+    with open(HTML_TPL_PATH, 'r', encoding=config.CHARSET) as file:
         html_tpl = file.read()
 
-    with open(TABLE_TPL_PATH, 'r', encoding=env.CHARSET) as file:
+    with open(TABLE_TPL_PATH, 'r', encoding=config.CHARSET) as file:
         table_tpl = file.read()
 
-    with open(ROW_TPL_PATH, 'r', encoding=env.CHARSET) as file:
+    with open(ROW_TPL_PATH, 'r', encoding=config.CHARSET) as file:
         row_tpl = file.read()
 
     return html_tpl, table_tpl, row_tpl
@@ -79,7 +79,7 @@ def load_tpl():
 
 
 def create_html(html):
-    with open(HTML_PATH, 'w', encoding=env.CHARSET) as file:
+    with open(HTML_PATH, 'w', encoding=config.CHARSET) as file:
         file.write(html)
 
 

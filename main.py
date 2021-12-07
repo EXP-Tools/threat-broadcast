@@ -2,13 +2,12 @@
 # -*- coding: utf-8 -*-
 # @Author : EXP
 # @Time   : 2020/4/25 22:17
-# @File   : main.py
 # -----------------------------------------------
 
 import sys
-from src.cfg import env
+from src.config import settings
 from src.utils import log
-from src.utils._sqlite import SqliteDBC
+from pypdm.dbc._sqlite import SqliteDBC
 
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus
@@ -45,8 +44,8 @@ def help_info():
 
 def init():
     log.init()
-    sdbc = SqliteDBC(env.DB_PATH)
-    sdbc.init(env.SQL_PATH)
+    sdbc = SqliteDBC(options=settings.database)
+    sdbc.init(settings.database['sqlpath'])
 
 
 
@@ -82,14 +81,14 @@ def to_log(cves):
 
 def get_sys_args(sys_args) :
     help = False
-    top = 30
-    auto_commit = False
-    gtk = ''
-    mail_smtp = 'smtp.qq.com'
-    mail_user = 'threatbroadcast@qq.com'
-    mail_pass = ''
-    qq_user = ''
-    qq_pass = ''
+    top = settings.crawler['top']
+    auto_commit = settings.github['auto_commit']
+    gtk = settings.github['gtk']
+    mail_smtp = settings.notify['mail_smtp']
+    mail_user = settings.notify['mail_user']
+    mail_pass = settings.notify['mail_pass']
+    qq_user = settings.notify['qq_user']
+    qq_pass = settings.notify['qq_pass']
 
     idx = 1
     size = len(sys_args)
@@ -132,7 +131,7 @@ def get_sys_args(sys_args) :
         except :
             pass
         idx += 1
-    return help, top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pass
+    return [ help, top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pass ]
 
 
 if __name__ == '__main__':

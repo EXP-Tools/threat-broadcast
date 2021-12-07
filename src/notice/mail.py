@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # @Author : EXP
 # @Time   : 2020/4/30 23:29
-# @File   : mail.py
 # -----------------------------------------------
 # 通过邮件发送威胁情报
 # -----------------------------------------------
@@ -12,15 +11,15 @@ import re
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
-from src.cfg import env
+import src.config as config
 from src.utils import log
 from src.utils import _git
 
-MAIL_TPL_PATH = '%s/tpl/mail.tpl' % env.PRJ_DIR
-MAIL_RECV_DIR = '%s/recv' % env.PRJ_DIR
+MAIL_TPL_PATH = '%s/tpl/mail.tpl' % config.PRJ_DIR
+MAIL_RECV_DIR = '%s/recv' % config.PRJ_DIR
 
-MAIL_CONTENT_CACHE = '%s/cache/mail_content.dat' % env.PRJ_DIR
-MAIL_RECV_CACHE = '%s/cache/mail_recvs.dat' % env.PRJ_DIR
+MAIL_CONTENT_CACHE = '%s/cache/mail_content.dat' % config.PRJ_DIR
+MAIL_RECV_CACHE = '%s/cache/mail_recvs.dat' % config.PRJ_DIR
 
 
 def to_mail(gtk, cves, smtp, sender, password):
@@ -35,7 +34,7 @@ def to_mail(gtk, cves, smtp, sender, password):
 
     else:
         log.info('[邮件] 正在推送威胁情报...')
-        email = MIMEText(content, 'html', env.CHARSET)     # 以 html 格式发送邮件内容
+        email = MIMEText(content, 'html', config.CHARSET)     # 以 html 格式发送邮件内容
         email['From'] = sender
         email['To'] = ', '.join(receivers)                  # 此处收件人列表必须为逗号分隔的 str
         log.info('[邮件] 收件人清单： %s' % receivers)
@@ -95,7 +94,7 @@ def load_local_receivers():
         for fileName in fileNames:
             if fileName.startswith('mail') and fileName.endswith('.dat'):
                 filePath = '%s/%s' % (MAIL_RECV_DIR, fileName)
-                with open(filePath, 'r', encoding=env.CHARSET) as file:
+                with open(filePath, 'r', encoding=config.CHARSET) as file:
                     lines = file.readlines()
                     for line in lines:
                         line = line.strip()
@@ -120,5 +119,5 @@ def load_issue_receivers(gtk):
 
 
 def to_cache(date, filepath):
-    with open(filepath, 'w+', encoding=env.CHARSET) as file:
+    with open(filepath, 'w+', encoding=config.CHARSET) as file:
         file.write(date)
