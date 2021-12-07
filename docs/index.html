@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-12-07 12:48:49 -->
+<!-- RELEASE TIME : 2021-12-07 15:32:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -254,6 +254,48 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0acfe267814af12acd8f3458beee060b</td>
+       <td>CVE-2021-28703</td>
+       <td>2021-12-07 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>grant table v2 status pages may remain accessible after de-allocation (take two) Guest get permitted access to certain Xen-owned pages of memory. The majority of such pages remain allocated / associated with a guest for its entire lifetime. Grant table v2 status pages, however, get de-allocated when a guest switched (back) from v2 to v1. The freeing of such pages requires that the hypervisor know where in the guest these pages were mapped. The hypervisor tracks only one use within guest space, but racing requests from the guest to insert mappings of these pages may result in any of them to become mapped in multiple locations. Upon switching back from v2 to v1, the guest would then retain access to a page that was freed and perhaps re-used for other purposes. This bug was fortuitously fixed by code cleanup in Xen 4.14, and backported to security-supported Xen branches as a prerequisite of the fix for XSA-378.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-28703">详情</a></td>
+      </tr>
+      <tr>
+       <td>e5d35f52cd7463038874dcd3fc1631cc</td>
+       <td>CVE-2021-4049</td>
+       <td>2021-12-07 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>livehelperchat is vulnerable to Cross-Site Request Forgery (CSRF)</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-4049">详情</a></td>
+      </tr>
+      <tr>
+       <td>364eac13f8eb35e544e6d1999ae7fa62</td>
+       <td>CVE-2021-29116</td>
+       <td>2021-12-07 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>A stored Cross Site Scripting (XSS) vulnerability in Esri ArcGIS Server feature services versions 10.8.1 and 10.9 (only) feature services may allow a remote, unauthenticated attacker to pass and store malicious strings via crafted queries which when accessed could potentially execute arbitrary JavaScript code in the user’s browser.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-29116">详情</a></td>
+      </tr>
+      <tr>
+       <td>919fbdc5322811c7d4e9e8c754dfb20e</td>
+       <td>CVE-2021-29115</td>
+       <td>2021-12-07 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>An information disclosure vulnerability in the ArcGIS Service Directory in Esri ArcGIS Enterprise versions 10.9.0 and below may allows a remote attacker to view hidden field names in feature layers. This issue may reveal field names, but not not disclose features.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-29115">详情</a></td>
+      </tr>
+      <tr>
+       <td>22b80ea05ede39fb3668226c30a54df4</td>
+       <td>CVE-2021-29114</td>
+       <td>2021-12-07 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>A SQL injection vulnerability in feature services provided by Esri ArcGIS Server 10.9 and below allows a remote, unauthenticated attacker to impact the confidentiality, integrity and availability of targeted services via specifically crafted queries.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-29114">详情</a></td>
+      </tr>
+      <tr>
+       <td>50c36108666d7ccb9d3c79403030d98a</td>
+       <td>CVE-2021-29113</td>
+       <td>2021-12-07 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>A remote file inclusion vulnerability in the ArcGIS Server help documentation may allow a remote, unauthenticated attacker to inject attacker supplied html into a page.</td>
+       <td><a href="https://www.tenable.com/cve/CVE-2021-29113">详情</a></td>
+      </tr>
+      <tr>
        <td>1f1a7ec56703289e49fc3f96dde73b6d</td>
        <td>CVE-2021-44513</td>
        <td>2021-12-07 03:15:00 <img src="imgs/new.gif" /></td>
@@ -420,48 +462,6 @@
        <td>2021-12-06 17:15:00 <img src="imgs/new.gif" /></td>
        <td>When a user has admin rights in Serv-U Console, the user can move, create and delete any files are able to be accessed on the Serv-U host machine.</td>
        <td><a href="https://www.tenable.com/cve/CVE-2021-35245">详情</a></td>
-      </tr>
-      <tr>
-       <td>32cbd200d279b8d11a08ce0df1e3851b</td>
-       <td>CVE-2021-35242</td>
-       <td>2021-12-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Serv-U server responds with valid CSRFToken when the request contains only Session.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-35242">详情</a></td>
-      </tr>
-      <tr>
-       <td>4b2c068e56b78fe7e58eee9c1adeec6e</td>
-       <td>CVE-2021-25041</td>
-       <td>2021-12-06 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Photo Gallery by 10Web WordPress plugin before 1.5.68 is vulnerable to Reflected Cross-Site Scripting (XSS) issues via the bwg_album_breadcrumb_0 and shortcode_id GET parameters passed to the bwg_frontend_data AJAX action</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-25041">详情</a></td>
-      </tr>
-      <tr>
-       <td>a9c467e0bdde94c1a1c45096c89050b9</td>
-       <td>CVE-2021-24943</td>
-       <td>2021-12-06 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Registrations for the Events Calendar WordPress plugin before 2.7.6 does not sanitise and escape the event_id in the rtec_send_unregister_link AJAX action (available to both unauthenticated and authenticated users) before using it in a SQL statement, leading to an unauthenticated SQL injection.</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24943">详情</a></td>
-      </tr>
-      <tr>
-       <td>21e120485e5b8ef8323d72ec8df9ca71</td>
-       <td>CVE-2021-24939</td>
-       <td>2021-12-06 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>The LoginWP (Formerly Peter's Login Redirect) WordPress plugin before 3.0.0.5 does not sanitise and escape the rul_login_url and rul_logout_url parameter before outputting them back in attributes in an admin page, leading to a Reflected Cross-Site Scripting issue</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24939">详情</a></td>
-      </tr>
-      <tr>
-       <td>20ce7df3cee12fd038389db0f2b5bbed</td>
-       <td>CVE-2021-24938</td>
-       <td>2021-12-06 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>The WOOCS WordPress plugin before 1.3.7.1 does not sanitise and escape the key parameter of the woocs_update_profiles_data AJAX action (available to any authenticated user) before outputting it back in the response, leading to a Reflected cross-Site Scripting issue</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24938">详情</a></td>
-      </tr>
-      <tr>
-       <td>a467c329aaa1b2d6a298da23d0d54d22</td>
-       <td>CVE-2021-24935</td>
-       <td>2021-12-06 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>The WP Google Fonts WordPress plugin before 3.1.5 does not escape the googlefont_ajax_name and googlefont_ajax_family parameter of the googlefont_action AJAx action (available to any authenticated user) before outputing them in attributes, leading Reflected Cross-Site Scripting issues</td>
-       <td><a href="https://www.tenable.com/cve/CVE-2021-24935">详情</a></td>
       </tr>
      </tbody>
     </table>
@@ -1936,6 +1936,55 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2a7ca8f1665dc737da9cf96fc4e3fc02</td>
+       <td>CVE-2021-44686</td>
+       <td>2021-12-07 00:15:08  <img src="imgs/new.gif" /></td>
+       <td>calibre before 5.32.0 contains a regular expression that is vulnerable to ReDoS (Regular Expression Denial of Service) in html_preprocess_rules in ebooks/conversion/preprocess.py.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44686">详情</a></td>
+      </tr>
+      <tr>
+       <td>e50599d0ae10b5c86426a9d4c622e0a2</td>
+       <td>CVE-2021-44682</td>
+       <td>2021-12-06 22:15:08  <img src="imgs/new.gif" /></td>
+       <td>An issue (6 of 6) was discovered in Veritas Enterprise Vault through 14.1.2. On start-up, the Enterprise Vault application starts several services that listen on random .NET Remoting TCP ports for possible commands from client applications. These TCP services can be exploited due to deserialization behavior that is inherent to the .NET Remoting service. A malicious attacker can exploit both TCP remoting services and local IPC services on the Enterprise Vault Server. This vulnerability is mitigated by properly configuring the servers and firewall as described in the vendor's security alert for this vulnerability (VTS21-003, ZDI-CAN-14079).</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44682">详情</a></td>
+      </tr>
+      <tr>
+       <td>b4f1f8139b127d195e0c41dd085abf9c</td>
+       <td>CVE-2021-44681</td>
+       <td>2021-12-06 22:15:08  <img src="imgs/new.gif" /></td>
+       <td>An issue (5 of 6) was discovered in Veritas Enterprise Vault through 14.1.2. On start-up, the Enterprise Vault application starts several services that listen on random .NET Remoting TCP ports for possible commands from client applications. These TCP services can be exploited due to deserialization behavior that is inherent to the .NET Remoting service. A malicious attacker can exploit both TCP remoting services and local IPC services on the Enterprise Vault Server. This vulnerability is mitigated by properly configuring the servers and firewall as described in the vendor's security alert for this vulnerability (VTS21-003, ZDI-CAN-14080).</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44681">详情</a></td>
+      </tr>
+      <tr>
+       <td>30547a8f40a5c809f24e8be8a95e41ff</td>
+       <td>CVE-2021-44680</td>
+       <td>2021-12-06 22:15:08  <img src="imgs/new.gif" /></td>
+       <td>An issue (4 of 6) was discovered in Veritas Enterprise Vault through 14.1.2. On start-up, the Enterprise Vault application starts several services that listen on random .NET Remoting TCP ports for possible commands from client applications. These TCP services can be exploited due to deserialization behavior that is inherent to the .NET Remoting service. A malicious attacker can exploit both TCP remoting services and local IPC services on the Enterprise Vault Server. This vulnerability is mitigated by properly configuring the servers and firewall as described in the vendor's security alert for this vulnerability (VTS21-003, ZDI-CAN-14075).</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44680">详情</a></td>
+      </tr>
+      <tr>
+       <td>9d5ff64eb2b75bc4be4ffc3cdb63521f</td>
+       <td>CVE-2021-44679</td>
+       <td>2021-12-06 22:15:07  <img src="imgs/new.gif" /></td>
+       <td>An issue (3 of 6) was discovered in Veritas Enterprise Vault through 14.1.2. On start-up, the Enterprise Vault application starts several services that listen on random .NET Remoting TCP ports for possible commands from client applications. These TCP services can be exploited due to deserialization behavior that is inherent to the .NET Remoting service. A malicious attacker can exploit both TCP remoting services and local IPC services on the Enterprise Vault Server. This vulnerability is mitigated by properly configuring the servers and firewall as described in the vendor's security alert for this vulnerability (VTS21-003, ZDI-CAN-14074).</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44679">详情</a></td>
+      </tr>
+      <tr>
+       <td>3862e49224103cfa19b3a8c1c752e655</td>
+       <td>CVE-2021-44678</td>
+       <td>2021-12-06 22:15:07  <img src="imgs/new.gif" /></td>
+       <td>An issue (2 of 6) was discovered in Veritas Enterprise Vault through 14.1.2. On start-up, the Enterprise Vault application starts several services that listen on random .NET Remoting TCP ports for possible commands from client applications. These TCP services can be exploited due to deserialization behavior that is inherent to the .NET Remoting service. A malicious attacker can exploit both TCP remoting services and local IPC services on the Enterprise Vault Server. This vulnerability is mitigated by properly configuring the servers and firewall as described in the vendor's security alert for this vulnerability (VTS21-003, ZDI-CAN-14076).</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44678">详情</a></td>
+      </tr>
+      <tr>
+       <td>31fcd31ea8ce832c2eeae519a8639431</td>
+       <td>CVE-2021-44677</td>
+       <td>2021-12-06 22:15:07  <img src="imgs/new.gif" /></td>
+       <td>An issue (1 of 6) was discovered in Veritas Enterprise Vault through 14.1.2. On start-up, the Enterprise Vault application starts several services that listen on random .NET Remoting TCP ports for possible commands from client applications. These TCP services can be exploited due to deserialization behavior that is inherent to the .NET Remoting service. A malicious attacker can exploit both TCP remoting services and local IPC services on the Enterprise Vault Server. This vulnerability is mitigated by properly configuring the servers and firewall as described in the vendor's security alert for this vulnerability (VTS21-003, ZDI-CAN-14078).</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44677">详情</a></td>
+      </tr>
+      <tr>
        <td>bd988986ae5c09a3d3753e320905022f</td>
        <td>CVE-2021-44349</td>
        <td>2021-12-03 20:15:08 </td>
@@ -1961,6 +2010,13 @@
        <td>CVE-2021-44352</td>
        <td>2021-12-03 19:15:07 </td>
        <td>A Stack-based Buffer Overflow vlnerability exists in the Tenda AC15 V15.03.05.18_multi device via the list parameter in a post request in goform/SetIpMacBind.</td>
+       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44352">详情</a></td>
+      </tr>
+      <tr>
+       <td>6914707d50628b01fa8f21488e94b426</td>
+       <td>CVE-2021-44352</td>
+       <td>2021-12-03 19:15:07 </td>
+       <td>A Stack-based Buffer Overflow vulnerability exists in the Tenda AC15 V15.03.05.18_multi device via the list parameter in a post request in goform/SetIpMacBind.</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44352">详情</a></td>
       </tr>
       <tr>
@@ -2088,62 +2144,6 @@
        <td>2021-12-01 10:15:07 </td>
        <td>snipe-it is vulnerable to Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
        <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-4018">详情</a></td>
-      </tr>
-      <tr>
-       <td>7435500da1d2e428d0eb612dae39fd8b</td>
-       <td>CVE-2021-43360</td>
-       <td>2021-12-01 02:15:07 </td>
-       <td>Sunnet eHRD e-mail delivery task schedule&acirc;&euro;&trade;s serialization function has inadequate input object validation and restriction, which allows a post-authenticated remote attacker with database access privilege, to execute arbitrary code and control the system or interrupt services.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43360">详情</a></td>
-      </tr>
-      <tr>
-       <td>5cde71386742063d65f729d6ea0f7af8</td>
-       <td>CVE-2021-43359</td>
-       <td>2021-12-01 02:15:07 </td>
-       <td>Sunnet eHRD has broken access control vulnerability, which allows a remote attacker to access account management page after being authenticated as a general user, then perform privilege escalation to execute arbitrary code and control the system or interrupt services.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43359">详情</a></td>
-      </tr>
-      <tr>
-       <td>5f729d27c6c1c1af9bf45a5db05c027f</td>
-       <td>CVE-2021-43358</td>
-       <td>2021-12-01 02:15:07 </td>
-       <td>Sunnet eHRD has inadequate filtering for special characters in URLs, which allows a remote attacker to perform path traversal attacks without authentication, access restricted paths and download system files.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43358">详情</a></td>
-      </tr>
-      <tr>
-       <td>dce9c173cf9669fe91f2ef772820f276</td>
-       <td>CVE-2021-42564</td>
-       <td>2021-11-30 20:15:07 </td>
-       <td>An open redirect through HTML injection in confidential messages in Cryptshare before 5.1.0 allows remote attackers (with permission to provide confidential messages via Cryptshare) to redirect targeted victims to any URL via the '&lt;meta http-equiv=&quot;refresh&quot;' substring in the editor parameter.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-42564">详情</a></td>
-      </tr>
-      <tr>
-       <td>0f0d68e8ab676c07b51847a5fed07e8e</td>
-       <td>CVE-2021-4026</td>
-       <td>2021-11-30 20:15:07 </td>
-       <td>bookstack is vulnerable to Improper Access Control</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-4026">详情</a></td>
-      </tr>
-      <tr>
-       <td>8135915f66380babad72e654051add78</td>
-       <td>CVE-2021-44230</td>
-       <td>2021-11-30 19:15:10 </td>
-       <td>PortSwigger Burp Suite Enterprise Edition before 2021.11 on Windows has weak file permissions for the embedded H2 database, which might lead to privilege escalation. This issue can be exploited by an adversary who has already compromised a valid Windows account on the server via separate means. In this scenario, the compromised account may have inherited read access to sensitive configuration, database, and log files.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-44230">详情</a></td>
-      </tr>
-      <tr>
-       <td>95ef307e64226ab228fa4056e26889b9</td>
-       <td>CVE-2021-43296</td>
-       <td>2021-11-30 19:15:10 </td>
-       <td>Zoho ManageEngine SupportCenter Plus before 11016 is vulnerable to an SSRF attack in ActionExecutor.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43296">详情</a></td>
-      </tr>
-      <tr>
-       <td>56f7469b52795251f8b66a5bc2c0bf44</td>
-       <td>CVE-2021-43295</td>
-       <td>2021-11-30 19:15:10 </td>
-       <td>Zoho ManageEngine SupportCenter Plus before 11016 is vulnerable to Reflected XSS in the Accounts module.</td>
-       <td><a href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-43295">详情</a></td>
       </tr>
      </tbody>
     </table>
