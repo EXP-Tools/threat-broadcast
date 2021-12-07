@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # @Author : EXP
 # @Time   : 2020/4/26 13:14
-# @File   : log.py
 # -----------------------------------------------
 # 日志
 # -----------------------------------------------
@@ -10,7 +9,7 @@
 import traceback
 import logging
 from logging.handlers import TimedRotatingFileHandler
-from config import PRJ_DIR
+from src.config import PRJ_DIR
 
 RUN_LOG = '%s/log/run.log' % PRJ_DIR
 ERR_LOG = '%s/log/err.log' % PRJ_DIR
@@ -48,7 +47,8 @@ def init(runlog = RUN_LOG, errlog = ERR_LOG):
     logger.addHandler(exfh)
 
     # 禁用第三方日志
-    # logging.getLogger("requests").setLevel(logging.FATAL)
+    logging.getLogger("requests").setLevel(logging.FATAL)
+    logging.getLogger('chardet.charsetprober').setLevel(logging.FATAL)
 
 
 

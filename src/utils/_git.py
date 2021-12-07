@@ -34,9 +34,9 @@ def auto_commit():
 # 通过 GraphQL 接口查询所有 Issue 标题
 # https://developer.github.com/v4/object/repository/
 # issues (IssueConnection!)
-def query_issues(github_token, owner=config.github['owner'], repo=config.github['repo'], iter=100):
+def query_issues(github_token, owner=config.settings.github['owner'], repo=config.settings.github['repo'], iter=100):
     titles = []
-    client = GraphqlClient(endpoint=config.github['graphql'])
+    client = GraphqlClient(endpoint=config.settings.github['graphql'])
     has_next_page = True
     next_cursor = None
     while has_next_page:

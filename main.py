@@ -45,7 +45,7 @@ def help_info():
 def init():
     log.init()
     sdbc = SqliteDBC(options=settings.database)
-    sdbc.init(settings.database['sqlpath'])
+    sdbc.exec_script(settings.database['sqlpath'])
 
 
 
