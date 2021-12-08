@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-12-08 21:25:50 -->
+<!-- RELEASE TIME : 2021-12-08 23:27:58 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7b1b224472de41f6d88fa0e710b5e941</td>
+       <td>CVE-2021-36720</td>
+       <td>2021-12-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>PineApp - Mail Secure - Attacker sending a request to :/blocking.php?url=<script>alert(1)</script> and stealing cookies .</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36720">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>53af76f0c7706f53f20d5a126de9c1b4</td>
+       <td>CVE-2021-36719</td>
+       <td>2021-12-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>PineApp - Mail Secure - The attacker must be logged in as a user to the Pineapp system. The attacker exploits the vulnerable nicUpload.php file to upload a malicious file,Thus taking over the server and running remote code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36719">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4aff59fc3f791e7288dc1072f0c79552</td>
+       <td>CVE-2021-36718</td>
+       <td>2021-12-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>SYNEL - eharmonynew / Synel Reports - The attacker can log in to the system with default credentials and export a report of eharmony system with sensetive data (Employee name, Employee ID number, Working hours etc') The vulnerabilety has been addressed and fixed on version 11. Default credentials , Security miscommunication , Sensetive data exposure vulnerability in Synel Reports of SYNEL eharmonynew, Synel Reports allows an attacker to log into the system with default credentials. This issue affects: SYNEL eharmonynew, Synel Reports 8.0.2 version 11 and prior versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36718">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>611ed9a1cc6711eb775655f542cab487</td>
+       <td>CVE-2021-43978</td>
+       <td>2021-12-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Allegro WIndows 3.3.4152.0, embeds software administrator database credentials into its binary files, which allows users to access and modify data using the same credentials.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43978">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0cc692fc9b96701b0091614df42dc22</td>
+       <td>CVE-2021-43809</td>
+       <td>2021-12-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>`Bundler` is a package for managing application dependencies in Ruby. In `bundler` versions before 2.2.33, when working with untrusted and apparently harmless `Gemfile`'s, it is not expected that they lead to execution of external code, unless that's explicit in the ruby code inside the `Gemfile` itself. However, if the `Gemfile` includes `gem` entries that use the `git` option with invalid, but seemingly harmless, values with a leading dash, this can be false. To handle dependencies that come from a Git repository instead of a registry, Bundler uses various commands, such as `git clone`. These commands are being constructed using user input (e.g. the repository URL). When building the commands, Bundler versions before 2.2.33 correctly avoid Command Injection vulnerabilities by passing an array of arguments instead of a command string. However, there is the possibility that a user input starts with a dash (`-`) and is therefore treated as an optional argument instead of a positional one. This can lead to Code Execution because some of the commands have options that can be leveraged to run arbitrary executables. Since this value comes from the `Gemfile` file, it can contain any character, including a leading dash. To exploit this vulnerability, an attacker has to craft a directory containing a `Gemfile` file that declares a dependency that is located in a Git repository. This dependency has to have a Git URL in the form of `-u./payload`. This URL will be used to construct a Git clone command but will be interpreted as the upload-pack argument. Then this directory needs to be shared with the victim, who then needs to run a command that evaluates the Gemfile, such as `bundle lock`, inside. This vulnerability can lead to Arbitrary Code Execution, which could potentially lead to the takeover of the system. However, the exploitability is very low, because it requires a lot of user interaction. Bundler 2.2.33 has patched this problem by inserting `--` as an argument before any positional arguments to those Git commands that were affected by this issue. Regardless of whether users can upgrade or not, they should review any untrustred `Gemfile`'s before running any `bundler` commands that may read them, since they can contain arbitrary ruby code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43809">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2af2924260e1a53cded6e5cdb7da4e39</td>
+       <td>CVE-2021-43399</td>
+       <td>2021-12-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Yubico YubiHSM YubiHSM2 library 2021.08, included in the yubihsm-shell project, does not properly validate the length of some operations including SSH signing requests, and some data operations received from a YubiHSM 2 device.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43399">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>41b9e3aaf31d1d4336d107fc3d743f21</td>
+       <td>CVE-2021-41025</td>
+       <td>2021-12-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple vulnerabilities in the authentication mechanism of confd in FortiWeb versions 6.4.1, 6.4.0, 6.3.0 through 6.3.15, 6.2.0 through 6.2.6, 6.1.0 through 6.1.2, 6.0.0 thorugh 6.0.7, including an instance of concurrent execution using shared resource with improper synchronization and one of authentication bypass by capture-replay, may allow a remote unauthenticated attacker to circumvent the authentication process and authenticate as a legitimate cluster peer.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41025">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9cc817708308325bdbd50d1814e35aba</td>
+       <td>CVE-2021-41017</td>
+       <td>2021-12-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple heap-based buffer overflow vulnerabilities in some web API controllers of FortiWeb 6.4.1, 6.4.0, and 6.3.0 through 6.3.15 may allow a remote authenticated attacker to execute arbitrary code or commands via specifically crafted HTTP requests.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41017">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ea9651c99142238eb5499bb66517129d</td>
+       <td>CVE-2021-36195</td>
+       <td>2021-12-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple command injection vulnerabilities in the command line interpreter of FortiWeb versions 6.4.1, 6.4.0, 6.3.0 through 6.3.15, 6.2.0 through 6.2.6, and 6.1.0 through 6.1.2 may allow an authenticated attacker to execute arbitrary commands on the underlying system shell via specially crafted command arguments.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36195">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>289667992965389afd843f258c0870fe</td>
+       <td>CVE-2021-36173</td>
+       <td>2021-12-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A heap-based buffer overflow in the firmware signature verification function of FortiOS versions 7.0.1, 7.0.0, 6.4.0 through 6.4.6, 6.2.0 through 6.2.9, and 6.0.0 through 6.0.13 may allow an attacker to execute arbitrary code via specially crafted installation images.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36173">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f899f5ce59e66004d0a2114401d3c24c</td>
        <td>CVE-2021-41030</td>
        <td>2021-12-08 18:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2021-12-08 14:15:00 <img src="imgs/new.gif" /></td>
        <td>A unintended proxy or intermediary ('confused deputy') in Fortinet FortiWeb version 6.4.1 and below, 6.3.15 and below allows an unauthenticated attacker to access protected hosts via crafted HTTP requests.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36190">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8c4118b2268be4cc2b9f7a5bf939e98c</td>
-       <td>CVE-2021-43064</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A url redirection to untrusted site ('open redirect') in Fortinet FortiWeb version 6.4.1 and 6.4.0, version 6.3.15 and below, version 6.2.6 and below allows attacker to use the device as a proxy and reach external or protected hosts via redirection handlers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43064">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>015f531f37cc25dc534f81c9a21490be</td>
-       <td>CVE-2021-41027</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A stack-based buffer overflow in Fortinet FortiWeb version 6.4.1 and 6.4.0, allows an authenticated attacker to execute unauthorized code or commands via crafted certificates loaded into the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41027">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d0e653390d98fdf18b45cd374ad9803</td>
-       <td>CVE-2021-41024</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A relative path traversal [CWE-23] vulnerabiltiy in FortiOS versions 7.0.0 and 7.0.1 and FortiProxy verison 7.0.0 may allow an unauthenticated, unauthorized attacker to inject path traversal character sequences to disclose sensitive information of the server via the GET request of the login page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41024">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d978aae05246dcdabe2f70adfa80b5a0</td>
-       <td>CVE-2021-41015</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A improper neutralization of input during web page generation ('cross-site scripting') in Fortinet FortiWeb version 6.4.1 and below, 6.3.15 and below allows attacker to execute unauthorized code or commands via crafted HTTP requests to SAML login handler</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41015">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12cbcb5f2ea362ad3675ad2b4e5aa154</td>
-       <td>CVE-2021-41014</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A uncontrolled resource consumption in Fortinet FortiWeb version 6.4.1 and below, 6.3.15 and below allows an unauthenticated attacker to make the httpsd daemon unresponsive via huge HTTP packets</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41014">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>791b9108e0e502fab9978f7b15ee5d6d</td>
-       <td>CVE-2021-36191</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A url redirection to untrusted site ('open redirect') in Fortinet FortiWeb version 6.4.1 and below, 6.3.15 and below allows attacker to use the device as proxy via crafted GET parameters in requests to error handlers</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36191">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>215b1a884d77eb3674136b78ef84801c</td>
-       <td>CVE-2021-26109</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>An integer overflow or wraparound vulnerability in the memory allocator of SSLVPN in FortiOS before 7.0.1 may allow an unauthenticated attacker to corrupt control data on the heap via specifically crafted requests to SSLVPN, resulting in potentially arbitrary code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-26109">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ab2ae09d21a6935e6a1c40ee60e8e934</td>
-       <td>CVE-2021-26108</td>
-       <td>2021-12-08 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A use of hard-coded cryptographic key vulnerability in the SSLVPN of FortiOS before 7.0.1 may allow an attacker to retrieve the key by reverse engineering.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-26108">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8ba0edbffdd17e001641a09a56f721ec</td>
-       <td>CVE-2021-44557</td>
-       <td>2021-12-08 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>National Library of the Netherlands multiNER <= c0440948057afc6e3d6b4903a7c05e666b94a3bc is affected by an XML External Entity (XXE) vulnerability in multiNER/ner.py. Since XML parsing resolves external entities, a malicious XML stream could leak internal files and/or cause a DoS.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-44557">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f2200be14210eec836d555bcf1d35b9e</td>
-       <td>CVE-2021-44556</td>
-       <td>2021-12-08 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>National Library of the Netherlands digger < 6697d1269d981e35e11f240725b16401b5ce3db5 is affected by a XML External Entity (XXE) vulnerability. Since XML parsing resolves external entities, a malicious XML stream could leak internal files and/or cause a DoS.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-44556">详情</a></td>
       </tr>
 
      </tbody>
