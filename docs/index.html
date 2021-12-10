@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-12-10 12:44:40 -->
+<!-- RELEASE TIME : 2021-12-10 13:32:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -292,6 +292,22 @@
       </tr>
 
       <tr>
+       <td>87e619563654be4ca9f79a170d9f9642</td>
+       <td>CVE-2021-43982</td>
+       <td>2021-12-09 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Delta Electronics CNCSoft Versions 1.01.30 and prior are vulnerable to a stack-based buffer overflow, which may allow an attacker to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43982">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3234bbd9f61c7195ae326c9c80655c91</td>
+       <td>CVE-2021-37861</td>
+       <td>2021-12-09 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Mattermost 6.0.2 and earlier fails to sufficiently sanitize user's password in audit logs when user creation fails.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-37861">详情</a></td>
+      </tr>
+
+      <tr>
        <td>0849b945f03f6166a037bfe6ad37fdc7</td>
        <td>CVE-2021-44514</td>
        <td>2021-12-09 20:15:00 <img src="imgs/new.gif" /></td>
@@ -308,11 +324,27 @@
       </tr>
 
       <tr>
+       <td>82665b0fd3f629e77a78a7ed371120ec</td>
+       <td>CVE-2021-4033</td>
+       <td>2021-12-09 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>kimai2 is vulnerable to Cross-Site Request Forgery (CSRF)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4033">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5a8fb82ce8949067e1023f180e27db3a</td>
        <td>CVE-2021-38951</td>
        <td>2021-12-09 17:15:00 <img src="imgs/new.gif" /></td>
        <td>IBM WebSphere Application Server 7.0, 8.0, 8.5, and 9.0 is vulnerable to a denial of service, caused by sending a specially-crafted request. A remote attacker could exploit this vulnerability to cause the server to consume all available CPU resources. IBM X-Force ID: 211405.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-38951">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9ef185fcc869545f4630dcadefe59ca</td>
+       <td>CVE-2021-22568</td>
+       <td>2021-12-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>When using the dart pub publish command to publish a package to a third-party package server, the request would be authenticated with an oauth2 access_token that is valid for publishing on pub.dev. Using these obtained credentials, an attacker can impersonate the user on pub.dev. We recommend upgrading past https://github.com/dart-lang/sdk/commit/d787e78d21e12ec1ef712d229940b1172aafcdf8 or beyond version 2.15.0</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-22568">详情</a></td>
       </tr>
 
       <tr>
@@ -489,38 +521,6 @@
        <td>2021-12-08 19:15:00</td>
        <td>`Bundler` is a package for managing application dependencies in Ruby. In `bundler` versions before 2.2.33, when working with untrusted and apparently harmless `Gemfile`'s, it is not expected that they lead to execution of external code, unless that's explicit in the ruby code inside the `Gemfile` itself. However, if the `Gemfile` includes `gem` entries that use the `git` option with invalid, but seemingly harmless, values with a leading dash, this can be false. To handle dependencies that come from a Git repository instead of a registry, Bundler uses various commands, such as `git clone`. These commands are being constructed using user input (e.g. the repository URL). When building the commands, Bundler versions before 2.2.33 correctly avoid Command Injection vulnerabilities by passing an array of arguments instead of a command string. However, there is the possibility that a user input starts with a dash (`-`) and is therefore treated as an optional argument instead of a positional one. This can lead to Code Execution because some of the commands have options that can be leveraged to run arbitrary executables. Since this value comes from the `Gemfile` file, it can contain any character, including a leading dash. To exploit this vulnerability, an attacker has to craft a directory containing a `Gemfile` file that declares a dependency that is located in a Git repository. This dependency has to have a Git URL in the form of `-u./payload`. This URL will be used to construct a Git clone command but will be interpreted as the upload-pack argument. Then this directory needs to be shared with the victim, who then needs to run a command that evaluates the Gemfile, such as `bundle lock`, inside. This vulnerability can lead to Arbitrary Code Execution, which could potentially lead to the takeover of the system. However, the exploitability is very low, because it requires a lot of user interaction. Bundler 2.2.33 has patched this problem by inserting `--` as an argument before any positional arguments to those Git commands that were affected by this issue. Regardless of whether users can upgrade or not, they should review any untrustred `Gemfile`'s before running any `bundler` commands that may read them, since they can contain arbitrary ruby code.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43809">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2af2924260e1a53cded6e5cdb7da4e39</td>
-       <td>CVE-2021-43399</td>
-       <td>2021-12-08 19:15:00</td>
-       <td>The Yubico YubiHSM YubiHSM2 library 2021.08, included in the yubihsm-shell project, does not properly validate the length of some operations including SSH signing requests, and some data operations received from a YubiHSM 2 device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43399">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>41b9e3aaf31d1d4336d107fc3d743f21</td>
-       <td>CVE-2021-41025</td>
-       <td>2021-12-08 19:15:00</td>
-       <td>Multiple vulnerabilities in the authentication mechanism of confd in FortiWeb versions 6.4.1, 6.4.0, 6.3.0 through 6.3.15, 6.2.0 through 6.2.6, 6.1.0 through 6.1.2, 6.0.0 thorugh 6.0.7, including an instance of concurrent execution using shared resource with improper synchronization and one of authentication bypass by capture-replay, may allow a remote unauthenticated attacker to circumvent the authentication process and authenticate as a legitimate cluster peer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41025">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9cc817708308325bdbd50d1814e35aba</td>
-       <td>CVE-2021-41017</td>
-       <td>2021-12-08 19:15:00</td>
-       <td>Multiple heap-based buffer overflow vulnerabilities in some web API controllers of FortiWeb 6.4.1, 6.4.0, and 6.3.0 through 6.3.15 may allow a remote authenticated attacker to execute arbitrary code or commands via specifically crafted HTTP requests.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41017">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ea9651c99142238eb5499bb66517129d</td>
-       <td>CVE-2021-36195</td>
-       <td>2021-12-08 19:15:00</td>
-       <td>Multiple command injection vulnerabilities in the command line interpreter of FortiWeb versions 6.4.1, 6.4.0, 6.3.0 through 6.3.15, 6.2.0 through 6.2.6, and 6.1.0 through 6.1.2 may allow an authenticated attacker to execute arbitrary commands on the underlying system shell via specially crafted command arguments.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36195">详情</a></td>
       </tr>
 
      </tbody>
