@@ -8,6 +8,11 @@
 ![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
 
 
+## TODO
+
+供应链情报
+某些很基础被大量应用的第三方构件，如 log4j，突然有个很旧的历史版本放出更新，尤其是 rc 版本
+
 ## 项目介绍
 
 从以下公开的威胁情报来源爬取并整合最新信息：
