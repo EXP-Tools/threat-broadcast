@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-12-13 21:25:24 -->
+<!-- RELEASE TIME : 2021-12-13 23:27:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3d692ef96f43ed8a27323ce5b0b323bd</td>
+       <td>CVE-2021-43823</td>
+       <td>2021-12-13 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sourcegraph is a code search and navigation engine. Sourcegraph prior to version 3.33.2 is vulnerable to a side-channel attack where strings in private source code could be guessed by an authenticated but unauthorized actor. This issue affects the Saved Searches and Code Monitoring features. A successful attack would require an authenticated bad actor to create many Saved Searches or Code Monitors to receive confirmation that a specific string exists. This could allow an attacker to guess formatted tokens in source code, such as API keys. This issue was patched in version 3.33.2 and any future versions of Sourcegraph. We strongly encourage upgrading to secure versions. If you are unable to, you may disable Saved Searches and Code Monitors.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43823">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45016f137e9e96ad110092be0aef0bc2</td>
+       <td>CVE-2021-43822</td>
+       <td>2021-12-13 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Jackalope Doctrine-DBAL is an implementation of the PHP Content Repository API (PHPCR) using a relational database to persist data. In affected versions users can provoke SQL injections if they can specify a node name or query. Upgrade to version 1.7.4 to resolve this issue. If that is not possible, you can escape all places where `$property` is used to filter `sv:name` in the class `Jackalope\Transport\DoctrineDBAL\Query\QOMWalker`: `XPath::escape($property)`. Node names and xpaths can contain `"` or `;` according to the JCR specification. The jackalope component that translates the query object model into doctrine dbal queries does not properly escape the names and paths, so that a accordingly crafted node name can lead to an SQL injection. If queries are never done from user input, or if you validate the user input to not contain `;`, you are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43822">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b351624101aa2c408204be702793b7df</td>
+       <td>CVE-2021-43817</td>
+       <td>2021-12-13 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Collabora Online is a collaborative online office suite based on LibreOffice technology. In affected versions a reflected XSS vulnerability was found in Collabora Online. An attacker could inject unescaped HTML into a variable as they created the Collabora Online iframe, and execute scripts inside the context of the Collabora Online iframe. This would give access to a small set of user settings stored in the browser, as well as the session's authentication token which was also passed in at iframe creation time. Users should upgrade to Collabora Online 6.4.16 or higher or Collabora Online 4.2.20 or higher. Collabora Online Development Edition 21.11 is not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43817">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>87b1d940eb60417f3f50c52204957e59</td>
+       <td>CVE-2021-43814</td>
+       <td>2021-12-13 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Rizin is a UNIX-like reverse engineering framework and command-line toolset. In versions up to and including 0.3.1 there is a heap-based out of bounds write in parse_die() when reversing an AMD64 ELF binary with DWARF debug info. When a malicious AMD64 ELF binary is opened by a victim user, Rizin may crash or execute unintended actions. No workaround are known and users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43814">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8dbf0ce3e59a2132358df84d46326b07</td>
+       <td>CVE-2021-43801</td>
+       <td>2021-12-13 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Mercurius is a GraphQL adapter for Fastify. Any users from Mercurius@8.10.0 to 8.11.1 are subjected to a denial of service attack by sending a malformed JSON to `/graphql` unless they are using a custom error handler. The vulnerability has been fixed in https://github.com/mercurius-js/mercurius/pull/678 and shipped as v8.11.2. As a workaround users may use a custom error handler.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43801">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>542b1db4aa2efe1a09893dfb175f3da2</td>
+       <td>CVE-2021-39063</td>
+       <td>2021-12-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM Spectrum Protect Plus 10.1.0.0 through 10.1.8.x uses Cross-Origin Resource Sharing (CORS) which could allow an attacker to carry out privileged actions and retrieve sensitive information due to a misconfiguration in access control headers. IBM X-Force ID: 214956.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39063">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c3006053cb741cae8507bb2b184f358</td>
+       <td>CVE-2021-39057</td>
+       <td>2021-12-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM Spectrum Protect Plus 10.1.0.0 through 10.1.8.x is vulnerable to server-side request forgery (SSRF). This may allow an authenticated attacker to send unauthorized requests from the system, potentially leading to network enumeration or facilitating other attacks. IBM X-Force ID: 214616.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39057">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>144005c44b89597b5180fc617e6bf0f8</td>
+       <td>CVE-2021-39050</td>
+       <td>2021-12-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM i2 Analyst's Notebook 9.2.0, 9.2.1, and 9.2.2 is vulnerable to a stack-based buffer overflow, caused by improper bounds checking. A local attacker could overflow a buffer and gain lower level privileges. IBM X-Force ID: 214440.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39050">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>542873d0b31c0143d86bf19a574812f9</td>
+       <td>CVE-2021-39049</td>
+       <td>2021-12-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM i2 Analyst's Notebook 9.2.0, 9.2.1, and 9.2.2 is vulnerable to a stack-based buffer overflow, caused by improper bounds checking. A local attacker could overflow a buffer and gain lower level privileges. IBM X-Force ID: 214439.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39049">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9608082cf13c304a05cdea8554adcfa6</td>
+       <td>CVE-2021-39048</td>
+       <td>2021-12-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM Spectrum Protect Client 7.1 and 8.1 is vulnerable to a stack based buffer overflow, caused by improper bounds checking. A local attacker could exploit this vulnerability and cause a denial of service. IBM X-Force ID: 214438.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39048">详情</a></td>
+      </tr>
+
+      <tr>
        <td>d1e60c9f89455f825f59398a2f7b20df</td>
        <td>CVE-2021-43818</td>
        <td>2021-12-13 18:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2021-12-13 16:15:00 <img src="imgs/new.gif" /></td>
        <td>A collision in access memoization logic in all versions of GitLab CE/EE before 14.3.6, all versions starting from 14.4 before 14.4.4, all versions starting from 14.5 before 14.5.2, leads to potential elevated privileges in groups and projects under rare circumstances</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39937">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3bf4c48528c9a66e4d423f2f2ddf5ded</td>
-       <td>CVE-2021-36169</td>
-       <td>2021-12-13 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Hidden Functionality in Fortinet FortiOS 7.x before 7.0.1, FortiOS 6.4.x before 6.4.7 allows attacker to Execute unauthorized code or commands via specific hex read/write operations.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36169">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>042214d57cf966eca1faf0dca65a14ab</td>
-       <td>CVE-2021-43117</td>
-       <td>2021-12-13 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>fastadmin v1.2.1 is affected by a file upload vulnerability which allows arbitrary code execution through shell access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43117">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>720b733fc9fc15f7c081c2edb4208f2e</td>
-       <td>CVE-2021-42549</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient Input Validation in the search functionality of Wordpress plugin Lets-Box prior to 1.15.3 allows unauthenticated user to craft a reflected Cross-Site Scripting attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42549">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d27b9fba0673020e1b91e78eefd16ac8</td>
-       <td>CVE-2021-42548</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient Input Validation in the search functionality of Wordpress plugin Share-one-Drive prior to 1.15.3 allows unauthenticated user to craft a reflected Cross-Site Scripting attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42548">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>80d08565e863935da01471d46d05c1ed</td>
-       <td>CVE-2021-42547</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient Input Validation in the search functionality of Wordpress plugin Out-of-the-Box prior to 1.20.3 allows unauthenticated user to craft a reflected Cross-Site Scripting attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42547">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4765703da0cdaaad5d9084936d696abf</td>
-       <td>CVE-2021-42546</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient Input Validation in the search functionality of Wordpress plugin Use-Your-Drive prior to 1.18.3 allows unauthenticated user to craft a reflected Cross-Site Scripting attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42546">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5ec82bea42501fa7dbc62800cd455b3</td>
-       <td>CVE-2021-24972</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Pixel Cat WordPress plugin before 2.6.3 does not escape some of its settings, which could allow high privilege users to perform Cross-Site Scripting attacks even when the unfiltered_html is disallowed</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-24972">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5afb5de5cf5f8e5f9271fe3bc77f81b</td>
-       <td>CVE-2021-24970</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The All-in-One Video Gallery WordPress plugin before 2.5.0 does not sanitise and validate the tab parameter before using it in a require statement in the admin dashboard, leading to a Local File Inclusion issue</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-24970">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0a6a41ea1082a308a76d4b436044ae6c</td>
-       <td>CVE-2021-24955</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The User Registration, Login Form, User Profile & Membership WordPress plugin before 3.2.3 does not escape the data parameter of the pp_get_forms_by_builder_type AJAX action before outputting it back in an attribute, leading to a Reflected Cross-Site Scripting issue</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-24955">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0462c8efe09bf07b8be0755148f1ea06</td>
-       <td>CVE-2021-24954</td>
-       <td>2021-12-13 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The User Registration, Login Form, User Profile & Membership WordPress plugin before 3.2.3 does not sanitise and escape the ppress_cc_data parameter before outputting it back in an attribute of an admin dashboard page, leading to a Reflected Cross-Site Scripting issue</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-24954">详情</a></td>
       </tr>
 
      </tbody>
