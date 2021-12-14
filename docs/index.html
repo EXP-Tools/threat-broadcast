@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-12-13 23:27:28 -->
+<!-- RELEASE TIME : 2021-12-14 01:30:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d939ff799d7657a0cad221c6934feab5</td>
+       <td>CVE-2021-41272</td>
+       <td>2021-12-13 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Besu is an Ethereum client written in Java. Starting in version 21.10.0, changes in the implementation of the SHL, SHR, and SAR operations resulted in the introduction of a signed type coercion error in values that represent negative values for 32 bit signed integers. Smart contracts that ask for shifts between approximately 2 billion and 4 billion bits (nonsensical but valid values for the operation) will fail to execute and hence fail to validate. In networks where vulnerable versions are mining with other clients or non-vulnerable versions this will result in a fork and the relevant transactions will not be included in the fork. In networks where vulnerable versions are not mining (such as Rinkeby) no fork will result and the validator nodes will stop accepting blocks. In networks where only vulnerable versions are mining the relevant transaction will not be included in any blocks. When the network adds a non-vulnerable version the network will act as in the first case. Besu 21.10.2 contains a patch for this issue. Besu 21.7.4 is not vulnerable and clients can roll back to that version. There is a workaround available: Once a transaction with the relevant shift operations is included in the canonical chain, the only remediation is to make sure all nodes are on non-vulnerable versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41272">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3e2b7258f5a3fe7bf1d97f8ea5035165</td>
+       <td>CVE-2021-24045</td>
+       <td>2021-12-13 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A type confusion vulnerability could be triggered when resolving the "typeof" unary operator in Facebook Hermes prior to v0.10.0. Note that this is only exploitable if the application using Hermes permits evaluation of untrusted JavaScript. Hence, most React Native applications are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-24045">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e61a3c1dcb49cf1a8ae4c0820f3a5fbf</td>
+       <td>CVE-2020-19042</td>
+       <td>2021-12-13 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting (XSS) vulnerability exists in zzcms 2019 XSS via a modify action in user/adv.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-19042">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3d692ef96f43ed8a27323ce5b0b323bd</td>
        <td>CVE-2021-43823</td>
        <td>2021-12-13 20:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2021-12-13 16:15:00 <img src="imgs/new.gif" /></td>
        <td>An issue has been discovered in GitLab CE/EE affecting all versions starting from 13.2 before 14.3.6, all versions starting from 14.4 before 14.4.4, all versions starting from 14.5 before 14.5.2. GitLab Maven Package registry is vulnerable to a regular expression denial of service when a specifically crafted string is sent.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39940">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>339f071cebc374d2b3409dd8dabfb7d9</td>
-       <td>CVE-2021-39939</td>
-       <td>2021-12-13 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>An uncontrolled resource consumption vulnerability in GitLab Runner affecting all versions starting from 13.7 before 14.3.6, all versions starting from 14.4 before 14.4.4, all versions starting from 14.5 before 14.5.2, allows an attacker triggering a job with a specially crafted docker image to exhaust resources on runner manager</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39939">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>22f925cec8d03a1f1f5118ae7b96c727</td>
-       <td>CVE-2021-39938</td>
-       <td>2021-12-13 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerable regular expression pattern in GitLab CE/EE since version 8.15 before 14.3.6, all versions starting from 14.4 before 14.4.4, all versions starting from 14.5 before 14.5.2, allows an attacker to cause uncontrolled resource consumption leading to Denial of Service via specially crafted deploy Slash commands</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39938">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a50538f977f5b991355b51ee51f91eb8</td>
-       <td>CVE-2021-39937</td>
-       <td>2021-12-13 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A collision in access memoization logic in all versions of GitLab CE/EE before 14.3.6, all versions starting from 14.4 before 14.4.4, all versions starting from 14.5 before 14.5.2, leads to potential elevated privileges in groups and projects under rare circumstances</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39937">详情</a></td>
       </tr>
 
      </tbody>
@@ -814,7 +814,7 @@
       <tr>
        <td>760157e7624b985c970d8bf905b64f6c</td>
        <td>CNNVD-202112-837 (CVE-2021-4097)</td>
-       <td>2021-12-12 12:44:56 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 12:44:56</td>
        <td>phpservermon 注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202112-837">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>b24173f1c88f383ca64c7f50e3d6f0f6</td>
        <td>CNNVD-202112-838 (CVE-2021-41805)</td>
-       <td>2021-12-12 12:44:54 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 12:44:54</td>
        <td>Hashicorp HashiCorp Consul 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202112-838">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>0a092861fc6ca097eab165a373e85bd4</td>
        <td>CNNVD-202112-839 (CVE-2021-44833)</td>
-       <td>2021-12-12 12:44:52 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 12:44:52</td>
        <td>OpenSearch Web browser 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202112-839">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>569fee1540cadede3ca98f74a62e0c1e</td>
        <td>CVE-2020-9553</td>
-       <td>2021-12-12 13:41:52 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:52</td>
        <td>奥多比 Adobe Bridge 信息泄露漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=46cbc5db901d49d6a7b1725acfe478a2">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>37140bd054e4f0f44f73afa7c99f9e5a</td>
        <td>CVE-2020-3768</td>
-       <td>2021-12-12 13:41:49 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:49</td>
        <td>Adobe ColdFusion 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d15f50245cd24312a1ba19d004444b28">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>b66055c9db031cff9801dd686c552864</td>
        <td>CVE-2020-15360</td>
-       <td>2021-12-12 13:41:46 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:46</td>
        <td>Docker Desktop 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f4b449a1796d4a2bba35a35a149e681a">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>a11c5341ff5f8c56060023ec17bc20de</td>
        <td>CVE-2020-3798</td>
-       <td>2021-12-12 13:41:43 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:43</td>
        <td>Adobe Digital Editions 信息泄露漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=dbf2bf57453d4dec95e566afa7e5b308">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>62b5c1a19f173b44cea88be25a771d27</td>
        <td>CVE-2020-3809</td>
-       <td>2021-12-12 13:41:39 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:39</td>
        <td>Adobe After Effects 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=68cdd55367b5489c805f3feb271f11ca">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>c6174a977960f74182f8aa4a145d5941</td>
        <td>CVE-2020-9661</td>
-       <td>2021-12-12 13:41:36 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:36</td>
        <td>Adobe After Effects 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=77f97f6775414136937b63d655133bcf">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>4a38104e186dfdaa9c7810224f4dde5c</td>
        <td>CVE-2020-3767</td>
-       <td>2021-12-12 13:41:33 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:33</td>
        <td>Adobe ColdFusion 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=486126d3f4e140bca62edf9bf5b8d133">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>425e483abf9998347443676a492b83e4</td>
        <td>CVE-2020-3796</td>
-       <td>2021-12-12 13:41:30 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:30</td>
        <td>Adobe ColdFusion 信息泄露漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7a0c0eea6e9e443da3272c5af82f0510">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>c7b4323aad68e2bc70799e6c4f97ab02</td>
        <td>CVE-2020-9660</td>
-       <td>2021-12-12 13:41:26 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:26</td>
        <td>Adobe After Effects 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=880ef943df404d59846985a70a8abce0">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>54a5f5283f684bfa53b73a26bbefc550</td>
        <td>CVE-2020-9666</td>
-       <td>2021-12-12 13:41:23 <img src="imgs/new.gif" /></td>
+       <td>2021-12-12 13:41:23</td>
        <td>Adobe Campaign Classic 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f22045ff1fb14592b49ea025aefb020c">详情</a></td>
       </tr>
