@@ -3,9 +3,21 @@
 
 ------
 
+![fork](https://img.shields.io/github/forks/lyy289065406/threat-broadcast?style=social)
+![star](https://img.shields.io/github/stars/lyy289065406/threat-broadcast?style=social)
+
+![commit](https://img.shields.io/github/last-commit/lyy289065406/threat-broadcast)
+![Contributors](https://img.shields.io/github/contributors-anon/lyy289065406/threat-broadcast) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/lyy289065406/threat-broadcast/pulls) 
+
+[![license](https://img.shields.io/badge/Apache-License-brightgreen)](./LICENSE)
+[![release](https://img.shields.io/badge/release-v3.0-brightgreen)](https://github.com/lyy289065406/threat-broadcast/releases)
+
+
 ## 运行环境
 
 ![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
+
 
 
 ## 项目介绍
