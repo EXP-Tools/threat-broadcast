@@ -3,15 +3,22 @@
 
 ------
 
+![fork](https://img.shields.io/github/forks/lyy289065406/threat-broadcast?style=social)
+![star](https://img.shields.io/github/stars/lyy289065406/threat-broadcast?style=social)
+
+![commit](https://img.shields.io/github/last-commit/lyy289065406/threat-broadcast)
+![Contributors](https://img.shields.io/github/contributors-anon/lyy289065406/threat-broadcast) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/lyy289065406/threat-broadcast/pulls) 
+
+[![license](https://img.shields.io/badge/Apache-License-brightgreen)](./LICENSE)
+[![release](https://img.shields.io/badge/release-v3.0-brightgreen)](https://github.com/lyy289065406/threat-broadcast/releases)
+
+
 ## 运行环境
 
 ![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
 
 
-## TODO
-
-供应链情报
-某些很基础被大量应用的第三方构件，如 log4j，突然有个很旧的历史版本放出更新，尤其是 rc 版本
 
 ## 项目介绍
 
