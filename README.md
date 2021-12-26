@@ -8,10 +8,10 @@
 
 ![commit](https://img.shields.io/github/last-commit/lyy289065406/threat-broadcast)
 ![Contributors](https://img.shields.io/github/contributors-anon/lyy289065406/threat-broadcast) 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/lyy289065406/threat-broadcast/pulls) 
 
-[![license](https://img.shields.io/badge/Apache-License-brightgreen)](./LICENSE)
-[![release](https://img.shields.io/badge/release-v3.0-brightgreen)](https://github.com/lyy289065406/threat-broadcast/releases)
+[![license](https://img.shields.io/badge/Apache-License-blue)](./LICENSE)
+[![release](https://img.shields.io/badge/release-v3.0-blue)](https://github.com/lyy289065406/threat-broadcast/releases)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/lyy289065406/threat-broadcast/pulls) 
 
 
 ## 运行环境
