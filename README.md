@@ -9,7 +9,7 @@
 ![commit](https://img.shields.io/github/last-commit/lyy289065406/threat-broadcast)
 ![Contributors](https://img.shields.io/github/contributors-anon/lyy289065406/threat-broadcast) 
 
-[![license](https://img.shields.io/badge/Apache-License-blue)](./LICENSE)
+[![license](https://img.shields.io/badge/GPLv3-License-blue)](./LICENSE)
 [![release](https://img.shields.io/badge/release-v3.0-blue)](https://github.com/lyy289065406/threat-broadcast/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/lyy289065406/threat-broadcast/pulls) 
 
@@ -17,13 +17,6 @@
 ## 运行环境
 
 ![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
-
-
-
-## TODO
-
-供应链情报
-某些很基础被大量应用的第三方构件，如 log4j，突然有个很旧的历史版本放出更新，尤其是 rc 版本
 
 
 ## 项目介绍
