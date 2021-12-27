@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2021-12-27 19:22:01 -->
+<!-- RELEASE TIME : 2021-12-27 20:29:50 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0dfe9875c9dd5377bac71da1db9f0014</td>
+       <td>CVE-2021-43856</td>
+       <td>2021-12-27 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wiki.js is a wiki app built on Node.js. Wiki.js 2.5.263 and earlier is vulnerable to stored cross-site scripting through non-image file uploads for file types that can be viewed directly inline in the browser. By creating a malicious file which can execute inline JS when viewed in the browser (e.g. XML files), a malicious Wiki.js user may stage a stored cross-site scripting attack. This allows the attacker to execute malicious JavaScript when the file is viewed directly by other users. The file must be opened directly by the user and will not trigger directly in a normal Wiki.js page. A patch in version 2.5.264 fixes this vulnerability by adding an optional (enabled by default) force download flag to all non-image file types, preventing the file from being viewed inline in the browser. As a workaround, disable file upload for all non-trusted users.---Thanks to @Haxatron for reporting this vulnerability.Initially reported via https://huntr.dev/bounties/266bff09-00d9-43ca-a4bb-bb540642811f/</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43856">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>93ed47e5a0dd7f1a13b253a7d4adf4a8</td>
+       <td>CVE-2021-43855</td>
+       <td>2021-12-27 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wiki.js is a wiki app built on node.js. Wiki.js 2.5.263 and earlier is vulnerable to stored cross-site scripting through a SVG file upload made via a custom request with a fake MIME type. By creating a crafted SVG file, a malicious Wiki.js user may stage a stored cross-site scripting attack. This allows the attacker to execute malicious JavaScript when the SVG is viewed directly by other users. Scripts do not execute when loaded inside a page via normal `<img>` tags. The malicious SVG can only be uploaded by crafting a custom request to the server with a fake MIME type. A patch in version 2.5.264 fixes this vulnerability by adding an additional file extension verification check to the optional (enabled by default) SVG sanitization step to all file uploads that match the SVG mime type. As a workaround, disable file upload for all non-trusted users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43855">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a2782f4aa9db3985f01aa490278c875c</td>
+       <td>CVE-2021-43845</td>
+       <td>2021-12-27 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>PJSIP is a free and open source multimedia communication library. In version 2.11.1 and prior, if incoming RTCP XR message contain block, the data field is not checked against the received packet size, potentially resulting in an out-of-bound read access. This affects all users that use PJMEDIA and RTCP XR. A malicious actor can send a RTCP XR message with an invalid packet size.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43845">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d1b186f5437cb36d925664c8f8d9d44a</td>
+       <td>CVE-2021-38961</td>
+       <td>2021-12-27 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM OPENBMC OP910 is vulnerable to cross-site scripting. This vulnerability allows users to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session. IBM X-Force ID: 212049.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-38961">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b9ae835a902f4d59757eb5b12a33639b</td>
        <td>CVE-2021-45232</td>
        <td>2021-12-27 15:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2021-12-27 00:15:00 <img src="imgs/new.gif" /></td>
        <td>An issue was discovered in the tectonic_xdv crate before 0.1.12 for Rust. XdvParser::<T>::process may read from uninitialized memory locations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45703">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b57cc3e24d38da1b301af87e9dac613e</td>
-       <td>CVE-2021-45702</td>
-       <td>2021-12-27 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in the tremor-script crate before 0.11.6 for Rust. A merge operation may result in a use-after-free.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45702">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7022210c67e84fb3e45c87a4ec94bf9a</td>
-       <td>CVE-2021-45720</td>
-       <td>2021-12-26 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in the lru crate before 0.7.1 for Rust. The iterators have a use-after-free, as demonstrated by an access after a pop operation.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45720">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8407ce4fa4b14e38c7e4ef5fdef64c68</td>
-       <td>CVE-2021-45719</td>
-       <td>2021-12-26 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in the rusqlite crate 0.25.x before 0.25.4 and 0.26.x before 0.26.2 for Rust. update_hook has a use-after-free.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45719">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>767b5a2c944f4ea77b918595dab6f490</td>
-       <td>CVE-2021-45718</td>
-       <td>2021-12-26 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in the rusqlite crate 0.25.x before 0.25.4 and 0.26.x before 0.26.2 for Rust. rollback_hook has a use-after-free.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45718">详情</a></td>
       </tr>
 
      </tbody>
