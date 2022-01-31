@@ -19,14 +19,6 @@
 ![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
 
 
-
-## TODO
-
-供应链情报
-某些很基础被大量应用的第三方构件，如 log4j，突然有个很旧的历史版本放出更新，尤其是 rc 版本
-
-
-
 ## 项目介绍
 
 从以下公开的威胁情报来源爬取并整合最新信息：
@@ -164,6 +156,14 @@
 > 只要爬取到新的威胁情报则会刷新 [`docs/index.html`](docs/index.html)，将其提交到仓库会自动更新 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
 
 </details>
+
+
+## RoadMap
+
+1. 增加供应链情报：某些很基础且被大量应用的第三方构件，突然有个很旧的历史版本放出更新，尤其是 rc 版本，则推送情报。（如 log4j）
+2. ....
+
+
 
 ## 目录说明
 
