@@ -60,9 +60,9 @@
 
 - 【邮件播报】 接收播报信息的邮箱配置： [recv/mail_*.dat](recv/mail.dat)
 - 【邮件播报】 对所有 open 状态的 <a href="https://github.com/lyy289065406/threat-broadcast/issues/new?title=Your+Email&amp;body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">Issues</a> 标题中的邮箱地址发送播报信息
-- 【实时播报】 接收播报信息的 QQ 群： `283212984`
-- 【实时播报】 接收播报信息的 WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)
-- 【页面播报】 最新的 TOP10 威胁情报会更新到 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
+- 【~~实时播报~~】 接收播报信息的 QQ 群： `283212984`
+- 【~~实时播报~~】 接收播报信息的 WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)
+- 【页面播报】 最新的 TOP30 威胁情报会更新到 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
 - 【情报归档】 所有威胁情报会归档到 [sqlite](data/cves.db)
 
 
@@ -83,8 +83,8 @@
 
 - 【开发者订阅】 可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
 - 【个人订阅】 在 <a href="https://github.com/lyy289065406/threat-broadcast/issues/new?title=Your+Email&amp;body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">Issues</a> 标题留下你的邮箱即可接收播报信息（若希望取消订阅，请 close issue）
-- 【个人订阅】 加入 QQ 群： 283212984
-- 【个人订阅】 关注 WeChat 公众号：
+- 【~~个人订阅~~】 加入 QQ 群： 283212984
+- 【~~个人订阅~~】 关注 WeChat 公众号：
 <br/>　　**名称**： EXP技术
 <br/>　　**微信号**： exp-blog
 <br/>![](https://github.com/lyy289065406/threat-broadcast/blob/master/imgs/wechat.png)
@@ -137,6 +137,7 @@
 - 任意找一台 Linux 服务器（阿里云、腾讯云等）
 - 安装 python 3.8
 - 把仓库 checkout 到服务器本地： `git clone https://github.com/lyy289065406/threat-broadcast`
+- 安装 python 依赖： `python -m pip install -r requirements.txt`
 
 > 国内的云主机（阿里云/腾讯云等）为了避免滥发邮件默认关闭了对 SMTP 25 端口的出口流量，直接导致邮件无法发送。 解封需要到控制台申请，例如 《[阿里云 25 端口解封](https://help.aliyun.com/knowledge_detail/56130.html?spm=a2c4e.11153940.0.0.50664791wrBD3D&source=5176.11533457&userCode=r3yteowb&type=copy)》、 《[腾讯云 25 端口解封](https://cloud.tencent.com/document/product/213/40436)》
 
@@ -154,11 +155,10 @@
 ### 自动生成 Github Page 播报页面
 
 - 安装 git 命令行客户端
-- 安装 GitPython 模块： `pip install GitPython`
 - 打开项目目录： `cd ${workspace}/threat-broadcast`
 - 设置使用 SSH 与 Github 连接（避免提交内容时要输入账密），详见 [这里](https://help.github.com/en/articles/connecting-to-github-with-ssh)
 - 若设置 SSH 后还要输入密码才能提交，则还需要把仓库的 https 协议改成 ssh，详见 [这里](https://help.github.com/en/articles/changing-a-remotes-url#switching-remote-urls-from-https-to-ssh)
-- [`main.py`](main.py) 添加运行参数 `-ac` 可自动提交变更到仓库
+- 在 [`main.py`](main.py) 添加运行参数 `-ac` 可自动提交变更到仓库
 
 
 > 只要爬取到新的威胁情报则会刷新 [`docs/index.html`](docs/index.html)，将其提交到仓库会自动更新 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
@@ -186,19 +186,10 @@ threat-broadcast
 ```
 
 
-## 赞助途径
-
-| 支付宝 | 微信 |
-|:---:|:---:|
-| ![](docs/imgs/alipay.png) | ![](docs/imgs/wechat.png) |
-
-
 ## 版权声明
 
 　[![Copyright (C) EXP,2016](https://img.shields.io/badge/Copyright%20(C)-EXP%202016-blue.svg)](http://exp-blog.com)　[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-- Site: [http://exp-blog.com](http://exp-blog.com) 
+- Site: [https://exp-blog.com](https://exp-blog.com) 
 - Mail: <a href="mailto:289065406@qq.com?subject=[EXP's Github]%20Your%20Question%20（请写下您的疑问）&amp;body=What%20can%20I%20help%20you?%20（需要我提供什么帮助吗？）">289065406@qq.com</a>
 
-
-------
