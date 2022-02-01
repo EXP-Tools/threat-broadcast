@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-01 12:41:47 -->
+<!-- RELEASE TIME : 2022-02-01 14:24:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5cbdd0a3c2b2259d3c9a188a47ad038d</td>
+       <td>CVE-2022-23597</td>
+       <td>2022-02-01 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Element Desktop is a Matrix client for desktop platforms with Element Web at its core. Element Desktop before 1.9.7 is vulnerable to a remote program execution bug with user interaction. The exploit is non-trivial and requires clicking on a malicious link, followed by another button click. To the best of our knowledge, the vulnerability has never been exploited in the wild. If you are using Element Desktop < 1.9.7, we recommend upgrading at your earliest convenience. If successfully exploited, the vulnerability allows an attacker to specify a file path of a binary on the victim's computer which then gets executed. Notably, the attacker does *not* have the ability to specify program arguments. However, in certain unspecified configurations, the attacker may be able to specify an URI instead of a file path which then gets handled using standard platform mechanisms. These may allow exploiting further vulnerabilities in those mechanisms, potentially leading to arbitrary code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23597">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce9342b3bdc58f2e9a181e9341e3de27</td>
+       <td>CVE-2022-23596</td>
+       <td>2022-02-01 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Junrar is an open source java RAR archive library. In affected versions A carefully crafted RAR archive can trigger an infinite loop while extracting said archive. The impact depends solely on how the application uses the library, and whether files can be provided by malignant users. The problem is patched in 7.4.1. There are no known workarounds and users are advised to upgrade as soon as possible.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23596">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>94953ff69682554a4e75a2d6e975144e</td>
+       <td>CVE-2022-21687</td>
+       <td>2022-02-01 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>gh-ost is a triggerless online schema migration solution for MySQL. Versions prior to 1.1.3 are subject to an arbitrary file read vulnerability. The attacker must have access to the target host or trick an administrator into executing a malicious gh-ost command on a host running gh-ost, plus network access from host running gh-ost to the attack's malicious MySQL server. The `-database` parameter does not properly sanitize user input which can lead to arbitrary file reads.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21687">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>002f8b883427d3f2acdcb999d86fb576</td>
+       <td>CVE-2021-43859</td>
+       <td>2022-02-01 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>XStream is an open source java library to serialize objects to XML and back again. Versions prior to 1.4.19 may allow a remote attacker to allocate 100% CPU time on the target system depending on CPU type or parallel execution of such a payload resulting in a denial of service only by manipulating the processed input stream. XStream 1.4.19 monitors and accumulates the time it takes to add elements to collections and throws an exception if a set threshold is exceeded. Users are advised to upgrade as soon as possible. Users unable to upgrade may set the NO_REFERENCE mode to prevent recursion. See GHSA-rmr5-cpv2-vgjf for further details on a workaround if an upgrade is not possible.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43859">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>663d07adf9ca486e07bc51e2d52d2baa</td>
+       <td>CVE-2021-41040</td>
+       <td>2022-02-01 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Eclipse Wakaama, ever since its inception until 2021-01-14, the CoAP parsing code does not properly sanitize network-received data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41040">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8630d9134253d396303fbf7a6c094b6e</td>
+       <td>CVE-2022-23607</td>
+       <td>2022-02-01 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>treq is an HTTP library inspired by requests but written on top of Twisted's Agents. Treq's request methods (`treq.get`, `treq.post`, etc.) and `treq.client.HTTPClient` constructor accept cookies as a dictionary. Such cookies are not bound to a single domain, and are therefore sent to *every* domain ("supercookies"). This can potentially cause sensitive information to leak upon an HTTP redirect to a different domain., e.g. should `https://example.com` redirect to `http://cloudstorageprovider.com` the latter will receive the cookie `session`. Treq 2021.1.0 and later bind cookies given to request methods (`treq.request`, `treq.get`, `HTTPClient.request`, `HTTPClient.get`, etc.) to the origin of the *url* parameter. Users are advised to upgrade. For users unable to upgrade Instead of passing a dictionary as the *cookies* argument, pass a `http.cookiejar.CookieJar` instance with properly domain- and scheme-scoped cookies in it.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23607">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>166632861742390a0d0dbabfbd544caa</td>
+       <td>CVE-2022-23603</td>
+       <td>2022-02-01 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>iTunesRPC-Remastered is a discord rich presence application for use with iTunes & Apple Music. In code before commit 24f43aa user input is not properly sanitized and code injection is possible. Users are advised to upgrade as soon as is possible. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23603">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>56453547b7d8070e22fcec729eab3fc5</td>
+       <td>CVE-2022-23602</td>
+       <td>2022-02-01 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nimforum is a lightweight alternative to Discourse written in Nim. In versions prior to 2.2.0 any forum user can create a new thread/post with an include referencing a file local to the host operating system. Nimforum will render the file if able. This can also be done silently by using NimForum's post "preview" endpoint. Even if NimForum is running as a non-critical user, the forum.json secrets can be stolen. Version 2.2.0 of NimForum includes patches for this vulnerability. Users are advised to upgrade as soon as is possible. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23602">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e8db4f145c231d3f7668e591821d1d0e</td>
+       <td>CVE-2022-0419</td>
+       <td>2022-02-01 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>NULL Pointer Dereference in NPM radare2.js prior to 6.0.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0419">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a67e3726be6a2c54325b580e2f9c81d3</td>
+       <td>CVE-2020-8562</td>
+       <td>2022-02-01 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>As mitigations to a report from 2019 and CVE-2020-8555, Kubernetes attempts to prevent proxied connections from accessing link-local or localhost networks when making user-driven connections to Services, Pods, Nodes, or StorageClass service providers. As part of this mitigation Kubernetes does a DNS name resolution check and validates that response IPs are not in the link-local (169.254.0.0/16) or localhost (127.0.0.0/8) range. Kubernetes then performs a second DNS resolution without validation for the actual connection. If a non-standard DNS server returns different non-cached responses, a user may be able to bypass the proxy IP restriction and access private networks on the control plane.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-8562">详情</a></td>
+      </tr>
+
+      <tr>
        <td>dd7aa5410ff0f59fbdd3241429fd630b</td>
        <td>CVE-2022-23774</td>
        <td>2022-02-01 06:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-01-27 21:15:00</td>
        <td>Cesanta MJS v2.20.0 was discovered to contain a SEGV vulnerability via mjs_set_internal at src/mjs_object.c. This vulnerability can lead to a Denial of Service (DoS).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46553">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ce5f0cbc235a2b6d43dc6613c1be34ad</td>
-       <td>CVE-2021-46550</td>
-       <td>2022-01-27 21:15:00</td>
-       <td>Cesanta MJS v2.20.0 was discovered to contain a SEGV vulnerability via free_json_frame at src/mjs_json.c. This vulnerability can lead to a Denial of Service (DoS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46550">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d3219d6871c36cf86d507d0a8f19c67e</td>
-       <td>CVE-2021-44650</td>
-       <td>2022-01-12 14:15:00</td>
-       <td>Zoho ManageEngine M365 Manager Plus before Build 4419 allows remote command execution when updating proxy settings through the Admin ProxySettings and Tenant ProxySettings components.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-44650">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e3eb67b69684f196582e436b7214f24f</td>
-       <td>CVE-2021-4080</td>
-       <td>2022-01-12 14:15:00</td>
-       <td>crater is vulnerable to Unrestricted Upload of File with Dangerous Type</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4080">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d644af2fa83e035dfdab5ce7dd09b3e</td>
-       <td>CVE-2021-44649</td>
-       <td>2022-01-12 13:15:00</td>
-       <td>Django CMS 3.7.3 does not validate the plugin_type parameter while generating error messages for an invalid plugin type, resulting in a Cross Site Scripting (XSS) vulnerability. The vulnerability allows an attacker to execute arbitrary JavaScript code in the web browser of the affected user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-44649">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c61602470ac394455dd17123bb86485</td>
-       <td>CVE-2021-44648</td>
-       <td>2022-01-12 13:15:00</td>
-       <td>GNOME gdk-pixbuf 2.42.6 is vulnerable to a heap-buffer overflow vulnerability when decoding the lzw compressed stream of image data in GIF files with lzw minimum code size equals to 12.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-44648">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c2cf9c2afed7cfdd5b46b57da0e0ad7</td>
-       <td>CVE-2021-3852</td>
-       <td>2022-01-12 11:15:00</td>
-       <td>growi is vulnerable to Authorization Bypass Through User-Controlled Key</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-3852">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f767c9edd5d1c8d9ea00b333f6b8e301</td>
-       <td>CVE-2022-0179</td>
-       <td>2022-01-12 05:15:00</td>
-       <td>snipe-it is vulnerable to Improper Access Control</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0179">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fd139f94756697b139e9029dac7bd36f</td>
-       <td>CVE-2022-0159</td>
-       <td>2022-01-12 03:15:00</td>
-       <td>orchardcore is vulnerable to Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0159">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2ccf9cece18c0ebbcf2819aaf573a042</td>
-       <td>CVE-2022-0087</td>
-       <td>2022-01-12 00:15:00</td>
-       <td>keystone is vulnerable to Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0087">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d83e338045d3820930f80309aaa857b</td>
-       <td>CVE-2022-21646</td>
-       <td>2022-01-11 22:15:00</td>
-       <td>SpiceDB is a database system for managing security-critical application permissions. Any user making use of a wildcard relationship under the right hand branch of an `exclusion` or within an `intersection` operation will see `Lookup`/`LookupResources` return a resource as "accessible" if it is *not* accessible by virtue of the inclusion of the wildcard in the intersection or the right side of the exclusion. In `v1.3.0`, the wildcard is ignored entirely in lookup's dispatch, resulting in the `banned` wildcard being ignored in the exclusion. Version 1.4.0 contains a patch for this issue. As a workaround, don't make use of wildcards on the right side of intersections or within exclusions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21646">详情</a></td>
       </tr>
 
      </tbody>
