@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-03 08:31:09 -->
+<!-- RELEASE TIME : 2022-02-03 14:23:56 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3c9c983e3a56b453395a784b6783fa9d</td>
+       <td>CVE-2022-23568</td>
+       <td>2022-02-03 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of `AddManySparseToTensorsMap` is vulnerable to an integer overflow which results in a `CHECK`-fail when building new `TensorShape` objects (so, an assert failure based denial of service). We are missing some validation on the shapes of the input tensors as well as directly constructing a large `TensorShape` with user-provided dimensions. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23568">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aebc0b0375f7f2294542168452967fcf</td>
+       <td>CVE-2022-23567</td>
+       <td>2022-02-03 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementations of `Sparse*Cwise*` ops are vulnerable to integer overflows. These can be used to trigger large allocations (so, OOM based denial of service) or `CHECK`-fails when building new `TensorShape` objects (so, assert failures based denial of service). We are missing some validation on the shapes of the input tensors as well as directly constructing a large `TensorShape` with user-provided dimensions. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23567">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e8f62350b8e7c420fa4bf3570ad5e35</td>
+       <td>CVE-2022-21736</td>
+       <td>2022-02-03 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of `SparseTensorSliceDataset` has an undefined behavior: under certain condition it can be made to dereference a `nullptr` value. The 3 input arguments to `SparseTensorSliceDataset` represent a sparse tensor. However, there are some preconditions that these arguments must satisfy but these are not validated in the implementation. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21736">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e6a8a32edd55ca75c1840f38b259e67</td>
+       <td>CVE-2022-21733</td>
+       <td>2022-02-03 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of `StringNGrams` can be used to trigger a denial of service attack by causing an out of memory condition after an integer overflow. We are missing a validation on `pad_witdh` and that result in computing a negative value for `ngram_width` which is later used to allocate parts of the output. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21733">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d4131cbc65237ea189df0d27db1e8471</td>
+       <td>CVE-2022-21732</td>
+       <td>2022-02-03 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of `ThreadPoolHandle` can be used to trigger a denial of service attack by allocating too much memory. This is because the `num_threads` argument is only checked to not be negative, but there is no upper bound on its value. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21732">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a0dea293e6c2f1c014bb2970d8795c80</td>
+       <td>CVE-2022-21731</td>
+       <td>2022-02-03 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of shape inference for `ConcatV2` can be used to trigger a denial of service attack via a segfault caused by a type confusion. The `axis` argument is translated into `concat_dim` in the `ConcatShapeHelper` helper function. Then, a value for `min_rank` is computed based on `concat_dim`. This is then used to validate that the `values` tensor has at least the required rank. However, `WithRankAtLeast` receives the lower bound as a 64-bits value and then compares it against the maximum 32-bits integer value that could be represented. Due to the fact that `min_rank` is a 32-bits value and the value of `axis`, the `rank` argument is a negative value, so the error check is bypassed. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21731">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d397737dd75a92c0f258ff1087ce6fce</td>
+       <td>CVE-2022-21730</td>
+       <td>2022-02-03 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of `FractionalAvgPoolGrad` does not consider cases where the input tensors are invalid allowing an attacker to read from outside of bounds of heap. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21730">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8a5611cb6225bcfa9249a0d0b50f9664</td>
+       <td>CVE-2022-21728</td>
+       <td>2022-02-03 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of shape inference for `ReverseSequence` does not fully validate the value of `batch_dim` and can result in a heap OOB read. There is a check to make sure the value of `batch_dim` does not go over the rank of the input, but there is no check for negative values. Negative dimensions are allowed in some cases to mimic Python's negative indexing (i.e., indexing from the end of the array), however if the value is too negative then the implementation of `Dim` would access elements before the start of an array. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21728">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>10c21a1523887084b6330dda81964eb5</td>
+       <td>CVE-2022-21727</td>
+       <td>2022-02-03 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of shape inference for `Dequantize` is vulnerable to an integer overflow weakness. The `axis` argument can be `-1` (the default value for the optional argument) or any other positive value at most the number of dimensions of the input. Unfortunately, the upper bound is not checked, and, since the code computes `axis + 1`, an attacker can trigger an integer overflow. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21727">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7ae9aae68a70d31dfbc235332a9ffeaa</td>
+       <td>CVE-2022-21726</td>
+       <td>2022-02-03 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The implementation of `Dequantize` does not fully validate the value of `axis` and can result in heap OOB accesses. The `axis` argument can be `-1` (the default value for the optional argument) or any other positive value at most the number of dimensions of the input. Unfortunately, the upper bound is not checked and this results in reading past the end of the array containing the dimensions of the input tensor. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21726">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4fe6cc73e92883a4350156f568d8f8e2</td>
        <td>CVE-2022-24121</td>
        <td>2022-02-03 04:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-02-02 18:15:00 <img src="imgs/new.gif" /></td>
        <td>PrinterLogic Web Stack versions 19.1.1.13 SP9 and below use user-controlled input to craft a URL, resulting in a Server Side Request Forgery (SSRF) vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42637">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7486dbeb0fcb9f77d9570aa0a781ce66</td>
-       <td>CVE-2021-42633</td>
-       <td>2022-02-02 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>PrinterLogic Web Stack versions 19.1.1.13 SP9 and below are vulnerable to SQL Injection, which may allow an attacker to access additional audit records.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42633">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9ce4bcab8bb895e4179981dd75f223eb</td>
-       <td>CVE-2022-22510</td>
-       <td>2022-02-02 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Codesys Profinet in version V4.2.0.0 is prone to null pointer dereference that allows a denial of service (DoS) attack of an unauthenticated user via SNMP.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22510">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7c62d58d351469438223ede121ec613b</td>
-       <td>CVE-2022-22509</td>
-       <td>2022-02-02 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Phoenix Contact FL SWITCH Series 2xxx in version 3.00 an incorrect privilege assignment allows an low privileged user to enable full access to the device configuration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22509">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e40dc8b6ebb7b52db42b6800358321fa</td>
-       <td>CVE-2022-21817</td>
-       <td>2022-02-02 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>NVIDIA Omniverse Launcher contains a Cross-Origin Resource Sharing (CORS) vulnerability which can allow an unprivileged remote attacker, if they can get user to browse malicious site, to acquire access tokens allowing them to access resources in other security domains, which may lead to code execution, escalation of privileges, and impact to confidentiality and integrity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21817">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b41e87301c10e98f917a7bf871ba244f</td>
-       <td>CVE-2022-21724</td>
-       <td>2022-02-02 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>pgjdbc is the offical PostgreSQL JDBC Driver. A security hole was found in the jdbc driver for postgresql database while doing security research. The system using the postgresql library will be attacked when attacker control the jdbc url or properties. pgjdbc instantiates plugin instances based on class names provided via `authenticationPluginClassName`, `sslhostnameverifier`, `socketFactory`, `sslfactory`, `sslpasswordcallback` connection properties. However, the driver did not verify if the class implements the expected interface before instantiating the class. This can lead to remote code execution loaded via arbitrary classes. Users using plugins are advised to upgrade. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21724">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e92d109da9ee7113b910eeaa92764355</td>
-       <td>CVE-2022-0366</td>
-       <td>2022-02-02 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>An authenticated and authorized agent user could potentially gain administrative access via an SQLi vulnerability to Capsule8 Console between versions 4.6.0 and 4.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0366">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c7b8d70b006d5d1bfe5e9fe24a64ccb</td>
-       <td>CVE-2021-41018</td>
-       <td>2022-02-02 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A improper neutralization of special elements used in an os command ('os command injection') in Fortinet FortiWeb version 6.4.1 and below, 6.3.15 and below allows attacker to execute unauthorized code or commands via crafted HTTP requests.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41018">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ddfd8dae20a42f3006fb3de4a04799a1</td>
-       <td>CVE-2021-39070</td>
-       <td>2022-02-02 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Security Verify Access 10.0.0.0, 10.0.1.0 and 10.0.2.0 with the advanced access control authentication service enabled could allow an attacker to authenticate as any user on the system.  IBM X-Force ID:  215353.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39070">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f1908934699652889b5fb2c167ecca3</td>
-       <td>CVE-2021-39066</td>
-       <td>2022-02-02 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Financial Transaction Manager 3.2.4 does not invalidate session any existing session identifier gives an attacker the opportunity to steal authenticated sessions.  IBM X-Force ID:  215040.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>da2c9952c3e6306b88a21387ecaf8d36</td>
-       <td>CVE-2021-39044</td>
-       <td>2022-02-02 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Financial Transaction Manager 3.2.4 is vulnerable to cross-site request forgery which could allow an attacker to execute malicious and unauthorized actions transmitted from a user that the website trusts.  IBM X-Force ID:  214210.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39044">详情</a></td>
       </tr>
 
      </tbody>
