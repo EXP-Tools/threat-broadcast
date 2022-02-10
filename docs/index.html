@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-09 23:25:32 -->
+<!-- RELEASE TIME : 2022-02-10 01:27:49 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>73940740b7ea1de59c13d4af12a8476b</td>
+       <td>CVE-2022-23631</td>
+       <td>2022-02-09 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>superjson is a program to allow JavaScript expressions to be serialized to a superset of JSON. In versions prior to 1.8.1 superjson allows input to run arbitrary code on any server using superjson input without prior authentication or knowledge. The only requirement is that the server implements at least one endpoint which uses superjson during request processing. This has been patched in superjson 1.8.1. Users are advised to update. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23631">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>93c5eda6621002106a084f373406eea4</td>
+       <td>CVE-2022-23628</td>
+       <td>2022-02-09 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>OPA is an open source, general-purpose policy engine. Under certain conditions, pretty-printing an abstract syntax tree (AST) that contains synthetic nodes could change the logic of some statements by reordering array literals. Example of policies impacted are those that parse and compare web paths. **All of these** three conditions have to be met to create an adverse effect: 1. An AST of Rego had to be **created programmatically** such that it ends up containing terms without a location (such as wildcard variables). 2. The AST had to be **pretty-printed** using the `github.com/open-policy-agent/opa/format` package. 3. The result of the pretty-printing had to be **parsed and evaluated again** via an OPA instance using the bundles, or the Golang packages. If any of these three conditions are not met, you are not affected. Notably, all three would be true if using **optimized bundles**, i.e. bundles created with `opa build -O=1` or higher. In that case, the optimizer would fulfil condition (1.), the result of that would be pretty-printed when writing the bundle to disk, fulfilling (2.). When the bundle was then used, we'd satisfy (3.). As a workaround users may disable optimization when creating bundles.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23628">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>88e65cfad090df84be589fd392a099bc</td>
+       <td>CVE-2022-23622</td>
+       <td>2022-02-09 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions there is a cross site scripting (XSS) vector in the `registerinline.vm` template related to the `xredirect` hidden field. This template is only used in the following conditions: 1. The wiki must be open to registration for anyone. 2. The wiki must be closed to view for Guest users or more specifically the XWiki.Registration page must be forbidden in View for guest user. A way to obtain the second condition is when administrators checked the "Prevent unregistered users from viewing pages, regardless of the page rights" box in the administration rights. This issue is patched in versions 12.10.11, 14.0-rc-1, 13.4.7, 13.10.3. There are two main ways for protecting against this vulnerability, the easiest and the best one is by applying a patch in the `registerinline.vm` template, the patch consists in checking the value of the xredirect field to ensure it matches: `<input type="hidden" name="xredirect" value="$escapetool.xml($!request.xredirect)" />`. If for some reason it's not possible to patch this file, another workaround is to ensure "Prevent unregistered users from viewing pages, regardless of the page rights" is not checked in the rights and apply a better right scheme using groups and rights on spaces.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23622">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d73aa3696be302df3f9b335335bb5580</td>
+       <td>CVE-2022-23621</td>
+       <td>2022-02-09 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions any user with SCRIPT right can read any file located in the XWiki WAR (for example xwiki.cfg and xwiki.properties) through XWiki#invokeServletAndReturnAsString as `$xwiki.invokeServletAndReturnAsString("/WEB-INF/xwiki.cfg")`. This issue has been patched in XWiki versions 12.10.9, 13.4.3 and 13.7-rc-1. Users are advised to update. The only workaround is to limit SCRIPT right.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23621">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>db232eefa30e78f48ffc81deda984543</td>
+       <td>CVE-2022-23620</td>
+       <td>2022-02-09 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions AbstractSxExportURLFactoryActionHandler#processSx does not escape anything from SSX document references when serializing it on filesystem, it is possible to for the HTML export process to contain reference elements containing filesystem syntax like "../", "./". or "/" in general. The referenced elements are not properly escaped. This issue has been resolved in version 13.6-rc-1. This issue can be worked around by limiting or disabling document export.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23620">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d1b479e1fa75231ff68b8fac9bae9f5</td>
+       <td>CVE-2022-23619</td>
+       <td>2022-02-09 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions it's possible to guess if a user has an account on the wiki by using the "Forgot your password" form, even if the wiki is closed to guest users. This problem has been patched on XWiki 12.10.9, 13.4.1 and 13.6RC1. Users are advised yo update. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23619">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e0d5bb6db54a3cb031691a4e9aea3c2d</td>
+       <td>CVE-2022-23618</td>
+       <td>2022-02-09 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions there is no protection against URL redirection to untrusted sites, in particular some well known parameters (xredirect) can be used to perform url redirections. This problem has been patched in XWiki 12.10.7 and XWiki 13.3RC1. Users are advised to update. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23618">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0662e32f7ced122d627eefa938d4a932</td>
+       <td>CVE-2022-23617</td>
+       <td>2022-02-09 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions any user with edit right can copy the content of a page it does not have access to by using it as template of a new page. This issue has been patched in XWiki 13.2CR1 and 12.10.6. Users are advised to update. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23617">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bdd02e27c78809920e161b4bde7fc26e</td>
+       <td>CVE-2022-23616</td>
+       <td>2022-02-09 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions it's possible for an unprivileged user to perform a remote code execution by injecting a groovy script in her own profile and by calling the Reset password feature since the feature is performing a save of the user profile with programming rights in the impacted versions of XWiki. The issue has been patched in XWiki 13.1RC1. There are two different possible workarounds, each consisting of modifying the XWiki/ResetPassword page. 1. The Reset password feature can be entirely disabled by deleting the XWiki/ResetPassword page. 2. The script in XWiki/ResetPassword can also be modified or removed: an administrator can replace it with a simple email contact to ask an administrator to reset the password.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23616">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b3efb3c29cdaedff1e4c771434d860c6</td>
+       <td>CVE-2022-23615</td>
+       <td>2022-02-09 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions any user with SCRIPT right can save a document with the right of the current user which allow accessing API requiring programming right if the current user has programming right. This has been patched in XWiki 13.0. Users are advised to update to resolve this issue. The only known workaround is to limit SCRIPT access.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23615">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2bfa1981d8b46ff4eb32bd1bfe56daa5</td>
        <td>CVE-2022-22567</td>
        <td>2022-02-09 20:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-02-09 16:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability has been identified in Simcenter Femap V2020.2 (All versions), Simcenter Femap V2021.1 (All versions). Affected application contains an out of bounds write past the end of an allocated structure while parsing specially crafted NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-15286)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46160">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bc3419f8fb985052c63079fb48a5fe14</td>
-       <td>CVE-2021-46159</td>
-       <td>2022-02-09 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Simcenter Femap V2020.2 (All versions), Simcenter Femap V2021.1 (All versions). Affected application contains an out of bounds write past the end of an allocated structure while parsing specially crafted NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-15050)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46159">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fe9da404cf5ee51c4922e1349510246f</td>
-       <td>CVE-2021-46158</td>
-       <td>2022-02-09 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Simcenter Femap V2020.2 (All versions), Simcenter Femap V2021.1 (All versions). Affected application contains a stack based buffer overflow vulnerability while parsing NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-15085, ZDI-CAN-15289, ZDI-CAN-15602)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46158">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7aaf131ac0e272d6befcbf4b1b311a1f</td>
-       <td>CVE-2021-46157</td>
-       <td>2022-02-09 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Simcenter Femap V2020.2 (All versions), Simcenter Femap V2021.1 (All versions). Affected application contains a memory corruption vulnerability while parsing NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-14757)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46157">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>30911cda179483e3f20fdc6d3d011e36</td>
-       <td>CVE-2021-46156</td>
-       <td>2022-02-09 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Simcenter Femap V2020.2 (All versions), Simcenter Femap V2021.1 (All versions). Affected application contains an out of bounds write past the end of an allocated structure while parsing specially crafted NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-14684)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46156">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8fd7658eb584102d493f0d85b32da3bd</td>
-       <td>CVE-2021-46155</td>
-       <td>2022-02-09 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Simcenter Femap V2020.2 (All versions), Simcenter Femap V2021.1 (All versions). Affected application contains a stack based buffer overflow vulnerability while parsing NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-14683, ZDI-CAN-15283, ZDI-CAN-15303, ZDI-CAN-15593)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46155">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d68572a05408ecc58261c8356cc02d29</td>
-       <td>CVE-2021-46154</td>
-       <td>2022-02-09 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Simcenter Femap V2020.2 (All versions), Simcenter Femap V2021.1 (All versions). Affected application contains a stack based buffer overflow vulnerability while parsing NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-14646, ZDI-CAN-14679, ZDI-CAN-15084, ZDI-CAN-15304)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46154">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5f776cd5b773e28e0e35c2d9f559e090</td>
-       <td>CVE-2022-0539</td>
-       <td>2022-02-09 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site Scripting (XSS) - Stored in Packagist ptrofimov/beanstalk_console prior to 1.7.14.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0539">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f24fe4fd3d1f75062e72e3395eb35af</td>
-       <td>CVE-2022-0538</td>
-       <td>2022-02-09 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jenkins 2.333 and earlier, LTS 2.319.2 and earlier defines custom XStream converters that have not been updated to apply the protections for the vulnerability CVE-2021-43859 and allow unconstrained resource usage.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0538">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>315687fedb8c85ac0f323b9a4f04ade2</td>
-       <td>CVE-2021-46360</td>
-       <td>2022-02-09 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Authenticated remote code execution (RCE) in Composr-CMS 10.0.39 and earlier allows remote attackers to execute arbitrary code via uploading a PHP shell through /adminzone/index.php?page=admin-commandr.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46360">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c2e6155a15c79230b8061f203413ac3b</td>
-       <td>CVE-2021-46354</td>
-       <td>2022-02-09 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Thinfinity VirtualUI 2.1.28.0, 2.1.32.1 and 2.5.26.2, fixed in version 3.0 is affected by an information disclosure vulnerability in the parameter "Addr" in cmd site. The ability to send requests to other systems can allow the vulnerable server to filtrate the real IP of the web server or increase the attack surface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46354">详情</a></td>
       </tr>
 
      </tbody>
@@ -798,7 +798,7 @@
       <tr>
        <td>eed1f132c1f74c46d16b184db37fb77b</td>
        <td>CNNVD-202202-668 (CVE-2022-23276)</td>
-       <td>2022-02-08 12:41:54 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:54</td>
        <td>Microsoft SQL Server 权限许可和访问控制问题漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-668">详情</a></td>
       </tr>
@@ -806,7 +806,7 @@
       <tr>
        <td>4fe8273e586d1cd247f1e525ab00af57</td>
        <td>CNNVD-202202-676 (CVE-2022-21974)</td>
-       <td>2022-02-08 12:41:51 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:51</td>
        <td>Microsoft Roaming Security Rights Management Services 代码注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-676">详情</a></td>
       </tr>
@@ -814,7 +814,7 @@
       <tr>
        <td>fbb3559736072ad991a5f21359ab9707</td>
        <td>CNNVD-202202-688 (CVE-2022-21844)</td>
-       <td>2022-02-08 12:41:49 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:49</td>
        <td>Microsoft Windows Codecs Library 代码注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-688">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>b2508df679896def836e96fa8a147d0f</td>
        <td>CNNVD-202202-691 (CVE-2022-21926)</td>
-       <td>2022-02-08 12:41:46 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:46</td>
        <td>Microsoft Windows Codecs Library 代码注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-691">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>c7fe9c9900c16bedd94060b2ff1ff915</td>
        <td>CNNVD-202202-694 (CVE-2022-21927)</td>
-       <td>2022-02-08 12:41:44 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:44</td>
        <td>Microsoft Windows Codecs Library 代码注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-694">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>32889ed6f2e1c5bb393cd885752f6584</td>
        <td>CNNVD-202202-696 (CVE-2022-21957)</td>
-       <td>2022-02-08 12:41:41 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:41</td>
        <td>Microsoft Dynamics 代码注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-696">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>7488658b193ed1bb473b83a175892b33</td>
        <td>CNNVD-202202-698 (CVE-2022-21965)</td>
-       <td>2022-02-08 12:41:39 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:39</td>
        <td>Microsoft Teams 输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-698">详情</a></td>
       </tr>
@@ -854,7 +854,7 @@
       <tr>
        <td>21cb9c6338a88a2a86cc0a3ea483a75e</td>
        <td>CNNVD-202202-701 (CVE-2022-22709)</td>
-       <td>2022-02-08 12:41:37 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:37</td>
        <td>Microsoft Windows Codecs Library 代码注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-701">详情</a></td>
       </tr>
@@ -862,7 +862,7 @@
       <tr>
        <td>de06695ddda1f87d549644b092623c83</td>
        <td>CNNVD-202202-706 (CVE-2022-23254)</td>
-       <td>2022-02-08 12:41:35 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:35</td>
        <td>Microsoft Power BI 权限许可和访问控制问题漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-706">详情</a></td>
       </tr>
@@ -870,7 +870,7 @@
       <tr>
        <td>157de2d1d0ad96f2a3c1d07a9400dc87</td>
        <td>CNNVD-202202-711 (CVE-2022-23255)</td>
-       <td>2022-02-08 12:41:32 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 12:41:32</td>
        <td>Microsoft OneDrive 安全特征问题漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-711">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>cf5e88890b5cbf2a6ddf6faa825c3f98</td>
        <td>CVE-2020-4482</td>
-       <td>2022-02-08 13:45:33 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:33</td>
        <td>ibm urbancode deploy(ucd) 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7dec64c09e3c4762a382840082cbf9f3">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>d61de8fc04f99bc029e41efb7bb0e8ff</td>
        <td>CVE-2020-28241</td>
-       <td>2022-02-08 13:45:29 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:29</td>
        <td>Maxmind Libmaxminddb 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=549155e199784463b43fc623cce89241">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>cda70fbe956c7ea9b4faa0e0c05fd1f1</td>
        <td>CVE-2020-28249</td>
-       <td>2022-02-08 13:45:28 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:28</td>
        <td>joplin desktop 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a76d6ffe39ad40e19bf06e612ff5ddc4">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>3105a3689e5fe3ef085367ae1ee9e3b5</td>
        <td>CVE-2020-27616</td>
-       <td>2022-02-08 13:45:23 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:23</td>
        <td>QEMU 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=af47eae9449141c1a876979821e6a50c">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>e9a12be943676bcac696e4028a5aac77</td>
        <td>CVE-2020-28196</td>
-       <td>2022-02-08 13:45:20 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:20</td>
        <td>MIT Kerberos 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f67bc9786498450488e85626afcf15a6">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>c06fd0adceb387db678f7347a4fe852e</td>
        <td>CVE-2020-26892</td>
-       <td>2022-02-08 13:45:17 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:17</td>
        <td>NATS Server 信任管理问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ae3bb158cb2c4f99a36c3039c9e94aa0">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>2c7079c87d6e9adb91d2c50459d7cb4e</td>
        <td>CVE-2020-27196</td>
-       <td>2022-02-08 13:45:12 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:12</td>
        <td>Lightbend Play Framework 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a37ccadcd1bf4ee1815469ca0a8faaac">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>60d8b8a2b66e8d576a67e64ac025b46f</td>
        <td>CVE-2020-24438</td>
-       <td>2022-02-08 13:45:10 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:10</td>
        <td>Adobe Reader 资源管理错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=027c4e906eb74030af374a68531992f4">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>721b87e4225136deb0d1527e1b521b87</td>
        <td>CVE-2020-26521</td>
-       <td>2022-02-08 13:45:05 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:05</td>
        <td>NATS nats-server 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d160025ec06140c88fb2342e96a108a8">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>98cbc183ef945842eec45bb5c4889ae3</td>
        <td>CVE-2020-24435</td>
-       <td>2022-02-08 13:45:03 <img src="imgs/new.gif" /></td>
+       <td>2022-02-08 13:45:03</td>
        <td>Adobe Reader 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=0d15d8d0b3cc4bbaba0485ea04ee3f3b">详情</a></td>
       </tr>
@@ -2236,6 +2236,14 @@
       </tr>
 
       <tr>
+       <td>6e0bb6fbc2060a689607bb8155890eb7</td>
+       <td>CVE-2021-46398</td>
+       <td>2022-02-04 16:15:07 </td>
+       <td>A Cross-Site Request Forgery vulnerability exists in Filebrowser &lt; 2.18.0 that allows attackers to create a backdoor user with admin privilege and get access to the filesystem via a malicious HTML webpage that is sent to the victim. An admin can run commands using the FileBrowser and hence it leads to RCE.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46398">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f215f1c64abc9be37f65c15a8d7df23b</td>
        <td>CVE-2022-24156</td>
        <td>2022-02-04 02:15:10 </td>
@@ -2348,6 +2356,54 @@
       </tr>
 
       <tr>
+       <td>1c7c33ef3bf895bc43cd1e7751b0041d</td>
+       <td>CVE-2021-46457</td>
+       <td>2022-02-04 02:15:09 </td>
+       <td>D-Link device D-Link DIR-823-Pro v1.0.2 was discovered to contain a command injection vulnerability in the function ChgSambaUserSettings. This vulnerability allows attackers to execute arbitrary commands via the samba_name parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46457">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e83e473eb3845be6689dcd703c26a286</td>
+       <td>CVE-2021-46456</td>
+       <td>2022-02-04 02:15:09 </td>
+       <td>D-Link device D-Link DIR-823-Pro v1.0.2 was discovered to contain a command injection vulnerability in the function SetWLanACLSettings. This vulnerability allows attackers to execute arbitrary commands via the wl(0).(0)_maclist parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46456">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0aa5f4e96f371cdae48a31f16c08966e</td>
+       <td>CVE-2021-46455</td>
+       <td>2022-02-04 02:15:09 </td>
+       <td>D-Link device D-Link DIR-823-Pro v1.0.2 was discovered to contain a command injection vulnerability in the function SetStationSettings. This vulnerability allows attackers to execute arbitrary commands via the station_access_enable parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46455">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>84988f429685f2e99115be83e3a62cd2</td>
+       <td>CVE-2021-46454</td>
+       <td>2022-02-04 02:15:09 </td>
+       <td>D-Link device D-Link DIR-823-Pro v1.0.2 was discovered to contain a command injection vulnerability in the function SetWLanApcliSettings. This vulnerability allows attackers to execute arbitrary commands via the ApCliKeyStr parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46454">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>96f7b6edc9e529e67132392269e12c67</td>
+       <td>CVE-2021-46453</td>
+       <td>2022-02-04 02:15:09 </td>
+       <td>D-Link device D-Link DIR-823-Pro v1.0.2 was discovered to contain a command injection vulnerability in the function SetStaticRouteSettings. This vulnerability allows attackers to execute arbitrary commands via the staticroute_list parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46453">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>578d97f568bbef26dd434efbf258e639</td>
+       <td>CVE-2021-46452</td>
+       <td>2022-02-04 02:15:09 </td>
+       <td>D-Link device D-Link DIR-823-Pro v1.0.2 was discovered to contain a command injection vulnerability in the function SetNetworkTomographySettings. This vulnerability allows attackers to execute arbitrary commands via the tomography_ping_address, tomography_ping_number, tomography_ping_size, tomography_ping_timeout, and tomography_ping_ttl parameters.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46452">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bda8b2d828111e43b8404c5988a2083b</td>
        <td>CVE-2022-24307</td>
        <td>2022-02-03 20:15:07 </td>
@@ -2369,62 +2425,6 @@
        <td>2022-02-02 06:15:06 </td>
        <td>In Minetest before 5.4.0, players can add or subtract items from a different player's inventory.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24301">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f862f74e700684ebe9d90d9f4c8fb5cf</td>
-       <td>CVE-2022-24198</td>
-       <td>2022-02-01 20:15:11 </td>
-       <td>iText v7.1.17 was discovered to contain an out-of-bounds exception via the component ARCFOUREncryption.encryptARCFOUR, which allows attackers to cause a Denial of Service (DoS) via a crafted PDF file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24198">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3a0c180b431b6a3d77a9e56e64fedc24</td>
-       <td>CVE-2022-24197</td>
-       <td>2022-02-01 20:15:11 </td>
-       <td>iText v7.1.17 was discovered to contain a stack-based buffer overflow via the component ByteBuffer.append, which allows attackers to cause a Denial of Service (DoS) via a crafted PDF file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24197">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c4a204d58d38955e227e196360d0d4ca</td>
-       <td>CVE-2022-24196</td>
-       <td>2022-02-01 20:15:11 </td>
-       <td>iText v7.1.17 was discovered to contain an out-of-memory error via the component readStreamBytesRaw, which allows attackers to cause a Denial of Service (DoS) via a crafted PDF file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24196">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6cb48d12a607ac89fefa1a04d0e59dce</td>
-       <td>CVE-2022-24222</td>
-       <td>2022-02-01 19:15:07 </td>
-       <td>eliteCMS v1.0 was discovered to contain a SQL injection vulnerability via /admin/edit_user.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24222">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ba85380a6632d88593f084fbbb012315</td>
-       <td>CVE-2022-24221</td>
-       <td>2022-02-01 19:15:07 </td>
-       <td>eliteCMS v1.0 was discovered to contain a SQL injection vulnerability via /admin/functions/functions.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24221">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>afe6345bb34849f20ab7d320620dc039</td>
-       <td>CVE-2022-24220</td>
-       <td>2022-02-01 19:15:07 </td>
-       <td>eliteCMS v1.0 was discovered to contain a SQL injection vulnerability via /admin/edit_post.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24220">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0dec60f21a5fadea2387b0af2417cbeb</td>
-       <td>CVE-2022-24219</td>
-       <td>2022-02-01 19:15:07 </td>
-       <td>eliteCMS v1.0 was discovered to contain a SQL injection vulnerability via /admin/edit_page.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24219">详情</a></td>
       </tr>
 
      </tbody>
