@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-10 23:26:18 -->
+<!-- RELEASE TIME : 2022-02-11 01:31:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f3f86773ec6a3108a7b3cff87d857957</td>
+       <td>CVE-2022-0554</td>
+       <td>2022-02-10 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Use of Out-of-range Pointer Offset in Conda vim prior to 8.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0554">详情</a></td>
+      </tr>
+
+      <tr>
        <td>02bb3bc3bd63d3cd94702b1d4d5612ff</td>
        <td>CVE-2022-24916</td>
        <td>2022-02-10 20:15:00 <img src="imgs/new.gif" /></td>
@@ -446,7 +454,7 @@
       <tr>
        <td>9bda7758c591534a60ebc457d31d7a61</td>
        <td>CVE-2022-24668</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A program using swift-nio-http2 is vulnerable to a denial of service attack caused by a network peer sending ALTSVC or ORIGIN frames. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. This vulnerability is caused by a logical error after frame parsing but before frame handling. ORIGIN and ALTSVC frames are not currently supported by swift-nio-http2, and should be ignored. However, one code path that encounters them has a deliberate trap instead. This was left behind from the original development process and was never removed. Sending an ALTSVC or ORIGIN frame does not require any special permission, so any HTTP/2 connection peer may send such a frame. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send one of these frames. The impact on availability is high: receiving the frame immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send these frames, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself. This is a controlled, intentional crash. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle the condition. The issue was found by automated fuzzing by oss-fuzz.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24668">详情</a></td>
       </tr>
@@ -454,7 +462,7 @@
       <tr>
        <td>ee2ab01c2bbf6558b9d596b60572d16a</td>
        <td>CVE-2022-24667</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A program using swift-nio-http2 is vulnerable to a denial of service attack, caused by a network peer sending a specially crafted HPACK-encoded header block. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. There are a number of implementation errors in the parsing of HPACK-encoded header blocks that allow maliciously crafted HPACK header blocks to cause crashes in processes using swift-nio-http2. Each of these crashes is triggered instead of an integer overflow. A malicious HPACK header block could be sent on any of the HPACK-carrying frames in a HTTP/2 connection (HEADERS and PUSH_PROMISE), at any position. Sending a HPACK header block does not require any special permission, so any HTTP/2 connection peer may send one. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send an appropriately crafted field block. The impact on availability is high: receiving a frame carrying this field block immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send appropriately crafted field blocks, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself: swift-nio-http2 is parsing the field block in memory-safe code and the crash is triggered instead of an integer overflow. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle all conditions in the function. The principal issue was found by automated fuzzing by oss-fuzz, but several associated bugs in the same code were found by code audit and fixed at the same time</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24667">详情</a></td>
       </tr>
@@ -462,7 +470,7 @@
       <tr>
        <td>8829ca710dfab5f1ab7be5f295bf28d1</td>
        <td>CVE-2022-24666</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A program using swift-nio-http2 is vulnerable to a denial of service attack, caused by a network peer sending a specially crafted HTTP/2 frame. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. This vulnerability is caused by a logical error when parsing a HTTP/2 HEADERS frame where the frame contains priority information without any other data. This logical error caused confusion about the size of the frame, leading to a parsing error. This parsing error immediately crashes the entire process. Sending a HEADERS frame with HTTP/2 priority information does not require any special permission, so any HTTP/2 connection peer may send such a frame. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send an appropriately crafted frame. The impact on availability is high: receiving the frame immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send appropriately crafted frames, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself: swift-nio-http2 is parsing the frame in memory-safe code, so the crash is safe. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle the condition. The issue was found by automated fuzzing by oss-fuzz.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24666">详情</a></td>
       </tr>
@@ -470,7 +478,7 @@
       <tr>
        <td>24a26c829bac23d1cc45b7fcd5a71cc8</td>
        <td>CVE-2022-24321</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A CWE-754: Improper Check for Unusual or Exceptional Conditions vulnerability exists that could cause Denial of Service against the Geo SCADA server when receiving a malformed HTTP request. Affected Product: ClearSCADA (All Versions), EcoStruxure Geo SCADA Expert 2019 (All Versions), EcoStruxure Geo SCADA Expert 2020 (All Versions)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24321">详情</a></td>
       </tr>
@@ -478,7 +486,7 @@
       <tr>
        <td>f7fe5f94f2e42f8bac8196d2acabd025</td>
        <td>CVE-2022-24320</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A CWE-295: Improper Certificate Validation vulnerability exists that could allow a Man-in-theMiddle attack when communications between the client and Geo SCADA database server are intercepted. Affected Product: ClearSCADA (All Versions), EcoStruxure Geo SCADA Expert 2019 (All Versions), EcoStruxure Geo SCADA Expert 2020 (All Versions)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24320">详情</a></td>
       </tr>
@@ -486,7 +494,7 @@
       <tr>
        <td>927c205c23ccc52cc021f20ed8206e66</td>
        <td>CVE-2022-24319</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A CWE-295: Improper Certificate Validation vulnerability exists that could allow a Man-in-theMiddle attack when communications between the client and Geo SCADA web server are intercepted. Affected Product: ClearSCADA (All Versions), EcoStruxure Geo SCADA Expert 2019 (All Versions), EcoStruxure Geo SCADA Expert 2020 (All Versions)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24319">详情</a></td>
       </tr>
@@ -494,7 +502,7 @@
       <tr>
        <td>b0662624c9055b5cf9d9c77286721851</td>
        <td>CVE-2022-24318</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A CWE-326: Inadequate Encryption Strength vulnerability exists that could cause non-encrypted communication with the server when outdated versions of the ViewX client are used. Affected Product: ClearSCADA (All Versions), EcoStruxure Geo SCADA Expert 2019 (All Versions), EcoStruxure Geo SCADA Expert 2020 (All Versions)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24318">详情</a></td>
       </tr>
@@ -502,7 +510,7 @@
       <tr>
        <td>6b26f86fda4466c859086ab64b4c4ffe</td>
        <td>CVE-2022-24317</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A CWE-862: Missing Authorization vulnerability exists that could cause information exposure when an attacker sends a specific message. Affected Product: Interactive Graphical SCADA System Data Server (V15.0.0.22020 and prior)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24317">详情</a></td>
       </tr>
@@ -510,17 +518,9 @@
       <tr>
        <td>e6d475486bd4eaf1d7fc7e9403969b0c</td>
        <td>CVE-2022-24316</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 23:15:00</td>
        <td>A CWE-665: Improper Initialization vulnerability exists that could cause information exposure when an attacker sends a specially crafted message. Affected Product: Interactive Graphical SCADA System Data Server (V15.0.0.22020 and prior)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24316">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>80aa940e1394a14a028774de9de01ddd</td>
-       <td>CVE-2022-24315</td>
-       <td>2022-02-09 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>A CWE-125: Out-of-bounds Read vulnerability exists that could cause denial of service when an attacker repeatedly sends a specially crafted message. Affected Product: Interactive Graphical SCADA System Data Server (V15.0.0.22020 and prior)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24315">详情</a></td>
       </tr>
 
      </tbody>
@@ -798,7 +798,7 @@
       <tr>
        <td>0e36c486ac7b5f0b64e88f7197ada9a5</td>
        <td>CNNVD-202202-756 (CVE-2022-21203)</td>
-       <td>2022-02-09 12:40:49 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:49</td>
        <td>Intel Quartus Prime Pro 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-756">详情</a></td>
       </tr>
@@ -806,7 +806,7 @@
       <tr>
        <td>3ceac7c914f0c08b2c63e258a70cea47</td>
        <td>CNNVD-202202-757 (CVE-2022-21204)</td>
-       <td>2022-02-09 12:40:47 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:47</td>
        <td>Intel Quartus Prime Pro 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-757">详情</a></td>
       </tr>
@@ -814,7 +814,7 @@
       <tr>
        <td>ac4e2782790c4b8a497f8552ec502881</td>
        <td>CNNVD-202202-758 (CVE-2022-21205)</td>
-       <td>2022-02-09 12:40:45 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:45</td>
        <td>Intel 多款产品安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-758">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>d5c2cc2f8769562566febc1b50bd12b5</td>
        <td>CNNVD-202202-759 (CVE-2022-21220)</td>
-       <td>2022-02-09 12:40:42 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:42</td>
        <td>Intel Quartus Prime Pro 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-759">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>4a69ad24f8e119e99c92510449c2fb1d</td>
        <td>CNNVD-202202-760 (CVE-2022-21133)</td>
-       <td>2022-02-09 12:40:40 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:40</td>
        <td>Intel Trace Analyzer and Collector 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-760">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>9a34a4000a7a4b95d17f21167cacd6ff</td>
        <td>CNNVD-202202-761 (CVE-2022-21156)</td>
-       <td>2022-02-09 12:40:37 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:37</td>
        <td>Intel Trace Analyzer and Collector 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-761">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>958e9691e4ea6b7a085734f9a0d00a74</td>
        <td>CNNVD-202202-762 (CVE-2022-21218)</td>
-       <td>2022-02-09 12:40:35 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:35</td>
        <td>Intel Trace Analyzer and Collector 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-762">详情</a></td>
       </tr>
@@ -854,7 +854,7 @@
       <tr>
        <td>46db28060a3f002b877dcb6f3d69334c</td>
        <td>CNNVD-202202-763 (CVE-2022-21226)</td>
-       <td>2022-02-09 12:40:32 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:32</td>
        <td>Intel Trace Analyzer and Collector 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-763">详情</a></td>
       </tr>
@@ -862,7 +862,7 @@
       <tr>
        <td>65371454d0ed7267d040854f76444d6d</td>
        <td>CNNVD-202202-764 (CVE-2022-24677)</td>
-       <td>2022-02-09 12:40:30 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:30</td>
        <td>HYBBS 默认配置问题漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-764">详情</a></td>
       </tr>
@@ -870,7 +870,7 @@
       <tr>
        <td>2259e34c5e1534d3dcdd09f6a560d703</td>
        <td>CNNVD-202202-765 (CVE-2022-24676)</td>
-       <td>2022-02-09 12:40:27 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 12:40:27</td>
        <td>HYBBS 输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-765">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>85656045cb1bb52dd54422e768ad6c7b</td>
        <td>CVE-2020-24401</td>
-       <td>2022-02-09 13:46:42 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:42</td>
        <td>Adobe Magento 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d0ba56e40560487180ef9b8a01ee9baa">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>02de3ca91fd34bd22452679998d47781</td>
        <td>CVE-2020-24400</td>
-       <td>2022-02-09 13:46:39 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:39</td>
        <td>Adobe Magento SQL注入漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=958eeb118c004fee998685479715e0e5">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>f89b99c1b2696aa6380d448969c3e570</td>
        <td>CVE-2020-23140</td>
-       <td>2022-02-09 13:46:37 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:37</td>
        <td>Microweber 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=feea6a876f5b4d428bebe213941eb0a0">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>525a74ff6ee41fd20cc6a2f5b26a6848</td>
        <td>CVE-2020-23139</td>
-       <td>2022-02-09 13:46:32 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:32</td>
        <td>Microweber 授权问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=525288365b25472ea4b4f429f441969c">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>879bb2b2e50ca16e5c98a7f54ae94746</td>
        <td>CVE-2020-23136</td>
-       <td>2022-02-09 13:46:30 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:30</td>
        <td>Microweber 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=dd34b09c22b3438783cb0505778050e5">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>8270099c703bb475faab3050057e3ef6</td>
        <td>CVE-2020-15297</td>
-       <td>2022-02-09 13:46:24 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:24</td>
        <td>Bitdefender Endpoint Security Tool 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=34394368164a4464a75042777366362f">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>7572be0f82f6748b7c2e392478f0eac3</td>
        <td>CVE-2020-28343</td>
-       <td>2022-02-09 13:46:19 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:19</td>
        <td>Samsung mobile devices P和Samsung mobile devices Q 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=fd817cb38bf44a9795394c692565868f">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>566842da225c280107acc03eb14d4ec2</td>
        <td>CVE-2020-24402</td>
-       <td>2022-02-09 13:46:16 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:16</td>
        <td>Adobe Magento 授权问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2d334641c6e94d828fe22221f8338fec">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>10ace8206812d97665ec48eb2b28749f</td>
        <td>CVE-2020-3600</td>
-       <td>2022-02-09 13:46:13 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:13</td>
        <td>Cisco SD-WAN 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=20e1fc1bcb3749a3802e8e27616fabf0">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>46cd9860777dcbefc791f8f070b1ca79</td>
        <td>CVE-2020-24353</td>
-       <td>2022-02-09 13:46:09 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 13:46:09</td>
        <td>Pega Platform 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=270886db3ea14f3daf713a432c99e603">详情</a></td>
       </tr>
@@ -1934,7 +1934,7 @@
       <tr>
        <td>990ecc66017aede184fd691f08dd4147</td>
        <td>CVE-2022-0467</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Pointer Lock实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63074">详情</a></td>
       </tr>
@@ -1942,7 +1942,7 @@
       <tr>
        <td>08a1c1a52654c1434f9226d3778a2e07</td>
        <td>CVE-2022-0466</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Extensions Platform实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63073">详情</a></td>
       </tr>
@@ -1950,7 +1950,7 @@
       <tr>
        <td>de27a9d2efaf2eaef1c9e95defa69c8b</td>
        <td>CVE-2022-0465</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Extensions内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63072">详情</a></td>
       </tr>
@@ -1958,7 +1958,7 @@
       <tr>
        <td>0956c2df380c39741707a8ab1c4391b0</td>
        <td>CVE-2022-0464</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Accessibility内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63071">详情</a></td>
       </tr>
@@ -1966,7 +1966,7 @@
       <tr>
        <td>f4043f1aa00d81bff2ffecf3878ae3c6</td>
        <td>CVE-2022-0463</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Accessibility内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63070">详情</a></td>
       </tr>
@@ -1974,7 +1974,7 @@
       <tr>
        <td>d69ccd20a1b1c0cb0ee37f89ac090b00</td>
        <td>CVE-2022-0462</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Scroll实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63069">详情</a></td>
       </tr>
@@ -1982,7 +1982,7 @@
       <tr>
        <td>a25fdac94e6e8dfd8ef831087dd6adb8</td>
        <td>CVE-2022-0461</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome COOP策略绕过漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63068">详情</a></td>
       </tr>
@@ -1990,7 +1990,7 @@
       <tr>
        <td>94380953e688d3db70dca83b04f5b403</td>
        <td>CVE-2022-0460</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Window Dialog内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63067">详情</a></td>
       </tr>
@@ -1998,7 +1998,7 @@
       <tr>
        <td>99366de66f1049f58586d51ae5226a15</td>
        <td>CVE-2022-0459</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Screen Capture内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63066">详情</a></td>
       </tr>
@@ -2006,7 +2006,7 @@
       <tr>
        <td>4d13ef2382cb2ce9f6487061c560ebd3</td>
        <td>CVE-2022-0458</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Thumbnail Tab Strip内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63065">详情</a></td>
       </tr>
@@ -2014,7 +2014,7 @@
       <tr>
        <td>f66a198bc1f05ce908b89b0f42f6cdf0</td>
        <td>CVE-2022-0457</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome V8类型混淆漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63064">详情</a></td>
       </tr>
@@ -2022,7 +2022,7 @@
       <tr>
        <td>e3789b261ee1f8e93c4a0cbdec6b2cf1</td>
        <td>CVE-2022-0456</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Web Search内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63063">详情</a></td>
       </tr>
@@ -2030,7 +2030,7 @@
       <tr>
        <td>38a30ab6beb091c91a27acc61b408393</td>
        <td>CVE-2022-0455</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Full Screen Mode实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63062">详情</a></td>
       </tr>
@@ -2038,7 +2038,7 @@
       <tr>
        <td>0a93897b2920c9101f99f950d5fc75ae</td>
        <td>CVE-2022-0454</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome ANGLE堆缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63061">详情</a></td>
       </tr>
@@ -2046,7 +2046,7 @@
       <tr>
        <td>77f1bb2a53a09e7be7fb199116bc6bf4</td>
        <td>CVE-2022-0453</td>
-       <td>2022-02-09 09:25:38 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 09:25:38</td>
        <td>Google Chrome Reader Mode内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63060">详情</a></td>
       </tr>
@@ -2054,7 +2054,7 @@
       <tr>
        <td>6dcfe1f74e3b38e8f88078c9150f71e5</td>
        <td>CVE-2022-0470</td>
-       <td>2022-02-09 07:24:14 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 07:24:14</td>
        <td>Google Chrome V8越界内存读取漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63058">详情</a></td>
       </tr>
@@ -2062,7 +2062,7 @@
       <tr>
        <td>0c446cf487274e5007feaf7bb0f46c70</td>
        <td>CVE-2022-0469</td>
-       <td>2022-02-09 07:24:14 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 07:24:14</td>
        <td>Google Chrome Cast内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63057">详情</a></td>
       </tr>
@@ -2070,7 +2070,7 @@
       <tr>
        <td>7d3fbd14df4db0b9d5e999c8334a1304</td>
        <td>CVE-2022-0468</td>
-       <td>2022-02-09 07:24:14 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 07:24:14</td>
        <td>Google Chrome Payments内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63056">详情</a></td>
       </tr>
@@ -2078,7 +2078,7 @@
       <tr>
        <td>36f77f3112ce8547d2c1c3172359c71d</td>
        <td>CVE-2022-23273</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Dynamics GP权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63055">详情</a></td>
       </tr>
@@ -2086,7 +2086,7 @@
       <tr>
        <td>ba49d280442d3da82a5f8f7f96371399</td>
        <td>CVE-2022-23272</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Dynamics GP权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63054">详情</a></td>
       </tr>
@@ -2094,7 +2094,7 @@
       <tr>
        <td>0d5ae9705443bae5e6982afff49473b1</td>
        <td>CVE-2022-23274</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Dynamics GP远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63053">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>262ac27c1ec706b5c73aa30e2cb9b501</td>
        <td>CVE-2022-21957</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Dynamics 365 (on-premises)远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63052">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>c6a8e442e307c74423e52e30bb562df7</td>
        <td>CVE-2022-23271</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Dynamics GP权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63051">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>e4bf823094c2b740fac62d09e04d3187</td>
        <td>CVE-2022-23263</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Edge (Chromium-based)权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63050">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>46e9d1f1bba35dbea79b3a2686f6ad65</td>
        <td>CVE-2022-23269</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Dynamics GP欺骗漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63049">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>a2027304f1d84058a1c33d4652c405f5</td>
        <td>CVE-2022-23261</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Edge (Chromium-based)篡改漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63048">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>059f671ab34a1cfc71b8e8d7859e0c3f</td>
        <td>CVE-2022-23262</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Edge (Chromium-based)权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63047">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>f15e229d53ccef41e0084b8915f43f00</td>
        <td>CVE-2022-23256</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Azure Data Explorer欺骗漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63046">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>d48d74bbf6ad35bd56ecdc3760248d8d</td>
        <td>CVE-2022-23276</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft SQL Server for Linux Containers权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63045">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>12cabd26b847e97bbe8e630bbafc6c90</td>
        <td>CVE-2022-22715</td>
-       <td>2022-02-09 03:25:59 <img src="imgs/new.gif" /></td>
+       <td>2022-02-09 03:25:59</td>
        <td>Microsoft Named Pipe File System权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/63044">详情</a></td>
       </tr>
@@ -2188,6 +2188,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d4d90138cd7f3b07d2970a509451c53b</td>
+       <td>CVE-2022-24115</td>
+       <td>2022-02-04 23:15:16 </td>
+       <td>Local privilege escalation due to unrestricted loading of unsigned libraries. The following products are affected: Acronis Cyber Protect Home Office (macOS) before build 39605, Acronis True Image 2021 (macOS) before build 39287</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24115">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1fe0a578ea998c45bf64f83a110052d5</td>
        <td>CVE-2022-24348</td>
        <td>2022-02-04 21:15:08 </td>
@@ -2201,6 +2209,14 @@
        <td>2022-02-04 20:15:08 </td>
        <td>An issue was discovered in fs/nfs/dir.c in the Linux kernel before 5.16.5. If an application sets the O_DIRECTORY flag, and tries to open a regular file, nfs_atomic_open() performs a regular lookup. If a regular file is found, ENOTDIR should occur, but the server instead returns uninitialized data in the file descriptor.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24448">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fdd66ae22473b677143b86c46e27c86f</td>
+       <td>CVE-2022-24129</td>
+       <td>2022-02-04 20:15:08 </td>
+       <td>The OIDC OP plugin before 3.0.4 for Shibboleth Identity Provider allows server-side request forgery (SSRF) due to insufficient restriction of the request_uri parameter. This allows attackers to interact with arbitrary third-party HTTP services.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24129">详情</a></td>
       </tr>
 
       <tr>
@@ -2409,22 +2425,6 @@
        <td>2022-02-04 02:15:10 </td>
        <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function formSetMacFilterCfg. This vulnerability allows attackers to cause a Denial of Service (DoS) via the deviceList parameter.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24157">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a2c3b56691885550e4dfbf4925c5beb1</td>
-       <td>CVE-2022-24145</td>
-       <td>2022-02-04 02:15:09 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function formWifiBasicSet. This vulnerability allows attackers to cause a Denial of Service (DoS) via the security and security_5g parameters.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24145">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdccdc02b8a34b414723ce7ab34bec05</td>
-       <td>CVE-2022-24144</td>
-       <td>2022-02-04 02:15:09 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a command injection vulnerability in the function WanParameterSetting. This vulnerability allows attackers to execute arbitrary commands via the gateway, dns1, and dns2 parameters.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24144">详情</a></td>
       </tr>
 
      </tbody>
