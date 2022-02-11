@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-11 12:40:14 -->
+<!-- RELEASE TIME : 2022-02-11 13:26:57 -->
 <html lang="zh-cn">
 
  <head>
@@ -2284,6 +2284,86 @@
       </tr>
 
       <tr>
+       <td>828b6a26a1005a951fa1535e5f6291c1</td>
+       <td>CVE-2022-23587</td>
+       <td>2022-02-04 23:15:15 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. Under certain scenarios, Grappler component of TensorFlow is vulnerable to an integer overflow during cost estimation for crop and resize. Since the cropping parameters are user controlled, a malicious person can trigger undefined behavior. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23587">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>af3d8bd95fed425e99599088cf926508</td>
+       <td>CVE-2022-23586</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. A malicious user can cause a denial of service by altering a `SavedModel` such that assertions in `function.cc` would be falsified and crash the Python interpreter. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23586">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5bd183cc78997f01d3730f743ffa0d6</td>
+       <td>CVE-2022-23585</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. When decoding PNG images TensorFlow can produce a memory leak if the image is invalid. After calling `png::CommonInitDecode(..., &amp;decode)`, the `decode` value contains allocated buffers which can only be freed by calling `png::CommonFreeDecode(&amp;decode)`. However, several error case in the function implementation invoke the `OP_REQUIRES` macro which immediately terminates the execution of the function, without allowing for the memory free to occur. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23585">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8159b6868ef679e7bcd262cf7b9d0900</td>
+       <td>CVE-2022-23584</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. A malicious user can cause a use after free behavior when decoding PNG images. After `png::CommonFreeDecode(&amp;decode)` gets called, the values of `decode.width` and `decode.height` are in an unspecified state. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23584">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2b9f9796169b970f72e3fa1ffb527aa7</td>
+       <td>CVE-2022-23583</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. A malicious user can cause a denial of service by altering a `SavedModel` such that any binary op would trigger `CHECK` failures. This occurs when the protobuf part corresponding to the tensor arguments is modified such that the `dtype` no longer matches the `dtype` expected by the op. In that case, calling the templated binary operator for the binary op would receive corrupted data, due to the type confusion involved. If `Tin` and `Tout` don't match the type of data in `out` and `input_*` tensors then `flat&lt;*&gt;` would interpret it wrongly. In most cases, this would be a silent failure, but we have noticed scenarios where this results in a `CHECK` crash, hence a denial of service. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23583">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>110fabf747be4e3e83ae68b1af18e31e</td>
+       <td>CVE-2022-23582</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. A malicious user can cause a denial of service by altering a `SavedModel` such that `TensorByteSize` would trigger `CHECK` failures. `TensorShape` constructor throws a `CHECK`-fail if shape is partial or has a number of elements that would overflow the size of an `int`. The `PartialTensorShape` constructor instead does not cause a `CHECK`-abort if the shape is partial, which is exactly what this function needs to be able to return `-1`. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23582">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>817df6343c81b0d6868f4c6a63bb761f</td>
+       <td>CVE-2022-23581</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The Grappler optimizer in TensorFlow can be used to cause a denial of service by altering a `SavedModel` such that `IsSimplifiableReshape` would trigger `CHECK` failures. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23581">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dca1ce3ce18998338ededbf5d234f52f</td>
+       <td>CVE-2022-23580</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. During shape inference, TensorFlow can allocate a large vector based on a value from a tensor controlled by the user. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23580">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>65f742fbb483bb2da106805455fcf953</td>
+       <td>CVE-2022-23579</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The Grappler optimizer in TensorFlow can be used to cause a denial of service by altering a `SavedModel` such that `SafeToRemoveIdentity` would trigger `CHECK` failures. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23579">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>57cd7ddf131220051f011e2c631d1855</td>
+       <td>CVE-2022-23578</td>
+       <td>2022-02-04 23:15:14 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. If a graph node is invalid, TensorFlow can leak memory in the implementation of `ImmutableExecutorState::Initialize`. Here, we set `item-&gt;kernel` to `nullptr` but it is a simple `OpKernel*` pointer so the memory that was previously allocated to it would leak. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23578">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1fe0a578ea998c45bf64f83a110052d5</td>
        <td>CVE-2022-24348</td>
        <td>2022-02-04 21:15:08 </td>
@@ -2345,86 +2425,6 @@
        <td>2022-02-04 16:15:07 </td>
        <td>A Cross-Site Request Forgery vulnerability exists in Filebrowser &lt; 2.18.0 that allows attackers to create a backdoor user with admin privilege and get access to the filesystem via a malicious HTML webpage that is sent to the victim. An admin can run commands using the FileBrowser and hence it leads to RCE.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-46398">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a7fa046888d34c06c95253e9c3b61b5d</td>
-       <td>CVE-2022-24172</td>
-       <td>2022-02-04 02:15:11 </td>
-       <td>Tenda routers G1 and G3 v15.11.0.17(9502)_CN were discovered to contain a stack overflow in the function formAddDhcpBindRule. This vulnerability allows attackers to cause a Denial of Service (DoS) via the addDhcpRules parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24172">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>af637b2818917bb49e394457b273869b</td>
-       <td>CVE-2022-24171</td>
-       <td>2022-02-04 02:15:11 </td>
-       <td>Tenda routers G1 and G3 v15.11.0.17(9502)_CN were discovered to contain a command injection vulnerability in the function formSetPppoeServer. This vulnerability allows attackers to execute arbitrary commands via the pppoeServerIP, pppoeServerStartIP, and pppoeServerEndIP parameters.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24171">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdb184c9aa3c46a6f4eb58051c92783f</td>
-       <td>CVE-2022-24170</td>
-       <td>2022-02-04 02:15:11 </td>
-       <td>Tenda routers G1 and G3 v15.11.0.17(9502)_CN were discovered to contain a command injection vulnerability in the function formSetIpSecTunnel. This vulnerability allows attackers to execute arbitrary commands via the IPsecLocalNet and IPsecRemoteNet parameters.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24170">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f215f1c64abc9be37f65c15a8d7df23b</td>
-       <td>CVE-2022-24156</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function formSetVirtualSer. This vulnerability allows attackers to cause a Denial of Service (DoS) via the list parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24156">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>984a8d4b7d5f625feb21b0a6d6c0e01e</td>
-       <td>CVE-2022-24155</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a heap overflow in the function setSchedWifi. This vulnerability allows attackers to cause a Denial of Service (DoS) via the schedStartTime and schedEndTime parameters.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24155">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d91907b412b85aed17af3f9255d4fae9</td>
-       <td>CVE-2022-24154</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function formSetRebootTimer. This vulnerability allows attackers to cause a Denial of Service (DoS) via the rebootTime parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24154">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>813941cacaebf52e86390b3e3ac5ac91</td>
-       <td>CVE-2022-24153</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function formAddMacfilterRule. This vulnerability allows attackers to cause a Denial of Service (DoS) via the devName parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24153">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e20a962c8a08e980e9c9d184f1ecab2d</td>
-       <td>CVE-2022-24152</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function fromSetRouteStatic. This vulnerability allows attackers to cause a Denial of Service (DoS) via the list parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24152">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>840df29866dbf7a767538d3bf377d52e</td>
-       <td>CVE-2022-24151</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function fromSetWifiGusetBasic. This vulnerability allows attackers to cause a Denial of Service (DoS) via the shareSpeed parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24151">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db530545fdb4bc6864f4b3e302aa0486</td>
-       <td>CVE-2022-24150</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a command injection vulnerability in the function formSetSafeWanWebMan. This vulnerability allows attackers to execute arbitrary commands via the remoteIp parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24150">详情</a></td>
       </tr>
 
      </tbody>
