@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-11 06:33:18 -->
+<!-- RELEASE TIME : 2022-02-11 08:29:59 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>92b8341e192c5db0e4d5691113b19191</td>
+       <td>CVE-2022-24955</td>
+       <td>2022-02-11 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Foxit PDF Reader before 11.2.1 and Foxit PDF Editor before 11.2.1 have an Uncontrolled Search Path Element for DLL files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24955">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>070057be589e984d8843fb91507c7f06</td>
+       <td>CVE-2022-24954</td>
+       <td>2022-02-11 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Foxit PDF Reader before 11.2.1 and Foxit PDF Editor before 11.2.1 have a Stack-Based Buffer Overflow related to XFA, for the 'subform colSpan="-2"' and 'draw colSpan="1"' substrings.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24954">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3ab6d16627e996b3186b21646ce91a6b</td>
+       <td>CVE-2022-23806</td>
+       <td>2022-02-11 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Curve.IsOnCurve in crypto/elliptic in Go before 1.16.14 and 1.17.x before 1.17.7 can incorrectly return true in situations with a big.Int value that is not a valid field element.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23806">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5423fc85696f2a07d3270434a4c0835c</td>
+       <td>CVE-2022-23773</td>
+       <td>2022-02-11 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>cmd/go in Go before 1.16.14 and 1.17.x before 1.17.7 can misinterpret branch names that falsely appear to be version tags. This can lead to incorrect access control if an actor is supposed to be able to create branches but not tags.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23773">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>056d6f7dddf0033a8e6d18e79fccca5c</td>
+       <td>CVE-2022-23772</td>
+       <td>2022-02-11 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Rat.SetString in math/big in Go before 1.16.14 and 1.17.x before 1.17.7 has an overflow that can lead to Uncontrolled Memory Consumption.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23772">详情</a></td>
+      </tr>
+
+      <tr>
        <td>51f0ad6f62c9076ab3c40610f3f8c20d</td>
        <td>CVE-2022-24647</td>
        <td>2022-02-10 23:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2022-02-10 10:15:00 <img src="imgs/new.gif" /></td>
        <td>Cross-site Scripting (XSS) - Stored in Packagist microweber/microweber prior to 1.2.11.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0558">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e1fe3fa77cdc60643f6fbc54ca1f5e4</td>
-       <td>CVE-2021-25992</td>
-       <td>2022-02-10 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Ifme, versions 1.0.0 to v.7.33.2 don’t properly invalidate a user’s session even after the user initiated logout. It makes it possible for an attacker to reuse the admin cookies either via local/network access or by other hypothetical attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-25992">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9bda7758c591534a60ebc457d31d7a61</td>
-       <td>CVE-2022-24668</td>
-       <td>2022-02-09 23:15:00</td>
-       <td>A program using swift-nio-http2 is vulnerable to a denial of service attack caused by a network peer sending ALTSVC or ORIGIN frames. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. This vulnerability is caused by a logical error after frame parsing but before frame handling. ORIGIN and ALTSVC frames are not currently supported by swift-nio-http2, and should be ignored. However, one code path that encounters them has a deliberate trap instead. This was left behind from the original development process and was never removed. Sending an ALTSVC or ORIGIN frame does not require any special permission, so any HTTP/2 connection peer may send such a frame. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send one of these frames. The impact on availability is high: receiving the frame immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send these frames, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself. This is a controlled, intentional crash. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle the condition. The issue was found by automated fuzzing by oss-fuzz.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24668">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee2ab01c2bbf6558b9d596b60572d16a</td>
-       <td>CVE-2022-24667</td>
-       <td>2022-02-09 23:15:00</td>
-       <td>A program using swift-nio-http2 is vulnerable to a denial of service attack, caused by a network peer sending a specially crafted HPACK-encoded header block. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. There are a number of implementation errors in the parsing of HPACK-encoded header blocks that allow maliciously crafted HPACK header blocks to cause crashes in processes using swift-nio-http2. Each of these crashes is triggered instead of an integer overflow. A malicious HPACK header block could be sent on any of the HPACK-carrying frames in a HTTP/2 connection (HEADERS and PUSH_PROMISE), at any position. Sending a HPACK header block does not require any special permission, so any HTTP/2 connection peer may send one. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send an appropriately crafted field block. The impact on availability is high: receiving a frame carrying this field block immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send appropriately crafted field blocks, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself: swift-nio-http2 is parsing the field block in memory-safe code and the crash is triggered instead of an integer overflow. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle all conditions in the function. The principal issue was found by automated fuzzing by oss-fuzz, but several associated bugs in the same code were found by code audit and fixed at the same time</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24667">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8829ca710dfab5f1ab7be5f295bf28d1</td>
-       <td>CVE-2022-24666</td>
-       <td>2022-02-09 23:15:00</td>
-       <td>A program using swift-nio-http2 is vulnerable to a denial of service attack, caused by a network peer sending a specially crafted HTTP/2 frame. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. This vulnerability is caused by a logical error when parsing a HTTP/2 HEADERS frame where the frame contains priority information without any other data. This logical error caused confusion about the size of the frame, leading to a parsing error. This parsing error immediately crashes the entire process. Sending a HEADERS frame with HTTP/2 priority information does not require any special permission, so any HTTP/2 connection peer may send such a frame. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send an appropriately crafted frame. The impact on availability is high: receiving the frame immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send appropriately crafted frames, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself: swift-nio-http2 is parsing the frame in memory-safe code, so the crash is safe. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle the condition. The issue was found by automated fuzzing by oss-fuzz.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24666">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>24a26c829bac23d1cc45b7fcd5a71cc8</td>
-       <td>CVE-2022-24321</td>
-       <td>2022-02-09 23:15:00</td>
-       <td>A CWE-754: Improper Check for Unusual or Exceptional Conditions vulnerability exists that could cause Denial of Service against the Geo SCADA server when receiving a malformed HTTP request. Affected Product: ClearSCADA (All Versions), EcoStruxure Geo SCADA Expert 2019 (All Versions), EcoStruxure Geo SCADA Expert 2020 (All Versions)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24321">详情</a></td>
       </tr>
 
      </tbody>
