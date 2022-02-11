@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-11 09:26:39 -->
+<!-- RELEASE TIME : 2022-02-11 11:22:48 -->
 <html lang="zh-cn">
 
  <head>
@@ -2252,6 +2252,38 @@
       </tr>
 
       <tr>
+       <td>393e0969b4d7fe2ab851086692046db5</td>
+       <td>CVE-2022-23594</td>
+       <td>2022-02-04 23:15:15 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The TFG dialect of TensorFlow (MLIR) makes several assumptions about the incoming `GraphDef` before converting it to the MLIR-based dialect. If an attacker changes the `SavedModel` format on disk to invalidate these assumptions and the `GraphDef` is then converted to MLIR-based IR then they can cause a crash in the Python interpreter. Under certain scenarios, heap OOB read/writes are possible. These issues have been discovered via fuzzing and it is possible that more weaknesses exist. We will patch them as they are discovered.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23594">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5fe700bdabd5db6aeef4fa142de08ea1</td>
+       <td>CVE-2022-23593</td>
+       <td>2022-02-04 23:15:15 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The `simplifyBroadcast` function in the MLIR-TFRT infrastructure in TensorFlow is vulnerable to a segfault (hence, denial of service), if called with scalar shapes. If all shapes are scalar, then `maxRank` is 0, so we build an empty `SmallVector`. The fix will be included in TensorFlow 2.8.0. This is the only affected version.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23593">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce01373b81ccda9426d1f8009fc5c0aa</td>
+       <td>CVE-2022-23592</td>
+       <td>2022-02-04 23:15:15 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. TensorFlow's type inference can cause a heap out of bounds read as the bounds checking is done in a `DCHECK` (which is a no-op during production). An attacker can control the `input_idx` variable such that `ix` would be larger than the number of values in `node_t.args`. The fix will be included in TensorFlow 2.8.0. This is the only affected version.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23592">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>96f404a1bf1a52a11cf21d7a9222f194</td>
+       <td>CVE-2022-23591</td>
+       <td>2022-02-04 23:15:15 </td>
+       <td>Tensorflow is an Open Source Machine Learning Framework. The `GraphDef` format in TensorFlow does not allow self recursive functions. The runtime assumes that this invariant is satisfied. However, a `GraphDef` containing a fragment such as the following can be consumed when loading a `SavedModel`. This would result in a stack overflow during execution as resolving each `NodeDef` means resolving the function itself and its nodes. The fix will be included in TensorFlow 2.8.0. We will also cherrypick this commit on TensorFlow 2.7.1, TensorFlow 2.6.3, and TensorFlow 2.5.3, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23591">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1fe0a578ea998c45bf64f83a110052d5</td>
        <td>CVE-2022-24348</td>
        <td>2022-02-04 21:15:08 </td>
@@ -2393,38 +2425,6 @@
        <td>2022-02-04 02:15:10 </td>
        <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a command injection vulnerability in the function formSetSafeWanWebMan. This vulnerability allows attackers to execute arbitrary commands via the remoteIp parameter.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24150">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ce79435818eac7ad495e68f778682995</td>
-       <td>CVE-2022-24149</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function fromSetWirelessRepeat. This vulnerability allows attackers to cause a Denial of Service (DoS) via the wpapsk_crypto parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24149">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0f94f27c6b637c507caef8e665525c5c</td>
-       <td>CVE-2022-24148</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a command injection vulnerability in the function mDMZSetCfg. This vulnerability allows attackers to execute arbitrary commands via the dmzIp parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24148">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c19e04254cb06c29a3a9612152c00784</td>
-       <td>CVE-2022-24147</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda AX3 v16.03.12.10_CN was discovered to contain a stack overflow in the function fromAdvSetMacMtuWan. This vulnerability allows attackers to cause a Denial of Service (DoS) via the wanMTU, wanSpeed, cloneType, mac, and serviceName parameters.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24147">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c79f62c123a9dd6f70818bedafd2451a</td>
-       <td>CVE-2022-24164</td>
-       <td>2022-02-04 02:15:10 </td>
-       <td>Tenda routers G1 and G3 v15.11.0.17(9502)_CN were discovered to contain a stack overflow in the function formSetVirtualSer. This vulnerability allows attackers to cause a Denial of Service (DoS) via the DnsHijackRule parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24164">详情</a></td>
       </tr>
 
      </tbody>
