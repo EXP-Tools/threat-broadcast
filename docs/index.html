@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-15 23:26:30 -->
+<!-- RELEASE TIME : 2022-02-16 01:36:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>de4fed4ad47b9fa9d4d01d97f02c10da</td>
        <td></td>
-       <td>2022-02-14 07:19:41 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 07:19:41</td>
        <td>安全事件周报 (02.07-02.13)</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=611b23d40205282583472b55e274e8fe">详情</a></td>
       </tr>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>783d5e060f579e44f8f42f36bc6a63d7</td>
+       <td>CVE-2022-23643</td>
+       <td>2022-02-15 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sourcegraph is a code search and navigation engine. Sourcegraph versions 3.35 and 3.36 reintroduced a previously fixed side-channel vulnerabilitity in the Code Monitoring feature where strings in private source code could be guessed by an authenticated but unauthorized actor. This issue affects only the Code Monitoring feature, whereas CVE-2021-43823 also affected saved searches. A successful attack would require an authenticated bad actor to create many Code Monitors to receive confirmation that a specific string exists. This could allow an attacker to guess formatted tokens in source code, such as API keys. This issue was patched in versions 3.35.2 and 3.36.3 of Sourcegraph. Those who are unable to upgrade may disable the Code Monitor feature in their installation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23643">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>84bfcb358bd5f6e33ce8b8fe31d0fc93</td>
+       <td>CVE-2021-35380</td>
+       <td>2022-02-15 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Directory Traversal vulnerability exists in Solari di Udine TermTalk Server (TTServer) 3.24.0.2, which lets an unauthenticated malicious user gain access to the files on the remote system by gaining access to the relative path of the file they want to download (http://url:port/file?valore).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-35380">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b847a93ef19a432d81c9698c8d6f2e6</td>
+       <td>CVE-2022-23641</td>
+       <td>2022-02-15 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open source discussion platform. In versions prior to 2.8.1 in the `stable` branch, 2.9.0.beta2 in the `beta` branch, and 2.9.0.beta2 in the `tests-passed` branch, users can trigger a Denial of Service attack by posting a streaming URL. Parsing Oneboxes in the background job trigger an infinite loop, which cause memory leaks. This issue is patched in version 2.8.1 of the `stable` branch, 2.9.0.beta2 of the `beta` branch, and 2.9.0.beta2 of the `tests-passed` branch. As a workaround, disable onebox in admin panel completely or specify allow list of domains that will be oneboxed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23641">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2ceaaebdf69aa7b48bc915ad77b9f8c9</td>
        <td>CVE-2021-46321</td>
        <td>2022-02-15 20:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2022-02-15 16:15:00 <img src="imgs/new.gif" /></td>
        <td>client_golang is the instrumentation library for Go applications in Prometheus, and the promhttp package in client_golang provides tooling around HTTP servers and clients. In client_golang prior to version 1.11.1, HTTP server is susceptible to a Denial of Service through unbounded cardinality, and potential memory exhaustion, when handling requests with non-standard HTTP methods. In order to be affected, an instrumented software must use any of `promhttp.InstrumentHandler*` middleware except `RequestsInFlight`; not filter any specific methods (e.g GET) before middleware; pass metric with `method` label name to our middleware; and not have any firewall/LB/proxy that filters away requests with unknown `method`. client_golang version 1.11.1 contains a patch for this issue. Several workarounds are available, including removing the `method` label name from counter/gauge used in the InstrumentHandler; turning off affected promhttp handlers; adding custom middleware before promhttp handler that will sanitize the request method given by Go http.Request; and using a reverse proxy or web application firewall, configured to only allow a limited set of methods.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21698">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9406dba3a76c43aadf3ebd5562293fdb</td>
-       <td>CVE-2021-44960</td>
-       <td>2022-02-15 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>In SVGPP SVG++ library 1.3.0, the XMLDocument::getRoot function in the renderDocument function handled the XMLDocument object improperly, returning a null pointer in advance at the second if, resulting in a null pointer reference behind the renderDocument function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-44960">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a85f65b290df160ef4d3f0e58c22d70d</td>
-       <td>CVE-2022-24684</td>
-       <td>2022-02-15 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>HashiCorp Nomad and Nomad Enterprise before 1.0.17, 1.1.x before 1.1.12, and 1.2.x before 1.2.6 has Uncontrolled Resource Consumption.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24684">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>18201ffd0113d610684185d6f162dc21</td>
-       <td>CVE-2022-24227</td>
-       <td>2022-02-15 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site scripting (XSS) vulnerability in BoltWire v7.10 allows attackers to execute arbitrary web scripts or HTML via a crafted payload in the name and lastname parameters.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24227">详情</a></td>
       </tr>
 
      </tbody>
@@ -806,7 +806,7 @@
       <tr>
        <td>a22bfc51f647bc8b91d2cbc1783fb0f3</td>
        <td>CNNVD-202202-1194 (CVE-2022-24705)</td>
-       <td>2022-02-14 12:41:46 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:46</td>
        <td>Accel-Ppp 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1194">详情</a></td>
       </tr>
@@ -814,7 +814,7 @@
       <tr>
        <td>ec355186689cb89cf05c94872039e9f7</td>
        <td>CNNVD-202202-1195 (CVE-2022-23992)</td>
-       <td>2022-02-14 12:41:43 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:43</td>
        <td>NEXCOM NIO50安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1195">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>ddaa8e0e6b5ca916b0b0bc79c868efca</td>
        <td>CNNVD-202202-1196 (CVE-2022-25139)</td>
-       <td>2022-02-14 12:41:41 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:41</td>
        <td>Openjs Jquery Ui 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1196">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>42ac8f3f12ba6c1d66a91eb54adb4e55</td>
        <td>CNNVD-202202-1197 (CVE-2022-0580)</td>
-       <td>2022-02-14 12:41:39 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:39</td>
        <td>librenms 访问控制错误漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1197">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>712bcd51f0e4ca3a55bdade568c23ddc</td>
        <td>CNNVD-202202-1198 (CVE-2022-0604)</td>
-       <td>2022-02-14 12:41:36 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:36</td>
        <td>Google Chrome 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1198">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>28d84d1d72a7335667fa501e95339767</td>
        <td>CNNVD-202202-1199 (CVE-2022-0563)</td>
-       <td>2022-02-14 12:41:34 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:34</td>
        <td>util-linux 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1199">详情</a></td>
       </tr>
@@ -854,7 +854,7 @@
       <tr>
        <td>e1efb7123162a4ed55588a3f0113de2d</td>
        <td>CNNVD-202202-1200 (CVE-2021-43952)</td>
-       <td>2022-02-14 12:41:32 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:32</td>
        <td>Atlassian Jira 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1200">详情</a></td>
       </tr>
@@ -862,7 +862,7 @@
       <tr>
        <td>d291612b4cd8c5673cff160d4cc5605c</td>
        <td>CNNVD-202202-1201 (CVE-2022-0603)</td>
-       <td>2022-02-14 12:41:29 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:29</td>
        <td>Google Chrome 资源管理错误漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1201">详情</a></td>
       </tr>
@@ -870,7 +870,7 @@
       <tr>
        <td>3b34562d921b11772cf2ca71c2ec1176</td>
        <td>CNNVD-202202-1202 (CVE-2021-4115)</td>
-       <td>2022-02-14 12:41:27 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 12:41:27</td>
        <td>polkit 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202202-1202">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>9d9ef172ef21dcce2d48c9cfe00db98e</td>
        <td>CVE-2020-6149</td>
-       <td>2022-02-14 13:46:02 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:46:02</td>
        <td>Pixar OpenUSD 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=55e37e10834d44c8a101041c1f7620e5">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>bee6ae8aebb7a50d61d5086acea86a44</td>
        <td>CVE-2020-6148</td>
-       <td>2022-02-14 13:45:58 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:58</td>
        <td>Pixar OpenUSD 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=3decaf2f33d04531a5a13ead53b091e3">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>89fcc240e8d9e8390a216f1ebb9803b6</td>
        <td>CVE-2020-4886</td>
-       <td>2022-02-14 13:45:54 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:54</td>
        <td>IBM InfoSphere Information Server 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=8c6618f35d0e428dbae34167d9fb0c12">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>eaf54f78a3ff7e464215b9776921fd69</td>
        <td>CVE-2020-6155</td>
-       <td>2022-02-14 13:45:52 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:52</td>
        <td>Pixar OpenUSD 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ba420a116f0c43a99c02e9c3f49cc85a">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>a270f1fcb6e17cc65d402a47e7ee1006</td>
        <td>CVE-2020-24719</td>
-       <td>2022-02-14 13:45:50 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:50</td>
        <td>Ericsson Erlang 操作系统命令注入漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=e3c156b7b4694b06a1fd7c6f4ebd1a6f">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>45a416a6789d2393948c8860350f41fe</td>
        <td>CVE-2020-6147</td>
-       <td>2022-02-14 13:45:44 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:44</td>
        <td>Pixar OpenUSD 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1eefa4b3e2af4767831e9534b0a09d98">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>ad4b314f375c165321f95394f77d906c</td>
        <td>CVE-2020-24454</td>
-       <td>2022-02-14 13:45:43 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:43</td>
        <td>Intel Quartus Prime Pro Edition 和Intel Quartus Prime Standard Edition 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=9082b107ef9d42d59cfccb53c7403f7b">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>d206c11f1f954e370d5c25a83f97de5f</td>
        <td>CVE-2020-27193</td>
-       <td>2022-02-14 13:45:36 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:36</td>
        <td>CKEditor 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5c09109d04e84deeba4a1b100611fc55">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>bd2aee4ac75c75481e5022307db542a9</td>
        <td>CVE-2020-26223</td>
-       <td>2022-02-14 13:45:32 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:32</td>
        <td>Spree 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=8bba866584824695b6c9eec0bc472535">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>5e7282b03272290cdc013f9ff591fd2e</td>
        <td>CVE-2020-24460</td>
-       <td>2022-02-14 13:45:29 <img src="imgs/new.gif" /></td>
+       <td>2022-02-14 13:45:29</td>
        <td>Intel Driver Support Assistant 默认配置问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=0f237e368c2844f1a1af6392d0023745">详情</a></td>
       </tr>
