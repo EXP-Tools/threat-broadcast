@@ -33,7 +33,7 @@
 - CNNVD：http://www.cnnvd.org.cn/web/vulnerability/querylist.tag
 - Tenable (Nessus)：https://www.tenable.com/cve/feeds?sort=newest
 - ~~安全客：https://www.anquanke.com/vul~~ （该平台已经不做 CVE 分析了）
-- ~~CNVD：https://www.cnvd.org.cn/flaw/list.htm~~ （不断升级反爬机制，尊重平台）
+- ~~CNVD：https://www.cnvd.org.cn/flaw/list~~ （该平台不断升级反爬机制，表示尊重）
 
 <details>
 <summary><b>关于 CVE 收录的完整性问题说明</b></summary>
