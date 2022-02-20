@@ -4,7 +4,6 @@
 # @Time   : 2020/4/25 22:17
 # -----------------------------------------------
 
-import sys
 import argparse
 from src.config import settings
 from color_log.clog import log
