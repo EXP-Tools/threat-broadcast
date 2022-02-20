@@ -8,7 +8,7 @@
 import os
 from abc import ABCMeta, abstractmethod     # python不存在抽象类的概念， 需要引入abc模块实现
 import src.config as config
-from src.utils import log
+from color_log.clog import log
 from pypdm.dbc._sqlite import SqliteDBC
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
@@ -49,7 +49,7 @@ class BaseCrawler:
             'Accept-Encoding' : 'gzip, deflate',
             'Accept-Language' : 'zh-CN,zh;q=0.9',
             'Connection' : 'keep-alive',
-            'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+            'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36',
         }
 
 

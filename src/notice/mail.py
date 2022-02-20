@@ -12,7 +12,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 import src.config as config
-from src.utils import log
+from color_log.clog import log
 from src.utils import _git
 
 MAIL_TPL_PATH = '%s/tpl/mail.tpl' % config.PRJ_DIR

@@ -9,7 +9,7 @@
 
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
-from src.utils import log
+from color_log.clog import log
 import requests
 from requests.utils import add_dict_to_cookiejar
 import execjs
@@ -26,8 +26,9 @@ class CNVD(BaseCrawler):
         self.name_ch = '国家信息安全漏洞共享平台（CNVD）'
         self.name_en = 'CNVD'
         self.home_page = 'https://www.cnvd.org.cn/'
-        self.url_list = 'https://www.cnvd.org.cn/flaw/list.htm'
+        self.url_list = 'https://www.cnvd.org.cn/flaw/list'
         self.url_cve = 'https://www.cnvd.org.cn/flaw/show/'
+        # https://www.cnvd.org.cn/flaw/typeResult?typeId=30
 
         self.session = requests.session()
         self._set_cookie(self.home_page)
@@ -47,7 +48,7 @@ class CNVD(BaseCrawler):
 
     # CNVD 采用加速乐反爬机制
     # 破解方式参考：
-    #    两次 JS 动态混淆反爬虫策略导致的 521 响应码，如果破？：https://blog.csdn.net/wojiushiwo945you/article/details/110952579
+    #    两次 JS 动态混淆反爬虫策略导致的 521 响应码，如何破？：https://blog.csdn.net/wojiushiwo945you/article/details/110952579
     #    爬虫CNVD构建漏洞库：https://blog.csdn.net/weixin_40502018/article/details/112581719?share_token=236ffb43-0fe7-4d2e-b3e9-0f0163f62558
     def _set_cookie(self, url):
         response1 = self.session.get(url)

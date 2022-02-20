@@ -11,7 +11,7 @@ import time
 import git
 from python_graphql_client import GraphqlClient
 import src.config as config
-from src.utils import log
+from color_log.clog import log
 
 
 

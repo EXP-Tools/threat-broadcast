@@ -7,7 +7,7 @@
 # 数据访问对象：基类
 # -----------------------------------------------
 
-from src.utils import log
+from color_log.clog import log
 
 
 class BaseDao:
