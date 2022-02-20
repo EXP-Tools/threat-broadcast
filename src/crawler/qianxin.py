@@ -9,7 +9,7 @@
 
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
-from src.utils import log
+from color_log.clog import log
 import requests
 import json
 import re

@@ -10,7 +10,7 @@
 import time
 from datetime import datetime, timedelta
 import src.config as config
-from src.utils import log
+from color_log.clog import log
 from pypdm.dbc._sqlite import SqliteDBC
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
