@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-22 18:31:56 -->
+<!-- RELEASE TIME : 2022-02-22 19:21:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -2228,6 +2228,22 @@
       </tr>
 
       <tr>
+       <td>ee7506a162e8513dde0d1a9c669accb6</td>
+       <td>CVE-2022-24927</td>
+       <td>2022-02-11 18:15:12 </td>
+       <td>Improper privilege management vulnerability in Samsung Video Player prior to version 7.3.15.30 allows attackers to execute video files without permission.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24927">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>931c2c89b431379dd478839e44aa5c50</td>
+       <td>CVE-2022-24925</td>
+       <td>2022-02-11 18:15:12 </td>
+       <td>Improper input validation vulnerability in SettingsProvider prior to Android S(12) allows privileged attackers to trigger a permanent denial of service attack on a victim's devices.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24925">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8c41e77ce1797803138838bb6be8b098</td>
        <td>CVE-2022-24289</td>
        <td>2022-02-11 13:15:08 </td>
@@ -2348,6 +2364,14 @@
       </tr>
 
       <tr>
+       <td>2a16c82c652e1db18800b304a347fcb7</td>
+       <td>CVE-2022-24668</td>
+       <td>2022-02-09 23:15:20 </td>
+       <td>A program using swift-nio-http2 is vulnerable to a denial of service attack caused by a network peer sending ALTSVC or ORIGIN frames. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. This vulnerability is caused by a logical error after frame parsing but before frame handling. ORIGIN and ALTSVC frames are not currently supported by swift-nio-http2, and should be ignored. However, one code path that encounters them has a deliberate trap instead. This was left behind from the original development process and was never removed. Sending an ALTSVC or ORIGIN frame does not require any special permission, so any HTTP/2 connection peer may send such a frame. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send one of these frames. The impact on availability is high: receiving the frame immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send these frames, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself. This is a controlled, intentional crash. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle the condition. The issue was found by automated fuzzing by oss-fuzz.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24668">详情</a></td>
+      </tr>
+
+      <tr>
        <td>98c8d28a870194886220c9beef9bd83e</td>
        <td>CVE-2022-24316</td>
        <td>2022-02-09 23:15:19 </td>
@@ -2401,30 +2425,6 @@
        <td>2022-02-09 23:15:19 </td>
        <td>Exponent CMS 2.6.0patch2 allows an authenticated admin user to inject persistent JavaScript code inside the &quot;Site/Organization Name&quot;,&quot;Site Title&quot; and &quot;Site Header&quot; parameters while updating the site settings on &quot;/exponentcms/administration/configure_site&quot;</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23047">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bdb399fbf3e3d76d4a9abda3a84798ba</td>
-       <td>CVE-2022-22812</td>
-       <td>2022-02-09 23:15:19 </td>
-       <td>A CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability exists that could cause a web session compromise when an attacker injects and then executes arbitrary malicious JavaScript code inside the target browser. Affected Product: spaceLYnk (V2.6.2 and prior), Wiser for KNX (formerly homeLYnk) (V2.6.2 and prior), fellerLYnk (V2.6.2 and prior)</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-22812">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98a9a5f0303f5c4ccf880c8cd89a3272</td>
-       <td>CVE-2022-22532</td>
-       <td>2022-02-09 23:15:18 </td>
-       <td>In SAP NetWeaver Application Server Java - versions KRNL64NUC 7.22, 7.22EXT, 7.49, KRNL64UC, 7.22, 7.22EXT, 7.49, 7.53, KERNEL 7.22, 7.49, 7.53, an unauthenticated attacker could submit a crafted HTTP server request which triggers improper shared memory buffer handling. This could allow the malicious payload to be executed and hence execute functions that could be impersonating the victim or even steal the victim's logon session.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-22532">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ef43d6a623ddad58b37e2712d9c5a1cb</td>
-       <td>CVE-2022-23280</td>
-       <td>2022-02-09 17:15:10 </td>
-       <td>Microsoft Outlook for Mac Security Feature Bypass Vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-23280">详情</a></td>
       </tr>
 
      </tbody>
