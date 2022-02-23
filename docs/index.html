@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-23 16:42:49 -->
+<!-- RELEASE TIME : 2022-02-23 17:28:36 -->
 <html lang="zh-cn">
 
  <head>
@@ -2220,11 +2220,27 @@
       </tr>
 
       <tr>
+       <td>c1a8f086449d4332cecb9dd3a7bcd249</td>
+       <td>CVE-2022-24988</td>
+       <td>2022-02-14 20:15:08 </td>
+       <td>In galois_2p8 before 0.1.2, PrimitivePolynomialField::new has an off-by-one buffer overflow for a vector.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24988">详情</a></td>
+      </tr>
+
+      <tr>
        <td>978502e6a880c75236c67880a30be4f8</td>
        <td>CVE-2022-25150</td>
        <td>2022-02-14 19:15:08 </td>
        <td>In Malwarebytes Binisoft Windows Firewall Control before 6.8.1.0, programs executed from the Tools tab can be used to escalate privileges.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25150">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a424bde90ab613fa367b04b784336aa9</td>
+       <td>CVE-2022-24976</td>
+       <td>2022-02-14 12:15:27 </td>
+       <td>Atheme IRC Services before 7.2.12, when used in conjunction with InspIRCd, allows authentication bypass by ending an IRC handshake at a certain point during a challenge-response login sequence.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24976">详情</a></td>
       </tr>
 
       <tr>
@@ -2409,22 +2425,6 @@
        <td>2022-02-09 23:15:20 </td>
        <td>A CWE-326: Inadequate Encryption Strength vulnerability exists that could cause non-encrypted communication with the server when outdated versions of the ViewX client are used. Affected Product: ClearSCADA (All Versions), EcoStruxure Geo SCADA Expert 2019 (All Versions), EcoStruxure Geo SCADA Expert 2020 (All Versions)</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24318">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a16c82c652e1db18800b304a347fcb7</td>
-       <td>CVE-2022-24668</td>
-       <td>2022-02-09 23:15:20 </td>
-       <td>A program using swift-nio-http2 is vulnerable to a denial of service attack caused by a network peer sending ALTSVC or ORIGIN frames. This attack affects all swift-nio-http2 versions from 1.0.0 to 1.19.1. This vulnerability is caused by a logical error after frame parsing but before frame handling. ORIGIN and ALTSVC frames are not currently supported by swift-nio-http2, and should be ignored. However, one code path that encounters them has a deliberate trap instead. This was left behind from the original development process and was never removed. Sending an ALTSVC or ORIGIN frame does not require any special permission, so any HTTP/2 connection peer may send such a frame. For clients, this means any server to which they connect may launch this attack. For servers, anyone they allow to connect to them may launch such an attack. The attack is low-effort: it takes very little resources to send one of these frames. The impact on availability is high: receiving the frame immediately crashes the server, dropping all in-flight connections and causing the service to need to restart. It is straightforward for an attacker to repeatedly send these frames, so attackers require very few resources to achieve a substantial denial of service. The attack does not have any confidentiality or integrity risks in and of itself. This is a controlled, intentional crash. However, sudden process crashes can lead to violations of invariants in services, so it is possible that this attack can be used to trigger an error condition that has confidentiality or integrity risks. The risk can be mitigated if untrusted peers can be prevented from communicating with the service. This mitigation is not available to many services. The issue is fixed by rewriting the parsing code to correctly handle the condition. The issue was found by automated fuzzing by oss-fuzz.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24668">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98c8d28a870194886220c9beef9bd83e</td>
-       <td>CVE-2022-24316</td>
-       <td>2022-02-09 23:15:19 </td>
-       <td>A CWE-665: Improper Initialization vulnerability exists that could cause information exposure when an attacker sends a specially crafted message. Affected Product: Interactive Graphical SCADA System Data Server (V15.0.0.22020 and prior)</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-24316">详情</a></td>
       </tr>
 
      </tbody>
