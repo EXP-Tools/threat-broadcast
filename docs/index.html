@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-02-24 01:37:41 -->
+<!-- RELEASE TIME : 2022-02-24 02:43:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>509e32e2821bcb5189fc6bd9e54688fa</td>
+       <td>CVE-2022-23655</td>
+       <td>2022-02-24 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Octobercms is a self-hosted CMS platform based on the Laravel PHP Framework. Affected versions of OctoberCMS did not validate gateway server signatures. As a result non-authoritative gateway servers may be used to exfiltrate user private keys. Users are advised to upgrade their installations to build 474 or v1.1.10. The only known workaround is to manually apply the patch (e3b455ad587282f0fbcb7763c6d9c3d000ca1e6a) which adds server signature validation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23655">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>212ae6a2280a108f2f836b346e361c1b</td>
+       <td>CVE-2022-23653</td>
+       <td>2022-02-23 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>B2 Command Line Tool is the official command line tool for the backblaze cloud storage service. Linux and Mac releases of the B2 command-line tool version 3.2.0 and below contain a key disclosure vulnerability that, in certain conditions, can be exploited by local attackers through a time-of-check-time-of-use (TOCTOU) race condition. The command line tool saves API keys (and bucket name-to-id mapping) in a local database file (`$XDG_CONFIG_HOME/b2/account_info`, `~/.b2_account_info` or a user-defined path) when `b2 authorize-account` is first run. This happens regardless of whether a valid key is provided or not. When first created, the file is world readable and is (typically a few milliseconds) later altered to be private to the user. If the directory is readable by a local attacker and the user did not yet run `b2 authorize-account` then during the brief period between file creation and permission modification, a local attacker can race to open the file and maintain a handle to it. This allows the local attacker to read the contents after the file after the sensitive information has been saved to it. Users that have not yet run `b2 authorize-account` should upgrade to B2 Command-Line Tool v3.2.1 before running it. Users that have run `b2 authorize-account` are safe if at the time of the file creation no other local users had read access to the local configuration file. Users that have run `b2 authorize-account` where the designated path could be opened by another local user should upgrade to B2 Command-Line Tool v3.2.1 and remove the database and regenerate all application keys. Note that `b2 clear-account` does not remove the database file and it should not be used to ensure that all open handles to the file are invalidated. If B2 Command-Line Tool cannot be upgraded to v3.2.1 due to a dependency conflict, a binary release can be used instead. Alternatively a new version could be installed within a virtualenv, or the permissions can be changed to prevent local users from opening the database file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23653">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b6c0116e0fea8e64cbee07dfbfcce7bd</td>
+       <td>CVE-2022-23651</td>
+       <td>2022-02-23 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>b2-sdk-python is a python library to access cloud storage provided by backblaze. Linux and Mac releases of the SDK version 1.14.0 and below contain a key disclosure vulnerability that, in certain conditions, can be exploited by local attackers through a time-of-check-time-of-use (TOCTOU) race condition. SDK users of the SqliteAccountInfo format are vulnerable while users of the InMemoryAccountInfo format are safe. The SqliteAccountInfo saves API keys (and bucket name-to-id mapping) in a local database file ($XDG_CONFIG_HOME/b2/account_info, ~/.b2_account_info or a user-defined path). When first created, the file is world readable and is (typically a few milliseconds) later altered to be private to the user. If the directory containing the file is readable by a local attacker then during the brief period between file creation and permission modification, a local attacker can race to open the file and maintain a handle to it. This allows the local attacker to read the contents after the file after the sensitive information has been saved to it. Consumers of this SDK who rely on it to save data using SqliteAccountInfo class should upgrade to the latest version of the SDK. Those who believe a local user might have opened a handle using this race condition, should remove the affected database files and regenerate all application keys. Users should upgrade to b2-sdk-python 1.14.1 or later.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23651">详情</a></td>
+      </tr>
+
+      <tr>
        <td>9685ffc100b3454464a260c1e0506342</td>
        <td>CVE-2022-24409</td>
        <td>2022-02-23 22:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2022-02-22 23:15:00</td>
        <td>Envoy is an open source edge and service proxy, designed for cloud-native applications. Envoy's tls allows re-use when some cert validation settings have changed from their default configuration. The only workaround for this issue is to ensure that default tls settings are used. Users are advised to upgrade.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21654">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d361e44e9d5f9ad443a281ebf76414bf</td>
-       <td>CVE-2021-43826</td>
-       <td>2022-02-22 23:15:00</td>
-       <td>Envoy is an open source edge and service proxy, designed for cloud-native applications. In affected versions of Envoy a crash occurs when configured for :ref:`upstream tunneling <envoy_v3_api_field_extensions.filters.network.tcp_proxy.v3.TcpProxy.tunneling_config>` and the downstream connection disconnects while the the upstream connection or http/2 stream is still being established. There are no workarounds for this issue. Users are advised to upgrade.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43826">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cb4b885e6b9cb74bdd8b6b1ea6ce8c20</td>
-       <td>CVE-2021-43825</td>
-       <td>2022-02-22 23:15:00</td>
-       <td>Envoy is an open source edge and service proxy, designed for cloud-native applications. Sending a locally generated response must stop further processing of request or response data. Envoy tracks the amount of buffered request and response data and aborts the request if the amount of buffered data is over the limit by sending 413 or 500 responses. However when the buffer overflows while response is processed by the filter chain the operation may not be aborted correctly and result in accessing a freed memory block. If this happens Envoy will crash resulting in a denial of service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43825">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c91b1752c2ccb38e56ae2b425ffbf614</td>
-       <td>CVE-2021-43824</td>
-       <td>2022-02-22 23:15:00</td>
-       <td>Envoy is an open source edge and service proxy, designed for cloud-native applications. In affected versions a crafted request crashes Envoy when a CONNECT request is sent to JWT filter configured with regex match. This provides a denial of service attack vector. The only workaround is to not use regex in the JWT filter. Users are advised to upgrade.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43824">详情</a></td>
       </tr>
 
      </tbody>
