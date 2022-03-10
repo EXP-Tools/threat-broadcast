@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-03-10 20:28:27 -->
+<!-- RELEASE TIME : 2022-03-10 22:27:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>200a786bc507f717d0e72956f0bac140</td>
+       <td>CVE-2022-23042</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Linux PV device frontends vulnerable to attacks by backends T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Several Linux PV device frontends are using the grant table interfaces for removing access rights of the backends in ways being subject to race conditions, resulting in potential data leaks, data corruption by malicious backends, and denial of service triggered by malicious backends: blkfront, netfront, scsifront and the gntalloc driver are testing whether a grant reference is still in use. If this is not the case, they assume that a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. The xenbus driver has a similar problem, as it doesn't check the success of removing the granted access of a shared ring buffer. blkfront: CVE-2022-23036 netfront: CVE-2022-23037 scsifront: CVE-2022-23038 gntalloc: CVE-2022-23039 xenbus: CVE-2022-23040 blkfront, netfront, scsifront, usbfront, dmabuf, xenbus, 9p, kbdfront, and pvcalls are using a functionality to delay freeing a grant reference until it is no longer in use, but the freeing of the related data page is not synchronized with dropping the granted access. As a result the backend can keep access to the memory page even after it has been freed and then re-used for a different purpose. CVE-2022-23041 netfront will fail a BUG_ON() assertion if it fails to revoke access in the rx path. This will result in a Denial of Service (DoS) situation of the guest which can be triggered by the backend. CVE-2022-23042</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23042">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1083873025706605a83359547aceecaa</td>
+       <td>CVE-2022-23041</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Linux PV device frontends vulnerable to attacks by backends T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Several Linux PV device frontends are using the grant table interfaces for removing access rights of the backends in ways being subject to race conditions, resulting in potential data leaks, data corruption by malicious backends, and denial of service triggered by malicious backends: blkfront, netfront, scsifront and the gntalloc driver are testing whether a grant reference is still in use. If this is not the case, they assume that a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. The xenbus driver has a similar problem, as it doesn't check the success of removing the granted access of a shared ring buffer. blkfront: CVE-2022-23036 netfront: CVE-2022-23037 scsifront: CVE-2022-23038 gntalloc: CVE-2022-23039 xenbus: CVE-2022-23040 blkfront, netfront, scsifront, usbfront, dmabuf, xenbus, 9p, kbdfront, and pvcalls are using a functionality to delay freeing a grant reference until it is no longer in use, but the freeing of the related data page is not synchronized with dropping the granted access. As a result the backend can keep access to the memory page even after it has been freed and then re-used for a different purpose. CVE-2022-23041 netfront will fail a BUG_ON() assertion if it fails to revoke access in the rx path. This will result in a Denial of Service (DoS) situation of the guest which can be triggered by the backend. CVE-2022-23042</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23041">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d95df21d5151db42caa4b04261d1aa40</td>
+       <td>CVE-2022-23040</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Linux PV device frontends vulnerable to attacks by backends T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Several Linux PV device frontends are using the grant table interfaces for removing access rights of the backends in ways being subject to race conditions, resulting in potential data leaks, data corruption by malicious backends, and denial of service triggered by malicious backends: blkfront, netfront, scsifront and the gntalloc driver are testing whether a grant reference is still in use. If this is not the case, they assume that a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. The xenbus driver has a similar problem, as it doesn't check the success of removing the granted access of a shared ring buffer. blkfront: CVE-2022-23036 netfront: CVE-2022-23037 scsifront: CVE-2022-23038 gntalloc: CVE-2022-23039 xenbus: CVE-2022-23040 blkfront, netfront, scsifront, usbfront, dmabuf, xenbus, 9p, kbdfront, and pvcalls are using a functionality to delay freeing a grant reference until it is no longer in use, but the freeing of the related data page is not synchronized with dropping the granted access. As a result the backend can keep access to the memory page even after it has been freed and then re-used for a different purpose. CVE-2022-23041 netfront will fail a BUG_ON() assertion if it fails to revoke access in the rx path. This will result in a Denial of Service (DoS) situation of the guest which can be triggered by the backend. CVE-2022-23042</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23040">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e73d7db1d88bbba6c31a4dfc2739c65</td>
+       <td>CVE-2022-23039</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Linux PV device frontends vulnerable to attacks by backends T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Several Linux PV device frontends are using the grant table interfaces for removing access rights of the backends in ways being subject to race conditions, resulting in potential data leaks, data corruption by malicious backends, and denial of service triggered by malicious backends: blkfront, netfront, scsifront and the gntalloc driver are testing whether a grant reference is still in use. If this is not the case, they assume that a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. The xenbus driver has a similar problem, as it doesn't check the success of removing the granted access of a shared ring buffer. blkfront: CVE-2022-23036 netfront: CVE-2022-23037 scsifront: CVE-2022-23038 gntalloc: CVE-2022-23039 xenbus: CVE-2022-23040 blkfront, netfront, scsifront, usbfront, dmabuf, xenbus, 9p, kbdfront, and pvcalls are using a functionality to delay freeing a grant reference until it is no longer in use, but the freeing of the related data page is not synchronized with dropping the granted access. As a result the backend can keep access to the memory page even after it has been freed and then re-used for a different purpose. CVE-2022-23041 netfront will fail a BUG_ON() assertion if it fails to revoke access in the rx path. This will result in a Denial of Service (DoS) situation of the guest which can be triggered by the backend. CVE-2022-23042</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23039">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c9887db78aaee7f7b2b739839500524</td>
+       <td>CVE-2022-23038</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Linux PV device frontends vulnerable to attacks by backends T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Several Linux PV device frontends are using the grant table interfaces for removing access rights of the backends in ways being subject to race conditions, resulting in potential data leaks, data corruption by malicious backends, and denial of service triggered by malicious backends: blkfront, netfront, scsifront and the gntalloc driver are testing whether a grant reference is still in use. If this is not the case, they assume that a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. The xenbus driver has a similar problem, as it doesn't check the success of removing the granted access of a shared ring buffer. blkfront: CVE-2022-23036 netfront: CVE-2022-23037 scsifront: CVE-2022-23038 gntalloc: CVE-2022-23039 xenbus: CVE-2022-23040 blkfront, netfront, scsifront, usbfront, dmabuf, xenbus, 9p, kbdfront, and pvcalls are using a functionality to delay freeing a grant reference until it is no longer in use, but the freeing of the related data page is not synchronized with dropping the granted access. As a result the backend can keep access to the memory page even after it has been freed and then re-used for a different purpose. CVE-2022-23041 netfront will fail a BUG_ON() assertion if it fails to revoke access in the rx path. This will result in a Denial of Service (DoS) situation of the guest which can be triggered by the backend. CVE-2022-23042</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23038">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d1aea399614012fc8c295ca99f8dc577</td>
+       <td>CVE-2022-23037</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Linux PV device frontends vulnerable to attacks by backends T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Several Linux PV device frontends are using the grant table interfaces for removing access rights of the backends in ways being subject to race conditions, resulting in potential data leaks, data corruption by malicious backends, and denial of service triggered by malicious backends: blkfront, netfront, scsifront and the gntalloc driver are testing whether a grant reference is still in use. If this is not the case, they assume that a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. The xenbus driver has a similar problem, as it doesn't check the success of removing the granted access of a shared ring buffer. blkfront: CVE-2022-23036 netfront: CVE-2022-23037 scsifront: CVE-2022-23038 gntalloc: CVE-2022-23039 xenbus: CVE-2022-23040 blkfront, netfront, scsifront, usbfront, dmabuf, xenbus, 9p, kbdfront, and pvcalls are using a functionality to delay freeing a grant reference until it is no longer in use, but the freeing of the related data page is not synchronized with dropping the granted access. As a result the backend can keep access to the memory page even after it has been freed and then re-used for a different purpose. CVE-2022-23041 netfront will fail a BUG_ON() assertion if it fails to revoke access in the rx path. This will result in a Denial of Service (DoS) situation of the guest which can be triggered by the backend. CVE-2022-23042</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23037">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5ddff6218b9920c7b3e8a4725d99d607</td>
+       <td>CVE-2022-23036</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Linux PV device frontends vulnerable to attacks by backends T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Several Linux PV device frontends are using the grant table interfaces for removing access rights of the backends in ways being subject to race conditions, resulting in potential data leaks, data corruption by malicious backends, and denial of service triggered by malicious backends: blkfront, netfront, scsifront and the gntalloc driver are testing whether a grant reference is still in use. If this is not the case, they assume that a following removal of the granted access will always succeed, which is not true in case the backend has mapped the granted page between those two operations. As a result the backend can keep access to the memory page of the guest no matter how the page will be used after the frontend I/O has finished. The xenbus driver has a similar problem, as it doesn't check the success of removing the granted access of a shared ring buffer. blkfront: CVE-2022-23036 netfront: CVE-2022-23037 scsifront: CVE-2022-23038 gntalloc: CVE-2022-23039 xenbus: CVE-2022-23040 blkfront, netfront, scsifront, usbfront, dmabuf, xenbus, 9p, kbdfront, and pvcalls are using a functionality to delay freeing a grant reference until it is no longer in use, but the freeing of the related data page is not synchronized with dropping the granted access. As a result the backend can keep access to the memory page even after it has been freed and then re-used for a different purpose. CVE-2022-23041 netfront will fail a BUG_ON() assertion if it fails to revoke access in the rx path. This will result in a Denial of Service (DoS) situation of the guest which can be triggered by the backend. CVE-2022-23042</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23036">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b36779cc50a338f86a191089b065423a</td>
+       <td>CVE-2021-39025</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM Guardium Data Encryption (GDE) 4.0.0.0 and 5.0.0.0 could disclose internal IP address information when the web backend is down. IBM X-Force 213863.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39025">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb7f46b05440ea6816e96280e1c64c6c</td>
+       <td>CVE-2021-39022</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM Guardium Data Encryption (GDE) 4.0.0.0 and 5.0.0.0 saves user-provided information into a Comma-Separated Value (CSV) file, but it does not neutralize or incorrectly neutralizes special elements that could be interpreted as a command when the file is opened by spreadsheet software. IBM X-Force ID: 213858.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39022">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2c71c9558fdc4ccffe8f51ea99932941</td>
+       <td>CVE-2021-38910</td>
+       <td>2022-03-10 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM DataPower Gateway V10CD, 10.0.1, and 2108.4.1 could allow a remote attacker to bypass security restrictions, caused by the improper validation of input. By sending a specially crafted JSON message, an attacker could exploit this vulnerability to modify structure and fields. IBM X-Force ID: 209824.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-38910">详情</a></td>
+      </tr>
+
+      <tr>
        <td>72e065ea2a924c1be263a410601b32b4</td>
        <td>CVE-2021-44673</td>
        <td>2022-03-10 18:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-03-09 23:15:00 <img src="imgs/new.gif" /></td>
        <td>Shopware is an open commerce platform based on the Symfony php Framework and the Vue javascript framework. In affected versions guest sessions are shared between customers when HTTP cache is enabled. This can lead to inconsistent experiences for guest users. Setups with Varnish are not affected by this issue. This issue has been resolved in version 6.4.8.2. Users unable to upgrade should disable the HTTP Cache.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24745">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c10410cb82a93c25d069d7f675dc4f96</td>
-       <td>CVE-2022-24744</td>
-       <td>2022-03-09 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Shopware is an open commerce platform based on the Symfony php Framework and the Vue javascript framework. In affected versions user sessions are not logged out if the password is reset via password recovery. This issue has been resolved in version 6.4.8.1. For older versions of 6.1, 6.2, and 6.3, corresponding security measures are also available via a plugin.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24744">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1ab5fa05fb3fbc097845538e5ee0c900</td>
-       <td>CVE-2022-24323</td>
-       <td>2022-03-09 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>A CWE-754: Improper Check for Unusual or Exceptional Conditions vulnerability exists that could cause a disruption of communication between the Modicon controller and the engineering software, when an attacker is able to intercept and manipulate specific Modbus response data. Affected Product: EcoStruxure Process Expert (V2021 and prior), EcoStruxure Control Expert (V15.0 SP1 and prior)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24323">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f6f1d465ed8a2e8e60939cc02a94f60</td>
-       <td>CVE-2022-24322</td>
-       <td>2022-03-09 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>A CWE-119: Improper Restriction of Operations within the Bounds of a Memory Buffer vulnerability exists that could cause a disruption of communication between the Modicon controller and the engineering software when an attacker is able to intercept and manipulate specific Modbus response data. Affected Product: EcoStruxure Control Expert (V15.0 SP1 and prior)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24322">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>51bf6233d2873f59a9f7f6ffad7452de</td>
-       <td>CVE-2021-22783</td>
-       <td>2022-03-09 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>A CWE-200: Information Exposure vulnerability exists which could allow a session hijack when the door panel is communicating with the door. Affected Product: Ritto Wiser Door (All versions)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-22783">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84093577f572fbc853cc6cae98bd126f</td>
-       <td>CVE-2022-24741</td>
-       <td>2022-03-09 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Nextcloud server is an open source, self hosted cloud style services platform. In affected versions an attacker can cause a denial of service by uploading specially crafted files which will cause the server to allocate too much memory / CPU. It is recommended that the Nextcloud Server is upgraded to 21.0.8 , 22.2.4 or 23.0.1. Users unable to upgrade should disable preview generation with the `'enable_previews'` config flag.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24741">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>04ba0e933895e676378f888db37f1b42</td>
-       <td>CVE-2022-24734</td>
-       <td>2022-03-09 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>MyBB is a free and open source forum software. In affected versions the Admin CP's Settings management module does not validate setting types correctly on insertion and update, making it possible to add settings of supported type `php` with PHP code, executed on on _Change Settings_ pages. This results in a Remote Code Execution (RCE) vulnerability. The vulnerable module requires Admin CP access with the `Can manage settings?` permission. MyBB's Settings module, which allows administrators to add, edit, and delete non-default settings, stores setting data in an options code string ($options_code; mybb_settings.optionscode database column) that identifies the setting type and its options, separated by a new line character (\n). In MyBB 1.2.0, support for setting type php was added, for which the remaining part of the options code is PHP code executed on Change Settings pages (reserved for plugins and internal use). MyBB 1.8.30 resolves this issue. There are no known workarounds.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24734">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78e53f1b904ad588f63c7baba1a33123</td>
-       <td>CVE-2022-24919</td>
-       <td>2022-03-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An authenticated user can create a link with reflected Javascript code inside it for graphsâ€™ page and send it to other users. The payload can be executed only with a known CSRF token value of the victim, which is changed periodically and is difficult to predict.Malicious code has access to all the same objects as the rest of the web page and can make arbitrary modifications to the contents of the page being displayed to a victim during social engineering attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24919">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b8ca0b49c54563a08534a60afcd1d798</td>
-       <td>CVE-2022-24918</td>
-       <td>2022-03-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An authenticated user can create a link with reflected Javascript code inside it for itemsâ€™ page and send it to other users. The payload can be executed only with a known CSRF token value of the victim, which is changed periodically and is difficult to predict.Malicious code has access to all the same objects as the rest of the web page and can make arbitrary modifications to the contents of the page being displayed to a victim during social engineering attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24918">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f478dec8c511d31911f0729bd2c3bbaf</td>
-       <td>CVE-2022-24917</td>
-       <td>2022-03-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An authenticated user can create a link with reflected Javascript code inside it for servicesâ€™ page and send it to other users. The payload can be executed only with a known CSRF token value of the victim, which is changed periodically and is difficult to predict.Malicious code has access to all the same objects as the rest of the web page and can make arbitrary modifications to the contents of the page being displayed to a victim during social engineering attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24917">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ce901a2f4934754d04940f81f78a5e7b</td>
-       <td>CVE-2022-24732</td>
-       <td>2022-03-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Maddy Mail Server is an open source SMTP compatible email server. Versions of maddy prior to 0.5.4 do not implement password expiry or account expiry checking when authenticating using PAM. Users are advised to upgrade. Users unable to upgrade should manually remove expired accounts via existing filtering mechanisms.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24732">详情</a></td>
       </tr>
 
      </tbody>
