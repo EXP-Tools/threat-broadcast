@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-03-14 12:44:28 -->
+<!-- RELEASE TIME : 2022-03-14 13:31:01 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9f531fa060097fc5c2f74c3b89e2d551</td>
+       <td>CVE-2022-23943</td>
+       <td>2022-03-14 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Out-of-bounds Write vulnerability in mod_sed of Apache HTTP Server allows an attacker to overwrite heap memory with possibly attacker provided data. This issue affects Apache HTTP Server 2.4 version 2.4.52 and prior versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23943">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>94aadd2135deb19a6bdbcd9220f52242</td>
+       <td>CVE-2022-22721</td>
+       <td>2022-03-14 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>If LimitXMLRequestBody is set to allow request bodies larger than 350MB (defaults to 1M) on 32 bit systems an integer overflow happens which later causes out of bounds writes. This issue affects Apache HTTP Server 2.4.52 and earlier.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22721">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a8692ba1227565d4564e286960e37ce6</td>
+       <td>CVE-2022-22720</td>
+       <td>2022-03-14 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Apache HTTP Server 2.4.52 and earlier fails to close inbound connection when errors are encountered discarding the request body, exposing the server to HTTP Request Smuggling</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22720">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aed55d4d5656cf5864ef1bbc811b0f21</td>
+       <td>CVE-2022-22719</td>
+       <td>2022-03-14 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>A carefully crafted request body can cause a read to a random memory area which could cause the process to crash. This issue affects Apache HTTP Server 2.4.52 and earlier.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22719">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ee64e00b0ba42ec43fb40c79fa44f3e5</td>
+       <td>CVE-2022-0940</td>
+       <td>2022-03-14 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Stored XSS due to Unrestricted File Upload in GitHub repository star7th/showdoc prior to v2.10.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0940">详情</a></td>
+      </tr>
+
+      <tr>
        <td>91738724cdbbe6d55ed1f7454246c692</td>
        <td>CVE-2022-0938</td>
        <td>2022-03-14 08:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2022-03-11 23:15:00</td>
        <td>An issue was discovered in Softing OPC UA C++ SDK before 5.70. An invalid XML element in the type dictionary makes the OPC/UA client crash due to an out-of-memory condition.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42262">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d2dc0093f778fbe654bb689439089cd3</td>
-       <td>CVE-2021-41850</td>
-       <td>2022-03-11 23:15:00</td>
-       <td>An issue was discovered in Luna Simo PPR1.180610.011/202001031830. A pre-installed app with a package name of com.skyroam.silverhelper writes three IMEI values to system properties at system startup. The system property values can be obtained via getprop by all third-party applications co-located on the device, even those with no permissions granted, exposing the IMEI values to processes without enforcing any access control.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41850">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1fdef17cebbb58ec2fed408f58d2c1f9</td>
-       <td>CVE-2021-41849</td>
-       <td>2022-03-11 23:15:00</td>
-       <td>An issue was discovered in Luna Simo PPR1.180610.011/202001031830. It sends the following Personally Identifiable Information (PII) in plaintext using HTTP to servers located in China: user's list of installed apps and device International Mobile Equipment Identity (IMEI). This PII is transmitted to log.skyroam.com.cn using HTTP, independent of whether the user uses the Simo software.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41849">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0db9bf0377f26fdeb77a128c1836cf8a</td>
-       <td>CVE-2021-41848</td>
-       <td>2022-03-11 23:15:00</td>
-       <td>An issue was discovered in Luna Simo PPR1.180610.011/202001031830. It mishandles software updates such that local third-party apps can provide a spoofed software update file that contains an arbitrary shell script and arbitrary ARM binary, where both will be executed as the root user with an SELinux domain named osi. To exploit this vulnerability, a local third-party app needs to have write access to external storage to write the spoofed update at the expected path. The vulnerable system binary (i.e., /system/bin/osi_bin) does not perform any authentication of the update file beyond ensuring that it is encrypted with an AES key (that is hard-coded in the vulnerable system binary). Processes executing with the osi SELinux domain can programmatically perform the following actions: install apps, grant runtime permissions to apps (including permissions with protection levels of dangerous and development), access extensive Personally Identifiable Information (PII) using the programmatically grant permissions, uninstall apps, set the default launcher app to a malicious launcher app that spoofs other apps, set a network proxy to intercept network traffic, unload kernel modules, set the default keyboard to a keyboard that has keylogging functionality, examine notification contents, send text messages, and more. The spoofed update can optionally contain an arbitrary ARM binary that will be locally stored in internal storage and executed at system startup to achieve persistent code execution as the root user with the osi SELinux domain. This ARM binary will continue to execute at startup even if the app that provided the spoofed update is uninstalled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-41848">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6b34e7af86a281c1a4cb5d1feed7df94</td>
-       <td>CVE-2022-24421</td>
-       <td>2022-03-11 22:15:00</td>
-       <td>Dell BIOS contains an improper input validation vulnerability. A local authenticated malicious user may potentially exploit this vulnerability by using an SMI to gain arbitrary code execution during SMM.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24421">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>32ff6778ae0a148e381471961f754b57</td>
-       <td>CVE-2022-24420</td>
-       <td>2022-03-11 22:15:00</td>
-       <td>Dell BIOS contains an improper input validation vulnerability. A local authenticated malicious user may potentially exploit this vulnerability by using an SMI to gain arbitrary code execution during SMM.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24420">详情</a></td>
       </tr>
 
      </tbody>
