@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-03-23 21:22:05 -->
+<!-- RELEASE TIME : 2022-03-23 23:27:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2f2a70e457c11b69713e99cdc7a68d09</td>
+       <td>CVE-2022-24757</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Jupyter Server provides the backend (i.e. the core services, APIs, and REST endpoints) for Jupyter web applications. Prior to version 1.15.4, unauthorized actors can access sensitive information from server logs. Anytime a 5xx error is triggered, the auth cookie and other header values are recorded in Jupyter Server logs by default. Considering these logs do not require root access, an attacker can monitor these logs, steal sensitive auth/cookie information, and gain access to the Jupyter server. Jupyter Server version 1.15.4 contains a patch for this issue. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24757">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d96e00f68e4e7d463d61675ae70e493e</td>
+       <td>CVE-2022-24731</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. Argo CD starting with version 1.5.0 but before versions 2.1.11, 2.2.6, and 2.3.0 is vulnerable to a path traversal vulnerability, allowing a malicious user with read/write access to leak sensitive files from Argo CD's repo-server. A malicious Argo CD user who has been granted `create` or `update` access to Applications can leak the contents of any text file on the repo-server. By crafting a malicious Helm chart and using it in an Application, the attacker can retrieve the sensitive file's contents either as part of the generated manifests or in an error message. The attacker would have to know or guess the location of the target file. Sensitive files which could be leaked include files from another Application's source repositories or any secrets which have been mounted as files on the repo-server. This vulnerability is patched in Argo CD versions 2.1.11, 2.2.6, and 2.3.0. The problem can be mitigated by avoiding storing secrets in git, avoiding mounting secrets as files on the repo-server, avoiding decrypting secrets into files on the repo-server, and carefully limiting who can `create` or `update` Applications.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24731">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4851a910bf39446c209242b081532636</td>
+       <td>CVE-2022-24730</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. Argo CD starting with version 1.3.0 but before versions 2.1.11, 2.2.6, and 2.3.0 is vulnerable to a path traversal bug, compounded by an improper access control bug, allowing a malicious user with read-only repository access to leak sensitive files from Argo CD's repo-server. A malicious Argo CD user who has been granted `get` access for a repository containing a Helm chart can craft an API request to the `/api/v1/repositories/{repo_url}/appdetails` endpoint to leak the contents of out-of-bounds files from the repo-server. The malicious payload would reference an out-of-bounds file, and the contents of that file would be returned as part of the response. Contents from a non-YAML file may be returned as part of an error message. The attacker would have to know or guess the location of the target file. Sensitive files which could be leaked include files from other Applications' source repositories or any secrets which have been mounted as files on the repo-server. This vulnerability is patched in Argo CD versions 2.1.11, 2.2.6, and 2.3.0. The patches prevent path traversal and limit access to users who either A) have been granted Application `create` privileges or B) have been granted Application `get` privileges and are requesting details for a `repo_url` that has already been used for the given Application. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24730">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce89a52018c5cdc9af49209f3c78c519</td>
+       <td>CVE-2022-23881</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>ZZZCMS zzzphp v2.1.0 was discovered to contain a remote command execution (RCE) vulnerability via danger_key() at zzz_template.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23881">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2c3c4686426ce70c1d2bf7fd46ab5354</td>
+       <td>CVE-2022-23880</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An arbitrary file upload vulnerability in the File Management function module of taoCMS v3.0.2 allows attackers to execute arbitrary code via a crafted PHP file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23880">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fd99130eada3c233c3cd24270b0255d1</td>
+       <td>CVE-2021-28278</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Heap-based Buffer Overflow vulnerability exists in jhead 3.04 and 3.05 via the RemoveSectionType function in jpgfile.c.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-28278">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8956de7bc58b05527edb25770bf1a531</td>
+       <td>CVE-2021-28277</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Heap-based Buffer Overflow vulnerabilty exists in jhead 3.04 and 3.05 is affected by: Buffer Overflow via the RemoveUnknownSections function in jpgfile.c.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-28277">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6eba795a1d5c1efa439970e9c109a20b</td>
+       <td>CVE-2021-28276</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Denial of Service vulnerability exists in jhead 3.04 and 3.05 via a wild address read in the ProcessCanonMakerNoteDir function in makernote.c.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-28276">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c91339c3715fac94baabefaa5e6e9ccd</td>
+       <td>CVE-2021-28275</td>
+       <td>2022-03-23 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Denial of Service vulnerability exists in jhead 3.04 and 3.05 due to a wild address read in the Get16u function in exif.c in will cause segmentation fault via a crafted_file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-28275">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>19fc40bb02a0176eb332a3f9ec481fb2</td>
+       <td>CVE-2022-25609</td>
+       <td>2022-03-23 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Stored Cross-Site Scripting (XSS) in Yoo Slider – Image Slider & Video Slider (WordPress plugin) allows attackers with contributor or higher user role to inject the malicious code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25609">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e1bcce01b5bcf1a4e5caa47a39b66f9f</td>
        <td>CVE-2022-26243</td>
        <td>2022-03-23 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-03-23 14:15:00 <img src="imgs/new.gif" /></td>
        <td>Improper Input Validation vulnerability in request line parsing of Apache Traffic Server allows an attacker to send invalid requests. This issue affects Apache Traffic Server 8.0.0 to 8.1.3 and 9.0.0 to 9.1.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-44040">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4f9b71d9e8ca3ef01773dd7f5f5c5376</td>
-       <td>CVE-2021-25220</td>
-       <td>2022-03-23 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>BIND 9.11.0 -> 9.11.36 9.12.0 -> 9.16.26 9.17.0 -> 9.18.0 BIND Supported Preview Editions: 9.11.4-S1 -> 9.11.36-S1 9.16.8-S1 -> 9.16.26-S1 Versions of BIND 9 earlier than those shown - back to 9.1.0, including Supported Preview Editions - are also believed to be affected but have not been tested as they are EOL. The cache could become poisoned with incorrect records leading to queries being made to the wrong servers, which might also result in false information being returned to clients.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-25220">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c15011b602bb0d3a474df11b597dee6e</td>
-       <td>CVE-2022-0635</td>
-       <td>2022-03-23 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Versions affected: BIND 9.18.0 When a vulnerable version of named receives a series of specific queries, the named process will eventually terminate due to a failed assertion check.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0635">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>61fa16c47808c8aab7bb776aef1b6e69</td>
-       <td>CVE-2022-0396</td>
-       <td>2022-03-23 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>BIND 9.16.11 -> 9.16.26, 9.17.0 -> 9.18.0 and versions 9.16.11-S1 -> 9.16.26-S1 of the BIND Supported Preview Edition. Specifically crafted TCP streams can cause connections to BIND to remain in CLOSE_WAIT status for an indefinite period of time, even after the client has terminated the connection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0396">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f6a3df27083c3ff6a8a5bd9e3f4e15e2</td>
-       <td>CVE-2021-45757</td>
-       <td>2022-03-23 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>ASUS AC68U <=3.0.0.4.385.20852 is affected by a buffer overflow in blocking.cgi, which may cause a denial of service (DoS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45757">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>06ddce17b00819380e185aa4bb128b1c</td>
-       <td>CVE-2021-45756</td>
-       <td>2022-03-23 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Asus RT-AC68U <3.0.0.4.385.20633 and RT-AC5300 <3.0.0.4.384.82072 are affected by a buffer overflow in blocking_request.cgi.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45756">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>39b90260a57dd469f7e76dab244883de</td>
-       <td>CVE-2022-1033</td>
-       <td>2022-03-23 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unrestricted Upload of File with Dangerous Type in GitHub repository crater-invoice/crater prior to 6.0.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1033">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>26a85fe6ee726be28c1d2fc239f2cf0e</td>
-       <td>CVE-2022-27666</td>
-       <td>2022-03-23 06:15:00 <img src="imgs/new.gif" /></td>
-       <td>In the Linux kernel before 5.16.15, there is a buffer overflow in ESP transformation in net/ipv4/esp4.c and net/ipv6/esp6.c via a large message.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27666">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8ec562ca29f8358abb60c6a92f3c2dd2</td>
-       <td>CVE-2022-25518</td>
-       <td>2022-03-22 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>In CMDBuild from version 3.0 to 3.3.2 payload requests are saved in a temporary log table, which allows attackers with database access to read the password of the users who login to the application by querying the database table.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25518">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>26ebd9fb9c72e12cd4eba2ccff757258</td>
-       <td>CVE-2022-26189</td>
-       <td>2022-03-22 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>TOTOLINK N600R V4.3.0cu.7570_B20200620 was discovered to contain a command injection vulnerability via the langType parameter in the login interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26189">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5ae0626e4375ca1d77531451a5937839</td>
-       <td>CVE-2022-26188</td>
-       <td>2022-03-22 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>TOTOLINK N600R V4.3.0cu.7570_B20200620 was discovered to contain a command injection vulnerability via /setting/NTPSyncWithHost.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26188">详情</a></td>
       </tr>
 
      </tbody>
