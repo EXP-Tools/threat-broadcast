@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-04-12 20:29:28 -->
+<!-- RELEASE TIME : 2022-04-12 22:28:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4609e8ae68afd0f46d4925e2760d484e</td>
+       <td>CVE-2022-0915</td>
+       <td>2022-04-12 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>There is a Time-of-check Time-of-use (TOCTOU) Race Condition Vulnerability in Logitech Sync for Windows prior to 2.4.574. Successful exploitation of these vulnerabilities may escalate the permission to the system user.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-0915">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e724978333a536d34b72edb9659abbd8</td>
+       <td>CVE-2022-24842</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>MinIO is a High Performance Object Storage released under GNU Affero General Public License v3.0. A security issue was found where an non-admin user is able to create service accounts for root or other admin users and then is able to assume their access policies via the generated credentials. This in turn allows the user to escalate privilege to that of the root user. This vulnerability has been resolved in pull request #14729 and is included in `RELEASE.2022-04-12T06-55-35Z`. Users unable to upgrade may workaround this issue by explicitly adding a `admin:CreateServiceAccount` deny policy, however, this, in turn, denies the user the ability to create their own service accounts as well.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24842">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>33943c562d1b99dfe9c335acbe719d7b</td>
+       <td>CVE-2022-24767</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Git for Windows is a fork of Git containing Windows-specific patches. Since part of Git for Windows' uninstaller is copied into the current user's temporary directory and run in that place, it is important to ensure that there are no malicious `.dll` file in that directory that might be loaded as part of loading the executable. However, the default system settings for `TMP` and `TEMP` are to point to `C:\Windows\Temp`, a folder that is world-writable (for historical reasons), and the SYSTEM user account inherits those settings. This means that any authenticated user can place malicious `.dll` files that are loaded when Git for Windows' uninstaller is run via the SYSTEM account. Fixes are available in Git for Windows v2.35.2 or newer. Users unable to upgrade may override SYSTEM's `TMP` environment variable to point to a directory exclusively under SYSTEM's control before running the uninstaller, clear `C:\Windows\Temp` of all `.dll` files before running the uninstaller, or run the uninstaller under an admin account rather than SYSTEM as a workaround.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24767">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>827b0a0deb98d17c6faf22b84e921d55</td>
+       <td>CVE-2022-24765</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Git for Windows is a fork of Git containing Windows-specific patches. This vulnerability affects users working on multi-user machines, where untrusted parties have write access to the same hard disk. Those untrusted parties could create the folder `C:\.git`, which would be picked up by Git operations run supposedly outside a repository while searching for a Git directory. Git would then respect any config in said Git directory. Git Bash users who set `GIT_PS1_SHOWDIRTYSTATE` are vulnerable as well. Users who installed posh-gitare vulnerable simply by starting a PowerShell. Users of IDEs such as Visual Studio are vulnerable: simply creating a new project would already read and respect the config specified in `C:\.git\config`. Users of the Microsoft fork of Git are vulnerable simply by starting a Git Bash. The problem has been patched in Git for Windows v2.35.2. Users unable to upgrade may create the folder `.git` on all drives where Git commands are run, and remove read/write access from those folders as a workaround. Alternatively, define or extend `GIT_CEILING_DIRECTORIES` to cover the _parent_ directory of the user profile, e.g. `C:\Users` if the user profile is located in `C:\Users\my-user-name`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24765">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>46561569613c3a1e94125f0c33ea2bd9</td>
+       <td>CVE-2022-24413</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell PowerScale OneFS, versions 8.2.2-9.3.x, contain a time-of-check-to-time-of-use vulnerability. A local user with access to the filesystem could potentially exploit this vulnerability, leading to data loss.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24413">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6b404b78da41cea85f1ecd34b8ebee07</td>
+       <td>CVE-2022-24412</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell EMC PowerScale OneFS 8.2.x - 9.3.0.x contain an improper handling of value vulnerability. An unprivileged network attacker could potentially exploit this vulnerability, leading to denial-of-service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24412">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>391fc0ae2a0e25da739d321fed00716b</td>
+       <td>CVE-2022-24411</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell PowerScale OneFS 8.2.2 and above contain an elevation of privilege vulnerability. A local attacker with ISI_PRIV_LOGIN_SSH and/or ISI_PRIV_LOGIN_CONSOLE could potentially exploit this vulnerability, leading to elevation of privilege. This could potentially allow users to circumvent PowerScale Compliance Mode guarantees.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24411">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5d6b6ef8e1b090633184d5351123002</td>
+       <td>CVE-2022-24070</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Subversion's mod_dav_svn is vulnerable to memory corruption. While looking up path-based authorization rules, mod_dav_svn servers may attempt to use memory which has already been freed. Affected Subversion mod_dav_svn servers 1.10.0 through 1.14.1 (inclusive). Servers that do not use mod_dav_svn are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24070">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6bffedf9eaf0d7500e2b7c0ae46f8d5d</td>
+       <td>CVE-2022-23163</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell PowerScale OneFS, 8.2,x, 9.1.0.x, 9.2.1.x, and 9.3.0.x contain a denial of service vulnerability. A local malicious user could potentially exploit this vulnerability, leading to denial of service/data unavailability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23163">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2405c87af0d573de37d5cf51dcd6d71b</td>
+       <td>CVE-2022-23161</td>
+       <td>2022-04-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell PowerScale OneFS versions 8.2.x - 9.3.0.x contains a denial-of-service vulnerability in SmartConnect. An unprivileged network attacker could potentially exploit this vulnerability, leading to denial-of-service. (of course this is temporary and will need to be adapted/reviewed as we determine the CWE with Srisimha Tummala 's help)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23161">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fafc82203d58a300fb5aa5c74b7324fd</td>
        <td>CVE-2022-28795</td>
        <td>2022-04-12 17:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability has been identified in Simcenter Femap (All versions < V2022.1.2). The affected application contains an out of bounds read past the end of an allocated buffer while parsing specially crafted .NEU files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-15114)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28661">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a662846fe8e997957c5668d2c23950bc</td>
-       <td>CVE-2022-28329</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in SCALANCE W1788-1 M12 (All versions < V3.0.0), SCALANCE W1788-2 EEC M12 (All versions < V3.0.0), SCALANCE W1788-2 M12 (All versions < V3.0.0), SCALANCE W1788-2IA M12 (All versions < V3.0.0). Affected devices do not properly handle malformed TCP packets received over the RemoteCapture feature. This could allow an attacker to lead to a denial of service condition which only affects the port used by the RemoteCapture feature.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28329">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a8cd9c5eba6827441db3b82694c3fee8</td>
-       <td>CVE-2022-28328</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in SCALANCE W1788-1 M12 (All versions < V3.0.0), SCALANCE W1788-2 EEC M12 (All versions < V3.0.0), SCALANCE W1788-2 M12 (All versions < V3.0.0), SCALANCE W1788-2IA M12 (All versions < V3.0.0). Affected devices do not properly handle malformed Multicast LLC frames. This could allow an attacker to trigger a denial of service condition.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28328">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a7c0ee1fb7b7dec638ed7180fe2cc10</td>
-       <td>CVE-2022-27481</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in SCALANCE W1788-1 M12 (All versions < V3.0.0), SCALANCE W1788-2 EEC M12 (All versions < V3.0.0), SCALANCE W1788-2 M12 (All versions < V3.0.0), SCALANCE W1788-2IA M12 (All versions < V3.0.0). Affected devices do not properly handle resources of ARP requests. This could allow an attacker to cause a race condition that leads to a crash of the entire device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27481">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>adf0b10e78acb9abe99318b4e88d0154</td>
-       <td>CVE-2022-27480</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in SICAM A8000 CP-8031 (All versions < V4.80), SICAM A8000 CP-8050 (All versions < V4.80). Affected devices do not require an user to be authenticated to access certain files. This could allow unauthenticated attackers to download these files.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27480">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>56caba3af1b19d275b3fa40513242536</td>
-       <td>CVE-2022-27241</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Mendix Applications using Mendix 7 (All versions), Mendix Applications using Mendix 8 (All versions), Mendix Applications using Mendix 9 (All versions < V9.11). Applications built with an affected system publicly expose the internal project structure.This could allow an unauthenticated remote attacker to read confidential information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27241">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d3467a2298b9bed355cae47c791c76d1</td>
-       <td>CVE-2022-27194</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in SIMATIC PCS neo (Administration Console) (All versions < V3.1 SP1), SINETPLAN (All versions), TIA Portal (V15, V15.1, V16 and V17). The affected system cannot properly process specially crafted packets sent to port 8888/tcp. A remote attacker could exploit this vulnerability to cause a Denial-of-Service condition. The affected devices must be restarted manually.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27194">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98b528c5bf97fb066e4d93b3b7c0690b</td>
-       <td>CVE-2022-26380</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in SCALANCE X302-7 EEC (230V), SCALANCE X302-7 EEC (230V, coated), SCALANCE X302-7 EEC (24V), SCALANCE X302-7 EEC (24V, coated), SCALANCE X302-7 EEC (2x 230V), SCALANCE X302-7 EEC (2x 230V, coated), SCALANCE X302-7 EEC (2x 24V), SCALANCE X302-7 EEC (2x 24V, coated), SCALANCE X304-2FE, SCALANCE X306-1LD FE, SCALANCE X307-2 EEC (230V), SCALANCE X307-2 EEC (230V, coated), SCALANCE X307-2 EEC (24V), SCALANCE X307-2 EEC (24V, coated), SCALANCE X307-2 EEC (2x 230V), SCALANCE X307-2 EEC (2x 230V, coated), SCALANCE X307-2 EEC (2x 24V), SCALANCE X307-2 EEC (2x 24V, coated), SCALANCE X307-3, SCALANCE X307-3, SCALANCE X307-3LD, SCALANCE X307-3LD, SCALANCE X308-2, SCALANCE X308-2, SCALANCE X308-2LD, SCALANCE X308-2LD, SCALANCE X308-2LH, SCALANCE X308-2LH, SCALANCE X308-2LH+, SCALANCE X308-2LH+, SCALANCE X308-2M, SCALANCE X308-2M, SCALANCE X308-2M PoE, SCALANCE X308-2M PoE, SCALANCE X308-2M TS, SCALANCE X308-2M TS, SCALANCE X310, SCALANCE X310, SCALANCE X310FE, SCALANCE X310FE, SCALANCE X320-1 FE, SCALANCE X320-1-2LD FE, SCALANCE X408-2, SCALANCE XR324-12M (230V, ports on front), SCALANCE XR324-12M (230V, ports on front), SCALANCE XR324-12M (230V, ports on rear), SCALANCE XR324-12M (230V, ports on rear), SCALANCE XR324-12M (24V, ports on front), SCALANCE XR324-12M (24V, ports on front), SCALANCE XR324-12M (24V, ports on rear), SCALANCE XR324-12M (24V, ports on rear), SCALANCE XR324-12M TS (24V), SCALANCE XR324-12M TS (24V), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on front), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear), SCALANCE XR324-4M EEC (100-240VAC/60-250VDC, ports on rear), SCALANCE XR324-4M EEC (24V, ports on front), SCALANCE XR324-4M EEC (24V, ports on front), SCALANCE XR324-4M EEC (24V, ports on rear), SCALANCE XR324-4M EEC (24V, ports on rear), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on front), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear), SCALANCE XR324-4M EEC (2x 100-240VAC/60-250VDC, ports on rear), SCALANCE XR324-4M EEC (2x 24V, ports on front), SCALANCE XR324-4M EEC (2x 24V, ports on front), SCALANCE XR324-4M EEC (2x 24V, ports on rear), SCALANCE XR324-4M EEC (2x 24V, ports on rear), SCALANCE XR324-4M PoE (230V, ports on front), SCALANCE XR324-4M PoE (230V, ports on rear), SCALANCE XR324-4M PoE (24V, ports on front), SCALANCE XR324-4M PoE (24V, ports on rear), SCALANCE XR324-4M PoE TS (24V, ports on front), SIPLUS NET SCALANCE X308-2. Affected devices do not properly validate if a certain SNMP key exists. An attacker could use this to trigger a reboot of an affected device by requesting specific SNMP information from the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26380">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>08ffcc5f7d181d44bee3aa5eebe2444d</td>
-       <td>CVE-2022-27241</td>
-       <td>2022-04-12 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Mendix Applications using Mendix 7 (All versions), Mendix Applications using Mendix 8 (All versions), Mendix Applications using Mendix 9 (All versions < V9.11). Applications built with an affected system publicly expose the internal project structure. This could allow an unauthenticated remote attacker to read confidential information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27241">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>65185f3d5797956e8ae5d0b41f2f0b04</td>
-       <td>CVE-2022-24839</td>
-       <td>2022-04-11 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>org.cyberneko.html is an html parser written in Java. The fork of `org.cyberneko.html` used by Nokogiri (Rubygem) raises a `java.lang.OutOfMemoryError` exception when parsing ill-formed HTML markup. Users are advised to upgrade to `>= 1.9.22.noko2`. Note: The upstream library `org.cyberneko.html` is no longer maintained. Nokogiri uses its own fork of this library located at https://github.com/sparklemotion/nekohtml and this CVE applies only to that fork. Other forks of nekohtml may have a similar vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24839">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>df551902132dfd2c8278fe8c6d14a0eb</td>
-       <td>CVE-2022-24836</td>
-       <td>2022-04-11 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Nokogiri is an open source XML and HTML library for Ruby. Nokogiri `< v1.13.4` contains an inefficient regular expression that is susceptible to excessive backtracking when attempting to detect encoding in HTML documents. Users are advised to upgrade to Nokogiri `>= 1.13.4`. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24836">详情</a></td>
       </tr>
 
      </tbody>
@@ -2196,6 +2196,14 @@
       </tr>
 
       <tr>
+       <td>e84ceaadb45ea2beebadf4f6d5dd39fb</td>
+       <td>CVE-2022-25373</td>
+       <td>2022-04-05 19:15:08 </td>
+       <td>Zoho ManageEngine SupportCenter Plus before 11020 allows Stored XSS in the request history.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25373">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5d7a4b47e4185ef8de41b68b89d49213</td>
        <td>CVE-2022-27463</td>
        <td>2022-04-05 16:15:16 </td>
@@ -2212,6 +2220,14 @@
       </tr>
 
       <tr>
+       <td>748c8f0ddc0b9e84867ad2160697ca00</td>
+       <td>CVE-2022-25356</td>
+       <td>2022-04-05 02:15:07 </td>
+       <td>Alt-N MDaemon Security Gateway through 8.5.0 allows SecurityGateway.dll?view=login XML Injection.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25356">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c3118330379873ab006334e012c049ab</td>
        <td>CVE-2022-27442</td>
        <td>2022-04-04 21:15:08 </td>
@@ -2225,6 +2241,22 @@
        <td>2022-04-04 21:15:07 </td>
        <td>A stored cross-site scripting (XSS) vulnerability in TPCMS v3.2 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Phone text box.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27441">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1cb65a9f4d264c9561fdc2ddcdcf7a0d</td>
+       <td>CVE-2022-25618</td>
+       <td>2022-04-04 20:15:10 </td>
+       <td>Authenticated (admin+) Stored Cross-Site Scripting (XSS) vulnerability in wpDataTables (WordPress plugin) versions &lt;= 2.1.27</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25618">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>232b2f4b9610e791b21754f27bc92690</td>
+       <td>CVE-2022-25613</td>
+       <td>2022-04-04 20:15:10 </td>
+       <td>Authenticated Persistent Cross-Site Scripting (XSS) vulnerability in FV Flowplayer Video Player (WordPress plugin) versions &lt;= 7.5.18.727 via &amp;fv_wp_flowplayer_field_splash parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25613">详情</a></td>
       </tr>
 
       <tr>
@@ -2393,38 +2425,6 @@
        <td>2022-04-01 23:15:13 </td>
        <td>n Spring Framework versions 5.3.0 - 5.3.16 and older unsupported versions, it is possible for a user to provide a specially crafted SpEL expression that may cause a denial of service condition.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-22950">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a81548d4a6678c89ca436da54406ff69</td>
-       <td>CVE-2022-1159</td>
-       <td>2022-04-01 23:15:12 </td>
-       <td>Rockwell Automation Studio 5000 Logix Designer (all versions) are vulnerable when an attacker who achieves administrator access on a workstation running Studio 5000 Logix Designer could inject controller code undetectable to a user.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-1159">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6e2390bc6a833556ad7cf06fe0655d9d</td>
-       <td>CVE-2022-1098</td>
-       <td>2022-04-01 23:15:12 </td>
-       <td>Delta Electronics DIAEnergie (all versions prior to 1.8.02.004) are vulnerable to a DLL hijacking condition. When combined with the Incorrect Default Permissions vulnerability of 4.2.2 above, this makes it possible for an attacker to escalate privileges</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-1098">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4e93261e2c11c9a6dce73545aa1628ac</td>
-       <td>CVE-2022-22404</td>
-       <td>2022-04-01 17:15:09 </td>
-       <td>IBM App Connect Enterprise Certified Container Dashboard UI (IBM App Connect Enterprise Certified Container 1.5, 2.0, 2.1, 3.0, and 3.1) may be vulnerable to denial of service due to excessive rate limiting.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-22404">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2644bfd9643da7aaf57c3669876ec044</td>
-       <td>CVE-2022-27966</td>
-       <td>2022-03-31 23:15:08 </td>
-       <td>Xshell v7.0.0099 and below contains a binary hijack vulnerability which allows attackers to execute arbitrary code via a crafted .exe file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27966">详情</a></td>
       </tr>
 
      </tbody>
