@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-04-14 23:28:00 -->
+<!-- RELEASE TIME : 2022-04-15 02:11:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>eb9f978360abd857f1444312ba91b859</td>
        <td></td>
-       <td>2022-04-13 03:27:21 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:27:21</td>
        <td>2022-04 补丁日: 微软多个漏洞安全更新通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=c44ae5dbcce81b30652a655f838a9ea0">详情</a></td>
       </tr>
@@ -38,7 +38,7 @@
       <tr>
        <td>b35a4f0535638825028460eb19b81973</td>
        <td>CVE-2021-31805</td>
-       <td>2022-04-13 02:19:24 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 02:19:24</td>
        <td>CVE-2021-31805：Apache Struts2远程代码执行漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=179b13f3017b822f4d6fe5aa42e85810">详情</a></td>
       </tr>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>93e1d1e451fb7c9410adbd6feea50f0e</td>
+       <td>CVE-2022-24855</td>
+       <td>2022-04-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Metabase is an open source business intelligence and analytics application. In affected versions Metabase ships with an internal development endpoint `/_internal` that can allow for cross site scripting (XSS) attacks, potentially leading to phishing attempts with malicious links that could lead to account takeover. Users are advised to either upgrade immediately, or block access in your firewall to `/_internal` endpoints for Metabase. The following patches (or greater versions) are available: 0.42.4 and 1.42.4, 0.41.7 and 1.41.7, 0.40.8 and 1.40.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24855">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>70f8c38870a5b54dcca6697d8a6671c7</td>
+       <td>CVE-2022-24854</td>
+       <td>2022-04-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Metabase is an open source business intelligence and analytics application. SQLite has an FDW-like feature called `ATTACH DATABASE`, which allows connecting multiple SQLite databases via the initial connection. If the attacker has SQL permissions to at least one SQLite database, then it can attach this database to a second database, and then it can query across all the tables. To be able to do that the attacker also needs to know the file path to the second database. Users are advised to upgrade as soon as possible. If you're unable to upgrade, you can modify your SQLIte connection strings to contain the url argument `?limit_attached=0`, which will disallow making connections to other SQLite databases. Only users making use of SQLite are affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24854">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ad303ee1547f13b3c37e57e0f606fcab</td>
+       <td>CVE-2022-24853</td>
+       <td>2022-04-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Metabase is an open source business intelligence and analytics application. Metabase has a proxy to load arbitrary URLs for JSON maps as part of our GeoJSON support. While we do validation to not return contents of arbitrary URLs, there is a case where a particularly crafted request could result in file access on windows, which allows enabling an `NTLM relay attack`, potentially allowing an attacker to receive the system password hash. If you use Windows and are on this version of Metabase, please upgrade immediately. The following patches (or greater versions) are available: 0.42.4 and 1.42.4, 0.41.7 and 1.41.7, 0.40.8 and 1.40.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24853">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>38911c47dad6e90c0fbd1833c16fa721</td>
+       <td>CVE-2022-24850</td>
+       <td>2022-04-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open source platform for community discussion. A category's group permissions settings can be viewed by anyone that has access to the category. As a result, a normal user is able to see whether a group has read/write permissions in the category even though the information should only be available to the users that can manage a category. This issue is patched in the latest stable, beta and tests-passed versions of Discourse. There are no workarounds for this problem.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24850">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f304474a414b112ed208d8b016f0c532</td>
+       <td>CVE-2022-24849</td>
+       <td>2022-04-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>DisCatSharp is a Discord API wrapper for .NET. Users of versions 9.8.5, 9.8.6, 9.9.0 and previously published prereleases of 10.0.0 who have used either one of the two `RequireDisCatSharpDeveloperAttribute`s or the `BaseDiscordClient.LibraryDeveloperTeam` have potentially had their bot token sent to a web server not affiliated with Discord. This server is owned and operated by DisCatSharp's development team. The tokens were not logged, yet it is still advisable to reset the tokens of potentially affected bots. 9.9.1 has been released to patch the issue for the current stable release and the current 10.0.0 prereleases are also no longer affected. Users unable to upgrade should remove all uses of the two `RequireDisCatSharpDeveloperAttribute`s and all direct calls to `BaseDiscordClient.LibraryDeveloperTeam`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24849">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f5161541850fa44124b3fb1801a3f6c9</td>
+       <td>CVE-2022-24846</td>
+       <td>2022-04-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>GeoWebCache is a tile caching server implemented in Java. The GeoWebCache disk quota mechanism can perform an unchecked JNDI lookup, which in turn can be used to perform class deserialization and result in arbitrary code execution. While in GeoWebCache the JNDI strings are provided via local configuration file, in GeoServer a user interface is provided to perform the same, that can be accessed remotely, and requires admin-level login to be used. These lookup are unrestricted in scope and can lead to code execution. The lookups are going to be restricted in GeoWebCache 1.21.0, 1.20.2, 1.19.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24846">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>919e2ffaabef172703bdf8035f4fb17a</td>
+       <td>CVE-2022-24824</td>
+       <td>2022-04-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open source platform for community discussion. In affected versions an attacker can poison the cache for anonymous (i.e. not logged in) users, such that the users are shown the crawler view of the site instead of the HTML page. This can lead to a partial denial-of-service. This issue is patched in the latest stable, beta and tests-passed versions of Discourse. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24824">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2a45bb3aefc7d3165a22701682ae7d4f</td>
        <td>CVE-2022-27848</td>
        <td>2022-04-14 21:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2022-04-14 15:15:00 <img src="imgs/new.gif" /></td>
        <td>nginx njs 0.7.2 is affected suffers from Use-after-free in njs_function_frame_alloc() when it try to invoke from a restored frame saved with njs_function_frame_save().</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27007">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>931b98d8c8c6e0df76583315caee6c7c</td>
-       <td>CVE-2022-1258</td>
-       <td>2022-04-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A blind SQL injection vulnerability in the ePolicy Orchestrator (ePO) extension of MA prior to 5.7.6 can be exploited by an authenticated administrator on ePO to perform arbitrary SQL queries in the back-end database, potentially leading to command execution on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1258">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12b07ce0aaebc51881fe44f9733b5813</td>
-       <td>CVE-2022-1257</td>
-       <td>2022-04-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insecure storage of sensitive information vulnerability in MA for Linux, macOS, and Windows prior to 5.7.6 allows a local user to gain access to sensitive information through storage in ma.db. The sensitive information has been moved to encrypted database files.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1257">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1cd619516662a84d6ccd55b02b755c93</td>
-       <td>CVE-2022-1256</td>
-       <td>2022-04-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A local privilege escalation vulnerability in MA for Windows prior to 5.7.6 allows a local low privileged user to gain system privileges through running the repair functionality. Temporary file actions were performed on the local user's %TEMP% directory with System privileges through manipulation of symbolic links.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1256">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dac11ca327fe71606dd0113d27291d96</td>
-       <td>CVE-2021-45228</td>
-       <td>2022-04-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>An XSS issue was discovered in COINS Construction Cloud 11.12. Due to insufficient neutralization of user input in the description of a task, it is possible to store malicious JavaScript code in the task description. This is later executed when it is reflected back to the user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45228">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e6e152fb8e3248ea6bfc7faecd4b19e</td>
-       <td>CVE-2021-45227</td>
-       <td>2022-04-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in COINS Construction Cloud 11.12. Due to an inappropriate use of HTML IFRAME elements, the file upload functionality is vulnerable to a persistent Cross-Site Scripting (XSS) attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-45227">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c8fd550283f1020057dc95a34b0c716</td>
-       <td>CVE-2022-27458</td>
-       <td>2022-04-14 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>MariaDB Server v10.6.3 and below was discovered to contain an use-after-free in the component Binary_string::free_buffer() at /sql/sql_string.h.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27458">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84e07fd24785478fb7177fb515b481e0</td>
-       <td>CVE-2022-27457</td>
-       <td>2022-04-14 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>MariaDB Server v10.6.3 and below was discovered to contain an use-after-free in the component my_mb_wc_latin1 at /strings/ctype-latin1.c.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27457">详情</a></td>
       </tr>
 
      </tbody>
@@ -814,7 +814,7 @@
       <tr>
        <td>8970ae34cd3f71bf4b40c90d55d5c8e2</td>
        <td>CNNVD-202204-3293 (CVE-2022-1107)</td>
-       <td>2022-04-13 13:35:22 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:35:22</td>
        <td>Lenovo ThinkPad 权限许可和访问控制问题漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3293">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>f2fa8b8de79e5a6b8cd66fd92b6011b5</td>
        <td>CNNVD-202204-3294 (CVE-2022-1108)</td>
-       <td>2022-04-13 13:35:20 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:35:20</td>
        <td>Lenovo ThinkPad 缓冲区错误漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3294">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>ec64b8c47bcd263efafd7b1ebf7f8fd7</td>
        <td>CNNVD-202204-3361 (CVE-2022-20684)</td>
-       <td>2022-04-13 12:52:30 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:30</td>
        <td>Cisco IOS XE 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3361">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>fe403a07b32f6b32f24600e20a643001</td>
        <td>CNNVD-202204-3362 (CVE-2022-20682)</td>
-       <td>2022-04-13 12:52:28 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:28</td>
        <td>Cisco IOS XE 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3362">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>fd2a94f7a7951bbdac1f7307be85dd1a</td>
        <td>CNNVD-202204-3363 (CVE-2022-20679)</td>
-       <td>2022-04-13 12:52:27 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:27</td>
        <td>Cisco IOS XE 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3363">详情</a></td>
       </tr>
@@ -854,7 +854,7 @@
       <tr>
        <td>b6169c46b13dd4dd4f4fbdca3fca0c8b</td>
        <td>CNNVD-202204-3364 (CVE-2022-1329)</td>
-       <td>2022-04-13 12:52:25 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:25</td>
        <td>Elementor 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3364">详情</a></td>
       </tr>
@@ -862,7 +862,7 @@
       <tr>
        <td>964194dfc51b6ac4e6d454225a4b0c2f</td>
        <td>CNNVD-202204-3365 (CVE-2022-24843)</td>
-       <td>2022-04-13 12:52:23 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:23</td>
        <td>Gin-Vue-Admin 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3365">详情</a></td>
       </tr>
@@ -870,7 +870,7 @@
       <tr>
        <td>2760109d7597558a4e14fb954f1811eb</td>
        <td>CNNVD-202204-3366 (CVE-2022-24845)</td>
-       <td>2022-04-13 12:52:21 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:21</td>
        <td>Vyper 输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3366">详情</a></td>
       </tr>
@@ -878,7 +878,7 @@
       <tr>
        <td>fed4f86686780c132f9c395858042122</td>
        <td>CNNVD-202204-3367 (CVE-2021-43154)</td>
-       <td>2022-04-13 12:52:19 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:19</td>
        <td>CMS Made Simple 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3367">详情</a></td>
       </tr>
@@ -886,7 +886,7 @@
       <tr>
        <td>ba6752e0f67660b3f8a4f90b1ba491fe</td>
        <td>CNNVD-202204-3368 (CVE-2022-24847)</td>
-       <td>2022-04-13 12:52:17 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 12:52:17</td>
        <td>GeoServer 输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202204-3368">详情</a></td>
       </tr>
@@ -1422,7 +1422,7 @@
       <tr>
        <td>07c09799b08afb04c63a9de750b70aca</td>
        <td>CVE-2022-26809, CVE-2022-24491, CVE-2022-24497, CVE-2022-26815, CVE-2022-26904</td>
-       <td>2022-04-13 07:51:00 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 07:51:00</td>
        <td>微软2022年4月补丁日漏洞通告</td>
        <td><a target="_blank" href="https://vas.riskivy.com/vuln-detail?id=2804">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>e2ad506b0329fad817686b6e57263722</td>
        <td>CVE-2021-21342</td>
-       <td>2022-04-13 13:53:42 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:53:42</td>
        <td>XStream 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d8e45d55ae4d42248a29bf94a63282a0">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>364ce77087f8971b453e98660e2e44fd</td>
        <td>CVE-2021-21339</td>
-       <td>2022-04-13 13:53:38 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:53:38</td>
        <td>TYPO3 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=812094c6aa64465a976c519578ec6fee">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>1b0bc3e1d6ea6e19d43214830a1381dc</td>
        <td>CVE-2021-20227</td>
-       <td>2022-04-13 13:53:34 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:53:34</td>
        <td>Ubuntu SQLite 资源管理错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=00a9654ab806466bac1b5142131288a4">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>8079f780f4ff723cb60999104f0adab5</td>
        <td>CVE-2021-21341</td>
-       <td>2022-04-13 13:53:10 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:53:10</td>
        <td>XStream 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1b07352aceb7468e850a0a1017df542e">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>df7e1250b40518d01902053fdffd46be</td>
        <td>CVE-2021-21338</td>
-       <td>2022-04-13 13:53:05 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:53:05</td>
        <td>TYPO3 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6a998b5068aa444295046e8f5c174328">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>2c2596c566ef35a2e4c7150a927ee545</td>
        <td>CVE-2021-20222</td>
-       <td>2022-04-13 13:53:01 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:53:01</td>
        <td>Red Hat Keycloak 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2c2773225491480c96bb9d19b183fec2">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>b3bb430a0041be79adb91cf28e48ad6f</td>
        <td>CVE-2020-9212</td>
-       <td>2022-04-13 13:52:57 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:52:57</td>
        <td>Huawei USG9500 信息泄露漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=8e7f2420dced41e0bd28305992ab972f">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>5b1b989dfe1ec53fb9e5263914fbd414</td>
        <td>CVE-2021-28972</td>
-       <td>2022-04-13 13:52:53 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:52:53</td>
        <td>Linux kernel 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=79356c07decb441a8dc72271b266422a">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>5d6f81a371756e68eb7f59f28beb224a</td>
        <td>CVE-2021-21340</td>
-       <td>2022-04-13 13:52:42 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:52:42</td>
        <td>TYPO3 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=8f5ef67eab43454bbadeb657b82ad3e1">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>6e56972157fb79a94cc7957aed7dfd97</td>
        <td>CVE-2021-20270</td>
-       <td>2022-04-13 13:52:38 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 13:52:38</td>
        <td>Red Hat Ansible Automation 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=20437e0c0dbe4720bfa64a347786c671">详情</a></td>
       </tr>
@@ -1934,7 +1934,7 @@
       <tr>
        <td>6a3c95df147b3e7e934e120986fbb43e</td>
        <td>CVE-2022-1133</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome WebRTC内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64231">详情</a></td>
       </tr>
@@ -1942,7 +1942,7 @@
       <tr>
        <td>c651017ff5f140c44ff1f5bc7b084410</td>
        <td>CVE-2022-1129</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Full Screen Mode实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64230">详情</a></td>
       </tr>
@@ -1950,7 +1950,7 @@
       <tr>
        <td>caa941a14aebcf8d8c723806bee5705e</td>
        <td>CVE-2022-1131</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Cast UI内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64229">详情</a></td>
       </tr>
@@ -1958,7 +1958,7 @@
       <tr>
        <td>d7f45dae58420f5278270233f02ba858</td>
        <td>CVE-2022-1145</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Extensions内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64228">详情</a></td>
       </tr>
@@ -1966,7 +1966,7 @@
       <tr>
        <td>25aaed876c14223237f001ef7a0a5f1f</td>
        <td>CVE-2022-1146</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Resource Timing实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64227">详情</a></td>
       </tr>
@@ -1974,7 +1974,7 @@
       <tr>
        <td>9a387a21a334fd41fbeb2e390eb09f0c</td>
        <td>CVE-2022-1138</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Web Cursor实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64226">详情</a></td>
       </tr>
@@ -1982,7 +1982,7 @@
       <tr>
        <td>fb147e41262bd254b14f14655554a7ec</td>
        <td>CVE-2022-1128</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Web Share API实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64225">详情</a></td>
       </tr>
@@ -1990,7 +1990,7 @@
       <tr>
        <td>24f0af63fae508d6893ea9ff3b2292fc</td>
        <td>CVE-2022-1135</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Shopping Cart内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64224">详情</a></td>
       </tr>
@@ -1998,7 +1998,7 @@
       <tr>
        <td>2f1a216a396dcd5f1f6ee5e96ee18885</td>
        <td>CVE-2022-1127</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome QR Code Generator内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64223">详情</a></td>
       </tr>
@@ -2006,7 +2006,7 @@
       <tr>
        <td>051cf17f0c9170067c95769b7ecbccfb</td>
        <td>CVE-2022-1139</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Background Fetch API实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64222">详情</a></td>
       </tr>
@@ -2014,7 +2014,7 @@
       <tr>
        <td>52e2a24e293543fbb010be9451cb33eb</td>
        <td>CVE-2022-1143</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome WebUI堆缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64221">详情</a></td>
       </tr>
@@ -2022,7 +2022,7 @@
       <tr>
        <td>c738c56b4f7ef9816bd5373cdb601690</td>
        <td>CVE-2022-1232</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome V8类型混淆漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64220">详情</a></td>
       </tr>
@@ -2030,7 +2030,7 @@
       <tr>
        <td>ee139c0978b8b36cfa8596658f055add</td>
        <td>CVE-2022-1137</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome Extensions实现不当漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64219">详情</a></td>
       </tr>
@@ -2038,7 +2038,7 @@
       <tr>
        <td>7493d681c86ebf572abec2b665a3a4f9</td>
        <td>CVE-2022-1134</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome V8类型混淆漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64218">详情</a></td>
       </tr>
@@ -2046,7 +2046,7 @@
       <tr>
        <td>11a17d507e76d721207d44c466caf0de</td>
        <td>CVE-2022-1130</td>
-       <td>2022-04-13 05:26:04 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 05:26:04</td>
        <td>Google Chrome WebOTP输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64217">详情</a></td>
       </tr>
@@ -2054,7 +2054,7 @@
       <tr>
        <td>d97f6bc96da66edde99eb93e1a865bdf</td>
        <td>CVE-2022-26904</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows User Profile Service权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64189">详情</a></td>
       </tr>
@@ -2062,7 +2062,7 @@
       <tr>
        <td>0ae04ed29904329b5ce963d3be724a88</td>
        <td>CVE-2022-26910</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Skype for Business and Lync欺骗漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64188">详情</a></td>
       </tr>
@@ -2070,7 +2070,7 @@
       <tr>
        <td>f4a5ef7786300ebfdf5bbc0d3161ceef</td>
        <td>CVE-2022-24493</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Local Security Authority (LSA) Server信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64187">详情</a></td>
       </tr>
@@ -2078,7 +2078,7 @@
       <tr>
        <td>0cec5a47aa32aa467d51639a242e2de5</td>
        <td>CVE-2022-26816</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64186">详情</a></td>
       </tr>
@@ -2086,7 +2086,7 @@
       <tr>
        <td>d04373e01e5853c838759db220f91432</td>
        <td>CVE-2022-26817</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64185">详情</a></td>
       </tr>
@@ -2094,7 +2094,7 @@
       <tr>
        <td>9ba3cd8bb6dc415579a3bc5028a9c25d</td>
        <td>CVE-2022-26818</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64184">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>fbb5cfed2fa8707a13a61824ff95c0eb</td>
        <td>CVE-2022-26819</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64183">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>be3477eba6c36ab54c7a9b665f00ef20</td>
        <td>CVE-2022-26820</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64182">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>0894fdf9acc959f15b540e9a9625f4fa</td>
        <td>CVE-2022-26821</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64181">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>14a238ab8347a49d9682a5a276797db3</td>
        <td>CVE-2022-24498</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows iSCSI Target Service信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64180">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>3d4d2fd5cba721a2694a76924a4ef207</td>
        <td>CVE-2022-26894</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Edge (Chromium-based)权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64179">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>1ad80b5d14e86b9e5c61686b1c091e26</td>
        <td>CVE-2022-26891</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Edge (Chromium-based)权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64178">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>16b5947994dca15ce5fb9a1e69ee4060</td>
        <td>CVE-2022-26822</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64177">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>9471b7d16be53ea5d2649a4385306b0c</td>
        <td>CVE-2022-26823</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64176">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>dd17fc01801386b19d3be8c886032668</td>
        <td>CVE-2022-26824</td>
-       <td>2022-04-13 03:42:58 <img src="imgs/new.gif" /></td>
+       <td>2022-04-13 03:42:58</td>
        <td>Microsoft Windows DNS Server远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/64175">详情</a></td>
       </tr>
@@ -2201,6 +2201,14 @@
        <td>2022-04-08 21:15:08 </td>
        <td>A Cross-Site Request Forgery (CSRF) in IceHrm 31.0.0.OS allows attackers to delete arbitrary users or achieve account takeover via the app/service.php URI.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26588">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d3832ddeb3aedfe4db8ed738f9e8bca3</td>
+       <td>CVE-2022-26180</td>
+       <td>2022-04-08 21:15:08 </td>
+       <td>qdPM 9.2 allows Cross-Site Request Forgery (CSRF) via the index.php/myAccount/update URI.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26180">详情</a></td>
       </tr>
 
       <tr>
@@ -2356,6 +2364,14 @@
       </tr>
 
       <tr>
+       <td>129f3fa43c5170721be96c99af394013</td>
+       <td>CVE-2022-26356</td>
+       <td>2022-04-05 13:15:07 </td>
+       <td>Racy interactions between dirty vram tracking and paging log dirty hypercalls Activation of log dirty mode done by XEN_DMOP_track_dirty_vram (was named HVMOP_track_dirty_vram before Xen 4.9) is racy with ongoing log dirty hypercalls. A suitably timed call to XEN_DMOP_track_dirty_vram can enable log dirty while another CPU is still in the process of tearing down the structures related to a previously enabled log dirty mode (XEN_DOMCTL_SHADOW_OP_OFF). This is due to lack of mutually exclusive locking between both operations and can lead to entries being added in already freed slots, resulting in a memory leak.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26356">详情</a></td>
+      </tr>
+
+      <tr>
        <td>027735e426876d422176036e7739571c</td>
        <td>CVE-2022-23909</td>
        <td>2022-04-05 06:15:06 </td>
@@ -2369,6 +2385,14 @@
        <td>2022-04-05 02:15:07 </td>
        <td>Alt-N MDaemon Security Gateway through 8.5.0 allows SecurityGateway.dll?view=login XML Injection.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25356">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e1d0894731d004b5eaf44dfceab877f</td>
+       <td>CVE-2022-26281</td>
+       <td>2022-04-05 02:15:07 </td>
+       <td>BigAnt Server v5.6.06 was discovered to contain an incorrect access control issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26281">详情</a></td>
       </tr>
 
       <tr>
@@ -2401,30 +2425,6 @@
        <td>2022-04-04 21:15:08 </td>
        <td>TPCMS v3.2 allows attackers to access the ThinkPHP log directory and obtain sensitive information such as the administrator's user name and password.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27442">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>48c000bd0e05dacbe7d2845725638cf4</td>
-       <td>CVE-2022-27441</td>
-       <td>2022-04-04 21:15:07 </td>
-       <td>A stored cross-site scripting (XSS) vulnerability in TPCMS v3.2 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Phone text box.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27441">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1cb65a9f4d264c9561fdc2ddcdcf7a0d</td>
-       <td>CVE-2022-25618</td>
-       <td>2022-04-04 20:15:10 </td>
-       <td>Authenticated (admin+) Stored Cross-Site Scripting (XSS) vulnerability in wpDataTables (WordPress plugin) versions &lt;= 2.1.27</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25618">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>232b2f4b9610e791b21754f27bc92690</td>
-       <td>CVE-2022-25613</td>
-       <td>2022-04-04 20:15:10 </td>
-       <td>Authenticated Persistent Cross-Site Scripting (XSS) vulnerability in FV Flowplayer Video Player (WordPress plugin) versions &lt;= 7.5.18.727 via &amp;fv_wp_flowplayer_field_splash parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-25613">详情</a></td>
       </tr>
 
      </tbody>
