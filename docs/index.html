@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-04-20 07:28:05 -->
+<!-- RELEASE TIME : 2022-04-20 08:36:08 -->
 <html lang="zh-cn">
 
  <head>
@@ -27,6 +27,14 @@
        <th width="43%">TITLE</th>
        <th width="5%">URL</th>
       </tr>
+      <tr>
+       <td>7eb322a673ef3c0b19410bdc96ba293b</td>
+       <td></td>
+       <td>2022-04-20 08:34:00 <img src="imgs/new.gif" /></td>
+       <td>2022-04 补丁日: Oracle多个产品漏洞安全风险通告</td>
+       <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=4e6912c7385b6495b3b4e17f8c0d8a13">详情</a></td>
+      </tr>
+
       <tr>
        <td>976cf8c971c9110deb43a103d5871c8a</td>
        <td></td>
@@ -259,14 +267,6 @@
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=da33ca52a982947907a18d6570909546">详情</a></td>
       </tr>
 
-      <tr>
-       <td>d64e8c999202491d43f23dc514036a1f</td>
-       <td></td>
-       <td>2021-12-23 03:35:44</td>
-       <td>Apache HTTP Server多个漏洞风险通告</td>
-       <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=9eddce1b5120cc0b0ec423f17aaf2940">详情</a></td>
-      </tr>
-
      </tbody>
     </table>
    </div>
@@ -283,6 +283,30 @@
        <th width="43%">TITLE</th>
        <th width="5%">URL</th>
       </tr>
+      <tr>
+       <td>84756194f67efaefa3eddf8ca8f73cb4</td>
+       <td>CVE-2022-27629</td>
+       <td>2022-04-20 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site request forgery (CSRF) vulnerability in 'MicroPayments - Paid Author Subscriptions, Content, Downloads, Membership' versions prior to 1.9.6 allows a remote unauthenticated attacker to hijack the authentication of an administrator and perform unintended operation via unspecified vectors.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27629">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a911f021a69f317413cc9c967e9b9392</td>
+       <td>CVE-2022-24860</td>
+       <td>2022-04-20 00:16:00 <img src="imgs/new.gif" /></td>
+       <td>Databasir is a team-oriented relational database model document management platform. Databasir 1.01 has Use of Hard-coded Cryptographic Key vulnerability. An attacker can use hard coding to generate login credentials of any user and log in to the service background located at different IP addresses.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24860">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce19df79c80d2f1c10e27f73ed320c11</td>
+       <td>CVE-2022-24826</td>
+       <td>2022-04-20 00:16:00 <img src="imgs/new.gif" /></td>
+       <td>On Windows, if Git LFS operates on a malicious repository with a `..exe` file as well as a file named `git.exe`, and `git.exe` is not found in `PATH`, the `..exe` program will be executed, permitting the attacker to execute arbitrary code. This does not affect Unix systems. Similarly, if the malicious repository contains files named `..exe` and `cygpath.exe`, and `cygpath.exe` is not found in `PATH`, the `..exe` program will be executed when certain Git LFS commands are run. More generally, if the current working directory contains any file with a base name of `.` and a file extension from `PATHEXT` (except `.bat` and `.cmd`), and also contains another file with the same base name as a program Git LFS intends to execute (such as `git`, `cygpath`, or `uname`) and any file extension from `PATHEXT` (including `.bat` and `.cmd`), then, on Windows, when Git LFS attempts to execute the intended program the `..exe`, `..com`, etc., file will be executed instead, but only if the intended program is not found in any directory listed in `PATH`. The vulnerability occurs because when Git LFS detects that the program it intends to run does not exist in any directory listed in `PATH` then Git LFS passes an empty string as the executable file path to the Go `os/exec` package, which contains a bug such that, on Windows, it prepends the name of the current working directory (i.e., `.`) to the empty string without adding a path separator, and as a result searches in that directory for a file with the base name `.` combined with any file extension from `PATHEXT`, executing the first one it finds. (The reason `..bat` and `..cmd` files are not executed in the same manner is that, although the Go `os/exec` package tries to execute them just as it does a `..exe` file, the Microsoft Win32 API `CreateProcess()` family of functions have an undocumented feature in that they apparently recognize when a caller is attempting to execute a batch script file and instead run the `cmd.exe` command interpreter, passing the full set of command line arguments as parameters. These are unchanged from the command line arguments set by Git LFS, and as such, the intended program's name is the first, resulting in a command line like `cmd.exe /c git`, which then fails.) Git LFS has resolved this vulnerability by always reporting an error when a program is not found in any directory listed in `PATH` rather than passing an empty string to the Go `os/exec` package in this case. The bug in the Go `os/exec` package has been reported to the Go project and is expected to be patched after this security advisory is published. The problem was introduced in version 2.12.1 and is patched in version 3.1.3. Users of affected versions should upgrade to version 3.1.3. There are currently no known workarounds at this time.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24826">详情</a></td>
+      </tr>
+
       <tr>
        <td>46e5b6dcc25b92095d7bad0b64f7fb0d</td>
        <td>CVE-2022-24858</td>
@@ -497,30 +521,6 @@
        <td>2022-04-19 08:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability within the authentication process of Abacus ERP allows a remote attacker to bypass the second authentication factor. This issue affects: Abacus ERP v2022 versions prior to R1 of 2022-01-15; v2021 versions prior to R4 of 2022-01-15; v2020 versions prior to R6 of 2022-01-15; v2019 versions later than R5 (service pack); v2018 versions later than R5 (service pack). This issue does not affect: Abacus ERP v2019 versions prior to R5 of 2020-03-15; v2018 versions prior to R7 of 2020-04-15; v2017 version and prior versions and prior versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1065">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>20d9d1b50c2494f23ef50c6e6737bdf3</td>
-       <td>CVE-2022-28108</td>
-       <td>2022-04-19 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Selenium Server (Grid) before 4 allows CSRF because it permits non-JSON content types such as application/x-www-form-urlencoded, multipart/form-data, and text/plain.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28108">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ffaa4ae8a6646af7da6a4ce8d7958272</td>
-       <td>CVE-2022-29464</td>
-       <td>2022-04-18 22:15:00</td>
-       <td>Certain WSO2 products allow unrestricted file upload with resultant remote code execution. This affects WSO2 API Manager 2.2.0 and above through 4.0.0; WSO2 Identity Server 5.2.0 and above through 5.11.0; WSO2 Identity Server Analytics 5.4.0, 5.4.1, 5.5.0, and 5.6.0; WSO2 Identity Server as Key Manager 5.3.0 and above through 5.10.0; and WSO2 Enterprise Integrator 6.2.0 and above through 6.6.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29464">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8dcb2bfd08cdc925ae9d2ca4055c4c9c</td>
-       <td>CVE-2022-24841</td>
-       <td>2022-04-18 22:15:00</td>
-       <td>fleetdm/fleet is an open source device management, built on osquery. All versions of fleet making use of the teams feature are affected by this authorization bypass issue. Fleet instances without teams, or with teams but without restricted team accounts are not affected. In affected versions a team admin can erroneously add themselves as admin, maintainer or observer on other teams. Users are advised to upgrade to version 4.13. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24841">详情</a></td>
       </tr>
 
      </tbody>
