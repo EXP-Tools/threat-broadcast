@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-04-27 22:29:14 -->
+<!-- RELEASE TIME : 2022-04-27 23:30:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e20d87e08ee50a4a4b0f13565892af0b</td>
+       <td>CVE-2022-24891</td>
+       <td>2022-04-27 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>ESAPI (The OWASP Enterprise Security API) is a free, open source, web application security control library. Prior to version 2.3.0.0, there is a potential for a cross-site scripting vulnerability in ESAPI caused by a incorrect regular expression for "onsiteURL" in the **antisamy-esapi.xml** configuration file that can cause "javascript:" URLs to fail to be correctly sanitized. This issue is patched in ESAPI 2.3.0.0. As a workaround, manually edit the **antisamy-esapi.xml** configuration files to change the "onsiteURL" regular expression. More information about remediation of the vulnerability, including the workaround, is available in the maintainers' release notes and security bulletin.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24891">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c6bcd57e573e790675bdcb87af06309</td>
+       <td>CVE-2021-3523</td>
+       <td>2022-04-27 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in 3Scale APICast in versions prior to 2.11.0, where it incorrectly identified connections for reuse. This flaw allows an attacker to bypass security restrictions for an API request when hosting multiple APIs on the same IP address.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-3523">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1bd6b71c7eb64c2bc5637a3fc26af8da</td>
+       <td>CVE-2022-24736</td>
+       <td>2022-04-27 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Redis is an in-memory database that persists on disk. Prior to versions 6.2.7 and 7.0.0, an attacker attempting to load a specially crafted Lua script can cause NULL pointer dereference which will result with a crash of the redis-server process. The problem is fixed in Redis versions 7.0.0, 6.2.X and 6.0.X. An additional workaround to mitigate this problem without patching the redis-server executable, if Lua scripting is not being used, is to block access to `SCRIPT LOAD` and `EVAL` commands using ACL rules.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24736">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c58fc3e93cb2b6d5392d2866d92ecc35</td>
+       <td>CVE-2022-24735</td>
+       <td>2022-04-27 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Redis is an in-memory database that persists on disk. By exploiting weaknesses in the Lua script execution environment, an attacker with access to Redis prior to version 7.0.0 or 6.2.7 can inject Lua code that will execute with the (potentially higher) privileges of another Redis user. The Lua script execution environment in Redis provides some measures that prevent a script from creating side effects that persist and can affect the execution of the same, or different script, at a later time. Several weaknesses of these measures have been publicly known for a long time, but they had no security impact as the Redis security model did not endorse the concept of users or privileges. With the introduction of ACLs in Redis 6.0, these weaknesses can be exploited by a less privileged users to inject Lua code that will execute at a later time, when a privileged user executes a Lua script. The problem is fixed in Redis versions 7.0.0 and 6.2.7. An additional workaround to mitigate this problem without patching the redis-server executable, if Lua scripting is not being used, is to block access to `SCRIPT LOAD` and `EVAL` commands using ACL rules.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24735">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5b11c418473db6ad9b56e896ccef3a2b</td>
        <td>CVE-2022-28197</td>
        <td>2022-04-27 18:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2022-04-27 08:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability, which was classified as problematic, has been found in GetSimple CMS. Affected by this issue is the file /admin/edit.php of the Content Module. The manipulation of the argument post-content with an input like <script>alert(1)</script> leads to cross site scripting. The attack may be launched remotely but requires authentication. Expoit details have been disclosed within the advisory.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1503">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5747dd5b47a49415aee64ab9717e935e</td>
-       <td>CVE-2022-29810</td>
-       <td>2022-04-27 06:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Hashicorp go-getter library before 1.5.11 could write SSH credentials into its logfile, exposing sensitive credentials to local users able to read the logfile.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29810">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c9caa9df2c60ede06c638b5747500768</td>
-       <td>CVE-2022-29701</td>
-       <td>2022-04-27 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A lack of rate limiting in the 'forgot password' feature of Zammad v5.1.0 allows attackers to send an excessive amount of reset requests for a legitimate user, leading to a possible Denial of Service (DoS) via a large amount of generated e-mail messages.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29701">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>819e33e785154f00772ac32c955b1b2a</td>
-       <td>CVE-2022-29700</td>
-       <td>2022-04-27 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A lack of password length restriction in Zammad v5.1.0 allows for the creation of extremely long passwords which can cause a Denial of Service (DoS) during password verification.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29700">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>90a96b17d6d01b05d1f8c689bfedebca</td>
-       <td>CVE-2022-28085</td>
-       <td>2022-04-27 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A flaw was found in htmldoc commit 31f7804. A heap buffer overflow in the function pdf_write_names in ps-pdf.cxx may lead to arbitrary code execution and Denial of Service (DoS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28085">详情</a></td>
       </tr>
 
      </tbody>
