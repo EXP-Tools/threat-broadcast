@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-05-05 21:27:20 -->
+<!-- RELEASE TIME : 2022-05-06 02:05:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>93b9132ed6b1bb28af57d8f1327866e4</td>
+       <td>CVE-2022-29535</td>
+       <td>2022-05-05 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zoho ManageEngine OPManager through 125588 allows SQL Injection via a few default reports.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29535">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>696d2bc85108fd935960159dfe140705</td>
+       <td>CVE-2022-29175</td>
+       <td>2022-05-05 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vyper is a pythonic smart contract language for the ethereum virtual machine. Since version 0.3.2, decimals use the full range of the underlying int168 type. multiplication of 168 bit integers can wrap in 256-bit arithmetic, but safemul does not check for that. This has been patched in v0.3.4. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29175">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>510a8ee7f7c9e6b308c1333b4e667cde</td>
+       <td>CVE-2022-29173</td>
+       <td>2022-05-05 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>go-tuf is a Go implementation of The Update Framework (TUF). go-tuf does not correctly implement the client workflow for updating the metadata files for roles other than the root role. Specifically, checks for rollback attacks are not implemented correctly meaning an attacker can cause clients to install software that is older than the software which the client previously knew to be available, and may include software with known vulnerabilities. In more detail, the client code of go-tuf has several issues in regards to preventing rollback attacks: 1. It does not take into account the content of any previously trusted metadata, if available, before proceeding with updating roles other than the root role (i.e., steps 5.4.3.1 and 5.5.5 of the detailed client workflow). This means that any form of version verification done on the newly-downloaded metadata is made using the default value of zero, which always passes. 2. For both timestamp and snapshot roles, go-tuf saves these metadata files as trusted before verifying if the version of the metafiles they refer to is correct (i.e., steps 5.5.4 and 5.6.4 of the detailed client workflow). A fix is available in version 0.3.0 or newer. No workarounds are known for this issue apart from upgrading.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29173">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>51712df3bba604391af5776b3fc6709b</td>
+       <td>CVE-2022-29172</td>
+       <td>2022-05-05 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Auth0 is an authentication broker that supports both social and enterprise identity providers, including Active Directory, LDAP, Google Apps, and Salesforce. In versions before `11.33.0`, when the â€œadditional signup fieldsâ€? feature [is configured](https://github.com/auth0/lock#additional-sign-up-fields), a malicious actor can inject invalidated HTML code into these additional fields, which is then stored in the service `user_metdata` payload (using the `name` property). Verification emails, when applicable, are generated using this metadata. It is therefor possible for an actor to craft a malicious link by injecting HTML, which is then rendered as the recipient's name within the delivered email template. You are impacted by this vulnerability if you are using `auth0-lock` version `11.32.2` or lower and are using the â€œadditional signup fieldsâ€? feature in your application. Upgrade to version `11.33.0`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29172">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4e7b8df445ae234d7d8c3c5757b52a1e</td>
+       <td>CVE-2022-29167</td>
+       <td>2022-05-05 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Hawk is an HTTP authentication scheme providing mechanisms for making authenticated HTTP requests with partial cryptographic verification of the request and response, covering the HTTP method, request URI, host, and optionally the request payload. Hawk used a regular expression to parse `Host` HTTP header (`Hawk.utils.parseHost()`), which was subject to regular expression DoS attack - meaning each added character in the attacker's input increases the computation time exponentially. `parseHost()` was patched in `9.0.1` to use built-in `URL` class to parse hostname instead. `Hawk.authenticate()` accepts `options` argument. If that contains `host` and `port`, those would be used instead of a call to `utils.parseHost()`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29167">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>81d5c19718638a5b159b06ba234a41b9</td>
+       <td>CVE-2022-29166</td>
+       <td>2022-05-05 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>matrix-appservice-irc is a Node.js IRC bridge for Matrix. The vulnerability in node-irc allows an attacker to manipulate a Matrix user into executing IRC commands by having them reply to a maliciously crafted message. The vulnerability has been patched in matrix-appservice-irc 0.33.2. Refrain from replying to messages from untrusted participants in IRC-bridged Matrix rooms. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29166">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>779fcd4b9391ef286cdd79f0f4c360f9</td>
+       <td>CVE-2022-29176</td>
+       <td>2022-05-05 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Rubygems is a package registry used to supply software for the Ruby language ecosystem. Due to a bug in the yank action, it was possible for any RubyGems.org user to remove and replace certain gems even if that user was not authorized to do so. To be vulnerable, a gem needed: one or more dashes in its name creation within 30 days OR no updates for over 100 days At present, we believe this vulnerability has not been exploited. RubyGems.org sends an email to all gem owners when a gem version is published or yanked. We have not received any support emails from gem owners indicating that their gem has been yanked without authorization. An audit of gem changes for the last 18 months did not find any examples of this vulnerability being used in a malicious way. A deeper audit for any possible use of this exploit is ongoing, and we will update this advisory once it is complete. Using Bundler in --frozen or --deployment mode in CI and during deploys, as the Bundler team has always recommended, will guarantee that your application does not silently switch to versions created using this exploit. To audit your application history for possible past exploits, review your Gemfile.lock and look for gems whose platform changed when the version number did not change. For example, gemname-3.1.2 updating to gemname-3.1.2-java could indicate a possible abuse of this vulnerability. RubyGems.org has been patched and is no longer vulnerable to this issue as of the 5th of May 2022.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29176">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1b39278d6010497cf8547e23d41dd37f</td>
        <td>CVE-2022-27411</td>
        <td>2022-05-05 19:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2022-05-05 14:15:00 <img src="imgs/new.gif" /></td>
        <td>MasaCMS 7.2.1 is affected by a path traversal vulnerability in /index.cfm/_api/asset/image/.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42183">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f6bfa85af5ad3b3581556d8b9c49b037</td>
-       <td>CVE-2022-29340</td>
-       <td>2022-05-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>GPAC 2.1-DEV-rev87-g053aae8-master. has a Null Pointer Dereference vulnerability in gf_isom_parse_movie_boxes_internal due to improper return value handling of GF_SKIP_BOX, which causes a Denial of Service. This vulnerability was fixed in commit 37592ad.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29340">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>90bef5ec0f397a8ae4f3b89416c7146c</td>
-       <td>CVE-2022-29339</td>
-       <td>2022-05-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In GPAC 2.1-DEV-rev87-g053aae8-master, function BS_ReadByte() in utils/bitstream.c has a failed assertion, which causes a Denial of Service. This vulnerability was fixed in commit 9ea93a2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29339">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed2c2425273106fe4ad725f1303e84d1</td>
-       <td>CVE-2022-28471</td>
-       <td>2022-05-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In ffjpeg (commit hash: caade60), the function bmp_load() in bmp.c contains an integer overflow vulnerability, which eventually results in the heap overflow in jfif_encode() in jfif.c. This is due to the incomplete patch for issue 38</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28471">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f318880076a796be0ce6d8d238e7067</td>
-       <td>CVE-2022-28462</td>
-       <td>2022-05-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>novel-plus 3.6.0 suffers from an Arbitrary file reading vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28462">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>582a319e15c90ae6ab0ecf7e2a121ce6</td>
-       <td>CVE-2022-28461</td>
-       <td>2022-05-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>mingyuefusu Library Management System all versions as of 03-27-2022 is vulnerable to SQL Injection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28461">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f2189c92fee65b7e731061e3ce1ee1a</td>
-       <td>CVE-2021-42242</td>
-       <td>2022-05-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A command execution vulnerability exists in jfinal_cms 5.0.1 via com.jflyfox.component.controller.Ueditor.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42242">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aedb343afaf6c564c8ce030960d73b86</td>
-       <td>CVE-2022-29940</td>
-       <td>2022-05-05 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>In LibreHealth EHR 2.0.0, lack of sanitization of the GET parameters formseq and formid in interface\orders\find_order_popup.php leads to multiple cross-site scripting (XSS) vulnerabilities.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29940">详情</a></td>
       </tr>
 
      </tbody>
@@ -1686,7 +1686,7 @@
       <tr>
        <td>1d218ad4489cd7dce32e931af37fc9e7</td>
        <td>CVE-2022-29531</td>
-       <td>2022-05-04 20:36:59 <img src="imgs/new.gif" /></td>
+       <td>2022-05-04 20:36:59</td>
        <td>MISP 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f8764d8b3b954528a652ed366479f6a8">详情</a></td>
       </tr>
@@ -1694,7 +1694,7 @@
       <tr>
        <td>70410cea0e0b399f1cf20f6ef14ca573</td>
        <td>CVE-2022-29534</td>
-       <td>2022-05-04 20:36:51 <img src="imgs/new.gif" /></td>
+       <td>2022-05-04 20:36:51</td>
        <td>MISP 授权问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d9e7f90b1fb5401c80263b3592b562ae">详情</a></td>
       </tr>
@@ -1702,7 +1702,7 @@
       <tr>
        <td>ed4022e0da8f5f7662157e0d23471d27</td>
        <td>CVE-2021-41570</td>
-       <td>2022-05-04 20:36:34 <img src="imgs/new.gif" /></td>
+       <td>2022-05-04 20:36:34</td>
        <td>Veritas NetBackup 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ae87aacb93764f12a3b704a9f86f5af0">详情</a></td>
       </tr>
