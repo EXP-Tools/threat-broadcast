@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-05-06 02:05:47 -->
+<!-- RELEASE TIME : 2022-05-06 06:37:49 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d12bd9afb3791706be6aadbe1c244573</td>
+       <td>CVE-2022-24878</td>
+       <td>2022-05-06 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Flux is an open and extensible continuous delivery solution for Kubernetes. Path Traversal in the kustomize-controller via a malicious `kustomization.yaml` allows an attacker to cause a Denial of Service at the controller level. Workarounds include automated tooling in the user's CI/CD pipeline to validate `kustomization.yaml` files conform with specific policies. This vulnerability is fixed in kustomize-controller v0.24.0 and included in flux2 v0.29.0. Users are recommended to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24878">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f68c660980874369bb7b026e62e95e70</td>
+       <td>CVE-2022-24877</td>
+       <td>2022-05-06 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Flux is an open and extensible continuous delivery solution for Kubernetes. Path Traversal in the kustomize-controller via a malicious `kustomization.yaml` allows an attacker to expose sensitive data from the controllerâ€™s pod filesystem and possibly privilege escalation in multi-tenancy deployments. Workarounds include automated tooling in the user's CI/CD pipeline to validate `kustomization.yaml` files conform with specific policies. This vulnerability is fixed in kustomize-controller v0.24.0 and included in flux2 v0.29.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24877">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4475c7976379536ee79542009c2f0106</td>
+       <td>CVE-2021-25746</td>
+       <td>2022-05-06 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>A security issue was discovered in ingress-nginx where a user that can create or update ingress objects can use .metadata.annotations in an Ingress object (in the networking.k8s.io or extensions API group) to obtain the credentials of the ingress-nginx controller. In the default configuration, that credential has access to all secrets in the cluster.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-25746">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ec32438b9771bf5ddc05cbb1a5caecbc</td>
+       <td>CVE-2021-25745</td>
+       <td>2022-05-06 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>A security issue was discovered in ingress-nginx where a user that can create or update ingress objects can use the spec.rules[].http.paths[].path field of an Ingress object (in the networking.k8s.io or extensions API group) to obtain the credentials of the ingress-nginx controller. In the default configuration, that credential has access to all secrets in the cluster.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-25745">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d473f89d3a01ba9e459777d542011f3d</td>
+       <td>CVE-2022-29171</td>
+       <td>2022-05-06 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sourcegraph is a fast and featureful code search and navigation engine. Versions before 3.38.0 are vulnerable to Remote Code Execution in the gitserver service. The Gitolite code host integration with Phabricator allows Sourcegraph site admins to specify a `callsignCommand`, which is used to obtain the Phabricator metadata for a Gitolite repository. An administrator who is able to edit or add a Gitolite code host and has administrative access to Sourcegraph’s bundled Grafana instance can change this command arbitrarily and run it remotely. This grants direct access to the infrastructure underlying the Sourcegraph installation. The attack requires: site-admin privileges on the instance of Sourcegraph, Administrative privileges on the bundled Grafana monitoring instance, Knowledge of the gitserver IP address or DNS name (if running in Kubernetes). This can be found through Grafana. The issue is patched in version 3.38.0. You may disable Gitolite code hosts. We still highly encourage upgrading regardless of workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29171">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a4e4780c2b1ec471f1b95a0d871fa932</td>
+       <td>CVE-2022-29164</td>
+       <td>2022-05-06 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. In affected versions an attacker can create a workflow which produces a HTML artifact containing an HTML file that contains a script which uses XHR calls to interact with the Argo Server API. The attacker emails the deep-link to the artifact to their victim. The victim opens the link, the script starts running. As the script has access to the Argo Server API (as the victim), so may read information about the victim’s workflows, or create and delete workflows. Note the attacker must be an insider: they must have access to the same cluster as the victim and must already be able to run their own workflows. The attacker must have an understanding of the victim’s system. We have seen no evidence of this in the wild. We urge all users to upgrade to the fixed versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29164">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0bab1f47328a1fdd8e662a1c678f932b</td>
+       <td>CVE-2022-29161</td>
+       <td>2022-05-06 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. The XWiki Crypto API will generate X509 certificates signed by default using SHA1 with RSA, which is not considered safe anymore for use in certificate signatures, due to the risk of collisions with SHA1. The problem has been patched in XWiki version 13.10.6, 14.3.1 and 14.4-rc-1. Since then, the Crypto API will generate X509 certificates signed by default using SHA256 with RSA. Administrators are advised to upgrade their XWiki installation to one of the patched versions. If the upgrade is not possible, it is possible to patch the module xwiki-platform-crypto in a local installation by applying the change exposed in 26728f3 and re-compiling the module.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29161">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b0e4e3c72b3a89249aa7311bbfab7e6b</td>
+       <td>CVE-2022-24903</td>
+       <td>2022-05-06 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Rsyslog is a rocket-fast system for log processing. Modules for TCP syslog reception have a potential heap buffer overflow when octet-counted framing is used. This can result in a segfault or some other malfunction. As of our understanding, this vulnerability can not be used for remote code execution. But there may still be a slight chance for experts to do that. The bug occurs when the octet count is read. While there is a check for the maximum number of octets, digits are written to a heap buffer even when the octet count is over the maximum, This can be used to overrun the memory buffer. However, once the sequence of digits stop, no additional characters can be added to the buffer. In our opinion, this makes remote exploits impossible or at least highly complex. Octet-counted framing is one of two potential framing modes. It is relatively uncommon, but enabled by default on receivers. Modules `imtcp`, `imptcp`, `imgssapi`, and `imhttp` are used for regular syslog message reception. It is best practice not to directly expose them to the public. When this practice is followed, the risk is considerably lower. Module `imdiag` is a diagnostics module primarily intended for testbench runs. We do not expect it to be present on any production installation. Octet-counted framing is not very common. Usually, it needs to be specifically enabled at senders. If users do not need it, they can turn it off for the most important modules. This will mitigate the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24903">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66c18ef18c0f15d8db028cbe31ce5276</td>
+       <td>CVE-2022-24902</td>
+       <td>2022-05-06 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>TkVideoplayer is a simple library to play video files in tkinter. Uncontrolled memory consumption in versions of TKVideoplayer prior to 2.0.0 can theoretically lead to performance degradation. There are no known workarounds. This issue has been patched and users are advised to upgrade to version 2.0.0 or later.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24902">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c3a4b3b1f724433a27d4c22ecb3c42cb</td>
+       <td>CVE-2022-24899</td>
+       <td>2022-05-06 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Contao is a powerful open source CMS that allows you to create professional websites and scalable web applications. In versions of Contao prior to 4.13.3 it is possible to inject code into the canonical tag. As a workaround users may disable canonical tags in the root page settings.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24899">详情</a></td>
+      </tr>
+
+      <tr>
        <td>93b9132ed6b1bb28af57d8f1327866e4</td>
        <td>CVE-2022-29535</td>
        <td>2022-05-05 23:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
        <td>SchedMD Slurm 21.08.x through 20.11.x has Incorrect Access Control that leads to Escalation of Privileges and code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29501">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3390ec80b18aaf93879f01ae57d5ba96</td>
-       <td>CVE-2022-29500</td>
-       <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>SchedMD Slurm 21.08.x through 20.11.x has Incorrect Access Control that leads to Information Disclosure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29500">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ba1e7953917f04c76bf1b8c7f109b929</td>
-       <td>CVE-2022-29491</td>
-       <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>On F5 BIG-IP LTM, Advanced WAF, ASM, or APM 16.1.x versions prior to 16.1.2.2, 15.1.x versions prior to 15.1.5, 14.1.x versions prior to 14.1.4.6, and all versions of 13.1.x, 12.1.x, and 11.6.x, when a virtual server is configured with HTTP, TCP on one side (client/server), and DTLS on the other (server/client), undisclosed requests can cause the TMM process to terminate. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29491">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c7bfcbfba74fc0f95428ba11ad1d6490</td>
-       <td>CVE-2022-29480</td>
-       <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>On F5 BIG-IP 13.1.x versions prior to 13.1.5, and all versions of 12.1.x and 11.6.x, when multiple route domains are configured, undisclosed requests to big3d can cause an increase in CPU resource utilization. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29480">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>594901bbc1fe10dac11846032ee81be0</td>
-       <td>CVE-2022-29479</td>
-       <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>On F5 BIG-IP 15.1.x versions prior to 15.1.5.1, 14.1.x versions prior to 14.1.4.6, 13.1.x versions prior to 13.1.5, and all versions of 12.1.x and 11.6.x, and F5 BIG-IQ Centralized Management all versions of 8.x and 7.x, when an IPv6 self IP address is configured and the ipv6.strictcompliance database key is enabled (disabled by default) on a BIG-IP system, undisclosed packets may cause decreased performance. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29479">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb1bbd973b2636dbd97092a2a9ac7b19</td>
-       <td>CVE-2022-29474</td>
-       <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>On F5 BIG-IP 16.1.x versions prior to 16.1.2.2, 15.1.x versions prior to 15.1.5.1, 14.1.x versions prior to 14.1.4.6, 13.1.x versions prior to 13.1.5, and all versions of 12.1.x and 11.6.x, a directory traversal vulnerability exists in iControl SOAP that allows an authenticated attacker with at least guest role privileges to read wsdl files in the BIG-IP file system. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29474">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6734c743b54ce322dcd867fbc8fc29e4</td>
-       <td>CVE-2022-29473</td>
-       <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>On F5 BIG-IP 15.1.x versions prior to 15.1.5.1, 14.1.x versions prior to 14.1.4.6, and 13.1.x versions prior to 13.1.5, when an IPSec ALG profile is configured on a virtual server, undisclosed responses can cause Traffic Management Microkernel(TMM) to terminate. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29473">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5ede64bfd4fa31d207396fd8c57da9e</td>
-       <td>CVE-2022-29263</td>
-       <td>2022-05-05 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>On F5 BIG-IP APM 16.1.x versions prior to 16.1.2.2, 15.1.x versions prior to 15.1.5.1, 14.1.x versions prior to 14.1.4.6, 13.1.x versions prior to 13.1.5, and all versions of 12.1.x and 11.6.x, as well as F5 BIG-IP APM Clients 7.x versions prior to 7.2.1.5, the BIG-IP Edge Client Component Installer Service does not use best practice while saving temporary files. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29263">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c9756c13b9a15b131ef1b431ab638038</td>
-       <td>CVE-2022-1516</td>
-       <td>2022-05-05 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A NULL pointer dereference flaw was found in the Linux kernel’s X.25 set of standardized network protocols functionality in the way a user terminates their session using a simulated Ethernet card and continued usage of this connection. This flaw allows a local user to crash the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1516">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b4cef8dce1168b9e0e532a37c8549f8b</td>
-       <td>CVE-2022-1464</td>
-       <td>2022-05-05 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Stored xss bug in GitHub repository gogs/gogs prior to 0.12.7. As the repo is public , any user can view the report and when open the attachment then xss is executed. This bug allow executed any javascript code in victim account .</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1464">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0ed46181d9d7852f4148a2e54bbc8b11</td>
-       <td>CVE-2021-42183</td>
-       <td>2022-05-05 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>MasaCMS 7.2.1 is affected by a path traversal vulnerability in /index.cfm/_api/asset/image/.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42183">详情</a></td>
       </tr>
 
      </tbody>
@@ -1420,6 +1420,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e2938ff82d0cc152508e0240697def4c</td>
+       <td>CVE-2022-1388</td>
+       <td>2022-05-06 05:53:04 <img src="imgs/new.gif" /></td>
+       <td>F5 BIG-IP iControl REST 身份验证绕过漏洞(CVE-2022-1388)</td>
+       <td><a target="_blank" href="https://vas.riskivy.com/vuln-detail?id=3238">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bcf7253d2ee580c618737de137d370c4</td>
        <td>CVE-2022-29464</td>
        <td>2022-04-22 02:21:17</td>
@@ -1649,14 +1657,6 @@
        <td>2021-10-09 03:33:50</td>
        <td>Apache HTTP Server 路径遍历漏洞</td>
        <td><a target="_blank" href="https://vas.riskivy.com/vuln-detail?id=97">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b425329012f167ceeee133dcab6c49c</td>
-       <td>CVE-2021-21991,  CVE-2021-21992,  CVE-2021-21993,  CVE-2021-22005,  CVE-2021-22006,  CVE-2021-22007,  CVE-2021-22008,  CVE-2021-22009,  CVE-2021-22010,  CVE-2021-22011,  CVE-2021-22012,  CVE-2021-22013,  CVE-2021-22014,  CVE-2021-22015, CVE-2021-22016,  CVE-2021-22017</td>
-       <td>2021-09-22 05:41:12</td>
-       <td>VMware多个高危漏洞通告</td>
-       <td><a target="_blank" href="https://vas.riskivy.com/vuln-detail?id=96">详情</a></td>
       </tr>
 
      </tbody>
