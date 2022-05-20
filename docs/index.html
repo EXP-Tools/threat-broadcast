@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-05-20 17:33:46 -->
+<!-- RELEASE TIME : 2022-05-20 18:35:40 -->
 <html lang="zh-cn">
 
  <head>
@@ -292,6 +292,62 @@
       </tr>
 
       <tr>
+       <td>4289ec484dd1d33af7bcf6ddb81f0db9</td>
+       <td>CVE-2022-31245</td>
+       <td>2022-05-20 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>mailcow before 2022-05d allows a remote authenticated user to inject OS commands and escalate privileges to domain admin via the --debug option in conjunction with the ---PIPEMESS option in Sync Jobs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31245">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8ee9e4824c8ddd5b8e3c18580b853799</td>
+       <td>CVE-2022-29165</td>
+       <td>2022-05-20 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. A critical vulnerability has been discovered in Argo CD starting with version 1.4.0 and prior to versions 2.1.15, 2.2.9, and 2.3.4 which would allow unauthenticated users to impersonate as any Argo CD user or role, including the `admin` user, by sending a specifically crafted JSON Web Token (JWT) along with the request. In order for this vulnerability to be exploited, anonymous access to the Argo CD instance must have been enabled. In a default Argo CD installation, anonymous access is disabled. The vulnerability can be exploited to impersonate as any user or role, including the built-in `admin` account regardless of whether it is enabled or disabled. Also, the attacker does not need an account on the Argo CD instance in order to exploit this. If anonymous access to the instance is enabled, an attacker can escalate their privileges, effectively allowing them to gain the same privileges on the cluster as the Argo CD instance, which is cluster admin in a default installation. This will allow the attacker to create, manipulate and delete any resource on the cluster. They may also exfiltrate data by deploying malicious workloads with elevated privileges, thus bypassing any redaction of sensitive data otherwise enforced by the Argo CD API. A patch for this vulnerability has been released in Argo CD versions 2.3.4, 2.2.9, and 2.1.15. As a workaround, one may disable anonymous access, but upgrading to a patched version is preferable.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29165">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dcfb860e7c18520e07573c64176674ab</td>
+       <td>CVE-2022-28660</td>
+       <td>2022-05-20 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>The querier component in Grafana Enterprise Logs 1.1.x through 1.3.x before 1.4.0 does not require authentication when X-Scope-OrgID is used. Versions 1.2.1, 1.3.1, and 1.4.0 contain the bugfix. This affects -auth.type=enterprise in microservices mode</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28660">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>03f7206dbefa1b609a852b022753c33e</td>
+       <td>CVE-2021-43728</td>
+       <td>2022-05-20 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Pix-Link MiNi Router 28K.MiniRouter.20190211 was discovered to contain a stored cross-site scripting (XSS) vulnerability due to an unsanitized SSID parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43728">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ff4a3460c89ac135d8ee54fbb31c67bc</td>
+       <td>CVE-2021-30028</td>
+       <td>2022-05-20 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>SOOTEWAY Wi-Fi Range Extender v1.5 was discovered to use default credentials (the admin password for the admin account) to access the TELNET service, allowing attackers to erase/read/write the firmware remotely.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-30028">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>31da6cafef283a476a643c59be647cdb</td>
+       <td>CVE-2022-24905</td>
+       <td>2022-05-20 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. A vulnerability was found in Argo CD prior to versions 2.3.4, 2.2.9, and 2.1.15 that allows an attacker to spoof error messages on the login screen when single sign on (SSO) is enabled. In order to exploit this vulnerability, an attacker would have to trick the victim to visit a specially crafted URL which contains the message to be displayed. As far as the research of the Argo CD team concluded, it is not possible to specify any active content (e.g. Javascript) or other HTML fragments (e.g. clickable links) in the spoofed message. A patch for this vulnerability has been released in Argo CD versions 2.3.4, 2.2.9, and 2.1.15. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24905">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0537957fa3009acbf5e162dfbe77107a</td>
+       <td>CVE-2022-24904</td>
+       <td>2022-05-20 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. Argo CD starting with version 0.7.0 and prior to versions 2.1.15m 2.2.9, and 2.3.4 is vulnerable to a symlink following bug allowing a malicious user with repository write access to leak sensitive files from Argo CD's repo-server. A malicious Argo CD user with write access for a repository which is (or may be) used in a directory-type Application may commit a symlink which points to an out-of-bounds file. Sensitive files which could be leaked include manifest files from other Applications' source repositories (potentially decrypted files, if you are using a decryption plugin) or any JSON-formatted secrets which have been mounted as files on the repo-server. A patch for this vulnerability has been released in Argo CD versions 2.3.4, 2.2.9, and 2.1.15. Users of versions 2.3.0 or above who do not have any Jsonnet/directory-type Applications may disable the Jsonnet/directory config management tool as a workaround.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24904">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6070b87dfe668f000e81b2839efec2a2</td>
        <td>CVE-2022-30887</td>
        <td>2022-05-20 13:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2022-05-19 21:15:00 <img src="imgs/new.gif" /></td>
        <td>Online Sports Complex Booking System 1.0 is vulnerable to SQL Injection via /classes/master.php?f=delete_ Facility.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29304">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a4541a67da5f7c7d4a03a84b0e1ad46</td>
-       <td>CVE-2022-28962</td>
-       <td>2022-05-19 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Online Sports Complex Booking System 1.0 is vulnerable to SQL Injection via /scbs/classes/Users.php?f=delete_client.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28962">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2663687f33dfbddf9b560d47ee94b144</td>
-       <td>CVE-2022-28961</td>
-       <td>2022-05-19 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Spip Web Framework v3.1.13 and below was discovered to contain multiple SQL injection vulnerabilities at /ecrire via the lier_trad and where parameters.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28961">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bf90e583bbcca284130e2aae410e1216</td>
-       <td>CVE-2022-28960</td>
-       <td>2022-05-19 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A PHP injection vulnerability in Spip before v3.2.8 allows attackers to execute arbitrary PHP code via the _oups parameter at /ecrire.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28960">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1cda6720d12c605b512371d791a494d5</td>
-       <td>CVE-2022-28959</td>
-       <td>2022-05-19 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiple cross-site scripting (XSS) vulnerabilities in the component /spip.php of Spip Web Framework v3.1.13 and below allows attackers to execute arbitrary web scripts or HTML.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28959">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad74dd2015a18795362c79ccb01cb7d4</td>
-       <td>CVE-2022-28948</td>
-       <td>2022-05-19 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in the Unmarshal function in Go-Yaml v3 causes the program to crash when attempting to deserialize invalid input.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28948">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4defcc2fd15c84eda2a59820dbea3380</td>
-       <td>CVE-2022-28946</td>
-       <td>2022-05-19 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in the component ast/parser.go of Open Policy Agent v0.39.0 causes the application to incorrectly interpret every expression, causing a Denial of Service (DoS) via triggering out-of-range memory access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28946">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>68787e871623685ebb3e408537b3d5b6</td>
-       <td>CVE-2022-30618</td>
-       <td>2022-05-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>An authenticated user with access to the Strapi admin panel can view private and sensitive data, such as email and password reset tokens, for API users if content types accessible to the authenticated user contain relationships to API users (from:users-permissions). There are many scenarios in which such details from API users can leak in the JSON response within the admin panel, either through a direct or indirect relationship. Access to this information enables a user to compromise these users’ accounts if the password reset API endpoints have been enabled. In a worst-case scenario, a low-privileged user could get access to a high-privileged API account, and could read and modify any data as well as block access to both the admin panel and API by revoking privileges for all other users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30618">详情</a></td>
       </tr>
 
      </tbody>
@@ -2188,6 +2188,78 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>83e61dcd8e38029d892bf623ca9f7bcc</td>
+       <td>CVE-2022-30594</td>
+       <td>2022-05-12 05:15:06 </td>
+       <td>The Linux kernel before 5.17.2 mishandles seccomp permissions. The PTRACE_SEIZE code path allows attackers to bypass intended restrictions on setting the PT_SUSPEND_SECCOMP flag.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30594">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4ed1ef33c584df3b95a9a34b5a0e7f45</td>
+       <td>CVE-2022-30592</td>
+       <td>2022-05-11 23:15:08 </td>
+       <td>liblsquic/lsquic_qenc_hdl.c in LiteSpeed QUIC (aka LSQUIC) before 3.1.0 mishandles MAX_TABLE_CAPACITY.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30592">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>61a3a242020fc1f66aa13d7b4ad44527</td>
+       <td>CVE-2022-30557</td>
+       <td>2022-05-11 20:15:09 </td>
+       <td>Foxit PDF Reader and PDF Editor before 11.2.2 have a Type Confusion issue that causes a crash because of Unsigned32 mishandling during JavaScript execution.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30557">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7a1efb52a2e914d746bc78d4cea2a1e</td>
+       <td>CVE-2022-30451</td>
+       <td>2022-05-11 19:15:07 </td>
+       <td>An authenticated user could execute code via a SQLi vulnerability in waimairenCMS before version 9.1.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30451">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>faa06a243f9f1d9ab49001eddca25ef4</td>
+       <td>CVE-2022-30450</td>
+       <td>2022-05-11 19:15:07 </td>
+       <td>A Remote Code Execution (RCE) vulnerability exists in waimairen 9.1 via wx.php</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30450">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5953bc7ee0da3a0d35bfe6cd68e0fdb</td>
+       <td>CVE-2022-30449</td>
+       <td>2022-05-11 19:15:07 </td>
+       <td>Hospital Management System in PHP with Source Code (HMS) 1.0 was discovered to contain a SQL injection vulnerability via the editid parameter in room.php.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30449">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cfc5abfe45018072970aa830290b5efa</td>
+       <td>CVE-2022-30448</td>
+       <td>2022-05-11 19:15:07 </td>
+       <td>Hospital Management System in PHP with Source Code (HMS) 1.0 was discovered to contain a File upload vulnerability in treatmentrecord.php.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30448">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bd375e51f64d8d2c87da50a091907f2b</td>
+       <td>CVE-2022-30453</td>
+       <td>2022-05-11 18:15:29 </td>
+       <td>ShopWind &lt;= 3.4.2 has a RCE vulnerability in Database.php</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30453">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f75e7cedd042c711037af0d887bab428</td>
+       <td>CVE-2022-30452</td>
+       <td>2022-05-11 18:15:29 </td>
+       <td>ShopWind &lt;= v3.4.2 has a Sql injection vulnerability in Database.php</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30452">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2ed4ce7e5687cfdc1324ae7d65876a51</td>
        <td>CVE-2022-20011</td>
        <td>2022-05-10 20:15:09 </td>
@@ -2353,78 +2425,6 @@
        <td>2022-05-06 17:15:09 </td>
        <td>Dragon Path Technologies Bharti Airtel Routers Hardware BDT-121 version 1.0 is vulnerable to Cross Site Scripting (XSS) via Dragon path router admin page.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-28507">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>103768027988800851fb2e9cb336c8b4</td>
-       <td>CVE-2021-36912</td>
-       <td>2022-05-06 17:15:08 </td>
-       <td>Stored Cross-Site Scripting (XSS) vulnerability in Andrea Pernici News Sitemap for Google plugin &lt;= 1.0.16 on WordPress, attackers must have contributor or higher user role.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-36912">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>03264043aa3de0fe45416793de586e56</td>
-       <td>CVE-2022-30295</td>
-       <td>2022-05-06 05:15:07 </td>
-       <td>uClibc-ng through 1.0.40 and uClibc through 0.9.33.2 use predictable DNS transaction IDs that may lead to DNS cache poisoning. This is related to a reset of a value to 0x2.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30295">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cfcc7886bdabbb1249b603b009829bc5</td>
-       <td>CVE-2022-30294</td>
-       <td>2022-05-06 05:15:07 </td>
-       <td>In WebKitGTK through 2.36.0 (and WPE WebKit), there is a use-after-free in WebCore::TextureMapperLayer::setContentsLayer in WebCore/platform/graphics/texmap/TextureMapperLayer.cpp.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30294">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>743b1206cd7ad5906459afd8891d2390</td>
-       <td>CVE-2022-30293</td>
-       <td>2022-05-06 05:15:07 </td>
-       <td>In WebKitGTK through 2.36.0 (and WPE WebKit), there is a heap-based buffer overflow in WebCore::TextureMapperLayer::setContentsLayer in WebCore/platform/graphics/texmap/TextureMapperLayer.cpp.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30293">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>834ec6d392f5da259ebf5e3f68630209</td>
-       <td>CVE-2022-27360</td>
-       <td>2022-05-05 19:15:07 </td>
-       <td>SpringBlade v3.2.0 and below was discovered to contain a SQL injection vulnerability via the component customSqlSegment.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27360">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>831f108a455f52685f93b2c151e2ac26</td>
-       <td>CVE-2022-27359</td>
-       <td>2022-05-05 19:15:07 </td>
-       <td>Foxit PDF Reader v11.2.1.53537 was discovered to contain a NULL pointer dereference via the component FoxitPDFReader.exe. This vulnerability allows attackers to cause a Denial of Service (DoS) via a crafted PHP file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27359">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e7c891ee42d01a34815907001a1e3537</td>
-       <td>CVE-2022-27337</td>
-       <td>2022-05-05 19:15:07 </td>
-       <td>A logic error in the Hints::Hints function of Poppler v22.03.0 allows attackers to cause a Denial of Service (DoS) via a crafted PDF file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27337">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ec1e96a7ff5423b83da61f33b0bd6124</td>
-       <td>CVE-2022-28584</td>
-       <td>2022-05-05 18:15:09 </td>
-       <td>It is found that there is a command injection vulnerability in the setWiFiWpsStart interface in TOTOlink A7100RU (v7.4cu.2313_b20191024) router, which allows an attacker to execute arbitrary commands through a carefully constructed payload.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-28584">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>34a7fa8c1dbe057a788f69d03e31c205</td>
-       <td>CVE-2022-28583</td>
-       <td>2022-05-05 18:15:09 </td>
-       <td>It is found that there is a command injection vulnerability in the setWiFiWpsCfg interface in TOTOlink A7100RU (v7.4cu.2313_b20191024) router, which allows an attacker to execute arbitrary commands through a carefully constructed payload.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-28583">详情</a></td>
       </tr>
 
      </tbody>
