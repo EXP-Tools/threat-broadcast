@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-05-23 14:32:47 -->
+<!-- RELEASE TIME : 2022-05-23 15:33:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e52635039bbea8c07a777f5bef795bdc</td>
+       <td>CVE-2022-1817</td>
+       <td>2022-05-23 12:16:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as problematic, was found in Badminton Center Management System. This affects the userlist module at /bcms/admin/?page=user/list. The manipulation of the argument username with the input </td><img src="" onerror="alert(1)"><td>1 leads to an authenticated cross site scripting. Exploit details have been disclosed to the public.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1817">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9984f72328e6133d3ec85d2a7288ef8f</td>
+       <td>CVE-2022-1816</td>
+       <td>2022-05-23 12:16:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as problematic, has been found in Zoo Management System 1.0. Affected by this issue is /zoo/admin/public_html/view_accounts?type=zookeeper of the content module. The manipulation of the argument admin_name with the input <script>alert(1)</script> leads to an authenticated cross site scripting. Exploit details have been disclosed to the public.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1816">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>199a8804c466bbf3d66ad0b109af4d58</td>
+       <td>CVE-2022-1810</td>
+       <td>2022-05-23 12:16:00 <img src="imgs/new.gif" /></td>
+       <td>Improper Access Control in GitHub repository publify/publify prior to 9.2.9.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1810">详情</a></td>
+      </tr>
+
+      <tr>
        <td>de3881b080caba14d5a3c8e297aeaca3</td>
        <td>CVE-2022-29599</td>
        <td>2022-05-23 11:16:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2022-05-21 00:15:00</td>
        <td>TensorFlow is an open source platform for machine learning. Prior to versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4, the `tf.compat.v1.signal.rfft2d` and `tf.compat.v1.signal.rfft3d` lack input validation and under certain condition can result in crashes (due to `CHECK`-failures). Versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4 contain a patch for this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29213">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>03113a6000c69e37d8769455b1365b96</td>
-       <td>CVE-2022-29212</td>
-       <td>2022-05-21 00:15:00</td>
-       <td>TensorFlow is an open source platform for machine learning. Prior to versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4, certain TFLite models that were created using TFLite model converter would crash when loaded in the TFLite interpreter. The culprit is that during quantization the scale of values could be greater than 1 but code was always assuming sub-unit scaling. Thus, since code was calling `QuantizeMultiplierSmallerThanOneExp`, the `TFLITE_CHECK_LT` assertion would trigger and abort the process. Versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4 contain a patch for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29212">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21d80e0586d81d39479f5dd813752863</td>
-       <td>CVE-2022-29211</td>
-       <td>2022-05-21 00:15:00</td>
-       <td>TensorFlow is an open source platform for machine learning. Prior to versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4, the implementation of `tf.histogram_fixed_width` is vulnerable to a crash when the values array contain `Not a Number` (`NaN`) elements. The implementation assumes that all floating point operations are defined and then converts a floating point result to an integer index. If `values` contains `NaN` then the result of the division is still `NaN` and the cast to `int32` would result in a crash. This only occurs on the CPU implementation. Versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4 contain a patch for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29211">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5332216677a2b2b0ba8e44d157a22610</td>
-       <td>CVE-2022-29210</td>
-       <td>2022-05-21 00:15:00</td>
-       <td>TensorFlow is an open source platform for machine learning. In version 2.8.0, the `TensorKey` hash function used total estimated `AllocatedBytes()`, which (a) is an estimate per tensor, and (b) is a very poor hash function for constants (e.g. `int32_t`). It also tried to access individual tensor bytes through `tensor.data()` of size `AllocatedBytes()`. This led to ASAN failures because the `AllocatedBytes()` is an estimate of total bytes allocated by a tensor, including any pointed-to constructs (e.g. strings), and does not refer to contiguous bytes in the `.data()` buffer. The discoverers could not use this byte vector anyway because types such as `tstring` include pointers, whereas they needed to hash the string values themselves. This issue is patched in Tensorflow versions 2.9.0 and 2.8.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29210">详情</a></td>
       </tr>
 
      </tbody>
