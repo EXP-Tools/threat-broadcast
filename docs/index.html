@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-05-23 12:55:21 -->
+<!-- RELEASE TIME : 2022-05-23 13:48:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>de3881b080caba14d5a3c8e297aeaca3</td>
+       <td>CVE-2022-29599</td>
+       <td>2022-05-23 11:16:00 <img src="imgs/new.gif" /></td>
+       <td>In Apache Maven maven-shared-utils prior to version 3.3.3, the Commandline class can emit double-quoted strings without proper escaping, allowing shell injection attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29599">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7841dd31ba5a9501e74dd8fe8bfa7176</td>
+       <td>CVE-2022-28874</td>
+       <td>2022-05-23 11:16:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple Denial-of-Service vulnerabilities was discovered in the F-Secure Atlant and in certain WithSecure products while scanning fuzzed PE32-bit files cause memory corruption and heap buffer overflow which eventually can crash the scanning engine. The exploit can be triggered remotely by an attacker.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28874">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eb2655c29977d3ea11153c6b35e37e76</td>
+       <td>CVE-2022-1825</td>
+       <td>2022-05-23 11:16:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - Reflected in GitHub repository collectiveaccess/providence prior to 1.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1825">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c67931c7ac3bb2b48d4a97055f608407</td>
+       <td>CVE-2021-42586</td>
+       <td>2022-05-23 11:16:00 <img src="imgs/new.gif" /></td>
+       <td>A heap buffer overflow was discovered in copy_bytes in decode_r2007.c in dwgread before 0.12.4 via a crafted dwg file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42586">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b3f4b6375977fd14d98b5883b903a83</td>
+       <td>CVE-2021-42585</td>
+       <td>2022-05-23 11:16:00 <img src="imgs/new.gif" /></td>
+       <td>A heap buffer overflow was discovered in copy_compressed_bytes in decode_r2007.c in dwgread before 0.12.4 via a crafted dwg file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42585">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4c364ae47f16732ade67f9e1dd62a795</td>
        <td>CVE-2022-1558</td>
        <td>2022-05-23 08:16:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2022-05-21 00:15:00</td>
        <td>TensorFlow is an open source platform for machine learning. In version 2.8.0, the `TensorKey` hash function used total estimated `AllocatedBytes()`, which (a) is an estimate per tensor, and (b) is a very poor hash function for constants (e.g. `int32_t`). It also tried to access individual tensor bytes through `tensor.data()` of size `AllocatedBytes()`. This led to ASAN failures because the `AllocatedBytes()` is an estimate of total bytes allocated by a tensor, including any pointed-to constructs (e.g. strings), and does not refer to contiguous bytes in the `.data()` buffer. The discoverers could not use this byte vector anyway because types such as `tstring` include pointers, whereas they needed to hash the string values themselves. This issue is patched in Tensorflow versions 2.9.0 and 2.8.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29210">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71812d7062964d4e21d9e95844316b19</td>
-       <td>CVE-2022-29209</td>
-       <td>2022-05-21 00:15:00</td>
-       <td>TensorFlow is an open source platform for machine learning. Prior to versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4, the macros that TensorFlow uses for writing assertions (e.g., `CHECK_LT`, `CHECK_GT`, etc.) have an incorrect logic when comparing `size_t` and `int` values. Due to type conversion rules, several of the macros would trigger incorrectly. Versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4 contain a patch for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29209">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7fb32d8fc50d5b354c2d8948335163a2</td>
-       <td>CVE-2022-31258</td>
-       <td>2022-05-20 23:15:00</td>
-       <td>In Checkmk before 1.6.0p29, 2.x before 2.0.0p25, and 2.1.x before 2.1.0b10, a site user can escalate to root by editing an OMD hook symlink.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31258">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>86771f9b8fd7d598fd844c36733c7609</td>
-       <td>CVE-2022-29208</td>
-       <td>2022-05-20 23:15:00</td>
-       <td>TensorFlow is an open source platform for machine learning. Prior to versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4, the implementation of `tf.raw_ops.EditDistance` has incomplete validation. Users can pass negative values to cause a segmentation fault based denial of service. In multiple places throughout the code, one may compute an index for a write operation. However, the existing validation only checks against the upper bound of the array. Hence, it is possible to write before the array by massaging the input to generate negative values for `loc`. Versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4 contain a patch for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29208">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>58f6cf3910d4b3779e7b956bdabc8d1c</td>
-       <td>CVE-2022-29206</td>
-       <td>2022-05-20 23:15:00</td>
-       <td>TensorFlow is an open source platform for machine learning. Prior to versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4, the implementation of `tf.raw_ops.SparseTensorDenseAdd` does not fully validate the input arguments. In this case, a reference gets bound to a `nullptr` during kernel execution. This is undefined behavior. Versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4 contain a patch for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29206">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee5cb652165364cc7961aceb944d8e10</td>
-       <td>CVE-2022-29205</td>
-       <td>2022-05-20 23:15:00</td>
-       <td>TensorFlow is an open source platform for machine learning. Prior to versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4, there is a potential for segfault / denial of service in TensorFlow by calling `tf.compat.v1.*` ops which don't yet have support for quantized types, which was added after migration to TensorFlow 2.x. In these scenarios, since the kernel is missing, a `nullptr` value is passed to `ParseDimensionValue` for the `py_value` argument. Then, this is dereferenced, resulting in segfault. Versions 2.9.0, 2.8.1, 2.7.2, and 2.6.4 contain a patch for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29205">详情</a></td>
       </tr>
 
      </tbody>
