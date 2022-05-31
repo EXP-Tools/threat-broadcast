@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-05-31 20:32:35 -->
+<!-- RELEASE TIME : 2022-05-31 22:30:14 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b0bf51661ae511322bb5ec2b2855f02f</td>
+       <td>CVE-2022-31011</td>
+       <td>2022-05-31 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>TiDB is an open-source NewSQL database that supports Hybrid Transactional and Analytical Processing (HTAP) workloads. Under certain conditions, an attacker can construct malicious authentication requests to bypass the authentication process, resulting in privilege escalation or unauthorized access. Only users using TiDB 5.3.0 are affected by this vulnerability. TiDB version 5.3.1 contains a patch for this issue. Other mitigation strategies include turning off Security Enhanced Mode (SEM), disabling local login for non-root accounts, and ensuring that the same IP cannot be logged in as root and normal user at the same time.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31011">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>574b3c7ed44f7e2fe5ef7e039ee78bfd</td>
+       <td>CVE-2022-31007</td>
+       <td>2022-05-31 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>eLabFTW is an electronic lab notebook manager for research teams. Prior to version 4.3.0, a vulnerability allows an authenticated user with an administrator role in a team to assign itself system administrator privileges within the application, or create a new system administrator account. The issue has been corrected in eLabFTW version 4.3.0. In the context of eLabFTW, an administrator is a user account with certain privileges to manage users and content in their assigned team/teams. A system administrator account can manage all accounts, teams and edit system-wide settings within the application. The impact is not deemed as high, as it requires the attacker to have access to an administrator account. Regular user accounts cannot exploit this to gain admin rights. A workaround for one if the issues is removing the ability of administrators to create accounts.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31007">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f9ab198d44570adb7bbb5e2c345f1914</td>
+       <td>CVE-2022-31005</td>
+       <td>2022-05-31 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vapor is an HTTP web framework for Swift. Users of Vapor prior to version 4.60.3 with FileMiddleware enabled are vulnerable to an integer overflow vulnerability that can crash the application. Version 4.60.3 contains a patch for this issue. As a workaround, disable FileMiddleware and serve via a Content Delivery Network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31005">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76a0996eb45c508b69047a951870269c</td>
+       <td>CVE-2022-31003</td>
+       <td>2022-05-31 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sofia-SIP is an open-source Session Initiation Protocol (SIP) User-Agent library. Prior to version 1.13.8, when parsing each line of a sdp message, `rest = record + 2` will access the memory behind `\0` and cause an out-of-bounds write. An attacker can send a message with evil sdp to FreeSWITCH, causing a crash or more serious consequence, such as remote code execution. Version 1.13.8 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31003">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45aae1964692e5d20d289d602739c3b4</td>
+       <td>CVE-2022-31001</td>
+       <td>2022-05-31 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sofia-SIP is an open-source Session Initiation Protocol (SIP) User-Agent library. Prior to version 1.13.8, an attacker can send a message with evil sdp to FreeSWITCH, which may cause crash. This type of crash may be caused by `#define MATCH(s, m) (strncmp(s, m, n = sizeof(m) - 1) == 0)`, which will make `n` bigger and trigger out-of-bound access when `IS_NON_WS(s[n])`. Version 1.13.8 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31001">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e3fa1c911e5009d564d96f00da06f7e1</td>
+       <td>CVE-2022-31002</td>
+       <td>2022-05-31 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sofia-SIP is an open-source Session Initiation Protocol (SIP) User-Agent library. Prior to version 1.13.8, an attacker can send a message with evil sdp to FreeSWITCH, which may cause a crash. This type of crash may be caused by a URL ending with `%`. Version 1.13.8 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31002">详情</a></td>
+      </tr>
+
+      <tr>
        <td>17daea7d9a51285c0cd25321f871f536</td>
        <td>CVE-2022-29258</td>
        <td>2022-05-31 17:15:00 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2022-05-29 14:15:00</td>
        <td>Buffer Over-read in GitHub repository vim/vim prior to 8.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1927">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d5f4918657a75d2df6c00c2448feee9e</td>
-       <td>CVE-2022-25878</td>
-       <td>2022-05-27 20:15:00</td>
-       <td>The package protobufjs before 6.11.3 are vulnerable to Prototype Pollution which can allow an attacker to add/modify properties of the Object.prototype.This vulnerability can occur in multiple ways:1. by providing untrusted user input to util.setProperty or to ReflectionObject.setParsedOption functions2. by parsing/loading .proto files</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25878">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b7b778f8dcec37cc5092c9101000640a</td>
-       <td>CVE-2021-27781</td>
-       <td>2022-05-27 17:15:00</td>
-       <td>The Master operator may be able to embed script tag in HTML with alert pop-up display cookie.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-27781">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9075d71df592141e10efd834a9faedb0</td>
-       <td>CVE-2021-27780</td>
-       <td>2022-05-27 17:15:00</td>
-       <td>The software may be vulnerable to both Un-Auth XML interaction and unauthenticated device enrollment.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-27780">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed15b837791a0e7845c0760b07dc799f</td>
-       <td>CVE-2022-1897</td>
-       <td>2022-05-27 15:15:00</td>
-       <td>Out-of-bounds Write in GitHub repository vim/vim prior to 8.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1897">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cad216df41b2dfd63bd6d54929490e98</td>
-       <td>CVE-2022-20807</td>
-       <td>2022-05-27 14:15:00</td>
-       <td>Multiple vulnerabilities in the API and web-based management interfaces of Cisco Expressway Series and Cisco TelePresence Video Communication Server (VCS) could allow an authenticated, remote attacker to write files or disclose sensitive information on an affected device. For more information about these vulnerabilities, see the Details section of this advisory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-20807">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>01792e07ce3d7707b66057e62f65fd27</td>
-       <td>CVE-2022-20806</td>
-       <td>2022-05-27 14:15:00</td>
-       <td>Multiple vulnerabilities in the API and web-based management interfaces of Cisco Expressway Series and Cisco TelePresence Video Communication Server (VCS) could allow an authenticated, remote attacker to write files or disclose sensitive information on an affected device. For more information about these vulnerabilities, see the Details section of this advisory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-20806">详情</a></td>
       </tr>
 
      </tbody>
