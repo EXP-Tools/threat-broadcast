@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-02 18:35:54 -->
+<!-- RELEASE TIME : 2022-06-02 19:22:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9f36e476b4fed884264a30c9596f0ff4</td>
+       <td>CVE-2022-31018</td>
+       <td>2022-06-02 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Play Framework is a web framework for Java and Scala. A denial of service vulnerability has been discovered in verions 2.8.3 through 2.8.15 of Play's forms library, in both the Scala and Java APIs. This can occur when using either the `Form#bindFromRequest` method on a JSON request body or the `Form#bind` method directly on a JSON value. If the JSON data being bound to the form contains a deeply-nested JSON object or array, the form binding implementation may consume all available heap space and cause an `OutOfMemoryError`. If executing on the default dispatcher and `akka.jvm-exit-on-fatal-error` is enabledâ€”as it is by defaultâ€”then this can crash the application process. `Form.bindFromRequest` is vulnerable when using any body parser that produces a type of `AnyContent` or `JsValue` in Scala, or one that can produce a `JsonNode` in Java. This includes Play's default body parser. This vulnerability been patched in version 2.8.16. There is now a global limit on the depth of a JSON object that can be parsed, which can be configured by the user if necessary. As a workaround, applications that do not need to parse a request body of type `application/json` can switch from the default body parser to another body parser that supports only the specific type of body they expect.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31018">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9487606ee72865a18b460627d6d613ba</td>
+       <td>CVE-2022-32028</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to SQL Injection via /car-rental-management-system/admin/manage_user.php?id=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32028">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d85ba296b1c2d089c0be12a0055361bf</td>
+       <td>CVE-2022-32027</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to SQL Injection via /car-rental-management-system/admin/index.php?page=manage_car&id=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32027">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c87d639737acea674f9835170ae59ff8</td>
+       <td>CVE-2022-32026</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to SQL Injection via /car-rental-management-system/admin/manage_booking.php?id=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32026">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>65fb85beab9f2b8861b2520500ea13a5</td>
+       <td>CVE-2022-32025</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to SQL Injection via /car-rental-management-system/admin/view_car.php?id=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32025">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b2fd44921adf1f96407a47cafa1dd2f</td>
+       <td>CVE-2022-32024</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to SQL Injection via car-rental-management-system/booking.php?car_id=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32024">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>95d07911733f3e262c6f9e2adc8655e1</td>
+       <td>CVE-2022-32022</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to SQL Injection via /ip/car-rental-management-system/admin/ajax.php?action=login.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32022">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f1ba27a3dcff9d4d297f1dce995b8835</td>
+       <td>CVE-2022-32021</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to SQL Injection via /car-rental-management-system/admin/manage_movement.php?id=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32021">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>29ccb1005a48c6fc48732d844bd3b807</td>
+       <td>CVE-2022-32020</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Car Rental Management System v1.0 is vulnerable to Arbitrary code execution via ip/car-rental-management-system/admin/ajax.php?action=save_settings.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32020">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9495420388bc257e10995374bb90f9a1</td>
+       <td>CVE-2022-32018</td>
+       <td>2022-06-02 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Complete Online Job Search System v1.0 is vulnerable to SQL Injection via /eris/index.php?q=hiring&search=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32018">详情</a></td>
+      </tr>
+
+      <tr>
        <td>127ae5a677d5958200c09d5ab90ff11a</td>
        <td>CVE-2022-32006</td>
        <td>2022-06-02 15:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-06-01 20:15:00 <img src="imgs/new.gif" /></td>
        <td>Microsoft Edge (Chromium-based) Elevation of Privilege Vulnerability. This CVE ID is unique from CVE-2022-30128.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30127">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cb425c5074474b83607182d6aa6603f9</td>
-       <td>CVE-2022-26905</td>
-       <td>2022-06-01 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Edge (Chromium-based) Spoofing Vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26905">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e4538f6c835d69eca4b53d5b9a8bcc8d</td>
-       <td>CVE-2022-31000</td>
-       <td>2022-06-01 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>solidus_backend is the admin interface for the Solidus e-commerce framework. Versions prior to 3.1.6, 3.0.6, and 2.11.16 contain a cross-site request forgery (CSRF) vulnerability. The vulnerability allows attackers to change the state of an order's adjustments if they hold its number, and the execution happens on a store administrator's computer. Users should upgrade to solidus_backend 3.1.6, 3.0.6, or 2.11.16 to receive a patch.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31000">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>863359bad5c12efd77d6b9544456f7a9</td>
-       <td>CVE-2022-24848</td>
-       <td>2022-06-01 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>DHIS2 is an information system for data capture, management, validation, analytics and visualization. A SQL injection security vulnerability affects the `/api/programs/orgUnits?programs=` API endpoint in DHIS2 versions prior to 2.36.10.1 and 2.37.6.1. The system is vulnerable to attack only from users that are logged in to DHIS2, and there is no known way of exploiting the vulnerability without first being logged in as a DHIS2 user. The vulnerability is not exposed to a non-malicious user and requires a conscious attack to be exploited. A successful exploit of this vulnerability could allow the malicious user to read, edit and delete data in the DHIS2 instance's database. Security patches are now available for DHIS2 versions 2.36.10.1 and 2.37.6.1. One may apply mitigations at the web proxy level as a workaround. More information about these mitigations is available in the GitHub Security Advisory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24848">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>80eabccce32ed96a328d227fa40930ca</td>
-       <td>CVE-2021-27914</td>
-       <td>2022-06-01 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site scripting (XSS) vulnerability in the installer component of Mautic before 4.3.0 allows admins to inject executable javascript</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-27914">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>be2987264803199a8b062c8b5625768e</td>
-       <td>CVE-2022-29098</td>
-       <td>2022-06-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell PowerScale OneFS versions 8.2.0.x through 9.3.0.x, contain a weak password requirement vulnerability. An administrator may create an account with no password. A remote attacker may potentially exploit this leading to a user account compromise.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29098">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eabb300aee960c74e2d073158b24e614</td>
-       <td>CVE-2020-26185</td>
-       <td>2022-06-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell BSAFE Micro Edition Suite, versions prior to 4.5.1, contain a Buffer Over-Read Vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-26185">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c67eeeb1430656e92fcfb84dd666b3ae</td>
-       <td>CVE-2020-26184</td>
-       <td>2022-06-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell BSAFE Micro Edition Suite, versions prior to 4.5.1, contain an Improper Certificate Validation vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-26184">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>927de666d2b5a5a6213b5a4e2ce3591f</td>
-       <td>CVE-2022-29875</td>
-       <td>2022-06-01 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Biograph Horizon PET/CT Systems (All VJ30 versions < VJ30C-UD01), MAGNETOM Family (NUMARIS X: VA12M, VA12S, VA10B, VA20A, VA30A, VA31A), MAMMOMAT Revelation (All VC20 versions < VC20D), NAEOTOM Alpha (All VA40 versions < VA40 SP2), SOMATOM X.cite (All versions < VA30 SP5 or VA40 SP2), SOMATOM X.creed (All versions < VA30 SP5 or VA40 SP2), SOMATOM go.All (All versions < VA30 SP5 or VA40 SP2), SOMATOM go.Now (All versions < VA30 SP5 or VA40 SP2), SOMATOM go.Open Pro (All versions < VA30 SP5 or VA40 SP2), SOMATOM go.Sim (All versions < VA30 SP5 or VA40 SP2), SOMATOM go.Top (All versions < VA30 SP5 or VA40 SP2), SOMATOM go.Up (All versions < VA30 SP5 or VA40 SP2), Symbia E/S (All VB22 versions < VB22A-UD03), Symbia Evo (All VB22 versions < VB22A-UD03), Symbia Intevo (All VB22 versions < VB22A-UD03), Symbia T (All VB22 versions < VB22A-UD03), Symbia.net (All VB22 versions < VB22A-UD03), syngo.via VB10 (All versions), syngo.via VB20 (All versions), syngo.via VB30 (All versions), syngo.via VB40 (All versions < VB40B HF06), syngo.via VB50 (All versions), syngo.via VB60 (All versions < VB60B HF02). The application deserialises untrusted data without sufficient validations that could result in an arbitrary deserialization. This could allow an unauthenticated attacker to execute code in the affected system if ports 32912/tcp or 32914/tcp are reachable.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29875">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3684e9426b1e9e21b30b0563287f8eb8</td>
-       <td>CVE-2022-1285</td>
-       <td>2022-06-01 06:15:00 <img src="imgs/new.gif" /></td>
-       <td>Server-Side Request Forgery (SSRF) in GitHub repository gogs/gogs prior to 0.12.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1285">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed63763fd16864277e30eac192d9f610</td>
-       <td>CVE-2021-27778</td>
-       <td>2022-06-01 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>HCL Traveler is vulnerable to a cross-site scripting (XSS) caused by improper validation of the Name parameter for Approved Applications in the Traveler administration web pages.  An attacker could exploit this vulnerability to execute a malicious script to access any cookies, session tokens, or other sensitive information retained by the browser and used with that site.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-27778">详情</a></td>
       </tr>
 
      </tbody>
