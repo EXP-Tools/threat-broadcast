@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-09 15:29:32 -->
+<!-- RELEASE TIME : 2022-06-09 16:46:10 -->
 <html lang="zh-cn">
 
  <head>
@@ -2188,6 +2188,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2690d813c785aadce3c3965589b05747</td>
+       <td>CVE-2022-31022</td>
+       <td>2022-06-01 20:15:08 </td>
+       <td>Bleve is a text indexing library for go. Bleve includes HTTP utilities under bleve/http package, that are used by its sample application. These HTTP methods pave way for exploitation of a node&acirc;&euro;&trade;s filesystem where the bleve index resides, if the user has used bleve&acirc;&euro;&trade;s own HTTP (bleve/http) handlers for exposing the access to the indexes. For instance, the CreateIndexHandler (`http/index_create.go`) and DeleteIndexHandler (`http/index_delete.go`) enable an attacker to create a bleve index (directory structure) anywhere where the user running the server has the write permissions and to delete recursively any directory owned by the same user account. Users who have used the bleve/http package for exposing access to bleve index without the explicit handling for the Role Based Access Controls(RBAC) of the index assets would be impacted by this issue. There is no patch for this issue because the http package is purely intended to be used for demonstration purposes. Bleve was never designed handle the RBACs, nor it was ever advertised to be used in that way. The collaborators of this project have decided to stay away from adding any authentication or authorization to bleve project at the moment. The bleve/http package is mainly for demonstration purposes and it lacks exhaustive validation of the user inputs as well as any authentication and authorization measures. It is recommended to not use bleve/http in production use cases.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31022">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5d6549268677025e4af77d570cb1ecee</td>
        <td>CVE-2022-31000</td>
        <td>2022-06-01 18:15:07 </td>
@@ -2417,14 +2425,6 @@
        <td>2022-05-25 21:15:08 </td>
        <td>MariaDB Server before 10.7 is vulnerable to Denial of Service. While executing the plugin/server_audit/server_audit.c method log_statement_ex, the held lock lock_bigbuffer is not released correctly, which allows local users to trigger a denial of service due to the deadlock.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31624">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>828e3a251116b31b30fbadea00629247</td>
-       <td>CVE-2022-31623</td>
-       <td>2022-05-25 21:15:08 </td>
-       <td>MariaDB Server before 10.7 is vulnerable to Denial of Service. In extra/mariabackup/ds_compress.cc, when an error occurs (i.e., going to the err label) while executing the method create_worker_threads, the held lock thd-&gt;ctrl_mutex is not released correctly, which allows local users to trigger a denial of service due to the deadlock.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31623">详情</a></td>
       </tr>
 
      </tbody>
