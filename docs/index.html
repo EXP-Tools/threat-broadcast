@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-09 14:25:09 -->
+<!-- RELEASE TIME : 2022-06-09 15:29:32 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b8be79c18b3dec2d02be1b4cccacdb9a</td>
+       <td>CVE-2022-31027</td>
+       <td>2022-06-09 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>OAuthenticator is an OAuth token library for the JupyerHub login handler. CILogonOAuthenticator is provided by the OAuthenticator package, and lets users log in to a JupyterHub via CILogon. This is primarily used to restrict a JupyterHub only to users of a given institute. The allowed_idps configuration trait of CILogonOAuthenticator is documented to be a list of domains that indicate the institutions whose users are authorized to access this JupyterHub. This authorization is validated by ensuring that the *email* field provided to us by CILogon has a *domain* that matches one of the domains listed in `allowed_idps`.If `allowed_idps` contains `berkeley.edu`, you might expect only users with valid current credentials provided by University of California, Berkeley to be able to access the JupyterHub. However, CILogonOAuthenticator does *not* verify which provider is used by the user to login, only the email address provided. So a user can login with a GitHub account that has email set to `<something>@berkeley.edu`, and that will be treated exactly the same as someone logging in using the UC Berkeley official Identity Provider. The patch fixing this issue makes a *breaking change* in how `allowed_idps` is interpreted. It's no longer a list of domains, but configuration representing the `EntityID` of the IdPs that are allowed, picked from the [list maintained by CILogon](https://cilogon.org/idplist/). Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31027">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6bead6443a12c7c5d91344add26b5240</td>
+       <td>CVE-2022-31026</td>
+       <td>2022-06-09 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Trilogy is a client library for MySQL. When authenticating, a malicious server could return a specially crafted authentication packet, causing the client to read and return up to 12 bytes of data from an uninitialized variable in stack memory. Users of the trilogy gem should upgrade to version 2.1.1 This issue can be avoided by only connecting to trusted servers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31026">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bc917b087800b4951d51a71229aec031</td>
+       <td>CVE-2022-31019</td>
+       <td>2022-06-09 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vapor is a server-side Swift HTTP web framework. When using automatic content decoding an attacker can craft a request body that can make the server crash with the following request: `curl -d "array[_0][0][array][_0][0][array]$(for f in $(seq 1100); do echo -n '[_0][0][array]'; done)[string][_0]=hello%20world" http://localhost:8080/foo`. The issue is unbounded, attacker controlled stack growth which will at some point lead to a stack overflow and a process crash. This issue has been fixed in version 4.61.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31019">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fd7d5fc734a63caa2461d1cfa89c97eb</td>
+       <td>CVE-2021-40668</td>
+       <td>2022-06-09 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Android application HTTP File Server (Version 1.4.1) by 'slowscript' is affected by a path traversal vulnerability that permits arbitrary directory listing, file read, and file write.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-40668">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fb3fdf1c39e53240c91234cd6d27199a</td>
+       <td>CVE-2021-40610</td>
+       <td>2022-06-09 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Emlog Pro v 1.0.4 cross-site scripting (XSS) in Emlog Pro background management.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-40610">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3a80be5da8938aae0344cf50cf61dd00</td>
        <td>CVE-2022-29255</td>
        <td>2022-06-09 09:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2022-06-08 16:15:00 <img src="imgs/new.gif" /></td>
        <td>An issue was discovered in certain Verbatim drives through 2022-03-31. Due to missing integrity checks, an attacker can manipulate the content of the emulated CD-ROM drive (containing the Windows and macOS client software). The content of this emulated CD-ROM drive is stored as an ISO-9660 image in the hidden sectors of the USB drive, that can only be accessed using special IOCTL commands, or when installing the drive in an external disk enclosure. By manipulating this ISO-9660 image or replacing it with another one, an attacker is able to store malicious software on the emulated CD-ROM drive. This software may get executed by an unsuspecting victim when using the device. For example, an attacker with temporary physical access during the supply chain could program a modified ISO-9660 image on a device that always accepts an attacker-controlled password for unlocking the device. If the attacker later on gains access to the used USB drive, he can simply decrypt all contained user data. Storing arbitrary other malicious software is also possible. This affects Executive Fingerprint Secure SSD GDMSFE01-INI3637-C VER1.1 and Fingerprint Secure Portable Hard Drive Part Number #53650.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28385">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>67075499de3606c3a004277ef3b1d57a</td>
-       <td>CVE-2022-28384</td>
-       <td>2022-06-08 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in certain Verbatim drives through 2022-03-31. Due to an insecure design, they allow an offline brute-force attack for determining the correct passcode, and thus gaining unauthorized access to the stored encrypted data. This affects Keypad Secure USB 3.2 Gen 1 Drive Part Number #49428 and Store 'n' Go Secure Portable HDD GD25LK01-3637-C VER4.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28384">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2abda9d1350bca345e9f53f89a004661</td>
-       <td>CVE-2022-28383</td>
-       <td>2022-06-08 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in certain Verbatim drives through 2022-03-31. Due to insufficient firmware validation, an attacker can store malicious firmware code for the USB-to-SATA bridge controller on the USB drive (e.g., by leveraging physical access during the supply chain). This code is then executed. This affects Keypad Secure USB 3.2 Gen 1 Drive Part Number #49428, Store 'n' Go Secure Portable HDD GD25LK01-3637-C VER4.0, Executive Fingerprint Secure SSD GDMSFE01-INI3637-C VER1.1, and Fingerprint Secure Portable Hard Drive Part Number #53650.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28383">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6d7506efcd6d4662f40ec5f0778df9bd</td>
-       <td>CVE-2022-28382</td>
-       <td>2022-06-08 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in certain Verbatim drives through 2022-03-31. Due to the use of an insecure encryption AES mode (Electronic Codebook, aka ECB), an attacker may be able to extract information even from encrypted data, for example by observing repeating byte patterns. The firmware of the USB-to-SATA bridge controller INIC-3637EN uses AES-256 with the ECB mode. This operation mode of block ciphers (e.g., AES) always encrypts identical plaintext data, in this case blocks of 16 bytes, to identical ciphertext data. For some data, for instance bitmap images, the lack of the cryptographic property called diffusion, within ECB, can leak sensitive information even in encrypted data. Thus, the use of the ECB operation mode can put the confidentiality of specific information at risk, even in an encrypted form. This affects Keypad Secure USB 3.2 Gen 1 Drive Part Number #49428, Store 'n' Go Secure Portable HDD GD25LK01-3637-C VER4.0, Executive Fingerprint Secure SSD GDMSFE01-INI3637-C VER1.1, and Fingerprint Secure Portable Hard Drive Part Number #53650.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28382">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>70187c07f0dff92d665ad22611a7eea8</td>
-       <td>CVE-2022-24296</td>
-       <td>2022-06-08 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use of a Broken or Risky Cryptographic Algorithm vulnerability in Air Conditioning System G-150AD Ver. 3.21 and prior, Air Conditioning System AG-150A-A Ver. 3.21 and prior, Air Conditioning System AG-150A-J Ver. 3.21 and prior, Air Conditioning System GB-50AD Ver. 3.21 and prior, Air Conditioning System GB-50ADA-A Ver. 3.21 and prior, Air Conditioning System GB-50ADA-J Ver. 3.21 and prior, Air Conditioning System EB-50GU-A Ver. 7.10 and prior, Air Conditioning System EB-50GU-J Ver. 7.10 and prior, Air Conditioning System AE-200J Ver. 7.97 and prior, Air Conditioning System AE-200A Ver. 7.97 and prior, Air Conditioning System AE-200E Ver. 7.97 and prior, Air Conditioning System AE-50J Ver. 7.97 and prior, Air Conditioning System AE-50A Ver. 7.97 and prior, Air Conditioning System AE-50E Ver. 7.97 and prior, Air Conditioning System EW-50J Ver. 7.97 and prior, Air Conditioning System EW-50A Ver. 7.97 and prior, Air Conditioning System EW-50E Ver. 7.97 and prior, Air Conditioning System TE-200A Ver. 7.97 and prior, Air Conditioning System TE-50A Ver. 7.97 and prior and Air Conditioning System TW-50A Ver. 7.97 and prior allows a remote unauthenticated attacker to cause a disclosure of encrypted message of the air conditioning systems by sniffing encrypted communications.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24296">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b3bb530f06701ab4aff57593801dc82</td>
-       <td>CVE-2021-36710</td>
-       <td>2022-06-08 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>ToaruOS 1.99.2 is affected by incorrect access control via the kernel. Improper MMU management and having a low GDT address allows it to be mapped in userland. A call gate can then be written to escalate to CPL 0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-36710">详情</a></td>
       </tr>
 
      </tbody>
