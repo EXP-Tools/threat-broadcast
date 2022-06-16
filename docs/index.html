@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-16 16:45:29 -->
+<!-- RELEASE TIME : 2022-06-16 18:36:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -2188,11 +2188,43 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>93ae596c6b6b4ca4be39573997730559</td>
+       <td>CVE-2022-29225</td>
+       <td>2022-06-09 20:15:08 </td>
+       <td>Envoy is a cloud-native high-performance proxy. In versions prior to 1.22.1 secompressors accumulate decompressed data into an intermediate buffer before overwriting the body in the decode/encodeBody. This may allow an attacker to zip bomb the decompressor by sending a small highly compressed payload. Maliciously constructed zip files may exhaust system memory and cause a denial of service. Users are advised to upgrade. Users unable to upgrade may consider disabling decompression.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-29225">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>741cb9590e2e661a4a3773aa8c9c6753</td>
+       <td>CVE-2022-29224</td>
+       <td>2022-06-09 19:15:10 </td>
+       <td>Envoy is a cloud-native high-performance proxy. Versions of envoy prior to 1.22.1 are subject to a segmentation fault in the GrpcHealthCheckerImpl. Envoy can perform various types of upstream health checking. One of them uses gRPC. Envoy also has a feature which can &Atilde;&cent;&acirc;&sbquo;&not;&Aring;&ldquo;hold&Atilde;&cent;&acirc;&sbquo;&not;? (prevent removal) upstream hosts obtained via service discovery until configured active health checking fails. If an attacker controls an upstream host and also controls service discovery of that host (via DNS, the EDS API, etc.), an attacker can crash Envoy by forcing removal of the host from service discovery, and then failing the gRPC health check request. This will crash Envoy via a null pointer dereference. Users are advised to upgrade to resolve this vulnerability. Users unable to upgrade may disable gRPC health checking and/or replace it with a different health checking type as a mitigation.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-29224">详情</a></td>
+      </tr>
+
+      <tr>
        <td>771d41c2fbe6df2f4c83405d5652d7d2</td>
        <td>CVE-2022-30522</td>
        <td>2022-06-09 17:15:09 </td>
        <td>If Apache HTTP Server 2.4.53 is configured to do transformations with mod_sed in contexts where the input to mod_sed may be very large, mod_sed may make excessively large memory allocations and trigger an abort.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30522">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>916b0028e311dce40b2dbcbac235248e</td>
+       <td>CVE-2022-28615</td>
+       <td>2022-06-09 17:15:09 </td>
+       <td>Apache HTTP Server 2.4.53 and earlier may crash or disclose information due to a read beyond bounds in ap_strcmp_match() when provided with an extremely large input buffer. While no code distributed with the server can be coerced into such a call, third-party modules or lua scripts that use ap_strcmp_match() may hypothetically be affected.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-28615">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b7b42309645d6ad4929b9edb007eb43</td>
+       <td>CVE-2022-29255</td>
+       <td>2022-06-09 09:15:08 </td>
+       <td>Vyper is a Pythonic Smart Contract Language for the ethereum virtual machine. In versions prior to 0.3.4 when a calling an external contract with no return value, the contract address (including side effects) could be evaluated twice. This may result in incorrect outcomes for contracts. This issue has been addressed in v0.3.4.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-29255">详情</a></td>
       </tr>
 
       <tr>
@@ -2393,38 +2425,6 @@
        <td>2022-06-07 19:15:10 </td>
        <td>Missing caller check in Smart Things prior to version 1.7.85.12 allows attacker to access senstive information remotely using javascript interface API.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30746">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b338c069732c119837ff1409a488fd46</td>
-       <td>CVE-2022-30745</td>
-       <td>2022-06-07 19:15:10 </td>
-       <td>Improper access control vulnerability in Quick Share prior to version 13.1.2.4 allows attacker to access internal files in Quick Share.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30745">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f2680592485fe61c87708b4d215adb0</td>
-       <td>CVE-2022-30744</td>
-       <td>2022-06-07 19:15:10 </td>
-       <td>DLL hijacking vulnerability in KiesWrapper in Samsung Kies prior to version 2.6.4.22043_1 allows attacker to execute arbitrary code.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30744">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1bc22221746cba52f80b43a9d81da133</td>
-       <td>CVE-2022-30743</td>
-       <td>2022-06-07 19:15:10 </td>
-       <td>Improper privilege management vulnerability in Samsung Account prior to 13.2.00.6 allows attackers to get the data of contact and gallery without permission.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30743">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71811cd02e9baa91d7b01b3ff5d5706f</td>
-       <td>CVE-2022-30742</td>
-       <td>2022-06-07 19:15:10 </td>
-       <td>Sensitive information exposure vulnerability in FmmExtraOperation of Find My Mobile prior to 7.2.24.12 allows local attackers with log access permissio to get sim card information through device log.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30742">详情</a></td>
       </tr>
 
      </tbody>
