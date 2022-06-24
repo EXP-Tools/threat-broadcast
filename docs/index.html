@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-24 16:45:04 -->
+<!-- RELEASE TIME : 2022-06-24 17:31:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>54dc2050c7c4447cccf07dd09e0ff812</td>
+       <td>CVE-2022-32209</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td># Possible XSS Vulnerability in Rails::Html::SanitizerThere is a possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer.This vulnerability has been assigned the CVE identifier CVE-2022-32209.Versions Affected: ALLNot affected: NONEFixed Versions: v1.4.3## ImpactA possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer may allow an attacker to inject content if the application developer has overridden the sanitizer's allowed tags to allow both `select` and `style` elements.Code is only impacted if allowed tags are being overridden. This may be done via application configuration:```ruby# In config/application.rbconfig.action_view.sanitized_allowed_tags = ["select", "style"]```see https://guides.rubyonrails.org/configuring.html#configuring-action-viewOr it may be done with a `:tags` option to the Action View helper `sanitize`:```<%= sanitize @comment.body, tags: ["select", "style"] %>```see https://api.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitizeOr it may be done with Rails::Html::SafeListSanitizer directly:```ruby# class-level optionRails::Html::SafeListSanitizer.allowed_tags = ["select", "style"]```or```ruby# instance-level optionRails::Html::SafeListSanitizer.new.sanitize(@article.body, tags: ["select", "style"])```All users overriding the allowed tags by any of the above mechanisms to include both "select" and "style" should either upgrade or use one of the workarounds immediately.## ReleasesThe FIXED releases are available at the normal locations.## WorkaroundsRemove either `select` or `style` from the overridden allowed tags.## CreditsThis vulnerability was responsibly reported by [windshock](https://hackerone.com/windshock?type=user).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32209">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>225d30637ef45b2ae08c149eb1e6d5ab</td>
+       <td>CVE-2022-30120</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>XSS in /dashboard/blocks/stacks/view_details/ - old browsers only. When using an older browser with built-in XSS protection disabled, insufficient sanitation where built urls are outputted can be exploited for Concrete 8.5.7 and below as well as Concrete 9.0 through 9.0.2 to allow XSS. This cannot be exploited in modern-day web browsers due to an automatic input escape mechanism. Concrete CMS Security team ranked this vulnerability 3.1with CVSS v3.1 Vector AV:N/AC:H/PR:N/UI:R/S:U/C:N/I:L/A:N. Sanitation has been added where built urls are output. Credit to Credit to Bogdan Tiron from FORTBRIDGE (https://www.fortbridge.co.uk/ ) for reporting</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30120">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02b14e42d673e208b06ed6170d84f29e</td>
+       <td>CVE-2022-30119</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>XSS in /dashboard/reports/logs/view - old browsers only. When using Internet Explorer with the XSS protection disabled, insufficient sanitation where built urls are outputted can be exploited for Concrete 8.5.7 and below as well as Concrete 9.0 through 9.0.2. This cannot be exploited in modern-day web browsers due to an automatic input escape mechanism. Concrete CMS Security team ranked this vulnerability 2 with CVSS v3.1 Vector AV:N/AC:H/PR:H/UI:R/S:U/C:N/I:L/A:N. Thanks zeroinside for reporting.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30119">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>205889b84791f355193b01ec1da5658c</td>
+       <td>CVE-2022-30118</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Title for CVE: XSS in /dashboard/system/express/entities/forms/save_control/[GUID]: old browsers only.Description: When using Internet Explorer with the XSS protection disabled, editing a form control in an express entities form for Concrete 8.5.7 and below as well as Concrete 9.0 through 9.0.2 can allow XSS. This cannot be exploited in modern-day web browsers due to an automatic input escape mechanism. Concrete CMS Security team ranked this vulnerability 2 with CVSS v3.1 Vector AV:N/AC:H/PR:H/UI:R/S:U/C:N/I:L/A:N. Thanks zeroinside for reporting.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30118">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>22227cd988e0f5b722a62a07584a0e88</td>
+       <td>CVE-2022-30117</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Concrete 8.5.7 and below as well as Concrete 9.0 through 9.0.2 allow traversal in /index.php/ccm/system/file/upload which could result in an Arbitrary File Delete exploit. This was remediated by sanitizing /index.php/ccm/system/file/upload to ensure Concrete doesn’t allow traversal and by changing isFullChunkFilePresent to have an early false return when input doesn't match expectations.Concrete CMS Security team ranked this 5.8 with CVSS v3.1 vector AV:N/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H. Credit to Siebene for reporting.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30117">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>52b385ee323982227583cf6dedaa08eb</td>
+       <td>CVE-2022-28620</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>A remote authentication bypass vulnerability was discovered in HPE Cray Legacy Shasta System Solutions; HPE Slingshot; and HPE Cray EX supercomputers versions: Prior to node controller firmware associated with HPE Cray EX liquid cooled blades, and all versions of chassis controller firmware associated with HPE Cray EX liquid cooled cabinets prior to 1.6.27/1.5.33/1.4.27; All Slingshot versions prior to 1.7.2; All versions of node controller firmware associated with HPE Cray EX liquid cooled blades, and all versions of chassis controller firmware associated with HPE Cray EX liquid cooled cabinets prior to 1.6.27/1.5.33/1.4.27. HPE has provided a software update to resolve this vulnerability in HPE Cray Legacy Shasta System Solutions, HPE Slingshot, and HPE Cray EX Supercomputers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28620">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>60960c46f9f0f3b1b35b96ba05bf44d3</td>
+       <td>CVE-2022-28619</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>A potential security vulnerability has been identified in the installer of HPE Version Control Repository Manager. The vulnerability could allow local escalation of privilege. HPE has made the following software update to resolve the vulnerability in HPE Version Control Repository Manager installer 7.6.14.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28619">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f1f1161fde6afc333635dd9c3f1229a</td>
+       <td>CVE-2022-23170</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>SysAid - Okta SSO integration - was found vulnerable to XML External Entity Injection vulnerability. Any SysAid environment that uses the Okta SSO integration might be vulnerable. An unauthenticated attacker could exploit the XXE vulnerability by sending a malformed POST request to the identity provider endpoint. An attacker can extract the identity provider endpoint by decoding the SAMLRequest parameter's value and searching for the AssertionConsumerServiceURL parameter's value. It often allows an attacker to view files on the application server filesystem and interact with any back-end or external systems that the application can access. In some situations, an attacker can escalate an XXE attack to compromise the underlying server or other back-end infrastructure by leveraging the XXE vulnerability to perform server-side request forgery (SSRF) attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23170">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>98980790128bb5068177841de97796d5</td>
+       <td>CVE-2022-21829</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Concrete CMS Versions 9.0.0 through 9.0.2 and 8.5.7 and below can download zip files over HTTP and execute code from those zip files which could lead to an RCE. Fixed by enforcing ‘concrete_secure’ instead of ‘concrete’. Concrete now only makes requests over https even a request comes in via http. Concrete CMS security team ranked this 8 with CVSS v3.1 vector: AV:N/AC:H/PR:H/UI:N/S:C/C:H/I:H/A:H Credit goes to Anna for reporting HackerOne 1482520.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21829">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7268e86024d8a5d004ba3e0054ec0bd9</td>
+       <td>CVE-2022-2121</td>
+       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>OFFIS DCMTK's (All versions prior to 3.6.7) has a NULL pointer dereference vulnerability while processing DICOM files, which may result in a denial-of-service condition.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2121">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6dba9bbf52df0464e1f0a4c77ca7d766</td>
        <td>CVE-2022-32530</td>
        <td>2022-06-24 13:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
        <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/inmates/manage_record.php:4</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32403">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a75dcb20c31fde44b95c25fdf3fa4791</td>
-       <td>CVE-2022-32402</td>
-       <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/prisons/manage_prison.php:4</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32402">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3097dc6f749f8eac83b5d616e2ba3ba6</td>
-       <td>CVE-2022-32401</td>
-       <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/inmates/manage_privilege.php:4</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32401">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f1b4bb5e918a137d324346c1dca2c921</td>
-       <td>CVE-2022-32400</td>
-       <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/user/manage_user.php:4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32400">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>031bf4506fce516f7cb06a6454af8597</td>
-       <td>CVE-2022-32399</td>
-       <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/crimes/view_crime.php:4</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32399">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98360b753a17280a5b19ab7b9749714f</td>
-       <td>CVE-2022-32398</td>
-       <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/cells/manage_cell.php:4</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32398">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c8eb7f50efd92653ae93974c9ff6f78</td>
-       <td>CVE-2022-32397</td>
-       <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/visits/view_visit.php:4</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32397">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7df0580003ca5d54081f90bab4b20c7a</td>
-       <td>CVE-2022-32396</td>
-       <td>2022-06-24 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prison Management System v1.0 was discovered to contain a SQL injection vulnerability via the 'id' parameter at /pms/admin/visits/manage_visit.php:4</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32396">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84d034f7856b017eef83d0c32938a387</td>
-       <td>CVE-2022-2147</td>
-       <td>2022-06-23 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cloudflare Warp for Windows from version 2022.2.95.0 contained an unquoted service path which enables arbitrary code execution leading to privilege escalation. The fix was released in version 2022.3.186.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2147">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1abb59aef2498a768fb7abd8e8879248</td>
-       <td>CVE-2022-32987</td>
-       <td>2022-06-23 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiple cross-site scripting (XSS) vulnerabilities in /bsms/?page=manage_account of Simple Bakery Shop Management System v1.0 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Username or Full Name fields.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32987">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d9e3dc5373fd48e166c29a96ad011fe3</td>
-       <td>CVE-2022-2183</td>
-       <td>2022-06-23 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>Out-of-bounds Read in GitHub repository vim/vim prior to 8.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2183">详情</a></td>
       </tr>
 
      </tbody>
