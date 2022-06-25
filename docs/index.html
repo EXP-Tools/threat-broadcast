@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-25 06:33:09 -->
+<!-- RELEASE TIME : 2022-06-25 11:24:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>545103acae42f8cf9ce7bb7d8671c0da</td>
+       <td>CVE-2022-31017</td>
+       <td>2022-06-25 09:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zulip is an open-source team collaboration tool. Versions 2.1.0 through and including 5.2 are vulnerable to a logic error. A stream configured as private with protected history, where new subscribers should not be allowed to see messages sent before they were subscribed, when edited causes the server to incorrectly send an API event that includes the edited message to all of the stream’s current subscribers. This API event is ignored by official clients, but can be observed by using a modified client or the browser’s developer tools. This bug will be fixed in Zulip Server 5.3. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31017">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>72ceeca6af6e0e1b99f34fb3043e6aec</td>
+       <td>CVE-2022-31016</td>
+       <td>2022-06-25 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>Argo CD is a declarative continuous deployment for Kubernetes. Argo CD versions v0.7.0 and later are vulnerable to an uncontrolled memory consumption bug, allowing an authorized malicious user to crash the repo-server service, resulting in a Denial of Service. The attacker must be an authenticated Argo CD user authorized to deploy Applications from a repository which contains (or can be made to contain) a large file. The fix for this vulnerability is available in versions 2.3.5, 2.2.10, 2.1.16, and later. There are no known workarounds. Users are recommended to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31016">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b694cd1610f0fac8460dd6190f60fff</td>
+       <td>CVE-2022-29168</td>
+       <td>2022-06-25 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wire is a secure messaging application. Wire is vulnerable to arbitrary HTML and Javascript execution via insufficient escaping when rendering `@mentions` in the wire-webapp. If a user receives and views a malicious message, arbitrary code is injected and executed in the context of the victim allowing the attacker to fully control the user account. Wire-desktop clients that are connected to a vulnerable wire-webapp version are also vulnerable to this attack. The issue has been fixed in wire-webapp 2022-05-04-production.0 and is already deployed on all Wire managed services. On-premise instances of wire-webapp need to be updated to docker tag 2022-05-04-production.0-v0.29.7-0-a6f2ded or wire-server 2022-05-04 (chart/4.11.0) or later. No known workarounds exist.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29168">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca5ec75c9c441ebc7e08fca88bb4c47f</td>
+       <td>CVE-2022-24893</td>
+       <td>2022-06-25 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>ESP-IDF is the official development framework for Espressif SoCs. In Espressif’s Bluetooth Mesh SDK (`ESP-BLE-MESH`), a memory corruption vulnerability can be triggered during provisioning, because there is no check for the `SegN` field of the Transaction Start PDU. This can result in memory corruption related attacks and potentially attacker gaining control of the entire system. Patch commits are available on the 4.1, 4.2, 4.3 and 4.4 branches and users are recommended to upgrade. The upgrade is applicable for all applications and users of `ESP-BLE-MESH` component from `ESP-IDF`. As it is implemented in the Bluetooth Mesh stack, there is no workaround for the user to fix the application layer without upgrading the underlying firmware.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24893">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5768a2d1a6b5afeab18abf182372ec3f</td>
+       <td>CVE-2019-25071</td>
+       <td>2022-06-25 06:15:00 <img src="imgs/new.gif" /></td>
+       <td>** DISPUTED ** A vulnerability was found in Apple iPhone up to 12.4.1. It has been declared as critical. Affected by this vulnerability is Siri. Playing an audio or video file might be able to initiate Siri on the same device which makes it possible to execute commands remotely. Exploit details have been disclosed to the public. The existence and implications of this vulnerability are doubted by Apple even though multiple public videos demonstrating the attack exist. Upgrading to version 13.0 migt be able to address this issue. It is recommended to upgrade affected devices.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25071">详情</a></td>
+      </tr>
+
+      <tr>
        <td>199b00b4b24ebec67724a8a43de5255b</td>
        <td>CVE-2022-33128</td>
        <td>2022-06-25 02:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
        <td>XSS in /dashboard/reports/logs/view - old browsers only. When using Internet Explorer with the XSS protection disabled, insufficient sanitation where built urls are outputted can be exploited for Concrete 8.5.7 and below as well as Concrete 9.0 through 9.0.2. This cannot be exploited in modern-day web browsers due to an automatic input escape mechanism. Concrete CMS Security team ranked this vulnerability 2 with CVSS v3.1 Vector AV:N/AC:H/PR:H/UI:R/S:U/C:N/I:L/A:N. Thanks zeroinside for reporting.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30119">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>205889b84791f355193b01ec1da5658c</td>
-       <td>CVE-2022-30118</td>
-       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Title for CVE: XSS in /dashboard/system/express/entities/forms/save_control/[GUID]: old browsers only.Description: When using Internet Explorer with the XSS protection disabled, editing a form control in an express entities form for Concrete 8.5.7 and below as well as Concrete 9.0 through 9.0.2 can allow XSS. This cannot be exploited in modern-day web browsers due to an automatic input escape mechanism. Concrete CMS Security team ranked this vulnerability 2 with CVSS v3.1 Vector AV:N/AC:H/PR:H/UI:R/S:U/C:N/I:L/A:N. Thanks zeroinside for reporting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30118">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>22227cd988e0f5b722a62a07584a0e88</td>
-       <td>CVE-2022-30117</td>
-       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Concrete 8.5.7 and below as well as Concrete 9.0 through 9.0.2 allow traversal in /index.php/ccm/system/file/upload which could result in an Arbitrary File Delete exploit. This was remediated by sanitizing /index.php/ccm/system/file/upload to ensure Concrete doesn’t allow traversal and by changing isFullChunkFilePresent to have an early false return when input doesn't match expectations.Concrete CMS Security team ranked this 5.8 with CVSS v3.1 vector AV:N/AC:H/PR:H/UI:N/S:C/C:N/I:N/A:H. Credit to Siebene for reporting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30117">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52b385ee323982227583cf6dedaa08eb</td>
-       <td>CVE-2022-28620</td>
-       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A remote authentication bypass vulnerability was discovered in HPE Cray Legacy Shasta System Solutions; HPE Slingshot; and HPE Cray EX supercomputers versions: Prior to node controller firmware associated with HPE Cray EX liquid cooled blades, and all versions of chassis controller firmware associated with HPE Cray EX liquid cooled cabinets prior to 1.6.27/1.5.33/1.4.27; All Slingshot versions prior to 1.7.2; All versions of node controller firmware associated with HPE Cray EX liquid cooled blades, and all versions of chassis controller firmware associated with HPE Cray EX liquid cooled cabinets prior to 1.6.27/1.5.33/1.4.27. HPE has provided a software update to resolve this vulnerability in HPE Cray Legacy Shasta System Solutions, HPE Slingshot, and HPE Cray EX Supercomputers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28620">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>60960c46f9f0f3b1b35b96ba05bf44d3</td>
-       <td>CVE-2022-28619</td>
-       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A potential security vulnerability has been identified in the installer of HPE Version Control Repository Manager. The vulnerability could allow local escalation of privilege. HPE has made the following software update to resolve the vulnerability in HPE Version Control Repository Manager installer 7.6.14.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28619">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f1f1161fde6afc333635dd9c3f1229a</td>
-       <td>CVE-2022-23170</td>
-       <td>2022-06-24 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>SysAid - Okta SSO integration - was found vulnerable to XML External Entity Injection vulnerability. Any SysAid environment that uses the Okta SSO integration might be vulnerable. An unauthenticated attacker could exploit the XXE vulnerability by sending a malformed POST request to the identity provider endpoint. An attacker can extract the identity provider endpoint by decoding the SAMLRequest parameter's value and searching for the AssertionConsumerServiceURL parameter's value. It often allows an attacker to view files on the application server filesystem and interact with any back-end or external systems that the application can access. In some situations, an attacker can escalate an XXE attack to compromise the underlying server or other back-end infrastructure by leveraging the XXE vulnerability to perform server-side request forgery (SSRF) attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23170">详情</a></td>
       </tr>
 
      </tbody>
