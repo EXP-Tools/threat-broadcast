@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-26 14:24:16 -->
+<!-- RELEASE TIME : 2022-06-26 15:28:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f165694d5f617dd9196a5b547963f25b</td>
+       <td>CVE-2020-27509</td>
+       <td>2022-06-26 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Persistent XSS in Galaxkey Secure Mail Client in Galaxkey up to 5.6.11.5 allows an attacker to perform an account takeover by intercepting the HTTP Post request when sending an email and injecting a specially crafted XSS payload in the 'subject' field. The payload executes when the recipient logs into their mailbox.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-27509">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fbda62cbfa78d300849923d33894b505</td>
        <td>CVE-2022-34491</td>
        <td>2022-06-25 21:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2022-06-24 17:15:00</td>
        <td>A vulnerability exists in Online Student Rate System v1.0 that allows any user to register as an administrator without needing to be authenticated.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39409">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>54dc2050c7c4447cccf07dd09e0ff812</td>
-       <td>CVE-2022-32209</td>
-       <td>2022-06-24 15:15:00</td>
-       <td># Possible XSS Vulnerability in Rails::Html::SanitizerThere is a possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer.This vulnerability has been assigned the CVE identifier CVE-2022-32209.Versions Affected: ALLNot affected: NONEFixed Versions: v1.4.3## ImpactA possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer may allow an attacker to inject content if the application developer has overridden the sanitizer's allowed tags to allow both `select` and `style` elements.Code is only impacted if allowed tags are being overridden. This may be done via application configuration:```ruby# In config/application.rbconfig.action_view.sanitized_allowed_tags = ["select", "style"]```see https://guides.rubyonrails.org/configuring.html#configuring-action-viewOr it may be done with a `:tags` option to the Action View helper `sanitize`:```<%= sanitize @comment.body, tags: ["select", "style"] %>```see https://api.rubyonrails.org/classes/ActionView/Helpers/SanitizeHelper.html#method-i-sanitizeOr it may be done with Rails::Html::SafeListSanitizer directly:```ruby# class-level optionRails::Html::SafeListSanitizer.allowed_tags = ["select", "style"]```or```ruby# instance-level optionRails::Html::SafeListSanitizer.new.sanitize(@article.body, tags: ["select", "style"])```All users overriding the allowed tags by any of the above mechanisms to include both "select" and "style" should either upgrade or use one of the workarounds immediately.## ReleasesThe FIXED releases are available at the normal locations.## WorkaroundsRemove either `select` or `style` from the overridden allowed tags.## CreditsThis vulnerability was responsibly reported by [windshock](https://hackerone.com/windshock?type=user).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32209">详情</a></td>
       </tr>
 
      </tbody>
