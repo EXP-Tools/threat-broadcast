@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-06-28 02:28:47 -->
+<!-- RELEASE TIME : 2022-06-28 05:35:07 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4ccaafb75bb36d4993bae7fd1f05dfa0</td>
+       <td>CVE-2022-34134</td>
+       <td>2022-06-28 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Benjamin BALET Jorani v1.0 was discovered to contain a Cross-Site Request Forgery (CSRF) via the component /application/controllers/Users.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34134">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>275290c3b08839d3e0f0ec8e49ca14d2</td>
+       <td>CVE-2022-34133</td>
+       <td>2022-06-28 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Benjamin BALET Jorani v1.0 was discovered to contain a cross-site scripting (XSS) vulnerability via the Comment parameter at application/controllers/Leaves.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34133">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f262df2d60880acefc0e70db0bd7ef1f</td>
+       <td>CVE-2022-34132</td>
+       <td>2022-06-28 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Benjamin BALET Jorani v1.0 was discovered to contain a SQL injection vulnerability via the id parameter at application/controllers/Leaves.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34132">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>44b7408980fd381b21b8d6d9d05a8973</td>
+       <td>CVE-2022-31104</td>
+       <td>2022-06-28 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wasmtime is a standalone runtime for WebAssembly. In affected versions wasmtime's implementation of the SIMD proposal for WebAssembly on x86_64 contained two distinct bugs in the instruction lowerings implemented in Cranelift. The aarch64 implementation of the simd proposal is not affected. The bugs were presented in the `i8x16.swizzle` and `select` WebAssembly instructions. The `select` instruction is only affected when the inputs are of `v128` type. The correspondingly affected Cranelift instructions were `swizzle` and `select`. The `swizzle` instruction lowering in Cranelift erroneously overwrote the mask input register which could corrupt a constant value, for example. This means that future uses of the same constant may see a different value than the constant itself. The `select` instruction lowering in Cranelift wasn't correctly implemented for vector types that are 128-bits wide. When the condition was 0 the wrong instruction was used to move the correct input to the output of the instruction meaning that only the low 32 bits were moved and the upper 96 bits of the result were left as whatever the register previously contained (instead of the input being moved from). The `select` instruction worked correctly if the condition was nonzero, however. This bug in Wasmtime's implementation of these instructions on x86_64 represents an incorrect implementation of the specified semantics of these instructions according to the WebAssembly specification. The impact of this is benign for hosts running WebAssembly but represents possible vulnerabilities within the execution of a guest program. For example a WebAssembly program could take unintended branches or materialize incorrect values internally which runs the risk of exposing the program itself to other related vulnerabilities which can occur from miscompilations. We have released Wasmtime 0.38.1 and cranelift-codegen (and other associated cranelift crates) 0.85.1 which contain the corrected implementations of these two instructions in Cranelift. If upgrading is not an option for you at this time, you can avoid the vulnerability by disabling the Wasm simd proposal. Additionally the bug is only present on x86_64 hosts. Other aarch64 hosts are not affected. Note that s390x hosts don't yet implement the simd proposal and are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31104">详情</a></td>
+      </tr>
+
+      <tr>
        <td>273bcdec4d9f883ef8a77a027f4cecd9</td>
        <td>CVE-2022-33009</td>
        <td>2022-06-27 23:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2022-06-27 17:15:00 <img src="imgs/new.gif" /></td>
        <td>When the Reduce operator run operation is executed, if there is a value of 0 in the parameter axis_sizes element, it will cause a division by 0 exception.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-33652">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a409969e6b6d43571f8d24fc7d492451</td>
-       <td>CVE-2021-33651</td>
-       <td>2022-06-27 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>When performing the analytical operation of the DepthwiseConv2D operator, if the attribute depth_multiplier is 0, it will cause a division by 0 exception.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-33651">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5c4964bb5eedaec22d9bb68936c4ce91</td>
-       <td>CVE-2021-33650</td>
-       <td>2022-06-27 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>When performing the inference shape operation of the SparseToDense operator, if the number of inputs is less than three, it will access data outside of bounds of inputs which allocated from heap buffers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-33650">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2d673f686d3a666a02e8a30dc8f6909f</td>
-       <td>CVE-2021-33649</td>
-       <td>2022-06-27 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>When performing the inference shape operation of the Transpose operator, if the value in the perm element is greater than or equal to the size of the input_shape, it will access data outside of bounds of input_shape which allocated from heap buffers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-33649">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc41ab51131797c8b58aa055db997303</td>
-       <td>CVE-2021-33648</td>
-       <td>2022-06-27 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>When performing the inference shape operation of Affine, Concat, MatMul, ArgMinMax, EmbeddingLookup, and Gather operators, if the input shape size is 0, it will access data outside of bounds of shape which allocated from heap buffers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-33648">详情</a></td>
       </tr>
 
      </tbody>
@@ -2188,6 +2188,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2d8701399bdb77d39590a5c4ce5aab6a</td>
+       <td>CVE-2022-33913</td>
+       <td>2022-06-20 16:15:08 </td>
+       <td>In Mahara 21.04 before 21.04.6, 21.10 before 21.10.4, and 22.04.2, files can sometimes be downloaded through thumb.php with no permission check.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33913">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b5474ad4a82d47241c66796f244df67a</td>
        <td>CVE-2022-31795</td>
        <td>2022-06-20 15:15:13 </td>
@@ -2209,6 +2217,54 @@
        <td>2022-06-17 14:15:08 </td>
        <td>Online Ordering System v2.3.2 was discovered to contain a SQL injection vulnerability via /ordering/admin/inventory/index.php?view=edit&amp;id=.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31357">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>461fecf8d0555d2850382eda6a7ef4fb</td>
+       <td>CVE-2022-33756</td>
+       <td>2022-06-16 22:15:08 </td>
+       <td>CA Automic Automation 12.2 and 12.3 contain an entropy weakness vulnerability in the Automic AutomationEngine that could allow a remote attacker to potentially access sensitive data.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33756">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>910852c4fd6b4fd695ae5e52c2e4d87f</td>
+       <td>CVE-2022-33755</td>
+       <td>2022-06-16 22:15:08 </td>
+       <td>CA Automic Automation 12.2 and 12.3 contain an insecure input handling vulnerability in the Automic Agent that could allow a remote attacker to potentially enumerate users.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33755">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>78d8af472c95a7c68287fafb62c529e3</td>
+       <td>CVE-2022-33754</td>
+       <td>2022-06-16 22:15:08 </td>
+       <td>CA Automic Automation 12.2 and 12.3 contain an insufficient input validation vulnerability in the Automic agent that could allow a remote attacker to potentially execute arbitrary code.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33754">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>977ae893866df49a6332fdc496fc6972</td>
+       <td>CVE-2022-33753</td>
+       <td>2022-06-16 22:15:08 </td>
+       <td>CA Automic Automation 12.2 and 12.3 contain an insecure file creation and handling vulnerability in the Automic agent that could allow a user to potentially elevate privileges.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33753">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>788f0fb42b25ca9e306b42c5156d9295</td>
+       <td>CVE-2022-33752</td>
+       <td>2022-06-16 22:15:08 </td>
+       <td>CA Automic Automation 12.2 and 12.3 contain an insufficient input validation vulnerability in the Automic agent that could allow a remote attacker to potentially execute arbitrary code.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33752">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3a183ec382d28ff7481c42c09b8ec82c</td>
+       <td>CVE-2022-33751</td>
+       <td>2022-06-16 22:15:08 </td>
+       <td>CA Automic Automation 12.2 and 12.3 contain an insecure memory handling vulnerability in the Automic agent that could allow a remote attacker to potentially access sensitive data.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33751">详情</a></td>
       </tr>
 
       <tr>
@@ -2369,62 +2425,6 @@
        <td>2022-06-14 18:15:08 </td>
        <td>Product Show Room Site v1.0 is vulnerable to SQL Injection via /psrs/admin/fields/view_field.php?id=.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32366">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>82f3587e83c509ec16796da9796e95fe</td>
-       <td>CVE-2022-32561</td>
-       <td>2022-06-14 17:15:08 </td>
-       <td>An issue was discovered in Couchbase Server before 6.6.5 and 7.x before 7.0.4. Previous mitigations for CVE-2018-15728 were found to be insufficient when it was discovered that diagnostic endpoints could still be accessed from the network.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32561">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>72c2d797f1362ccee01af5743e3ff6cc</td>
-       <td>CVE-2022-31403</td>
-       <td>2022-06-14 17:15:08 </td>
-       <td>ITOP v3.0.1 was discovered to contain a cross-site scripting (XSS) vulnerability via /itop/pages/ajax.render.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31403">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>faab42c76b3844d4a7f556643d2b32af</td>
-       <td>CVE-2022-32351</td>
-       <td>2022-06-14 16:15:09 </td>
-       <td>Hospital's Patient Records Management System v1.0 is vulnerable to SQL Injection via /hprms/classes/Master.php?f=delete_message.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32351">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>685f60edf6c45b3182eecc1c827a4a6f</td>
-       <td>CVE-2022-32350</td>
-       <td>2022-06-14 16:15:09 </td>
-       <td>Hospital's Patient Records Management System v1.0 is vulnerable to SQL Injection via /hprms/classes/Master.php?f=delete_room_type.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32350">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b1622061d535d5660a62afb0af2bfff</td>
-       <td>CVE-2022-32349</td>
-       <td>2022-06-14 16:15:09 </td>
-       <td>Hospital's Patient Records Management System v1.0 is vulnerable to SQL Injection via /hprms/classes/Master.php?f=delete_patient_history.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32349">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3023697b354b6899ff0deee600089f8f</td>
-       <td>CVE-2022-32348</td>
-       <td>2022-06-14 16:15:09 </td>
-       <td>Hospital's Patient Records Management System v1.0 is vulnerable to SQL Injection via /hprms/classes/Master.php?f=delete_doctor.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32348">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c34ad0053e958d8b8f128760660aa106</td>
-       <td>CVE-2022-32347</td>
-       <td>2022-06-14 16:15:09 </td>
-       <td>Hospital's Patient Records Management System v1.0 is vulnerable to SQL Injection via /hprms/classes/Master.php?f=delete_room.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32347">详情</a></td>
       </tr>
 
      </tbody>
