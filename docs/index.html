@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-07-06 14:37:14 -->
+<!-- RELEASE TIME : 2022-07-06 16:46:49 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d250b6821c7c4a7a96da0537d1edbda1</td>
+       <td>CVE-2022-33980</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Apache Commons Configuration performs variable interpolation, allowing properties to be dynamically evaluated and expanded. The standard format for interpolation is "${prefix:name}", where "prefix" is used to locate an instance of org.apache.commons.configuration2.interpol.Lookup that performs the interpolation. Starting with version 2.4 and continuing through 2.7, the set of default Lookup instances included interpolators that could result in arbitrary code execution or contact with remote servers. These lookups are:- "script" - execute expressions using the JVM script execution engine (javax.script)- "dns" - resolve dns records- "url" - load values from urls, including from remote serversApplications using the interpolation defaults in the affected versions may be vulnerable to remote code execution or unintentional contact with remote servers if untrusted configuration values are used.Users are recommended to upgrade to Apache Commons Configuration 2.8.0, which disables the problematic interpolators by default.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33980">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>529f87554b43e473725f92018c5b94ff</td>
+       <td>CVE-2022-28935</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Totolink A830R V5.9c.4729_B20191112, Totolink A3100R V4.1.2cu.5050_B20200504, Totolink A950RG V4.1.2cu.5161_B20200903, Totolink A800R V4.1.2cu.5137_B20200730, Totolink A3000RU V5.9c.5185_B20201128, Totolink A810R V4.1.2cu.5182_B20201026 were discovered to contain a command injection vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28935">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>713e8a5e3e6b05b406e7e99de4e11ab5</td>
+       <td>CVE-2022-24141</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The iTopVPNmini.exe component of iTop VPN 3.2 will try to connect to datastate_iTopVPN_Pipe_Server on a loop. An attacker that opened a named pipe with the same name can use it to gain the token of another user by listening for connections and abusing ImpersonateNamedPipeClient().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cfaa75924d6f0069f3900174abe958da</td>
+       <td>CVE-2022-24140</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>IOBit Advanced System Care 15, iTop Screen Recorder 2.1, iTop VPN 3.2, Driver Booster 9, and iTop Screenshot sends HTTP requests in their update procedure in order to download a config file. After downloading the config file, the products will parse the HTTP location of the update from the file and will try to install the update automatically with ADMIN privileges. An attacker Intercepting this communication can supply the product a fake config file with malicious locations for the updates thus gaining a remote code execution on an endpoint.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24140">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>74f5609901bda3f0ba4365e5b1c0dd3c</td>
+       <td>CVE-2022-24139</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>In IOBit Advanced System Care (AscService.exe) 15, an attacker with SEImpersonatePrivilege can create a named pipe with the same name as one of ASCService's named pipes. ASCService first tries to connect before trying to create the named pipes, because of that during login the service will try to connect to the attacker which will lead to either escalation of privileges (through token manipulation and ImpersonateNamedPipeClient() ) from ADMIN -> SYSTEM or from Local ADMIN-> Domain ADMIN depending on the user and named pipe that is used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24139">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0d0e5ed2fe9ce8834e39c794ae8d9b86</td>
+       <td>CVE-2022-24138</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>IOBit Advanced System Care (Asc.exe) 15 and Action Download Center both download components of IOBit suite into ProgramData folder, ProgramData folder has "rwx" permissions for unprivileged users. Low privilege users can use SetOpLock to wait for CreateProcess and switch the genuine component with a malicious executable thus gaining code execution as a high privilege user (Low Privilege -> high integrity ADMIN).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24138">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>011fde96f120ee99a8aae55473ddb39f</td>
+       <td>CVE-2021-37839</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Apache Superset up to 1.5.1 allowed for authenticated users to access metadata information related to datasets they have no permission on. This metadata included the dataset name, columns and metrics.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-37839">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca50764e190ab117d7f8f8d57de48aa3</td>
+       <td>CVE-2021-31679</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in PESCMS-V2.3.3. There is a CSRF vulnerability that allows attackers to delete admin and other members' account numbers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-31679">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>756f61d0dc325bb1a1d74ff28a69414a</td>
+       <td>CVE-2021-31678</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in PESCMS-V2.3.3. There is a CSRF vulnerability that can delete import information about a user's company.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-31678">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb249e8d714cb9dac6b0136c7a7cf394</td>
+       <td>CVE-2021-31677</td>
+       <td>2022-07-06 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in PESCMS-V2.3.3. There is a CSRF vulnerability that can modify admin and other members' passwords.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-31677">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fed04dc544c01e551dd3427f065ef3f2</td>
        <td>CVE-2022-35230</td>
        <td>2022-07-06 11:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-07-05 16:15:00 <img src="imgs/new.gif" /></td>
        <td>Reflected Cross Site Scripting (XSS) vulnerabilities in AST Agent Time Sheet interface (/vicidial/AST_agent_time_sheet.php) of VICIdial via agent, and search_archived_data parameters. This issue affects: VICIdial 2.14b0.5 versions prior to 3555.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34879">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>45955534ee9575c9dcf9dd6818ef3067</td>
-       <td>CVE-2022-34878</td>
-       <td>2022-07-05 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL Injection vulnerability in User Stats interface (/vicidial/user_stats.php) of VICIdial via the file_download parameter allows attacker to spoof identity, tamper with existing data, allow the complete disclosure of all data on the system, destroy the data or make it otherwise unavailable, and become administrators of the database server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34878">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bee45019521deb34da291bb144d2ff73</td>
-       <td>CVE-2022-34877</td>
-       <td>2022-07-05 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL Injection vulnerability in AST Agent Time Sheet interface ((/vicidial/AST_agent_time_sheet.php) of VICIdial via the agent parameter allows attacker to spoof identity, tamper with existing data, allow the complete disclosure of all data on the system, destroy the data or make it otherwise unavailable, and become administrators of the database server. This issue affects: VICIdial 2.14b0.5 versions prior to 3555.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34877">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e8bb1516a9e05b99396591e38f12349</td>
-       <td>CVE-2022-34876</td>
-       <td>2022-07-05 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL Injection vulnerability in admin interface (/vicidial/admin.php) of VICIdial via modify_email_accounts, access_recordings, and agentcall_email parameters allows attacker to spoof identity, tamper with existing data, allow the complete disclosure of all data on the system, destroy the data or make it otherwise unavailable, and become administrators of the database server. This issue affects: VICIdial 2.14b0.5 versions prior to 3555.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34876">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c28251393e69348b00beee016bb34a94</td>
-       <td>CVE-2022-31770</td>
-       <td>2022-07-05 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM App Connect Enterprise Certified Container 4.2 could allow a user from the administration console to cause a denial of service by creating a specially crafted request. IBM X-Force ID: 228221.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31770">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3cb4c9a5d507f76b1a7a2abb56c93a9e</td>
-       <td>CVE-2022-31836</td>
-       <td>2022-07-05 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>The leafInfo.match() function in Beego v2.0.3 and below uses path.join() to deal with wildcardvalues which can lead to cross directory risk.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31836">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>956e0556b7eba6b2f29a2ccdcffa7dae</td>
-       <td>CVE-2021-43116</td>
-       <td>2022-07-05 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>An Access Control vulnerability exists in Nacos 2.0.3 in the access prompt page; enter username and password, click on login to capture packets and then change the returned package, which lets a malicious user login.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43116">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>63c8eb2006d210347b31ebe575ba6965</td>
-       <td>CVE-2022-33744</td>
-       <td>2022-07-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Arm guests can cause Dom0 DoS via PV devices When mapping pages of guests on Arm, dom0 is using an rbtree to keep track of the foreign mappings. Updating of that rbtree is not always done completely with the related lock held, resulting in a small race window, which can be used by unprivileged guests via PV devices to cause inconsistencies of the rbtree. These inconsistencies can lead to Denial of Service (DoS) of dom0, e.g. by causing crashes or the inability to perform further mappings of other guests' memory pages.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33744">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21baadc3c6be8046bc1a3c1b74c33c65</td>
-       <td>CVE-2022-33743</td>
-       <td>2022-07-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>network backend may cause Linux netfront to use freed SKBs While adding logic to support XDP (eXpress Data Path), a code label was moved in a way allowing for SKBs having references (pointers) retained for further processing to nevertheless be freed.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33743">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eda5dc219a455ed8ebd0699e56955798</td>
-       <td>CVE-2022-33742</td>
-       <td>2022-07-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Linux disk/nic frontends data leaks T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Linux Block and Network PV device frontends don't zero memory regions before sharing them with the backend (CVE-2022-26365, CVE-2022-33740). Additionally the granularity of the grant table doesn't allow sharing less than a 4K page, leading to unrelated data residing in the same 4K page as data shared with a backend being accessible by such backend (CVE-2022-33741, CVE-2022-33742).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33742">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a3ed8a455bbdb76205b1aedb48373825</td>
-       <td>CVE-2022-33741</td>
-       <td>2022-07-05 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Linux disk/nic frontends data leaks T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Linux Block and Network PV device frontends don't zero memory regions before sharing them with the backend (CVE-2022-26365, CVE-2022-33740). Additionally the granularity of the grant table doesn't allow sharing less than a 4K page, leading to unrelated data residing in the same 4K page as data shared with a backend being accessible by such backend (CVE-2022-33741, CVE-2022-33742).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33741">详情</a></td>
       </tr>
 
      </tbody>
@@ -2244,6 +2244,14 @@
       </tr>
 
       <tr>
+       <td>482de026918e1c696933f38c0b7b6e7d</td>
+       <td>CVE-2022-33910</td>
+       <td>2022-06-24 17:15:08 </td>
+       <td>An XSS vulnerability in MantisBT before 2.25.5 allows remote attackers to attach crafted SVG documents to issue reports or bugnotes. When a user or an admin clicks on the attachment, file_download.php opens the SVG document in a browser tab instead of downloading it as a file, causing the JavaScript code to execute.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-33910">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c7e86db8d439ea912aa472ce921d9ec7</td>
        <td>CVE-2022-33953</td>
        <td>2022-06-24 16:15:10 </td>
@@ -2417,14 +2425,6 @@
        <td>2022-06-23 17:15:16 </td>
        <td>Jenkins Hidden Parameter Plugin 0.0.4 and earlier does not escape the name and description of Hidden Parameter parameters on views displaying parameters, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Item/Configure permission.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-34188">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ef34d20ba96dba02efba654174b5040b</td>
-       <td>CVE-2022-34187</td>
-       <td>2022-06-23 17:15:16 </td>
-       <td>Jenkins Filesystem List Parameter Plugin 0.0.7 and earlier does not escape the name and description of File system objects list parameters on views displaying parameters, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Item/Configure permission.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-34187">详情</a></td>
       </tr>
 
      </tbody>
