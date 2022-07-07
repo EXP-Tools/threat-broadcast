@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-07-07 14:27:40 -->
+<!-- RELEASE TIME : 2022-07-07 15:37:46 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ba52c49d239fa1d6fd48e4714a5e35e8</td>
+       <td>CVE-2022-32208</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>When curl < 7.84.0 does FTP transfers secured by krb5, it handles message verification failures wrongly. This flaw makes it possible for a Man-In-The-Middle attack to go unnoticed and even allows it to inject data to the client.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32208">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>51a6104c726d7388e28b2abf370cbcde</td>
+       <td>CVE-2022-32207</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>When curl < 7.84.0 saves cookies, alt-svc and hsts data to local files, it makes the operation atomic by finalizing the operation with a rename from a temporary name to the final target file name.In that rename operation, it might accidentally *widen* the permissions for the target file, leaving the updated file accessible to more users than intended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32207">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b9fb5a19b39d8ea47eb04a001f75ed50</td>
+       <td>CVE-2022-32206</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>curl < 7.84.0 supports "chained" HTTP compression algorithms, meaning that a serverresponse can be compressed multiple times and potentially with different algorithms. The number of acceptable "links" in this "decompression chain" was unbounded, allowing a malicious server to insert a virtually unlimited number of compression steps.The use of such a decompression chain could result in a "malloc bomb", makingcurl end up spending enormous amounts of allocated heap memory, or trying toand returning out of memory errors.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32206">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>618b5ec0e776188454d1d3d17734f5c8</td>
+       <td>CVE-2022-32205</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>A malicious server can serve excessive amounts of `Set-Cookie:` headers in a HTTP response to curl and curl < 7.84.0 stores all of them. A sufficiently large amount of (big) cookies make subsequent HTTP requests to this, or other servers to which the cookies match, create requests that become larger than the threshold that curl uses internally to avoid sending crazy large requests (1048576 bytes) and instead returns an error.This denial state might remain for as long as the same cookies are kept, match and haven't expired. Due to cookie matching rules, a server on `foo.example.com` can set cookies that also would match for `bar.example.com`, making it it possible for a "sister server" to effectively cause a denial of service for a sibling site on the same second level domain using this method.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32205">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>454ecfc43e95ebb62eca6b8b3ce8eccf</td>
+       <td>CVE-2022-31854</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Codoforum v5.1 was discovered to contain an arbitrary file upload vulnerability via the logo change option in the admin panel.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31854">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3f5a61d142c4906a561e05784df0e052</td>
+       <td>CVE-2015-3207</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Openshift Origin 3 the cookies being set in console have no 'secure', 'HttpOnly' attributes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2015-3207">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>98263a4a57c974b424e5fb73872e4e50</td>
+       <td>CVE-2015-1785</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>In nextgen-galery wordpress plugin before 2.0.77.3 there are two vulnerabilities which can allow an attacker to gain full access over the web application. The vulnerabilities lie in how the application validates user uploaded files and lack of security measures preventing unwanted HTTP requests.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2015-1785">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9185cb6bb1f8af3b59b4d00c3769c2c9</td>
+       <td>CVE-2015-1784</td>
+       <td>2022-07-07 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>In nextgen-galery wordpress plugin before 2.0.77.3 there are two vulnerabilities which can allow an attacker to gain full access over the web application. The vulnerabilities lie in how the application validates user uploaded files and lack of security measures preventing unwanted HTTP requests.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2015-1784">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e1d1e908fdbffef73868f243dd4444f</td>
+       <td>CVE-2022-34007</td>
+       <td>2022-07-07 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>EQS Integrity Line through 2022-07-01 allows a stored XSS via a crafted whistleblower entry.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34007">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>135a0ccc74bbcbba930676afabd4cf52</td>
+       <td>CVE-2022-33996</td>
+       <td>2022-07-07 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Incorrect permission management in Devolutions Server before 2022.2 allows a new user with a preexisting username to inherit the permissions of that previous user.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33996">详情</a></td>
+      </tr>
+
+      <tr>
        <td>9c28ce3ce7528279f51e7ad843252164</td>
        <td>CVE-2022-32567</td>
        <td>2022-07-07 11:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-07-06 18:15:00 <img src="imgs/new.gif" /></td>
        <td>Roxy-wi is an open source web interface for managing Haproxy, Nginx, Apache and Keepalived servers. A vulnerability in Roxy-wi allows a remote, unauthenticated attacker to code execution by sending a specially crafted HTTP request to /app/options.py file. This affects Roxy-wi versions before 6.1.1.0. Users are advised to upgrade. There are no known workarounds for this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31126">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>954a5c460ef198ef761264a847dae15e</td>
-       <td>CVE-2022-31125</td>
-       <td>2022-07-06 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Roxy-wi is an open source web interface for managing Haproxy, Nginx, Apache and Keepalived servers. A vulnerability in Roxy-wi allows a remote, unauthenticated attacker to bypass authentication and access admin functionality by sending a specially crafted HTTP request. This affects Roxywi versions before 6.1.1.0. Users are advised to upgrade. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31125">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>de841f4f7fcd88fc2522d1bdfeb4cb21</td>
-       <td>CVE-2022-31124</td>
-       <td>2022-07-06 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>openssh_key_parser is an open source Python package providing utilities to parse and pack OpenSSH private and public key files. In versions prior to 0.0.6 if a field of a key is shorter than it is declared to be, the parser raises an error with a message containing the raw field value. An attacker able to modify the declared length of a key's sensitive field can thus expose the raw value of that field. Users are advised to upgrade to version 0.0.6, which no longer includes the raw field value in the error message. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31124">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e142d57f070f77e3198af0716df5ef7c</td>
-       <td>CVE-2022-31111</td>
-       <td>2022-07-06 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Frontier is Substrate's Ethereum compatibility layer. In affected versions the truncation done when converting between EVM balance type and Substrate balance type was incorrectly implemented. This leads to possible discrepancy between appeared EVM transfer value and actual Substrate value transferred. It is recommended that an emergency upgrade to be planned and EVM execution temporarily paused in the mean time. The issue is patched in Frontier master branch commit fed5e0a9577c10bea021721e8c2c5c378e16bf66 and polkadot-v0.9.22 branch commit e3e427fa2e5d1200a784679f8015d4774cedc934. This vulnerability affects only EVM internal states, but not Substrate balance states or node. You can temporarily pause EVM execution (by setting up a Substrate `CallFilter` that disables `pallet-evm` and `pallet-ethereum` calls before the patch can be applied.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31111">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0cb3fcc51abc806febcfe742bec8fdbb</td>
-       <td>CVE-2022-34598</td>
-       <td>2022-07-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>The udpserver in H3C Magic R100 V200R004 and V100R005 has the 9034 port opened, allowing attackers to execute arbitrary commands.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34598">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>24ac8ff39386c18d94efe8e0acc5c53d</td>
-       <td>CVE-2022-34597</td>
-       <td>2022-07-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AX1806 v1.0.0.1 was discovered to contain a command injection vulnerability via the function WanParameterSetting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34597">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ffb77158365b43d2e5891528c39e0113</td>
-       <td>CVE-2022-34596</td>
-       <td>2022-07-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AX1803 v1.0.0.1_2890 was discovered to contain a command injection vulnerability via the function WanParameterSetting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c82ee6baf52fcf84e1ef743b417334aa</td>
-       <td>CVE-2022-34595</td>
-       <td>2022-07-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AX1803 v1.0.0.1_2890 was discovered to contain a command injection vulnerability via the function setipv6status.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5713f1bc5cce4acd26afb3f4b419e027</td>
-       <td>CVE-2022-26348</td>
-       <td>2022-07-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Command Centre Server is vulnerable to SQL Injection via Windows Registry settings for date fields on the server. The Windows Registry setting allows an attacker using the Visitor Management Kiosk, an application designed for public use, to invoke an arbitrary SQL query that has been preloaded into the registry of the Windows Server to obtain sensitive information. This issue affects: Gallagher Command Centre 8.60 versions prior to 8.60.1652; 8.50 versions prior to 8.50.2245; 8.40 versions prior to 8.40.2216; 8.30 versions prior to 8.30.1470; version 8.20 and prior versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26348">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb6cb4cabe3a04e1b4f04bbc8471677c</td>
-       <td>CVE-2022-26078</td>
-       <td>2022-07-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Gallagher Controller 6000 is vulnerable to a Denial of Service attack via conflicting ARP packets with a duplicate IP address. This issue affects: Gallagher Gallagher Controller 6000 vCR8.60 versions prior to 220303a; vCR8.50 versions prior to 220303a; vCR8.40 versions prior to 220303a; vCR8.30 versions prior to 220303a.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26078">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bd971167a5a614fdbf243387254dce9b</td>
-       <td>CVE-2022-33738</td>
-       <td>2022-07-06 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>OpenVPN Access Server before 2.11 uses a weak random generator used to create user session token for the web portal</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33738">详情</a></td>
       </tr>
 
      </tbody>
