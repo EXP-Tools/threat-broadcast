@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-07-11 21:26:25 -->
+<!-- RELEASE TIME : 2022-07-11 23:27:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>bd32b94426ba9051390f74c9c298c97d</td>
+       <td>CVE-2022-31080</td>
+       <td>2022-07-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubeEdge is an open source system for extending native containerized application orchestration capabilities to hosts at Edge. Prior to versions 1.11.1, 1.10.2, and 1.9.4, a large response received by the viaduct WSClient can cause a DoS from memory exhaustion. The entire body of the response is being read into memory which could allow an attacker to send a request that returns a response with a large body. The consequence of the exhaustion is that the process which invokes a WSClient will be in a denial of service. The software is affected If users who are authenticated to the edge side connect to `cloudhub` from the edge side through WebSocket protocol. This bug has been fixed in Kubeedge 1.11.1, 1.10.2, and 1.9.4. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31080">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c74b18023f143114906afe20fe06b05e</td>
+       <td>CVE-2022-31079</td>
+       <td>2022-07-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubeEdge is an open source system for extending native containerized application orchestration capabilities to hosts at Edge. Prior to versions 1.11.1, 1.10.2, and 1.9.4, the Cloud Stream server and the Edge Stream server reads the entire message into memory without imposing a limit on the size of this message. An attacker can exploit this by sending a large message to exhaust memory and cause a DoS. The Cloud Stream server and the Edge Stream server are under DoS attack in this case. The consequence of the exhaustion is that the CloudCore and EdgeCore will be in a denial of service. Only an authenticated user can cause this issue. It will be affected only when users enable `cloudStream` module in the config file `cloudcore.yaml` and enable `edgeStream` module in the config file `edgecore.yaml`. This bug has been fixed in Kubeedge 1.11.1, 1.10.2, and 1.9.4. As a workaround, disable cloudStream module in the config file `cloudcore.yaml` and disable edgeStream module in the config file `edgecore.yaml`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31079">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>09bf70a76fc7183ba99459c37e60d405</td>
+       <td>CVE-2022-31078</td>
+       <td>2022-07-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubeEdge is an open source system for extending native containerized application orchestration capabilities to hosts at Edge. Prior to versions 1.11.1, 1.10.2, and 1.9.4, the CloudCore Router does not impose a limit on the size of responses to requests made by the REST handler. An attacker could use this weakness to make a request that will return an HTTP response with a large body and cause DoS of CloudCore. In the HTTP Handler API, the rest handler makes a request to a pre-specified handle. The handle will return an HTTP response that is then read into memory. The consequence of the exhaustion is that CloudCore will be in a denial of service. Only an authenticated user of the cloud can make an attack. It will be affected only when users enable `router` module in the config file `cloudcore.yaml`. This bug has been fixed in Kubeedge 1.11.1, 1.10.2, and 1.9.4. As a workaround, disable the router switch in the config file `cloudcore.yaml`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31078">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0bb6b373c433eb291a372fb68cc7c8aa</td>
+       <td>CVE-2022-31075</td>
+       <td>2022-07-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubeEdge is an open source system for extending native containerized application orchestration capabilities to hosts at Edge. Prior to versions 1.11.1, 1.10.2, and 1.9.4, EdgeCore may be susceptible to a DoS attack on CloudHub if an attacker was to send a well-crafted HTTP request to `/edge.crt`. If an attacker can send a well-crafted HTTP request to CloudHub, and that request has a very large body, that request can crash the HTTP service through a memory exhaustion vector. The request body is being read into memory, and a body that is larger than the available memory can lead to a successful attack. Because the request would have to make it through authorization, only authorized users may perform this attack. The consequence of the exhaustion is that CloudHub will be in denial of service. KubeEdge is affected only when users enable the CloudHub module in the file `cloudcore.yaml`. This bug has been fixed in Kubeedge 1.11.1, 1.10.2, and 1.9.4. As a workaround, disable the CloudHub switch in the config file `cloudcore.yaml`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31075">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>61cda97832cc01c30ec2f44eefef72f7</td>
+       <td>CVE-2022-31140</td>
+       <td>2022-07-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Valinor is a PHP library that helps to map any input into a strongly-typed value object structure. Prior to version 0.12.0, Valinor can use `Throwable#getMessage()` when it should not have permission to do so. This is a problem with cases such as an SQL exception showing an SQL snippet, a database connection exception showing database IP address/username/password, or a timeout detail / out of memory detail. Attackers could use this information for potential data exfiltration, denial of service attacks, enumeration attacks, etc. Version 0.12.0 contains a patch for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31140">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7846c1b549971244489e78f6e235f9f3</td>
+       <td>CVE-2022-31074</td>
+       <td>2022-07-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubeEdge is an open source system for extending native containerized application orchestration capabilities to hosts at Edge. Prior to versions 1.11.1, 1.10.2, and 1.9.4, several endpoints in the Cloud AdmissionController may be susceptible to a DoS attack if an HTTP request containing a very large Body is sent to it. The consequence of the exhaustion is that the Cloud AdmissionController will be in denial of service. This bug has been fixed in Kubeedge 1.11.1, 1.10.2, and 1.9.4. There is currently no known workaround.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31074">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2099a5ea5cd471707606e149fb38d8e1</td>
+       <td>CVE-2022-31073</td>
+       <td>2022-07-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubeEdge is an open source system for extending native containerized application orchestration capabilities to hosts at Edge. Prior to versions 1.11.1, 1.10.2, and 1.9.4, the ServiceBus server on the edge side may be susceptible to a DoS attack if an HTTP request containing a very large Body is sent to it. It is possible for the node to be exhausted of memory. The consequence of the exhaustion is that other services on the node, e.g. other containers, will be unable to allocate memory and thus causing a denial of service. Malicious apps accidentally pulled by users on the host and have the access to send HTTP requests to localhost may make an attack. It will be affected only when users enable the `ServiceBus` module in the config file `edgecore.yaml`. This bug has been fixed in Kubeedge 1.11.1, 1.10.2, and 1.9.4. As a workaround, disable the `ServiceBus` module in the config file `edgecore.yaml`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31073">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76b31c9280f4e4bff1087693042e498a</td>
+       <td>CVE-2020-35169</td>
+       <td>2022-07-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell BSAFE Crypto-C Micro Edition, versions before 4.1.5, and Dell BSAFE Micro Edition Suite,versions before 4.5.2, contain an Improper Input Validation Vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-35169">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3177e49b0fe9391d2284b0b5f9497f89</td>
+       <td>CVE-2020-35168</td>
+       <td>2022-07-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell BSAFE Crypto-C Micro Edition, versions before 4.1.5, and Dell BSAFE Micro Edition Suite,versions before 4.6, contain an Observable Timing Discrepancy Vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-35168">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0f472439beaea7f28a5536ace2ab0eb9</td>
+       <td>CVE-2020-35167</td>
+       <td>2022-07-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell BSAFE Crypto-C Micro Edition, versions before 4.1.5, and Dell BSAFE Micro Edition Suite,versions before 4.6, contain an Observable Timing Discrepancy Vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-35167">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5cba9b85e758d4932740cad35c56b018</td>
        <td>CVE-2022-31139</td>
        <td>2022-07-11 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-07-11 08:15:00 <img src="imgs/new.gif" /></td>
        <td>Business Logic Errors in GitHub repository microweber/microweber prior to 1.2.20.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2368">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6528c65a4abd34f4f1fb0df3940f474d</td>
-       <td>CVE-2022-35416</td>
-       <td>2022-07-11 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>H3C SSL VPN through 2022-07-10 allows wnm/login/login.json svpnlang cookie XSS.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35416">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f7c2362eea9feadf7cfbc79936a393bc</td>
-       <td>CVE-2022-32294</td>
-       <td>2022-07-11 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Zimbra Collaboration Open Source 8.8.15 does not encrypt the initial-login randomly created password (from the "zmprove ca" command). It is visible in cleartext on port UDP 514 (aka the syslog port).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32294">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>08cbc4ef070f1afd2514e60fd61d9630</td>
-       <td>CVE-2022-35414</td>
-       <td>2022-07-11 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>softmmu/physmem.c in QEMU through 7.0.0 can perform an uninitialized read on the translate_fail path, leading to an io_readx or io_writex crash.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35414">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8a28693c4a903df5e7483941b7e7f33e</td>
-       <td>CVE-2022-31588</td>
-       <td>2022-07-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The zippies/testplatform repository through 2016-07-19 on GitHub allows absolute path traversal because the Flask send_file function is used unsafely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31588">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c54fa68f1ddc312521793dddd1ec97b3</td>
-       <td>CVE-2022-31587</td>
-       <td>2022-07-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The yuriyouzhou/KG-fashion-chatbot repository through 2018-05-22 on GitHub allows absolute path traversal because the Flask send_file function is used unsafely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31587">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b6bf95c4cc10bffb74b371ac1977d026</td>
-       <td>CVE-2022-31586</td>
-       <td>2022-07-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The unizar-30226-2019-06/ChangePop-Back repository through 2019-06-04 on GitHub allows absolute path traversal because the Flask send_file function is used unsafely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31586">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1e2946da895592176c9572a038406883</td>
-       <td>CVE-2022-31585</td>
-       <td>2022-07-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The umeshpatil-dev/Home__internet repository through 2020-08-28 on GitHub allows absolute path traversal because the Flask send_file function is used unsafely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31585">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e6badef9edcf9cfcac0c88315da2bf1c</td>
-       <td>CVE-2022-31584</td>
-       <td>2022-07-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The stonethree/s3label repository through 2019-08-14 on GitHub allows absolute path traversal because the Flask send_file function is used unsafely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31584">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1a1d548ec89d14594cd8df56285170de</td>
-       <td>CVE-2022-31583</td>
-       <td>2022-07-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The sravaniboinepelli/AutomatedQuizEval repository through 2020-04-27 on GitHub allows absolute path traversal because the Flask send_file function is used unsafely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31583">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>73868e62862cfb96633d342cd64c883e</td>
-       <td>CVE-2022-31582</td>
-       <td>2022-07-11 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The shaolo1/VideoServer repository through 2019-09-21 on GitHub allows absolute path traversal because the Flask send_file function is used unsafely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31582">详情</a></td>
       </tr>
 
      </tbody>
