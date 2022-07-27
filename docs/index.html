@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-07-26 18:36:54 -->
+<!-- RELEASE TIME : 2022-07-27 02:44:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>93bf2542d7b127db32690651646d19c2</td>
        <td></td>
-       <td>2022-07-25 03:38:49 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 03:38:49</td>
        <td>安全事件周报 (07.18-07.24)</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=7f3650949f8888e0745f1b90a1af90f3">详情</a></td>
       </tr>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>917abb88dae0508a5983a092df284c0d</td>
+       <td>CVE-2022-36129</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>HashiCorp Vault and Vault Enterprise through 2022-07-17 have Incorrect Access Control.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36129">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e3ebc20035deac7f6c2032c4c92bf64e</td>
+       <td>CVE-2022-30276</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Motorola MOSCAD and ACE line of RTUs through 2022-05-02 omit an authentication requirement. They feature IP Gateway modules which allow for interfacing between Motorola Data Link Communication (MDLC) networks (potentially over a variety of serial, RF and/or Ethernet links) and TCP/IP networks. Communication with RTUs behind the gateway is done by means of the proprietary IPGW protocol (5001/TCP). This protocol does not have any authentication features, allowing any attacker capable of communicating with the port in question to invoke (a subset of) desired functionality.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30276">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b08bd146afa69b06b2437991fb49bc0d</td>
+       <td>CVE-2022-30274</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Motorola ACE1000 RTU through 2022-05-02 uses ECB encryption unsafely. It can communicate with an XRT LAN-to-radio gateway by means of an embedded client. Credentials for accessing this gateway are stored after being encrypted with the Tiny Encryption Algorithm (TEA) in ECB mode using a hardcoded key. Similarly, the ACE1000 RTU can route MDLC traffic over Extended Command and Management Protocol (XCMP) and Network Layer (XNL) networks via the MDLC driver. Authentication to the XNL port is protected by TEA in ECB mode using a hardcoded key.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30274">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0d8ab55f72f59feb6b6710b093d948a7</td>
+       <td>CVE-2022-30272</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Motorola ACE1000 RTU through 2022-05-02 mishandles firmware integrity. It utilizes either the STS software suite or ACE1000 Easy Configurator for performing firmware updates. In case of the Easy Configurator, firmware updates are performed through access to the Web UI where file system, kernel, package, bundle, or application images can be installed. Firmware updates for the Front End Processor (FEP) module are performed via access to the SSH interface (22/TCP), where a .hex file image is transferred and a bootloader script invoked. File system, kernel, package, and bundle updates are supplied as RPM (RPM Package Manager) files while FEP updates are supplied as S-rec files. In all cases, firmware images were found to have no authentication (in the form of firmware signing) and only relied on insecure checksums for regular integrity checks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30272">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>239a57188ff88833b15ffd03ba871337</td>
+       <td>CVE-2022-30271</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Motorola ACE1000 RTU through 2022-05-02 ships with a hardcoded SSH private key and initialization scripts (such as /etc/init.d/sshd_service) only generate a new key if no private-key file exists. Thus, this hardcoded key is likely to be used by default.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30271">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>27776f919cc15a40ae5436e329642ab1</td>
+       <td>CVE-2022-30270</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Motorola ACE1000 RTU through 2022-05-02 has default credentials. It exposes an SSH interface on port 22/TCP. This interface is used for remote maintenance and for SFTP file-transfer operations that are part of engineering software functionality. Access to this interface is controlled by 5 preconfigured accounts (root, abuilder, acelogin, cappl, ace), all of which come with default credentials. Although the ACE1000 documentation mentions the root, abuilder and acelogin accounts and instructs users to change the default credentials, the cappl and ace accounts remain undocumented and thus are unlikely to have their credentials changed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30270">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>465a34b473edfd2ccfc56c00f6c9276e</td>
+       <td>CVE-2022-30269</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Motorola ACE1000 RTUs through 2022-05-02 mishandle application integrity. They allow for custom application installation via either STS software, the C toolkit, or the ACE1000 Easy Configurator. In the case of the Easy Configurator, application images (as PLX/DAT/APP/CRC files) are uploaded via the Web UI. In case of the C toolkit, they are transferred and installed using SFTP/SSH. In each case, application images were found to have no authentication (in the form of firmware signing) and only relied on insecure checksums for regular integrity checks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30269">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>05c7a824442f857db212003d4b33ff55</td>
+       <td>CVE-2021-40180</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>In the WeChat application 8.0.10 for Android and iOS, a mini program can obtain sensitive information from a user's address book via wx.searchContacts.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-40180">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d99778ed144a102f15326de3654f2b8</td>
+       <td>CVE-2021-33057</td>
+       <td>2022-07-26 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>The QQ application 8.7.1 for Android and iOS does not enforce the permission requirements (e.g., android.permission.ACCESS_FINE_LOCATION) for determining the device's physical location. An attacker can use qq.createMapContext to create a MapContext object, use MapContext.moveToLocation to move the center of the map to the device's location, and use MapContext.getCenterLocation to get the latitude and longitude of the current map center.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-33057">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45ab1a4a58c4b079ed95fbaf031ec1f4</td>
+       <td>CVE-2022-31207</td>
+       <td>2022-07-26 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Omron SYSMAC Cx product family PLCs (CS series, CJ series, and CP series) through 2022-05-18 lack cryptographic authentication. They utilize the Omron FINS (9600/TCP) protocol for engineering purposes, including downloading projects and control logic to the PLC. This protocol has authentication flaws as reported in FSCT-2022-0057. Control logic is downloaded to PLC volatile memory using the FINS Program Area Read and Program Area Write commands or to non-volatile memory using other commands from where it can be loaded into volatile memory for execution. The logic that is loaded into and executed from the user program area exists in compiled object code form. Upon execution, these object codes are first passed to a dedicated ASIC that determines whether the object code is to be executed by the ASIC or the microprocessor. In the former case, the object code is interpreted by the ASIC whereas in the latter case the object code is passed to the microprocessor for object code interpretation by a ROM interpreter. In the abnormal case where the object code cannot be handled by either, an abnormal condition is triggered and the PLC is halted. The logic that is downloaded to the PLC does not seem to be cryptographically authenticated, thus allowing an attacker to manipulate transmitted object code to the PLC and either execute arbitrary object code commands on the ASIC or on the microprocessor interpreter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31207">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e4c86ffc5fc5edb0c7b978bbad747362</td>
        <td>CVE-2022-1671</td>
        <td>2022-07-26 17:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-07-26 06:15:00 <img src="imgs/new.gif" /></td>
        <td>untangle is a python library to convert XML data to python objects. untangle versions 1.2.0 and earlier improperly restricts XML external entity references. By exploiting this vulnerability, a remote unauthenticated attacker may read the contents of local files.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31471">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c60fda2f2744c0e6f4bce021b1759db</td>
-       <td>CVE-2022-30706</td>
-       <td>2022-07-26 06:15:00 <img src="imgs/new.gif" /></td>
-       <td>Open redirect vulnerability in Booked versions prior to 3.3 allows a remote unauthenticated attacker to redirect a user to an arbitrary web site and conduct a phishing attack by having a user to access a specially crafted URL.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30706">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1fe8408e2dbad18c80da3e59aa313eb0</td>
-       <td>CVE-2022-1042</td>
-       <td>2022-07-26 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Zephyr bluetooth mesh core stack, an out-of-bound write vulnerability can be triggered during provisioning.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1042">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0af08f5f5fd802ba6b555ad580650cf0</td>
-       <td>CVE-2022-1041</td>
-       <td>2022-07-26 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Zephyr bluetooth mesh core stack, an out-of-bound write vulnerability can be triggered during provisioning.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1041">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5e965e797f225e929821856124fc82d5</td>
-       <td>CVE-2020-36290</td>
-       <td>2022-07-26 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Livesearch macro in Confluence Server and Data Center before version 7.4.5, from version 7.5.0 before 7.6.3, and from version 7.7.0 before version 7.7.4 allows remote attackers with permission to edit a page or blog to inject arbitrary HTML or JavaScript via a cross site scripting (XSS) vulnerability in the page excerpt functionality.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36290">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8b8f20ed72401a31ed4fd9b1bad5f3ed</td>
-       <td>CVE-2022-22686</td>
-       <td>2022-07-26 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in webapi component in Synology Calendar before 2.3.4-0631 allows remote authenticated users to hijack the authentication of administrators via unspecified vectors.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22686">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ea22ca19575f1f95a931093027d2fb0c</td>
-       <td>CVE-2022-34749</td>
-       <td>2022-07-25 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>In mistune through 2.0.2, support of inline markup is implemented by using regular expressions that can involve a high amount of backtracking on certain edge cases. This behavior is commonly named catastrophic backtracking.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34749">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>47532c4665ac4b2dd249a5e78f98bc55</td>
-       <td>CVE-2022-34577</td>
-       <td>2022-07-25 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in adm.cgi of WAVLINK WN535 G3 M35G3R.V5030.180927 allows attackers to execute arbitrary code via a crafted POST request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34577">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c15a046fbbcc5f694adfbb0d92e91adc</td>
-       <td>CVE-2022-34576</td>
-       <td>2022-07-25 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in /cgi-bin/ExportAllSettings.sh of WAVLINK WN535 G3 M35G3R.V5030.180927 allows attackers to execute arbitrary code via a crafted POST request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34576">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e761e44f27e6288228a9e999cc5ea8d</td>
-       <td>CVE-2022-34575</td>
-       <td>2022-07-25 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An access control issue in Wavlink WiFi-Repeater RPTA2-77W.M4300.01.GD.2017Sep19 allows attackers to obtain the key information of the device via accessing fctest.shtml.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34575">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2fa015eefd9755ac3ba4e10b547de90d</td>
-       <td>CVE-2022-34574</td>
-       <td>2022-07-25 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An access control issue in Wavlink WiFi-Repeater RPTA2-77W.M4300.01.GD.2017Sep19 allows attackers to obtain the key information of the device via accessing Tftpd32.ini.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34574">详情</a></td>
       </tr>
 
      </tbody>
@@ -798,7 +798,7 @@
       <tr>
        <td>1b638aecc1b81ad78ccddee5b5501a2d</td>
        <td>CNNVD-202207-2396 (CVE-2022-34572)</td>
-       <td>2022-07-25 13:01:34 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:34</td>
        <td>WAVLINK WiFi-Repeater 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2396">详情</a></td>
       </tr>
@@ -806,7 +806,7 @@
       <tr>
        <td>5e7c7592fc88ea1d1dd13eb2a37f6a49</td>
        <td>CNNVD-202207-2397 (CVE-2022-34570)</td>
-       <td>2022-07-25 13:01:32 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:32</td>
        <td>WAVLINK WN579 X3 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2397">详情</a></td>
       </tr>
@@ -814,7 +814,7 @@
       <tr>
        <td>9187dc8a5a05119ddbccaf9115ccceb9</td>
        <td>CNNVD-202207-2398 (CVE-2022-34575)</td>
-       <td>2022-07-25 13:01:29 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:29</td>
        <td>WAVLINK WiFi-Repeater 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2398">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>a41c5206cf9cb6232fcf461cb881c5be</td>
        <td>CNNVD-202207-2399 (CVE-2022-34571)</td>
-       <td>2022-07-25 13:01:27 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:27</td>
        <td>WAVLINK WiFi-Repeater 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2399">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>f4ec02ecfbeafcfbdf8eb11ea37bbf74</td>
        <td>CNNVD-202207-2400 (CVE-2022-2403)</td>
-       <td>2022-07-25 13:01:24 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:24</td>
        <td>Red Hat OpenShift Container Platform 信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2400">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>bc2e02d3e452e92f74e1fb2029f0248a</td>
        <td>CNNVD-202207-2401 (CVE-2022-34573)</td>
-       <td>2022-07-25 13:01:22 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:22</td>
        <td>WAVLINK WiFi-Repeater 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2401">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>e8f1d4ab43becba944ecf4175e207096</td>
        <td>CNNVD-202207-2402 (CVE-2022-34576)</td>
-       <td>2022-07-25 13:01:19 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:19</td>
        <td>WAVLINK WN535 G3 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2402">详情</a></td>
       </tr>
@@ -854,7 +854,7 @@
       <tr>
        <td>f7cd98ff8fb869defd338e315c0731e4</td>
        <td>CNNVD-202207-2403 (CVE-2022-34577)</td>
-       <td>2022-07-25 13:01:17 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:17</td>
        <td>WAVLINK WN535 G3 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2403">详情</a></td>
       </tr>
@@ -862,7 +862,7 @@
       <tr>
        <td>60f216253654e6dac5457459b6ec5982</td>
        <td>CNNVD-202207-2404 (CVE-2022-34574)</td>
-       <td>2022-07-25 13:01:14 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:14</td>
        <td>WAVLINK WiFi-Repeater 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2404">详情</a></td>
       </tr>
@@ -870,7 +870,7 @@
       <tr>
        <td>f6fdaa787ba0bf42a1776c77278b1e29</td>
        <td>CNNVD-202207-2405 (CVE-2022-34749)</td>
-       <td>2022-07-25 13:01:12 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 13:01:12</td>
        <td>mistune 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202207-2405">详情</a></td>
       </tr>
@@ -1726,7 +1726,7 @@
       <tr>
        <td>76176df6fcb2b04e1cb0d1b0145ba13a</td>
        <td>CVE-2022-21432</td>
-       <td>2022-07-25 20:14:25 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:14:25</td>
        <td>Oracle Database Server 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1f6e514473f248aba7ce76d406efb1d2">详情</a></td>
       </tr>
@@ -1734,7 +1734,7 @@
       <tr>
        <td>45b5cd4586bf1d6ca0dc94e99f79d1e0</td>
        <td>CVE-2022-21455</td>
-       <td>2022-07-25 20:14:21 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:14:21</td>
        <td>Oracle MySQL 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=759aeff9c8184cdfbbf66d1f32bedd13">详情</a></td>
       </tr>
@@ -1742,7 +1742,7 @@
       <tr>
        <td>1aa61fa7393888428756fd900e5d2271</td>
        <td>CVE-2022-21429</td>
-       <td>2022-07-25 20:14:16 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:14:16</td>
        <td>Oracle Communications Billing and Revenue Management 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1829a322b75c403192867c5494001678">详情</a></td>
       </tr>
@@ -1750,7 +1750,7 @@
       <tr>
        <td>010f6dffd0e8a8be7f4da6807d37e918</td>
        <td>CVE-2022-21509</td>
-       <td>2022-07-25 20:14:07 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:14:07</td>
        <td>Oracle MySQL 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=af76a620f2e14db1956e7f8ee10ebc19">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>e5c78c8e0ca1d7259f21f17c3008c627</td>
        <td>CVE-2022-21516</td>
-       <td>2022-07-25 20:14:02 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:14:02</td>
        <td>Oracle Enterprise Manager Base Platform 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=c4398ce464e047b694c2b83f199210d6">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>74b7c0e0f28e3d5cf39e3d66ca0a9334</td>
        <td>CVE-2022-21515</td>
-       <td>2022-07-25 20:13:58 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:13:58</td>
        <td>Oracle MySQL 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=db73d40b529a4bb596410f57ed1dda0a">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>3a06f3d8e42f0b9abff5a615e4f2dada</td>
        <td>CVE-2022-21520</td>
-       <td>2022-07-25 20:13:53 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:13:53</td>
        <td>Oracle PeopleSoft Enterprise PeopleTools 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7a140489ebf34fb790f123582432e4f7">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>64be3b19cce6e8ddc115fec5757a3b41</td>
        <td>CVE-2022-21519</td>
-       <td>2022-07-25 20:13:48 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:13:48</td>
        <td>Oracle MySQL 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1849f484f01c44b3b507d32cc9f13350">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>d4c7b3a36bb407bc3e7634a2e392e85e</td>
        <td>CVE-2022-21524</td>
-       <td>2022-07-25 20:13:43 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:13:43</td>
        <td>Oracle Solaris 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ae110b605d314ef68e980c743962a75f">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>5a092c59d72a4c3e9aee02fd1592370f</td>
        <td>CVE-2022-21522</td>
-       <td>2022-07-25 20:13:39 <img src="imgs/new.gif" /></td>
+       <td>2022-07-25 20:13:39</td>
        <td>Oracle MySQL 输入验证错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=941e3a0d491e4be283081fded87ad916">详情</a></td>
       </tr>
