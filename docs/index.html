@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-01 20:34:16 -->
+<!-- RELEASE TIME : 2022-08-01 21:28:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5cb6b1fdec3684af620597c42f68dbe1</td>
+       <td>CVE-2022-31178</td>
+       <td>2022-08-01 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>eLabFTW is an electronic lab notebook manager for research teams. A vulnerability was discovered which allows a logged in user to read a template without being authorized to do so. This vulnerability has been patched in 4.3.4. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31178">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4e82fea42baa5ec8b17cf0b44e4d0dc0</td>
+       <td>CVE-2022-31177</td>
+       <td>2022-08-01 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Flask-AppBuilder is an application development framework built on top of Flask python framework. In versions prior to 4.1.3 an authenticated Admin user could query other users by their salted and hashed passwords strings. These filters could be made by using partial hashed password strings. The response would not include the hashed passwords, but an attacker could infer partial password hashes and their respective users. This issue has been fixed in version 4.1.3. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31177">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9649b049fe66c9160bbd4af1ab9d9b68</td>
+       <td>CVE-2022-31173</td>
+       <td>2022-08-01 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Juniper is a GraphQL server library for Rust. Affected versions of Juniper are vulnerable to uncontrolled recursion resulting in a program crash. This issue has been addressed in version 0.15.10. Users are advised to upgrade. Users unable to upgrade should limit the recursion depth manually.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31173">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>890153a68ae3118beb2938ad691e0014</td>
+       <td>CVE-2022-31155</td>
+       <td>2022-08-01 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sourcegraph is an opensource code search and navigation engine. In Sourcegraph versions before 3.41.0, it is possible for an attacker to delete other usersâ€™ saved searches due to a bug in the authorization check. The vulnerability does not allow the reading of other usersâ€™ saved searches, only overwriting them with attacker-controlled searches. The issue is patched in Sourcegraph version 3.41.0. There is no workaround for this issue and updating to a secure version is highly recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31155">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ba7c300407638e661369eb740baef5cb</td>
+       <td>CVE-2022-31154</td>
+       <td>2022-08-01 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sourcegraph is an opensource code search and navigation engine. It is possible for an authenticated Sourcegraph user to edit the Code Monitors owned by any other Sourcegraph user. This includes being able to edit both the trigger and the action of the monitor in question. An attacker is not able to read contents of existing code monitors, only override the data. The issue is fixed in Sourcegraph 3.42. There are no workaround for the issue and patching is highly recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31154">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ec7583f7260408d9ffe2d53f10e0595d</td>
        <td>CVE-2022-31148</td>
        <td>2022-08-01 17:15:00 <img src="imgs/new.gif" /></td>
@@ -305,6 +345,14 @@
        <td>2022-08-01 17:15:00 <img src="imgs/new.gif" /></td>
        <td>laminas-diactoros is a PHP package containing implementations of the PSR-7 HTTP message interfaces and PSR-17 HTTP message factory interfaces. Applications that use Diactoros, and are either not behind a proxy, or can be accessed via untrusted proxies, can potentially have the host, protocol, and/or port of a `Laminas\Diactoros\Uri` instance associated with the incoming server request modified to reflect values from `X-Forwarded-*` headers. Such changes can potentially lead to XSS attacks (if a fully-qualified URL is used in links) and/or URL poisoning. Since the `X-Forwarded-*` headers do have valid use cases, particularly in clustered environments using a load balancer, the library offers mitigation measures only in the v2 releases, as doing otherwise would break these use cases immediately. Users of v2 releases from 2.11.1 can provide an additional argument to `Laminas\Diactoros\ServerRequestFactory::fromGlobals()` in the form of a `Laminas\Diactoros\RequestFilter\RequestFilterInterface` instance, including the shipped `Laminas\Diactoros\RequestFilter\NoOpRequestFilter` implementation which ignores the `X-Forwarded-*` headers. Starting in version 3.0, the library will reverse behavior to use the `NoOpRequestFilter` by default, and require users to opt-in to `X-Forwarded-*` header usage via a configured `Laminas\Diactoros\RequestFilter\LegacyXForwardedHeaderFilter` instance. Users are advised to upgrade to version 2.11.1 or later to resolve this issue. Users unable to upgrade may configure web servers to reject `X-Forwarded-*` headers at the web server level.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31109">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f7c03d7f36cbd02324f9f0944485808e</td>
+       <td>CVE-2022-31148</td>
+       <td>2022-08-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Shopware is an open source e-commerce software. In versions from 5.7.0 a persistent cross site scripting (XSS) vulnerability exists in the customer module. Users are recommend to update to the current version 5.7.14. You can get the update to 5.7.14 regularly via the Auto-Updater or directly via the download overview. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31148">详情</a></td>
       </tr>
 
       <tr>
@@ -473,54 +521,6 @@
        <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
        <td>The YaySMTP WordPress plugin before 2.2.1 does not have capability check in an AJAX action, allowing any logged in users, such as subscriber to view the Logs of the plugin</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2369">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>72164c4b84a39b72a31807209c9020d8</td>
-       <td>CVE-2022-2328</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Flexi Quote Rotator WordPress plugin through 0.9.4 does not sanitise and escape its settings, allowing high privilege users such as admin to perform Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2328">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>44b7f958cd6703d672b82e9eb5b825fc</td>
-       <td>CVE-2022-2325</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Invitation Based Registrations WordPress plugin through 2.2.84 does not sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks when the unfiltered_html capability is disallowed (for example in multisite setup)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2325">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d553280c36a614bdaeb00f7935861b48</td>
-       <td>CVE-2022-2317</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Simple Membership WordPress plugin before 4.1.3 allows user to change their membership at the registration stage due to insufficient checking of a user supplied parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2317">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69bd959121b38b73cea01ea9ea472d9f</td>
-       <td>CVE-2022-2305</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The WordPress Popup WordPress plugin through 1.9.3.8 does not sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks when the unfiltered_html capability is disallowed (for example in multisite setup)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2305">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>314eab6f2ff26a7890c5c82242f64986</td>
-       <td>CVE-2022-2278</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Featured Image from URL (FIFU) WordPress plugin before 4.0.1 does not validate, sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks when the unfiltered_html capability is disallowed (for example in multisite setup)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2278">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6e99b1c72889ae22225895204f7e847</td>
-       <td>CVE-2022-36799</td>
-       <td>2022-08-01 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>This issue exists to document that a security improvement in the way that Jira Server and Data Center use templates has been implemented. Affected versions of Atlassian Jira Server and Data Center allowed remote attackers with system administrator permissions to execute arbitrary code via Template Injection leading to Remote Code Execution (RCE) in the Email Templates feature. In this case the security improvement was to protect against using the XStream library to be able to execute arbitrary code in velocity templates. The affected versions are before version 8.13.19, from version 8.14.0 before 8.20.7, and from version 8.21.0 before 8.22.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36799">详情</a></td>
       </tr>
 
      </tbody>
