@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-01 22:32:03 -->
+<!-- RELEASE TIME : 2022-08-01 23:32:53 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>633cfa46695dd545ab64857e756cc060</td>
+       <td>CVE-2022-35916</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenZeppelin Contracts is a library for secure smart contract development. Contracts using the cross chain utilities for Arbitrum L2, `CrossChainEnabledArbitrumL2` or `LibArbitrumL2`, will classify direct interactions of externally owned accounts (EOAs) as cross chain calls, even though they are not started on L1. This issue has been patched in v4.7.2. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35916">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9cd04322b1097f4c4f2d6f09f2bb50ea</td>
+       <td>CVE-2022-35915</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenZeppelin Contracts is a library for secure smart contract development. The target contract of an EIP-165 `supportsInterface` query can cause unbounded gas consumption by returning a lot of data, while it is generally assumed that this operation has a bounded cost. The issue has been fixed in v4.7.2. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35915">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>671f9033a4461014262f70e027b7b860</td>
+       <td>CVE-2022-31198</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenZeppelin Contracts is a library for secure smart contract development. This issue concerns instances of Governor that use the module `GovernorVotesQuorumFraction`, a mechanism that determines quorum requirements as a percentage of the voting token's total supply. In affected instances, when a proposal is passed to lower the quorum requirements, past proposals may become executable if they had been defeated only due to lack of quorum, and the number of votes it received meets the new quorum requirement. Analysis of instances on chain found only one proposal that met this condition, and we are actively monitoring for new occurrences of this particular issue. This issue has been patched in v4.7.2. Users are advised to upgrade. Users unable to upgrade should consider avoiding lowering quorum requirements if a past proposal was defeated for lack of quorum.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31198">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>beba4f254d624466426376efd7af91a2</td>
+       <td>CVE-2022-31195</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>DSpace open source software is a repository application which provides durable access to digital resources. In affected versions the ItemImportServiceImpl is vulnerable to a path traversal vulnerability. This means a malicious SAF (simple archive format) package could cause a file/directory to be created anywhere the Tomcat/DSpace user can write to on the server.  However, this path traversal vulnerability is only possible by a user with special privileges (either Administrators or someone with command-line access to the server).  This vulnerability impacts the XMLUI, JSPUI and command-line. Users are advised to upgrade. As a basic workaround, users may block all access to the following URL paths: If you are using the XMLUI, block all access to /admin/batchimport path (this is the URL of the Admin Batch Import tool). Keep in mind, if your site uses the path "/xmlui", then you'd need to block access to /xmlui/admin/batchimport. If you are using the JSPUI, block all access to /dspace-admin/batchimport path (this is the URL of the Admin Batch Import tool). Keep in mind, if your site uses the path "/jspui", then you'd need to block access to /jspui/dspace-admin/batchimport. Keep in mind, only an Administrative user or a user with command-line access to the server is able to import/upload SAF packages. Therefore, assuming those users do not blindly upload untrusted SAF packages, then it is unlikely your site could be impacted by this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31195">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>222caec9fb1328d915749cda2fe57cb8</td>
+       <td>CVE-2022-31194</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>DSpace open source software is a repository application which provides durable access to digital resources. dspace-jspui is a UI component for DSpace. The JSPUI resumable upload implementations in SubmissionController and FileUploadRequest are vulnerable to multiple path traversal attacks, allowing an attacker to create files/directories anywhere on the server writable by the Tomcat/DSpace user, by modifying some request parameters during submission. This path traversal can only be executed by a user with special privileges (submitter rights). This vulnerability only impacts the JSPUI. Users are advised to upgrade. There are no known workarounds. However, this vulnerability cannot be exploited by an anonymous user or a basic user. The user must first have submitter privileges to at least one Collection and be able to determine how to modify the request parameters to exploit the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31194">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>74df8e7eb38aed2af003d65991fef980</td>
+       <td>CVE-2022-31193</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>DSpace open source software is a repository application which provides durable access to digital resources. dspace-jspui is a UI component for DSpace. The JSPUI controlled vocabulary servlet is vulnerable to an open redirect attack, where an attacker can craft a malicious URL that looks like a legitimate DSpace/repository URL.  When that URL is clicked by the target, it redirects them to a site of the attacker's choice. This issue has been patched in versions 5.11 and 6.4. Users are advised to upgrade. There are no known workaround for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31193">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>08e287c9de67a8939f6913c3eae9c5db</td>
+       <td>CVE-2022-31192</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>DSpace open source software is a repository application which provides durable access to digital resources. dspace-jspui is a UI component for DSpace. The JSPUI "Request a Copy" feature does not properly escape values submitted and stored from the "Request a Copy" form.  This means that item requests could be vulnerable to XSS attacks. This vulnerability only impacts the JSPUI. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31192">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6943d8e6d088d84fd788295c69f05035</td>
+       <td>CVE-2022-31191</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>DSpace open source software is a repository application which provides durable access to digital resources. dspace-jspui is a UI component for DSpace. The JSPUI spellcheck "Did you mean" HTML escapes the data-spell attribute in the link, but not the actual displayed text.  Similarly, the JSPUI autocomplete HTML does not properly escape text passed to it. Both are vulnerable to XSS.  This vulnerability only impacts the JSPUI. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31191">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>25292bc1ba190c6fd0b4fa6fdbf58a4e</td>
+       <td>CVE-2022-31189</td>
+       <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>DSpace open source software is a repository application which provides durable access to digital resources. dspace-jspui is a UI component for DSpace. When an "Internal System Error" occurs in the JSPUI, then entire exception (including stack trace) is available. Information in this stacktrace may be useful to an attacker in launching a more sophisticated attack. This vulnerability only impacts the JSPUI. This issue has been fixed in version 6.4. users are advised to upgrade. Users unable to upgrade should disable the display of error messages in their internal.jsp file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31189">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d668af511a6f99b3711807025925c58d</td>
+       <td>CVE-2022-35118</td>
+       <td>2022-08-01 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>PyroCMS v3.9 was discovered to contain multiple cross-site scripting (XSS) vulnerabilities.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35118">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5cb6b1fdec3684af620597c42f68dbe1</td>
        <td>CVE-2022-31178</td>
        <td>2022-08-01 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
        <td>Improper Authorization in GitHub repository kromitgmbh/titra prior to 0.79.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aff8eea9ac0d5605540bbff39ba64756</td>
-       <td>CVE-2022-2589</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site Scripting (XSS) - Reflected in GitHub repository beancount/fava prior to 1.22.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2589">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>573b1472d01ce4c5453fa7fc1ee0a1e2</td>
-       <td>CVE-2022-2581</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Out-of-bounds Read in GitHub repository vim/vim prior to 9.0.0104.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2581">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>805d6c4dce5ee152748528d4cc91cb68</td>
-       <td>CVE-2022-2580</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Heap-based Buffer Overflow in GitHub repository vim/vim prior to 9.0.0102.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2580">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>497aad7aa6bff8e1f74072d4e213c36b</td>
-       <td>CVE-2022-2571</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Heap-based Buffer Overflow in GitHub repository vim/vim prior to 9.0.0101.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2571">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4ac568c83e418abcae8f0184210752b5</td>
-       <td>CVE-2022-36343</td>
-       <td>2022-08-01 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Authenticated (author or higher user role) Stored Cross-Site Scripting (XSS) vulnerability in ideasToCode Enable SVG, WebP & ICO Upload plugin <= 1.0.1 at WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36343">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d89470d1919d880b5be4d949ff5c486</td>
-       <td>CVE-2022-26310</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Pandora FMS v7.0NG.760 and below allows an improper authorization in User Management where any authenticated user with access to the User Management module could create, modify or delete any user with full admin privilege. The impact could lead to a vertical privilege escalation to access the privileges of a higher-level user or typically an admin user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26310">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee58213f948a20a3d5ad3b630595c0b0</td>
-       <td>CVE-2022-26309</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Pandora FMS v7.0NG.759 allows Cross-Site Request Forgery in Bulk operation (User operation) resulting in elevation of privilege to Administrator group.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26309">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>62230ea4d4bda3afa619c717a3cd6d5d</td>
-       <td>CVE-2022-26308</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Pandora FMS v7.0NG.760 and below allows an improper access control in Configuration (Credential store) where a user with the role of Operator (Write) could create, delete, view existing keys which are outside the intended role.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26308">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d028b5f39088dc7e60295478ad13186</td>
-       <td>CVE-2022-2370</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The YaySMTP WordPress plugin before 2.2.1 does not have capability check before displaying the Mailer Credentials in JS code for the settings, allowing any authenticated users, such as subscriber to retrieve them</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2370">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>717b7b0a77fe47abefe4227623f7dbf9</td>
-       <td>CVE-2022-2369</td>
-       <td>2022-08-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The YaySMTP WordPress plugin before 2.2.1 does not have capability check in an AJAX action, allowing any logged in users, such as subscriber to view the Logs of the plugin</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2369">详情</a></td>
       </tr>
 
      </tbody>
