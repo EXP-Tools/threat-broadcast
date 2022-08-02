@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-01 23:32:53 -->
+<!-- RELEASE TIME : 2022-08-02 02:51:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>453f2671ce02514c3547cec75d7b4bd4</td>
+       <td>CVE-2022-37315</td>
+       <td>2022-08-01 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>graphql-go (aka GraphQL for Go) through 0.8.0 has infinite recursion in the type definition parser.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37315">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d2ec1381a8b6a8f0bb0acf3ed72fa603</td>
+       <td>CVE-2022-35922</td>
+       <td>2022-08-01 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Rust-WebSocket is a WebSocket (RFC6455) library written in Rust. In versions prior to 0.26.5 untrusted websocket connections can cause an out-of-memory (OOM) process abort in a client or a server. The root cause of the issue is during dataframe parsing. Affected versions would allocate a buffer based on the declared dataframe size, which may come from an untrusted source. When `Vec::with_capacity` fails to allocate, the default Rust allocator will abort the current process, killing all threads. This affects only sync (non-Tokio) implementation. Async version also does not limit memory, but does not use `with_capacity`, so DoS can happen only when bytes for oversized dataframe or message actually got delivered by the attacker. The crashes are fixed in version 0.26.5 by imposing default dataframe size limits. Affected users are advised to update to this version. Users unable to upgrade are advised to filter websocket traffic externally or to only accept trusted traffic.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35922">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cbd6a49509098e073043352c52398c8b</td>
+       <td>CVE-2022-35921</td>
+       <td>2022-08-01 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>fof/byobu is a private discussions extension for Flarum forum. Affected versions were found to not respect private discussion disablement by users. Users of Byobu should update the extension to version 1.1.7, where this has been patched. Users of Byobu with Flarum 1.0 or 1.1 should upgrade to Flarum 1.2 or later, or evaluate the impact this issue has on your forum's users and choose to disable the extension if needed. There are no workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35921">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>53e6708344c02e549ddfaf61cdb75e3d</td>
+       <td>CVE-2022-35920</td>
+       <td>2022-08-01 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sanic is an opensource python web server/framework. Affected versions of sanic allow access to lateral directories when using `app.static` if using encoded `%2F` URLs. Parent directory traversal is not impacted. Users are advised to upgrade. There is no known workaround for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35920">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>15293964fa3441c684cbb9ea7535fd29</td>
+       <td>CVE-2022-35919</td>
+       <td>2022-08-01 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>MinIO is a High Performance Object Storage released under GNU Affero General Public License v3.0. In affected versions all 'admin' users authorized for `admin:ServerUpdate` can selectively trigger an error that in response, returns the content of the path requested. Any normal OS system would allow access to contents at any arbitrary paths that are readable by MinIO process. Users are advised to upgrade. Users unable to upgrade may disable ServerUpdate API by denying the `admin:ServerUpdate` action for your admin users via IAM policies.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35919">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>424ddcaef12e77400b5affa20fa77d3f</td>
+       <td>CVE-2022-35918</td>
+       <td>2022-08-01 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Streamlit is a data oriented application development framework for python. Users hosting Streamlit app(s) that use custom components are vulnerable to a directory traversal attack that could leak data from their web server file-system such as: server logs, world readable files, and potentially other sensitive information. An attacker can craft a malicious URL with file paths and the streamlit server would process that URL and return the contents of that file or overwrite existing files on the web-server. This issue has been resolved in version 1.11.1. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35918">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cf4674a493da42641a2aa9fdd199914b</td>
+       <td>CVE-2022-35917</td>
+       <td>2022-08-01 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Solana Pay is a protocol and set of reference implementations that enable developers to incorporate decentralized payments into their apps and services. When a Solana Pay transaction is located using a reference key, it may be checked to represent a transfer of the desired amount to the recipient, using the supplied `validateTransfer` function. An edge case regarding this mechanism could cause the validation logic to validate multiple transfers. This issue has been patched as of version `0.2.1`. Users of the Solana Pay SDK should upgrade to it. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35917">详情</a></td>
+      </tr>
+
+      <tr>
        <td>633cfa46695dd545ab64857e756cc060</td>
        <td>CVE-2022-35916</td>
        <td>2022-08-01 21:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2022-08-01 16:15:00 <img src="imgs/new.gif" /></td>
        <td>IBM CICS TX 11.1 could allow a remote attacker to hijack the clicking action of the victim. By persuading a victim to visit a malicious Web site, a remote attacker could exploit this vulnerability to hijack the victim's click actions and possibly launch further attacks against the victim. IBM X-Force ID: 229332.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34162">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ce2fce2d151508007dad09e31e685340</td>
-       <td>CVE-2022-34161</td>
-       <td>2022-08-01 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM CICS TX 11.1 is vulnerable to cross-site request forgery which could allow an attacker to execute malicious and unauthorized actions transmitted from a user that the website trusts. IBM X-Force ID: 229331.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34161">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>042cbe4e3aed2577379e49d5539d53c0</td>
-       <td>CVE-2022-33955</td>
-       <td>2022-08-01 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM CICS TX 11.1 could allow allow an attacker with physical access to the system to execute code due using a back and refresh attack. IBM X-Force ID: 229312.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33955">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a20f5945db2e91263a2e1737736d035</td>
-       <td>CVE-2022-30699</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>NLnet Labs Unbound, up to and including version 1.16.1, is vulnerable to a novel type of the "ghost domain names" attack. The vulnerability works by targeting an Unbound instance. Unbound is queried for a rogue domain name when the cached delegation information is about to expire. The rogue nameserver delays the response so that the cached delegation information is expired. Upon receiving the delayed answer containing the delegation information, Unbound overwrites the now expired entries. This action can be repeated when the delegation information is about to expire making the rogue delegation information ever-updating. From version 1.16.2 on, Unbound stores the start time for a query and uses that to decide if the cached delegation information can be overwritten.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30699">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8101f1e212522ac50823946ce944adb5</td>
-       <td>CVE-2022-30698</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>NLnet Labs Unbound, up to and including version 1.16.1 is vulnerable to a novel type of the "ghost domain names" attack. The vulnerability works by targeting an Unbound instance. Unbound is queried for a subdomain of a rogue domain name. The rogue nameserver returns delegation information for the subdomain that updates Unbound's delegation cache. This action can be repeated before expiry of the delegation information by querying Unbound for a second level subdomain which the rogue nameserver provides new delegation information. Since Unbound is a child-centric resolver, the ever-updating child delegation information can keep a rogue domain name resolvable long after revocation. From version 1.16.2 on, Unbound checks the validity of parent delegation records before using cached delegation information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30698">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>124720c927e6cebffbec6c1b8a158ffc</td>
-       <td>CVE-2022-2598</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Undefined Behavior for Input to API in GitHub repository vim/vim prior to 9.0.0100.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2598">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2405739238ff7da78d576843612e8a63</td>
-       <td>CVE-2022-2596</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Denial of Service in GitHub repository node-fetch/node-fetch prior to 3.2.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>280965b2fb74cb006f73cb3b0ade1897</td>
-       <td>CVE-2022-2595</td>
-       <td>2022-08-01 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Authorization in GitHub repository kromitgmbh/titra prior to 0.79.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2595">详情</a></td>
       </tr>
 
      </tbody>
@@ -1750,7 +1750,7 @@
       <tr>
        <td>2afa9adc814bba9514d737dacd7bd6cc</td>
        <td>CVE-2021-33438</td>
-       <td>2022-07-31 20:36:25 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:36:25</td>
        <td>Cesanta MJS 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=270e1123af474e29a419669faae5be23">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>da52e11b6a1dcafb46b62ed713cbde84</td>
        <td>CVE-2021-33437</td>
-       <td>2022-07-31 20:36:20 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:36:20</td>
        <td>Cesanta MJS 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=66e9b78654d04727b3c671ba28e68581">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>bafb6a40496fed891e96628e2eb2b06c</td>
        <td>CVE-2021-33441</td>
-       <td>2022-07-31 20:36:15 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:36:15</td>
        <td>Cesanta MJS 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=9bd7a111fa004be9a36e6864d054fd05">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>73b5e4b56a91ba7025e230bf88363fc2</td>
        <td>CVE-2021-33439</td>
-       <td>2022-07-31 20:36:11 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:36:11</td>
        <td>Cesanta MJS 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=53c5050582764e898a082e8dde7b2760">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>a513c51085b7c86bd3732d1d6b88c9f1</td>
        <td>CVE-2021-33440</td>
-       <td>2022-07-31 20:36:06 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:36:06</td>
        <td>Cesanta MJS 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=3d4787cb62674b5fbab41d6c3082844e">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>3f19ec07ea137ac6ec1a69dc431138de</td>
        <td>CVE-2021-33444</td>
-       <td>2022-07-31 20:36:01 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:36:01</td>
        <td>Cesanta MJS 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1736a262a39a46ffb4e21ddf5a69c9aa">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>9d52237fb36b29f71c1767b703a76bee</td>
        <td>CVE-2021-33442</td>
-       <td>2022-07-31 20:35:56 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:35:56</td>
        <td>Cesanta MJS 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=3b7f3e7b62f54cf69319eabfc2ea9df2">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>0f652bbf1e607b7a0d24c249aba96912</td>
        <td>CVE-2021-33443</td>
-       <td>2022-07-31 20:35:51 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:35:51</td>
        <td>Cesanta MJS 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5485bc4df8a44a498c81bec6fca366a5">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>9b6ae309eaf628519cd49cead2f91509</td>
        <td>CVE-2021-33447</td>
-       <td>2022-07-31 20:35:47 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:35:47</td>
        <td>Cesanta MJS 代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=134f0e093f3e44c496a9a3c1ce28bcfa">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>df03238824c1692b287fb01eb263ba0b</td>
        <td>CVE-2021-33445</td>
-       <td>2022-07-31 20:35:42 <img src="imgs/new.gif" /></td>
+       <td>2022-07-31 20:35:42</td>
        <td>Cesanta MJS代码问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=0356d1ed1f5b421e970581fa2b09a88a">详情</a></td>
       </tr>
@@ -2276,6 +2276,14 @@
       </tr>
 
       <tr>
+       <td>f8ac5fc2f4eb24392f9a9205435a445b</td>
+       <td>CVE-2022-2225</td>
+       <td>2022-07-26 12:15:08 </td>
+       <td>By using warp-cli subcommands (disable-ethernet, disable-wifi), it was possible for a user without admin privileges to bypass configured Zero Trust security policies (e.g. Secure Web Gateway policies) and features such as 'Lock WARP switch'.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2225">详情</a></td>
+      </tr>
+
+      <tr>
        <td>92dab99f0eebed99e982a2d1fc5c93b6</td>
        <td>CVE-2022-22686</td>
        <td>2022-07-26 02:15:07 </td>
@@ -2417,14 +2425,6 @@
        <td>2022-07-23 00:15:09 </td>
        <td>Inappropriate implementation in Resource Timing in Google Chrome prior to 100.0.4896.60 allowed a remote attacker to leak cross-origin data via a crafted HTML page.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-1146">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>208781a229873d65001c75e41d3dbd7e</td>
-       <td>CVE-2022-1145</td>
-       <td>2022-07-23 00:15:09 </td>
-       <td>Use after free in Extensions in Google Chrome prior to 100.0.4896.60 allowed an attacker who convinced a user to install a malicious extension to potentially exploit heap corruption via specific user interaction and profile destruction.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-1145">详情</a></td>
       </tr>
 
      </tbody>
