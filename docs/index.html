@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-02 19:25:17 -->
+<!-- RELEASE TIME : 2022-08-02 20:30:59 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2784c2092d7c6b1ced832c3c453d8dde</td>
+       <td>CVE-2022-35924</td>
+       <td>2022-08-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>NextAuth.js is a complete open source authentication solution for Next.js applications. `next-auth` users who are using the `EmailProvider` either in versions before `4.10.3` or `3.29.10` are affected. If an attacker could forge a request that sent a comma-separated list of emails (eg.: `attacker@attacker.com,victim@victim.com`) to the sign-in endpoint, NextAuth.js would send emails to both the attacker and the victim's e-mail addresses. The attacker could then login as a newly created user with the email being `attacker@attacker.com,victim@victim.com`. This means that basic authorization like `email.endsWith("@victim.com")` in the `signIn` callback would fail to communicate a threat to the developer and would let the attacker bypass authorization, even with an `@attacker.com` address. This vulnerability has been patched in `v4.10.3` and `v3.29.10` by normalizing the email value that is sent to the sign-in endpoint before accessing it anywhere else. We also added a `normalizeIdentifier` callback on the `EmailProvider` configuration, where you can further tweak your requirements for what your system considers a valid e-mail address. (E.g.: strict RFC2821 compliance). Users are advised to upgrade. There are no known workarounds for this vulnerability. If for some reason you cannot upgrade, you can normalize the incoming request using Advanced Initialization.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35924">详情</a></td>
+      </tr>
+
+      <tr>
        <td>595d953f663a9775a74f0f94f9f3a3f9</td>
        <td>CVE-2022-30572</td>
        <td>2022-08-02 17:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2022-08-02 03:15:00 <img src="imgs/new.gif" /></td>
        <td>Pharmacy Management System v1.0 was discovered to contain a SQL injection vulnerability via the id parameter at editproduct.php.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34950">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>49b322389e0d41bb4367aa08ef783b3b</td>
-       <td>CVE-2022-34949</td>
-       <td>2022-08-02 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Pharmacy Management System v1.0 was discovered to contain multiple SQL injection vulnerabilities via the email or password parameter at login.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34949">详情</a></td>
       </tr>
 
      </tbody>
@@ -2188,6 +2188,22 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b56bb4b3151263bbe90a852553afe4e1</td>
+       <td>CVE-2022-36880</td>
+       <td>2022-07-27 04:15:10 </td>
+       <td>The Read Mail module in Webmin 1.995 and Usermin through 1.850 allows XSS via a crafted HTML e-mail message.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36880">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>71da084430658a3fef8e09a5a3ad01ec</td>
+       <td>CVE-2022-36879</td>
+       <td>2022-07-27 04:15:10 </td>
+       <td>An issue was discovered in the Linux kernel through 5.18.14. xfrm_expand_policies in net/xfrm/xfrm_policy.c can cause a refcount to be dropped twice.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36879">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1001a66c89fde1dfbe055e27bba1b98b</td>
        <td>CVE-2022-1489</td>
        <td>2022-07-26 22:15:09 </td>
@@ -2273,6 +2289,14 @@
        <td>2022-07-26 13:15:10 </td>
        <td>Warehouse Management System v1.0 was discovered to contain a SQL injection vulnerability via the cari parameter.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-34067">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d58385f6ee38cb7a4e16fc3ad15110d</td>
+       <td>CVE-2022-36161</td>
+       <td>2022-07-26 13:15:10 </td>
+       <td>Orange Station 1.0 was discovered to contain a SQL injection vulnerability via the username parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36161">详情</a></td>
       </tr>
 
       <tr>
@@ -2401,30 +2425,6 @@
        <td>2022-07-25 14:15:10 </td>
        <td>The time and filter parameters in Fava prior to v1.22 are vulnerable to reflected XSS due to the lack of escaping of error messages which contained the parameters in verbatim.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2514">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>31754f06d827a60081145e49b62a09dd</td>
-       <td>CVE-2022-2071</td>
-       <td>2022-07-25 13:15:08 </td>
-       <td>The Name Directory WordPress plugin before 1.25.4 does not have CSRF check when importing names, and is also lacking sanitisation as well as escaping in some of the imported data, which could allow attackers to make a logged in admin import arbitrary names with XSS payloads in them.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2071">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0aacaaf39cfd07156cbaea78fccf5dfb</td>
-       <td>CVE-2022-2240</td>
-       <td>2022-07-25 13:15:08 </td>
-       <td>The Request a Quote WordPress plugin through 2.3.7 does not validate uploaded CSV files, allowing unauthenticated users to attach a malicious CSV file to a quote, which could lead to a CSV injection once an admin download and open it</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2240">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3150e7881d4b6b6f495d39eec9e21c4b</td>
-       <td>CVE-2022-2239</td>
-       <td>2022-07-25 13:15:08 </td>
-       <td>The Request a Quote WordPress plugin through 2.3.7 does not sanitise and escape some of its settings, allowing high privilege users such as admin to perform cross-Site Scripting attacks even when the unfiltered_html capability is disallowed.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-2239">详情</a></td>
       </tr>
 
      </tbody>
