@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-03 20:31:21 -->
+<!-- RELEASE TIME : 2022-08-03 21:28:24 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>1d2c2a8f8fd08d99c085cf55c1199e0d</td>
+       <td>CVE-2022-31197</td>
+       <td>2022-08-03 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>PostgreSQL JDBC Driver (PgJDBC for short) allows Java programs to connect to a PostgreSQL database using standard, database independent Java code. The PGJDBC implementation of the `java.sql.ResultRow.refreshRow()` method is not performing escaping of column names so a malicious column name that contains a statement terminator, e.g. `;`, could lead to SQL injection. This could lead to executing additional SQL commands as the application's JDBC user. User applications that do not invoke the `ResultSet.refreshRow()` method are not impacted. User application that do invoke that method are impacted if the underlying database that they are querying via their JDBC application may be under the control of an attacker. The attack requires the attacker to trick the user into executing SQL against a table name who's column names would contain the malicious SQL and subsequently invoke the `refreshRow()` method on the ResultSet. Note that the application's JDBC user and the schema owner need not be the same. A JDBC application that executes as a privileged user querying database schemas owned by potentially malicious less-privileged users would be vulnerable. In that situation it may be possible for the malicious user to craft a schema that causes the application to execute commands as the privileged user. Patched versions will be released as `42.2.26` and `42.4.1`. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31197">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a4a9b4d91b34c7962dab6dd954dbb015</td>
+       <td>CVE-2022-31175</td>
+       <td>2022-08-03 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>CKEditor 5 is a JavaScript rich text editor. A cross-site scripting vulnerability has been discovered affecting three optional CKEditor 5's packages in versions prior to 35.0.1. The vulnerability allowed to trigger a JavaScript code after fulfilling special conditions. The affected packages are `@ckeditor/ckeditor5-markdown-gfm`, `@ckeditor/ckeditor5-html-support`, and `@ckeditor/ckeditor5-html-embed`. The specific conditions are 1) Using one of the affected packages. In case of `ckeditor5-html-support` and `ckeditor5-html-embed`, additionally, it was required to use a configuration that allows unsafe markup inside the editor. 2) Destroying the editor instance and 3) Initializing the editor on an element and using an element other than `<textarea>` as a base. The root cause of the issue was a mechanism responsible for updating the source element with the markup coming from the CKEditor 5 data pipeline after destroying the editor. This vulnerability might affect a small percent of integrators that depend on dynamic editor initialization/destroy and use Markdown, General HTML Support or HTML embed features. The problem has been recognized and patched. The fix is available in version 35.0.1. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31175">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>116786a1e38c284125632b949807713e</td>
+       <td>CVE-2022-34992</td>
+       <td>2022-08-03 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Luadec v0.9.9 was discovered to contain a heap-buffer overflow via the function UnsetPending.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34992">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c8d2273ffd7cab1e4f80bd26e6c38443</td>
        <td>CVE-2022-37396</td>
        <td>2022-08-03 16:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2022-08-02 22:15:00 <img src="imgs/new.gif" /></td>
        <td>In Progress WS_FTP Server prior to version 8.7.3, multiple reflected cross-site scripting (XSS) vulnerabilities exist in the administrative web interface. It is possible for a remote attacker to inject arbitrary JavaScript into a WS_FTP administrator's web session. This would allow the attacker to execute code within the context of the victim's browser.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36967">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d6370a9ec85f22c1572b934ac7d58e8</td>
-       <td>CVE-2022-34619</td>
-       <td>2022-08-02 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A stored cross-site scripting (XSS) vulnerability in Mealie v0.5.5 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Shopping Lists item names text field.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34619">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fa1d11f1f609845b106e9bdc929f665e</td>
-       <td>CVE-2022-30285</td>
-       <td>2022-08-02 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Quest KACE Systems Management Appliance (SMA) through 12.0, a hash collision is possible during authentication. This may allow authentication with invalid credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30285">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1bfc15000d9152592081f7ba26290c5f</td>
-       <td>CVE-2022-29808</td>
-       <td>2022-08-02 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Quest KACE Systems Management Appliance (SMA) through 12.0, predictable token generation occurs when appliance linking is enabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-29808">详情</a></td>
       </tr>
 
      </tbody>
