@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-04 15:35:22 -->
+<!-- RELEASE TIME : 2022-08-04 17:35:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>031a49921a8acb274e42dba3f7634d6c</td>
+       <td>CVE-2022-25168</td>
+       <td>2022-08-04 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Apache Hadoop's FileUtil.unTar(File, File) API does not escape the input file name before being passed to the shell. An attacker can inject arbitrary commands. This is only used in Hadoop 3.3 InMemoryAliasMap.completeBootstrapTransfer, which is only ever run by a local user. It has been used in Hadoop 2.x for yarn localization, which does enable remote code execution. It is used in Apache Spark, from the SQL command ADD ARCHIVE. As the ADD ARCHIVE command adds new binaries to the classpath, being able to execute shell scripts does not confer new permissions to the caller. SPARK-38305. "Check existence of file before untarring/zipping", which is included in 3.3.0, 3.1.4, 3.2.2, prevents shell commands being executed, regardless of which version of the hadoop libraries are in use. Users should upgrade to Apache Hadoop 2.10.2, 3.2.4, 3.3.3 or upper (including HADOOP-18136).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25168">详情</a></td>
+      </tr>
+
+      <tr>
        <td>56f6de4b8a6c744ec0148ff9c46f182b</td>
        <td>CVE-2022-2656</td>
        <td>2022-08-04 13:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2022-08-03 16:15:00 <img src="imgs/new.gif" /></td>
        <td>In JetBrains Rider before 2022.2 Trust and Open Project dialog could be bypassed, leading to local code execution</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37396">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>911dcb2fee0cb1bb3b77eb7a0d8614fb</td>
-       <td>CVE-2022-35867</td>
-       <td>2022-08-03 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>This vulnerability allows local attackers to escalate privileges on affected installations of xhyve. An attacker must first obtain the ability to execute high-privileged code on the target guest system in order to exploit this vulnerability. The specific flaw exists within the e1000 virtual device. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a stack-based buffer. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of the hypervisor. Was ZDI-CAN-15056.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35867">详情</a></td>
       </tr>
 
      </tbody>
