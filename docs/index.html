@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-04 21:28:20 -->
+<!-- RELEASE TIME : 2022-08-04 23:29:11 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>41c2aff18515b65cc20fecbad830235e</td>
+       <td>CVE-2022-35927</td>
+       <td>2022-08-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Contiki-NG is an open-source, cross-platform operating system for IoT devices. In the RPL-Classic routing protocol implementation in the Contiki-NG operating system, an incoming DODAG Information Option (DIO) control message can contain a prefix information option with a length parameter. The value of the length parameter is not validated, however, and it is possible to cause a buffer overflow when copying the prefix in the set_ip_from_prefix function. This vulnerability affects anyone running a Contiki-NG version prior to 4.7 that can receive RPL DIO messages from external parties. To obtain a patched version, users should upgrade to Contiki-NG 4.7 or later. There are no workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35927">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>65c9157ded349e8926fb809e98a85b1e</td>
+       <td>CVE-2022-35926</td>
+       <td>2022-08-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Contiki-NG is an open-source, cross-platform operating system for IoT devices. Because of insufficient validation of IPv6 neighbor discovery options in Contiki-NG, attackers can send neighbor solicitation packets that trigger an out-of-bounds read. The problem exists in the module os/net/ipv6/uip-nd6.c, where memory read operations from the main packet buffer, <code>uip_buf</code>, are not checked if they go out of bounds. In particular, this problem can occur when attempting to read the 2-byte option header and the Source Link-Layer Address Option (SLLAO). This attack requires ipv6 be enabled for the network. The problem has been patched in the develop branch of Contiki-NG. The upcoming 4.8 release of Contiki-NG will include the patch.Users unable to upgrade may apply the patch in Contiki-NG PR #1654.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35926">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aae7e3fa0059c12754f23b80a85e0ab1</td>
+       <td>CVE-2021-32771</td>
+       <td>2022-08-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Contiki-NG is an open-source, cross-platform operating system for IoT devices. In affected versions it is possible to cause a buffer overflow when copying an IPv6 address prefix in the RPL-Classic implementation in Contiki-NG. In order to trigger the vulnerability, the Contiki-NG system must have joined an RPL DODAG. After that, an attacker can send a DAO packet with a Target option that contains a prefix length larger than 128 bits. The problem was fixed after the release of Contiki-NG 4.7. Users unable to upgrade may apply the patch in Contiki-NG PR #1615.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-32771">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4eff0c8b319f3395d058e237a2c74768</td>
+       <td>CVE-2022-35858</td>
+       <td>2022-08-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>The TEE_PopulateTransientObject and __utee_from_attr functions in Samsung mTower 0.3.0 allow a trusted application to trigger a memory overwrite, denial of service, and information disclosure by invoking the function TEE_PopulateTransientObject with a large number in the parameter attrCount.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35858">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e2cc5942afcf197eef2ea8458d963d4b</td>
+       <td>CVE-2022-35144</td>
+       <td>2022-08-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Renato v0.17.0 was discovered to contain a cross-site scripting (XSS) vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35144">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>06f6718c38a7386f36b61d2898d58440</td>
+       <td>CVE-2022-35143</td>
+       <td>2022-08-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Renato v0.17.0 employs weak password complexity requirements, allowing attackers to crack user passwords via brute-force attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35143">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55cd4b339803aca95807b07b40f20068</td>
+       <td>CVE-2022-35142</td>
+       <td>2022-08-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in Renato v0.17.0 allows attackers to cause a Denial of Service (DoS) via a crafted payload injected into the Search parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35142">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5f7a97443b728ba1f3e7fe014a50ed77</td>
        <td>CVE-2022-35929</td>
        <td>2022-08-04 19:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2022-08-04 09:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability was found in SourceCodester Multi Language Hotel Management Software. It has been rated as critical. This issue affects some unknown processing. The manipulation of the argument room_id leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-205595.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2648">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b707a30ae62fe074a1fa15b1992b4500</td>
-       <td>CVE-2022-2647</td>
-       <td>2022-08-04 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in jeecg-boot. It has been declared as critical. This vulnerability affects unknown code of the file /api/. The manipulation of the argument file leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-205594 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2647">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>545ba0f8f7e9002d82b653c8953d8144</td>
-       <td>CVE-2022-2646</td>
-       <td>2022-08-04 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, was found in SourceCodester Online Admission System. Affected is an unknown function of the file index.php. The manipulation of the argument eid with the input 8</h3><script>alert(1)</script> leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-205572.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2646">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bd60e7a3d95e303e3cc469c576d5db93</td>
-       <td>CVE-2022-2645</td>
-       <td>2022-08-04 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in SourceCodester Garage Management System and classified as problematic. Affected by this vulnerability is an unknown functionality of the file edituser.php. The manipulation of the argument id with the input 1\"><ScRiPt>alert(1)</sCrIpT> leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-205573 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2645">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>02d42ed8e3391aefc4ac16823b52ae45</td>
-       <td>CVE-2022-2644</td>
-       <td>2022-08-04 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Online Admission System and classified as critical. This issue affects some unknown processing of the component GET Parameter Handler. The manipulation of the argument eid leads to sql injection. The exploit has been disclosed to the public and may be used. The identifier VDB-205565 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2644">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>72fd3832a974389d64bf3b660b0b9ce5</td>
-       <td>CVE-2022-2643</td>
-       <td>2022-08-04 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in SourceCodester Online Admission System and classified as critical. This vulnerability affects unknown code of the component POST Parameter Handler. The manipulation of the argument shift leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier of this entry is VDB-205564.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2643">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2cf3f7f67cbfa698e6dd3f410982e5cb</td>
-       <td>CVE-2022-34158</td>
-       <td>2022-08-04 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A carefully crafted invocation on the Image plugin could trigger an CSRF vulnerability on Apache JSPWiki before 2.11.3, which could allow a group privilege escalation of the attacker's account. Further examination of this issue established that it could also be used to modify the email associated with the attacked account, and then a reset password request from the login page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34158">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e8d31ebb3d79ec316b5c9f70418219a3</td>
-       <td>CVE-2022-28732</td>
-       <td>2022-08-04 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A carefully crafted request on WeblogPlugin could trigger an XSS vulnerability on Apache JSPWiki, which could allow the attacker to execute javascript in the victim's browser and get some sensitive information about the victim. Apache JSPWiki users should upgrade to 2.11.3 or later.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28732">详情</a></td>
       </tr>
 
      </tbody>
