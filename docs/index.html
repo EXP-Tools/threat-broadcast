@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-04 20:31:28 -->
+<!-- RELEASE TIME : 2022-08-04 21:28:20 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5f7a97443b728ba1f3e7fe014a50ed77</td>
+       <td>CVE-2022-35929</td>
+       <td>2022-08-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>cosign is a container signing and verification utility. In versions prior to 1.10.1 cosign can report a false positive if any attestation exists. `cosign verify-attestation` used with the `--type` flag will report a false positive verification when there is at least one attestation with a valid signature and there are NO attestations of the type being verified (--type defaults to "custom"). This can happen when signing with a standard keypair and with "keyless" signing with Fulcio. This vulnerability can be reproduced with the `distroless.dev/static@sha256:dd7614b5a12bc4d617b223c588b4e0c833402b8f4991fb5702ea83afad1986e2` image. This image has a `vuln` attestation but not an `spdx` attestation. However, if you run `cosign verify-attestation --type=spdx` on this image, it incorrectly succeeds. This issue has been addressed in version 1.10.1 of cosign. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35929">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9388e38673ea7ddaf0a5ba8c3b475a17</td>
+       <td>CVE-2022-34993</td>
+       <td>2022-08-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Totolink A3600R_Firmware V4.1.2cu.5182_B20201102 contains a hard code password for root in /etc/shadow.sample.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34993">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f4f5a10ed1c450263d6eb117028b33eb</td>
+       <td>CVE-2022-34970</td>
+       <td>2022-08-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Crow before v1.0+4 was discovered to contain a buffer overflow via the function qs_parse at query_string.h. This vulnerability allows attackers to cause a Denial of Service (DoS) via a crafted input.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34970">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e35c43c66912d3344045412ff6a0a0de</td>
+       <td>CVE-2022-35735</td>
+       <td>2022-08-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In BIG-IP Versions 16.1.x before 16.1.3.1, 15.1.x before 15.1.6.1, 14.1.x before 14.1.5.1, and all versions of 13.1.x, an authenticated attacker with Resource Administrator or Manager privileges can create or modify existing monitor objects in the Configuration utility in an undisclosed manner leading to a privilege escalation. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35735">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>83063521974d0ebd06ac79fa43d7b662</td>
+       <td>CVE-2022-35728</td>
+       <td>2022-08-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In BIG-IP Versions 17.0.x before 17.0.0.1, 16.1.x before 16.1.3.1, 15.1.x before 15.1.6.1, 14.1.x before 14.1.5.1, and all versions of 13.1.x, and BIG-IQ version 8.x before 8.2.0 and all versions of 7.x, an authenticated user's iControl REST token may remain valid for a limited time after logging out from the Configuration utility. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35728">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>adb1b266002590f4b5475174749ed164</td>
+       <td>CVE-2022-35272</td>
+       <td>2022-08-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In BIG-IP Versions 17.0.x before 17.0.0.1 and 16.1.x before 16.1.3.1, when source-port preserve-strict is configured on an HTTP Message Routing Framework (MRF) virtual server, undisclosed traffic may cause the Traffic Management Microkernel (TMM) to produce a core file and the connection to terminate. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35272">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ecb170b9c4cdfd47a7559a0a126fa764</td>
+       <td>CVE-2022-35245</td>
+       <td>2022-08-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In BIG-IP Versions 16.1.x before 16.1.3.1, 15.1.x before 15.1.6.1, and 14.1.x before 14.1.5.1, when a BIG-IP APM access policy is configured on a virtual server, undisclosed traffic can cause the Traffic Management Microkernel (TMM) to terminate. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35245">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>899ccda369b566d91caf9b304519fdbb</td>
+       <td>CVE-2022-35243</td>
+       <td>2022-08-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In BIG-IP Versions 16.1.x before 16.1.3, 15.1.x before 15.1.5.1, 14.1.x before 14.1.5, and all versions of 13.1.x, when running in Appliance mode, an authenticated user assigned the Administrator role may be able to bypass Appliance mode restrictions, using an undisclosed iControl REST endpoint. A successful exploit can allow the attacker to cross a security boundary. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35243">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dca43a858e556815500c84c48cbcca98</td>
+       <td>CVE-2022-35241</td>
+       <td>2022-08-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In versions 2.x before 2.3.1 and all versions of 1.x, when NGINX Instance Manager is in use, undisclosed requests can cause an increase in disk resource utilization. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35241">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>56bda2d77dd9b4098d9922916b76aa25</td>
+       <td>CVE-2022-35240</td>
+       <td>2022-08-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In BIG-IP Versions 16.1.x before 16.1.2.2, 15.1.x before 15.1.6.1, and 14.1.x before 14.1.5, when the Message Routing (MR) Message Queuing Telemetry Transport (MQTT) profile is configured on a virtual server, undisclosed requests can cause an increase in memory resource utilization. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35240">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f891c33f015309cb029876eda1cd496c</td>
        <td>CVE-2022-31132</td>
        <td>2022-08-04 17:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-08-04 07:15:00 <img src="imgs/new.gif" /></td>
        <td>A carefully crafted request on WeblogPlugin could trigger an XSS vulnerability on Apache JSPWiki, which could allow the attacker to execute javascript in the victim's browser and get some sensitive information about the victim. Apache JSPWiki users should upgrade to 2.11.3 or later.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28732">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0ee35c649b522c7d19d4592c0c9cfac3</td>
-       <td>CVE-2022-28731</td>
-       <td>2022-08-04 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A carefully crafted request on UserPreferences.jsp could trigger an CSRF vulnerability on Apache JSPWiki before 2.11.3, which could allow the attacker to modify the email associated with the attacked account, and then a reset password request from the login page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28731">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71ff4241660ec8ac1ba3f238b9eba038</td>
-       <td>CVE-2022-35506</td>
-       <td>2022-08-03 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>TripleCross v0.1.0 was discovered to contain a stack overflow which occurs because there is no limit to the length of program parameters.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35506">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f59efe3e14085fb876d31792d786a178</td>
-       <td>CVE-2022-35505</td>
-       <td>2022-08-03 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A segmentation fault in TripleCross v0.1.0 occurs when sending a control command from the client to the server. This occurs because there is no limit to the length of the output of the executed command.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35505">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33e71e42956c992829d228ecac9952ea</td>
-       <td>CVE-2022-35161</td>
-       <td>2022-08-03 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>GVRET Stable Release as of Aug 15, 2015 was discovered to contain a buffer overflow via the handleConfigCmd function at SerialConsole.cpp.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35161">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9d8c796999f725f9d94539ea23a423f8</td>
-       <td>CVE-2022-35158</td>
-       <td>2022-08-03 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the lua parser of TscanCode tsclua v2.15.01 allows attackers to cause a Denial of Service (DoS) via a crafted lua script.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35158">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33bda51dd2ef85972febb5691cc0ec52</td>
-       <td>CVE-2021-43179</td>
-       <td>2022-08-03 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was in a CNA pool that was not assigned to any issues during 2021. Notes: none.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43179">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d91f6efef8b6779637921f1df7cdd10f</td>
-       <td>CVE-2021-43178</td>
-       <td>2022-08-03 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was in a CNA pool that was not assigned to any issues during 2021. Notes: none.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-43178">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23f20e5b4bd8f0572c15a96b3456a9f3</td>
-       <td>CVE-2022-35928</td>
-       <td>2022-08-03 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>AES Crypt is a file encryption software for multiple platforms. AES Crypt for Linux built using the source on GitHub and having the version number 3.11 has a vulnerability with respect to reading user-provided passwords and confirmations via command-line prompts. Passwords lengths were not checked before being read. This vulnerability may lead to buffer overruns. This does _not_ affect source code found on aescrypt.com, nor is the vulnerability present when providing a password or a key via the `-p` or `-k` command-line options. The problem was fixed via in commit 68761851b and will be included in release 3.16. Users are advised to upgrade. Users unable to upgrade should us the `-p` or `-k` options to provide a password or key.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35928">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25f1ac6f471806acc0459a4f05269bca</td>
-       <td>CVE-2022-27551</td>
-       <td>2022-08-03 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>HCL Launch could allow an authenticated user to obtain sensitive information in some instances due to improper security checking.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-27551">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d2c2a8f8fd08d99c085cf55c1199e0d</td>
-       <td>CVE-2022-31197</td>
-       <td>2022-08-03 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>PostgreSQL JDBC Driver (PgJDBC for short) allows Java programs to connect to a PostgreSQL database using standard, database independent Java code. The PGJDBC implementation of the `java.sql.ResultRow.refreshRow()` method is not performing escaping of column names so a malicious column name that contains a statement terminator, e.g. `;`, could lead to SQL injection. This could lead to executing additional SQL commands as the application's JDBC user. User applications that do not invoke the `ResultSet.refreshRow()` method are not impacted. User application that do invoke that method are impacted if the underlying database that they are querying via their JDBC application may be under the control of an attacker. The attack requires the attacker to trick the user into executing SQL against a table name who's column names would contain the malicious SQL and subsequently invoke the `refreshRow()` method on the ResultSet. Note that the application's JDBC user and the schema owner need not be the same. A JDBC application that executes as a privileged user querying database schemas owned by potentially malicious less-privileged users would be vulnerable. In that situation it may be possible for the malicious user to craft a schema that causes the application to execute commands as the privileged user. Patched versions will be released as `42.2.26` and `42.4.1`. Users are advised to upgrade. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31197">详情</a></td>
       </tr>
 
      </tbody>
