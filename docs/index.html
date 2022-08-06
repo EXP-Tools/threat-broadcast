@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-06 05:27:18 -->
+<!-- RELEASE TIME : 2022-08-06 10:31:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -2356,6 +2356,22 @@
       </tr>
 
       <tr>
+       <td>01178eaa89ed016a2e2038a01fcc473d</td>
+       <td>CVE-2022-26435</td>
+       <td>2022-08-01 14:15:09 </td>
+       <td>In mailbox, there is a possible out of bounds write due to type confusion. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07138435; Issue ID: ALPS07138435.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26435">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca44d223803f783f904228c33aea33bd</td>
+       <td>CVE-2022-26434</td>
+       <td>2022-08-01 14:15:09 </td>
+       <td>In mailbox, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07138450; Issue ID: ALPS07138450.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26434">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4bab0ce4b683f35c7b420871f1420a0d</td>
        <td>CVE-2022-30616</td>
        <td>2022-08-01 11:15:13 </td>
@@ -2409,22 +2425,6 @@
        <td>2022-07-28 16:15:11 </td>
        <td>Honeywell Experion PKS Safety Manager 5.02 has Insufficient Verification of Data Authenticity. According to FSCT-2022-0054, there is a Honeywell Experion PKS Safety Manager unauthenticated firmware update issue. The affected components are characterized as: Firmware update functionality. The potential impact is: Firmware manipulation. The Honeywell Experion PKS Safety Manager utilizes the DCOM-232/485 communication FTA serial interface and Enea POLO bootloader for firmware management purposes. An engineering workstation running the Safety Builder software communicates via serial or serial-over-ethernet link with the DCOM-232/485 interface. Firmware images were found to have no authentication (in the form of firmware signing) and only relied on insecure checksums for regular integrity checks. Firmware images are unsigned. An attacker with access to the serial interface (either through physical access, a compromised EWS or an exposed serial-to-ethernet gateway) can utilize hardcoded credentials (see FSCT-2022-0052) for the POLO bootloader to control the boot process and push malicious firmware images to the controller allowing for firmware manipulation, remote code execution and denial of service impacts. A mitigating factor is that in order for a firmware update to be initiated, the Safety Manager has to be rebooted which is typically done by means of physical controls on the Safety Manager itself. As such, an attacker would have to either lay dormant until a legitimate reboot occurs or possibly attempt to force a reboot through a secondary vulnerability.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30316">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a80a089a97ed9b0fc661046112eb220</td>
-       <td>CVE-2022-30315</td>
-       <td>2022-07-28 16:15:11 </td>
-       <td>Honeywell Experion PKS Safety Manager (SM and FSC) through 2022-05-06 has Insufficient Verification of Data Authenticity. According to FSCT-2022-0053, there is a Honeywell Experion PKS Safety Manager insufficient logic security controls issue. The affected components are characterized as: Honeywell FSC runtime (FSC-CPU, QPP), Honeywell Safety Builder. The potential impact is: Remote Code Execution, Denial of Service. The Honeywell Experion PKS Safety Manager family of safety controllers utilize the unauthenticated Safety Builder protocol (FSCT-2022-0051) for engineering purposes, including downloading projects and control logic to the controller. Control logic is downloaded to the controller on a block-by-block basis. The logic that is downloaded consists of FLD code compiled to native machine code for the CPU module (which applies to both the Safety Manager and FSC families). Since this logic does not seem to be cryptographically authenticated, it allows an attacker capable of triggering a logic download to execute arbitrary machine code on the controller's CPU module in the context of the runtime. While the researchers could not verify this in detail, the researchers believe that the microprocessor underpinning the FSC and Safety Manager CPU modules is incapable of offering memory protection or privilege separation capabilities which would give an attacker full control of the CPU module. There is no authentication on control logic downloaded to the controller. Memory protection and privilege separation capabilities for the runtime are possibly lacking. The researchers confirmed the issues in question on Safety Manager R145.1 and R152.2 but suspect the issue affects all FSC and SM controllers and associated Safety Builder versions regardless of software or firmware revision. An attacker who can communicate with a Safety Manager controller via the Safety Builder protocol can execute arbitrary code without restrictions on the CPU module, allowing for covert manipulation of control operations and implanting capabilities similar to the TRITON malware (MITRE ATT&amp;CK software ID S1009). A mitigating factor with regards to some, but not all, of the above functionality is that these require the Safety Manager physical keyswitch to be in the right position.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30315">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ea5ba13e7e49f04a539d2443ac2d3ff5</td>
-       <td>CVE-2022-30314</td>
-       <td>2022-07-28 16:15:10 </td>
-       <td>Honeywell Experion PKS Safety Manager 5.02 uses Hard-coded Credentials. According to FSCT-2022-0052, there is a Honeywell Experion PKS Safety Manager hardcoded credentials issue. The affected components are characterized as: POLO bootloader. The potential impact is: Manipulate firmware. The Honeywell Experion PKS Safety Manager utilizes the DCOM-232/485 serial interface for firmware management purposes. When booting, the Safety Manager exposes the Enea POLO bootloader via this interface. Access to the boot configuration is controlled by means of credentials hardcoded in the Safety Manager firmware. The credentials for the bootloader are hardcoded in the firmware. An attacker with access to the serial interface (either through physical access, a compromised EWS or an exposed serial-to-ethernet gateway) can utilize these credentials to control the boot process and manipulate the unauthenticated firmware image (see FSCT-2022-0054).</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-30314">详情</a></td>
       </tr>
 
      </tbody>
