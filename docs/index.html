@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-09 21:28:26 -->
+<!-- RELEASE TIME : 2022-08-09 22:29:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -2204,6 +2204,14 @@
       </tr>
 
       <tr>
+       <td>89e811d4cbd7007baaf5e4d3110d5e9c</td>
+       <td>CVE-2022-31175</td>
+       <td>2022-08-03 19:15:08 </td>
+       <td>CKEditor 5 is a JavaScript rich text editor. A cross-site scripting vulnerability has been discovered affecting three optional CKEditor 5's packages in versions prior to 35.0.1. The vulnerability allowed to trigger a JavaScript code after fulfilling special conditions. The affected packages are `@ckeditor/ckeditor5-markdown-gfm`, `@ckeditor/ckeditor5-html-support`, and `@ckeditor/ckeditor5-html-embed`. The specific conditions are 1) Using one of the affected packages. In case of `ckeditor5-html-support` and `ckeditor5-html-embed`, additionally, it was required to use a configuration that allows unsafe markup inside the editor. 2) Destroying the editor instance and 3) Initializing the editor on an element and using an element other than `&lt;textarea&gt;` as a base. The root cause of the issue was a mechanism responsible for updating the source element with the markup coming from the CKEditor 5 data pipeline after destroying the editor. This vulnerability might affect a small percent of integrators that depend on dynamic editor initialization/destroy and use Markdown, General HTML Support or HTML embed features. The problem has been recognized and patched. The fix is available in version 35.0.1. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31175">详情</a></td>
+      </tr>
+
+      <tr>
        <td>70d1fe74205794bbf7d9553fb9e9c63e</td>
        <td>CVE-2022-35867</td>
        <td>2022-08-03 16:15:08 </td>
@@ -2340,6 +2348,62 @@
       </tr>
 
       <tr>
+       <td>cdee82ba0fb865e32f5358eb7144d057</td>
+       <td>CVE-2022-31180</td>
+       <td>2022-08-01 20:15:08 </td>
+       <td>Shescape is a simple shell escape package for JavaScript. Affected versions were found to have insufficient escaping of white space when interpolating output. This issue only impacts users that use the `escape` or `escapeAll` functions with the `interpolation` option set to `true`. The result is that if an attacker is able to include whitespace in their input they can: 1. Invoke shell-specific behaviour through shell-specific special characters inserted directly after whitespace. 2. Invoke shell-specific behaviour through shell-specific special characters inserted or appearing after line terminating characters. 3. Invoke arbitrary commands by inserting a line feed character. 4. Invoke arbitrary commands by inserting a carriage return character. Behaviour number 1 has been patched in [v1.5.7] which you can upgrade to now. No further changes are required. Behaviour number 2, 3, and 4 have been patched in [v1.5.8] which you can upgrade to now. No further changes are required. The best workaround is to avoid having to use the `interpolation: true` option - in most cases using an alternative is possible, see [the recipes](https://github.com/ericcornelissen/shescape#recipes) for recommendations. Alternatively, users may strip all whitespace from user input. Note that this is error prone, for example: for PowerShell this requires stripping `'\u0085'` which is not included in JavaScript's definition of `\s` for Regular Expressions.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31180">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ec308a725e22a8fd005b907d946d6e5f</td>
+       <td>CVE-2022-31179</td>
+       <td>2022-08-01 20:15:08 </td>
+       <td>Shescape is a simple shell escape package for JavaScript. Versions prior to 1.5.8 were found to be subject to code injection on windows. This impacts users that use Shescape (any API function) to escape arguments for cmd.exe on Windows An attacker can omit all arguments following their input by including a line feed character (`'\n'`) in the payload. This bug has been patched in [v1.5.8] which you can upgrade to now. No further changes are required. Alternatively, line feed characters (`'\n'`) can be stripped out manually or the user input can be made the last argument (this only limits the impact).</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31179">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>253b87e29976845ac328573180446466</td>
+       <td>CVE-2022-31178</td>
+       <td>2022-08-01 19:15:08 </td>
+       <td>eLabFTW is an electronic lab notebook manager for research teams. A vulnerability was discovered which allows a logged in user to read a template without being authorized to do so. This vulnerability has been patched in 4.3.4. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31178">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>052293465bcc98262206368cd7b968b6</td>
+       <td>CVE-2022-31177</td>
+       <td>2022-08-01 19:15:08 </td>
+       <td>Flask-AppBuilder is an application development framework built on top of Flask python framework. In versions prior to 4.1.3 an authenticated Admin user could query other users by their salted and hashed passwords strings. These filters could be made by using partial hashed password strings. The response would not include the hashed passwords, but an attacker could infer partial password hashes and their respective users. This issue has been fixed in version 4.1.3. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31177">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0528897df26fbca81ec2a73666557e9b</td>
+       <td>CVE-2022-31173</td>
+       <td>2022-08-01 19:15:08 </td>
+       <td>Juniper is a GraphQL server library for Rust. Affected versions of Juniper are vulnerable to uncontrolled recursion resulting in a program crash. This issue has been addressed in version 0.15.10. Users are advised to upgrade. Users unable to upgrade should limit the recursion depth manually.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31173">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>65380e172970dae6bef91ae283d4c7d0</td>
+       <td>CVE-2022-31155</td>
+       <td>2022-08-01 19:15:08 </td>
+       <td>Sourcegraph is an opensource code search and navigation engine. In Sourcegraph versions before 3.41.0, it is possible for an attacker to delete other users&Atilde;&cent;&acirc;&sbquo;&not;&acirc;&bdquo;&cent; saved searches due to a bug in the authorization check. The vulnerability does not allow the reading of other users&Atilde;&cent;&acirc;&sbquo;&not;&acirc;&bdquo;&cent; saved searches, only overwriting them with attacker-controlled searches. The issue is patched in Sourcegraph version 3.41.0. There is no workaround for this issue and updating to a secure version is highly recommended.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31155">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b2580f0cd0f6d0abf2a74dc2f5216af7</td>
+       <td>CVE-2022-31154</td>
+       <td>2022-08-01 19:15:08 </td>
+       <td>Sourcegraph is an opensource code search and navigation engine. It is possible for an authenticated Sourcegraph user to edit the Code Monitors owned by any other Sourcegraph user. This includes being able to edit both the trigger and the action of the monitor in question. An attacker is not able to read contents of existing code monitors, only override the data. The issue is fixed in Sourcegraph 3.42. There are no workaround for the issue and patching is highly recommended.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31154">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ddc57c01d4070a641b348e47a9b80e91</td>
        <td>CVE-2022-31148</td>
        <td>2022-08-01 17:15:08 </td>
@@ -2361,70 +2425,6 @@
        <td>2022-08-01 14:15:09 </td>
        <td>In wifi driver, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: GN20220420075; Issue ID: GN20220420075.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26444">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>17e5972ebe9cbbc57e43e41b038c70a7</td>
-       <td>CVE-2022-26443</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In wifi driver, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: GN20220420068; Issue ID: GN20220420068.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26443">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4e8a0d54c16b7ca0595c5f773dc8d1f1</td>
-       <td>CVE-2022-26442</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In wifi driver, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: GN20220420051; Issue ID: GN20220420051.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26442">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9088fcc0d265f8142f4a95aa8213c5bc</td>
-       <td>CVE-2022-26441</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In wifi driver, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: GN20220420044; Issue ID: GN20220420044.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26441">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a6145cf1795158609fe0234fec91bd3f</td>
-       <td>CVE-2022-26440</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In wifi driver, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: GN20220420037; Issue ID: GN20220420037.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26440">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d6028df139787657874b1ca6b469e29</td>
-       <td>CVE-2022-26439</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In wifi driver, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: GN20220420020; Issue ID: GN20220420020.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26439">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a81f592eaa9898c77e2fb471fe445f06</td>
-       <td>CVE-2022-26438</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In wifi driver, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: GN20220420013; Issue ID: GN20220420013.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26438">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>05b7beaed8deaea06c3d5507792a6e23</td>
-       <td>CVE-2022-26437</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In httpclient, there is a possible out of bounds write due to uninitialized data. This could lead to remote escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation. Patch ID: WSAP00103831; Issue ID: WSAP00103831.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26437">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12af00b8b30ebfce6c5273847705d99d</td>
-       <td>CVE-2022-26436</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In emi mpu, there is a possible out of bounds read due to a missing bounds check. This could lead to local information disclosure with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07023666; Issue ID: ALPS07023666.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26436">详情</a></td>
       </tr>
 
      </tbody>
