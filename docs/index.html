@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-09 16:43:04 -->
+<!-- RELEASE TIME : 2022-08-09 20:31:09 -->
 <html lang="zh-cn">
 
  <head>
@@ -2204,6 +2204,38 @@
       </tr>
 
       <tr>
+       <td>70d1fe74205794bbf7d9553fb9e9c63e</td>
+       <td>CVE-2022-35867</td>
+       <td>2022-08-03 16:15:08 </td>
+       <td>This vulnerability allows local attackers to escalate privileges on affected installations of xhyve. An attacker must first obtain the ability to execute high-privileged code on the target guest system in order to exploit this vulnerability. The specific flaw exists within the e1000 virtual device. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a stack-based buffer. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of the hypervisor. Was ZDI-CAN-15056.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35867">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0b8e7913e25d01d12c24309fc444feae</td>
+       <td>CVE-2022-35865</td>
+       <td>2022-08-03 16:15:08 </td>
+       <td>This vulnerability allows remote attackers to execute arbitrary code on affected installations of BMC Track-It! 20.21.2.109. Authentication is not required to exploit this vulnerability. The specific flaw exists within the authorization of HTTP requests. The issue results from the lack of authentication prior to allowing access to functionality. An attacker can leverage this vulnerability to execute code in the context of the service account. Was ZDI-CAN-16709.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35865">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1a9e69a588d7a088358ee9dffb22afd2</td>
+       <td>CVE-2022-35864</td>
+       <td>2022-08-03 16:15:08 </td>
+       <td>This vulnerability allows remote attackers to disclose sensitive information on affected installations of BMC Track-It! 20.21.02.109. Authentication is required to exploit this vulnerability. The specific flaw exists within the GetPopupSubQueryDetails endpoint. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to disclose stored credentials, leading to further compromise. Was ZDI-CAN-16690.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35864">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>606c5f38686c6aa5db1351a0a2022146</td>
+       <td>CVE-2022-35923</td>
+       <td>2022-08-02 20:15:09 </td>
+       <td>v8n is a javascript validation library. Versions of v8n prior to 1.5.1 were found to have an inefficient regular expression complexity in the `lowercase()` and `uppercase()` regex which could lead to a denial of service attack. In testing of the `lowercase()` function a payload of 'a' + 'a'.repeat(i) + 'A' with 32 leading characters took 29443 ms to execute. The same issue happens with uppercase(). Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35923">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c201a567604a3dcd535e68c8ee706414</td>
        <td>CVE-2022-2631</td>
        <td>2022-08-02 17:15:10 </td>
@@ -2292,6 +2324,22 @@
       </tr>
 
       <tr>
+       <td>84340d835caccbe2ed771a561dbf7ecd</td>
+       <td>CVE-2022-35916</td>
+       <td>2022-08-01 21:15:13 </td>
+       <td>OpenZeppelin Contracts is a library for secure smart contract development. Contracts using the cross chain utilities for Arbitrum L2, `CrossChainEnabledArbitrumL2` or `LibArbitrumL2`, will classify direct interactions of externally owned accounts (EOAs) as cross chain calls, even though they are not started on L1. This issue has been patched in v4.7.2. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35916">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c512610817dab3e4d6509de6944d07b0</td>
+       <td>CVE-2022-35915</td>
+       <td>2022-08-01 21:15:13 </td>
+       <td>OpenZeppelin Contracts is a library for secure smart contract development. The target contract of an EIP-165 `supportsInterface` query can cause unbounded gas consumption by returning a lot of data, while it is generally assumed that this operation has a bounded cost. The issue has been fixed in v4.7.2. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35915">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ddc57c01d4070a641b348e47a9b80e91</td>
        <td>CVE-2022-31148</td>
        <td>2022-08-01 17:15:08 </td>
@@ -2377,54 +2425,6 @@
        <td>2022-08-01 14:15:09 </td>
        <td>In emi mpu, there is a possible out of bounds read due to a missing bounds check. This could lead to local information disclosure with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07023666; Issue ID: ALPS07023666.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26436">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>01178eaa89ed016a2e2038a01fcc473d</td>
-       <td>CVE-2022-26435</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In mailbox, there is a possible out of bounds write due to type confusion. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07138435; Issue ID: ALPS07138435.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26435">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ca44d223803f783f904228c33aea33bd</td>
-       <td>CVE-2022-26434</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In mailbox, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07138450; Issue ID: ALPS07138450.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26434">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>86d92b219adb7c1f12ddaf68b107f6e8</td>
-       <td>CVE-2022-26433</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In mailbox, there is a possible out of bounds write due to type confusion. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07138400; Issue ID: ALPS07138400.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26433">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fb48b07d3fcedf0d14052012bb2372b4</td>
-       <td>CVE-2022-26432</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In mailbox, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07032542; Issue ID: ALPS07032542.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26432">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e8fbab33abce1262c786168b7f90b28f</td>
-       <td>CVE-2022-26431</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In mailbox, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07032553; Issue ID: ALPS07032553.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26431">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2bf70700dee935e80bba59c90c6a5393</td>
-       <td>CVE-2022-26430</td>
-       <td>2022-08-01 14:15:09 </td>
-       <td>In mailbox, there is a possible out of bounds write due to type confusion. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07032521; Issue ID: ALPS07032521.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-26430">详情</a></td>
       </tr>
 
      </tbody>
