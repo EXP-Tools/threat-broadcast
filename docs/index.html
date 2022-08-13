@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-12 23:28:05 -->
+<!-- RELEASE TIME : 2022-08-13 02:22:18 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,22 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>dc3c007bfbe14e5fade3976ce5bc474e</td>
+       <td>CVE-2022-35949</td>
+       <td>2022-08-12 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>undici is an HTTP/1.1 client, written from scratch for Node.js.`undici` is vulnerable to SSRF (Server-side Request Forgery) when an application takes in **user input** into the `path/pathname` option of `undici.request`. If a user specifies a URL such as `http://127.0.0.1` or `//127.0.0.1` ```js const undici = require("undici") undici.request({origin: "http://example.com", pathname: "//127.0.0.1"}) ``` Instead of processing the request as `http://example.org//127.0.0.1` (or `http://example.org/http://127.0.0.1` when `http://127.0.0.1 is used`), it actually processes the request as `http://127.0.0.1/` and sends it to `http://127.0.0.1`. If a developer passes in user input into `path` parameter of `undici.request`, it can result in an _SSRF_ as they will assume that the hostname cannot change, when in actual fact it can change because the specified path parameter is combined with the base URL. This issue was fixed in `undici@5.8.1`. The best workaround is to validate user input before passing it to the `undici.request` call.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2a329f4d699fefdb076e921ccf18b032</td>
+       <td>CVE-2022-35942</td>
+       <td>2022-08-12 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper input validation on the `contains` LoopBack filter may allow for arbitrary SQL injection. When the extended filter property `contains` is permitted to be interpreted by the Postgres connector, it is possible to inject arbitrary SQL which may affect the confidentiality and integrity of data stored on the connected database. A patch was released in version 5.5.1. This affects users who does any of the following: - Connect to the database via the DataSource with `allowExtendedProperties: true` setting OR - Uses the connector's CRUD methods directly OR - Uses the connector's other methods to interpret the LoopBack filter. Users who are unable to upgrade should do the following if applicable: - Remove `allowExtendedProperties: true` DataSource setting - Add `allowExtendedProperties: false` DataSource setting - When passing directly to the connector functions, manually sanitize the user input for the `contains` LoopBack filter beforehand.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35942">详情</a></td>
+      </tr>
+
+      <tr>
        <td>baa76a0e244f09e5c74911872815e0ed</td>
        <td>CVE-2022-35956</td>
        <td>2022-08-12 21:15:00 <img src="imgs/new.gif" /></td>
@@ -505,22 +521,6 @@
        <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
        <td>A stack overflow vulnerability exists in /goform/setAutoPing in Tenda W6 V1.0.0.9(4122), which allows an attacker to construct ping1 parameters and ping2 parameters for a stack overflow attack. An attacker can use this vulnerability to execute arbitrary code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35559">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fc6326e22bc296ad84df509bd79017f6</td>
-       <td>CVE-2022-35558</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A stack overflow vulnerability exists in /goform/WifiMacFilterGet in Tenda W6 V1.0.0.9(4122) version, which can be exploited by attackers to cause a denial of service (DoS) via the index parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35558">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>96ece67e50a518ec9e23c375cc58bc38</td>
-       <td>CVE-2022-28636</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A potential local arbitrary code execution and a local denial of service (DoS) vulnerability within an isolated process were discovered in HPE Integrated Lights-Out 5 (iLO 5) firmware version(s): Prior to 2.71. An unprivileged user could locally exploit this vulnerability to potentially execute arbitrary code in an isolated process resulting in a complete loss of confidentiality, integrity, and availability within that process. In addition, an unprivileged user could exploit a denial of service (DoS) vulnerability in an isolated process resulting in a complete loss of availability within that process. A successful attack depends on conditions beyond the attackers control. HPE has provided a firmware update to resolve this vulnerability in HPE Integrated Lights-Out 5 (iLO 5).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28636">详情</a></td>
       </tr>
 
      </tbody>
@@ -798,7 +798,7 @@
       <tr>
        <td>df69facf9f28391e1cde9793196d543a</td>
        <td>CNNVD-202208-2823 (CVE-2022-20246)</td>
-       <td>2022-08-11 12:57:25 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:25</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2823">详情</a></td>
       </tr>
@@ -806,7 +806,7 @@
       <tr>
        <td>72495e3e99ee9ec9186c3e11e8b570a9</td>
        <td>CNNVD-202208-2824 (CVE-2022-20242)</td>
-       <td>2022-08-11 12:57:23 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:23</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2824">详情</a></td>
       </tr>
@@ -814,7 +814,7 @@
       <tr>
        <td>56bbeea7d6c5fc9d53e710c5b19f088b</td>
        <td>CNNVD-202208-2825 (CVE-2022-20241)</td>
-       <td>2022-08-11 12:57:21 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:21</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2825">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>98deee5e1f71e6a496e19d5145986ea1</td>
        <td>CNNVD-202208-2826 (CVE-2022-20244)</td>
-       <td>2022-08-11 12:57:19 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:19</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2826">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>7b34a30429ac11bc118c65f8dd9ad971</td>
        <td>CNNVD-202208-2827 (CVE-2022-20245)</td>
-       <td>2022-08-11 12:57:17 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:17</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2827">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>33c05400b61777f5f559b795df364325</td>
        <td>CNNVD-202208-2828 (CVE-2022-20249)</td>
-       <td>2022-08-11 12:57:14 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:14</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2828">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>31496064636ed1ee0b7d76f538907934</td>
        <td>CNNVD-202208-2829 (CVE-2022-20248)</td>
-       <td>2022-08-11 12:57:12 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:12</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2829">详情</a></td>
       </tr>
@@ -854,7 +854,7 @@
       <tr>
        <td>e4f456f685b3d137846333fc19ada4c8</td>
        <td>CNNVD-202208-2830 (CVE-2022-20247)</td>
-       <td>2022-08-11 12:57:10 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:10</td>
        <td>Google Android 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2830">详情</a></td>
       </tr>
@@ -862,7 +862,7 @@
       <tr>
        <td>c6b6143284e79fd3482c2629255622f9</td>
        <td>CNNVD-202208-2831 (CVE-2022-2625)</td>
-       <td>2022-08-11 12:57:08 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:08</td>
        <td>PostgreSQL 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2831">详情</a></td>
       </tr>
@@ -870,7 +870,7 @@
       <tr>
        <td>4af03974c87aecbad477499d3f2c96f0</td>
        <td>CNNVD-202208-2832 (CVE-2022-2764)</td>
-       <td>2022-08-11 12:57:06 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 12:57:06</td>
        <td>Red Hat Undertow 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202208-2832">详情</a></td>
       </tr>
@@ -1702,7 +1702,7 @@
       <tr>
        <td>a47ec307008de8f5ab1cc609f1c432d8</td>
        <td>CVE-2022-26310</td>
-       <td>2022-08-11 20:22:35 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 20:22:35</td>
        <td>Artica Pandora FMS 其他漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=afc50cf36a7c43a3be10a0a0b14e00d2">详情</a></td>
       </tr>
@@ -1710,7 +1710,7 @@
       <tr>
        <td>3d5ec616396b7bce7d7cd52fc456e612</td>
        <td>CVE-2022-21791</td>
-       <td>2022-08-11 20:22:25 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 20:22:25</td>
        <td>MediaTek 芯片 缓冲区错误漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7515b0b9825743e392b0f4c07031c28f">详情</a></td>
       </tr>
@@ -1718,7 +1718,7 @@
       <tr>
        <td>7ecacadfe93ea351f96efbabf89336b1</td>
        <td>CVE-2022-26430</td>
-       <td>2022-08-11 20:22:16 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 20:22:16</td>
        <td>MediaTek 芯片 其他漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=22bf12d4412249caaa17f6e368400e8d">详情</a></td>
       </tr>
@@ -1726,7 +1726,7 @@
       <tr>
        <td>d75c49491f8a418d68955f6d496561f3</td>
        <td>CVE-2021-46681</td>
-       <td>2022-08-11 20:22:11 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 20:22:11</td>
        <td>Artica Pandora FMS 跨站脚本漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2734c6c94bbd42bdb262142251ba2c64">详情</a></td>
       </tr>
@@ -1934,7 +1934,7 @@
       <tr>
        <td>b50255613cf9cbc8dfa2abe2b83841a8</td>
        <td>CVE-2022-32192</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Couchbase Server信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68103">详情</a></td>
       </tr>
@@ -1942,7 +1942,7 @@
       <tr>
        <td>47d7727663bb481a7d8d80b299095178</td>
        <td>CVE-2022-25167</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Apache Flume远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68102">详情</a></td>
       </tr>
@@ -1950,7 +1950,7 @@
       <tr>
        <td>2909a76de46233f385e354b392a06412</td>
        <td>CVE-2022-33127</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Diffy任意代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68101">详情</a></td>
       </tr>
@@ -1958,7 +1958,7 @@
       <tr>
        <td>cd859b1eb430b43786f7bb3f09be1a19</td>
        <td>CVE-2022-32262</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Siemens SINEMA Remote Connect Server命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68100">详情</a></td>
       </tr>
@@ -1966,7 +1966,7 @@
       <tr>
        <td>68ba2187d21cf0951d8aa8f228108128</td>
        <td>CVE-2021-40212</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Kakao PotPlayer越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68099">详情</a></td>
       </tr>
@@ -1974,7 +1974,7 @@
       <tr>
        <td>cb6266b64be06b3e46b5a62c824d3ce3</td>
        <td>CVE-2022-31273</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>TOPSEC TopIDP 3000信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68098">详情</a></td>
       </tr>
@@ -1982,7 +1982,7 @@
       <tr>
        <td>5cd4720dddc253ce0201250e4549fefe</td>
        <td>CVE-2022-31590</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>SAP PowerDesigner Proxy拒绝服务漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68097">详情</a></td>
       </tr>
@@ -1990,7 +1990,7 @@
       <tr>
        <td>9fde5d2ad7e0fd2f246f2401da28bf1e</td>
        <td>CVE-2022-32237</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>SAP 3D Visual Enterprise Viewer输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68096">详情</a></td>
       </tr>
@@ -1998,7 +1998,7 @@
       <tr>
        <td>ab67fe8db6f2ccc2016c1c69891704f1</td>
        <td>CVE-2021-37182</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Siemens SCALANCE拒绝服务漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68095">详情</a></td>
       </tr>
@@ -2006,7 +2006,7 @@
       <tr>
        <td>d83eddbc0fd5e1f14628cbbcc4e2ac8e</td>
        <td>CVE-2022-29485</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>SHIRAGI跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68094">详情</a></td>
       </tr>
@@ -2014,7 +2014,7 @@
       <tr>
        <td>c047588cbd9d1b3759391a3c0aeb454f</td>
        <td>CVE-2022-31754</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>HUAWEI EMUI拒绝服务漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68093">详情</a></td>
       </tr>
@@ -2022,7 +2022,7 @@
       <tr>
        <td>f9c1bfd108c84c5a6ab80dbb98ff8c49</td>
        <td>CVE-2022-31845</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>WAVLINK WN535 G3信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68092">详情</a></td>
       </tr>
@@ -2030,7 +2030,7 @@
       <tr>
        <td>bb055f05ec80c58f7cf33bf577888871</td>
        <td>CVE-2021-40956</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>LaikeTui SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68091">详情</a></td>
       </tr>
@@ -2038,7 +2038,7 @@
       <tr>
        <td>1db6487b60311c7393562155b2c4aa2b</td>
        <td>CVE-2021-39806</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Google Android内存破坏漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68090">详情</a></td>
       </tr>
@@ -2046,7 +2046,7 @@
       <tr>
        <td>92f024d981417b4890af02f569a68618</td>
        <td>CVE-2022-20143</td>
-       <td>2022-08-11 07:27:54 <img src="imgs/new.gif" /></td>
+       <td>2022-08-11 07:27:54</td>
        <td>Google Android不受控制的资源消耗漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/68089">详情</a></td>
       </tr>
