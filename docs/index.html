@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-13 14:25:45 -->
+<!-- RELEASE TIME : 2022-08-14 14:26:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -286,7 +286,7 @@
       <tr>
        <td>dc3c007bfbe14e5fade3976ce5bc474e</td>
        <td>CVE-2022-35949</td>
-       <td>2022-08-12 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 23:15:00</td>
        <td>undici is an HTTP/1.1 client, written from scratch for Node.js.`undici` is vulnerable to SSRF (Server-side Request Forgery) when an application takes in **user input** into the `path/pathname` option of `undici.request`. If a user specifies a URL such as `http://127.0.0.1` or `//127.0.0.1` ```js const undici = require("undici") undici.request({origin: "http://example.com", pathname: "//127.0.0.1"}) ``` Instead of processing the request as `http://example.org//127.0.0.1` (or `http://example.org/http://127.0.0.1` when `http://127.0.0.1 is used`), it actually processes the request as `http://127.0.0.1/` and sends it to `http://127.0.0.1`. If a developer passes in user input into `path` parameter of `undici.request`, it can result in an _SSRF_ as they will assume that the hostname cannot change, when in actual fact it can change because the specified path parameter is combined with the base URL. This issue was fixed in `undici@5.8.1`. The best workaround is to validate user input before passing it to the `undici.request` call.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35949">详情</a></td>
       </tr>
@@ -294,7 +294,7 @@
       <tr>
        <td>2a329f4d699fefdb076e921ccf18b032</td>
        <td>CVE-2022-35942</td>
-       <td>2022-08-12 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 23:15:00</td>
        <td>Improper input validation on the `contains` LoopBack filter may allow for arbitrary SQL injection. When the extended filter property `contains` is permitted to be interpreted by the Postgres connector, it is possible to inject arbitrary SQL which may affect the confidentiality and integrity of data stored on the connected database. A patch was released in version 5.5.1. This affects users who does any of the following: - Connect to the database via the DataSource with `allowExtendedProperties: true` setting OR - Uses the connector's CRUD methods directly OR - Uses the connector's other methods to interpret the LoopBack filter. Users who are unable to upgrade should do the following if applicable: - Remove `allowExtendedProperties: true` DataSource setting - Add `allowExtendedProperties: false` DataSource setting - When passing directly to the connector functions, manually sanitize the user input for the `contains` LoopBack filter beforehand.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35942">详情</a></td>
       </tr>
@@ -302,7 +302,7 @@
       <tr>
        <td>baa76a0e244f09e5c74911872815e0ed</td>
        <td>CVE-2022-35956</td>
-       <td>2022-08-12 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 21:15:00</td>
        <td>This Rails gem adds two methods to the ActiveRecord::Base class that allow you to update many records on a single database hit, using a case sql statement for it. Before version 0.1.3 `update_by_case` gem used custom sql strings, and it was not sanitized, making it vulnerable to sql injection. Upgrade to version >= 0.1.3 that uses `Arel` instead to construct the resulting sql statement, with sanitized sql.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35956">详情</a></td>
       </tr>
@@ -310,7 +310,7 @@
       <tr>
        <td>38447acf20ecf69a10529b688d471127</td>
        <td>CVE-2022-35953</td>
-       <td>2022-08-12 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 21:15:00</td>
        <td>BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next. Some links in BookWyrm may be vulnerable to tabnabbing, a form of phishing that gives attackers an opportunity to redirect a user to a malicious site. The issue was patched in version 0.4.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35953">详情</a></td>
       </tr>
@@ -318,7 +318,7 @@
       <tr>
        <td>737c38ff532843f12a7604255f2d36ba</td>
        <td>CVE-2022-35943</td>
-       <td>2022-08-12 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 21:15:00</td>
        <td>Shield is an authentication and authorization framework for CodeIgniter 4. This vulnerability may allow [SameSite Attackers](https://canitakeyoursubdomain.name/) to bypass the [CodeIgniter4 CSRF protection](https://codeigniter4.github.io/userguide/libraries/security.html) mechanism with CodeIgniter Shield. For this attack to succeed, the attacker must have direct (or indirect, e.g., XSS) control over a subdomain site (e.g., `https://a.example.com/`) of the target site (e.g., `http://example.com/`). Upgrade to **CodeIgniter v4.2.3 or later** and **Shield v1.0.0-beta.2 or later**. As a workaround: set `Config\Security::$csrfProtection` to `'session,'`remove old session data right after login (immediately after ID and password match) and regenerate CSRF token right after login (immediately after ID and password match)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35943">详情</a></td>
       </tr>
@@ -326,7 +326,7 @@
       <tr>
        <td>5f0a9a90354d03296b0ded3d7625778c</td>
        <td>CVE-2022-38183</td>
-       <td>2022-08-12 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:15:00</td>
        <td>In Gitea before 1.16.9, it was possible for users to add existing issues to projects. Due to improper access controls, an attacker could assign any issue to any project in Gitea (there was no permission check for fetching the issue). As a result, the attacker would get access to private issue titles.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38183">详情</a></td>
       </tr>
@@ -334,7 +334,7 @@
       <tr>
        <td>0b6eaa8841cd0d8942d84072c5674cff</td>
        <td>CVE-2022-37397</td>
-       <td>2022-08-12 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:15:00</td>
        <td>An issue was discovered in the YugabyteDB 2.6.1 when using LDAP-based authentication in YCQL with Microsoft’s Active Directory. When anonymous or unauthenticated LDAP binding is enabled, it allows bypass of authentication with an empty password.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37397">详情</a></td>
       </tr>
@@ -342,7 +342,7 @@
       <tr>
        <td>d0348ff858b3d765010a5a1d1a8b8fbc</td>
        <td>CVE-2022-2804</td>
-       <td>2022-08-12 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:15:00</td>
        <td>A vulnerability was found in SourceCodester Zoo Management System. It has been classified as critical. Affected is an unknown function of the file /pages/apply_vacancy.php. The manipulation of the argument filename leads to unrestricted upload. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-206250 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2804">详情</a></td>
       </tr>
@@ -350,7 +350,7 @@
       <tr>
        <td>59ab61ddcd507685fc042a46036ad7e2</td>
        <td>CVE-2022-2803</td>
-       <td>2022-08-12 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:15:00</td>
        <td>A vulnerability was found in SourceCodester Zoo Management System and classified as critical. This issue affects some unknown processing of the file /pages/animals.php. The manipulation of the argument class_id leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-206249 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2803">详情</a></td>
       </tr>
@@ -358,7 +358,7 @@
       <tr>
        <td>aabf1ba46a6846eb562845da719a6a80</td>
        <td>CVE-2022-2802</td>
-       <td>2022-08-12 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:15:00</td>
        <td>A vulnerability has been found in SourceCodester Gas Agency Management System and classified as critical. This vulnerability affects unknown code of the file gasmark/login.php. The manipulation of the argument username leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-206248.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2802">详情</a></td>
       </tr>
@@ -366,7 +366,7 @@
       <tr>
        <td>dc7cb39fa8ed249725c4c07f847b028a</td>
        <td>CVE-2022-2801</td>
-       <td>2022-08-12 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:15:00</td>
        <td>A vulnerability, which was classified as critical, was found in SourceCodester Automated Beer Parlour Billing System. This affects an unknown part of the component Login. The manipulation of the argument username leads to sql injection. It is possible to initiate the attack remotely. The associated identifier of this vulnerability is VDB-206247.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2801">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>1ff9adf241ffa9fc1925a71691b59ed9</td>
        <td>CVE-2022-2800</td>
-       <td>2022-08-12 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:15:00</td>
        <td>A vulnerability, which was classified as problematic, has been found in SourceCodester Gym Management System. Affected by this issue is some unknown functionality. The manipulation leads to clickjacking. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-206246 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2800">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>8615e15830a962b42e4b6d8ab9df7ea0</td>
        <td>CVE-2022-2797</td>
-       <td>2022-08-12 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 19:15:00</td>
        <td>A vulnerability classified as critical was found in SourceCodester Student Information System. Affected by this vulnerability is an unknown functionality of the file /admin/students/view_student.php. The manipulation of the argument id leads to sql injection. The attack can be launched remotely. The identifier VDB-206245 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2797">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>9f1f025d389809b0771ed1bdf51d98a7</td>
        <td>CVE-2021-29118</td>
-       <td>2022-08-12 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 19:15:00</td>
        <td>An out-of-bounds read vulnerability exists when parsing a specially crafted file in Esri ArcReader 10.8.1 (and earlier) which allow an unauthenticated attacker to induce an information disclosure issue in the context of the current user.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-29118">详情</a></td>
       </tr>
@@ -398,7 +398,7 @@
       <tr>
        <td>e993b3e9662552e188b6e34dfe2c7aa1</td>
        <td>CVE-2021-29117</td>
-       <td>2022-08-12 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 19:15:00</td>
        <td>A use-after-free vulnerability when parsing a specially crafted file in Esri ArcReader 10.8.1 (and earlier) allows an unauthenticated attacker to achieve arbitrary code execution in the context of the current user.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-29117">详情</a></td>
       </tr>
@@ -406,7 +406,7 @@
       <tr>
        <td>ad82acac893de620393b3c6a37f8abfd</td>
        <td>CVE-2021-29112</td>
-       <td>2022-08-12 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 19:15:00</td>
        <td>An out-of-bounds read vulnerability exists when parsing a specially crafted file in Esri ArcReader 10.8.1 (and earlier) which allow an unauthenticated attacker to induce an information disclosure issue in the context of the current user.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-29112">详情</a></td>
       </tr>
@@ -414,7 +414,7 @@
       <tr>
        <td>d5b5544defe2bab89649aa56670096e5</td>
        <td>CVE-2022-35980</td>
-       <td>2022-08-12 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 18:15:00</td>
        <td>OpenSearch Security is a plugin for OpenSearch that offers encryption, authentication and authorization. Versions 2.0.0.0 and 2.1.0.0 of the security plugin are affected by an information disclosure vulnerability. Requests to an OpenSearch cluster configured with advanced access control features document level security (DLS), field level security (FLS), and/or field masking will not be filtered when the query's search pattern matches an aliased index. OpenSearch Dashboards creates an alias to `.kibana` by default, so filters with the index pattern of `*` to restrict access to documents or fields will not be applied. This issue allows requests to access sensitive information when customer have acted to restrict access that specific information. OpenSearch 2.2.0, which is compatible with OpenSearch Security 2.2.0.0, contains the fix for this issue. There is no recommended work around.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35980">详情</a></td>
       </tr>
@@ -422,7 +422,7 @@
       <tr>
        <td>49b9219bc017a287d1e7cd7a0a67bb01</td>
        <td>CVE-2021-42751</td>
-       <td>2022-08-12 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 17:15:00</td>
        <td>A cross-site scripting (XSS) vulnerability in Rule Engine in ThingsBoard 3.3.1 allows remote attackers (with administrative access) to inject arbitrary JavaScript within the description of a rule node.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42751">详情</a></td>
       </tr>
@@ -430,7 +430,7 @@
       <tr>
        <td>ffcabb848e0a66d31d4c7a74e5d30564</td>
        <td>CVE-2021-42750</td>
-       <td>2022-08-12 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 17:15:00</td>
        <td>A cross-site scripting (XSS) vulnerability in Rule Engine in ThingsBoard 3.3.1 allows remote attackers (with administrative access) to inject arbitrary JavaScript within the title of a rule node.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42750">详情</a></td>
       </tr>
@@ -438,7 +438,7 @@
       <tr>
        <td>5cb9386abc41bfdb63abaab38d450517</td>
        <td>CVE-2022-35932</td>
-       <td>2022-08-12 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 16:15:00</td>
        <td>Nextcloud Talk is a video and audio conferencing app for Nextcloud. Prior to versions 12.2.7, 13.0.7, and 14.0.3, password protected conversations are susceptible to brute force attacks if the attacker has the link/conversation token. It is recommended that the Nextcloud Talk application is upgraded to 12.2.7, 13.0.7 or 14.0.3. There are currently no known workarounds available apart from not having password protected conversations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35932">详情</a></td>
       </tr>
@@ -446,7 +446,7 @@
       <tr>
        <td>2b0452234f61c772b0d82484a67869f0</td>
        <td>CVE-2022-35590</td>
-       <td>2022-08-12 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 16:15:00</td>
        <td>A cross-site scripting (XSS) issue in the ForkCMS version 5.9.3 allows remote attackers to inject JavaScript via the "end_date" Parameter</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35590">详情</a></td>
       </tr>
@@ -454,7 +454,7 @@
       <tr>
        <td>a74c9829150f753e8f613feac8129814</td>
        <td>CVE-2022-35589</td>
-       <td>2022-08-12 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 16:15:00</td>
        <td>A cross-site scripting (XSS) issue in the Fork version 5.9.3 allows remote attackers to inject JavaScript via the "publish_on_time" Parameter.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35589">详情</a></td>
       </tr>
@@ -462,7 +462,7 @@
       <tr>
        <td>46dc3111124f0012dbe220276b2c2d04</td>
        <td>CVE-2022-35587</td>
-       <td>2022-08-12 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 16:15:00</td>
        <td>A cross-site scripting (XSS) issue in the Fork version 5.9.3 allows remote attackers to inject JavaScript via the "publish_on_date" Parameter</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35587">详情</a></td>
       </tr>
@@ -470,7 +470,7 @@
       <tr>
        <td>b37150fdcb61afb4bb3cf20a6eea17fc</td>
        <td>CVE-2022-35585</td>
-       <td>2022-08-12 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 16:15:00</td>
        <td>A stored cross-site scripting (XSS) issue in the ForkCMS version 5.9.3 allows remote attackers to inject JavaScript via the "start_date" Parameter</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35585">详情</a></td>
       </tr>
@@ -478,7 +478,7 @@
       <tr>
        <td>b94c9272136b784f9a7bce9fe9ef8b47</td>
        <td>CVE-2022-37423</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 15:15:00</td>
        <td>Neo4j APOC (Awesome Procedures on Cypher) before 4.3.0.7 and 4.x before 4.4.0.8 allows Directory Traversal to sibling directories via apoc.log.stream.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37423">详情</a></td>
       </tr>
@@ -486,7 +486,7 @@
       <tr>
        <td>4a2a1582b214d2311ef90ab22d8addab</td>
        <td>CVE-2022-37043</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 15:15:00</td>
        <td>An issue was discovered in the webmail component in Zimbra Collaboration Suite (ZCS) 8.8.15 and 9.0. When using preauth, CSRF tokens are not checked on some POST endpoints. Thus, when an authenticated user views an attacker-controlled page, a request will be sent to the application that appears to be intended. The CSRF token is omitted from the request, but the request still succeeds.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37043">详情</a></td>
       </tr>
@@ -494,7 +494,7 @@
       <tr>
        <td>67d7bf7ff7b39b7583458aa3abec6ef5</td>
        <td>CVE-2022-37042</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 15:15:00</td>
        <td>Zimbra Collaboration Suite (ZCS) 8.8.15 and 9.0 has mboximport functionality that receives a ZIP archive and extracts files from it. By bypassing authentication (i.e., not having an authtoken), an attacker can upload arbitrary files to the system, leading to directory traversal and remote code execution. NOTE: this issue exists because of an incomplete fix for CVE-2022-27925.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37042">详情</a></td>
       </tr>
@@ -502,7 +502,7 @@
       <tr>
        <td>3f8a422692bf0069a95040323098944f</td>
        <td>CVE-2022-37041</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 15:15:00</td>
        <td>An issue was discovered in ProxyServlet.java in the /proxy servlet in Zimbra Collaboration Suite (ZCS) 8.8.15 and 9.0. The value of the X-Forwarded-Host header overwrites the value of the Host header in proxied requests. The value of X-Forwarded-Host header is not checked against the whitelist of hosts that ZCS is allowed to proxy to (the zimbraProxyAllowedDomains setting).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37041">详情</a></td>
       </tr>
@@ -510,7 +510,7 @@
       <tr>
        <td>6aa61ccb16dadfcc38f233c686c9d83b</td>
        <td>CVE-2022-35561</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 15:15:00</td>
        <td>A stack overflow vulnerability exists in /goform/WifiMacFilterSet in Tenda W6 V1.0.0.9(4122) version, which can be exploited by attackers to cause a denial of service (DoS) via the index parameter.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35561">详情</a></td>
       </tr>
@@ -518,7 +518,7 @@
       <tr>
        <td>66c2bcd5eb466cb5aae23152fc8dfa4a</td>
        <td>CVE-2022-35559</td>
-       <td>2022-08-12 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 15:15:00</td>
        <td>A stack overflow vulnerability exists in /goform/setAutoPing in Tenda W6 V1.0.0.9(4122), which allows an attacker to construct ping1 parameters and ping2 parameters for a stack overflow attack. An attacker can use this vulnerability to execute arbitrary code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35559">详情</a></td>
       </tr>
@@ -1676,6 +1676,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a3a1062f4340569bcfbbcfe836231976</td>
+       <td>CVE-2022-20353</td>
+       <td>2022-08-14 20:28:02 <img src="imgs/new.gif" /></td>
+       <td>Google Android 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f9ba03c8f9dc49a8a82627d07c07386b">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>36c1bc2b3cf3f920ed957088f323f27b</td>
+       <td>CVE-2022-20354</td>
+       <td>2022-08-14 20:27:53 <img src="imgs/new.gif" /></td>
+       <td>Google Android 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=142a0032ae6646bb9433a4382589cd5c">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed09e5368e6f8af6fe716e419c3ed81e</td>
+       <td>CVE-2022-20349</td>
+       <td>2022-08-14 20:27:48 <img src="imgs/new.gif" /></td>
+       <td>Google Android 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1d922be7661e4b1a889d13ae1f914322">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>61c91876335fe7b24f7072b7a8c86e07</td>
+       <td>CVE-2022-20361</td>
+       <td>2022-08-14 20:27:44 <img src="imgs/new.gif" /></td>
+       <td>Google Android 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=964526ca28d342b28a90912d0e2a0d9f">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>25c89228fe03a9a2255d5360f276fcdb</td>
+       <td>CVE-2022-21979</td>
+       <td>2022-08-14 20:27:34 <img src="imgs/new.gif" /></td>
+       <td>Microsoft Exchange Server 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=53583d79400c40d9ad76d36b2e76ac5f">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>be5d42d524f5550e91e3729745b37df0</td>
+       <td>CVE-2022-20358</td>
+       <td>2022-08-14 20:27:25 <img src="imgs/new.gif" /></td>
+       <td>Google Android 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=8fc4f2410bac4bf5a47a3b9db91eb76e">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1a3be092129664dc4c4abd0363ddbfe6</td>
        <td>CVE-2022-26979</td>
        <td>2022-08-13 20:25:04 <img src="imgs/new.gif" /></td>
@@ -1758,7 +1806,7 @@
       <tr>
        <td>4687f1d2bb8553a403d55b3c766d3913</td>
        <td>CVE-2022-36359</td>
-       <td>2022-08-12 20:30:58 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:30:58</td>
        <td>Django 其他漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2528815973d6439191a84360dcb1215f">详情</a></td>
       </tr>
@@ -1766,7 +1814,7 @@
       <tr>
        <td>e80c45e2671bd1acaf1f85bff83b66b6</td>
        <td>CVE-2022-29154</td>
-       <td>2022-08-12 20:30:53 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:30:53</td>
        <td>rsync 其他漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5edb5b9729854a349fecb4c0825754d0">详情</a></td>
       </tr>
@@ -1774,7 +1822,7 @@
       <tr>
        <td>93ed11ba554c7116a34a10f7d487c61a</td>
        <td>CVE-2022-27617</td>
-       <td>2022-08-12 20:30:48 <img src="imgs/new.gif" /></td>
+       <td>2022-08-12 20:30:48</td>
        <td>Synology Calendar 路径遍历漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=4eead74002f343c493ac7a8701e7bef7">详情</a></td>
       </tr>
@@ -1865,54 +1913,6 @@
        <td>2022-08-09 20:19:58</td>
        <td>Adobe Magento Commerce和Magento Open Source 授权问题漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=145e3e11aa3448928964b875079ce070">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f088af995321bc695a1082eea5c66a26</td>
-       <td>CVE-2020-1754</td>
-       <td>2022-08-09 20:19:54</td>
-       <td>Moodle 安全漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=e531bfa88a4544d0b16b702ec38cdf01">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>72810fe40ba524e16247e4a3b371dd29</td>
-       <td>CVE-2020-1691</td>
-       <td>2022-08-09 20:19:49</td>
-       <td>Moodle 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=b9fbc0142ead4198a8b8c28f5ba5bf2e">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eedc282aea3ca0ec0ced65c18fee8dcc</td>
-       <td>CVE-2021-46678</td>
-       <td>2022-08-09 20:19:44</td>
-       <td>Artica Pandora FMS 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=9d42fa4b5ee04ded8839e0f1c3dde39c">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>afb7558e58cc679b6558d3c4ffe9ff13</td>
-       <td>CVE-2021-46677</td>
-       <td>2022-08-09 20:19:39</td>
-       <td>Artica Pandora FMS 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ed65e0d409474e2cafd9aa2bec8da10e">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e80ce9cce0a118e2e59af41dcb35ad7</td>
-       <td>CVE-2022-23733</td>
-       <td>2022-08-09 20:19:34</td>
-       <td>GitHub Enterprise Server 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=845cee3c0af74016b6067b2ea6ba2e6e">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>34645c3a6d1191e2607d709eb040bcd3</td>
-       <td>CVE-2021-46680</td>
-       <td>2022-08-09 20:19:29</td>
-       <td>Artica Pandora FMS 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=3b80b17dac85414caa567d06b678df3e">详情</a></td>
       </tr>
 
      </tbody>
