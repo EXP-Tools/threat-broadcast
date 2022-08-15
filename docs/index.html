@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-15 20:31:10 -->
+<!-- RELEASE TIME : 2022-08-15 21:27:46 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8d0d98444365f1b6d0dbfe9f51f1c0d9</td>
+       <td>CVE-2022-36010</td>
+       <td>2022-08-15 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>This library allows strings to be parsed as functions and stored as a specialized component, [`JsonFunctionValue`](https://github.com/oxyno-zeta/react-editable-json-tree/blob/09a0ca97835b0834ad054563e2fddc6f22bc5d8c/src/components/JsonFunctionValue.js). To do this, Javascript's [`eval`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) function is used to execute strings that begin with "function" as Javascript. This unfortunately could allow arbitrary code to be executed if it exists as a value within the JSON structure being displayed. Given that this component may often be used to display data from arbitrary, untrusted sources, this is extremely dangerous. One important note is that users who have defined a custom [`onSubmitValueParser`](https://github.com/oxyno-zeta/react-editable-json-tree/tree/09a0ca97835b0834ad054563e2fddc6f22bc5d8c#onsubmitvalueparser) callback prop on the [`JsonTree`](https://github.com/oxyno-zeta/react-editable-json-tree/blob/09a0ca97835b0834ad054563e2fddc6f22bc5d8c/src/JsonTree.js) component should be ***unaffected***. This vulnerability exists in the default `onSubmitValueParser` prop which calls [`parse`](https://github.com/oxyno-zeta/react-editable-json-tree/blob/master/src/utils/parse.js#L30). Prop is added to `JsonTree` called `allowFunctionEvaluation`. This prop will be set to `true` in v2.2.2, which allows upgrade without losing backwards-compatibility. In v2.2.2, we switched from using `eval` to using [`Function`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) to construct anonymous functions. This is better than `eval` for the following reasons: - Arbitrary code should not be able to execute immediately, since the `Function` constructor explicitly *only creates* anonymous functions - Functions are created without local closures, so they only have access to the global scope If you use: - **Version `<2.2.2`**, you must upgrade as soon as possible. - **Version `^2.2.2`**, you must explicitly set `JsonTree`'s `allowFunctionEvaluation` prop to `false` to fully mitigate this vulnerability. - **Version `>=3.0.0`**, `allowFunctionEvaluation` is already set to `false` by default, so no further steps are necessary.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36010">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>33e40a73f696edf7bcee9caf48a889f9</td>
+       <td>CVE-2022-35978</td>
+       <td>2022-08-15 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Minetest is a free open-source voxel game engine with easy modding and game creation. In **single player**, a mod can set a global setting that controls the Lua script loaded to display the main menu. The script is then loaded as soon as the game session is exited. The Lua environment the menu runs in is not sandboxed and can directly interfere with the user's system. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35978">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5df522be3efe74bd89a06eda3897b7d</td>
+       <td>CVE-2022-24654</td>
+       <td>2022-08-15 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Authenticated stored cross-site scripting (XSS) vulnerability in "Field Server Address" field in INTELBRAS ATA 200 Firmware 74.19.10.21 allows attackers to inject JavaScript code through a crafted payload.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24654">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b503e8e6bc34f935d536a19f687b2701</td>
        <td>CVE-2022-36526</td>
        <td>2022-08-15 17:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2022-08-12 23:15:00</td>
        <td>Improper input validation on the `contains` LoopBack filter may allow for arbitrary SQL injection. When the extended filter property `contains` is permitted to be interpreted by the Postgres connector, it is possible to inject arbitrary SQL which may affect the confidentiality and integrity of data stored on the connected database. A patch was released in version 5.5.1. This affects users who does any of the following: - Connect to the database via the DataSource with `allowExtendedProperties: true` setting OR - Uses the connector's CRUD methods directly OR - Uses the connector's other methods to interpret the LoopBack filter. Users who are unable to upgrade should do the following if applicable: - Remove `allowExtendedProperties: true` DataSource setting - Add `allowExtendedProperties: false` DataSource setting - When passing directly to the connector functions, manually sanitize the user input for the `contains` LoopBack filter beforehand.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35942">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>baa76a0e244f09e5c74911872815e0ed</td>
-       <td>CVE-2022-35956</td>
-       <td>2022-08-12 21:15:00</td>
-       <td>This Rails gem adds two methods to the ActiveRecord::Base class that allow you to update many records on a single database hit, using a case sql statement for it. Before version 0.1.3 `update_by_case` gem used custom sql strings, and it was not sanitized, making it vulnerable to sql injection. Upgrade to version >= 0.1.3 that uses `Arel` instead to construct the resulting sql statement, with sanitized sql.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35956">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>38447acf20ecf69a10529b688d471127</td>
-       <td>CVE-2022-35953</td>
-       <td>2022-08-12 21:15:00</td>
-       <td>BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next. Some links in BookWyrm may be vulnerable to tabnabbing, a form of phishing that gives attackers an opportunity to redirect a user to a malicious site. The issue was patched in version 0.4.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35953">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>737c38ff532843f12a7604255f2d36ba</td>
-       <td>CVE-2022-35943</td>
-       <td>2022-08-12 21:15:00</td>
-       <td>Shield is an authentication and authorization framework for CodeIgniter 4. This vulnerability may allow [SameSite Attackers](https://canitakeyoursubdomain.name/) to bypass the [CodeIgniter4 CSRF protection](https://codeigniter4.github.io/userguide/libraries/security.html) mechanism with CodeIgniter Shield. For this attack to succeed, the attacker must have direct (or indirect, e.g., XSS) control over a subdomain site (e.g., `https://a.example.com/`) of the target site (e.g., `http://example.com/`). Upgrade to **CodeIgniter v4.2.3 or later** and **Shield v1.0.0-beta.2 or later**. As a workaround: set `Config\Security::$csrfProtection` to `'session,'`remove old session data right after login (immediately after ID and password match) and regenerate CSRF token right after login (immediately after ID and password match)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35943">详情</a></td>
       </tr>
 
      </tbody>
