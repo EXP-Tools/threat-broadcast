@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-15 12:59:28 -->
+<!-- RELEASE TIME : 2022-08-15 14:31:01 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7ef39eb2b641c9e2c48f2c0078ab479b</td>
+       <td>CVE-2022-38223</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>There is an out-of-bounds write in checkType located in etc.c in w3m 0.5.3. It can be triggered by sending a crafted HTML file to the w3m binary. It allows an attacker to cause Denial of Service or possibly have unspecified other impact.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38223">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3f2f331133ad3b10b462ad5c3dd191fa</td>
+       <td>CVE-2022-38221</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>A buffer overflow in the FTcpListener thread in The Isle Evrima (the dedicated server on Windows and Linux) 0.9.88.07 before 2022-08-12 allows a remote attacker to crash any server with an accessible RCON port, or possibly execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38221">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>134630280d98fc11286ce90f0e407ca3</td>
+       <td>CVE-2022-37401</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>Apache OpenOffice supports the storage of passwords for web connections in the user's configuration database. The stored passwords are encrypted with a single master key provided by the user. A flaw in OpenOffice existed where master key was poorly encoded resulting in weakening its entropy from 128 to 43 bits making the stored passwords vulnerable to a brute force attack if an attacker has access to the users stored config. This issue affects: Apache OpenOffice versions prior to 4.1.13. Reference: CVE-2022-26307 - LibreOffice</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37401">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>57df2af4a56cf0fa35deda0f4e59b98c</td>
+       <td>CVE-2022-37400</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>Apache OpenOffice supports the storage of passwords for web connections in the user's configuration database. The stored passwords are encrypted with a single master key provided by the user. A flaw in OpenOffice existed where the required initialization vector for encryption was always the same which weakens the security of the encryption making them vulnerable if an attacker has access to the user's configuration data. This issue affects: Apache OpenOffice versions prior to 4.1.13. Reference: CVE-2022-26306 - LibreOffice</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37400">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>587ee7294ca00bb9314d27ee2395388a</td>
+       <td>CVE-2022-36007</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>Venice is a Clojure inspired sandboxed Lisp dialect with excellent Java interoperability. A partial path traversal issue exists within the functions `load-file` and `load-resource`. These functions can be limited to load files from a list of load paths. Assuming Venice has been configured with the load paths: `[ "/Users/foo/resources" ]` When passing **relative** paths to these two vulnerable functions everything is fine: `(load-resource "test.png")` => loads the file "/Users/foo/resources/test.png" `(load-resource "../resources-alt/test.png")` => rejected, outside the load path When passing **absolute** paths to these two vulnerable functions Venice may return files outside the configured load paths: `(load-resource "/Users/foo/resources/test.png")` => loads the file "/Users/foo/resources/test.png" `(load-resource "/Users/foo/resources-alt/test.png")` => loads the file "/Users/foo/resources-alt/test.png" !!! The latter call suffers from the _Partial Path Traversal_ vulnerability. This issue’s scope is limited to absolute paths whose name prefix matches a load path. E.g. for a load-path `"/Users/foo/resources"`, the actor can cause loading a resource also from `"/Users/foo/resources-alt"`, but not from `"/Users/foo/images"`. Versions of Venice before and including v1.10.17 are affected by this issue. Upgrade to Venice >= 1.10.18, if you are on a version < 1.10.18. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36007">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>62ae0549b4b598507f1f87a4845a3737</td>
+       <td>CVE-2022-36006</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>Arvados is an open source platform for managing, processing, and sharing genomic and other large scientific and biomedical data. A remote code execution (RCE) vulnerability in the Arvados Workbench allows authenticated attackers to execute arbitrary code via specially crafted JSON payloads. This exists in all versions up to 2.4.1 and is fixed in 2.4.2. This vulnerability is specific to the Ruby on Rails Workbench application (“Workbench 1”). We do not believe any other Arvados components, including the TypesScript browser-based Workbench application (“Workbench 2”) or API Server, are vulnerable to this attack. For versions of Arvados earlier than 2.4.2: remove the Ruby-based "Workbench 1" app ("apt-get remove arvados-workbench") from your installation as a workaround.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36006">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cbd9922f9b2494b9f27e6bf85bf41de4</td>
+       <td>CVE-2022-35961</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>OpenZeppelin Contracts is a library for secure smart contract development. The functions `ECDSA.recover` and `ECDSA.tryRecover` are vulnerable to a kind of signature malleability due to accepting EIP-2098 compact signatures in addition to the traditional 65 byte signature format. This is only an issue for the functions that take a single `bytes` argument, and not the functions that take `r, v, s` or `r, vs` as separate arguments. The potentially affected contracts are those that implement signature reuse or replay protection by marking the signature itself as used rather than the signed message or a nonce included in it. A user may take a signature that has already been submitted, submit it again in a different form, and bypass this protection. The issue has been patched in 4.7.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35961">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d07072acb637553d7b23404882e80a25</td>
+       <td>CVE-2022-35958</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is a 100% open source discussion platform. A malicious user can use the invitation system to spam arbitrary email addresses by sending them invitation emails in some cases. This issue is patched in the latest stable, beta and tests-passed versions of Discourse. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35958">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6c602674274c2e5f874e67abff55d4a8</td>
+       <td>CVE-2022-35954</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>The GitHub Actions ToolKit provides a set of packages to make creating actions easier. The `core.exportVariable` function uses a well known delimiter that attackers can use to break out of that specific variable and assign values to other arbitrary variables. Workflows that write untrusted values to the `GITHUB_ENV` file may cause the path or other environment variables to be modified without the intention of the workflow or action author. Users should upgrade to `@actions/core v1.9.1`. If you are unable to upgrade the `@actions/core` package, you can modify your action to ensure that any user input does not contain the delimiter `_GitHubActionsFileCommandDelimeter_` before calling `core.exportVariable`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35954">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>285196bb313291d3a90b8ff1b05badc4</td>
+       <td>CVE-2022-35948</td>
+       <td>2022-08-15 11:21:00 <img src="imgs/new.gif" /></td>
+       <td>undici is an HTTP/1.1 client, written from scratch for Node.js.`=< undici@5.8.0` users are vulnerable to _CRLF Injection_ on headers when using unsanitized input as request headers, more specifically, inside the `content-type` header. Example: ``` import { request } from 'undici' const unsanitizedContentTypeInput = 'application/json\r\n\r\nGET /foo2 HTTP/1.1' await request('http://localhost:3000, { method: 'GET', headers: { 'content-type': unsanitizedContentTypeInput }, }) ``` The above snippet will perform two requests in a single `request` API call: 1) `http://localhost:3000/` 2) `http://localhost:3000/foo2` This issue was patched in Undici v5.8.1. Sanitize input when sending content-type headers using user input as a workaround.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35948">详情</a></td>
+      </tr>
+
+      <tr>
        <td>dc3c007bfbe14e5fade3976ce5bc474e</td>
        <td>CVE-2022-35949</td>
        <td>2022-08-12 23:15:00</td>
@@ -441,86 +521,6 @@
        <td>2022-08-12 16:15:00</td>
        <td>Nextcloud Talk is a video and audio conferencing app for Nextcloud. Prior to versions 12.2.7, 13.0.7, and 14.0.3, password protected conversations are susceptible to brute force attacks if the attacker has the link/conversation token. It is recommended that the Nextcloud Talk application is upgraded to 12.2.7, 13.0.7 or 14.0.3. There are currently no known workarounds available apart from not having password protected conversations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35932">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b0452234f61c772b0d82484a67869f0</td>
-       <td>CVE-2022-35590</td>
-       <td>2022-08-12 16:15:00</td>
-       <td>A cross-site scripting (XSS) issue in the ForkCMS version 5.9.3 allows remote attackers to inject JavaScript via the "end_date" Parameter</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35590">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a74c9829150f753e8f613feac8129814</td>
-       <td>CVE-2022-35589</td>
-       <td>2022-08-12 16:15:00</td>
-       <td>A cross-site scripting (XSS) issue in the Fork version 5.9.3 allows remote attackers to inject JavaScript via the "publish_on_time" Parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35589">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>46dc3111124f0012dbe220276b2c2d04</td>
-       <td>CVE-2022-35587</td>
-       <td>2022-08-12 16:15:00</td>
-       <td>A cross-site scripting (XSS) issue in the Fork version 5.9.3 allows remote attackers to inject JavaScript via the "publish_on_date" Parameter</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35587">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b37150fdcb61afb4bb3cf20a6eea17fc</td>
-       <td>CVE-2022-35585</td>
-       <td>2022-08-12 16:15:00</td>
-       <td>A stored cross-site scripting (XSS) issue in the ForkCMS version 5.9.3 allows remote attackers to inject JavaScript via the "start_date" Parameter</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35585">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b94c9272136b784f9a7bce9fe9ef8b47</td>
-       <td>CVE-2022-37423</td>
-       <td>2022-08-12 15:15:00</td>
-       <td>Neo4j APOC (Awesome Procedures on Cypher) before 4.3.0.7 and 4.x before 4.4.0.8 allows Directory Traversal to sibling directories via apoc.log.stream.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37423">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a2a1582b214d2311ef90ab22d8addab</td>
-       <td>CVE-2022-37043</td>
-       <td>2022-08-12 15:15:00</td>
-       <td>An issue was discovered in the webmail component in Zimbra Collaboration Suite (ZCS) 8.8.15 and 9.0. When using preauth, CSRF tokens are not checked on some POST endpoints. Thus, when an authenticated user views an attacker-controlled page, a request will be sent to the application that appears to be intended. The CSRF token is omitted from the request, but the request still succeeds.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37043">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>67d7bf7ff7b39b7583458aa3abec6ef5</td>
-       <td>CVE-2022-37042</td>
-       <td>2022-08-12 15:15:00</td>
-       <td>Zimbra Collaboration Suite (ZCS) 8.8.15 and 9.0 has mboximport functionality that receives a ZIP archive and extracts files from it. By bypassing authentication (i.e., not having an authtoken), an attacker can upload arbitrary files to the system, leading to directory traversal and remote code execution. NOTE: this issue exists because of an incomplete fix for CVE-2022-27925.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37042">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f8a422692bf0069a95040323098944f</td>
-       <td>CVE-2022-37041</td>
-       <td>2022-08-12 15:15:00</td>
-       <td>An issue was discovered in ProxyServlet.java in the /proxy servlet in Zimbra Collaboration Suite (ZCS) 8.8.15 and 9.0. The value of the X-Forwarded-Host header overwrites the value of the Host header in proxied requests. The value of X-Forwarded-Host header is not checked against the whitelist of hosts that ZCS is allowed to proxy to (the zimbraProxyAllowedDomains setting).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37041">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6aa61ccb16dadfcc38f233c686c9d83b</td>
-       <td>CVE-2022-35561</td>
-       <td>2022-08-12 15:15:00</td>
-       <td>A stack overflow vulnerability exists in /goform/WifiMacFilterSet in Tenda W6 V1.0.0.9(4122) version, which can be exploited by attackers to cause a denial of service (DoS) via the index parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35561">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>66c2bcd5eb466cb5aae23152fc8dfa4a</td>
-       <td>CVE-2022-35559</td>
-       <td>2022-08-12 15:15:00</td>
-       <td>A stack overflow vulnerability exists in /goform/setAutoPing in Tenda W6 V1.0.0.9(4122), which allows an attacker to construct ping1 parameters and ping2 parameters for a stack overflow attack. An attacker can use this vulnerability to execute arbitrary code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35559">详情</a></td>
       </tr>
 
      </tbody>
@@ -1676,6 +1676,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7c4d41be99c8b60913a6d23ec467b3f0</td>
+       <td>CVE-2022-20402</td>
+       <td>2022-08-15 20:25:27 <img src="imgs/new.gif" /></td>
+       <td>Google Pixel 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f063eb900cbf4654bcafaf676544ee2d">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>480272aea92114179820ed89bfc1eb4e</td>
+       <td>CVE-2022-20401</td>
+       <td>2022-08-15 20:25:22 <img src="imgs/new.gif" /></td>
+       <td>Google Pixel 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=719289866c834ebcabbd2f95a90d2b95">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3fd121a3f0ee3ad2f7ed0d1812f21453</td>
+       <td>CVE-2022-20407</td>
+       <td>2022-08-15 20:25:17 <img src="imgs/new.gif" /></td>
+       <td>Google Pixel 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6f9e6d571d014f45ae6f1293b8cfdb36">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f12408e613a7e6ccbccb602af9c5b8d</td>
+       <td>CVE-2022-20405</td>
+       <td>2022-08-15 20:25:13 <img src="imgs/new.gif" /></td>
+       <td>Google Pixel 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=e89a16c4541541bfa1f85a41e6d43332">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a1fd03cc9784633c58dd65a65c1c2ca4</td>
+       <td>CVE-2022-20713</td>
+       <td>2022-08-15 20:25:08 <img src="imgs/new.gif" /></td>
+       <td>Cisco Adaptive Security Appliance Software 环境问题漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=14c8cbff87a240bf93887d7573ef7bbe">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c55ed00d83b3e0c881f68d46fd5a817</td>
+       <td>CVE-2022-38133</td>
+       <td>2022-08-15 20:25:03 <img src="imgs/new.gif" /></td>
+       <td>JetBrains TeamCity 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=b23fe7f8e73e43cca12081023ff0abb3">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>19a31021881b59e7228afc56be6b5737</td>
+       <td>CVE-2022-33925</td>
+       <td>2022-08-15 20:24:58 <img src="imgs/new.gif" /></td>
+       <td>Dell Wyse Management Suite 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=503606c73fed4f5d82cafa0827f51297">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>070af28bacc4fd17172dd4bd41ea01c3</td>
+       <td>CVE-2022-33924</td>
+       <td>2022-08-15 20:24:53 <img src="imgs/new.gif" /></td>
+       <td>Dell Wyse Management Suite 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=248fef96edd2435cb09371e2173a8ccf">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>121baffd24d9dfe518a49a768ee1ac05</td>
+       <td>CVE-2022-33928</td>
+       <td>2022-08-15 20:24:48 <img src="imgs/new.gif" /></td>
+       <td>Dell Wyse Management Suite 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7cd62569a55b44ec8a40d71a9109ae60">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1bcb831d8c9127e01a31db3c5958862b</td>
+       <td>CVE-2022-33927</td>
+       <td>2022-08-15 20:24:43 <img src="imgs/new.gif" /></td>
+       <td>Dell Wyse Management Suite 安全漏洞</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=750c2ff23f304f5383d1648429e6fbc6">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a3a1062f4340569bcfbbcfe836231976</td>
        <td>CVE-2022-20353</td>
        <td>2022-08-14 20:28:02 <img src="imgs/new.gif" /></td>
@@ -1833,86 +1913,6 @@
        <td>2022-08-11 20:22:35</td>
        <td>Artica Pandora FMS 其他漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=afc50cf36a7c43a3be10a0a0b14e00d2">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d5ec616396b7bce7d7cd52fc456e612</td>
-       <td>CVE-2022-21791</td>
-       <td>2022-08-11 20:22:25</td>
-       <td>MediaTek 芯片 缓冲区错误漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7515b0b9825743e392b0f4c07031c28f">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7ecacadfe93ea351f96efbabf89336b1</td>
-       <td>CVE-2022-26430</td>
-       <td>2022-08-11 20:22:16</td>
-       <td>MediaTek 芯片 其他漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=22bf12d4412249caaa17f6e368400e8d">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d75c49491f8a418d68955f6d496561f3</td>
-       <td>CVE-2021-46681</td>
-       <td>2022-08-11 20:22:11</td>
-       <td>Artica Pandora FMS 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2734c6c94bbd42bdb262142251ba2c64">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>39d741d4c86a3edba87fbb6181b50fcc</td>
-       <td>CVE-2020-1754</td>
-       <td>2022-08-10 20:22:52</td>
-       <td>Moodle 其他漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=e531bfa88a4544d0b16b702ec38cdf01">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d8caf782d8e9136406959ef91e6f3c2e</td>
-       <td>CVE-2021-21022</td>
-       <td>2022-08-10 20:22:47</td>
-       <td>Magento Open Source和Magento Commerce 授权问题漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=145e3e11aa3448928964b875079ce070">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2bb4bc48e6d7448e3f2960a384ad60c5</td>
-       <td>CVE-2021-46679</td>
-       <td>2022-08-10 20:22:42</td>
-       <td>Artica Pandora FMS 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=67fd9c30a52c4159bb698a83e1f03288">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>95eda828e64c752ea489453f36041b12</td>
-       <td>CVE-2021-46676</td>
-       <td>2022-08-10 20:22:38</td>
-       <td>Artica Pandora FMS 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=77f61b60ddbe4352ae216d0f0a6a740d">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9ef9a9ba3cd0b877a76491d8c7ef31ce</td>
-       <td>CVE-2022-2215</td>
-       <td>2022-08-10 20:22:23</td>
-       <td>WordPress和WordPress plugin 跨站脚本漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=8012ee102ac94a93a3ffc26c0a21d730">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>249282cd65e2ec0dec9088c45abfe03b</td>
-       <td>CVE-2022-26427</td>
-       <td>2022-08-10 20:22:13</td>
-       <td>MediaTek 芯片 缓冲区错误漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=72d5c18a1e384d7fbf661be54d3fc6eb">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d051da05c2b3e5c4753e0372738f7bf3</td>
-       <td>CVE-2021-21022</td>
-       <td>2022-08-09 20:19:58</td>
-       <td>Adobe Magento Commerce和Magento Open Source 授权问题漏洞</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=145e3e11aa3448928964b875079ce070">详情</a></td>
       </tr>
 
      </tbody>
@@ -2188,6 +2188,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d50c400a294e259471faef60bc0f536a</td>
+       <td>CVE-2022-36270</td>
+       <td>2022-08-10 20:16:01 </td>
+       <td>Clinic's Patient Management System v1.0 has arbitrary code execution via url: ip/pms/users.php.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36270">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5ef0b6df6238a1408545474c6121201d</td>
        <td>CVE-2022-30580</td>
        <td>2022-08-10 20:15:40 </td>
@@ -2332,11 +2340,51 @@
       </tr>
 
       <tr>
+       <td>9bdf379801a853f3c87bacec81abc75d</td>
+       <td>CVE-2022-36125</td>
+       <td>2022-08-09 07:15:07 </td>
+       <td>It is possible to crash (panic) an application by providing a corrupted data to be read. This issue affects Rust applications using Apache Avro Rust SDK prior to 0.14.0 (previously known as avro-rs). Users should update to apache-avro version 0.14.0 which addresses this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36125">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>536cc66444700f863a4a880c03708696</td>
+       <td>CVE-2022-36267</td>
+       <td>2022-08-08 15:15:09 </td>
+       <td>In Airspan AirSpot 5410 version 0.3.4.1-4 and under there exists a Unauthenticated remote command injection vulnerability. The ping functionality can be called without user authentication when crafting a malicious http request by injecting code in one of the parameters allowing for remote code execution. This vulnerability is exploited via the binary file /home/www/cgi-bin/diagnostics.cgi that accepts unauthenticated requests and unsanitized data. As a result, a malicious actor can craft a specific request and interact remotely with the device.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36267">详情</a></td>
+      </tr>
+
+      <tr>
        <td>7d19793d81b1a97210069be93abd2563</td>
        <td>CVE-2022-35493</td>
        <td>2022-08-08 15:15:08 </td>
        <td>A Cross-site scripting (XSS) vulnerability in json search parse and the json response in wrteam.in, eShop - Multipurpose Ecommerce Store Website version 3.0.4 allows remote attackers to inject arbitrary web script or HTML via the get_products?search parameter.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35493">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>853c2cc84bd4e8abd7aae20484dce332</td>
+       <td>CVE-2022-36266</td>
+       <td>2022-08-08 15:15:08 </td>
+       <td>In Airspan AirSpot 5410 version 0.3.4.1-4 and under there exists a stored XSS vulnerability. As the binary file /home/www/cgi-bin/login.cgi does not check if the user is authenticated, a malicious actor can craft a specific request on the login.cgi endpoint that contains a base32 encoded XSS payload that will be accepted and stored. A successful attack will results in the injection of malicious scripts into the user settings page.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36266">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>61ec67d9d9cd04bc5bbe9c08c192a6b5</td>
+       <td>CVE-2022-36265</td>
+       <td>2022-08-08 15:15:08 </td>
+       <td>In Airspan AirSpot 5410 version 0.3.4.1-4 and under there exists a Hidden system command web page. After performing a reverse engineering of the firmware, it was discovered that a hidden page not listed in the administration management interface allows a user to execute Linux commands on the device with root privileges. An authenticated malicious threat actor can use this page to fully compromise the device.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36265">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fcfd1127094cdbc312289290b5b0b030</td>
+       <td>CVE-2022-36264</td>
+       <td>2022-08-08 15:15:08 </td>
+       <td>In Airspan AirSpot 5410 version 0.3.4.1-4 and under there exists an Unauthenticated remote Arbitrary File Upload vulnerability which allows overwriting arbitrary files. A malicious actor can remotely upload a file of their choice and overwrite any file in the system by manipulating the filename and append a relative path that will be interpreted during the upload process. Using this method, it is possible to rewrite any file in the system or upload a new file.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-36264">详情</a></td>
       </tr>
 
       <tr>
@@ -2377,54 +2425,6 @@
        <td>2022-08-06 18:15:08 </td>
        <td>Exim before 4.96 has an invalid free in pam_converse in auths/call_pam.c because store_free is not used after store_malloc.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37451">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>848f40fdc8aa10c9b9766a634a007673</td>
-       <td>CVE-2022-32543</td>
-       <td>2022-08-05 22:15:11 </td>
-       <td>An integer overflow vulnerability exists in the way ESTsoft Alyac 2.5.8.544 parses OLE files. A specially-crafted OLE file can lead to a heap buffer overflow which can result in arbitrary code execution. An attacker can provide a malicious file to trigger this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32543">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dbe1d8a721f3e542bfeea3289cc0dc04</td>
-       <td>CVE-2022-28665</td>
-       <td>2022-08-05 22:15:11 </td>
-       <td>A memory corruption vulnerability exists in the httpd unescape functionality of FreshTomato 2022.1. A specially-crafted HTTP request can lead to memory corruption. An attacker can send a network request to trigger this vulnerability.The `freshtomato-arm` has a vulnerable URL-decoding feature that can lead to memory corruption.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-28665">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d2794ca9d93fc346704d22d16d40580</td>
-       <td>CVE-2022-28664</td>
-       <td>2022-08-05 22:15:11 </td>
-       <td>A memory corruption vulnerability exists in the httpd unescape functionality of FreshTomato 2022.1. A specially-crafted HTTP request can lead to memory corruption. An attacker can send a network request to trigger this vulnerability.The `freshtomato-mips` has a vulnerable URL-decoding feature that can lead to memory corruption.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-28664">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9eebbeb17e95234f4d366e5082739c07</td>
-       <td>CVE-2022-27660</td>
-       <td>2022-08-05 22:15:11 </td>
-       <td>A denial of service vulnerability exists in the confctl_set_guest_wlan functionality of TCL LinkHub Mesh Wi-Fi MS1G_00_01.00_14. A specially-crafted network packet can lead to denial of service. An attacker can send packets to trigger this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-27660">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>66a1b02edd3be25471c4bb3f8bc61d2b</td>
-       <td>CVE-2022-37450</td>
-       <td>2022-08-05 21:15:09 </td>
-       <td>Go Ethereum (aka geth) through 1.10.21 allows attackers to increase rewards by mining blocks in certain situations, and using a manipulation of time-difference values to achieve replacement of main-chain blocks, aka Riskless Uncle Making (RUM), as exploited in the wild in 2020 through 2022.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37450">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>53108a6286ff5ef2249ca63de351785a</td>
-       <td>CVE-2022-37398</td>
-       <td>2022-08-05 17:15:08 </td>
-       <td>A stack-based buffer overflow vulnerability was found inside ADM when using WebDAV due to the lack of data size validation. An attacker can exploit this vulnerability to run arbitrary code. Affected ADM versions include: 3.5.9.RUE3 and below, 4.0.5.RVI1 and below as well as 4.1.0.RJD1 and below.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37398">详情</a></td>
       </tr>
 
      </tbody>
