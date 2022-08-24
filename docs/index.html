@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-24 16:41:50 -->
+<!-- RELEASE TIME : 2022-08-24 17:29:30 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0a412e8622950d9a3c03a671497eda8e</td>
+       <td>CVE-2022-20122</td>
+       <td>2022-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>The PowerVR GPU driver allows unprivileged apps to allocated pinned memory, unpin it (which makes it available to be freed), and continue using the page in GPU calls. No privileges required and this results in kernel memory corruption.Product: AndroidVersions: Android SoCAndroid ID: A-232441339</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-20122">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>89b87c5bbc3a8883c7beef4b32a9f57f</td>
+       <td>CVE-2021-39815</td>
+       <td>2022-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>The PowerVR GPU driver allows unprivileged apps to allocated pinned memory, unpin it (which makes it available to be freed), and continue using the page in GPU calls. No privileges required and this results in kernel memory corruption.Product: AndroidVersions: Android SoCAndroid ID: A-232440670</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39815">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d909d2f67eddd1e35e264d0acca191f1</td>
+       <td>CVE-2021-0947</td>
+       <td>2022-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>The method PVRSRVBridgeTLDiscoverStreams allocates puiStreamsInt on the heap, fills the contents of the buffer via TLServerDiscoverStreamsKM, and then copies the buffer to userspace. The method TLServerDiscoverStreamsKM may fail for several reasons including invalid sizes. If this method fails the buffer will be left uninitialized and despite the error will still be copied to userspace. Kernel leak of uninitialized heap data with no privs required.Product: AndroidVersions: Android SoCAndroid ID: A-236838960</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-0947">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e2865528fbf2ac004a63da537625b600</td>
+       <td>CVE-2021-0946</td>
+       <td>2022-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>The method PVRSRVBridgePMRPDumpSymbolicAddr allocates puiMemspaceNameInt on the heap, fills the contents of the buffer via PMR_PDumpSymbolicAddr, and then copies the buffer to userspace. The method PMR_PDumpSymbolicAddr may fail, and if it does the buffer will be left uninitialized and despite the error will still be copied to userspace. Kernel leak of uninitialized heap data with no privs required.Product: AndroidVersions: Android SoCAndroid ID: A-236846966</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-0946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb5c816d8e9c2a0edef39b8ded79c8dc</td>
+       <td>CVE-2021-0891</td>
+       <td>2022-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>An unprivileged app can trigger PowerVR driver to return an uninitialized heap memory causing information disclosure.Product: AndroidVersions: Android SoCAndroid ID: A-236849490</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-0891">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce115bbbd88ae79f477d1a368ca3ba92</td>
+       <td>CVE-2021-0887</td>
+       <td>2022-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>In PVRSRVBridgeHeapCfgHeapConfigName, there is a possible leak of kernel heap content due to uninitialized data. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.Product: AndroidVersions: Android SoCAndroid ID: A-236848817</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-0887">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a0fd180cf666af96f815f0ab7e78ab8e</td>
+       <td>CVE-2021-0698</td>
+       <td>2022-08-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>In PVRSRVBridgeHeapCfgHeapDetails, there is a possible leak of kernel heap content due to uninitialized data. This could lead to local information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.Product: AndroidVersions: Android SoCAndroid ID: A-236848165</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-0698">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c2d4819f2ac6325eae517f1b6f1e0fe8</td>
        <td>CVE-2022-37153</td>
        <td>2022-08-24 13:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2022-08-23 20:15:00 <img src="imgs/new.gif" /></td>
        <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-35515">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>053907493d8b876d86c3c785d6247f4b</td>
-       <td>CVE-2020-35511</td>
-       <td>2022-08-23 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>A global buffer overflow was discovered in pngcheck function in pngcheck-2.4.0(5 patches applied) via a crafted png file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-35511">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ae1cf3a3a2e8d56b2c2a93eacff8ca34</td>
-       <td>CVE-2022-38463</td>
-       <td>2022-08-23 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>ServiceNow through San Diego Patch 4b and Patch 6 allows reflected XSS in the logout functionality.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38463">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>30a09fa908aed1c59cdbe5ba1e40106a</td>
-       <td>CVE-2022-38172</td>
-       <td>2022-08-23 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>ServiceNow through San Diego Patch 3 allows XSS via the name field during creation of a new dashboard for the Performance Analytics dashboard.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38172">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c1d19ef4747e7d2ac498e4f708cb196</td>
-       <td>CVE-2022-35115</td>
-       <td>2022-08-23 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>IceWarp WebClient DC2 - Update 2 Build 9 (13.0.2.9) was discovered to contain a SQL injection vulnerability via the search parameter at /webmail/server/webmail.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35115">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>613ef3e546e62b3526cb952290ec22e3</td>
-       <td>CVE-2022-1513</td>
-       <td>2022-08-23 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A potential vulnerability was reported in Lenovo PCManager prior to version 5.0.10.4191 that may allow code execution when visiting a specially crafted website.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1513">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a2670a1a7fcbb0a78b8a419188806ef4</td>
-       <td>CVE-2022-38665</td>
-       <td>2022-08-23 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jenkins CollabNet Plugins Plugin 2.0.8 and earlier stores a RabbitMQ password unencrypted in its global configuration file on the Jenkins controller where it can be viewed by users with access to the Jenkins controller file system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38665">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>981d8b5231bda530898ab7ef299f81d4</td>
-       <td>CVE-2022-38664</td>
-       <td>2022-08-23 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jenkins Job Configuration History Plugin 1165.v8cc9fd1f4597 and earlier does not escape the job name on the System Configuration History page, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers able to configure job names.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38664">详情</a></td>
       </tr>
 
      </tbody>
