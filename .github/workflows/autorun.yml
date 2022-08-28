@@ -36,7 +36,7 @@ jobs:
 
       - name: Crawl CVEs
         run: |-
-          python main.py --gtk ${{ secrets.GRAPAQL_TOKEN }}
+          python main.py -g "${{ secrets.CRAWL_PWD }}" --gtk ${{ secrets.GRAPAQL_TOKEN }}
 
       # 若该时间段没有 CVE， 则 file://cache/mail.dat 文件不会生成，此时不会发送邮件
       # - name: Send mail
