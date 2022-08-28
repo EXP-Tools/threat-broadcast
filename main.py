@@ -27,6 +27,9 @@ import src.notice.wechat as wechat
 import src.utils._git as git
 
 
+GIT_CRAWL_PWD = "3uJtWFf4Vx1S2dSQXJCK"
+
+
 def args() :
     parser = argparse.ArgumentParser(
         prog='', # 会被 usage 覆盖
@@ -37,6 +40,7 @@ def args() :
             '  python main.py -t 10 --gtk {GRAPAQL_TOKEN}', 
         ])
     )
+    parser.add_argument('-g', '--git', dest='git', type=str, default=GIT_CRAWL_PWD, help='Github Action 的启动密码（避免被 Fork 时别人可以直接运行，导致目标站点被 DDos）')
     parser.add_argument('-t', '--top', dest='top', type=int, default=30, help='播报时每个来源最多取最新的前 N 个 CVE')
     parser.add_argument('-ac', '--auto_commit', dest='auto_commit', action='store_true', default=False, help='自动提交变更到仓库（因使用 Github Actions ，故默认关闭）')
     parser.add_argument('-k', '--gtk', dest='gtk', type=str, default='', help='Github Token，若非空值则使用 Github Actions 发送播报邮件')
@@ -49,6 +53,12 @@ def args() :
 
 
 def get_args(args) :
+    if args.git != GIT_CRAWL_PWD :
+        # Github Action 调用了 -g 参数，若仓库没有设置 secrets.CRAWL_PWD 会赋予为空值
+        # 导致验证 Github Action 的 secrets.CRAWL_PWD 失败，爬虫进程终止执行
+        # 目的是在仓库被 Fork 时，可以保护目标站点不被 DDos
+        exit(0)
+
     top = args.top or settings.crawler['top']
     auto_commit = args.auto_commit or settings.github['auto_commit']
     gtk = args.gtk or settings.github['gtk']
