@@ -39,19 +39,19 @@ jobs:
           python main.py -g "${{ secrets.CRAWL_PWD }}" --gtk ${{ secrets.GRAPAQL_TOKEN }}
 
       # 若该时间段没有 CVE， 则 file://cache/mail.dat 文件不会生成，此时不会发送邮件
-      - name: Send mail
-        if: ${{ secrets.CRAWL_PWD != '' && github.event_name != 'pull_request' }}
-        uses: lyy289065406/action-send-mail@master
-        with:
-          server_address: ${{ secrets.MAIL_SMTP }}
-          server_port: 465
-          username: ${{ secrets.MAIL_USER }}
-          password: ${{ secrets.MAIL_PASS }}
-          from: ${{ secrets.MAIL_USER }}
-          to: file://cache/mail_recvs.dat
-          body: file://cache/mail_content.dat
-          content_type: text/html
-          subject: 威胁情报播报
+      # - name: Send mail
+      #   if: ${{ secrets.CRAWL_PWD != '' && github.event_name != 'pull_request' }}
+      #   uses: lyy289065406/action-send-mail@master
+      #   with:
+      #     server_address: ${{ secrets.MAIL_SMTP }}
+      #     server_port: 465
+      #     username: ${{ secrets.MAIL_USER }}
+      #     password: ${{ secrets.MAIL_PASS }}
+      #     from: ${{ secrets.MAIL_USER }}
+      #     to: file://cache/mail_recvs.dat
+      #     body: file://cache/mail_content.dat
+      #     content_type: text/html
+      #     subject: 威胁情报播报
 
       # 如果不希望污染 commit 记录，user.email 和 user.name 随便填即可
       # Github Runner 是有权限提交到仓库的，只要 user 不是 owner ，当次 commit 不会被记录
