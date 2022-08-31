@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-31 18:35:17 -->
+<!-- RELEASE TIME : 2022-08-31 20:31:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ffc754a72026724e5ffbcbc6de97e7a8</td>
+       <td>CVE-2022-38152</td>
+       <td>2022-08-31 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in wolfSSL before 5.5.0. When a TLS 1.3 client connects to a wolfSSL server and SSL_clear is called on its session, the server crashes with a segmentation fault. This occurs in the second session, which is created through TLS session resumption and reuses the initial struct WOLFSSL. If the server reuses the previous session structure (struct WOLFSSL) by calling wolfSSL_clear(WOLFSSL* ssl) on it, the next received Client Hello (that resumes the previous session) crashes the server. Note that this bug is only triggered when resuming sessions using TLS session resumption. Only servers that use wolfSSL_clear instead of the recommended SSL_free; SSL_new sequence are affected. Furthermore, wolfSSL_clear is part of wolfSSL's compatibility layer and is not enabled by default. It is not part of wolfSSL's native API.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38152">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>561d811f4bc418cf5b98ac2cfb415017</td>
+       <td>CVE-2022-37122</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Carel pCOWeb HVAC BACnet Gateway 2.1.0, Firmware: A2.1.0 - B2.1.0, Application Software: 2.15.4A Software v16 13020200 suffers from an unauthenticated arbitrary file disclosure vulnerability. Input passed through the 'file' GET parameter through the 'logdownload.cgi' Bash script is not properly verified before being used to download log files. This can be exploited to disclose the contents of arbitrary and sensitive files via directory traversal attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37122">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c9604cfc92afc1c485647b902076f6ed</td>
+       <td>CVE-2022-30318</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Honeywell ControlEdge through R151.1 uses Hard-coded Credentials. According to FSCT-2022-0056, there is a Honeywell ControlEdge hardcoded credentials issue. The affected components are characterized as: SSH. The potential impact is: Remote code execution, manipulate configuration, denial of service. The Honeywell ControlEdge PLC and RTU product line exposes an SSH service on port 22/TCP. Login as root to this service is permitted and credentials for the root user are hardcoded without automatically changing them upon first commissioning. The credentials for the SSH service are hardcoded in the firmware. The credentials grant an attacker access to a root shell on the PLC/RTU, allowing for remote code execution, configuration manipulation and denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30318">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3ebb0d74323f9d2bd23857af51a799ca</td>
+       <td>CVE-2022-30317</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Honeywell Experion LX through 2022-05-06 has Missing Authentication for a Critical Function. According to FSCT-2022-0055, there is a Honeywell Experion LX Control Data Access (CDA) EpicMo protocol with unauthenticated functionality issue. The affected components are characterized as: Honeywell Control Data Access (CDA) EpicMo (55565/TCP). The potential impact is: Firmware manipulation, Denial of service. The Honeywell Experion LX Distributed Control System (DCS) utilizes the Control Data Access (CDA) EpicMo protocol (55565/TCP) for device diagnostics and maintenance purposes. This protocol does not have any authentication features, allowing any attacker capable of communicating with the ports in question to invoke (a subset of) desired functionality. There is no authentication functionality on the protocol in question. An attacker capable of invoking the protocols' functionalities could issue firmware download commands potentially allowing for firmware manipulation and reboot devices causing denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30317">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f518f7e5ab6fdf1e71e711dea5108e17</td>
+       <td>CVE-2022-3028</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A race condition was found in the Linux kernel's IP framework for transforming packets (XFRM subsystem) when multiple calls to xfrm_probe_algs occurred simultaneously. This flaw could allow a local attacker to potentially trigger an out-of-bounds write or leak kernel heap memory by performing an out-of-bounds read and copying it into a socket.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3028">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4aad82b200f2e7b336b587c0d1bec4d8</td>
+       <td>CVE-2022-2866</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>FATEK FvDesigner version 1.5.103 and prior is vulnerable to an out-of-bounds write while processing project files. If a valid user is tricked into using maliciously crafted project files, an attacker could achieve arbitrary code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2866">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aca57f190c5082c96a5513cecbd48bf8</td>
+       <td>CVE-2022-28625</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A local disclosure of sensitive information vulnerability was discovered in HPE OneView version(s): Prior to 7.0 or 6.60.01. A low privileged user could locally exploit this vulnerability to disclose sensitive information resulting in a complete loss of confidentiality, integrity, and availability. To exploit this vulnerability, HPE OneView must be configured with credential access to external repositories. HPE has provided a software update to resolve this vulnerability in HPE OneView.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28625">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fdefd55dee3cc637ec2c3bebc8f56fe1</td>
+       <td>CVE-2022-2759</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Delta Electronics Delta Robot Automation Studio (DRAS) versions prior to 1.13.20 are affected by improper restrictions where the software processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output. This may allow an attacker to view sensitive documents and information on the affected host.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2759">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5daf381bbfd95e83b32e8323b41f0bf4</td>
+       <td>CVE-2022-2758</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>All versions of LS Industrial Systems (LSIS) Co. Ltd LS Electric PLCs and XG5000 PLC programming software are affected where passwords are not adequately encrypted during the communication process between the XG5000 software and the affected PLC. This would allow an attacker to identify and decrypt the affected PLC’s password by sniffing the traffic.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2758">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>80e3119bc5f8cfededc9e0598005fc2d</td>
+       <td>CVE-2022-26331</td>
+       <td>2022-08-31 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Potential vulnerabilities have been identified in Micro Focus ArcSight Logger. The vulnerabilities could be remotely exploited resulting in Information Disclosure, or Self Cross-Site Scripting (XSS). This issue affects: Micro Focus ArcSight Logger versions prior to v7.2.2 version and prior versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26331">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6621d87b88a7b4d0cbd387a17d07eba5</td>
        <td>CVE-2022-36045</td>
        <td>2022-08-31 15:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-08-30 16:15:00 <img src="imgs/new.gif" /></td>
        <td>An attacker can send malicious RTMP requests to make the ZLMediaKit server crash remotely. Affected version is below commit 7d8b212a3c3368bc2f6507cb74664fc419eb9327.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37237">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9bbc78c8eaa7f3d5931f7b89c3008f53</td>
-       <td>CVE-2022-37176</td>
-       <td>2022-08-30 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC6(AC1200) v5.0 Firmware v02.03.01.114 and below contains a vulnerability which allows attackers to remove the Wi-Fi password and force the device into open security mode via a crafted packet sent to goform/setWizard.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37176">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>18bc760eaef3a572ac570ab76a111a2e</td>
-       <td>CVE-2022-36552</td>
-       <td>2022-08-30 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC6(AC1200) v5.0 Firmware v02.03.01.114 and below contains an issue in the component /cgi-bin/DownloadFlash which allows attackers to steal all data such as source code and system files via a crafted GET request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36552">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6241f294c143c8cfc9d50b507629120</td>
-       <td>CVE-2022-37149</td>
-       <td>2022-08-30 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>WAVLINK WL-WN575A3 RPT75A3.V4300.201217 was discovered to contain a command injection vulnerability when operating the file adm.cgi. This vulnerability allows attackers to execute arbitrary commands via the username parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37149">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>66fab6e8a9aace119f2323cece630906</td>
-       <td>CVE-2022-3063</td>
-       <td>2022-08-30 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site Scripting (XSS) - Generic in GitHub repository nuxt/framework prior to -.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3063">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0d1c9239777fb93b8c89dfdb6a1f35f0</td>
-       <td>CVE-2022-3063</td>
-       <td>2022-08-30 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. Reason: This CVE has been rejected as it was incorrectly assigned. All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3063">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a1195b0bb490086c521f0b10e0405f49</td>
-       <td>CVE-2022-3022</td>
-       <td>2022-08-30 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Stack-based Buffer Overflow in GitHub repository arnoldaldrin/binaries prior to 1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3022">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6954a6c8e5e9d09d7c9fc5c200ba213f</td>
-       <td>CVE-2022-3022</td>
-       <td>2022-08-30 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. Reason: This CVE has been rejected as it was incorrectly assigned. All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3022">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>46c347343a165b90a512c15408b732df</td>
-       <td>CVE-2022-2330</td>
-       <td>2022-08-30 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Restriction of XML External Entity Reference vulnerability in DLP Endpoint for Windows prior to 11.9.100 and 11.6.600 allows a remote attacker to cause the DLP Agent to access a local service that the attacker wouldn't usually have access to via a carefully constructed XML file, which the DLP Agent doesn't parse correctly.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2330">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fd05984b3c911ffc3f47b16ba37fc413</td>
-       <td>CVE-2021-46837</td>
-       <td>2022-08-30 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>res_pjsip_t38 in Sangoma Asterisk 16.x before 16.16.2, 17.x before 17.9.3, and 18.x before 18.2.2, and Certified Asterisk before 16.8-cert7, allows an attacker to trigger a crash by sending an m=image line and zero port in a response to a T.38 re-invite initiated by Asterisk. This is a re-occurrence of the CVE-2019-15297 symptoms but not for exactly the same reason. The crash occurs because there is an append operation relative to the active topology, but this should instead be a replace operation.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-46837">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e13c42bd7b3da2ebbb1098f07065880</td>
-       <td>CVE-2022-39028</td>
-       <td>2022-08-30 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>telnetd in GNU Inetutils through 2.3, MIT krb5-appl through 1.0.3, and derivative works has a NULL pointer dereference via 0xff 0xf7 or 0xff 0xf8. In a typical installation, the telnetd application would crash but the telnet service would remain available through inetd. However, if the telnetd application has many crashes within a short time interval, the telnet service would become unavailable after inetd logs a "telnet/tcp server failing (looping), service terminated" error. NOTE: MIT krb5-appl is not supported upstream but is shipped by a few Linux distributions. The affected code was removed from the supported MIT Kerberos 5 (aka krb5) product many years ago, at version 1.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39028">详情</a></td>
       </tr>
 
      </tbody>
@@ -2244,6 +2244,14 @@
       </tr>
 
       <tr>
+       <td>7b92e8d3cdc7ee4df4435843883e7564</td>
+       <td>CVE-2022-37152</td>
+       <td>2022-08-26 13:15:08 </td>
+       <td>An issue was discovered in Online Diagnostic Lab Management System 1.0, There is a SQL injection vulnerability via &quot;dob&quot; parameter in &quot;/classes/Users.php?f=save_client&quot;</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37152">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f4b4d46db51499777dfa7993b0cae715</td>
        <td>CVE-2022-36721</td>
        <td>2022-08-25 22:15:08 </td>
@@ -2372,6 +2380,14 @@
       </tr>
 
       <tr>
+       <td>d3146043ccc266c3362d8ff89f28c0fe</td>
+       <td>CVE-2022-37158</td>
+       <td>2022-08-25 17:15:08 </td>
+       <td>RuoYi v3.8.3 has a Weak password vulnerability in the management system.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37158">详情</a></td>
+      </tr>
+
+      <tr>
        <td>03569f85f08b1bf7cdd9d4dc8dda7d1d</td>
        <td>CVE-2022-37292</td>
        <td>2022-08-25 16:15:08 </td>
@@ -2409,22 +2425,6 @@
        <td>2022-08-25 15:15:11 </td>
        <td>Tenda AX1803 v1.0.0.1 was discovered to contain a stack overflow via the shareSpeed parameter in the function fromSetWifiGusetBasic.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37824">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2fd884325660bf2bbdfdb17bd1611b5c</td>
-       <td>CVE-2022-37823</td>
-       <td>2022-08-25 15:15:11 </td>
-       <td>Tenda AX1803 v1.0.0.1 was discovered to contain a stack overflow via the list parameter in the function formSetVirtualSer.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37823">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3aec0f7b3a781ca90054b2156027320c</td>
-       <td>CVE-2022-37822</td>
-       <td>2022-08-25 15:15:11 </td>
-       <td>Tenda AX1803 v1.0.0.1 was discovered to contain a stack overflow via the function fromSetRouteStatic.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37822">详情</a></td>
       </tr>
 
      </tbody>
