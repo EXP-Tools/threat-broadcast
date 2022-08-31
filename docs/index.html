@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-08-31 16:44:39 -->
+<!-- RELEASE TIME : 2022-08-31 18:35:17 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,22 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6621d87b88a7b4d0cbd387a17d07eba5</td>
+       <td>CVE-2022-36045</td>
+       <td>2022-08-31 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>NodeBB Forum Software is powered by Node.js and supports either Redis, MongoDB, or a PostgreSQL database. It utilizes web sockets for instant interactions and real-time notifications. `utils.generateUUID`, a helper function available in essentially all versions of NodeBB (as far back as v1.0.1 and potentially earlier) used a cryptographically insecure Pseudo-random number generator (`Math.random()`), which meant that a specially crafted script combined with multiple invocations of the password reset functionality could enable an attacker to correctly calculate the reset code for an account they do not have access to.This vulnerability impacts all installations of NodeBB. The vulnerability allows for an attacker to take over any account without the involvement of the victim, and as such, the remediation should be applied immediately (either via NodeBB upgrade or cherry-pick of the specific changeset. The vulnerability has been patched in version 2.x and 1.19.x. There is no known workaround, but the patch sets listed above will fully patch the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36045">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f13385f28d29b5ff79c84cde14317bb</td>
+       <td>CVE-2022-36035</td>
+       <td>2022-08-31 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Flux is a tool for keeping Kubernetes clusters in sync with sources of configuration (like Git repositories), and automating updates to configuration when there is new code to deploy. Flux CLI allows users to deploy Flux components into a Kubernetes cluster via command-line. The vulnerability allows other applications to replace the Flux deployment information with arbitrary content which is deployed into the target Kubernetes cluster instead. The vulnerability is due to the improper handling of user-supplied input, which results in a path traversal that can be controlled by the attacker. Users sharing the same shell between other applications and the Flux CLI commands could be affected by this vulnerability. In some scenarios no errors may be presented, which may cause end users not to realize that something is amiss. A safe workaround is to execute Flux CLI in ephemeral and isolated shell environments, which can ensure no persistent values exist from previous processes. However, upgrading to the latest version of the CLI is still the recommended mitigation strategy.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36035">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4de05955a07861fff28514a494cd55c5</td>
        <td>CVE-2022-27911</td>
        <td>2022-08-31 10:15:00 <img src="imgs/new.gif" /></td>
@@ -505,22 +521,6 @@
        <td>2022-08-30 05:15:00 <img src="imgs/new.gif" /></td>
        <td>telnetd in GNU Inetutils through 2.3, MIT krb5-appl through 1.0.3, and derivative works has a NULL pointer dereference via 0xff 0xf7 or 0xff 0xf8. In a typical installation, the telnetd application would crash but the telnet service would remain available through inetd. However, if the telnetd application has many crashes within a short time interval, the telnet service would become unavailable after inetd logs a "telnet/tcp server failing (looping), service terminated" error. NOTE: MIT krb5-appl is not supported upstream but is shipped by a few Linux distributions. The affected code was removed from the supported MIT Kerberos 5 (aka krb5) product many years ago, at version 1.8.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39028">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>868884af7f108051e5d1a6f84a423e1b</td>
-       <td>CVE-2022-38118</td>
-       <td>2022-08-30 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>OAKlouds Portal website’s Meeting Room has insufficient validation for user input. A remote attacker with general user privilege can perform SQL-injection to access, modify, delete database, perform system operations and disrupt service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38118">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0396a55790012dfb7f4a87ad294631bf</td>
-       <td>CVE-2022-38116</td>
-       <td>2022-08-30 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Le-yan Personnel and Salary Management System has hard-coded database account and password within the website source code. An unauthenticated remote attacker can access, modify system data or disrupt service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38116">详情</a></td>
       </tr>
 
      </tbody>
@@ -2412,19 +2412,19 @@
       </tr>
 
       <tr>
-       <td>ff5bcc844b6126f095ab6376468ca243</td>
-       <td>CVE-2022-37816</td>
-       <td>2022-08-25 15:15:10 </td>
-       <td>Tenda AC1206 V15.03.06.23 was discovered to contain a stack overflow via the function fromSetIpMacBind.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37816">详情</a></td>
+       <td>2fd884325660bf2bbdfdb17bd1611b5c</td>
+       <td>CVE-2022-37823</td>
+       <td>2022-08-25 15:15:11 </td>
+       <td>Tenda AX1803 v1.0.0.1 was discovered to contain a stack overflow via the list parameter in the function formSetVirtualSer.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37823">详情</a></td>
       </tr>
 
       <tr>
-       <td>4b0f5b409673ed8df474ca29ec7d102a</td>
-       <td>CVE-2022-37245</td>
-       <td>2022-08-25 15:15:10 </td>
-       <td>MDaemon Technologies SecurityGateway for Email Servers 8.5.2 is vulnerable to Cross Site Scripting (XSS) via the Blacklist endpoint.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37245">详情</a></td>
+       <td>3aec0f7b3a781ca90054b2156027320c</td>
+       <td>CVE-2022-37822</td>
+       <td>2022-08-25 15:15:11 </td>
+       <td>Tenda AX1803 v1.0.0.1 was discovered to contain a stack overflow via the function fromSetRouteStatic.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37822">详情</a></td>
       </tr>
 
      </tbody>
