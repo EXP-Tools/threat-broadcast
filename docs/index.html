@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-09-02 14:27:29 -->
+<!-- RELEASE TIME : 2022-09-02 15:32:10 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>844feeef5d164eff532eed1eae209d45</td>
+       <td>CVE-2022-36078</td>
+       <td>2022-09-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Binary provides encoding/decoding in Borsh and other formats. The vulnerability is a memory allocation vulnerability that can be exploited to allocate slices in memory with (arbitrary) excessive size value, which can either exhaust available memory or crash the whole program. When using `github.com/gagliardetto/binary` to parse unchecked (or wrong type of) data from untrusted sources of input (e.g. the blockchain) into slices, it's possible to allocate memory with excessive size. When `dec.Decode(&val)` method is used to parse data into a structure that is or contains slices of values, the length of the slice was previously read directly from the data itself without any checks on the size of it, and then a slice was allocated. This could lead to an overflow and an allocation of memory with excessive size value. Users should upgrade to `v0.7.1` or higher. A workaround is not to rely on the `dec.Decode(&val)` function to parse the data, but to use a custom `UnmarshalWithDecoder()` method that reads and checks the length of any slice.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36078">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9d4be7c8f0d540e2be0c470f76a422a</td>
+       <td>CVE-2022-36076</td>
+       <td>2022-09-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>NodeBB Forum Software is powered by Node.js and supports either Redis, MongoDB, or a PostgreSQL database. Due to an unnecessarily strict conditional in the code handling the first step of the SSO process, the pre-existing logic that added (and later checked) a nonce was inadvertently rendered opt-in instead of opt-out. This re-exposed a vulnerability in that a specially crafted Man-in-the-Middle (MITM) attack could theoretically take over another user account during the single sign-on process. The issue has been fully patched in version 1.17.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36076">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ef03c43d105d331552c0c1507c4abce</td>
+       <td>CVE-2022-37458</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse through 2.8.7 allows admins to send invitations to arbitrary email addresses at an unlimited rate.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37458">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>90a0648a47e79732677c0ce97635d879</td>
+       <td>CVE-2022-25680</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in multimedia due to buffer overflow while processing count variable from client in Snapdragon Auto</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25680">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>03b92440d9904c332b613d22a9d23a1e</td>
+       <td>CVE-2022-25668</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in video driver due to double free while parsing ASF clip in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon Mobile, Snapdragon Voice & Music, Snapdragon Wearables</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25668">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2bdc9d2e843907c4571032a3faf32578</td>
+       <td>CVE-2022-25659</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption due to buffer overflow while parsing MKV clips with invalid bitmap size in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon Mobile, Snapdragon Voice & Music, Snapdragon Wearables</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25659">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4fbd1e4805e29aea177bed9ccd940c92</td>
+       <td>CVE-2022-25658</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption due to incorrect pointer arithmetic when attempting to change the endianness in video parser function in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon Mobile, Snapdragon Voice & Music, Snapdragon Wearables</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25658">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>47383cf26f4f698ff8dcec87b9fc1fd3</td>
+       <td>CVE-2022-25657</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption due to buffer overflow occurs while processing invalid MKV clip which has invalid seek header in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Industrial IOT, Snapdragon Mobile, Snapdragon Wearables</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25657">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b6135616fd7870836d370ebb58887298</td>
+       <td>CVE-2022-22106</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in multimedia due to improper length check while copying the data in Snapdragon Auto</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22106">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5c6f5260691a2e353cb522897ec7f94</td>
+       <td>CVE-2022-22104</td>
+       <td>2022-09-02 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in multimedia due to improper check on the messages received. in Snapdragon Auto</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22104">详情</a></td>
+      </tr>
+
+      <tr>
        <td>12a836525b52c798ac391220b2f5319c</td>
        <td>CVE-2022-38170</td>
        <td>2022-09-02 07:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
        <td>Assertion fail in the display_debug_names() function in binutils/dwarf.c may lead to program crash and denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38126">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>54c3a954643777287a7c4145d1f42087</td>
-       <td>CVE-2022-36622</td>
-       <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Samsung Electronics mTower v0.3.0 and earlier was discovered to contain a NULL pointer dereference via the function TEE_GetObjectInfo1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36622">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d81708a2808a4c8a6668db5a5f9028ca</td>
-       <td>CVE-2022-36621</td>
-       <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Samsung Electronics mTower v0.3.0 and earlier was discovered to contain a NULL pointer dereference via the function TEE_AllocateTransientObject.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36621">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6781a13281250b8fa6061149e81148ad</td>
-       <td>CVE-2022-36604</td>
-       <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An access control issue in Canaan Avalon ASIC Miner 2020.3.30 and below allows unauthenticated attackers to arbitrarily change user passwords via a crafted POST request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36604">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>320d15f4e36ae68f8c5a5320bb1ab1b8</td>
-       <td>CVE-2022-36603</td>
-       <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>InnoSilicon T3T+ t2t+_soc_20190911_151433.swu was discovered to contain a remote code execution (RCE) vulnerability in the checkUrl function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36603">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>137174010031809811d0edc220d70e1b</td>
-       <td>CVE-2022-36602</td>
-       <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>InnoSilicon A10 a10_20200924_120556 was discovered to contain a remote code execution (RCE) vulnerability in the setPlatformAPI function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36602">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4ae5376b7c2430b9154c04227f3cb70f</td>
-       <td>CVE-2022-36601</td>
-       <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Eclipse TCF debug interface in JasMiner-X4-Server-20220621-090907 and below is open on port 1534. This issue allows unauthenticated attackers to gain root privileges on the affected device and access sensitive data or execute arbitrary commands.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36601">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e430c5e2e6434830efef9680383a8264</td>
-       <td>CVE-2022-32743</td>
-       <td>2022-09-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Samba does not validate the Validated-DNS-Host-Name right for the dNSHostName attribute which could permit unprivileged users to write it.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32743">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3ad3d133d4222a58e9d0f17e13bd4f99</td>
-       <td>CVE-2022-36773</td>
-       <td>2022-09-01 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Cognos Analytics 11.1.7, 11.2.0, and 11.2.1 is vulnerable to an XML External Entity Injection (XXE) attack when processing XML data. A remote attacker could exploit this vulnerability to expose sensitive information or consume memory resources.  IBM X-Force ID:  233571.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36773">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d193c08b21e63a8614cd7db24a703ba4</td>
-       <td>CVE-2022-34380</td>
-       <td>2022-09-01 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell CloudLink 7.1.3 and all earlier versions contain an Authentication Bypass Using an Alternate Path or Channel Vulnerability. A high privileged local attacker may potentially exploit this vulnerability leading to authentication bypass and access the CloudLink system console. This is critical severity vulnerability as it allows attacker to take control of the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34380">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>49b2a327974315f38c5bbf9a67b97b78</td>
-       <td>CVE-2022-34379</td>
-       <td>2022-09-01 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell EMC CloudLink 7.1.2 and all prior versions contain an Authentication Bypass Vulnerability. A remote attacker, with the knowledge of the active directory usernames, could potentially exploit this vulnerability to gain unauthorized access to the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34379">详情</a></td>
       </tr>
 
      </tbody>
