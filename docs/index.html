@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-09-13 20:32:37 -->
+<!-- RELEASE TIME : 2022-09-13 21:29:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>27c0db4d91dec2de54466eda071de2d2</td>
+       <td>CVE-2022-40635</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper Control of Dynamically-Managed Code Resources vulnerability in Crafter Studio of Crafter CMS allows authenticated developers to execute OS commands via Groovy Sandbox Bypass.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40635">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>22428f4eb865f80aca0bb89de2de3ba9</td>
+       <td>CVE-2022-40634</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper Control of Dynamically-Managed Code Resources vulnerability in Crafter Studio of Crafter CMS allows authenticated developers to execute OS commands via FreeMarker SSTI.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40634">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a1adbe82d2db87217c9e2bbb741bcb05</td>
+       <td>CVE-2022-39208</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Onedev is an open source, self-hosted Git Server with CI/CD and Kanban. All files in the /opt/onedev/sites/ directory are exposed and can be read by unauthenticated users. This directory contains all projects, including their bare git repos and build artifacts. This file disclosure vulnerability can be used by unauthenticated attackers to leak all project files of any project. Since project IDs are incremental, an attacker could iterate through them and leak all project data. This issue has been resolved in version 7.3.0 and users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39208">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f7eec2ceb5ff53e160755dd02d741ae3</td>
+       <td>CVE-2022-39207</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Onedev is an open source, self-hosted Git Server with CI/CD and Kanban. During CI/CD builds, it is possible to save build artifacts for later retrieval. They can be accessed through OneDev's web UI after the successful run of a build. These artifact files are served by the webserver in the same context as the UI without any further restrictions. This leads to Cross-Site Scripting (XSS) when a user creates a build artifact that contains HTML. When accessing the artifact, the content is rendered by the browser, including any JavaScript that it contains. Since all cookies (except for the rememberMe one) do not set the HttpOnly flag, an attacker could steal the session of a victim and use it to impersonate them. To exploit this issue, attackers need to be able to modify the content of artifacts, which usually means they need to be able to modify a project's build spec. The exploitation requires the victim to click on an attacker's link. It can be used to elevate privileges by targeting admins of a OneDev instance. In the worst case, this can lead to arbitrary code execution on the server, because admins can create Server Shell Executors and use them to run any command on the server. This issue has been patched in version 7.3.0. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39207">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0a3bdba59f7bf0ae491987776c76f87a</td>
+       <td>CVE-2022-39206</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Onedev is an open source, self-hosted Git Server with CI/CD and Kanban. When using Docker-based job executors, the Docker socket (e.g. /var/run/docker.sock on Linux) is mounted into each Docker step. Users that can define and trigger CI/CD jobs on a project could use this to control the Docker daemon on the host machine. This is a known dangerous pattern, as it can be used to break out of Docker containers and, in most cases, gain root privileges on the host system. This issue allows regular (non-admin) users to potentially take over the build infrastructure of a OneDev instance. Attackers need to have an account (or be able to register one) and need permission to create a project. Since code.onedev.io has the right preconditions for this to be exploited by remote attackers, it could have been used to hijack builds of OneDev itself, e.g. by injecting malware into the docker images that are built and pushed to Docker Hub. The impact is increased by this as described before. Users are advised to upgrade to 7.3.0 or higher. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39206">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>845697dee83c6ff403779ea083d74bf8</td>
+       <td>CVE-2022-39205</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Onedev is an open source, self-hosted Git Server with CI/CD and Kanban. In versions of Onedev prior to 7.3.0 unauthenticated users can take over a OneDev instance if there is no properly configured reverse proxy. The /git-prereceive-callback endpoint is used by the pre-receive git hook on the server to check for branch protections during a push event. It is only intended to be accessed from localhost, but the check relies on the X-Forwarded-For header. Invoking this endpoint leads to the execution of one of various git commands. The environment variables of this command execution can be controlled via query parameters. This allows attackers to write to arbitrary files, which can in turn lead to the execution of arbitrary code. Such an attack would be very hard to detect, which increases the potential impact even more. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39205">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cb0eaedadd20b94b838d0d9235ea06cb</td>
+       <td>CVE-2022-39203</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>matrix-appservice-irc is an open source Node.js IRC bridge for Matrix. Attackers can specify a specific string of characters, which would confuse the bridge into combining an attacker-owned channel and an existing channel, allowing them to grant themselves permissions in the channel. The vulnerability has been patched in matrix-appservice-irc 0.35.0. As a workaround operators may disable dynamic channel joining via `dynamicChannels.enabled` to prevent users from joining new channels, which prevents any new channels being bridged outside of what is already bridged, and what is specified in the config.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39203">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5a457fa88f68043a92f135796fd9e385</td>
+       <td>CVE-2022-38020</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Visual Studio Code Elevation of Privilege Vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38020">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7de2c89742244203f8caf33d409ecffd</td>
+       <td>CVE-2022-38019</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>AV1 Video Extension Remote Code Execution Vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38019">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>95a2b5a907b649e37b7b95fc8ec184be</td>
+       <td>CVE-2022-38013</td>
+       <td>2022-09-13 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>.NET Core and Visual Studio Denial of Service Vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38013">详情</a></td>
+      </tr>
+
+      <tr>
        <td>57d33db91cb195a876ee830ac87e3947</td>
        <td>CVE-2022-36103</td>
        <td>2022-09-13 17:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-09-13 15:15:00 <img src="imgs/new.gif" /></td>
        <td>Pal Electronics Systems - Pal Gate Authorization Errors. The vulnerability is an authorization problem in PalGate device management android client app. Gates of bulidings and parking lots with a simple button in any smartphone. The API was found after a decompiling and static research using Jadx, and a dynamic analasys using Frida. The attacker can iterate over all the IOT devices to see every entry and exit, on every gate and device all over the world, he can also scrape the server and create a user's DB with full names and phone number of over 2.8 million users, and to see all of the users' movement in and out of gates, even in real time.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36782">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e80971640659a35e236aa5f0b3f1bc48</td>
-       <td>CVE-2022-38616</td>
-       <td>2022-09-13 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>SmartVista SVFE2 v2.2.22 was discovered to contain a SQL injection vulnerability via the UserForm:j_id90 parameter at /feegroups/tgrt_group.jsf.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38616">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a47a92a8718ac09239eccab931063cb4</td>
-       <td>CVE-2022-39158</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in RUGGEDCOM ROS RMC8388 (All versions < V5.6.0), RUGGEDCOM ROS RS416Pv2 (All versions < V5.6.0), RUGGEDCOM ROS RS416v2 (All versions < V5.6.0), RUGGEDCOM ROS RS900 (32M) (All versions < V5.6.0), RUGGEDCOM ROS RS900G (32M) (All versions < V5.6.0), RUGGEDCOM ROS RSG2100 (32M) (All versions < V5.6.0), RUGGEDCOM ROS RSG2288 (All versions < V5.6.0), RUGGEDCOM ROS RSG2300 (All versions < V5.6.0), RUGGEDCOM ROS RSG2300P (All versions < V5.6.0), RUGGEDCOM ROS RSG2488 (All versions < V5.6.0), RUGGEDCOM ROS RSG907R (All versions < V5.6.0), RUGGEDCOM ROS RSG908C (All versions < V5.6.0), RUGGEDCOM ROS RSG909R (All versions < V5.6.0), RUGGEDCOM ROS RSG910C (All versions < V5.6.0), RUGGEDCOM ROS RSG920P (All versions < V5.6.0), RUGGEDCOM ROS RSL910 (All versions < v5.6.0), RUGGEDCOM ROS RST2228 (All versions < v5.6.0), RUGGEDCOM ROS RST2228P (All versions < V5.6.0), RUGGEDCOM ROS RST916C (All versions < v5.6.0), RUGGEDCOM ROS RST916P (All versions < v5.6.0). Affected devices improperly handle partial HTTP requests which makes them vulnerable to slowloris attacks. This could allow a remote attacker to create a denial of service condition that persists until the attack ends.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39158">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84be6da5f6535f3955d32bd2028149cb</td>
-       <td>CVE-2022-39156</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application is vulnerable to out of bounds read past the end of an allocated buffer when parsing X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-18196)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39156">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>62108d2c7bee847925fc66248526d4a1</td>
-       <td>CVE-2022-39155</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application contains an out of bounds write past the end of an allocated buffer while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-18192)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39155">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>963d5f5bb16d2f94c748f6eafad817c4</td>
-       <td>CVE-2022-39154</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application contains an out of bounds write past the end of an allocated buffer while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-18188)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39154">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee935ca755b4e3060f45394f502491a5</td>
-       <td>CVE-2022-39153</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application is vulnerable to out of bounds read past the end of an allocated buffer when parsing X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-18187)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39153">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c67493d063a9d8e6701e8c712cc2f6c</td>
-       <td>CVE-2022-39152</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application contains an out of bounds write past the end of an allocated buffer while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-17740)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39152">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>83b66c3aa780b5a56cf8f7500dc70919</td>
-       <td>CVE-2022-39151</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application contains an out of bounds write past the end of an allocated buffer while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-17736)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39151">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d23306c3ff902adbd52f0b2a9c0a71cd</td>
-       <td>CVE-2022-39150</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application contains an out of bounds write past the end of an allocated buffer while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-17735)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39150">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>046c56a9e15063ffaee7cdf5c95e6f3f</td>
-       <td>CVE-2022-39149</td>
-       <td>2022-09-13 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Parasolid V33.1 (All versions < V33.1.262), Parasolid V33.1 (All versions >= V33.1.262 < V33.1.263), Parasolid V34.0 (All versions < V34.0.252), Parasolid V34.1 (All versions < V34.1.242), Parasolid V35.0 (All versions < V35.0.161), Parasolid V35.0 (All versions >= V35.0.161 < V35.0.164), Simcenter Femap V2022.1 (All versions < V2022.1.3), Simcenter Femap V2022.2 (All versions < V2022.2.2). The affected application contains an out of bounds write past the end of an allocated buffer while parsing specially crafted X_T files. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-17733)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39149">详情</a></td>
       </tr>
 
      </tbody>
