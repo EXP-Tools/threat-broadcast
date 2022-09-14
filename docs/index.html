@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-09-14 20:34:42 -->
+<!-- RELEASE TIME : 2022-09-14 21:28:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>68450cb350384883be7b39363be310d8</td>
+       <td>CVE-2022-1972</td>
+       <td>2022-09-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2022-2078. Reason: This candidate is a reservation duplicate of CVE-2022-2078. Notes: All CVE users should reference CVE-2022-2078 instead of this candidate. All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1972">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eceb4c7bb2abc5286a9c7f3c935862fb</td>
+       <td>CVE-2022-1835</td>
+       <td>2022-09-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was in a CNA pool that was not assigned to any issues during 2022. Notes: none.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1835">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01f1b7cafe143ec28334a59e9bfc9b01</td>
+       <td>CVE-2022-36114</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cargo is a package manager for the rust programming language. It was discovered that Cargo did not limit the amount of data extracted from compressed archives. An attacker could upload to an alternate registry a specially crafted package that extracts way more data than its size (also known as a "zip bomb"), exhausting the disk space on the machine using Cargo to download the package. Note that by design Cargo allows code execution at build time, due to build scripts and procedural macros. The vulnerabilities in this advisory allow performing a subset of the possible damage in a harder to track down way. Your dependencies must still be trusted if you want to be protected from attacks, as it's possible to perform the same attacks with build scripts and procedural macros. The vulnerability is present in all versions of Cargo. Rust 1.64, to be released on September 22nd, will include a fix for it. Since the vulnerability is just a more limited way to accomplish what a malicious build scripts or procedural macros can do, we decided not to publish Rust point releases backporting the security fix. Patch files are available for Rust 1.63.0 are available in the wg-security-response repository for people building their own toolchain. We recommend users of alternate registries to excercise care in which package they download, by only including trusted dependencies in their projects. Please note that even with these vulnerabilities fixed, by design Cargo allows arbitrary code execution at build time thanks to build scripts and procedural macros: a malicious dependency will be able to cause damage regardless of these vulnerabilities. crates.io implemented server-side checks to reject these kinds of packages years ago, and there are no packages on crates.io exploiting these vulnerabilities. crates.io users still need to excercise care in choosing their dependencies though, as the same concerns about build scripts and procedural macros apply here.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36114">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8cca46eebe46c2d797b2b6ea5dc43770</td>
+       <td>CVE-2022-36113</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cargo is a package manager for the rust programming language. After a package is downloaded, Cargo extracts its source code in the ~/.cargo folder on disk, making it available to the Rust projects it builds. To record when an extraction is successful, Cargo writes "ok" to the .cargo-ok file at the root of the extracted source code once it extracted all the files. It was discovered that Cargo allowed packages to contain a .cargo-ok symbolic link, which Cargo would extract. Then, when Cargo attempted to write "ok" into .cargo-ok, it would actually replace the first two bytes of the file the symlink pointed to with ok. This would allow an attacker to corrupt one file on the machine using Cargo to extract the package. Note that by design Cargo allows code execution at build time, due to build scripts and procedural macros. The vulnerabilities in this advisory allow performing a subset of the possible damage in a harder to track down way. Your dependencies must still be trusted if you want to be protected from attacks, as it's possible to perform the same attacks with build scripts and procedural macros. The vulnerability is present in all versions of Cargo. Rust 1.64, to be released on September 22nd, will include a fix for it. Since the vulnerability is just a more limited way to accomplish what a malicious build scripts or procedural macros can do, we decided not to publish Rust point releases backporting the security fix. Patch files are available for Rust 1.63.0 are available in the wg-security-response repository for people building their own toolchain. Mitigations We recommend users of alternate registries to exercise care in which package they download, by only including trusted dependencies in their projects. Please note that even with these vulnerabilities fixed, by design Cargo allows arbitrary code execution at build time thanks to build scripts and procedural macros: a malicious dependency will be able to cause damage regardless of these vulnerabilities. crates.io implemented server-side checks to reject these kinds of packages years ago, and there are no packages on crates.io exploiting these vulnerabilities. crates.io users still need to exercise care in choosing their dependencies though, as remote code execution is allowed by design there as well.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36113">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c1e32c9fac52601a8ba1e70ac0339bfb</td>
+       <td>CVE-2022-36112</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GLPI stands for Gestionnaire Libre de Parc Informatique and is a Free Asset and IT Management Software package, that provides ITIL Service Desk features, licenses tracking and software auditing. Usage of RSS feeds or extenal calendar in planning is subject to SSRF exploit. Server-side requests can be used to scan server port or services opened on GLPI server or its private network. Queries responses are not exposed to end-user (blind SSRF). Users are advised to upgrade to version 10.0.3 to resolve this issue. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36112">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a78bba3de15ab61b89b26e364dc175e3</td>
+       <td>CVE-2022-35947</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GLPI stands for Gestionnaire Libre de Parc Informatique and is a Free Asset and IT Management Software package, that provides ITIL Service Desk features, licenses tracking and software auditing. Affected versions have been found to be vulnerable to a SQL injection attack which an attacker could leverage to simulate an arbitrary user login. Users are advised to upgrade to version 10.0.3. Users unable to upgrade should disable the `Enable login with external token` API configuration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35947">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>78f7628ba5102d69bbb4ca9495e94ac3</td>
+       <td>CVE-2022-35946</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GLPI stands for Gestionnaire Libre de Parc Informatique and is a Free Asset and IT Management Software package, that provides ITIL Service Desk features, licenses tracking and software auditing. In affected versions request input is not properly validated in the plugin controller and can be used to access low-level API of Plugin class. An attacker can, for instance, alter database data. Attacker must have "General setup" update rights to be able to perform this attack. Users are advised to upgrade to version 10.0.3. Users unable to upgrade should remove the `front/plugin.form.php` script.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cffdb25490d51cb0bf4fe74d10333095</td>
+       <td>CVE-2022-35945</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GLPI stands for Gestionnaire Libre de Parc Informatique and is a Free Asset and IT Management Software package, that provides ITIL Service Desk features, licenses tracking and software auditing. Information associated to registration key are not properly escaped in registration key configuration page. They can be used to steal a GLPI administrator cookie. Users are advised to upgrade to 10.0.3. There are no known workarounds for this issue. ### Workarounds Do not use a registration key created by an untrusted person.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35945">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f1f0f5d8a087693a28fb702705ccd6b6</td>
+       <td>CVE-2022-31187</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GLPI stands for Gestionnaire Libre de Parc Informatique and is a Free Asset and IT Management Software package, that provides ITIL Service Desk features, licenses tracking and software auditing. Affected versions were found to not properly neutralize HTML tags in the global search context. Users are advised to upgrade to version 10.0.3 to resolve this issue. Users unable to upgrade should disable global search.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31187">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c4974f9dafce45313b918b53825021cd</td>
+       <td>CVE-2022-31143</td>
+       <td>2022-09-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GLPI stands for Gestionnaire Libre de Parc Informatique and is a Free Asset and IT Management Software package, that provides ITIL Service Desk features, licenses tracking and software auditing. It was found that in affected versions there is an exposure of private information defined in setup of GLPI (like smtp or cas hosts). Note that passwords are not exposed. Users are advised to upgrade to version 10.0.3. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31143">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4abda2c4d9333b9e5f99b129f6afea58</td>
        <td>CVE-2022-0029</td>
        <td>2022-09-14 17:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-09-13 23:15:00 <img src="imgs/new.gif" /></td>
        <td>The mobile application in Transtek Mojodat FAM (Fixed Asset Management) 2.4.6 allows remote attackers to send SCRIPT tags as injected input to the API request.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38771">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee1feee665dbdf011e0d140783a3eec4</td>
-       <td>CVE-2022-38770</td>
-       <td>2022-09-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>The mobile application in Transtek Mojodat FAM (Fixed Asset Management) 2.4.6 allows remote attackers to fetch other users' data upon a successful login request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38770">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>01975bc5ae4a11b71da888bb28017b43</td>
-       <td>CVE-2022-38769</td>
-       <td>2022-09-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>The mobile application in Transtek Mojodat FAM (Fixed Asset Management) 2.4.6 allows remote attackers to fetch cleartext passwords upon a successful login request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38769">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1eef67957f683e766ac0b9a26c1edecc</td>
-       <td>CVE-2022-38768</td>
-       <td>2022-09-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>The mobile application in Transtek Mojodat FAM (Fixed Asset Management) 2.4.6 allows remote attackers to bypass authorization.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38768">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee2d355411ea3099b172baad747a4077</td>
-       <td>CVE-2022-38305</td>
-       <td>2022-09-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>AeroCMS v0.0.1 was discovered to contain an arbitrary file upload vulnerability via the component /admin/profile.php. This vulnerability allows attackers to execute arbitrary code via a crafted PHP file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38305">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2cf47ce8375e135d4502ba269eed73e1</td>
-       <td>CVE-2022-37191</td>
-       <td>2022-09-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>The component "cuppa/api/index.php" of CuppaCMS v1.0 is Vulnerable to LFI. An authenticated user can read system files via crafted POST request using [function] parameter value as LFI payload.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37191">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>94b6509028c24f3203c6e591a107aeff</td>
-       <td>CVE-2022-37190</td>
-       <td>2022-09-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>CuppaCMS 1.0 is vulnerable to Remote Code Execution (RCE). An authenticated user can control both parameters (action and function) from "/api/index.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37190">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>99138c2e94e4b75846dc62aa7c452948</td>
-       <td>CVE-2022-38633</td>
-       <td>2022-09-13 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Genymotion Desktop v3.2.1 was discovered to contain a DLL hijacking vulnerability which allows attackers to escalate privileges and execute arbitrary code via a crafted binary.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38633">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5546f259dec5164eb45355d1b502c32a</td>
-       <td>CVE-2022-35582</td>
-       <td>2022-09-13 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Penta Security Systems Inc WAPPLES 4.0.*, 5.0.0.*, 5.0.12.* are vulnerable to Incorrect Access Control. The operating system that WAPPLES runs on has a built-in non-privileged user penta with a predefined password. The password for this user, as well as its existence, is not disclosed in the documentation. Knowing the credentials, attackers can use this feature to gain uncontrolled access to the device and therefore are considered an undocumented possibility for remote control.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35582">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a0452c9bad269a74a32a4bc126bfe93f</td>
-       <td>CVE-2022-35413</td>
-       <td>2022-09-13 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>WAPPLES through 6.0 has a hardcoded systemi account accessible via db/wp.no1 (as configured in the /opt/penta/wapples/script/wcc_auto_scaling.py file). A threat actor could use this account to access the system configuration and confidential information (such as SSL keys) via an HTTPS request to the /webapi/ URI on port 443 or 5001.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35413">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>94e3c9e7c0dd05d7fa3bbf1bbcc7e513</td>
-       <td>CVE-2022-40623</td>
-       <td>2022-09-13 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>The WAVLINK Quantum D4G (WN531G3) running firmware version M31G3.V5030.200325 does not utilize anti-CSRF tokens, which, when combined with other issues (such as CVE-2022-35518), can lead to remote, unauthenticated command execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40623">详情</a></td>
       </tr>
 
      </tbody>
