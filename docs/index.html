@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-09-20 09:36:22 -->
+<!-- RELEASE TIME : 2022-09-20 13:02:08 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9ed4d1e7de8a08340cf6d79cc9b291b4</td>
+       <td>CVE-2022-34917</td>
+       <td>2022-09-20 09:15:00 <img src="imgs/new.gif" /></td>
+       <td>A security vulnerability has been identified in Apache Kafka. It affects all releases since 2.8.0. The vulnerability allows malicious unauthenticated clients to allocate large amounts of memory on brokers. This can lead to brokers hitting OutOfMemoryException and causing denial of service. Example scenarios: - Kafka cluster without authentication: Any clients able to establish a network connection to a broker can trigger the issue. - Kafka cluster with SASL authentication: Any clients able to establish a network connection to a broker, without the need for valid SASL credentials, can trigger the issue. - Kafka cluster with TLS authentication: Only clients able to successfully authenticate via TLS can trigger the issue. We advise the users to upgrade the Kafka installations to one of the 3.2.3, 3.1.2, 3.0.2, 2.8.2 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34917">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a935b9d403a45913928dce5bd67c2604</td>
+       <td>CVE-2022-39958</td>
+       <td>2022-09-20 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>The OWASP ModSecurity Core Rule Set (CRS) is affected by a response body bypass to sequentially exfiltrate small and undetectable sections of data by repeatedly submitting an HTTP Range header field with a small byte range. A restricted resource, access to which would ordinarily be detected, may be exfiltrated from the backend, despite being protected by a web application firewall that uses CRS. Short subsections of a restricted resource may bypass pattern matching techniques and allow undetected access. The legacy CRS versions 3.0.x and 3.1.x are affected, as well as the currently supported versions 3.2.1 and 3.3.2. Integrators and users are advised to upgrade to 3.2.2 and 3.3.3 respectively and to configure a CRS paranoia level of 3 or higher.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39958">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f821a1bbe7dcead261d180ea40f49023</td>
+       <td>CVE-2022-39957</td>
+       <td>2022-09-20 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>The OWASP ModSecurity Core Rule Set (CRS) is affected by a response body bypass. A client can issue an HTTP Accept header field containing an optional "charset" parameter in order to receive the response in an encoded form. Depending on the "charset", this response can not be decoded by the web application firewall. A restricted resource, access to which would ordinarily be detected, may therefore bypass detection. The legacy CRS versions 3.0.x and 3.1.x are affected, as well as the currently supported versions 3.2.1 and 3.3.2. Integrators and users are advised to upgrade to 3.2.2 and 3.3.3 respectively.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39957">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>86386d57b05276c9af7fc93e6806a8df</td>
+       <td>CVE-2022-39956</td>
+       <td>2022-09-20 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>The OWASP ModSecurity Core Rule Set (CRS) is affected by a partial rule set bypass for HTTP multipart requests by submitting a payload that uses a character encoding scheme via the Content-Type or the deprecated Content-Transfer-Encoding multipart MIME header fields that will not be decoded and inspected by the web application firewall engine and the rule set. The multipart payload will therefore bypass detection. A vulnerable backend that supports these encoding schemes can potentially be exploited. The legacy CRS versions 3.0.x and 3.1.x are affected, as well as the currently supported versions 3.2.1 and 3.3.2. Integrators and users are advised upgrade to 3.2.2 and 3.3.3 respectively. The mitigation against these vulnerabilities depends on the installation of the latest ModSecurity version (v2.9.6 / v3.0.8).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39956">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a4c969f095d9b7bcda4042a836d6c9e1</td>
+       <td>CVE-2022-39955</td>
+       <td>2022-09-20 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>The OWASP ModSecurity Core Rule Set (CRS) is affected by a partial rule set bypass by submitting a specially crafted HTTP Content-Type header field that indicates multiple character encoding schemes. A vulnerable back-end can potentially be exploited by declaring multiple Content-Type "charset" names and therefore bypassing the configurable CRS Content-Type header "charset" allow list. An encoded payload can bypass CRS detection this way and may then be decoded by the backend. The legacy CRS versions 3.0.x and 3.1.x are affected, as well as the currently supported versions 3.2.1 and 3.3.2. Integrators and users are advised to upgrade to 3.2.2 and 3.3.3 respectively.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39955">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>15c146935b420fe9bacf3e5a3ec16afe</td>
+       <td>CVE-2022-3000</td>
+       <td>2022-09-20 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - Stored in GitHub repository yetiforcecompany/yetiforcecrm prior to 6.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3000">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2af7f57d066251f189cd9363755057f9</td>
+       <td>CVE-2022-2924</td>
+       <td>2022-09-20 06:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - Stored in GitHub repository yetiforcecompany/yetiforcecrm prior to 6.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2924">详情</a></td>
+      </tr>
+
+      <tr>
        <td>dd0da1514677f77aa3d418aa15bdd5c5</td>
        <td>CVE-2022-34746</td>
        <td>2022-09-20 02:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
        <td>IBM Spectrum Protect Plus 10.1.6 through 10.1.11 Microsoft File Systems restore operation can download any file on the target machine by manipulating the URL with a directory traversal attack. This results in the restore operation gaining access to files which the operator should not have access to. IBM X-Force ID: 235873.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40608">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7411d34a8497d519f227a32fa3d8d11e</td>
-       <td>CVE-2022-40234</td>
-       <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Versions of IBM Spectrum Protect Plus prior to 10.1.12 (excluding 10.1.12) include the private key information for a certificate inside the generated .crt file when uploading a TLS certificate to IBM Spectrum Protect Plus. If this generated .crt file is shared, an attacker can obtain the private key information for the uploaded certificate. IBM X-Force ID: 235718.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40234">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>93ea9838ac9a71b1f01093621bc657c2</td>
-       <td>CVE-2022-40144</td>
-       <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in Trend Micro Apex One and Trend Micro Apex One as a Service could allow an attacker to bypass the product’s login authentication by falsifying request parameters on affected installations.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40144">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>82e93827e0abc548b41223a8f60ca160</td>
-       <td>CVE-2022-40143</td>
-       <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A link following local privilege escalation vulnerability in Trend Micro Apex One and Trend Micro Apex One as a Service servers could allow a local attacker to abuse an insecure directory that could allow a low-privileged user to run arbitrary code with elevated privileges.Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40143">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ea9a7aea99076043f1780819849712e</td>
-       <td>CVE-2022-40142</td>
-       <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A security link following local privilege escalation vulnerability in Trend Micro Apex One and Trend Micro Apex One as a Service agents could allow a local attacker to create a writable folder in an arbitrary location and escalate privileges on affected installations.Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40142">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b144f63b4308ba3533f33b9dc7e01da1</td>
-       <td>CVE-2022-40141</td>
-       <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in Trend Micro Apex One and Apex One as a Service could allow an attacker to intercept and decode certain communication strings that may contain some identification attributes of a particular Apex One server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40141">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6a62bd779446361561a4f325fe025aa6</td>
-       <td>CVE-2022-40140</td>
-       <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>An origin validation error vulnerability in Trend Micro Apex One and Apex One as a Service could allow a local attacker to cause a denial-of-service on affected installations.Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40140">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>63417cb1aeae21e81cd6867c257853bc</td>
-       <td>CVE-2022-40139</td>
-       <td>2022-09-19 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper validation of some components used by the rollback mechanism in Trend Micro Apex One and Trend Micro Apex One as a Service clients could allow a Apex One server administrator to instruct affected clients to download an unverified rollback package, which could lead to remote code execution.Please note: an attacker must first obtain Apex One server administration console access in order to exploit this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40139">详情</a></td>
       </tr>
 
      </tbody>
@@ -796,6 +796,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8f27f771101e2a03aee0913d24d6b2f8</td>
+       <td>CNNVD-202209-1536 (CVE-2022-35062)</td>
+       <td>2022-09-19 13:02:07 <img src="imgs/new.gif" /></td>
+       <td>OTFCC 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1536">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a201fe8efeea1b9f4009bc443b1c325b</td>
+       <td>CNNVD-202209-1537 (CVE-2022-35066)</td>
+       <td>2022-09-19 13:02:04 <img src="imgs/new.gif" /></td>
+       <td>OTFCC 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1537">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4dd2ecb2337da1f0c58e458b4639d06a</td>
+       <td>CNNVD-202209-1538 (CVE-2022-35069)</td>
+       <td>2022-09-19 13:02:01 <img src="imgs/new.gif" /></td>
+       <td>OTFCC 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1538">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3028b1066fba579380e898379f1e637d</td>
+       <td>CNNVD-202209-1539 (CVE-2022-35070)</td>
+       <td>2022-09-19 13:01:59 <img src="imgs/new.gif" /></td>
+       <td>OTFCC 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1539">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d0b2b7343fe4043e10eba885c042112</td>
+       <td>CNNVD-202209-1540 (CVE-2022-38339)</td>
+       <td>2022-09-19 13:01:56 <img src="imgs/new.gif" /></td>
+       <td>Safe Software FME Server 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1540">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>376c41b13e41c9eed1d7dc3250e091e9</td>
+       <td>CNNVD-202209-1541 (CVE-2022-38532)</td>
+       <td>2022-09-19 13:01:53 <img src="imgs/new.gif" /></td>
+       <td>Micro-Star International MSI Center 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1541">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b7b54de3df805fb34d1ceb4f6069948c</td>
+       <td>CNNVD-202209-1542 (CVE-2022-38545)</td>
+       <td>2022-09-19 13:01:50 <img src="imgs/new.gif" /></td>
+       <td>Valine 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1542">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>11163d36df705fd62e6ee30dc116bba2</td>
+       <td>CNNVD-202209-1543 (CVE-2022-38509)</td>
+       <td>2022-09-19 13:01:48 <img src="imgs/new.gif" /></td>
+       <td>Wedding Planner 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1543">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e4dbb5d7e96b1dda0b3bc4d26b292ab9</td>
+       <td>CNNVD-202209-1544 (CVE-2022-38527)</td>
+       <td>2022-09-19 13:01:45 <img src="imgs/new.gif" /></td>
+       <td>UCMS 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1544">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2a916dd4a402719bcd502a7c6b3912cb</td>
+       <td>CNNVD-202209-1545 (CVE-2022-38550)</td>
+       <td>2022-09-19 13:01:42 <img src="imgs/new.gif" /></td>
+       <td>JEESNS 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1545">详情</a></td>
+      </tr>
+
+      <tr>
        <td>49a2963b6ea63f046bd7f1f0b9a71262</td>
        <td>CNNVD-202209-1412 (CVE-2022-40768)</td>
        <td>2022-09-18 13:03:53</td>
@@ -953,86 +1033,6 @@
        <td>2022-09-15 12:58:22</td>
        <td>GnuPG 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1171">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e4481d9467451c74dffe39d86dfd4a4a</td>
-       <td>CNNVD-202209-1064 (CVE-2022-40142)</td>
-       <td>2022-09-14 13:07:04</td>
-       <td>Trend Micro Apex One 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1064">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b851f5b02f236573ea166ccaa7a4dc0</td>
-       <td>CNNVD-202209-1065 (CVE-2022-36056)</td>
-       <td>2022-09-14 13:07:01</td>
-       <td>cosign 数据伪造问题漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1065">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>366209501dfc316d8910955eb4448e38</td>
-       <td>CNNVD-202209-1066 (CVE-2022-40141)</td>
-       <td>2022-09-14 13:06:58</td>
-       <td>Trend Micro Apex One 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bdbb398386761e4d741c4ffd9cb0c7a0</td>
-       <td>CNNVD-202209-1067 (CVE-2022-40140)</td>
-       <td>2022-09-14 13:06:55</td>
-       <td>Trend Micro Apex One 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1067">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e047c8abb46cc791ffe323e31a8d444</td>
-       <td>CNNVD-202209-1068 (CVE-2021-42597)</td>
-       <td>2022-09-14 13:06:53</td>
-       <td>Storage Unit Rental Management System 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1068">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f9c6b0c81535a759ea5c7e927064a51b</td>
-       <td>CNNVD-202209-1069 (CVE-2022-20845)</td>
-       <td>2022-09-14 13:06:50</td>
-       <td>Cisco Network Convergence System 4000 Series 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1069">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b8e4f096eb82d1a236ca0692377f9ec</td>
-       <td>CNNVD-202209-1070 (CVE-2022-40139)</td>
-       <td>2022-09-14 13:06:46</td>
-       <td>Trend Micro Apex One 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1070">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>74580de3cfe7dca61ee750818e2ed8d6</td>
-       <td>CNNVD-202209-1072 (CVE-2020-36603)</td>
-       <td>2022-09-14 13:06:44</td>
-       <td>miHoYo Genshin Impact 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1072">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>68de5d98edf448b330c87325d3b96670</td>
-       <td>CNNVD-202209-1073 (CVE-2018-25047)</td>
-       <td>2022-09-14 13:06:40</td>
-       <td>Smarty 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1073">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e5074bfcb5aaf0625f8e434d2969ecf</td>
-       <td>CNNVD-202209-1074 (CVE-2022-40734)</td>
-       <td>2022-09-14 13:06:37</td>
-       <td>laravel-filemanager 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202209-1074">详情</a></td>
       </tr>
 
      </tbody>
