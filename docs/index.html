@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-09-23 10:35:26 -->
+<!-- RELEASE TIME : 2022-09-23 12:59:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>50b1923c79501fe906af5d96964359a0</td>
+       <td>CVE-2022-39239</td>
+       <td>2022-09-23 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>netlify-ipx is an on-Demand image optimization for Netlify using ipx. In versions prior to 1.2.3, an attacker can bypass the source image domain allowlist by sending specially crafted headers, causing the handler to load and return arbitrary images. Because the response is cached globally, this image will then be served to visitors without requiring those headers to be set. XSS can be achieved by requesting a malicious SVG with embedded scripts, which would then be served from the site domain. Note that this does not apply to images loaded in `<img>` tags, as scripts do not execute in this context. The image URL can be set in the header independently of the request URL, meaning any site images that have not previously been cached can have their cache poisoned. This problem has been fixed in version 1.2.3. As a workaround, cached content can be cleared by re-deploying the site.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39239">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>16eddc5b43d5269145600e16b4cb5365</td>
+       <td>CVE-2022-39238</td>
+       <td>2022-09-23 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>Arvados is an open source platform for managing and analyzing biomedical big data. In versions prior to 2.4.3, when using Portable Authentication Modules (PAM) for user authentication, if a user presented valid credentials but the account is disabled or otherwise not allowed to access the host (such as an expired password), it would still be accepted for access to Arvados. Other authentication methods (LDAP, OpenID Connect) supported by Arvados are not affected by this flaw. This issue is patched in version 2.4.3. Workaround for this issue is to migrate to a different authentication method supported by Arvados, such as LDAP.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39238">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1f0a2a09e0801411579c598106f548df</td>
+       <td>CVE-2022-39231</td>
+       <td>2022-09-23 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. In versions prior to 4.10.16, or from 5.0.0 to 5.2.6, validation of the authentication adapter app ID for _Facebook_ and _Spotify_ may be circumvented. Configurations which allow users to authenticate using the Parse Server authentication adapter where `appIds` is set as a string instead of an array of strings authenticate requests from an app with a different app ID than the one specified in the `appIds` configuration. For this vulnerability to be exploited, an attacker needs to be assigned an app ID by the authentication provider which is a sub-set of the server-side configured app ID. This issue is patched in versions 4.10.16 and 5.2.7. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39231">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>130854de6c9f503191ee2be4c942d4cd</td>
+       <td>CVE-2022-26112</td>
+       <td>2022-09-23 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>In 0.10.0 or older versions of Apache Pinot, Pinot query endpoint and realtime ingestion layer has a vulnerability in unprotected environments due to a groovy function support. In order to avoid this, we disabled the groovy function support by default from Pinot release 0.11.0. See https://docs.pinot.apache.org/basics/releases/0.11.0</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26112">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d84d9e6d44dbfec5307d4db0890c4a02</td>
+       <td>CVE-2022-39230</td>
+       <td>2022-09-23 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>fhir-works-on-aws-authz-smart is an implementation of the authorization interface from the FHIR Works interface. Versions 3.1.1 and 3.1.2 are subject to Exposure of Sensitive Information to an Unauthorized Actor. This issue allows a client of the API to retrieve more information than the client’s OAuth scope permits when making “search-type” requests. This issue would not allow a client to retrieve information about individuals other than those the client was already authorized to access. Users of fhir-works-on-aws-authz-smart 3.1.1 or 3.1.2 should upgrade to version 3.1.3 or higher immediately. Versions 3.1.0 and below are unaffected. There is no workaround for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39230">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>49882eaaee102dc5f19fd84500418e0b</td>
+       <td>CVE-2022-39227</td>
+       <td>2022-09-23 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>python-jwt is a module for generating and verifying JSON Web Tokens. Versions prior to 3.3.4 are subject to Authentication Bypass by Spoofing, resulting in identity spoofing, session hijacking or authentication bypass. An attacker who obtains a JWT can arbitrarily forge its contents without knowing the secret key. Depending on the application, this may for example enable the attacker to spoof other user's identities, hijack their sessions, or bypass authentication. Users should upgrade to version 3.3.4. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39227">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca09f8dd03159d5a20e4735b419b4fbc</td>
+       <td>CVE-2022-39225</td>
+       <td>2022-09-23 07:15:00 <img src="imgs/new.gif" /></td>
+       <td>Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. In versions prior to 4.10.15, or 5.0.0 and above prior to 5.2.6, a user can write to the session object of another user if the session object ID is known. For example, an attacker can assign the session object to their own user by writing to the `user` field and then read any custom fields of that session object. Note that assigning a session to another user does not usually change the privileges of either of the two users, and a user cannot assign their own session to another user. This issue is patched in version 4.10.15 and above, and 5.2.6 and above. To mitigate this issue in unpatched versions add a `beforeSave` trigger to the `_Session` class and prevent writing if the requesting user is different from the user in the session object.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39225">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4f5c01c0566ff81a1b7df36075c3bd47</td>
+       <td>CVE-2020-36604</td>
+       <td>2022-09-23 06:15:00 <img src="imgs/new.gif" /></td>
+       <td>hoek before 8.5.1 and 9.x before 9.0.3 allows prototype poisoning in the clone function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36604">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cb5eaf0863c89bbe9443b4835ed4678a</td>
+       <td>CVE-2022-41322</td>
+       <td>2022-09-23 05:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Kitty before 0.26.2, insufficient validation in the desktop notification escape sequence can lead to arbitrary code execution. The user must display attacker-controlled content in the terminal, then click on a notification popup.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41322">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b434bc37efc04be6e8122789d0efb0dc</td>
+       <td>CVE-2022-41320</td>
+       <td>2022-09-23 05:15:00 <img src="imgs/new.gif" /></td>
+       <td>Veritas System Recovery (VSR) versions 18 and 21 store a network destination password in the Windows registry during configuration of the backup configuration. This vulnerability could provide a Windows user (who has sufficient privileges) to access a network file system that they were not authorized to access.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41320">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2f643c7dc9a0ec24152c7b5441d9b2d9</td>
        <td>CVE-2022-35951</td>
        <td>2022-09-23 04:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
        <td>Online Pet Shop We App v1.0 is vulnerable to SQL Injection via /pet_shop/classes/Master.php?f=delete_category,id.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40935">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2417c38edbe43bb35a5d83d2d811dd48</td>
-       <td>CVE-2022-40934</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Online Pet Shop We App v1.0 is vulnerable to SQL injection via /pet_shop/classes/Master.php?f=delete_sub_category,id</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40934">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77e45e8755f44ac540698e077f276b29</td>
-       <td>CVE-2022-40933</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Online Pet Shop We App v1.0 by oretnom23 is vulnerable to SQL injection via /pet_shop/classes/Master.php?f=delete_order,id.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40933">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>496536850dc995e10eb8bcfc830a9620</td>
-       <td>CVE-2022-35039</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>OTFCC commit 617837b was discovered to contain a heap buffer overflow via /release-x64/otfccdump+0x6e20a0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35039">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1db51e5b2e0d68a098ba512feec1bb43</td>
-       <td>CVE-2022-35038</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>OTFCC commit 617837b was discovered to contain a heap buffer overflow via /release-x64/otfccdump+0x6b064d.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35038">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bed26ba97cb89be5d0f296f63df07b4d</td>
-       <td>CVE-2022-35037</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>OTFCC commit 617837b was discovered to contain a heap buffer overflow via /release-x64/otfccdump+0x6adb1e.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35037">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6258a82a1e8995fa3067cfbed5e60c03</td>
-       <td>CVE-2022-35036</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>OTFCC commit 617837b was discovered to contain a heap buffer overflow via /release-x64/otfccdump+0x6e1fc8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35036">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98970f575f918d56bfb248bbf5782f6c</td>
-       <td>CVE-2022-35035</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>OTFCC commit 617837b was discovered to contain a heap buffer overflow via /release-x64/otfccdump+0x6b559f.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35035">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>149bb35a1703de88161a022708d77e11</td>
-       <td>CVE-2022-35034</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>OTFCC commit 617837b was discovered to contain a heap buffer overflow via /release-x64/otfccdump+0x6e7e3d.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35034">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8294c7043079c1c5a280d4d7b0cfb253</td>
-       <td>CVE-2022-35032</td>
-       <td>2022-09-22 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>OTFCC commit 617837b was discovered to contain a segmentation violation via /release-x64/otfccdump+0x6b6a8f.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-35032">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d2099ccdf5168c8b73e1367db52597a6</td>
-       <td>CVE-2022-40146</td>
-       <td>2022-09-22 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Server-Side Request Forgery (SSRF) vulnerability in Batik of Apache XML Graphics allows an attacker to access files using a Jar url. This issue affects Apache XML Graphics Batik 1.14.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40146">详情</a></td>
       </tr>
 
      </tbody>
@@ -2324,6 +2324,46 @@
       </tr>
 
       <tr>
+       <td>f96fcc1c77d98a74afa83061cac2ebf3</td>
+       <td>CVE-2022-38550</td>
+       <td>2022-09-19 23:15:09 </td>
+       <td>A stored cross-site scripting (XSS) vulnerability in the /weibo/list component of Jeesns v2.0.0 allows attackers to execute arbitrary web scripts or HTML via a crafted payload.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38550">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d3d4b3c26158285c0640e8252fdd7433</td>
+       <td>CVE-2022-38545</td>
+       <td>2022-09-19 23:15:09 </td>
+       <td>Valine v1.4.18 was discovered to contain a remote code execution (RCE) vulnerability which allows attackers to execute arbitrary code via a crafted POST request.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38545">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>64fc8d18e41aa57594ac758541c54c98</td>
+       <td>CVE-2022-38532</td>
+       <td>2022-09-19 22:15:11 </td>
+       <td>Micro-Star International Co., Ltd MSI Center 1.0.50.0 was discovered to contain a vulnerability in the component C_Features of MSI.CentralServer.exe. This vulnerability allows attackers to escalate privileges via running a crafted executable.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38532">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>781d384ceefb206609e9bf0c728a55ff</td>
+       <td>CVE-2022-38527</td>
+       <td>2022-09-19 22:15:11 </td>
+       <td>UCMS v1.6.0 was discovered to contain a cross-site scripting (XSS) vulnerability via the Import function under the Site Management page.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38527">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>afc47c34f350253cfae59efd1a3bcea5</td>
+       <td>CVE-2022-38509</td>
+       <td>2022-09-19 22:15:11 </td>
+       <td>Wedding Planner v1.0 was discovered to contain a SQL injection vulnerability via the booking_id parameter at /admin/budget.php.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38509">详情</a></td>
+      </tr>
+
+      <tr>
        <td>32742d5c3b5453d75af5ab421df675e7</td>
        <td>CVE-2022-38576</td>
        <td>2022-09-19 20:15:12 </td>
@@ -2385,46 +2425,6 @@
        <td>2022-09-19 16:15:12 </td>
        <td>The d8s-dicts for python, as distributed on PyPI, included a potential code-execution backdoor inserted by a third party. The backdoor is the democritus-hypothesis package. The affected version is 0.1.0</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40809">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>126f1a16583ba6bddbe8b32af02e368d</td>
-       <td>CVE-2022-40715</td>
-       <td>2022-09-19 16:15:12 </td>
-       <td>An issue was discovered in NOKIA 1350OMS R14.2. An Absolute Path Traversal vulnerability exists for a specific endpoint via the logfile parameter, allowing a remote authenticated attacker to read files on the filesystem arbitrarily.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40715">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e3d7ac2580bf028e0e242746d74a55fa</td>
-       <td>CVE-2022-37700</td>
-       <td>2022-09-19 16:15:11 </td>
-       <td>Zentao Demo15 is vulnerable to Directory Traversal. The impact is: obtain sensitive information (remote). The component is: URL : view-source:https://demo15.zentao.pm/user-login.html/zentao/index.php?mode=getconfig.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-37700">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e808c8689f9953f347d4b5e917fca4e6</td>
-       <td>CVE-2022-38887</td>
-       <td>2022-09-19 16:15:11 </td>
-       <td>The d8s-python for python, as distributed on PyPI, included a potential code-execution backdoor inserted by a third party. The democritus-strings package. The affected version is 0.1.0.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38887">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52aaeb3474e2ed0a54ece1496ad94f95</td>
-       <td>CVE-2022-38886</td>
-       <td>2022-09-19 16:15:11 </td>
-       <td>The d8s-xml for python, as distributed on PyPI, included a potential code-execution backdoor inserted by a third party. The backdoor is the democritus-strings package. The affected version is 0.1.0.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38886">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dbf5ead603a77da41923d9c0f1d39082</td>
-       <td>CVE-2022-38885</td>
-       <td>2022-09-19 16:15:11 </td>
-       <td>The d8s-netstrings for python, as distributed on PyPI, included a potential code-execution backdoor inserted by a third party. The backdoor is the democritus-strings package. The affected version is 0.1.0.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38885">详情</a></td>
       </tr>
 
      </tbody>
