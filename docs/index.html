@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-09-28 20:35:08 -->
+<!-- RELEASE TIME : 2022-09-28 22:34:50 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f9448b9ba2639d235fc04d1747dd7dfb</td>
+       <td>CVE-2022-40710</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A link following vulnerability in Trend Micro Deep Security 20 and Cloud One - Workload Security Agent for Windows could allow a local attacker to escalate privileges on affected installations.Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40710">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c4909d062e66032990624934f739b4b</td>
+       <td>CVE-2022-40709</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An Out-of-bounds read vulnerability in Trend Micro Deep Security 20 and Cloud One - Workload Security Agent for Windows could allow a local attacker to disclose sensitive information on affected installations.Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit these vulnerabilities.This vulnerability is similar to, but not identical to CVE-2022-40707 and 40708.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40709">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>67ff516a46afc3920509baa15eebd74b</td>
+       <td>CVE-2022-40708</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An Out-of-bounds read vulnerability in Trend Micro Deep Security 20 and Cloud One - Workload Security Agent for Windows could allow a local attacker to disclose sensitive information on affected installations.Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit these vulnerabilities.This vulnerability is similar to, but not identical to CVE-2022-40707.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40708">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3f80077eb65a266941c9a07a5862ba3e</td>
+       <td>CVE-2022-40707</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An Out-of-bounds read vulnerability in Trend Micro Deep Security 20 and Cloud One - Workload Security Agent for Windows could allow a local attacker to disclose sensitive information on affected installations.Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit these vulnerabilities.This vulnerability is similar to, but not identical to CVE-2022-40708.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40707">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>923375035fc201ae9cc6658321d05514</td>
+       <td>CVE-2022-39263</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>`@next-auth/upstash-redis-adapter` is the Upstash Redis adapter for NextAuth.js, which provides authentication for Next.js. Applications that use `next-auth` Email Provider and `@next-auth/upstash-redis-adapter` before v3.0.2 are affected by this vulnerability. The Upstash Redis adapter implementation did not check for both the identifier (email) and the token, but only checking for the identifier when verifying the token in the email callback flow. An attacker who knows about the victim's email could easily sign in as the victim, given the attacker also knows about the verification token's expired duration. The vulnerability is patched in v3.0.2. A workaround is available. Using Advanced Initialization, developers can check the requests and compare the query's token and identifier before proceeding.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39263">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d3a85aeb121f51d89d2f15afe37b127d</td>
+       <td>CVE-2022-39257</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Matrix iOS SDK allows developers to build iOS apps compatible with Matrix. Prior to version 0.23.19, an attacker cooperating with a malicious homeserver can construct messages appearing to have come from another person. Such messages will be marked with a grey shield on some platforms, but this may be missing in others. This attack is possible due to the matrix-ios-sdk implementing a too permissive key forwarding strategy. The default policy for accepting key forwards has been made more strict in the matrix-ios-sdk version 0.23.19. matrix-ios-sdk will now only accept forwarded keys in response to previously issued requests and only from own, verified devices. The SDK now sets a `trusted` flag on the decrypted message upon decryption, based on whether the key used to decrypt the message was received from a trusted source. Clients need to ensure that messages decrypted with a key with `trusted = false` are decorated appropriately (for example, by showing a warning for such messages). This attack requires coordination between a malicious home server and an attacker, so those who trust their home servers do not need a workaround.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39257">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2bd62bd83c2212f37cf73e9bdce4dc4b</td>
+       <td>CVE-2022-39255</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Matrix iOS SDK allows developers to build iOS apps compatible with Matrix. Prior to version 0.23.19, an attacker cooperating with a malicious homeserver can construct messages that legitimately appear to have come from another person, without any indication such as a grey shield. Additionally, a sophisticated attacker cooperating with a malicious homeserver could employ this vulnerability to perform a targeted attack in order to send fake to-device messages appearing to originate from another user. This can allow, for example, to inject the key backup secret during a self-verification, to make a targeted device start using a malicious key backup spoofed by the homeserver. These attacks are possible due to a protocol confusion vulnerability that accepts to-device messages encrypted with Megolm instead of Olm. matrix-ios-sdk version 0.23.19 has been modified to only accept Olm-encrypted to-device messages. Out of caution, several other checks have been audited or added. This attack requires coordination between a malicious home server and an attacker, so those who trust their home servers do not need a workaround. To avoid malicious backup attacks, one should not verify one's new logins using emoji/QR verifications methods until patched.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39255">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9153a3bb8e4371f7bc4e80204789ad5e</td>
+       <td>CVE-2022-34424</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Networking OS10, versions 10.5.1.x, 10.5.2.x, and 10.5.3.x contain a vulnerability that could allow an attacker to cause a system crash by running particular security scans.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34424">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>584ce9c9cfc82bc1b023b9d9cf59897b</td>
+       <td>CVE-2022-34394</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell OS10, version 10.5.3.4, contains an Improper Certificate Validation vulnerability in Support Assist. A remote unauthenticated attacker could potentially exploit this vulnerability, leading to unauthorized access to limited switch configuration data. The vulnerability could be leveraged by attackers to conduct man-in-the-middle attacks to gain access to the Support Assist information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34394">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f9cb2f915d905436621cc58eb152ffe</td>
+       <td>CVE-2022-3292</td>
+       <td>2022-09-28 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Use of Cache Containing Sensitive Information in GitHub repository ikus060/rdiffweb prior to 2.4.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3292">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fce6f0db3319e1c7641498a892363abb</td>
        <td>CVE-2022-3193</td>
        <td>2022-09-28 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-09-28 14:15:00 <img src="imgs/new.gif" /></td>
        <td>In Carlo Gavazzi UWP3.0 in multiple versions and CPY Car Park Server in Version 2.8.3 a remote, unauthenticated attacker could make use of an SQL-injection to gain access to a volatile temporary database with the current states of the device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28813">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>49c9da43091642875c595248e3a930d1</td>
-       <td>CVE-2022-28812</td>
-       <td>2022-09-28 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Carlo Gavazzi UWP3.0 in multiple versions and CPY Car Park Server in Version 2.8.3 a remote, unauthenticated attacker could make use of hard-coded credentials to gain SuperUser access to the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28812">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9af1c98cf578fbc57315377b3030e1b9</td>
-       <td>CVE-2022-40486</td>
-       <td>2022-09-28 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>TP Link Archer AX10 V1 Firmware Version 1.3.1 Build 20220401 Rel. 57450(5553) was discovered to allow authenticated attackers to execute arbitrary code via a crafted backup file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40486">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1107d05fed8e10272d112f8341aa930d</td>
-       <td>CVE-2022-3349</td>
-       <td>2022-09-28 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Sony PS4 and PS5. It has been classified as critical. This affects the function UVFAT_readupcasetable of the component exFAT Handler. The manipulation of the argument dataLength leads to heap-based buffer overflow. It is possible to launch the attack on the physical device. It is recommended to upgrade the affected component. The associated identifier of this vulnerability is VDB-209679.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3349">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7ee0e85e08c216b59e797b5b8a73cfb1</td>
-       <td>CVE-2022-2760</td>
-       <td>2022-09-28 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>In affected versions of Octopus Deploy it is possible to reveal the Space ID of spaces that the user does not have access to view in an error message when a resource is part of another Space.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2760">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e4b428b141c06f1dbf698260e060361d</td>
-       <td>CVE-2022-30935</td>
-       <td>2022-09-28 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>An authorization bypass in b2evolution allows remote, unauthenticated attackers to predict password reset tokens for any user through the use of a bad randomness function. This allows the attacker to get valid sessions for arbitrary users, and optionally reset their password. Tested and confirmed in a default installation of version 7.2.3. Earlier versions are affected, possibly earlier major versions as well.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-30935">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7e5353a227f2bf018af7f9c481af5fcd</td>
-       <td>CVE-2022-32170</td>
-       <td>2022-09-28 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>The “Bytebase” application does not restrict low privilege user to access admin “projects“ for which an unauthorized user can view the “projects“ created by “Admin” and the affected endpoint is “/api/project?user=${userId}”.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32170">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>443a815641e4007e47f6c6a2eaf350bd</td>
-       <td>CVE-2022-32169</td>
-       <td>2022-09-28 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>The “Bytebase” application does not restrict low privilege user to access “admin issues“ for which an unauthorized user can view the “OPEN” and “CLOSED” issues by “Admin” and the affected endpoint is “/issue”.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32169">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f08dfb97696f98bce8bc2621f819ba0d</td>
-       <td>CVE-2022-32166</td>
-       <td>2022-09-28 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>In ovs versions v0.90.0 through v2.5.0 are vulnerable to heap buffer over-read in flow.c. An unsafe comparison of “minimasks” function could lead access to an unmapped region of memory. This vulnerability is capable of crashing the software, memory modification, and possible remote execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32166">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a23d3e014d3e3be10e43974a2ad0cb1</td>
-       <td>CVE-2022-3348</td>
-       <td>2022-09-28 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Just like in the previous report, an attacker could steal the account of different users. But in this case, it's a little bit more specific, because it is needed to be an editor in the same app as the victim.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3348">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bc332553e340660d61a29ac408dcf93a</td>
-       <td>CVE-2022-32168</td>
-       <td>2022-09-28 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Notepad++ versions 8.4.1 and before are vulnerable to DLL hijacking where an attacker can replace the vulnerable dll (UxTheme.dll) with his own dll and run arbitrary code in the context of Notepad++.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32168">详情</a></td>
       </tr>
 
      </tbody>
@@ -2276,6 +2276,46 @@
       </tr>
 
       <tr>
+       <td>76cf0774f7623963e931a4716b39c9ba</td>
+       <td>CVE-2022-40630</td>
+       <td>2022-09-23 19:15:15 </td>
+       <td>This vulnerability exists in Tacitine Firewall, all versions of EN6200-PRIME QUAD-35 and EN6200-PRIME QUAD-100 between 19.1.1 to 22.20.1 (inclusive), due to improper session management in the Tacitine Firewall web-based management interface. An unauthenticated remote attacker could exploit this vulnerability by sending a specially crafted http request on the targeted device. Successful exploitation of this vulnerability could allow an unauthenticated remote attacker to perform session fixation on the targeted device.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40630">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5a5c5ef7539ec0f02350bba620a24a6f</td>
+       <td>CVE-2022-40629</td>
+       <td>2022-09-23 18:15:11 </td>
+       <td>This vulnerability exists in Tacitine Firewall, all versions of EN6200-PRIME QUAD-35 and EN6200-PRIME QUAD-100 between 19.1.1 to 22.20.1 (inclusive), due to insecure design in the Tacitine Firewall web-based management interface. An unauthenticated remote attacker could exploit this vulnerability by sending a specially crafted http request on the targeted device. Successful exploitation of this vulnerability could allow an unauthenticated remote attacker to view sensitive information on the targeted device.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40629">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>57c50fdcfb4fd786f196b14c4133829b</td>
+       <td>CVE-2022-40628</td>
+       <td>2022-09-23 16:15:11 </td>
+       <td>This vulnerability exists in Tacitine Firewall, all versions of EN6200-PRIME QUAD-35 and EN6200-PRIME QUAD-100 between 19.1.1 to 22.20.1 (inclusive), due to improper control of code generation in the Tacitine Firewall web-based management interface. An unauthenticated remote attacker could exploit this vulnerability by sending a specially crafted http request on the targeted device. Successful exploitation of this vulnerability could allow an unauthenticated remote attacker to execute arbitrary commands on the targeted device.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40628">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6912144b2465d6ed182256456cd2b819</td>
+       <td>CVE-2022-40672</td>
+       <td>2022-09-23 15:15:14 </td>
+       <td>Authenticated (admin+) Stored Cross-Site Scripting (XSS) vulnerability in CPO Shortcodes plugin &lt;= 1.5.0 at WordPress.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40672">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1efcb9ab8f6fe10fa160a60530f6eaf2</td>
+       <td>CVE-2022-40671</td>
+       <td>2022-09-23 15:15:14 </td>
+       <td>Cross-Site Request Forgery (CSRF) vulnerability in Rate my Post &acirc;&euro;&ldquo; WP Rating System plugin &lt;= 3.3.4 at WordPress.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40671">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a5d8b5f83c34dd6b0f35086bab0df78e</td>
        <td>CVE-2022-40869</td>
        <td>2022-09-23 14:15:13 </td>
@@ -2385,46 +2425,6 @@
        <td>2022-09-22 14:15:09 </td>
        <td>ZZCMS 2022 was discovered to contain a SQL injection vulnerability via the component /admin/sendmailto.php?tomail=&amp;groupid=.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40446">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>303777e07a337c3f878782775775d6a4</td>
-       <td>CVE-2022-40444</td>
-       <td>2022-09-22 14:15:09 </td>
-       <td>ZZCMS 2022 was discovered to contain a full path disclosure vulnerability via the page /admin/index.PHP? _server.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40444">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dc8c5001ca2e084a68d9145692ba7eb7</td>
-       <td>CVE-2022-40443</td>
-       <td>2022-09-22 14:15:09 </td>
-       <td>An absolute path traversal vulnerability in ZZCMS 2022 allows attackers to obtain sensitive information via a crafted GET request sent to /one/siteinfo.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40443">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>978ba391b9a20c46fbac0fddcd7fdb7b</td>
-       <td>CVE-2022-40705</td>
-       <td>2022-09-22 09:15:09 </td>
-       <td>** UNSUPPORTED WHEN ASSIGNED ** An Improper Restriction of XML External Entity Reference vulnerability in RPCRouterServlet of Apache SOAP allows an attacker to read arbitrary files over HTTP. This issue affects Apache SOAP version 2.2 and later versions. It is unknown whether previous versions are also affected. NOTE: This vulnerability only affects products that are no longer supported by the maintainer.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-40705">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b5354f8d92da8126cfa7d7beb2b5553</td>
-       <td>CVE-2022-39975</td>
-       <td>2022-09-22 00:15:10 </td>
-       <td>The Layout module in Liferay Portal v7.3.3 through v7.4.3.34, and Liferay DXP 7.3 before update 10, and 7.4 before update 35 does not check user permission before showing the preview of a &quot;Content Page&quot; type page, allowing attackers to view unpublished &quot;Content Page&quot; pages via URL manipulation.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-39975">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>17957a34aec68d29e332b3844d451fb5</td>
-       <td>CVE-2022-39224</td>
-       <td>2022-09-21 23:15:09 </td>
-       <td>Arr-pm is an RPM reader/writer library written in Ruby. Versions prior to 0.0.12 are subject to OS command injection resulting in shell execution if the RPM contains a malicious &quot;payload compressor&quot; field. This vulnerability impacts the `extract` and `files` methods of the `RPM::File` class of this library. Version 0.0.12 patches these issues. A workaround for this issue is to ensure any RPMs being processed contain valid/known payload compressor values such as gzip, bzip2, xz, zstd, and lzma. The payload compressor field in an rpm can be checked by using the rpm command line tool.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-39224">详情</a></td>
       </tr>
 
      </tbody>
