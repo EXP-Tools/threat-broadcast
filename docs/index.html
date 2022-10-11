@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-10-11 16:53:09 -->
+<!-- RELEASE TIME : 2022-10-11 17:43:58 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2483cf5d4578318682da9e329cc32feb</td>
+       <td>CVE-2022-3358</td>
+       <td>2022-10-11 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenSSL supports creating a custom cipher via the legacy EVP_CIPHER_meth_new() function and associated function calls. This function was deprecated in OpenSSL 3.0 and application authors are instead encouraged to use the new provider mechanism in order to implement custom ciphers. OpenSSL versions 3.0.0 to 3.0.5 incorrectly handle legacy custom ciphers passed to the EVP_EncryptInit_ex2(), EVP_DecryptInit_ex2() and EVP_CipherInit_ex2() functions (as well as other similarly named encryption and decryption initialisation functions). Instead of using the custom cipher directly it incorrectly tries to fetch an equivalent cipher from the available providers. An equivalent cipher is found based on the NID passed to EVP_CIPHER_meth_new(). This NID is supposed to represent the unique NID for a given cipher. However it is possible for an application to incorrectly pass NID_undef as this value in the call to EVP_CIPHER_meth_new(). When NID_undef is used in this way the OpenSSL encryption/decryption initialisation function will match the NULL cipher as being equivalent and will fetch this from the available providers. This will succeed if the default provider has been loaded (or if a third party provider has been loaded that offers this cipher). Using the NULL cipher means that the plaintext is emitted as the ciphertext. Applications are only affected by this issue if they call EVP_CIPHER_meth_new() using NID_undef and subsequently use it in a call to an encryption/decryption initialisation function. Applications that only use SSL/TLS are not impacted by this issue. Fixed in OpenSSL 3.0.6 (Affected 3.0.0-3.0.5).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3358">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>40be4a1cd019b34da79b08c08e68f188</td>
+       <td>CVE-2022-32175</td>
+       <td>2022-10-11 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>In AdGuardHome, versions v0.95 through v0.108.0-b.13 are vulnerable to Cross-Site Request Forgery (CSRF), in the custom filtering rules functionality. An attacker can persuade an authorized user to follow a malicious link, resulting in deleting/modifying the custom filtering rules.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32175">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fedad3034c4c8d7d241ae7ef4a988bce</td>
+       <td>CVE-2022-32174</td>
+       <td>2022-10-11 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Gogs, versions v0.6.5 through v0.12.10 are vulnerable to Stored Cross-Site Scripting (XSS) that leads to an account takeover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-32174">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ffb2782792ae198e36d78c7665e90eb</td>
+       <td>CVE-2022-42731</td>
+       <td>2022-10-11 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>mfa/FIDO2.py in django-mfa2 before 2.5.1 and 2.6.x before 2.6.1 allows a replay attack that could be used to register another device for a user. The device registration challenge is not invalidated after usage.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42731">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d664b7d86a10f0bc9edf456e0746744</td>
+       <td>CVE-2022-39271</td>
+       <td>2022-10-11 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Traefik (pronounced traffic) is a modern HTTP reverse proxy and load balancer that assists in deploying microservices. There is a potential vulnerability in Traefik managing HTTP/2 connections. A closing HTTP/2 server connection could hang forever because of a subsequent fatal error. This failure mode could be exploited to cause a denial of service. There has been a patch released in versions 2.8.8 and 2.9.0-rc5. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39271">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b07dd046478b821f8911d29c5b3865e0</td>
        <td>CVE-2022-33749</td>
        <td>2022-10-11 13:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2022-10-10 21:15:00 <img src="imgs/new.gif" /></td>
        <td>An Out-of-Bounds access vulnerability in Trend Micro Apex One could allow a local attacker to create a specially crafted message to cause memory corruption on a certain service process which could lead to local privilege escalation on affected installations. Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41745">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4ce7c50326d1c99b2b91f384f2aab314</td>
-       <td>CVE-2022-41744</td>
-       <td>2022-10-10 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Time-of-Check Time-Of-Use vulnerability in the Trend Micro Apex One Vulnerability Protection integrated component could allow a local attacker to escalate privileges and turn a specific working directory into a mount point on affected installations. Please note: an attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41744">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>242d76570b8d98c39a379138db06dd47</td>
-       <td>CVE-2022-39288</td>
-       <td>2022-10-10 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>fastify is a fast and low overhead web framework, for Node.js. Affected versions of fastify are subject to a denial of service via malicious use of the Content-Type header. An attacker can send an invalid Content-Type header that can cause the application to crash. This issue has been addressed in commit `fbb07e8d` and will be included in release version 4.8.1. Users are advised to upgrade. Users unable to upgrade may manually filter out http content with malicious Content-Type headers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39288">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2897e75568bb2622017f9211c5457cc9</td>
-       <td>CVE-2022-36063</td>
-       <td>2022-10-10 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Azure RTOS USBx is a USB host, device, and on-the-go (OTG) embedded stack, fully integrated with Azure RTOS ThreadX and available for all Azure RTOS ThreadX–supported processors. Azure RTOS USBX implementation of host support for USB CDC ECM includes an integer underflow and a buffer overflow in the `_ux_host_class_cdc_ecm_mac_address_get` function which may be potentially exploited to achieve remote code execution or denial of service. Setting mac address string descriptor length to a `0` or `1` allows an attacker to introduce an integer underflow followed (string_length) by a buffer overflow of the `cdc_ecm -> ux_host_class_cdc_ecm_node_id` array. This may allow one to redirect the code execution flow or introduce a denial of service. The fix has been included in USBX release [6.1.12](https://github.com/azure-rtos/usbx/releases/tag/v6.1.12_rel). Improved mac address string descriptor length validation to check for unexpectedly small values may be used as a workaround.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36063">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b6d5a94f158ba8da17a0bae260f3409d</td>
-       <td>CVE-2022-34425</td>
-       <td>2022-10-10 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell Enterprise SONiC OS, 4.0.0, 4.0.1, contain a cryptographic key vulnerability in SSH. An unauthenticated remote attacker could potentially exploit this vulnerability, leading to unauthorized access to communication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34425">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdc930b0e286e70141d2003a69dfe6b2</td>
-       <td>CVE-2022-34402</td>
-       <td>2022-10-10 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell Wyse ThinOS 2205 contains a Regular Expression Denial of Service Vulnerability in UI. An admin privilege attacker could potentially exploit this vulnerability, leading to denial-of-service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34402">详情</a></td>
       </tr>
 
      </tbody>
