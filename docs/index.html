@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-10-19 11:33:10 -->
+<!-- RELEASE TIME : 2022-10-19 13:11:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ab46332513733055ef4debc9e53bef0c</td>
+       <td>CVE-2022-39253</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Git is an open source, scalable, distributed revision control system. Versions prior to 2.30.6, 2.31.5, 2.32.4, 2.33.5, 2.34.5, 2.35.5, 2.36.3, and 2.37.4 are subject to exposure of sensitive information to a malicious actor. When performing a local clone (where the source and target of the clone are on the same volume), Git copies the contents of the source's `$GIT_DIR/objects` directory into the destination by either creating hardlinks to the source contents, or copying them (if hardlinks are disabled via `--no-hardlinks`). A malicious actor could convince a victim to clone a repository with a symbolic link pointing at sensitive information on the victim's machine. This can be done either by having the victim clone a malicious repository on the same machine, or having them clone a malicious repository embedded as a bare repository via a submodule from any source, provided they clone with the `--recurse-submodules` option. Git does not create symbolic links in the `$GIT_DIR/objects` directory. The problem has been patched in the versions published on 2022-10-18, and backported to v2.30.x. Potential workarounds: Avoid cloning untrusted repositories using the `--local` optimization when on a shared machine, either by passing the `--no-local` option to `git clone` or cloning from a URL that uses the `file://` scheme. Alternatively, avoid cloning repositories from untrusted sources with `--recurse-submodules` or run `git config --global protocol.file.allow user`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39253">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>608195764e5c4209278f152ec297e411</td>
+       <td>CVE-2022-39233</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tuleap is a Free & Open Source Suite to improve management of software developments and collaboration. In versions 12.9.99.228 and above, prior to 14.0.99.24, authorizations are not properly verified when updating the branch prefix used by the GitLab repository integration. Authenticated users can change the branch prefix of any of the GitLab repository integration they can see vie the REST endpoint `PATCH /gitlab_repositories/{id}`. This action should be restricted to Git administrators. This issue is patched in Tuleap Community Edition 14.0.99.24 and Tuleap Enterprise Edition 14.0-3. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39233">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5cf75e17b102088b5309770fe89fa518</td>
+       <td>CVE-2022-33217</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in Qualcomm IPC due to buffer copy without checking the size of input while starting communication with a compromised kernel. in Snapdragon Mobile</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33217">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01f4bcaa30bddf2ddec8acbaa8288987</td>
+       <td>CVE-2022-33214</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in display due to time-of-check time-of-use of metadata reserved size in Snapdragon Auto, Snapdragon Compute, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon Mobile, Snapdragon Wearables</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33214">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>42a171f9f8da7d1eb28bf81f89051aed</td>
+       <td>CVE-2022-33210</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in automotive multimedia due to use of out-of-range pointer offset while parsing command request packet with a very large type value. in Snapdragon Auto</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33210">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3d41e37aaed1188533d1adddc05c627a</td>
+       <td>CVE-2022-25750</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in BTHOST due to double free while music playback and calls over bluetooth headset in Snapdragon Mobile</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25750">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a9f77bc72b3b25f3d93b865461c0c4e3</td>
+       <td>CVE-2022-25749</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Transient Denial-of-Service in WLAN due to buffer over-read while parsing MDNS frames. in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer Electronics Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon IoT, Snapdragon Mobile, Snapdragon Voice & Music, Snapdragon Wearables, Snapdragon Wired Infrastructure and Networking</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25749">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1ab3856325fee27e85e0275609c15e5b</td>
+       <td>CVE-2022-25748</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in WLAN due to integer overflow to buffer overflow while parsing GTK frames. in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer Electronics Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon IoT, Snapdragon Mobile, Snapdragon Voice & Music, Snapdragon Wearables, Snapdragon Wired Infrastructure and Networking</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25748">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a55c475b7d88da5f4e4c799a1e853f96</td>
+       <td>CVE-2022-25736</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Denial of service in WLAN due to out-of-bound read happens while processing VHT action frame in Snapdragon Auto, Snapdragon Compute, Snapdragon Connectivity, Snapdragon Consumer Electronics Connectivity, Snapdragon Consumer IOT, Snapdragon Industrial IOT, Snapdragon Mobile, Snapdragon Voice & Music, Snapdragon Wearables, Snapdragon Wired Infrastructure and Networking</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25736">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6613f8e3da7926d1573864ab1b75562f</td>
+       <td>CVE-2022-25723</td>
+       <td>2022-10-19 11:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory corruption in multimedia due to use after free during callback registration failure in Snapdragon Mobile</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25723">详情</a></td>
+      </tr>
+
+      <tr>
        <td>610fc5d1b07185a5f4e9137ca9adec42</td>
        <td>CVE-2022-3606</td>
        <td>2022-10-19 09:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-10-18 21:15:00 <img src="imgs/new.gif" /></td>
        <td>Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Core). Supported versions that are affected are Prior to 6.1.40. Difficult to exploit vulnerability allows unauthenticated attacker with network access via VRDP to compromise Oracle VM VirtualBox. Successful attacks of this vulnerability can result in takeover of Oracle VM VirtualBox. CVSS 3.1 Base Score 8.1 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39426">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e4b069918690facf3d86f7b2fca82c1a</td>
-       <td>CVE-2022-39425</td>
-       <td>2022-10-18 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Core). Supported versions that are affected are Prior to 6.1.40. Difficult to exploit vulnerability allows unauthenticated attacker with network access via VRDP to compromise Oracle VM VirtualBox. Successful attacks of this vulnerability can result in takeover of Oracle VM VirtualBox. CVSS 3.1 Base Score 8.1 (Confidentiality, Integrity and Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39425">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>06189e065cac2e1469793075f05b10a5</td>
-       <td>CVE-2022-42188</td>
-       <td>2022-10-18 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Lavalite 9.0.0, the XSRF-TOKEN cookie is vulnerable to path traversal attacks, enabling read access to arbitrary files on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42188">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ab86aa3a98b31e759787315fd9bbd5c1</td>
-       <td>CVE-2022-39198</td>
-       <td>2022-10-18 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>A deserialization vulnerability existed in dubbo hessian-lite 3.2.12 and its earlier versions, which could lead to malicious code execution. This issue affects Apache Dubbo 2.7.x version 2.7.17 and prior versions; Apache Dubbo 3.0.x version 3.0.11 and prior versions; Apache Dubbo 3.1.x version 3.1.0 and prior versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39198">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>300744a926f0854d2955f6ac8096251e</td>
-       <td>CVE-2022-43260</td>
-       <td>2022-10-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC18 V15.03.05.19(6318) was discovered to contain a stack overflow via the time parameter in the fromSetSysTime function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43260">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>44e4c990bc3dc34848668472da7c180f</td>
-       <td>CVE-2022-43259</td>
-       <td>2022-10-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC15 V15.03.05.18 was discovered to contain a stack overflow via the timeZone parameter in the form_fast_setting_wifi_set function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43259">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>88b92cda6c7e0707c861f07efc502472</td>
-       <td>CVE-2022-41547</td>
-       <td>2022-10-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Mobile Security Framework (MobSF) v0.9.2 and below was discovered to contain a local file inclusion (LFI) vulnerability in the StaticAnalyzer/views.py script. This vulnerability allows attackers to read arbitrary files via a crafted HTTP request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41547">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>83639b78a138ab9a03425cc96167eb40</td>
-       <td>CVE-2022-41544</td>
-       <td>2022-10-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>GetSimple CMS v3.3.16 was discovered to contain a remote code execution (RCE) vulnerability via the edited_file parameter in admin/theme-edit.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41544">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cd4bd0aaba1d54d8c9e4cd058bc9e90d</td>
-       <td>CVE-2022-41541</td>
-       <td>2022-10-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>TP-Link AX10v1 V1_211117 allows attackers to execute a replay attack by using a previously transmitted encrypted authentication message and valid authentication token. Attackers are able to login to the web application as an admin user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41541">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5f838f194fb5fe60d4f4d3514d6b261</td>
-       <td>CVE-2022-41540</td>
-       <td>2022-10-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>The web app client of TP-Link AX10v1 V1_211117 uses hard-coded cryptographic keys when communicating with the router. Attackers who are able to intercept the communications between the web client and router through a man-in-the-middle attack can then obtain the sequence key via a brute-force attack, and access sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41540">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>39042976830b714fd4dbb7ae5a820c61</td>
-       <td>CVE-2022-41537</td>
-       <td>2022-10-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Online Tours & Travels Management System v1.0 was discovered to contain an arbitrary file upload vulnerability via the component /user_operations/profile.php. This vulnerability allows attackers to execute arbitrary code via a crafted PHP file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41537">详情</a></td>
       </tr>
 
      </tbody>
@@ -796,6 +796,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ccaae2941d6e7a8ab622a344bfbe819a</td>
+       <td>CNNVD-202210-1315 (CVE-2022-21611)</td>
+       <td>2022-10-18 13:11:35 <img src="imgs/new.gif" /></td>
+       <td>Oracle MySQL 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1315">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b4ea6ccb53142830f35986c26af6142d</td>
+       <td>CNNVD-202210-1316 (CVE-2022-21608)</td>
+       <td>2022-10-18 13:11:33 <img src="imgs/new.gif" /></td>
+       <td>Oracle MySQL 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1316">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>716f3b0187a97926753482f9d74d891d</td>
+       <td>CNNVD-202210-1317 (CVE-2022-21610)</td>
+       <td>2022-10-18 13:11:31 <img src="imgs/new.gif" /></td>
+       <td>Oracle Solaris 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1317">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b71b824fb26d245f90225282a45ed2b0</td>
+       <td>CNNVD-202210-1318 (CVE-2022-42928)</td>
+       <td>2022-10-18 13:11:29 <img src="imgs/new.gif" /></td>
+       <td>Mozilla Firefox 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1318">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>75b67601036a3c71cc54e68f06444bfd</td>
+       <td>CNNVD-202210-1319 (CVE-2022-42927)</td>
+       <td>2022-10-18 13:11:26 <img src="imgs/new.gif" /></td>
+       <td>Mozilla Firefox 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1319">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e989ccbaf255fcc1884fa9d736bdbe3</td>
+       <td>CNNVD-202210-1320 (CVE-2022-2602)</td>
+       <td>2022-10-18 13:11:24 <img src="imgs/new.gif" /></td>
+       <td>Linux kernel 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1320">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>61adaaf84009860f3c17853e876f286c</td>
+       <td>CNNVD-202210-1321 (CVE-2022-38436)</td>
+       <td>2022-10-18 13:11:22 <img src="imgs/new.gif" /></td>
+       <td>Adobe Illustrator 缓冲区错误漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1321">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb1cd8122a2e39f15ea3a78083e34386</td>
+       <td>CNNVD-202210-1322 (CVE-2022-38435)</td>
+       <td>2022-10-18 13:11:20 <img src="imgs/new.gif" /></td>
+       <td>Adobe Illustrator 输入验证错误漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1322">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c8597b37dfb5fab19340dbbc0bb598ef</td>
+       <td>CNNVD-202210-1323 (CVE-2022-41500)</td>
+       <td>2022-10-18 13:11:18 <img src="imgs/new.gif" /></td>
+       <td>EyouCms 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1323">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>973b7f63c0f423560e3a984f10071988</td>
+       <td>CNNVD-202210-1324 (CVE-2022-42218)</td>
+       <td>2022-10-18 13:11:16 <img src="imgs/new.gif" /></td>
+       <td>Open Source SACCO Management System 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1324">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1512ba16840d9e141f7aec0746f4291a</td>
        <td>CNNVD-202210-1171 (CVE-2022-3515)</td>
        <td>2022-10-18 13:10:09 <img src="imgs/new.gif" /></td>
@@ -953,86 +1033,6 @@
        <td>2022-10-16 13:11:28</td>
        <td>Linux kernel 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-1050">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d138e61fa049e47f11e5d4ccb03c888e</td>
-       <td>CNNVD-202210-858 (CVE-2022-35136)</td>
-       <td>2022-10-13 13:10:18</td>
-       <td>Boodskap IoT Platform 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-858">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>167b6ce47d4d0a4484ebb59acbdb55dd</td>
-       <td>CNNVD-202210-859 (CVE-2022-35611)</td>
-       <td>2022-10-13 13:10:16</td>
-       <td>MQTT 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-859">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fee7cbe3d4534bf42cc41c10efad9617</td>
-       <td>CNNVD-202210-860 (CVE-2022-3116)</td>
-       <td>2022-10-13 13:10:13</td>
-       <td>Heimdal Premium Security 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-860">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f8d8dc813420f30e68b5c87ba8db3294</td>
-       <td>CNNVD-202210-861 (CVE-2022-35612)</td>
-       <td>2022-10-13 13:10:11</td>
-       <td>MQTT 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-861">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d6c31790269ee1be368d94a59e3ec499</td>
-       <td>CNNVD-202210-862 (CVE-2022-39295)</td>
-       <td>2022-10-13 13:10:09</td>
-       <td>Knowage 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-862">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>44e195df394645e90e43bd41a890b89a</td>
-       <td>CNNVD-202210-863 (CVE-2022-39201)</td>
-       <td>2022-10-13 13:10:06</td>
-       <td>Grafana 信息泄露漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-863">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>abe0973f1a8bbb22c3b412742de662e6</td>
-       <td>CNNVD-202210-864 (CVE-2022-39278)</td>
-       <td>2022-10-13 13:10:04</td>
-       <td>Istio 资源管理错误漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-864">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e76499295acf66aab3ab07d7994f820c</td>
-       <td>CNNVD-202210-865 (CVE-2022-41390)</td>
-       <td>2022-10-13 13:10:02</td>
-       <td>OcoMon SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-865">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cec13eeefc8e035d50b8e989b2004f8a</td>
-       <td>CNNVD-202210-866 (CVE-2022-39303)</td>
-       <td>2022-10-13 13:09:58</td>
-       <td>Ree6 SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-866">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8ef2ed85ed73b99aad404283dd65c9eb</td>
-       <td>CNNVD-202210-867 (CVE-2022-41391)</td>
-       <td>2022-10-13 13:09:56</td>
-       <td>OcoMon SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202210-867">详情</a></td>
       </tr>
 
      </tbody>
@@ -2188,11 +2188,51 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5b0d3670847af6d963f09d63e1ac35c5</td>
+       <td>CVE-2022-42221</td>
+       <td>2022-10-17 16:15:23 </td>
+       <td>Netgear R6220 v1.1.0.114_1.0.1 suffers from Incorrect Access Control, resulting in a command injection vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42221">详情</a></td>
+      </tr>
+
+      <tr>
        <td>72d14221d01bb7a36ad99e64e182609f</td>
        <td>CVE-2022-42969</td>
        <td>2022-10-16 06:15:09 </td>
        <td>The py library through 1.11.0 for Python allows remote attackers to conduct a ReDoS (Regular expression Denial of Service) attack via a Subversion repository with crafted info data, because the InfoSvnCommand argument is mishandled.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42969">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2fab90f192d8e5e6066477e953b8bc15</td>
+       <td>CVE-2022-42342</td>
+       <td>2022-10-14 20:15:17 </td>
+       <td>Adobe Acrobat Reader versions 22.002.20212 (and earlier) and 20.005.30381 (and earlier) are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to bypass mitigations such as ASLR. Exploitation of this issue requires user interaction in that a victim must open a malicious file.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42342">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b8749dd94cb57e15c2785bad98c116fc</td>
+       <td>CVE-2022-42341</td>
+       <td>2022-10-14 20:15:17 </td>
+       <td>Adobe ColdFusion versions Update 14 (and earlier) and Update 4 (and earlier) are affected by an Improper Restriction of XML External Entity Reference ('XXE') vulnerability that could result in arbitrary file system read. Exploitation of this issue does not require user interaction.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42341">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e2b5249b4e00f69b0700f7272c644c17</td>
+       <td>CVE-2022-42340</td>
+       <td>2022-10-14 20:15:17 </td>
+       <td>Adobe ColdFusion versions Update 14 (and earlier) and Update 4 (and earlier) are affected by an Improper Input Validation vulnerability that could result in arbitrary file system read. Exploitation of this issue does not require user interaction.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42340">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b509df650f60c14141a4c300ca0163c</td>
+       <td>CVE-2022-42339</td>
+       <td>2022-10-14 20:15:17 </td>
+       <td>Adobe Acrobat Reader versions 22.002.20212 (and earlier) and 20.005.30381 (and earlier) are affected by a Stack-based Buffer Overflow vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42339">详情</a></td>
       </tr>
 
       <tr>
@@ -2217,6 +2257,22 @@
        <td>2022-10-14 19:15:13 </td>
        <td>In messaging service, there is a missing permission check. This could lead to local denial of service in messaging service with no additional execution privileges needed.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38687">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>39a97b768f9987d95cbefccb6a4c275b</td>
+       <td>CVE-2022-42234</td>
+       <td>2022-10-14 17:15:17 </td>
+       <td>There is a file inclusion vulnerability in the template management module in UCMS 1.6</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42234">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>323efe64ac2e6954aa139be12feb0310</td>
+       <td>CVE-2022-42232</td>
+       <td>2022-10-14 17:15:16 </td>
+       <td>Simple Cold Storage Management System v1.0 is vulnerable to SQL Injection via /csms/classes/Master.php?f=delete_storage.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42232">详情</a></td>
       </tr>
 
       <tr>
@@ -2316,6 +2372,14 @@
       </tr>
 
       <tr>
+       <td>d8d710176ee79fef520c58e8a8ffc120</td>
+       <td>CVE-2022-42463</td>
+       <td>2022-10-14 15:16:24 </td>
+       <td>OpenHarmony-v3.1.2 and prior versions have an authenication bypass vulnerability in a callback handler function of Softbus_server in communication subsystem. Attackers can launch attacks on distributed networks by sending Bluetooth rfcomm packets to any remote device and executing arbitrary commands.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42463">详情</a></td>
+      </tr>
+
+      <tr>
        <td>18321d526b154fbdbb0673f6127770b6</td>
        <td>CVE-2022-42064</td>
        <td>2022-10-14 15:16:23 </td>
@@ -2361,70 +2425,6 @@
        <td>2022-10-14 00:15:09 </td>
        <td>An issue was discovered in the Linux kernel before 5.19.16. Attackers able to inject WLAN frames could cause a buffer overflow in the ieee80211_bss_info_update function in net/mac80211/scan.c.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-41674">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>808a31587657d3622c2bb84ff3c7ed40</td>
-       <td>CVE-2022-42719</td>
-       <td>2022-10-13 23:15:11 </td>
-       <td>A use-after-free in the mac80211 stack when parsing a multi-BSSID element in the Linux kernel 5.2 through 5.19.x before 5.19.16 could be used by attackers (able to inject WLAN frames) to crash the kernel and potentially execute code.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-42719">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5196dac1645e814f5148638fa27bf9cc</td>
-       <td>CVE-2022-41391</td>
-       <td>2022-10-13 23:15:11 </td>
-       <td>OcoMon v4.0 was discovered to contain a SQL injection vulnerability via the cod parameter at showImg.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-41391">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a56eb2140d72e30a693ff2a350bc75c2</td>
-       <td>CVE-2022-41390</td>
-       <td>2022-10-13 23:15:11 </td>
-       <td>OcoMon v4.0 was discovered to contain a SQL injection vulnerability via the cod parameter at download.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-41390">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5c96f10b5994a6dfd89e7e52fede73f8</td>
-       <td>CVE-2022-35136</td>
-       <td>2022-10-13 23:15:10 </td>
-       <td>Boodskap IoT Platform v4.4.9-02 allows attackers to make unauthenticated API requests.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35136">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f70ba31a8586ae68f015880ab1a60546</td>
-       <td>CVE-2022-35135</td>
-       <td>2022-10-13 23:15:09 </td>
-       <td>Boodskap IoT Platform v4.4.9-02 allows attackers to escalate privileges via a crafted request sent to /api/user/upsert/&lt;uuid&gt;.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35135">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>afdb66cb3d07c6286643fc1d5c8dc8d9</td>
-       <td>CVE-2022-35134</td>
-       <td>2022-10-13 23:15:09 </td>
-       <td>Boodskap IoT Platform v4.4.9-02 contains a cross-site scripting (XSS) vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-35134">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>368d9316bbe1da99151baaeea62d5702</td>
-       <td>CVE-2022-31123</td>
-       <td>2022-10-13 22:15:10 </td>
-       <td>Grafana is an open source observability and data visualization platform. Versions prior to 9.1.8 and 8.5.14 are vulnerable to a bypass in the plugin signature verification. An attacker can convince a server admin to download and successfully run a malicious plugin even though unsigned plugins are not allowed. Versions 9.1.8 and 8.5.14 contain a patch for this issue. As a workaround, do not install plugins downloaded from untrusted sources.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-31123">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>295d4850900b3b1a09b2d8c1889c1008</td>
-       <td>CVE-2022-3493</td>
-       <td>2022-10-13 16:15:09 </td>
-       <td>A vulnerability, which was classified as problematic, has been found in SourceCodester Human Resource Management System 1.0. This issue affects some unknown processing of the component Add Employee Handler. The manipulation of the argument First Name/Middle Name/Last Name leads to cross site scripting. The attack may be initiated remotely. The identifier VDB-210773 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-3493">详情</a></td>
       </tr>
 
      </tbody>
