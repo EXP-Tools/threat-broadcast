@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-10-25 19:05:15 -->
+<!-- RELEASE TIME : 2022-10-25 19:47:52 -->
 <html lang="zh-cn">
 
  <head>
@@ -364,6 +364,14 @@
       </tr>
 
       <tr>
+       <td>e37973861d11dc6a048fb5c564e52181</td>
+       <td>CVE-2022-39350</td>
+       <td>2022-10-25 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>@dependencytrack/frontend is a Single Page Application (SPA) used in Dependency-Track, an open source Component Analysis platform that allows organizations to identify and reduce risk in the software supply chain. Due to the common practice of providing vulnerability details in markdown format, the Dependency-Track frontend renders them using the JavaScript library Showdown. Showdown does not have any XSS countermeasures built in, and versions before 4.6.1 of the Dependency-Track frontend did not encode or sanitize Showdown's output. This made it possible for arbitrary JavaScript included in vulnerability details via HTML attributes to be executed in context of the frontend. Actors with the `VULNERABILITY_MANAGEMENT` permission can exploit this weakness by creating or editing a custom vulnerability and providing XSS payloads in any of the following fields: Description, Details, Recommendation, or References. The payload will be executed for users with the `VIEW_PORTFOLIO` permission when browsing to the modified vulnerability's page. Alternatively, malicious JavaScript could be introduced via any of the vulnerability databases mirrored by Dependency-Track. However, this attack vector is highly unlikely, and the maintainers of Dependency-Track are not aware of any occurrence of this happening. Note that the `Vulnerability Details` element of the `Audit Vulnerabilities` tab in the project view is not affected. The issue has been fixed in frontend version 4.6.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39350">详情</a></td>
+      </tr>
+
+      <tr>
        <td>673e9a8a6f593dc165d88bcdf0a6b1fc</td>
        <td>CVE-2022-43680</td>
        <td>2022-10-24 14:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2022-10-21 18:15:00</td>
        <td>Dell PowerScale OneFS, versions 8.2.2-9.3.0, contain an OS command injection vulnerability. A privileged local malicious user could potentially exploit this vulnerability, leading to a full system compromise. This impacts compliance mode clusters.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34437">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc29c1addcff320e0d9cb1b4ca878926</td>
-       <td>CVE-2022-31239</td>
-       <td>2022-10-21 18:15:00</td>
-       <td>Dell PowerScale OneFS, versions 9.0.0 up to and including 9.1.0.19, 9.2.1.12, and 9.3.0.6, contain sensitive data in log files vulnerability. A privileged local user may potentially exploit this vulnerability, leading to disclosure of this sensitive data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31239">详情</a></td>
       </tr>
 
      </tbody>
