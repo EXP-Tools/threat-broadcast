@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-10-29 22:29:52 -->
+<!-- RELEASE TIME : 2022-10-29 23:32:55 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6559345ca7fb2462af56ed62ea46d393</td>
+       <td>CVE-2022-42915</td>
+       <td>2022-10-29 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>curl before 7.86.0 has a double free. If curl is told to use an HTTP proxy for a transfer with a non-HTTP(S) URL, it sets up the connection to the remote server by issuing a CONNECT request to the proxy, and then tunnels the rest of the protocol through. An HTTP proxy might refuse this request (HTTP proxies often only allow outgoing connections to specific port numbers, like 443 for HTTPS) and instead return a non-200 status code to the client. Due to flaws in the error/cleanup handling, this could trigger a double free in curl if one of the following schemes were used in the URL for the transfer: dict, gopher, gophers, ldap, ldaps, rtmp, rtmps, or telnet. The earliest affected version is 7.77.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42915">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c2d699b4eac02d9477f6980abd1d0252</td>
        <td>CVE-2022-41974</td>
        <td>2022-10-29 19:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2022-10-28 17:15:00 <img src="imgs/new.gif" /></td>
        <td>A stored cross-site scripting (XSS) vulnerability in the Users Access Groups feature (/index.php?module=users_groups/users_groups) of Rukovoditel v3.2.1 allows authenticated attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Name parameter after clicking "Add New Group".</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43169">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b5684ebc267bcc6987e686f7fe2cab1a</td>
-       <td>CVE-2022-43168</td>
-       <td>2022-10-28 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Rukovoditel v3.2.1 was discovered to contain a SQL injection vulnerability via the reports_id parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43168">详情</a></td>
       </tr>
 
      </tbody>
