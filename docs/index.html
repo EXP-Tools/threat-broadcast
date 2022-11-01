@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-11-01 18:39:51 -->
+<!-- RELEASE TIME : 2022-11-01 20:33:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0e4562afd674bba2a340a967a34438dc</td>
+       <td>CVE-2022-40839</td>
+       <td>2022-11-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>A SQL injection vulnerability in the height and width parameter in NdkAdvancedCustomizationFields v3.5.0 allows unauthenticated attackers to exfiltrate database data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40839">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0e0132c349f37f0205bfdb3fdcf06cc0</td>
+       <td>CVE-2022-39369</td>
+       <td>2022-11-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>phpCAS is an authentication library that allows PHP applications to easily authenticate users via a Central Authentication Service (CAS) server. The phpCAS library uses HTTP headers to determine the service URL used to validate tickets. This allows an attacker to control the host header and use a valid ticket granted for any authorized service in the same SSO realm (CAS server) to authenticate to the service protected by phpCAS. Depending on the settings of the CAS server service registry in worst case this may be any other service URL (if the allowed URLs are configured to "^(https)://.*") or may be strictly limited to known and authorized services in the same SSO federation if proper URL service validation is applied. This vulnerability may allow an attacker to gain access to a victim's account on a vulnerable CASified service without victim's knowledge, when the victim visits attacker's website while being logged in to the same CAS server. phpCAS 1.6.0 is a major version upgrade that starts enforcing service URL discovery validation, because there is unfortunately no 100% safe default config to use in PHP. Starting this version, it is required to pass in an additional service base URL argument when constructing the client class. For more information, please refer to the upgrading doc. This vulnerability only impacts the CAS client that the phpCAS library protects against. The problematic service URL discovery behavior in phpCAS < 1.6.0 will only be disabled, and thus you are not impacted from it, if the phpCAS configuration has the following setup: 1. `phpCAS::setUrl()` is called (a reminder that you have to pass in the full URL of the current page, rather than your service base URL), and 2. `phpCAS::setCallbackURL()` is called, only when the proxy mode is enabled. 3. If your PHP's HTTP header input `X-Forwarded-Host`, `X-Forwarded-Server`, `Host`, `X-Forwarded-Proto`, `X-Forwarded-Protocol` is sanitized before reaching PHP (by a reverse proxy, for example), you will not be impacted by this vulnerability either. If your CAS server service registry is configured to only allow known and trusted service URLs the severity of the vulnerability is reduced substantially in its severity since an attacker must be in control of another authorized service. Otherwise, you should upgrade the library to get the safe service discovery behavior.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39369">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d69ec01f6df1eb0c81e5dc14407f972a</td>
+       <td>CVE-2022-3804</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in eolinker apinto-dashboard. It has been classified as problematic. Affected is an unknown function of the file /login. The manipulation of the argument callback leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-212640.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3804">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bdd1c560df7fd94cf4fb4ef062721177</td>
+       <td>CVE-2022-3803</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in eolinker apinto-dashboard and classified as problematic. This issue affects some unknown processing of the file /api/discoveries/. The manipulation leads to cross site scripting. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-212639.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3803">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a2fa193bf1a1508d0f87c8bb55ea5c1b</td>
+       <td>CVE-2022-3802</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in IBAX go-ibax and classified as critical. This vulnerability affects unknown code of the file /api/v2/open/rowsInfo. The manipulation of the argument where leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-212638 is the identifier assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3802">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>38b8ac544b8eef17c9296d02eaa252d4</td>
+       <td>CVE-2022-3801</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as critical, was found in IBAX go-ibax. This affects an unknown part of the file /api/v2/open/rowsInfo. The manipulation of the argument order leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-212637 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3801">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>553ae6fdc41af65073ecb3ddb18f61bb</td>
+       <td>CVE-2022-3800</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as critical, has been found in IBAX go-ibax. Affected by this issue is some unknown functionality of the file /api/v2/open/rowsInfo. The manipulation of the argument table_name leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-212636.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3800">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>29e2d277588f52da2b27e722c5688486</td>
+       <td>CVE-2022-3799</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical was found in IBAX go-ibax. Affected by this vulnerability is an unknown functionality of the file /api/v2/open/tablesInfo. The manipulation leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-212635.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3799">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>af9ce74b2c5b348edb4b66ef60edfdf7</td>
+       <td>CVE-2022-3798</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical has been found in IBAX go-ibax. Affected is an unknown function of the file /api/v2/open/tablesInfo. The manipulation leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-212634 is the identifier assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3798">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>20a3eff2403d025aa98fd0fd6c0078f4</td>
+       <td>CVE-2022-3797</td>
+       <td>2022-11-01 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in eolinker apinto-dashboard. It has been rated as problematic. This issue affects some unknown processing of the file /login. The manipulation of the argument callback leads to open redirect. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-212633 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3797">详情</a></td>
+      </tr>
+
+      <tr>
        <td>08fb47ca8f6e1210207e11672dcc6ab2</td>
        <td>CVE-2022-43223</td>
        <td>2022-11-01 14:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-11-01 13:15:00 <img src="imgs/new.gif" /></td>
        <td>Xenstore: guests can let run xenstored out of memory T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] Malicious guests can cause xenstored to allocate vast amounts of memory, eventually resulting in a Denial of Service (DoS) of xenstored. There are multiple ways how guests can cause large memory allocations in xenstored: - - by issuing new requests to xenstored without reading the responses, causing the responses to be buffered in memory - - by causing large number of watch events to be generated via setting up multiple xenstore watches and then e.g. deleting many xenstore nodes below the watched path - - by creating as many nodes as allowed with the maximum allowed size and path length in as many transactions as possible - - by accessing many nodes inside a transaction</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42317">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d92b57b360a9354fc27019aa7aea5bcb</td>
-       <td>CVE-2022-42325</td>
-       <td>2022-11-01 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Xenstore: Guests can create arbitrary number of nodes via transactions T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] In case a node has been created in a transaction and it is later deleted in the same transaction, the transaction will be terminated with an error. As this error is encountered only when handling the deleted node at transaction finalization, the transaction will have been performed partially and without updating the accounting information. This will enable a malicious guest to create arbitrary number of nodes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42325">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>94856ff1cfab1e379fcccf1c595ea92c</td>
-       <td>CVE-2022-42252</td>
-       <td>2022-11-01 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>If Apache Tomcat 8.5.0 to 8.5.52, 9.0.0-M1 to 9.0.67, 10.0.0-M1 to 10.0.26 or 10.1.0-M1 to 10.1.0 was configured to ignore invalid HTTP headers via setting rejectIllegalHeader to false (the default for 8.5.x only), Tomcat did not reject a request containing an invalid Content-Length header making a request smuggling attack possible if Tomcat was located behind a reverse proxy that also failed to reject the request with the invalid header.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42252">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7cad0c9f92a9f62888d9a96d62460dcc</td>
-       <td>CVE-2022-3369</td>
-       <td>2022-11-01 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>An Improper Access Control vulnerability in the bdservicehost.exe component, as used in Bitdefender Engines for Windows, allows an attacker to delete privileged registry keys by pointing a Registry symlink to a privileged key. This issue affects: Bitdefender Engines versions prior to 7.92659. It also affects Bitdefender Antivirus Free, Bitdefender Antivirus Plus, Bitdefender Internet Security, Bitdefender Total Security, as well as Bitdefender Endpoint Security Tools for Windows with engine versions prior to 7.92659.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3369">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e7ad691edd39a8090c6e90551b41bc1d</td>
-       <td>CVE-2022-25892</td>
-       <td>2022-11-01 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>The package muhammara before 2.6.1, from 3.1.0 and before 3.1.1; all versions of package hummus are vulnerable to Denial of Service (DoS) when supplied with a maliciously crafted PDF file to be parsed.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25892">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>861d31a35e9cd8f9a90cf94108234ec8</td>
-       <td>CVE-2022-25885</td>
-       <td>2022-11-01 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>The package muhammara before 2.6.0; all versions of package hummus are vulnerable to Denial of Service (DoS) when PDFStreamForResponse() is used with invalid data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25885">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5754594792c2428c010a12b867427ea7</td>
-       <td>CVE-2022-41553</td>
-       <td>2022-11-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insertion of Sensitive Information into Temporary File vulnerability in Hitachi Infrastructure Analytics Advisor on Linux (Analytics probe component), Hitachi Ops Center Analyzer on Linux (Hitachi Ops Center Analyzer probe component) allows local users to gain sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41553">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c67a0bea8bc7b5c4461845f21c864e19</td>
-       <td>CVE-2022-41552</td>
-       <td>2022-11-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Server-Side Request Forgery (SSRF) vulnerability in Hitachi Infrastructure Analytics Advisor on Linux (Data Center Analytics, Analytics probe components), Hitachi Ops Center Analyzer on Linux (Hitachi Ops Center Analyzer detail view, Hitachi Ops Center Analyzer probe components) allows Server Side Request Forgery.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41552">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>40f4fd70b7384c541d4b3644a6e0e662</td>
-       <td>CVE-2022-3373</td>
-       <td>2022-11-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Out of bounds write in V8 in Google Chrome prior to 106.0.5249.91 allowed a remote attacker to perform an out of bounds memory write via a crafted HTML page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3373">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>59f8eac34769d63a8317ff0785e02c4d</td>
-       <td>CVE-2022-3370</td>
-       <td>2022-11-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use after free in Custom Elements in Google Chrome prior to 106.0.5249.91 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3370">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6c194e12b247cf1397a17b18fb7e0081</td>
-       <td>CVE-2022-3191</td>
-       <td>2022-11-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insertion of Sensitive Information into Log File vulnerability in Hitachi Ops Center Analyzer on Linux (Virtual Strage Software Agent component) allows local users to gain sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3191">详情</a></td>
       </tr>
 
      </tbody>
