@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-11-18 23:27:54 -->
+<!-- RELEASE TIME : 2022-11-19 02:08:43 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>94b19125f235b796cee9fe59b1e09666</td>
+       <td>CVE-2022-41911</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. When printing a tensor, we get it's data as a `const char*` array (since that's the underlying storage) and then we typecast it to the element type. However, conversions from `char` to `bool` are undefined if the `char` is not `0` or `1`, so sanitizers/fuzzers will crash. The issue has been patched in GitHub commit `1be74370327`. The fix will be included in TensorFlow 2.11.0. We will also cherrypick this commit on TensorFlow 2.10.1, TensorFlow 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41911">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f2ee438162976f6a3e9ece1854f319e1</td>
+       <td>CVE-2022-41909</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. An input `encoded` that is not a valid `CompositeTensorVariant` tensor will trigger a segfault in `tf.raw_ops.CompositeTensorVariantToComponents`. We have patched the issue in GitHub commits bf594d08d377dc6a3354d9fdb494b32d45f91971 and 660ce5a89eb6766834bdc303d2ab3902aef99d3d. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41909">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ffdedbcaa9ee1b447a3638eee70568e6</td>
+       <td>CVE-2022-41908</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. An input `token` that is not a UTF-8 bytestring will trigger a `CHECK` fail in `tf.raw_ops.PyFunc`. We have patched the issue in GitHub commit 9f03a9d3bafe902c1e6beb105b2f24172f238645. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41908">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a4ce0332f60fbf6ddecdfa9c597a269f</td>
+       <td>CVE-2022-41907</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. When `tf.raw_ops.ResizeNearestNeighborGrad` is given a large `size` input, it overflows. We have patched the issue in GitHub commit 00c821af032ba9e5f5fa3fe14690c8d28a657624. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41907">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5a223d262cd86192e163fdbbd677cff</td>
+       <td>CVE-2022-41901</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. An input `sparse_matrix` that is not a matrix with a shape with rank 0 will trigger a `CHECK` fail in `tf.raw_ops.SparseMatrixNNZ`. We have patched the issue in GitHub commit f856d02e5322821aad155dad9b3acab1e9f5d693. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41901">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>48deac33dee112f16cf3f1f53d88f9ba</td>
+       <td>CVE-2022-41900</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. The security vulnerability results in FractionalMax(AVG)Pool with illegal pooling_ratio. Attackers using Tensorflow can exploit the vulnerability. They can access heap memory which is not in the control of user, leading to a crash or remote code execution. We have patched the issue in GitHub commit 216525144ee7c910296f5b05d214ca1327c9ce48. The fix will be included in TensorFlow 2.11.0. We will also cherry pick this commit on TensorFlow 2.10.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41900">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>590733b80113360083e3d2c30c2a97d5</td>
+       <td>CVE-2022-41899</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. Inputs `dense_features` or `example_state_data` not of rank 2 will trigger a `CHECK` fail in `SdcaOptimizer`. We have patched the issue in GitHub commit 80ff197d03db2a70c6a111f97dcdacad1b0babfa. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41899">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3af568f527282bf20556f88057ea8dc9</td>
+       <td>CVE-2022-41898</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. If `SparseFillEmptyRowsGrad` is given empty inputs, TensorFlow will crash. We have patched the issue in GitHub commit af4a6a3c8b95022c351edae94560acc61253a1b8. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41898">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7fdd645c0f9d6beb5cb6bbea72403ff</td>
+       <td>CVE-2022-41897</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. If `FractionMaxPoolGrad` is given outsize inputs `row_pooling_sequence` and `col_pooling_sequence`, TensorFlow will crash. We have patched the issue in GitHub commit d71090c3e5ca325bdf4b02eb236cfb3ee823e927. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41897">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>854001af73cfb4710872940d1284cfda</td>
+       <td>CVE-2022-41896</td>
+       <td>2022-11-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>TensorFlow is an open source platform for machine learning. If `ThreadUnsafeUnigramCandidateSampler` is given input `filterbank_channel_count` greater than the allowed max size, TensorFlow will crash. We have patched the issue in GitHub commit 39ec7eaf1428e90c37787e5b3fbd68ebd3c48860. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41896">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3ab73ae2e24abbf3d7c6b25470575788</td>
        <td>CVE-2022-43673</td>
        <td>2022-11-18 20:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-11-18 00:15:00 <img src="imgs/new.gif" /></td>
        <td>A malformed packet containing an invalid destination address, causes a stack overflow in the Ember ZNet stack. This causes an assert which leads to a reset, immediately clearing the error.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24939">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9650bbba9f38940bd2b3ed98d8d6a702</td>
-       <td>CVE-2022-45375</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. Stored Cross-Site Scripting (XSS) vulnerability in iFeature Slider plugin <= 1.2 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45375">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>602055d875108af3f8d74ddacd0f5053</td>
-       <td>CVE-2022-45077</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (subscriber+) PHP Object Injection vulnerability in Betheme theme <= 26.5.1.4 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45077">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>42f0f09c34c69e1dee703b358a1b62ce</td>
-       <td>CVE-2022-45069</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (contributor+) Privilege Escalation vulnerability in Crowdsignal Dashboard plugin <= 3.0.9 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45069">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12b2d785509853ca69fe8a6cdb375e0b</td>
-       <td>CVE-2022-45066</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (subscriber+) Broken Access Control vulnerability in WooSwipe WooCommerce Gallery plugin <= 2.0.1 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9470652a69186a41abc4d81036a076a8</td>
-       <td>CVE-2022-44736</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Chameleon plugin <= 1.4.3 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-44736">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>68e796e8ff1e2ffbbcaca8f4384231d2</td>
-       <td>CVE-2022-44591</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Anthologize plugin <= 0.8.0 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-44591">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a6abda1be35c17ea2fb12b6810fa57c</td>
-       <td>CVE-2022-44577</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. CSV Injection vulnerability in Export Users With Meta plugin <= 0.6.8 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-44577">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7ecacc7db0010bdbea8ee35c75a03f48</td>
-       <td>CVE-2022-43506</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL Injection in HandlerTag_KID.ashx in Delta Electronics DIAEnergie versions prior to v1.9.02.001 allows an attacker to inject SQL queries via Network</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43506">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5ed1f3ac3a294a44923e1a7396dc2108</td>
-       <td>CVE-2022-43457</td>
-       <td>2022-11-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL Injection in HandlerPage_KID.ashx in Delta Electronics DIAEnergie versions prior to v1.9.02.001 allows an attacker to inject SQL queries via Network</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43457">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3acda968d41c278f1a6ea93511d87f64</td>
-       <td>CVE-2022-43142</td>
-       <td>2022-11-17 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site scripting (XSS) vulnerability in the add-fee.php component of Password Storage Application v1.0 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the cmddept parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43142">详情</a></td>
       </tr>
 
      </tbody>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>6c815a0a1dc548777c8337c2a4eb1323</td>
        <td>CVE-2022-4053</td>
-       <td>2022-11-17 17:15:14  <img src="imgs/new.gif" /></td>
+       <td>2022-11-17 17:15:14 </td>
        <td>A vulnerability was found in Student Attendance Management System. It has been classified as problematic. Affected is an unknown function of the file createClass.php. The manipulation of the argument className leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-213846 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-4053">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>b69ce30721f8e141a1464d63da481032</td>
        <td>CVE-2022-4052</td>
-       <td>2022-11-17 17:15:14  <img src="imgs/new.gif" /></td>
+       <td>2022-11-17 17:15:14 </td>
        <td>A vulnerability was found in Student Attendance Management System and classified as critical. This issue affects some unknown processing of the file /Admin/createClass.php. The manipulation of the argument Id leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-213845 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-4052">详情</a></td>
       </tr>
