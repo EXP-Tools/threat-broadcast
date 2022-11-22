@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-11-22 21:23:39 -->
+<!-- RELEASE TIME : 2022-11-22 22:28:58 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,70 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ec7bfeb03f1bb31c4a1c82c71f5e68a0</td>
+       <td>CVE-2022-41919</td>
+       <td>2022-11-22 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Fastify is a web framework with minimal overhead and plugin architecture. The attacker can use the incorrect `Content-Type` to bypass the `Pre-Flight` checking of `fetch`. `fetch()` requests with Content-Typeâ€™s essence as "application/x-www-form-urlencoded", "multipart/form-data", or "text/plain", could potentially be used to invoke routes that only accepts `application/json` content type, thus bypassing any CORS protection, and therefore they could lead to a Cross-Site Request Forgery attack. This issue has been patched in version 4.10.2 and 3.29.4. As a workaround, implement Cross-Site Request Forgery protection using `@fastify/csrf'.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41919">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>80c6d95d3014713f5aa2195d5e63c552</td>
+       <td>CVE-2022-39199</td>
+       <td>2022-11-22 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>immudb is a database with built-in cryptographic proof and verification. immudb client SDKs use server's UUID to distinguish between different server instance so that the client can connect to different immudb instances and keep the state for multiple servers. SDK does not validate this uuid and can accept any value reported by the server. A malicious server can change the reported UUID tricking the client to treat it as a different server thus accepting a state completely irrelevant to the one previously retrieved from the server. This issue has been patched in version 1.4.1. As a workaround, when initializing an immudb client object a custom state handler can be used to store the state. Providing custom implementation that ignores the server UUID can be used to ensure that even if the server changes the UUID, client will still consider it to be the same server.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-39199">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>71890725e9b44128c05be92ed595c7e6</td>
+       <td>CVE-2022-2791</td>
+       <td>2022-11-22 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Emerson Electric's Proficy Machine Edition Version 9.00 and prior is vulnerable to CWE-434 Unrestricted Upload of File with Dangerous Type, and will upload any file written into the PLC logic folder to the connected PLC.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2791">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bfdef1627fdbaab55bb5d0083edd95c8</td>
+       <td>CVE-2022-41943</td>
+       <td>2022-11-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>sourcegraph is a code intelligence platform. As a site admin it was possible to execute arbitrary commands on Gitserver when the experimental `customGitFetch` feature was enabled. This experimental feature has now been disabled by default. This issue has been patched in version 4.1.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41943">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7d8a65c2e9a0651ed2425f2782efc8b0</td>
+       <td>CVE-2022-41942</td>
+       <td>2022-11-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sourcegraph is a code intelligence platform. In versions prior to 4.1.0 a command Injection vulnerability existed in the gitserver service, present in all Sourcegraph deployments. This vulnerability was caused by a lack of input validation on the host parameter of the `/list-gitolite` endpoint. It was possible to send a crafted request to gitserver that would execute commands inside the container. Successful exploitation requires the ability to send local requests to gitserver. The issue is patched in version 4.1.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41942">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76c3c45faaea2fe96d37944f441e52cb</td>
+       <td>CVE-2022-4116</td>
+       <td>2022-11-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in quarkus. This security flaw happens in Dev UI Config Editor which is vulnerable to drive-by localhost attacks leading to remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4116">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>88c4844ef35dbd75e0fe3574c02e153d</td>
+       <td>CVE-2022-40228</td>
+       <td>2022-11-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM DataPower Gateway 10.0.3.0 through 10.0.4.0, 10.0.1.0 through 10.0.1.9, 2018.4.1.0 through 2018.4.1.22, and 10.5.0.0 through 10.5.0.2 does not invalidate session after a password change which could allow an authenticated user to impersonate another user on the system. IBM X-Force ID: 235527.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40228">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cfae80776b0fd7d9222b87030cdaef4b</td>
+       <td>CVE-2022-3500</td>
+       <td>2022-11-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in keylime. This security issue happens in some circumstances, due to some improperly handled exceptions, there exists the possibility that a rogue agent could create errors on the verifier that stopped attestation attempts for that host leaving it in an attested state but not verifying that anymore.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3500">详情</a></td>
+      </tr>
+
+      <tr>
        <td>9f991aeb8f233cf1878c1caf653023b0</td>
        <td>CVE-2022-43212</td>
        <td>2022-11-22 18:15:00 <img src="imgs/new.gif" /></td>
@@ -457,70 +521,6 @@
        <td>2022-11-22 11:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability exists in the Intelligent Electronic Device (IED) Connectivity Package (ConnPack) credential storage function in Hitachi Energy’s PCM600 product included in the versions listed below, where IEDs credentials are stored in a cleartext format in the PCM600 database. An attacker who manages to get access to the exported backup file can exploit the vulnerability and obtain credentials of the IEDs. The credentials may be used to perform unauthorized modifications such as loading incorrect configurations, reboot the IEDs or cause a denial-of-service on the IEDs.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-2513">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>42badf43c731db23c4ddd92bae258e8b</td>
-       <td>CVE-2022-41131</td>
-       <td>2022-11-22 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability in Apache Airflow Hive Provider, Apache Airflow allows an attacker to execute arbtrary commands in the task execution context, without write access to DAG files. This issue affects Hive Provider versions prior to 4.1.0. It also impacts any Apache Airflow versions prior to 2.3.0 in case HIve Provider is installed (Hive Provider 4.1.0 can only be installed for Airflow 2.3.0+). Note that you need to manually install the HIve Provider version 4.1.0 in order to get rid of the vulnerability on top of Airflow 2.3.0+ version that has lower version of the Hive Provider installed).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41131">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>216681f1cdd97457a26ba04fda097937</td>
-       <td>CVE-2022-40954</td>
-       <td>2022-11-22 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability in Apache Airflow Spark Provider, Apache Airflow allows an attacker to read arbtrary files in the task execution context, without write access to DAG files. This issue affects Spark Provider versions prior to 4.0.0. It also impacts any Apache Airflow versions prior to 2.3.0 in case Spark Provider is installed (Spark Provider 4.0.0 can only be installed for Airflow 2.3.0+). Note that you need to manually install the Spark Provider version 4.0.0 in order to get rid of the vulnerability on top of Airflow 2.3.0+ version that has lower version of the Spark Provider installed).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40954">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>04a7ed821c9c1c48c7102ddfaf2b0e4e</td>
-       <td>CVE-2022-40189</td>
-       <td>2022-11-22 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability in Apache Airflow Pig Provider, Apache Airflow allows an attacker to control commands executed in the task execution context, without write access to DAG files. This issue affects Pig Provider versions prior to 4.0.0. It also impacts any Apache Airflow versions prior to 2.3.0 in case Pig Provider is installed (Pig Provider 4.0.0 can only be installed for Airflow 2.3.0+). Note that you need to manually install the Pig Provider version 4.0.0 in order to get rid of the vulnerability on top of Airflow 2.3.0+ version.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40189">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e66da32f5a67be42257da7b54bdf030</td>
-       <td>CVE-2022-38649</td>
-       <td>2022-11-22 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability in Apache Airflow Pinot Provider, Apache Airflow allows an attacker to control commands executed in the task execution context, without write access to DAG files. This issue affects Apache Airflow Pinot Provider versions prior to 4.0.0. It also impacts any Apache Airflow versions prior to 2.3.0 in case Apache Airflow Pinot Provider is installed (Apache Airflow Pinot Provider 4.0.0 can only be installed for Airflow 2.3.0+). Note that you need to manually install the Pinot Provider version 4.0.0 in order to get rid of the vulnerability on top of Airflow 2.3.0+ version.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38649">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0467ce6cb2c8f977e35ac8f6f8fb431b</td>
-       <td>CVE-2022-45363</td>
-       <td>2022-11-22 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (subscriber+) Stored Cross-Site Scripting (XSS) in Muffingroup Betheme theme <= 26.6.1 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45363">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c79fc21dd600cc3d8504c5e9ad4ed465</td>
-       <td>CVE-2022-37931</td>
-       <td>2022-11-22 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in NetBatch-Plus software allows unauthorized access to the application. HPE has provided a workaround and fix. Please refer to HPE Security Bulletin HPESBNS04388 for details.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-37931">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e229a355e9976446b0d050e3d4654cc6</td>
-       <td>CVE-2022-4111</td>
-       <td>2022-11-22 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>What happens if a bot net starts uploading 100MB files from 100 machines at the same time. This would mean that our network pipes are clogged handling 10GB of data while slowing down our real customers..... the answer the site will down and come not available</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4111">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7c1a359b85d9eb18040a5c29998f5a09</td>
-       <td>CVE-2022-40602</td>
-       <td>2022-11-22 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>A flaw in the Zyxel LTE3301-M209 firmware verisons prior to V1.00(ABLG.6)C0 could allow a remote attacker to access the device using an improper pre-configured password if the remote administration feature has been enabled by an authenticated administrator.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40602">详情</a></td>
       </tr>
 
      </tbody>
