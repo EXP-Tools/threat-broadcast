@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-11-24 02:02:08 -->
+<!-- RELEASE TIME : 2022-11-24 03:00:22 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6fa19a269557bebe87d8ec139fc10dcb</td>
+       <td>CVE-2022-45873</td>
+       <td>2022-11-23 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>systemd 250 and 251 allows local users to achieve a systemd-coredump deadlock by triggering a crash that has a long backtrace. This occurs in parse_elf_object in shared/elf-util.c. The exploitation methodology is to crash a binary calling the same function recursively, and put it in a deeply nested directory to make its backtrace large enough to cause the deadlock. This must be done 16 times when MaxConnections=16 is set for the systemd/units/systemd-coredump.socket file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45873">详情</a></td>
+      </tr>
+
+      <tr>
        <td>13357974d898a8b6717d8bd907ba33ee</td>
        <td>CVE-2022-45872</td>
        <td>2022-11-23 22:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2022-11-23 18:15:00 <img src="imgs/new.gif" /></td>
        <td>An issue was discovered in open-vm-tools 2009.03.18-154848. Local users can bypass intended access restrictions on mounting shares via a symlink attack that leverages a realpath race condition in mount.vmhgfs (aka hgfsmounter).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2009-1143">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f8cd64866949e00b0cc785e81d96221</td>
-       <td>CVE-2009-1142</td>
-       <td>2022-11-23 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in open-vm-tools 2009.03.18-154848. Local users can gain privileges via a symlink attack on /tmp files if vmware-user-suid-wrapper is setuid root and the ChmodChownDirectory function is enabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2009-1142">详情</a></td>
       </tr>
 
      </tbody>
