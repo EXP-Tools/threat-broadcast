@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-11-29 19:21:13 -->
+<!-- RELEASE TIME : 2022-11-29 21:23:07 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>79a6b74c0f5461f108294eb5da451ff8</td>
+       <td>CVE-2022-46150</td>
+       <td>2022-11-29 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open-source discussion platform. Prior to version 2.8.13 of the `stable` branch and version 2.9.0.beta14 of the `beta` and `tests-passed` branches, unauthorized users may learn of the existence of hidden tags and that they have been applied to topics that they have access to. This issue is patched in version 2.8.13 of the `stable` branch and version 2.9.0.beta14 of the `beta` and `tests-passed` branches. As a workaround, use the `disable_email` site setting to disable all emails to non-staff users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46150">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9281f0eda6b38c1d5af5e2c1919d9153</td>
+       <td>CVE-2022-4172</td>
+       <td>2022-11-29 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>An integer overflow and buffer overflow issues were found in the ACPI Error Record Serialization Table (ERST) device of QEMU in the read_erst_record() and write_erst_record() functions. Both issues may allow the guest to overrun the host buffer allocated for the ERST memory device. A malicious guest could use these flaws to crash the QEMU process on the host.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4172">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bedd4fc2d9b8b6586c148204e261490f</td>
+       <td>CVE-2022-4144</td>
+       <td>2022-11-29 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>An out-of-bounds read flaw was found in the QXL display device emulation in QEMU. The qxl_phys2virt() function does not check the size of the structure pointed to by the guest physical address, potentially reading past the end of the bar space into adjacent pages. A malicious guest user could use this flaw to crash the QEMU process on the host causing a denial of service condition.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4144">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01b0a019147522f6e62ff99f1af16d5e</td>
+       <td>CVE-2022-46152</td>
+       <td>2022-11-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>OP-TEE Trusted OS is the secure side implementation of OP-TEE project, a Trusted Execution Environment. Versions prior to 3.19.0, contain an Improper Validation of Array Index vulnerability. The function `cleanup_shm_refs()` is called by both `entry_invoke_command()` and `entry_open_session()`. The commands `OPTEE_MSG_CMD_OPEN_SESSION` and `OPTEE_MSG_CMD_INVOKE_COMMAND` can be executed from the normal world via an OP-TEE SMC. This function is not validating the `num_params` argument, which is only limited to `OPTEE_MSG_MAX_NUM_PARAMS` (127) in the function `get_cmd_buffer()`. Therefore, an attacker in the normal world can craft an SMC call that will cause out-of-bounds reading in `cleanup_shm_refs` and potentially freeing of fake-objects in the function `mobj_put()`. A normal-world attacker with permission to execute SMC instructions may exploit this flaw. Maintainers believe this problem permits local privilege escalation from the normal world to the secure world. Version 3.19.0 contains a fix for this issue. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46152">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f77cc253a06885d08b17beff6a86eec</td>
+       <td>CVE-2022-46148</td>
+       <td>2022-11-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open-source messaging platform. In versions 2.8.10 and prior on the `stable` branch and versions 2.9.0.beta11 and prior on the `beta` and `tests-passed` branches, users composing malicious messages and navigating to drafts page could self-XSS. This vulnerability can lead to a full XSS on sites which have modified or disabled Discourse’s default Content Security Policy. This issue is patched in the latest stable, beta and tests-passed versions of Discourse.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46148">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>045d53ab7c206ee83bbf26a2f99b8fe3</td>
+       <td>CVE-2022-44356</td>
+       <td>2022-11-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>WAVLINK Quantum D4G (WL-WN531G3) running firmware versions M31G3.V5030.201204 and M31G3.V5030.200325 has an access control issue which allows unauthenticated attackers to download configuration data and log files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-44356">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c735f2b848ed1b7adc36029d0048118e</td>
+       <td>CVE-2022-44355</td>
+       <td>2022-11-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>SolarView Compact 7.0 is vulnerable to Cross-site Scripting (XSS) via /network_test.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-44355">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>61481788538641b241bc9ac94dd8187c</td>
+       <td>CVE-2022-44354</td>
+       <td>2022-11-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>SolarView Compact 4.0 and 5.0 is vulnerable to Unrestricted File Upload via a crafted php file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-44354">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>94eb35efc6ae3e64f5076b3c4b70d516</td>
+       <td>CVE-2022-25848</td>
+       <td>2022-11-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>This affects all versions of package static-dev-server. This is because when paths from users to the root directory are joined, the assets for the path accessed are relative to that of the root directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25848">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca8b3d14398fba8feb7c75218ac156bb</td>
+       <td>CVE-2022-21126</td>
+       <td>2022-11-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>The package com.github.samtools:htsjdk before 3.0.1 are vulnerable to Creation of Temporary File in Directory with Insecure Permissions due to the createTempDir() function in util/IOUtil.java not checking for the existence of the temporary directory before attempting to create it.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21126">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2d21818ed03b8ebc1c797246c1fa8367</td>
        <td>CVE-2022-45343</td>
        <td>2022-11-29 16:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2022-11-28 22:15:00 <img src="imgs/new.gif" /></td>
        <td>A flaw was found in the Linux kernel's Layer 2 Tunneling Protocol (L2TP). A missing lock when clearing sk_user_data can lead to a race condition and NULL pointer dereference. A local user could use this flaw to potentially crash the system causing a denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4129">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a728a3eaac23767c8661456418d94e45</td>
-       <td>CVE-2022-4128</td>
-       <td>2022-11-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A NULL pointer dereference issue was discovered in the Linux kernel in the MPTCP protocol when traversing the subflow list at disconnect time. A local user could use this flaw to potentially crash the system causing a denial of service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4128">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>03a9d117122989d0e3fc10fd46cb320e</td>
-       <td>CVE-2022-4127</td>
-       <td>2022-11-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A NULL pointer dereference issue was discovered in the Linux kernel in io_files_update_with_index_alloc. A local user could use this flaw to potentially crash the system causing a denial of service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4127">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>82668f11094ca4a6d0adc90939ff8d13</td>
-       <td>CVE-2022-38753</td>
-       <td>2022-11-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>This update resolves a multi-factor authentication bypass attack</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38753">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>37ee620e197d866843ba084780de0296</td>
-       <td>CVE-2022-3088</td>
-       <td>2022-11-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>UC-8100A-ME-T System Image: Versions v1.0 to v1.6, UC-2100 System Image: Versions v1.0 to v1.12, UC-2100-W System Image: Versions v1.0 to v 1.12, UC-3100 System Image: Versions v1.0 to v1.6, UC-5100 System Image: Versions v1.0 to v1.4, UC-8100 System Image: Versions v3.0 to v3.5, UC-8100-ME-T System Image: Versions v3.0 and v3.1, UC-8100A-ME-T System Image: Versions v1.0 to v1.6, UC-8200 System Image: v1.0 to v1.5, AIG-300 System Image: v1.0 to v1.4, UC-8410A with Debian 9 System Image: Versions v4.0.2 and v4.1.2, UC-8580 with Debian 9 System Image: Versions v2.0 and v2.1, UC-8540 with Debian 9 System Image: Versions v2.0 and v2.1, and DA-662C-16-LX (GLB) System Image: Versions v1.0.2 to v1.1.2 of Moxa's ARM-based computers have an execution with unnecessary privileges vulnerability, which could allow an attacker with user-level privileges to gain root privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3088">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>75dea61f3f71a4f8f790edf5357aba28</td>
-       <td>CVE-2022-24190</td>
-       <td>2022-11-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>The /device/acceptBind end-point for Ourphoto App version 1.4.1 does not require authentication or authorization. The user_token header is not implemented or present on this end-point. An attacker can send a request to bind their account to any users picture frame, then send a POST request to accept their own bind request, without the end-users approval or interaction.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24190">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ec4400316d486a809498d66591e32263</td>
-       <td>CVE-2022-38140</td>
-       <td>2022-11-28 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (contributor+) Arbitrary File Upload in SEO Plugin by Squirrly SEO plugin <= 12.1.10 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38140">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d69f73bf42d2da3c03f35c45d8a9ecba</td>
-       <td>CVE-2022-34654</td>
-       <td>2022-11-28 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) in Virgial Berveling's Manage Notification E-mails plugin <= 1.8.2 on WordPress.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34654">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bbde34c8595e2d9a2746c98911e1fcdd</td>
-       <td>CVE-2022-4104</td>
-       <td>2022-11-28 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>A loop with an unreachable exit condition can be triggered by passing a crafted JPEG file to the Lepton image compression tool, resulting in a denial-of-service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4104">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ea9f3398f929b081c17444867e6ae1a</td>
-       <td>CVE-2022-4169</td>
-       <td>2022-11-28 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Theme and plugin translation for Polylang is vulnerable to authorization bypass in versions up to, and including, 3.2.16 due to missing capability checks in the process_polylang_theme_translation_wp_loaded() function. This makes it possible for unauthenticated attackers to update plugin and theme translation settings and to import translation strings.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4169">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>adba57f02a5cd73574008c03d79d021c</td>
-       <td>CVE-2022-41732</td>
-       <td>2022-11-28 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Maximo Mobile 8.7 and 8.8 stores user credentials in plain clear text which can be read by a local user. IBM X-Force ID: 237407.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41732">详情</a></td>
       </tr>
 
      </tbody>
@@ -2212,6 +2212,30 @@
       </tr>
 
       <tr>
+       <td>753bfa088c764c17a2b1078aaeb81899</td>
+       <td>CVE-2022-45888</td>
+       <td>2022-11-25 04:15:09 </td>
+       <td>An issue was discovered in the Linux kernel through 6.0.9. drivers/char/xillybus/xillyusb.c has a race condition and use-after-free during physical removal of a USB device.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45888">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b43c19672248581bb025b67338d91ff1</td>
+       <td>CVE-2022-45887</td>
+       <td>2022-11-25 04:15:09 </td>
+       <td>An issue was discovered in the Linux kernel through 6.0.9. drivers/media/usb/ttusb-dec/ttusb_dec.c has a memory leak because of the lack of a dvb_frontend_detach call.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45887">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d3fb323a4aa349842a0bf3b60f2b3dd</td>
+       <td>CVE-2022-45886</td>
+       <td>2022-11-25 04:15:09 </td>
+       <td>An issue was discovered in the Linux kernel through 6.0.9. drivers/media/dvb-core/dvb_net.c has a .disconnect versus dvb_device_open race condition that leads to a use-after-free.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45886">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ffd0670e4ce07ec64523be3338a7bb13</td>
        <td>CVE-2022-45280</td>
        <td>2022-11-23 21:15:11 </td>
@@ -2409,30 +2433,6 @@
        <td>2022-11-17 23:15:23 </td>
        <td>A cross-site scripting (XSS) vulnerability in Wondercms v3.3.4 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Site title field of the Configuration Panel.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-43332">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71a144d13dbd0b961e818bbabbe5d1aa</td>
-       <td>CVE-2022-43142</td>
-       <td>2022-11-17 19:15:14 </td>
-       <td>A cross-site scripting (XSS) vulnerability in the add-fee.php component of Password Storage Application v1.0 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the cmddept parameter.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-43142">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6c815a0a1dc548777c8337c2a4eb1323</td>
-       <td>CVE-2022-4053</td>
-       <td>2022-11-17 17:15:14 </td>
-       <td>A vulnerability was found in Student Attendance Management System. It has been classified as problematic. Affected is an unknown function of the file createClass.php. The manipulation of the argument className leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-213846 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-4053">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b69ce30721f8e141a1464d63da481032</td>
-       <td>CVE-2022-4052</td>
-       <td>2022-11-17 17:15:14 </td>
-       <td>A vulnerability was found in Student Attendance Management System and classified as critical. This issue affects some unknown processing of the file /Admin/createClass.php. The manipulation of the argument Id leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-213845 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-4052">详情</a></td>
       </tr>
 
      </tbody>
