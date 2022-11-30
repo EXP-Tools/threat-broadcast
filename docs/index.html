@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-11-30 15:28:42 -->
+<!-- RELEASE TIME : 2022-11-30 16:37:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -308,6 +308,14 @@
       </tr>
 
       <tr>
+       <td>9be48ae77a5408d730e6c8d4f934cb54</td>
+       <td>CVE-2022-38802</td>
+       <td>2022-11-30 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zkteco BioTime < 8.5.3 Build:20200816.447 is vulnerable to Incorrect Access Control via resign, private message, manual log, time interval, attshift, and holiday. An authenticated administrator can read local files by exploiting XSS into a pdf generator when exporting data as a PDF</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38802">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2edf5c69f351e0cd7db676abf2e88a1f</td>
        <td>CVE-2022-45842</td>
        <td>2022-11-30 13:15:00 <img src="imgs/new.gif" /></td>
@@ -321,6 +329,22 @@
        <td>2022-11-30 13:15:00 <img src="imgs/new.gif" /></td>
        <td>Cross-Site Request Forgery (CSRF) in AdRotate Banner Manager Plugin <= 5.9 on WordPress.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-26366">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b50fd9ecd752f3c8b97053a6112f669b</td>
+       <td>CVE-2022-24441</td>
+       <td>2022-11-30 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The package snyk before 1.1064.0 are vulnerable to Code Injection when analyzing a project. An attacker who can convince a user to scan a malicious project can include commands in a build file such as build.gradle or gradle-wrapper.jar, which will be executed with the privileges of the application. This vulnerability may be triggered when running the the CLI tool directly, or when running a scan with one of the IDE plugins that invoke the Snyk CLI. Successful exploitation of this issue would likely require some level of social engineering - to coerce an untrusted project to be downloaded and analyzed via the Snyk CLI or opened in an IDE where a Snyk IDE plugin is installed and enabled. Additionally, if the IDE has a Trust feature then the target folder must be marked as ‘trusted’ in order to be vulnerable. **NOTE:** This issue is independent of the one reported in [CVE-2022-40764](https://security.snyk.io/vuln/SNYK-JS-SNYK-3037342), and upgrading to a fixed version for this addresses that issue as well. The affected IDE plugins and versions are: - VS Code - Affected: <=1.8.0, Fixed: 1.9.0 - IntelliJ - Affected: <=2.4.47, Fixed: 2.4.48 - Visual Studio - Affected: <=1.1.30, Fixed: 1.1.31 - Eclipse - Affected: <=v20221115.132308, Fixed: All subsequent versions - Language Server - Affected: <=v20221109.114426, Fixed: All subsequent versions</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24441">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>edf06ad92da6f1efb0b7e813ab079968</td>
+       <td>CVE-2022-22984</td>
+       <td>2022-11-30 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The package snyk before 1.1064.0; the package snyk-mvn-plugin before 2.31.3; the package snyk-gradle-plugin before 3.24.5; the package @snyk/snyk-cocoapods-plugin before 2.5.3; the package snyk-sbt-plugin before 2.16.2; the package snyk-python-plugin before 1.24.2; the package snyk-docker-plugin before 5.6.5; the package @snyk/snyk-hex-plugin before 1.1.6 are vulnerable to Command Injection due to an incomplete fix for [CVE-2022-40764](https://security.snyk.io/vuln/SNYK-JS-SNYK-3037342). A successful exploit allows attackers to run arbitrary commands on the host system where the Snyk CLI is installed by passing in crafted command line flags. In order to exploit this vulnerability, a user would have to execute the snyk test command on untrusted files. In most cases, an attacker positioned to control the command line arguments to the Snyk CLI would already be positioned to execute arbitrary commands. However, this could be abused in specific scenarios, such as continuous integration pipelines, where developers can control the arguments passed to the Snyk CLI to leverage this component as part of a wider attack against an integration/build pipeline. This issue has been addressed in the latest Snyk Docker images available at https://hub.docker.com/r/snyk/snyk as of 2022-11-29. Images downloaded and built prior to that date should be updated. The issue has also been addressed in the Snyk TeamCity CI/CD plugin as of version v20221130.093605.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22984">详情</a></td>
       </tr>
 
       <tr>
@@ -497,30 +521,6 @@
        <td>2022-11-30 00:15:00 <img src="imgs/new.gif" /></td>
        <td>Use after free in Sign-In in Google Chrome prior to 108.0.5359.71 allowed a remote attacker who convinced a user to engage in specific UI interaction to potentially exploit heap corruption via profile destruction. (Chromium security severity: Medium)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4191">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8beab71c5be43b96914524eaf823367a</td>
-       <td>CVE-2022-4190</td>
-       <td>2022-11-30 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient data validation in Directory in Google Chrome prior to 108.0.5359.71 allowed a remote attacker to bypass file system restrictions via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4190">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>26e808751c1202533ba1c85069b7ad79</td>
-       <td>CVE-2022-4189</td>
-       <td>2022-11-30 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient policy enforcement in DevTools in Google Chrome prior to 108.0.5359.71 allowed an attacker who convinced a user to install a malicious extension to bypass navigation restrictions via a crafted Chrome Extension. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4189">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>998f688c9a40607683572bd4f825419c</td>
-       <td>CVE-2022-4188</td>
-       <td>2022-11-30 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Insufficient validation of untrusted input in CORS in Google Chrome on Android prior to 108.0.5359.71 allowed a remote attacker to bypass same origin policy via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4188">详情</a></td>
       </tr>
 
      </tbody>
