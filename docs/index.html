@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-12-02 18:28:24 -->
+<!-- RELEASE TIME : 2022-12-02 19:19:18 -->
 <html lang="zh-cn">
 
  <head>
@@ -2204,6 +2204,14 @@
       </tr>
 
       <tr>
+       <td>c63eb2d00361b9b3ce226f205fe26732</td>
+       <td>CVE-2022-46155</td>
+       <td>2022-11-29 23:15:10 </td>
+       <td>Airtable.js is the JavaScript client for Airtable. Prior to version 0.11.6, Airtable.js had a misconfigured build script in its source package. When the build script is run, it would bundle environment variables into the build target of a transpiled bundle. Specifically, the AIRTABLE_API_KEY and AIRTABLE_ENDPOINT_URL environment variables are inserted during Browserify builds due to being referenced in Airtable.js code. This only affects copies of Airtable.js built from its source, not those installed via npm or yarn. Airtable API keys set in users&acirc;&euro;&trade; environments via the AIRTABLE_API_KEY environment variable may be bundled into local copies of Airtable.js source code if all of the following conditions are met: 1) the user has cloned the Airtable.js source onto their machine, 2) the user runs the `npm prepare` script, and 3) the user' has the AIRTABLE_API_KEY environment variable set. If these conditions are met, a user&acirc;&euro;&trade;s local build of Airtable.js would be modified to include the value of the AIRTABLE_API_KEY environment variable, which could then be accidentally shipped in the bundled code. Users who do not meet all three of these conditions are not impacted by this issue. Users should upgrade to Airtable.js version 0.11.6 or higher; or, as a workaround unset the AIRTABLE_API_KEY environment variable in their shell and/or remove it from your .bashrc, .zshrc, or other shell configuration files. Users should also regenerate any Airtable API keys they use, as the keysy may be present in bundled code.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-46155">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f06365dfd0c4462294426fb11fc75740</td>
        <td>CVE-2022-46150</td>
        <td>2022-11-29 18:15:10 </td>
@@ -2217,6 +2225,14 @@
        <td>2022-11-29 17:15:11 </td>
        <td>Discourse is an open-source messaging platform. In versions 2.8.10 and prior on the `stable` branch and versions 2.9.0.beta11 and prior on the `beta` and `tests-passed` branches, users composing malicious messages and navigating to drafts page could self-XSS. This vulnerability can lead to a full XSS on sites which have modified or disabled Discourse&acirc;&euro;&trade;s default Content Security Policy. This issue is patched in the latest stable, beta and tests-passed versions of Discourse.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-46148">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f5cdf469e63ea35bb3f5287411a38b41</td>
+       <td>CVE-2022-46152</td>
+       <td>2022-11-29 17:15:11 </td>
+       <td>OP-TEE Trusted OS is the secure side implementation of OP-TEE project, a Trusted Execution Environment. Versions prior to 3.19.0, contain an Improper Validation of Array Index vulnerability. The function `cleanup_shm_refs()` is called by both `entry_invoke_command()` and `entry_open_session()`. The commands `OPTEE_MSG_CMD_OPEN_SESSION` and `OPTEE_MSG_CMD_INVOKE_COMMAND` can be executed from the normal world via an OP-TEE SMC. This function is not validating the `num_params` argument, which is only limited to `OPTEE_MSG_MAX_NUM_PARAMS` (127) in the function `get_cmd_buffer()`. Therefore, an attacker in the normal world can craft an SMC call that will cause out-of-bounds reading in `cleanup_shm_refs` and potentially freeing of fake-objects in the function `mobj_put()`. A normal-world attacker with permission to execute SMC instructions may exploit this flaw. Maintainers believe this problem permits local privilege escalation from the normal world to the secure world. Version 3.19.0 contains a fix for this issue. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-46152">详情</a></td>
       </tr>
 
       <tr>
@@ -2417,22 +2433,6 @@
        <td>2022-11-22 21:15:11 </td>
        <td>AeroCMS v0.0.1 was discovered to contain a SQL Injection vulnerability via the id parameter at \admin\post_comments.php. This vulnerability allows attackers to access database information.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45536">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>644ab0b1547e2a2b228d042b861b2487</td>
-       <td>CVE-2022-45535</td>
-       <td>2022-11-22 21:15:11 </td>
-       <td>AeroCMS v0.0.1 was discovered to contain a SQL Injection vulnerability via the edit parameter at \admin\categories.php. This vulnerability allows attackers to access database information.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45535">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f4638bcbb0685d198a0a24e48170ca0b</td>
-       <td>CVE-2022-45529</td>
-       <td>2022-11-22 21:15:11 </td>
-       <td>AeroCMS v0.0.1 was discovered to contain a SQL Injection vulnerability via the post_category_id parameter at \admin\includes\edit_post.php. This vulnerability allows attackers to access database information.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45529">详情</a></td>
       </tr>
 
      </tbody>
