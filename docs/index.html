@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-12-08 23:26:16 -->
+<!-- RELEASE TIME : 2022-12-09 01:53:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>cc5871850d3237f1a846420ef7c0c3e6</td>
        <td>CVE-2022-46169</td>
-       <td>2022-12-07 07:20:46 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 07:20:46</td>
        <td>CVE-2022-46169：Cacti命令注入漏洞</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=3ad298ed076f5033e94d987e490e575d">详情</a></td>
       </tr>
@@ -284,6 +284,70 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5626f56d8d18c3653a705ff486336190</td>
+       <td>CVE-2022-46158</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>PrestaShop is an open-source e-commerce solution. Versions prior to 1.7.8.8 did not properly restrict host filesystem access for users. Users may have been able to view the contents of the upload directory without appropriate permissions. This issue has been addressed and users are advised to upgrade to version 1.7.8.8. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46158">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d866c0c50a2b93ce663d18d1c564280d</td>
+       <td>CVE-2022-46153</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Traefik is an open source HTTP reverse proxy and load balancer. In affected versions there is a potential vulnerability in Traefik managing TLS connections. A router configured with a not well-formatted TLSOption is exposed with an empty TLSOption. For instance, a route secured using an mTLS connection set with a wrong CA file is exposed without verifying the client certificates. Users are advised to upgrade to version 2.9.6. Users unable to upgrade should check their logs to detect the error messages and fix your TLS options.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46153">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>06fe73fd7c675abb57f669dc7681e791</td>
+       <td>CVE-2022-41949</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>DHIS 2 is an open source information system for data capture, management, validation, analytics and visualization. In affected versions an authenticated DHIS2 user can craft a request to DHIS2 to instruct the server to make requests to external resources (like third party servers). This could allow an attacker, for example, to identify vulnerable services which might not be otherwise exposed to the public internet or to determine whether a specific file is present on the DHIS2 server. DHIS2 administrators should upgrade to the following hotfix releases: 2.36.12.1, 2.37.8.1, 2.38.2.1, 2.39.0.1. At this time, there is no known workaround or mitigation for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0c0cc53da999da4850727bafbd4f7063</td>
+       <td>CVE-2022-33186</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in Brocade Fabric OS software v9.1.1, v9.0.1e, v8.2.3c, v7.4.2j, and earlier versions could allow a remote unauthenticated attacker to execute on a Brocade Fabric OS switch commands capable of modifying zoning, disabling the switch, disabling ports, and modifying the switch IP address.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-33186">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0e1b455df640aca08779ec9a9c55f73</td>
+       <td>CVE-2022-23496</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Yet Another UserAgent Analyzer (Yauaa) is a java library that tries to parse and analyze the useragent string and extract as many relevant attributes as possible. Applications using the Client Hints analysis feature introduced with 7.0.0 can crash because the Yauaa library throws an ArrayIndexOutOfBoundsException. If uncaught the exception will result in a program crash. Applications that do not use this feature are not affected. Users are advised to upgrade to version 7.9.0. Users unable to upgrade may catch and discard any ArrayIndexOutOfBoundsException thrown by the Yauaa library.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23496">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ba7a633cb958820d8a05d801e1d8de83</td>
+       <td>CVE-2022-23495</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>go-merkledag implements the 'DAGService' interface and adds two ipld node types, Protobuf and Raw for the ipfs project. A `ProtoNode` may be modified in such a way as to cause various encode errors which will trigger a panic on common method calls that don't allow for error returns. A `ProtoNode` should only be able to encode to valid DAG-PB, attempting to encode invalid DAG-PB forms will result in an error from the codec. Manipulation of an existing (newly created or decoded) `ProtoNode` using the modifier methods did not account for certain states that would place the `ProtoNode` into an unencodeable form. Due to conformance with the [`github.com/ipfs/go-block-format#Block`](https://pkg.go.dev/github.com/ipfs/go-block-format#Block) and [`github.com/ipfs/go-ipld-format#Node`](https://pkg.go.dev/github.com/ipfs/go-ipld-format#Node) interfaces, certain methods, which internally require a re-encode if state has changed, will panic due to the inability to return an error. This issue has been addressed across a number of pull requests. Users are advised to upgrade to version 0.8.1 for a complete set of fixes. Users unable to upgrade may attempt to mitigate this issue by sanitising inputs when allowing user-input to set a new `CidBuilder` on a `ProtoNode` and by sanitising `Tsize` (`Link#Size`) values such that they are a reasonable byte-size for sub-DAGs where derived from user-input.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23495">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>974fb3f5284d6aa72c233e4187298a23</td>
+       <td>CVE-2022-23494</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>tinymce is an open source rich text editor. A cross-site scripting (XSS) vulnerability was discovered in the alert and confirm dialogs when these dialogs were provided with malicious HTML content. This can occur in plugins that use the alert or confirm dialogs, such as in the `image` plugin, which presents these dialogs when certain errors occur. The vulnerability allowed arbitrary JavaScript execution when an alert presented in the TinyMCE UI for the current user. This vulnerability has been patched in TinyMCE 5.10.7 and TinyMCE 6.3.1 by ensuring HTML sanitization was still performed after unwrapping invalid elements. Users are advised to upgrade to either 5.10.7 or 6.3.1. Users unable to upgrade may ensure the the `images_upload_handler` returns a valid value as per the images_upload_handler documentation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23494">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>956d09a7bc1936f33070432fb2ef16ed</td>
+       <td>CVE-2022-23469</td>
+       <td>2022-12-08 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Traefik is an open source HTTP reverse proxy and load balancer. Versions prior to 2.9.6 are subject to a potential vulnerability in Traefik displaying the Authorization header in its debug logs. In certain cases, if the log level is set to DEBUG, credentials provided using the Authorization header are displayed in the debug logs. Attackers must have access to a users logging system in order for credentials to be stolen. This issue has been addressed in version 2.9.6. Users are advised to upgrade. Users unable to upgrade may set the log level to `INFO`, `WARN`, or `ERROR`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23469">详情</a></td>
+      </tr>
+
+      <tr>
        <td>540cd165ac965eeb3a2ca10955a41e4b</td>
        <td>CVE-2022-44938</td>
        <td>2022-12-08 20:15:00 <img src="imgs/new.gif" /></td>
@@ -457,70 +521,6 @@
        <td>2022-12-08 16:15:00 <img src="imgs/new.gif" /></td>
        <td>Tenda W30E V1.0.1.25(633) was discovered to contain a stack overflow via the page parameter at /goform/SetIpBind.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45518">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5f15846e5e01040a6a0b09133e64674b</td>
-       <td>CVE-2022-45517</td>
-       <td>2022-12-08 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda W30E V1.0.1.25(633) was discovered to contain a stack overflow via the page parameter at /goform/VirtualSer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45517">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2f54b661ec8e9308f6a4b08cc460e9c5</td>
-       <td>CVE-2022-4354</td>
-       <td>2022-12-08 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in LinZhaoguan pb-cms 2.0 and classified as problematic. Affected by this issue is some unknown functionality of the file /blog/comment of the component Message Board. The manipulation leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-215114 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4354">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>68b47c0b332083428318225db6fe9154</td>
-       <td>CVE-2022-4353</td>
-       <td>2022-12-08 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in LinZhaoguan pb-cms 2.0 and classified as problematic. Affected by this vulnerability is the function IpUtil.getIpAddr. The manipulation leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-215113 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4353">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d95d217532bd407cded30479cdcaa80b</td>
-       <td>CVE-2022-4350</td>
-       <td>2022-12-08 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, was found in Mingsoft MCMS 5.2.8. Affected is an unknown function of the file search.do. The manipulation of the argument content_title leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-215112.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4350">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f9f4df49a37b5212ae3daaabcb38e30</td>
-       <td>CVE-2020-36610</td>
-       <td>2022-12-08 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in annyshow DuxCMS 2.1. It has been declared as problematic. This vulnerability affects unknown code. The manipulation leads to cross-site request forgery. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-215116.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36610">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8e033607b9521e71de0a368cf6cfd23f</td>
-       <td>CVE-2020-36609</td>
-       <td>2022-12-08 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in annyshow DuxCMS 2.1. It has been classified as problematic. This affects an unknown part of the file admin.php&r=article/AdminContent/edit of the component Article Handler. The manipulation of the argument content leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-215115.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36609">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98f298e4a48840289585a4827d763d1a</td>
-       <td>CVE-2022-4349</td>
-       <td>2022-12-08 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as problematic has been found in CTF-hacker pwn. This affects an unknown part of the file delete.html. The manipulation leads to cross-site request forgery. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-215109 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4349">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b333f0f008afd1466759ab3ac1661166</td>
-       <td>CVE-2022-4348</td>
-       <td>2022-12-08 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in y_project RuoYi-Cloud. It has been rated as problematic. Affected by this issue is some unknown functionality of the component JSON Handler. The manipulation leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-215108.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4348">详情</a></td>
       </tr>
 
      </tbody>
@@ -1942,7 +1942,7 @@
       <tr>
        <td>55eb964e51be0198a8d6129930aa3abd</td>
        <td>CVE-2022-38986</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Huawei EMUI信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73575">详情</a></td>
       </tr>
@@ -1950,7 +1950,7 @@
       <tr>
        <td>b5abbee49a9ced991ead90ee1d9d805e</td>
        <td>CVE-2022-2563</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>WordPress Tutor LMS Plugin跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73574">详情</a></td>
       </tr>
@@ -1958,7 +1958,7 @@
       <tr>
        <td>ffb3428be1c99adff099d357817ef1eb</td>
        <td>CVE-2022-39311</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>GoCD不受信数据反序列化漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73573">详情</a></td>
       </tr>
@@ -1966,7 +1966,7 @@
       <tr>
        <td>b86395fe7e48f4c26b1d191669e4412e</td>
        <td>CVE-2022-42237</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Merchandise Online Store SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73572">详情</a></td>
       </tr>
@@ -1974,7 +1974,7 @@
       <tr>
        <td>127e89ab5af3f0d2cdfa82b782f21ece</td>
        <td>CVE-2022-22128</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Tableau Server Administration Agent路径遍历漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73571">详情</a></td>
       </tr>
@@ -1982,7 +1982,7 @@
       <tr>
        <td>932efe31f3d6f9160d40d3a9e697e1ea</td>
        <td>CVE-2022-3331</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>GitLab EE信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73570">详情</a></td>
       </tr>
@@ -1990,7 +1990,7 @@
       <tr>
        <td>c7cdd27b1b95f81cecca50f143fa681e</td>
        <td>CVE-2022-2884</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>GitLab CE/EE操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73569">详情</a></td>
       </tr>
@@ -1998,7 +1998,7 @@
       <tr>
        <td>6f8a3c42fc40392839a6e8d5c43ba173</td>
        <td>CVE-2022-40055</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>GX Group GPON ONT Titanium 2122A权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73568">详情</a></td>
       </tr>
@@ -2006,7 +2006,7 @@
       <tr>
        <td>fe66125bf8e61049c2adcf837b532518</td>
        <td></td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Changing Information Technology RAVA Certificate Validation System SQL注入漏洞（CVE-2</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73567">详情</a></td>
       </tr>
@@ -2014,7 +2014,7 @@
       <tr>
        <td>880ca6dad4d7577459ac06002df24e6f</td>
        <td>CVE-2022-3339</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Trellix ePolicy Orchestrator跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73566">详情</a></td>
       </tr>
@@ -2022,7 +2022,7 @@
       <tr>
        <td>4cc5749845578a58afecfd682b10e30b</td>
        <td>CVE-2022-41479</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>DevExpress ASP.NET Web Forms Build信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73565">详情</a></td>
       </tr>
@@ -2030,7 +2030,7 @@
       <tr>
        <td>380bc8be1b292d31a156570ccbd73008</td>
        <td>CVE-2022-41537</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Online Tours &amp; Travels Management System任意文件上传漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73564">详情</a></td>
       </tr>
@@ -2038,7 +2038,7 @@
       <tr>
        <td>1f89e8721e7ec102c047a3f394e02eba</td>
        <td>CVE-2022-1414</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Red Hat 3scale API Management输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73563">详情</a></td>
       </tr>
@@ -2046,7 +2046,7 @@
       <tr>
        <td>22ed25ce7da38addcf2a6faa69d532da</td>
        <td>CVE-2022-21606</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Oracle Database Server跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73562">详情</a></td>
       </tr>
@@ -2054,7 +2054,7 @@
       <tr>
        <td>6e2856b66d71f93cb373ea42ceb47a3a</td>
        <td>CVE-2022-21636</td>
-       <td>2022-12-07 10:28:25 <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 10:28:25</td>
        <td>Oracle Applications Framework信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/73561">详情</a></td>
       </tr>
@@ -2196,9 +2196,49 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4e6464ba05c5f86a1a2e4e95a2662482</td>
+       <td>CVE-2022-45026</td>
+       <td>2022-12-07 02:15:10 </td>
+       <td>An issue in Markdown Preview Enhanced v0.6.5 and v0.19.6 for VSCode and Atom allows attackers to execute arbitrary commands during the GFM export process.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45026">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cfe1be9d02b64efde81dce6634cb4816</td>
+       <td>CVE-2022-45025</td>
+       <td>2022-12-07 02:15:10 </td>
+       <td>Markdown Preview Enhanced v0.6.5 and v0.19.6 for VSCode and Atom was discovered to contain a command injection vulnerability via the PDF file import function.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45025">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c8a8308c3801be31ea16bc19aef55c65</td>
+       <td>CVE-2022-45010</td>
+       <td>2022-12-07 02:15:10 </td>
+       <td>Simple Phone Book/Directory Web App v1.0 was discovered to contain a SQL injection vulnerability via the editid parameter at /PhoneBook/edit.php.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45010">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c183b507767d298dc5b3d732d13deb1</td>
+       <td>CVE-2022-45009</td>
+       <td>2022-12-07 02:15:09 </td>
+       <td>Online Leave Management System v1.0 was discovered to contain an arbitrary file upload vulnerability at /leave_system/classes/SystemSettings.php?f=update_settings. This vulnerability allows attackers to execute arbitrary code via a crafted PHP file.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45009">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fd7d857b03a2ebf78dda0c24760f1d89</td>
+       <td>CVE-2022-45008</td>
+       <td>2022-12-07 02:15:09 </td>
+       <td>Online Leave Management System v1.0 was discovered to contain a stored cross-site scripting (XSS) vulnerability in the component /leave_system/admin/?page=maintenance/department. This vulnerability allows attackers to execute arbitrary web scripts or HTML via crafted payload injected into the Name field under the Create New module.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45008">详情</a></td>
+      </tr>
+
+      <tr>
        <td>dc8c58ffe77c6041efd9c2ec08513d78</td>
        <td>CVE-2022-45918</td>
-       <td>2022-12-07 01:15:11  <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 01:15:11 </td>
        <td>ILIAS before 7.16 allows External Control of File Name or Path.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45918">详情</a></td>
       </tr>
@@ -2206,7 +2246,7 @@
       <tr>
        <td>e011bd9755867d8b502e3d43ce46e33b</td>
        <td>CVE-2022-45917</td>
-       <td>2022-12-07 01:15:11  <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 01:15:11 </td>
        <td>ILIAS before 7.16 has an Open Redirect.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45917">详情</a></td>
       </tr>
@@ -2214,7 +2254,7 @@
       <tr>
        <td>0014ef32333b4cf62043f230d349c21c</td>
        <td>CVE-2022-45916</td>
-       <td>2022-12-07 01:15:11  <img src="imgs/new.gif" /></td>
+       <td>2022-12-07 01:15:11 </td>
        <td>ILIAS before 7.16 allows XSS.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45916">详情</a></td>
       </tr>
@@ -2300,6 +2340,22 @@
       </tr>
 
       <tr>
+       <td>5eccf02c14648fdc60f30b105d01a55b</td>
+       <td>CVE-2022-45020</td>
+       <td>2022-12-05 23:15:09 </td>
+       <td>Rukovoditel v3.2.1 was discovered to contain a DOM-based cross-site scripting (XSS) vulnerability in the component /rukovoditel/index.php?module=users/login. This vulnerability allows attackers to cause a Denial of Service (DoS) via a crafted GET request.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45020">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>abfbe1593018c6f26fa38a3824b291c3</td>
+       <td>CVE-2022-45019</td>
+       <td>2022-12-05 23:15:09 </td>
+       <td>SLiMS 9 Bulian v9.5.0 was discovered to contain a SQL injection vulnerability via the keywords parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45019">详情</a></td>
+      </tr>
+
+      <tr>
        <td>0aea886ab5e93668730e22d1897370e8</td>
        <td>CVE-2022-45912</td>
        <td>2022-12-05 22:15:11 </td>
@@ -2377,62 +2433,6 @@
        <td>2022-12-05 17:15:10 </td>
        <td>The Syncee WordPress plugin before 1.0.10 leaks the administrator token that can be used to take over the administrator's account.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-3694">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7385768ab4ad382a5788605b3c0ecd8c</td>
-       <td>CVE-2022-3677</td>
-       <td>2022-12-05 17:15:10 </td>
-       <td>The Advanced Import WordPress plugin before 1.3.8 does not have CSRF check when installing and activating plugins, which could allow attackers to make a logged in admin install arbitrary plugins from WordPress.org, and activate arbitrary ones from the blog via CSRF attacks</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-3677">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c34ba0e2013e298508158a32b79f5d1c</td>
-       <td>CVE-2022-45478</td>
-       <td>2022-12-05 16:15:10 </td>
-       <td>Telepad allows an attacker (in a man-in-the-middle position between the server and a connected device) to see all data (including keypresses) in cleartext. CVSS:3.1/AV:L/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45478">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7dc2e2fcfe357be8584fdccb46de17bc</td>
-       <td>CVE-2022-45477</td>
-       <td>2022-12-05 16:15:10 </td>
-       <td>Telepad allows remote unauthenticated users to send instructions to the server to execute arbitrary code without any previous authorization or authentication. CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45477">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>744bb5fe363a717fd114e7362c58e2da</td>
-       <td>CVE-2022-45315</td>
-       <td>2022-12-05 16:15:10 </td>
-       <td>Mikrotik RouterOs before stable v7.6 was discovered to contain an out-of-bounds read in the snmp process. This vulnerability allows attackers to execute arbitrary code via a crafted packet.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45315">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c05ffc5fe11b98bfb415c99606be4347</td>
-       <td>CVE-2022-45313</td>
-       <td>2022-12-05 16:15:09 </td>
-       <td>Mikrotik RouterOs before stable v7.5 was discovered to contain an out-of-bounds read in the hotspot process. This vulnerability allows attackers to execute arbitrary code via a crafted nova message.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45313">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fa4385e2032360f44638846303e17679</td>
-       <td>CVE-2022-32629</td>
-       <td>2022-12-05 15:15:18 </td>
-       <td>In isp, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07310774; Issue ID: ALPS07310774.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32629">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>072a9385564545f19663adc674e64290</td>
-       <td>CVE-2022-32628</td>
-       <td>2022-12-05 15:15:18 </td>
-       <td>In isp, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07310780; Issue ID: ALPS07310780.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-32628">详情</a></td>
       </tr>
 
      </tbody>
