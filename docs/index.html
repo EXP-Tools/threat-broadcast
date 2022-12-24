@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-12-24 06:27:22 -->
+<!-- RELEASE TIME : 2022-12-24 07:20:21 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e15ddcc252f5ba4da4e0314899d900dc</td>
+       <td>CVE-2022-46175</td>
+       <td>2022-12-24 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>JSON5 is an extension to the popular JSON file format that aims to be easier to write and maintain by hand (e.g. for config files). The `parse` method of the JSON5 library before and including version `2.2.1` does not restrict parsing of keys named `__proto__`, allowing specially crafted strings to pollute the prototype of the resulting object. This vulnerability pollutes the prototype of the object returned by `JSON5.parse` and not the global Object prototype, which is the commonly understood definition of Prototype Pollution. However, polluting the prototype of a single object can have significant security impact for an application if the object is later used in trusted operations. This vulnerability could allow an attacker to set arbitrary and unexpected keys on the object returned from `JSON5.parse`. The actual impact will depend on how applications utilize the returned object and how they filter unwanted keys, but could include denial of service, cross-site scripting, elevation of privilege, and in extreme cases, remote code execution. `JSON5.parse` should restrict parsing of `__proto__` keys when parsing JSON strings to objects. As a point of reference, the `JSON.parse` method included in JavaScript ignores `__proto__` keys. Simply changing `JSON5.parse` to `JSON.parse` in the examples above mitigates this vulnerability. This vulnerability is patched in json5 version 2.2.2 and later.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46175">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fdd0fed8505c4950959862f7c3fd1207</td>
        <td>CVE-2022-45798</td>
        <td>2022-12-24 00:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2022-12-23 16:15:00 <img src="imgs/new.gif" /></td>
        <td>The ProfilePress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘wp_user_cover_default_image_url’ parameter in versions up to, and including, 4.5.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4697">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>97f8eacd849c1f21b015543dfd058db2</td>
-       <td>CVE-2022-38757</td>
-       <td>2022-12-23 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been identified in Micro Focus ZENworks 2020 Update 3a and prior versions. This vulnerability allows administrators with rights to perform actions (e.g., install a bundle) on a set of managed devices, to be able to exercise these rights on managed devices in the ZENworks zone but which are outside the scope of the administrator. This vulnerability does not result in the administrators gaining additional rights on the managed devices, either in the scope or outside the scope of the administrator.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38757">详情</a></td>
       </tr>
 
      </tbody>
