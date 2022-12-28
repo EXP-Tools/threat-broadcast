@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2022-12-28 06:29:24 -->
+<!-- RELEASE TIME : 2022-12-28 07:21:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4cc1f30f061291cd6488a96971ce7e08</td>
+       <td>CVE-2022-3347</td>
+       <td>2022-12-28 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>DNSSEC validation is not performed correctly. An attacker can cause this package to report successful validation for invalid, attacker-controlled records. Root DNSSEC public keys are not validated, permitting an attacker to present a self-signed root key and delegation chain.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3347">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>759de736ecdb380b7f0760727834a8f4</td>
+       <td>CVE-2022-3346</td>
+       <td>2022-12-28 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>DNSSEC validation is not performed correctly. An attacker can cause this package to report successful validation for invalid, attacker-controlled records. The owner name of RRSIG RRs is not validated, permitting an attacker to present the RRSIG for an attacker-controlled domain in a response for any other domain.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3346">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b3c566cf6d263c6ef2688c7a4cfec8f1</td>
+       <td>CVE-2020-36563</td>
+       <td>2022-12-28 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>XML Digital Signatures generated and validated using this package use SHA-1, which may allow an attacker to craft inputs which cause hash collisions depending on their control over the input.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36563">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>143b3c605eeae38c31dcdc4cb9f4bc6c</td>
+       <td>CVE-2020-36562</td>
+       <td>2022-12-28 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>Due to unchecked type assertions, maliciously crafted messages can cause panics, which may be used as a denial of service vector.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36562">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6ec1006b1db4a1815c68f5cf15e61fa2</td>
+       <td>CVE-2022-23555</td>
+       <td>2022-12-28 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>authentik is an open-source Identity Provider focused on flexibility and versatility. Versions prior to 2022.11.4 and 2022.10.4 are vulnerable to Improper Authentication. Token reuse in invitation URLs leads to access control bypass via the use of a different enrollment flow than in the one provided. The vulnerability allows an attacker that knows different invitation flows names (e.g. `enrollment-invitation-test` and `enrollment-invitation-admin`) via either different invite links or via brute forcing to signup via a single invitation url for any valid invite link received (it can even be a url for a third flow as long as it's a valid invite) as the token used in the `Invitations` section of the Admin interface does NOT change when a different `enrollment flow` is selected via the interface and it is NOT bound to the selected flow, so it will be valid for any flow when used. This issue is patched in authentik 2022.11.4,2022.10.4 and 2022.12.0. Only configurations that use invitations and have multiple enrollment flows with invitation stages that grant different permissions are affected. The default configuration is not vulnerable, and neither are configurations with a single enrollment flow. As a workaround, fixed data can be added to invitations which can be checked in the flow to deny requests. Alternatively, an identifier with high entropy (like a UUID) can be used as flow slug, mitigating the attack vector by exponentially decreasing the possibility of discovering other flows.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23555">详情</a></td>
+      </tr>
+
+      <tr>
        <td>eba357f2eb098955b854e46c19917768</td>
        <td>CVE-2022-4773</td>
        <td>2022-12-28 00:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2022-12-27 15:15:00 <img src="imgs/new.gif" /></td>
        <td>Unrestricted Upload of File with Dangerous Type in GitHub repository microweber/microweber prior to 1.3.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4732">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ce12e9a59029bad4880a3731b05a199d</td>
-       <td>CVE-2022-4730</td>
-       <td>2022-12-27 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Graphite Web. It has been classified as problematic. Affected is an unknown function of the component Absolute Time Range Handler. The manipulation leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The name of the patch is 2f178f490e10efc03cd1d27c72f64ecab224eb23. It is recommended to apply a patch to fix this issue. The identifier of this vulnerability is VDB-216744.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4730">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>168a7be788f376355733173221e88b11</td>
-       <td>CVE-2022-4729</td>
-       <td>2022-12-27 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Graphite Web and classified as problematic. This issue affects some unknown processing of the component Template Name Handler. The manipulation leads to cross site scripting. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The name of the patch is 2f178f490e10efc03cd1d27c72f64ecab224eb23. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-216743.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4729">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1a23fb0f33c21c58140f38f6ddd6b7c6</td>
-       <td>CVE-2022-4728</td>
-       <td>2022-12-27 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in Graphite Web and classified as problematic. This vulnerability affects unknown code of the component Cookie Handler. The manipulation leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The name of the patch is 2f178f490e10efc03cd1d27c72f64ecab224eb23. It is recommended to apply a patch to fix this issue. VDB-216742 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4728">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dbd723182746980b9605f68599a2abb7</td>
-       <td>CVE-2022-4727</td>
-       <td>2022-12-27 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, was found in OpenMRS Appointment Scheduling Module up to 1.16.x. This affects the function getNotes of the file api/src/main/java/org/openmrs/module/appointmentscheduling/AppointmentRequest.java of the component Notes Handler. The manipulation of the argument notes leads to cross site scripting. It is possible to initiate the attack remotely. Upgrading to version 1.17.0 is able to address this issue. The name of the patch is 2ccbe39c020809765de41eeb8ee4c70b5ec49cc8. It is recommended to upgrade the affected component. The identifier VDB-216741 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4727">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fec2dd5e2327ec3f0cbcac7255a56c57</td>
-       <td>CVE-2022-4726</td>
-       <td>2022-12-27 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as critical was found in SourceCodester Sanitization Management System 1.0. Affected by this vulnerability is an unknown functionality of the component Admin Login. The manipulation of the argument username/password leads to sql injection. The attack can be launched remotely. The associated identifier of this vulnerability is VDB-216739.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4726">详情</a></td>
       </tr>
 
      </tbody>
