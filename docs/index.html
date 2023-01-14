@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-01-14 06:27:36 -->
+<!-- RELEASE TIME : 2023-01-14 08:27:39 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4dbe14d37f27a4d7cc2e53c7b4533a5e</td>
+       <td>CVE-2023-0297</td>
+       <td>2023-01-14 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>Code Injection in GitHub repository pyload/pyload prior to 0.5.0b3.dev31.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0297">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>87376ae49611b9ff1414054c16724b43</td>
+       <td>CVE-2023-22851</td>
+       <td>2023-01-14 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tiki before 24.2 allows lib/importer/tikiimporter_blog_wordpress.php PHP Object Injection by an admin because of an unserialize call.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22851">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>99647f176809ef348a2159915bee5150</td>
+       <td>CVE-2023-22850</td>
+       <td>2023-01-14 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tiki before 24.1, when the Spreadsheets feature is enabled, allows lib/sheet/grid.php PHP Object Injection because of an unserialize call.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22850">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e38fc8321db0115a5dfaa18f86274f87</td>
+       <td>CVE-2023-22497</td>
+       <td>2023-01-14 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Netdata is an open source option for real-time infrastructure monitoring and troubleshooting. Each Netdata Agent has an automatically generated MACHINE GUID. It is generated when the agent first starts and it is saved to disk, so that it will persist across restarts and reboots. Anyone who has access to a Netdata Agent has access to its MACHINE_GUID. Streaming is a feature that allows a Netdata Agent to act as parent for other Netdata Agents (children), offloading children from various functions (increased data retention, ML, health monitoring, etc) that can now be handled by the parent Agent. Configuration is done via `stream.conf`. On the parent side, users configure in `stream.conf` an API key (any random UUID can do) to provide common configuration for all children using this API key and per MACHINE GUID configuration to customize the configuration for each child. The way this was implemented, allowed an attacker to use a valid MACHINE_GUID as an API key. This affects all users who expose their Netdata Agents (children) to non-trusted users and they also expose to the same users Netdata Agent parents that aggregate data from all these children. The problem has been fixed in: Netdata agent v1.37 (stable) and Netdata agent v1.36.0-409 (nightly). As a workaround, do not enable streaming by default. If you have previously enabled this, it can be disabled. Limiting access to the port on the recipient Agent to trusted child connections may mitigate the impact of this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22497">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4eab42e3beb77522de536920f52262bf</td>
+       <td>CVE-2022-38287</td>
+       <td>2023-01-14 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38287">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>08854383e490392715908cc816087542</td>
+       <td>CVE-2023-23589</td>
+       <td>2023-01-14 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>The SafeSocks option in Tor before 0.4.7.13 has a logic error in which the unsafe SOCKS4 protocol can be used but not the safe SOCKS4a protocol, aka TROVE-2022-002.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23589">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3204a8e880e2ff69735a455f93033ef0</td>
+       <td>CVE-2023-22853</td>
+       <td>2023-01-14 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tiki before 24.1, when feature_create_webhelp is enabled, allows lib/structures/structlib.php PHP Object Injection because of an eval.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22853">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d659583d06b3d1f5cb2a0a47423d246a</td>
+       <td>CVE-2023-22852</td>
+       <td>2023-01-14 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tiki through 25.0 allows CSRF attacks that are related to tiki-importer.php and tiki-import_sheet.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22852">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa3772f844313e8b55f7ab4f532245e5</td>
+       <td>CVE-2023-22496</td>
+       <td>2023-01-14 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Netdata is an open source option for real-time infrastructure monitoring and troubleshooting. An attacker with the ability to establish a streaming connection can execute arbitrary commands on the targeted Netdata agent. When an alert is triggered, the function `health_alarm_execute` is called. This function performs different checks and then enqueues a command by calling `spawn_enq_cmd`. This command is populated with several arguments that are not sanitized. One of them is the `registry_hostname` of the node for which the alert is raised. By providing a specially crafted `registry_hostname` as part of the health data that is streamed to a Netdata (parent) agent, an attacker can execute arbitrary commands at the remote host as a side-effect of the raised alert. Note that the commands are executed as the user running the Netdata Agent. This user is usually named `netdata`. The ability to run arbitrary commands may allow an attacker to escalate privileges by escalating other vulnerabilities in the system, as that user. The problem has been fixed in: Netdata agent v1.37 (stable) and Netdata agent v1.36.0-409 (nightly). As a workaround, streaming is not enabled by default. If you have previously enabled this, it can be disabled. Limiting access to the port on the recipient Agent to trusted child connections may mitigate the impact of this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22496">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6ba03d775822d716979369e92665ab61</td>
+       <td>CVE-2023-22495</td>
+       <td>2023-01-14 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Izanami is a shared configuration service well-suited for micro-service architecture implementation. Attackers can bypass the authentication in this application when deployed using the official Docker image. Because a hard coded secret is used to sign the authentication token (JWT), an attacker could compromise another instance of Izanami. This issue has been patched in version 1.11.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22495">详情</a></td>
+      </tr>
+
+      <tr>
        <td>463672634a3044498fbb8d89e48c1137</td>
        <td>CVE-2022-41721</td>
        <td>2023-01-13 23:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-01-13 20:15:00 <img src="imgs/new.gif" /></td>
        <td>The Mediamatic – Media Library Folders plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on its AJAX actions in versions up to, and including, 2.8.1. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to change image categories, which it uses to arrange them in folder views.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0293">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>247c6cdf7361bf85bee4c209d6de3801</td>
-       <td>CVE-2022-46956</td>
-       <td>2023-01-13 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dynamic Transaction Queuing System v1.0 was discovered to contain a SQL injection vulnerability via the id parameter at /admin/manage_user.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46956">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2eeca7a93c284f7d3aa3b26aa1cd5f49</td>
-       <td>CVE-2021-4312</td>
-       <td>2023-01-13 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>** UNSUPPPORTED WHEN ASSIGNED **** UNSUPPORTED WHEN ASSIGNED ** A vulnerability classified as problematic has been found in Th3-822 Rapidleech. This affects the function zip_go of the file classes/options/zip.php. The manipulation of the argument archive leads to cross site scripting. It is possible to initiate the attack remotely. The name of the patch is 885a87ea4ee5e14fa95801eca255604fb2e138c6. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-218295. NOTE: This vulnerability only affects products that are no longer supported by the maintainer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4312">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2bdf222d8b4d751473269da94af91e16</td>
-       <td>CVE-2009-10002</td>
-       <td>2023-01-13 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, has been found in dpup fittr-flickr. This issue affects some unknown processing of the file fittr-flickr/features/easy-exif.js of the component EXIF Preview Handler. The manipulation leads to cross site scripting. The attack may be initiated remotely. The name of the patch is 08875dd8a2e5d0d16568bb0d67cb4328062fccde. It is recommended to apply a patch to fix this issue. The identifier VDB-218297 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2009-10002">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>95d754c36b5307346eda3d83914410a5</td>
-       <td>CVE-2009-10001</td>
-       <td>2023-01-13 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as problematic was found in jianlinwei cool-php-captcha up to 0.2. This vulnerability affects unknown code of the file example-form.php. The manipulation of the argument captcha with the input %3Cscript%3Ealert(1)%3C/script%3E leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 0.3 is able to address this issue. The name of the patch is c84fb6b153bebaf228feee0cbf50728d27ae3f80. It is recommended to upgrade the affected component. The identifier of this vulnerability is VDB-218296.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2009-10001">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>afe9daec3d2ead0bd68d7e116c7ed090</td>
-       <td>CVE-2023-22494</td>
-       <td>2023-01-13 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>a12nserver is an open source lightweight OAuth2 server. Users of a12nserver that use MySQL might be vulnerable to SQL injection bugs. If you use a12nserver and MySQL, update as soon as possible. This SQL injection bug might let an attacker obtain OAuth2 Access Tokens for users unrelated to those that permitted OAuth2 clients. The knex dependency has been updated to 2.4.0 in a12nserver 0.23.0. There are no known workarounds.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22494">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>09457232b58c15f8170f87b667fdda26</td>
-       <td>CVE-2023-0289</td>
-       <td>2023-01-13 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site Scripting (XSS) - Stored in GitHub repository craigk5n/webcalendar prior to master.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0289">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>333b05d2bad0e4e706a514e1a61a8c5c</td>
-       <td>CVE-2023-0288</td>
-       <td>2023-01-13 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Heap-based Buffer Overflow in GitHub repository vim/vim prior to 9.0.1189.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0288">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>68f19ea6dcd08fccdc973ac5c3caf287</td>
-       <td>CVE-2023-0221</td>
-       <td>2023-01-13 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Product security bypass vulnerability in ACC prior to version 8.3.4 allows a locally logged-in attacker with administrator privileges to bypass the execution controls provided by ACC using the utilman program.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0221">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>394419ccbd4e1c11676cc7fd9e44305f</td>
-       <td>CVE-2023-22493</td>
-       <td>2023-01-13 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>RSSHub is an open source RSS feed generator. RSSHub is vulnerable to Server-Side Request Forgery (SSRF) attacks. This vulnerability allows an attacker to send arbitrary HTTP requests from the server to other servers or resources on the network. An attacker can exploit this vulnerability by sending a request to the affected routes with a malicious URL. An attacker could also use this vulnerability to send requests to internal or any other servers or resources on the network, potentially gain access to sensitive information that would not normally be accessible and amplifying the impact of the attack. The patch for this issue can be found in commit a66cbcf.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22493">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fa742048a0a0fbdffdc96ab1dd3986a9</td>
-       <td>CVE-2023-0287</td>
-       <td>2023-01-13 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in ityouknow favorites-web. It has been rated as problematic. Affected by this issue is some unknown functionality of the component Comment Handler. The manipulation leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-218294 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0287">详情</a></td>
       </tr>
 
      </tbody>
