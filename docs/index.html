@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-01-20 21:21:41 -->
+<!-- RELEASE TIME : 2023-01-20 22:23:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>861191383b56d6d6c42403ff7bac67a4</td>
+       <td>CVE-2022-3918</td>
+       <td>2023-01-20 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>A program using FoundationNetworking in swift-corelibs-foundation is potentially vulnerable to CRLF ( ) injection in URLRequest headers. In this vulnerability, a client can insert one or several CRLF sequences into a URLRequest header value. When that request is sent via URLSession to an HTTP server, the server may interpret the content after the CRLF as extra headers, or even a second request. For example, consider a URLRequest to http://example.com/ with the GET method. Suppose we set the URLRequest header "Foo" to the value "Bar Extra-Header: Added GET /other HTTP/1.1". When this request is sent, it will appear to the server as two requests: GET / HTTP/1.1 Foo: Bar Extra-Header: Added GET /other HTTP/1.1 In this manner, the client is able to inject extra headers and craft an entirely new request to a separate path, despite only making one API call in URLSession. If a developer has total control over the request and its headers, this vulnerability may not pose a threat. However, this vulnerability escalates if un-sanitized user input is placed in header values. If so, a malicious user could inject new headers or requests to an intermediary or backend server. Developers should be especially careful to sanitize user input in this case, or upgrade their version of swift-corelibs-foundation to include the patch below.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3918">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>144ff4a6c69e6973b17be6ca755c5c11</td>
+       <td>CVE-2022-1109</td>
+       <td>2023-01-20 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>An incorrect default permissions vulnerability in Lenovo Leyun cloud music application could allow denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-1109">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>327a2f74a186436af283480252d4fe34</td>
+       <td>CVE-2023-24021</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>In ModSecurity before 2.9.7, FILES_TMP_CONTENT sometimes lacked the complete content. This can lead to a Web Application Firewall bypass.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24021">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4fee3833fb41f869c3d51ef894e8590c</td>
+       <td>CVE-2023-23492</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Login with Phone Number WordPress Plugin, version < 1.4.2, is affected by an authenticated SQL injection vulnerability in the 'ID' parameter of its 'lwp_forgot_password' action.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23492">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>32f982d5920d67ea8c7877e7b824a1cb</td>
+       <td>CVE-2023-23491</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Quick Event Manager WordPress Plugin, version < 9.7.5, is affected by a reflected cross-site scripting vulnerability in the 'category' parameter of its 'qem_ajax_calendar' action.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7a81d6dc22409eb498952f7032f590d</td>
+       <td>CVE-2023-23490</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Survey Maker WordPress Plugin, version < 3.1.2, is affected by an authenticated SQL injection vulnerability in the 'surveys_ids' parameter of its 'ays_surveys_export_json' action.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23490">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ee45cc2056528ee4043ced31b3c2219f</td>
+       <td>CVE-2023-23145</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>GPAC version 2.2-rev0-gab012bbfb-master was discovered to contain a memory leak in lsr_read_rare_full function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23145">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e0a272eaabd819df147fdf4a9183e8ca</td>
+       <td>CVE-2023-23144</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Integer overflow vulnerability in function Q_DecCoordOnUnitSphere file bifs/unquantize.c in GPAC version 2.2-rev0-gab012bbfb-master.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23144">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c324c50b9536c95290da57bcf6dfe899</td>
+       <td>CVE-2023-23143</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Buffer overflow vulnerability in function avc_parse_slice in file media_tools/av_parsers.c. GPAC version 2.3-DEV-rev1-g4669ba229-master.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23143">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>698a6bd16066d02c18d53e63a47aebb0</td>
+       <td>CVE-2023-23024</td>
+       <td>2023-01-20 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Book Store Management System v1.0 was discovered to contain a cross-site scripting (XSS) vulnerability in /bsms_ci/index.php/book. This vulnerability allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the writer parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23024">详情</a></td>
+      </tr>
+
+      <tr>
        <td>d6b0e9a8527c7b736d6b289f3611f4f0</td>
        <td>CVE-2023-23489</td>
        <td>2023-01-20 18:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-01-20 12:15:00 <img src="imgs/new.gif" /></td>
        <td>CRLF vulnerability in Reprise License Manager (RLM) web interface through 14.2BL4 in the password parameter in View License Result function, that allows remote attackers to inject arbitrary HTTP headers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-37499">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>82565e191c5ba9de878faebc5e179918</td>
-       <td>CVE-2021-37498</td>
-       <td>2023-01-20 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>An SSRF issue was discovered in Reprise License Manager (RLM) web interface through 14.2BL4 that allows remote attackers to trigger outbound requests to intranet servers, conduct port scans via the actserver parameter in License Activation function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-37498">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3a54a07c8a7c2c24e1b547ebaf7b4af</td>
-       <td>CVE-2023-23691</td>
-       <td>2023-01-20 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell EMC PV ME5, versions ME5.1.0.0.0 and ME5.1.0.1.0, contains a Client-side desync Vulnerability. An unauthenticated attacker could potentially exploit this vulnerability to force a victim's browser to desynchronize its connection with the website, typically leading to XSS and DoS.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23691">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e7ed295293a296579bd00c7711b9cb4d</td>
-       <td>CVE-2023-23596</td>
-       <td>2023-01-20 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>jc21 NGINX Proxy Manager through 2.9.19 allows OS command injection. When creating an access list, the backend builds an htpasswd file with crafted username and/or password input that is concatenated without any validation, and is directly passed to the exec command, potentially allowing an authenticated attacker to execute arbitrary commands on the system. NOTE: this is not part of any NGINX software shipped by F5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>61fbcee713dc1650fb163ec2d412bceb</td>
-       <td>CVE-2022-40267</td>
-       <td>2023-01-20 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Predictable Seed in Pseudo-Random Number Generator (PRNG) vulnerability in Mitsubishi Electric Corporation MELSEC iQ-F Series FX5U-xMy/z (x=32,64,80, y=T,R, z=ES,DS,ESS,DSS) with serial number 17X**** or later, and versions 1.280 and prior, Mitsubishi Electric Corporation MELSEC iQ-F Series FX5U-xMy/z (x=32,64,80, y=T,R, z=ES,DS,ESS,DSS) with serial number 179**** and prior, and versions 1.074 and prior, Mitsubishi Electric Corporation MELSEC iQ-F Series FX5UC-xMy/z (x=32,64,96, y=T, z=D,DSS)) with serial number 17X**** or later, and versions 1.280 and prior, Mitsubishi Electric Corporation MELSEC iQ-F Series FX5UC-xMy/z (x=32,64,96, y=T, z=D,DSS)) with serial number 179**** and prior, and versions 1.074 and prior, Mitsubishi Electric Corporation MELSEC iQ-F Series FX5UC-32MT/DS-TS versions 1.280 and prior, Mitsubishi Electric Corporation MELSEC iQ-F Series FX5UC-32MT/DSS-TS versions 1.280 and prior, Mitsubishi Electric Corporation MELSEC iQ-F Series FX5UC-32MR/DS-TS versions 1.280 and prior, Mitsubishi Electric Corporation MELSEC iQ-R Series R00/01/02CPU all versions, Mitsubishi Electric Corporation MELSEC iQ-R Series R04/08/16/32/120(EN)CPU all versions allows a remote unauthenticated attacker to access the Web server function by guessing the random numbers used for authentication from several used random numbers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40267">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a63b47b9cd2c09427d57dbb0a482ff3b</td>
-       <td>CVE-2023-20058</td>
-       <td>2023-01-20 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the web-based management interface of Cisco Unified Intelligence Center could allow an unauthenticated, remote attacker to conduct a reflected cross-site scripting (XSS) attack against a user of the interface. This vulnerability exists because the web-based management interface does not properly validate user-supplied input. An attacker could exploit this vulnerability by persuading a user of the interface to click a crafted link. A successful exploit could allow the attacker to execute arbitrary script code in the context of the affected interface or access sensitive browser-based information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20058">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>965149a63aa19544d07c68626ed863d0</td>
-       <td>CVE-2023-20057</td>
-       <td>2023-01-20 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the URL filtering mechanism of Cisco AsyncOS Software for Cisco Email Security Appliance (ESA) could allow an unauthenticated, remote attacker to bypass the URL reputation filters on an affected device. This vulnerability is due to improper processing of URLs. An attacker could exploit this vulnerability by crafting a URL in a particular way. A successful exploit could allow the attacker to bypass the URL reputation filters that are configured for an affected device, which could allow malicious URLs to pass through the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20057">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f213ed8796692d093bb590c77cd007c6</td>
-       <td>CVE-2023-20047</td>
-       <td>2023-01-20 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the Link Layer Discovery Protocol (LLDP) feature of Cisco Webex Room Phone and Cisco Webex Share devices could allow an unauthenticated, adjacent attacker to cause a denial of service (DoS) condition on an affected device. This vulnerability is due to insufficient resource allocation. An attacker could exploit this vulnerability by sending crafted LLDP traffic to an affected device. A successful exploit could allow the attacker to exhaust the memory resources of the affected device, resulting in a crash of the LLDP process. If the affected device is configured to support LLDP only, this could cause an interruption to inbound and outbound calling. By default, these devices are configured to support both Cisco Discovery Protocol and LLDP. To recover operational state, the affected device needs a manual restart.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20047">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6d0aacf9442967f29d190ca84d962f52</td>
-       <td>CVE-2023-20045</td>
-       <td>2023-01-20 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the web-based management interface of Cisco Small Business RV160 and RV260 Series VPN Routers could allow an authenticated, remote attacker to execute arbitrary commands on the underlying operating system of an affected device. This vulnerability is due to insufficient validation of user input. An attacker could exploit this vulnerability by sending a crafted request to the web-based management interface of an affected device. A successful exploit could allow the attacker to execute arbitrary commands using root-level privileges on the affected device. To exploit this vulnerability, the attacker must have valid Administrator-level credentials on the affected device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20045">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e6d8c45257535706ab691eb62c62d8b1</td>
-       <td>CVE-2023-20044</td>
-       <td>2023-01-20 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in Cisco CX Cloud Agent of could allow an authenticated, local attacker to elevate their privileges. This vulnerability is due to insecure file permissions. An attacker could exploit this vulnerability by persuading support to update settings which call the insecure script. A successful exploit could allow the attacker to take complete control of the affected device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20044">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b067d797f07009c1b828e786059fce9</td>
-       <td>CVE-2023-20043</td>
-       <td>2023-01-20 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in Cisco CX Cloud Agent of could allow an authenticated, local attacker to elevate their privileges. This vulnerability is due to insecure file permissions. An attacker could exploit this vulnerability by calling the script with sudo. A successful exploit could allow the attacker to take complete control of the affected device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20043">详情</a></td>
       </tr>
 
      </tbody>
