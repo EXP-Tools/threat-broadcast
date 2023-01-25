@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-01-25 15:25:06 -->
+<!-- RELEASE TIME : 2023-01-25 17:23:46 -->
 <html lang="zh-cn">
 
  <head>
@@ -2300,6 +2300,38 @@
       </tr>
 
       <tr>
+       <td>14e1ce50d66068985ca4696a8cda7d42</td>
+       <td>CVE-2023-22480</td>
+       <td>2023-01-14 01:15:15 </td>
+       <td>KubeOperator is an open source Kubernetes distribution focused on helping enterprises plan, deploy and operate production-level K8s clusters. In KubeOperator versions 3.16.3 and below, API interfaces with unauthorized entities and can leak sensitive information. This vulnerability could be used to take over the cluster under certain conditions. This issue has been patched in version 3.16.4.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22480">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>796d4b3c7bf2117cecbc514a6e22457e</td>
+       <td>CVE-2023-22478</td>
+       <td>2023-01-14 01:15:14 </td>
+       <td>KubePi is a modern Kubernetes panel. The API interfaces with unauthorized entities and may leak sensitive information. This issue has been patched in version 1.6.4. There are currently no known workarounds.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22478">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f1d9507016d8d62bb327b2468e2eb690</td>
+       <td>CVE-2023-22471</td>
+       <td>2023-01-14 01:15:14 </td>
+       <td>Deck is a kanban style organization tool aimed at personal planning and project organization for teams integrated with Nextcloud. Broken access control allows a user to delete attachments of other users. There are currently no known workarounds. It is recommended that the Nextcloud Deck app is upgraded to 1.6.5 or 1.7.3 or 1.8.2.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22471">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9d5f93dbb0d0c24a2261e66102615992</td>
+       <td>CVE-2023-22470</td>
+       <td>2023-01-14 01:15:13 </td>
+       <td>Nextcloud Deck is a kanban style organization tool aimed at personal planning and project organization for teams integrated with Nextcloud. A database error can be generated potentially causing a DoS when performed multiple times. There are currently no known workarounds. It is recommended that the Nextcloud Server is upgraded to 1.6.5 or 1.7.3 or 1.8.2.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22470">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c79e5e39e775a81f1627f464a3d8d709</td>
        <td>CVE-2023-0294</td>
        <td>2023-01-13 20:15:12 </td>
@@ -2372,6 +2404,22 @@
       </tr>
 
       <tr>
+       <td>cbd1e1ced77362be13850093d79f84b9</td>
+       <td>CVE-2023-22491</td>
+       <td>2023-01-13 19:15:12 </td>
+       <td>Gatsby is a free and open source framework based on React that helps developers build websites and apps. The gatsby-transformer-remark plugin prior to versions 5.25.1 and 6.3.2 passes input through to the `gray-matter` npm package, which is vulnerable to JavaScript injection in its default configuration, unless input is sanitized. The vulnerability is present in gatsby-transformer-remark when passing input in data mode (querying MarkdownRemark nodes via GraphQL). Injected JavaScript executes in the context of the build server. To exploit this vulnerability untrusted/unsanitized input would need to be sourced by or added into a file processed by gatsby-transformer-remark. A patch has been introduced in `gatsby-transformer-remark@5.25.1` and `gatsby-transformer-remark@6.3.2` which mitigates the issue by disabling the `gray-matter` JavaScript Frontmatter engine. As a workaround, if an older version of `gatsby-transformer-remark` must be used, input passed into the plugin should be sanitized ahead of processing. It is encouraged for projects to upgrade to the latest major release branch for all Gatsby plugins to ensure the latest security updates and bug fixes are received in a timely manner.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>78f34ba764d4cf32f2102955c0b3615e</td>
+       <td>CVE-2023-22489</td>
+       <td>2023-01-13 19:15:12 </td>
+       <td>Flarum is a discussion platform for websites. If the first post of a discussion is permanently deleted but the discussion stays visible, any actor who can view the discussion is able to create a new reply via the REST API, no matter the reply permission or lock status. This includes users that don't have a validated email. Guests cannot successfully create a reply because the API will fail with a 500 error when the user ID 0 is inserted into the database. This happens because when the first post of a discussion is permanently deleted, the `first_post_id` attribute of the discussion becomes `null` which causes access control to be skipped for all new replies. Flarum automatically makes discussions with zero comments invisible so an additional condition for this vulnerability is that the discussion must have at least one approved reply so that `discussions.comment_count` is still above zero after the post deletion. This can open the discussion to uncontrolled spam or just unintentional replies if users still had their tab open before the vulnerable discussion was locked and then post a reply when they shouldn't be able to. In combination with the email notification settings, this could also be used as a way to send unsolicited emails. Versions between `v1.3.0` and `v1.6.3` are impacted. The vulnerability has been fixed and published as flarum/core v1.6.3. All communities running Flarum should upgrade as soon as possible. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22489">详情</a></td>
+      </tr>
+
+      <tr>
        <td>805ce0a19ef98d50f7dbcb9690a3eca3</td>
        <td>CVE-2023-0289</td>
        <td>2023-01-13 16:15:09 </td>
@@ -2401,54 +2449,6 @@
        <td>2023-01-13 10:15:09 </td>
        <td>A vulnerability classified as critical has been found in SourceCodester Online Flight Booking Management System. This affects an unknown part of the file review_search.php of the component POST Parameter Handler. The manipulation of the argument txtsearch leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-218277 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0283">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b30e7b83b9487fe532d398019e931ea2</td>
-       <td>CVE-2023-0281</td>
-       <td>2023-01-13 10:15:09 </td>
-       <td>A vulnerability was found in SourceCodester Online Flight Booking Management System. It has been rated as critical. Affected by this issue is some unknown functionality of the file judge_panel.php. The manipulation of the argument subevent_id leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-218276.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0281">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4f2ff88b2292ff3b08f0b23248ae60fe</td>
-       <td>CVE-2022-3693</td>
-       <td>2023-01-13 08:15:07 </td>
-       <td>The File Management System developed by FileOrbis before version 10.6.3 has an unauthenticated local file inclusion and path traversal vulnerability. This has been fixed in the version 10.6.3</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-3693">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee3bc0cd9f187c132531fb4f8fd79412</td>
-       <td>CVE-2022-3841</td>
-       <td>2023-01-13 06:15:11 </td>
-       <td>RHACM: unauthenticated SSRF in console API endpoint. A Server-Side Request Forgery (SSRF) vulnerability was found in the console API endpoint from Red Hat Advanced Cluster Management for Kubernetes (RHACM). An attacker could take advantage of this as the console API endpoint is missing an authentication check, allowing unauthenticated users making requests.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-3841">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b028fdfce768b897c3206942c3f109c4</td>
-       <td>CVE-2023-23559</td>
-       <td>2023-01-13 01:15:10 </td>
-       <td>In rndis_query_oid in drivers/net/wireless/rndis_wlan.c in the Linux kernel through 6.1.5, there is an integer overflow in an addition.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-23559">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b20f29441afd7ac2e3ac833271438fb0</td>
-       <td>CVE-2023-22410</td>
-       <td>2023-01-13 00:15:11 </td>
-       <td>A Missing Release of Memory after Effective Lifetime vulnerability in the Juniper Networks Junos OS on MX Series platforms with MPC10/MPC11 line cards, allows an unauthenticated adjacent attacker to cause a Denial of Service (DoS). Devices are only vulnerable when the Suspicious Control Flow Detection (scfd) feature is enabled. Upon enabling this specific feature, an attacker sending specific traffic is causing memory to be allocated dynamically and it is not freed. Memory is not freed even after deactivating this feature. Sustained processing of such traffic will eventually lead to an out of memory condition that prevents all services from continuing to function, and requires a manual restart to recover. The FPC memory usage can be monitored using the CLI command &quot;show chassis fpc&quot;. On running the above command, the memory of AftDdosScfdFlow can be observed to detect the memory leak. This issue affects Juniper Networks Junos OS on MX Series: All versions prior to 20.2R3-S5; 20.3 version 20.3R1 and later versions.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22410">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>63e97b28e8d82dae32ee2bf7172bf253</td>
-       <td>CVE-2023-22407</td>
-       <td>2023-01-13 00:15:11 </td>
-       <td>An Incomplete Cleanup vulnerability in the Routing Protocol Daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows an adjacent, unauthenticated attacker to cause a Denial of Service (DoS). An rpd crash can occur when an MPLS TE tunnel configuration change occurs on a directly connected router. This issue affects: Juniper Networks Junos OS All versions prior to 18.4R2-S7; 19.1 versions prior to 19.1R3-S2; 19.2 versions prior to 19.2R3; 19.3 versions prior to 19.3R3; 19.4 versions prior to 19.4R3; 20.1 versions prior to 20.1R2; 20.2 versions prior to 20.2R2. Juniper Networks Junos OS Evolved All versions prior to 19.2R3-EVO; 19.3 versions prior to 19.3R3-EVO; 19.4 versions prior to 19.4R3-EVO; 20.1 versions prior to 20.1R3-EVO; 20.2 versions prior to 20.2R2-EVO.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22407">详情</a></td>
       </tr>
 
      </tbody>
