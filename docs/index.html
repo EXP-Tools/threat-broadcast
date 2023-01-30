@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-01-30 15:26:46 -->
+<!-- RELEASE TIME : 2023-01-30 17:25:11 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>dddeebb8bd1af06b002eaaa1f8c4fdfa</td>
+       <td>CVE-2023-0266</td>
+       <td>2023-01-30 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A use after free vulnerability exists in the ALSA PCM package in the Linux Kernel. SNDRV_CTL_IOCTL_ELEM_{READ|WRITE}32 is missing locks that can be used in a use-after-free that can result in a priviledge escalation to gain ring0 access from the system user. We recommend upgrading past commit 56b88b50565cd8b946a2d00b0c83927b7ebb055e</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0266">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1931e49566545e62ffcc2568ccdfbee0</td>
+       <td>CVE-2023-0240</td>
+       <td>2023-01-30 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>There is a logic error in io_uring's implementation which can be used to trigger a use-after-free vulnerability leading to privilege escalation. In the io_prep_async_work function the assumption that the last io_grab_identity call cannot return false is not true, and in this case the function will use the init_cred or the previous linked requests identity to do operations instead of using the current identity. This can lead to reference counting issues causing use-after-free. We recommend upgrading past version 5.10.161.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0240">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c39d48461945984de03ce21c59a9249f</td>
+       <td>CVE-2022-45788</td>
+       <td>2023-01-30 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>A CWE-754: Improper Check for Unusual or Exceptional Conditions vulnerability exists that could cause arbitrary code execution, denial of service and loss of confidentiality & integrity when a malicious project file is loaded onto the controller. Affected Products: EcoStruxure™ Control Expert (All Versions), EcoStruxure™ Process Expert (Version V2020 & prior), Modicon M340 CPU (part numbers BMXP34*) (All Versions), Modicon M580 CPU (part numbers BMEP* and BMEH*) (All Versions), Modicon M580 CPU Safety (part numbers BMEP58*S and BMEH58*S) (All Versions), Modicon Momentum Unity M1E Processor (171CBU*) (All Versions), Modicon MC80 (BMKC80) (All Versions), Legacy Modicon Quantum (140CPU65*) and Premium CPUs (TSXP57*) (All Versions)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45788">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8f38956a41698efa27841f40b7376f6f</td>
        <td>CVE-2022-42484</td>
        <td>2023-01-30 11:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-01-29 19:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability was found in capnsquarepants wordcraft up to 0.6. It has been classified as problematic. Affected is an unknown function of the file tag.php. The manipulation of the argument tag leads to cross site scripting. It is possible to launch the attack remotely. Upgrading to version 0.7 is able to address this issue. The name of the patch is be23028633e8105de92f387036871c03f34d3124. It is recommended to upgrade the affected component. VDB-219714 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2009-10003">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>04ee9f054491bcfd0516ebd685339e2a</td>
-       <td>CVE-2023-0571</td>
-       <td>2023-01-29 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in SourceCodester Canteen Management System 1.0 and classified as problematic. This vulnerability affects unknown code of the file createcustomer.php of the component Add Customer. The manipulation of the argument name leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-219730 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0571">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc4309bffb1c07948f66cab7e0171d5b</td>
-       <td>CVE-2023-0570</td>
-       <td>2023-01-29 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, was found in SourceCodester Online Tours & Travels Management System 1.0. This affects an unknown part of the file user\operations\payment_operation.php. The manipulation of the argument booking_id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-219729 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0570">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b3d41eb6c791fa5a5766c0c959bda3e6</td>
-       <td>CVE-2023-0569</td>
-       <td>2023-01-29 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>Weak Password Requirements in GitHub repository publify/publify prior to 9.2.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0569">详情</a></td>
       </tr>
 
      </tbody>
@@ -2372,6 +2372,14 @@
       </tr>
 
       <tr>
+       <td>fe882e3b4aab4e9770514165eb9e35bb</td>
+       <td>CVE-2022-43704</td>
+       <td>2023-01-20 17:15:10 </td>
+       <td>The Sinilink XY-WFT1 WiFi Remote Thermostat, running firmware 1.3.6, allows an attacker to bypass the intended requirement to communicate using MQTT. It is possible to replay Sinilink aka SINILINK521 protocol (udp/1024) commands interfacing directly with the target device. This, in turn, allows for an attack to control the onboard relay without requiring authentication via the mobile application. This might result in an unacceptable temperature within the target device's physical environment.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-43704">详情</a></td>
+      </tr>
+
+      <tr>
        <td>94e9cbaa76ebeafc5a255e3c25c73b57</td>
        <td>CVE-2023-20044</td>
        <td>2023-01-20 07:15:16 </td>
@@ -2441,14 +2449,6 @@
        <td>2023-01-20 07:15:10 </td>
        <td>HCL BigFix Mobile / Modern Client Management Admin and Config UI passwords can be brute-forced. User should be locked out for multiple invalid attempts.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-27782">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c360f3305c93936ccc03d69c383f4016</td>
-       <td>CVE-2023-0410</td>
-       <td>2023-01-20 01:15:10 </td>
-       <td>Cross-site Scripting (XSS) - Generic in GitHub repository builderio/qwik prior to 0.1.0-beta5.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0410">详情</a></td>
       </tr>
 
      </tbody>
