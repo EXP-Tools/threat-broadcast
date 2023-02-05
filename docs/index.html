@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-04 23:22:38 -->
+<!-- RELEASE TIME : 2023-02-05 01:57:25 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>56c9b0569afa478c5be2a04e83904aa8</td>
        <td>CVE-2023-21608</td>
-       <td>2023-02-03 08:44:56 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 08:44:56</td>
        <td>CVE-2023-21608：Adobe Acrobat Reader 任意代码执行漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=859e4f4c4042b744f5228a9f4e282439">详情</a></td>
       </tr>
@@ -284,6 +284,22 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9b0c6f64602b75aaaa38455b18191c00</td>
+       <td>CVE-2023-22849</td>
+       <td>2023-02-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An improper neutralization of input during web page generation ('Cross-site Scripting') [CWE-79] vulnerability in Sling App CMS version 1.1.4 and prior may allow an authenticated remote attacker to perform a reflected cross-site scripting (XSS) attack in multiple features. Upgrade to Apache Sling App CMS >= 1.1.6</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22849">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f613f09f3b0de58595b5cdb0e666c27</td>
+       <td>CVE-2022-45786</td>
+       <td>2023-02-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>There are issues with the AGE drivers for Golang and Python that enable SQL injections to occur. This impacts AGE for PostgreSQL 11 & AGE for PostgreSQL 12, all versions up-to-and-including 1.1.0, when using those drivers. The fix is to update to the latest Golang and Python drivers in addition to the latest version of AGE that is used for PostgreSQL 11 or PostgreSQL 12. The update of AGE will add a new function to enable parameterization of the cypher() function, which, in conjunction with the driver updates, will resolve this issue. Background (for those who want more information): After thoroughly researching this issue, we found that due to the nature of the cypher() function, it was not easy to parameterize the values passed into it. This enabled SQL injections, if the developer of the driver wasn't careful. The developer of the Golang and Pyton drivers didn't fully utilize parameterization, likely because of this, thus enabling SQL injections. The obvious fix to this issue is to use parameterization in the drivers for all PG SQL queries. However, parameterizing all PG queries is complicated by the fact that the cypher() function call itself cannot be parameterized directly, as it isn't a real function. At least, not the parameters that would take the graph name and cypher query. The reason the cypher() function cannot have those values parameterized is because the function is a placeholder and never actually runs. The cypher() function node, created by PG in the query tree, is transformed and replaced with a query tree for the actual cypher query during the analyze phase. The problem is that parameters - that would be passed in and that the cypher() function transform needs to be resolved - are only resolved in the execution phase, which is much later. Since the transform of the cypher() function needs to know the graph name and cypher query prior to execution, they can't be passed as parameters. The fix that we are testing right now, and are proposing to use, is to create a function that will be called prior to the execution of the cypher() function transform. This new function will allow values to be passed as parameters for the graph name and cypher query. As this command will be executed prior to the cypher() function transform, its values will be resolved. These values can then be cached for the immediately following cypher() function transform to use. As added features, the cached values will store the calling session's pid, for validation. And, the cypher() function transform will clear this cached information after function invocation, regardless of whether it was used. This method will allow the parameterizing of the cypher() function indirectly and provide a way to lock out SQL injection attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45786">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ec4eedd0444fbc85a54b5cb281f2bf58</td>
        <td>CVE-2023-25193</td>
        <td>2023-02-04 20:15:00 <img src="imgs/new.gif" /></td>
@@ -406,7 +422,7 @@
       <tr>
        <td>e500753dcc969b30aaef78ee2925240a</td>
        <td>CVE-2023-23615</td>
-       <td>2023-02-03 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 22:15:00</td>
        <td>Discourse is an open source discussion platform. The embeddable comments can be exploited to create new topics as any user but without any clear title or content. This issue is patched in the latest stable, beta and tests-passed versions of Discourse. As a workaround, disable embeddable comments by deleting all embeddable hosts.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23615">详情</a></td>
       </tr>
@@ -414,7 +430,7 @@
       <tr>
        <td>8be898b3f70ea64a2501587112e6c790</td>
        <td>CVE-2023-23082</td>
-       <td>2023-02-03 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 22:15:00</td>
        <td>A heap buffer overflow vulnerability in Kodi Home Theater Software up to 19.5 allows attackers to cause a denial of service due to an improper length of the value passed to the offset argument.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23082">详情</a></td>
       </tr>
@@ -422,7 +438,7 @@
       <tr>
        <td>61d4e54bf14123025cbdfa55d8d4aa41</td>
        <td>CVE-2023-22746</td>
-       <td>2023-02-03 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 22:15:00</td>
        <td>CKAN is an open-source DMS (data management system) for powering data hubs and data portals. When creating a new container based on one of the Docker images listed below, the same secret key was being used by default. If the users didn't set a custom value via environment variables in the `.env` file, that key was shared across different CKAN instances, making it easy to forge authentication requests. Users overriding the default secret key in their own `.env` file are not affected by this issue. Note that the legacy images (ckan/ckan) located in the main CKAN repo are not affected by this issue. The affected images are ckan/ckan-docker, (ckan/ckan-base images), okfn/docker-ckan (openknowledge/ckan-base and openknowledge/ckan-dev images) keitaroinc/docker-ckan (keitaro/ckan images).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22746">详情</a></td>
       </tr>
@@ -430,7 +446,7 @@
       <tr>
        <td>b692cf1b7ef4bcb577723a1557f34238</td>
        <td>CVE-2022-24895</td>
-       <td>2023-02-03 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 22:15:00</td>
        <td>Symfony is a PHP framework for web and console applications and a set of reusable PHP components. When authenticating users Symfony by default regenerates the session ID upon login, but preserves the rest of session attributes. Because this does not clear CSRF tokens upon login, this might enables same-site attackers to bypass the CSRF protection mechanism by performing an attack similar to a session-fixation. This issue has been fixed in the 4.4 branch.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24895">详情</a></td>
       </tr>
@@ -438,7 +454,7 @@
       <tr>
        <td>c9d6e0384e2b01c9b75eaae4adf2726e</td>
        <td>CVE-2022-24894</td>
-       <td>2023-02-03 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 22:15:00</td>
        <td>Symfony is a PHP framework for web and console applications and a set of reusable PHP components. The Symfony HTTP cache system, acts as a reverse proxy: It caches entire responses (including headers) and returns them to the clients. In a recent change in the `AbstractSessionListener`, the response might contain a `Set-Cookie` header. If the Symfony HTTP cache system is enabled, this response might bill stored and return to the next clients. An attacker can use this vulnerability to retrieve the victim's session. This issue has been patched and is available for branch 4.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24894">详情</a></td>
       </tr>
@@ -446,7 +462,7 @@
       <tr>
        <td>0bf70fad11024f3525fd565d406da63c</td>
        <td>CVE-2022-23498</td>
-       <td>2023-02-03 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 22:15:00</td>
        <td>Grafana is an open-source platform for monitoring and observability. When datasource query caching is enabled, Grafana caches all headers, including `grafana_session`. As a result, any user that queries a datasource where the caching is enabled can acquire another user’s session. To mitigate the vulnerability you can disable datasource query caching for all datasources. This issue has been patched in versions 9.2.10 and 9.3.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23498">详情</a></td>
       </tr>
@@ -454,7 +470,7 @@
       <tr>
        <td>fd4b549237833c64b8d756e601ec7467</td>
        <td>CVE-2023-25130</td>
-       <td>2023-02-03 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 21:15:00</td>
        <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was in a CNA pool that was not assigned to any issues during 2023. Notes: none.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25130">详情</a></td>
       </tr>
@@ -462,7 +478,7 @@
       <tr>
        <td>3e1b0abf20050f437a95e9a70535c91f</td>
        <td>CVE-2023-23940</td>
-       <td>2023-02-03 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:15:00</td>
        <td>OpenZeppelin Contracts for Cairo is a library for secure smart contract development written in Cairo for StarkNet, a decentralized ZK Rollup. `is_valid_eth_signature` is missing a call to `finalize_keccak` after calling `verify_eth_signature`. As a result, any contract using `is_valid_eth_signature` from the account library (such as the `EthAccount` preset) is vulnerable to a malicious sequencer. Specifically, the malicious sequencer would be able to bypass signature validation to impersonate an instance of these accounts. The issue has been patched in 0.6.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23940">详情</a></td>
       </tr>
@@ -470,7 +486,7 @@
       <tr>
        <td>28cd6f7113dadb1c7dd9f35e9aa42e20</td>
        <td>CVE-2023-23937</td>
-       <td>2023-02-03 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:15:00</td>
        <td>Pimcore is an Open Source Data & Experience Management Platform: PIM, MDM, CDP, DAM, DXP/CMS & Digital Commerce. The upload functionality for updating user profile does not properly validate the file content-type, allowing any authenticated user to bypass this security check by adding a valid signature (p.e. GIF89) and sending any invalid content-type. This could allow an authenticated attacker to upload HTML files with JS content that will be executed in the context of the domain. This issue has been patched in version 10.5.16.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23937">详情</a></td>
       </tr>
@@ -478,7 +494,7 @@
       <tr>
        <td>017f5e6e7856051232654497ed96a6bf</td>
        <td>CVE-2023-23933</td>
-       <td>2023-02-03 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:15:00</td>
        <td>OpenSearch Anomaly Detection identifies atypical data and receives automatic notifications. There is an issue with the application of document and field level restrictions in the Anomaly Detection plugin, where users with the Anomaly Detector role can read aggregated numerical data (e.g. averages, sums) of fields that are otherwise restricted to them. This issue only affects authenticated users who were previously granted read access to the indexes containing the restricted fields. This issue has been patched in versions 1.3.8 and 2.6.0. There are no known workarounds for this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23933">详情</a></td>
       </tr>
@@ -486,7 +502,7 @@
       <tr>
        <td>00cbfda58e393930fd4cf5766939e9b0</td>
        <td>CVE-2023-23925</td>
-       <td>2023-02-03 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:15:00</td>
        <td>Switcher Client is a JavaScript SDK to work with Switcher API which is cloud-based Feature Flag. Unsanitized input flows into Strategy match operation (EXIST), where it is used to build a regular expression. This may result in a Regular expression Denial of Service attack (reDOS). This issue has been patched in version 3.1.4. As a workaround, avoid using Strategy settings that use REGEX in conjunction with EXIST and NOT_EXIST operations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23925">详情</a></td>
       </tr>
@@ -494,7 +510,7 @@
       <tr>
        <td>c92e8726a2aca572a5922ca2f44f744e</td>
        <td>CVE-2023-22474</td>
-       <td>2023-02-03 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:15:00</td>
        <td>Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Parse Server uses the request header `x-forwarded-for` to determine the client IP address. If Parse Server doesn't run behind a proxy server, then a client can set this header and Parse Server will trust the value of the header. The incorrect client IP address will be used by various features in Parse Server. This allows to circumvent the security mechanism of the Parse Server option `masterKeyIps` by setting an allowed IP address as the `x-forwarded-for` header value. This issue has been patched in version 5.4.1. The mechanism to determine the client IP address has been rewritten. The correct IP address determination now requires to set the Parse Server option `trustProxy`.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22474">详情</a></td>
       </tr>
@@ -502,25 +518,9 @@
       <tr>
        <td>2eb2e4393fc08ea8412adf606868be16</td>
        <td>CVE-2013-10016</td>
-       <td>2023-02-03 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:15:00</td>
        <td>A vulnerability was found in fanzila WebFinance 0.5 and classified as critical. This issue affects some unknown processing of the file htdocs/admin/save_taxes.php. The manipulation of the argument id leads to sql injection. The name of the patch is 306f170ca2a8203ae3d8f51fb219ba9e05b945e1. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-220055.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2013-10016">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b4a1e254546b24136b0db16fdc78184e</td>
-       <td>CVE-2013-10015</td>
-       <td>2023-02-03 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in fanzila WebFinance 0.5 and classified as critical. This vulnerability affects unknown code of the file htdocs/admin/save_Contract_Signer_Role.php. The manipulation of the argument n/v leads to sql injection. The name of the patch is abad81af614a9ceef3f29ab22ca6bae517619e06. It is recommended to apply a patch to fix this issue. VDB-220054 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2013-10015">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2eceef383f4013ce855243da7f94103d</td>
-       <td>CVE-2023-24576</td>
-       <td>2023-02-03 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>EMC NetWorker may potentially be vulnerable to an unauthenticated remote code execution vulnerability in the Networker Client execution service (nsrexecd) when oldauth authentication method is used. An unauthenticated remote attacker could send arbitrary commands via RPC service to be executed on the host system with the privileges of the nsrexecd service, which runs with administrative privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24576">详情</a></td>
       </tr>
 
      </tbody>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>89664530b6650b4028675df612fe1210</td>
        <td>CVE-2022-4303</td>
-       <td>2023-02-03 20:26:33 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:26:33</td>
        <td>CIPHERCOIN WP_LIMIT_LOGIN_ATTEMPTS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=c8aa83035d9a4924a0f4acc880535a26">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>80a5a4ce22d248ce48c25dd9d01d45a4</td>
        <td>CVE-2023-24055</td>
-       <td>2023-02-03 20:26:27 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:26:27</td>
        <td>KEEPASS KEEPASS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=aeb6ff75bc9240f883972e722e067ce2">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>1819a5266b8723df1b2b5757dba73544</td>
        <td>CVE-2023-20010</td>
-       <td>2023-02-03 20:26:20 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:26:20</td>
        <td>CISCO UNIFIED_COMMUNICATIONS_MANAGER Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5eec33e5c6054d6a9f59f9581fae0a61">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>74f6c2368993b8c42e21c5d37a0c317c</td>
        <td>CVE-2022-4672</td>
-       <td>2023-02-03 20:26:15 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:26:15</td>
        <td>TIPSANDTRICKS-HQ WORDPRESS_SIMPLE_PAYPAL_SHOPPING_CART Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a87076f7054f44579844ecad4a0b97ce">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>6a6893f6a39005f69d38b69e7d8df9cd</td>
        <td>CVE-2022-3425</td>
-       <td>2023-02-03 20:26:09 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:26:09</td>
        <td>SUMO GOOGLE_ANALYTICATOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=0d85caa9e2814ed89a42679f5c94b20c">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>52e1e9996c711fa689df2d763ed79ea7</td>
        <td>CVE-2023-20026</td>
-       <td>2023-02-03 20:26:02 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:26:02</td>
        <td>CISCO Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=97ff23adce81473bb79d1378b524a525">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>a621af987fe07166501bfbbd5f247122</td>
        <td>CVE-2023-24056</td>
-       <td>2023-02-03 20:25:56 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:25:56</td>
        <td>PKGCONF PKGCONF Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=21e4ecbb08254571a8c3eb4609a76422">详情</a></td>
       </tr>
@@ -1838,7 +1838,7 @@
       <tr>
        <td>95c1564e1f30cdaf9196a54eb2393988</td>
        <td>CVE-2023-22884</td>
-       <td>2023-02-03 20:25:50 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:25:50</td>
        <td>APACHE Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a678fd7d26f6468f821e19c663c7f490">详情</a></td>
       </tr>
@@ -1846,7 +1846,7 @@
       <tr>
        <td>1c555f1bb0b56f64e7af0da34bcf4cb9</td>
        <td>CVE-2023-20045</td>
-       <td>2023-02-03 20:25:44 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:25:44</td>
        <td>CISCO Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=cd6020205cd34b88a162caa9a965014a">详情</a></td>
       </tr>
@@ -1854,7 +1854,7 @@
       <tr>
        <td>e1d831593122fddce8a03f73a1104552</td>
        <td>CVE-2023-20018</td>
-       <td>2023-02-03 20:25:37 <img src="imgs/new.gif" /></td>
+       <td>2023-02-03 20:25:37</td>
        <td>CISCO Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=42ef013a226f45bc9b45e57f66194bb5">详情</a></td>
       </tr>
