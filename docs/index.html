@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-05 23:23:42 -->
+<!-- RELEASE TIME : 2023-02-06 01:47:59 -->
 <html lang="zh-cn">
 
  <head>
@@ -294,7 +294,7 @@
       <tr>
        <td>9b0c6f64602b75aaaa38455b18191c00</td>
        <td>CVE-2023-22849</td>
-       <td>2023-02-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 21:15:00</td>
        <td>An improper neutralization of input during web page generation ('Cross-site Scripting') [CWE-79] vulnerability in Sling App CMS version 1.1.4 and prior may allow an authenticated remote attacker to perform a reflected cross-site scripting (XSS) attack in multiple features. Upgrade to Apache Sling App CMS >= 1.1.6</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22849">详情</a></td>
       </tr>
@@ -302,7 +302,7 @@
       <tr>
        <td>7f613f09f3b0de58595b5cdb0e666c27</td>
        <td>CVE-2022-45786</td>
-       <td>2023-02-04 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 21:15:00</td>
        <td>There are issues with the AGE drivers for Golang and Python that enable SQL injections to occur. This impacts AGE for PostgreSQL 11 & AGE for PostgreSQL 12, all versions up-to-and-including 1.1.0, when using those drivers. The fix is to update to the latest Golang and Python drivers in addition to the latest version of AGE that is used for PostgreSQL 11 or PostgreSQL 12. The update of AGE will add a new function to enable parameterization of the cypher() function, which, in conjunction with the driver updates, will resolve this issue. Background (for those who want more information): After thoroughly researching this issue, we found that due to the nature of the cypher() function, it was not easy to parameterize the values passed into it. This enabled SQL injections, if the developer of the driver wasn't careful. The developer of the Golang and Pyton drivers didn't fully utilize parameterization, likely because of this, thus enabling SQL injections. The obvious fix to this issue is to use parameterization in the drivers for all PG SQL queries. However, parameterizing all PG queries is complicated by the fact that the cypher() function call itself cannot be parameterized directly, as it isn't a real function. At least, not the parameters that would take the graph name and cypher query. The reason the cypher() function cannot have those values parameterized is because the function is a placeholder and never actually runs. The cypher() function node, created by PG in the query tree, is transformed and replaced with a query tree for the actual cypher query during the analyze phase. The problem is that parameters - that would be passed in and that the cypher() function transform needs to be resolved - are only resolved in the execution phase, which is much later. Since the transform of the cypher() function needs to know the graph name and cypher query prior to execution, they can't be passed as parameters. The fix that we are testing right now, and are proposing to use, is to create a function that will be called prior to the execution of the cypher() function transform. This new function will allow values to be passed as parameters for the graph name and cypher query. As this command will be executed prior to the cypher() function transform, its values will be resolved. These values can then be cached for the immediately following cypher() function transform to use. As added features, the cached values will store the calling session's pid, for validation. And, the cypher() function transform will clear this cached information after function invocation, regardless of whether it was used. This method will allow the parameterizing of the cypher() function indirectly and provide a way to lock out SQL injection attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45786">详情</a></td>
       </tr>
@@ -310,7 +310,7 @@
       <tr>
        <td>ec4eedd0444fbc85a54b5cb281f2bf58</td>
        <td>CVE-2023-25193</td>
-       <td>2023-02-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:15:00</td>
        <td>hb-ot-layout-gsubgpos.hh in HarfBuzz through 6.0.0 allows attackers to trigger O(n^2) growth via consecutive marks during the process of looking back for base glyphs when attaching marks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25193">详情</a></td>
       </tr>
@@ -318,7 +318,7 @@
       <tr>
        <td>161c38cee172d2cbecdd226ed8de1e7e</td>
        <td>CVE-2023-0678</td>
-       <td>2023-02-04 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 13:15:00</td>
        <td>Improper Authorization in GitHub repository phpipam/phpipam prior to v1.5.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0678">详情</a></td>
       </tr>
@@ -326,7 +326,7 @@
       <tr>
        <td>07bbc1f50ccce171ff39b7eb0e89d7b3</td>
        <td>CVE-2023-0677</td>
-       <td>2023-02-04 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 13:15:00</td>
        <td>Cross-site Scripting (XSS) - Reflected in GitHub repository phpipam/phpipam prior to v1.5.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0677">详情</a></td>
       </tr>
@@ -334,7 +334,7 @@
       <tr>
        <td>a180f95e97ae5a7723936e8153445929</td>
        <td>CVE-2023-0676</td>
-       <td>2023-02-04 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 13:15:00</td>
        <td>Cross-site Scripting (XSS) - Reflected in GitHub repository phpipam/phpipam prior to 1.5.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0676">详情</a></td>
       </tr>
@@ -342,7 +342,7 @@
       <tr>
        <td>1d9c2bdd6d689ecfe8b44f9878294d7d</td>
        <td>CVE-2023-0675</td>
-       <td>2023-02-04 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 08:15:00</td>
        <td>A vulnerability, which was classified as critical, was found in Calendar Event Management System 2.3.0. This affects an unknown part. The manipulation of the argument start/end leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-220197 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0675">详情</a></td>
       </tr>
@@ -350,7 +350,7 @@
       <tr>
        <td>18e69f049c8afcee147d833bc1e725c8</td>
        <td>CVE-2023-0674</td>
-       <td>2023-02-04 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 08:15:00</td>
        <td>A vulnerability, which was classified as problematic, has been found in XXL-JOB 2.3.1. Affected by this issue is some unknown functionality of the file /user/updatePwd of the component New Password Handler. The manipulation leads to cross-site request forgery. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-220196.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0674">详情</a></td>
       </tr>
@@ -358,7 +358,7 @@
       <tr>
        <td>1e8c85d30718dfa8d78bfdb5b015c434</td>
        <td>CVE-2023-0673</td>
-       <td>2023-02-04 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 08:15:00</td>
        <td>A vulnerability classified as critical was found in SourceCodester Online Eyewear Shop 1.0. Affected by this vulnerability is an unknown functionality of the file oews/products/view_product.php. The manipulation of the argument id leads to sql injection. The attack can be launched remotely. The associated identifier of this vulnerability is VDB-220195.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0673">详情</a></td>
       </tr>
@@ -366,7 +366,7 @@
       <tr>
        <td>06b7f3dabd072d374ae6c3735d9b094a</td>
        <td>CVE-2019-25101</td>
-       <td>2023-02-04 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 08:15:00</td>
        <td>A vulnerability classified as critical has been found in OnShift TurboGears 1.0.11.10. This affects an unknown part of the file turbogears/controllers.py of the component HTTP Header Handler. The manipulation leads to http response splitting. It is possible to initiate the attack remotely. Upgrading to version 1.0.11.11 is able to address this issue. The name of the patch is f68bbaba47f4474e1da553aa51564a73e1d92a84. It is recommended to upgrade the affected component. The associated identifier of this vulnerability is VDB-220059.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25101">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>480fe6328767828db9775a021dbf7532</td>
        <td>CVE-2018-25080</td>
-       <td>2023-02-04 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 08:15:00</td>
        <td>A vulnerability, which was classified as problematic, has been found in MobileDetect 2.8.31. This issue affects the function initLayoutType of the file examples/session_example.php of the component Example. The manipulation of the argument $_SERVER['PHP_SELF'] leads to cross site scripting. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 2.8.32 is able to address this issue. The name of the patch is 31818a441b095bdc4838602dbb17b8377d1e5cce. It is recommended to upgrade the affected component. The identifier VDB-220061 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2018-25080">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>57aad348ad6918eb900b3715eaa948ea</td>
        <td>CVE-2018-25079</td>
-       <td>2023-02-04 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 04:15:00</td>
        <td>A vulnerability was found in Segmentio is-url up to 1.2.2. It has been rated as problematic. Affected by this issue is some unknown functionality of the file index.js. The manipulation leads to inefficient regular expression complexity. The attack may be launched remotely. Upgrading to version 1.2.3 is able to address this issue. The name of the patch is 149550935c63a98c11f27f694a7c4a9479e53794. It is recommended to upgrade the affected component. VDB-220058 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2018-25079">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>a1b5defc68252fa238e7681879419d43</td>
        <td>CVE-2015-10072</td>
-       <td>2023-02-04 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 04:15:00</td>
        <td>A vulnerability classified as problematic was found in NREL api-umbrella-web 0.7.1. This vulnerability affects unknown code of the component Flash Message Handler. The manipulation leads to cross site scripting. The attack can be initiated remotely. Upgrading to version 0.8.0 is able to address this issue. The name of the patch is bcc0e922c61d30367678c8f17a435950969315cd. It is recommended to upgrade the affected component. The identifier of this vulnerability is VDB-220060.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2015-10072">详情</a></td>
       </tr>
@@ -398,7 +398,7 @@
       <tr>
        <td>522b9ce5d69c9674e25fbf1252984093</td>
        <td>CVE-2023-0671</td>
-       <td>2023-02-04 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 01:15:00</td>
        <td>Code Injection in GitHub repository froxlor/froxlor prior to 2.0.10.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0671">详情</a></td>
       </tr>
@@ -406,7 +406,7 @@
       <tr>
        <td>df4b5d5024618b95571fc69f30bb53b3</td>
        <td>CVE-2023-24806</td>
-       <td>2023-02-04 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 00:15:00</td>
        <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. Reason: This CVE has been rejected as it was incorrectly assigned. All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24806">详情</a></td>
       </tr>
@@ -414,7 +414,7 @@
       <tr>
        <td>142af0c24fbe1574b0b6b7491afa4e5d</td>
        <td>CVE-2013-10018</td>
-       <td>2023-02-04 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 00:15:00</td>
        <td>A vulnerability was found in fanzila WebFinance 0.5. It has been declared as critical. Affected by this vulnerability is an unknown functionality of the file htdocs/prospection/save_contact.php. The manipulation of the argument nom/prenom/email/tel/mobile/client/fonction/note leads to sql injection. The name of the patch is 165dfcaa0520ee0179b7c1282efb84f5a03df114. It is recommended to apply a patch to fix this issue. The identifier VDB-220057 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2013-10018">详情</a></td>
       </tr>
@@ -422,7 +422,7 @@
       <tr>
        <td>b60d1c6c41aabc4f72b754cd6544be26</td>
        <td>CVE-2013-10017</td>
-       <td>2023-02-04 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 00:15:00</td>
        <td>A vulnerability was found in fanzila WebFinance 0.5. It has been classified as critical. Affected is an unknown function of the file htdocs/admin/save_roles.php. The manipulation of the argument id leads to sql injection. The name of the patch is 6cfeb2f6b35c1b3a7320add07cd0493e4f752af3. It is recommended to apply a patch to fix this issue. The identifier of this vulnerability is VDB-220056.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2013-10017">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>23370e017a1a9a03972b3b3fcf26db0e</td>
        <td>CVE-2022-27596</td>
-       <td>2023-02-04 20:44:45 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:45</td>
        <td>QNAP Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7cf09c7c8b384b19abf77daf9e1a3001">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>0ba467fd82fe0dac723ed4db2fa8eb25</td>
        <td>CVE-2022-41145</td>
-       <td>2023-02-04 20:44:38 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:38</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a17e60f504ee40c782449f7046b2bfeb">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>61baf12a95859b74364a78bcdff70bfc</td>
        <td>CVE-2022-41148</td>
-       <td>2023-02-04 20:44:32 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:32</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=fa5a1b898fe94bacadf20eb3662f231c">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>bfdf022c5ba39f13f55dddb4367cb42d</td>
        <td>CVE-2022-41151</td>
-       <td>2023-02-04 20:44:26 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:26</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=358c39c307da4fe58fa61e904d4f64b3">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>4bca30a26332a6affc1d4e4f4e742cea</td>
        <td>CVE-2022-41144</td>
-       <td>2023-02-04 20:44:20 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:20</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ca8a6ffe8a394411aadd00dc8933d119">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>14c83ff6861fc5d163465e3d65aeff26</td>
        <td>CVE-2022-42369</td>
-       <td>2023-02-04 20:44:14 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:14</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=97c77cec908e4ad28b00dc82b52071a0">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>9bcf11352df65ead594c211fc6d4be1e</td>
        <td>CVE-2022-41147</td>
-       <td>2023-02-04 20:44:08 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:08</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=b1ea613c67734215a276b5fde95ee5e4">详情</a></td>
       </tr>
@@ -1838,7 +1838,7 @@
       <tr>
        <td>f97e08fb201cb0a84a7cad89bf296b27</td>
        <td>CVE-2022-42372</td>
-       <td>2023-02-04 20:44:01 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:44:01</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ece5a40831f24246ac7e185949e8013f">详情</a></td>
       </tr>
@@ -1846,7 +1846,7 @@
       <tr>
        <td>47c0bed0677ef5ee5041e9b601e03acd</td>
        <td>CVE-2022-41150</td>
-       <td>2023-02-04 20:43:55 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:43:55</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=be665f77a97a45aaa54a0bb093bd9c10">详情</a></td>
       </tr>
@@ -1854,7 +1854,7 @@
       <tr>
        <td>20766469da588f0ef6dc6a24b673bcb8</td>
        <td>CVE-2022-42374</td>
-       <td>2023-02-04 20:43:49 <img src="imgs/new.gif" /></td>
+       <td>2023-02-04 20:43:49</td>
        <td>TRACKER-SOFTWARE PDF-XCHANGE_EDITOR Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=884492764fc1411ead525c1dbd329f72">详情</a></td>
       </tr>
