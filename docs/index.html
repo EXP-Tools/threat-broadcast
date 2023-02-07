@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-07 06:29:11 -->
+<!-- RELEASE TIME : 2023-02-07 07:21:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8beff655de1e84a1bed33f42ceed337a</td>
+       <td>CVE-2022-42291</td>
+       <td>2023-02-07 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA GeForce Experience contains a vulnerability in the installer, where a user installing the NVIDIA GeForce Experience software may inadvertently delete data from a linked location, which may lead to data tampering. An attacker does not have explicit control over the exploitation of this vulnerability, which requires the user to explicitly launch the installer from the compromised directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42291">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eabacfaff30b88e667649dc8cd4aedb7</td>
+       <td>CVE-2022-31611</td>
+       <td>2023-02-07 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA GeForce Experience contains an uncontrolled search path vulnerability in all its client installers, where an attacker with user level privileges may cause the installer to load an arbitrary DLL when the installer is launched. A successful exploit of this vulnerability could lead to escalation of privileges and code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31611">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>89c9134b646c94f0b3d52a0735134a3e</td>
+       <td>CVE-2022-45854</td>
+       <td>2023-02-07 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>An improper check for unusual conditions in Zyxel NWA110AX firmware verisons prior to 6.50(ABTG.0)C0, which could allow a LAN attacker to cause a temporary denial-of-service (DoS) by sending crafted VLAN frames if the MAC address of the vulnerable AP were intercepted by the attacker.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45854">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66319cb192dcebeeb03ec96520cb1f8d</td>
+       <td>CVE-2022-45441</td>
+       <td>2023-02-07 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>A cross-site scripting (XSS) vulnerability in Zyxel NBG-418N v2 firmware versions prior to V1.00(AARP.13)C0, which could allow an attacker to store malicious scripts in the Logs page of the GUI on a vulnerable device. A successful XSS attack could force an authenticated user to execute the stored malicious scripts and then result in a denial-of-service (DoS) condition when the user visits the Logs page of the GUI on the device.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45441">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>efcfe5d5f178e9c7fd5a36929d072688</td>
+       <td>CVE-2022-38547</td>
+       <td>2023-02-07 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>A post-authentication command injection vulnerability in the CLI command of Zyxel ZyWALL/USG series firmware versions 4.20 through 4.72, VPN series firmware versions 4.30 through 5.32, USG FLEX series firmware versions 4.50 through 5.32, and ATP series firmware versions 4.32 through 5.32, which could allow an authenticated attacker with administrator privileges to execute OS commands.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38547">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5bd4561a6012d3a24b36899b1a3174c</td>
+       <td>CVE-2023-24827</td>
+       <td>2023-02-07 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>syft is a a CLI tool and Go library for generating a Software Bill of Materials (SBOM) from container images and filesystems. A password disclosure flaw was found in Syft versions v0.69.0 and v0.69.1. This flaw leaks the password stored in the SYFT_ATTEST_PASSWORD environment variable. The `SYFT_ATTEST_PASSWORD` environment variable is for the `syft attest` command to generate attested SBOMs for the given container image. This environment variable is used to decrypt the private key (provided with `syft attest --key <path-to-key-file>`) during the signing process while generating an SBOM attestation. This vulnerability affects users running syft that have the `SYFT_ATTEST_PASSWORD` environment variable set with credentials (regardless of if the attest command is being used or not). Users that do not have the environment variable `SYFT_ATTEST_PASSWORD` set are not affected by this issue. The credentials are leaked in two ways: in the syft logs when `-vv` or `-vvv` are used in the syft command (which is any log level >= `DEBUG`) and in the attestation or SBOM only when the `syft-json` format is used. Note that as of v0.69.0 any generated attestations by the `syft attest` command are uploaded to the OCI registry (if you have write access to that registry) in the same way `cosign attach` is done. This means that any attestations generated for the affected versions of syft when the `SYFT_ATTEST_PASSWORD` environment variable was set would leak credentials in the attestation payload uploaded to the OCI registry. This issue has been patched in commit `9995950c70` and has been released as v0.70.0. There are no workarounds for this vulnerability. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24827">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>753f0f34a802f47c6e6e0147e0b14c4c</td>
+       <td>CVE-2023-24808</td>
+       <td>2023-02-07 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>PDFio is a C library for reading and writing PDF files. In versions prior to 1.1.0 a denial of service (DOS) vulnerability exists in the pdfio parser. Crafted pdf files can cause the program to run at 100% utilization and never terminate. The pdf which causes this crash found in testing is about 28kb in size and was discovered via fuzzing. Anyone who uses this library either as a standalone binary or as a library can be DOSed when attempting to parse this type of file. Web servers or other automated processes which rely on this code to turn pdf submissions into plaintext can be DOSed when an attacker uploads the pdf. Please see the linked GHSA for an example pdf. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24808">详情</a></td>
+      </tr>
+
+      <tr>
        <td>af1da8f5983e3b7d7371dfc749bf8c14</td>
        <td>CVE-2023-23849</td>
        <td>2023-02-06 23:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-02-06 20:15:00 <img src="imgs/new.gif" /></td>
        <td>In ril, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07628614; Issue ID: ALPS07628614.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20613">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>beb449014d5ad310764b50c43abd8eba</td>
-       <td>CVE-2023-20612</td>
-       <td>2023-02-06 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>In ril, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07629571; Issue ID: ALPS07629571.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20612">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6a0ad0da8c57bffb165a4361e89037a4</td>
-       <td>CVE-2023-20611</td>
-       <td>2023-02-06 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>In gpu, there is a possible use after free due to a race condition. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07588678; Issue ID: ALPS07588678.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20611">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>61515ab9d8f29ff9ecdc390683f035e2</td>
-       <td>CVE-2023-20610</td>
-       <td>2023-02-06 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>In display drm, there is a possible memory corruption due to a race condition. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07363469; Issue ID: ALPS07363469.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20610">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>204832d8c7223511a2885911be6fb291</td>
-       <td>CVE-2022-47071</td>
-       <td>2023-02-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>In NVS365 V01, the background network test function can trigger command execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47071">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>884fd70fd061dff4d183ca06330fb09b</td>
-       <td>CVE-2020-36660</td>
-       <td>2023-02-06 17:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in paxswill EVE Ship Replacement Program 0.12.11. It has been rated as problematic. This issue affects some unknown processing of the file src/evesrp/views/api.py of the component User Information Handler. The manipulation leads to information disclosure. The attack may be initiated remotely. Upgrading to version 0.12.12 is able to address this issue. The name of the patch is 9e03f68e46e85ca9c9694a6971859b3ee66f0240. It is recommended to upgrade the affected component. The associated identifier of this vulnerability is VDB-220211.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36660">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>793a23031feadd9aaf64fef169d447a0</td>
-       <td>CVE-2022-48078</td>
-       <td>2023-02-06 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>pycdc commit 44a730f3a889503014fec94ae6e62d8401cb75e5 was discovered to contain a stack overflow via the component ASTree.cpp:BuildFromCode.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48078">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e19d9141017ef7178824d66d7ff6eef5</td>
-       <td>CVE-2023-24276</td>
-       <td>2023-02-06 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>TOTOlink A7100RU(V7.4cu.2313_B20191024) was discovered to contain a command injection vulnerability via the country parameter at setting/delStaticDhcpRules.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24276">详情</a></td>
       </tr>
 
      </tbody>
