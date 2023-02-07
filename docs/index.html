@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-07 21:21:57 -->
+<!-- RELEASE TIME : 2023-02-07 23:23:50 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,70 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2b6f1f8f583ba7a6d35a61dbee489ee4</td>
+       <td>CVE-2023-25194</td>
+       <td>2023-02-07 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>A possible security vulnerability has been identified in Apache Kafka Connect. This requires access to a Kafka Connect worker, and the ability to create/modify connectors on it with an arbitrary Kafka client SASL JAAS config and a SASL-based security protocol, which has been possible on Kafka Connect clusters since Apache Kafka 2.3.0. When configuring the connector via the Kafka Connect REST API, an authenticated operator can set the `sasl.jaas.config` property for any of the connector's Kafka clients to "com.sun.security.auth.module.JndiLoginModule", which can be done via the `producer.override.sasl.jaas.config`, `consumer.override.sasl.jaas.config`, or `admin.override.sasl.jaas.config` properties. This will allow the server to connect to the attacker's LDAP server and deserialize the LDAP response, which the attacker can use to execute java deserialization gadget chains on the Kafka connect server. Attacker can cause unrestricted deserialization of untrusted data (or) RCE vulnerability when there are gadgets in the classpath. Since Apache Kafka 3.0.0, users are allowed to specify these properties in connector configurations for Kafka Connect clusters running with out-of-the-box configurations. Before Apache Kafka 3.0.0, users may not specify these properties unless the Kafka Connect cluster has been reconfigured with a connector client override policy that permits them. Since Apache Kafka 3.4.0, we have added a system property ("-Dorg.apache.kafka.disallowed.login.modules") to disable the problematic login modules usage in SASL JAAS configuration. Also by default "com.sun.security.auth.module.JndiLoginModule" is disabled in Apache Kafka 3.4.0. We advise the Kafka Connect users to validate connector configurations and only allow trusted JNDI configurations. Also examine connector dependencies for vulnerable versions and either upgrade their connectors, upgrading that specific dependency, or removing the connectors as options for remediation. Finally, in addition to leveraging the "org.apache.kafka.disallowed.login.modules" system property, Kafka Connect users can also implement their own connector client config override policy, which can be used to control which Kafka client properties can be overridden directly in a connector config and which cannot.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25194">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c628660c0266f2486d7a12d2c0e306c</td>
+       <td>CVE-2023-0732</td>
+       <td>2023-02-07 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in SourceCodester Online Eyewear Shop 1.0 and classified as problematic. Affected by this vulnerability is an unknown functionality of the file oews/classes/Users.php of the component POST Request Handler. The manipulation of the argument firstname/middlename/lastname/lastname/contact leads to cross site scripting. The attack can be launched remotely. The identifier VDB-220369 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0732">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3ba18f67269ac18e74c7ad4dc8a8034f</td>
+       <td>CVE-2022-47412</td>
+       <td>2023-02-07 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Given a malicious document provided by an attacker, the ONLYOFFICE Workspace DMS is vulnerable to a stored (persistent, or "Type II") cross-site scripting (XSS) condition.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47412">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eca362f5adf2890ac3fc6d6809d19e52</td>
+       <td>CVE-2023-24814</td>
+       <td>2023-02-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>TYPO3 is a free and open source Content Management Framework released under the GNU General Public License. In affected versions the TYPO3 core component `GeneralUtility::getIndpEnv()` uses the unfiltered server environment variable `PATH_INFO`, which allows attackers to inject malicious content. In combination with the TypoScript setting `config.absRefPrefix=auto`, attackers can inject malicious HTML code to pages that have not been rendered and cached, yet. As a result, injected values would be cached and delivered to other website visitors (persisted cross-site scripting). Individual code which relies on the resolved value of `GeneralUtility::getIndpEnv('SCRIPT_NAME')` and corresponding usages (as shown below) are vulnerable as well. Additional investigations confirmed that at least Apache web server deployments using CGI (FPM, FCGI/FastCGI, and similar) are affected. However, there still might be the risk that other scenarios like nginx, IIS, or Apache/mod_php are vulnerable. The usage of server environment variable `PATH_INFO` has been removed from corresponding processings in `GeneralUtility::getIndpEnv()`. Besides that, the public property `TypoScriptFrontendController::$absRefPrefix` is encoded for both being used as a URI component and for being used as a prefix in an HTML context. This mitigates the cross-site scripting vulnerability. Users are advised to update to TYPO3 versions 8.7.51 ELTS, 9.5.40 ELTS, 10.4.35 LTS, 11.5.23 LTS and 12.2.0 which fix this problem. For users who are unable to patch in a timely manner the TypoScript setting `config.absRefPrefix` should at least be set to a static path value, instead of using auto - e.g. `config.absRefPrefix=/`. This workaround **does not fix all aspects of the vulnerability**, and is just considered to be an intermediate mitigation to the most prominent manifestation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24814">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45ebb6e6459c649dcd534037202516de</td>
+       <td>CVE-2023-24813</td>
+       <td>2023-02-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dompdf is an HTML to PDF converter written in php. Due to the difference in the attribute parser of Dompdf and php-svg-lib, an attacker can still call arbitrary URLs with arbitrary protocols. Dompdf parses the href attribute of `image` tags and respects `xlink:href` even if `href` is specified. However, php-svg-lib, which is later used to parse the svg file, parses the href attribute. Since `href` is respected if both `xlink:href` and `href` is specified, it's possible to bypass the protection on the Dompdf side by providing an empty `xlink:href` attribute. An attacker can exploit the vulnerability to call arbitrary URLs with arbitrary protocols if they provide an SVG file to the Dompdf. In PHP versions before 8.0.0, it leads to arbitrary unserialize, which will lead, at the very least, to arbitrary file deletion and might lead to remote code execution, depending on available classes. This vulnerability has been addressed in commit `95009ea98` which has been included in release version 2.0.3. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24813">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d21173fea47947a6b9d5c44005d99f8</td>
+       <td>CVE-2023-22735</td>
+       <td>2023-02-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zulip is an open-source team collaboration tool. In versions of zulip prior to commit `2f6c5a8` but after commit `04cf68b` users could upload files with arbitrary `Content-Type` which would be served from the Zulip hostname with `Content-Disposition: inline` and no `Content-Security-Policy` header, allowing them to trick other users into executing arbitrary Javascript in the context of the Zulip application. Among other things, this enables session theft. Only deployments which use the S3 storage (not the local-disk storage) are affected, and only deployments which deployed commit 04cf68b45ebb5c03247a0d6453e35ffc175d55da, which has only been in `main`, not any numbered release. Users affected should upgrade from main again to deploy this fix. Switching from S3 storage to the local-disk storage would nominally mitigate this, but is likely more involved than upgrading to the latest `main` which addresses the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22735">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>290003d4b211eb1cecf37359157203ce</td>
+       <td>CVE-2022-4883</td>
+       <td>2023-02-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libXpm. When processing files with .Z or .gz extensions, the library calls external programs to compress and uncompress files, relying on the PATH environment variable to find these programs, which could allow a malicious user to execute other programs by manipulating the PATH environment variable.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4883">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>edc359290906d32c336258f8e735ef74</td>
+       <td>CVE-2022-46285</td>
+       <td>2023-02-07 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libXpm. This issue occurs when parsing a file with a comment not closed; the end-of-file condition will not be detected, leading to an infinite loop and resulting in a Denial of Service in the application linked to the library.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46285">详情</a></td>
+      </tr>
+
+      <tr>
        <td>d0f26c5a8b9d65807714611f436500cd</td>
        <td>CVE-2022-24990</td>
        <td>2023-02-07 18:15:00 <img src="imgs/new.gif" /></td>
@@ -457,70 +521,6 @@
        <td>2023-02-07 11:15:00 <img src="imgs/new.gif" /></td>
        <td>An Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in paste allows remote attackers to place Javascript into SVG files. This issue affects: openSUSE paste paste version b57b9f87e303a3db9465776e657378e96845493b and prior versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21948">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1bf906312107b17f172130eed45bfcd</td>
-       <td>CVE-2023-23696</td>
-       <td>2023-02-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell Command Intel vPro Out of Band, versions prior to 4.3.1, contain an Improper Authorization vulnerability. A locally authenticated malicious users could potentially exploit this vulnerability in order to write arbitrary files to the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23696">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2cf17c4fc7ac49f80bedb16adecd77b3</td>
-       <td>CVE-2023-22643</td>
-       <td>2023-02-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>An Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability in libzypp-plugin-appdata of SUSE Linux Enterprise Server for SAP 15-SP3; openSUSE Leap 15.4 allows attackers that can trick users to use specially crafted REPO_ALIAS, REPO_TYPE or REPO_METADATA_PATH settings to execute code as root.This issue affects:SUSE Linux Enterprise Server for SAP 15-SP3libzypp-plugin-appdata versions prior to 1.0.1+git.20180426.openSUSE Leap 15.4libzypp-plugin-appdata versions prior to 1.0.1+git.20180426.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22643">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4f788e8297484aaa17f314fa0e7f2c70</td>
-       <td>CVE-2023-0706</td>
-       <td>2023-02-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, has been found in SourceCodester Medical Certificate Generator App 1.0. Affected by this issue is some unknown functionality of the file manage_record.php. The manipulation of the argument id leads to sql injection. The attack may be launched remotely. The identifier of this vulnerability is VDB-220340.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0706">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>96abb09c9f2238b34cc090a058ee7205</td>
-       <td>CVE-2022-31254</td>
-       <td>2023-02-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Incorrect Default Permissions vulnerability in rmt-server-regsharing service of SUSE Linux Enterprise Server for SAP 15, SUSE Linux Enterprise Server for SAP 15-SP1, SUSE Manager Server 4.1; openSUSE Leap 15.3, openSUSE Leap 15.4 allows local attackers with access to the _rmt user to escalate to root. This issue affects: SUSE Linux Enterprise Server for SAP 15 rmt-server versions prior to 2.10. SUSE Linux Enterprise Server for SAP 15-SP1 rmt-server versions prior to 2.10. SUSE Manager Server 4.1 rmt-server versions prior to 2.10. openSUSE Leap 15.3 rmt-server versions prior to 2.10. openSUSE Leap 15.4 rmt-server versions prior to 2.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31254">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e50dc73d59fde562a2526e4429882f00</td>
-       <td>CVE-2015-10074</td>
-       <td>2023-02-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in OpenSeaMap online_chart 1.2. It has been classified as problematic. Affected is the function init of the file index.php. The manipulation of the argument mtext leads to cross site scripting. It is possible to launch the attack remotely. Upgrading to version staging is able to address this issue. The name of the patch is 8649157158f921590d650e2d2f4bdf0df1017e9d. It is recommended to upgrade the affected component. VDB-220218 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2015-10074">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>47e35e8f82f44081383e11501e773ca3</td>
-       <td>CVE-2023-22643</td>
-       <td>2023-02-07 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>An Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability in libzypp-plugin-appdata of SUSE Linux Enterprise Server for SAP 15-SP3; openSUSE Leap 15.4 allows attackers that can trick users to use specially crafted REPO_ALIAS, REPO_TYPE or REPO_METADATA_PATH settings to execute code as root. This issue affects: SUSE Linux Enterprise Server for SAP 15-SP3 libzypp-plugin-appdata versions prior to 1.0.1+git.20180426. openSUSE Leap 15.4 libzypp-plugin-appdata versions prior to 1.0.1+git.20180426.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22643">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8beff655de1e84a1bed33f42ceed337a</td>
-       <td>CVE-2022-42291</td>
-       <td>2023-02-07 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>NVIDIA GeForce Experience contains a vulnerability in the installer, where a user installing the NVIDIA GeForce Experience software may inadvertently delete data from a linked location, which may lead to data tampering. An attacker does not have explicit control over the exploitation of this vulnerability, which requires the user to explicitly launch the installer from the compromised directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-42291">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eabacfaff30b88e667649dc8cd4aedb7</td>
-       <td>CVE-2022-31611</td>
-       <td>2023-02-07 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>NVIDIA GeForce Experience contains an uncontrolled search path vulnerability in all its client installers, where an attacker with user level privileges may cause the installer to load an arbitrary DLL when the installer is launched. A successful exploit of this vulnerability could lead to escalation of privileges and code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31611">详情</a></td>
       </tr>
 
      </tbody>
