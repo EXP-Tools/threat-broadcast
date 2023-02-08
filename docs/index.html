@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-08 21:22:10 -->
+<!-- RELEASE TIME : 2023-02-08 22:25:41 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e4c6eaa965f428a135f04865f0ddf2b1</td>
+       <td>CVE-2023-25167</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open source discussion platform. In affected versions a malicious user can cause a regular expression denial of service using a carefully crafted git URL. This issue is patched in the latest stable, beta and tests-passed versions of Discourse. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25167">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e116c1e46ef1cb841994f09303aa82a</td>
+       <td>CVE-2023-25166</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>formula is a math and string formula parser. In versions prior to 3.0.1 crafted user-provided strings to formula's parser might lead to polynomial execution time and a denial of service. Users should upgrade to 3.0.1+. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25166">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ab045098b2d00ccbbc89da6ecf3d8640</td>
+       <td>CVE-2023-25165</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Helm is a tool that streamlines installing and managing Kubernetes applications.`getHostByName` is a Helm template function introduced in Helm v3. The function is able to accept a hostname and return an IP address for that hostname. To get the IP address the function performs a DNS lookup. The DNS lookup happens when used with `helm install|upgrade|template` or when the Helm SDK is used to render a chart. Information passed into the chart can be disclosed to the DNS servers used to lookup the IP address. For example, a malicious chart could inject `getHostByName` into a chart in order to disclose values to a malicious DNS server. The issue has been fixed in Helm 3.11.1. Prior to using a chart with Helm verify the `getHostByName` function is not being used in a template to disclose any information you do not want passed to DNS servers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25165">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3f79967c3a3621fda7cb0d99df98ac3f</td>
+       <td>CVE-2023-25164</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tinacms is a Git-backed headless content management system with support for visual editing. Sites being built with @tinacms/cli >= 1.0.0 && < 1.0.9 which store sensitive values in the process.env variable are impacted. These values will be added in plaintext to the index.js file. If you're on a version prior to 1.0.0 this vulnerability does not affect you. If you are affected and your Tina-enabled website has sensitive credentials stored as environment variables (eg. Algolia API keys) you should rotate those keys immediately. This issue has been patched in @tinacms/cli@1.0.9. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25164">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>29286b44026b3184ca7c889e517cc455</td>
+       <td>CVE-2023-25151</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>opentelemetry-go-contrib is a collection of extensions for OpenTelemetry-Go. The v0.38.0 release of `go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp` uses the `httpconv.ServerRequest` function to annotate metric measurements for the `http.server.request_content_length`, `http.server.response_content_length`, and `http.server.duration` instruments. The `ServerRequest` function sets the `http.target` attribute value to be the whole request URI (including the query string)[^1]. The metric instruments do not "forget" previous measurement attributes when `cumulative` temporality is used, this means the cardinality of the measurements allocated is directly correlated with the unique URIs handled. If the query string is constantly random, this will result in a constant increase in memory allocation that can be used in a denial-of-service attack. This issue has been addressed in version 0.39.0. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25151">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4a1fc5288238a16124eadbd3291a0bdb</td>
+       <td>CVE-2023-25150</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nextcloud office/richdocuments is an office suit for the nextcloud server platform. In affected versions the Collabora integration can be tricked to provide access to any file without proper permission validation. As a result any user with access to Collabora can obtain the content of other users files. It is recommended that the Nextcloud Office App (Collabora Integration) is updated to 7.0.2 (Nextcloud 25), 6.3.2 (Nextcloud 24), 5.0.10 (Nextcloud 23), 4.2.9 (Nextcloud 21-22), or 3.8.7 (Nextcloud 15-20). There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25150">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f787631c9a4103b73a663f2521ae73b</td>
+       <td>CVE-2023-0751</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>When GELI reads a key file from standard input, it does not reuse the key file to initialize multiple providers at once resulting in the second and subsequent devices silently using a NULL key as the user key file. If a user only uses a key file without a user passphrase, the master key is encrypted with an empty key file allowing trivial recovery of the master key.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0751">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b56eff69fd8e16fea3ac37509f01197</td>
+       <td>CVE-2023-0401</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>A NULL pointer can be dereferenced when signatures are being verified on PKCS7 signed or signedAndEnveloped data. In case the hash algorithm used for the signature is known to the OpenSSL library but the implementation of the hash algorithm is not available the digest initialization will fail. There is a missing check for the return value from the initialization function which later leads to invalid usage of the digest API most likely leading to a crash. The unavailability of an algorithm can be caused by using FIPS enabled configuration of providers or more commonly by not loading the legacy provider. PKCS7 data is processed by the SMIME library calls and also by the time stamp (TS) library calls. The TLS implementation in OpenSSL does not call these functions however third party applications would be affected if they call these functions to verify signatures on untrusted data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0401">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8a1958196712c59faaa51b253250b2f9</td>
+       <td>CVE-2023-0286</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>There is a type confusion vulnerability relating to X.400 address processing inside an X.509 GeneralName. X.400 addresses were parsed as an ASN1_STRING but the public structure definition for GENERAL_NAME incorrectly specified the type of the x400Address field as ASN1_TYPE. This field is subsequently interpreted by the OpenSSL function GENERAL_NAME_cmp as an ASN1_TYPE rather than an ASN1_STRING. When CRL checking is enabled (i.e. the application sets the X509_V_FLAG_CRL_CHECK flag), this vulnerability may allow an attacker to pass arbitrary pointers to a memcmp call, enabling them to read memory contents or enact a denial of service. In most cases, the attack requires the attacker to provide both the certificate chain and CRL, neither of which need to have a valid signature. If the attacker only controls one of these inputs, the other input must already contain an X.400 address as a CRL distribution point, which is uncommon. As such, this vulnerability is most likely to only affect applications which have implemented their own functionality for retrieving CRLs over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0286">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c34694a09b29bba78e1aaae636aaa62</td>
+       <td>CVE-2023-0217</td>
+       <td>2023-02-08 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>An invalid pointer dereference on read can be triggered when an application tries to check a malformed DSA public key by the EVP_PKEY_public_check() function. This will most likely lead to an application crash. This function can be called on public keys supplied from untrusted sources which could allow an attacker to cause a denial of service attack. The TLS implementation in OpenSSL does not call this function but applications might call the function if there are additional security requirements imposed by standards such as FIPS 140-3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0217">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3926e5bf9ea52f22f4720520505bd6ab</td>
        <td>CVE-2023-0748</td>
        <td>2023-02-08 15:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-02-08 02:15:00 <img src="imgs/new.gif" /></td>
        <td>The Wicked Folders plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on the ajax_save_folder_order function in versions up to, and including, 2.18.16. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to invoke this function and perform actions intended for administrators such as modifying the folder structure maintained by the plugin.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0720">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>09f47e2d3e49435605c2621629d819f0</td>
-       <td>CVE-2023-0717</td>
-       <td>2023-02-08 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Wicked Folders plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on the ajax_delete_folder function in versions up to, and including, 2.18.16. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to invoke this function and perform actions intended for administrators such as modifying the folder structure maintained by the plugin.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0717">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9298a4ffa2d78b7a8177c20aa8cec24c</td>
-       <td>CVE-2023-0716</td>
-       <td>2023-02-08 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Wicked Folders plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on the ajax_edit_folder function in versions up to, and including, 2.18.16. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to invoke this function and perform actions intended for administrators such as modifying the folder structure maintained by the plugin.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0716">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db0ffae93962531e836a3cce9c0a7f46</td>
-       <td>CVE-2023-0715</td>
-       <td>2023-02-08 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Wicked Folders plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on the ajax_clone_folder function in versions up to, and including, 2.18.16. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to invoke this function and perform actions intended for administrators such as modifying the folder structure maintained by the plugin.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0715">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3402bdd394e1c06d041a63f75804aa9</td>
-       <td>CVE-2023-0711</td>
-       <td>2023-02-08 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Wicked Folders plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on the ajax_save_state function in versions up to, and including, 2.18.16. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to invoke this function and perform actions intended for administrators such as modifying the view state of the folder structure maintained by the plugin.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0711">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1100611d9e4036aaeaa2ced10505cb1d</td>
-       <td>CVE-2023-24828</td>
-       <td>2023-02-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Onedev is a self-hosted Git Server with CI/CD and Kanban. In versions prior to 7.9.12 the algorithm used to generate access token and password reset keys was not cryptographically secure. Existing normal users (or everyone if it allows self-registration) may exploit this to elevate privilege to obtain administrator permission. This issue is has been addressed in version 7.9.12. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24828">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>397fdf5f08a7a660103718d28e520ba8</td>
-       <td>CVE-2023-0718</td>
-       <td>2023-02-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Wicked Folders plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on the ajax_save_folder function in versions up to, and including, 2.18.16. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to invoke this function and perform actions intended for administrators such as modifying the folder structure maintained by the plugin.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0718">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f4372d435cb4e310b8eec6d4b64ad96</td>
-       <td>CVE-2022-45192</td>
-       <td>2023-02-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered on Microchip RN4870 1.43 devices. An attacker within BLE radio range can cause a denial of service by sending a cleartext encryption pause request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45192">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a859db1c83cf62b2c59d86862ca9dc9f</td>
-       <td>CVE-2022-45191</td>
-       <td>2023-02-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered on Microchip RN4870 1.43 devices. An attacker within BLE radio range can cause a denial of service by sending a pair confirm message with wrong values.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45191">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>507e57eccc00fb706e423ff926562113</td>
-       <td>CVE-2022-45190</td>
-       <td>2023-02-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered on Microchip RN4870 1.43 devices. An attacker within BLE radio range can bypass passkey entry in the legacy pairing of the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45190">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>acb09e96030373c33da9c18012129e1a</td>
-       <td>CVE-2022-40480</td>
-       <td>2023-02-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Nordic Semiconductor, Microchip Technology NRF5340-DK DT100112 was discovered to contain an issue which allows attackers to cause a Denial of Service (DoS) via a crafted ConReq packet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40480">详情</a></td>
       </tr>
 
      </tbody>
