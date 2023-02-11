@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-10 21:22:08 -->
+<!-- RELEASE TIME : 2023-02-11 13:27:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>0036b6a88492d925d854a83f63f00b97</td>
        <td>CVE-2023-25194</td>
-       <td>2023-02-09 08:10:41 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 08:10:41</td>
        <td>CVE-2023-25194：Apache Kafka Connect 远程代码执行漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=94ade46132097e89bbab1f4b2789de0c">详情</a></td>
       </tr>
@@ -38,7 +38,7 @@
       <tr>
        <td>73006a657cd754e903cda6398499f2c3</td>
        <td>CVE-2023-23477</td>
-       <td>2023-02-09 08:08:29 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 08:08:29</td>
        <td>CVE-2023-23477：IBM WebSphere Application Server远程代码执行漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=f557c1c8c4f4f2d5058720d7fd81fdc0">详情</a></td>
       </tr>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3fb49cb91ad7253a907eeb611e5aafb5</td>
+       <td>CVE-2023-0780</td>
+       <td>2023-02-11 02:20:00 <img src="imgs/new.gif" /></td>
+       <td>Improper Restriction of Rendered UI Layers or Frames in GitHub repository cockpit-hq/cockpit prior to 2.3.9-dev.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0780">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c35d2e312c17b161c21ba40c14311030</td>
+       <td>CVE-2023-25562</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>DataHub is an open-source metadata platform. In versions of DataHub prior to 0.8.45 Session cookies are only cleared on new sign-in events and not on logout events. Any authentication checks using the `AuthUtils.hasValidSessionCookie()` method could be bypassed by using a cookie from a logged out session, as a result any logged out session cookie may be accepted as valid and therefore lead to an authentication bypass to the system. Users are advised to upgrade. There are no known workarounds for this issue. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-083.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25562">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>68b0d67a63cb8674903060031ed32ad8</td>
+       <td>CVE-2023-25561</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>DataHub is an open-source metadata platform. In the event a system is using Java Authentication and Authorization Service (JAAS) authentication and that system is given a configuration which contains an error, the authentication for the system will fail open and allow an attacker to login using any username and password. The reason for this is that while an error is thrown in the `authenticateJaasUser` method it is swallowed without propagating the error. As a result of this issue unauthenticated users may gain access to the system. Users are advised to upgrade. There are no known workarounds for this issue. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-081.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25561">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd78ec027e6dbc8d83c723559a69ff9c</td>
+       <td>CVE-2023-25560</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>DataHub is an open-source metadata platform. The AuthServiceClient which is responsible for creation of new accounts, verifying credentials, resetting them or requesting access tokens, crafts multiple JSON strings using format strings with user-controlled data. This means that an attacker may be able to augment these JSON strings to be sent to the backend and that can potentially be abused by including new or colliding values. This issue may lead to an authentication bypass and the creation of system accounts, which effectively can lead to full system compromise. Users are advised to upgrade. There are no known workarounds for this vulnerability. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-080.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25560">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d8a5b68384773f64abd44d8f3a847fb5</td>
+       <td>CVE-2023-25559</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>DataHub is an open-source metadata platform. When not using authentication for the metadata service, which is the default configuration, the Metadata service (GMS) will use the X-DataHub-Actor HTTP header to infer the user the frontend is sending the request on behalf of. When the backends retrieves the header, its name is retrieved in a case-insensitive way. This case differential can be abused by an attacker to smuggle an X-DataHub-Actor header with different casing (eg: X-DATAHUB-ACTOR). This issue may lead to an authorization bypass by allowing any user to impersonate the system user account and perform any actions on its behalf. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-079.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25559">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c833e9c35d6f94f3162cc2eaa9489fd8</td>
+       <td>CVE-2023-25558</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>DataHub is an open-source metadata platform. When the DataHub frontend is configured to authenticate via SSO, it will leverage the pac4j library. The processing of the `id_token` is done in an unsafe manner which is not properly accounted for by the DataHub frontend. Specifically, if any of the id_token claims value start with the {#sb64} prefix, pac4j considers the value to be a serialized Java object and will deserialize it. This issue may lead to Remote Code Execution (RCE) in the worst case. Although a `RestrictedObjectInputStream` is in place, that puts some restriction on what classes can be deserialized, it still allows a broad range of java packages and potentially exploitable with different gadget chains. Users are advised to upgrade. There are no known workarounds. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-086.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25558">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5aaa5b3122292fcb457165edcb44c8f3</td>
+       <td>CVE-2023-25557</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>DataHub is an open-source metadata platform. The DataHub frontend acts as a proxy able to forward any REST or GraphQL requests to the backend. The goal of this proxy is to perform authentication if needed and forward HTTP requests to the DataHub Metadata Store (GMS). It has been discovered that the proxy does not adequately construct the URL when forwarding data to GMS, allowing external users to reroute requests from the DataHub Frontend to any arbitrary hosts. As a result attackers may be able to reroute a request from originating from the frontend proxy to any other server and return the result. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-076.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25557">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>df74b5a229cb9f778b6a7d2ebbc63a3f</td>
+       <td>CVE-2023-0776</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>Baicells Nova 436Q, Nova 430E, Nova 430I, and Neutrino 430 LTE TDD eNodeB devices with firmware through QRTB 2.12.7 are vulnerable to remote shell code exploitation via HTTP command injections. Commands are executed using pre-login execution and executed with root permissions. The following methods below have been tested and validated by a 3rd party analyst and has been confirmed exploitable special thanks to Rustam Amin for providing the steps to reproduce.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0776">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9fbecf376b6ce2e5661c5d08524aa94f</td>
+       <td>CVE-2022-46755</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>Wyse Management Suite 3.8 and below contain an improper access control vulnerability. A authenticated malicious admin user can edit general client policy for which the user is not authorized.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46755">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4189fbc610b5e35d277040eb06d30ee6</td>
+       <td>CVE-2022-46754</td>
+       <td>2023-02-11 01:23:00 <img src="imgs/new.gif" /></td>
+       <td>Wyse Management Suite 3.8 and below contain an improper access control vulnerability. A authenticated malicious admin user might access certain pro license features for which this admin is not authorized in order to configure user controlled external entities.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46754">详情</a></td>
+      </tr>
+
+      <tr>
        <td>151aa6a9617e7dde0e3fc0d62cfd9c86</td>
        <td>CVE-2022-46650</td>
        <td>2023-02-10 18:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-02-10 10:15:00 <img src="imgs/new.gif" /></td>
        <td>PowerPath Management Appliance with versions 3.3, 3.2*, 3.1 & 3.0* contains sensitive information disclosure vulnerability. An Authenticated admin user can able to exploit the issue and view sensitive information stored in the logs.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34452">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ea6a8a00e80234ecb6e40108639f4d47</td>
-       <td>CVE-2023-22832</td>
-       <td>2023-02-10 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>The ExtractCCDAAttributes Processor in Apache NiFi 1.2.0 through 1.19.1 does not restrict XML External Entity references. Flow configurations that include the ExtractCCDAAttributes Processor are vulnerable to malicious XML documents that contain Document Type Declarations with XML External Entity references. The resolution disables Document Type Declarations and disallows XML External Entity resolution in the ExtractCCDAAttributes Processor.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22832">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0fa3b3a2908ef2aed67689699be21d90</td>
-       <td>CVE-2023-22369</td>
-       <td>2023-02-10 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2023-25011. Reason: This candidate is a duplicate of CVE-2023-25011. Notes: All CVE users should reference CVE-2023-25011 instead of this candidate. All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22369">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e08e71664c75783f1bbcec8134856d08</td>
-       <td>CVE-2023-24689</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in Mojoportal v2.7.0.0 and below allows an authenticated attacker to list all css files inside the root path of the webserver via manipulation of the "s" parameter in /DesignTools/ManageSkin.aspx</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24689">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7ab8cfe07bbe49b43a5d7673616e331b</td>
-       <td>CVE-2023-24688</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in Mojoportal v2.7.0.0 allows an unauthenticated attacker to register a new user even if the Allow User Registrations feature is disabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24688">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0501b8ae781d8d767cd60505c97e876c</td>
-       <td>CVE-2023-24687</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Mojoportal v2.7.0.0 was discovered to contain a stored cross-site scripting (XSS) vulnerability in the Company Info Settings component. This vulnerability allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the txtCompanyName parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24687">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8e153a5c51122cfa77bda7efc48fed22</td>
-       <td>CVE-2023-24323</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Mojoportal v2.7 was discovered to contain an authenticated XML external entity (XXE) injection vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24323">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ced8b092d8fca0de289e128206037f4b</td>
-       <td>CVE-2023-24322</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>A reflected cross-site scripting (XSS) vulnerability in the FileDialog.aspx component of mojoPortal v2.7.0.0 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the ed and tbi parameters.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24322">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>05d7b7281eb01b37a8a86a94be7da0a7</td>
-       <td>CVE-2023-23912</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, found in EdgeRouters Version 2.0.9-hotfix.5 and earlier and UniFi Security Gateways (USG) Version 4.4.56 and earlier with their DHCPv6 prefix delegation set to dhcpv6-stateless or dhcpv6-stateful, allows a malicious actor directly connected to the WAN interface of an affected device to create a remote code execution vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23912">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5361a6076fd40d72c66d4d644fd4a22</td>
-       <td>CVE-2023-22799</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>A ReDoS based DoS vulnerability in the GlobalID <1.0.1 which could allow an attacker supplying a carefully crafted input can cause the regular expression engine to take an unexpected amount of time. All users running an affected release should either upgrade or use one of the workarounds immediately.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22799">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f9b7ea3c5019d42ca4fa69849a9ca79f</td>
-       <td>CVE-2023-22798</td>
-       <td>2023-02-09 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Prior to commit 51867e0d15a6d7f80d5b714fd0e9976b9c160bb0, https://github.com/brave/adblock-lists removed redirect interceptors on some websites like Facebook in which the redirect interceptor may have been there for security purposes. This could potentially cause open redirects on these websites. Brave's redirect interceptor removal feature is known as "debouncing" and is intended to remove unnecessary redirects that track users across the web.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22798">详情</a></td>
       </tr>
 
      </tbody>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>ee35f87c0cd682e927b4169db335fd68</td>
        <td>CVE-2023-0266</td>
-       <td>2023-02-09 20:34:29 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:34:29</td>
        <td>LINUX LINUX_KERNEL Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=88900801d7584b648f5bf696e7d44175">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>9e34dcdc7762cd0c53a274a5a7592cad</td>
        <td>CVE-2023-0471</td>
-       <td>2023-02-09 20:34:23 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:34:23</td>
        <td>GOOGLE CHROME Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5b8c32e288ee4786b76a46d69b334189">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>db25786762373086390e5c7ae127bc0b</td>
        <td>CVE-2023-0474</td>
-       <td>2023-02-09 20:34:16 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:34:16</td>
        <td>GOOGLE CHROME Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=382440909380406ea88868970011dccf">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>084852940cb503fdd111eed6a6b4891c</td>
        <td>CVE-2023-0240</td>
-       <td>2023-02-09 20:34:10 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:34:10</td>
        <td>LINUX LINUX_KERNEL Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ad3ae6f94be348608b714d6d438c8b67">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>167a38c6308e7f57fc256404ce7c9730</td>
        <td>CVE-2022-4335</td>
-       <td>2023-02-09 20:34:04 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:34:04</td>
        <td>GITLAB GITLAB Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=687fea1302ac4148a4399d83b7f4dae6">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>47e2a1f50c1041009ecf24b2751dfa1e</td>
        <td>CVE-2023-24830</td>
-       <td>2023-02-09 20:33:58 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:33:58</td>
        <td>APACHE IOTDB Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=872a005098ce41aa81f4d07211384f9d">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>72e081fb5149198ecc92f3f06383f0d5</td>
        <td>CVE-2023-0512</td>
-       <td>2023-02-09 20:33:52 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:33:52</td>
        <td>VIM VIM Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d49e7e134e7c4082b0de64f60283f244">详情</a></td>
       </tr>
@@ -1838,7 +1838,7 @@
       <tr>
        <td>5eefd3eae902f0c015d3b35541332c90</td>
        <td>CVE-2023-22242</td>
-       <td>2023-02-09 20:33:46 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:33:46</td>
        <td>ADOBE Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a52ba1dcef434dbbb12799bc76d58c70">详情</a></td>
       </tr>
@@ -1846,7 +1846,7 @@
       <tr>
        <td>ce032e27bea12433a4bee0e53f8c4e81</td>
        <td>CVE-2023-0473</td>
-       <td>2023-02-09 20:33:39 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:33:39</td>
        <td>GOOGLE CHROME Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=9a0b1f271ce746f1be36413359346083">详情</a></td>
       </tr>
@@ -1854,7 +1854,7 @@
       <tr>
        <td>f6d4a241270bb79a223044b9da044d10</td>
        <td>CVE-2023-0472</td>
-       <td>2023-02-09 20:33:33 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 20:33:33</td>
        <td>GOOGLE CHROME Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=c72f79e74b8446249f683a0c0d7a09a8">详情</a></td>
       </tr>
@@ -2078,7 +2078,7 @@
       <tr>
        <td>12b29d6d3096685ef15ca3cacc0434d0</td>
        <td>CVE-2022-46903</td>
-       <td>2023-02-09 04:29:22 <img src="imgs/new.gif" /></td>
+       <td>2023-02-09 04:29:22</td>
        <td>WebSoft HCM跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/75504">详情</a></td>
       </tr>
@@ -2268,6 +2268,70 @@
       </tr>
 
       <tr>
+       <td>40ff68ef570bb31b8ccd33bc3b564184</td>
+       <td>CVE-2023-0646</td>
+       <td>2023-02-02 15:17:39 </td>
+       <td>A vulnerability classified as critical was found in dst-admin 1.5.0. Affected by this vulnerability is an unknown functionality of the file /home/cavesConsole. The manipulation of the argument command leads to command injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-220033 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0646">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>58c8f8ede6676dec913f96a6eb470a32</td>
+       <td>CVE-2023-0643</td>
+       <td>2023-02-02 12:15:09 </td>
+       <td>Improper Handling of Additional Special Element in GitHub repository squidex/squidex prior to 7.4.0.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0643">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1f8c294764a19330977de249166965ec</td>
+       <td>CVE-2023-0642</td>
+       <td>2023-02-02 12:15:09 </td>
+       <td>Cross-Site Request Forgery (CSRF) in GitHub repository squidex/squidex prior to 7.4.0.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0642">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>60eff2971285fb5c846c86f239409e28</td>
+       <td>CVE-2023-0641</td>
+       <td>2023-02-02 09:15:08 </td>
+       <td>A vulnerability was found in PHPGurukul Employee Leaves Management System 1.0. It has been declared as problematic. Affected by this vulnerability is an unknown functionality of the file changepassword.php. The manipulation of the argument newpassword/confirmpassword leads to weak password requirements. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-220021 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0641">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d7012726a9b4776f824eca6887a3d43</td>
+       <td>CVE-2023-0640</td>
+       <td>2023-02-02 09:15:08 </td>
+       <td>A vulnerability was found in TRENDnet TEW-652BRP 3.04b01. It has been classified as critical. Affected is an unknown function of the file ping.ccp of the component Web Interface. The manipulation leads to command injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-220020.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0640">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9c8b2a3632aa9b86603f5ce92bbfb3a</td>
+       <td>CVE-2023-0639</td>
+       <td>2023-02-02 09:15:08 </td>
+       <td>A vulnerability was found in TRENDnet TEW-652BRP 3.04b01 and classified as problematic. This issue affects some unknown processing of the file get_set.ccp of the component Web Management Interface. The manipulation of the argument nextPage leads to cross site scripting. The attack may be initiated remotely. The associated identifier of this vulnerability is VDB-220019.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0639">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bd78f98d16c881b3c4e6afab86273c46</td>
+       <td>CVE-2023-0638</td>
+       <td>2023-02-02 09:15:08 </td>
+       <td>A vulnerability has been found in TRENDnet TEW-811DRU 1.0.10.0 and classified as critical. This vulnerability affects unknown code of the component Web Interface. The manipulation leads to command injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-220018 is the identifier assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0638">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>56581af66a0abdd38b65487a1d2e5c84</td>
+       <td>CVE-2023-0637</td>
+       <td>2023-02-02 09:15:08 </td>
+       <td>A vulnerability, which was classified as critical, was found in TRENDnet TEW-811DRU 1.0.10.0. This affects an unknown part of the file wan.asp of the component Web Management Interface. The manipulation leads to memory corruption. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-220017 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0637">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fb5980e3eeb820c59632b7572969a802</td>
        <td>CVE-2023-25015</td>
        <td>2023-02-02 04:15:08 </td>
@@ -2316,6 +2380,14 @@
       </tr>
 
       <tr>
+       <td>8260bb354aa2803b5b87c4fc044ce7c4</td>
+       <td>CVE-2023-0619</td>
+       <td>2023-02-01 20:15:10 </td>
+       <td>The Kraken.io Image Optimizer plugin for WordPress is vulnerable to authorization bypass due to a missing capability check on its AJAX actions in versions up to, and including, 2.6.8. This makes it possible for authenticated attackers, with subscriber-level permissions and above, to reset image optimizations.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0619">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5811853964678b749ab5a4fec7f94a16</td>
        <td>CVE-2023-23969</td>
        <td>2023-02-01 19:15:08 </td>
@@ -2356,6 +2428,14 @@
       </tr>
 
       <tr>
+       <td>5a0c0234d1f268e1d2116cb816afd189</td>
+       <td>CVE-2023-0618</td>
+       <td>2023-02-01 17:15:10 </td>
+       <td>A vulnerability was found in TRENDnet TEW-652BRP 3.04B01. It has been declared as critical. This vulnerability affects unknown code of the file cfg_op.ccp of the component Web Service. The manipulation leads to memory corruption. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-219958 is the identifier assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0618">详情</a></td>
+      </tr>
+
+      <tr>
        <td>0030ccf03c318be6b3ab9bf7b2a72899</td>
        <td>CVE-2023-24997</td>
        <td>2023-02-01 15:15:08 </td>
@@ -2369,86 +2449,6 @@
        <td>2023-02-01 14:15:09 </td>
        <td>Last Yard 22.09.8-1 is vulnerable to Cross-origin resource sharing (CORS).</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-47717">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5053d5cbda941f501d7e7d2214861626</td>
-       <td>CVE-2022-47715</td>
-       <td>2023-02-01 14:15:09 </td>
-       <td>In Last Yard 22.09.8-1, the cookie can be stolen via via unencrypted traffic.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-47715">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5868f257cd6ecf541646f51e7c015df2</td>
-       <td>CVE-2023-24610</td>
-       <td>2023-02-01 14:15:09 </td>
-       <td>NOSH 4a5cfdb allows remote authenticated users to execute PHP arbitrary code via the &quot;practice logo&quot; upload feature. The client-side checks can be bypassed. This may allow attackers to steal Protected Health Information because the product is for health charting.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24610">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84c1ac4c55be08df657b3e0fdcd0bae5</td>
-       <td>CVE-2023-23126</td>
-       <td>2023-02-01 14:15:09 </td>
-       <td>** DISPUTED ** Connectwise Automate 2022.11 is vulnerable to Clickjacking. The login screen can be iframed and used to manipulate users to perform unintended actions. NOTE: the vendor's position is that a Content-Security-Policy HTTP response header is present to block this attack.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-23126">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b341832bfc45558e663538da58c3aaa0</td>
-       <td>CVE-2022-47714</td>
-       <td>2023-02-01 14:15:08 </td>
-       <td>Last Yard 22.09.8-1 does not enforce HSTS headers</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-47714">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>30af9caec984014fb42314d63d938020</td>
-       <td>CVE-2023-0610</td>
-       <td>2023-02-01 12:15:09 </td>
-       <td>Improper Authorization in GitHub repository wallabag/wallabag prior to 2.5.3.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0610">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dee74276b6750e687d36283e84e4f10d</td>
-       <td>CVE-2023-24977</td>
-       <td>2023-02-01 10:15:10 </td>
-       <td>Out-of-bounds Read vulnerability in Apache Software Foundation Apache InLong.This issue affects Apache InLong: from 1.1.0 through 1.5.0. Users are advised to upgrade to Apache InLong's latest version or cherry-pick https://github.com/apache/inlong/pull/7214 https://github.com/apache/inlong/pull/7214 to solve it.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24977">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>205689baa145f19df6f6849168363e85</td>
-       <td>CVE-2023-0608</td>
-       <td>2023-02-01 06:15:09 </td>
-       <td>Cross-site Scripting (XSS) - DOM in GitHub repository microweber/microweber prior to 1.3.2.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0608">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>22dbdfbfa2b87ab9ac3843ac6846dd5d</td>
-       <td>CVE-2023-20856</td>
-       <td>2023-02-01 03:15:08 </td>
-       <td>VMware vRealize Operations (vROps) contains a CSRF bypass vulnerability. A malicious user could execute actions on the vROps platform on behalf of the authenticated victim user.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-20856">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f2cb9da32377008d9c195ddfac173109</td>
-       <td>CVE-2023-0587</td>
-       <td>2023-02-01 03:15:08 </td>
-       <td>A file upload vulnerability in exists in Trend Micro Apex One server build 11110. Using a malformed Content-Length header in an HTTP PUT message sent to URL /officescan/console/html/cgi/fcgiOfcDDA.exe, an unauthenticated remote attacker can upload arbitrary files to the SampleSubmission directory (i.e., \PCCSRV\TEMP\SampleSubmission) on the server. The attacker can upload a large number of large files to fill up the file system on which the Apex One server is installed.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0587">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d82d5f373c45b2d402e1107eada775f9</td>
-       <td>CVE-2023-0454</td>
-       <td>2023-02-01 03:15:08 </td>
-       <td>OrangeScrum version 2.0.11 allows an authenticated external attacker to delete arbitrary local files from the server. This is possible because the application uses an unsanitized attacker-controlled parameter to construct an internal path.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0454">详情</a></td>
       </tr>
 
      </tbody>
