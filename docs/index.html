@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-14 14:25:34 -->
+<!-- RELEASE TIME : 2023-02-14 17:25:48 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b9c1d0697e5c5580409426aaad49c60f</td>
+       <td>CVE-2023-25149</td>
+       <td>2023-02-14 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>TimescaleDB, an open-source time-series SQL database, has a privilege escalation vulnerability in versions 2.8.0 through 2.9.2. During installation, TimescaleDB creates a telemetry job that is runs as the installation user. The queries run as part of the telemetry data collection were not run with a locked down `search_path`, allowing malicious users to create functions that would be executed by the telemetry job, leading to privilege escalation. In order to be able to take advantage of this vulnerability, a user would need to be able to create objects in a database and then get a superuser to install TimescaleDB into their database. When TimescaleDB is installed as trusted extension, non-superusers can install the extension without help from a superuser. Version 2.9.3 fixes this issue. As a mitigation, the `search_path` of the user running the telemetry job can be locked down to not include schemas writable by other users. The vulnerability is not exploitable on instances in Timescale Cloud and Managed Service for TimescaleDB due to additional security provisions in place on those platforms.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25149">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>73fe9370e422a519f22b1fd5059dbbc9</td>
+       <td>CVE-2023-25141</td>
+       <td>2023-02-14 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Apache Sling JCR Base < 3.1.12 has a critical injection vulnerability when running on old JDK versions (JDK 1.8.191 or earlier) through utility functions in RepositoryAccessor. The functions getRepository and getRepositoryFromURL allow an application to access data stored in a remote location via JDNI and RMI. Users of Apache Sling JCR Base are recommended to upgrade to Apache Sling JCR Base 3.1.12 or later, or to run on a more recent JDK.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c05020df9bdc149466b8074637ddcb71</td>
+       <td>CVE-2023-0827</td>
+       <td>2023-02-14 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - Stored in GitHub repository pimcore/pimcore prior to 1.5.17.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0827">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5fae230e6f618305c8524a9d7c96d727</td>
        <td>CVE-2023-25065</td>
        <td>2023-02-14 12:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-02-13 23:15:00 <img src="imgs/new.gif" /></td>
        <td>LibTIFF 4.4.0 has an out-of-bounds write in tiffcrop in libtiff/tif_unix.c:368, invoked by tools/tiffcrop.c:2903 and tools/tiffcrop.c:6778, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit 33aee127.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0801">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cda6efb9927132fa7029718b19e2923a</td>
-       <td>CVE-2023-0800</td>
-       <td>2023-02-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>LibTIFF 4.4.0 has an out-of-bounds write in tiffcrop in tools/tiffcrop.c:3502, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit 33aee127.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0800">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>10b7b789703463ffa84fd5ca583f3de1</td>
-       <td>CVE-2023-0799</td>
-       <td>2023-02-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>LibTIFF 4.4.0 has an out-of-bounds read in tiffcrop in tools/tiffcrop.c:3701, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit afaabc3e.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0799">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dc24456e1eacbe04d8bb473a9f379613</td>
-       <td>CVE-2023-0798</td>
-       <td>2023-02-13 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>LibTIFF 4.4.0 has an out-of-bounds read in tiffcrop in tools/tiffcrop.c:3400, allowing attackers to cause a denial-of-service via a crafted tiff file. For users that compile libtiff from sources, the fix is available with commit afaabc3e.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0798">详情</a></td>
       </tr>
 
      </tbody>
