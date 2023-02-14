@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-14 18:30:03 -->
+<!-- RELEASE TIME : 2023-02-14 20:25:52 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7db1e632b7a765542e5deb3e247da314</td>
+       <td>CVE-2023-25571</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Backstage is an open platform for building developer portals. `@backstage/catalog-model` prior to version 1.2.0, `@backstage/core-components` prior to 0.12.4, and `@backstage/plugin-catalog-backend` prior to 1.7.2 are affected by a cross-site scripting vulnerability. This vulnerability allows a malicious actor with access to add or modify content in an instance of the Backstage software catalog to inject script URLs in the entities stored in the catalog. If users of the catalog then click on said URLs, that can lead to an XSS attack. This vulnerability has been patched in both the frontend and backend implementations. The default `Link` component from `@backstage/core-components` version 1.2.0 and greater will now reject `javascript:` URLs, and there is a global override of `window.open` to do the same. In addition, the catalog model v0.12.4 and greater as well as the catalog backend v1.7.2 and greater now has additional validation built in that prevents `javascript:` URLs in known annotations. As a workaround, the general practice of limiting access to modifying catalog content and requiring code reviews greatly help mitigate this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25571">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7360b26161da40b4446eb6f4b7981562</td>
+       <td>CVE-2023-25567</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GSS-NTLMSSP, a mechglue plugin for the GSSAPI library that implements NTLM authentication, has an out-of-bounds read when decoding target information prior to version 1.2.0. The length of the `av_pair` is not checked properly for two of the elements which can trigger an out-of-bound read. The out-of-bounds read can be triggered via the main `gss_accept_sec_context` entry point and could cause a denial-of-service if the memory is unmapped. The issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25567">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cb8d64f665ee539b40fcf43dfa3b8fdc</td>
+       <td>CVE-2023-25566</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, a memory leak can be triggered when parsing usernames which can trigger a denial-of-service. The domain portion of a username may be overridden causing an allocated memory area the size of the domain name to be leaked. An attacker can leak memory via the main `gss_accept_sec_context` entry point, potentially causing a denial-of-service. This issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25566">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fe6a55fb37b68dfa368760dfd15e2707</td>
+       <td>CVE-2023-25565</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, an incorrect free when decoding target information can trigger a denial of service. The error condition incorrectly assumes the `cb` and `sh` buffers contain a copy of the data that needs to be freed. However, that is not the case. This vulnerability can be triggered via the main `gss_accept_sec_context` entry point. This will likely trigger an assertion failure in `free`, causing a denial-of-service. This issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25565">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3985bbdab99848e59ee4efa755bb05ed</td>
+       <td>CVE-2023-25564</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, memory corruption can be triggered when decoding UTF16 strings. The variable `outlen` was not initialized and could cause writing a zero to an arbitrary place in memory if `ntlm_str_convert()` were to fail, which would leave `outlen` uninitialized. This can lead to a denial of service if the write hits unmapped memory or randomly corrupts a byte in the application memory space. This vulnerability can trigger an out-of-bounds write, leading to memory corruption. This vulnerability can be triggered via the main `gss_accept_sec_context` entry point. This issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25564">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>59611b7db7424875c412373c46e9adba</td>
+       <td>CVE-2023-25563</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, multiple out-of-bounds reads when decoding NTLM fields can trigger a denial of service. A 32-bit integer overflow condition can lead to incorrect checks of consistency of length of internal buffers. Although most applications will error out before accepting a singe input buffer of 4GB in length this could theoretically happen. This vulnerability can be triggered via the main `gss_accept_sec_context` entry point if the application allows tokens greater than 4GB in length. This can lead to a large, up to 65KB, out-of-bounds read which could cause a denial-of-service if it reads from unmapped memory. Version 1.2.0 contains a patch for the out-of-bounds reads.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25563">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>70b0ba1a03d3607ff18851d98b7bb104</td>
+       <td>CVE-2023-22943</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Add-on Builder (AoB) versions below 4.1.2 and the Splunk CloudConnect SDK versions below 3.1.3, requests to third-party APIs through the REST API Modular Input incorrectly revert to using HTTP to connect after a failure to connect over HTTPS occurs. The vulnerability affects AoB and apps that AoB generates when using the REST API Modular Input functionality through its user interface. The vulnerability also potentially affects third-party apps and add-ons that call the *cloudconnectlib.splunktacollectorlib.cloud_connect_mod_input* Python class directly.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22943">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd1c953afb8c8b7b9fd87deccd3c2dbe</td>
+       <td>CVE-2023-22942</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 8.1.13, 8.2.10, and 9.0.4, a cross-site request forgery in the Splunk Secure Gateway (SSG) app in the ‘kvstore_client’ REST endpoint lets a potential attacker update SSG [App Key Value Store (KV store)](https://docs.splunk.com/Documentation/Splunk/latest/Admin/AboutKVstore) collections using an HTTP GET request. SSG is a Splunk-built app that comes with Splunk Enterprise. The vulnerability affects instances with SSG and Splunk Web enabled.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22942">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c549ff07a05eff3c7334a6a038f37bc8</td>
+       <td>CVE-2023-22941</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 8.1.13, 8.2.10, and 9.0.4, an improperly-formatted ‘INGEST_EVAL’ parameter in a [Field Transformation](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Managefieldtransforms) crashes the Splunk daemon (splunkd).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22941">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>27b1db9aa314aa1f6c37361f7339c1f5</td>
+       <td>CVE-2023-22940</td>
+       <td>2023-02-14 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 8.1.13, 8.2.10, and 9.0.4, aliases of the ‘collect’ search processing language (SPL) command, including ‘summaryindex’, ‘sumindex’, ‘stash’,’ mcollect’, and ‘meventcollect’, were not designated as safeguarded commands. The commands could potentially allow for the exposing of data to a summary index that unprivileged users could access. The vulnerability requires a higher privileged user to initiate a request within their browser, and only affects instances with Splunk Web enabled.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22940">详情</a></td>
+      </tr>
+
+      <tr>
        <td>01d6e3bc48c0788617d9d5682aa8a654</td>
        <td>CVE-2023-25576</td>
        <td>2023-02-14 16:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-02-14 11:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability has been identified in Tecnomatix Plant Simulation (All versions < V2201.0006). The affected application contains an out of bounds write past the end of an allocated buffer while parsing a specially crafted SPP file. This could allow an attacker to execute code in the context of the current process. (ZDI-CAN-19814)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24992">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9244af703cc19789f8cc4349eb9b6832</td>
-       <td>CVE-2023-25758</td>
-       <td>2023-02-14 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>Onekey Touch devices through 4.0.0 and Onekey Mini devices through 2.10.0 allow man-in-the-middle attackers to obtain the seed phase. The man-in-the-middle access can only be obtained after disassembling a device (i.e., here, "man-in-the-middle" does not refer to the attacker's position on an IP network). NOTE: the vendor states that "our hardware team has updated the security patch without anyone being affected."</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25758">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d93c1d30beca640e64037a2e6fe9b9da</td>
-       <td>CVE-2023-25066</td>
-       <td>2023-02-14 06:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in FolioVision FV Flowplayer Video Player plugin <= 7.5.30.7212 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c1a06aae2a475e905e39b1fa199715f0</td>
-       <td>CVE-2022-43469</td>
-       <td>2023-02-14 06:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Orchestrated Corona Virus (COVID-19) Banner & Live Data plugin <= 1.7.0.6 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43469">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>94e00df5a24b7aee453f91f23fe29f0f</td>
-       <td>CVE-2023-25614</td>
-       <td>2023-02-14 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>SAP NetWeaver AS ABAP (BSP Framework) application - versions 700, 701, 702, 731, 740, 750, 751, 752, 753, 754, 755, 756, 757, allow an unauthenticated attacker to inject the code that can be executed by the application over the network. On successful exploitation it can gain access to the sensitive information which leads to a limited impact on the confidentiality and the integrity of the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25614">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8586f1d35d5be538d623a4be22ad259f</td>
-       <td>CVE-2023-24530</td>
-       <td>2023-02-14 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>SAP BusinessObjects Business Intelligence Platform (CMC) - versions 420, 430, allows an authenticated admin user to upload malicious code that can be executed by the application over the network. On successful exploitation, attacker can perform operations that may completely compromise the application causing high impact on confidentiality, integrity and availability of the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24530">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33802e04be4d15db13ed08632f704fd3</td>
-       <td>CVE-2023-24529</td>
-       <td>2023-02-14 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>Due to lack of proper input validation, BSP application (CRM_BSP_FRAME) - versions 700, 701, 702, 731, 740, 750, 751, 752, 75C, 75D, 75E, 75F, 75G, 75H, allow malicious inputs from untrusted sources, which can be leveraged by an attacker to execute a Reflected Cross-Site Scripting (XSS) attack. As a result, an attacker may be able to hijack a user session, read and modify some sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24529">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>813eba60576c6165285fba83d20b90a7</td>
-       <td>CVE-2023-24528</td>
-       <td>2023-02-14 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>SAP Fiori apps for Travel Management in SAP ERP (My Travel Requests) - version 600, allows an authenticated attacker to exploit a certain misconfigured application endpoint to view sensitive data. This endpoint is normally exposed over the network and successful exploitation can lead to exposure of data like travel documents.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24528">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>514c8806410f22101611e8b4249e1c3c</td>
-       <td>CVE-2023-24525</td>
-       <td>2023-02-14 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>SAP CRM WebClient UI - versions WEBCUIF 748, 800, 801, S4FND 102, 103, does not sufficiently encode user-controlled inputs, resulting in Cross-Site Scripting (XSS) vulnerability. On successful exploitation an authenticated attacker can cause limited impact on confidentiality of the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24525">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>639339e41c3a230bf11885d55aee38bb</td>
-       <td>CVE-2023-24524</td>
-       <td>2023-02-14 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>SAP S/4 HANA Map Treasury Correspondence Format Data does not perform necessary authorization check for an authenticated user, resulting in escalation of privileges. This could allow an attacker to delete the data with a high impact to availability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24524">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f7a04e9e9c1688989db38bf46432a4a9</td>
-       <td>CVE-2023-24523</td>
-       <td>2023-02-14 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>An attacker authenticated as a non-admin user with local access to a server port assigned to the SAP Host Agent (Start Service) - versions 7.21, 7.22, can submit a crafted ConfigureOutsideDiscovery request with an operating system command which will be executed with administrator privileges. The OS command can read or modify any user or system data and can make the system unavailable.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24523">详情</a></td>
       </tr>
 
      </tbody>
