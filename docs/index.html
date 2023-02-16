@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-16 15:26:37 -->
+<!-- RELEASE TIME : 2023-02-16 17:23:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,22 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6a8d2972cbf526b98c79b7ed84e8436d</td>
+       <td>CVE-2022-43969</td>
+       <td>2023-02-16 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Ricoh mp_c4504ex devices with firmware 1.06 mishandle credentials.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43969">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa8529d7b6ecf11e0b3801b59f94cc8d</td>
+       <td>CVE-2022-38731</td>
+       <td>2023-02-16 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Qaelum DOSE 18.08 through 21.1 before 21.2 allows Directory Traversal via the loadimages name parameter. It allows a user to specify an arbitrary location on the server's filesystem from which to load an image. (Only images are displayed to the attacker. All other files are loaded but not displayed.) The Content-Type response header reflects the actual content type of the file being requested. This allows an attacker to enumerate files on the local system. Additionally, remote resources can be requested via a UNC path, allowing an attacker to coerce authentication out from the server to the attackers machine.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38731">详情</a></td>
+      </tr>
+
+      <tr>
        <td>36d07e6b794fc28358a23bfd56390369</td>
        <td>CVE-2023-0862</td>
        <td>2023-02-16 10:15:00 <img src="imgs/new.gif" /></td>
@@ -505,22 +521,6 @@
        <td>2023-02-15 18:15:00 <img src="imgs/new.gif" /></td>
        <td>LS ELECTRIC XBC-DN32U with operating system version 01.80 has improper access control to its read prohibition feature. This could allow a remote attacker to remotely set the feature to lock users out of reading data from the device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22805">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ecde911eaf22db2645315d9fc3509c5f</td>
-       <td>CVE-2023-22804</td>
-       <td>2023-02-15 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>LS ELECTRIC XBC-DN32U with operating system version 01.80 is missing authentication to create users on the PLC. This could allow an attacker to create and use an account with elevated privileges and take control of the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22804">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>404aeca02a6d9611965a3c2ab6521b01</td>
-       <td>CVE-2023-22803</td>
-       <td>2023-02-15 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>LS ELECTRIC XBC-DN32U with operating system version 01.80 is missing authentication to perform critical functions to the PLC. This could allow an attacker to change the PLC's mode arbitrarily.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22803">详情</a></td>
       </tr>
 
      </tbody>
@@ -2340,11 +2340,27 @@
       </tr>
 
       <tr>
+       <td>58f96ee7f43cab9e622c5b08d80ecc75</td>
+       <td>CVE-2023-25194</td>
+       <td>2023-02-07 20:15:09 </td>
+       <td>A possible security vulnerability has been identified in Apache Kafka Connect. This requires access to a Kafka Connect worker, and the ability to create/modify connectors on it with an arbitrary Kafka client SASL JAAS config and a SASL-based security protocol, which has been possible on Kafka Connect clusters since Apache Kafka 2.3.0. When configuring the connector via the Kafka Connect REST API, an authenticated operator can set the `sasl.jaas.config` property for any of the connector's Kafka clients to &quot;com.sun.security.auth.module.JndiLoginModule&quot;, which can be done via the `producer.override.sasl.jaas.config`, `consumer.override.sasl.jaas.config`, or `admin.override.sasl.jaas.config` properties. This will allow the server to connect to the attacker's LDAP server and deserialize the LDAP response, which the attacker can use to execute java deserialization gadget chains on the Kafka connect server. Attacker can cause unrestricted deserialization of untrusted data (or) RCE vulnerability when there are gadgets in the classpath. Since Apache Kafka 3.0.0, users are allowed to specify these properties in connector configurations for Kafka Connect clusters running with out-of-the-box configurations. Before Apache Kafka 3.0.0, users may not specify these properties unless the Kafka Connect cluster has been reconfigured with a connector client override policy that permits them. Since Apache Kafka 3.4.0, we have added a system property (&quot;-Dorg.apache.kafka.disallowed.login.modules&quot;) to disable the problematic login modules usage in SASL JAAS configuration. Also by default &quot;com.sun.security.auth.module.JndiLoginModule&quot; is disabled in Apache Kafka 3.4.0. We advise the Kafka Connect users to validate connector configurations and only allow trusted JNDI configurations. Also examine connector dependencies for vulnerable versions and either upgrade their connectors, upgrading that specific dependency, or removing the connectors as options for remediation. Finally, in addition to leveraging the &quot;org.apache.kafka.disallowed.login.modules&quot; system property, Kafka Connect users can also implement their own connector client config override policy, which can be used to control which Kafka client properties can be overridden directly in a connector config and which cannot.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25194">详情</a></td>
+      </tr>
+
+      <tr>
        <td>954131ff602ed617a2c9a374490ffa61</td>
        <td>CVE-2023-24813</td>
        <td>2023-02-07 19:15:09 </td>
        <td>Dompdf is an HTML to PDF converter written in php. Due to the difference in the attribute parser of Dompdf and php-svg-lib, an attacker can still call arbitrary URLs with arbitrary protocols. Dompdf parses the href attribute of `image` tags and respects `xlink:href` even if `href` is specified. However, php-svg-lib, which is later used to parse the svg file, parses the href attribute. Since `href` is respected if both `xlink:href` and `href` is specified, it's possible to bypass the protection on the Dompdf side by providing an empty `xlink:href` attribute. An attacker can exploit the vulnerability to call arbitrary URLs with arbitrary protocols if they provide an SVG file to the Dompdf. In PHP versions before 8.0.0, it leads to arbitrary unserialize, which will lead, at the very least, to arbitrary file deletion and might lead to remote code execution, depending on available classes. This vulnerability has been addressed in commit `95009ea98` which has been included in release version 2.0.3. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24813">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>399a5279db16c49b79d59a2826f698ea</td>
+       <td>CVE-2023-24814</td>
+       <td>2023-02-07 19:15:09 </td>
+       <td>TYPO3 is a free and open source Content Management Framework released under the GNU General Public License. In affected versions the TYPO3 core component `GeneralUtility::getIndpEnv()` uses the unfiltered server environment variable `PATH_INFO`, which allows attackers to inject malicious content. In combination with the TypoScript setting `config.absRefPrefix=auto`, attackers can inject malicious HTML code to pages that have not been rendered and cached, yet. As a result, injected values would be cached and delivered to other website visitors (persisted cross-site scripting). Individual code which relies on the resolved value of `GeneralUtility::getIndpEnv('SCRIPT_NAME')` and corresponding usages (as shown below) are vulnerable as well. Additional investigations confirmed that at least Apache web server deployments using CGI (FPM, FCGI/FastCGI, and similar) are affected. However, there still might be the risk that other scenarios like nginx, IIS, or Apache/mod_php are vulnerable. The usage of server environment variable `PATH_INFO` has been removed from corresponding processings in `GeneralUtility::getIndpEnv()`. Besides that, the public property `TypoScriptFrontendController::$absRefPrefix` is encoded for both being used as a URI component and for being used as a prefix in an HTML context. This mitigates the cross-site scripting vulnerability. Users are advised to update to TYPO3 versions 8.7.51 ELTS, 9.5.40 ELTS, 10.4.35 LTS, 11.5.23 LTS and 12.2.0 which fix this problem. For users who are unable to patch in a timely manner the TypoScript setting `config.absRefPrefix` should at least be set to a static path value, instead of using auto - e.g. `config.absRefPrefix=/`. This workaround **does not fix all aspects of the vulnerability**, and is just considered to be an intermediate mitigation to the most prominent manifestation.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24814">详情</a></td>
       </tr>
 
       <tr>
@@ -2433,22 +2449,6 @@
        <td>2023-02-06 15:15:11 </td>
        <td>TOTOlink A7100RU(V7.4cu.2313_B20191024) was discovered to contain a command injection vulnerability via the country parameter at setting/delStaticDhcpRules.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24276">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bbc58223aa6b0b317d4461ba8f742594</td>
-       <td>CVE-2023-24192</td>
-       <td>2023-02-06 15:15:10 </td>
-       <td>Online Food Ordering System v2 was discovered to contain a cross-site scripting (XSS) vulnerability via the redirect parameter in login.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24192">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6b9b2b1f7746cafeb641f8dfe6b42923</td>
-       <td>CVE-2023-24191</td>
-       <td>2023-02-06 15:15:10 </td>
-       <td>Online Food Ordering System v2 was discovered to contain a cross-site scripting (XSS) vulnerability via the redirect parameter in signup.php.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24191">详情</a></td>
       </tr>
 
      </tbody>
