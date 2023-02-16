@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-16 14:25:14 -->
+<!-- RELEASE TIME : 2023-02-16 15:26:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -2220,6 +2220,14 @@
       </tr>
 
       <tr>
+       <td>482ff8fa7723dbef2500f6ea3866dc51</td>
+       <td>CVE-2023-25168</td>
+       <td>2023-02-09 00:16:36 </td>
+       <td>Wings is Pterodactyl's server control plane. This vulnerability can be used to delete files and directories recursively on the host system. This vulnerability can be combined with `GHSA-p8r3-83r8-jwj5` to overwrite files on the host system. In order to use this exploit, an attacker must have an existing &quot;server&quot; allocated and controlled by Wings. This vulnerability has been resolved in version `v1.11.4` of Wings, and has been back-ported to the 1.7 release series in `v1.7.4`. Anyone running `v1.11.x` should upgrade to `v1.11.4` and anyone running `v1.7.x` should upgrade to `v1.7.4`. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25168">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1d2867a4310f6119c4e988950d0f200e</td>
        <td>CVE-2023-0726</td>
        <td>2023-02-08 02:15:08 </td>
@@ -2332,6 +2340,14 @@
       </tr>
 
       <tr>
+       <td>954131ff602ed617a2c9a374490ffa61</td>
+       <td>CVE-2023-24813</td>
+       <td>2023-02-07 19:15:09 </td>
+       <td>Dompdf is an HTML to PDF converter written in php. Due to the difference in the attribute parser of Dompdf and php-svg-lib, an attacker can still call arbitrary URLs with arbitrary protocols. Dompdf parses the href attribute of `image` tags and respects `xlink:href` even if `href` is specified. However, php-svg-lib, which is later used to parse the svg file, parses the href attribute. Since `href` is respected if both `xlink:href` and `href` is specified, it's possible to bypass the protection on the Dompdf side by providing an empty `xlink:href` attribute. An attacker can exploit the vulnerability to call arbitrary URLs with arbitrary protocols if they provide an SVG file to the Dompdf. In PHP versions before 8.0.0, it leads to arbitrary unserialize, which will lead, at the very least, to arbitrary file deletion and might lead to remote code execution, depending on available classes. This vulnerability has been addressed in commit `95009ea98` which has been included in release version 2.0.3. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24813">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8a0ed88097ee94d979d00b10f9b2855b</td>
        <td>CVE-2023-0706</td>
        <td>2023-02-07 10:15:52 </td>
@@ -2433,22 +2449,6 @@
        <td>2023-02-06 15:15:10 </td>
        <td>Online Food Ordering System v2 was discovered to contain a cross-site scripting (XSS) vulnerability via the redirect parameter in signup.php.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24191">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cf1ec293b296baea1e577bc2123d4321</td>
-       <td>CVE-2023-25193</td>
-       <td>2023-02-04 20:15:08 </td>
-       <td>hb-ot-layout-gsubgpos.hh in HarfBuzz through 6.0.0 allows attackers to trigger O(n^2) growth via consecutive marks during the process of looking back for base glyphs when attaching marks.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25193">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a7c4da47b755c64b42a64579b0b518d2</td>
-       <td>CVE-2023-24029</td>
-       <td>2023-02-03 21:15:11 </td>
-       <td>In Progress WS_FTP Server before 8.8, it is possible for a host administrator to elevate their privileges via the administrative interface due to insufficient authorization controls applied on user modification workflows.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24029">详情</a></td>
       </tr>
 
      </tbody>
