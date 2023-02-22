@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-22 18:30:11 -->
+<!-- RELEASE TIME : 2023-02-22 19:18:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -2220,6 +2220,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>824d702024849d17f16cafdaeb9fee2c</td>
+       <td>CVE-2023-25567</td>
+       <td>2023-02-14 18:15:13 </td>
+       <td>GSS-NTLMSSP, a mechglue plugin for the GSSAPI library that implements NTLM authentication, has an out-of-bounds read when decoding target information prior to version 1.2.0. The length of the `av_pair` is not checked properly for two of the elements which can trigger an out-of-bound read. The out-of-bounds read can be triggered via the main `gss_accept_sec_context` entry point and could cause a denial-of-service if the memory is unmapped. The issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25567">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6709f1f6932e9375cbeef32360e3af4c</td>
+       <td>CVE-2023-25566</td>
+       <td>2023-02-14 18:15:13 </td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, a memory leak can be triggered when parsing usernames which can trigger a denial-of-service. The domain portion of a username may be overridden causing an allocated memory area the size of the domain name to be leaked. An attacker can leak memory via the main `gss_accept_sec_context` entry point, potentially causing a denial-of-service. This issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25566">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b1bde781df8928678c844248a37dba21</td>
+       <td>CVE-2023-25565</td>
+       <td>2023-02-14 18:15:13 </td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, an incorrect free when decoding target information can trigger a denial of service. The error condition incorrectly assumes the `cb` and `sh` buffers contain a copy of the data that needs to be freed. However, that is not the case. This vulnerability can be triggered via the main `gss_accept_sec_context` entry point. This will likely trigger an assertion failure in `free`, causing a denial-of-service. This issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25565">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>33818a491da780cdf8afe0827d886cd4</td>
+       <td>CVE-2023-25564</td>
+       <td>2023-02-14 18:15:13 </td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, memory corruption can be triggered when decoding UTF16 strings. The variable `outlen` was not initialized and could cause writing a zero to an arbitrary place in memory if `ntlm_str_convert()` were to fail, which would leave `outlen` uninitialized. This can lead to a denial of service if the write hits unmapped memory or randomly corrupts a byte in the application memory space. This vulnerability can trigger an out-of-bounds write, leading to memory corruption. This vulnerability can be triggered via the main `gss_accept_sec_context` entry point. This issue is fixed in version 1.2.0.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25564">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f7aa850fef973d2add9b3565ed71adbc</td>
+       <td>CVE-2023-25563</td>
+       <td>2023-02-14 18:15:13 </td>
+       <td>GSS-NTLMSSP is a mechglue plugin for the GSSAPI library that implements NTLM authentication. Prior to version 1.2.0, multiple out-of-bounds reads when decoding NTLM fields can trigger a denial of service. A 32-bit integer overflow condition can lead to incorrect checks of consistency of length of internal buffers. Although most applications will error out before accepting a singe input buffer of 4GB in length this could theoretically happen. This vulnerability can be triggered via the main `gss_accept_sec_context` entry point if the application allows tokens greater than 4GB in length. This can lead to a large, up to 65KB, out-of-bounds read which could cause a denial-of-service if it reads from unmapped memory. Version 1.2.0 contains a patch for the out-of-bounds reads.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25563">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>368d76b60794e321c1a93d1d7059c351</td>
+       <td>CVE-2023-25576</td>
+       <td>2023-02-14 16:15:11 </td>
+       <td>@fastify/multipart is a Fastify plugin to parse the multipart content-type. Prior to versions 7.4.1 and 6.0.1, @fastify/multipart may experience denial of service due to a number of situations in which an unlimited number of parts are accepted. This includes the multipart body parser accepting an unlimited number of file parts, the multipart body parser accepting an unlimited number of field parts, and the multipart body parser accepting an unlimited number of empty parts as field parts. This is fixed in v7.4.1 (for Fastify v4.x) and v6.0.1 (for Fastify v3.x). There are no known workarounds.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25576">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4a0b7070a038cd1dd497a33a85084a6f</td>
        <td>CVE-2023-25758</td>
        <td>2023-02-14 07:15:11 </td>
@@ -2409,54 +2457,6 @@
        <td>2023-02-13 15:15:20 </td>
        <td>The Extensive VC Addons for WPBakery page builder WordPress plugin before 1.9.1 does not validate a parameter passed to the php extract function when loading templates, allowing an unauthenticated attacker to override the template path to read arbitrary files from the hosts file system.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0159">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f4d4bd9c87b47df15168cf2ccb5476d</td>
-       <td>CVE-2023-0776</td>
-       <td>2023-02-11 01:23:26 </td>
-       <td>Baicells Nova 436Q, Nova 430E, Nova 430I, and Neutrino 430 LTE TDD eNodeB devices with firmware through QRTB 2.12.7 are vulnerable to remote shell code exploitation via HTTP command injections. Commands are executed using pre-login execution and executed with root permissions. The following methods below have been tested and validated by a 3rd party analyst and has been confirmed exploitable special thanks to Rustam Amin for providing the steps to reproduce.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0776">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a2dc913e9b3123818850147fc8a8069e</td>
-       <td>CVE-2023-25562</td>
-       <td>2023-02-11 01:23:26 </td>
-       <td>DataHub is an open-source metadata platform. In versions of DataHub prior to 0.8.45 Session cookies are only cleared on new sign-in events and not on logout events. Any authentication checks using the `AuthUtils.hasValidSessionCookie()` method could be bypassed by using a cookie from a logged out session, as a result any logged out session cookie may be accepted as valid and therefore lead to an authentication bypass to the system. Users are advised to upgrade. There are no known workarounds for this issue. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-083.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25562">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d3958b186fa043b3ccbf52383e0d7677</td>
-       <td>CVE-2023-25561</td>
-       <td>2023-02-11 01:23:26 </td>
-       <td>DataHub is an open-source metadata platform. In the event a system is using Java Authentication and Authorization Service (JAAS) authentication and that system is given a configuration which contains an error, the authentication for the system will fail open and allow an attacker to login using any username and password. The reason for this is that while an error is thrown in the `authenticateJaasUser` method it is swallowed without propagating the error. As a result of this issue unauthenticated users may gain access to the system. Users are advised to upgrade. There are no known workarounds for this issue. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-081.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25561">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>504c0057917ac2a28b1e2ab4878f30af</td>
-       <td>CVE-2023-25560</td>
-       <td>2023-02-11 01:23:26 </td>
-       <td>DataHub is an open-source metadata platform. The AuthServiceClient which is responsible for creation of new accounts, verifying credentials, resetting them or requesting access tokens, crafts multiple JSON strings using format strings with user-controlled data. This means that an attacker may be able to augment these JSON strings to be sent to the backend and that can potentially be abused by including new or colliding values. This issue may lead to an authentication bypass and the creation of system accounts, which effectively can lead to full system compromise. Users are advised to upgrade. There are no known workarounds for this vulnerability. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-080.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25560">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f7575f18c46cf5a53bfd028714c37849</td>
-       <td>CVE-2023-25559</td>
-       <td>2023-02-11 01:23:26 </td>
-       <td>DataHub is an open-source metadata platform. When not using authentication for the metadata service, which is the default configuration, the Metadata service (GMS) will use the X-DataHub-Actor HTTP header to infer the user the frontend is sending the request on behalf of. When the backends retrieves the header, its name is retrieved in a case-insensitive way. This case differential can be abused by an attacker to smuggle an X-DataHub-Actor header with different casing (eg: X-DATAHUB-ACTOR). This issue may lead to an authorization bypass by allowing any user to impersonate the system user account and perform any actions on its behalf. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-079.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25559">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f2558324879f9507a3eabf00ec883782</td>
-       <td>CVE-2023-25558</td>
-       <td>2023-02-11 01:23:26 </td>
-       <td>DataHub is an open-source metadata platform. When the DataHub frontend is configured to authenticate via SSO, it will leverage the pac4j library. The processing of the `id_token` is done in an unsafe manner which is not properly accounted for by the DataHub frontend. Specifically, if any of the id_token claims value start with the {#sb64} prefix, pac4j considers the value to be a serialized Java object and will deserialize it. This issue may lead to Remote Code Execution (RCE) in the worst case. Although a `RestrictedObjectInputStream` is in place, that puts some restriction on what classes can be deserialized, it still allows a broad range of java packages and potentially exploitable with different gadget chains. Users are advised to upgrade. There are no known workarounds. This vulnerability was discovered and reported by the GitHub Security lab and is tracked as GHSL-2022-086.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25558">详情</a></td>
       </tr>
 
      </tbody>
