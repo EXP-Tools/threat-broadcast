@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-21 22:26:31 -->
+<!-- RELEASE TIME : 2023-02-22 01:54:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -54,7 +54,7 @@
       <tr>
        <td>90fffab9d66d505311596a71af6abbb9</td>
        <td></td>
-       <td>2023-02-20 09:55:02 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 09:55:02</td>
        <td>安全事件周报 (02.13-02.19)</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=c0f9d88474d93ebf538a7750f64f9a61">详情</a></td>
       </tr>
@@ -62,7 +62,7 @@
       <tr>
        <td>920484737cd9fc0121ce5697641c88f8</td>
        <td>CVE-2021-42756</td>
-       <td>2023-02-20 08:20:26 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 08:20:26</td>
        <td>CVE-2021-42756/CVE-2022-39952：Fortinet 多个漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=08705cd4ff6a7933e66543f88e084f0d">详情</a></td>
       </tr>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>18601e794f6027f29b080cf5c7b175ea</td>
+       <td>CVE-2023-25157</td>
+       <td>2023-02-21 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>GeoServer is an open source software server written in Java that allows users to share and edit geospatial data. GeoServer includes support for the OGC Filter expression language and the OGC Common Query Language (CQL) as part of the Web Feature Service (WFS) and Web Map Service (WMS) protocols. CQL is also supported through the Web Coverage Service (WCS) protocol for ImageMosaic coverages. Users are advised to upgrade to either version 2.21.4, or version 2.22.2 to resolve this issue. Users unable to upgrade should disable the PostGIS Datastore *encode functions* setting to mitigate ``strEndsWith``, ``strStartsWith`` and ``PropertyIsLike `` misuse and enable the PostGIS DataStore *preparedStatements* setting to mitigate the ``FeatureId`` misuse.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25157">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cf1774a9304758108d78c3cc6a9b0863</td>
+       <td>CVE-2023-24320</td>
+       <td>2023-02-21 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An access control issue in Axcora POS #0~gitf77ec09 allows unauthenticated attackers to execute arbitrary commands via unspecified vectors.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24320">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd8b889b74267d07b18d9ddd6044181e</td>
+       <td>CVE-2023-25812</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Minio is a Multi-Cloud Object Storage framework. Affected versions do not correctly honor a `Deny` policy on ByPassGoverance. Ideally, minio should return "Access Denied" to all users attempting to DELETE a versionId with the special header `X-Amz-Bypass-Governance-Retention: true`. However, this was not honored instead the request will be honored and an object under governance would be incorrectly deleted. All users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25812">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3e21a7f26ce7690437e2e59b6dd4dd02</td>
+       <td>CVE-2023-25811</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Uptime Kuma is a self-hosted monitoring tool. In versions prior to 1.20.0 the Uptime Kuma `name` parameter allows a persistent XSS attack. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25811">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fad6248057d4853ecc4ff164ae96241d</td>
+       <td>CVE-2023-25810</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Uptime Kuma is a self-hosted monitoring tool. In versions prior to 1.20.0 the Uptime Kuma status page allows a persistent XSS attack. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25810">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b83a3ec3510eac81a0916c14ebaa00d</td>
+       <td>CVE-2023-25657</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nautobot is a Network Source of Truth and Network Automation Platform. All users of Nautobot versions earlier than 1.5.7 are impacted by a remote code execution vulnerability. Nautobot did not properly sandbox Jinja2 template rendering. In Nautobot 1.5.7 has enabled sandboxed environments for the Jinja2 template engine used internally for template rendering for the following objects: `extras.ComputedField`, `extras.CustomLink`, `extras.ExportTemplate`, `extras.Secret`, `extras.Webhook`. While no active exploits of this vulnerability are known this change has been made as a preventative measure to protect against any potential remote code execution attacks utilizing maliciously crafted template code. This change forces the Jinja2 template engine to use a `SandboxedEnvironment` on all new installations of Nautobot. This addresses any potential unsafe code execution everywhere the helper function `nautobot.utilities.utils.render_jinja2` is called. Additionally, the documentation that had previously suggesting the direct use of `jinja2.Template` has been revised to suggest `render_jinja2`. Users are advised to upgrade to Nautobot 1.5.7 or newer. For users that are unable to upgrade to the latest release of Nautobot, you may add the following setting to your `nautobot_config.py` to apply the sandbox environment enforcement: `TEMPLATES[1]["OPTIONS"]["environment"] = "jinja2.sandbox.SandboxedEnvironment"` After applying this change, you must restart all Nautobot services, including any Celery worker processes. **Note:** *Nautobot specifies two template engines by default, the first being “django” for the Django built-in template engine, and the second being “jinja” for the Jinja2 template engine. This recommended setting will update the second item in the list of template engines, which is the Jinja2 engine.* For users that are unable to immediately update their configuration such as if a Nautobot service restart is too disruptive to operations, access to provide custom Jinja2 template values may be mitigated using permissions to restrict “change” (write) actions to the affected object types listed in the first section. **Note:** *This solution is intended to be stopgap until you can successfully update your `nautobot_config.py` or upgrade your Nautobot instance to apply the sandboxed environment enforcement.*</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25657">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2ed91ac485e686397f78ca44e4a79492</td>
+       <td>CVE-2023-25158</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>GeoTools is an open source Java library that provides tools for geospatial data. GeoTools includes support for OGC Filter expression language parsing, encoding and execution against a range of datastore. SQL Injection Vulnerabilities have been found when executing OGC Filters with JDBCDataStore implementations. Users are advised to upgrade to either version 27.4 or to 28.2 to resolve this issue. Users unable to upgrade may disable `encode functions` for PostGIS DataStores or enable `prepared statements` for JDBCDataStores as a partial mitigation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25158">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7cb876fe25ad00fa5924d8001470e4a5</td>
+       <td>CVE-2023-0946</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in SourceCodester Best POS Management System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file billing/index.php?id=9. The manipulation of the argument id leads to sql injection. The attack can be launched remotely. The identifier VDB-221593 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>19fa07867c65dc81ad5c385d2fe6d8fa</td>
+       <td>CVE-2023-0945</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as problematic, was found in SourceCodester Best POS Management System 1.0. Affected is an unknown function of the file index.php?page=add-category. The manipulation of the argument Name with the input "><img src=x onerror=prompt(document.domain);> leads to cross site scripting. It is possible to launch the attack remotely. The identifier of this vulnerability is VDB-221592.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0945">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>565f614cee4e36abb4a42975d06d15bc</td>
+       <td>CVE-2022-46637</td>
+       <td>2023-02-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Prolink router PRS1841 was discovered to contain hardcoded credentials for its Telnet and FTP services.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46637">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e74c169ab47fcf95082326b044644869</td>
        <td>CVE-2023-0943</td>
        <td>2023-02-21 20:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-02-21 14:15:00 <img src="imgs/new.gif" /></td>
        <td>Hyperium Hyper before 0.14.19 does not allow for customization of the max_header_list_size method in the H2 third-party software, allowing attackers to perform HTTP2 attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31394">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5e932c58c403cabe1e03630423470c15</td>
-       <td>CVE-2023-0938</td>
-       <td>2023-02-21 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as critical has been found in SourceCodester Music Gallery Site 1.0. This affects an unknown part of the file music_list.php of the component GET Request Handler. The manipulation of the argument cid leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-221553 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0938">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>83c8c7c5c900c31069c722f8369695c2</td>
-       <td>CVE-2023-0936</td>
-       <td>2023-02-21 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in TP-Link Archer C50 V2_160801. It has been rated as problematic. Affected by this issue is some unknown functionality of the component Web Management Interface. The manipulation leads to denial of service. The attack can only be initiated within the local network. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-221552.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0936">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>236b9f8313cf926c0d26e6977d4e13f5</td>
-       <td>CVE-2023-0935</td>
-       <td>2023-02-21 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in DolphinPHP up to 1.5.1. It has been declared as critical. Affected by this vulnerability is an unknown functionality of the file common.php of the component Incomplete Fix CVE-2021-46097. The manipulation of the argument id leads to os command injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-221551.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0935">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f60042d4901d8bb9d764953d2cf602d4</td>
-       <td>CVE-2023-26267</td>
-       <td>2023-02-21 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>php-saml-sp before 1.1.1 and 2.x before 2.1.1 allows reading arbitrary files as the webserver user because resolving XML external entities was silently enabled via \LIBXML_DTDLOAD | \LIBXML_DTDATTR.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26267">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7e88ec04cf122342e8b5bf613b7b380b</td>
-       <td>CVE-2023-0559</td>
-       <td>2023-02-21 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>The GS Portfolio for Envato WordPress plugin before 1.4.0 does not validate and escape some of its shortcode attributes before outputting them back in a page/post where the shortcode is embedded, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0559">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6a8eb07bddec98201e6875f022b4a556</td>
-       <td>CVE-2023-0541</td>
-       <td>2023-02-21 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>The GS Books Showcase WordPress plugin before 1.3.1 does not validate and escape some of its shortcode attributes before outputting them back in a page/post where the shortcode is embed, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0541">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8a1f17a5680cf62ccb99911fe0d83d76</td>
-       <td>CVE-2023-0540</td>
-       <td>2023-02-21 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>The GS Filterable Portfolio WordPress plugin before 1.6.1 does not validate and escape some of its shortcode attributes before outputting them back in a page/post where the shortcode is embed, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0540">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>30f4769f6cba943fb60fef97609bc7e6</td>
-       <td>CVE-2023-0492</td>
-       <td>2023-02-21 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>The GS Products Slider for WooCommerce WordPress plugin before 1.5.9 does not validate and escape some of its shortcode attributes before outputting them back in a page/post where the shortcode is embed, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0492">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>00a4bc6fbbce3b2834aa49c91f5af01b</td>
-       <td>CVE-2023-0453</td>
-       <td>2023-02-21 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>The WP Private Message WordPress plugin (bundled with the Superio theme as a required plugin) before 1.0.6 does not ensure that private messages to be accessed belong to the user making the requests. This allowing any authenticated users to access private messages belonging to other users by tampering the ID.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0453">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d3ba4d67260c60db4e7d2f3014555d2</td>
-       <td>CVE-2023-0442</td>
-       <td>2023-02-21 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Loan Comparison WordPress plugin before 1.5.3 does not validate and escape some of its query parameters before outputting them back in a page/post via an embedded shortcode, which could allow an attacker to inject javascript into into the site via a crafted URL.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0442">详情</a></td>
       </tr>
 
      </tbody>
@@ -1726,7 +1726,7 @@
       <tr>
        <td>998d35c038c979e33451cf0b586f47fb</td>
        <td>CVE-2023-0800</td>
-       <td>2023-02-20 20:28:08 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 20:28:08</td>
        <td>LIBTIFF LIBTIFF Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1cde0cf61b3343908b3c426072f25056">详情</a></td>
       </tr>
@@ -1734,7 +1734,7 @@
       <tr>
        <td>ab572e47a786ae0ad1f3a2b73c48be7a</td>
        <td>CVE-2023-0803</td>
-       <td>2023-02-20 20:27:56 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 20:27:56</td>
        <td>LIBTIFF LIBTIFF Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=b523a50f40644df6b8394875ce0a0a45">详情</a></td>
       </tr>
@@ -1742,7 +1742,7 @@
       <tr>
        <td>7019f09f3f9ba99697f42cb4aa867781</td>
        <td>CVE-2022-33934</td>
-       <td>2023-02-20 20:27:44 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 20:27:44</td>
        <td>DELL EMC_POWERSCALE_ONEFS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=b459338eb4a946beae42fa650fb3747c">详情</a></td>
       </tr>
@@ -1750,7 +1750,7 @@
       <tr>
        <td>366b3fa02aee6a345459b4f682835119</td>
        <td>CVE-2023-22832</td>
-       <td>2023-02-20 20:27:31 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 20:27:31</td>
        <td>APACHE NIFI Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5e12c8f6bf9f43998ad262aed3e18629">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>b8dcbf189eba0da34a4f9b13f1210835</td>
        <td>CVE-2023-0814</td>
-       <td>2023-02-20 20:27:25 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 20:27:25</td>
        <td>COZMOSLABS PROFILE_BUILDER Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=af7a716a18444dffa5c24a0728f0489f">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>c2a9c210d59936ce164d13c16cc0b2f9</td>
        <td>CVE-2022-48295</td>
-       <td>2023-02-20 20:27:19 <img src="imgs/new.gif" /></td>
+       <td>2023-02-20 20:27:19</td>
        <td>HUAWEI Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d1137b40caba440bb19f2b16a1604b94">详情</a></td>
       </tr>
