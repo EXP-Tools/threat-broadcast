@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-23 20:26:39 -->
+<!-- RELEASE TIME : 2023-02-23 21:22:52 -->
 <html lang="zh-cn">
 
  <head>
@@ -2324,6 +2324,14 @@
       </tr>
 
       <tr>
+       <td>965f05a6eb6bfd596a2d14dd9dd511a3</td>
+       <td>CVE-2023-25149</td>
+       <td>2023-02-14 14:15:09 </td>
+       <td>TimescaleDB, an open-source time-series SQL database, has a privilege escalation vulnerability in versions 2.8.0 through 2.9.2. During installation, TimescaleDB creates a telemetry job that is runs as the installation user. The queries run as part of the telemetry data collection were not run with a locked down `search_path`, allowing malicious users to create functions that would be executed by the telemetry job, leading to privilege escalation. In order to be able to take advantage of this vulnerability, a user would need to be able to create objects in a database and then get a superuser to install TimescaleDB into their database. When TimescaleDB is installed as trusted extension, non-superusers can install the extension without help from a superuser. Version 2.9.3 fixes this issue. As a mitigation, the `search_path` of the user running the telemetry job can be locked down to not include schemas writable by other users. The vulnerability is not exploitable on instances in Timescale Cloud and Managed Service for TimescaleDB due to additional security provisions in place on those platforms.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25149">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4a0b7070a038cd1dd497a33a85084a6f</td>
        <td>CVE-2023-25758</td>
        <td>2023-02-14 07:15:11 </td>
@@ -2436,27 +2444,19 @@
       </tr>
 
       <tr>
-       <td>45be52d7bc5a9613ba611128c699d307</td>
-       <td>CVE-2023-25719</td>
-       <td>2023-02-13 20:15:11 </td>
-       <td>ConnectWise Control before 22.9.10032 (formerly known as ScreenConnect) fails to validate user-supplied parameters such as the Bin/ConnectWiseControl.Client.exe h parameter. This results in reflected data and injection of malicious code into a downloaded executable. The executable can be used to execute malicious queries or as a denial-of-service vector.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25719">详情</a></td>
+       <td>228fe6cc62b47ecb7e5bf822c47939b0</td>
+       <td>CVE-2023-25241</td>
+       <td>2023-02-13 21:15:15 </td>
+       <td>bgERP v22.31 was discovered to contain a reflected cross-site scripting (XSS) vulnerability via the Search parameter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25241">详情</a></td>
       </tr>
 
       <tr>
-       <td>d970c07b7b6efd0c5e2e0dab9a75fb50</td>
-       <td>CVE-2023-0275</td>
-       <td>2023-02-13 15:15:21 </td>
-       <td>The Easy Accept Payments for PayPal WordPress plugin before 4.9.10 does not validate and escape some of its shortcode attributes before outputting them back in a page/post where the shortcode is embed, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0275">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>03008058effe28355c4af85666eb90c3</td>
-       <td>CVE-2023-0270</td>
-       <td>2023-02-13 15:15:21 </td>
-       <td>The YaMaps for WordPress Plugin WordPress plugin before 0.6.26 does not validate and escape some of its shortcode attributes before outputting them back in a page/post where the shortcode is embed, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-0270">详情</a></td>
+       <td>554cdf7ccc466c600e92da684112d7f5</td>
+       <td>CVE-2023-25240</td>
+       <td>2023-02-13 21:15:15 </td>
+       <td>An improper SameSite Attribute vulnerability in pimCore v10.5.15 allows attackers to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25240">详情</a></td>
       </tr>
 
      </tbody>
