@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-02-28 19:20:36 -->
+<!-- RELEASE TIME : 2023-02-28 20:26:23 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5ed01fbb33870ccf465460cff91d44c9</td>
+       <td>CVE-2023-27320</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sudo before 1.9.13p2 has a double free in the per-command chroot feature.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27320">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a1da8d51f5687c308e32116107d4a448</td>
+       <td>CVE-2023-25432</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Online Reviewer Management System v1.0. There is a SQL injection that can directly issue instructions to the background database system via reviewer_0/admins/assessments/course/course-update.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25432">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6dfad91af114e0c7e2e91cabcdd28144</td>
+       <td>CVE-2023-25431</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Online Reviewer Management System v1.0. There is a XSS vulnerability via reviewer_0/admins/assessments/course/course-update.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25431">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0f8cfdbb26c01d52df4f5f28baa3f43</td>
+       <td>CVE-2023-1018</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>An out-of-bounds read vulnerability exists in TPM2.0's Module Library allowing a 2-byte read past the end of a TPM2.0 command in the CryptParameterDecryption routine. An attacker who can successfully exploit this vulnerability can read or access sensitive data stored in the TPM.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1018">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b44f898de2f99812a7d831947e36105</td>
+       <td>CVE-2022-41727</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>An attacker can craft a malformed TIFF image which will consume a significant amount of memory when passed to DecodeConfig. This could lead to a denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41727">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55ab922969d4b5260bf3c6346a84b52e</td>
+       <td>CVE-2022-41725</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A denial of service is possible from excessive resource consumption in net/http and mime/multipart. Multipart form parsing with mime/multipart.Reader.ReadForm can consume largely unlimited amounts of memory and disk files. This also affects form parsing in the net/http package with the Request methods FormFile, FormValue, ParseMultipartForm, and PostFormValue. ReadForm takes a maxMemory parameter, and is documented as storing "up to maxMemory bytes +10MB (reserved for non-file parts) in memory". File parts which cannot be stored in memory are stored on disk in temporary files. The unconfigurable 10MB reserved for non-file parts is excessively large and can potentially open a denial of service vector on its own. However, ReadForm did not properly account for all memory consumed by a parsed form, such as map entry overhead, part names, and MIME headers, permitting a maliciously crafted form to consume well over 10MB. In addition, ReadForm contained no limit on the number of disk files created, permitting a relatively small request body to create a large number of disk temporary files. With fix, ReadForm now properly accounts for various forms of memory overhead, and should now stay within its documented limit of 10MB + maxMemory bytes of memory consumption. Users should still be aware that this limit is high and may still be hazardous. In addition, ReadForm now creates at most one on-disk temporary file, combining multiple form parts into a single temporary file. The mime/multipart.File interface type's documentation states, "If stored on disk, the File's underlying concrete type will be an *os.File.". This is no longer the case when a form contains more than one file part, due to this coalescing of parts into a single file. The previous behavior of using distinct files for each form part may be reenabled with the environment variable GODEBUG=multipartfiles=distinct. Users should be aware that multipart.ReadForm and the http.Request methods that call it do not limit the amount of disk consumed by temporary files. Callers can limit the size of form data with http.MaxBytesReader.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41725">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ad1002e4f0097b3e033ef552ef018d65</td>
+       <td>CVE-2022-41724</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Large handshake records may cause panics in crypto/tls. Both clients and servers may send large TLS handshake records which cause servers and clients, respectively, to panic when attempting to construct responses. This affects all TLS 1.3 clients, TLS 1.2 clients which explicitly enable session resumption (by setting Config.ClientSessionCache to a non-nil value), and TLS 1.3 servers which request client certificates (by setting Config.ClientAuth >= RequestClientCert).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41724">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>602b117ef6c8bda85bbe26354b9db6ee</td>
+       <td>CVE-2022-41723</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A maliciously crafted HTTP/2 stream could cause excessive CPU consumption in the HPACK decoder, sufficient to cause a denial of service from a small number of small requests.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41723">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c4cae97a4ab59b6ba43318c004a53852</td>
+       <td>CVE-2022-41722</td>
+       <td>2023-02-28 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A path traversal vulnerability exists in filepath.Clean on Windows. On Windows, the filepath.Clean function could transform an invalid path such as "a/../c:/b" into the valid path "c:\b". This transformation of a relative (if invalid) path into an absolute path could enable a directory traversal attack. After fix, the filepath.Clean function transforms this path into the relative (but still invalid) path ".\c:\b".</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41722">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f77ebb75434ec7a8e4ae5891ee0905d6</td>
+       <td>CVE-2023-27295</td>
+       <td>2023-02-28 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site request forgery is facilitated by OpenCATS failure to require CSRF tokens in POST requests. An attacker can exploit this issue by creating a dummy page that executes Javascript in an authenticated user's session when visited.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27295">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a055ca2921ed87a0e8f04ffe4f87cabf</td>
        <td>CVE-2023-26256</td>
        <td>2023-02-28 16:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-02-28 13:15:00 <img src="imgs/new.gif" /></td>
        <td>The WP Meta SEO plugin for WordPress is vulnerable to unauthorized options update due to a missing capability check on the wpmsGGSaveInformation function in versions up to, and including, 4.5.3. This makes it possible for authenticated attackers with subscriber-level access to update google analytics options maintained by the plugin. This vulnerability occurred as a result of the plugin relying on nonce checks as a means of access control, and that nonce being accessible to all authenticated users regardless of role.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1022">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad5183cb5db31e365daec3cdb7d0c442</td>
-       <td>CVE-2023-26105</td>
-       <td>2023-02-28 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>All versions of the package utilities are vulnerable to Prototype Pollution via the _mix function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26105">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e685f4d79e31b8601733c30336de4581</td>
-       <td>CVE-2023-22995</td>
-       <td>2023-02-28 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>In the Linux kernel before 5.17, an error path in dwc3_qcom_acpi_register_core in drivers/usb/dwc3/dwc3-qcom.c lacks certain platform_device_put and kfree calls.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22995">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>17f57d437c50ef792877e94fd5fc5521</td>
-       <td>CVE-2021-22283</td>
-       <td>2023-02-28 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Initialization vulnerability in ABB Relion protection relays - 611 series, ABB Relion protection relays - 615 series IEC 4.0 FP1, ABB Relion protection relays - 615 series CN 4.0 FP1, ABB Relion protection relays - 615 series IEC 5.0, ABB Relion protection relays - 615 series IEC 5.0 FP1, ABB Relion protection relays - 620 series IEC/CN 2.0, ABB Relion protection relays - 620 series IEC/CN 2.0 FP1, ABB Relion protection relays - REX640 PCL1, ABB Relion protection relays - REX640 PCL2, ABB Relion protection relays - REX640 PCL3, ABB Relion protection relays - RER615, ABB Remote Monitoring and Control - REC615, ABB Merging Unit- SMU615 allows Communication Channel Manipulation.This issue affects Relion protection relays - 611 series: from 1.0.0 before 2.0.3; Relion protection relays - 615 series IEC 4.0 FP1: from 4.1.0 before 4.1.9; Relion protection relays - 615 series CN 4.0 FP1: from 4.1.0 before 4.1.8; Relion protection relays - 615 series IEC 5.0: from 5.0.0 before 5.0.12; Relion protection relays - 615 series IEC 5.0 FP1: from 5.1.0 before 5.1.20; Relion protection relays - 620 series IEC/CN 2.0: from 2.0.0 before 2.0.11; Relion protection relays - 620 series IEC/CN 2.0 FP1: from 2.1.0 before 2.1.15; Relion protection relays - REX640 PCL1: from 1.0.0 before 1.0.8; Relion protection relays - REX640 PCL2: from 1.1.0 before 1.1.4; Relion protection relays - REX640 PCL3: from 1.2.0 before 1.2.1; Relion protection relays - RER615: from 2.0.0 before 2.0.3; Remote Monitoring and Control - REC615: from 1.0.0 before 2.0.3; Merging Unit- SMU615: from 1.0.0 before 1.0.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-22283">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>026226ac8825a29f8862346b83ace4a6</td>
-       <td>CVE-2022-4895</td>
-       <td>2023-02-28 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Certificate Validation vulnerability in Hitachi Infrastructure Analytics Advisor on Linux (Analytics probe component), Hitachi Ops Center Analyzer on Linux (Analyzer probe component) allows Man in the Middle Attack.This issue affects Hitachi Infrastructure Analytics Advisor: from 2.0.0-00 through 4.4.0-00; Hitachi Ops Center Analyzer: from 10.0.0-00 before 10.9.1-00.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4895">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98a94ce9a45bd4ff159796460f6d536f</td>
-       <td>CVE-2022-3884</td>
-       <td>2023-02-28 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Incorrect Default Permissions vulnerability in Hitachi Ops Center Analyzer on Windows (Hitachi Ops Center Analyzer RAID Agent component) allows local users to read and write specific files.This issue affects Hitachi Ops Center Analyzer: from 10.9.0-00 before 10.9.0-01.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3884">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>330b54fa84a0cbc19f713be433aec40d</td>
-       <td>CVE-2020-36652</td>
-       <td>2023-02-28 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Incorrect Default Permissions vulnerability in Hitachi Automation Director on Linux, Hitachi Infrastructure Analytics Advisor on Linux (Hitachi Infrastructure Analytics Advisor, Analytics probe server components), Hitachi Ops Center Automator on Linux, Hitachi Ops Center Analyzer on Linux (Hitachi Ops Center Analyzer, Analyzer probe server components), Hitachi Ops Center Viewpoint on Linux (Viewpoint RAID Agent component) allows local users to read and write specific files. This issue affects Hitachi Automation Director: from 8.2.0-00 through 10.6.1-00; Hitachi Infrastructure Analytics Advisor: from 2.0.0-00 through 4.0.0-00; Hitachi Ops Center Automator: before 10.9.1-00; Hitachi Ops Center Analyzer: before 10.9.1-00; Hitachi Ops Center Viewpoint: before 10.9.1-00.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-36652">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>028fdc3f600f1459d09653ee77a8d2aa</td>
-       <td>CVE-2023-1081</td>
-       <td>2023-02-28 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site Scripting (XSS) - Stored in GitHub repository microweber/microweber prior to 1.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1081">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>39586108c7f20371f33dd6bcea456a78</td>
-       <td>CVE-2015-10086</td>
-       <td>2023-02-28 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, was found in OpenCycleCompass server-php. Affected is an unknown function of the file api1/login.php. The manipulation of the argument user leads to sql injection. It is possible to launch the attack remotely. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The name of the patch is fa0d9bcf81c711a88172ad0d37a842f029ac3782. It is recommended to apply a patch to fix this issue. The identifier of this vulnerability is VDB-221808.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2015-10086">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b433ddb89ec6967f1dffcc67389b33ef</td>
-       <td>CVE-2023-1055</td>
-       <td>2023-02-27 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A flaw was found in RHDS 11 and RHDS 12. While browsing entries LDAP tries to decode the userPassword attribute instead of the userCertificate attribute which could lead into sensitive information leaked. An attacker with a local account where the cockpit-389-ds is running can list the processes and display the hashed passwords. The highest threat from this vulnerability is to data confidentiality.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1055">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6a24bb79fb812301b47e412721e87a8b</td>
-       <td>CVE-2023-26043</td>
-       <td>2023-02-27 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>GeoNode is an open source platform that facilitates the creation, sharing, and collaborative use of geospatial data. GeoNode is vulnerable to an XML External Entity (XXE) injection in the style upload functionality of GeoServer leading to Arbitrary File Read. This issue has been patched in version 4.0.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26043">详情</a></td>
       </tr>
 
      </tbody>
