@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-02 19:20:57 -->
+<!-- RELEASE TIME : 2023-03-02 20:27:09 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,70 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>49745e5c7cc0f43adf3e2c34279e1b91</td>
+       <td>CVE-2023-26480</td>
+       <td>2023-03-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform. Starting in version 12.10, a user without script rights can introduce a stored cross-site scripting by using the Live Data macro. This has been patched in XWiki 14.9, 14.4.7, and 13.10.10. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26480">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d9bb9373e20259521122ed64972c12a</td>
+       <td>CVE-2023-26479</td>
+       <td>2023-03-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform. Starting in version 6.0, users with write rights can insert well-formed content that is not handled well by the parser. As a consequence, some pages becomes unusable, including the user index (if the page containing the faulty content is a user page) and the page index. Note that on the page, the normal UI is completely missing and it is not possible to open the editor directly to revert the change as the stack overflow is already triggered while getting the title of the document. This means that it is quite difficult to remove this content once inserted. This has been patched in XWiki 13.10.10, 14.4.6, and 14.9-rc-1. A temporary workaround to avoid Stack Overflow errors is to increase the memory allocated to the stack by using the `-Xss` JVM parameter (e.g., `-Xss32m`). This should allow the parser to pass and to fix the faulty content. The consequences for other aspects of the system (e.g., performance) are unknown, and this workaround should be only be used as a temporary solution. The workaround does not prevent the issue occurring again with other content. Consequently, it is strongly advised to upgrade to a version where the issue has been patched.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26479">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e88bb23ec2f0146ba6817f4c520e6ce</td>
+       <td>CVE-2023-26478</td>
+       <td>2023-03-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform. Starting in version 14.3-rc-1, `org.xwiki.store.script.TemporaryAttachmentsScriptService#uploadTemporaryAttachment` returns an instance of `com.xpn.xwiki.doc.XWikiAttachment`. This class is not supported to be exposed to users without the `programing` right. `com.xpn.xwiki.api.Attachment` should be used instead and takes case of checking the user's rights before performing dangerous operations. This has been patched in versions 14.9-rc-1 and 14.4.6. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26478">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eee606f2e2383dc1e4209628cf73b6da</td>
+       <td>CVE-2023-26477</td>
+       <td>2023-03-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform. Starting in versions 6.3-rc-1 and 6.2.4, it's possible to inject arbitrary wiki syntax including Groovy, Python and Velocity script macros via the `newThemeName` request parameter (URL parameter), in combination with additional parameters. This has been patched in the supported versions 13.10.10, 14.9-rc-1, and 14.4.6. As a workaround, it is possible to edit `FlamingoThemesCode.WebHomeSheet` and manually perform the changes from the patch fixing the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26477">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f1f24f76c4cc5789d0f6ed348cb0ae9</td>
+       <td>CVE-2023-1155</td>
+       <td>2023-03-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Cost Calculator plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the nd_cc_meta_box_cc_price_icon parameter in versions up to, and including, 1.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1155">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a6f4f16b8feed01c730b631cbd9d7b53</td>
+       <td>CVE-2023-1118</td>
+       <td>2023-03-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw use after free in the Linux kernel integrated infrared receiver/transceiver driver was found in the way user detaching rc device. A local user could use this flaw to crash the system or potentially escalate their privileges on the system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1118">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b6a7523a9365d2f0fc148ec53c4df4e</td>
+       <td>CVE-2022-38734</td>
+       <td>2023-03-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>StorageGRID (formerly StorageGRID Webscale) versions prior to 11.6.0.8 are susceptible to a Denial of Service (DoS) vulnerability. A successful exploit could lead to to a crash of the Local Distribution Router (LDR) service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38734">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f6ed31147689348f0c0406260d225265</td>
+       <td>CVE-2023-0085</td>
+       <td>2023-03-02 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Metform Elementor Contact Form Builder plugin for WordPress is vulnerable to reCaptcha Bypass in versions up to, and including, 3.2.1. This is due to insufficient server side checking on the captcha value submitted during a form submission. This makes it possible for unauthenticated attackers to bypass Captcha restrictions and for attackers to utilize bots to submit forms.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0085">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ef5f9d1569ffb8220fd939d5981f4dff</td>
        <td>CVE-2023-26780</td>
        <td>2023-03-02 16:15:00 <img src="imgs/new.gif" /></td>
@@ -457,70 +521,6 @@
        <td>2023-03-02 02:15:00 <img src="imgs/new.gif" /></td>
        <td>Improper Authentication vulnerability in ABB Symphony Plus S+ Operations allows Man in the Middle Attack.This issue affects Symphony Plus S+ Operations: from 2.X through 2.1 SP2, 2.2, from 3.X through 3.3 SP1, 3.3 SP2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0228">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33c6d881cbf2f9e0344f36624703d862</td>
-       <td>CVE-2020-5026</td>
-       <td>2023-03-01 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Financial Transaction Manager for Digital Payments for Multi-Platform 3.2.0 through 3.2.7 could allow a remote attacker to obtain sensitive information when a detailed technical error message is returned in the browser. This information could be used in further attacks against the system. IBM X-Force ID: 193662.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-5026">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6a132e64c658b6e3061304a43fbe3b15</td>
-       <td>CVE-2020-5001</td>
-       <td>2023-03-01 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Financial Transaction Manager 3.2.0 through 3.2.7 could allow a remote attacker to traverse directories on the system. An attacker could send a specially-crafted URL request containing "dot dot" sequences (/../) to view arbitrary files on the system. IBM X-Force ID: 192953.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-5001">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>91615360c91f92107ff864ab40b92068</td>
-       <td>CVE-2023-24127</td>
-       <td>2023-03-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey1 parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24127">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bce65f6c94419c0f3f81e0506e7764f1</td>
-       <td>CVE-2023-24126</td>
-       <td>2023-03-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey4_5g parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24126">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f62564338a6797264b782827ee838d84</td>
-       <td>CVE-2023-24125</td>
-       <td>2023-03-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey2_5g parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24125">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>87d8a495f8af72219843b74b6d705652</td>
-       <td>CVE-2023-24124</td>
-       <td>2023-03-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wrlEn parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24124">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3cf42708c482c0b4e3e74f05caa1c3f8</td>
-       <td>CVE-2023-24123</td>
-       <td>2023-03-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepauth parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24123">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb148672479e590912641bd0925ba01b</td>
-       <td>CVE-2023-24122</td>
-       <td>2023-03-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the ssid_5g parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24122">详情</a></td>
       </tr>
 
      </tbody>
