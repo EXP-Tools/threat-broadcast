@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-09 17:26:12 -->
+<!-- RELEASE TIME : 2023-03-09 20:27:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8012e927bb9fb632473fb4292cbeeb4c</td>
+       <td>CVE-2023-25814</td>
+       <td>2023-03-09 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>metersphere is an open source continuous testing platform. In versions prior to 2.7.1 a user who has permission to create a resource file through UI operations is able to append a path to their submission query which will be read by the system and displayed to the user. This allows a users of the system to read arbitrary files on the filesystem of the server so long as the server process itself has permission to read the requested files. This issue has been addressed in version 2.7.1. All users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25814">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a95fc7f5ec2925e13bb5be1e65d6db7b</td>
+       <td>CVE-2023-25573</td>
+       <td>2023-03-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>metersphere is an open source continuous testing platform. In affected versions an improper access control vulnerability exists in `/api/jmeter/download/files`, which allows any user to download any file without authentication. This issue may expose all files available to the running process. This issue has been addressed in version 1.20.20 lts and 2.7.1. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25573">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02d3f850e5fdf4406fdae0c54edf2053</td>
+       <td>CVE-2023-1288</td>
+       <td>2023-03-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An XML External Entity injection (XXE) vulnerability in ENOVIA Live Collaboration V6R2013xE allows Remote File inclusions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1288">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fe4d6c84c07d3ed4a235eff6328fde97</td>
+       <td>CVE-2023-1287</td>
+       <td>2023-03-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An XSL template vulnerability in ENOVIA Live Collaboration V6R2013xE allows Remote Code Execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1287">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6bfb7023f9564f10cfae843106ff8d38</td>
        <td>CVE-2023-0845</td>
        <td>2023-03-09 16:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2023-03-08 22:15:00 <img src="imgs/new.gif" /></td>
        <td>An issue in Wyomind Help Desk Magento 2 extension v.1.3.6 and before fixed in v.1.3.7 allows attacker to execute arbitrary code via a phar file upload in the ticket message field.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-33352">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>94fc95038b401e847ac9a3ce28c8354d</td>
-       <td>CVE-2023-26489</td>
-       <td>2023-03-08 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>wasmtime is a fast and secure runtime for WebAssembly. In affected versions wasmtime's code generator, Cranelift, has a bug on x86_64 targets where address-mode computation mistakenly would calculate a 35-bit effective address instead of WebAssembly's defined 33-bit effective address. This bug means that, with default codegen settings, a wasm-controlled load/store operation could read/write addresses up to 35 bits away from the base of linear memory. Due to this bug, however, addresses up to `0xffffffff * 8 + 0x7ffffffc = 36507222004 = ~34G` bytes away from the base of linear memory are possible from guest code. This means that the virtual memory 6G away from the base of linear memory up to ~34G away can be read/written by a malicious module. A guest module can, without the knowledge of the embedder, read/write memory in this region. The memory may belong to other WebAssembly instances when using the pooling allocator, for example. Affected embedders are recommended to analyze preexisting wasm modules to see if they're affected by the incorrect codegen rules and possibly correlate that with an anomalous number of traps during historical execution to locate possibly suspicious modules. The specific bug in Cranelift's x86_64 backend is that a WebAssembly address which is left-shifted by a constant amount from 1 to 3 will get folded into x86_64's addressing modes which perform shifts. For example `(i32.load (i32.shl (local.get 0) (i32.const 3)))` loads from the WebAssembly address `$local0 << 3`. When translated to Cranelift the `$local0 << 3` computation, a 32-bit value, is zero-extended to a 64-bit value and then added to the base address of linear memory. Cranelift would generate an instruction of the form `movl (%base, %local0, 8), %dst` which calculates `%base + %local0 << 3`. The bug here, however, is that the address computation happens with 64-bit values, where the `$local0 << 3` computation was supposed to be truncated to a a 32-bit value. This means that `%local0`, which can use up to 32-bits for an address, gets 3 extra bits of address space to be accessible via this `movl` instruction. The fix in Cranelift is to remove the erroneous lowering rules in the backend which handle these zero-extended expression. The above example is then translated to `movl %local0, %temp; shl $3, %temp; movl (%base, %temp), %dst` which correctly truncates the intermediate computation of `%local0 << 3` to 32-bits inside the `%temp` register which is then added to the `%base` value. Wasmtime version 4.0.1, 5.0.1, and 6.0.1 have been released and have all been patched to no longer contain the erroneous lowering rules. While updating Wasmtime is recommended, there are a number of possible workarounds that embedders can employ to mitigate this issue if updating is not possible. Note that none of these workarounds are on-by-default and require explicit configuration: 1. The `Config::static_memory_maximum_size(0)` option can be used to force all accesses to linear memory to be explicitly bounds-checked. This will perform a bounds check separately from the address-mode computation which correctly calculates the effective address of a load/store. Note that this can have a large impact on the execution performance of WebAssembly modules. 2. The `Config::static_memory_guard_size(1 << 36)` option can be used to greatly increase the guard pages placed after linear memory. This will guarantee that memory accesses up-to-34G away are guaranteed to be semantically correct by reserving unmapped memory for the instance. Note that this reserves a very large amount of virtual memory per-instances and can greatly reduce the maximum number of concurrent instances being run. 3. If using a non-x86_64 host is possible, then that will also work around this bug. This bug does not affect Wasmtime's or Cranelift's AArch64 backend, for example.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26489">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e9eec4ffabac2a4085b37750eb8db887</td>
-       <td>CVE-2023-24533</td>
-       <td>2023-03-08 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiplication of certain unreduced P-256 scalars produce incorrect results. There are no protocols known at this time that can be attacked due to this.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24533">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>50134a4213e2d50d6c0cb1e030751ab8</td>
-       <td>CVE-2023-24532</td>
-       <td>2023-03-08 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>The ScalarMult and ScalarBaseMult methods of the P256 Curve may return an incorrect result if called with some specific unreduced scalars (a scalar larger than the order of the curve). This does not impact usages of crypto/ecdsa or crypto/ecdh.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24532">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad429192f62f70ba36b69c68242ce4c5</td>
-       <td>CVE-2023-27486</td>
-       <td>2023-03-08 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>xCAT is a toolkit for deployment and administration of computer clusters. In versions prior to 2.16.5 if zones are configured as a mechanism to secure clusters in XCAT, it is possible for a local root user from one node to obtain credentials to SSH to any node in any zone, except the management node of the default zone. XCAT zones are not enabled by default. Only users that use the optional zone feature are impacted. All versions of xCAT prior to xCAT 2.16.5 are vulnerable. This problem has been fixed in xCAT 2.16.5. Users making use of zones should upgrade to 2.16.5. Users unable to upgrade may mitigate the issue by disabling zones or patching the management node with the fix contained in commit `85149c37f49`.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27486">详情</a></td>
       </tr>
 
      </tbody>
