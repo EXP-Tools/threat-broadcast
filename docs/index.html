@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-14 20:31:41 -->
+<!-- RELEASE TIME : 2023-03-14 22:25:34 -->
 <html lang="zh-cn">
 
  <head>
@@ -2228,6 +2228,46 @@
       </tr>
 
       <tr>
+       <td>8a71c0cf0acfd1c3f358b512085e35a3</td>
+       <td>CVE-2023-27481</td>
+       <td>2023-03-07 19:15:12 </td>
+       <td>Directus is a real-time API and App dashboard for managing SQL database content. In versions prior to 9.16.0 users with read access to the `password` field in `directus_users` can extract the argon2 password hashes by brute forcing the export functionality combined with a `_starts_with` filter. This allows the user to enumerate the password hashes. Accounts cannot be taken over unless the hashes can be reversed which is unlikely with current hardware. This problem has been patched by preventing any hashed/concealed field to be filtered against with the `_starts_with` or other string operator in version 9.16.0. Users are advised to upgrade. Users unable to upgrade may mitigate this issue by ensuring that no user has `read` access to the `password` field in `directus_users`.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27481">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3bdf83d80271f60e21938b9e148395b2</td>
+       <td>CVE-2023-27480</td>
+       <td>2023-03-07 19:15:12 </td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions any user with edit rights on a document can trigger an XAR import on a forged XAR file, leading to the ability to display the content of any file on the XWiki server host. This vulnerability has been patched in XWiki 13.10.11, 14.4.7 and 14.10-rc-1. Users are advised to upgrade. Users unable to upgrade may apply the patch `e3527b98fd` manually.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27480">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c385512f2088c69386bc87394ebcbeb6</td>
+       <td>CVE-2023-27479</td>
+       <td>2023-03-07 19:15:12 </td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions any user with view rights can execute arbitrary Groovy, Python or Velocity code in XWiki leading to full access to the XWiki installation. The root cause is improper escaping of UIX parameters. A proof of concept exploit is to log in, add an `XWiki.UIExtensionClass` xobject to the user profile page, with an Extension Parameters content containing `label={{/html}} {{async async=&quot;true&quot; cached=&quot;false&quot; context=&quot;doc.reference&quot;}}{{groovy}}println(&quot;Hello &quot; + &quot;from groovy!&quot;){{/groovy}}{{/async}}`. Then, navigating to `PanelsCode.ApplicationsPanelConfigurationSheet` (i.e., `&lt;xwiki-host&gt;/xwiki/bin/view/PanelsCode/ApplicationsPanelConfigurationSheet` where `&lt;xwiki-host&gt;` is the URL of your XWiki installation) should not execute the Groovy script. If it does, you will see `Hello from groovy!` displayed on the screen. This vulnerability has been patched in XWiki 13.10.11, 14.4.7 and 14.10-rc-1. Users are advised to upgrade. For users unable to upgrade the issue can be fixed by editing the `PanelsCode.ApplicationsPanelConfigurationSheet` wiki page and making the same modifications as shown in commit `6de5442f3c`.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27479">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>38636d84120c30c323ce05131aeaf4b8</td>
+       <td>CVE-2023-27478</td>
+       <td>2023-03-07 18:15:09 </td>
+       <td>libmemcached-awesome is an open source C/C++ client library and tools for the memcached server. `libmemcached` could return data for a previously requested key, if that previous request timed out due to a low `POLL_TIMEOUT`. This issue has been addressed in version 1.1.4. Users are advised to upgrade. There are several ways to workaround or lower the probability of this bug affecting a given deployment. 1: use a reasonably high `POLL_TIMEOUT` setting, like the default. 2: use separate libmemcached connections for unrelated data. 3: do not re-use libmemcached connections in an unknown state.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27478">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7e34a34e0d5859545694b038df46cb03</td>
+       <td>CVE-2023-27475</td>
+       <td>2023-03-07 18:15:09 </td>
+       <td>Goutil is a collection of miscellaneous functionality for the go language. In versions prior to 0.6.0 when users use fsutil.Unzip to unzip zip files from a malicious attacker, they may be vulnerable to path traversal. This vulnerability is known as a ZipSlip. This issue has been fixed in version 0.6.0, users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27475">详情</a></td>
+      </tr>
+
+      <tr>
        <td>257983a0b1d22974d746cd30517a6a3e</td>
        <td>CVE-2023-27522</td>
        <td>2023-03-07 16:15:09 </td>
@@ -2417,46 +2457,6 @@
        <td>2023-03-01 20:15:18 </td>
        <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey3 parameter at /goform/WifiBasicSet.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24134">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9eb61f8f5ef69c076c1fb96d0ee29f5e</td>
-       <td>CVE-2023-24133</td>
-       <td>2023-03-01 20:15:18 </td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey_5g parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24133">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dbe537949260c9623fbb6ae8cf42829e</td>
-       <td>CVE-2023-24132</td>
-       <td>2023-03-01 20:15:17 </td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey3_5g parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24132">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ccf15fbed3794c1dbd8531aa918db06e</td>
-       <td>CVE-2023-24131</td>
-       <td>2023-03-01 20:15:17 </td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey1_5g parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24131">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1fde3f2bbd4d8366d764d93e48f4e419</td>
-       <td>CVE-2023-24130</td>
-       <td>2023-03-01 20:15:16 </td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24130">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d0f0bea23ede05ee73d47cd17638a32</td>
-       <td>CVE-2023-24129</td>
-       <td>2023-03-01 20:15:16 </td>
-       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a stack overflow via the wepkey4 parameter at /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-24129">详情</a></td>
       </tr>
 
      </tbody>
