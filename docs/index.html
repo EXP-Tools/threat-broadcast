@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-15 23:19:30 -->
+<!-- RELEASE TIME : 2023-03-16 01:48:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -38,7 +38,7 @@
       <tr>
        <td>ae733c9e19d8a91d1e36ae4ef7dbcdde</td>
        <td>CVE-2023-23638</td>
-       <td>2023-03-14 07:05:15 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 07:05:15</td>
        <td>CVE-2023-23638：Apache Dubbo反序列化漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=64101cab12d0ac6890a92c60">详情</a></td>
       </tr>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>376a84747a7809389baea3dc5649ace8</td>
+       <td>CVE-2023-28461</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Array Networks Array AG Series and vxAG (9.4.0.481 and earlier) allow remote code execution. An attacker can browse the filesystem on the SSL VPN gateway using a flags attribute in an HTTP header without authentication. The product could then be exploited through a vulnerable URL. The 2023-03-09 vendor advisory stated "a new Array AG release with the fix will be available soon."</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28461">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>44f52dadbcfd515d628c7f5168c718fc</td>
+       <td>CVE-2023-28460</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>A command injection vulnerability was discovered in Array Networks APV products. A remote attacker can send a crafted packet after logging into the affected appliance as an administrator, resulting in arbitrary shell code execution. This is fixed in 8.6.1.262 or newer and 10.4.2.93 or newer.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28460">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1aa98cd2581ed62aca8732aef6e5605e</td>
+       <td>CVE-2023-28338</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Any request send to a Netgear Nighthawk Wifi6 Router (RAX30)'s web service containing a “Content-Type” of “multipartboundary=” will result in the request body being written to “/tmp/mulipartFile” on the device itself. A sufficiently large file will cause device resources to be exhausted, resulting in the device becoming unusable until it is rebooted.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28338">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c05f17b03476a767c63296ce3b3176a6</td>
+       <td>CVE-2023-28337</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>When uploading a firmware image to a Netgear Nighthawk Wifi6 Router (RAX30), a hidden “forceFWUpdate” parameter may be provided to force the upgrade to complete and bypass certain validation checks. End users can use this to upload modified, unofficial, and potentially malicious firmware to the device.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28337">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>24f5a791c5ca4b751b0cd5c8bbb9c35b</td>
+       <td>CVE-2023-28099</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenSIPS is a Session Initiation Protocol (SIP) server implementation. Prior to versions 3.1.9 and 3.2.6, if `ds_is_in_list()` is used with an invalid IP address string (`NULL` is illegal input), OpenSIPS will attempt to print a string from a random address (stack garbage), which could lead to a crash. All users of `ds_is_in_list()` without the `$si` variable as 1st parameter could be affected by this vulnerability to a larger, lesser or no extent at all, depending if the data passed to the function is a valid IPv4 or IPv6 address string or not. Fixes will are available starting with the 3.1.9 and 3.2.6 minor releases. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28099">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>479919b6f132feb76fbc15d9f69e9d62</td>
+       <td>CVE-2023-28098</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenSIPS is a Session Initiation Protocol (SIP) server implementation. Prior to versions 3.1.7 and 3.2.4, a specially crafted Authorization header causes OpenSIPS to crash or behave in an unexpected way due to a bug in the function `parse_param_name()` . This issue was discovered while performing coverage guided fuzzing of the function parse_msg. The AddressSanitizer identified that the issue occurred in the function `q_memchr()` which is being called by the function `parse_param_name()`. This issue may cause erratic program behaviour or a server crash. It affects configurations containing functions that make use of the affected code, such as the function `www_authorize()` . Versions 3.1.7 and 3.2.4 contain a fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28098">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4ac3f05cbce3e61ca874faa4ae7c3f15</td>
+       <td>CVE-2023-28097</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenSIPS is a Session Initiation Protocol (SIP) server implementation. Prior to versions 3.1.9 and 3.2.6, a malformed SIP message containing a large _Content-Length_ value and a specially crafted Request-URI causes a segmentation fault in OpenSIPS. This issue occurs when a large amount of shared memory using the `-m` flag was allocated to OpenSIPS, such as 10 GB of RAM. On the test system, this issue occurred when shared memory was set to `2362` or higher. This issue is fixed in versions 3.1.9 and 3.2.6. The only workaround is to guarantee that the Content-Length value of input messages is never larger than `2147483647`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28097">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d1ec926ee0272ca6dccfd6103db6273d</td>
+       <td>CVE-2023-24468</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Broken access control in Advanced Authentication versions prior to 6.4.1.1 and 6.3.7.2</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24468">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5746084420c8dbfee3f7a4dfb2b1e39a</td>
+       <td>CVE-2023-1421</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>A reflected cross-site scripting vulnerability in the OAuth flow completion endpoints in Mattermost allows an attacker to send AJAX requests on behalf of the victim via sharing a crafted link with a malicious state parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1421">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>850c9959c7a0a93404703e40a2bb1859</td>
+       <td>CVE-2023-1389</td>
+       <td>2023-03-15 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>TP-Link Archer AX21 (AX1800) firmware versions before 1.1.4 Build 20230219 contained a command injection vulnerability in the country form of the /cgi-bin/luci;stok=/locale endpoint on the web management interface. Specifically, the country parameter of the write operation was not sanitized before being used in a call to popen(), allowing an unauthenticated attacker to inject commands, which would be run as root, with a simple POST request.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1389">详情</a></td>
+      </tr>
+
+      <tr>
        <td>737b524abc8e044a751faffbd7763229</td>
        <td>CVE-2023-25282</td>
        <td>2023-03-15 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-03-15 15:15:00 <img src="imgs/new.gif" /></td>
        <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Ernest Marcinko Ajax Search Lite plugin <= 4.10.3 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38456">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1a2f08c0d3790bc6f7c347f5c7c725eb</td>
-       <td>CVE-2022-34148</td>
-       <td>2023-03-15 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in JetBackup JetBackup – WP Backup, Migrate & Restore plugin <= 1.6.9.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34148">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a19ad45bbc664a34f894e5294027dfb3</td>
-       <td>CVE-2023-26084</td>
-       <td>2023-03-15 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>The armv8_dec_aes_gcm_full() API of Arm AArch64cryptolib before 86065c6 fails to the verify the authentication tag of AES-GCM protected data, leading to a man-in-the-middle attack. This occurs because of an improperly initialized variable.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26084">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f0af3f8c696dc7347a561e2f630c994f</td>
-       <td>CVE-2023-24732</td>
-       <td>2023-03-15 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Simple Customer Relationship Management System v1.0 as discovered to contain a SQL injection vulnerability via the gender parameter in the user profile update function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24732">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>520f676dbf7355966013c3311b81444a</td>
-       <td>CVE-2023-24731</td>
-       <td>2023-03-15 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Simple Customer Relationship Management System v1.0 as discovered to contain a SQL injection vulnerability via the query parameter in the user profile update function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24731">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b76de5baabb80b7397b2c6a0eaa7563</td>
-       <td>CVE-2022-45155</td>
-       <td>2023-03-15 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>An Improper Handling of Exceptional Conditions vulnerability in obs-service-go_modules of openSUSE Factory allows attackers that can influence the call to the service to delete files and directories on the system of the victim.This issue affects:SUSE openSUSE Factoryobs-service-go_modules  versions prior to 0.6.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45155">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>da70f8e44ce890f5fb3481d004649589</td>
-       <td>CVE-2023-0322</td>
-       <td>2023-03-15 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Talent Software UNIS allows Reflected XSS.This issue affects UNIS: before 28376.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0322">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>edfdb84d003a7d19a22be6db0bad3b0a</td>
-       <td>CVE-2023-25968</td>
-       <td>2023-03-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Cozmoslabs, Madalin Ungureanu, Antohe Cristian Client Portal – Private user pages and login plugin <= 1.1.8 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25968">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>043e8d7f92b15c3709f9c0a00d20e2c8</td>
-       <td>CVE-2023-25709</td>
-       <td>2023-03-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Plainware Locatoraid Store Locator plugin <= 3.9.11 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25709">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2490ee1933e4d62868617e15c2dddcef</td>
-       <td>CVE-2023-25708</td>
-       <td>2023-03-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Rextheme WP VR – 360 Panorama and Virtual Tour Builder For WordPress plugin <= 8.2.7 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25708">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>06ff6cb3534dbc5581a998a544acdbd0</td>
-       <td>CVE-2022-47427</td>
-       <td>2023-03-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Joseph C Dolson My Calendar plugin <= 3.3.24.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47427">详情</a></td>
       </tr>
 
      </tbody>
@@ -1750,7 +1750,7 @@
       <tr>
        <td>f78427a0d63073b8e7dd887d7f36d8f2</td>
        <td>CVE-2023-22856</td>
-       <td>2023-03-14 20:28:14 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 20:28:14</td>
        <td>BLOGENGINE BLOGENGINE.NET Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ccc8d843f4bd49e2803ee1984d4ff6bf">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>9fff8545afac2a64edefca5fb87e6740</td>
        <td>CVE-2021-20251</td>
-       <td>2023-03-14 20:28:08 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 20:28:08</td>
        <td>Samba 安全漏洞</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=b296020e13304b8c89dc8dbb88750637">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>4f3ba94bd339ea7a3d14e66f6e48cbd3</td>
        <td>CVE-2023-1212</td>
-       <td>2023-03-14 20:27:55 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 20:27:55</td>
        <td>PHPIPAM PHPIPAM Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=e90feb0fcbad453bb97506a10d033dc6">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>6206b3455a62920ea847dfca9b60fd43</td>
        <td>CVE-2023-1211</td>
-       <td>2023-03-14 20:27:49 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 20:27:49</td>
        <td>PHPIPAM PHPIPAM Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=231fda70763b47118c651bf8de1f8424">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>06f61f8059be4c304830fa40c84cc3f3</td>
        <td>CVE-2023-20078</td>
-       <td>2023-03-14 20:27:42 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 20:27:42</td>
        <td>CISCO Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2f540143d7df4fb4a7603a638bf0994f">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>003f03842188212b9fd5499134088802</td>
        <td>CVE-2023-22857</td>
-       <td>2023-03-14 20:27:29 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 20:27:29</td>
        <td>BLOGENGINE BLOGENGINE.NET Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5a2aeb73ad894be8b42893c4d201b381">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>7c2c8842dc1abc673f1a4a69211abf3f</td>
        <td>CVE-2023-23927</td>
-       <td>2023-03-14 20:27:23 <img src="imgs/new.gif" /></td>
+       <td>2023-03-14 20:27:23</td>
        <td>CRAFTCMS CRAFT_CMS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=bfa1bfc8ad614a2f872c34c9a0819ae2">详情</a></td>
       </tr>
@@ -2340,6 +2340,14 @@
       </tr>
 
       <tr>
+       <td>d8efaa56e921cb08de4ca142f5268b4d</td>
+       <td>CVE-2023-26948</td>
+       <td>2023-03-09 01:15:10 </td>
+       <td>onekeyadmin v1.3.9 was discovered to contain an arbitrary file read vulnerability via the component /admin1/file/download.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26948">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b0ee42d6d58a37f9ed5ace99362da1f3</td>
        <td>CVE-2023-27974</td>
        <td>2023-03-09 00:15:09 </td>
@@ -2356,6 +2364,14 @@
       </tr>
 
       <tr>
+       <td>940f439503108a77c89b71e4e580c8e1</td>
+       <td>CVE-2023-26489</td>
+       <td>2023-03-08 20:15:09 </td>
+       <td>wasmtime is a fast and secure runtime for WebAssembly. In affected versions wasmtime's code generator, Cranelift, has a bug on x86_64 targets where address-mode computation mistakenly would calculate a 35-bit effective address instead of WebAssembly's defined 33-bit effective address. This bug means that, with default codegen settings, a wasm-controlled load/store operation could read/write addresses up to 35 bits away from the base of linear memory. Due to this bug, however, addresses up to `0xffffffff * 8 + 0x7ffffffc = 36507222004 = ~34G` bytes away from the base of linear memory are possible from guest code. This means that the virtual memory 6G away from the base of linear memory up to ~34G away can be read/written by a malicious module. A guest module can, without the knowledge of the embedder, read/write memory in this region. The memory may belong to other WebAssembly instances when using the pooling allocator, for example. Affected embedders are recommended to analyze preexisting wasm modules to see if they're affected by the incorrect codegen rules and possibly correlate that with an anomalous number of traps during historical execution to locate possibly suspicious modules. The specific bug in Cranelift's x86_64 backend is that a WebAssembly address which is left-shifted by a constant amount from 1 to 3 will get folded into x86_64's addressing modes which perform shifts. For example `(i32.load (i32.shl (local.get 0) (i32.const 3)))` loads from the WebAssembly address `$local0 &lt;&lt; 3`. When translated to Cranelift the `$local0 &lt;&lt; 3` computation, a 32-bit value, is zero-extended to a 64-bit value and then added to the base address of linear memory. Cranelift would generate an instruction of the form `movl (%base, %local0, 8), %dst` which calculates `%base + %local0 &lt;&lt; 3`. The bug here, however, is that the address computation happens with 64-bit values, where the `$local0 &lt;&lt; 3` computation was supposed to be truncated to a a 32-bit value. This means that `%local0`, which can use up to 32-bits for an address, gets 3 extra bits of address space to be accessible via this `movl` instruction. The fix in Cranelift is to remove the erroneous lowering rules in the backend which handle these zero-extended expression. The above example is then translated to `movl %local0, %temp; shl $3, %temp; movl (%base, %temp), %dst` which correctly truncates the intermediate computation of `%local0 &lt;&lt; 3` to 32-bits inside the `%temp` register which is then added to the `%base` value. Wasmtime version 4.0.1, 5.0.1, and 6.0.1 have been released and have all been patched to no longer contain the erroneous lowering rules. While updating Wasmtime is recommended, there are a number of possible workarounds that embedders can employ to mitigate this issue if updating is not possible. Note that none of these workarounds are on-by-default and require explicit configuration: 1. The `Config::static_memory_maximum_size(0)` option can be used to force all accesses to linear memory to be explicitly bounds-checked. This will perform a bounds check separately from the address-mode computation which correctly calculates the effective address of a load/store. Note that this can have a large impact on the execution performance of WebAssembly modules. 2. The `Config::static_memory_guard_size(1 &lt;&lt; 36)` option can be used to greatly increase the guard pages placed after linear memory. This will guarantee that memory accesses up-to-34G away are guaranteed to be semantically correct by reserving unmapped memory for the instance. Note that this reserves a very large amount of virtual memory per-instances and can greatly reduce the maximum number of concurrent instances being run. 3. If using a non-x86_64 host is possible, then that will also work around this bug. This bug does not affect Wasmtime's or Cranelift's AArch64 backend, for example.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26489">详情</a></td>
+      </tr>
+
+      <tr>
        <td>0656ccedf006b9c5a5c3edb3860b72d0</td>
        <td>CVE-2023-27088</td>
        <td>2023-03-08 16:15:09 </td>
@@ -2364,11 +2380,27 @@
       </tr>
 
       <tr>
+       <td>19891fe4bb5c18aa36553a162bc6a18a</td>
+       <td>CVE-2023-26922</td>
+       <td>2023-03-08 16:15:09 </td>
+       <td>SQL injection vulnerability found in Varisicte matrix-gui v.2 allows a remote attacker to execute arbitrary code via the shell_exect parameter to the \www\pages\matrix-gui-2.0 endpoint.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26922">详情</a></td>
+      </tr>
+
+      <tr>
        <td>16ff4bf649bb30cdb823dc1b135a3945</td>
        <td>CVE-2023-27476</td>
        <td>2023-03-08 00:15:08 </td>
        <td>OWSLib is a Python package for client programming with Open Geospatial Consortium (OGC) web service interface standards, and their related content models. OWSLib's XML parser (which supports both `lxml` and `xml.etree`) does not disable entity resolution, and could lead to arbitrary file reads from an attacker-controlled XML payload. This affects all XML parsing in the codebase. This issue has been addressed in version 0.28.1. All users are advised to upgrade. The only known workaround is to patch the library manually. See `GHSA-8h9c-r582-mggc` for details.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27476">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4dcc086bcc16b4e2eeb4726e42eec01c</td>
+       <td>CVE-2023-26823</td>
+       <td>2023-03-07 22:15:10 </td>
+       <td>An arbitrary file upload vulnerability in the /admin/template.php component of shopEx EcShop v4.1.5 allows attackers to execute arbitrary code via a crafted PHP file.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26823">详情</a></td>
       </tr>
 
       <tr>
@@ -2425,38 +2457,6 @@
        <td>2023-03-07 16:15:09 </td>
        <td>HTTP Response Smuggling vulnerability in Apache HTTP Server via mod_proxy_uwsgi. This issue affects Apache HTTP Server: from 2.4.30 through 2.4.55. Special characters in the origin response header can truncate/split the response forwarded to the client.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27522">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a33f967834dd293ca6a3b9c2039554a</td>
-       <td>CVE-2023-27891</td>
-       <td>2023-03-06 23:15:11 </td>
-       <td>rami.io pretix before 4.17.1 allows OAuth application authorization from a logged-out session. The fixed versions are 4.15.1, 4.16.1, and 4.17.1.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27891">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c673cb6e41314136bb0d8f9ef2c597b</td>
-       <td>CVE-2023-27472</td>
-       <td>2023-03-06 19:15:10 </td>
-       <td>quickentity-editor-next is an open source, system local, video game asset editor. In affected versions HTML tags in entity names are not sanitised (XSS vulnerability). Allows arbitrary code execution within the browser sandbox, among other things, simply from loading a file containing a script tag in any entity name. This issue has been patched in version 1.28.1 of the application. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27472">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0570351a1519e9a7f0ab7afb2aba254c</td>
-       <td>CVE-2023-27474</td>
-       <td>2023-03-06 17:15:10 </td>
-       <td>Directus is a real-time API and App dashboard for managing SQL database content. Instances relying on an allow-listed reset URL are vulnerable to an HTML injection attack through the use of query parameters in the reset URL. An attacker could exploit this to email users urls to the servers domain but which may contain malicious code. The problem has been resolved and released under version 9.23.0. People relying on a custom password reset URL should upgrade to 9.23.0 or later, or remove the custom reset url from the configured allow list. Users are advised to upgrade. Users unable to upgrade may disable the custom reset URL allow list as a workaround.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27474">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8dc3cc792d8f2c8f660e7a3c2e24f8f8</td>
-       <td>CVE-2023-26111</td>
-       <td>2023-03-06 05:15:12 </td>
-       <td>All versions of the package @nubosoftware/node-static; all versions of the package node-static are vulnerable to Directory Traversal due to improper file path sanitization in the startsWith() method in the servePath function.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26111">详情</a></td>
       </tr>
 
      </tbody>
