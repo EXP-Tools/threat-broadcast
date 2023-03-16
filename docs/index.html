@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-16 01:48:19 -->
+<!-- RELEASE TIME : 2023-03-16 05:24:59 -->
 <html lang="zh-cn">
 
  <head>
@@ -2220,6 +2220,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5c1c07eb49f07d489469aa9732ca9727</td>
+       <td>CVE-2023-27905</td>
+       <td>2023-03-10 21:15:15 </td>
+       <td>Jenkins update-center2 3.13 and 3.14 renders the required Jenkins core version on plugin download index pages without sanitization, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers able to provide a plugin for hosting.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27905">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2368199971a03ca93a02f237fbfe7ab2</td>
+       <td>CVE-2023-27904</td>
+       <td>2023-03-10 21:15:15 </td>
+       <td>Jenkins 2.393 and earlier, LTS 2.375.3 and earlier prints an error stack trace on agent-related pages when agent connections are broken, potentially revealing information about Jenkins configuration that is otherwise inaccessible to attackers.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27904">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7313f586f4a65eda25c8574398eb5ec5</td>
+       <td>CVE-2023-27903</td>
+       <td>2023-03-10 21:15:15 </td>
+       <td>Jenkins 2.393 and earlier, LTS 2.375.3 and earlier creates a temporary file in the default temporary directory with the default permissions for newly created files when uploading a file parameter through the CLI, potentially allowing attackers with access to the Jenkins controller file system to read and write the file before it is used.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27903">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8132bbbda8412c481e7d9028d6563f2c</td>
        <td>CVE-2023-27850</td>
        <td>2023-03-10 18:15:16 </td>
@@ -2433,30 +2457,6 @@
        <td>2023-03-07 19:15:12 </td>
        <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions any user with view rights can execute arbitrary Groovy, Python or Velocity code in XWiki leading to full access to the XWiki installation. The root cause is improper escaping of UIX parameters. A proof of concept exploit is to log in, add an `XWiki.UIExtensionClass` xobject to the user profile page, with an Extension Parameters content containing `label={{/html}} {{async async=&quot;true&quot; cached=&quot;false&quot; context=&quot;doc.reference&quot;}}{{groovy}}println(&quot;Hello &quot; + &quot;from groovy!&quot;){{/groovy}}{{/async}}`. Then, navigating to `PanelsCode.ApplicationsPanelConfigurationSheet` (i.e., `&lt;xwiki-host&gt;/xwiki/bin/view/PanelsCode/ApplicationsPanelConfigurationSheet` where `&lt;xwiki-host&gt;` is the URL of your XWiki installation) should not execute the Groovy script. If it does, you will see `Hello from groovy!` displayed on the screen. This vulnerability has been patched in XWiki 13.10.11, 14.4.7 and 14.10-rc-1. Users are advised to upgrade. For users unable to upgrade the issue can be fixed by editing the `PanelsCode.ApplicationsPanelConfigurationSheet` wiki page and making the same modifications as shown in commit `6de5442f3c`.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27479">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>38636d84120c30c323ce05131aeaf4b8</td>
-       <td>CVE-2023-27478</td>
-       <td>2023-03-07 18:15:09 </td>
-       <td>libmemcached-awesome is an open source C/C++ client library and tools for the memcached server. `libmemcached` could return data for a previously requested key, if that previous request timed out due to a low `POLL_TIMEOUT`. This issue has been addressed in version 1.1.4. Users are advised to upgrade. There are several ways to workaround or lower the probability of this bug affecting a given deployment. 1: use a reasonably high `POLL_TIMEOUT` setting, like the default. 2: use separate libmemcached connections for unrelated data. 3: do not re-use libmemcached connections in an unknown state.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27478">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7e34a34e0d5859545694b038df46cb03</td>
-       <td>CVE-2023-27475</td>
-       <td>2023-03-07 18:15:09 </td>
-       <td>Goutil is a collection of miscellaneous functionality for the go language. In versions prior to 0.6.0 when users use fsutil.Unzip to unzip zip files from a malicious attacker, they may be vulnerable to path traversal. This vulnerability is known as a ZipSlip. This issue has been fixed in version 0.6.0, users are advised to upgrade. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27475">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>257983a0b1d22974d746cd30517a6a3e</td>
-       <td>CVE-2023-27522</td>
-       <td>2023-03-07 16:15:09 </td>
-       <td>HTTP Response Smuggling vulnerability in Apache HTTP Server via mod_proxy_uwsgi. This issue affects Apache HTTP Server: from 2.4.30 through 2.4.55. Special characters in the origin response header can truncate/split the response forwarded to the client.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27522">详情</a></td>
       </tr>
 
      </tbody>
