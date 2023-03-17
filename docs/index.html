@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-17 02:43:07 -->
+<!-- RELEASE TIME : 2023-03-17 05:24:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -2220,6 +2220,22 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>61278757e480cc9df5af15631d9978d3</td>
+       <td>CVE-2023-27532</td>
+       <td>2023-03-10 22:15:10 </td>
+       <td>Vulnerability in Veeam Backup &amp; Replication component allows encrypted credentials stored in the configuration database to be obtained. This may lead to gaining access to the backup infrastructure hosts.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27532">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f28bcdc29180de6e4f9e241452a16e89</td>
+       <td>CVE-2023-27530</td>
+       <td>2023-03-10 22:15:10 </td>
+       <td>A DoS vulnerability exists in Rack &lt;v3.0.4.2, &lt;v2.2.6.3, &lt;v2.1.4.3 and &lt;v2.0.9.3 within in the Multipart MIME parsing code in which could allow an attacker to craft requests that can be abuse to cause multipart parsing to take longer than expected.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27530">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5c1c07eb49f07d489469aa9732ca9727</td>
        <td>CVE-2023-27905</td>
        <td>2023-03-10 21:15:15 </td>
@@ -2281,6 +2297,14 @@
        <td>2023-03-10 21:15:15 </td>
        <td>Jenkins 2.393 and earlier, LTS 2.375.3 and earlier shows temporary directories related to job workspaces, which allows attackers with Item/Workspace permission to access their contents.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27902">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>18b4a6e6968b05d1d504e0387099e1ef</td>
+       <td>CVE-2023-27577</td>
+       <td>2023-03-10 21:15:15 </td>
+       <td>flarum is a forum software package for building communities. In versions prior to 1.7.0 an admin account which has already been compromised by an attacker may use a vulnerability in the `LESS` parser which can be exploited to read sensitive files on the server through the use of path traversal techniques. An attacker can achieve this by providing an absolute path to a sensitive file in the custom `LESS` setting, which the `LESS` parser will then read. For example, an attacker could use the following code to read the contents of the `/etc/passwd` file on a linux machine. The scope of what files are vulnerable will depend on the permissions given to the running flarum process. The vulnerability has been addressed in version `1.7`. Users should upgrade to this version to mitigate the vulnerability. Users unable to upgrade may mitigate the vulnerability by ensuring that their admin accounts are secured with strong passwords and follow other best practices for account security. Additionally, users can limit the exposure of sensitive files on the server by implementing appropriate file permissions and access controls at the operating system level.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27577">详情</a></td>
       </tr>
 
       <tr>
@@ -2380,6 +2404,14 @@
       </tr>
 
       <tr>
+       <td>6267e219db5247702442b10a26d85d3c</td>
+       <td>CVE-2023-27490</td>
+       <td>2023-03-09 21:15:11 </td>
+       <td>NextAuth.js is an open source authentication solution for Next.js applications. `next-auth` applications using OAuth provider versions before `v4.20.1` have been found to be subject to an authentication vulnerability. A bad actor who can read traffic on the victim's network or who is able to social engineer the victim to click a manipulated login link could intercept and tamper with the authorization URL to **log in as the victim**, bypassing the CSRF protection. This is due to a partial failure during a compromised OAuth session where a session code is erroneously generated. This issue has been addressed in version 4.20.1. Users are advised to upgrade. Users unable to upgrade may using Advanced Initialization, manually check the callback request for state, pkce, and nonce against the provider configuration to prevent this issue. See the linked GHSA for details.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27490">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6b33859338617b9b4a6d7a066e3c0a33</td>
        <td>CVE-2023-26957</td>
        <td>2023-03-09 21:15:10 </td>
@@ -2425,38 +2457,6 @@
        <td>2023-03-08 21:15:11 </td>
        <td>wasmtime is a fast and secure runtime for WebAssembly. Wasmtime's code generation backend, Cranelift, has a bug on x86_64 platforms for the WebAssembly `i8x16.select` instruction which will produce the wrong results when the same operand is provided to the instruction and some of the selected indices are greater than 16. There is an off-by-one error in the calculation of the mask to the `pshufb` instruction which causes incorrect results to be returned if lanes are selected from the second vector. This codegen bug has been fixed in Wasmtiem 6.0.1, 5.0.1, and 4.0.1. Users are recommended to upgrade to these updated versions. If upgrading is not an option for you at this time, you can avoid this miscompilation by disabling the Wasm simd proposal. Additionally the bug is only present on x86_64 hosts. Other platforms such as AArch64 and s390x are not affected.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27477">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>940f439503108a77c89b71e4e580c8e1</td>
-       <td>CVE-2023-26489</td>
-       <td>2023-03-08 20:15:09 </td>
-       <td>wasmtime is a fast and secure runtime for WebAssembly. In affected versions wasmtime's code generator, Cranelift, has a bug on x86_64 targets where address-mode computation mistakenly would calculate a 35-bit effective address instead of WebAssembly's defined 33-bit effective address. This bug means that, with default codegen settings, a wasm-controlled load/store operation could read/write addresses up to 35 bits away from the base of linear memory. Due to this bug, however, addresses up to `0xffffffff * 8 + 0x7ffffffc = 36507222004 = ~34G` bytes away from the base of linear memory are possible from guest code. This means that the virtual memory 6G away from the base of linear memory up to ~34G away can be read/written by a malicious module. A guest module can, without the knowledge of the embedder, read/write memory in this region. The memory may belong to other WebAssembly instances when using the pooling allocator, for example. Affected embedders are recommended to analyze preexisting wasm modules to see if they're affected by the incorrect codegen rules and possibly correlate that with an anomalous number of traps during historical execution to locate possibly suspicious modules. The specific bug in Cranelift's x86_64 backend is that a WebAssembly address which is left-shifted by a constant amount from 1 to 3 will get folded into x86_64's addressing modes which perform shifts. For example `(i32.load (i32.shl (local.get 0) (i32.const 3)))` loads from the WebAssembly address `$local0 &lt;&lt; 3`. When translated to Cranelift the `$local0 &lt;&lt; 3` computation, a 32-bit value, is zero-extended to a 64-bit value and then added to the base address of linear memory. Cranelift would generate an instruction of the form `movl (%base, %local0, 8), %dst` which calculates `%base + %local0 &lt;&lt; 3`. The bug here, however, is that the address computation happens with 64-bit values, where the `$local0 &lt;&lt; 3` computation was supposed to be truncated to a a 32-bit value. This means that `%local0`, which can use up to 32-bits for an address, gets 3 extra bits of address space to be accessible via this `movl` instruction. The fix in Cranelift is to remove the erroneous lowering rules in the backend which handle these zero-extended expression. The above example is then translated to `movl %local0, %temp; shl $3, %temp; movl (%base, %temp), %dst` which correctly truncates the intermediate computation of `%local0 &lt;&lt; 3` to 32-bits inside the `%temp` register which is then added to the `%base` value. Wasmtime version 4.0.1, 5.0.1, and 6.0.1 have been released and have all been patched to no longer contain the erroneous lowering rules. While updating Wasmtime is recommended, there are a number of possible workarounds that embedders can employ to mitigate this issue if updating is not possible. Note that none of these workarounds are on-by-default and require explicit configuration: 1. The `Config::static_memory_maximum_size(0)` option can be used to force all accesses to linear memory to be explicitly bounds-checked. This will perform a bounds check separately from the address-mode computation which correctly calculates the effective address of a load/store. Note that this can have a large impact on the execution performance of WebAssembly modules. 2. The `Config::static_memory_guard_size(1 &lt;&lt; 36)` option can be used to greatly increase the guard pages placed after linear memory. This will guarantee that memory accesses up-to-34G away are guaranteed to be semantically correct by reserving unmapped memory for the instance. Note that this reserves a very large amount of virtual memory per-instances and can greatly reduce the maximum number of concurrent instances being run. 3. If using a non-x86_64 host is possible, then that will also work around this bug. This bug does not affect Wasmtime's or Cranelift's AArch64 backend, for example.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26489">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0656ccedf006b9c5a5c3edb3860b72d0</td>
-       <td>CVE-2023-27088</td>
-       <td>2023-03-08 16:15:09 </td>
-       <td>feiqu-opensource Background Vertical authorization vulnerability exists in IndexController.java. demo users with low permission can perform operations within the permission of the admin super administrator and can use this vulnerability to change the blacklist IP address in the system at will.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27088">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>19891fe4bb5c18aa36553a162bc6a18a</td>
-       <td>CVE-2023-26922</td>
-       <td>2023-03-08 16:15:09 </td>
-       <td>SQL injection vulnerability found in Varisicte matrix-gui v.2 allows a remote attacker to execute arbitrary code via the shell_exect parameter to the \www\pages\matrix-gui-2.0 endpoint.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26922">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>16ff4bf649bb30cdb823dc1b135a3945</td>
-       <td>CVE-2023-27476</td>
-       <td>2023-03-08 00:15:08 </td>
-       <td>OWSLib is a Python package for client programming with Open Geospatial Consortium (OGC) web service interface standards, and their related content models. OWSLib's XML parser (which supports both `lxml` and `xml.etree`) does not disable entity resolution, and could lead to arbitrary file reads from an attacker-controlled XML payload. This affects all XML parsing in the codebase. This issue has been addressed in version 0.28.1. All users are advised to upgrade. The only known workaround is to patch the library manually. See `GHSA-8h9c-r582-mggc` for details.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27476">详情</a></td>
       </tr>
 
      </tbody>
