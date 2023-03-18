@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-18 01:47:14 -->
+<!-- RELEASE TIME : 2023-03-18 02:42:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6e42018794b9e4f5312f769bfb7acf46</td>
+       <td>CVE-2023-28116</td>
+       <td>2023-03-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Contiki-NG is an open-source, cross-platform operating system for internet of things (IoT) devices. In versions 4.8 and prior, an out-of-bounds write can occur in the BLE L2CAP module of the Contiki-NG operating system. The network stack of Contiki-NG uses a global buffer (packetbuf) for processing of packets, with the size of PACKETBUF_SIZE. In particular, when using the BLE L2CAP module with the default configuration, the PACKETBUF_SIZE value becomes larger then the actual size of the packetbuf. When large packets are processed by the L2CAP module, a buffer overflow can therefore occur when copying the packet data to the packetbuf. The vulnerability has been patched in the "develop" branch of Contiki-NG, and will be included in release 4.9. The problem can be worked around by applying the patch manually.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28116">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>de75fe414933f829c41794f06a2a1add</td>
+       <td>CVE-2023-28115</td>
+       <td>2023-03-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Snappy is a PHP library allowing thumbnail, snapshot or PDF generation from a url or a html page. Prior to version 1.4.2, Snappy is vulnerable to PHAR deserialization due to a lack of checking on the protocol before passing it into the `file_exists()` function. If an attacker can upload files of any type to the server he can pass in the phar:// protocol to unserialize the uploaded file and instantiate arbitrary PHP objects. This can lead to remote code execution especially when snappy is used with frameworks with documented POP chains like Laravel/Symfony vulnerable developer code. If a user can control the output file from the `generateFromHtml()` function, it will invoke deserialization. This vulnerability is capable of remote code execution if Snappy is used with frameworks or developer code with vulnerable POP chains. It has been fixed in version 1.4.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28115">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5dac8d82eb24569f3fc2949cb856aa6c</td>
+       <td>CVE-2023-27595</td>
+       <td>2023-03-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cilium is a networking, observability, and security solution with an eBPF-based dataplane. In version 1.13.0, when Cilium is started, there is a short period when Cilium eBPF programs are not attached to the host. During this period, the host does not implement any of Cilium's featureset. This can cause disruption to newly established connections during this period due to the lack of Load Balancing, or can cause Network Policy bypass due to the lack of Network Policy enforcement during the window. This vulnerability impacts any Cilium-managed endpoints on the node (such as Kubernetes Pods), as well as the host network namespace (including Host Firewall). This vulnerability is fixed in Cilium 1.13.1 or later. Cilium releases 1.12.x, 1.11.x, and earlier are not affected. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27595">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55dd789dff1b02d55bc5f13853639574</td>
+       <td>CVE-2023-27253</td>
+       <td>2023-03-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A command injection vulnerability in the function restore_rrddata() of Netgate pfSense v2.7.0 allows authenticated attackers to execute arbitrary commands via manipulating the contents of an XML file supplied to the component config.xml.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27253">详情</a></td>
+      </tr>
+
+      <tr>
        <td>547a961e14bfdda1b149107548961a09</td>
        <td>CVE-2023-24678</td>
        <td>2023-03-17 21:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2023-03-17 12:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability classified as critical has been found in SourceCodester Student Study Center Desk Management System 1.0. Affected is an unknown function of the file Master.php?f=delete_img of the component POST Parameter Handler. The manipulation of the argument path with the input C%3A%2Ffoo.txt leads to path traversal. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-223326 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1467">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>353e5a54b7d3213f4b02406a5a176fca</td>
-       <td>CVE-2023-1466</td>
-       <td>2023-03-17 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Student Study Center Desk Management System 1.0. It has been rated as critical. This issue affects the function view_student of the file admin/?page=students/view_student. The manipulation of the argument id with the input 3' AND (SELECT 2100 FROM (SELECT(SLEEP(5)))FWlC) AND 'butz'='butz leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-223325 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1466">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b3af30e310db651a93f39d215daba5c0</td>
-       <td>CVE-2023-1464</td>
-       <td>2023-03-17 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, was found in SourceCodester Medicine Tracker System 1.0. This affects an unknown part of the file Users.php?f=save_user. The manipulation of the argument firstname/middlename/lastname/username/password leads to improper authentication. It is possible to initiate the attack remotely. The associated identifier of this vulnerability is VDB-223311.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1464">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fc978a40933ac3f43948602ad2a84adb</td>
-       <td>CVE-2023-1463</td>
-       <td>2023-03-17 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Authorization in GitHub repository nilsteampassnet/teampass prior to 3.0.0.23.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1463">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c45af955974c924adc83cd600148353</td>
-       <td>CVE-2023-1461</td>
-       <td>2023-03-17 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Canteen Management System 1.0. It has been declared as critical. This vulnerability affects the function query of the file createCategories.php. The manipulation of the argument categoriesStatus leads to sql injection. The attack can be initiated remotely. VDB-223306 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1461">详情</a></td>
       </tr>
 
      </tbody>
