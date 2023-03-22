@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-22 21:18:33 -->
+<!-- RELEASE TIME : 2023-03-22 22:20:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>51d0f826230e28d1405c9a8318fa3392</td>
+       <td>CVE-2023-28114</td>
+       <td>2023-03-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>`cilium-cli` is the command line interface to install, manage, and troubleshoot Kubernetes clusters running Cilium. Prior to version 0.13.2,`cilium-cli`, when used to configure cluster mesh functionality, can remove the enforcement of user permissions on the `etcd` store used to mirror local cluster information to remote clusters. Users who have set up cluster meshes using the Cilium Helm chart are not affected by this issue. Due to an incorrect mount point specification, the settings specified by the `initContainer` that configures `etcd` users and their permissions are overwritten when using `cilium-cli` to configure a cluster mesh. An attacker who has already gained access to a valid key and certificate for an `etcd` cluster compromised in this manner could then modify state in that `etcd` cluster. This issue is patched in `cilium-cli` 0.13.2. As a workaround, one may use Cilium's Helm charts to create their cluster.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28114">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1b037101076c9a0c138d7a962b0fab10</td>
+       <td>CVE-2023-25820</td>
+       <td>2023-03-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nextcloud Server is the file server software for Nextcloud, a self-hosted productivity platform, and Nextcloud Enterprise Server is the enterprise version of the file server software. In Nextcloud Server versions 25.0.x prior to 25.0.5 and versions 24.0.x prior to 24.0.10 as well as Nextcloud Enterprise Server versions 25.0.x prior to 25.0.4, 24.0.x prior to 24.0.10, 23.0.x prior to 23.0.12.5, 22.x prior to 22.2.0.10, and 21.x prior to 21.0.9.10, when an attacker gets access to an already logged in user session they can then brute force the password on the confirmation endpoint. Nextcloud Server should upgraded to 24.0.10 or 25.0.4 and Nextcloud Enterprise Server should upgraded to 21.0.9.10, 22.2.10.10, 23.0.12.5, 24.0.10, or 25.0.4 to receive a patch. No known workarounds are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25820">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>204a63445f9a2f3a4ad62a74cdfff5b7</td>
+       <td>CVE-2023-0870</td>
+       <td>2023-03-22 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A form can be manipulated with cross-site request forgery in multiple versions of OpenNMS Meridian and Horizon. This can potentially allow an attacker to gain access to confidential information and compromise integrity. The solution is to upgrade to Meridian 2023.1.1 or Horizon 31.0.6 or newer. Meridian and Horizon installation instructions state that they are intended for installation within an organization's private networks and should not be directly accessible from the Internet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0870">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f0bf3735f1980e0f38c9442f3505ee01</td>
        <td>CVE-2023-27754</td>
        <td>2023-03-22 17:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-03-22 12:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability, which was classified as critical, was found in code-projects Simple Online Hotel Reservation System 1.0. Affected is an unknown function of the file add_room.php. The manipulation leads to unrestricted upload. It is possible to launch the attack remotely. VDB-223554 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1561">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e233ddcc964473ea9131e43f479570d6</td>
-       <td>CVE-2023-1560</td>
-       <td>2023-03-22 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, has been found in TinyTIFF 3.0.0.0. This issue affects some unknown processing of the file tinytiffreader.c of the component File Handler. The manipulation leads to buffer overflow. Attacking locally is a requirement. The exploit has been disclosed to the public and may be used. The identifier VDB-223553 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1560">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db77114d9d1b9b01289bdbf067e8325d</td>
-       <td>CVE-2023-1559</td>
-       <td>2023-03-22 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as problematic was found in SourceCodester Storage Unit Rental Management System 1.0. This vulnerability affects unknown code of the file classes/Users.php?f=save. The manipulation leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-223552.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1559">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>695118956bf3d58f42834970758710df</td>
-       <td>CVE-2023-28708</td>
-       <td>2023-03-22 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>When using the RemoteIpFilter with requests received from a reverse proxy via HTTP that include the X-Forwarded-Proto header set to https, session cookies created by Apache Tomcat 11.0.0-M1 to 11.0.0.-M2, 10.1.0-M1 to 10.1.5, 9.0.0-M1 to 9.0.71 and 8.5.0 to 8.5.85 did not include the secure attribute. This could result in the user agent transmitting the session cookie over an insecure channel.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28708">详情</a></td>
       </tr>
 
      </tbody>
