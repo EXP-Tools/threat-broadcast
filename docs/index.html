@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-24 01:42:10 -->
+<!-- RELEASE TIME : 2023-03-24 06:28:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>56cdb9dcc2b87f452326a653c5882ada</td>
+       <td>CVE-2023-28818</td>
+       <td>2023-03-24 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Veritas NetBackup IT Analytics 11 before 11.2.0. The application upgrade process included unsigned files that could be exploited and result in a customer installing unauthentic components. A malicious actor could install rogue Collector executable files (aptare.jar or upgrademanager.zip) on the Portal server, which might then be downloaded and installed on collectors.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28818">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e100fe67d8f162873db6d0657e292d5</td>
+       <td>CVE-2023-28686</td>
+       <td>2023-03-24 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dino before 0.2.3, 0.3.x before 0.3.2, and 0.4.x before 0.4.2 allows attackers to modify the personal bookmark store via a crafted message. The attacker can change the display of group chats or force a victim to join a group chat; the victim may then be tricked into disclosing sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28686">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fa77074a2b654ccc724f5c50f00b5f2e</td>
+       <td>CVE-2023-28445</td>
+       <td>2023-03-24 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Deno is a runtime for JavaScript and TypeScript that uses V8 and is built in Rust. Resizable ArrayBuffers passed to asynchronous functions that are shrunk during the asynchronous operation could result in an out-of-bound read/write. It is unlikely that this has been exploited in the wild, as the only version affected is Deno 1.32.0. Deno Deploy users are not affected. The problem has been resolved by disabling resizable ArrayBuffers temporarily in Deno 1.32.1. Deno 1.32.2 will re-enable resizable ArrayBuffers with a proper fix. As a workaround, run with `--v8-flags=--no-harmony-rab-gsab` to disable resizable ArrayBuffers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28445">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>270c75282f5d40db1cc05a66d88b2faa</td>
+       <td>CVE-2023-28443</td>
+       <td>2023-03-24 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Directus is a real-time API and App dashboard for managing SQL database content. Prior to version 9.23.3, the `directus_refresh_token` is not redacted properly from the log outputs and can be used to impersonate users without their permission. This issue is patched in version 9.23.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28443">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>38be9ddde85a8a8e5e151a83cd037af2</td>
+       <td>CVE-2023-28442</td>
+       <td>2023-03-24 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>GeoNode is an open source platform that facilitates the creation, sharing, and collaborative use of geospatial data. Prior to versions 2.20.6, 2.19.6, and 2.18.7, anonymous users can obtain sensitive information about GeoNode configurations from the response of the `/geoserver/rest/about/status` Geoserver REST API endpoint. The Geoserver endpoint is secured by default, but the configuration of Geoserver for GeoNode opens a list of REST endpoints to support some of its public-facing services. The vulnerability impacts both GeoNode 3 and GeoNode 4 instances. Geoserver security configuration is provided by `geoserver-geonode-ext`. A patch for 2.20.7 has been released which blocks access to the affected endpoint. The patch has been backported to branches 2.20.6, 2.19.7, 2.19.6, and 2.18.7. All the published artifacts and Docker images have been updated accordingly. A more advanced patch has been applied to the master and development versions, which require some changes to GeoNode code. They will be available with the next 4.1.0 release. The patched configuration only has an effect on new deployments. For existing setups, the patch must be applied manually inside the Geoserver data directory. The patched file must replace the existing `<geoserver_datadir>/security/rest.properties` file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28442">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed14c583c515a5fc71e04f5f2671d709</td>
+       <td>CVE-2023-28441</td>
+       <td>2023-03-24 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>smartCARS 3 is flight tracking software. In version 0.5.8 and prior, all persons who have failed login attempts will have their password stored in error logs. This problem doesn't occur in version 0.5.9. As a workaround, delete the affected log file, and ensure one logs in correctly.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28441">详情</a></td>
+      </tr>
+
+      <tr>
        <td>73660d3d4f4a2fa21750c9d7481b968c</td>
        <td>CVE-2023-27034</td>
        <td>2023-03-23 22:15:00 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2023-03-23 17:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability in the deterministic random bit generator (DRBG), also known as pseudorandom number generator (PRNG), in Cisco Adaptive Security Appliance (ASA) Software and Cisco Firepower Threat Defense (FTD) Software for Cisco ASA 5506-X, ASA 5508-X, and ASA 5516-X Firewalls could allow an unauthenticated, remote attacker to cause a cryptographic collision, enabling the attacker to discover the private key of an affected device. This vulnerability is due to insufficient entropy in the DRBG for the affected hardware platforms when generating cryptographic keys. An attacker could exploit this vulnerability by generating a large number of cryptographic keys on an affected device and looking for collisions with target devices. A successful exploit could allow the attacker to impersonate an affected target device or to decrypt traffic secured by an affected key that is sent to or from an affected target device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20107">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>95499b17f38a6af5d417caa120ea962f</td>
-       <td>CVE-2023-28772</td>
-       <td>2023-03-23 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in the Linux kernel before 5.13.3. lib/seq_buf.c has a seq_buf_putmem_hex buffer overflow.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28772">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>766e2524ae9283adc81175c0360a0ddd</td>
-       <td>CVE-2023-27135</td>
-       <td>2023-03-23 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>TOTOlink A7100RU V7.4cu.2313_B20191024 was discovered to contain a command injection vulnerability via the enabled parameter at /setting/setWanIeCfg.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27135">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2be7ce94e4dc32e164ec493242899ca1</td>
-       <td>CVE-2023-27078</td>
-       <td>2023-03-23 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A command injection issue was found in TP-Link MR3020 v.1_150921 that allows a remote attacker to execute arbitrary commands via a crafted request to the tftp endpoint.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27078">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6fb243a82041dbd89207a30c9bf42597</td>
-       <td>CVE-2023-27077</td>
-       <td>2023-03-23 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Stack Overflow vulnerability found in 360 D901 allows a remote attacker to cause a Distributed Denial of Service (DDOS) via a crafted HTTP package.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27077">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21bb03bf518fd385e6d83a490ae48789</td>
-       <td>CVE-2023-23728</td>
-       <td>2023-03-23 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (contributor+) Cross-Site Scripting (XSS) vulnerability in Winwar Media WP Flipclock plugin <= 1.7.4 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23728">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>73019e512b533aa1649d1e8320692d16</td>
-       <td>CVE-2023-23722</td>
-       <td>2023-03-23 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Winwar Media WP eBay Product Feeds plugin <= 3.3.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23722">详情</a></td>
       </tr>
 
      </tbody>
