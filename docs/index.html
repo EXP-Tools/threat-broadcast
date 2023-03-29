@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-29 20:24:37 -->
+<!-- RELEASE TIME : 2023-03-29 22:25:22 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d6304205fd6683bc12d55f5831aca6f6</td>
+       <td>CVE-2023-28642</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>runc is a CLI tool for spawning and running containers according to the OCI specification. It was found that AppArmor can be bypassed when `/proc` inside the container is symlinked with a specific mount configuration. This issue has been fixed in runc version 1.1.5, by prohibiting symlinked `/proc`. See PR #3785 for details. users are advised to upgrade. Users unable to upgrade should avoid using an untrusted container image.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28642">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8c7b98837c0d45d7f1dabb167a206c4a</td>
+       <td>CVE-2023-27489</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kiwi TCMS is an open source test management system for both manual and automated testing. Kiwi TCMS accepts SVG files uploaded by users which could potentially contain JavaScript code. If SVG images are viewed directly, i.e. not rendered in an HTML page, this JavaScript code could execute. This vulnerability has been fixed by configuring Kiwi TCMS to serve with the Content-Security-Policy HTTP header which blocks inline JavaScript in all modern browsers. This configuration change is provided in version 12.1 and users are advised to upgrade. Users unable to upgrade may set their Content-Security-Policy HTTP header manually.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27489">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8fe4b538c7248828952b9d1973400db2</td>
+       <td>CVE-2023-25809</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>runc is a CLI tool for spawning and running containers according to the OCI specification. In affected versions it was found that rootless runc makes `/sys/fs/cgroup` writable in following conditons: 1. when runc is executed inside the user namespace, and the `config.json` does not specify the cgroup namespace to be unshared (e.g.., `(docker|podman|nerdctl) run --cgroupns=host`, with Rootless Docker/Podman/nerdctl) or 2. when runc is executed outside the user namespace, and `/sys` is mounted with `rbind, ro` (e.g., `runc spec --rootless`; this condition is very rare). A container may gain the write access to user-owned cgroup hierarchy `/sys/fs/cgroup/user.slice/...` on the host . Other users's cgroup hierarchies are not affected. Users are advised to upgrade to version 1.1.5. Users unable to upgrade may unshare the cgroup namespace (`(docker|podman|nerdctl) run --cgroupns=private)`. This is the default behavior of Docker/Podman/nerdctl on cgroup v2 hosts. or add `/sys/fs/cgroup` to `maskedPaths`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25809">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ddc7b3c0b43591b00ef623a74f6f86e0</td>
+       <td>CVE-2022-47613</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in QuantumCloud AI ChatBot plugin <= 4.3.0 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47613">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>85d29c4a3b7a7c35808d2c927806205e</td>
+       <td>CVE-2022-47610</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Mr Digital Simple Image Popup plugin <= 1.3.6 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47610">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>680231d6cad275cddc9a36008ad9cdc5</td>
+       <td>CVE-2022-47607</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Usersnap plugin <= 4.16 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47607">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f17038162f186e1c60b63df40c4ee550</td>
+       <td>CVE-2022-47603</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in wpdevart Gallery – Image and Video Gallery with Thumbnails plugin <= 2.0.1 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47603">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e281c81de1b90827ce675a913c643b9d</td>
+       <td>CVE-2022-45355</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Auth. (admin+) SQL Injection (SQLi) vulnerability in ThimPress WP Pipes plugin <= 1.33 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45355">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8dc65b9265fed91fd1152b27a4faf232</td>
+       <td>CVE-2022-43650</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>This vulnerability allows remote attackers to disclose sensitive information on affected installations of RARLAB WinRAR 6.11.0.0. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of ZIP files. Crafted data in a ZIP file can trigger a read past the end of an allocated buffer. An attacker can leverage this in conjunction with other vulnerabilities to execute arbitrary code in the context of the current process. Was ZDI-CAN-19232.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43650">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eda60242a8cacb84532ece29b09cf607</td>
+       <td>CVE-2022-43649</td>
+       <td>2023-03-29 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>This vulnerability allows remote attackers to execute arbitrary code on affected installations of Foxit PDF Reader 12.0.2.12465. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the handling of Annotation objects. The issue results from the lack of validating the existence of an object prior to performing operations on the object. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-19478.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43649">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b8f2ed8e29d51b2d71899d0586b78308</td>
        <td>CVE-2023-27167</td>
        <td>2023-03-29 17:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-03-29 13:15:00 <img src="imgs/new.gif" /></td>
        <td>In JetBrains IntelliJ IDEA before 2023.1 in some cases, Gradle and Maven projects could be imported without the “Trust Project” confirmation.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48431">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bfe98df3978aeeb16940f5253a9f917b</td>
-       <td>CVE-2022-48430</td>
-       <td>2023-03-29 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>In JetBrains IntelliJ IDEA before 2023.1 file content could be disclosed via an external stylesheet path in Markdown preview.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48430">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dcfc8b2f120cc3c64a39ad7320a3e304</td>
-       <td>CVE-2022-47444</td>
-       <td>2023-03-29 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in ProfilePress Membership Team Paid Membership Plugin, Ecommerce, Registration Form, Login Form, User Profile & Restrict Content – ProfilePress plugin <= 4.5.3 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47444">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>63306897cf965aebace1d6366805d465</td>
-       <td>CVE-2022-47438</td>
-       <td>2023-03-29 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (editor+) Stored Cross-Site Scripting (XSS) vulnerability in WpDevArt Booking calendar, Appointment Booking System plugin <= 3.2.3 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47438">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>34a3d827cd64302672bb8a206cedcae3</td>
-       <td>CVE-2022-47433</td>
-       <td>2023-03-29 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unauth. Reflected Cross-Site Scripting vulnerability in Daniel Powney Multi Rating plugin <= 5.0.5 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47433">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e2acb6f3458e44c069092b08315e7f78</td>
-       <td>CVE-2022-38077</td>
-       <td>2023-03-29 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in WP OnlineSupport, Essential Plugin Popup Anything – A Marketing Popup and Lead Generation Conversions plugin <= 2.2.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38077">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b9e0cd098090d6c8ecd15c866ad8a0e0</td>
-       <td>CVE-2023-1690</td>
-       <td>2023-03-29 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, has been found in SourceCodester Earnings and Expense Tracker App 1.0. This issue affects some unknown processing of the file LoginRegistration.php?a=register_user. The manipulation of the argument fullname leads to cross site scripting. The attack may be initiated remotely. The identifier VDB-224309 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1690">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1f043dcc63f2a59754cf51f019800853</td>
-       <td>CVE-2023-1509</td>
-       <td>2023-03-29 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The GMAce plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 1.5.2. This is due to missing nonce validation on the gmace_manager_server function called via the wp_ajax_gmace_manager AJAX action. This makes it possible for unauthenticated attackers to modify arbitrary files and achieve remote code execution via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1509">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>407d95d9e5c9ea2db320ab0ba8505713</td>
-       <td>CVE-2023-0213</td>
-       <td>2023-03-29 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Elevation of privilege issue in M-Files Installer versions before 22.6 on Windows allows user to gain SYSTEM privileges via DLL hijacking.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0213">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d0ffccd168ffb221425d3e98d0bae1ad</td>
-       <td>CVE-2023-1689</td>
-       <td>2023-03-29 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as problematic was found in SourceCodester Earnings and Expense Tracker App 1.0. This vulnerability affects unknown code of the file Master.php?a=save_earning. The manipulation of the argument name leads to cross site scripting. The attack can be initiated remotely. The identifier of this vulnerability is VDB-224308.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1689">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6112982c9cba505f662f45d877b312a1</td>
-       <td>CVE-2023-1688</td>
-       <td>2023-03-29 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as problematic has been found in SourceCodester Earnings and Expense Tracker App 1.0. This affects an unknown part of the file Master.php?a=save_expense. The manipulation of the argument name leads to cross site scripting. It is possible to initiate the attack remotely. The associated identifier of this vulnerability is VDB-224307.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1688">详情</a></td>
       </tr>
 
      </tbody>
@@ -2252,6 +2252,14 @@
       </tr>
 
       <tr>
+       <td>9c367377ec53cbfbcbfa2c60c9e7bf1c</td>
+       <td>CVE-2022-38745</td>
+       <td>2023-03-24 16:15:08 </td>
+       <td>Apache OpenOffice versions before 4.1.14 may be configured to add an empty entry to the Java class path. This may lead to run arbitrary Java code from the current directory.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-38745">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3c46c0597081c82c2666528dc885f115</td>
        <td>CVE-2023-28441</td>
        <td>2023-03-24 00:15:15 </td>
@@ -2449,14 +2457,6 @@
        <td>2023-03-23 12:15:13 </td>
        <td>Reflected Cross-Site Scripting (XSS) vulnerability in Michael Winkler teachPress plugin &lt;= 8.1.8 versions.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22704">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bd863f1a4cd5a700f5d84820ab0a3d74</td>
-       <td>CVE-2022-45843</td>
-       <td>2023-03-23 12:15:12 </td>
-       <td>Auth. (contributor+) Stored Cross-Site Scripting vulnerability in Nextend Smart Slider 3 plugin &lt;= 3.5.1.9 versions.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2022-45843">详情</a></td>
       </tr>
 
      </tbody>
