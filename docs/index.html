@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-03-29 06:28:50 -->
+<!-- RELEASE TIME : 2023-03-29 10:27:36 -->
 <html lang="zh-cn">
 
  <head>
@@ -2284,6 +2284,22 @@
       </tr>
 
       <tr>
+       <td>6a8a460ce6b1759191772a756ba3452f</td>
+       <td>CVE-2023-28330</td>
+       <td>2023-03-23 21:15:19 </td>
+       <td>Insufficient sanitizing in backup resulted in an arbitrary file read risk. The capability to access this feature is only available to teachers, managers and admins by default.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-28330">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7c5c86d3e337d527c3b197affbfbc37d</td>
+       <td>CVE-2023-28329</td>
+       <td>2023-03-23 21:15:19 </td>
+       <td>Insufficient validation of profile field availability condition resulted in an SQL injection risk (by default only available to teachers and managers).</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-28329">详情</a></td>
+      </tr>
+
+      <tr>
        <td>badde18b31f200fbd152e5d91e5a48c7</td>
        <td>CVE-2023-1608</td>
        <td>2023-03-23 20:15:14 </td>
@@ -2404,6 +2420,22 @@
       </tr>
 
       <tr>
+       <td>926b13ab0019689c61b90e2d5a9002b9</td>
+       <td>CVE-2023-28119</td>
+       <td>2023-03-22 20:15:12 </td>
+       <td>The crewjam/saml go library contains a partial implementation of the SAML standard in golang. Prior to version 0.4.13, the package's use of `flate.NewReader` does not limit the size of the input. The user can pass more than 1 MB of data in the HTTP request to the processing functions, which will be decompressed server-side using the Deflate algorithm. Therefore, after repeating the same request multiple times, it is possible to achieve a reliable crash since the operating system kills the process. This issue is patched in version 0.4.13.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-28119">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9ecfc38631c994b54371e1b21352720</td>
+       <td>CVE-2023-28117</td>
+       <td>2023-03-22 20:15:12 </td>
+       <td>Sentry SDK is the official Python SDK for Sentry, real-time crash reporting software. When using the Django integration of versions prior to 1.14.0 of the Sentry SDK in a specific configuration it is possible to leak sensitive cookies values, including the session cookie to Sentry. These sensitive cookies could then be used by someone with access to your Sentry issues to impersonate or escalate their privileges within your application. In order for these sensitive values to be leaked, the Sentry SDK configuration must have `sendDefaultPII` set to `True`; one must use a custom name for either `SESSION_COOKIE_NAME` or `CSRF_COOKIE_NAME` in one's Django settings; and one must not be configured in one's organization or project settings to use Sentry's data scrubbing features to account for the custom cookie names. As of version 1.14.0, the Django integration of the `sentry-sdk` will detect the custom cookie names based on one's Django settings and will remove the values from the payload before sending the data to Sentry. As a workaround, use the SDK's filtering mechanism to remove the cookies from the payload that is sent to Sentry. For error events, this can be done with the `before_send` callback method and for performance related events (transactions) one can use the `before_send_transaction` callback method. Those who want to handle filtering of these values on the server-side can also use Sentry's advanced data scrubbing feature to account for the custom cookie names. Look for the `$http.cookies`, `$http.headers`, `$request.cookies`, or `$request.headers` fields to target with a scrubbing rule.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-28117">详情</a></td>
+      </tr>
+
+      <tr>
        <td>067239d2be81495ca13a4cb45a8f7d67</td>
        <td>CVE-2023-22271</td>
        <td>2023-03-22 17:15:14 </td>
@@ -2425,38 +2457,6 @@
        <td>2023-03-22 17:15:14 </td>
        <td>Experience Manager versions 6.5.15.0 (and earlier) are affected by a URL Redirection to Untrusted Site ('Open Redirect') vulnerability. A low-privilege authenticated attacker could leverage this vulnerability to redirect users to malicious websites. Exploitation of this issue requires user interaction.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22266">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9366d919643b787bafbe98d29426088d</td>
-       <td>CVE-2023-22265</td>
-       <td>2023-03-22 17:15:14 </td>
-       <td>Experience Manager versions 6.5.15.0 (and earlier) are affected by a URL Redirection to Untrusted Site ('Open Redirect') vulnerability. A low-privilege authenticated attacker could leverage this vulnerability to redirect users to malicious websites. Exploitation of this issue requires user interaction.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22265">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6fcd287f1d930a6205f7b0b0386c869a</td>
-       <td>CVE-2023-22264</td>
-       <td>2023-03-22 17:15:14 </td>
-       <td>Experience Manager versions 6.5.15.0 (and earlier) are affected by a URL Redirection to Untrusted Site ('Open Redirect') vulnerability. A low-privilege authenticated attacker could leverage this vulnerability to redirect users to malicious websites. Exploitation of this issue requires user interaction.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22264">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8c95d026ba22560d20575e7f3f0cdb4b</td>
-       <td>CVE-2023-22263</td>
-       <td>2023-03-22 17:15:14 </td>
-       <td>Experience Manager versions 6.5.15.0 (and earlier) are affected by a URL Redirection to Untrusted Site ('Open Redirect') vulnerability. A low-privilege authenticated attacker could leverage this vulnerability to redirect users to malicious websites. Exploitation of this issue requires user interaction.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22263">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f3830ae6641ba828f955a6eccfe0ae5</td>
-       <td>CVE-2023-22262</td>
-       <td>2023-03-22 17:15:14 </td>
-       <td>Experience Manager versions 6.5.15.0 (and earlier) are affected by a URL Redirection to Untrusted Site ('Open Redirect') vulnerability. A low-privilege authenticated attacker could leverage this vulnerability to redirect users to malicious websites. Exploitation of this issue requires user interaction.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-22262">详情</a></td>
       </tr>
 
      </tbody>
