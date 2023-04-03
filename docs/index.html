@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-03 17:22:12 -->
+<!-- RELEASE TIME : 2023-04-03 19:17:20 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ccf5410c22b81fcc6510d39d1a276a7f</td>
+       <td>CVE-2023-28837</td>
+       <td>2023-04-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wagtail is an open source content management system built on Django. Prior to versions 4.1.4 and 4.2.2, a memory exhaustion bug exists in Wagtail's handling of uploaded images and documents. For both images and documents, files are loaded into memory during upload for additional processing. A user with access to upload images or documents through the Wagtail admin interface could upload a file so large that it results in a crash of denial of service. The vulnerability is not exploitable by an ordinary site visitor without access to the Wagtail admin. It can only be exploited by admin users with permission to upload images or documents. Image uploads are restricted to 10MB by default, however this validation only happens on the frontend and on the backend after the vulnerable code. Patched versions have been released as Wagtail 4.1.4 and Wagtail 4.2.2). Site owners who are unable to upgrade to the new versions are encouraged to add extra protections outside of Wagtail to limit the size of uploaded files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28837">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c0e87f691724a5ca4e811b4df4cf3fbb</td>
+       <td>CVE-2023-28836</td>
+       <td>2023-04-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Wagtail is an open source content management system built on Django. Starting in version 1.5 and prior to versions 4.1.4 and 4.2.2, a stored cross-site scripting (XSS) vulnerability exists on ModelAdmin views within the Wagtail admin interface. A user with a limited-permission editor account for the Wagtail admin could potentially craft pages and documents that, when viewed by a user with higher privileges, could perform actions with that user's credentials. The vulnerability is not exploitable by an ordinary site visitor without access to the Wagtail admin, and only affects sites with ModelAdmin enabled. For page, the vulnerability is in the "Choose a parent page" ModelAdmin view (`ChooseParentView`), available when managing pages via ModelAdmin. For documents, the vulnerability is in the ModelAdmin Inspect view (`InspectView`) when displaying document fields. Patched versions have been released as Wagtail 4.1.4 and Wagtail 4.2.2. Site owners who are unable to upgrade to the new versions can disable or override the corresponding functionality.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28836">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2b695378b4e182a70f11d4abc070f800</td>
+       <td>CVE-2023-28834</td>
+       <td>2023-04-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nextcloud Server is an open source personal cloud server. Nextcloud Server 24.0.0 until 24.0.6 and 25.0.0 until 25.0.4, as well as Nextcloud Enterprise Server 23.0.0 until 23.0.11, 24.0.0 until 24.0.6, and 25.0.0 until 25.0.4, have an information disclosure vulnerability. A user was able to get the full data directory path of the Nextcloud server from an API endpoint. By itself this information is not problematic as it can also be guessed for most common setups, but it could speed up other unknown attacks in the future if the information is known. Nextcloud Server 24.0.6 and 25.0.4 and Nextcloud Enterprise Server 23.0.11, 24.0.6, and 25.0.4 contain patches for this issue. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28834">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>da21d17e3b0fd08711faf4ff59b66b7a</td>
+       <td>CVE-2023-0977</td>
+       <td>2023-04-03 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A heap-based overflow vulnerability in Trellix Agent (Windows and Linux) version 5.7.8 and earlier, allows a remote user to alter the page heap in the macmnsvc process memory block resulting in the service becoming unavailable.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0977">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4bc83733590c9f05ffc2fae8fac21038</td>
+       <td>CVE-2023-0975</td>
+       <td>2023-04-03 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability exists in Trellix Agent for Windows version 5.7.8 and earlier, that allows local users, during install/upgrade workflow, to replace one of the Agent’s executables before it can be executed. This allows the user to elevate their permissions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0975">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>965f4203e3718b2cf1b9152ac838874e</td>
+       <td>CVE-2022-38072</td>
+       <td>2023-04-03 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>An improper array index validation vulnerability exists in the stl_fix_normal_directions functionality of ADMesh Master Commit 767a105 and v0.98.4. A specially-crafted stl file can lead to a heap buffer overflow. An attacker can provide a malicious file to trigger this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-38072">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a5b7507207057861cac4bed5668138f5</td>
+       <td>CVE-2022-36440</td>
+       <td>2023-04-03 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A reachable assertion was found in Frrouting frr-bgpd 8.3.0 in the peek_for_as4_capability function. Attackers can maliciously construct BGP open packets and send them to BGP peers running frr-bgpd, resulting in DoS.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-36440">详情</a></td>
+      </tr>
+
+      <tr>
        <td>d25e9ecd46c5f0a26abd868bd0bda0af</td>
        <td>CVE-2023-1377</td>
        <td>2023-04-03 15:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-04-02 21:15:00 <img src="imgs/new.gif" /></td>
        <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate is unused by its CNA. Notes: none.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29034">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3331eae3e74199255b41af780de9b586</td>
-       <td>CVE-2023-29033</td>
-       <td>2023-04-02 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate is unused by its CNA. Notes: none.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29033">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>292dcbf01194a973144ee5e67154e3bb</td>
-       <td>CVE-2023-1796</td>
-       <td>2023-04-02 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as problematic has been found in SourceCodester Employee Payslip Generator 1.0. Affected is an unknown function of the file /classes/Master.php?f=save_position of the component Create News Handler. The manipulation of the argument name with the input <script>alert(document.cookie)</script> leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-224748.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1796">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>449f6be0f9416f37524864ead8e3951f</td>
-       <td>CVE-2023-1795</td>
-       <td>2023-04-02 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Gadget Works Online Ordering System 1.0. It has been rated as problematic. This issue affects some unknown processing of the file /admin/products/index.php of the component GET Parameter Handler. The manipulation of the argument view with the input <script>alert(666)</script> leads to cross site scripting. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-224747.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1795">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0805aaac29615b78401c900b726d6cfa</td>
-       <td>CVE-2023-1794</td>
-       <td>2023-04-02 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Police Crime Record Management System 1.0. It has been declared as problematic. This vulnerability affects unknown code of the file /admin/casedetails.php of the component GET Parameter Handler. The manipulation of the argument id with the input "><script>alert(233)</script> leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-224746 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1794">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c6489d908e3f64f466d7c85cfcd9900</td>
-       <td>CVE-2023-1793</td>
-       <td>2023-04-02 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Police Crime Record Management System 1.0. It has been classified as critical. This affects an unknown part of the file /officer/assigncase.php of the component GET Parameter Handler. The manipulation of the argument caseid leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-224745 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1793">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6b5e13353559d7733eb76c84170fa317</td>
-       <td>CVE-2023-1792</td>
-       <td>2023-04-02 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Simple Mobile Comparison Website 1.0 and classified as critical. Affected by this issue is some unknown functionality of the file /admin/fields/manage_field.php of the component GET Parameter Handler. The manipulation of the argument id leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-224744.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1792">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1bac315d36cf23d415cfb7cb6a86fc74</td>
-       <td>CVE-2023-1791</td>
-       <td>2023-04-02 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in SourceCodester Simple Task Allocation System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file manage_user.php. The manipulation of the argument id leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-224743.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1791">详情</a></td>
       </tr>
 
      </tbody>
