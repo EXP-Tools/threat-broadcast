@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-04 19:17:25 -->
+<!-- RELEASE TIME : 2023-04-04 21:19:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4ba0ef9a8189ddb7faae411acd808f29</td>
+       <td>CVE-2023-27492</td>
+       <td>2023-04-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, the Lua filter is vulnerable to denial of service. Attackers can send large request bodies for routes that have Lua filter enabled and trigger crashes. As of versions versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, Envoy no longer invokes the Lua coroutine if the filter has been reset. As a workaround for those whose Lua filter is buffering all requests/ responses, mitigate by using the buffer filter to avoid triggering the local reply in the Lua filter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27492">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b40db15f473a32dcd36f3980964e9b90</td>
+       <td>CVE-2023-27491</td>
+       <td>2023-04-04 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Compliant HTTP/1 service should reject malformed request lines. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, There is a possibility that non compliant HTTP/1 service may allow malformed requests, potentially leading to a bypass of security policies. This issue is fixed in versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a7cb71ce4308bc640a9c9735a6c2f747</td>
+       <td>CVE-2023-27488</td>
+       <td>2023-04-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, escalation of privileges is possible when `failure_mode_allow: true` is configured for `ext_authz` filter. For affected components that are used for logging and/or visibility, requests may not be logged by the receiving service. When Envoy was configured to use ext_authz, ext_proc, tap, ratelimit filters, and grpc access log service and an http header with non-UTF-8 data was received, Envoy would generate an invalid protobuf message and send it to the configured service. The receiving service would typically generate an error when decoding the protobuf message. For ext_authz that was configured with ``failure_mode_allow: true``, the request would have been allowed in this case. For the other services, this could have resulted in other unforeseen errors such as a lack of visibility into requests. As of versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, Envoy by default sanitizes the values sent in gRPC service calls to be valid UTF-8, replacing data that is not valid UTF-8 with a `!` character. This behavioral change can be temporarily reverted by setting runtime guard `envoy.reloadable_features.service_sanitize_non_utf8_strings` to false. As a workaround, one may set `failure_mode_allow: false` for `ext_authz`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27488">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b441ca84a9ca734d3b175e475bfe8a82</td>
+       <td>CVE-2023-27091</td>
+       <td>2023-04-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>An unauthorized access issue found in XiaoBingby TeaCMS 2.3.3 allows attackers to escalate privileges via the id and keywords parameter(s).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27091">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e56d475e732ad5d218c67232023de9a</td>
+       <td>CVE-2023-27089</td>
+       <td>2023-04-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting vulnerability found in Ehuacui BBS allows attackers to cause a denial of service via a crafted payload in the login parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27089">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bfd64602dc7c3ab0880175ed9b996bd0</td>
        <td>CVE-2023-1752</td>
        <td>2023-04-04 17:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
        <td>user_oidc is the OIDC connect user backend for Nextcloud, an open source collaboration platform. A vulnerability in versions 1.0.0 until 1.3.0 effectively allowed an attacker to bypass the state protection as they could just copy the expected state token from the first request to their second request. Users should upgrade user_oidc to 1.3.0 to receive a patch for the issue. No known workarounds are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28848">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc959fa04438484a76961bd7399dd4b4</td>
-       <td>CVE-2023-26866</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>GreenPacket OH736's WR-1200 Indoor Unit, OT-235 with firmware versions M-IDU-1.6.0.3_V1.1 and MH-46360-2.0.3-R5-GP respectively are vulnerable to remote command injection. Commands are executed using pre-login execution and executed with root privileges allowing complete takeover.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26866">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e547c42ae93bb1051058429f91c9df5b</td>
-       <td>CVE-2023-25356</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>CoreDial sipXcom up to and including 21.04 is vulnerable to Improper Neutralization of Argument Delimiters in a Command. XMPP users are able to inject arbitrary arguments into a system command, which can be used to read files from, and write files to, the sipXcom server. This can also be leveraged to gain remote command execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25356">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>36f53c94ad515951a8f5b7a9efdb9da8</td>
-       <td>CVE-2023-25355</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>CoreDial sipXcom up to and including 21.04 is vulnerable to Insecure Permissions. A user who has the ability to run commands as the `daemon` user on a sipXcom server can overwrite a service file, and escalate their privileges to `root`.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25355">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e82ce7b8d0b4c6c261ff1382c6c4363</td>
-       <td>CVE-2023-25305</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>PolyMC Launcher <= 1.4.3 is vulnerable to Directory Traversal. A mrpack file can be maliciously crafted to create arbitrary files outside of the installation directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25305">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>346a6f2866b4fb55f9ae01232595673c</td>
-       <td>CVE-2023-25303</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>ATLauncher <= 3.4.26.0 is vulnerable to Directory Traversal. A mrpack file can be maliciously crafted to create arbitrary files outside of the installation directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25303">详情</a></td>
       </tr>
 
      </tbody>
