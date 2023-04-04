@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-04 21:19:28 -->
+<!-- RELEASE TIME : 2023-04-04 23:20:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>151f6b3784f674c6718ed3605f949cfa</td>
+       <td>CVE-2023-27496</td>
+       <td>2023-04-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, the OAuth filter assumes that a `state` query param is present on any response that looks like an OAuth redirect response. Sending it a request with the URI path equivalent to the redirect path, without the `state` parameter, will lead to abnormal termination of Envoy process. Versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9 contain a patch. The issue can also be mitigated by locking down OAuth traffic, disabling the filter, or by filtering traffic before it reaches the OAuth filter (e.g. via a lua script).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27496">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9845b12d20647ac21e639ec2b1e907ee</td>
+       <td>CVE-2023-27493</td>
+       <td>2023-04-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, Envoy does not sanitize or escape request properties when generating request headers. This can lead to characters that are illegal in header values to be sent to the upstream service. In the worst case, it can cause upstream service to interpret the original request as two pipelined requests, possibly bypassing the intent of Envoy’s security policy. Versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9 contain a patch. As a workaround, disable adding request headers based on the downstream request properties, such as downstream certificate properties.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27493">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ab35ebe72fd245ed8bd7770e868e7dd5</td>
+       <td>CVE-2023-1840</td>
+       <td>2023-04-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Sp*tify Play Button for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in versions up to, and including, 2.07 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1840">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4ba0ef9a8189ddb7faae411acd808f29</td>
        <td>CVE-2023-27492</td>
        <td>2023-04-04 19:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
        <td>Nextcloud is an open-source productivity platform. In Nextcloud Desktop client 3.0.0 until 3.8.0, Nextcloud Android app 3.13.0 until 3.25.0, and Nextcloud iOS app 3.0.5 until 4.8.0, a malicious server administrator can gain full access to an end-to-end encrypted folder. They can decrypt files, recover the folder structure and add new files.? This issue is fixed in Nextcloud Desktop 3.8.0, Nextcloud Android 3.25.0, and Nextcloud iOS 4.8.0. No known workarounds are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28999">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5c73798b7ae2167e87cf379c484e8ed</td>
-       <td>CVE-2023-28998</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Nextcloud Desktop Client is a tool to synchronize files from Nextcloud Server. Starting with version 3.0.0 and prior to version 3.6.5, a malicious server administrator can gain full access to an end-to-end encrypted folder. They can decrypt files, recover the folder structure, and add new files.? Users should upgrade the Nextcloud Desktop client to 3.6.5 to receive a patch. No known workarounds are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28998">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>14123478f8bcd49b8bb17c41b419a805</td>
-       <td>CVE-2023-28997</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Nextcloud Desktop Client is a tool to synchronize files from Nextcloud Server. Starting with version 3.0.0 and prior to version 3.6.5, a malicious server administrator can recover and modify the contents of end-to-end encrypted files. Users should upgrade the Nextcloud Desktop client to 3.6.5 to receive a patch. No known workarounds are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28997">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f71ba509cfae67533a9f932371aed70</td>
-       <td>CVE-2023-28848</td>
-       <td>2023-04-04 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>user_oidc is the OIDC connect user backend for Nextcloud, an open source collaboration platform. A vulnerability in versions 1.0.0 until 1.3.0 effectively allowed an attacker to bypass the state protection as they could just copy the expected state token from the first request to their second request. Users should upgrade user_oidc to 1.3.0 to receive a patch for the issue. No known workarounds are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28848">详情</a></td>
       </tr>
 
      </tbody>
