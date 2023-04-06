@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-06 18:25:52 -->
+<!-- RELEASE TIME : 2023-04-06 19:17:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,78 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6ef1fad20705494727dff0b2046f4c2f</td>
+       <td>CVE-2023-29010</td>
+       <td>2023-04-06 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Budibase is a low code platform for creating internal tools, workflows, and admin panels. Versions prior to 2.4.3 (07 March 2023) are vulnerable to Server-Side Request Forgery. This can lead to an attacker gaining access to a Budibase AWS secret key. Users of Budibase cloud need to take no action. Self-host users who run Budibase on the public internet and are using a cloud provider that allows HTTP access to metadata information should ensure that when they deploy Budibase live, their internal metadata endpoint is not exposed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29010">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>64a1b3cfc92ee73ec982bfa9ae2feed2</td>
+       <td>CVE-2023-29008</td>
+       <td>2023-04-06 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>The SvelteKit framework offers developers an option to create simple REST APIs. This is done by defining a `+server.js` file, containing endpoint handlers for different HTTP methods. SvelteKit provides out-of-the-box cross-site request forgery (CSRF) protection to its users. The protection is implemented at `kit/src/runtime/server/respond.js`. While the implementation does a sufficient job of mitigating common CSRF attacks, the protection can be bypassed in versions prior to 1.15.2 by simply specifying an upper-cased `Content-Type` header value. The browser will not send uppercase characters, but this check does not block all expected CORS requests. If abused, this issue will allow malicious requests to be submitted from third-party domains, which can allow execution of operations within the context of the victim's session, and in extreme scenarios can lead to unauthorized access to users’ accounts. This may lead to all POST operations requiring authentication being allowed in the following cases: If the target site sets `SameSite=None` on its auth cookie and the user visits a malicious site in a Chromium-based browser; if the target site doesn't set the `SameSite` attribute explicitly and the user visits a malicious site with Firefox/Safari with tracking protections turned off; and/or if the user is visiting a malicious site with a very outdated browser. SvelteKit 1.15.2 contains a patch for this issue. It is also recommended to explicitly set `SameSite` to a value other than `None` on authentication cookies especially if the upgrade cannot be done in a timely manner.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29008">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a3a0db23224cdad11086f2dc7232a9cb</td>
+       <td>CVE-2023-0580</td>
+       <td>2023-04-06 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Insecure Storage of Sensitive Information vulnerability in ABB My Control System (on-premise) allows an attacker who successfully exploited this vulnerability to gain access to the secure application data or take control of the application. Of the services that make up the My Control System (on-premise) application, the following ones are affected by this vulnerability: User Interface System Monitoring1 Asset Inventory This issue affects My Control System (on-premise): from 5.0;0 through 5.13.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0580">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cc7a21388941cb2cf76e3309a446950e</td>
+       <td>CVE-2023-26083</td>
+       <td>2023-04-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Memory leak vulnerability in Mali GPU Kernel Driver in Midgard GPU Kernel Driver all versions from r6p0 - r32p0, Bifrost GPU Kernel Driver all versions from r0p0 - r42p0, Valhall GPU Kernel Driver all versions from r19p0 - r42p0, and Avalon GPU Kernel Driver all versions from r41p0 - r42p0 allows a non-privileged user to make valid GPU processing operations that expose sensitive kernel metadata.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26083">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>69d5c0ec55b2753b585ff09ecb84ce0b</td>
+       <td>CVE-2023-24538</td>
+       <td>2023-04-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Templates do not properly consider backticks (`) as Javascript string delimiters, and do not escape them as expected. Backticks are used, since ES6, for JS template literals. If a template contains a Go template action within a Javascript template literal, the contents of the action can be used to terminate the literal, injecting arbitrary Javascript code into the Go template. As ES6 template literals are rather complex, and themselves can do string interpolation, the decision was made to simply disallow Go template actions from being used inside of them (e.g. "var a = {{.}}"), since there is no obviously safe way to allow this behavior. This takes the same approach as github.com/google/safehtml. With fix, Template.Parse returns an Error when it encounters templates like this, with an ErrorCode of value 12. This ErrorCode is currently unexported, but will be exported in the release of Go 1.21. Users who rely on the previous behavior can re-enable it using the GODEBUG flag jstmpllitinterp=1, with the caveat that backticks will now be escaped. This should be used with caution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24538">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bcc57aba9f97553210e2447f21d6f7c1</td>
+       <td>CVE-2023-24537</td>
+       <td>2023-04-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Calling any of the Parse functions on Go source code which contains //line directives with very large line numbers can cause an infinite loop due to integer overflow.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24537">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>246e275b3f4c61c6bcbfc3cd03a668d2</td>
+       <td>CVE-2023-24536</td>
+       <td>2023-04-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multipart form parsing can consume large amounts of CPU and memory when processing form inputs containing very large numbers of parts. This stems from several causes: 1. mime/multipart.Reader.ReadForm limits the total memory a parsed multipart form can consume. ReadForm can undercount the amount of memory consumed, leading it to accept larger inputs than intended. 2. Limiting total memory does not account for increased pressure on the garbage collector from large numbers of small allocations in forms with many parts. 3. ReadForm can allocate a large number of short-lived buffers, further increasing pressure on the garbage collector. The combination of these factors can permit an attacker to cause an program that parses multipart forms to consume large amounts of CPU and memory, potentially resulting in a denial of service. This affects programs that use mime/multipart.Reader.ReadForm, as well as form parsing in the net/http package with the Request methods FormFile, FormValue, ParseMultipartForm, and PostFormValue. With fix, ReadForm now does a better job of estimating the memory consumption of parsed forms, and performs many fewer short-lived allocations. In addition, the fixed mime/multipart.Reader imposes the following limits on the size of parsed forms: 1. Forms parsed with ReadForm may contain no more than 1000 parts. This limit may be adjusted with the environment variable GODEBUG=multipartmaxparts=. 2. Form parts parsed with NextPart and NextRawPart may contain no more than 10,000 header fields. In addition, forms parsed with ReadForm may contain no more than 10,000 header fields across all parts. This limit may be adjusted with the environment variable GODEBUG=multipartmaxheaders=.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24536">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>78b7791656bd245cc43e1dba4aeb5ecc</td>
+       <td>CVE-2023-24534</td>
+       <td>2023-04-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>HTTP and MIME header parsing can allocate large amounts of memory, even when parsing small inputs, potentially leading to a denial of service. Certain unusual patterns of input data can cause the common function used to parse HTTP and MIME headers to allocate substantially more memory than required to hold the parsed headers. An attacker can exploit this behavior to cause an HTTP server to allocate large amounts of memory from a small request, potentially leading to memory exhaustion and a denial of service. With fix, header parsing now correctly allocates only the memory required to hold parsed headers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24534">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7408c4565544bf86e1de4e6ac473f87f</td>
+       <td>CVE-2022-46781</td>
+       <td>2023-04-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in the Arm Mali GPU Kernel Driver. A non-privileged user can make improper GPU memory processing operations to access a limited amount outside of buffer bounds. This affects Valhall r29p0 through r41p0 before r42p0 and Avalon r41p0 before r42p0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46781">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6b686db6b6f6f51ba6c4ace1ccc3747e</td>
        <td>CVE-2023-22985</td>
        <td>2023-04-06 15:15:00 <img src="imgs/new.gif" /></td>
@@ -449,78 +521,6 @@
        <td>2023-04-06 09:15:00 <img src="imgs/new.gif" /></td>
        <td>Auth. (contributor+) Stored Cross-Site Scripting (XSS) vulnerability in Timersys WP Popups – WordPress Popup plugin <= 2.1.4.8 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24003">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>14df2f9b92f9ab421b39d2906b5bf516</td>
-       <td>CVE-2023-24002</td>
-       <td>2023-04-06 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in WPdevart YouTube Embed, Playlist and Popup by WpDevArt plugin <= 2.6.3 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24002">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b2f3e58aa9920d379cc7961853773d9f</td>
-       <td>CVE-2023-1802</td>
-       <td>2023-04-06 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Docker Desktop 4.17.x the Artifactory Integration falls back to sending registry credentials over plain HTTP if the HTTPS health check has failed. A targeted network sniffing attack can lead to a disclosure of sensitive information. Only users who have Access Experimental Features enabled and have logged in to a private registry are affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1802">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>302796b4f825e87ced9850031fbf0a8e</td>
-       <td>CVE-2023-24006</td>
-       <td>2023-04-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Cross-Site Scripting (XSS) vulnerability in Link Software LLC WP Terms Popup plugin <= 2.6.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24006">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e0c6f7f9ef6abf4f0875612787925d59</td>
-       <td>CVE-2023-24001</td>
-       <td>2023-04-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Yannick Lefebvre Modal Dialog plugin <= 3.5.9 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24001">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>255b6ba6d905289a4402693940fac6c3</td>
-       <td>CVE-2023-23998</td>
-       <td>2023-04-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in E4J s.R.L. VikRentCar Car Rental Management System plugin <= 1.3.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23998">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>88452d14169241efd14344227323c8fd</td>
-       <td>CVE-2023-23996</td>
-       <td>2023-04-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in ProfilePress Membership Team ProfilePress plugin <= 4.5.3 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23996">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>195111096b29f8d746815f87a7b709fe</td>
-       <td>CVE-2023-23980</td>
-       <td>2023-04-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in MailOptin Popup Builder Team MailOptin plugin <= 1.2.54.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23980">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23046d5647b6a7272d659279269a1d58</td>
-       <td>CVE-2023-28046</td>
-       <td>2023-04-06 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell Display Manager, versions 2.1.0 and prior, contains an arbitrary file or folder deletion vulnerability during uninstallation A local low privilege attacker could potentially exploit this vulnerability, leading to the deletion of arbitrary files on the operating system with high privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28046">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fcefe6e2aba3d724f56b8a6a7529af7f</td>
-       <td>CVE-2022-31890</td>
-       <td>2023-04-05 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL Injection vulnerability in audit/class.audit.php in osTicket osTicket-plugins before commit a7842d494889fd5533d13deb3c6a7789768795ae via the order parameter to the getOrder function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31890">详情</a></td>
       </tr>
 
      </tbody>
