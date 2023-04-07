@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-07 21:18:36 -->
+<!-- RELEASE TIME : 2023-04-07 22:22:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -2324,6 +2324,14 @@
       </tr>
 
       <tr>
+       <td>88d427dfafb4ea20355057e7785ef63f</td>
+       <td>CVE-2023-25809</td>
+       <td>2023-03-29 19:15:22 </td>
+       <td>runc is a CLI tool for spawning and running containers according to the OCI specification. In affected versions it was found that rootless runc makes `/sys/fs/cgroup` writable in following conditons: 1. when runc is executed inside the user namespace, and the `config.json` does not specify the cgroup namespace to be unshared (e.g.., `(docker|podman|nerdctl) run --cgroupns=host`, with Rootless Docker/Podman/nerdctl) or 2. when runc is executed outside the user namespace, and `/sys` is mounted with `rbind, ro` (e.g., `runc spec --rootless`; this condition is very rare). A container may gain the write access to user-owned cgroup hierarchy `/sys/fs/cgroup/user.slice/...` on the host . Other users's cgroup hierarchies are not affected. Users are advised to upgrade to version 1.1.5. Users unable to upgrade may unshare the cgroup namespace (`(docker|podman|nerdctl) run --cgroupns=private)`. This is the default behavior of Docker/Podman/nerdctl on cgroup v2 hosts. or add `/sys/fs/cgroup` to `maskedPaths`.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-25809">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a6602af107af95d4b796792b1eea4032</td>
        <td>CVE-2023-1575</td>
        <td>2023-03-29 15:15:07 </td>
@@ -2449,14 +2457,6 @@
        <td>2023-03-28 20:15:15 </td>
        <td>Adobe Dimension versions 3.4.7 (and earlier) is affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to bypass mitigations such as ASLR. Exploitation of this issue requires user interaction in that a victim must open a malicious file.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26355">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>912f0d27f16db348ae1f16f315008cab</td>
-       <td>CVE-2023-26354</td>
-       <td>2023-03-28 20:15:15 </td>
-       <td>Adobe Dimension versions 3.4.7 (and earlier) is affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to bypass mitigations such as ASLR. Exploitation of this issue requires user interaction in that a victim must open a malicious file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26354">详情</a></td>
       </tr>
 
      </tbody>
