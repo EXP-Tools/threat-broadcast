@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-11 21:19:14 -->
+<!-- RELEASE TIME : 2023-04-11 22:21:51 -->
 <html lang="zh-cn">
 
  <head>
@@ -2228,6 +2228,38 @@
       </tr>
 
       <tr>
+       <td>e3fe3e06cd00f6aafddde5f51e0801db</td>
+       <td>CVE-2023-27496</td>
+       <td>2023-04-04 20:15:07 </td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, the OAuth filter assumes that a `state` query param is present on any response that looks like an OAuth redirect response. Sending it a request with the URI path equivalent to the redirect path, without the `state` parameter, will lead to abnormal termination of Envoy process. Versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9 contain a patch. The issue can also be mitigated by locking down OAuth traffic, disabling the filter, or by filtering traffic before it reaches the OAuth filter (e.g. via a lua script).</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27496">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ffd04a1ef8830ef1c4fa2abf602e331d</td>
+       <td>CVE-2023-27493</td>
+       <td>2023-04-04 20:15:07 </td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, Envoy does not sanitize or escape request properties when generating request headers. This can lead to characters that are illegal in header values to be sent to the upstream service. In the worst case, it can cause upstream service to interpret the original request as two pipelined requests, possibly bypassing the intent of Envoy&acirc;&euro;&trade;s security policy. Versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9 contain a patch. As a workaround, disable adding request headers based on the downstream request properties, such as downstream certificate properties.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27493">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9ce1065ca4238cd5c77258285f776b19</td>
+       <td>CVE-2023-27492</td>
+       <td>2023-04-04 19:15:07 </td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, the Lua filter is vulnerable to denial of service. Attackers can send large request bodies for routes that have Lua filter enabled and trigger crashes. As of versions versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, Envoy no longer invokes the Lua coroutine if the filter has been reset. As a workaround for those whose Lua filter is buffering all requests/ responses, mitigate by using the buffer filter to avoid triggering the local reply in the Lua filter.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27492">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2b1169086b246bf068dac05563e48f8c</td>
+       <td>CVE-2023-27491</td>
+       <td>2023-04-04 19:15:07 </td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. Compliant HTTP/1 service should reject malformed request lines. Prior to versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9, There is a possibility that non compliant HTTP/1 service may allow malformed requests, potentially leading to a bypass of security policies. This issue is fixed in versions 1.26.0, 1.25.3, 1.24.4, 1.23.6, and 1.22.9.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-27491">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ca0d85af733127060aa359a5b37d20b6</td>
        <td>CVE-2023-28999</td>
        <td>2023-04-04 13:15:09 </td>
@@ -2425,38 +2457,6 @@
        <td>2023-03-30 20:15:07 </td>
        <td>Unpoly is a JavaScript framework for server-side web applications. There is a possible Denial of Service (DoS) vulnerability in the `unpoly-rails` gem that implements the Unpoly server protocol for Rails applications. This issues affects Rails applications that operate as an upstream of a load balancer's that uses passive health checks. The `unpoly-rails` gem echoes the request URL as an `X-Up-Location` response header. By making a request with exceedingly long URLs (paths or query string), an attacker can cause unpoly-rails to write a exceedingly large response header. If the response header is too large to be parsed by a load balancer downstream of the Rails application, it may cause the load balancer to remove the upstream from a load balancing group. This causes that application instance to become unavailable until a configured timeout is reached or until an active healthcheck succeeds. This issue has been fixed and released as version 2.7.2.2 which is available via RubyGems and GitHub. Users unable to upgrade may: Configure your load balancer to use active health checks, e.g. by periodically requesting a route with a known response that indicates healthiness; Configure your load balancer so the maximum size of response headers is at least twice the maximum size of a URL; or instead of changing your server configuration you may also configure your Rails application to delete redundant `X-Up-Location` headers set by unpoly-rails.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-28846">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bed2564e4f83aa151838c7450da44417</td>
-       <td>CVE-2023-28835</td>
-       <td>2023-03-30 19:15:07 </td>
-       <td>Nextcloud server is an open source home cloud implementation. In affected versions the generated fallback password when creating a share was using a weak complexity random number generator, so when the sharer did not change it the password could be guessable to an attacker willing to brute force it. It is recommended that the Nextcloud Server is upgraded to 24.0.10 or 25.0.4. This issue only affects users who do not have a password policy enabled, so enabling a password policy is an effective mitigation for users unable to upgrade.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-28835">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5196339959d9d5240b605c2036c4b7d3</td>
-       <td>CVE-2023-26482</td>
-       <td>2023-03-30 19:15:06 </td>
-       <td>Nextcloud server is an open source home cloud implementation. In affected versions a missing scope validation allowed users to create workflows which are designed to be only available for administrators. Some workflows are designed to be RCE by invoking defined scripts, in order to generate PDFs, invoking webhooks or running scripts on the server. Due to this combination depending on the available apps the issue can result in a RCE at the end. It is recommended that the Nextcloud Server is upgraded to 24.0.10 or 25.0.4. Users unable to upgrade should disable app `workflow_scripts` and `workflow_pdf_converter` as a mitigation.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-26482">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e48479a8e1a4fae9e14613b5a94afc7f</td>
-       <td>CVE-2023-28833</td>
-       <td>2023-03-30 19:15:06 </td>
-       <td>Nextcloud server is an open source home cloud implementation. In affected versions admins of a server were able to upload a logo or a favicon and to provided a file name which was not restricted and could overwrite files in the appdata directory. Administrators may have access to overwrite these files by other means but this method could be exploited by tricking an admin into uploading a maliciously named file. It is recommended that the Nextcloud Server is upgraded to 24.0.10 or 25.0.4. Users unable to upgrade should avoid ingesting logo files from untrusted sources.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-28833">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f9b822aeac7379ec6fd326a5bcb35c04</td>
-       <td>CVE-2023-29059</td>
-       <td>2023-03-30 17:15:06 </td>
-       <td>3CX DesktopApp through 18.12.416 has embedded malicious code, as exploited in the wild in March 2023. This affects versions 18.12.407 and 18.12.416 of the 3CX DesktopApp Electron Windows application shipped in Update 7, and versions 18.11.1213, 18.12.402, 18.12.407, and 18.12.416 of the 3CX DesktopApp Electron macOS application.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-29059">详情</a></td>
       </tr>
 
      </tbody>
