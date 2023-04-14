@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-14 20:22:38 -->
+<!-- RELEASE TIME : 2023-04-14 21:19:32 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f89e69c443aca80adeeff6ffce64c1c8</td>
+       <td>CVE-2023-29529</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>matrix-js-sdk is the Matrix Client-Server SDK for JavaScript and TypeScript. An attacker present in a room where an MSC3401 group call is taking place can eavesdrop on the video and audio of participants using matrix-js-sdk, without their knowledge. To affected matrix-js-sdk users, the attacker will not appear to be participating in the call. This attack is possible because matrix-js-sdk's group call implementation accepts incoming direct calls from other users, even if they have not yet declared intent to participate in the group call, as a means of resolving a race condition in call setup. Affected versions do not restrict access to the user's outbound media in this case. Legacy 1:1 calls are unaffected. This is fixed in matrix-js-sdk 24.1.0. As a workaround, users may hold group calls in private rooms where only the exact users who are expected to participate in the call are present.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29529">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>20db48485889940e592be8933a321c17</td>
+       <td>CVE-2023-29199</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>There exists a vulnerability in source code transformer (exception sanitization logic) of vm2 for versions up to 3.9.15, allowing attackers to bypass `handleException()` and leak unsanitized host exceptions which can be used to escape the sandbox and run arbitrary code in host context. A threat actor can bypass the sandbox protections to gain remote code execution rights on the host running the sandbox. This vulnerability was patched in the release of version `3.9.16` of `vm2`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29199">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9fc39b1f9971816f138c78fd8725eaa9</td>
+       <td>CVE-2023-29194</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vitess is a database clustering system for horizontal scaling of MySQL. Users can either intentionally or inadvertently create a keyspace containing `/` characters such that from that point on, anyone who tries to view keyspaces from VTAdmin will receive an error. Trying to list all the keyspaces using `vtctldclient GetKeyspaces` will also return an error. Note that all other keyspaces can still be administered using the CLI (vtctldclient). This issue is fixed in version 16.0.1. As a workaround, delete the offending keyspace using a CLI client (vtctldclient).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29194">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c36a7d1a19ff525c247cf1cae04bc9ab</td>
+       <td>CVE-2023-29067</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A maliciously crafted X_B file when parsed through Autodesk® AutoCAD® 2023 could lead to memory corruption vulnerability by write access violation. This vulnerability in conjunction with other vulnerabilities could lead to code execution in the context of the current process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29067">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e1267e1d079663f554d3a1ab7c00dc6</td>
+       <td>CVE-2023-29018</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>The OpenFeature Operator allows users to expose feature flags to applications. Assuming the pre-existence of a vulnerability that allows for arbitrary code execution, an attacker could leverage the lax permissions configured on `open-feature-operator-controller-manager` to escalate the privileges of any SA in the cluster. The increased privileges could be used to modify cluster state, leading to DoS, or read sensitive data, including secrets. Version 0.2.32 mitigates this issue by restricting the resources the `open-feature-operator-controller-manager` can modify.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29018">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>13861640a3dee30f1f997c96c21859b8</td>
+       <td>CVE-2023-29013</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Traefik (pronounced traffic) is a modern HTTP reverse proxy and load balancer for deploying microservices. There is a vulnerability in Go when parsing the HTTP headers, which impacts Traefik. HTTP header parsing could allocate substantially more memory than required to hold the parsed headers. This behavior could be exploited to cause a denial of service. This issue has been patched in versions 2.9.10 and 2.10.0-rc2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29013">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>30245aa69a2eb63145cf2d0720e52c3d</td>
+       <td>CVE-2023-27915</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A maliciously crafted X_B file when parsed through Autodesk® AutoCAD® 2023 could lead to memory corruption vulnerability by read access violation. This vulnerability in conjunction with other vulnerabilities could lead to code execution in the context of the current process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27915">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb9a49cc792c334bb5465e77849695c2</td>
+       <td>CVE-2023-27914</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A maliciously crafted X_B file when parsed through Autodesk® AutoCAD® 2023 can be used to write beyond the allocated buffer causing a Stack Buffer Overflow. A malicious actor can leverage this vulnerability to cause a crash or read sensitive data or execute arbitrary code in the context of the current process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27914">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ac04d205bd19f626a99ac9f8cf02baba</td>
+       <td>CVE-2023-27913</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A maliciously crafted X_B file when parsed through Autodesk® AutoCAD® 2023 can be used to cause an Integer Overflow. A malicious actor can leverage this vulnerability to cause a crash or read sensitive data, or execute arbitrary code in the context of the current process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27913">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0bf8cd40911322fff83639be08856ba1</td>
+       <td>CVE-2023-27912</td>
+       <td>2023-04-14 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>A maliciously crafted X_B file when parsed through Autodesk® AutoCAD® 2023 can force an Out-of-Bound Read. A malicious actor can leverage this vulnerability to cause a crash or read sensitive data or execute arbitrary code in the context of the current process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27912">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cd0683229519eb667b9c794575eb72ea</td>
        <td>CVE-2022-47501</td>
        <td>2023-04-14 16:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-04-14 12:15:00 <img src="imgs/new.gif" /></td>
        <td>An issue found in WHOv.1.0.28, v.1.0.30, v.1.0.32 allows an attacker to cause a denial of service via the SharedPreference files.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27653">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>349214fece82113792cf9de5783cca7b</td>
-       <td>CVE-2023-27651</td>
-       <td>2023-04-14 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue found in Ego Studio SuperClean v.1.1.9 and v.1.1.5 allows an attacker to gain privileges via the update_info field of the _default_.xml file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27651">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>087d62e32a377d0a2c17edc342bb1796</td>
-       <td>CVE-2023-2049</td>
-       <td>2023-04-14 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Campcodes Advanced Online Voting System 1.0. It has been declared as critical. This vulnerability affects unknown code of the file /admin/ballot_up.php. The manipulation of the argument id leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-225934 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2049">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>685caa2748b33b2b6a0221ba0ffc42cc</td>
-       <td>CVE-2023-2048</td>
-       <td>2023-04-14 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Campcodes Advanced Online Voting System 1.0. It has been classified as critical. This affects an unknown part of the file /admin/voters_row.php. The manipulation of the argument id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-225933 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2048">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0f7dc2fb1cf1b74fb435b94768781092</td>
-       <td>CVE-2023-2047</td>
-       <td>2023-04-14 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Campcodes Advanced Online Voting System 1.0 and classified as critical. Affected by this issue is some unknown functionality of the file login.php. The manipulation of the argument voter leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-225932.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2047">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ccde08a7b30d21ddf0b065ca22e7d9a1</td>
-       <td>CVE-2023-2044</td>
-       <td>2023-04-14 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in Control iD iDSecure 4.7.29.1 and classified as problematic. This vulnerability affects unknown code of the component Dispositivos Page. The manipulation of the argument IP-DNS leads to cross site scripting. The attack can be initiated remotely. VDB-225922 is the identifier assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2044">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>51bcc824ccd73dd605f9a2adab5bcd02</td>
-       <td>CVE-2023-2043</td>
-       <td>2023-04-14 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, was found in Control iD 23.3.19.0. This affects an unknown part of the file /v2/customerdb/operator.svc/a of the component Edit Handler. The manipulation of the argument email leads to sql injection. It is possible to initiate the attack remotely. The identifier VDB-225921 was assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2043">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84605f1ee02e0c0e45ae0ae268f89566</td>
-       <td>CVE-2023-2042</td>
-       <td>2023-04-14 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, has been found in DataGear up to 4.5.1. Affected by this issue is some unknown functionality of the component JDBC Server Handler. The manipulation leads to deserialization. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-225920. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2042">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7aafaa22a9ca36b4a43ca155c68987ab</td>
-       <td>CVE-2023-2041</td>
-       <td>2023-04-14 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as critical was found in novel-plus 3.6.2. Affected by this vulnerability is an unknown functionality of the file /category/list?limit=10&offset=0&order=desc. The manipulation of the argument sort leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-225919. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2041">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>11c9df95b341ff07183c30b15e869794</td>
-       <td>CVE-2023-2040</td>
-       <td>2023-04-14 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as critical has been found in novel-plus 3.6.2. Affected is an unknown function of the file /news/list?limit=10&offset=0&order=desc. The manipulation of the argument sort leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-225918 is the identifier assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2040">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0226c90b1e5d60c2abbd9e9716fc1ff8</td>
-       <td>CVE-2023-1863</td>
-       <td>2023-04-14 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Eskom Computer Water Metering Software allows Command Line Execution through SQL Injection.This issue affects Water Metering Software: before 23.04.06.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1863">详情</a></td>
       </tr>
 
      </tbody>
