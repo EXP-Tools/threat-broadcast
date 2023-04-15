@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-15 16:28:04 -->
+<!-- RELEASE TIME : 2023-04-15 17:21:21 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>de54bebbfeb80613852380f71b967928</td>
+       <td>CVE-2023-29202</td>
+       <td>2023-04-15 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Commons are technical libraries common to several other top level XWiki projects. The RSS macro that is bundled in XWiki included the content of the feed items without any cleaning in the HTML output when the parameter `content` was set to `true`. This allowed arbitrary HTML and in particular also JavaScript injection and thus cross-site scripting (XSS) by specifying an RSS feed with malicious content. With the interaction of a user with programming rights, this could be used to execute arbitrary actions in the wiki, including privilege escalation, remote code execution, information disclosure, modifying or deleting content and sabotaging the wiki. The issue has been patched in XWiki 14.6 RC1, the content of the feed is now properly cleaned before being displayed. As a workaround, if the RSS macro isn't used in the wiki, the macro can be uninstalled by deleting `WEB-INF/lib/xwiki-platform-rendering-macro-rss-XX.jar`, where `XX` is XWiki's version, in the web application's directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29202">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>72046149f4c09e77c83e5b5c4056d08f</td>
+       <td>CVE-2023-29201</td>
+       <td>2023-04-15 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Commons are technical libraries common to several other top level XWiki projects. The "restricted" mode of the HTML cleaner in XWiki, introduced in version 4.2-milestone-1, only escaped `<script>` and `<style>`-tags but neither attributes that can be used to inject scripts nor other dangerous HTML tags like `<iframe>`. As a consequence, any code relying on this "restricted" mode for security is vulnerable to JavaScript injection ("cross-site scripting"/XSS). When a privileged user with programming rights visits such a comment in XWiki, the malicious JavaScript code is executed in the context of the user session. This allows server-side code execution with programming rights, impacting the confidentiality, integrity and availability of the XWiki instance. This problem has been patched in XWiki 14.6 RC1 with the introduction of a filter with allowed HTML elements and attributes that is enabled in restricted mode. There are no known workarounds apart from upgrading to a version including the fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29201">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1db97d0cd961e7f0a30faea66a453b6b</td>
+       <td>CVE-2023-2107</td>
+       <td>2023-04-15 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as critical, was found in IBOS 4.5.5. Affected is an unknown function of the file file/personal/del&op=recycle. The manipulation of the argument fids leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-226110 is the identifier assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2107">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b7c89fc326c7179d57af2122ef9e9b9</td>
+       <td>CVE-2023-2106</td>
+       <td>2023-04-15 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Weak Password Requirements in GitHub repository janeczku/calibre-web prior to 0.6.20.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2106">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>be944fb17b4fe6adcba228886e90f80c</td>
+       <td>CVE-2023-2105</td>
+       <td>2023-04-15 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Session Fixation in GitHub repository alextselegidis/easyappointments prior to 1.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2105">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c7de0ff4fbf7ddebf2e9abf16bc367df</td>
+       <td>CVE-2023-2104</td>
+       <td>2023-04-15 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper Access Control in GitHub repository alextselegidis/easyappointments prior to 1.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2104">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2aafad72220d6e294a469b4fe84f38d4</td>
+       <td>CVE-2023-2103</td>
+       <td>2023-04-15 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - Stored in GitHub repository alextselegidis/easyappointments prior to 1.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2103">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a0af0ab3970e2469fd0e80de465ff76b</td>
        <td>CVE-2023-2102</td>
        <td>2023-04-15 13:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-04-15 01:15:00 <img src="imgs/new.gif" /></td>
        <td>Qt before 6.4.3 allows a denial of service via a crafted string when the SQL ODBC driver plugin is used and the size of SQLTCHAR is 4. The affected versions are 5.x before 5.15.13, 6.x before 6.2.8, and 6.3.x before 6.4.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24607">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6b06e95e8406cb2f577da629b4444fc4</td>
-       <td>CVE-2023-22670</td>
-       <td>2023-04-15 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>A heap-based buffer overflow exists in the DXF file reading procedure in Open Design Alliance Drawings SDK before 2023.6. The specific flaw exists within the parsing of DXF files. The issue results from the lack of proper validation of the length of user-supplied XRecord data prior to copying it to a fixed-length heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22670">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>58aa6444520c58afeb3429ebc9019aab</td>
-       <td>CVE-2023-22669</td>
-       <td>2023-04-15 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>Parsing of DWG files in Open Design Alliance Drawings SDK before 2023.6 lacks proper validation of the length of user-supplied XRecord data prior to copying it to a fixed-length heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22669">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>edda39a5230fbb87a8389c2227595122</td>
-       <td>CVE-2022-48178</td>
-       <td>2023-04-15 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>X2CRM Open Source Sales CRM 6.6 and 6.9 was discovered to contain a stored cross-site scripting (XSS) vulnerability via the Create Action function, aka an index.php/actions/update URI.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48178">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b614193f679d4fafa5444a641e7d4b45</td>
-       <td>CVE-2023-29383</td>
-       <td>2023-04-14 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Shadow 4.13, it is possible to inject control characters into fields provided to the SUID program chfn (change finger). Although it is not possible to exploit this directly (e.g., adding a new user fails because \n is in the block list), it is possible to misrepresent the /etc/passwd file when viewed. Use of \r manipulations and Unicode characters to work around blocking of the : character make it possible to give the impression that a new user has been added. In other words, an adversary may be able to convince a system administrator to take the system offline (an indirect, social-engineered denial of service) by demonstrating that "cat /etc/passwd" shows a rogue user account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29383">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a1b797b15c1f55cd116a016e0485c6d7</td>
-       <td>CVE-2023-24934</td>
-       <td>2023-04-14 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Defender Security Feature Bypass Vulnerability</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24934">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e219d50549e39d413e345cfd24a1832</td>
-       <td>CVE-2023-29091</td>
-       <td>2023-04-14 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Exynos Mobile Processor, Automotive Processor and Modem for Exynos Modem 5123, Exynos Modem 5300, Exynos 980, Exynos 1080, Exynos 9110, and Exynos Auto T5123. Memory corruption can occur due to insufficient parameter validation while decoding an SIP URI.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29091">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>100fb3f9c951baf848ea54b03e1290cd</td>
-       <td>CVE-2023-29090</td>
-       <td>2023-04-14 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Exynos Mobile Processor, Automotive Processor and Modem for Exynos Modem 5123, Exynos Modem 5300, Exynos 980, Exynos 1080, Exynos 9110, and Exynos Auto T5123. Memory corruption can occur due to insufficient parameter validation while decoding an SIP Via header.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29090">详情</a></td>
       </tr>
 
      </tbody>
