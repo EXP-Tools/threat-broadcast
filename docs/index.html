@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-17 23:21:44 -->
+<!-- RELEASE TIME : 2023-04-18 02:36:14 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6ede2f9798bbc20ff32cfcf3b55050c6</td>
+       <td>CVE-2023-30547</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>vm2 is a sandbox that can run untrusted code with whitelisted Node's built-in modules. There exists a vulnerability in exception sanitization of vm2 for versions up to 3.9.16, allowing attackers to raise an unsanitized host exception inside `handleException()` which can be used to escape the sandbox and run arbitrary code in host context. This vulnerability was patched in the release of version `3.9.17` of `vm2`. There are no known workarounds for this vulnerability. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30547">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66ef5ae66d15c9a97b7e7696f127fa5f</td>
+       <td>CVE-2023-30543</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>@web3-react is a framework for building Ethereum Apps . In affected versions the `chainId` may be outdated if the user changes chains as part of the connection flow. This means that the value of `chainId` returned by `useWeb3React()` may be incorrect. In an application, this means that any data derived from `chainId` could be incorrect. For example, if a swapping application derives a wrapped token contract address from the `chainId` *and* a user has changed chains as part of their connection flow the application could cause the user to send funds to the incorrect address when wrapping. This issue has been addressed in PR #749 and is available in updated npm artifacts. There are no known workarounds for this issue. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30543">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fd6181f0281a7d5287b27fac35ab2a50</td>
+       <td>CVE-2023-30541</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenZeppelin Contracts is a library for secure smart contract development. A function in the implementation contract may be inaccessible if its selector clashes with one of the proxy's own selectors. Specifically, if the clashing function has a different signature with incompatible ABI encoding, the proxy could revert while attempting to decode the arguments from calldata. The probability of an accidental clash is negligible, but one could be caused deliberately and could cause a reduction in availability. The issue has been fixed in version 4.8.3. As a workaround if a function appears to be inaccessible for this reason, it may be possible to craft the calldata such that ABI decoding does not fail at the proxy and the function is properly proxied through.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30541">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>992d5e73b38b7674e87dcb7d20593580</td>
+       <td>CVE-2023-30540</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nextcloud Talk is a chat, video & audio call extension for Nextcloud. In affected versions a user that was added later to a conversation can use this information to get access to data that was deleted before they were added to the conversation. This issue has been patched in version 15.0.5 and it is recommended that users upgrad to 15.0.5. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30540">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>971a386dd52168cf617dc9bae13b9849</td>
+       <td>CVE-2023-30539</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nextcloud is a personal home server system. Depending on the set up tags and other workflows this issue can be used to limit access of others or being able to grant them access when there are system tag based files access control or files retention rules. It is recommended that the Nextcloud Server is upgraded to 24.0.11 or 25.0.5, the Nextcloud Enterprise Server to 21.0.9.11, 22.2.10.11, 23.0.12.6, 24.0.11 or 25.0.5, and the Nextcloud Files automated tagging app to 1.11.1, 1.12.1, 1.13.1, 1.14.2, 1.15.3 or 1.16.1. Users unable to upgrade should disable all workflow related apps. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30539">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>072a9a6b4efe37e893f3a3b6dff0ac84</td>
+       <td>CVE-2023-30536</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>slim/psr7 is a PSR-7 implementation for use with Slim 4. In versions prior to 1.6.1 an attacker could sneak in a newline (\n) into both the header names and values. While the specification states that \r\n\r\n is used to terminate the header list, many servers in the wild will also accept \n\n. An attacker that is able to control the header names that are passed to Slilm-Psr7 would be able to intentionally craft invalid messages, possibly causing application errors or invalid HTTP requests being sent out with an PSR-18 HTTP client. The latter might present a denial of service vector if a remote service’s web application firewall bans the application due to the receipt of malformed requests. The issue has been patched in version 1.6.1. There are no known workarounds to this issue. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30536">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e948f53b4fbca12051793743f151d31</td>
+       <td>CVE-2023-29213</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In affected versions of `org.xwiki.platform:xwiki-platform-logging-ui` it is possible to trick a user with programming rights into visiting a constructed url where e.g., by embedding an image with this URL in a document that is viewed by a user with programming rights which will evaluate an expression in the constructed url and execute it. This issue has been addressed in versions 13.10.11, 14.4.7, and 14.10. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29213">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b091cb8a0889a009da137d62460ef8fd</td>
+       <td>CVE-2023-29197</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>guzzlehttp/psr7 is a PSR-7 HTTP message library implementation in PHP. Affected versions are subject to improper header parsing. An attacker could sneak in a newline (\n) into both the header names and values. While the specification states that \r\n\r\n is used to terminate the header list, many servers in the wild will also accept \n\n. This is a follow-up to CVE-2022-24775 where the fix was incomplete. The issue has been patched in versions 1.9.1 and 2.4.5. There are no known workarounds for this vulnerability. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29197">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8fef68607441467e71e8f120f85f01ed</td>
+       <td>CVE-2023-28984</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Use After Free vulnerability in the Layer 2 Address Learning Manager (l2alm) of Juniper Networks Junos OS on QFX Series allows an adjacent attacker to cause the Packet Forwarding Engine to crash and restart, leading to a Denial of Service (DoS). The PFE may crash when a lot of MAC learning and aging happens, but due to a Race Condition (Concurrent Execution using Shared Resource with Improper Synchronization) that is outside the attackers direct control. This issue affects: Juniper Networks Junos OS versions prior to 19.4R3-S10 on QFX Series; 20.2 versions prior to 20.2R3-S7 on QFX Series; 20.3 versions prior to 20.3R3-S6 on QFX Series; 20.4 versions prior to 20.4R3-S5 on QFX Series; 21.1 versions prior to 21.1R3-S4 on QFX Series; 21.2 versions prior to 21.2R3-S3 on QFX Series; 21.3 versions prior to 21.3R3-S3 on QFX Series; 21.4 versions prior to 21.4R3 on QFX Series; 22.1 versions prior to 22.1R3 on QFX Series; 22.2 versions prior to 22.2R2 on QFX Series.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28984">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3fd7ca7acb276130b7c2c17dd2e63f88</td>
+       <td>CVE-2023-28983</td>
+       <td>2023-04-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An OS Command Injection vulnerability in gRPC Network Operations Interface (gNOI) server module of Juniper Networks Junos OS Evolved allows an authenticated, low privileged, network based attacker to inject shell commands and execute code. This issue affects Juniper Networks Junos OS Evolved 21.4 version 21.4R1-EVO and later versions prior to 22.1R1-EVO.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28983">详情</a></td>
+      </tr>
+
+      <tr>
        <td>05dda0b9c01b95fdf9e9cd1ceef752af</td>
        <td>CVE-2023-30548</td>
        <td>2023-04-17 21:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
        <td>SQL injection vulnerability found in PrestaShopleurlrewrite v.1.0 and before allow a remote attacker to gain privileges via the Dispatcher::getController component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27844">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d16bcd4cdc5377abcbbdd16f46d3568</td>
-       <td>CVE-2023-27733</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>DedeCMS v5.7.106 was discovered to contain a SQL injection vulnerability via the component /dede/sys_sql_query.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27733">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bd6ae6a305e03ee30a661530ce28447e</td>
-       <td>CVE-2023-1473</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Slider, Gallery, and Carousel by MetaSlider WordPress plugin 3.29.0 does not sanitise and escape a parameter before outputting it back in the page, leading to a Reflected Cross-Site Scripting which could be used against high privilege users such as admin</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1473">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>745080c3e18bcfae572f58a7d3a438e4</td>
-       <td>CVE-2023-1427</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>- The Photo Gallery by 10Web WordPress plugin before 1.8.15 did not ensure that uploaded files are kept inside its uploads folder, allowing high privilege users to put images anywhere in the filesystem via a path traversal vector.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1427">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c66cf4fe667210e91650097f8ca15368</td>
-       <td>CVE-2023-1413</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The WP VR WordPress plugin before 8.2.9 does not sanitise and escape some parameters before outputting them back in the page, leading to a Reflected Cross-Site Scripting which could be used against high privilege users such as admin</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1413">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>05fbb0502c534a024342e3187c34f3ab</td>
-       <td>CVE-2023-1373</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The W4 Post List WordPress plugin before 2.4.6 does not escape some URLs before outputting them in attributes, leading to Reflected Cross-Site Scripting</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1373">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b5e39ec2ba49ed27573e9aca2b5a97e7</td>
-       <td>CVE-2023-1371</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The W4 Post List WordPress plugin before 2.4.6 does not ensure that password protected posts can be accessed before displaying their content, which could allow any authenticated users to access them</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1371">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>86c9c05df33eaa55e7dba8f4da53676e</td>
-       <td>CVE-2023-1331</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Redirection WordPress plugin before 1.1.5 does not have CSRF checks in the uninstall action, which could allow attackers to make logged in admins delete all the redirections through a CSRF attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1331">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ac8c22313fd01e16795352287bd35131</td>
-       <td>CVE-2023-1325</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Easy Forms for Mailchimp WordPress plugin before 6.8.7 does not validate and escape some of its shortcode attributes before outputting them back in a page/post where the shortcode is embed, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1325">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c8cddd31e5fbcbbc48ea2e2a7805156</td>
-       <td>CVE-2023-1282</td>
-       <td>2023-04-17 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Drag and Drop Multiple File Upload PRO - Contact Form 7 Standard WordPress plugin before 2.11.1 and Drag and Drop Multiple File Upload PRO - Contact Form 7 with Remote Storage Integrations WordPress plugin before 5.0.6.4 do not sanitise and escape a parameter before outputting it back in the page, leading to a Reflected Cross-Site Scripting which could be used against high-privilege users such as admins.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1282">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d5673e98044e96485f99a40a2fdd59f</td>
-       <td>CVE-2023-2017</td>
-       <td>2023-04-17 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Server-side Template Injection (SSTI) in Shopware 6 (<= v6.4.20.0, v6.5.0.0-rc1 <= v6.5.0.0-rc4), affecting both shopware/core and shopware/platform GitHub repositories, allows remote attackers with access to a Twig environment without the Sandbox extension to bypass the validation checks in `Shopware\Core\Framework\Adapter\Twig\SecurityExtension` and call any arbitrary PHP function and thus execute arbitrary code/commands via usage of fully-qualified names, supplied as array of strings, when referencing callables. Users are advised to upgrade to v6.4.20.1 to resolve this issue. This is a bypass of CVE-2023-22731.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2017">详情</a></td>
       </tr>
 
      </tbody>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>26cda203c9d35e28a6dd2b4185b21c1d</td>
        <td>CVE-2022-32871</td>
-       <td>2023-04-16 20:28:52 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:52</td>
        <td>APPLE IPHONE_OS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=81ae8a55fd874f0ab88f5c932991a74c">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>0040b4966e6e30432690de4e45555565</td>
        <td>CVE-2022-42858</td>
-       <td>2023-04-16 20:28:46 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:46</td>
        <td>APPLE MACOS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a2a6e663523245e79e995a63c98aa568">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>3fac3a297a866075390f14bf4fd3b935</td>
        <td>CVE-2021-45985</td>
-       <td>2023-04-16 20:28:39 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:39</td>
        <td>LUA LUA Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5b0abcd313494138a3dc1a37b169c55f">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>55d091f3307ad82e622f738b4b46afce</td>
        <td>CVE-2022-34333</td>
-       <td>2023-04-16 20:28:27 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:27</td>
        <td>IBM STERLING_ORDER_MANAGEMENT Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=8c6b5695ecdd42a49791cf55df689241">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>376ef57bcaff6c1cfe3767f41fdebca6</td>
        <td>CVE-2023-30456</td>
-       <td>2023-04-16 20:28:20 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:20</td>
        <td>LINUX LINUX_KERNEL Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=540c83e6dc7a436e8bc3784abeabaa07">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>5aa7859cba70c85a9e2a8507da7b5387</td>
        <td>CVE-2023-24537</td>
-       <td>2023-04-16 20:28:13 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:13</td>
        <td>GOLANG GO Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=937cb63b887d45caa5c4feab455a2593">详情</a></td>
       </tr>
@@ -1838,7 +1838,7 @@
       <tr>
        <td>08419d55ea24a29993f31a3aa58681ee</td>
        <td>CVE-2022-43914</td>
-       <td>2023-04-16 20:28:07 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:07</td>
        <td>IBM TRIRIGA_APPLICATION_PLATFORM Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7518f0faee114028a090d821a1d145f0">详情</a></td>
       </tr>
@@ -1846,7 +1846,7 @@
       <tr>
        <td>1f2fa11df48a5e037221d713a3a6d387</td>
        <td>CVE-2023-20653</td>
-       <td>2023-04-16 20:28:00 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:28:00</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=cea3d3886e6a4143a87d86bbd7bf20e9">详情</a></td>
       </tr>
@@ -1854,7 +1854,7 @@
       <tr>
        <td>710e37b943fb5acf45762b49a246ea4a</td>
        <td>CVE-2023-23762</td>
-       <td>2023-04-16 20:27:53 <img src="imgs/new.gif" /></td>
+       <td>2023-04-16 20:27:53</td>
        <td>GITHUB ENTERPRISE_SERVER Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=3a26af9e456748b4aee57ada4837fc33">详情</a></td>
       </tr>
