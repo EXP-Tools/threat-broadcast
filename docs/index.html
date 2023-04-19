@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-19 11:19:03 -->
+<!-- RELEASE TIME : 2023-04-19 13:27:10 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7d60fa7aa55242a9c9db21d558cce256</td>
+       <td>CVE-2023-2170</td>
+       <td>2023-04-19 10:15:00 <img src="imgs/new.gif" /></td>
+       <td>The TaxoPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Related Posts functionality in versions up to, and including, 3.6.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers with Editor+ permissions to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2170">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f0ca92498e6968241ed6844560bd7ba3</td>
+       <td>CVE-2023-2169</td>
+       <td>2023-04-19 10:15:00 <img src="imgs/new.gif" /></td>
+       <td>The TaxoPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Related Posts functionality in versions up to, and including, 3.6.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers with Editor+ permissions to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2169">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fde413ec2c326985020bd2fb4a8da5f8</td>
+       <td>CVE-2023-2168</td>
+       <td>2023-04-19 10:15:00 <img src="imgs/new.gif" /></td>
+       <td>The TaxoPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Suggest Terms Title field in versions up to, and including, 3.6.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers with Editor+ permissions to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2168">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f2e638a5504bbc74328c431f4145e92d</td>
        <td>CVE-2023-25620</td>
        <td>2023-04-19 09:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-04-18 21:15:00 <img src="imgs/new.gif" /></td>
        <td>A CWE-613: Insufficient Session Expiration vulnerability exists that could allow an attacker tomaintain unauthorized access over a hijacked session in PME after the legitimate user hassigned out of their account.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28003">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33d2ad4aa5e33d730ea31c4865de9f3e</td>
-       <td>CVE-2023-26049</td>
-       <td>2023-04-18 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jetty is a java based web server and servlet engine. Nonstandard cookie parsing in Jetty may allow an attacker to smuggle cookies within other cookies, or otherwise perform unintended behavior by tampering with the cookie parsing mechanism. If Jetty sees a cookie VALUE that starts with `"` (double quote), it will continue to read the cookie string until it sees a closing quote -- even if a semicolon is encountered. So, a cookie header such as: `DISPLAY_LANGUAGE="b; JSESSIONID=1337; c=d"` will be parsed as one cookie, with the name DISPLAY_LANGUAGE and a value of b; JSESSIONID=1337; c=d instead of 3 separate cookies. This has security implications because if, say, JSESSIONID is an HttpOnly cookie, and the DISPLAY_LANGUAGE cookie value is rendered on the page, an attacker can smuggle the JSESSIONID cookie into the DISPLAY_LANGUAGE cookie and thereby exfiltrate it. This is significant when an intermediary is enacting some policy based on cookies, so a smuggled cookie can bypass that policy yet still be seen by the Jetty server or its logging system. This issue has been addressed in versions 9.4.51, 10.0.14, 11.0.14, and 12.0.0.beta0 and users are advised to upgrade. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26049">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8353d1cf39cd6329991b94f13a306292</td>
-       <td>CVE-2023-26048</td>
-       <td>2023-04-18 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jetty is a java based web server and servlet engine. In affected versions servlets with multipart support (e.g. annotated with `@MultipartConfig`) that call `HttpServletRequest.getParameter()` or `HttpServletRequest.getParts()` may cause `OutOfMemoryError` when the client sends a multipart request with a part that has a name but no filename and very large content. This happens even with the default settings of `fileSizeThreshold=0` which should stream the whole part content to disk. An attacker client may send a large multipart request and cause the server to throw `OutOfMemoryError`. However, the server may be able to recover after the `OutOfMemoryError` and continue its service -- although it may take some time. This issue has been patched in versions 9.4.51, 10.0.14, and 11.0.14. Users are advised to upgrade. Users unable to upgrade may set the multipart parameter `maxRequestSize` which must be set to a non-negative value, so the whole multipart content is limited (although still read into memory).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26048">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d4544c30fb7987bd4147e63805e11e51</td>
-       <td>CVE-2023-25555</td>
-       <td>2023-04-18 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A CWE-78: Improper Neutralization of Special Elements used in an OS Command ('OSCommand Injection') vulnerability exists that could allow a user that knows the credentials toexecute unprivileged shell commands on the appliance over SSH.      Affected products: StruxureWare Data Center Expert (V7.9.2 and prior)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25555">详情</a></td>
       </tr>
 
      </tbody>
