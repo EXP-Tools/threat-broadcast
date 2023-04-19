@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-18 23:21:39 -->
+<!-- RELEASE TIME : 2023-04-19 01:42:01 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>65289db6316398217acf197362db4989</td>
        <td></td>
-       <td>2023-04-17 07:52:39 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 07:52:39</td>
        <td>安全事件周报 2023-04-10 第15周</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=643cfac722fb511ce8a14acc">详情</a></td>
       </tr>
@@ -38,7 +38,7 @@
       <tr>
        <td>bac04757fb29e6f5a68d734e1b55972d</td>
        <td>CVE-2023-2033</td>
-       <td>2023-04-17 00:43:33 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 00:43:33</td>
        <td>CVE-2023-2033：Google Chrome V8类型混淆漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=643c963522fb511ce8a14ac4">详情</a></td>
       </tr>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c61463f42abe42d87e12839577fa29bc</td>
+       <td>CVE-2023-30608</td>
+       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>sqlparse is a non-validating SQL parser module for Python. In affected versions the SQL parser contains a regular expression that is vulnerable to ReDoS (Regular Expression Denial of Service). This issue was introduced by commit `e75e358`. The vulnerability may lead to Denial of Service (DoS). This issues has been fixed in sqlparse 0.4.4 by commit `c457abd5f`. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30608">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9fdd5fffc4e4628934f6633b4531959</td>
+       <td>CVE-2023-30606</td>
+       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open source platform for community discussion. In affected versions a user logged as an administrator can call arbitrary methods on the `SiteSetting` class, notably `#clear_cache!` and `#notify_changed!`, which when done on a multisite instance, can affect the entire cluster resulting in a denial of service. Users not running in multisite environments are not affected. This issue is patched in the latest stable, beta and tests-passed versions of Discourse. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30606">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c4fca56ffeda50904f58f06fd9b8b1a0</td>
+       <td>CVE-2023-30538</td>
+       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open source platform for community discussion. Due to the improper sanitization of SVG files, an attacker can execute arbitrary JavaScript on the users’ browsers by uploading a crafted SVG file. This issue is patched in the latest stable and tests-passed versions of Discourse. Users are advised to upgrade. For users unable to upgrade there are two possible workarounds: enable CDN handing of uploads (and ensure the CDN sanitizes SVG files) or disable SVG file uploads by ensuring that the `authorized extensions` site setting does not include `svg` (or reset that setting to the default, by default Discourse doesn't enable SVG uploads by users).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30538">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>972dbb9d2b4c41e282dd83ef131ad899</td>
+       <td>CVE-2023-29410</td>
+       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A CWE-20: Improper Input Validation vulnerability exists that could allow an authenticatedattacker to gain the same privilege as the application on the server when a malicious payload isprovided over HTTP for the server to execute.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29410">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7032c0fb742a18049037f965483dae5</td>
+       <td>CVE-2023-29196</td>
+       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Discourse is an open source platform for community discussion. This vulnerability is not exploitable on the default install of Discourse. A custom feature must be enabled for it to work at all, and the attacker’s payload must pass the CSP to be executed. However, if an attacker succeeds in embedding Javascript that does pass the CSP, it could result in session hijacking for any users that view the attacker’s post. The vulnerability is patched in the latest tests-passed, beta and stable branches. Users are advised to upgrade. Users unable to upgrade should enable and/or restore your site's CSP to the default one provided with Discourse. Remove any embed-able hosts configured.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29196">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a2ce94ede986cd696a57ffcf48a59582</td>
+       <td>CVE-2023-29002</td>
+       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cilium is a networking, observability, and security solution with an eBPF-based dataplane. When run in debug mode, Cilium will log the contents of the `cilium-secrets` namespace. This could include data such as TLS private keys for Ingress and GatewayAPI resources. An attacker with access to debug output from the Cilium containers could use the resulting output to intercept and modify traffic to and from the affected cluster. Output of the sensitive information would occur at Cilium agent restart, when secrets in the namespace are modified, and on creation of Ingress or GatewayAPI resources. This vulnerability is fixed in Cilium releases 1.11.16, 1.12.9, and 1.13.2. Users unable to upgrade should disable debug mode.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29002">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bfa258e87ec6f00097d8d7c0a8a80f27</td>
+       <td>CVE-2023-28004</td>
+       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A CWE-129: Improper validation of an array index vulnerability exists where a specially craftedEthernet request could result in denial of service or remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28004">详情</a></td>
+      </tr>
+
+      <tr>
        <td>64432d606749eaeb20e32b6089dc9e89</td>
        <td>CVE-2023-29413</td>
        <td>2023-04-18 21:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-04-18 16:15:00 <img src="imgs/new.gif" /></td>
        <td>An NTFS Junction condition exists in the Qualys Cloud Agentfor Windows platform in versions before 4.8.0.31. Attackers may write files toarbitrary locations via a local attack vector. This allows attackers to assumethe privileges of the process, and they may delete or otherwise on unauthorizedfiles, allowing for the potential modification or deletion of sensitive fileslimited only to that specific directory/file object. This vulnerability isbounded only to the time of uninstallation and can only be exploited locally.At the time of this disclosure, versions before 4.0 areclassified as End of Life.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28141">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d3f22076d92c0914e686047d49f3a4d</td>
-       <td>CVE-2023-29774</td>
-       <td>2023-04-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dreamer CMS 3.0.1 is vulnerable to stored Cross Site Scripting (XSS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29774">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c9a448505640e2d3fdfd9d860e76cfe0</td>
-       <td>CVE-2023-2155</td>
-       <td>2023-04-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Air Cargo Management System 1.0. It has been declared as problematic. This vulnerability affects unknown code of the file classes/Master.php?f=save_cargo_type. The manipulation of the argument name leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-226276.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2155">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>301554b87c078796d8cde9c2d3ad4919</td>
-       <td>CVE-2023-2154</td>
-       <td>2023-04-18 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Task Reminder System 1.0. It has been classified as critical. This affects an unknown part of the file /admin/?page=reminders/view_reminder. The manipulation of the argument id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-226275.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2154">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ecfe641e4690bff71d920d38925c1e4</td>
-       <td>CVE-2023-28863</td>
-       <td>2023-04-18 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>AMI MegaRAC SPx12 and SPx13 devices have Insufficient Verification of Data Authenticity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28863">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21ccd6d347292d6c46190321b7060205</td>
-       <td>CVE-2023-2153</td>
-       <td>2023-04-18 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Complaint Management System 1.0 and classified as problematic. Affected by this issue is some unknown functionality of the file admin/assets/plugins/DataTables/examples/examples_support/editable_ajax.php of the component POST Parameter Handler. The manipulation of the argument value with the input 1><script>alert(666)</script> leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-226274 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2153">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a28ef1363fe03182fa1b0fbe898bdff</td>
-       <td>CVE-2023-2152</td>
-       <td>2023-04-18 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in SourceCodester Student Study Center Desk Management System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file index.php. The manipulation of the argument page leads to file inclusion. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-226273 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2152">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d767156fabfe2fd50939ecb03b1f35d4</td>
-       <td>CVE-2022-45836</td>
-       <td>2023-04-18 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in W3 Eden, Inc. Download Manager plugin <= 3.2.59 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-45836">详情</a></td>
       </tr>
 
      </tbody>
@@ -1742,7 +1742,7 @@
       <tr>
        <td>0b1f983a7f66b20e7d02ebb54ac416ca</td>
        <td>CVE-2022-47335</td>
-       <td>2023-04-17 20:32:25 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:32:25</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=e83168ac04a1471ea7ae78732ab7577a">详情</a></td>
       </tr>
@@ -1750,7 +1750,7 @@
       <tr>
        <td>bc0da3bc02516046e6b63e4e7a929470</td>
        <td>CVE-2022-47338</td>
-       <td>2023-04-17 20:32:18 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:32:18</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a30487fd90eb4c1c821893f1c5743ee0">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>8d83878917e92016513fedf1d29a1c0c</td>
        <td>CVE-2022-47464</td>
-       <td>2023-04-17 20:32:11 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:32:11</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d3834669bf4143e08238044bd4f4e6b7">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>2b5ce0afe23fb21d45935c78b1280f6b</td>
        <td>CVE-2022-47336</td>
-       <td>2023-04-17 20:32:10 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:32:10</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d09765bc4ff5461fa4694a86799d5acb">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>1b0d12279dc24a356dce5bdbd87ec71b</td>
        <td>CVE-2022-47337</td>
-       <td>2023-04-17 20:32:07 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:32:07</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ed1ec07bad4e4467b7e152c62681269c">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>7d084550a3ac30633818c3a562a1a5eb</td>
        <td>CVE-2022-47467</td>
-       <td>2023-04-17 20:31:51 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:31:51</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=3d1a897a2d39430a8fe61e25e2389411">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>6b21e78003b8725eb686e55077ef01c1</td>
        <td>CVE-2022-47362</td>
-       <td>2023-04-17 20:31:48 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:31:48</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6bffe7f1f6584c03a69a5a5ee521bf3e">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>30739a8dd4cd6074ecf1b810ed2e0eb3</td>
        <td>CVE-2022-47463</td>
-       <td>2023-04-17 20:31:40 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:31:40</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a17627a8ccaa44369df4cf7dbb0a8cd6">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>f56f4b550fd3a7022e0547936eb90ac6</td>
        <td>CVE-2023-24884</td>
-       <td>2023-04-17 20:31:25 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:31:25</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a32cca14c3e24340b09fb9a1c2b50fc0">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>7efa8891313e2081722668defee8743a</td>
        <td>CVE-2022-47465</td>
-       <td>2023-04-17 20:31:25 <img src="imgs/new.gif" /></td>
+       <td>2023-04-17 20:31:25</td>
        <td>GOOGLE ANDROID Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=1f8fd361b8164fb98766d2db716dbb0f">详情</a></td>
       </tr>
