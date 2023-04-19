@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-19 17:22:41 -->
+<!-- RELEASE TIME : 2023-04-19 19:18:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>1b3c185f832a8fccd08c8df27768ba35</td>
+       <td>CVE-2023-22894</td>
+       <td>2023-04-19 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Strapi through 4.5.5 allows attackers (with access to the admin panel) to discover sensitive user details by exploiting the query filter. The attacker can filter users by columns that contain sensitive information and infer a value from API responses. If the attacker has super admin access, then this can be exploited to discover the password hash and password reset token of all users. If the attacker has admin panel access to an account with permission to access the username and email of API users with a lower privileged role (e.g., Editor or Author), then this can be exploited to discover sensitive information for all API users but not other admin accounts.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22894">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f55056156d202429d8c79dde9851300b</td>
+       <td>CVE-2023-22893</td>
+       <td>2023-04-19 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Strapi through 4.5.5 does not verify the access or ID tokens issued during the OAuth flow when the AWS Cognito login provider is used for authentication. A remote attacker could forge an ID token that is signed using the 'None' type algorithm to bypass authentication and impersonate any user that use AWS Cognito for authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22893">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>39b9294c231e47846667bfa3bb89774e</td>
+       <td>CVE-2023-22621</td>
+       <td>2023-04-19 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Strapi through 4.5.5 allows authenticated Server-Side Template Injection (SSTI) that can be exploited to execute arbitrary code on the server. A remote attacker with access to the Strapi admin panel can inject a crafted payload that executes code on the server into an email template that bypasses the validation checks that should prevent code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22621">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cb7e19c00869eed529c72e64c7ba5360</td>
        <td>CVE-2023-29586</td>
        <td>2023-04-19 15:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-04-19 00:15:00 <img src="imgs/new.gif" /></td>
        <td>Archery is an open source SQL audit platform. The Archery project contains multiple SQL injection vulnerabilities, that may allow an attacker to query the connected databases. Affected versions are subject to SQL injection in the `optimize_sqltuningadvisor` method of `sql_optimize.py`. User input coming from the `db_name` parameter value in `sql_optimize.py` is passed to the `sqltuningadvisor` method in `oracle.py`for execution. To mitigate escape the variables accepted via user input when used in `sql_optimize.py`. Users may also use prepared statements when dealing with SQL as a mitigation for this issue. This issue is also indexed as `GHSL-2022-107`.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30556">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33e9075481899420d9414fa9be27b5da</td>
-       <td>CVE-2023-30555</td>
-       <td>2023-04-19 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Archery is an open source SQL audit platform. The Archery project contains multiple SQL injection vulnerabilities, that may allow an attacker to query the connected databases.Affected versions are subject to SQL injection in the `explain` method in `sql_optimize.py`. User input coming from the `db_name` parameter value in the `explain` endpoint is passed to the following `query` methods of each database engine for execution. `query` in `sql/engines/mssql.py`, and `query` in `sql/engines/oracle.py`. Each of these issues may be mitigated by escaping user input or by using prepared statements when executing SQL queries. This issue is also indexed as `GHSL-2022-108`.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30555">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c61463f42abe42d87e12839577fa29bc</td>
-       <td>CVE-2023-30608</td>
-       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>sqlparse is a non-validating SQL parser module for Python. In affected versions the SQL parser contains a regular expression that is vulnerable to ReDoS (Regular Expression Denial of Service). This issue was introduced by commit `e75e358`. The vulnerability may lead to Denial of Service (DoS). This issues has been fixed in sqlparse 0.4.4 by commit `c457abd5f`. Users are advised to upgrade. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30608">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d9fdd5fffc4e4628934f6633b4531959</td>
-       <td>CVE-2023-30606</td>
-       <td>2023-04-18 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Discourse is an open source platform for community discussion. In affected versions a user logged as an administrator can call arbitrary methods on the `SiteSetting` class, notably `#clear_cache!` and `#notify_changed!`, which when done on a multisite instance, can affect the entire cluster resulting in a denial of service. Users not running in multisite environments are not affected. This issue is patched in the latest stable, beta and tests-passed versions of Discourse. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30606">详情</a></td>
       </tr>
 
      </tbody>
