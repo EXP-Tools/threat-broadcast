@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-25 21:20:00 -->
+<!-- RELEASE TIME : 2023-04-25 23:21:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a3c14ba211af239d6c4172b27b54b0b6</td>
+       <td>CVE-2023-30609</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>matrix-react-sdk is a react-based SDK for inserting a Matrix chat/VoIP client into a web page. Prior to version 3.71.0, plain text messages containing HTML tags are rendered as HTML in the search results. To exploit this, an attacker needs to trick a user into searching for a specific message containing an HTML injection payload. No cross-site scripting attack is possible due to the hardcoded content security policy. Version 3.71.0 of the SDK patches over the issue. As a workaround, restarting the client will clear the HTML injection.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30609">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f7952d0e6b9ca8e6916b450e4994e196</td>
+       <td>CVE-2023-30549</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Apptainer is an open source container platform for Linux. There is an ext4 use-after-free flaw that is exploitable through versions of Apptainer < 1.1.0, installations that include apptainer-suid < 1.1.8, and all versions of Singularity in their default configurations on older operating systems where that CVE has not been patched. That includes Red Hat Enterprise Linux 7, Debian 10 buster (unless the linux-5.10 package is installed), Ubuntu 18.04 bionic and Ubuntu 20.04 focal. Use-after-free flaws in the kernel can be used to attack the kernel for denial of service and potentially for privilege escalation.Apptainer 1.1.8 includes a patch that by default disables mounting of extfs filesystem types in setuid-root mode, while continuing to allow mounting of extfs filesystems in non-setuid "rootless" mode using fuse2fs.Some workarounds are possible. Either do not install apptainer-suid (for versions 1.1.0 through 1.1.7) or set `allow setuid = no` in apptainer.conf (or singularity.conf for singularity versions).  This requires having unprivileged user namespaces enabled and except for apptainer 1.1.x versions will disallow mounting of sif files, extfs files, and squashfs files in addition to other, less significant impacts.  (Encrypted sif files are also not supported unprivileged in apptainer 1.1.x.). Alternatively, use the `limit containers` options in apptainer.conf/singularity.conf to limit sif files to trusted users, groups, and/or paths, and set `allow container extfs = no` to disallow mounting of extfs overlay files.  The latter option by itself does not disallow mounting of extfs overlay partitions inside SIF files, so that's why the former options are also needed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30549">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c2449f719ac46906a7ff323afc9a991c</td>
+       <td>CVE-2023-29012</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Git for Windows is the Windows port of Git. Prior to version 2.40.1, any user of Git CMD who starts the command in an untrusted directory is impacted by an Uncontrolles Search Path Element vulnerability. Maliciously-placed `doskey.exe` would be executed silently upon running Git CMD. The problem has been patched in Git for Windows v2.40.1. As a workaround, avoid using Git CMD or, if using Git CMD, avoid starting it in an untrusted directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29012">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>37a71d3e25371b45ad407e1f7583f198</td>
+       <td>CVE-2023-29011</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Git for Windows, the Windows port of Git, ships with an executable called `connect.exe`, which implements a SOCKS5 proxy that can be used to connect e.g. to SSH servers via proxies when certain ports are blocked for outgoing connections. The location of `connect.exe`'s config file is hard-coded as `/etc/connectrc` which will typically be interpreted as `C:\etc\connectrc`. Since `C:\etc` can be created by any authenticated user, this makes `connect.exe` susceptible to malicious files being placed there by other users on the same multi-user machine. The problem has been patched in Git for Windows v2.40.1. As a workaround, create the folder `etc` on all drives where Git commands are run, and remove read/write access from those folders. Alternatively, watch out for malicious `<drive>:\etc\connectrc` files on multi-user machines.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29011">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1a68b0018536521dfd409970ec0b243b</td>
+       <td>CVE-2023-29007</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Git is a revision control system. Prior to versions 2.30.9, 2.31.8, 2.32.7, 2.33.8, 2.34.8, 2.35.8, 2.36.6, 2.37.7, 2.38.5, 2.39.3, and 2.40.1, a specially crafted `.gitmodules` file with submodule URLs that are longer than 1024 characters can used to exploit a bug in `config.c::git_config_copy_or_rename_section_in_file()`. This bug can be used to inject arbitrary configuration into a user's `$GIT_DIR/config` when attempting to remove the configuration section associated with that submodule. When the attacker injects configuration values which specify executables to run (such as `core.pager`, `core.editor`, `core.sshCommand`, etc.) this can lead to a remote code execution. A fix A fix is available in versions 2.30.9, 2.31.8, 2.32.7, 2.33.8, 2.34.8, 2.35.8, 2.36.6, 2.37.7, 2.38.5, 2.39.3, and 2.40.1. As a workaround, avoid running `git submodule deinit` on untrusted repositories or without prior inspection of any submodule sections in `$GIT_DIR/config`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29007">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d8f88dbd2efb8faf9a082e53d6602390</td>
+       <td>CVE-2023-24512</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>On affected platforms running Arista EOS, an authorized attacker with permissions to perform gNMI requests could craft a request allowing it to update arbitrary configurations in the switch. This situation occurs only when the Streaming Telemetry Agent (referred to as the TerminAttr agent) is enabled and gNMI access is configured on the agent. Note: This gNMI over the Streaming Telemetry Agent scenario is mostly commonly used when streaming to a 3rd party system and is not used by default when streaming to CloudVision</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24512">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f4cd024d2e496ec16a11ac42be75d15a</td>
+       <td>CVE-2023-23839</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The SolarWinds Platform was susceptible to the Exposure of Sensitive Information Vulnerability. This vulnerability allows users to access Orion.WebCommunityStrings SWIS schema object and obtain sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23839">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>13ec7c74d43d18a95eb8808549449715</td>
+       <td>CVE-2023-2293</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in SourceCodester Purchase Order Management System 1.0. It has been classified as problematic. This affects an unknown part of the file classes/Master.php?f=save_item. The manipulation of the argument description with the input <script>alert(document.cookie)</script> leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-227463.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2293">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9939530e42e78b946ca042401caadb4</td>
+       <td>CVE-2023-2269</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A denial of service problem was found, due to a possible recursive locking scenario, resulting in a deadlock in table_clear in drivers/md/dm-ioctl.c in the Linux Kernel Device Mapper-Multipathing sub-component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2269">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5ca4b07eaf1d62aa61356810104d5eed</td>
+       <td>CVE-2023-20872</td>
+       <td>2023-04-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>VMware Workstation and Fusion contain an out-of-bounds read/write vulnerability in SCSI CD/DVD device emulation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20872">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c9879b3a389c05c87676a82787cbab78</td>
        <td>CVE-2023-30839</td>
        <td>2023-04-25 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-04-25 14:15:00 <img src="imgs/new.gif" /></td>
        <td>Sengled Dimmer Switch V0.0.9 contains a denial of service (DOS) vulnerability, which allows a remote attacker to send malicious Zigbee messages to a vulnerable device and cause crashes. After receiving the malicious command, the device will keep reporting its status and finally drain its battery after receiving the 'Set_short_poll_interval' command.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29779">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8f69e11c4f81b823825621c0fd0da581</td>
-       <td>CVE-2023-2281</td>
-       <td>2023-04-25 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>When archiving a team, Mattermost fails to sanitize the related Websocket event sent to currently connected clients. This allows the clients to see the name, display name, description, and other data about the archived team.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2281">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3a18b62fdf94e29f5ce961421fb3bb72</td>
-       <td>CVE-2023-30417</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site scripting (XSS) vulnerability in Pear-Admin-Boot up to v2.0.2 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Title of a private message.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30417">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>90503c6121f743437422b684403e41ab</td>
-       <td>CVE-2023-26843</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A stored Cross-site scripting (XSS) vulnerability in ChurchCRM 4.5.3 allows remote attackers to inject arbitrary web script or HTML via the NoteEditor.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26843">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>48e41ef3186b197a56b1761f856b130c</td>
-       <td>CVE-2023-26841</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site request forgery (CSRF) vulnerability in ChurchCRM v4.5.3 allows attackers to change any user's password except for the user that is currently logged in.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26841">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b2a06573e3a0c7bee15df862fe5d8122</td>
-       <td>CVE-2023-26840</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site request forgery (CSRF) vulnerability in ChurchCRM v4.5.3 allows attackers to set a person to a user and set that user to be an Administrator.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26840">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7846cbb208d3dac553a8fd2d4f8b3a34</td>
-       <td>CVE-2023-26839</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site request forgery (CSRF) vulnerability in ChurchCRM v4.5.3 allows attackers to edit information for existing people on the site.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26839">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ab4c145fb0dfc8843b29f3c7d10a8892</td>
-       <td>CVE-2023-26058</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>An XXE issue was discovered in Nokia NetAct before 22 FP2211 via an XML document to a Performance Manager page. Input validation and a proper XML parser configuration are missing. For an external attacker, it is very difficult to exploit this, because a few dynamically created parameters such as Jsession-id, a CSRF token, and an Nxsrf token would be needed. The attack can realistically only be performed by an internal user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26058">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed85f973c2cf3f32cdf87a3d9e70543b</td>
-       <td>CVE-2023-26057</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>An XXE issue was discovered in Nokia NetAct before 22 FP2211 via an XML document to the Configuration Dashboard page. Input validation and a proper XML parser configuration are missing. For an external attacker, it is very difficult to exploit this, because a few dynamically created parameters such as Jsession-id, a CSRF token, and an Nxsrf token would be needed. The attack can realistically only be performed by an internal user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26057">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ebd3f129d87f132f1c65598badfa111b</td>
-       <td>CVE-2023-25348</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>ChurchCRM 4.5.3 was discovered to contain a CSV injection vulnerability via the Last Name and First Name input fields when creating a new person. These vulnerabilities allow attackers to execute arbitrary code via a crafted excel file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25348">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6d6a5cc603bd0eb7e88add59e4f6769f</td>
-       <td>CVE-2023-25347</td>
-       <td>2023-04-25 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A stored cross-site scripting (XSS) vulnerability in ChurchCRM 4.5.3, allows remote attackers to inject arbitrary web script or HTML via input fields. These input fields are located in the "Title" Input Field in EventEditor.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25347">详情</a></td>
       </tr>
 
      </tbody>
