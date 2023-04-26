@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-04-26 22:23:34 -->
+<!-- RELEASE TIME : 2023-04-26 23:22:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>651569f81935cd4accba57abc27fc37d</td>
+       <td>CVE-2023-30846</td>
+       <td>2023-04-26 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>typed-rest-client is a library for Node Rest and Http Clients with typings for use with TypeScript. Users of the typed-rest-client library version 1.7.3 or lower are vulnerable to leak authentication data to 3rd parties. The flow of the vulnerability is as follows: First, send any request with `BasicCredentialHandler`, `BearerCredentialHandler` or `PersonalAccessTokenCredentialHandler`. Second, the target host may return a redirection (3xx), with a link to a second host. Third, the next request will use the credentials to authenticate with the second host, by setting the `Authorization` header. The expected behavior is that the next request will *NOT* set the `Authorization` header. The problem was fixed in version 1.8.0. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30846">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b1d984dd91a0f79fa35701bac8a89a7a</td>
+       <td>CVE-2023-30845</td>
+       <td>2023-04-26 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>ESPv2 is a service proxy that provides API management capabilities using Google Service Infrastructure. ESPv2 2.20.0 through 2.42.0 contains an authentication bypass vulnerability. API clients can craft a malicious `X-HTTP-Method-Override` header value to bypass JWT authentication in specific cases.ESPv2 allows malicious requests to bypass authentication if both the conditions are true: The requested HTTP method is **not** in the API service definition (OpenAPI spec or gRPC `google.api.http` proto annotations, and the specified `X-HTTP-Method-Override` is a valid HTTP method in the API service definition. ESPv2 will forward the request to your backend without checking the JWT. Attackers can craft requests with a malicious `X-HTTP-Method-Override` value that allows them to bypass specifying JWTs. Restricting API access with API keys works as intended and is not affected by this vulnerability.Upgrade deployments to release v2.43.0 or higher to receive a patch. This release ensures that JWT authentication occurs, even when the caller specifies `x-http-method-override`. `x-http-method-override` is still supported by v2.43.0+. API clients can continue sending this header to ESPv2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30845">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c1e9901cf9bb01963ed97351b8d11ce7</td>
+       <td>CVE-2023-30843</td>
+       <td>2023-04-26 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Payload is a free and open source headless content management system. In versions prior to 1.7.0, if a user has access to documents that contain hidden fields or fields they do not have access to, the user could reverse-engineer those values via brute force. Version 1.7.0 contains a patch. As a workaround, write a `beforeOperation` hook to remove `where` queries that attempt to access hidden field data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30843">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9e252745bc2de03df867339fdbf54c7b</td>
+       <td>CVE-2023-30363</td>
+       <td>2023-04-26 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>vConsole v3.15.0 was discovered to contain a prototype pollution due to incorrect key and value resolution in setOptions in core.ts.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30363">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a93bdbf18478e8506f0444c440b3d9cf</td>
+       <td>CVE-2023-29443</td>
+       <td>2023-04-26 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zoho ManageEngine ServiceDesk Plus through 14104 allows admin users to conduct an XXE attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29443">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>28f458361896b490ca29f65db25ae408</td>
+       <td>CVE-2023-29442</td>
+       <td>2023-04-26 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zoho ManageEngine Applications Manager through 16390 allows DOM XSS.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29442">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8082311b73bab951c1bac953b38bb047</td>
+       <td>CVE-2023-2291</td>
+       <td>2023-04-26 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Static credentials exist in the PostgreSQL data used in ManageEngine Access Manager Plus (AMP) build 4309, ManageEngine Password Manager Pro, and ManageEngine PAM360. These credentials could allow a malicious actor to modify configuration data that would escalate their permissions from that of a low-privileged user to an Administrative user.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2291">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b5e7f00e8605e0a0a0884d9d67382a7</td>
+       <td>CVE-2023-30280</td>
+       <td>2023-04-26 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Buffer Overflow vulnerability found in Netgear R6900 v.1.0.2.26, R6700v3 v.1.0.4.128, R6700 v.1.0.0.26 allows a remote attacker to execute arbitrary code and cause a denial ofservice via the getInputData parameter of the fwSchedule.cgi page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30280">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>322b0586c56351cf5647abe10e8e98be</td>
+       <td>CVE-2023-29836</td>
+       <td>2023-04-26 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting vulnerability found in Exelysis Unified Communication Solutions (EUCS) v.1.0 allows a remote attacker to execute arbitrary code via the Username parameter of the eucsAdmin login form.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29836">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ebaa8746c6824b686226aec2787b1855</td>
+       <td>CVE-2023-29835</td>
+       <td>2023-04-26 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Insecure Permission vulnerability found in Wondershare Dr.Fone v.12.9.6 allows a remote attacker to escalate privileges via the service permission function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29835">详情</a></td>
+      </tr>
+
+      <tr>
        <td>45de14bb453158ed9c88783b6ca6f4fb</td>
        <td>CVE-2023-31250</td>
        <td>2023-04-26 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-04-26 15:15:00 <img src="imgs/new.gif" /></td>
        <td>The Media oEmbed iframe route does not properly validate the iframe domain setting, which allows embeds to be displayed in the context of the primary domain. Under certain circumstances, this could lead to cross-site scripting, leaked cookies, or other vulnerabilities.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-25276">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b9f314065af1018c0124919d9e46c290</td>
-       <td>CVE-2023-30269</td>
-       <td>2023-04-26 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>CLTPHP <=6.0 is vulnerable to Improper Input Validation via application/admin/controller/Template.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30269">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>249a70c417ab97a30a9b8857b97f0a25</td>
-       <td>CVE-2023-30267</td>
-       <td>2023-04-26 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>CLTPHP <=6.0 is vulnerable to Cross Site Scripting (XSS) via application/home/controller/Changyan.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30267">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>27f93e11c149db981e9b6299f5aa4d1c</td>
-       <td>CVE-2023-30266</td>
-       <td>2023-04-26 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>CLTPHP <=6.0 is vulnerable to Unrestricted Upload of File with Dangerous Type.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30266">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>885a6544d215f199523ef526e7d07e5e</td>
-       <td>CVE-2023-30265</td>
-       <td>2023-04-26 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>CLTPHP <=6.0 is vulnerable to Directory Traversal.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30265">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98cd46dcf8474879934e2488f6e34098</td>
-       <td>CVE-2023-30112</td>
-       <td>2023-04-26 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Medicine Tracker System in PHP 1.0.0 is vulnerable to SQL Injection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30112">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>38c875c7443c1d89cd393aa23e379ba7</td>
-       <td>CVE-2023-22728</td>
-       <td>2023-04-26 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Silverstripe Framework is the Model-View-Controller framework that powers the Silverstripe content management system. Prior to version 4.12.15, the GridField print view incorrectly validates the permission of DataObjects potentially allowing a content author to view records they are not authorised to access. Users should upgrade to Silverstripe Framework 4.12.15 or above to address the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22728">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>278bb899a99999f2765f4c026b7a55f6</td>
-       <td>CVE-2023-29257</td>
-       <td>2023-04-26 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 10.5, 11.1, and 11.5 is vulnerable to remote code execution as a database administrator of one database may execute code or read/write files from another database within the same instance.  IBM X-Force ID:  252011.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29257">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fddc2780702a3ab28e1238aac0ac7694</td>
-       <td>CVE-2023-24796</td>
-       <td>2023-04-26 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Password vulnerability found in Vinga WR-AC1200 81.102.1.4370 and before allows a remote attacker to execute arbitrary code via the password parameter at the /goform/sysTools and /adm/systools.asp endpoints.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24796">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9424fef69df2a903fb171e4f5a6ea5ff</td>
-       <td>CVE-2023-26286</td>
-       <td>2023-04-26 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM AIX 7.1, 7.2, 7.3, and VIOS 3.1 could allow a non-privileged local user to exploit a vulnerability in the AIX runtime services library to execute arbitrary commands.  IBM X-Force ID:  248421.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26286">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>91640628fe76628ee143a5c7379fbbaa</td>
-       <td>CVE-2023-2273</td>
-       <td>2023-04-26 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Rapid7 Insight Agent token handler versions 3.2.6 and below, suffer from a Directory Traversal vulnerability whereby unsanitized input from a CLI argument flows into io.ioutil.WriteFile, where it is used as a path. This can result in a Path Traversal vulnerability and allow an attacker to write arbitrary files. This issue is remediated in version 3.3.0 via safe guards that reject inputs that attempt to do path traversal.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2273">详情</a></td>
       </tr>
 
      </tbody>
