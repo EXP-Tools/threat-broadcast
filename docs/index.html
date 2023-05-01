@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-01 14:22:49 -->
+<!-- RELEASE TIME : 2023-05-01 15:22:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3dbdf051bf79edec453b63e2419089aa</td>
+       <td>CVE-2023-2248</td>
+       <td>2023-05-01 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>A heap out-of-bounds read/write vulnerability in the Linux Kernel traffic control (QoS) subsystem can be exploited to achieve local privilege escalation.The qfq_change_class function does not properly limit the lmax variable which can lead to out-of-bounds read/write. If the TCA_QFQ_LMAX value is not offered through nlattr, lmax is determined by the MTU value of the network device. The MTU of the loopback device can be set up to 2^31-1 and as a result, it is possible to have an lmax value that exceeds QFQ_MIN_LMAX.We recommend upgrading past commit 3037933448f60f9acb705997eae62013ecb81e0d.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2248">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>059f3c61c93e884d5065fb7dbe247cdb</td>
+       <td>CVE-2023-2236</td>
+       <td>2023-05-01 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>A use-after-free vulnerability in the Linux Kernel io_uring subsystem can be exploited to achieve local privilege escalation.Both io_install_fixed_file and its callers call fput in a file in case of an error, causing a reference underflow which leads to a use-after-free vulnerability.We recommend upgrading past commit 9d94c04c0db024922e886c9fd429659f22f48ea4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2236">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cf2799fb4c5a4ab22a7cf8daf18e7bb7</td>
+       <td>CVE-2023-2235</td>
+       <td>2023-05-01 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>A use-after-free vulnerability in the Linux Kernel Performance Events system can be exploited to achieve local privilege escalation.The perf_group_detach function did not check the event's siblings' attach_state before calling add_event_to_groups(), but remove_on_exec made it possible to call list_del_event() on before detaching from their group, making it possible to use a dangling pointer causing a use-after-free vulnerability.We recommend upgrading past commit fd0815f632c24878e325821943edccc7fde947a2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2235">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2ec1c62fc0ab91f0c35754d6b0c2c152</td>
        <td>CVE-2018-25085</td>
        <td>2023-05-01 05:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-04-28 22:15:00</td>
        <td>A valid, authenticated administrative user can query a web interface API to reveal the configured LDAP client password used by XCC to authenticate to an external LDAP server in certain configurations.  There is no exposure where no LDAP client password is configured</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25495">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5aad08f1ce4c1b916d79109d645d5a7d</td>
-       <td>CVE-2023-24269</td>
-       <td>2023-04-28 22:15:00</td>
-       <td>An arbitrary file upload vulnerability in the plugin upload function of Textpattern v4.8.8 allows attackers to execute arbitrary code via a crafted Zip file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24269">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>787b67b36025a8acede2e78ffa04521a</td>
-       <td>CVE-2023-2397</td>
-       <td>2023-04-28 22:15:00</td>
-       <td>A vulnerability, which was classified as problematic, has been found in SourceCodester Simple Mobile Comparison Website 1.0. This issue affects some unknown processing of the file classes/Master.php?f=save_field. The manipulation of the argument Field Name leads to cross site scripting. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-227675.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2397">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1543aeb4d72d4bb3543a437ba6ed853f</td>
-       <td>CVE-2023-30454</td>
-       <td>2023-04-28 19:15:00</td>
-       <td>An issue was discovered in ebankIT before 7. Document Object Model based XSS exists within the /Security/Transactions/Transactions.aspx endpoint. Users can supply their own JavaScript within the ctl100$ctl00MainContent$TransactionMainContent$accControl$hdnAccountsArray POST parameter that will be passed to an eval() function and executed upon pressing the continue button.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30454">详情</a></td>
       </tr>
 
      </tbody>
