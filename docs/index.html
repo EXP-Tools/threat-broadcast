@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-02 20:22:13 -->
+<!-- RELEASE TIME : 2023-05-02 22:23:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6936dcfb8a8e32ff20ed8988d3595f8e</td>
+       <td>CVE-2023-30861</td>
+       <td>2023-05-02 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Flask is a lightweight WSGI web application framework. When all of the following conditions are met, a response containing data intended for one client may be cached and subsequently sent by the proxy to other clients. If the proxy also caches `Set-Cookie` headers, it may send one client's `session` cookie to other clients. The severity depends on the application's use of the session and the proxy's behavior regarding cookies. The risk depends on all these conditions being met.1. The application must be hosted behind a caching proxy that does not strip cookies or ignore responses with cookies.2. The application sets `session.permanent = True`3. The application does not access or modify the session at any point during a request.4. `SESSION_REFRESH_EACH_REQUEST` enabled (the default).5. The application does not set a `Cache-Control` header to indicate that a page is private or should not be cached.This happens because vulnerable versions of Flask only set the `Vary: Cookie` header when the session is accessed or modified, not when it is refreshed (re-sent to update the expiration) without being accessed or modified. This issue has been fixed in versions 2.3.2 and 2.2.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30861">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4b1f4b52b1ee8c6cec4b0bf9ef613472</td>
        <td>CVE-2023-29918</td>
        <td>2023-05-02 16:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2023-05-01 22:15:00 <img src="imgs/new.gif" /></td>
        <td>Cleartext Transmission in set-cookie:ecos_pw: Tenda N301 v6.0, Firmware v12.02.01.61_multi allows an authenticated attacker on the LAN or WLAN to intercept communications with the router and obtain the password.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29680">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2216c5df5321369da83a2a394e97b17a</td>
-       <td>CVE-2023-27108</td>
-       <td>2023-05-01 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in KaiOS 3.0. The pre-installed Communications application exposes a Web Activity that returns the user's call log without origin or permission checks. An attacker can inject a JavaScript payload that runs in a browser or app without user interaction or consent. This allows an attacker to send the user's call logs to a remote server via XMLHttpRequest or Fetch.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27108">详情</a></td>
       </tr>
 
      </tbody>
