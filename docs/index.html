@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-05 15:22:15 -->
+<!-- RELEASE TIME : 2023-05-05 16:28:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -2228,6 +2228,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a5f2c7879d7eaec768d56839c66ad43f</td>
+       <td>CVE-2023-31287</td>
+       <td>2023-04-27 03:15:10 </td>
+       <td>An issue was discovered in Serenity Serene (and StartSharp) before 6.7.0. Password reset links are sent by email. A link contains a token that is used to reset the password. This token remains valid even after the password reset and can be used a second time to change the password of the corresponding user. The token expires only 3 hours after issuance and is sent as a query parameter when resetting. An attacker with access to the browser history can thus use the token again to change the password in order to take over the account.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31287">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>489cd47a3f04e633a78ae2b91bb2b72b</td>
+       <td>CVE-2023-31285</td>
+       <td>2023-04-27 03:15:10 </td>
+       <td>An XSS issue was discovered in Serenity Serene (and StartSharp) before 6.7.0. When users upload temporary files, some specific file endings are not allowed, but it is possible to upload .html or .htm files containing an XSS payload. The resulting link can be sent to an administrator user.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31285">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>16fc215803043a129af34f50f59fffd3</td>
+       <td>CVE-2023-31250</td>
+       <td>2023-04-26 19:15:09 </td>
+       <td>The file download facility doesn't sufficiently sanitize file paths in certain situations. This may result in users gaining access to private files that they should not have access to. Some sites may require configuration changes following this security release. Review the release notes for your Drupal version if you have issues accessing private files after updating.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31250">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c372724ec5adea57cb3fd6463a094604</td>
        <td>CVE-2023-31223</td>
        <td>2023-04-25 23:15:09 </td>
@@ -2441,30 +2465,6 @@
        <td>2023-04-18 22:15:08 </td>
        <td>Discourse is an open source platform for community discussion. Due to the improper sanitization of SVG files, an attacker can execute arbitrary JavaScript on the users&acirc;&euro;&trade; browsers by uploading a crafted SVG file. This issue is patched in the latest stable and tests-passed versions of Discourse. Users are advised to upgrade. For users unable to upgrade there are two possible workarounds: enable CDN handing of uploads (and ensure the CDN sanitizes SVG files) or disable SVG file uploads by ensuring that the `authorized extensions` site setting does not include `svg` (or reset that setting to the default, by default Discourse doesn't enable SVG uploads by users).</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-30538">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fcb8f7672ba52e0bbd2c0b46a32df090</td>
-       <td>CVE-2023-30539</td>
-       <td>2023-04-17 22:15:10 </td>
-       <td>Nextcloud is a personal home server system. Depending on the set up tags and other workflows this issue can be used to limit access of others or being able to grant them access when there are system tag based files access control or files retention rules. It is recommended that the Nextcloud Server is upgraded to 24.0.11 or 25.0.5, the Nextcloud Enterprise Server to 21.0.9.11, 22.2.10.11, 23.0.12.6, 24.0.11 or 25.0.5, and the Nextcloud Files automated tagging app to 1.11.1, 1.12.1, 1.13.1, 1.14.2, 1.15.3 or 1.16.1. Users unable to upgrade should disable all workflow related apps. Users are advised to upgrade.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-30539">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c1c0b7007057e3b0e1537390a451ee20</td>
-       <td>CVE-2023-30541</td>
-       <td>2023-04-17 22:15:10 </td>
-       <td>OpenZeppelin Contracts is a library for secure smart contract development. A function in the implementation contract may be inaccessible if its selector clashes with one of the proxy's own selectors. Specifically, if the clashing function has a different signature with incompatible ABI encoding, the proxy could revert while attempting to decode the arguments from calldata. The probability of an accidental clash is negligible, but one could be caused deliberately and could cause a reduction in availability. The issue has been fixed in version 4.8.3. As a workaround if a function appears to be inaccessible for this reason, it may be possible to craft the calldata such that ABI decoding does not fail at the proxy and the function is properly proxied through.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-30541">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7edf01defc57841b39e356ba8268f580</td>
-       <td>CVE-2023-30540</td>
-       <td>2023-04-17 22:15:10 </td>
-       <td>Nextcloud Talk is a chat, video &amp; audio call extension for Nextcloud. In affected versions a user that was added later to a conversation can use this information to get access to data that was deleted before they were added to the conversation. This issue has been patched in version 15.0.5 and it is recommended that users upgrad to 15.0.5. There are no known workarounds for this issue.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-30540">详情</a></td>
       </tr>
 
      </tbody>
