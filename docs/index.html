@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-08 19:17:36 -->
+<!-- RELEASE TIME : 2023-05-08 21:19:22 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>196f1d35813f9e943f587d8f0f6bb3f6</td>
+       <td>CVE-2023-30860</td>
+       <td>2023-05-08 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo is an open source video platform. In AVideo prior to version 12.4, a normal user can make a Meeting Schedule where the user can invite another user in that Meeting, but it does not properly sanitize the malicious characters when creating a Meeting Room. This allows attacker to insert malicious scripts. Since any USER including the ADMIN can see the meeting room that was created by the attacker this can lead to cookie hijacking and takeover of any accounts. Version 12.4 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30860">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>84b31e361cccda59cadcff8fccc96832</td>
+       <td>CVE-2023-30855</td>
+       <td>2023-05-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Pimcore is an open source data and experience management platform. Versions of Pimcore prior to 10.5.18 are vulnerable to path traversal. The impact of this path traversal and arbitrary extension is limited to creation of arbitrary files and appending data to existing files. When combined with the SQL Injection, the exported data `RESTRICTED DIFFUSION 9 / 9` can be controlled and a webshell can be uploaded. Attackers can use that to execute arbitrary PHP code on the server with the permissions of the webserver. Users may upgrade to version 10.5.18 to receive a patch or, as a workaround, apply the patch manually.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30855">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1565d323667e08dfd9ba7275f887c13c</td>
+       <td>CVE-2023-30844</td>
+       <td>2023-05-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Mutagen provides real-time file synchronization and flexible network forwarding for developers. Prior to versions 0.16.6 and 0.17.1 in `mutagen` and prior to version 0.17.1 in `mutagen-compose`, Mutagen `list` and `monitor` commands are susceptible to control characters that could be provided by remote endpoints.  This could cause terminal corruption, either intentional or unintentional, if these characters were present in error messages or file paths/names. This could be used as an attack vector if synchronizing with an untrusted remote endpoint, synchronizing files not under control of the user, or forwarding to/from an untrusted remote endpoint.  On very old systems with terminals susceptible to issues such as CVE-2003-0069, the issue could theoretically cause code execution. The problem has been patched in Mutagen v0.16.6 and v0.17.1.  Earlier versions of Mutagen are no longer supported and will not be patched.  Versions of Mutagen after v0.18.0 will also have the patch merged. As a workaround, avoiding synchronization of untrusted files or interaction with untrusted remote endpoints should mitigate any risk.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30844">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>636f280011b5c5297e8defaa1c052b75</td>
+       <td>CVE-2023-30840</td>
+       <td>2023-05-08 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Fluid is an open source Kubernetes-native distributed dataset orchestrator and accelerator for data-intensive applications. Starting in version 0.7.0 and prior to version 0.8.6, if a malicious user gains control of a Kubernetes node running fluid csi pod (controlled by the `csi-nodeplugin-fluid` node-daemonset), they can leverage the fluid-csi service account to modify specs of all the nodes in the cluster. However, since this service account lacks `list node` permissions, the attacker may need to use other techniques to identify vulnerable nodes.Once the attacker identifies and modifies the node specs, they can manipulate system-level-privileged components to access all secrets in the cluster or execute pods on other nodes. This allows them to elevate privileges beyond the compromised node and potentially gain full privileged access to the whole cluster.To exploit this vulnerability, the attacker can make all other nodes unschedulable (for example, patch node with taints) and wait for system-critical components with high privilege to appear on the compromised node. However, this attack requires two prerequisites: a compromised node and identifying all vulnerable nodes through other means.Version 0.8.6 contains a patch for this issue. As a workaround, delete the `csi-nodeplugin-fluid` daemonset in `fluid-system` namespace and avoid using CSI mode to mount FUSE file systems. Alternatively, using sidecar mode to mount FUSE file systems is recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30840">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b7db2acce0191abff4d3bb42a91be4f1</td>
        <td>CVE-2023-30837</td>
        <td>2023-05-08 17:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2023-05-08 10:15:00 <img src="imgs/new.gif" /></td>
        <td>Task instance details page in the UI is vulnerable to a stored XSS.This issue affects Apache Airflow: before 2.6.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29247">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d74487f9b7b14520eaa61cfe277cf213</td>
-       <td>CVE-2023-31039</td>
-       <td>2023-05-08 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Security vulnerability in Apache bRPC <1.5.0 on all platforms allows attackers to execute arbitrary code via ServerOptions::pid_file.An attacker that can influence the ServerOptions pid_file parameter with which the bRPC server is started can execute arbitrary code with the permissions of the bRPC process.Solution:1. upgrade to bRPC >= 1.5.0, download link:  https://dist.apache.org/repos/dist/release/brpc/1.5.0/ https://dist.apache.org/repos/dist/release/brpc/1.5.0/ 2. If you are using an old version of bRPC and hard to upgrade, you can apply this patch:  https://github.com/apache/brpc/pull/2218 https://github.com/apache/brpc/pull/2218</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31039">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f529ae3215bd46072d45e5dc2231aa8b</td>
-       <td>CVE-2023-31038</td>
-       <td>2023-05-08 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL injection in Log4cxx when using the ODBC appender to send log messages to a database.  No fields sent to the database were properly escaped for SQL injection.  This has been the case since at least version 0.9.0(released 2003-08-06)Note that Log4cxx is a C++ framework, so only C++ applications are affected.Before version 1.1.0, the ODBC appender was automatically part of Log4cxx if the library was found when compiling the library.  As of version 1.1.0, this must be both explicitly enabled in order to be compiled in.Three preconditions must be met for this vulnerability to be possible:1. Log4cxx compiled with ODBC support(before version 1.1.0, this was auto-detected at compile time)2. ODBCAppender enabled for logging messages to, generally done via a config file3. User input is logged at some point. If your application does not have user input, it is unlikely to be affected.Users are recommended to upgrade to version 1.1.0 which properly binds the parameters to the SQL statement, or migrate to the new DBAppender class which supports an ODBC connection in addition to other databases. Note that this fix does require a configuration file update, as the old configuration files will not configure properly.  An example is shown below, and more information may be found in the Log4cxx documentation on the ODBCAppender.Example of old configuration snippet:<appender name="SqlODBCAppender" class="ODBCAppender">    <param name="sql" value="INSERT INTO logs (message) VALUES ('%m')" />    ... other params here ...</appender>The migrated configuration snippet with new ColumnMapping parameters:<appender name="SqlODBCAppender" class="ODBCAppender">    <param name="sql" value="INSERT INTO logs (message) VALUES (?)" />    <param name="ColumnMapping" value="message"/>    ... other params here ...</appender></td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31038">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3e0fb2293592d55ca9e47b121c1dcd6</td>
-       <td>CVE-2023-2534</td>
-       <td>2023-05-08 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Authorization vulnerability in OTRS AG OTRS 8 (Websocket API backend) allows any as Agent authenticated attacker to track user behaviour and to gain live insight into overall system usage. User IDs can easily be correlated with real names e. g. viaticket histories by any user. (Fuzzing for garnering other adjacent user/sensitive data). Subscribing to all possible push events could also lead to performance implications on the server side, depending on the size of the installationand the number of active users. (Flooding)This issue affects OTRS: from 8.0.X before 8.0.32.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2534">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d65077efe09fc97b1b52308ec0021b3</td>
-       <td>CVE-2023-2566</td>
-       <td>2023-05-08 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site Scripting (XSS) - Stored in GitHub repository openemr/openemr prior to 7.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2566">详情</a></td>
       </tr>
 
      </tbody>
