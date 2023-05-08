@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-08 09:21:49 -->
+<!-- RELEASE TIME : 2023-05-08 10:26:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -27,6 +27,14 @@
        <th width="43%">TITLE</th>
        <th width="5%">URL</th>
       </tr>
+      <tr>
+       <td>51077656fe9fc37d4140d4ce8100cf7c</td>
+       <td>CVE-2023-2478</td>
+       <td>2023-05-08 09:58:45 <img src="imgs/new.gif" /></td>
+       <td>CVE-2023-2478：GitLab代码执行漏洞通告</td>
+       <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=6458c7d55c895614774fe033">详情</a></td>
+      </tr>
+
       <tr>
        <td>7b6e1c8a54653e59e6b19bc5e127c801</td>
        <td></td>
@@ -259,14 +267,6 @@
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=640996d88bda0d54e3509064">详情</a></td>
       </tr>
 
-      <tr>
-       <td>e789b5055a4a30fd3f2f81447efc91c0</td>
-       <td>CVE-2023-21716</td>
-       <td>2023-03-07 09:38:55</td>
-       <td>Microsoft Word 远程代码执行漏洞通告</td>
-       <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=640705d24299b09abea6940b">详情</a></td>
-      </tr>
-
      </tbody>
     </table>
    </div>
@@ -283,6 +283,38 @@
        <th width="43%">TITLE</th>
        <th width="5%">URL</th>
       </tr>
+      <tr>
+       <td>d74487f9b7b14520eaa61cfe277cf213</td>
+       <td>CVE-2023-31039</td>
+       <td>2023-05-08 09:15:00 <img src="imgs/new.gif" /></td>
+       <td>Security vulnerability in Apache bRPC <1.5.0 on all platforms allows attackers to execute arbitrary code via ServerOptions::pid_file.An attacker that can influence the ServerOptions pid_file parameter with which the bRPC server is started can execute arbitrary code with the permissions of the bRPC process.Solution:1. upgrade to bRPC >= 1.5.0, download link:  https://dist.apache.org/repos/dist/release/brpc/1.5.0/ https://dist.apache.org/repos/dist/release/brpc/1.5.0/ 2. If you are using an old version of bRPC and hard to upgrade, you can apply this patch:  https://github.com/apache/brpc/pull/2218 https://github.com/apache/brpc/pull/2218</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31039">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f529ae3215bd46072d45e5dc2231aa8b</td>
+       <td>CVE-2023-31038</td>
+       <td>2023-05-08 09:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection in Log4cxx when using the ODBC appender to send log messages to a database.  No fields sent to the database were properly escaped for SQL injection.  This has been the case since at least version 0.9.0(released 2003-08-06)Note that Log4cxx is a C++ framework, so only C++ applications are affected.Before version 1.1.0, the ODBC appender was automatically part of Log4cxx if the library was found when compiling the library.  As of version 1.1.0, this must be both explicitly enabled in order to be compiled in.Three preconditions must be met for this vulnerability to be possible:1. Log4cxx compiled with ODBC support(before version 1.1.0, this was auto-detected at compile time)2. ODBCAppender enabled for logging messages to, generally done via a config file3. User input is logged at some point. If your application does not have user input, it is unlikely to be affected.Users are recommended to upgrade to version 1.1.0 which properly binds the parameters to the SQL statement, or migrate to the new DBAppender class which supports an ODBC connection in addition to other databases. Note that this fix does require a configuration file update, as the old configuration files will not configure properly.  An example is shown below, and more information may be found in the Log4cxx documentation on the ODBCAppender.Example of old configuration snippet:<appender name="SqlODBCAppender" class="ODBCAppender">    <param name="sql" value="INSERT INTO logs (message) VALUES ('%m')" />    ... other params here ...</appender>The migrated configuration snippet with new ColumnMapping parameters:<appender name="SqlODBCAppender" class="ODBCAppender">    <param name="sql" value="INSERT INTO logs (message) VALUES (?)" />    <param name="ColumnMapping" value="message"/>    ... other params here ...</appender></td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31038">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f3e0fb2293592d55ca9e47b121c1dcd6</td>
+       <td>CVE-2023-2534</td>
+       <td>2023-05-08 08:15:00 <img src="imgs/new.gif" /></td>
+       <td>Improper Authorization vulnerability in OTRS AG OTRS 8 (Websocket API backend) allows any as Agent authenticated attacker to track user behaviour and to gain live insight into overall system usage. User IDs can easily be correlated with real names e. g. viaticket histories by any user. (Fuzzing for garnering other adjacent user/sensitive data). Subscribing to all possible push events could also lead to performance implications on the server side, depending on the size of the installationand the number of active users. (Flooding)This issue affects OTRS: from 8.0.X before 8.0.32.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2534">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d65077efe09fc97b1b52308ec0021b3</td>
+       <td>CVE-2023-2566</td>
+       <td>2023-05-08 05:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - Stored in GitHub repository openemr/openemr prior to 7.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2566">详情</a></td>
+      </tr>
+
       <tr>
        <td>b727fd18c87667dbd4d1dd13e582db87</td>
        <td>CVE-2023-30018</td>
@@ -489,38 +521,6 @@
        <td>2023-05-05 20:15:00</td>
        <td>Cross-site Scripting (XSS) - Stored in GitHub repository thorsten/phpmyfaq prior to 3.1.13.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2550">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b8c1122bbce97b6a6c6e7bfca500b0f2</td>
-       <td>CVE-2023-2516</td>
-       <td>2023-05-05 19:15:00</td>
-       <td>Cross-site Scripting (XSS) - Stored in GitHub repository nilsteampassnet/teampass prior to 3.0.7.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2516">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9ae4281a1000e8f7b5a8a28b43a6115b</td>
-       <td>CVE-2023-2427</td>
-       <td>2023-05-05 19:15:00</td>
-       <td>Cross-site Scripting (XSS) - Reflected in GitHub repository thorsten/phpmyfaq prior to 3.1.13.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2427">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f6ba3b4e760d450510d3ff8eca9dd48</td>
-       <td>CVE-2022-43866</td>
-       <td>2023-05-05 19:15:00</td>
-       <td>IBM Maximo Asset Management 7.6.1.2 and 7.6.1.3 is vulnerable to cross-site scripting. This vulnerability allows users to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session.  IBM X-Force ID:  239436.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43866">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>099d449f9e9b7bbdefaf3e142a624792</td>
-       <td>CVE-2020-4914</td>
-       <td>2023-05-05 19:15:00</td>
-       <td>IBM Cloud Pak System Suite 2.3.3.0 through 2.3.3.5 does not invalidate session after logout which could allow a local user to impersonate another user on the system.  IBM X-Force ID:  191290.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-4914">详情</a></td>
       </tr>
 
      </tbody>
