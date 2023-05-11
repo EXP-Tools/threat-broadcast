@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-11 22:23:14 -->
+<!-- RELEASE TIME : 2023-05-11 23:22:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>1f1e64bd6a395377314a151b064b9018</td>
+       <td>CVE-2023-32058</td>
+       <td>2023-05-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vyper is a Pythonic smart contract language for the Ethereum virtual machine. Prior to version 0.3.8, due to missing overflow check for loop variables, by assigning the iterator of a loop to a variable, it is possible to overflow the type of the latter. The issue seems to happen only in loops of type `for i in range(a, a + N)` as in loops of type `for i in range(start, stop)` and `for i in range(stop)`, the compiler is able to raise a `TypeMismatch` when trying to overflow the variable. The problem has been patched in version 0.3.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32058">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d35d55927a82d8b5e0ac9bf5e15958eb</td>
+       <td>CVE-2023-31497</td>
+       <td>2023-05-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Incorrect access control in Quick Heal Technologies Limited Seqrite Endpoint Security (EPS) all versions prior to v8.0 allows attackers to escalate privileges to root via supplying a crafted binary to the target system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31497">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6a99327c4bb62b68c7d31a658360a879</td>
+       <td>CVE-2023-31146</td>
+       <td>2023-05-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vyper is a Pythonic smart contract language for the Ethereum virtual machine. Prior to version 0.3.8, during codegen, the length word of a dynarray is written before the data, which can result in out-of-bounds array access in the case where the dynarray is on both the lhs and rhs of an assignment. The issue can cause data corruption across call frames. The expected behavior is to revert due to out-of-bounds array access. Version 0.3.8 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31146">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>befee059001c5c37871a4b64cc52f027</td>
+       <td>CVE-2023-29791</td>
+       <td>2023-05-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>kodbox <= 1.37 is vulnerable to Cross Site Scripting (XSS) via the debug information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29791">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7633b05f2287cd36be4b0d98a29649c3</td>
+       <td>CVE-2023-2664</td>
+       <td>2023-05-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Xpdf 4.04 (and earlier), a PDF object loop in the embedded file tree leads to infinite recursion and a stack overflow.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2664">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d0b557da61a5a36b87037bb57794db2</td>
+       <td>CVE-2023-2663</td>
+       <td>2023-05-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Xpdf 4.04 (and earlier), a PDF object loop in the page label tree leads to infinite recursion and a stack overflow.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2663">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>06450d0205c5597d03b41ffa2876745e</td>
+       <td>CVE-2023-2662</td>
+       <td>2023-05-11 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Xpdf 4.04 (and earlier), a bad color space object in the input PDF file can cause a divide-by-zero.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2662">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7661f611a6fc1c1c0dfd94ae92309504</td>
+       <td>CVE-2023-32082</td>
+       <td>2023-05-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>etcd is a distributed key-value store for the data of a distributed system. Prior to versions 3.4.26 and 3.5.9, the LeaseTimeToLive API allows access to key names (not value) associated to a lease when `Keys` parameter is true, even a user doesn't have read permission to the keys. The impact is limited to a cluster which enables auth (RBAC). Versions 3.4.26 and 3.5.9 fix this issue. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32082">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aad946a7b55f120faa21cda96c7ea98a</td>
+       <td>CVE-2023-29195</td>
+       <td>2023-05-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vitess is a database clustering system for horizontal scaling of MySQL through generalized sharding. Prior to version 16.0.2, users can either intentionally or inadvertently create a shard containing `/` characters from VTAdmin such that from that point on, anyone who tries to create a new shard from VTAdmin will receive an error. Attempting to view the keyspace(s) will also no longer work. Creating a shard using `vtctldclient` does not have the same problem because the CLI validates the input correctly. Version 16.0.2, corresponding to version 0.16.2 of the `go` module, contains a patch for this issue. Some workarounds are available. Always use `vtctldclient` to create shards, instead of using VTAdmin; disable creating shards from VTAdmin using RBAC; and/or delete the topology record for the offending shard using the client for your topology server.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29195">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>20a5f51bdb142a460a580dafaf8d8110</td>
+       <td>CVE-2023-27870</td>
+       <td>2023-05-11 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>IBM Spectrum Virtualize 8.5, under certain circumstances, could disclose sensitive credential information while a download from Fix Central is in progress. IBM X-Force ID: 249518.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27870">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4eabfa52d5b85f458758d272d6a75e5a</td>
        <td>CVE-2023-30394</td>
        <td>2023-05-11 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-05-11 14:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability classified as problematic was found in SourceCodester Online Computer and Laptop Store 1.0. Affected by this vulnerability is an unknown functionality of the file products.php. The manipulation of the argument search leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-228799.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2657">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bc8ce730a6895efe2569672c924f8729</td>
-       <td>CVE-2022-47129</td>
-       <td>2023-05-11 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>PHPOK v6.3 was discovered to contain a remote code execution (RCE) vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47129">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5b9d5d21c3c026079eee922d7739f670</td>
-       <td>CVE-2023-29863</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Medical Systems Co. Medisys Weblab Products v19.4.03 was discovered to contain a SQL injection vulnerability via the tem:statement parameter in the WSDL files.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29863">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5859342e7a27946de6331a922fcf2d10</td>
-       <td>CVE-2023-2656</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as critical has been found in SourceCodester AC Repair and Services System 1.0. Affected is an unknown function of the file /classes/Master.php?f=delete_service. The manipulation of the argument id leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-228798 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2656">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c4e4a7779d58bf5af5132ed8caa06912</td>
-       <td>CVE-2023-0859</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Arbitrary Files can be installed in the Setting Data Import function of Office / Small Office Multifunction Printers and Laser Printers(*). *:Satera LBP660C Series/LBP620C Series/MF740C Series/MF640C Series firmware Ver.11.04 and earlier sold in Japan. Color imageCLASS LBP660C Series/LBP 620C Series/X LBP1127C/MF740C Series/MF640C Series/X MF1127C firmware Ver.11.04 and earlier sold in US. i-SENSYS LBP660C Series/LBP620C Series/MF740C Series/MF640C Series, C1127P, C1127iF, C1127i firmware Ver.11.04 and earlier sold in Europe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0859">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e998750310d2cb6474b319e298890a2</td>
-       <td>CVE-2023-0858</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Authentication of RemoteUI of Office / Small Office Multifunction Printers and Laser Printers(*) which may allow an attacker on the network segment to trigger unauthorized access to the product. *:Satera LBP660C Series/LBP620C Series/MF740C Series/MF640C Series firmware Ver.11.04 and earlier sold in Japan. Color imageCLASS LBP660C Series/LBP 620C Series/X LBP1127C/MF740C Series/MF640C Series/X MF1127C firmware Ver.11.04 and earlier sold in US. i-SENSYS LBP660C Series/LBP620C Series/MF740C Series/MF640C Series, C1127P, C1127iF, C1127i firmware Ver.11.04 and earlier sold in Europe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0858">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2106f4db09335ff6d4d23c65da579202</td>
-       <td>CVE-2023-0857</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unintentional change of settings during initial registration of system administrators which uses control protocols. The affected Office / Small Office Multifunction Printers and Laser Printers(*) may allow an attacker on the network segment to trigger unauthorized access to the product. *:Satera LBP660C Series/LBP620C Series/MF740C Series/MF640C Series firmware Ver.11.04 and earlier sold in Japan. Color imageCLASS LBP660C Series/LBP 620C Series/X LBP1127C/MF740C Series/MF640C Series/X MF1127C firmware Ver.11.04 and earlier sold in US. i-SENSYS LBP660C Series/LBP620C Series/MF740C Series/MF640C Series, C1127P, C1127iF, C1127i firmware Ver.11.04 and earlier sold in Europe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0857">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad8cf1a2f9c80d48395be01d83804aba</td>
-       <td>CVE-2023-0856</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Buffer overflow in IPP sides attribute process of Office / Small Office Multifunction Printers and Laser Printers(*) which may allow an attacker on the network segment to trigger the affected product being unresponsive or to execute arbitrary code. *:Satera LBP660C Series/LBP620C Series/MF740C Series/MF640C Series firmware Ver.11.04 and earlier sold in Japan. Color imageCLASS LBP660C Series/LBP 620C Series/X LBP1127C/MF740C Series/MF640C Series/X MF1127C firmware Ver.11.04 and earlier sold in US. i-SENSYS LBP660C Series/LBP620C Series/MF740C Series/MF640C Series, C1127P, C1127iF, C1127i firmware Ver.11.04 and earlier sold in Europe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0856">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23a3d70e608ecce7c230261628714bf0</td>
-       <td>CVE-2023-0855</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Buffer overflow in IPP number-up attribute process of Office / Small Office Multifunction Printers and Laser Printers(*) which may allow an attacker on the network segment to trigger the affected product being unresponsive or to execute arbitrary code. *:Satera LBP660C Series/LBP620C Series/MF740C Series/MF640C Series firmware Ver.11.04 and earlier sold in Japan. Color imageCLASS LBP660C Series/LBP 620C Series/X LBP1127C/MF740C Series/MF640C Series/X MF1127C firmware Ver.11.04 and earlier sold in US. i-SENSYS LBP660C Series/LBP620C Series/MF740C Series/MF640C Series, C1127P, C1127iF, C1127i firmware Ver.11.04 and earlier sold in Europe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0855">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bdf162b89871583869843cc3341a6548</td>
-       <td>CVE-2023-0854</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Buffer overflow in NetBIOS QNAME registering and communication process of Office / Small Office Multifunction Printers and Laser Printers(*) which may allow an attacker on the network segment to trigger the affected product being unresponsive or to execute arbitrary code. *:Satera LBP660C Series/LBP620C Series/MF740C Series/MF640C Series firmware Ver.11.04 and earlier sold in Japan. Color imageCLASS LBP660C Series/LBP 620C Series/X LBP1127C/MF740C Series/MF640C Series/X MF1127C firmware Ver.11.04 and earlier sold in US. i-SENSYS LBP660C Series/LBP620C Series/MF740C Series/MF640C Series, C1127P, C1127iF, C1127i firmware Ver.11.04 and earlier sold in Europe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0854">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c59e6fc4552948d60bf8887d83546fcf</td>
-       <td>CVE-2023-0853</td>
-       <td>2023-05-11 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Buffer overflow in mDNS NSEC record registering process of Office / Small Office Multifunction Printers and Laser Printers(*) which may allow an attacker on the network segment to trigger the affected product being unresponsive or to execute arbitrary code. *:Satera LBP660C Series/LBP620C Series/MF740C Series/MF640C Series firmware Ver.11.04 and earlier sold in Japan. Color imageCLASS LBP660C Series/LBP 620C Series/X LBP1127C/MF740C Series/MF640C Series/X MF1127C firmware Ver.11.04 and earlier sold in US. i-SENSYS LBP660C Series/LBP620C Series/MF740C Series/MF640C Series, C1127P, C1127iF, C1127i firmware Ver.11.04 and earlier sold in Europe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0853">详情</a></td>
       </tr>
 
      </tbody>
