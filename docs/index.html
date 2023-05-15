@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-15 22:23:19 -->
+<!-- RELEASE TIME : 2023-05-15 23:20:40 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>64aea261da80bcfc199e680e16d31893</td>
+       <td>CVE-2023-32309</td>
+       <td>2023-05-15 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>PyMdown Extensions is a set of extensions for the `Python-Markdown` markdown project. In affected versions an arbitrary file read is possible when using include file syntax. By using the syntax `--8<--"/etc/passwd"` or `--8<--"/proc/self/environ"` the content of these files will be rendered in the generated documentation. Additionally, a path relative to a specified, allowed base path can also be used to render the content of a file outside the specified base paths: `--8<-- "../../../../etc/passwd"`. Within the Snippets extension, there exists a `base_path` option but the implementation is vulnerable to Directory Traversal. The vulnerable section exists in `get_snippet_path(self, path)` lines 155 to 174 in snippets.py. Any readable file on the host where the plugin is executing may have its content exposed. This can impact any use of Snippets that exposes the use of Snippets to external users. It is never recommended to use Snippets to process user-facing, dynamic content. It is designed to process known content on the backend under the control of the host, but if someone were to accidentally enable it for user-facing content, undesired information could be exposed. This issue has been addressed in version 10.0. Users are advised to upgrade. Users unable to upgrade may restrict relative paths by filtering input.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32309">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>96096b2aaedd70a69faf5443f534d682</td>
+       <td>CVE-2023-32308</td>
+       <td>2023-05-15 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>anuko timetracker is an open source time tracking system. Boolean-based blind SQL injection vulnerability existed in Time Tracker invoices.php in versions prior to 1.22.11.5781. This was happening because of a coding error after validating parameters in POST requests. There was no check for errors before adjusting invoice sorting order. Because of this, it was possible to craft a POST request with malicious SQL for Time Tracker database. This issue has been fixed in version 1.22.11.5781. Users are advised to upgrade. Users unable to upgrade may insert an additional check for errors in a condition before calling `ttGroupHelper::getActiveInvoices()` in invoices.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32308">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a6d652075f2bea84480f9407931eaef6</td>
+       <td>CVE-2023-32068</td>
+       <td>2023-05-15 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. In versions prior to 14.10.4 it's possible to exploit well known parameters in XWiki URLs to perform redirection to untrusted site. This vulnerability was partially fixed in the past for XWiki 12.10.7 and 13.3RC1 but there is still the possibility to force specific URLs to skip some checks, e.g. using URLs like `http:example.com` in the parameter would allow the redirect.  The issue has now been patched against all patterns that are known for performing redirects. This issue has been patched in XWiki 14.10.4 and 15.0. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32068">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>72a6021887f181e62bb510b7a3288252</td>
+       <td>CVE-2023-31145</td>
+       <td>2023-05-15 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Collabora Online is a collaborative online office suite based on LibreOffice technology. This vulnerability report describes a reflected XSS vulnerability with full CSP bypass in Nextcloud installations using the recommended bundle. The vulnerability can be exploited to perform a trivial account takeover attack. The vulnerability allows attackers to inject malicious code into web pages, which can be executed in the context of the victim's browser session. This means that an attacker can steal sensitive data, such as login credentials or personal information, or perform unauthorized actions on behalf of the victim, such as modifying or deleting data. In this specific case, the vulnerability allows for a trivial account takeover attack. An attacker can exploit the vulnerability to inject code into the victim's browser session, allowing the attacker to take over the victim's account without their knowledge or consent. This can lead to unauthorized access to sensitive information and data, as well as the ability to perform actions on behalf of the victim. Furthermore, the fact that the vulnerability bypasses the Content Security Policy (CSP) makes it more dangerous, as CSP is an important security mechanism used to prevent cross-site scripting attacks. By bypassing CSP, attackers can circumvent the security measures put in place by the web application and execute their malicious code. This issue has been patched in versions 22.05.13, 21.11.9, and 6.4.27. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31145">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dbc3ee3276ece3081ae11df8bbb4b57f</td>
+       <td>CVE-2023-32314</td>
+       <td>2023-05-15 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>vm2 is a sandbox that can run untrusted code with Node's built-in modules. A sandbox escape vulnerability exists in vm2 for versions up to and including 3.9.17. It abuses an unexpected creation of a host object based on the specification of `Proxy`. As a result a threat actor can bypass the sandbox protections to gain remote code execution rights on the host running the sandbox. This vulnerability was patched in the release of version `3.9.18` of `vm2`. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32314">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>65256633f01ace875e8061f5edc65050</td>
+       <td>CVE-2023-32313</td>
+       <td>2023-05-15 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>vm2 is a sandbox that can run untrusted code with Node's built-in modules. In versions 3.9.17 and lower of vm2 it was possible to get a read-write reference to the node `inspect` method and edit options for `console.log`. As a result a threat actor can edit options for the `console.log` command. This vulnerability was patched in the release of version `3.9.18` of `vm2`. Users are advised to upgrade. Users unable to upgrade may make the `inspect` method readonly with `vm.readonly(inspect)` after creating a vm.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32313">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1b518c9f6dae3c707f2c3becd32a2fbf</td>
        <td>CVE-2023-30245</td>
        <td>2023-05-15 16:15:00 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2023-05-15 11:15:00 <img src="imgs/new.gif" /></td>
        <td>Use of Password Hash Instead of Password for Authentication in SICK FTMg AIRFLOW SENSOR with Partnumbers 1100214, 1100215, 1100216, 1120114, 1120116, 1122524, 1122526allows an unprivileged remote attacker to use a password hash instead of an actual password to loginto a valid user account via the REST interface.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23450">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bfa3044a750d7e9cb811e8011981dff8</td>
-       <td>CVE-2023-23449</td>
-       <td>2023-05-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Observable Response Discrepancy in SICK FTMg AIR FLOW SENSOR with Partnumbers 1100214, 1100215, 1100216, 1120114, 1120116, 1122524, 1122526 allows a remote attackerto gain information about valid usernames by analyzing challenge responses from the server via theREST interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23449">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ef836cc1d696f2b9f81034bc05e93e21</td>
-       <td>CVE-2023-23448</td>
-       <td>2023-05-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inclusion of Sensitive Information in Source Code in SICK FTMg AIR FLOW SENSOR with Partnumbers 1100214, 1100215, 1100216, 1120114, 1120116, 1122524, 1122526 allows aremote attacker to gain information about valid usernames via analysis of source code.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23448">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0ca509f0b34ffb94106591d798385bc5</td>
-       <td>CVE-2023-23447</td>
-       <td>2023-05-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Uncontrolled Resource Consumption in SICK FTMg AIR FLOW SENSOR with Partnumbers 1100214, 1100215, 1100216, 1120114, 1120116, 1122524, 1122526 allows an unprivilegedremote attacker to influence the availability of the webserver by invocing several open file requests viathe REST interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23447">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9bb43a969ec64ce975164b2656fbd03f</td>
-       <td>CVE-2023-23446</td>
-       <td>2023-05-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Access Control in SICK FTMg AIR FLOW SENSOR with Partnumbers1100214, 1100215, 1100216, 1120114, 1120116, 1122524, 1122526 allows an unprivileged remote attacker to download files by using a therefore unpriviledged account via the REST interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23446">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5f77e722d51b378f3d025983ad42151d</td>
-       <td>CVE-2023-23445</td>
-       <td>2023-05-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Access Control in SICK FTMg AIR FLOW SENSOR with Partnumbers1100214, 1100215, 1100216, 1120114, 1120116, 1122524, 1122526 allows an unprivileged remoteattacker to gain unauthorized access to data fields by using a therefore unpriviledged account via theREST interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23445">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b5f1ed559dd5bb00ca97f62339d1189e</td>
-       <td>CVE-2023-22703</td>
-       <td>2023-05-15 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in Webcodin WCP Contact Form plugin <= 3.1.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22703">详情</a></td>
       </tr>
 
      </tbody>
