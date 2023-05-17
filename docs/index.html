@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-17 01:44:22 -->
+<!-- RELEASE TIME : 2023-05-17 05:23:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -2412,6 +2412,38 @@
       </tr>
 
       <tr>
+       <td>68a56531e69d1aabd2f64d05f0478f14</td>
+       <td>CVE-2023-31144</td>
+       <td>2023-05-09 16:15:14 </td>
+       <td>Craft CMS is a content management system. Starting in version 3.0.0 and prior to versions 3.8.4 and 4.4.4, a malformed title in the feed widget can deliver a cross-site scripting payload. This issue is fixed in version 3.8.4 and 4.4.4.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31144">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c8a6ae0a35bee6d541e716fa9442f2b3</td>
+       <td>CVE-2023-31143</td>
+       <td>2023-05-09 15:15:10 </td>
+       <td>mage-ai is an open-source data pipeline tool for transforming and integrating data. Those who use Mage starting in version 0.8.34 and prior to 0.8.72 with user authentication enabled may be affected by a vulnerability. The terminal could be accessed by users who are not signed in or do not have editor permissions. Version 0.8.72 contains a fix for this issue.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31143">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dfdf77f1ffd87a3d21ece8d5b9dd1c7d</td>
+       <td>CVE-2023-31139</td>
+       <td>2023-05-09 15:15:10 </td>
+       <td>DHIS2 Core contains the service layer and Web API for DHIS2, an information system for data capture. Starting in the 2.37 branch and prior to versions 2.37.9.1, 2.38.3.1, and 2.39.1.2, Personal Access Tokens (PATs) generate unrestricted session cookies. This may lead to a bypass of other access restrictions (for example, based on allowed IP addresses or HTTP methods). DHIS2 implementers should upgrade to a supported version of DHIS2: 2.37.9.1, 2.38.3.1, or 2.39.1.2. Implementers can work around this issue by adding extra access control validations on a reverse proxy.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31139">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3343e7d444645fbfe6ec267b55251610</td>
+       <td>CVE-2023-31138</td>
+       <td>2023-05-09 15:15:10 </td>
+       <td>DHIS2 Core contains the service layer and Web API for DHIS2, an information system for data capture. Starting in the 2.36 branch and prior to versions 2.37.9.1, 2.38.3.1, and 2.39.1.2, using object model traversal in the payload of a PATCH request, authenticated users with write access to an object may be able to modify related objects that they should not have access to. DHIS2 implementers should upgrade to a supported version of DHIS2 to receive a patch: 2.37.9.1, 2.38.3.1, or 2.39.1.2. It is possible to work around this issue by blocking all PATCH requests on a reverse proxy, but this may cause some issues with the functionality of built-in applications using legacy PATCH requests.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31138">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4e853fc99b8647ca361cf5b1e1cc65e4</td>
        <td>CVE-2023-31973</td>
        <td>2023-05-09 14:15:13 </td>
@@ -2420,51 +2452,19 @@
       </tr>
 
       <tr>
-       <td>5c7d0955ad8db9a20792661837612902</td>
-       <td>CVE-2023-31975</td>
-       <td>2023-05-09 13:15:18 </td>
-       <td>yasm v1.3.0 was discovered to contain a memory leak via the function yasm_intnum_copy at /libyasm/intnum.c.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31975">详情</a></td>
+       <td>ea0bc8f2e1b366cac699747662de5dae</td>
+       <td>CVE-2023-31137</td>
+       <td>2023-05-09 14:15:13 </td>
+       <td>MaraDNS is open-source software that implements the Domain Name System (DNS). In version 3.5.0024 and prior, a remotely exploitable integer underflow vulnerability in the DNS packet decompression function allows an attacker to cause a Denial of Service by triggering an abnormal program termination.The vulnerability exists in the `decomp_get_rddata` function within the `Decompress.c` file. When handling a DNS packet with an Answer RR of qtype 16 (TXT record) and any qclass, if the `rdlength` is smaller than `rdata`, the result of the line `Decompress.c:886` is a negative number `len = rdlength - total;`. This value is then passed to the `decomp_append_bytes` function without proper validation, causing the program to attempt to allocate a massive chunk of memory that is impossible to allocate. Consequently, the program exits with an error code of 64, causing a Denial of Service.One proposed fix for this vulnerability is to patch `Decompress.c:887` by breaking `if(len &lt;= 0)`, which has been incorporated in version 3.5.0036 via commit bab062bde40b2ae8a91eecd522e84d8b993bab58.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31137">详情</a></td>
       </tr>
 
       <tr>
-       <td>1c4701cadc892a2ad4a1f7264ead75cc</td>
-       <td>CVE-2023-31974</td>
-       <td>2023-05-09 13:15:18 </td>
-       <td>yasm v1.3.0 was discovered to contain a use after free via the function error at /nasm/nasm-pp.c.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31974">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdd4e4be625481b7682eb6461bc45727</td>
-       <td>CVE-2023-31972</td>
-       <td>2023-05-09 13:15:18 </td>
-       <td>yasm v1.3.0 was discovered to contain a use after free via the function pp_getline at /nasm/nasm-pp.c.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31972">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>711dea2d905d4af3bd7d1a1143baeec9</td>
-       <td>CVE-2023-2596</td>
-       <td>2023-05-09 13:15:18 </td>
-       <td>A vulnerability was found in SourceCodester Online Reviewer System 1.0 and classified as critical. Affected by this issue is some unknown functionality of the file /reviewer/system/system/admins/manage/users/user-update.php of the component GET Parameter Handler. The manipulation of the argument user_id leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-228398 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-2596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3b9aba0b8996bfb051dcc51b6ea0bb75</td>
-       <td>CVE-2023-2595</td>
-       <td>2023-05-09 13:15:17 </td>
-       <td>A vulnerability has been found in SourceCodester Billing Management System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file ajax_service.php of the component POST Parameter Handler. The manipulation of the argument drop_services leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-228397 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-2595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c5a5eeb7e040b1b85aa828e42624c5c</td>
-       <td>CVE-2023-2594</td>
-       <td>2023-05-09 13:15:17 </td>
-       <td>A vulnerability, which was classified as critical, was found in SourceCodester Food Ordering Management System 1.0. Affected is an unknown function of the component Registration. The manipulation of the argument username leads to sql injection. It is possible to launch the attack remotely. The identifier of this vulnerability is VDB-228396.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-2594">详情</a></td>
+       <td>409edea7c0b4b89c4c91030a945f1ba3</td>
+       <td>CVE-2023-31136</td>
+       <td>2023-05-09 14:15:13 </td>
+       <td>PostgresNIO is a Swift client for PostgreSQL. Any user of PostgresNIO prior to version 1.14.2 connecting to servers with TLS enabled is vulnerable to a man-in-the-middle attacker injecting false responses to the client's first few queries, despite the use of TLS certificate verification and encryption. The vulnerability is addressed in PostgresNIO versions starting from 1.14.2. There are no known workarounds for unpatched users.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31136">详情</a></td>
       </tr>
 
      </tbody>
