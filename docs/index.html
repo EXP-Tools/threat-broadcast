@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-18 15:21:51 -->
+<!-- RELEASE TIME : 2023-05-18 19:17:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a06f9234037c77b0c85b73d5697c3802</td>
+       <td>CVE-2023-32322</td>
+       <td>2023-05-18 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Ombi is an open source application which allows users to request specific media from popular self-hosted streaming servers. Versions prior to 4.38.2 contain an arbitrary file read vulnerability where an Ombi administrative user may access files available to the Ombi server process on the host operating system. Ombi administrators may not always be local system administrators and so this may violate the security expectations of the system. The arbitrary file read vulnerability was present in `ReadLogFile` and `Download` endpoints in `SystemControllers.cs` as the parameter `logFileName` is not sanitized before being combined with the `Logs` directory. When using `Path.Combine(arg1, arg2, arg3)`, an attacker may be able to escape to folders/files outside of `Path.Combine(arg1, arg2)` by using ".." in `arg3`. In addition, by specifying an absolute path for `arg3`, `Path.Combine` will completely ignore the first two arguments and just return just `arg3`. This vulnerability can lead to information disclosure. The Ombi `documentation` suggests running Ombi as a Service with Administrator privileges. An attacker targeting such an application may be able to read the files of any Windows user on the host machine and certain system files. This issue has been addressed in commit `b8a8f029` and in release version 4.38.2. Users are advised to upgrade. There are no known workarounds for this vulnerability. This issue is also tracked as GHSL-2023-088.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32322">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3f42853ac643d83856ac0fc7555013fe</td>
+       <td>CVE-2023-31871</td>
+       <td>2023-05-18 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenText Documentum Content Server before 23.2 has a flaw that allows for privilege escalation from a non-privileged Documentum user to root. The software comes prepackaged with a root owned SUID binary dm_secure_writer. The binary has security controls in place preventing creation of a file in a non-owned directory, or as the root user. However, these controls can be carefully bypassed to allow for an arbitrary file write as root.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31871">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>851960b9a0571150dfe6307ff8197f89</td>
+       <td>CVE-2023-2800</td>
+       <td>2023-05-18 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Insecure Temporary File in GitHub repository huggingface/transformers prior to 4.30.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2800">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>276a55aca3f8e5a97b0c1301cf3da66f</td>
+       <td>CVE-2023-2799</td>
+       <td>2023-05-18 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as problematic, has been found in cnoa OA up to 5.1.1.5. Affected by this issue is some unknown functionality of the file /index.php?app=main&func=passport&action=login. The manipulation leads to use of hard-coded password. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-229376. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2799">详情</a></td>
+      </tr>
+
+      <tr>
        <td>854b896c130999ae109f990bcf434903</td>
        <td>CVE-2023-2790</td>
        <td>2023-05-18 13:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2023-05-18 03:15:00 <img src="imgs/new.gif" /></td>
        <td>Multiple vulnerabilities in the web-based management interface of Cisco Identity Services Engine (ISE) could allow an authenticated, remote attacker to read arbitrary files or conduct a server-side request forgery (SSRF) attack through an affected device. To exploit these vulnerabilities, an attacker must have valid Administrator credentials on the affected device. For more information about these vulnerabilities, see the Details section of this advisory.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20173">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23c04b6c08fa3c306b631d0771352b75</td>
-       <td>CVE-2023-20172</td>
-       <td>2023-05-18 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiple vulnerabilities in Cisco Identity Services Engine (ISE) could allow an authenticated attacker to delete or read arbitrary files on the underlying operating system. To exploit these vulnerabilities, an attacker must have valid credentials on an affected device. For more information about these vulnerabilities, see the Details section of this advisory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20172">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>36277d3fa4b94ab55a4eaa805e67cdda</td>
-       <td>CVE-2023-20171</td>
-       <td>2023-05-18 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Multiple vulnerabilities in Cisco Identity Services Engine (ISE) could allow an authenticated attacker to delete or read arbitrary files on the underlying operating system. To exploit these vulnerabilities, an attacker must have valid credentials on an affected device. For more information about these vulnerabilities, see the Details section of this advisory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20171">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>691a8351a12829bdb72667387cdba3fb</td>
-       <td>CVE-2023-2319</td>
-       <td>2023-05-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>It was discovered that an update for PCS package in RHBA-2023:2151 erratum released as part of Red Hat Enterprise Linux 9.2 failed to include the fix for the Webpack issue CVE-2023-28154 (for PCS package), which was previously addressed in Red Hat Enterprise Linux 9.1 via erratum RHSA-2023:1591. The CVE-2023-2319 was assigned to that Red Hat specific security regression in Red Hat Enterprise Linux 9.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2319">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e76ce0f201238fb38a039149df32d9a0</td>
-       <td>CVE-2023-2295</td>
-       <td>2023-05-17 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in the libreswan library. This security issue occurs when an IKEv1 Aggressive Mode packet is received with only unacceptable crypto algorithms, and the response packet is not sent with a zero responder SPI. When a subsequent packet is received where the sender reuses the libreswan responder SPI as its own initiator SPI, the pluto daemon state machine crashes. No remote code execution is possible. This CVE exists because of a CVE-2023-30570 security regression for libreswan package in Red Hat Enterprise Linux 8.8 and Red Hat Enterprise Linux 9.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2295">详情</a></td>
       </tr>
 
      </tbody>
