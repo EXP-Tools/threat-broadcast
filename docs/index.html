@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-19 20:21:46 -->
+<!-- RELEASE TIME : 2023-05-19 23:20:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7f56f0785100e54da2c3b6857685f656</td>
+       <td>CVE-2023-32677</td>
+       <td>2023-05-19 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zulip is an open-source team collaboration tool with unique topic-based threading. Zulip administrators can configure Zulip to limit who can add users to streams, and separately to limit who can invite users to the organization. In Zulip Server 6.1 and below, the UI which allows a user to invite a new user also allows them to set the streams that the new user is invited to -- even if the inviting user would not have permissions to add an existing user to streams. While such a configuration is likely rare in practice, the behavior does violate security-related controls. This does not let a user invite new users to streams they cannot see, or would not be able to add users to if they had that general permission. This issue has been addressed in version 6.2. Users are advised to upgrade. Users unable to upgrade may limit sending of invitations down to users who also have the permission to add users to streams.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32677">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d69d97ef2148141dac050348a4dbee05</td>
+       <td>CVE-2023-32679</td>
+       <td>2023-05-19 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Craft CMS is an open source content management system. In affected versions of Craft CMS an unrestricted file extension may lead to Remote Code Execution. If the name parameter value is not empty string('') in the View.php's doesTemplateExist() -> resolveTemplate() -> _resolveTemplateInternal() -> _resolveTemplate() function, it returns directly without extension verification, so that arbitrary extension files are rendered as twig templates. When attacker with admin privileges on a DEV or an improperly configured STG or PROD environment, they can exploit this vulnerability to remote code execution. Code execution may grant the attacker access to the host operating system. This issue has been addressed in version 4.4.6. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32679">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>39864801d2577101bb3b6236fdd4a6db</td>
+       <td>CVE-2023-32675</td>
+       <td>2023-05-19 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vyper is a pythonic Smart Contract Language for the ethereum virtual machine. In contracts with more than one regular nonpayable function, it is possible to send funds to the default function, even if the default function is marked `nonpayable`. This applies to contracts compiled with vyper versions prior to 0.3.8. This issue was fixed by the removal of the global `calldatasize` check in commit `02339dfda`. Users are advised to upgrade to version 0.3.8. Users unable to upgrade should avoid use of nonpayable default functions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32675">详情</a></td>
+      </tr>
+
+      <tr>
        <td>26d592dfbd606efb4cd9c24714eba4f4</td>
        <td>CVE-2023-2815</td>
        <td>2023-05-19 17:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-05-18 22:15:00 <img src="imgs/new.gif" /></td>
        <td>netconsd prior to v0.2 was vulnerable to an integer overflow in its parse_packet function. A malicious individual could leverage this overflow to create heap memory corruption with attacker controlled data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28753">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1bf38609cb027fd750df3a5512468e6b</td>
-       <td>CVE-2023-28081</td>
-       <td>2023-05-18 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A bytecode optimization bug in Hermes prior to commit e6ed9c1a4b02dc219de1648f44cd808a56171b81 could be used to cause an use-after-free and obtain arbitrary code execution via a carefully crafted payload. Note that this is only exploitable in cases where Hermes is used to execute untrusted JavaScript. Hence, most React Native applications are not affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28081">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa6564d93580c8c589831c443e5d2825</td>
-       <td>CVE-2023-25933</td>
-       <td>2023-05-18 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A type confusion bug in TypedArray prior to commit e6ed9c1a4b02dc219de1648f44cd808a56171b81 could have been used by a malicious attacker to execute arbitrary code via untrusted JavaScript. Note that this is only exploitable in cases where Hermes is used to execute untrusted JavaScript. Hence, most React Native applications are not affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25933">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>935afec4539daa027093a510d94b28ab</td>
-       <td>CVE-2023-24833</td>
-       <td>2023-05-18 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>A use-after-free in BigIntPrimitive addition in Hermes prior to commit a6dcafe6ded8e61658b40f5699878cd19a481f80 could have been used by an attacker to leak raw data from Hermes VM’s heap. Note that this is only exploitable in cases where Hermes is used to execute untrusted JavaScript. Hence, most React Native applications are not affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24833">详情</a></td>
       </tr>
 
      </tbody>
