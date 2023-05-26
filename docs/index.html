@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-26 20:21:36 -->
+<!-- RELEASE TIME : 2023-05-26 22:23:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,70 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>109e371fe21ffc59c1c97f24519748e1</td>
+       <td>CVE-2023-32681</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Requests is a HTTP library. Since Requests 2.3.0, Requests has been leaking Proxy-Authorization headers to destination servers when redirected to an HTTPS endpoint. This is a product of how we use `rebuild_proxies` to reattach the `Proxy-Authorization` header to requests. For HTTP connections sent through the tunnel, the proxy will identify the header in the request itself and remove it prior to forwarding to the destination server. However when sent over HTTPS, the `Proxy-Authorization` header must be sent in the CONNECT request as the proxy has no visibility into the tunneled request. This results in Requests forwarding proxy credentials to the destination server unintentionally, allowing a malicious actor to potentially exfiltrate sensitive information. This issue has been patched in version 2.31.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32681">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eb4328f86e4d0cdc901edcee7f754485</td>
+       <td>CVE-2023-32318</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nextcloud server provides a home for data. A regression in the session handling between Nextcloud Server and the Nextcloud Text app prevented a correct destruction of the session on logout if cookies were not cleared manually. After successfully authenticating with any other account the previous session would be continued and the attacker would be authenticated as the previously logged in user. It is recommended that the Nextcloud Server is upgraded to 25.0.6 or 26.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32318">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0b5c5712ddd22b524b1bdf06726aaac9</td>
+       <td>CVE-2023-22970</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Bottles before 51.0 mishandles YAML load, which allows remote code execution via a crafted file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22970">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e881ccf33d11e7bc747b7f3ff7c97a63</td>
+       <td>CVE-2023-2283</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in libssh, where the authentication check of the connecting client can be bypassed in the`pki_verify_data_signature` function in memory allocation problems. This issue may happen if there is insufficient memory or the memory usage is limited. The problem is caused by the return value `rc,` which is initialized to SSH_ERROR and later rewritten to save the return value of the function call `pki_key_check_hash_compatible.` The value of the variable is not changed between this point and the cryptographic verification. Therefore any error between them calls `goto error` returning SSH_OK.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2283">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a797d1ceb32d6338ddd7ab80b4887bec</td>
+       <td>CVE-2023-20868</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>NSX-T contains a reflected cross-site scripting vulnerability due to a lack of input validation. A remote attacker can inject HTML or JavaScript to redirect to malicious pages.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20868">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>00f85dd692b4cbeda103dc784f81352d</td>
+       <td>CVE-2023-1981</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in the avahi library. This flaw allows an unprivileged user to make a dbus call, causing the avahi daemon to crash.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1981">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>95830738417a4049675db0036a9bbaf1</td>
+       <td>CVE-2023-1667</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A NULL pointer dereference was found In libssh during re-keying with algorithm guessing. This issue may allow an authenticated client to cause a denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1667">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>33c3d2a644e2b1aa0f08b7b6b368c66c</td>
+       <td>CVE-2023-1664</td>
+       <td>2023-05-26 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in Keycloak. This flaw depends on a non-default configuration "Revalidate Client Certificate" to be enabled and the reverse proxy is not validating the certificate before Keycloak. Using this method an attacker may choose the certificate which will be validated by the server. If this happens and the KC_SPI_TRUSTSTORE_FILE_FILE variable is missing/misconfigured, any trustfile may be accepted with the logging information of "Cannot validate client certificate trust: Truststore not available". This may not impact availability as the attacker would have no access to the server, but consumer applications Integrity or Confidentiality may be impacted considering a possible access to them. Considering the environment is correctly set to use "Revalidate Client Certificate" this flaw is avoidable.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1664">详情</a></td>
+      </tr>
+
+      <tr>
        <td>de83af9674dcacbdd100cc29d3267736</td>
        <td>CVE-2023-33780</td>
        <td>2023-05-26 17:15:00 <img src="imgs/new.gif" /></td>
@@ -457,70 +521,6 @@
        <td>2023-05-26 14:15:00 <img src="imgs/new.gif" /></td>
        <td>Cross-Site Request Forgery (CSRF) vulnerability in Anton Skorobogatov Rus-To-Lat plugin <= 0.3 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25470">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d661f41b17442131a3819c59439702f</td>
-       <td>CVE-2023-25038</td>
-       <td>2023-05-26 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in 984.Ru For the visually impaired plugin <= 0.58 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25038">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f09798b169ea409ccaeed398de3e3582</td>
-       <td>CVE-2023-24008</td>
-       <td>2023-05-26 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in yonifre Maspik – Spam Blacklist plugin <= 0.7.8 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24008">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4bb72ba3c25d786fb93a31b721c4be11</td>
-       <td>CVE-2023-22693</td>
-       <td>2023-05-26 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in conlabzgmbh WP Google Tag Manager plugin <= 1.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22693">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ae6c43c15032d33488ae7d3ccc9eff9b</td>
-       <td>CVE-2023-25976</td>
-       <td>2023-05-26 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in CRM Perks Integration for Contact Form 7 and Zoho CRM, Bigin plugin <= 1.2.2 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25976">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>403fc5594db9f127ed6b7a4b16bc9ad9</td>
-       <td>CVE-2023-25971</td>
-       <td>2023-05-26 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in FixBD Educare plugin <= 1.4.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25971">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f2abb6f7a4303b601e8d1aea36856f03</td>
-       <td>CVE-2023-25781</td>
-       <td>2023-05-26 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Sebastian Krysmanski Upload File Type Settings plugin <= 1.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25781">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1ec004968fcedafc21eeb79098323f5a</td>
-       <td>CVE-2023-24007</td>
-       <td>2023-05-26 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in TheOnlineHero - Tom Skroza Admin Block Country plugin <= 7.1.4 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24007">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb77b2246313ff610bd4b1a234fbcb01</td>
-       <td>CVE-2023-23714</td>
-       <td>2023-05-26 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Uncanny Owl Uncanny Toolkit for LearnDash plugin <= 3.6.4.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23714">详情</a></td>
       </tr>
 
      </tbody>
@@ -2228,6 +2228,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>71e74c3d75be97395afcf291bb63825a</td>
+       <td>CVE-2023-31584</td>
+       <td>2023-05-22 19:15:10 </td>
+       <td>GitHub repository cu/silicon commit a9ef36 was discovered to contain a reflected cross-site scripting (XSS) vulnerability via the User Input field.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31584">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2e5f495e11384dfb591e7f337109561f</td>
        <td>CVE-2023-33288</td>
        <td>2023-05-22 03:15:09 </td>
@@ -2332,6 +2340,14 @@
       </tr>
 
       <tr>
+       <td>94d465c7c578c38eb191e7d8dab1bc04</td>
+       <td>CVE-2023-31597</td>
+       <td>2023-05-18 18:15:10 </td>
+       <td>An issue in Zammad v5.4.0 allows attackers to bypass e-mail verification using an arbitrary address and manipulate the data of the generated user. Attackers are also able to gain unauthorized access to existing tickets.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31597">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ca4fe9fdd2ba6495eef35a70e5e67579</td>
        <td>CVE-2023-32515</td>
        <td>2023-05-18 10:15:09 </td>
@@ -2353,6 +2369,14 @@
        <td>2023-05-17 20:15:10 </td>
        <td>The web interface of Symcon IP-Symcon before 6.3 (i.e., before 2023-05-12) allows a remote attacker to read sensitive files via .. directory-traversal sequences in the URL.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32767">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5abd1d58d25ae704660f1b8ab4062768</td>
+       <td>CVE-2023-31544</td>
+       <td>2023-05-16 21:15:09 </td>
+       <td>A stored cross-site scripting (XSS) vulnerability in alkacon-OpenCMS v11.0.0.0 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Title field under the Upload Image module.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-31544">详情</a></td>
       </tr>
 
       <tr>
@@ -2441,30 +2465,6 @@
        <td>2023-05-16 16:15:11 </td>
        <td>Jenkins Sidebar Link Plugin 2.2.1 and earlier does not restrict the path of files in a method implementing form validation, allowing attackers with Overall/Read permission to check for the existence of an attacker-specified file path on the Jenkins controller file system.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32985">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d012ea5dcc02bb3a8ee0c086b3114026</td>
-       <td>CVE-2023-32984</td>
-       <td>2023-05-16 16:15:11 </td>
-       <td>Jenkins TestNG Results Plugin 730.v4c5283037693 and earlier does not escape several values that are parsed from TestNG report files and displayed on the plugin's test information pages, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers able to provide a crafted TestNG report file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32984">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c2fa28a7cb5891012819165af26b3c0</td>
-       <td>CVE-2023-32983</td>
-       <td>2023-05-16 16:15:10 </td>
-       <td>Jenkins Ansible Plugin 204.v8191fd551eb_f and earlier does not mask extra variables displayed on the configuration form, increasing the potential for attackers to observe and capture them.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32983">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>112936006d6a2b346baff805c250b204</td>
-       <td>CVE-2023-32982</td>
-       <td>2023-05-16 16:15:10 </td>
-       <td>Jenkins Ansible Plugin 204.v8191fd551eb_f and earlier stores extra variables unencrypted in job config.xml files on the Jenkins controller where they can be viewed by users with Item/Extended Read permission or access to the Jenkins controller file system.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32982">详情</a></td>
       </tr>
 
      </tbody>
