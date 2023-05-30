@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-05-30 15:22:15 -->
+<!-- RELEASE TIME : 2023-05-30 17:22:08 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>614df81af4d52a02a622af8436658a48</td>
+       <td>CVE-2023-2984</td>
+       <td>2023-05-30 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Path Traversal: '\..\filename' in GitHub repository pimcore/pimcore prior to 10.5.22.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2984">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d85226899e79d1c93cafb67fa6d52fe1</td>
+       <td>CVE-2023-2983</td>
+       <td>2023-05-30 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Privilege Defined With Unsafe Actions in GitHub repository pimcore/pimcore prior to 10.5.23.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2983">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9461bd90322e4d787469854a5e1bb8f5</td>
+       <td>CVE-2023-2981</td>
+       <td>2023-05-30 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as problematic, has been found in Abstrium Pydio Cells 4.2.0. This issue affects some unknown processing of the component Chat. The manipulation leads to basic cross site scripting. The attack may be initiated remotely. Upgrading to version 4.2.1 is able to address this issue. It is recommended to upgrade the affected component. The identifier VDB-230213 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2981">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0e97f845859c03fb00d244afbca88e8c</td>
+       <td>CVE-2023-2980</td>
+       <td>2023-05-30 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical was found in Abstrium Pydio Cells 4.2.0. This vulnerability affects unknown code of the component User Creation Handler. The manipulation leads to improper control of resource identifiers. The attack can be initiated remotely. Upgrading to version 4.2.1 is able to address this issue. It is recommended to upgrade the affected component. The identifier of this vulnerability is VDB-230212.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2980">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa780b62331fa910429c041ed98e9636</td>
+       <td>CVE-2023-2979</td>
+       <td>2023-05-30 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical has been found in Abstrium Pydio Cells 4.2.0. This affects an unknown part of the component User Creation Handler. The manipulation leads to improper access controls. It is possible to initiate the attack remotely. Upgrading to version 4.2.1 is able to address this issue. It is recommended to upgrade the affected component. The associated identifier of this vulnerability is VDB-230211.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2979">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>69e74ea912774bca31418226f59d8b59</td>
+       <td>CVE-2023-2978</td>
+       <td>2023-05-30 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Abstrium Pydio Cells 4.2.0. It has been rated as problematic. Affected by this issue is some unknown functionality of the component Change Subscription Handler. The manipulation leads to authorization bypass. Upgrading to version 4.2.1 is able to address this issue. It is recommended to upgrade the affected component. VDB-230210 is the identifier assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2978">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b0693ed2faf7e72361c322f431ea909e</td>
+       <td>CVE-2023-2650</td>
+       <td>2023-05-30 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Issue summary: Processing some specially crafted ASN.1 object identifiers ordata containing them may be very slow.Impact summary: Applications that use OBJ_obj2txt() directly, or use any ofthe OpenSSL subsystems OCSP, PKCS7/SMIME, CMS, CMP/CRMF or TS with no messagesize limit may experience notable to very long delays when processing thosemessages, which may lead to a Denial of Service.An OBJECT IDENTIFIER is composed of a series of numbers - sub-identifiers -most of which have no size limit.  OBJ_obj2txt() may be used to translatean ASN.1 OBJECT IDENTIFIER given in DER encoding form (using the OpenSSLtype ASN1_OBJECT) to its canonical numeric text form, which are thesub-identifiers of the OBJECT IDENTIFIER in decimal form, separated byperiods.When one of the sub-identifiers in the OBJECT IDENTIFIER is very large(these are sizes that are seen as absurdly large, taking up tens or hundredsof KiBs), the translation to a decimal number in text may take a very longtime.  The time complexity is O(n^2) with 'n' being the size of thesub-identifiers in bytes (*).With OpenSSL 3.0, support to fetch cryptographic algorithms using names /identifiers in string form was introduced.  This includes using OBJECTIDENTIFIERs in canonical numeric text form as identifiers for fetchingalgorithms.Such OBJECT IDENTIFIERs may be received through the ASN.1 structureAlgorithmIdentifier, which is commonly used in multiple protocols to specifywhat cryptographic algorithm should be used to sign or verify, encrypt ordecrypt, or digest passed data.Applications that call OBJ_obj2txt() directly with untrusted data areaffected, with any version of OpenSSL.  If the use is for the mere purposeof display, the severity is considered low.In OpenSSL 3.0 and newer, this affects the subsystems OCSP, PKCS7/SMIME,CMS, CMP/CRMF or TS.  It also impacts anything that processes X.509certificates, including simple things like verifying its signature.The impact on TLS is relatively low, because all versions of OpenSSL have a100KiB limit on the peer's certificate chain.  Additionally, this onlyimpacts clients, or servers that have explicitly enabled clientauthentication.In OpenSSL 1.1.1 and 1.0.2, this only affects displaying diverse objects,such as X.509 certificates.  This is assumed to not happen in such a waythat it would cause a Denial of Service, so these versions are considerednot affected by this issue in such a way that it would be cause for concern,and the severity is therefore considered low.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2650">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b27f9b07be382c44e2569ca6135ffe1a</td>
        <td>CVE-2023-30196</td>
        <td>2023-05-30 12:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
        <td>tgstation-server is a toolset to manage production BYOND servers. Starting in version 4.7.0 and prior to 5.12.1, instance users with the list chat bots permission can read chat bot connections strings without the associated permission. This issue is patched in version 5.12.1. As a workaround, remove the list chat bots permission from users that should not have the ability to view connection strings. Invalidate any credentials previously stored for safety.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32687">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>83163412c2ad4aaf6fafa257456668d2</td>
-       <td>CVE-2023-32072</td>
-       <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tuleap is an open source tool for end to end traceability of application and system developments. Tuleap Community Edition prior to version 14.8.99.60 and Tuleap Enterprise edition prior to 14.8-3 and 14.7-7, the logs of the triggered Jenkins job URLs are not properly escaped. A malicious Git administrator can setup a malicious Jenkins hook to make a victim, also a Git administrator, execute uncontrolled code. Tuleap Community Edition 14.8.99.60, Tuleap Enterprise Edition 14.8-3, and Tuleap Enterprise Edition 14.7-7 contain a patch for this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32072">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0c6f375e677fb30e2db100b38b1b177c</td>
-       <td>CVE-2023-30253</td>
-       <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dolibarr before 17.0.1 allows remote code execution by an authenticated user via an uppercase manipulation: <?PHP instead of <?php in injected data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30253">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fdc39d3f48b1e62bf21bd0875819b36b</td>
-       <td>CVE-2022-41766</td>
-       <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in MediaWiki before 1.35.8, 1.36.x and 1.37.x before 1.37.5, and 1.38.x before 1.38.3. Upon an action=rollback operation, the alreadyrolled message can leak a user name (when the user has been revision deleted/suppressed).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-41766">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69d73d6e10813f22aabd8d15de8f71f0</td>
-       <td>CVE-2022-24632</td>
-       <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in AudioCodes Device Manager Express through 7.8.20002.47752. It is directory traversal during file download via the BrowseFiles.php view parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24632">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d260cf7d43a3e673f2fab36915e3f4fc</td>
-       <td>CVE-2022-24631</td>
-       <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in AudioCodes Device Manager Express through 7.8.20002.47752. It is stored XSS via the ajaxTenants.php desc parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24631">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84e87c9586b45d99fc901a026974772d</td>
-       <td>CVE-2022-24630</td>
-       <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in AudioCodes Device Manager Express through 7.8.20002.47752. BrowseFiles.php allows a ?cmd=ssh POST request with an ssh_command field that is executed.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24630">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a3c002d6e13041f4b3073f1edfddb376</td>
-       <td>CVE-2022-24629</td>
-       <td>2023-05-29 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in AudioCodes Device Manager Express through 7.8.20002.47752. Remote code execution can be achieved via directory traversal in the dir parameter of the file upload functionality of BrowseFiles.php. An attacker can upload a .php file to WebAdmin/admin/AudioCodes_files/ajax/.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-24629">详情</a></td>
       </tr>
 
      </tbody>
