@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-01 18:27:59 -->
+<!-- RELEASE TIME : 2023-06-01 20:21:54 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>55adbeeabf929497d2cdc8821185cc7e</td>
+       <td>CVE-2023-34092</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vite provides frontend tooling. Prior to versions 2.9.16, 3.2.7, 4.0.5, 4.1.5, 4.2.3, and 4.3.9, Vite Server Options (`server.fs.deny`) can be bypassed using double forward-slash (//) allows any unauthenticated user to read file from the Vite root-path of the application including the default `fs.deny` settings (`['.env', '.env.*', '*.{crt,pem}']`). Only users explicitly exposing the Vite dev server to the network (using `--host` or `server.host` config option) are affected, and only files in the immediate Vite project root folder could be exposed. This issue is fixed in vite@4.3.9, vite@4.2.3, vite@4.1.5, vite@4.0.5, vite@3.2.7, and vite@2.9.16.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34092">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c09636b3ad0cc51ad02da31f0a0988b6</td>
+       <td>CVE-2023-34091</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kyverno is a policy engine designed for Kubernetes. In versions of Kyverno prior to 1.10.0, resources which have the `deletionTimestamp` field defined can bypass validate, generate, or mutate-existing policies, even in cases where the `validationFailureAction` field is set to `Enforce`. This situation occurs as resources pending deletion were being consciously exempted by Kyverno, as a way to reduce processing load as policies are typically not applied to objects which are being deleted. However, this could potentially result in allowing a malicious user to leverage the Kubernetes finalizers feature by setting a finalizer which causes the Kubernetes API server to set the `deletionTimestamp` and then not completing the delete operation as a way to explicitly to bypass a Kyverno policy. Note that this is not applicable to Kubernetes Pods but, as an example, a Kubernetes Service resource can be manipulated using an indefinite finalizer to bypass policies. This is resolved in Kyverno 1.10.0. There is no known workaround.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34091">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b3e2987342bab66c4cfa3cb2dcdc9359</td>
+       <td>CVE-2023-33960</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenProject is web-based project management software. For any OpenProject installation, a `robots.txt` file is generated through the server to denote which routes shall or shall not be accessed by crawlers. These routes contain project identifiers of all public projects in the instance. Prior to version 12.5.6, even if the entire instance is marked as `Login required` and prevents all truly anonymous access, the `/robots.txt` route remains publicly available.Version 12.5.6 has a fix for this issue. Alternatively, users can download a patchfile to apply the patch to any OpenProject version greater than 10.0 As a workaround, one may mark any public project as non-public and give anyone in need of access to the project a membership.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33960">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2af94bf6f0a1597473a90f57ac777b24</td>
+       <td>CVE-2023-32717</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>On Splunk Enterprise versions below 9.0.5, 8.2.11, and 8.1.14, and in Splunk Cloud Platform versions below 9.0.2303.100, an unauthorized user can access the {{/services/indexing/preview}} REST endpoint to overwrite search results if they know the search ID (SID) of an existing search job.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32717">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9364ba16e92781e44bee2d5a9b6db0d2</td>
+       <td>CVE-2023-32716</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 9.0.5, 8.2.11, and 8.1.14, and Splunk Cloud Platform versions below 9.0.2303.100, an attacker can exploit a vulnerability in the {{dump}} SPL command to cause a denial of service by crashing the Splunk daemon.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32716">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9454c053c92f24b17fa914f9139f96c3</td>
+       <td>CVE-2023-32715</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>In the Splunk App for Lookup File Editing versions below 4.0.1, a user can insert potentially malicious JavaScript code into the app, which causes that code to run on the user’s machine. The app itself does not contain the potentially malicious JavaScript code. The vulnerability requires the attacker to phish the victim by tricking them into initiating a request within their browser, and requires additional user interaction to trigger. The attacker cannot exploit the vulnerability at will.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32715">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a9ae0f3ce7d37b84356ae21981a4f472</td>
+       <td>CVE-2023-32714</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>In the Splunk App for Lookup File Editing versions below 4.0.1, a low-privileged user can, with a specially crafted web request, trigger a path traversal exploit that can then be used to read and write to restricted areas of the Splunk installation directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32714">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d54089e13c87047de6273afeee54710b</td>
+       <td>CVE-2023-32713</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk App for Stream versions below 8.1.1, a low-privileged user could use a vulnerability in the streamfwd process within the Splunk App for Stream to escalate their privileges on the machine that runs the Splunk Enterprise instance, up to and including the root user.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32713">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f5e1576a3d8ae94d7128d7a28df9f90</td>
+       <td>CVE-2023-32712</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 9.0.5, 8.2.11, and 8.1.14, an attacker can use a specially crafted web URL in their browser to cause log file poisoning. The attack requires the attacker to have secure shell (SSH) access to the instance and use a terminal program that supports a certain feature set to execute the attack successfully.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32712">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>904e0536400a87afa439ef9f3f5dc93e</td>
+       <td>CVE-2023-32711</td>
+       <td>2023-06-01 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 9.0.5, 8.2.11, and 8.1.14, a Splunk dashboard view lets a low-privileged user exploit a vulnerability in the Bootstrap web framework (CVE-2019-8331) and build a stored cross-site scripting (XSS) payload.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32711">详情</a></td>
+      </tr>
+
+      <tr>
        <td>331e88a27a75ce550b4bd7d88364ea82</td>
        <td>CVE-2023-33965</td>
        <td>2023-06-01 15:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-06-01 05:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability classified as problematic has been found in Stars Alliance PsychoStats up to 3.2.2a. This affects an unknown part of the file upload/admin/login.php. The manipulation of the argument ref leads to cross site scripting. It is possible to initiate the attack remotely. Upgrading to version 3.2.2b is able to address this issue. The name of the patch is 5d3b7311fd5085ec6ea1b1bfa9a05285964e07e4. It is recommended to upgrade the affected component. The identifier VDB-230265 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2010-10010">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0a49552c78ec4a63edb1767769742762</td>
-       <td>CVE-2023-33778</td>
-       <td>2023-06-01 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>Draytek Vigor Routers firmware versions below 3.9.6/4.2.4, Access Points firmware versions below v1.4.0, Switches firmware versions below 2.6.7, and Myvigor firmware versions below 2.3.2 were discovered to use hardcoded encryption keys which allows attackers to bind any affected device to their own account. Attackers are then able to create WCF and DrayDDNS licenses and synchronize them from the website.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33778">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4cc41daf297567f007a39c38e54bbe20</td>
-       <td>CVE-2023-34312</td>
-       <td>2023-06-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Tencent QQ through 9.7.8.29039 and TIM through 3.4.7.22084, QQProtect.exe and QQProtectEngine.dll do not validate pointers from inter-process communication, which leads to a write-what-where condition.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34312">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7529af62ad832a239097185718c208c2</td>
-       <td>CVE-2023-33719</td>
-       <td>2023-06-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>mp4v2 v2.1.3 was discovered to contain a memory leak via MP4SdpAtom::Read() at atom_sdp.cpp</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33719">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b96a2603a759c0a571fc5d5f6ba5b2c6</td>
-       <td>CVE-2023-33716</td>
-       <td>2023-06-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>mp4v2 v2.1.3 was discovered to contain a memory leak via the class MP4StringProperty at mp4property.cpp.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33716">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a14c2fa57ca8e486d2a30247bf763c58</td>
-       <td>CVE-2023-33461</td>
-       <td>2023-06-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>iniparser v4.1 is vulnerable to NULL Pointer Dereference in function iniparser_getlongint which misses check NULL for function iniparser_getstring's return.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33461">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f30c65d1dc0cd7876905baa8810d1e3a</td>
-       <td>CVE-2023-29748</td>
-       <td>2023-06-01 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Story Saver for Instragram - Video Downloader 1.0.6 for Android has an exposed component that provides a method to modify the SharedPreference file. An attacker can leverage this method to inject a large amount of data into any SharedPreference file, which will be loaded into memory when the application is opened. When an attacker injects too much data, the application will trigger an OOM error and crash at startup, resulting in a persistent denial of service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29748">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1646924a0214c137de672e64ae3eb202</td>
-       <td>CVE-2023-30758</td>
-       <td>2023-06-01 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site scripting vulnerability in Pleasanter 1.3.38.1 and earlier allows a remote authenticated attacker to inject an arbitrary script.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30758">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f06f9796f537c06b4714afebb872b347</td>
-       <td>CVE-2023-29159</td>
-       <td>2023-06-01 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>Directory traversal vulnerability in Starlette versions 0.13.5 and later and prior to 0.27.0 allows a remote unauthenticated attacker to view files in a web service which was built using Starlette.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29159">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>08940ee97f17a38c2915156511f3c0ae</td>
-       <td>CVE-2023-29154</td>
-       <td>2023-06-01 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL injection vulnerability exists in the CONPROSYS HMI System (CHS) versions prior to 3.5.3. A user who can access the affected product with an administrative privilege may execute an arbitrary SQL command via specially crafted input to the query setting page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29154">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2f0bfa5cbcd963834e6b3d624ad74b5a</td>
-       <td>CVE-2023-28937</td>
-       <td>2023-06-01 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>DataSpider Servista version 4.4 and earlier uses a hard-coded cryptographic key. DataSpider Servista is data integration software. ScriptRunner and ScriptRunner for Amazon SQS are used to start the configured processes on DataSpider Servista. The cryptographic key is embedded in ScriptRunner and ScriptRunner for Amazon SQS, which is common to all users. If an attacker who can gain access to a target DataSpider Servista instance and obtain a Launch Settings file of ScriptRunner and/or ScriptRunner for Amazon SQS, the attacker may perform operations with the user privilege encrypted in the file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28937">详情</a></td>
       </tr>
 
      </tbody>
