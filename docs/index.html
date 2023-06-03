@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-03 06:25:45 -->
+<!-- RELEASE TIME : 2023-06-03 10:24:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -2316,6 +2316,46 @@
       </tr>
 
       <tr>
+       <td>9d82c891e596eb93e4f5ba34baa38a01</td>
+       <td>CVE-2023-32325</td>
+       <td>2023-05-27 00:15:09 </td>
+       <td>PostHog-js is a library to interface with the PostHog analytics tool. Versions prior to 1.57.2 have the potential for cross-site scripting. Problem has been patched in 1.57.2. Users are advised to upgrade. Users unable to upgrade should ensure that their Content Security Policy is in place.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32325">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>89d10e4081d486bd286cc4bc6fbe18d6</td>
+       <td>CVE-2023-32321</td>
+       <td>2023-05-26 23:15:18 </td>
+       <td>CKAN is an open-source data management system for powering data hubs and data portals. Multiple vulnerabilities have been discovered in Ckan which may lead to remote code execution. An arbitrary file write in `resource_create` and `package_update` actions, using the `ResourceUploader` object.  Also reachable via `package_create`, `package_revise`, and `package_patch` via calls to `package_update`. Remote code execution via unsafe pickle loading, via Beaker's session store when configured to use the file session store backend. Potential DOS due to lack of a length check on the resource id. Information disclosure: A user with permission to create a resource can access any other resource on the system if they know the id, even if they don't have access to it. Resource overwrite: A user with permission to create a resource can overwrite any resource if they know the id, even if they don't have access to it. A user with permissions to create or edit a dataset can upload a resource with a specially crafted id to write the uploaded file in an arbitrary location. This can be leveraged to Remote Code Execution via Beaker's insecure pickle loading. All the above listed vulnerabilities have been fixed in CKAN 2.9.9 and CKAN 2.10.1. Users are advised to upgrade. There are no known workarounds for these issues.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32321">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>155cbf277a74b09a1c34573ada68056b</td>
+       <td>CVE-2023-32319</td>
+       <td>2023-05-26 23:15:17 </td>
+       <td>Nextcloud server is an open source personal cloud implementation. Missing brute-force protection on the WebDAV endpoints via the basic auth header allowed to brute-force user credentials when the provided user name was not an email address. Users from version 24.0.0 onward are affected. This issue has been addressed in releases 24.0.11, 25.0.5 and 26.0.0. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32319">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f3b4a61691951d44572876812b5dc786</td>
+       <td>CVE-2023-32317</td>
+       <td>2023-05-26 23:15:16 </td>
+       <td>Autolab is a course management service that enables auto-graded programming assignments. A Tar slip vulnerability was found in the MOSS cheat checker functionality of Autolab. To exploit this vulnerability an authenticated attacker with instructor permissions needs to upload a specially crafted Tar file. Both &quot;Base File Tar&quot; and &quot;Additional file archive&quot; can be fed with Tar files that contain paths outside their target directories (e.g.,  `../../../../tmp/tarslipped2.sh`). When the MOSS cheat checker is started the files inside of the archives are expanded to the attacker-chosen locations. This issue may lead to arbitrary file write within the scope of the running process.  This issue has been addressed in version 2.11.0. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32317">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2277b88a1ee6bcc3f41ea4527f71c9dd</td>
+       <td>CVE-2023-32316</td>
+       <td>2023-05-26 23:15:16 </td>
+       <td>CloudExplorer Lite is an open source cloud management tool. In affected versions users can add themselves to any organization in CloudExplorer Lite. This is due to a missing permission check on the user profile. It is recommended to upgrade the version to v1.1.0. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-32316">详情</a></td>
+      </tr>
+
+      <tr>
        <td>99da49b5168db25226cbd570333e4726</td>
        <td>CVE-2023-33255</td>
        <td>2023-05-26 20:15:49 </td>
@@ -2425,46 +2465,6 @@
        <td>2023-05-24 20:15:10 </td>
        <td>A stored cross-site scripting (XSS) vulnerability in the Create Rack (/dcim/rack/) function of Netbox v3.5.1 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Name field.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33798">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb0e30ffce60b4393ff8545919e4d33a</td>
-       <td>CVE-2023-33797</td>
-       <td>2023-05-24 20:15:10 </td>
-       <td>A stored cross-site scripting (XSS) vulnerability in the Create Sites (/dcim/sites/) function of Netbox v3.5.1 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Name field.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33797">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b7c7c03a795ece9b3594342aafe1349</td>
-       <td>CVE-2023-33796</td>
-       <td>2023-05-24 20:15:10 </td>
-       <td>A vulnerability in Netbox v3.5.1 allows unauthenticated attackers to execute queries against the GraphQL database, granting them access to sensitive data stored in the database.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33796">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b95cf4f53be3446185c6a59d8c096fd</td>
-       <td>CVE-2023-33795</td>
-       <td>2023-05-24 20:15:10 </td>
-       <td>A stored cross-site scripting (XSS) vulnerability in the Create Contact Roles (/tenancy/contact-roles/) function of Netbox v3.5.1 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Name field.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33795">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3a204900b91fa462cc519bef08e19057</td>
-       <td>CVE-2023-33794</td>
-       <td>2023-05-24 20:15:10 </td>
-       <td>A stored cross-site scripting (XSS) vulnerability in the Create Tenants (/tenancy/tenants/) function of Netbox v3.5.1 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Name field.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33794">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2dc8a9e7fb159bcb9379267845eee720</td>
-       <td>CVE-2023-33793</td>
-       <td>2023-05-24 20:15:10 </td>
-       <td>A stored cross-site scripting (XSS) vulnerability in the Create Power Panels (/dcim/power-panels/) function of Netbox v3.5.1 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Name field.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33793">详情</a></td>
       </tr>
 
      </tbody>
