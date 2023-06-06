@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-06 19:17:05 -->
+<!-- RELEASE TIME : 2023-06-06 21:20:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b6347f3d6f3aeafb004fb7ff2b52736d</td>
+       <td>CVE-2023-33977</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kiwi TCMS is an open source test management system for both manual and automated testing. Kiwi TCMS allows users to upload attachments to test plans, test cases, etc. Earlier versions of Kiwi TCMS had introduced upload validators in order to prevent potentially dangerous files from being uploaded and Content-Security-Policy definition to prevent cross-site-scripting attacks. The upload validation checks were not 100% robust which left the possibility to circumvent them and upload a potentially dangerous file which allows execution of arbitrary JavaScript in the browser. Additionally we've discovered that Nginx's `proxy_pass` directive will strip some headers negating protections built into Kiwi TCMS when served behind a reverse proxy. This issue has been addressed in version 12.4. Users are advised to upgrade. Users unable to upgrade who are serving Kiwi TCMS behind a reverse proxy should make sure that additional header values are still passed to the client browser. If they aren't redefining them inside the proxy configuration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33977">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ddb0df8a591df57fd2dbbaf16dae8185</td>
+       <td>CVE-2023-33959</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>notation is a CLI tool to sign and verify OCI artifacts and container images. An attacker who has compromised a registry can cause users to verify the wrong artifact. The problem has been fixed in the release v1.0.0-rc.6. Users should upgrade their notation-go library to v1.0.0-rc.6 or above. Users unable to upgrade may restrict container registries to a set of secure and trusted container registries.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33959">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>72f24dfcca8f63e5f5763c909c3e0fa9</td>
+       <td>CVE-2023-33958</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>notation is a CLI tool to sign and verify OCI artifacts and container images. An attacker who has compromised a registry and added a high number of signatures to an artifact can cause denial of service of services on the machine, if a user runs notation verify command on the same machine. The problem has been fixed in the release v1.0.0-rc.6. Users should upgrade their notation packages to v1.0.0-rc.6 or above. Users unable to upgrade may restrict container registries to a set of secure and trusted container registries.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33958">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb2859825e3ac7ce1ab03d49bbf3e7ff</td>
+       <td>CVE-2023-33957</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>notation is a CLI tool to sign and verify OCI artifacts and container images. An attacker who has compromised a registry and added a high number of signatures to an artifact can cause denial of service of services on the machine, if a user runs notation inspect command on the same machine. The problem has been fixed in the release v1.0.0-rc.6. Users should upgrade their notation packages to v1.0.0-rc.6 or above. Users are advised to upgrade. Users unable to upgrade may restrict container registries to a set of secure and trusted container registries.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33957">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d10d2b643f6653c4fda59539a8da211b</td>
+       <td>CVE-2023-33653</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sitecore Experience Platform (XP) v9.3 was discovered to contain an authenticated remote code execution (RCE) vulnerability via the component /Applications/Content%20Manager/Execute.aspx?cmd=convert&mode=HTML.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33653">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>361cea4de5c95d7b4f24c7bbeaedd1b3</td>
+       <td>CVE-2023-33652</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sitecore Experience Platform (XP) v9.3 was discovered to contain an authenticated remote code execution (RCE) vulnerability via the component /sitecore/shell/Invoke.aspx.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33652">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9ab08fbaeb3be0ff1fb9ed178b93b98a</td>
+       <td>CVE-2023-33651</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in the MVC Device Simulator of Sitecore Experience Platform (XP), Experience Manager (XM), and Experience Commerce (XC) v9.0 Initial Release to v13.0 Initial Release allows attackers to bypass authorization rules.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33651">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ba37ba643d104fffbc3dbf4b8b5fa8aa</td>
+       <td>CVE-2023-32683</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Synapse is a Matrix protocol homeserver written in Python with the Twisted framework. A discovered oEmbed or image URL can bypass the `url_preview_url_blacklist` setting potentially allowing server side request forgery or bypassing network policies. Impact is limited to IP addresses allowed by the `url_preview_ip_range_blacklist` setting (by default this only allows public IPs) and by the limited information returned to the client: 1. For discovered oEmbed URLs, any non-JSON response or a JSON response which includes non-oEmbed information is discarded. 2. For discovered image URLs, any non-image response is discarded. Systems which have URL preview disabled (via the `url_preview_enabled` setting) or have not configured a `url_preview_url_blacklist` are not affected. This issue has been addressed in version 1.85.0. Users are advised to upgrade. User unable to upgrade may also disable URL previews.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32683">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f36a8f6c97324464644bdc119312bea8</td>
+       <td>CVE-2023-32682</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Synapse is a Matrix protocol homeserver written in Python with the Twisted framework. In affected versions it may be possible for a deactivated user to login when using uncommon configurations. This only applies if any of the following are true: 1. JSON Web Tokens are enabled for login via the `jwt_config.enabled` configuration setting. 2. The local password database is enabled via the `password_config.enabled` and `password_config.localdb_enabled` configuration settings *and* a user's password is updated via an admin API after a user is deactivated. Note that the local password database is enabled by default, but it is uncommon to set a user's password after they've been deactivated. Installations that are configured to only allow login via Single Sign-On (SSO) via CAS, SAML or OpenID Connect (OIDC); or via an external password provider (e.g. LDAP) are not affected. If not using JSON Web Tokens, ensure that deactivated users do not have a password set. This issue has been addressed in version 1.85.0. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32682">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55ef189afb6a08280de446e99b63b603</td>
+       <td>CVE-2023-2801</td>
+       <td>2023-06-06 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>Grafana is an open-source platform for monitoring and observability. Using public dashboards users can query multiple distinct data sources using mixed queries. However such query has a possibility of crashing a Grafana instance.The only feature that uses mixed queries at the moment is public dashboards, but it's also possible to cause this by calling the query API directly.This might enable malicious users to crash Grafana instances through that endpoint.Users may upgrade to version 9.4.12 and 9.5.3 to receive a fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2801">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fa8fde9269d6051d8d9e1070376b55a9</td>
        <td>CVE-2023-34111</td>
        <td>2023-06-06 17:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-06-06 13:15:00 <img src="imgs/new.gif" /></td>
        <td>In keymange, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07825502; Issue ID: ALPS07825502.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20751">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2006f7ee60df17f7202d8b80d25768ac</td>
-       <td>CVE-2023-3121</td>
-       <td>2023-06-06 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in Dahua Smart Parking Management up to 20230528 and classified as problematic. This vulnerability affects unknown code of the file /ipms/imageConvert/image. The manipulation of the argument fileUrl leads to server-side request forgery. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-230800. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3121">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0b85792fa4ceb2136fdd315cd65787d5</td>
-       <td>CVE-2023-3120</td>
-       <td>2023-06-06 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, was found in SourceCodester Service Provider Management System 1.0. This affects an unknown part of the file view_service.php. The manipulation of the argument id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-230799.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3120">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3dacc90fc37dd078dbb754bbd54ff0ab</td>
-       <td>CVE-2023-3119</td>
-       <td>2023-06-06 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, has been found in SourceCodester Service Provider Management System 1.0. Affected by this issue is some unknown functionality of the file view.php. The manipulation of the argument id leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-230798 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3119">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b3c302fe81134b231d4e3231fbb82b73</td>
-       <td>CVE-2023-1779</td>
-       <td>2023-06-06 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Exposure of Sensitive Information to an unauthorized actor vulnerability in MB Connect Lines mbCONNECT24, mymbCONNECT24 and Helmholz' myREX24 and myREX24.virtual in versions <=2.13.3 allow an authorized remote attacker with low privileges to view a limited amount of another accounts contact information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1779">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>202eb8db9c62ea56bded4a9155a1ccca</td>
-       <td>CVE-2023-0985</td>
-       <td>2023-06-06 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>An Authorization Bypass vulnerability was found in MB Connect Lines mbCONNECT24, mymbCONNECT24 and Helmholz' myREX24 and myREX24.virtual version <= 2.13.3. An authenticated remote user with low privileges can change the password of any user in the same account. This allows to take over the admin user and therefore fully compromise the account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0985">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>15064160c721fae8ae490d3a63ac4b58</td>
-       <td>CVE-2023-2833</td>
-       <td>2023-06-06 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>The ReviewX plugin for WordPress is vulnerable to privilege escalation in versions up to, and including, 1.6.13 due to insufficient restriction on the 'rx_set_screen_options' function. This makes it possible for authenticated attackers, with minimal permissions such as a subscriber, to modify their user role by supplying the 'wp_screen_options[option]' and 'wp_screen_options[value]' parameters during a screen option update.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2833">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33de8830c2725c004b357e36ba8c7a60</td>
-       <td>CVE-2023-20727</td>
-       <td>2023-06-06 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>In wlan, there is a possible out of bounds read due to a missing bounds check. This could lead to local information disclosure with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS07588531; Issue ID: ALPS07588531.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20727">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>29a2806a6e1ee582708d2c1bc4f163b6</td>
-       <td>CVE-2023-21670</td>
-       <td>2023-06-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Memory Corruption in GPU Subsystem due to arbitrary command execution from GPU in privileged mode.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-21670">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7abacdd3043fbb13317e328a24b91335</td>
-       <td>CVE-2023-21669</td>
-       <td>2023-06-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Information Disclosure in WLAN HOST while sending DPP action frame to peer with an invalid source address.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-21669">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21c5e8a0c7e8f4c4125372c0f6bbf2f5</td>
-       <td>CVE-2023-21661</td>
-       <td>2023-06-06 08:15:00 <img src="imgs/new.gif" /></td>
-       <td>Transient DOS while parsing WLAN beacon or probe-response frame.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-21661">详情</a></td>
       </tr>
 
      </tbody>
