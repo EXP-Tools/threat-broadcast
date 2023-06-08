@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-08 21:20:22 -->
+<!-- RELEASE TIME : 2023-06-08 23:21:54 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>67147b85f2b15cff5be769603586c4b3</td>
+       <td>CVE-2023-34233</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Snowflake Connector for Python provides an interface for developing Python applications that can connect to Snowflake and perform all standard operations. Versions prior to 3.0.2 are vulnerable to command injection via single sign-on(SSO) browser URL authentication. In order to exploit the potential for command injection, an attacker would need to be successful in (1) establishing a malicious resource and (2) redirecting users to utilize the resource. The attacker could set up a malicious, publicly accessible server which responds to the SSO URL with an attack payload. If the attacker then tricked a user into visiting the maliciously crafted connection URL, the user’s local machine would render the malicious payload, leading to a remote code execution. This attack scenario can be mitigated through URL whitelisting as well as common anti-phishing resources. Version 3.0.2 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34233">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ec4c5285b193a597e011bfa56c0d2ae0</td>
+       <td>CVE-2023-34232</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>snowflake-connector-nodejs, a NodeJS driver for Snowflake, is vulnerable to command injection via single sign on (SSO) browser URL authentication in versions prior to 1.6.21. In order to exploit the potential for command injection, an attacker would need to be successful in (1) establishing a malicious resource and (2) redirecting users to utilize the resource. The attacker could set up a malicious, publicly accessible server which responds to the SSO URL with an attack payload. If the attacker then tricked a user into visiting the maliciously crafted connection URL, the user’s local machine would render the malicious payload, leading to a remote code execution. This attack scenario can be mitigated through URL whitelisting as well as common anti-phishing resources. Version 1.6.21 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34232">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1d16aba0a7832a29b30942ff71e05aa2</td>
+       <td>CVE-2023-34230</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>snowflake-connector-net, the Snowflake Connector for .NET, is vulnerable to command injection prior to version 2.0.18 via SSO URL authentication. In order to exploit the potential for command injection, an attacker would need to be successful in (1) establishing a malicious resource and (2) redirecting users to utilize the resource. The attacker could set up a malicious, publicly accessible server which responds to the SSO URL with an attack payload. If the attacker then tricked a user into visiting the maliciously crafted connection URL, the user’s local machine would render the malicious payload, leading to a remote code execution. This attack scenario can be mitigated through URL whitelisting as well as common anti-phishing resources. Version 2.0.18 fixes this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34230">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>15db448b1dd55762d4a1fe82b54747f0</td>
+       <td>CVE-2023-32751</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Pydio Cells through 4.1.2 allows XSS. Pydio Cells implements the download of files using presigned URLs which are generated using the Amazon AWS SDK for JavaScript [1]. The secrets used to sign these URLs are hardcoded and exposed through the JavaScript files of the web application. Therefore, it is possible to generate valid signatures for arbitrary download URLs. By uploading an HTML file and modifying the download URL to serve the file inline instead of as an attachment, any included JavaScript code is executed when the URL is opened in a browser, leading to a cross-site scripting vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32751">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cbada6b3cb3d4add52bbe2d223c93c4f</td>
+       <td>CVE-2023-32750</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Pydio Cells through 4.1.2 allows SSRF. For longer running processes, Pydio Cells allows for the creation of jobs, which are run in the background. The job "remote-download" can be used to cause the backend to send a HTTP GET request to a specified URL and save the response to a new file. The response file is then available in a user-specified folder in Pydio Cells.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32750">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ec65e41c0276c278d4f120e35383d729</td>
+       <td>CVE-2023-29405</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The go command may execute arbitrary code at build time when using cgo. This may occur when running "go get" on a malicious module, or when running any other command which builds untrusted code. This is can by triggered by linker flags, specified via a "#cgo LDFLAGS" directive. Flags containing embedded spaces are mishandled, allowing disallowed flags to be smuggled through the LDFLAGS sanitization by including them in the argument of another flag. This only affects usage of the gccgo compiler.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29405">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d84edf97bf54b12d62f644cca68a746c</td>
+       <td>CVE-2023-29404</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The go command may execute arbitrary code at build time when using cgo. This may occur when running "go get" on a malicious module, or when running any other command which builds untrusted code. This is can by triggered by linker flags, specified via a "#cgo LDFLAGS" directive. The arguments for a number of flags which are non-optional are incorrectly considered optional, allowing disallowed flags to be smuggled through the LDFLAGS sanitization. This affects usage of both the gc and gccgo compilers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29404">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>99b9ca69e499a7a13685904c9d8e25fb</td>
+       <td>CVE-2023-29403</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>On Unix platforms, the Go runtime does not behave differently when a binary is run with the setuid/setgid bits. This can be dangerous in certain cases, such as when dumping memory state, or assuming the status of standard i/o file descriptors. If a setuid/setgid binary is executed with standard I/O file descriptors closed, opening any files can result in unexpected content being read or written with elevated privileges. Similarly, if a setuid/setgid program is terminated, either via panic or signal, it may leak the contents of its registers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29403">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d3c54f1e6f4752770c2dbe52f6899bf6</td>
+       <td>CVE-2023-29402</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The go command may generate unexpected code at build time when using cgo. This may result in unexpected behavior when running a go program which uses cgo. This may occur when running an untrusted module which contains directories with newline characters in their names. Modules which are retrieved using the go command, i.e. via "go get", are not affected (modules retrieved using GOPATH-mode, i.e. GO111MODULE=off, may be affected).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29402">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66d4d34d1dd85c873b2fa08e33b04dee</td>
+       <td>CVE-2023-29401</td>
+       <td>2023-06-08 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The filename parameter of the Context.FileAttachment function is not properly sanitized. A maliciously crafted filename can cause the Content-Disposition header to be sent with an unexpected filename value or otherwise modify the Content-Disposition header. For example, a filename of "setup.bat&quot;;x=.txt" will be sent as a file named "setup.bat". If the FileAttachment function is called with names provided by an untrusted source, this may permit an attacker to cause a file to be served with a name different than provided. Maliciously crafted attachment file name can modify the Content-Disposition header.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29401">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3e8dc2267c60f615116cae26e280f33b</td>
        <td>CVE-2023-34962</td>
        <td>2023-06-08 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-06-08 02:15:00 <img src="imgs/new.gif" /></td>
        <td>IBM Sterling Partner Engagement Manager 6.1, 6.2, and 6.2.1 could allow a remote attacker to hijack the clicking action of the victim. By persuading a victim to visit a malicious Web site, a remote attacker could exploit this vulnerability to hijack the victim's click actions and possibly launch further attacks against the victim.  IBM X-Force ID:  245891.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23482">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a773d2caa2902c07757c40a5e8e0285f</td>
-       <td>CVE-2023-23481</td>
-       <td>2023-06-08 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Sterling Partner Engagement Manager 6.1, 6.2, and 6.2.1 is vulnerable to stored cross-site scripting. This vulnerability allows users to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session.  IBM X-Force ID:  245889.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23481">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a4c1ea1f8d4bfb296a7965fc56b095b1</td>
-       <td>CVE-2023-23480</td>
-       <td>2023-06-08 02:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Sterling Partner Engagement Manager 6.1, 6.2, and 6.2.1 is vulnerable to cross-site scripting. This vulnerability allows users to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session.  IBM X-Force ID:  245885.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23480">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>660310eaa93cfbde039b33ada7ab80c8</td>
-       <td>CVE-2023-33847</td>
-       <td>2023-06-08 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM TXSeries for Multiplatforms 8.1, 8.2, 9.1, CICS TX Standard, 11.1, CICS TX Advanced 10.1, and 11.1 does not set the secure attribute on authorization tokens or session cookies. Attackers may be able to get the cookie values by sending a http:// link to a user or by planting this link in a site the user goes to. The cookie will be sent to the insecure link and the attacker can then obtain the cookie value by snooping the traffic. IBM X-Force ID: 257102.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33847">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f070a7cd0efdb050a44f0a2f1907c245</td>
-       <td>CVE-2023-33846</td>
-       <td>2023-06-08 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM TXSeries for Multiplatforms 8.1, 8.2, 9.1, CICS TX Standard, 11.1, CICS TX Advanced 10.1, and 11.1 is vulnerable to cross-site scripting. This vulnerability allows users to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session.  IBM X-Force ID:  257100.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33846">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3150d47a520cacf6776482701d5e41b</td>
-       <td>CVE-2023-34239</td>
-       <td>2023-06-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Gradio is an open-source Python library that is used to build machine learning and data science. Due to a lack of path filtering Gradio does not properly restrict file access to users. Additionally Gradio does not properly restrict the what URLs are proxied. These issues have been addressed in version 3.34.0. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34239">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c14260384b74bad2c4443f0b6d6ee5c</td>
-       <td>CVE-2023-34238</td>
-       <td>2023-06-08 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Gatsby is a free and open source framework based on React. The Gatsby framework prior to versions 4.25.7 and 5.9.1 contain a Local File Inclusion vulnerability in the `__file-code-frame` and `__original-stack-frame` paths, exposed when running the Gatsby develop server (`gatsby develop`). Any file in scope of the development server could potentially be exposed. It should be noted that by default `gatsby develop` is only accessible via the localhost `127.0.0.1`, and one would need to intentionally expose the server to other interfaces to exploit this vulnerability by using server options such as `--host 0.0.0.0`, `-H 0.0.0.0`, or the `GATSBY_HOST=0.0.0.0` environment variable. A patch has been introduced in `gatsby@5.9.1` and `gatsby@4.25.7` which mitigates the issue. Users are advised to upgrade. Users unable to upgrade should avoid exposing their development server to the internet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34238">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78afabc17534d895204acbdecf1ff28f</td>
-       <td>CVE-2023-33849</td>
-       <td>2023-06-07 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM TXSeries for Multiplatforms 8.1, 8.2, 9.1, CICS TX Standard, 11.1, CICS TX Advanced 10.1, and 11.1 could transmit sensitive information in query parameters that could be intercepted using man in the middle techniques.  IBM X-Force ID:  257105.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33849">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>936f691a2366ea5432a3d24c8c496703</td>
-       <td>CVE-2023-31200</td>
-       <td>2023-06-07 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>PTC Vuforia Studio does not require a token; this could allow an attacker with local access to perform a cross-site request forgery attack or a replay attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31200">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4367bc6419569bb2f930ee4749f2f822</td>
-       <td>CVE-2023-29502</td>
-       <td>2023-06-07 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Before importing a project into Vuforia, a user could modify the “resourceDirectory” attribute in the appConfig.json file to be a different path.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29502">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6e34315f7b5c4e393838db1dcda2845f</td>
-       <td>CVE-2023-29168</td>
-       <td>2023-06-07 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>The local Vuforia web application does not support HTTPS, and federated credentials are passed via basic authentication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29168">详情</a></td>
       </tr>
 
      </tbody>
