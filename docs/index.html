@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-08 14:23:30 -->
+<!-- RELEASE TIME : 2023-06-08 15:22:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>35d05b8258eb9572720f765826796f23</td>
+       <td>CVE-2023-33657</td>
+       <td>2023-06-08 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>A use-after-free vulnerability exists in NanoMQ 0.17.2. The vulnerability can be triggered by calling the function nni_mqtt_msg_get_publish_property() in the file mqtt_msg.c. This vulnerability is caused by improper data tracing, and an attacker could exploit it to cause a denial of service attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33657">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dbeed094190bec8edbfc266a17fe2525</td>
+       <td>CVE-2023-33660</td>
+       <td>2023-06-08 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>A heap buffer overflow vulnerability exists in NanoMQ 0.17.2. The vulnerability can be triggered by calling the function copyn_str() in the file mqtt_parser.c. An attacker could exploit this vulnerability to cause a denial of service attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33660">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>befe1050e75ab5034dee04bcfd0dc3f7</td>
+       <td>CVE-2023-33658</td>
+       <td>2023-06-08 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>A heap buffer overflow vulnerability exists in NanoMQ 0.17.2. The vulnerability can be triggered by calling the function nni_msg_get_pub_pid() in the file message.c. An attacker could exploit this vulnerability to cause a denial of service attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33658">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2b3f65ab1c0113a6f016ed1bf59a2710</td>
        <td>CVE-2023-34969</td>
        <td>2023-06-08 03:15:00 <img src="imgs/new.gif" /></td>
@@ -497,30 +521,6 @@
        <td>2023-06-07 21:15:00 <img src="imgs/new.gif" /></td>
        <td>FANUC ROBOGUIDE-HandlingPRO Versions 9 Rev.ZD and prior is vulnerable to a path traversal, which could allow an attacker to remotely read files on the system running the affected software.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1864">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c001c4fe7b7d015b1b569f1e53e276b9</td>
-       <td>CVE-2023-34234</td>
-       <td>2023-06-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>OpenZeppelin Contracts is a library for smart contract development. By frontrunning the creation of a proposal, an attacker can become the proposer and gain the ability to cancel it. The attacker can do this repeatedly to try to prevent a proposal from being proposed at all. This impacts the `Governor` contract in v4.9.0 only, and the `GovernorCompatibilityBravo` contract since v4.3.0. This problem has been patched in 4.9.1 by introducing opt-in frontrunning protection. Users are advised to upgrade. Users unable to upgrade may submit the proposal creation transaction to an endpoint with frontrunning protection as a workaround.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34234">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>631999281700f5c3afaa1df959772c46</td>
-       <td>CVE-2023-34109</td>
-       <td>2023-06-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>zxcvbn-ts is an open source password strength estimator written in typescript. This vulnerability affects users running on the nodeJS platform which are using the second argument of the zxcvbn function. It can result in an unbounded resource consumption as the user inputs array is extended with every function call. Browsers are impacted, too but a single user need to do a lot of input changes so that it affects the browser, while the node process gets the inputs of every user of a platform and can be killed that way. This problem has been patched in version 3.0.2. Users are advised to upgrade. Users unable to upgrade should stop using the second argument of the zxcvbn function and use the zxcvbnOptions.setOptions function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34109">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25168b7838780c4aa6061d4cbf899f24</td>
-       <td>CVE-2023-34108</td>
-       <td>2023-06-07 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>mailcow is a mail server suite based on Dovecot, Postfix and other open source software, that provides a modern web UI for user/server administration. A vulnerability has been discovered in mailcow which allows an attacker to manipulate internal Dovecot variables by using specially crafted passwords during the authentication process. The issue arises from the behavior of the `passwd-verify.lua` script, which is responsible for verifying user passwords during login attempts. Upon a successful login, the script returns a response in the format of "password=<valid-password>", indicating the successful authentication. By crafting a password with additional key-value pairs appended to it, an attacker can manipulate the returned string and influence the internal behavior of Dovecot. For example, using the password "123 mail_crypt_save_version=0" would cause the `passwd-verify.lua` script to return the string "password=123 mail_crypt_save_version=0". Consequently, Dovecot will interpret this string and set the internal variables accordingly, leading to unintended consequences. This vulnerability can be exploited by an authenticated attacker who has the ability to set their own password. Successful exploitation of this vulnerability could result in unauthorized access to user accounts, bypassing security controls, or other malicious activities. This issue has been patched in version `2023-05a`. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34108">详情</a></td>
       </tr>
 
      </tbody>
