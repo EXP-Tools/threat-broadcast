@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-10 05:23:08 -->
+<!-- RELEASE TIME : 2023-06-10 06:25:33 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>da056a9e4ff416d333bc1cd4176aa84f</td>
+       <td>CVE-2023-3188</td>
+       <td>2023-06-10 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>Server-Side Request Forgery (SSRF) in GitHub repository owncast/owncast prior to 0.1.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3188">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ff95d329f85bf3840a9edf1ee1a108ed</td>
        <td>CVE-2023-3187</td>
        <td>2023-06-09 21:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2023-06-09 11:15:00 <img src="imgs/new.gif" /></td>
        <td>When gRPC HTTP2 stack raised a header size exceeded error, it skipped parsing the rest of the HPACK frame. This caused any HPACK table mutations to also be skipped, resulting in a desynchronization of HPACK tables between sender and receiver. If leveraged, say, between a proxy and a backend, this could lead to requests from the proxy being interpreted as containing headers from different proxy clients - leading to an information leak that can be used for privilege escalation or data exfiltration. We recommend upgrading beyond the commit contained in  https://github.com/grpc/grpc/pull/32309 https://github.com/grpc/grpc/pull/32309</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32731">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb3084c4d3382055194f0935fe0b540a</td>
-       <td>CVE-2023-1428</td>
-       <td>2023-06-09 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>There exists an vulnerability causing an abort() to be called in gRPC. The following headers cause gRPC's C++ implementation to abort() when called via http2:te: x (x != trailers):scheme: x (x != http, https)grpclb_client_stats: x (x == anything)On top of sending one of those headers, a later header must be sent that gets the total header size past 8KB. We recommend upgrading past git commit 2485fa94bd8a723e5c977d55a3ce10b301b437f8 or v1.53 and above.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1428">详情</a></td>
       </tr>
 
      </tbody>
