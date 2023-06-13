@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-13 17:23:16 -->
+<!-- RELEASE TIME : 2023-06-13 18:26:01 -->
 <html lang="zh-cn">
 
  <head>
@@ -2228,6 +2228,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4df2305f8eccc93d58d289a1a3c95055</td>
+       <td>CVE-2023-34111</td>
+       <td>2023-06-06 17:15:15 </td>
+       <td>The `Release PR Merged` workflow in the github repo taosdata/grafanaplugin is subject to a command injection vulnerability which allows for arbitrary code execution within the github action context due to the insecure usage of `${{ github.event.pull_request.title }}` in a bash command within the GitHub workflow. Attackers can inject malicious commands which will be executed by the workflow. This happens because `${{ github.event.pull_request.title }}` is directly passed to bash command on like 25 of the workflow. This may allow an attacker to gain access to secrets which the github action has access to or to otherwise make use of the compute resources.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-34111">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cdd363ca0771ae142c902c6b0318ec1a</td>
        <td>CVE-2023-34103</td>
        <td>2023-06-05 23:15:12 </td>
@@ -2457,14 +2465,6 @@
        <td>2023-06-02 14:15:09 </td>
        <td>A vulnerability was found in code-projects Agro-School Management System 1.0. It has been classified as critical. Affected is an unknown function of the file index.php. The manipulation of the argument password leads to sql injection. It is possible to launch the attack remotely. The identifier of this vulnerability is VDB-230568.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3062">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bffa1705637f13876dfddc30a7c8cfac</td>
-       <td>CVE-2023-3061</td>
-       <td>2023-06-02 14:15:09 </td>
-       <td>A vulnerability was found in code-projects Agro-School Management System 1.0 and classified as critical. This issue affects some unknown processing of the file btn_functions.php of the component Attachment Image Handler. The manipulation leads to unrestricted upload. The attack may be initiated remotely. The associated identifier of this vulnerability is VDB-230567.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3061">详情</a></td>
       </tr>
 
      </tbody>
