@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-15 18:26:08 -->
+<!-- RELEASE TIME : 2023-06-15 19:16:30 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>edbb27bf97f159434498e65088a6e9bd</td>
+       <td>CVE-2023-34880</td>
+       <td>2023-06-15 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>cmseasy v7.7.7.7 20230520 was discovered to contain a path traversal vulnerability via the add_action method at lib/admin/language_admin.php. This vulnerability allows attackers to execute arbitrary code and perform a local file inclusion.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34880">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01aa2c9aa54523a99adcf0f5ef34b255</td>
+       <td>CVE-2023-34666</td>
+       <td>2023-06-15 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site scripting (XSS) vulnerability in Phpgurukul Cyber Cafe Management System 1.0 allows remote attackers to inject arbitrary web script or HTML via the admin username parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34666">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>909a60856a3814da893c2ec778949450</td>
+       <td>CVE-2023-34454</td>
+       <td>2023-06-15 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>snappy-java is a fast compressor/decompressor for Java. Due to unchecked multiplications, an integer overflow may occur in versions prior to 1.1.10.1, causing an unrecoverable fatal error.The function `compress(char[] input)` in the file `Snappy.java` receives an array of characters and compresses it. It does so by multiplying the length by 2 and passing it to the rawCompress` function.Since the length is not tested, the multiplication by two can cause an integer overflow and become negative. The rawCompress function then uses the received length and passes it to the natively compiled maxCompressedLength function, using the returned value to allocate a byte array.Since the maxCompressedLength function treats the length as an unsigned integer, it doesn’t care that it is negative, and it returns a valid value, which is casted to a signed integer by the Java engine. If the result is negative, a `java.lang.NegativeArraySizeException` exception will be raised while trying to allocate the array `buf`. On the other side, if the result is positive, the `buf` array will successfully be allocated, but its size might be too small to use for the compression, causing a fatal Access Violation error.The same issue exists also when using the `compress` functions that receive double, float, int, long and short, each using a different multiplier that may cause the same issue. The issue most likely won’t occur when using a byte array, since creating a byte array of size 0x80000000 (or any other negative value) is impossible in the first place.Version 1.1.10.1 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34454">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f360caa2f5e8839b47939bf7c2f9296a</td>
+       <td>CVE-2023-34453</td>
+       <td>2023-06-15 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>snappy-java is a fast compressor/decompressor for Java. Due to unchecked multiplications, an integer overflow may occur in versions prior to 1.1.10.1, causing a fatal error.The function `shuffle(int[] input)` in the file `BitShuffle.java` receives an array of integers and applies a bit shuffle on it. It does so by multiplying the length by 4 and passing it to the natively compiled shuffle function. Since the length is not tested, the multiplication by four can cause an integer overflow and become a smaller value than the true size, or even zero or negative. In the case of a negative value, a `java.lang.NegativeArraySizeException` exception will raise, which can crash the program. In a case of a value that is zero or too small, the code that afterwards references the shuffled array will assume a bigger size of the array, which might cause exceptions such as `java.lang.ArrayIndexOutOfBoundsException`.The same issue exists also when using the `shuffle` functions that receive a double, float, long and short, each using a different multiplier that may cause the same issue.Version 1.1.10.1 contains a patch for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34453">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>30ef4aed7b24c3142263244928e59e51</td>
+       <td>CVE-2023-34626</td>
+       <td>2023-06-15 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Piwigo 13.7.0 is vulnerable to SQL Injection via the "Users" function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34626">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fb9629527a454ecba5ab56dc5d7e6548</td>
        <td>CVE-2023-27634</td>
        <td>2023-06-15 14:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2023-06-15 01:15:00 <img src="imgs/new.gif" /></td>
        <td>IBM PowerVM Hypervisor FW950.00 through FW950.71, FW1010.00 through FW1010.40, FW1020.00 through FW1020.20, and FW1030.00 through FW1030.11 could allow an attacker to obtain sensitive information if they gain service access to the HMC.  IBM X-Force ID:  247592.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25683">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>de9a3eda75d9dd678b57dcdf59d2d7f7</td>
-       <td>CVE-2022-22307</td>
-       <td>2023-06-15 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>IBM Security Guardium 11.3, 11.4, and 11.5 could allow a local user to obtain elevated privileges due to incorrect authorization checks.  IBM X-Force ID:  216753.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-22307">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>58f3af49496c828607a5b0bb33b805a2</td>
-       <td>CVE-2023-34452</td>
-       <td>2023-06-14 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Grav is a flat-file content management system. In versions 1.7.42 and prior, the "/forgot_password" page has a self-reflected cross-site scripting vulnerability that can be exploited by injecting a script into the "email" parameter of the request. While this vulnerability can potentially allow an attacker to execute arbitrary code on the user's browser, the impact is limited as it requires user interaction to trigger the vulnerability. As of time of publication, a patch is not available. Server-side validation should be implemented to prevent this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34452">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b2dd709c19a90db46f771f7616aaf06e</td>
-       <td>CVE-2023-34448</td>
-       <td>2023-06-14 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Grav is a file-based Web platform. Prior to version 1.7.42, the patch for CVE-2022-2073, a server-side template injection vulnerability in Grav leveraging the default `filter()` function, did not block other built-in functions exposed by Twig's Core Extension that could be used to invoke arbitrary unsafe functions, thereby allowing for remote code execution. A patch in version 1.74.2 overrides the built-in Twig `map()` and `reduce()` filter functions in `system/src/Grav/Common/Twig/Extension/GravExtension.php` to validate the argument passed to the filter in `$arrow`.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34448">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8b7419a7843f6097727b41b1984e1f3d</td>
-       <td>CVE-2023-34253</td>
-       <td>2023-06-14 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Grav is a file-based Web platform. Prior to version 1.7.42, the denylist introduced in commit 9d6a2d to prevent dangerous functions from being executed via injection of malicious templates was insufficient and could be easily subverted in multiple ways -- (1) using unsafe functions that are not banned, (2) using capitalised callable names, and (3) using fully-qualified names for referencing callables. Consequently, a low privileged attacker with login access to Grav Admin panel and page creation/update permissions is able to inject malicious templates to obtain remote code execution. A patch in version 1.7.42 improves the denylist.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34253">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>699f10e5245914abb504edc62fd590c4</td>
-       <td>CVE-2023-34252</td>
-       <td>2023-06-14 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Grav is a file-based Web platform. Prior to version 1.7.42, there is a logic flaw in the `GravExtension.filterFilter()` function whereby validation against a denylist of unsafe functions is only performed when the argument passed to filter is a string. However, passing an array as a callable argument allows the validation check to be skipped. Consequently, a low privileged attacker with login access to Grav Admin panel and page creation/update permissions is able to inject malicious templates to obtain remote code execution. The vulnerability can be found in the `GravExtension.filterFilter()` function declared in `/system/src/Grav/Common/Twig/Extension/GravExtension.php`. Version 1.7.42 contains a patch for this issue. End users should also ensure that `twig.undefined_functions` and `twig.undefined_filters` properties in `/path/to/webroot/system/config/system.yaml` configuration file are set to `false` to disallow Twig from treating undefined filters/functions as PHP functions and executing them.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34252">详情</a></td>
       </tr>
 
      </tbody>
