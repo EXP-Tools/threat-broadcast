@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-14 23:22:07 -->
+<!-- RELEASE TIME : 2023-06-15 01:49:57 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>58f3af49496c828607a5b0bb33b805a2</td>
+       <td>CVE-2023-34452</td>
+       <td>2023-06-14 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Grav is a flat-file content management system. In versions 1.7.42 and prior, the "/forgot_password" page has a self-reflected cross-site scripting vulnerability that can be exploited by injecting a script into the "email" parameter of the request. While this vulnerability can potentially allow an attacker to execute arbitrary code on the user's browser, the impact is limited as it requires user interaction to trigger the vulnerability. As of time of publication, a patch is not available. Server-side validation should be implemented to prevent this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34452">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b2dd709c19a90db46f771f7616aaf06e</td>
+       <td>CVE-2023-34448</td>
+       <td>2023-06-14 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Grav is a file-based Web platform. Prior to version 1.7.42, the patch for CVE-2022-2073, a server-side template injection vulnerability in Grav leveraging the default `filter()` function, did not block other built-in functions exposed by Twig's Core Extension that could be used to invoke arbitrary unsafe functions, thereby allowing for remote code execution. A patch in version 1.74.2 overrides the built-in Twig `map()` and `reduce()` filter functions in `system/src/Grav/Common/Twig/Extension/GravExtension.php` to validate the argument passed to the filter in `$arrow`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34448">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8b7419a7843f6097727b41b1984e1f3d</td>
+       <td>CVE-2023-34253</td>
+       <td>2023-06-14 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Grav is a file-based Web platform. Prior to version 1.7.42, the denylist introduced in commit 9d6a2d to prevent dangerous functions from being executed via injection of malicious templates was insufficient and could be easily subverted in multiple ways -- (1) using unsafe functions that are not banned, (2) using capitalised callable names, and (3) using fully-qualified names for referencing callables. Consequently, a low privileged attacker with login access to Grav Admin panel and page creation/update permissions is able to inject malicious templates to obtain remote code execution. A patch in version 1.7.42 improves the denylist.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34253">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>699f10e5245914abb504edc62fd590c4</td>
+       <td>CVE-2023-34252</td>
+       <td>2023-06-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Grav is a file-based Web platform. Prior to version 1.7.42, there is a logic flaw in the `GravExtension.filterFilter()` function whereby validation against a denylist of unsafe functions is only performed when the argument passed to filter is a string. However, passing an array as a callable argument allows the validation check to be skipped. Consequently, a low privileged attacker with login access to Grav Admin panel and page creation/update permissions is able to inject malicious templates to obtain remote code execution. The vulnerability can be found in the `GravExtension.filterFilter()` function declared in `/system/src/Grav/Common/Twig/Extension/GravExtension.php`. Version 1.7.42 contains a patch for this issue. End users should also ensure that `twig.undefined_functions` and `twig.undefined_filters` properties in `/path/to/webroot/system/config/system.yaml` configuration file are set to `false` to disallow Twig from treating undefined filters/functions as PHP functions and executing them.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34252">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>353a2b7457c5a0781a965fc66403d7a0</td>
+       <td>CVE-2023-34251</td>
+       <td>2023-06-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Grav is a flat-file content management system. Versions prior to 1.7.42 are vulnerable to server side template injection. Remote code execution is possible by embedding malicious PHP code on the administrator screen by a user with page editing privileges. Version 1.7.42 contains a fix for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34251">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>093386efe2333448391ecb4d8862facf</td>
+       <td>CVE-2023-2820</td>
+       <td>2023-06-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An information disclosure vulnerability in the?faye endpoint in Proofpoint Threat Response / Threat Response Auto-Pull (PTR/TRAP) could be used by an attacker on an adjacent network to obtain credentials to integrated services via a man-in-the-middle position or cryptanalysis of the session traffic. An attacker could use these credentials to impersonate PTR/TRAP to these services. All versions prior to 5.10.0 are affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2820">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fb82c4d0c72a65004a0a9590aac90844</td>
+       <td>CVE-2023-2819</td>
+       <td>2023-06-14 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A stored cross-site scripting vulnerability in the Sources UI in Proofpoint Threat Response/ Threat Response Auto Pull (PTR/TRAP) could allow an authenticated administrator on an adjacent network to replace the image file with an arbitrary MIME type. ?This could result in arbitrary javascript code execution in an admin context.?All versions prior to 5.10.0 are affected.?</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2819">详情</a></td>
+      </tr>
+
+      <tr>
        <td>916676f4c5d8457fd9018949528ee251</td>
        <td>CVE-2023-34565</td>
        <td>2023-06-14 21:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-06-14 17:15:00 <img src="imgs/new.gif" /></td>
        <td>Potential vulnerabilities have been identified in the system BIOS of certain HP PC products, which might allow arbitrary code execution, escalation of privilege, denial of service, and information disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31640">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>83b75322963b817a6d26028cd67f1035</td>
-       <td>CVE-2023-34868</td>
-       <td>2023-06-14 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jerryscript 3.0 (commit 05dbbd1) was discovered to contain an Assertion Failure via the parser_parse_for_statement_start at jerry-core/parser/js/js-parser-statm.c.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34868">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fe6e338255d0acd2dd716d274b945cd7</td>
-       <td>CVE-2023-34867</td>
-       <td>2023-06-14 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Jerryscript 3.0 (commit 05dbbd1) was discovered to contain an Assertion Failure via the ecma_property_hashmap_create at jerry-core/ecma/base/ecma-property-hashmap.c.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34867">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ca29a4b1a2b0edfb14608f299aa374e</td>
-       <td>CVE-2023-34540</td>
-       <td>2023-06-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Langchain 0.0.171 is vulnerable to Arbitrary Code Execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34540">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7316d134413f7f12517e62d8c6b05195</td>
-       <td>CVE-2023-34101</td>
-       <td>2023-06-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Contiki-NG is an operating system for internet of things devices. In version 4.8 and prior, when processing ICMP DAO packets in the `dao_input_storing` function, the Contiki-NG OS does not verify that the packet buffer is big enough to contain the bytes it needs before accessing them. Up to 16 bytes can be read out of bounds in the `dao_input_storing` function. An attacker can truncate an ICMP packet so that it does not contain enough data, leading to an out-of-bounds read on these lines. The problem has been patched in the "develop" branch of Contiki-NG, and is expected to be included in release 4.9. As a workaround, one can apply the changes in Contiki-NG pull request #2435 to patch the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34101">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5b65e002ffd4ca6429d960375c1d2ea4</td>
-       <td>CVE-2023-32031</td>
-       <td>2023-06-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Exchange Server Remote Code Execution Vulnerability</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32031">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e9ecdbd3a1809096f767c5e2e7a85adf</td>
-       <td>CVE-2023-32030</td>
-       <td>2023-06-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>.NET and Visual Studio Denial of Service Vulnerability</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32030">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>17848afa750ca23a7e60e2cb2209ecbb</td>
-       <td>CVE-2023-32024</td>
-       <td>2023-06-14 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Power Apps Spoofing Vulnerability</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32024">详情</a></td>
       </tr>
 
      </tbody>
@@ -1734,7 +1734,7 @@
       <tr>
        <td>bb16e7d2bb964525314466a258a4d18a</td>
        <td>CVE-2022-40533</td>
-       <td>2023-06-13 20:28:41 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:28:41</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d1263b7be11a4ae6bd574b28fecc3796">详情</a></td>
       </tr>
@@ -1742,7 +1742,7 @@
       <tr>
        <td>a8a3427ab018534d1085d87ea6ba98a5</td>
        <td>CVE-2022-40536</td>
-       <td>2023-06-13 20:28:33 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:28:33</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=e5391f7fb60c4faa896443b1f4807a31">详情</a></td>
       </tr>
@@ -1750,7 +1750,7 @@
       <tr>
        <td>83b6c47b81fd7c68f06ef6f8604b69e8</td>
        <td>CVE-2022-40538</td>
-       <td>2023-06-13 20:28:26 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:28:26</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f26d0f11b1624294bb149ddfa71f635f">详情</a></td>
       </tr>
@@ -1758,7 +1758,7 @@
       <tr>
        <td>57c32b695ab5fb41e5fc6d58620c0fc5</td>
        <td>CVE-2023-21628</td>
-       <td>2023-06-13 20:28:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:28:18</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2b52dd7dd529450f812623c8b561e7df">详情</a></td>
       </tr>
@@ -1766,7 +1766,7 @@
       <tr>
        <td>c4e1811ef40a07f358062132be11ac6b</td>
        <td>CVE-2023-21632</td>
-       <td>2023-06-13 20:28:10 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:28:10</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=daa63fe2ba414cf6995ff65d27551145">详情</a></td>
       </tr>
@@ -1774,7 +1774,7 @@
       <tr>
        <td>58004c73e4e794620fd7c5447d4feecf</td>
        <td>CVE-2023-21656</td>
-       <td>2023-06-13 20:28:02 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:28:02</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ebe73caa372840c8a1c6f07bbb39c685">详情</a></td>
       </tr>
@@ -1782,7 +1782,7 @@
       <tr>
        <td>de3fb3e73fe686ac8db7e121727e87ab</td>
        <td>CVE-2023-21657</td>
-       <td>2023-06-13 20:27:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:27:55</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=479e3032d2d549d2bb18bf3852050b45">详情</a></td>
       </tr>
@@ -1790,7 +1790,7 @@
       <tr>
        <td>8baea408b97686ff9527a3dba0da8c0f</td>
        <td>CVE-2023-21658</td>
-       <td>2023-06-13 20:27:47 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 20:27:47</td>
        <td>QUALCOMM Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=b7665b8d88654c33977a6e97f134006e">详情</a></td>
       </tr>
@@ -2094,7 +2094,7 @@
       <tr>
        <td>f563166ae38ea59bb0a3f011615f3e99</td>
        <td>CVE-2022-43645</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>D-Link DIR-825操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80197">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>86bdfc7152ae8c81023e796cdf4edac7</td>
        <td>CVE-2022-43639</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Foxit PDF Reader内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80196">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>633e859cca63af039f5d1e39954a00d6</td>
        <td>CVE-2022-43633</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>D-Link DIR-1935操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80195">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>7e342283ce452e9ca041a853a4328219</td>
        <td>CVE-2022-43627</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>D-Link DIR-1935操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80194">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>2e2e8f457d1c7ce8b5fbab95401b76f0</td>
        <td>CVE-2022-43615</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Corel CorelDRAW Graphics Suite越界读取漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80193">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>9c64408ec5a7caadd9caaf7610ab3538</td>
        <td>CVE-2023-1258</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>ABB Flow-X信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80192">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>07c70e7c1c080b628afe8ea93440f373</td>
        <td>CVE-2023-1393</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>X.org Server内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80191">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>5d14ac03d8bbdefcb3cb73edadda4324</td>
        <td>CVE-2023-27536</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>curl身份认证绕过漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80190">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>811746dfdd894b1e2cc0df484190fc9c</td>
        <td>CVE-2023-27489</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Kiwi TCMS跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80189">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>b841e92699931bc101f894f9e528fe50</td>
        <td>CVE-2019-8963</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Flexera FlexNet Publisher lmadmin拒绝服务漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80188">详情</a></td>
       </tr>
@@ -2174,7 +2174,7 @@
       <tr>
        <td>a47986c6cff550d59a85f5fcad98e9fc</td>
        <td>CVE-2023-28502</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Rocket Software UniVerse和UniData堆栈缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80187">详情</a></td>
       </tr>
@@ -2182,7 +2182,7 @@
       <tr>
        <td>8e6bb223ea902f7ad23f837d0c8781b4</td>
        <td>CVE-2023-28508</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Rocket Software UniVerse和UniData堆缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80186">详情</a></td>
       </tr>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>354f93dd562d49f675409645460689dc</td>
        <td>CVE-2023-26117</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Angular拒绝服务漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80185">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>97956669626716f1f6e3bdebd333247f</td>
        <td>CVE-2022-28313</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Bentley Systems MicroStation CONNECT越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80184">详情</a></td>
       </tr>
@@ -2206,7 +2206,7 @@
       <tr>
        <td>d6b18e383f06808392ae926bfdcb78c2</td>
        <td>CVE-2022-28307</td>
-       <td>2023-06-13 03:22:18 <img src="imgs/new.gif" /></td>
+       <td>2023-06-13 03:22:18</td>
        <td>Bentley Systems Bentley View越界读取漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80183">详情</a></td>
       </tr>
@@ -2273,6 +2273,38 @@
        <td>2023-06-08 15:15:09 </td>
        <td>Tenda AC10 v4 US_AC10V4.0si_V16.03.10.13_cn was discovered to contain a stack overflow via parameter list at /goform/SetVirtualServerCfg.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-34567">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66133d4c1e04cada33db1d329ed2d474</td>
+       <td>CVE-2023-33865</td>
+       <td>2023-06-07 20:15:10 </td>
+       <td>RenderDoc through 1.26 allows local privilege escalation via a symlink attack.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33865">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>06825e836bea2fae94321e4d7165be73</td>
+       <td>CVE-2023-33864</td>
+       <td>2023-06-07 20:15:10 </td>
+       <td>RenderDoc through 1.26 allows an Integer Overflow with a resultant Buffer Overflow (issue 2 of 2).</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33864">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ef89f81d1fa7905da04d22045e523bbd</td>
+       <td>CVE-2023-33863</td>
+       <td>2023-06-07 20:15:09 </td>
+       <td>RenderDoc through 1.26 allows an Integer Overflow with a resultant Buffer Overflow (issue 1 of 2).</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33863">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a91a8ef225925ffca66164c30087ed59</td>
+       <td>CVE-2023-33782</td>
+       <td>2023-06-07 01:15:39 </td>
+       <td>D-Link DIR-842V2 v1.0.3 was discovered to contain a command injection vulnerability via the iperf3 diagnostics function.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33782">详情</a></td>
       </tr>
 
       <tr>
@@ -2345,6 +2377,14 @@
        <td>2023-06-05 20:15:09 </td>
        <td>Kanboard is open source project management software that focuses on the Kanban methodology. Versions prior to 1.2.30 are subject to a missing access control vulnerability that allows a user with low privileges to create or transfer tasks to any project within the software, even if they have not been invited or the project is personal. The vulnerable features are `Duplicate to project` and `Move to project`, which both utilize the `checkDestinationProjectValues()` function to check his values. This issue has been addressed in version 1.2.30. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33968">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cbf6b801f3a8a0cd3f19a24f898b6f04</td>
+       <td>CVE-2023-33956</td>
+       <td>2023-06-05 20:15:09 </td>
+       <td>Kanboard is open source project management software that focuses on the Kanban methodology. Versions prior to 1.2.30 are subject to an Insecure direct object reference (IDOR) vulnerability present in the application's URL parameter. This vulnerability enables any user to read files uploaded by any other user, regardless of their privileges or restrictions. By Changing the file_id any user can render all the files where MimeType is image uploaded under **/files** directory regard less of uploaded by any user. This vulnerability poses a significant impact and severity to the application's security. By manipulating the URL parameter, an attacker can access sensitive files that should only be available to authorized users. This includes confidential documents or any other type of file stored within the application. The ability to read these files can lead to various detrimental consequences, such as unauthorized disclosure of sensitive information, privacy breaches, intellectual property theft, or exposure of trade secrets. Additionally, it could result in legal and regulatory implications, reputation damage, financial losses, and potential compromise of user trust. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33956">详情</a></td>
       </tr>
 
       <tr>
@@ -2425,46 +2465,6 @@
        <td>2023-06-03 11:15:20 </td>
        <td>Cross-site Scripting (XSS) - Stored in GitHub repository nilsteampassnet/teampass prior to 3.0.9.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3084">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>34148c4df68bf03255de167a3fc72df8</td>
-       <td>CVE-2023-3083</td>
-       <td>2023-06-03 08:15:08 </td>
-       <td>Cross-site Scripting (XSS) - Stored in GitHub repository nilsteampassnet/teampass prior to 3.0.9.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3083">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>736a9f8558ff484946eef701a2b4df48</td>
-       <td>CVE-2023-33672</td>
-       <td>2023-06-02 20:15:09 </td>
-       <td>Tenda AC8V4.0-V16.03.34.06 was discovered to contain a stack overflow via the shareSpeed parameter in the fromSetWifiGusetBasic function.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33672">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8f24d2fb3d25438061b494842b3f8bcc</td>
-       <td>CVE-2023-33671</td>
-       <td>2023-06-02 20:15:09 </td>
-       <td>Tenda AC8V4.0-V16.03.34.06 was discovered to contain a stack overflow via the deviceId parameter in the saveParentControlInfo function.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33671">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>15f58c71bb0224daa52550c594a50777</td>
-       <td>CVE-2023-33670</td>
-       <td>2023-06-02 20:15:09 </td>
-       <td>Tenda AC8V4.0-V16.03.34.06 was discovered to contain a stack overflow via the time parameter in the sub_4a79ec function.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33670">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>396ad3ad779264abb6091d88a5a2e456</td>
-       <td>CVE-2023-33669</td>
-       <td>2023-06-02 20:15:09 </td>
-       <td>Tenda AC8V4.0-V16.03.34.06 was discovered to contain a stack overflow via the timeZone parameter in the sub_44db3c function.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-33669">详情</a></td>
       </tr>
 
      </tbody>
