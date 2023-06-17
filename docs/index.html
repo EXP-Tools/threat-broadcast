@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-16 22:23:43 -->
+<!-- RELEASE TIME : 2023-06-17 01:47:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>96ad31cb5510fd5fba478bc8490b4b65</td>
+       <td>CVE-2023-34459</td>
+       <td>2023-06-16 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenZeppelin Contracts is a library for smart contract development. Starting in version 4.7.0 and prior to version 4.9.2, when the `verifyMultiProof`, `verifyMultiProofCalldata`, `procesprocessMultiProof`, or `processMultiProofCalldat` functions are in use, it is possible to construct merkle trees that allow forging a valid multiproof for an arbitrary set of leaves.A contract may be vulnerable if it uses multiproofs for verification and the merkle tree that is processed includes a node with value 0 at depth 1 (just under the root). This could happen inadvertedly for balanced trees with 3 leaves or less, if the leaves are not hashed. This could happen deliberately if a malicious tree builder includes such a node in the tree.A contract is not vulnerable if it uses single-leaf proving (`verify`, `verifyCalldata`, `processProof`, or `processProofCalldata`), or if it uses multiproofs with a known tree that has hashed leaves. Standard merkle trees produced or validated with the @openzeppelin/merkle-tree library are safe.The problem has been patched in version 4.9.2.Some workarounds are available. For those using multiproofs: When constructing merkle trees hash the leaves and do not insert empty nodes in your trees. Using the @openzeppelin/merkle-tree package eliminates this issue. Do not accept user-provided merkle roots without reconstructing at least the first level of the tree. Verify the merkle tree structure by reconstructing it from the leaves.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34459">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>320a7a60af697cdc35b612be522cee68</td>
+       <td>CVE-2023-35790</td>
+       <td>2023-06-16 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in dec_patch_dictionary.cc in libjxl before 0.8.2. An integer underflow in patch decoding can lead to a denial of service, such as an infinite loop.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35790">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ded774329d44c1b8d2dd6f08e7bb3d1</td>
+       <td>CVE-2023-35789</td>
+       <td>2023-06-16 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in the C AMQP client library (aka rabbitmq-c) through 0.13.0 for RabbitMQ. Credentials can only be entered on the command line (e.g., for amqp-publish or amqp-consume) and are thus visible to local attackers by listing a process and its arguments.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35789">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>52bd3d52ba076a8e37f530b750cd839d</td>
+       <td>CVE-2023-35788</td>
+       <td>2023-06-16 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in fl_set_geneve_opt in net/sched/cls_flower.c in the Linux kernel before 6.3.7. It allows an out-of-bounds write in the flower classifier code via TCA_FLOWER_KEY_ENC_OPTS_GENEVE packets. This may result in denial of service or privilege escalation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35788">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb29a60feb54edd211129741202a32f8</td>
+       <td>CVE-2023-33438</td>
+       <td>2023-06-16 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A stored Cross-site scripting (XSS) vulnerability in Wolters Kluwer TeamMate+ 35.0.11.0 allows remote attackers to inject arbitrary web script or HTML.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33438">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>937f8885bb5d4fd02f17e90fb8b9bb50</td>
+       <td>CVE-2023-30905</td>
+       <td>2023-06-16 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The MC990 X and UV300 RMC component has and inadequate default configuration that could be exploited to obtain enhanced privilege.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30905">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ab98c6d62c8432289ac11849fd8504a8</td>
+       <td>CVE-2023-30904</td>
+       <td>2023-06-16 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A security vulnerability in HPE Insight Remote Support may result in the local disclosure of privileged LDAP information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30904">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a946afca7f154342814c717e57324c4f</td>
+       <td>CVE-2023-30903</td>
+       <td>2023-06-16 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>HP-UX could be exploited locally to create a Denial of Service (DoS) when any physical interface is configured with IPv6/inet6.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30903">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c654a257a30f494a0d7cd8dc7e58dfa6</td>
+       <td>CVE-2023-35784</td>
+       <td>2023-06-16 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>A double free or use after free could occur after SSL_clear in OpenBSD 7.2 before errata 026 and 7.3 before errata 004, and in LibreSSL before 3.6.3 and 3.7.x before 3.7.3. NOTE: OpenSSL is not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35784">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a44f4828f7dc5ebc98328459cd5a33de</td>
+       <td>CVE-2023-34475</td>
+       <td>2023-06-16 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>A heap use after free issue was discovered in ImageMagick's ReplaceXmpValue() function in MagickCore/profile.c. An attacker could trick user to open a specially crafted file to convert, triggering an heap-use-after-free write error, allowing an application to crash, resulting in a denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34475">详情</a></td>
+      </tr>
+
+      <tr>
        <td>7c4ac5c01e8f07fdbffe6f41e22108d6</td>
        <td>CVE-2023-3268</td>
        <td>2023-06-16 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-06-16 15:15:00 <img src="imgs/new.gif" /></td>
        <td>The ipandlanguageredirect extension before 5.1.2 for TYPO3 allows SQL Injection.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35782">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2267171d786985189bfc9bf9a5b0a229</td>
-       <td>CVE-2023-34548</td>
-       <td>2023-06-16 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Simple Customer Relationship Management 1.0 is vulnerable to SQL Injection via the email parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34548">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8e08939174aa1dd1d58cef1b71ad949b</td>
-       <td>CVE-2023-20885</td>
-       <td>2023-06-16 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Vulnerability in Cloud Foundry Notifications, Cloud Foundry SMB-volume release, Cloud FOundry cf-nfs-volume release.This issue affects Notifications: All versions prior to 63; SMB-volume release: All versions prior to 3.1.19; cf-nfs-volume release: 5.0.X versions prior to 5.0.27, 7.1.X versions prior to 7.1.19.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-20885">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7ce2b75d55a38f3566475cafaea5d110</td>
-       <td>CVE-2022-48473</td>
-       <td>2023-06-16 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is a misinterpretation of input vulnerability in Huawei Printer. Successful exploitation of this vulnerability may cause the printer service to be abnormal.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48473">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee5b1b5c1c17e155790ac2a46848e1f3</td>
-       <td>CVE-2022-48472</td>
-       <td>2023-06-16 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Huawei printer has a system command injection vulnerability. Successful exploitation could lead to remote code execution. Affected product versions include:BiSheng-WNM versions OTA-BiSheng-FW-2.0.0.211-beta,BiSheng-WNM FW 3.0.0.325,BiSheng-WNM FW 2.0.0.211.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48472">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db6fff8826f6367af305706c05481887</td>
-       <td>CVE-2022-48471</td>
-       <td>2023-06-16 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is a misinterpretation of input vulnerability in Huawei Printer. Successful exploitation of this vulnerability may cause the printer service to be abnormal.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48471">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c3eca188fad4ea6334966c9b8bbdbec5</td>
-       <td>CVE-2022-48469</td>
-       <td>2023-06-16 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is a traffic hijacking vulnerability in Huawei routers. Successful exploitation of this vulnerability can cause packets to be hijacked by attackers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48469">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f2de30a46b18e2684ddb2769ddfec919</td>
-       <td>CVE-2022-48330</td>
-       <td>2023-06-16 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Huawei sound box product has an out-of-bounds write vulnerability. Attackers can exploit this vulnerability to cause buffer overflow. Affected product versions include:FLMG-10 versions FLMG-10 10.0.1.0(H100SP22C00).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48330">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f9956a64a9e4b525fbd2c2d76907a08</td>
-       <td>CVE-2023-3294</td>
-       <td>2023-06-16 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-site Scripting (XSS) - DOM in GitHub repository saleor/react-storefront prior to c29aab226f07ca980cc19787dcef101e11b83ef7.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3294">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f6b96a4d0a0980cf2d89f272dd5ef71e</td>
-       <td>CVE-2023-26537</td>
-       <td>2023-06-16 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in nicolly WP No External Links plugin <= 1.0.2 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26537">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>36eacb0acbe587fddabf7ac89caf45e3</td>
-       <td>CVE-2023-26527</td>
-       <td>2023-06-16 12:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in WPIndeed Debug Assistant plugin <= 1.4 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26527">详情</a></td>
       </tr>
 
      </tbody>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>466f80eafa7bb840113eb9558d1cf371</td>
        <td>CVE-2023-0921</td>
-       <td>2023-06-15 20:29:23 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:29:23</td>
        <td>GITLAB GITLAB Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=01be70b19a6d47a289026d7b62cd1fbc">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>1d893021cc2a1fca23a00b1f84422897</td>
        <td>CVE-2023-33613</td>
-       <td>2023-06-15 20:29:09 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:29:09</td>
        <td>AXTLS_PROJECT AXTLS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=14ca3f53bd5e4099944df2d584afdd54">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>abfc3135c652836e9a901e33b5644da1</td>
        <td>CVE-2023-33956</td>
-       <td>2023-06-15 20:29:01 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:29:01</td>
        <td>KANBOARD KANBOARD Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2f8250c91db9477aac7fc05c61f65a4f">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>ae529fff383ae3def4a1b56fdab8b0b8</td>
        <td>CVE-2020-36703</td>
-       <td>2023-06-15 20:28:54 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:28:54</td>
        <td>ELEMENTOR WEBSITE_BUILDER Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=f511a1e12e194e2b9d17c0e826c1e38e">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>2eaf4678c399ee3839bc6e10d46ea83d</td>
        <td>CVE-2023-33968</td>
-       <td>2023-06-15 20:28:47 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:28:47</td>
        <td>KANBOARD KANBOARD Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=fbcb4fb56116449793acb5f8122f97ab">详情</a></td>
       </tr>
@@ -1838,7 +1838,7 @@
       <tr>
        <td>711b84978df464e8752e0cc532df90f7</td>
        <td>CVE-2023-33970</td>
-       <td>2023-06-15 20:28:40 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:28:40</td>
        <td>KANBOARD KANBOARD Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=bc3f2c4cea7f4901aa03bcb785c6bfbb">详情</a></td>
       </tr>
@@ -1846,7 +1846,7 @@
       <tr>
        <td>45a601ed16f0a7013fd5cb3ecbdbd58d</td>
        <td>CVE-2023-33969</td>
-       <td>2023-06-15 20:28:33 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:28:33</td>
        <td>KANBOARD KANBOARD Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=eba41138cad94c0385d7c10c3b336d3d">详情</a></td>
       </tr>
@@ -1854,7 +1854,7 @@
       <tr>
        <td>e9aef0b161ef506dc80c224377b233e2</td>
        <td>CVE-2023-22450</td>
-       <td>2023-06-15 20:28:25 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 20:28:25</td>
        <td>ADVANTECH WEBACCESS\/SCADA Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=baf9a529afa64e8ab91d96e4abcb950e">详情</a></td>
       </tr>
@@ -2094,7 +2094,7 @@
       <tr>
        <td>571279520d2c51cd4d0b0fe46ee0ccac</td>
        <td>CVE-2023-29802</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>TOTOLINK X18命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80302">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>9332a938444c3b703c289cc13abf90c5</td>
        <td>CVE-2023-26559</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>Syncro Soft Oxygen XML Web Author和Oxygen Content Fusion目录遍历漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80301">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>93713541d94817f6a688cd172c3de4b5</td>
        <td>CVE-2023-27193</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>DUALSPACE权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80300">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>19ca8187e1e8c5d8ac63f7397d2a4039</td>
        <td>CVE-2023-26123</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>raylib跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80299">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>dcc57dc4744279c8e251ece27805b478</td>
        <td>CVE-2023-1326</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>Canonical Apport权限管理错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80298">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>fb059dc4449c91771112b81aeaacb9e6</td>
        <td>CVE-2023-26411</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>Adobe Substance 3D Designer越界读取漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80297">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>db17f8f4d56bb25a6f9d4ab910418201</td>
        <td>CVE-2023-20866</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>Spring Session信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80296">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>d77365c5e2f58b8bbd0ca4590b9c903a</td>
        <td>CVE-2022-45064</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>Apache Sling Engine跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80295">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>afcac9fc5bbd6041e5a407fd95fa9d01</td>
        <td>CVE-2023-26394</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>Adobe Substance 3D Stager堆缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80294">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>5ebad1b6e40abf5d78d1463a35dd5629</td>
        <td>CVE-2023-1992</td>
-       <td>2023-06-15 07:19:55 <img src="imgs/new.gif" /></td>
+       <td>2023-06-15 07:19:55</td>
        <td>Wireshark不受控制的资源消耗漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/80293">详情</a></td>
       </tr>
