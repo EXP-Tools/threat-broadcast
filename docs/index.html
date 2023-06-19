@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-19 20:21:49 -->
+<!-- RELEASE TIME : 2023-06-19 22:24:40 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9fd055a2680db7a018fa12492d72625e</td>
+       <td>CVE-2023-35843</td>
+       <td>2023-06-19 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>NocoDB through 0.106.0 (or 0.109.1) has a path traversal vulnerability that allows an unauthenticated attacker to access arbitrary files on the server by manipulating the path parameter of the /download route. This vulnerability could allow an attacker to access sensitive files and data on the server, including configuration files, source code, and other sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35843">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9439fc77b4a24743bc141b1a561d3b39</td>
+       <td>CVE-2023-34461</td>
+       <td>2023-06-19 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>PyBB is an open source bulletin board. A manual code review of the PyBB bulletin board server has revealed that a vulnerability could have been exploited in which users could submit any type of HTML tag, and have said tag run. For example, a malicious `<a>` that looks like ```<a href=javascript:alert (1)>xss</a>``` could have been used to run code through JavaScript on the client side. The problem has been patched as of commit `5defd92`, and users are advised to upgrade. Attackers do need posting privilege in order to exploit this vulnerability. This vulnerability is present within the 0.1.0 release, and users are advised to upgrade to 0.1.1. Users unable to upgrade may be able to work around the attack by either; Removing the ability to create posts, removing the `|safe` tag from the Jinja2 template titled "post.html" in templates or by adding manual validation of links in the post creation section.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34461">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ecdd8af288ef983f708ef4cc99ccd157</td>
+       <td>CVE-2023-3312</td>
+       <td>2023-06-19 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in drivers/cpufreq/qcom-cpufreq-hw.c in cpufreq subsystem in the Linux Kernel. This flaw, during device unbind will lead to double release problem leading to denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3312">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c3725a35f2bace0caee93ad4d7228c38</td>
+       <td>CVE-2023-3022</td>
+       <td>2023-06-19 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in the IPv6 module of the Linux kernel. The arg.result was not used consistently in fib6_rule_lookup, sometimes holding rt6_info and other times fib6_info. This was not accounted for in other parts of the code where rt6_info was expected unconditionally, potentially leading to a kernel panic in fib6_rule_suppress.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3022">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c8b1f96212e2ed9f031fe11654bf2d55</td>
        <td>CVE-2023-34167</td>
        <td>2023-06-19 17:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2023-06-19 11:15:00 <img src="imgs/new.gif" /></td>
        <td>Memory safety bugs present in Firefox 113. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 114.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34417">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>672878ac7f1ba6cd276034aca48f3fd1</td>
-       <td>CVE-2023-34416</td>
-       <td>2023-06-19 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Memory safety bugs present in Firefox 113, Firefox ESR 102.11, and Thunderbird 102.12. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox ESR < 102.12, Firefox < 114, and Thunderbird < 102.12.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34416">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>470544ba74afed28434ca91157388bdc</td>
-       <td>CVE-2023-34415</td>
-       <td>2023-06-19 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>When choosing a site-isolated process for a document loaded from a data: URL that was the result of a redirect, Firefox would load that document in the same process as the site that issued the redirect. This bypassed the site-isolation protections against Spectre-like attacks on sites that host an "open redirect". Firefox no longer follows HTTP redirects to data: URLs. This vulnerability affects Firefox < 114.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34415">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1eb0d37565864ab06c184a04a343356b</td>
-       <td>CVE-2023-34414</td>
-       <td>2023-06-19 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>The error page for sites with invalid TLS certificates was missing theactivation-delay Firefox uses to protect prompts and permission dialogsfrom attacks that exploit human response time delays. If a maliciouspage elicited user clicks in precise locations immediately beforenavigating to a site with a certificate error and made the rendererextremely busy at the same time, it could create a gap between whenthe error page was loaded and when the display actually refreshed.With the right timing the elicited clicks could land in that gap and activate the button that overrides the certificate error for that site. This vulnerability affects Firefox ESR < 102.12, Firefox < 114, and Thunderbird < 102.12.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34414">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ba5a2d85d4388626a792286bccaae01</td>
-       <td>CVE-2023-29546</td>
-       <td>2023-06-19 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>When recording the screen while in Private Browsing on Firefox for Android the address bar and keyboard were not hidden, potentially leaking sensitive information. *This bug only affects Firefox for Android. Other operating systems are unaffected.* This vulnerability affects Firefox for Android < 112 and Focus for Android < 112.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29546">详情</a></td>
       </tr>
 
      </tbody>
