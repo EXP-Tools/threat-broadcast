@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-21 16:31:00 -->
+<!-- RELEASE TIME : 2023-06-21 19:16:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6ad75056687378532a22b7a8bbea2ab8</td>
+       <td>CVE-2023-2911</td>
+       <td>2023-06-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>If the `recursive-clients` quota is reached on a BIND 9 resolver configured with both `stale-answer-enable yes;` and `stale-answer-client-timeout 0;`, a sequence of serve-stale-related lookups could cause `named` to loop and terminate unexpectedly due to a stack overflow.This issue affects BIND 9 versions 9.16.33 through 9.16.41, 9.18.7 through 9.18.15, 9.16.33-S1 through 9.16.41-S1, and 9.18.11-S1 through 9.18.15-S1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2911">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0391a12ad134346efed7c45af2540947</td>
+       <td>CVE-2023-2829</td>
+       <td>2023-06-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>A `named` instance configured to run as a DNSSEC-validating recursive resolver with the Aggressive Use of DNSSEC-Validated Cache (RFC 8198) option (`synth-from-dnssec`) enabled can be remotely terminated using a zone with a malformed NSEC record.This issue affects BIND 9 versions 9.16.8-S1 through 9.16.41-S1 and 9.18.11-S1 through 9.18.15-S1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2829">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a043a88c4e6c76f7524e1a6430b9d518</td>
+       <td>CVE-2023-2828</td>
+       <td>2023-06-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Every `named` instance configured to run as a recursive resolver maintains a cache database holding the responses to the queries it has recently sent to authoritative servers. The size limit for that cache database can be configured using the `max-cache-size` statement in the configuration file; it defaults to 90% of the total amount of memory available on the host. When the size of the cache reaches 7/8 of the configured limit, a cache-cleaning algorithm starts to remove expired and/or least-recently used RRsets from the cache, to keep memory use below the configured limit.It has been discovered that the effectiveness of the cache-cleaning algorithm used in `named` can be severely diminished by querying the resolver for specific RRsets in a certain order, effectively allowing the configured `max-cache-size` limit to be significantly exceeded.This issue affects BIND 9 versions 9.11.0 through 9.16.41, 9.18.0 through 9.18.15, 9.19.0 through 9.19.13, 9.11.3-S1 through 9.16.41-S1, and 9.18.11-S1 through 9.18.15-S1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2828">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0d73b9005657a11cb40295d6b22f881a</td>
+       <td>CVE-2023-0026</td>
+       <td>2023-06-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An Improper Input Validation vulnerability in the Routing Protocol Daemon (rpd) of Juniper Networks Junos OS and Junos OS Evolved allows an unauthenticated, network-based attacker to cause a Denial of Service (DoS). When a BGP update message is received over an established BGP session, and that message contains a specific, optional transitive attribute, this session will be torn down with an update message error. This issue cannot propagate beyond an affected system as the processing error occurs as soon as the update is received. This issue is exploitable remotely as the respective attribute can propagate through unaffected systems and intermediate AS (if any). Continuous receipt of a BGP update containing this attribute will create a sustained Denial of Service (DoS) condition. Some customers have experienced these BGP session flaps which prompted Juniper SIRT to release this advisory out of cycle before fixed releases are widely available as there is an effective workaround. This issue affects: Juniper Networks Junos OS 15.1R1 and later versions prior to 20.4R3-S8; 21.1 version 21.1R1 and later versions prior to 21.2R3-S6; 21.3 versions prior to 21.3R3-S5; 21.4 versions prior to 21.4R3-S4; 22.1 versions prior to 22.1R3-S4; 22.2 versions prior to 22.2R3-S2; 22.3 versions prior to 22.2R3-S2; 22.4 versions prior to 22.4R2-S1, 22.4R3; 23.1 versions prior to 23.1R1-S1, 23.1R2. Juniper Networks Junos OS Evolved All versions prior to 20.4R3-S8-EVO; 21.1 version 21.1R1-EVO and later versions prior to 21.2R3-S6-EVO; 21.3 versions prior to 21.3R3-S5-EVO; 21.4 versions prior to 21.4R3-S4-EVO; 22.1 versions prior to 22.1R3-S4-EVO; 22.2 versions prior to 22.2R3-S2-EVO; 22.3 versions prior to 22.3R2-S2-EVO, 22.3R3-S1-EVO; 22.4 versions prior to 22.4R2-S1-EVO, 22.4R3-EVO; 23.1 versions prior to 23.1R1-S1-EVO, 23.1R2-EVO.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0026">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5f17f73a952410677913c7fc4e7dd72</td>
+       <td>CVE-2023-33725</td>
+       <td>2023-06-21 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Broadleaf 5.x and 6.x (including 5.2.25-GA and 6.2.6-GA) was discovered to contain a cross-site scripting (XSS) vulnerability via a customer signup with a crafted email address. This is fixed in 6.2.6.1-GA.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33725">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4f639647b62c7488bb1d2f0fb1dd3a10</td>
+       <td>CVE-2023-27243</td>
+       <td>2023-06-21 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>An access control issue in Makves DCAP v3.0.0.122 allows unauthenticated attackers to obtain cleartext credentials via a crafted web request to the product API.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27243">详情</a></td>
+      </tr>
+
+      <tr>
        <td>14392f5674564500e7762282b4472886</td>
        <td>CVE-2023-27432</td>
        <td>2023-06-21 14:15:00 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2023-06-20 15:15:00 <img src="imgs/new.gif" /></td>
        <td>Langchain 0.0.171 is vulnerable to Arbitrary code execution in load_prompt.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34541">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8166f9fb50c870d6b54d22e17999249e</td>
-       <td>CVE-2023-2533</td>
-       <td>2023-06-20 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Cross-Site Request Forgery (CSRF) vulnerability has been identified inPaperCut NG/MF, which, under specific conditions, could potentially enablean attacker to alter security settings or execute arbitrary code. This couldbe exploited if the target is an admin with a current login session. Exploitingthis would typically involve the possibility of deceiving an admin into clickinga specially crafted malicious link, potentially leading to unauthorized changes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2533">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>766eadd02f0dfd66190e2c80d2e4ade4</td>
-       <td>CVE-2020-21489</td>
-       <td>2023-06-20 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>File Upload vulnerability in Feehicms v.2.0.8 allows a remote attacker to execute arbitrary code via the /admin/index.php?r=admin-user%2Fupdate-self component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-21489">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b08a2d4c858434db10037c37a4dce95</td>
-       <td>CVE-2020-21486</td>
-       <td>2023-06-20 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL injection vulnerability in PHPOK v.5.4. allows a remote attacker to obtain sensitive information via the _userlist function in framerwork/phpok_call.php file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-21486">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bc30441c43185c1a069556ccf255a08a</td>
-       <td>CVE-2020-21485</td>
-       <td>2023-06-20 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross Site Scripting vulnerability in Alluxio v.1.8.1 allows a remote attacker to executea arbitrary code via the path parameter in the browse board component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-21485">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>270737beabc7e2b48dff2e9bdf180574</td>
-       <td>CVE-2020-21474</td>
-       <td>2023-06-20 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>File Upload vulnerability in NucleusCMS v.3.71 allows a remote attacker to execute arbitrary code via the /nucleus/plugins/skinfiles/?dir=rsd parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-21474">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76f07e5573fa5457416d84385abeac0e</td>
-       <td>CVE-2020-21400</td>
-       <td>2023-06-20 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>SQL injection vulnerability in gaozhifeng PHPMyWind v.5.6 allows a remote attacker to execute arbitrary code via the id variable in the modify function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-21400">详情</a></td>
       </tr>
 
      </tbody>
