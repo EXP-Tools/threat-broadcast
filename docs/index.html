@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-29 22:26:11 -->
+<!-- RELEASE TIME : 2023-06-29 23:23:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d70a0d0be5b5f94c511b4ab6cc7c2c62</td>
+       <td>CVE-2023-36607</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>The affected TBox RTUs are missing authorization for running some API commands. An attacker running these commands could reveal sensitive information such as software versions and web server file contents.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36607">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b2e5e263171d8bc4989fe9b10beccd87</td>
+       <td>CVE-2023-36470</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. By either creating a new or editing an existing document with an icon set, an attacker can inject XWiki syntax and Velocity code that is executed with programming rights and thus allows remote code execution. There are different attack vectors, the simplest is the Velocity code in the icon set's HTML or XWiki syntax definition. The [icon picker](https://extensions.xwiki.org/xwiki/bin/view/Extension/Icon%20Theme%20Application#HIconPicker) can be used to trigger the rendering of any icon set. The XWiki syntax variant of the icon set is also used without any escaping in some documents, allowing to inject XWiki syntax including script macros into a document that might have programming right, for this the currently used icon theme needs to be edited. Further, the HTML output of the icon set is output as JSON in the icon picker and this JSON is interpreted as XWiki syntax, allowing again the injection of script macros into a document with programming right and thus allowing remote code execution. This impacts the confidentiality, integrity and availability of the whole XWiki instance. This issue has been patched in XWiki 14.10.6 and 15.1. Icon themes now require script right and the code in the icon theme is executed within the context of the icon theme, preventing any rights escalation. A macro for displaying icons has been introduced to avoid injecting the raw wiki syntax of an icon set into another document. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36470">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b93ba69b248ce23a5a0f4d3ab3f6cace</td>
+       <td>CVE-2023-36469</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. Any user who can edit their own user profile and notification settings can execute arbitrary script macros including Groovy and Python macros that allow remote code execution including unrestricted read and write access to all wiki contents. This has been patched in XWiki 14.10.6 and 15.2RC1. Users are advised to update. As a workaround the main security fix can be manually applied by patching the affected document `XWiki.Notifications.Code.NotificationRSSService`. This will break the link to the differences, though as this requires additional changes to Velocity templates as shown in the patch. While the default template is available in the instance and can be easily patched, the template for mentions is contained in a `.jar`-file and thus cannot be fixed without replacing that jar.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36469">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2bd0474821eaa2d01a85f996baca2103</td>
+       <td>CVE-2023-36468</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. When an XWiki installation is upgraded and that upgrade contains a fix for a bug in a document, just a new version of that document is added. In some cases, it's still possible to exploit the vulnerability that was fixed in the new version. The severity of this depends on the fixed vulnerability, for the purpose of this advisory take CVE-2022-36100/GHSA-2g5c-228j-p52x as example - it is easily exploitable with just view rights and critical. When XWiki is upgraded from a version before the fix for it (e.g., 14.3) to a version including the fix (e.g., 14.4), the vulnerability can still be reproduced by adding `rev=1.1` to the URL used in the reproduction steps so remote code execution is possible even after upgrading. Therefore, this affects the confidentiality, integrity and availability of the whole XWiki installation. This vulnerability also affects manually added script macros that contained security vulnerabilities that were later fixed by changing the script macro without deleting the versions with the security vulnerability from the history. This vulnerability doesn't affect freshly installed versions of XWiki. Further, this vulnerability doesn't affect content that is only loaded from the current version of a document like the code of wiki macros or UI extensions. This vulnerability has been patched in XWiki 14.10.7 and 15.2RC1 by forcing old revisions to be executed in a restricted mode that disables all script macros. As a workaround, admins can manually delete old revisions of affected documents. A script could be used to identify all installed documents and delete the history for them. However, also manually added and later corrected code may be affected by this vulnerability so it is easy to miss documents.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36468">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d8518fa4acf67d71561a25aa68f5abcd</td>
+       <td>CVE-2023-3465</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in SimplePHPscripts Classified Ads Script 1.8. It has been declared as problematic. Affected by this vulnerability is an unknown functionality of the file user.php of the component HTTP POST Request Handler. The manipulation of the argument title leads to cross site scripting. The attack can be launched remotely. It is recommended to upgrade the affected component. The associated identifier of this vulnerability is VDB-232711.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3465">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>56d8cfad4334e23005bfbaed83aa4a4c</td>
+       <td>CVE-2023-3464</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in SimplePHPscripts Classified Ads Script 1.8. It has been classified as problematic. Affected is an unknown function of the file /preview.php of the component URL Parameter Handler. The manipulation of the argument p leads to cross site scripting. It is possible to launch the attack remotely. It is recommended to upgrade the affected component. VDB-232710 is the identifier assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3464">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cc31848fa49b47a9e06d6de3d40fafe3</td>
+       <td>CVE-2020-26710</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>easy-parse v0.1.1 was discovered to contain a XML External Entity Injection (XXE) vulnerability which allows attackers to execute arbitrary code via a crafted XML file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-26710">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c92253b28dad77af6309693d5ad52b37</td>
+       <td>CVE-2020-26709</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>py-xml v1.0 was discovered to contain an XML External Entity Injection (XXE) vulnerability which allows attackers to execute arbitrary code via a crafted XML file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-26709">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>657c75b21e4cf24bfaef7885d037c2eb</td>
+       <td>CVE-2020-26708</td>
+       <td>2023-06-29 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>requests-xml v0.2.3 was discovered to contain an XML External Entity Injection (XXE) vulnerability which allows attackers to execute arbitrary code via a crafted XML file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-26708">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>25d59fd9769473491ecc4bfb5c3062d3</td>
+       <td>CVE-2023-36471</td>
+       <td>2023-06-29 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Xwiki commons is the common modules used by other XWiki top level projects. The HTML sanitizer that is included in XWiki since version 14.6RC1 allowed form and input HTML tags. In the context of XWiki, this allows an attacker without script right to either create forms that can be used for phishing attacks or also in the context of a sheet, the attacker could add an input like `{{html}}<input type="hidden" name="content" value="{{groovy}}println(&quot;Hello from Groovy!&quot;)" />{{/html}}` that would allow remote code execution when it is submitted by an admin (the sheet is rendered as part of the edit form). The attacker would need to ensure that the edit form looks plausible, though, which can be non-trivial as without script right the attacker cannot display the regular content of the document. This has been patched in XWiki 14.10.6 and 15.2RC1 by removing the central form-related tags from the list of allowed tags. Users are advised to upgrade. As a workaround an admin can manually disallow the tags by adding `form, input, select, textarea, button` to the configuration option `xml.htmlElementSanitizer.forbidTags` in the `xwiki.properties` configuration file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36471">详情</a></td>
+      </tr>
+
+      <tr>
        <td>aaa7555a0b480dd1a89f6086e36e4c27</td>
        <td>CVE-2023-36484</td>
        <td>2023-06-29 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-06-29 15:15:00 <img src="imgs/new.gif" /></td>
        <td>Gibbon v25.0.0 is vulnerable to a Local File Inclusion (LFI) where it's possible to include the content of several files present in the installation folder in the server's response.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34598">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>46872654614d49edc7de51159518dc76</td>
-       <td>CVE-2023-33466</td>
-       <td>2023-06-29 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Orthanc before 1.12.0 allows authenticated users with access to the Orthanc API to overwrite arbitrary files on the file system, and in specific deployment scenarios allows the attacker to overwrite the configuration, which can be exploited to trigger Remote Code Execution (RCE).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33466">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5dad11664e301606ee7f2441490450d4</td>
-       <td>CVE-2015-1313</td>
-       <td>2023-06-29 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>JetBrains TeamCity 8 and 9 before 9.0.2 allows bypass of account-creation restrictions via a crafted request because the required request data can be deduced by reading HTML and JavaScript files that are returned to the web browser after an initial unauthenticated request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2015-1313">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4f189fa9d55503db3882ac9a7f4dc8f4</td>
-       <td>CVE-2023-34735</td>
-       <td>2023-06-29 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>Property Cloud Platform Management Center 1.0 is vulnerable to error-based SQL injection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34735">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8100839fa44b20c1352c2acf84438e8a</td>
-       <td>CVE-2023-3458</td>
-       <td>2023-06-29 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Shopping Website 1.0. It has been declared as critical. Affected by this vulnerability is an unknown functionality of the file forgot-password.php. The manipulation of the argument contact leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-232675.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3458">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55a7a39c88cf22d6148f9821c1bb0f39</td>
-       <td>CVE-2023-3457</td>
-       <td>2023-06-29 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in SourceCodester Shopping Website 1.0. It has been classified as critical. Affected is an unknown function of the file index.php. The manipulation of the argument username leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-232674 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3457">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e44f45e6b1f7e04d411c7201ab09eeb0</td>
-       <td>CVE-2023-36617</td>
-       <td>2023-06-29 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>A ReDoS issue was discovered in the URI component before 0.12.2 for Ruby. The URI parser mishandles invalid URLs that have specific characters. There is an increase in execution time for parsing strings to URI objects with rfc2396_parser.rb and rfc3986_parser.rb. NOTE: this issue exists becuse of an incomplete fix for CVE-2023-28755. Version 0.10.3 is also a fixed version.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36617">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9db7cadc3016e835bd32654114fcc191</td>
-       <td>CVE-2023-22886</td>
-       <td>2023-06-29 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Input Validation vulnerability in Apache Software Foundation Apache Airflow JDBC Provider.Airflow JDBC Provider Connection’s [Connection URL] parameters had norestrictions, which made it possible to implement RCE attacks viadifferent type JDBC drivers, obtain airflow server permission.This issue affects Apache Airflow JDBC Provider: before 4.0.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22886">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5076c1cd978537584a70423ea7f9c9e9</td>
-       <td>CVE-2023-3447</td>
-       <td>2023-06-29 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Active Directory Integration / LDAP Integration plugin for WordPress is vulnerable to LDAP Injection in versions up to, and including, 4.1.5. This is due to insufficient escaping on the supplied username value. This makes it possible for unauthenticated attackers to extract potentially sensitive information from the LDAP directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3447">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e801695bfb2475bd3e0626a386083322</td>
-       <td>CVE-2022-23264</td>
-       <td>2023-06-29 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Microsoft Edge (Chromium-based) Spoofing Vulnerability</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23264">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c4e0c425f3b7993a3a259b63e6863fb4</td>
-       <td>CVE-2023-34834</td>
-       <td>2023-06-29 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>A Directory Browsing vulnerability in MCL-Net version 4.3.5.8788 webserver running on default port 5080, allows attackers to gain sensitive information about the configured databases via the "/file" endpoint.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34834">详情</a></td>
       </tr>
 
      </tbody>
