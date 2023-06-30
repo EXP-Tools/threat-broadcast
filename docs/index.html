@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-06-30 22:27:18 -->
+<!-- RELEASE TIME : 2023-06-30 23:23:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4125d347743a89da7bd47fc0a415d959</td>
+       <td>CVE-2023-35947</td>
+       <td>2023-06-30 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Gradle is a build tool with a focus on build automation and support for multi-language development. In affected versions when unpacking Tar archives, Gradle did not check that files could be written outside of the unpack location. This could lead to important files being overwritten anywhere the Gradle process has write permissions. For a build reading Tar entries from a Tar archive, this issue could allow Gradle to disclose information from sensitive files through an arbitrary file read. To exploit this behavior, an attacker needs to either control the source of an archive already used by the build or modify the build to interact with a malicious archive. It is unlikely that this would go unnoticed. A fix has been released in Gradle 7.6.2 and 8.2 to protect against this vulnerability. Starting from these versions, Gradle will refuse to handle Tar archives which contain path traversal elements in a Tar entry name. Users are advised to upgrade. There are no known workarounds for this vulnerability.### ImpactThis is a path traversal vulnerability when Gradle deals with Tar archives, often referenced as TarSlip, a variant of ZipSlip.* When unpacking Tar archives, Gradle did not check that files could be written outside of the unpack location. This could lead to important files being overwritten anywhere the Gradle process has write permissions.* For a build reading Tar entries from a Tar archive, this issue could allow Gradle to disclose information from sensitive files through an arbitrary file read.To exploit this behavior, an attacker needs to either control the source of an archive already used by the build or modify the build to interact with a malicious archive. It is unlikely that this would go unnoticed.Gradle uses Tar archives for its [Build Cache](https://docs.gradle.org/current/userguide/build_cache.html). These archives are safe when created by Gradle. But if an attacker had control of a remote build cache server, they could inject malicious build cache entries that leverage this vulnerability. This attack vector could also be exploited if a man-in-the-middle can be performed between the remote cache and the build.### PatchesA fix has been released in Gradle 7.6.2 and 8.2 to protect against this vulnerability. Starting from these versions, Gradle will refuse to handle Tar archives which contain path traversal elements in a Tar entry name.It is recommended that users upgrade to a patched version.### WorkaroundsThere is no workaround.* If your build deals with Tar archives that you do not fully trust, you need to inspect them to confirm they do not attempt to leverage this vulnerability.* If you use the Gradle remote build cache, make sure only trusted parties have write access to it and that connections to the remote cache are properly secured.### References* [CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')](https://cwe.mitre.org/data/definitions/22.html)* [Gradle Build Cache](https://docs.gradle.org/current/userguide/build_cache.html)* [ZipSlip](https://security.snyk.io/research/zip-slip-vulnerability)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35947">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9ab153417a6d7f6efe90242c8bd97eb1</td>
+       <td>CVE-2023-35946</td>
+       <td>2023-06-30 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Gradle is a build tool with a focus on build automation and support for multi-language development. When Gradle writes a dependency into its dependency cache, it uses the dependency's coordinates to compute a file location. With specially crafted dependency coordinates, Gradle can be made to write files into an unintended location. The file may be written outside the dependency cache or over another file in the dependency cache. This vulnerability could be used to poison the dependency cache or overwrite important files elsewhere on the filesystem where the Gradle process has write permissions. Exploiting this vulnerability requires an attacker to have control over a dependency repository used by the Gradle build or have the ability to modify the build's configuration. It is unlikely that this would go unnoticed. A fix has been released in Gradle 7.6.2 and 8.2 to protect against this vulnerability. Gradle will refuse to cache dependencies that have path traversal elements in their dependency coordinates. It is recommended that users upgrade to a patched version. If you are unable to upgrade to Gradle 7.6.2 or 8.2, `dependency verification` will make this vulnerability more difficult to exploit.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>59c0aefafb6513d1e79d0c1e4c0f85de</td>
+       <td>CVE-2023-29147</td>
+       <td>2023-06-30 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>In Malwarebytes EDR 1.0.11 for Linux, it is possible to bypass the detection layers that depend on inode identifiers, because an identifier may be reused when a file is replaced, and because two files on different filesystems can have the same identifier.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29147">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>088e8869f6417134bea138e3300a9624</td>
+       <td>CVE-2023-31543</td>
+       <td>2023-06-30 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>A dependency confusion in pipreqs v0.3.0 to v0.4.11 allows attackers to execute arbitrary code via uploading a crafted PyPI package to the chosen repository server.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31543">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>310894595bbba2c9b8bc31f9ae6e8535</td>
+       <td>CVE-2023-29145</td>
+       <td>2023-06-30 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>The Malwarebytes EDR 1.0.11 for Linux driver doesn't properly ensure whitelisting of executable libraries loaded by executable files, allowing arbitrary code execution. The attacker can set LD_LIBRARY_PATH, set LD_PRELOAD, or run an executable file in a debugger.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29145">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>37b2bb9559f4e99000f7d03fedbca790</td>
+       <td>CVE-2023-27469</td>
+       <td>2023-06-30 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>Malwarebytes Anti-Exploit 4.4.0.220 is vulnerable to arbitrary file deletion and denial of service via an ALPC message in which FullFileNamePath lacks a '\0' character.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27469">详情</a></td>
+      </tr>
+
+      <tr>
        <td>15b91a7b54ffbddf30c74bb6975359bc</td>
        <td>CVE-2023-37365</td>
        <td>2023-06-30 19:15:00 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2023-06-30 07:15:00 <img src="imgs/new.gif" /></td>
        <td>A vulnerability was found in SimplePHPscripts Event Script 2.1 and classified as problematic. Affected by this issue is some unknown functionality of the file preview.php of the component URL Parameter Handler. The manipulation leads to cross site scripting. The attack may be launched remotely. It is recommended to upgrade the affected component. VDB-232754 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3475">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>949917110106c1de638b0242bb4900fa</td>
-       <td>CVE-2023-3474</td>
-       <td>2023-06-30 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in SimplePHPscripts Simple Blog 3.2 and classified as problematic. Affected by this vulnerability is an unknown functionality of the file preview.php of the component URL Parameter Handler. The manipulation leads to cross site scripting. The attack can be launched remotely. It is recommended to upgrade the affected component. The identifier VDB-232753 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3474">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0ab6ae475579ef4b5d55780a1d522f14</td>
-       <td>CVE-2023-3473</td>
-       <td>2023-06-30 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, was found in Campcodes Retro Cellphone Online Store 1.0. Affected is an unknown function of the file /admin/edit_product.php. The manipulation of the argument username leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-232752.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3473">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e20227b3e9c40e6d6dd6f277f1a825f5</td>
-       <td>CVE-2023-28387</td>
-       <td>2023-06-30 07:15:00 <img src="imgs/new.gif" /></td>
-       <td>"NewsPicks" App for Android versions 10.4.5 and earlier and "NewsPicks" App for iOS versions 10.4.2 and earlier use hard-coded credentials, which may allow a local attacker to analyze data in the app and to obtain API key for an external service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28387">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d1be3d3f41e5977546c8f7c2781aee8f</td>
-       <td>CVE-2023-32622</td>
-       <td>2023-06-30 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper neutralization of special elements in WL-WN531AX2 firmware versions prior to 2023526 allows an attacker with an administrative privilege to execute OS commands with the root privilege.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32622">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cafb549c90d2da9016a37e21d859f7d3</td>
-       <td>CVE-2023-32621</td>
-       <td>2023-06-30 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>WL-WN531AX2 firmware versions prior to 2023526 allows an attacker with an administrative privilege to upload arbitrary files and execute OS commands with the root privilege.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32621">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>006dcf09b0ed117881b465c57b754f6d</td>
-       <td>CVE-2023-32620</td>
-       <td>2023-06-30 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper authentication vulnerability in WL-WN531AX2 firmware versions prior to 2023526 allows a network-adjacent attacker to obtain a password for the wireless network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32620">详情</a></td>
       </tr>
 
      </tbody>
