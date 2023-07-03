@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-03 18:33:11 -->
+<!-- RELEASE TIME : 2023-07-03 19:22:16 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c1aac24018506fde434617efb9d47fc3</td>
+       <td>CVE-2023-36816</td>
+       <td>2023-07-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>2FA is a Web app to manage Two-Factor Authentication (2FA) accounts and generate their security codes. Cross site scripting (XSS) injection can be done via the account/service field. This was tested in docker-compose environment. This vulnerability has been patched in version 4.0.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36816">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3cfdc88a5a8e5acd7ce03f41affa0e90</td>
+       <td>CVE-2023-36814</td>
+       <td>2023-07-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Products.CMFCore are the key framework services for the Zope Content Management Framework (CMF). The use of Python's marshal module to handle unchecked input in a public method on `PortalFolder` objects can lead to an unauthenticated denial of service and crash situation. The code in question is exposed by all portal software built on top of `Products.CMFCore`, such as Plone. All deployments are vulnerable. The code has been fixed in `Products.CMFCore` version 3.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36814">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d8b229a9def7686cfeae2644274a1aeb</td>
+       <td>CVE-2023-35935</td>
+       <td>2023-07-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>@fastify/oauth2, a wrapper around the `simple-oauth2` library, is vulnerable to cross site request forgery (CSRF) prior to version 7.2.0.. All versions of @fastify/oauth2 used a statically generated `state` parameter at startup time and were used across all requests for all users. The purpose of the Oauth2 `state` parameter is to prevent CSRF attacks. As such, it should be unique per user and should be connected to the user's session in some way that will allow the server to validate it. Version 7.2.0 changes the default behavior to store the `state` in a cookie with the `http-only` and `same-site=lax` attributes set. The state is now by default generated for every user. Note that this contains a breaking change in the `checkStateFunction` function, which now accepts the full `Request` object. There are no known workarounds for the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35935">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>147a62eb7256d24caf1f30c47d0dad96</td>
+       <td>CVE-2023-3497</td>
+       <td>2023-07-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Out of bounds read in Google Security Processor firmware in Google Chrome on Chrome OS prior to 114.0.5735.90 allowed a local attacker to perform denial of service via physical access to the device. (Chromium security severity: Medium)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3497">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>23dd21e0dd713aa0c6c641a49c5ec102</td>
+       <td>CVE-2023-34451</td>
+       <td>2023-07-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>CometBFT is a Byzantine Fault Tolerant (BFT) middleware that takes a state transition machine and replicates it on many machines. The mempool maintains two data structures to keep track of outstanding transactions: a list and a map.These two data structures are supposed to be in sync all the time in the sense that the map tracks the index (if any) of the transaction in the list. In `v0.37.0`, and `v0.37.1`, as well as in `v0.34.28`, and all previous releases of the CometBFT repo2, it is possible to have them out of sync. When this happens, the list may contain several copies of the same transaction. Because the map tracks a single index, it is then no longer possible to remove all the copies of the transaction from the list. This happens even if the duplicated transaction is later committed in a block. The only way to remove the transaction is by restarting the node.The above problem can be repeated on and on until a sizable number of transactions are stuck in the mempool, in order to try to bring down the target node. The problem is fixed in releases `v0.34.29` and `v0.37.2`. Some workarounds are available. Increasing the value of `cache_size` in `config.toml` makes it very difficult to effectively attack a full node. Not exposing the transaction submission RPC's would mitigate the probability of a successful attack, as the attacker would then have to create a modified (byzantine) full node to be able to perform the attack via p2p.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34451">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c62c49dc5704f2301c254b657a201b0</td>
+       <td>CVE-2023-34450</td>
+       <td>2023-07-03 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>CometBFT is a Byzantine Fault Tolerant (BFT) middleware that takes a state transition machine and replicates it on many machines. An internal modification made in versions 0.34.28 and 0.37.1 to the way struct `PeerState` is serialized to JSON introduced a deadlock when new function MarshallJSON is called. This function can be called from two places. The first is via logs, setting the `consensus` logging module to "debug" level (should not happen in production), and setting the log output format to JSON. The second is via RPC `dump_consensus_state`.Case 1, which should not be hit in production, will eventually hit the deadlock in most goroutines, effectively halting the node.In case 2, only the data structures related to the first peer will be deadlocked, together with the thread(s) dealing with the RPC request(s). This means that only one of the channels of communication to the node's peers will be blocked. Eventually the peer will timeout and excluded from the list (typically after 2 minutes). The goroutines involved in the deadlock will not be garbage collected, but they will not interfere with the system after the peer is excluded.The theoretical worst case for case 2, is a network with only two validator nodes. In this case, each of the nodes only has one `PeerState` struct. If `dump_consensus_state` is called in either node (or both), the chain will halt until the peer connections time out, after which the nodes will reconnect (with different `PeerState` structs) and the chain will progress again. Then, the same process can be repeated.As the number of nodes in a network increases, and thus, the number of peer struct each node maintains, the possibility of reproducing the perturbation visible with two nodes decreases. Only the first `PeerState` struct will deadlock, and not the others (RPC `dump_consensus_state` accesses them in a for loop, so the deadlock at the first iteration causes the rest of the iterations of that "for" loop to never be reached).This regression was fixed in versions 0.34.29 and 0.37.2. Some workarounds are available. For case 1 (hitting the deadlock via logs), either don't set the log output to "json", leave at "plain", or don't set the consensus logging module to "debug", leave it at "info" or higher. For case 2 (hitting the deadlock via RPC `dump_consensus_state`), do not expose `dump_consensus_state` RPC endpoint to the public internet (e.g., via rules in one's nginx setup).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34450">详情</a></td>
+      </tr>
+
+      <tr>
        <td>03d839b0e8433c97616342323d81fe32</td>
        <td>CVE-2023-26509</td>
        <td>2023-07-03 15:15:00 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2023-07-01 06:15:00</td>
        <td>The Edwiser Bridge plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including,2.0.6. This is due to missing or incorrect nonce validation on the user_data_synchronization_initiater(), course_synchronization_initiater(), users_link_to_moodle_synchronization(), connection_test_initiater(), admin_menus(), and subscribe_handler() function. This makes it possible for unauthenticated attackers to perform unauthorized actions via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4399">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6b5f837facc961798318b794277dcd9d</td>
-       <td>CVE-2021-4398</td>
-       <td>2023-07-01 06:15:00</td>
-       <td>The Amministrazione Trasparente plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including,  7.1. This is due to missing or incorrect nonce validation on the at_save_aturl_meta() function. This makes it possible for unauthenticated attackers to update meta data via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4398">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12e5690e44d49ee6037654453699bd11</td>
-       <td>CVE-2021-4397</td>
-       <td>2023-07-01 06:15:00</td>
-       <td>The Staff Directory Plugin plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 3.6. This is due to missing or incorrect nonce validation on the saveCustomFields() function. This makes it possible for unauthenticated attackers to save custom fields via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4397">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d76767862c6012e46894fbc03a8edc87</td>
-       <td>CVE-2021-4396</td>
-       <td>2023-07-01 06:15:00</td>
-       <td>The Rucy plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 0.4.4. This is due to missing or incorrect nonce validation on the save_rc_post_meta() function. This makes it possible for unauthenticated attackers to save post meta via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4396">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b671e4b19dfa4c9f8b0b154cfc380fc9</td>
-       <td>CVE-2021-4387</td>
-       <td>2023-07-01 04:15:00</td>
-       <td>The Opal Estate plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 1.6.11. This is due to missing or incorrect nonce validation on the opalestate_set_feature_property() and opalestate_remove_feature_property() functions. This makes it possible for unauthenticated attackers to set and remove featured properties via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4387">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a15774dc2c0f9a00c63d6157c93436e</td>
-       <td>CVE-2021-4386</td>
-       <td>2023-07-01 04:15:00</td>
-       <td>The WP Security Question plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 1.0.5. This is due to missing or incorrect nonce validation on the save() function. This makes it possible for unauthenticated attackers to modify the plugin's settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4386">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dab42b57bdb2469613b28130dc85a074</td>
-       <td>CVE-2021-4385</td>
-       <td>2023-07-01 04:15:00</td>
-       <td>The WP Private Content Plus plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 3.1. This is due to missing or incorrect nonce validation on the save_groups() function. This makes it possible for unauthenticated attackers to add new group members via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-4385">详情</a></td>
       </tr>
 
      </tbody>
@@ -796,6 +796,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>1de08a53b8451938d7cb8f06a04f538a</td>
+       <td>CNNVD-202307-045 (CVE-2021-4392)</td>
+       <td>2023-07-01 19:19:54</td>
+       <td>WordPress Plugin eCommerce Product Catalog 跨站请求伪造漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-045">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fe733f5a83e4429f452009771a7caca6</td>
        <td>CNNVD-202307-039 (CVE-2021-4394)</td>
        <td>2023-07-01 18:32:02</td>
@@ -1025,14 +1033,6 @@
        <td>2023-06-27 23:25:27</td>
        <td>CmsEasy 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202306-1979">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>90d9f0b0bc18850a0a05e786064e0152</td>
-       <td>CNNVD-202306-1980 (CVE-2020-18410)</td>
-       <td>2023-06-27 16:33:26</td>
-       <td>Chaojicms 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202306-1980">详情</a></td>
       </tr>
 
      </tbody>
