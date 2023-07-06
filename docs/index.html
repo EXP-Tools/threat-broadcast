@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-06 18:28:04 -->
+<!-- RELEASE TIME : 2023-07-06 19:20:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9e3c3854548c3b8af0635e0318bace29</td>
+       <td>CVE-2023-37454</td>
+       <td>2023-07-06 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in the Linux kernel through 6.4.2. A crafted UDF filesystem image causes a use-after-free write operation in the udf_put_super and udf_close_lvid functions in fs/udf/super.c.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37454">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8073342ac667984a4ce670ba4068d525</td>
+       <td>CVE-2023-37453</td>
+       <td>2023-07-06 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in the USB subsystem in the Linux kernel through 6.4.2. There is an out-of-bounds and crash in read_descriptors in drivers/usb/core/sysfs.c.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37453">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3264b2f263732f265d1c5df15310d87d</td>
+       <td>CVE-2023-37260</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>league/oauth2-server is an implementation of an OAuth 2.0 authorization server written in PHP. Starting in version 8.3.2 and prior to version 8.5.3, servers that passed their keys to the CryptKey constructor as as string instead of a file path will have had that key included in a LogicException message if they did not provide a valid pass phrase for the key where required. This issue has been patched so that the provided key is no longer exposed in the exception message in the scenario outlined above. Users should upgrade to version 8.5.3 to receive the patch. As a workaround, pass the key as a file instead of a string.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37260">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>77af2f53c80b77cff8bfa72f9ade0d36</td>
+       <td>CVE-2023-36830</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQLFluff is a SQL linter. Prior to version 2.1.2, in environments where untrusted users have access to the config files, there is a potential security vulnerability where those users could use the `library_path` config value to allow arbitrary python code to be executed via macros. For many users who use SQLFluff in the context of an environment where all users already have fairly escalated privileges, this may not be an issue - however in larger user bases, or where SQLFluff is bundled into another tool where developers still wish to give users access to supply their on rule configuration, this may be an issue.The 2.1.2 release offers the ability for the `library_path` argument to be overwritten on the command line by using the `--library-path` option. This overrides any values provided in the config files and effectively prevents this route of attack for users which have access to the config file, but not to the scripts which call the SQLFluff CLI directly. A similar option is provided for the Python API, where users also have a greater ability to further customise or override configuration as necessary. Unless `library_path` is explicitly required, SQLFluff maintainers recommend using the option `--library-path none` when invoking SQLFluff which will disable the `library-path` option entirely regardless of the options set in the configuration file or via inline config directives. As a workaround, limiting access to - or otherwise validating configuration files before they are ingested by SQLFluff will provides a similar effect and does not require upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36830">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>00341874b9a0531df44c2030fec8d3e2</td>
+       <td>CVE-2023-36823</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sanitize is an allowlist-based HTML and CSS sanitizer. Using carefully crafted input, an attacker may be able to sneak arbitrary HTML and CSS through Sanitize starting with version 3.0.0 and prior to version 6.0.2 when Sanitize is configured to use the built-in "relaxed" config or when using a custom config that allows `style` elements and one or more CSS at-rules. This could result in cross-site scripting or other undesired behavior when the malicious HTML and CSS are rendered in a browser. Sanitize 6.0.2 performs additional escaping of CSS in `style` element content, which fixes this issue. Users who are unable to upgrade can prevent this issue by using a Sanitize config that doesn't allow `style` elements, using a Sanitize config that doesn't allow CSS at-rules, or by manually escaping the character sequence `</` as `<\/` in `style` element content.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36823">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca0d4db3e518f4e1e4987492d3e87044</td>
+       <td>CVE-2023-34193</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>File Upload vulnerability in Zimbra ZCS 8.8.15 allows an authenticated privileged user to execute arbitrary code and obtain sensitive information via the ClientUploader function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34193">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed7e216643f80cf3bd467091d2df1b7a</td>
+       <td>CVE-2023-34192</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting vulnerability in Zimbra ZCS v.8.8.15 allows a remote authenticated attacker to execute arbitrary code via a crafted script to the /h/autoSaveDraft function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34192">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f8cff4bf72953d77d5dd8abff10d41bd</td>
+       <td>CVE-2023-30321</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting (XSS) vulnerability in textMessage field in /src/chatbotapp/LoginServlet.java in wliang6 ChatEngine commit fded8e710ad59f816867ad47d7fc4862f6502f3e, allows attackers to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30321">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a1044d3f9bc41fec3b702dc0a0714ec0</td>
+       <td>CVE-2023-30320</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting (XSS) vulnerability in textMessage field in /src/chatbotapp/chatWindow.java in wliang6 ChatEngine commit fded8e710ad59f816867ad47d7fc4862f6502f3e, allows attackers to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30320">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>87f6e7bb5f231ca61452a818661e512e</td>
+       <td>CVE-2023-30319</td>
+       <td>2023-07-06 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting (XSS) vulnerability in username field in /src/chatbotapp/LoginServlet.java in wliang6 ChatEngine commit fded8e710ad59f816867ad47d7fc4862f6502f3e, allows attackers to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30319">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8921ecb602e95e834d0de5f42f32486a</td>
        <td>CVE-2023-37136</td>
        <td>2023-07-06 15:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-07-06 13:15:00 <img src="imgs/new.gif" /></td>
        <td>Vulnerability of failures to capture exceptions in the communication framework. Successful exploitation of this vulnerability may cause features to perform abnormally.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1691">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6fde4ca45442bda9c826b7ed249a345</td>
-       <td>CVE-2023-3523</td>
-       <td>2023-07-06 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Out-of-bounds Read in GitHub repository gpac/gpac prior to 2.2.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3523">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cac4cd98ff2dbec9df799b2a2671c707</td>
-       <td>CVE-2023-26138</td>
-       <td>2023-07-06 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>All versions of the package drogonframework/drogon are vulnerable to CRLF Injection when untrusted user input is used to set request headers in the addHeader function. An attacker can add the \r\n (carriage return line feeds) characters and inject additional headers in the request sent.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26138">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f93e1ff7cbfef8ff5f99f9a610fa2e67</td>
-       <td>CVE-2023-26137</td>
-       <td>2023-07-06 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>All versions of the package drogonframework/drogon are vulnerable to HTTP Response Splitting when untrusted user input is used to build header values in the addHeader and addCookie functions. An attacker can add the \r\n (carriage return line feeds) characters to end the HTTP response headers and inject malicious content.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26137">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>906a980b7893ab68c0f9bcd247b869c6</td>
-       <td>CVE-2023-30678</td>
-       <td>2023-07-06 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Potential zip path traversal vulnerability in Calendar application prior to version 12.4.07.15 in Android 13 allows attackers to write arbitrary file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30678">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b78d7c6bd86bcd6c85d66a0533c1f0b4</td>
-       <td>CVE-2023-30677</td>
-       <td>2023-07-06 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper access control vulnerability in Samsung Pass prior to version 4.2.03.1 allows physical attackers to access data of Samsung Pass on a certain state of an unlocked device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30677">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ceabbb60a1fa1fbdaafac109b1d68f05</td>
-       <td>CVE-2023-30676</td>
-       <td>2023-07-06 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper access control vulnerability in Samsung Pass prior to version 4.2.03.1 allows physical attackers to access data of Samsung Pass.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30676">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c6d5e2e469baed433bb42c7b76426a7</td>
-       <td>CVE-2023-30675</td>
-       <td>2023-07-06 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper authentication in Samsung Pass prior to version 4.2.03.1 allows local attacker to access stored account information when Samsung Wallet is not installed.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30675">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b751fcf14b50c8298940580b4ce41c47</td>
-       <td>CVE-2023-30674</td>
-       <td>2023-07-06 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper configuration in Samsung Internet prior to version 21.0.0.41 allows attacker to bypass SameSite Cookie.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30674">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>22c46a62d82c22dd38972ab49e97a788</td>
-       <td>CVE-2023-30673</td>
-       <td>2023-07-06 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper validation of integrity check vulnerability in Smart Switch PC prior to version 4.3.23052_1 allows local attackers to delete arbitrary directory using directory junction.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30673">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5f12e3fcfbac2f6fb83d4bbbd43ef188</td>
-       <td>CVE-2023-30672</td>
-       <td>2023-07-06 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper privilege management vulnerability in Samsung Smart Switch for Windows Installer prior to version 4.3.23043_3 allows attackers to cause permanent DoS via directory junction.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30672">详情</a></td>
       </tr>
 
      </tbody>
