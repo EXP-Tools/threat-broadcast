@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-05 23:24:32 -->
+<!-- RELEASE TIME : 2023-07-06 02:07:53 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>3411013fd367ea6471b09d5e354b35ca</td>
        <td></td>
-       <td>2023-07-04 08:09:52 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 08:09:52</td>
        <td>Smartbi 多个高危漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=64a3d168d5b5ed368982cf2e">详情</a></td>
       </tr>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c5dcea55e95e2ba23a75a23a0c386f93</td>
+       <td>CVE-2023-36828</td>
+       <td>2023-07-05 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Statamic is a flat-first, Laravel and Git powered content management system. Prior to version 4.10.0, the SVG tag does not sanitize malicious SVG. Therefore, an attacker can exploit this vulnerability to perform cross-site scripting attacks using SVG, even when using the `sanitize` function. Version 4.10.0 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36828">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>42c808d630445008486065b58db2af0f</td>
+       <td>CVE-2023-36827</td>
+       <td>2023-07-05 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Fides is an open-source privacy engineering platform for managing the fulfillment of data privacy requests in a runtime environment, and the enforcement of privacy regulations in code. A path traversal (directory traversal) vulnerability affects fides versions lower than version `2.15.1`, allowing remote attackers to access arbitrary files on the fides webserver container's filesystem. The vulnerability is patched in fides `2.15.1`.If the Fides webserver API is not directly accessible to attackers and is instead deployed behind a reverse proxy as recommended in Ethyca's security best practice documentation, and the reverse proxy is an AWS application load balancer, the vulnerability can't be exploited by these attackers. An AWS application load balancer will reject this attack with a 400 error. Additionally, any secrets supplied to the container using environment variables rather than a `fides.toml` configuration file are not affected by this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36827">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0571a59f11abe0a28b2cb797989fffec</td>
+       <td>CVE-2023-36822</td>
+       <td>2023-07-05 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Uptime Kuma, a self-hosted monitoring tool, has a path traversal vulnerability in versions prior to 1.22.1. Uptime Kuma allows authenticated users to install plugins from an official list of plugins. This feature is currently disabled in the web interface, but the corresponding API endpoints are still available after login. Before a plugin is downloaded, the plugin installation directory is checked for existence. If it exists, it's removed before the plugin installation. Because the plugin is not validated against the official list of plugins or sanitized, the check for existence and the removal of the plugin installation directory are prone to path traversal. This vulnerability allows an authenticated attacker to delete files from the server Uptime Kuma is running on. Depending on which files are deleted, Uptime Kuma or the whole system may become unavailable due to data loss.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36822">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8916c3804f66a9e7871292ec0bb3897e</td>
+       <td>CVE-2023-36821</td>
+       <td>2023-07-05 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Uptime Kuma, a self-hosted monitoring tool, allows an authenticated attacker to install a maliciously crafted plugin in versions prior to 1.22.1, which may lead to remote code execution. Uptime Kuma allows authenticated users to install plugins from an official list of plugins. This feature is currently disabled in the web interface, but the corresponding API endpoints are still available after login. After downloading a plugin, it's installed by calling `npm install` in the installation directory of the plugin. Because the plugin is not validated against the official list of plugins or installed with `npm install --ignore-scripts`, a maliciously crafted plugin taking advantage of npm scripts can gain remote code execution. Version 1.22.1 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36821">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1ddc4b644c548a055784f2dd267c228b</td>
+       <td>CVE-2023-36813</td>
+       <td>2023-07-05 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kanboard is project management software that focuses on the Kanban methodology. In versions prior to 1.2.31authenticated user is able to perform a SQL Injection, leading to a privilege escalation or loss of confidentiality. It appears that in some insert and update operations, the code improperly uses the PicoDB library to update/insert new information. Version 1.2.31 contains a fix for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36813">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>efade883b47becb78a979ddf777c93ed</td>
+       <td>CVE-2023-36809</td>
+       <td>2023-07-05 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kiwi TCMS, an open source test management system allows users to upload attachments to test plans, test cases, etc. Versions of Kiwi TCMS prior to 12.5 had introduced changes which were meant to serve all uploaded files as plain text in order to prevent browsers from executing potentially dangerous files when such files are accessed directly. The previous Nginx configuration was incorrect allowing certain browsers like Firefox to ignore the `Content-Type: text/plain` header on some occasions thus allowing potentially dangerous scripts to be executed. Additionally, file upload validators and parts of the HTML rendering code had been found to require additional sanitation and improvements. Version 12.5 fixes this vulnerability with updated Nginx content type configuration, improved file upload validation code to prevent more potentially dangerous uploads, and Sanitization of test plan names used in the `tree_view_html()` function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36809">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bbfc5c0081fe5d32a590705293592610</td>
        <td>CVE-2023-36808</td>
        <td>2023-07-05 21:15:00 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2023-07-05 16:15:00 <img src="imgs/new.gif" /></td>
        <td>In Progress MOVEit Transfer before 2021.0.9 (13.0.9), 2021.1.7 (13.1.7), 2022.0.7 (14.0.7), 2022.1.8 (14.1.8), and 2023.0.4 (15.0.4), it is possible for an attacker to invoke a method that results in an unhandled exception. Triggering this workflow can cause the MOVEit Transfer application to terminate unexpectedly.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36933">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>14f466ffcb80ba0db19872bae6ba0bae</td>
-       <td>CVE-2023-36932</td>
-       <td>2023-07-05 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>In Progress MOVEit Transfer before 2020.1.11 (12.1.11), 2021.0.9 (13.0.9), 2021.1.7 (13.1.7), 2022.0.7 (14.0.7), 2022.1.8 (14.1.8), and 2023.0.4 (15.0.4), multiple SQL injection vulnerabilities have been identified in the MOVEit Transfer web application that could allow an authenticated attacker to gain unauthorized access to the MOVEit Transfer database. An attacker could submit a crafted payload to a MOVEit Transfer application endpoint that could result in modification and disclosure of MOVEit database content.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36932">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d7f67eddf43c213459306390928289b4</td>
-       <td>CVE-2023-31194</td>
-       <td>2023-07-05 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>An access violation vulnerability exists in the GraphPlanar::Write functionality of Diagon v1.0.139. A specially crafted network request can lead to a heap buffer overflow. An attacker can send a network request to trigger this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31194">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d3806e5ae0193fffc7c714d057945a3</td>
-       <td>CVE-2023-27390</td>
-       <td>2023-07-05 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>A heap-based buffer overflow vulnerability exists in the Sequence::DrawText functionality of Diagon v1.0.139. A specially crafted network request can lead to a heap buffer overflow. An attacker can send a network request to trigger this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27390">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5bc0a3aca23c408bf01756c08c98bb4</td>
-       <td>CVE-2023-35979</td>
-       <td>2023-07-05 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is an unauthenticated buffer overflow vulnerability in the process controlling the ArubaOS web-based management interface. Successful exploitation of this vulnerability results in a Denial-of-Service (DoS) condition affecting the web-based management interface of the controller.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35979">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1e139a0aaa25b56cf4927ee8b13345a3</td>
-       <td>CVE-2023-35978</td>
-       <td>2023-07-05 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in ArubaOS could allow an unauthenticated remote attacker to conduct a reflected cross-site scripting (XSS) attack against a user of the web-based management interface. A successful exploit could allow an attacker to execute arbitrary script code in a victim's browser in the context of the affected interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35978">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a9cf97626314cfda56c1647a8e07832</td>
-       <td>CVE-2023-35977</td>
-       <td>2023-07-05 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Vulnerabilities exist which allow an authenticated attacker to access sensitive information on the ArubaOS command line interface. Successful exploitation could allow access to data beyond what is authorized by the users existing privilege level.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35977">详情</a></td>
       </tr>
 
      </tbody>
@@ -798,7 +798,7 @@
       <tr>
        <td>e6a2afacd73973d58c815d61ba1e734e</td>
        <td>CNNVD-202307-151 (CVE-2023-21624)</td>
-       <td>2023-07-04 19:22:46 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 19:22:46</td>
        <td>Qualcomm Chipsets 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-151">详情</a></td>
       </tr>
@@ -806,7 +806,7 @@
       <tr>
        <td>87441dd558ee6e71c745acbcd17483ba</td>
        <td>CNNVD-202307-156 (CVE-2023-31999)</td>
-       <td>2023-07-04 17:27:16 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 17:27:16</td>
        <td>oauth2 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-156">详情</a></td>
       </tr>
@@ -814,7 +814,7 @@
       <tr>
        <td>94e501e446addf401ab5d6497234f0c5</td>
        <td>CNNVD-202307-157 (CVE-2023-3505)</td>
-       <td>2023-07-04 17:27:14 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 17:27:14</td>
        <td>Onest CRM 跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-157">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>88b2a54d49c8b95cc2f0e183f6779686</td>
        <td>CNNVD-202307-158 (CVE-2023-3506)</td>
-       <td>2023-07-04 17:27:12 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 17:27:12</td>
        <td>Active It Zone Active eCommerce CMS 跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-158">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>2af6ca8260eb268fa0ce43a757d7b46a</td>
        <td>CNNVD-202307-150 (CVE-2023-21631)</td>
-       <td>2023-07-04 15:29:09 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 15:29:09</td>
        <td>Qualcomm Chipsets 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-150">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>ee2f2ad927a221571587472903771f43</td>
        <td>CNNVD-202307-154 (CVE-2023-3503)</td>
-       <td>2023-07-04 15:27:57 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 15:27:57</td>
        <td>SourceCodester Shopping Website 代码问题漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-154">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>6790c520e00c7c74e9ee4a2d687cce88</td>
        <td>CNNVD-202307-155 (CVE-2023-3502)</td>
-       <td>2023-07-04 15:27:55 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 15:27:55</td>
        <td>SourceCodester Shopping Website SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-155">详情</a></td>
       </tr>
@@ -854,9 +854,17 @@
       <tr>
        <td>ce51b49056ea0ebe9d9919e26ab8ca22</td>
        <td>CNNVD-202307-159 (CVE-2023-3255)</td>
-       <td>2023-07-04 15:26:42 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 15:26:42</td>
        <td>QEMU 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-159">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a3649542e735699d62282a164a4c5b5b</td>
+       <td>CNNVD-202307-153 (CVE-2023-3504)</td>
+       <td>2023-07-04 02:07:44</td>
+       <td>SmartWeb Infotech Job Board 代码问题漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-153">详情</a></td>
       </tr>
 
       <tr>
@@ -1025,14 +1033,6 @@
        <td>2023-06-30 14:25:36</td>
        <td>Linux kernel 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202306-2191">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5f719954ef9fabe6d39e062b5a6627de</td>
-       <td>CNNVD-202306-2192 (CVE-2023-1584)</td>
-       <td>2023-06-30 14:25:33</td>
-       <td>Quarkus 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202306-2192">详情</a></td>
       </tr>
 
      </tbody>
@@ -1726,7 +1726,7 @@
       <tr>
        <td>f9d1108812982c743d0c01ed9d582e3d</td>
        <td>CVE-2023-28040</td>
-       <td>2023-07-04 20:53:58 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 20:53:58</td>
        <td>DELL Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6187e4274390495283f86a9d153195b2">详情</a></td>
       </tr>
@@ -1734,7 +1734,7 @@
       <tr>
        <td>b8f23fe39ac526b4c02e36e697c14e87</td>
        <td>CVE-2023-28034</td>
-       <td>2023-07-04 20:53:50 <img src="imgs/new.gif" /></td>
+       <td>2023-07-04 20:53:50</td>
        <td>DELL Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ac3c864530704ff1856287de40a22575">详情</a></td>
       </tr>
