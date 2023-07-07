@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-07 18:31:52 -->
+<!-- RELEASE TIME : 2023-07-07 19:17:31 -->
 <html lang="zh-cn">
 
  <head>
@@ -300,6 +300,70 @@
       </tr>
 
       <tr>
+       <td>101060ff574d140cbcf8c05a31f1c647</td>
+       <td>CVE-2023-37264</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tekton Pipelines project provides k8s-style resources for declaring CI/CD-style pipelines. Starting in version 0.35.0, pipelines do not validate child UIDs, which means that a user that has access to create TaskRuns can create their own Tasks that the Pipelines controller will accept as the child Task. While the software stores and validates the PipelineRun's (api version, kind, name, uid) in the child Run's OwnerReference, it only store (api version, kind, name) in the ChildStatusReference. This means that if a client had access to create TaskRuns on a cluster, they could create a child TaskRun for a pipeline with the same name + owner reference, and the Pipeline controller picks it up as if it was the original TaskRun. This is problematic since it can let users modify the config of Pipelines at runtime, which violates SLSA L2 Service Generated / Non-falsifiable requirements. This issue can be used to trick the Pipeline controller into associating unrelated Runs to the Pipeline, feeding its data through the rest of the Pipeline. This requires access to create TaskRuns, so impact may vary depending on one Tekton setup. If users already have unrestricted access to create any Task/PipelineRun, this does not grant any additional capabilities. As of time of publication, there are no known patches for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37264">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>052a04ab60c0788eb436aa6d035ae82f</td>
+       <td>CVE-2023-37067</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Chamilo 1.11.x up to 1.11.20 allows users with admin privilege account to insert XSS in the classes/usergroups management section.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37067">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b922116012a51b3072408c27afbf36f</td>
+       <td>CVE-2023-37066</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Chamilo 1.11.x up to 1.11.20 allows users with admin privilege account to insert XSS in the skills wheel.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37066">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bdd0a0f2b3dc8c5b455e75e4fceaca90</td>
+       <td>CVE-2023-37065</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Chamilo 1.11.x up to 1.11.20 allows users with admin privilege account to insert XSS in the session category management section.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37065">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>547af13bdc463f1a39a40c64c17da8b5</td>
+       <td>CVE-2023-37064</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Chamilo 1.11.x up to 1.11.20 allows users with admin privilege account to insert XSS in the extra fields management section.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37064">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c03396c987717c564e006659dfb60c66</td>
+       <td>CVE-2023-37063</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Chamilo 1.11.x up to 1.11.20 allows users with admin privilege account to insert XSS in the careers & promotions management section.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37063">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3d51c97e0f82ac15ef713e96500d07fd</td>
+       <td>CVE-2023-37062</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Chamilo 1.11.x up to 1.11.20 allows users with admin privilege account to insert XSS in the course categories' definition.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37062">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b04c01e1660b4ef586895f7bdcd9187f</td>
+       <td>CVE-2023-37061</td>
+       <td>2023-07-07 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Chamilo 1.11.x up to 1.11.20 allows users with an admin privilege account to insert XSS in the languages management section.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37061">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fe32ea73655ccb858e4515aae41f7c97</td>
        <td>CVE-2023-3540</td>
        <td>2023-07-07 15:15:00 <img src="imgs/new.gif" /></td>
@@ -457,70 +521,6 @@
        <td>2023-07-07 00:15:00 <img src="imgs/new.gif" /></td>
        <td>Memory management and protection issues in Bitcoin Core v22 allows attackers to modify the stored sending address within the app's memory, potentially allowing them to redirect Bitcoin transactions to wallets of their own choosing.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37192">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>60ae78cc5c99b9d8eb44d7624cc94cff</td>
-       <td>CVE-2023-35765</td>
-       <td>2023-07-07 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>PiiGAB M-Bus stores credentials in a plaintext file, which could allow a low-level user to gain admin credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35765">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a82508f72b228b9a9762e777c146bae3</td>
-       <td>CVE-2023-35120</td>
-       <td>2023-07-07 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>PiiGAB M-Bus is vulnerable to cross-site request forgery. An attacker who wants to execute a certain command could send a phishing mail to the owner of the device and hope that the owner clicks on the link. If the owner of the device has a cookie stored that allows the owner to be logged in, then the device could execute the GET or POST link request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35120">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9ef4834439ba239219b8bf2a5829b8b3</td>
-       <td>CVE-2023-34995</td>
-       <td>2023-07-07 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>There are no requirements for setting a complex password for PiiGAB M-Bus, which could contribute to a successful brute force attack if the password is inline with recommended password guidelines.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34995">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>32cd30f717ea824a0cc9dc9b4817b7e8</td>
-       <td>CVE-2023-34433</td>
-       <td>2023-07-07 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>PiiGAB M-Bus stores passwords using a weak hash algorithm.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34433">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c02b4291ed9de36f3780a8627abf009d</td>
-       <td>CVE-2023-32652</td>
-       <td>2023-07-07 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>PiiGAB M-Bus does not validate identification strings before processing, which could make it vulnerable to cross-site scripting attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32652">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>57e4793f18c3dbc04ae81631b4c21482</td>
-       <td>CVE-2023-36859</td>
-       <td>2023-07-06 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>PiiGAB M-Bus SoftwarePack 900Sdoes not correctly sanitize user input, which could allow an attacker to inject arbitrary commands.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36859">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0fa1788004e5a4862cb6fbc99ff49196</td>
-       <td>CVE-2023-36829</td>
-       <td>2023-07-06 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Sentry is an error tracking and performance monitoring platform. Starting in version 23.6.0 and prior to version 23.6.2, the Sentry API incorrectly returns the `access-control-allow-credentials: true` HTTP header if the `Origin` request header ends with the `system.base-hostname` option of Sentry installation. This only affects installations that have `system.base-hostname` option explicitly set, as it is empty by default. Impact is limited since recent versions of major browsers have cross-site cookie blocking enabled by default. However, this flaw could allow other multi-step attacks. The patch has been released in Sentry 23.6.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36829">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2fc32e2902941b6c0104da991372125f</td>
-       <td>CVE-2023-35987</td>
-       <td>2023-07-06 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>PiiGAB M-Bus contains hard-coded credentials which it uses for authentication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35987">详情</a></td>
       </tr>
 
      </tbody>
