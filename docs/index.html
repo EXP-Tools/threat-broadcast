@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-17 23:21:49 -->
+<!-- RELEASE TIME : 2023-07-18 02:17:43 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f9857f2a31a44484eec698b7239c8d63</td>
+       <td>CVE-2023-37850</td>
+       <td>2023-07-17 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37850">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>97676a1e0eaa48a68df339d9ab9ebd59</td>
+       <td>CVE-2023-37479</td>
+       <td>2023-07-17 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>Open Enclave is a hardware-agnostic open source library for developing applications that utilize Hardware-based Trusted Execution Environments, also known as Enclaves. There are two issues that are mitigated in version 0.19.3. First, Open Enclave SDK does not properly sanitize the `MXCSR` register on enclave entry. This makes applications vulnerable to MXCSR Configuration Dependent Timing (MCDT) attacks, where incorrect `MXCSR` values can impact instruction retirement by at most one cycle, depending on the (secret) data operand value. Please find more details in the guidance from Intel in the references. Second, Open Enclave SDK does not sanitize x86's alignment check flag `RFLAGS.AC` on enclave entry. This opens up the possibility for a side-channel attacker to be notified for every unaligned memory access performed by the enclave. The issue has been addressed in version 0.19.3 and the current master branch. Users will need to recompile their applications against the patched libraries to be protected from this vulnerability. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37479">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>186c5d2b9cbf88d64964ccac9652dcda</td>
+       <td>CVE-2023-38409</td>
+       <td>2023-07-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in set_con2fb_map in drivers/video/fbdev/core/fbcon.c in the Linux kernel before 6.2.12. Because an assignment occurs only for the first vc, the fbcon_registered_fb and fbcon_display arrays can be desynchronized in fbcon_mode_deleted (the con2fb_map points at the old fb_info).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38409">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fc008096be11ed79188a10d30cdf0700</td>
+       <td>CVE-2023-37476</td>
+       <td>2023-07-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenRefine is a free, open source tool for data processing. A carefully crafted malicious OpenRefine project tar file can be used to trigger arbitrary code execution in the context of the OpenRefine process if a user can be convinced to import it. The vulnerability exists in all versions of OpenRefine up to and including 3.7.3. Users should update to OpenRefine 3.7.4 as soon as possible. Users unable to upgrade should only import OpenRefine projects from trusted sources.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37476">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c83f2f2be9378c8513ea60143e96b57c</td>
+       <td>CVE-2023-3724</td>
+       <td>2023-07-17 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>If a TLS 1.3 client gets neither a PSK (pre shared key) extension nor a KSE (key share extension) when connecting to a malicious server, a default predictable buffer gets used for the IKM (Input Keying Material) value when generating the session master secret. Using a potentially known IKM value when generating the session master secret key compromises the key generated, allowing an eavesdropper to reconstruct it and potentially allowing access to or meddling with message contents in the session. This issue does not affect client validation of connected servers, nor expose private key information, but could result in an insecure TLS 1.3 session when not controlling both sides of the connection. wolfSSL recommends that TLS 1.3 client side users update the version of wolfSSL used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3724">详情</a></td>
+      </tr>
+
+      <tr>
        <td>743782b36685c5dae44c69d84f695667</td>
        <td>CVE-2023-38405</td>
        <td>2023-07-17 21:15:00 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2023-07-17 16:15:00 <img src="imgs/new.gif" /></td>
        <td>Cross Site Scripting (XSS) vulnerability in Jaegertracing Jaeger UI before v.1.31.0 allows a remote attacker to execute arbitrary code via the KeyValuesTable component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36656">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4fbcb5ecaaef5fa96d9abd581fef4e0a</td>
-       <td>CVE-2023-3615</td>
-       <td>2023-07-17 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Mattermost iOS app fails to properly validate the server certificate while initializing the TLS connection allowing a network attacker to intercept the WebSockets connection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3615">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>503af596011e53a5698d36481bf99211</td>
-       <td>CVE-2023-3614</td>
-       <td>2023-07-17 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Mattermost fails to properly validate a gif image file, allowing an attacker to consume a significant amount of server resources, making the server unresponsive for an extended period of time by linking to specially crafted image file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3614">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>074cff12495ba7ffad8acd7a4df6296f</td>
-       <td>CVE-2023-3613</td>
-       <td>2023-07-17 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>Mattermost WelcomeBot plugin fails to to validate the membership status when inviting or adding users to channels allowing guest accounts to be added or invited to channels by default.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3613">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>872f8a54be23c239767f1fe737828ee1</td>
-       <td>CVE-2023-37968</td>
-       <td>2023-07-17 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Faboba Falang multilanguage for WordPress plugin <= 1.3.39 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37968">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>86dd46c5c4ac3491a315c9a82b1754d0</td>
-       <td>CVE-2023-36514</td>
-       <td>2023-07-17 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in WooCommerce Shipping Multiple Addresses plugin <= 3.8.5 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36514">详情</a></td>
       </tr>
 
      </tbody>
@@ -798,7 +798,7 @@
       <tr>
        <td>5777035889128e0931e6ec8b90f3cedc</td>
        <td>CNNVD-202307-1370 (CVE-2023-3687)</td>
-       <td>2023-07-16 21:22:48 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 21:22:48</td>
        <td>Bylancer QuickVCard SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1370">详情</a></td>
       </tr>
@@ -806,7 +806,7 @@
       <tr>
        <td>15ecddf7d9199bfe39f3c0c7d67e8f96</td>
        <td>CNNVD-202307-1375 (CVE-2023-38378)</td>
-       <td>2023-07-16 21:20:37 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 21:20:37</td>
        <td>RIGOL MSO5000 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1375">详情</a></td>
       </tr>
@@ -814,7 +814,7 @@
       <tr>
        <td>eb2ab94470704fcf9677853b8fd6dcaf</td>
        <td>CNNVD-202307-1371 (CVE-2023-3691)</td>
-       <td>2023-07-16 20:25:32 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:25:32</td>
        <td>layui 跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1371">详情</a></td>
       </tr>
@@ -822,7 +822,7 @@
       <tr>
        <td>05c1c02b545447c1e8f1c8818081a49b</td>
        <td>CNNVD-202307-1378 (CVE-2023-30989)</td>
-       <td>2023-07-16 20:25:12 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:25:12</td>
        <td>IBM i 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1378">详情</a></td>
       </tr>
@@ -830,7 +830,7 @@
       <tr>
        <td>22cffe1a377e8ce9b7fe6f95179852c6</td>
        <td>CNNVD-202307-1369 (CVE-2023-3688)</td>
-       <td>2023-07-16 16:36:03 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 16:36:03</td>
        <td>Bylancer QuickJob SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1369">详情</a></td>
       </tr>
@@ -838,7 +838,7 @@
       <tr>
        <td>bf60981c6106f5c8ceee853a1ca8cb32</td>
        <td>CNNVD-202307-1372 (CVE-2023-38379)</td>
-       <td>2023-07-16 16:33:54 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 16:33:54</td>
        <td>RIGOL MSO5000 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1372">详情</a></td>
       </tr>
@@ -846,7 +846,7 @@
       <tr>
        <td>ada659b6a4399e83716ab299c616e583</td>
        <td>CNNVD-202307-1373 (CVE-2023-3689)</td>
-       <td>2023-07-16 16:33:51 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 16:33:51</td>
        <td>Bylancer QuickQR SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1373">详情</a></td>
       </tr>
@@ -854,7 +854,7 @@
       <tr>
        <td>a2497708deb45a9bc987e31d284f8b1b</td>
        <td>CNNVD-202307-1374 (CVE-2023-3690)</td>
-       <td>2023-07-16 16:33:49 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 16:33:49</td>
        <td>Bylancer QuickOrder SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1374">详情</a></td>
       </tr>
@@ -862,7 +862,7 @@
       <tr>
        <td>aa445f050cc02df4596bc7eddbf2cca0</td>
        <td>CNNVD-202307-1376 (CVE-2023-3693)</td>
-       <td>2023-07-16 16:33:43 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 16:33:43</td>
        <td>Insurance Management System SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1376">详情</a></td>
       </tr>
@@ -870,7 +870,7 @@
       <tr>
        <td>1870feec56dcff06f63f5626ccce0a11</td>
        <td>CNNVD-202307-1377 (CVE-2023-30988)</td>
-       <td>2023-07-16 16:33:41 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 16:33:41</td>
        <td>IBM i 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1377">详情</a></td>
       </tr>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>dd85e32378701e6c598956429c437144</td>
        <td>CVE-2023-20185</td>
-       <td>2023-07-16 20:31:04 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:31:04</td>
        <td>CISCO NX-OS Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5a2f0b05b2c342af9693b4ffe325d377">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>2656eefde719b2faa0a20c02ebac4ce2</td>
        <td>CVE-2023-21756</td>
-       <td>2023-07-16 20:30:56 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:56</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=122d46c770ba4bfe94a1043f070c21c5">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>849f834fdf6ddfcb0c6784c3421ab7d9</td>
        <td>CVE-2023-29347</td>
-       <td>2023-07-16 20:30:49 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:49</td>
        <td>MICROSOFT WINDOWS_ADMIN_CENTER Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2ed8c1801fb449c58bea70fcd6554379">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>a9d54cfe150833f53f3ce6a2cf7d1098</td>
        <td>CVE-2023-32034</td>
-       <td>2023-07-16 20:30:41 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:41</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=674dee25fa224007a48078eb1ff888af">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>135c05e18ac7d34e74e0f2119538526b</td>
        <td>CVE-2023-32035</td>
-       <td>2023-07-16 20:30:33 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:33</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d612ca371f434afab4e008a7f58f1946">详情</a></td>
       </tr>
@@ -1838,7 +1838,7 @@
       <tr>
        <td>0e1edc73b79481a114c27f1c6097a08e</td>
        <td>CVE-2023-32038</td>
-       <td>2023-07-16 20:30:26 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:26</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=d1fa4b1cb3c5473abd564ae2e36f7f0d">详情</a></td>
       </tr>
@@ -1846,7 +1846,7 @@
       <tr>
        <td>bad6976ec68cf492ad6b8c1c199eaccf</td>
        <td>CVE-2023-32039</td>
-       <td>2023-07-16 20:30:18 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:18</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=4e0d05050e1e4af1ad90b2f06b2961c9">详情</a></td>
       </tr>
@@ -1854,7 +1854,7 @@
       <tr>
        <td>ad277edfefc21b9614bdaf49c22165e6</td>
        <td>CVE-2023-32041</td>
-       <td>2023-07-16 20:30:11 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:11</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=2fe2837598f44b00a0366ffcce5d5bdc">详情</a></td>
       </tr>
@@ -1862,7 +1862,7 @@
       <tr>
        <td>5bc7a793bafe24c7d393c2d67491b122</td>
        <td>CVE-2023-32042</td>
-       <td>2023-07-16 20:30:03 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:30:03</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=3127126b1ea147b1b17d4f5b5f64e601">详情</a></td>
       </tr>
@@ -1870,7 +1870,7 @@
       <tr>
        <td>452a4d42f07adb209ac630489da251e6</td>
        <td>CVE-2023-32044</td>
-       <td>2023-07-16 20:29:55 <img src="imgs/new.gif" /></td>
+       <td>2023-07-16 20:29:55</td>
        <td>MICROSOFT Multiple product Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6f37ebc7bbc6446796182cb8abdce595">详情</a></td>
       </tr>
@@ -2420,51 +2420,51 @@
       </tr>
 
       <tr>
+       <td>6b296e9b943607dc76dfed99d91cfc59</td>
+       <td>CVE-2023-3562</td>
+       <td>2023-07-10 16:15:56 </td>
+       <td>A vulnerability has been found in GZ Scripts PHP CRM Platform 1.8 and classified as problematic. This vulnerability affects unknown code of the file /index.php. The manipulation of the argument action leads to cross site scripting. The attack can be initiated remotely. The identifier of this vulnerability is VDB-233356. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3562">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c0db6266c469d5d17d08292e6bd0b6e7</td>
+       <td>CVE-2023-3561</td>
+       <td>2023-07-10 16:15:56 </td>
+       <td>A vulnerability, which was classified as problematic, was found in GZ Scripts PHP GZ Hotel Booking Script 1.8. This affects an unknown part of the file /load.php. The manipulation of the argument first_name/second_name/phone/address_1/country leads to cross site scripting. It is possible to initiate the attack remotely. The associated identifier of this vulnerability is VDB-233355. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3561">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>517ede66dd9e6fc5792f72b1607ad62c</td>
+       <td>CVE-2023-3560</td>
+       <td>2023-07-10 16:15:56 </td>
+       <td>A vulnerability, which was classified as problematic, has been found in GZ Scripts Ticket Booking Script 1.8. Affected by this issue is some unknown functionality of the file /load.php. The manipulation of the argument first_name/second_name/phone/address_1/country leads to cross site scripting. The attack may be launched remotely. VDB-233354 is the identifier assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3560">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>51b6fb52db3a1acbf2ec64f5c047cf57</td>
+       <td>CVE-2023-3559</td>
+       <td>2023-07-10 16:15:55 </td>
+       <td>A vulnerability classified as problematic was found in GZ Scripts PHP GZ Appointment Scheduling Script 1.8. Affected by this vulnerability is an unknown functionality of the file /load.php. The manipulation of the argument first_name/second_name/phone/address_1/country leads to cross site scripting. The attack can be launched remotely. The identifier VDB-233353 was assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3559">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d2881ee029c98d404e6b644cb729bda</td>
+       <td>CVE-2023-3558</td>
+       <td>2023-07-10 16:15:55 </td>
+       <td>A vulnerability classified as problematic has been found in GZ Scripts Event Booking Calendar 1.8. Affected is an unknown function of the file /load.php. The manipulation of the argument first_name/second_name/phone/address_1/country leads to cross site scripting. It is possible to launch the attack remotely. The identifier of this vulnerability is VDB-233352. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3558">详情</a></td>
+      </tr>
+
+      <tr>
        <td>0c071549f1438da7781e11cf1afef24c</td>
        <td>CVE-2023-35912</td>
        <td>2023-07-10 16:15:53 </td>
        <td>Cross-Site Request Forgery (CSRF) vulnerability in WP Zone Potent Donations for WooCommerce plugin &lt;=&Acirc;&nbsp;1.1.9 versions.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-35912">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f9bf1bf06519ca40e6fd59dca084b065</td>
-       <td>CVE-2023-35697</td>
-       <td>2023-07-10 16:15:52 </td>
-       <td>Improper Restriction of Excessive Authentication Attempts in the SICK ICR890-4could allow a remote attacker to brute-force user credentials.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-35697">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4407ac89f03e6b34c5d9e7b3c83a8702</td>
-       <td>CVE-2023-35696</td>
-       <td>2023-07-10 16:15:52 </td>
-       <td>Unauthenticated endpoints in the SICK ICR890-4 could allow an unauthenticatedremote attacker to retrieve sensitive information about the device via HTTP requests.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-35696">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12aeb030169ed0d75750c0d70e40f905</td>
-       <td>CVE-2023-2967</td>
-       <td>2023-07-10 16:15:51 </td>
-       <td>The TinyMCE Custom Styles WordPress plugin before 1.1.4 does not sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed (for example in multisite setup).</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-2967">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c07756d60d2b1ca77a1c64c24e9a375</td>
-       <td>CVE-2023-2964</td>
-       <td>2023-07-10 16:15:51 </td>
-       <td>The Simple Iframe WordPress plugin before 1.2.0 does not properly validate one of its WordPress block attribute's content, which may allow users whose role is at least that of a contributor to conduct Stored Cross-Site Scripting attacks.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-2964">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c8858a2f8df832e49bd42f2aad9915e</td>
-       <td>CVE-2023-2853</td>
-       <td>2023-07-10 16:15:51 </td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Softmed SelfPatron allows Reflected XSS.This issue affects SelfPatron : before 2.0.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-2853">详情</a></td>
       </tr>
 
      </tbody>
