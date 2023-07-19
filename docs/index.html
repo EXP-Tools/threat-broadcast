@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-19 14:24:40 -->
+<!-- RELEASE TIME : 2023-07-19 15:24:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b78783e7085320842baa8ba2b81ef9ea</td>
+       <td>CVE-2023-3446</td>
+       <td>2023-07-19 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>Issue summary: Checking excessively long DH keys or parameters may be very slow.Impact summary: Applications that use the functions DH_check(), DH_check_ex()or EVP_PKEY_param_check() to check a DH key or DH parameters may experience longdelays. Where the key or parameters that are being checked have been obtainedfrom an untrusted source this may lead to a Denial of Service.The function DH_check() performs various checks on DH parameters. One of thosechecks confirms that the modulus ('p' parameter) is not too large. Trying to usea very large modulus is slow and OpenSSL will not normally use a modulus whichis over 10,000 bits in length.However the DH_check() function checks numerous aspects of the key or parametersthat have been supplied. Some of those checks use the supplied modulus valueeven if it has already been found to be too large.An application that calls DH_check() and supplies a key or parameters obtainedfrom an untrusted source could be vulernable to a Denial of Service attack.The function DH_check() is itself called by a number of other OpenSSL functions.An application calling any of those other functions may similarly be affected.The other functions affected by this are DH_check_ex() andEVP_PKEY_param_check().Also vulnerable are the OpenSSL dhparam and pkeyparam command line applicationswhen using the '-check' option.The OpenSSL SSL/TLS implementation is not affected by this issue.The OpenSSL 3.0 and 3.1 FIPS providers are not affected by this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3446">详情</a></td>
+      </tr>
+
+      <tr>
        <td>042cc1ad893400c7fd0f3f520c97224e</td>
        <td>CVE-2023-28754</td>
        <td>2023-07-19 08:15:00 <img src="imgs/new.gif" /></td>
@@ -513,14 +521,6 @@
        <td>2023-07-18 21:15:00 <img src="imgs/new.gif" /></td>
        <td>Vulnerability in the JD Edwards EnterpriseOne Tools product of Oracle JD Edwards (component: Web Runtime SEC).  Supported versions that are affected are Prior to 9.2.7.4. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise JD Edwards EnterpriseOne Tools.  Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in JD Edwards EnterpriseOne Tools, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of JD Edwards EnterpriseOne Tools accessible data as well as  unauthorized read access to a subset of JD Edwards EnterpriseOne Tools accessible data. CVSS 3.1 Base Score 6.1 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22055">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e2386c2a1a276f9142cc77214c78824</td>
-       <td>CVE-2023-22054</td>
-       <td>2023-07-18 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Vulnerability in the MySQL Server product of Oracle MySQL (component: Server: Optimizer).  Supported versions that are affected are 8.0.33 and prior. Easily exploitable vulnerability allows high privileged attacker with network access via multiple protocols to compromise MySQL Server.  Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of MySQL Server. CVSS 3.1 Base Score 4.9 (Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-22054">详情</a></td>
       </tr>
 
      </tbody>
@@ -796,6 +796,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a94bcecefa4bcbdc38f731a866ac0c7c</td>
+       <td>CNNVD-202307-1638 (CVE-2023-3730)</td>
+       <td>2023-07-18 15:24:13 <img src="imgs/new.gif" /></td>
+       <td>Google Chrome 安全漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1638">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6f7fe410d3aa6a4948ed41eb8f5d71f4</td>
        <td>CNNVD-202307-1639 (CVE-2023-3527)</td>
        <td>2023-07-18 14:24:36 <img src="imgs/new.gif" /></td>
@@ -1025,14 +1033,6 @@
        <td>2023-07-16 16:33:41</td>
        <td>IBM i 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1377">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3558380acfa891e9b40ee6fb92267bbb</td>
-       <td>CNNVD-202307-1275 (CVE-2023-37849)</td>
-       <td>2023-07-13 19:21:30</td>
-       <td>Panda Security VPN 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1275">详情</a></td>
       </tr>
 
      </tbody>
