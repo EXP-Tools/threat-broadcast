@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-20 05:25:44 -->
+<!-- RELEASE TIME : 2023-07-20 06:28:46 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5a17e276d5bcfb5192d706da91b9ca58</td>
+       <td>CVE-2023-38408</td>
+       <td>2023-07-20 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>The PKCS#11 feature in ssh-agent in OpenSSH before 9.3p2 has an insufficiently trustworthy search path, leading to remote code execution if an agent is forwarded to an attacker-controlled system. (Code in /usr/lib is not necessarily safe for loading into ssh-agent.) NOTE: this issue exists because of an incomplete fix for CVE-2016-10009.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38408">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fc6edd3bb4f4cb2ba0d147d3f3e6d6a8</td>
+       <td>CVE-2023-37289</td>
+       <td>2023-07-20 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>It is identified a vulnerability of Unrestricted Upload of File with Dangerous Type in the file uploading function in  InfoDoc Document On-line Submission and Approval System, which allows an unauthenticated remote attacker to exploit this vulnerability to upload and run arbitrary executable files to perform arbitrary system commands or disrupt service. This issue affects Document On-line Submission and Approval System: 22547, 22567.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37289">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6abd42d3ac8066649942d097ba30acbf</td>
+       <td>CVE-2022-28737</td>
+       <td>2023-07-20 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>There's a possible overflow in handle_image() when shim tries to load and execute crafted EFI executables; The handle_image() function takes into account the SizeOfRawData field from each section to be loaded. An attacker can leverage this to perform out-of-bound writes into memory. Arbitrary code execution is not discarded in such scenario.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28737">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>26097e92bc96509cd4dea777d017000b</td>
+       <td>CVE-2022-28736</td>
+       <td>2023-07-20 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>There's a use-after-free vulnerability in grub_cmd_chainloader() function; The chainloader command is used to boot up operating systems that doesn't support multiboot and do not have direct support from GRUB2. When executing chainloader more than once a use-after-free vulnerability is triggered. If an attacker can control the GRUB2's memory allocation pattern sensitive data may be exposed and arbitrary code execution can be achieved.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28736">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>866e033d852d226bd8429b5c50f26a35</td>
+       <td>CVE-2022-28735</td>
+       <td>2023-07-20 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>The GRUB2's shim_lock verifier allows non-kernel files to be loaded on shim-powered secure boot systems. Allowing such files to be loaded may lead to unverified code and modules to be loaded in GRUB2 breaking the secure boot trust-chain.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28735">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d22b2214d666c43b632d113606422ee7</td>
+       <td>CVE-2022-28734</td>
+       <td>2023-07-20 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Out-of-bounds write when handling split HTTP headers; When handling split HTTP headers, GRUB2 HTTP code accidentally moves its internal data buffer point by one position. This can lead to a out-of-bound write further when parsing the HTTP request, writing a NULL byte past the buffer. It's conceivable that an attacker controlled set of packets can lead to corruption of the GRUB2's internal memory metadata.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28734">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6a88669fbcbcff491eaae53a585b5c20</td>
+       <td>CVE-2022-28733</td>
+       <td>2023-07-20 01:15:00 <img src="imgs/new.gif" /></td>
+       <td>Integer underflow in grub_net_recv_ip4_packets; A malicious crafted IP packet can lead to an integer underflow in grub_net_recv_ip4_packets() function on rsm->total_len value. Under certain circumstances the total_len value may end up wrapping around to a small integer number which will be used in memory allocation. If the attack succeeds in such way, subsequent operations can write past the end of the buffer.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28733">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c0f36c8e5ffc68765002b49867ac526b</td>
+       <td>CVE-2023-3300</td>
+       <td>2023-07-20 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>HashiCorp Nomad and Nomad Enterprise 0.11.0 up to 1.5.6 and 1.4.1 HTTP search API can reveal names of available CSI plugins to unauthenticated users or users without the plugin:read policy. Fixed in 1.6.0, 1.5.7, and 1.4.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3300">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>28879624b76b9a7c1dd4ffabcc201336</td>
+       <td>CVE-2023-3299</td>
+       <td>2023-07-20 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>HashiCorp Nomad Enterprise 1.2.11 up to 1.5.6, and 1.4.10 ACL policies using a block without a label generates unexpected results. Fixed in 1.6.0, 1.5.7, and 1.4.11.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3299">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9e53671670907fe96ab2946b88916bf</td>
+       <td>CVE-2023-3072</td>
+       <td>2023-07-20 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>HashiCorp Nomad and Nomad Enterprise 0.7.0 up to 1.5.6 and 1.4.10 ACL policies using a block without a label generates unexpected results. Fixed in 1.6.0, 1.5.7, and 1.4.11.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3072">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2379094ada1ae63ca86a1fa9cf180cdd</td>
        <td>CVE-2023-37362</td>
        <td>2023-07-19 22:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-07-19 16:15:00 <img src="imgs/new.gif" /></td>
        <td>A potential vulnerability has been identified in the Micro Focus Dimensions CM Plugin for Jenkins. The vulnerability allows attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.See the following Jenkins security advisory for details:  *   https://www.jenkins.io/security/advisory/2023-06-14/ https://www.jenkins.io/security/advisory/2023-06-14/</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32261">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>05f6bb92e561e6c096f9d6da3b3f57a6</td>
-       <td>CVE-2023-25839</td>
-       <td>2023-07-19 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is SQL injection vulnerability in Esri ArcGIS Insights Desktop for Mac and Windows version 2022.1  that may allow a local, authorized attacker to execute arbitrary SQL commands against the back-end database. The effort required to generate the crafted input required to exploit this issue is complex and requires significant effort before a successful attack can be expected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25839">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8675cc2fd42db6b1d22ac5a90569d374</td>
-       <td>CVE-2023-25838</td>
-       <td>2023-07-19 16:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is SQL injection vulnerability in Esri ArcGIS Insights 2022.1 for ArcGIS Enterprise and that may allow a remote, authorized attacker to execute arbitrary SQL commands against the back-end database. The effort required to generate the crafted input required to exploit this issue is complex and requires significant effort before a successful attack can be expected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25838">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a31f745d37eb8f72d97cb38007dfe5cc</td>
-       <td>CVE-2023-3638</td>
-       <td>2023-07-19 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>In GeoVision GV-ADR2701 cameras, an attacker could edit the login response to access the web application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3638">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ff9ed550ea30d849160e013cc1b983a3</td>
-       <td>CVE-2023-34034</td>
-       <td>2023-07-19 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>Using "**" as a pattern in Spring Security configuration for WebFlux creates a mismatch in pattern matching between Spring Security and Spring WebFlux, and the potential for a security bypass.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34034">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a7a35b3aa0d386e32ff23d9b4ea98016</td>
-       <td>CVE-2023-30799</td>
-       <td>2023-07-19 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>MikroTik RouterOS stable before 6.49.7 and long-term through 6.48.6 are vulnerable to a privilege escalation issue. A remote and authenticated attacker can escalate privileges from admin to super-admin on the Winbox or HTTP interface. The attacker can abuse this vulnerability to execute arbitrary code on the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30799">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5a6c71833d13f1b8b8324306255d10f</td>
-       <td>CVE-2022-40896</td>
-       <td>2023-07-19 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>A ReDoS issue was discovered in pygments/lexers/smithy.py in pygments through 2.15.0 via SmithyLexer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-40896">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33856e38e8e8affe6cbb5c8a004ea6f4</td>
-       <td>CVE-2023-3463</td>
-       <td>2023-07-19 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>All versions of GE Digital CIMPLICITY that are not adhering to SDG guidance and accepting documents from untrusted sources are vulnerable to memory corruption issues due to insufficient input validation, including issues such as out-of-bounds reads and writes, use-after-free, stack-based buffer overflows, uninitialized pointers, and a heap-based buffer overflow. Successful exploitation could allow an attacker to execute arbitrary code.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3463">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>493f765e5f1fc842180d520473b2dd5f</td>
-       <td>CVE-2023-33876</td>
-       <td>2023-07-19 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A use-after-free vulnerability exists in the way Foxit Reader 12.1.2.15332 handles destroying annotations. A specially-crafted Javascript code inside a malicious PDF document can trigger reuse of a previously freed object which can lead to memory corruption and result in arbitrary code execution. A specially-crafted Javascript code inside a malicious PDF document can cause memory corruption and lead to remote code execution. Exploitation is also possible if a user visits a specially-crafted, malicious site if the browser plugin extension is enabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33876">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>57685d7a99621288a57e57f40c0f04e1</td>
-       <td>CVE-2023-33866</td>
-       <td>2023-07-19 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A use-after-free vulnerability exists in the JavaScript engine of Foxit Software’s PDF Reader, version 12.1.2.15332. By prematurely deleting objects associated with pages, a specially crafted PDF document can trigger the reuse of previously freed memory, which can lead to arbitrary code execution. An attacker needs to trick the user into opening the malicious file to trigger this vulnerability. Exploitation is also possible if a user visits a specially crafted, malicious site if the browser plugin extension is enabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33866">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1b125b8a229160447e1272effc75dd47</td>
-       <td>CVE-2023-32664</td>
-       <td>2023-07-19 14:15:00 <img src="imgs/new.gif" /></td>
-       <td>A type confusion vulnerability exists in the Javascript checkThisBox method as implemented in Foxit Reader 12.1.2.15332. A specially-crafted Javascript code inside a malicious PDF document can cause memory corruption and lead to remote code execution. User would need to open a malicious file to trigger the vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32664">详情</a></td>
       </tr>
 
      </tbody>
