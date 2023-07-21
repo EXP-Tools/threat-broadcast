@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-21 22:27:21 -->
+<!-- RELEASE TIME : 2023-07-21 23:26:30 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>93e6b536e556fb37dfeecaebd28b6aa6</td>
+       <td>CVE-2023-37918</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dapr is a portable, event-driven, runtime for building distributed applications across cloud and edge. A vulnerability has been found in Dapr that allows bypassing API token authentication, which is used by the Dapr sidecar to authenticate calls coming from the application, with a well-crafted HTTP request. Users who leverage API token authentication are encouraged to upgrade Dapr to 1.10.9 or to 1.11.2. This vulnerability impacts Dapr users who have configured API token authentication. An attacker could craft a request that is always allowed by the Dapr sidecar over HTTP, even if the `dapr-api-token` in the request is invalid or missing. The issue has been fixed in Dapr 1.10.9 or to 1.11.2. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37918">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5ca352e38995fcd6f96602ac9f17be1</td>
+       <td>CVE-2023-37917</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubePi is an opensource kubernetes management panel. A normal user has permission to create/update users, they can become admin by editing the `isadmin` value in the request. As a result any user may take administrative control of KubePi. This issue has been addressed in version 1.6.5. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37917">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a5434f566c3c8cb5e4d490da40ed0882</td>
+       <td>CVE-2023-37916</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>KubePi is an opensource kubernetes management panel. The endpoint /kubepi/api/v1/users/search?pageNum=1&&pageSize=10 leak password hash of any user (including admin). A sufficiently motivated attacker may be able to crack leaded password hashes. This issue has been addressed in version 1.6.5. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37916">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bef45a6e743686c9cafa140a1b16941f</td>
+       <td>CVE-2023-37915</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenDDS is an open source C++ implementation of the Object Management Group (OMG) Data Distribution Service (DDS). OpenDDS crashes while parsing a malformed `PID_PROPERTY_LIST` in a DATA submessage during participant discovery. Attackers can remotely crash OpenDDS processes by sending a DATA submessage containing the malformed parameter to the known multicast port. This issue has been addressed in version 3.25. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37915">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4c5a9e447f763eda1090dd1705139370</td>
+       <td>CVE-2023-3776</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A use-after-free vulnerability in the Linux kernel's net/sched: cls_fw component can be exploited to achieve local privilege escalation.If tcf_change_indev() fails, fw_set_parms() will immediately return an error after incrementing or decrementing the reference counter in tcf_bind_filter(). If an attacker can control the reference counter and set it to zero, they can cause the reference to be freed, leading to a use-after-free vulnerability.We recommend upgrading past commit 0323bce598eea038714f941ce2b22541c46d488f.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3776">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bcf2c49946638a2d26c06a3caafc97cc</td>
+       <td>CVE-2023-3611</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An out-of-bounds write vulnerability in the Linux kernel's net/sched: sch_qfq component can be exploited to achieve local privilege escalation.The qfq_change_agg() function in net/sched/sch_qfq.c allows an out-of-bounds write because lmax is updated according to packet sizes without bounds checks.We recommend upgrading past commit 3e337087c3b5805fe0b8a46ba622a962880b5d64.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3611">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a845ab2c6c6fd2bac09fc39ef99e68a8</td>
+       <td>CVE-2023-3610</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A use-after-free vulnerability in the Linux kernel's netfilter: nf_tables component can be exploited to achieve local privilege escalation.Flaw in the error handling of bound chains causes a use-after-free in the abort path of NFT_MSG_NEWRULE. The vulnerability requires CAP_NET_ADMIN to be triggered.We recommend upgrading past commit 4bedf9eee016286c835e3d8fa981ddece5338795.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3610">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>039fcd513ee6955bb31d8acd9db1cf2b</td>
+       <td>CVE-2023-3609</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>A use-after-free vulnerability in the Linux kernel's net/sched: cls_u32 component can be exploited to achieve local privilege escalation.If tcf_change_indev() fails, u32_set_parms() will immediately return an error after incrementing or decrementing the reference counter in tcf_bind_filter(). If an attacker can control the reference counter and set it to zero, they can cause the reference to be freed, leading to a use-after-free vulnerability.We recommend upgrading past commit 04c55383fa5689357bcdd2c8036725a55ed632bc.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3609">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b9af518d7c4f235c6ce6993836707527</td>
+       <td>CVE-2023-35077</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An out-of-bounds write vulnerability on windows operating systems causes the Ivanti AntiVirus Product to crash. Update to Ivanti AV Product version 7.9.1.285 or above.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35077">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45923605dd388e79cc2904ae8a722b7a</td>
+       <td>CVE-2022-46295</td>
+       <td>2023-07-21 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Multiple out-of-bounds write vulnerabilities exist in the translationVectors parsing functionality in multiple supported formats of Open Babel 3.1.1 and master commit 530dbfa3. A specially-crafted malformed file can lead to arbitrary code execution. An attacker can provide a malicious file to trigger this vulnerability.This vulnerability affects the Gaussian file format</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-46295">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a05ee5438f4fcb53e7199b1f24f7cee2</td>
        <td>CVE-2023-37901</td>
        <td>2023-07-21 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-07-21 07:15:00 <img src="imgs/new.gif" /></td>
        <td>A stack-based buffer overflow in Panasonic Control FPWIN Pro versions 7.6.0.3 and all previous versions may allow arbitrary code execution when opening specially crafted project files.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28728">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>006ea87739381c32866379e86bca0f5c</td>
-       <td>CVE-2023-32478</td>
-       <td>2023-07-21 06:15:00 <img src="imgs/new.gif" /></td>
-       <td>Dell PowerStore versions prior to 3.5.0.1 contain an insertion of sensitive information into log file vulnerability. A high privileged malicious user could potentially exploit this vulnerability, leading to sensitive information disclosure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32478">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>525d0489c857d61375f4d8db259b9f7b</td>
-       <td>CVE-2023-3815</td>
-       <td>2023-07-21 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, has been found in y_project RuoYi up to 4.7.7. Affected by this issue is the function uploadFilesPath of the component File Upload. The manipulation of the argument originalFilenames leads to cross site scripting. The attack may be launched remotely. VDB-235118 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3815">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a34b5317a02c7589918270acb6be025</td>
-       <td>CVE-2023-3811</td>
-       <td>2023-07-21 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Hospital Management System 1.0. It has been rated as critical. This issue affects some unknown processing of the file patientprofile.php. The manipulation of the argument address leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-235079.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3811">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6e1967730b704a00f47f8cb695874015</td>
-       <td>CVE-2023-37292</td>
-       <td>2023-07-21 05:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability in HGiga iSherlock 4.5 (iSherlock-user modules), HGiga iSherlock 5.5 (iSherlock-user modules) allows OS Command Injection.This issue affects iSherlock 4.5: before iSherlock-user-4.5-174; iSherlock 5.5: before iSherlock-user-5.5-174.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37292">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4f224e5197de32c000a653f411e8b852</td>
-       <td>CVE-2023-3810</td>
-       <td>2023-07-21 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Hospital Management System 1.0. It has been declared as critical. This vulnerability affects unknown code of the file patientappointment.php. The manipulation of the argument loginid/password/mobileno/appointmentdate/appointmenttime/patiente/dob/doct/city leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-235078 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3810">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c791667a19f8e134010c2a076613c813</td>
-       <td>CVE-2023-3809</td>
-       <td>2023-07-21 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Hospital Management System 1.0. It has been classified as critical. This affects an unknown part of the file patient.php. The manipulation of the argument address leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-235077 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3809">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>765bcf1aa89f91605006485e36796af4</td>
-       <td>CVE-2023-37291</td>
-       <td>2023-07-21 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>Galaxy Software Services Vitals ESP is vulnerable to using a hard-coded encryption key. An unauthenticated remote attacker can generate a valid token parameter and exploit this vulnerability to access system to operate processes and access data.This issue affects Vitals ESP: from 3.0.8 through 6.2.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37291">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>af04558b8b63bbb8dbb8e03858568315</td>
-       <td>CVE-2023-25837</td>
-       <td>2023-07-21 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is a Cross-site Scripting vulnerability in Esri Portal Sites in versions 10.8.1 – 10.9 that may allow a remote, authenticated attacker to create a crafted link which when clicked could potentially execute arbitrary JavaScript code in the victims browser.  The privileges required to execute this attack are high.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25837">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7a9e533cd95926a84e411d59c917bf9d</td>
-       <td>CVE-2023-25836</td>
-       <td>2023-07-21 04:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is a Cross-site Scripting vulnerability in Esri Portal Sites in versions 10.8.1 – 10.9 that may allow a remote, authenticated attacker to create a crafted link which when clicked could potentially execute arbitrary JavaScript code in the victims browser.  The privileges required to execute this attack are low.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25836">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>01c965c49deb350da2ab6fdb8341a61e</td>
-       <td>CVE-2023-3813</td>
-       <td>2023-07-21 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Jupiter X Core plugin for WordPress is vulnerable to arbitrary file downloads in versions up to, and including, 2.5.0. This makes it possible for unauthenticated attackers to download the contents of arbitrary files on the server, which can contain sensitive information. The requires the premium version of the plugin to be activated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3813">详情</a></td>
       </tr>
 
      </tbody>
@@ -796,6 +796,14 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ed6a22a2cfcc7c1bc3e72e792c280f71</td>
+       <td>CNNVD-202307-1778 (CVE-2023-3800)</td>
+       <td>2023-07-20 23:21:11 <img src="imgs/new.gif" /></td>
+       <td>EasyAdmin8 代码问题漏洞</td>
+       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1778">详情</a></td>
+      </tr>
+
+      <tr>
        <td>983048af921872ef898791c9973f1716</td>
        <td>CNNVD-202307-1712 (CVE-2023-3347)</td>
        <td>2023-07-20 21:19:05 <img src="imgs/new.gif" /></td>
@@ -1025,14 +1033,6 @@
        <td>2023-07-17 21:17:27</td>
        <td>Linux kernel 安全漏洞</td>
        <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1484">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>43a2fb4730078099d030bd0f82e1e7e7</td>
-       <td>CNNVD-202307-1474 (CVE-2023-38430)</td>
-       <td>2023-07-17 19:19:35</td>
-       <td>Linux kernel 安全漏洞</td>
-       <td><a target="_blank" href="http://www.cnnvd.org.cn/web/xxk/ldxqById.tag?CNNVD=CNNVD-202307-1474">详情</a></td>
       </tr>
 
      </tbody>
