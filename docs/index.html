@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-27 18:33:41 -->
+<!-- RELEASE TIME : 2023-07-27 19:16:35 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a576a5a82ec7c8407c683a122408caab</td>
+       <td>CVE-2023-38492</td>
+       <td>2023-07-27 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 affects all Kirby sites with user accounts (unless Kirby's API and Panel are disabled in the config). The real-world impact of this vulnerability is limited, however we still recommend to update to one of the patch releases because they also fix more severe vulnerabilities.Kirby's authentication endpoint did not limit the password length. This allowed attackers to provide a password with a length up to the server's maximum request body length. Validating that password against the user's actual password requires hashing the provided password, which requires more CPU and memory resources (and therefore processing time) the longer the provided password gets. This could be abused by an attacker to cause the website to become unresponsive or unavailable. Because Kirby comes with a built-in brute force protection, the impact of this vulnerability is limited to 10 failed logins from each IP address and 10 failed logins for each existing user per hour.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6. In all of the mentioned releases, the maintainers have added password length limits in the affected code so that passwords longer than 1000 bytes are immediately blocked, both when setting a password and when logging in.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38492">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a8e98e7a445f0efe2bd40f065dfc9114</td>
+       <td>CVE-2023-38491</td>
+       <td>2023-07-27 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 affects all Kirby sites that might have potential attackers in the group of authenticated Panel users or that allow external visitors to upload an arbitrary file to the content folder. Kirby sites are not affected if they don't allow file uploads for untrusted users or visitors or if the file extensions of uploaded files are limited to a fixed safe list. The attack requires user interaction by another user or visitor and cannot be automated.An editor with write access to the Kirby Panel could upload a file with an unknown file extension like `.xyz` that contains HTML code including harmful content like `<script>` tags. The direct link to that file could be sent to other users or visitors of the site. If the victim opened that link in a browser where they are logged in to Kirby and the file had not been opened by anyone since the upload, Kirby would not be able to send the correct MIME content type, instead falling back to `text/html`. The browser would then run the script, which could for example trigger requests to Kirby's API with the permissions of the victim.The issue was caused by the underlying `Kirby\Http\Response::file()` method, which didn't have an explicit fallback if the MIME type could not be determined from the file extension. If you use this method in site or plugin code, these uses may be affected by the same vulnerability.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6. In all of the mentioned releases, the maintainers have fixed the affected method to use a fallback MIME type of `text/plain` and set the `X-Content-Type-Options: nosniff` header if the MIME type of the file is unknown.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a53dc41fab743617f997c42d8581e172</td>
+       <td>CVE-2023-37900</td>
+       <td>2023-07-27 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Crossplane is a framework for building cloud native control planes without needing to write code. In versions prior to 1.11.5, 1.12.3, and 1.13.0, a high-privileged user could create a Package referencing an arbitrarily large image containing that Crossplane would then parse, possibly resulting in exhausting all the available memory and therefore in the container being OOMKilled. The impact is limited due to the high privileges required to be able to create the Package and the eventually consistency nature of controller. This issue is fixed in versions 1.11.5, 1.12.3, and 1.13.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37900">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8807f49ec58e02af79f5160235f5628c</td>
+       <td>CVE-2023-29845</td>
+       <td>2023-07-27 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** DO NOT USE THIS CVE RECORD. ConsultIDs: none. Reason: This record was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29845">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fc10902a8cb5f2553ad9c3702c50fdb4</td>
        <td>CVE-2023-3975</td>
        <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
@@ -361,6 +393,30 @@
        <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
        <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in RadiusTheme Variation Swatches for WooCommerce plugin <= 2.3.7 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37975">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eb31d56e912472bfcdbe3418fe3cc63d</td>
+       <td>CVE-2023-38490</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 only affects Kirby sites that use the `Xml` data handler (e.g. `Data::decode($string, 'xml')`) or the `Xml::parse()` method in site or plugin code. The Kirby core does not use any of the affected methods.XML External Entities (XXE) is a little used feature in the XML markup language that allows to include data from external files in an XML structure. If the name of the external file can be controlled by an attacker, this becomes a vulnerability that can be abused for various system impacts like the disclosure of internal or confidential data that is stored on the server (arbitrary file disclosure) or to perform network requests on behalf of the server (server-side request forgery, SSRF).Kirby's `Xml::parse()` method used PHP's `LIBXML_NOENT` constant, which enabled the processing of XML external entities during the parsing operation. The `Xml::parse()` method is used in the `Xml` data handler (e.g. `Data::decode($string, 'xml')`). Both the vulnerable method and the data handler are not used in the Kirby core. However they may be used in site or plugin code, e.g. to parse RSS feeds or other XML files. If those files are of an external origin (e.g. uploaded by a user or retrieved from an external URL), attackers may be able to include an external entity in the XML file that will then be processed in the parsing process. Kirby sites that don't use XML parsing in site or plugin code are *not* affected.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6. In all of the mentioned releases, the maintainers have removed the `LIBXML_NOENT` constant as processing of external entities is out of scope of the parsing logic. This protects all uses of the method against the described vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38490">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c30c88c4d1adb4e3fc969a3fe76b1670</td>
+       <td>CVE-2023-38489</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 affects all Kirby sites with user accounts (unless Kirby's API and Panel are disabled in the config). It can only be abused if a Kirby user is logged in on a device or browser that is shared with potentially untrusted users or if an attacker already maliciously used a previous password to log in to a Kirby site as the affected user.Insufficient Session Expiration is when a web site permits an attacker to reuse old session credentials or session IDs for authorization. In the variation described in this advisory, it allows attackers to stay logged in to a Kirby site on another device even if the logged in user has since changed their password. Kirby did not invalidate user sessions that were created with a password that was since changed by the user or by a site admin. If a user changed their password to lock out an attacker who was already in possession of the previous password or of a login session on another device or browser, the attacker would not be reliably prevented from accessing the Kirby site as the affected user.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6. In all of the mentioned releases, the maintainers have updated the authentication implementation to keep track of the hashed password in each active session. If the password changed since the login, the session is invalidated. To enforce this fix even if the vulnerability was previously abused, all users are logged out from the Kirby site after updating to one of the patched releases.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38489">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4c055da4f4a110f7c0d206f47a5c92e0</td>
+       <td>CVE-2023-38488</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 affects all Kirby sites that might have potential attackers in the group of authenticated Panel users or that allow external visitors to update a Kirby content file (e.g. via a contact or comment form). Kirby sites are *not* affected if they don't allow write access for untrusted users or visitors.A field injection in a content storage implementation is a type of vulnerability that allows attackers with content write access to overwrite content fields that the site developer didn't intend to be modified. In a Kirby site this can be used to alter site content, break site behavior or inject malicious data or code. The exact security risk depends on the field type and usage.Kirby stores content of the site, of pages, files and users in text files by default. The text files use Kirby's KirbyData format where each field is separated by newlines and a line with four dashes (`----`). When reading a KirbyData file, the affected code first removed the Unicode BOM sequence from the file contents and afterwards split the content into fields by the field separator.When writing to a KirbyData file, field separators in field data are escaped to prevent user input from interfering with the field structure. However this escaping could be tricked by including a Unicode BOM sequence in a field separator (e.g. `--\xEF\xBB\xBF--`). When writing, this was not detected as a separator, but because the BOM was removed during reading, it could be abused by attackers to inject other field data into content files.Because each field can only be defined once per content file, this vulnerability only affects fields in the content file that were defined above the vulnerable user-writable field or not at all. Fields that are defined below the vulnerable field override the injected field content and were therefore already protected.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6. In all of the mentioned releases, the maintainers have fixed the affected code to only remove the Unicode BOM sequence at the beginning of the file. This fixes this vulnerability both for newly written as well as for existing content files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38488">详情</a></td>
       </tr>
 
       <tr>
@@ -465,62 +521,6 @@
        <td>2023-07-27 01:15:00 <img src="imgs/new.gif" /></td>
        <td>The issue was addressed with improved memory handling. This issue is fixed in iOS 16.6 and iPadOS 16.6, macOS Ventura 13.5, watchOS 9.6. An app may be able to execute arbitrary code with kernel privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38580">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>36ef31668de11126a603c384ac6a8f0d</td>
-       <td>CVE-2023-38572</td>
-       <td>2023-07-27 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>The issue was addressed with improved checks. This issue is fixed in iOS 15.7.8 and iPadOS 15.7.8, iOS 16.6 and iPadOS 16.6, tvOS 16.6, macOS Ventura 13.5, Safari 16.6, watchOS 9.6. A website may be able to bypass Same Origin Policy.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38572">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c7bafc88f04caac759a4bdc15a78493b</td>
-       <td>CVE-2023-38565</td>
-       <td>2023-07-27 01:15:00 <img src="imgs/new.gif" /></td>
-       <td>A path handling issue was addressed with improved validation. This issue is fixed in macOS Monterey 12.6.8, iOS 16.6 and iPadOS 16.6, macOS Big Sur 11.7.9, macOS Ventura 13.5, watchOS 9.6. An app may be able to gain root privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38565">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dbda3b167811acf4c8b27c5458509eb9</td>
-       <td>CVE-2023-3451</td>
-       <td>2023-07-26 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>** REJECT ** Duplicate CVE. Please use CVE-2023-32297.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3451">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d1917b7966b2cf695e99c442e342851b</td>
-       <td>CVE-2023-28013</td>
-       <td>2023-07-26 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>HCL BigFix Mobile is vulnerable to a cross-site scripting attack. An authenticated attacker could inject malicious scripts into the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28013">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c35c4edfe80974a768f445dce9ee8168</td>
-       <td>CVE-2023-38285</td>
-       <td>2023-07-26 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Trustwave ModSecurity 3.x before 3.0.10 has Inefficient Algorithmic Complexity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38285">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3789884cd2b63c502bc65e663884883</td>
-       <td>CVE-2023-37732</td>
-       <td>2023-07-26 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Yasm v1.3.0.78 was found prone to NULL Pointer Dereference in /libyasm/intnum.c and /elf/elf.c, which allows the attacker to cause a denial of service via a crafted file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37732">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5f7e57783dbac2d46c836ebe6e55312</td>
-       <td>CVE-2023-37692</td>
-       <td>2023-07-26 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An arbitrary file upload vulnerability in October CMS v3.4.4 allows attackers to execute arbitrary code via a crafted file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37692">详情</a></td>
       </tr>
 
      </tbody>
