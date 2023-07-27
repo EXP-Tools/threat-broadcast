@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-07-27 15:22:41 -->
+<!-- RELEASE TIME : 2023-07-27 17:22:33 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>fc10902a8cb5f2553ad9c3702c50fdb4</td>
+       <td>CVE-2023-3975</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>OS Command Injection in GitHub repository jgraph/drawio prior to 21.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3975">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e6912528a068de515d983b500b2d2269</td>
+       <td>CVE-2023-3974</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>OS Command Injection in GitHub repository jgraph/drawio prior to 21.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3974">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>efac479c16093722a90d42dbea2ffba8</td>
+       <td>CVE-2023-3973</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - Reflected in GitHub repository jgraph/drawio prior to 21.6.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3973">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c004526e18241e9561214d1bbf4620e</td>
+       <td>CVE-2023-38490</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 only affects Kirby sites that use the `Xml` data handler (e.g. `Data::decode($string, 'xml')`) or the `Xml::parse()` method in site or plugin code. The Kirby core does not use any of the affected methods.XML External Entities (XXE) is a little used feature in the XML markup language that allows to include data from external files in an XML structure. If the name of the external file can be controlled by an attacker, this becomes a vulnerability that can be abused for various system impacts like the disclosure of internal or confidential data that is stored on the server (arbitrary file disclosure) or to perform network requests on behalf of the server (server-side request forgery, SSRF).Kirby's `Xml::parse()` method used PHP's `LIBXML_NOENT` constant, which enabled the processing of XML external entities during the parsing operation. The `Xml::parse()` method is used in the `Xml` data handler (e.g. `Data::decode($string, 'xml')`). Both the vulnerable method and the data handler are not used in the Kirby core. However they may be used in site or plugin code, e.g. to parse RSS feeds or other XML files. If those files are of an external origin (e.g. uploaded by a user or retrieved from an external URL), attackers may be able to include an external entity in the XML file that will then be processed in the parsing process. Kirby sites that don't use XML parsing in site or plugin code are *not* affected.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and Kirby 3.9.6. In all of the mentioned releases, the maintainers have removed the `LIBXML_NOENT` constant as processing of external entities is out of scope of the parsing logic. This protects all uses of the method against the described vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38490">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b02ca94ee93764057a9409e8176fb7fe</td>
+       <td>CVE-2023-38489</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 affects all Kirby sites with user accounts (unless Kirby's API and Panel are disabled in the config). It can only be abused if a Kirby user is logged in on a device or browser that is shared with potentially untrusted users or if an attacker already maliciously used a previous password to log in to a Kirby site as the affected user.Insufficient Session Expiration is when a web site permits an attacker to reuse old session credentials or session IDs for authorization. In the variation described in this advisory, it allows attackers to stay logged in to a Kirby site on another device even if the logged in user has since changed their password. Kirby did not invalidate user sessions that were created with a password that was since changed by the user or by a site admin. If a user changed their password to lock out an attacker who was already in possession of the previous password or of a login session on another device or browser, the attacker would not be reliably prevented from accessing the Kirby site as the affected user.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and Kirby 3.9.6. In all of the mentioned releases, the maintainers have updated the authentication implementation to keep track of the hashed password in each active session. If the password changed since the login, the session is invalidated. To enforce this fix even if the vulnerability was previously abused, all users are logged out from the Kirby site after updating to one of the patched releases.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38489">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a4211fb8133fac12b901deee5e77748f</td>
+       <td>CVE-2023-38488</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Kirby is a content management system. A vulnerability in versions prior to 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and 3.9.6 affects all Kirby sites that might have potential attackers in the group of authenticated Panel users or that allow external visitors to update a Kirby content file (e.g. via a contact or comment form). Kirby sites are *not* affected if they don't allow write access for untrusted users or visitors.A field injection in a content storage implementation is a type of vulnerability that allows attackers with content write access to overwrite content fields that the site developer didn't intend to be modified. In a Kirby site this can be used to alter site content, break site behavior or inject malicious data or code. The exact security risk depends on the field type and usage.Kirby stores content of the site, of pages, files and users in text files by default. The text files use Kirby's KirbyData format where each field is separated by newlines and a line with four dashes (`----`). When reading a KirbyData file, the affected code first removed the Unicode BOM sequence from the file contents and afterwards split the content into fields by the field separator.When writing to a KirbyData file, field separators in field data are escaped to prevent user input from interfering with the field structure. However this escaping could be tricked by including a Unicode BOM sequence in a field separator (e.g. `--\xEF\xBB\xBF--`). When writing, this was not detected as a separator, but because the BOM was removed during reading, it could be abused by attackers to inject other field data into content files.Because each field can only be defined once per content file, this vulnerability only affects fields in the content file that were defined above the vulnerable user-writable field or not at all. Fields that are defined below the vulnerable field override the injected field content and were therefore already protected.The problem has been patched in Kirby 3.5.8.3, 3.6.6.3, 3.7.5.2, 3.8.4.1, and Kirby 3.9.6. In all of the mentioned releases, the maintainers have fixed the affected code to only remove the Unicode BOM sequence at the beginning of the file. This fixes this vulnerability both for newly written as well as for existing content files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38488">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8259da7a4198c6a9e146b0250f057eea</td>
+       <td>CVE-2023-37979</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in Saturday Drive Ninja Forms Contact Form plugin <= 3.6.25 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37979">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e2562130b01efafd486e8327eef7549</td>
+       <td>CVE-2023-37977</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in WPFunnels Team Drag & Drop Sales Funnel Builder for WordPress – WPFunnels plugin <= 2.7.16 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37977">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>30db2617bf84c34d0f9ac8d905e6a3d3</td>
+       <td>CVE-2023-37976</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in Radio Forge Muses Player with Skins plugin <= 2.5 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37976">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3d69d0bb88bfa80917c941269018ce7e</td>
+       <td>CVE-2023-37975</td>
+       <td>2023-07-27 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in RadiusTheme Variation Swatches for WooCommerce plugin <= 2.3.7 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37975">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a4e204664687d1dcc2ed998d5378310a</td>
        <td>CVE-2023-3970</td>
        <td>2023-07-27 12:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-07-26 21:15:00 <img src="imgs/new.gif" /></td>
        <td>An arbitrary file upload vulnerability in October CMS v3.4.4 allows attackers to execute arbitrary code via a crafted file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37692">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98d94d4aff478adb328e3b402e167354</td>
-       <td>CVE-2023-32001</td>
-       <td>2023-07-26 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>libcurl can be told to save cookie, HSTS and/or alt-svc data to files. Whendoing this, it called `stat()` followed by `fopen()` in a way that made itvulnerable to a TOCTOU race condition problem.By exploiting this flaw, an attacker could trick the victim to create oroverwrite protected files holding this data in ways it was not intended to.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32001">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1b85b7924fbaa4f5de8dd97b4e797bf</td>
-       <td>CVE-2023-30367</td>
-       <td>2023-07-26 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>mRemoteNG configuration files can be stored in an encrypted state on disk. mRemoteNG version <= v1.76.20 and <= 1.77.3-dev loads configuration files in plain text into memory at application start-up, even if no connection has been established yet. This allows attackers to access contents of configuration files in plain text through a memory dump and thus compromise user credentials when no custom password encryption key has been set. This also bypasses the connection configuration file encryption setting by dumping already decrypted configurations from memory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30367">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4731183e95dfef2d0ec02cab06822ef6</td>
-       <td>CVE-2022-31455</td>
-       <td>2023-07-26 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>* A cross-site scripting (XSS) vulnerability in Truedesk v1.2.2 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into a user chat box.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31455">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f5ac88d91dd35f5ad94d19e8cfa9a98</td>
-       <td>CVE-2023-37624</td>
-       <td>2023-07-26 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Netdisco before v2.063000 was discovered to contain an open redirect vulnerability. An attacker may exploit this vulnerability to redirect users to arbitrary web URLs by tricking the victim users to click on crafted links.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37624">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25f13666a0e9f1ec6e09897b596342c7</td>
-       <td>CVE-2023-37623</td>
-       <td>2023-07-26 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Netdisco before v2.063000 was discovered to contain a cross-site scripting (XSS) vulnerability via the component /Web/TypeAhead.pm.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37623">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>711ef43a6b06ac2375603ff77d542093</td>
-       <td>CVE-2023-33802</td>
-       <td>2023-07-26 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>A buffer overflow in SumatraPDF Reader v3.4.6 allows attackers to cause a Denial of Service (DoS) via a crafted text file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33802">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ae2e97694d25854a5d7529e238b2ebbd</td>
-       <td>CVE-2023-31466</td>
-       <td>2023-07-26 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An XSS issue was discovered in FSMLabs TimeKeeper 8.0.17. On the "Configuration -> Compliance -> Add a new compliance report" and "Configuration -> Timekeeper Configuration -> Add a new source there" screens, there are entry points to inject JavaScript code.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31466">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dbe1a78619db0d597a536a8023f8ef15</td>
-       <td>CVE-2023-3442</td>
-       <td>2023-07-26 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>A missing authorization vulnerability exists in versions of the Jenkins Plug-in for ServiceNow DevOps prior to 1.38.1 that, if exploited successfully, could cause the unwanted exposure of sensitive information. To address this issue, apply the 1.38.1 version of the Jenkins plug-in for ServiceNow DevOps on your Jenkins server.  No changes are required on your instances of the Now Platform.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3442">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>efa255bbbf6a69fc2dd9be2de6e2288b</td>
-       <td>CVE-2023-3414</td>
-       <td>2023-07-26 19:15:00 <img src="imgs/new.gif" /></td>
-       <td>A cross-site request forgery vulnerability exists in versions of the Jenkins Plug-in for ServiceNow DevOps prior to 1.38.1 that, if exploited successfully, could cause the unwanted exposure of sensitive information. To address this issue, apply the 1.38.1 version of the Jenkins plug-in for ServiceNow DevOps on your Jenkins server.  No changes are required on your instances of the Now Platform.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3414">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d0dea3b94fea6ca72a99e75f6c379735</td>
-       <td>CVE-2023-3242</td>
-       <td>2023-07-26 18:15:00 <img src="imgs/new.gif" /></td>
-       <td>Allocation of Resources Without Limits or Throttling, Improper Initialization vulnerability in B&R Industrial Automation B&R Automation Runtime allows Flooding, Leveraging Race Conditions.This issue affects B&R Automation Runtime: <G4.93.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3242">详情</a></td>
       </tr>
 
      </tbody>
