@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-02 14:28:27 -->
+<!-- RELEASE TIME : 2023-08-02 15:25:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b5637ca430dbcaed48fbbcd30eb82f0d</td>
+       <td>CVE-2023-26451</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Functions with insufficient randomness were used to generate authorization tokens of the integrated oAuth Authorization Service. Authorization codes were predictable for third parties and could be used to intercept and take over the client authorization process. As a result, other users accounts could be compromised. The oAuth Authorization Service is not enabled by default. We have updated the implementation to use sources with sufficient randomness to generate authorization tokens. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26451">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>18400bd03448f621cf2502d57e5f4f08</td>
+       <td>CVE-2023-26450</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The "OX Count" web service did not specify a media-type when processing responses by external resources. Malicious script code can be executed within the victims context. This can lead to session hijacking or triggering unwanted actions via the web interface and API. To exploit this an attacker would require temporary access to the users account or lure a user to a compromised account. We are now defining the accepted media-type to avoid code execution. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26450">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a044de5a860c3f55f3b84f0a2b607ed8</td>
+       <td>CVE-2023-26449</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The "OX Chat" web service did not specify a media-type when processing responses by external resources. Malicious script code can be executed within the victims context. This can lead to session hijacking or triggering unwanted actions via the web interface and API. To exploit this an attacker would require temporary access to the users account or lure a user to a compromised account. We are now defining the accepted media-type to avoid code execution. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26449">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9591e4ade405c030eab85380c1e15fe5</td>
+       <td>CVE-2023-26448</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Custom log-in and log-out locations are used-defined as jslob but were not checked to contain malicious protocol handlers. Malicious script code can be executed within the victims context. This can lead to session hijacking or triggering unwanted actions via the web interface and API. To exploit this an attacker would require temporary access to the users account or lure a user to a compromised account. We now sanitize jslob content for those locations to avoid redirects to malicious content. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26448">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>538a766c1e56c7a2e3b13006ec5b7d48</td>
+       <td>CVE-2023-26447</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The "upsell" widget for the portal allows to specify a product description. This description taken from a user-controllable jslob did not get escaped before being added to DOM. Malicious script code can be executed within the victims context. This can lead to session hijacking or triggering unwanted actions via the web interface and API. To exploit this an attacker would require temporary access to the users account or lure a user to a compromised account. We now sanitize jslob content. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26447">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1434e11177b9f2a9e8bab8aae879e079</td>
+       <td>CVE-2023-26446</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>The users clientID at "application passwords" was not sanitized or escaped before being added to DOM. Malicious script code can be executed within the victims context. This can lead to session hijacking or triggering unwanted actions via the web interface and API. To exploit this an attacker would require temporary access to the users account or lure a user to a compromised account. We now sanitize the user-controllable clientID parameter. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26446">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1721bc9a2eff46cb9b222a2d75ca4c45</td>
+       <td>CVE-2023-26445</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Frontend themes are defined by user-controllable jslob settings and could point to a malicious resource which gets processed during login. Malicious script code can be executed within the victims context. This can lead to session hijacking or triggering unwanted actions via the web interface and API. To exploit this an attacker would require temporary access to the users account or lure a user to a compromised account. We now sanitize the theme value and use a default fallback if no theme matches. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26445">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ba887d608e855a2b165e4c4553208f1d</td>
+       <td>CVE-2023-26443</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Full-text autocomplete search allows user-provided SQL syntax to be injected to SQL statements. With existing sanitization in place, this can be abused to trigger benign SQL Exceptions but could potentially be escalated to a malicious SQL injection vulnerability. We now properly encode single quotes for SQL FULLTEXT queries. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26443">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c8d206a5488da359877074ba68e52d0</td>
+       <td>CVE-2023-26442</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>In case Cacheservice was configured to use a sproxyd object-storage backend, it would follow HTTP redirects issued by that backend. An attacker with access to a local or restricted network with the capability to intercept and replay HTTP requests to sproxyd (or who is in control of the sproxyd service) could perform a server-side request-forgery attack and make Cacheservice connect to unexpected resources. We have disabled the ability to follow HTTP redirects when connecting to sproxyd resources. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26442">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>30dc7a6b5b9f1cddabcdd513b94dcfa3</td>
+       <td>CVE-2023-26441</td>
+       <td>2023-08-02 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cacheservice did not correctly check if relative cache object were pointing to the defined absolute location when accessing resources. An attacker with access to the database and a local or restricted network would be able to read arbitrary local file system resources that are accessible by the services system user account. We have improved path validation and make sure that any access is contained to the defined root directory. No publicly available exploits are known.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26441">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2f87d889693924700c1d62b561b58b39</td>
        <td>CVE-2023-3426</td>
        <td>2023-08-02 10:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
        <td>Insufficient validation of untrusted input in Chromad in Google Chrome on ChromeOS prior to 115.0.5790.98 allowed a remote attacker to execute arbitrary code via a crafted shell script. (Chromium security severity: Low)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3739">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>108da53a2e741ea5fe5215b5527c4532</td>
-       <td>CVE-2023-3738</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Autofill in Google Chrome prior to 115.0.5790.98 allowed a remote attacker to obfuscate security UI via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3738">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cfe76944d0e3c3d6a7517ae5b4e90b83</td>
-       <td>CVE-2023-3737</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Notifications in Google Chrome prior to 115.0.5790.98 allowed a remote attacker to spoof the contents of media notifications via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3737">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fe9da8b02eca017df57841403d983b94</td>
-       <td>CVE-2023-3736</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Custom Tabs in Google Chrome on Android prior to 115.0.5790.98 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3736">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>267c4497a188311215f98d5ffc54ea5e</td>
-       <td>CVE-2023-3735</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Web API Permission Prompts in Google Chrome prior to 115.0.5790.98 allowed a remote attacker to obfuscate security UI via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3735">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bbd4304b0a821e74fbacf92010eb4163</td>
-       <td>CVE-2023-3734</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Picture In Picture in Google Chrome prior to 115.0.5790.98 allowed a remote attacker to potentially spoof the contents of the Omnibox (URL bar) via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3734">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dbdada7c110cddf6668b1e6bd2fd13a3</td>
-       <td>CVE-2023-3733</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in WebApp Installs in Google Chrome prior to 115.0.5790.98 allowed a remote attacker to potentially spoof the contents of the Omnibox (URL bar) via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3733">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e54cbf9ba50227d0cf86ff625f468591</td>
-       <td>CVE-2023-3732</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Out of bounds memory access in Mojo in Google Chrome prior to 115.0.5790.98 allowed a remote attacker who had compromised the renderer process to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3732">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>de52d9de402ab45a36ce528d09147381</td>
-       <td>CVE-2023-3731</td>
-       <td>2023-08-01 23:15:00 <img src="imgs/new.gif" /></td>
-       <td>Use after free in Diagnostics in Google Chrome on ChromeOS prior to 115.0.5790.98 allowed an attacker who convinced a user to install a malicious extension to potentially exploit heap corruption via a crafted Chrome Extension. (Chromium security severity: High)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3731">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f41d58c8db92ae907a385424eb0b18e1</td>
-       <td>CVE-2023-31429</td>
-       <td>2023-08-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Brocade Fabric OS before Brocade Fabric OS v9.1.1c, v9.2.0 contains a vulnerability when using various commands such as “chassisdistribute”, “reboot”, “rasman”, errmoduleshow, errfilterset, hassiscfgperrthreshold, supportshowcfgdisable and supportshowcfgenable commands that can cause the content of shell interpreted variables to be printed in the terminal.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31429">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>88574ab845a680d8aa0e6d69b95a49a8</td>
-       <td>CVE-2023-31425</td>
-       <td>2023-08-01 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability in the fosexec command of Brocade Fabric OS after Brocade Fabric OS v9.1.0 and, before Brocade Fabric OS v9.1.1 could allow a local authenticated user to perform privilege escalation to root by breaking the rbash shell. Starting with Fabric OS v9.1.0, “root” account access is disabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31425">详情</a></td>
       </tr>
 
      </tbody>
