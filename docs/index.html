@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-08 18:29:59 -->
+<!-- RELEASE TIME : 2023-08-08 19:20:58 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>784a2f13b2317213764691c777d69f51</td>
+       <td>CVE-2023-39532</td>
+       <td>2023-08-08 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>SES is a JavaScript environment that allows safe execution of arbitrary programs in Compartments. In version 0.18.0 prior to 0.18.7, 0.17.0 prior to 0.17.1, 0.16.0 prior to 0.16.1, 0.15.0 prior to 0.15.24, 0.14.0 prior to 0.14.5, an 0.13.0 prior to 0.13.5, there is a hole in the confinement of guest applications under SES that may manifest as either the ability to exfiltrate information or execute arbitrary code depending on the configuration and implementation of the surrounding host.Guest program running inside a Compartment with as few as no endowments can gain access to the surrounding host’s dynamic import by using dynamic import after the spread operator, like `{...import(arbitraryModuleSpecifier)}`.On the web or in web extensions, a Content-Security-Policy following ordinary best practices likely mitigates both the risk of exfiltration and execution of arbitrary code, at least limiting the modules that the attacker can import to those that are already part of the application. However, without a Content-Security-Policy, dynamic import can be used to issue HTTP requests for either communication through the URL or for the execution of code reachable from that origin.Within an XS worker, an attacker can use the host’s module system to the extent that the host has been configured. This typically only allows access to module code on the host’s file system and is of limited use to an attacker.Within Node.js, the attacker gains access to Node.js’s module system. Importing the powerful builtins is not useful except insofar as there are side-effects and tempered because dynamic import returns a promise. Spreading a promise into an object renders the promises useless. However, Node.js allows importing data URLs, so this is a clear path to arbitrary execution.Versions 0.18.7, 0.17.1, 0.16.1, 0.15.24, 0.14.5, and 0.13.5 contain a patch for this issue. Some workarounds are available. On the web, providing a suitably constrained Content-Security-Policy mitigates most of the threat. With XS, building a binary that lacks the ability to load modules at runtime mitigates the entirety of the threat. That will look like an implementation of `fxFindModule` in a file like `xsPlatform.c` that calls `fxRejectModuleFile`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39532">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2b382a8055d45f1c64fb460de8817554</td>
+       <td>CVE-2023-37646</td>
+       <td>2023-08-08 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in the CAB file extraction function of Bitberry File Opener v23.0 allows attackers to execute a directory traversal.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37646">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>081f85cf49dabe04d0a328fbcd2e2dda</td>
+       <td>CVE-2023-38773</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to obtain sensitive information via the volopp1 and volopp2 parameters within the /QueryView.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38773">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9d51135f6784b2b8615a5879c7142932</td>
+       <td>CVE-2023-38771</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to obtain sensitive information via the volopp parameter within the /QueryView.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38771">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1162be8e9048fb54ed7ba5e449a8af93</td>
+       <td>CVE-2023-38770</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to obtain sensitive information via the group parameter within the /QueryView.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38770">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d1bb455d5f5e7bfcfed542302f41c92e</td>
+       <td>CVE-2023-38769</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to obtain sensitive information via the searchstring and searchwhat parameters within the /QueryView.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38769">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bbd1bcb3fc134040d1c1f74eae435ba0</td>
+       <td>CVE-2023-38768</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to obtain sensitive information via the PropertyID parameter within the /QueryView.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38768">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2ff3bb85382ebe591012432e8cdf6215</td>
+       <td>CVE-2023-38767</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to obtain sensitive information via the 'value' and 'custom' parameters within the /QueryView.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38767">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b9fa8e28423c0b78c644528f263ac5cc</td>
+       <td>CVE-2023-38766</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting (XSS) vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to execute arbitrary code via a crafted payload to the PersonView.php component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38766">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e5adb9668e19c04488afd1b939d06b1</td>
+       <td>CVE-2023-38765</td>
+       <td>2023-08-08 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in ChurchCRM v.5.0.0 allows a remote attacker to obtain sensitive information via the membermonth parameter within the /QueryView.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38765">详情</a></td>
+      </tr>
+
+      <tr>
        <td>50bfeaeda91d51faee4fadfff04ad4a0</td>
        <td>CVE-2023-3653</td>
        <td>2023-08-08 15:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
        <td>Advantech EKI-1524, EKI-1522, EKI-1521 devices through 1.21 are affected by a Stored Cross-Site Scripting vulnerability, which can be triggered by authenticated users in the device name field of the web-interface.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4202">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6384a6c3c46d8536ef0bedef55e3f4ad</td>
-       <td>CVE-2023-3717</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Farmakom Remote Administration Console allows SQL Injection.This issue affects Remote Administration Console: before 1.02.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3717">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>88d1cc9527de275a4e1bf9276faa9fc1</td>
-       <td>CVE-2023-36692</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Christian Kramer & Hendrik Thole WP-Cirrus plugin <= 0.6.11 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36692">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f4de432888da85fe5777d5ef60155955</td>
-       <td>CVE-2023-32503</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in GTmetrix GTmetrix for WordPress plugin <= 0.4.6 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32503">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>91bd5811d68ea7aa96c1dfd065bc2cc3</td>
-       <td>CVE-2023-29099</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (contributor+) Stored Cross-Site Scripting (XSS) vulnerability in Elegant themes Divi theme <= 4.20.2 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-29099">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c3e17018771c2ebde8cebf6ce494452e</td>
-       <td>CVE-2023-27422</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in NsThemes NS Coupon To Become Customer plugin <= 1.2.2 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27422">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0c9d23d19417fb4105b491af96ac7b4e</td>
-       <td>CVE-2023-27421</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in Everest themes Everest News theme <= 1.1.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27421">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f6fb1eaa2c51a984c7d712000d3c6e88</td>
-       <td>CVE-2023-27416</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Decon Digital Decon WP SMS plugin <= 1.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27416">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>67cd9eff41a05db437ab5d51df5fcd2e</td>
-       <td>CVE-2023-27412</td>
-       <td>2023-08-08 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Unauth. Reflected Cross-Site Scripting (XSS) vulnerability in Everest themes Mocho Blog theme <= 1.0.4 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27412">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e6124a5c66b7127d56747fef355a93fa</td>
-       <td>CVE-2023-4009</td>
-       <td>2023-08-08 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>In MongoDB Ops Manager v5.0 prior to 5.0.22 and v6.0 prior to 6.0.17 it is possible for an authenticated user with project owner or project user admin access to generate an API key with the privileges of org owner resulting in privilege escalation.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4009">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cf224c277a5f2fd38018f54af01c983e</td>
-       <td>CVE-2023-3898</td>
-       <td>2023-08-08 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in mAyaNet E-Commerce Software allows SQL Injection.This issue affects E-Commerce Software: before 1.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3898">详情</a></td>
       </tr>
 
      </tbody>
