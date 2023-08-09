@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-09 14:29:16 -->
+<!-- RELEASE TIME : 2023-08-09 15:27:25 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8f254ea8d5de953a6e3343326d671fcd</td>
+       <td>CVE-2023-33953</td>
+       <td>2023-08-09 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>gRPC contains a vulnerability that allows hpack table accounting errors could lead to unwanted disconnects between clients and servers in exceptional cases/ Three vectors were found that allow the following DOS attacks:- Unbounded memory buffering in the HPACK parser- Unbounded CPU consumption in the HPACK parserThe unbounded CPU consumption is down to a copy that occurred per-input-block in the parser, and because that could be unbounded due to the memory copy bug we end up with an O(n^2) parsing loop, with n selected by the client.The unbounded memory buffering bugs:- The header size limit check was behind the string reading code, so we needed to first buffer up to a 4 gigabyte string before rejecting it as longer than 8 or 16kb.- HPACK varints have an encoding quirk whereby an infinite number of 0’s can be added at the start of an integer. gRPC’s hpack parser needed to read all of them before concluding a parse.- gRPC’s metadata overflow check was performed per frame, so that the following sequence of frames could cause infinite buffering: HEADERS: containing a: 1 CONTINUATION: containing a: 2 CONTINUATION: containing a: 3 etc…</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33953">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4601af5e4acb4b085be520c6d83c5136</td>
+       <td>CVE-2023-32782</td>
+       <td>2023-08-09 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Paessler PRTG Network Monitor 23.2.83.1760. Due to command-line parameter injection and an undocumented debug feature flag, an attacker can utilize the DICOM sensor to write arbitrary data to the disk. This can be utilized to write a custom EXE(.bat) sensor, that will then run. This primitive gives remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32782">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dd7ce8004b53a32449b7c751d3223fbc</td>
+       <td>CVE-2023-32781</td>
+       <td>2023-08-09 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Paessler PRTG Network Monitor 23.2.83.1760. Due to command-line parameter injection and an undocumented debug feature flag, an attacker can utilize the HL7 sensor to write arbitrary data to the disk. This can be utilized to write a custom EXE(.bat) sensor, that will then run. This primitive gives remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32781">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6327cc794e46fbac59b7ac7eb34b8f0f</td>
+       <td>CVE-2023-31452</td>
+       <td>2023-08-09 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Paessler PRTG Network Monitor 23.2.83.1760 x64. The NetApp Volume Sensor transmits cleartext credentials over the network when the HTTP protocol is selected. This can be triggered remotely via a CSRF by simply sending a controls/addsensor3.htm link to a logged-in victim.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31452">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>11c0d854ff2c9b83efc3c32551a8280f</td>
+       <td>CVE-2023-31450</td>
+       <td>2023-08-09 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Paessler PRTG Network Monitor 23.2.83.1760 x64. To exploit the vulnerability, a authenticated user can create a SQL Sensor. When creating this sensor, the user can set the SQL message that should be sent from the PRTG device. This input parameter contains a path traversal vulnerability that allows an attacker to choose arbitrary files from the system. They will be transmitted over the internet to the attacker's machine.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31450">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8e65246859cf0df36810d13f671ca864</td>
+       <td>CVE-2023-31449</td>
+       <td>2023-08-09 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Paessler PRTG Network Monitor 23.2.83.1760 x64. To exploit the vulnerability, a authenticated user can create a WMI Custom Sensor. When creating this sensor, the user can set the WQL message that should be sent from the PRTG device. This input parameter contains a path traversal vulnerability that allows an attacker to choose arbitrary files from the system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31449">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d96564c68e9f185cae3fa532063f0587</td>
+       <td>CVE-2023-31448</td>
+       <td>2023-08-09 12:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Paessler PRTG Network Monitor 23.2.83.1760 x64. To exploit the vulnerability, a authenticated user can create a HL7 Sensor. When creating this sensor, the user can set the HL7 message that should be sent from the PRTG device. This input parameter contains a path traversal vulnerability that allows an attacker to choose arbitrary files from the system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-31448">详情</a></td>
+      </tr>
+
+      <tr>
        <td>55d59c04f6b863c076ff538f2ce9aee1</td>
        <td>CVE-2023-24015</td>
        <td>2023-08-09 10:15:00 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-08-08 22:15:00 <img src="imgs/new.gif" /></td>
        <td>Untrusted search path in Zoom Rooms for Windows before version 5.15.5 may allow an authenticated user to enable a denial of service via local access.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39212">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4acc789ff7e22d34ac8bac439468a044</td>
-       <td>CVE-2023-39211</td>
-       <td>2023-08-08 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper privilege management in Zoom Desktop Client for Windows and Zoom Rooms for Windows before 5.15.5 may allow an authenticated user to enable an information disclosure via local access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39211">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f7a6faa97e903d62cee8bb7d743b6273</td>
-       <td>CVE-2023-39210</td>
-       <td>2023-08-08 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cleartext storage of sensitive information in Zoom Client SDK for Windows before 5.15.0 may allow an authenticated user to enable an information disclosure via local access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39210">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>61fbb6ea3527fc970430ec6eca7a9ac0</td>
-       <td>CVE-2023-39209</td>
-       <td>2023-08-08 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>Improper input validation in Zoom Desktop Client for Windows before 5.15.5 may allow an authenticated user to enable an information disclosure via network access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39209">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c9745728e58e074fdafbdb3b7e91231</td>
-       <td>CVE-2023-39086</td>
-       <td>2023-08-08 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>ASUS RT-AC66U B1 3.0.0.4.286_51665 was discovered to transmit sensitive information in cleartext.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39086">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>60511aea169343a4c7f6d2d137d80a28</td>
-       <td>CVE-2023-36482</td>
-       <td>2023-08-08 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Samsung NFC S3NRN4V, S3NSN4V, S3NSEN4, SEN82AB, and S3NRN82. A buffer copy without checking its input size can cause an NFC service restart.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36482">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>768cb1758be79f03a7cb02593a1e1008</td>
-       <td>CVE-2023-36344</td>
-       <td>2023-08-08 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in Diebold Nixdorf Vynamic View Console v.5.3.1 and before allows a local attacker to execute arbitrary code via not restricting the search path for required DLLs and not verifying the signature.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36344">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1ad449f0bd340b301a825b7813d953a6</td>
-       <td>CVE-2023-26961</td>
-       <td>2023-08-08 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>Alteryx Server 2022.1.1.42590 does not employ file type verification for uploaded files. This vulnerability allows attackers to upload arbitrary files by changing the extension of the uploaded file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26961">详情</a></td>
       </tr>
 
      </tbody>
