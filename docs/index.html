@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-09 18:30:34 -->
+<!-- RELEASE TIME : 2023-08-09 19:20:38 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2b12ddcfacfdff9012f31c886d58828d</td>
+       <td>CVE-2023-39531</td>
+       <td>2023-08-09 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sentry is an error tracking and performance monitoring platform. Starting in version 10.0.0 and prior to version 23.7.2, an attacker with sufficient client-side exploits could retrieve a valid access token for another user during the OAuth token exchange due to incorrect credential validation. The client ID must be known and the API application must have already been authorized on the targeted user account. Sentry SaaS customers do not need to take any action. Self-hosted installations should upgrade to version 23.7.2 or higher. There are no direct workarounds, but users should review applications authorized on their account and remove any that are no longer needed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39531">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d34a403ce69a62e69f02cff906a8665e</td>
+       <td>CVE-2023-40012</td>
+       <td>2023-08-09 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>uthenticode is a small cross-platform library for partially verifying Authenticode digital signatures. Versions of uthenticode prior to the 2.x series did not check Extended Key Usages in certificates, in violation of the Authenticode X.509 certificate profile. As a result, a malicious user could produce a "signed" PE file that uthenticode would verify and consider valid using an X.509 certificate that isn't entitled to produce code signatures (e.g., a SSL certificate). By design, uthenticode does not perform full-chain validation. However, the absence of EKU validation was an unintended oversight. The 2.0.0 release series includes EKU checks. There are no workarounds to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40012">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>490cd9f0f9745a08cd3ea40c5d956a4e</td>
+       <td>CVE-2023-39969</td>
+       <td>2023-08-09 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>uthenticode is a small cross-platform library for partially verifying Authenticode digital signatures. Version 1.0.9 of uthenticode hashed the entire file rather than hashing sections by virtual address, in violation of the Authenticode specification. As a result, an attacker could modify code within a binary without changing its Authenticode hash, making it appear valid from uthenticode's perspective. Versions of uthenticode prior to 1.0.9 are not vulnerable to this attack, nor are versions in the 2.x series. By design, uthenticode does not perform full-chain validation. However, the malleability of signature verification introduced in 1.0.9 was an unintended oversight. The 2.x series addresses the vulnerability. Versions prior to 1.0.9 are also not vulnerable, but users are encouraged to upgrade rather than downgrade. There are no workarounds to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39969">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>be9c19d742a92aba3d5cc262b27c02d3</td>
+       <td>CVE-2023-3518</td>
+       <td>2023-08-09 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>HashiCorp Consul and Consul Enterprise 1.16.0 when using JWT Auth for service mesh incorrectly allows/denies access regardless of service identities. Fixed in 1.16.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3518">详情</a></td>
+      </tr>
+
+      <tr>
        <td>7889e37a0a204ca748810ddfd94f79d3</td>
        <td>CVE-2023-4273</td>
        <td>2023-08-09 15:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2023-08-09 04:15:00 <img src="imgs/new.gif" /></td>
        <td>Improper authorization vulnerability in Special Interest Group Network for Analysis and Liaison versions 4.4.0 to 4.7.7 allows the authorized API users to view the organization information of the information receiver that is set as "non-disclosure" in the information provision operation.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38751">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6bf596f284391f19ce17741a7dc78ba</td>
-       <td>CVE-2023-4239</td>
-       <td>2023-08-09 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Real Estate Manager plugin for WordPress is vulnerable to privilege escalation in versions up to, and including, 6.7.1 due to insufficient restriction on the 'rem_save_profile_front' function. This makes it possible for authenticated attackers, with minimal permissions such as a subscriber, to modify their user role by supplying the 'wp_capabilities' parameter during a profile update.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4239">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d79820a96b37398102d7090a5ac6c4d8</td>
-       <td>CVE-2023-39910</td>
-       <td>2023-08-09 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>The cryptocurrency wallet entropy seeding mechanism used in Libbitcoin Explorer 3.0.0 through 3.6.0 is weak, aka the Milk Sad issue. The use of an mt19937 Mersenne Twister PRNG restricts the internal entropy to 32 bits regardless of settings. This allows remote attackers to recover any wallet private keys generated from "bx seed" entropy output and steal funds. (Affected users need to move funds to a secure new cryptocurrency wallet.) NOTE: the vendor's position is that there was sufficient documentation advising against "bx seed" but others disagree. NOTE: this was exploited in the wild in June and July 2023.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39910">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8fcc793bf93bf05021b392563340c822</td>
-       <td>CVE-2023-39341</td>
-       <td>2023-08-09 03:15:00 <img src="imgs/new.gif" /></td>
-       <td>"FFRI yarai", "FFRI yarai Home and Business Edition" and their OEM products handle exceptional conditions improperly, which may lead to denial-of-service (DoS) condition. Affected products and versions are as follows: FFRI yarai versions 3.4.0 to 3.4.6 and 3.5.0, FFRI yarai Home and Business Edition version 1.4.0, InfoTrace Mark II Malware Protection (Mark II Zerona) versions 3.0.1 to 3.2.2, Zerona / Zerona PLUS versions 3.2.32 to 3.2.36, ActSecure ? versions 3.4.0 to 3.4.6 and 3.5.0, Dual Safe Powered by FFRI yarai version 1.4.1, EDR Plus Pack (Bundled FFRI yarai versions 3.4.0 to 3.4.6 and 3.5.0), and EDR Plus Pack Cloud (Bundled FFRI yarai versions 3.4.0 to 3.4.6 and 3.5.0).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39341">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>41a82e86f559233dc366df4e1eef329d</td>
-       <td>CVE-2023-39951</td>
-       <td>2023-08-08 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>OpenTelemetry Java Instrumentation provides OpenTelemetry auto-instrumentation and instrumentation libraries for Java. OpenTelemetry Java Instrumentation prior to version 1.28.0 contains an issue related to the instrumentation of Java applications using the AWS SDK v2 with Amazon Simple Email Service (SES) v1 API. When SES POST requests are instrumented, the query parameters of the request are inserted into the trace `url.path` field. This behavior leads to the http body, containing the email subject and message, to be present in the trace request url metadata. Any user using a version before 1.28.0 of OpenTelemetry Java Instrumentation to instrument AWS SDK v2 call to SES’s v1 SendEmail API is affected. The e-mail content sent to SES may end up in telemetry backend. This exposes the e-mail content to unintended audiences. The issue can be mitigated by updating OpenTelemetry Java Instrumentation to version 1.28.0 or later.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39951">详情</a></td>
       </tr>
 
      </tbody>
