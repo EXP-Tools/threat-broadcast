@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-25 22:25:22 -->
+<!-- RELEASE TIME : 2023-08-25 23:22:35 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e1a7003a4e0830bafab6c0193bca3f72</td>
+       <td>CVE-2023-41080</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>URL Redirection to Untrusted Site ('Open Redirect') vulnerability in FORM authentication feature Apache Tomcat.This issue affects Apache Tomcat: from 11.0.0-M1 through 11.0.0-M10, from 10.1.0-M1 through 10.0.12, from 9.0.0-M1 through 9.0.79 and from 8.5.0 through 8.5.92.The vulnerability is limited to the ROOT (default) web application.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41080">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>276c1f60d738d23c14b34f6433dede5f</td>
+       <td>CVE-2023-40587</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Pyramid is an open source Python web framework. A path traversal vulnerability in Pyramid versions 2.0.0 and 2.0.1 impacts users of Python 3.11 that are using a Pyramid static view with a full filesystem path and have a `index.html` file that is located exactly one directory above the location of the static view's file system path. No further path traversal exists, and the only file that could be disclosed accidentally is `index.html`. Pyramid version 2.0.2 rejects any path that contains a null-byte out of caution. While valid in directory/file names, we would strongly consider it a mistake to use null-bytes in naming files/directories. Secondly, Python 3.11, and 3.12 has fixed the underlying issue in `os.path.normpath` to no longer truncate on the first `0x00` found, returning the behavior to pre-3.11 Python, un an as of yet unreleased version. Fixes will be available in:Python 3.12.0rc2 and 3.11.5. Some workarounds are available. Use a version of Python 3 that is not affected, downgrade to Python 3.10 series temporarily, or wait until Python 3.11.5 is released and upgrade to the latest version of Python 3.11 series.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40587">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6364986a0db4fdb1f5956fb3bb61b0e1</td>
+       <td>CVE-2023-40586</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>OWASP Coraza WAF is a golang modsecurity compatible web application firewall library. Due to the misuse of `log.Fatalf`, the application using coraza crashed after receiving crafted requests from attackers. The application will immediately crash after receiving a malicious request that triggers an error in `mime.ParseMediaType`. This issue was patched in version 3.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40586">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e003ca5d6a0e8ba36b5b8e5f2e8ad3a7</td>
+       <td>CVE-2023-40585</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>ironic-image is a container image to run OpenStack Ironic as part of Metal³. Prior to version capm3-v1.4.3, if Ironic is not deployed with TLS and it does not have API and Conductor split into separate services, access to the API is not protected by any authentication. Ironic API is also listening in host network. In case the node is not behind a firewall, the API could be accessed by anyone via network without authentication. By default, Ironic API in Metal3 is protected by TLS and basic authentication, so this vulnerability requires operator to configure API without TLS for it to be vulnerable. TLS and authentication however should not be coupled as they are in versions prior to capm3-v1.4.3. A patch exists in versions capm3-v1.4.3 and newer. Some workarounds are available. Either configure TLS for Ironic API (`deploy.sh -t ...`, `IRONIC_TLS_SETUP=true`) or split Ironic API and Conductor via configuration change (old implementation, not recommended). With both workarounds, services are configured with httpd front-end, which has proper authentication configuration in place.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40585">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f496c5b00927954626104775d769dba8</td>
+       <td>CVE-2023-40583</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>libp2p is a networking stack and library modularized out of The IPFS Project, and bundled separately for other tools to use. In go-libp2p, by using signed peer records a malicious actor can store an arbitrary amount of data in a remote node’s memory. This memory does not get garbage collected and so the victim can run out of memory and crash. If users of go-libp2p in production are not monitoring memory consumption over time, it could be a silent attack i.e. the attacker could bring down nodes over a period of time (how long depends on the node resources i.e. a go-libp2p node on a virtual server with 4 gb of memory takes about 90 sec to bring down; on a larger server, it might take a bit longer.) This issue was patched in version 0.27.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40583">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>41da625e1b39fe2447aaec740cc5f5dc</td>
+       <td>CVE-2023-40571</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>weblogic-framework is a tool for detecting weblogic vulnerabilities. Versions 0.2.3 and prior do not verify the returned data packets, and there is a deserialization vulnerability which may lead to remote code execution. When weblogic-framework gets the command echo, it directly deserializes the data returned by the server without verifying it. At the same time, the classloader loads a lot of deserialization calls. In this case, the malicious serialized data returned by the server will cause remote code execution. Version 0.2.4 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40571">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ba44a97ff5d6a41c96698aa5c7e21f7c</td>
+       <td>CVE-2023-40166</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Notepad++ is a free and open-source source code editor. Versions 8.5.6 and prior are vulnerable to heap buffer read overflow in `FileManager::detectLanguageFromTextBegining `. The exploitability of this issue is not clear. Potentially, it may be used to leak internal memory allocation information. As of time of publication, no known patches are available in existing versions of Notepad++.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40166">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>974a83f50b21d595eca348c5e0e575bd</td>
+       <td>CVE-2023-40164</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>Notepad++ is a free and open-source source code editor. Versions 8.5.6 and prior are vulnerable to global buffer read overflow in `nsCodingStateMachine::NextStater`. The exploitability of this issue is not clear. Potentially, it may be used to leak internal memory allocation information. As of time of publication, no known patches are available in existing versions of Notepad++.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40164">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>310ef584d74944ee1b061d530b3727ba</td>
+       <td>CVE-2023-38712</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Libreswan 3.x and 4.x before 4.12. When an IKEv1 ISAKMP SA Informational Exchange packet contains a Delete/Notify payload followed by further Notifies that act on the ISAKMP SA, such as a duplicated Delete/Notify message, a NULL pointer dereference on the deleted state causes the pluto daemon to crash and restart.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38712">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b7f46a24e0b9f4c536d9322c5b1273e7</td>
+       <td>CVE-2023-38711</td>
+       <td>2023-08-25 21:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Libreswan before 4.12. When an IKEv1 Quick Mode connection configured with ID_IPV4_ADDR or ID_IPV6_ADDR receives an IDcr payload with ID_FQDN, a NULL pointer dereference causes a crash and restart of the pluto daemon. NOTE: the earliest affected version is 4.6.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38711">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6b500b74ddeb4790968e8d6f71af2935</td>
        <td>CVE-2023-25848</td>
        <td>2023-08-25 19:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-08-25 11:15:00 <img src="imgs/new.gif" /></td>
        <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Palasthotel by Edward Bock, Katharina Rompf Sunny Search plugin <= 1.0.2 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c72c503040d6f18df9bb7961107e74b</td>
-       <td>CVE-2023-32575</td>
-       <td>2023-08-25 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in PI Websolution Product page shipping calculator for WooCommerce plugin <= 1.3.25 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32575">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d62dad6bb5c87db8b2e7229cff425e84</td>
-       <td>CVE-2023-24394</td>
-       <td>2023-08-25 11:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Gopi Ramasamy iframe popup plugin <= 3.3 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24394">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0f3faed997426bad35d18253d7854b47</td>
-       <td>CVE-2023-4478</td>
-       <td>2023-08-25 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Mattermost fails to restrict which parameters' values it takes from the request during signup allowing an attacker to register users as inactive, thus blocking them from later accessing Mattermost without the system admin activating their accounts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4478">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e774857b5a6b010306e26b92dc1740b</td>
-       <td>CVE-2023-25981</td>
-       <td>2023-08-25 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (contributor+) Stored Cross-Site Scripting (XSS) vulnerability in ThemeKraft Post Form plugin <= 2.8.1 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25981">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>38167e3ad8491e66c4eb9bb6111baadc</td>
-       <td>CVE-2023-25649</td>
-       <td>2023-08-25 10:15:00 <img src="imgs/new.gif" /></td>
-       <td>There is a command injection vulnerability in a mobile internet product of ZTE. Due to insufficient validation of SET_DEVICE_LED interface parameter, an authenticated attacker could use the vulnerability to execute arbitrary commands.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-25649">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>404403cbf2aaafaca59477c6db35e722</td>
-       <td>CVE-2023-3425</td>
-       <td>2023-08-25 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Out-of-bounds read issue in M-Files Server versions below 23.8.12892.6 and LTS Service Release Versions before 23.2 LTS SR3 allows unauthenticated user to read restricted amount of bytes from memory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3425">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee500c1e9dac6a797a13c9badf768bc1</td>
-       <td>CVE-2023-3406</td>
-       <td>2023-08-25 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Path Traversal issue in M-Files Classic Web versions below 23.6.12695.3 and LTS Service Release Versions before 23.2 LTS SR3 allows authenticated user to read some restricted files on the web server</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3406">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1011673e3f867cc45b0b8c18731003a</td>
-       <td>CVE-2023-32591</td>
-       <td>2023-08-25 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Cloud Primero B.V DBargain plugin <= 3.0.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32591">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a307eb2f54e03279da934a92b6b2d71e</td>
-       <td>CVE-2023-32584</td>
-       <td>2023-08-25 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in John Newcombe eBecas plugin <= 3.1.3 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32584">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>16f9a0f5e1ee9422e7e1dc0687ca95c9</td>
-       <td>CVE-2023-32577</td>
-       <td>2023-08-25 09:15:00 <img src="imgs/new.gif" /></td>
-       <td>Auth. (admin+) Stored Cross-Site Scripting (XSS) vulnerability in Eji Osigwe DevBuddy Twitter Feed plugin <= 4.0.0 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32577">详情</a></td>
       </tr>
 
      </tbody>
