@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-29 18:27:33 -->
+<!-- RELEASE TIME : 2023-08-29 19:18:17 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5fc67553b5ab7a124fc93e64da06ac0b</td>
+       <td>CVE-2023-41037</td>
+       <td>2023-08-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>OpenPGP.js is a JavaScript implementation of the OpenPGP protocol. In affected versions OpenPGP Cleartext Signed Messages are cryptographically signed messages where the signed text is readable without special tools. These messages typically contain a "Hash: ..." header declaring the hash algorithm used to compute the signature digest. OpenPGP.js up to v5.9.0 ignored any data preceding the "Hash: ..." texts when verifying the signature. As a result, malicious parties could add arbitrary text to a third-party Cleartext Signed Message, to lead the victim to believe that the arbitrary text was signed. A user or application is vulnerable to said attack vector if it verifies the CleartextMessage by only checking the returned `verified` property, discarding the associated `data` information, and instead _visually trusting_ the contents of the original message. Since `verificationResult.data` would always contain the actual signed data, users and apps that check this information are not vulnerable. Similarly, given a CleartextMessage object, retrieving the data using `getText()` or the `text` field returns only the contents that are considered when verifying the signature. Finally, re-armoring a CleartextMessage object (using `armor()` will also result in a "sanitised" version, with the extraneous text being removed. This issue has been addressed in version 5.10.1 (current stable version) which will reject messages when calling `openpgp.readCleartextMessage()` and in version 4.10.11 (legacy version) which will will reject messages when calling `openpgp.cleartext.readArmored()`. Users are advised to upgrade. Users unable to upgrade should check the contents of `verificationResult.data` to see what data was actually signed, rather than visually trusting the contents of the armored message.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41037">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>29fa36bd817140c015ca34a8c2b50223</td>
+       <td>CVE-2023-40890</td>
+       <td>2023-08-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>A stack-based buffer overflow vulnerability exists in the lookup_sequence function of ZBar 0.23.90. Specially crafted QR codes may lead to information disclosure and/or arbitrary code execution. To trigger this vulnerability, an attacker can digitally input the malicious QR code, or prepare it to be physically scanned by the vulnerable scanner.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40890">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e1c43a6fb3f5368492fa705771b84fd8</td>
+       <td>CVE-2023-40889</td>
+       <td>2023-08-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>A heap-based buffer overflow exists in the qr_reader_match_centers function of ZBar 0.23.90. Specially crafted QR codes may lead to information disclosure and/or arbitrary code execution. To trigger this vulnerability, an attacker can digitally input the malicious QR code, or prepare it to be physically scanned by the vulnerable scanner.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40889">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e5bb1bfab9ad34ecb7df7ee27ffe9f8</td>
+       <td>CVE-2023-39616</td>
+       <td>2023-08-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>AOMedia v3.0.0 to v3.5.0 was discovered to contain an invalid read memory access via the component assign_frame_buffer_p in av1/common/av1_common_int.h.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39616">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>20ae5ad674f54393023e35441b1c27e2</td>
+       <td>CVE-2023-39615</td>
+       <td>2023-08-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Xmlsoft Libxml2 v2.11.0 was discovered to contain a global buffer overflow via the xmlSAX2StartElement() function at /libxml2/SAX2.c. This vulnerability allows attackers to cause a Denial of Service (DoS) via supplying a crafted XML file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39615">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4ae3bc720e1c8d512040072baaecf3d5</td>
+       <td>CVE-2023-3646</td>
+       <td>2023-08-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>On affected platforms running Arista EOS with mirroring to multiple destinations configured, an internal system error may trigger a kernel panic and cause system reload.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3646">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a10149440f974eab1c908edf2c7cf286</td>
+       <td>CVE-2023-24548</td>
+       <td>2023-08-29 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>On affected platforms running Arista EOS with VXLAN configured, malformed or truncated packets received over a VXLAN tunnel and forwarded in hardware can cause egress ports to be unable to forward packets. The device will continue to be susceptible to the issue until remediation is in place.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24548">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>375df83cf72a20aee5a2d983a8cb7c37</td>
+       <td>CVE-2023-41376</td>
+       <td>2023-08-29 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Nokia Service Router Operating System (SR OS) 22.10 and SR Linux, when error-handling update-fault-tolerance is not enabled, mishandle BGP path attributes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41376">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c106cf0217c1e5ac338d1890e1835784</td>
+       <td>CVE-2023-41362</td>
+       <td>2023-08-29 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>MyBB before 1.8.36 allows Code Injection by users with certain high privileges. Templates in Admin CP intentionally use eval, and there was some validation of the input to eval, but type juggling interfered with this when using PCRE within PHP.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41362">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>03aca0317bac5bd4cd03eb68c704bbf0</td>
+       <td>CVE-2023-38802</td>
+       <td>2023-08-29 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>FRRouting FRR 7.5.1 through 9.0 and Pica8 PICOS 4.3.3.2 allow a remote attacker to cause a denial of service via a crafted BGP update with a corrupted attribute 23 (Tunnel Encapsulation).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38802">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5b73e4c8520a4d6dba74a451f25760a7</td>
        <td>CVE-2023-0238</td>
        <td>2023-08-29 15:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-08-28 22:15:00 <img src="imgs/new.gif" /></td>
        <td>Buffer Overflow vulnerability in VirusTotal yara v.4.3.2 allows a remote attacker to execute arbtirary code via the yr_execute_cod function in the exe.c component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40857">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ffc00a8167d53131baa6f9b28ff1753a</td>
-       <td>CVE-2023-40828</td>
-       <td>2023-08-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in pf4j pf4j v.3.9.0 and before allows a remote attacker to obtain sensitive information and execute arbitrary code via the expandIfZip method in the extract function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40828">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23cb6aa24aaf9f1fa10085c87c724a1b</td>
-       <td>CVE-2023-40827</td>
-       <td>2023-08-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in pf4j pf4j v.3.9.0 and before allows a remote attacker to obtain sensitive information and execute arbitrary code via the loadpluginPath parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40827">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a9f6ae61494ca3ed0dc0ed8842c5b8ab</td>
-       <td>CVE-2023-40826</td>
-       <td>2023-08-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in pf4j pf4j v.3.9.0 and before allows a remote attacker to obtain sensitive information and execute arbitrary code via the zippluginPath parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40826">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a7965a66d7508cbd5aa05ba1d7c6754</td>
-       <td>CVE-2023-40825</td>
-       <td>2023-08-28 22:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue in Perfree PerfreeBlog v.3.1.2 allows a remote attacker to execute arbitrary code via crafted plugin listed in admin/plugin/access/list.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40825">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>62798fdb50cd5d41113e6a42a5152a82</td>
-       <td>CVE-2023-40170</td>
-       <td>2023-08-28 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>jupyter-server is the backend for Jupyter web applications. Improper cross-site credential checks on `/files/` URLs could allow exposure of certain file contents, or accessing files when opening untrusted files via  "Open image in new tab". This issue has been addressed in commit `87a49272728` which has been included in release `2.7.2`. Users are advised to upgrade. Users unable to upgrade may use the lower performance `--ContentsManager.files_handler_class=jupyter_server.files.handlers.FilesHandler`, which implements the correct checks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40170">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>588f9384e1e9e2ee02c0060ba2d43bcf</td>
-       <td>CVE-2023-39968</td>
-       <td>2023-08-28 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>jupyter-server is the backend for Jupyter web applications. Open Redirect Vulnerability. Maliciously crafted login links to known Jupyter Servers can cause successful login or an already logged-in session to be redirected to arbitrary sites, which should be restricted to Jupyter Server-served URLs. This issue has been addressed in commit `29036259` which is included in release 2.7.2. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39968">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5db9ba27a69abe5c8ea5447db72c2456</td>
-       <td>CVE-2023-39652</td>
-       <td>2023-08-28 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>theme volty tvcmsvideotab up to v4.0.0 was discovered to contain a SQL injection vulnerability via the component TvcmsVideoTabConfirmDeleteModuleFrontController::run().</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39652">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5332498d4ed01ba30b8192f07b5dd9de</td>
-       <td>CVE-2023-38969</td>
-       <td>2023-08-28 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>Cross Site Scripting vulnerabiltiy in Badaso v.2.9.7 allows a remote attacker to execute arbitrary code via a crafted payload to the title parameter in the new book and edit book function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38969">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a71ab41e4b4dd5e519cfea6d22b4b521</td>
-       <td>CVE-2020-24165</td>
-       <td>2023-08-28 21:15:00 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in TCG Accelerator in QEMU 4.2.0, allows local attackers to execute arbitrary code, escalate privileges, and cause a denial of service (DoS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-24165">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fa1faeeb538ec10a361e303197bf365a</td>
-       <td>CVE-2023-41109</td>
-       <td>2023-08-28 20:15:00 <img src="imgs/new.gif" /></td>
-       <td>SmartNode SN200 (aka SN200) 3.21.2-23021 allows unauthenticated OS Command Injection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41109">详情</a></td>
       </tr>
 
      </tbody>
