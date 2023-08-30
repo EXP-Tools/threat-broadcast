@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-30 19:18:56 -->
+<!-- RELEASE TIME : 2023-08-30 21:20:14 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,38 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5f6ec06becd0cffefef71d45a2b22254</td>
+       <td>CVE-2023-41039</td>
+       <td>2023-08-30 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>RestrictedPython is a restricted execution environment for Python to run untrusted code. Python's "format" functionality allows someone controlling the format string to "read" all objects accessible through recursive attribute lookup and subscription from objects he can access. This can lead to critical information disclosure. With `RestrictedPython`, the format functionality is available via the `format` and `format_map` methods of `str` (and `unicode`) (accessed either via the class or its instances) and via `string.Formatter`. All known versions of `RestrictedPython` are vulnerable. This issue has been addressed in commit `4134aedcff1` which has been included in the 5.4 and 6.2 releases. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41039">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1fda863e7e94195863b98f7694df6001</td>
+       <td>CVE-2023-40582</td>
+       <td>2023-08-30 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>find-exec is a utility to discover available shell commands. Versions prior to 1.0.3 did not properly escape user input and are vulnerable to Command Injection via an attacker controlled parameter. As a result, attackers may run malicious shell commands in the context of the running process. This issue has been addressed in version 1.0.3. users are advised to upgrade. Users unable to upgrade should ensure that all input passed to find-exec comes from a trusted source.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40582">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0e3ae36fc1efcc3951af60a8eb89918d</td>
+       <td>CVE-2023-40184</td>
+       <td>2023-08-30 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>xrdp is an open source remote desktop protocol (RDP) server. In versions prior to 0.9.23 improper handling of session establishment errors allows bypassing OS-level session restrictions. The `auth_start_session` function can return non-zero (1) value on, e.g., PAM error which may result in in session restrictions such as max concurrent sessions per user by PAM (ex ./etc/security/limits.conf) to be bypassed. Users (administrators) don't use restrictions by PAM are not affected. This issue has been addressed in release version 0.9.23. Users are advised to upgrade. There are no known workarounds for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40184">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>214a34049a851028910e9a6da1523480</td>
+       <td>CVE-2023-36811</td>
+       <td>2023-08-30 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>borgbackup is an opensource, deduplicating archiver with compression and authenticated encryption. A flaw in the cryptographic authentication scheme in borgbackup allowed an attacker to fake archives and potentially indirectly cause backup data loss in the repository. The attack requires an attacker to be able to: 1. insert files (with no additional headers) into backups and 2. gain write access to the repository. This vulnerability does not disclose plaintext to the attacker, nor does it affect the authenticity of existing archives. Creating plausible fake archives may be feasible for empty or small archives, but is unlikely for large archives. The issue has been fixed in borgbackup 1.2.5. Users are advised to upgrade. Additionally to installing the fixed code, users must follow the upgrade procedure as documented in the change log. Data loss after being attacked can be avoided by reviewing the archives (timestamp and contents valid and as expected) after any "borg check --repair" and before "borg prune". There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36811">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c7f0e82ff0fafd7873e0fc1bed06dfca</td>
        <td>CVE-2023-4640</td>
        <td>2023-08-30 17:15:00 <img src="imgs/new.gif" /></td>
@@ -489,38 +521,6 @@
        <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
        <td>Tenda AC7 V1.0 V15.03.06.44, Tenda AC9 V3.0 V15.03.06.42_multi, and Tenda AC5 V1.0RTL_V15.03.06.28 were discovered to contain a stack overflow via parameter page at url /goform/NatStaticSetting.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41559">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fb3eaa9e342036c93a1d4af043e29f05</td>
-       <td>CVE-2023-41558</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC7 V1.0 V15.03.06.44 was discovered to contain a stack overflow via parameter timeZone at url /goform/SetSysTimeCfg.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41558">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a60daaa7f2b4812c8338125c1794bfe8</td>
-       <td>CVE-2023-41557</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC7 V1.0 V15.03.06.44 and Tenda AC5 V1.0RTL_V15.03.06.28 were discovered to contain a stack overflow via parameter entrys and mitInterface at url /goform/addressNat.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41557">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>15ab4e8487d9f7e3ad40af7155044cf9</td>
-       <td>CVE-2023-41556</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC7 V1.0 V15.03.06.44, Tenda AC9 V3.0 V15.03.06.42_multi, and Tenda AC5 V1.0RTL_V15.03.06.28 were discovered to contain a stack overflow via parameter list at url /goform/SetIpMacBind.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41556">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb26a090e9fe9be04dd7e9f4582b4806</td>
-       <td>CVE-2023-41555</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC7 V1.0 V15.03.06.44 was discovered to contain a stack overflow via parameter security_5g at url /goform/WifiBasicSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41555">详情</a></td>
       </tr>
 
      </tbody>
