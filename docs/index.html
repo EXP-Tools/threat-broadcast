@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-08-30 21:20:14 -->
+<!-- RELEASE TIME : 2023-08-31 01:22:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b5b137a9b53f3c9fedcd6e1051e43d72</td>
+       <td>CVE-2023-23765</td>
+       <td>2023-08-30 23:15:00 <img src="imgs/new.gif" /></td>
+       <td>An incorrect comparison vulnerability was identified in GitHub Enterprise Server that allowed commit smuggling by displaying an incorrect diff in a re-opened Pull Request. To exploit this vulnerability, an attacker would need write access to the repository. This vulnerability was reported via the  GitHub Bug Bounty Program https://bounty.github.com/ .</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23765">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a49bd776841ecca0387fc14c687a6a64</td>
+       <td>CVE-2023-41163</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>A Reflected Cross-site scripting (XSS) vulnerability in the file manager tab in Usermin 2.000 allows remote attackers to inject arbitrary web script or HTML via the replace in results field while replacing the results under the tools drop down.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41163">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>91369c9f2ed8284f3b81aae5ea00f570</td>
+       <td>CVE-2023-41041</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Graylog is a free and open log management platform. In a multi-node Graylog cluster, after a user has explicitly logged out, a user session may still be used for API requests until it has reached its original expiry time. Each node maintains an in-memory cache of user sessions. Upon a cache-miss, the session is loaded from the database. After that, the node operates solely on the cached session. Modifications to sessions will update the cached version as well as the session persisted in the database. However, each node maintains their isolated version of the session. When the user logs out, the session is removed from the node-local cache and deleted from the database. The other nodes will however still use the cached session. These nodes will only fail to accept the session id if they intent to update the session in the database. They will then notice that the session is gone. This is true for most API requests originating from user interaction with the Graylog UI because these will lead to an update of the session's "last access" timestamp. If the session update is however prevented by setting the `X-Graylog-No-Session-Extension:true` header in the request, the node will consider the (cached) session valid until the session is expired according to its timeout setting. No session identifiers are leaked. After a user has logged out, the UI shows the login screen again, which gives the user the impression that their session is not valid anymore. However, if the session becomes compromised later, it can still be used to perform API requests against the Graylog cluster. The time frame for this is limited to the configured session lifetime, starting from the time when the user logged out. This issue has been addressed in versions 5.0.9 and 5.1.3. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41041">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>18dc88f3fa31e398b8f9b1de6b88b31b</td>
+       <td>CVE-2023-41040</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>GitPython is a python library used to interact with Git repositories. In order to resolve some git references, GitPython reads files from the `.git` directory, in some places the name of the file being read is provided by the user, GitPython doesn't check if this file is located outside the `.git` directory. This allows an attacker to make GitPython read any file from the system. This vulnerability is present in https://github.com/gitpython-developers/GitPython/blob/1c8310d7cae144f74a671cbe17e51f63a830adbf/git/refs/symbolic.py#L174-L175. That code joins the base directory with a user given string without checking if the final path is located outside the base directory. This vulnerability cannot be used to read the contents of files but could in theory be used to trigger a denial of service for the program. This issue has not yet been addressed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41040">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b8784d65a641ebd05b698254196f08bd</td>
+       <td>CVE-2023-39139</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in Archive v3.3.7 allows attackers to execute a path traversal via extracting a crafted zip file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39139">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e720bcd6c724ac815265def61fdbf128</td>
+       <td>CVE-2023-39138</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in ZIPFoundation v0.9.16 allows attackers to execute a path traversal via extracting a crafted zip file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39138">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b0bf3103d23389c11fcac772ab919beb</td>
+       <td>CVE-2023-39137</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in Archive v3.3.7 allows attackers to spoof zip filenames which can lead to inconsistent filename parsing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39137">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76147b1a869937be05b1c77aebf6f0f3</td>
+       <td>CVE-2023-39136</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An unhandled edge case in the component _sanitizedPath of ZipArchive v2.5.4 allows attackers to cause a Denial of Service (DoS) via a crafted zip file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39136">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4eb62ce7e9bb0edacf4eb23c86bb98fc</td>
+       <td>CVE-2023-39135</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>An issue in Zip Swift v2.1.2 allows attackers to execute a path traversal attack via a crafted zip entry.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39135">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3a3274245acc996fd7cbcbe28fd414f6</td>
+       <td>CVE-2023-38970</td>
+       <td>2023-08-30 22:15:00 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting vulnerabiltiy in Badaso v.0.0.1 thru v.2.9.7 allows a remote attacker to execute arbitrary code via a crafted payload to the Name of member parameter in the add new member function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38970">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5f6ec06becd0cffefef71d45a2b22254</td>
        <td>CVE-2023-41039</td>
        <td>2023-08-30 18:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-08-30 15:15:00 <img src="imgs/new.gif" /></td>
        <td>The All Users Messenger WordPress plugin through 1.24 does not prevent non-administrator users from deleting messages from the all-users messenger.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4023">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0857bd5d3ecafadc29e81bfc140d0d11</td>
-       <td>CVE-2023-4013</td>
-       <td>2023-08-30 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>The GDPR Cookie Compliance (CCPA, DSGVO, Cookie Consent) WordPress plugin before 4.12.5 does not have proper CSRF checks when managing its license, which could allow attackers to make logged in admins update and deactivate the plugin's license via CSRF attacks</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4013">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>14611375130ec6ac6067bf3c19d02ffc</td>
-       <td>CVE-2023-3992</td>
-       <td>2023-08-30 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>The PostX WordPress plugin before 3.0.6 does not sanitise and escape a parameter before outputting it back in the page, leading to a Reflected Cross-Site Scripting which could be used against high privilege users such as admin</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3992">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4545c544c707436caff227e26799a604</td>
-       <td>CVE-2023-3720</td>
-       <td>2023-08-30 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>The Upload Media By URL WordPress plugin before 1.0.8 does not have CSRF check when uploading files, which could allow attackers to make logged in admins upload files (including HTML containing JS code for users with the unfiltered_html capability) on their behalf.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3720">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6384054fa8efc6ab4c089c3db3ede9d</td>
-       <td>CVE-2023-3501</td>
-       <td>2023-08-30 15:15:00 <img src="imgs/new.gif" /></td>
-       <td>The FormCraft WordPress plugin before 1.2.7 does not sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed (for example in multisite setup).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3501">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>73ac7876f25637525284e003b7953444</td>
-       <td>CVE-2023-4624</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Server-Side Request Forgery (SSRF) in GitHub repository bookstackapp/bookstack prior to v23.08.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4624">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>00a73583cbe779d619e5890b4d864724</td>
-       <td>CVE-2023-41563</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC9 V3.0 V15.03.06.42_multi and Tenda AC5 US_AC5V1.0RTL_V15.03.06.28 were discovered to contain a stack overflow via parameter mac at url /goform/GetParentControlInfo.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41563">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0933025885560ff239cf3dc2725f4f40</td>
-       <td>CVE-2023-41562</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC7 V1.0 V15.03.06.44, Tenda AC9 V3.0 V15.03.06.42_multi, and Tenda AC5 US_AC5V1.0RTL_V15.03.06.28 were discovered to contain a stack overflow via parameter time at url /goform/PowerSaveSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41562">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e6fce98511a815507c2983fc3653003</td>
-       <td>CVE-2023-41561</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC9 V3.0 V15.03.06.42_multi and Tenda AC5 US_AC5V1.0RTL_V15.03.06.28 were discovered to contain a stack overflow via parameter startIp and endIp at url /goform/SetPptpServerCfg.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41561">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6b4c1a0446e1e54b68f0ea7dce9c650d</td>
-       <td>CVE-2023-41560</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC9 V3.0 V15.03.06.42_multi was discovered to contain a stack overflow via parameter firewallEn at url /goform/SetFirewallCfg.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41560">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9047d1d329cb32dad587071233ca6eb3</td>
-       <td>CVE-2023-41559</td>
-       <td>2023-08-30 13:15:00 <img src="imgs/new.gif" /></td>
-       <td>Tenda AC7 V1.0 V15.03.06.44, Tenda AC9 V3.0 V15.03.06.42_multi, and Tenda AC5 V1.0RTL_V15.03.06.28 were discovered to contain a stack overflow via parameter page at url /goform/NatStaticSetting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41559">详情</a></td>
       </tr>
 
      </tbody>
@@ -1726,7 +1726,7 @@
       <tr>
        <td>d4d8ce47d03fa49fd2bf3dc60620d3d6</td>
        <td>CVE-2020-19188</td>
-       <td>2023-08-29 20:05:41 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 20:05:41</td>
        <td>GNU NCURSES Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=989153a7702341d1aa9679f787e3bc92">详情</a></td>
       </tr>
@@ -1734,7 +1734,7 @@
       <tr>
        <td>817488f0f008597c6b1f2d8b49c6f3c4</td>
        <td>CVE-2020-19187</td>
-       <td>2023-08-29 20:05:40 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 20:05:40</td>
        <td>GNU NCURSES Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=a8cbe654f26e4953a2d3c415c3c91225">详情</a></td>
       </tr>
@@ -1742,7 +1742,7 @@
       <tr>
        <td>b21d32851aacc3ee2906e725d3a35bcb</td>
        <td>CVE-2020-19909</td>
-       <td>2023-08-29 20:05:40 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 20:05:40</td>
        <td>HAXX CURL Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6cf1d14852454080b6e86146c5f36a93">详情</a></td>
       </tr>
@@ -2094,7 +2094,7 @@
       <tr>
        <td>b154da32cd87858f59dec5d7ca3a7222</td>
        <td>CVE-2023-39212</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Zoom Rooms不受信搜索路径漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83856">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>3b033a9adee56792a078600b781b903d</td>
        <td>CVE-2021-4422</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>WordPress POST SMTP Mailer Plugin跨站请求伪造漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83855">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>651074434d993c66cf163f302d26b3b1</td>
        <td>CVE-2023-36344</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Diebold Nixdorf Vynamic View Console不受控制的搜索路径元素漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83854">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>272d7f863945a67c9b8618ae5b92fa15</td>
        <td>CVE-2023-36533</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Zoom SDK不受控制的资源消耗漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83853">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>4ce32afe8f189854da98e6fdb669d4dc</td>
        <td>CVE-2023-37646</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Bitberry File Opener目录遍历漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83852">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>2bd6704c1f60a4711727501cdb848feb</td>
        <td>CVE-2020-36023</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Freedesktop Poppler无限循环漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83851">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>4aa253e3563b5fb224c043275b998bda</td>
        <td>CVE-2023-3525</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>WordPress Getnet Argentina para Woocommerce Plugin授权绕过漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83850">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>f313a11941c169c70de246f9b060f6de</td>
        <td>CVE-2023-3166</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>WordPress Lana Email Logger Plugin跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83849">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>ae732e863745878ef21613dccfbaaf23</td>
        <td>CVE-2023-2423</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Rockwell Automation Armor PowerFlex计算错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83848">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>49f072d6071e3957b6d9ee89a35bd869</td>
        <td>CVE-2023-39549</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Siemens Solid Edge内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83847">详情</a></td>
       </tr>
@@ -2174,7 +2174,7 @@
       <tr>
        <td>a5f6c483976ebd6d9bd57398ba849a68</td>
        <td>CVE-2023-4239</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>WordPress Real Estate Manager Plugin权限管理错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83846">详情</a></td>
       </tr>
@@ -2182,7 +2182,7 @@
       <tr>
        <td>0d927065d595f14e8ccdd0775e665fc6</td>
        <td>CVE-2023-3687</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Bylancer QuickVCard SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83845">详情</a></td>
       </tr>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>73e4a16a74e7c00af0dd36c7e89bbcdd</td>
        <td>CVE-2023-3694</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>House Rental and Property Listing SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83844">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>d472768a1c930023ac287624e282972a</td>
        <td>CVE-2023-39185</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Siemens Solid Edge越界读取漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83843">详情</a></td>
       </tr>
@@ -2206,7 +2206,7 @@
       <tr>
        <td>72355a6e2a6d22c60d73be51cb01c5c0</td>
        <td>CVE-2023-38682</td>
-       <td>2023-08-29 11:17:18 <img src="imgs/new.gif" /></td>
+       <td>2023-08-29 11:17:18</td>
        <td>Siemens JT2Go和Teamcenter Visualization越界读取漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/83842">详情</a></td>
       </tr>
