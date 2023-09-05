@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-09-04 23:21:17 -->
+<!-- RELEASE TIME : 2023-09-05 01:20:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>436a1d1146419571afb63b60079672a4</td>
+       <td>CVE-2023-3995</td>
+       <td>2023-09-04 20:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** This CVE ID has been rejected or withdrawn by its CVE Numbering Authority because it is a duplicate of CVE-2023-4147.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3995">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0686da1ed4133ca2261ca71dc5c24031</td>
+       <td>CVE-2023-41057</td>
+       <td>2023-09-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>hyper-bump-it is a command line tool for updating the version in project files.`hyper-bump-it` reads a file glob pattern from the configuration file. That is combined with the project root directory to construct a full glob pattern that is used to find files that should be edited. These matched files should be contained within the project root directory, but that is not checked. This could result in changes being written to files outside of the project. The default behaviour of `hyper-bump-it` is to display the planned changes and prompt the user for confirmation before editing any files. However, the configuration file provides a field that can be used cause files to be edited without displaying the prompt. This issue has been fixed in release version 0.5.1. Users are advised to upgrade. Users that are unable to update from vulnerable versions, executing `hyper-bump-it` with the `--interactive` command line argument will ensure that all planned changes are displayed and prompt the user for confirmation before editing any files, even if the configuration file contains `show_confirm_prompt=true`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41057">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd6b936570afb701b9ebde68a9b66a9d</td>
+       <td>CVE-2023-41055</td>
+       <td>2023-09-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>LibreY is a fork of LibreX, a framework-less and javascript-free privacy respecting meta search engine. LibreY is subject to a Server-Side Request Forgery (SSRF) vulnerability in the `engines/google/text.php` and `engines/duckduckgo/text.php` files in versions before commit be59098abd119cda70b15bf3faac596dfd39a744. This vulnerability allows remote attackers to request the server to send HTTP GET requests to arbitrary targets and conduct Denial-of-Service (DoS) attacks via the `wikipedia_language` cookie. Remote attackers can request the server to download large files to reduce the performance of the server or even deny access from legitimate users. This issue has been patched in https://github.com/Ahwxorg/LibreY/pull/9. LibreY hosters are advised to use the latest commit. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41055">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e23577e20247d8fbca501336aefba0e9</td>
+       <td>CVE-2023-41054</td>
+       <td>2023-09-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>LibreY is a fork of LibreX, a framework-less and javascript-free privacy respecting meta search engine. LibreY is subject to a Server-Side Request Forgery (SSRF) vulnerability in the `image_proxy.php` file of LibreY before commit 8f9b9803f231e2954e5b49987a532d28fe50a627. This vulnerability allows remote attackers to use the server as a proxy to send HTTP GET requests to arbitrary targets and retrieve information in the internal network or conduct Denial-of-Service (DoS) attacks via the `url` parameter. Remote attackers can use the server as a proxy to send HTTP GET requests and retrieve information in the internal network. Remote attackers can also request the server to download large files or chain requests among multiple instances to reduce the performance of the server or even deny access from legitimate users. This issue has been addressed in https://github.com/Ahwxorg/LibreY/pull/31. LibreY hosters are advised to use the latest commit. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41054">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0d28b3033b340a334854054259889dc</td>
+       <td>CVE-2023-41052</td>
+       <td>2023-09-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vyper is a Pythonic Smart Contract Language. In affected versions the order of evaluation of the arguments of the builtin functions `uint256_addmod`, `uint256_mulmod`, `ecadd` and `ecmul` does not follow source order. This behaviour is problematic when the evaluation of one of the arguments produces side effects that other arguments depend on. A patch is currently being developed on pull request #3583. When using builtins from the list above, users should make sure that the arguments of the expression do not produce side effects or, if one does, that no other argument is dependent on those side effects.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41052">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>295ba82d300748b80acdb6109806335a</td>
+       <td>CVE-2023-40015</td>
+       <td>2023-09-04 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>Vyper is a Pythonic Smart Contract Language. For the following (probably non-exhaustive) list of expressions, the compiler evaluates the arguments from right to left instead of left to right. `unsafe_add, unsafe_sub, unsafe_mul, unsafe_div, pow_mod256, |, &, ^ (bitwise operators), bitwise_or (deprecated), bitwise_and (deprecated), bitwise_xor (deprecated), raw_call, <, >, <=, >=, ==, !=, in, not in (when lhs and rhs are enums)`. This behaviour becomes a problem when the evaluation of one of the arguments produces side effects that other arguments depend on. The following expressions can produce side-effect: state modifying external call , state modifying internal call, `raw_call`, `pop()` when used on a Dynamic Array stored in the storage, `create_minimal_proxy_to`, `create_copy_of`, `create_from_blueprint`. This issue has not yet been patched. Users are advised to make sure that the arguments of the expression do not produce side effects or, if one does, that no other argument is dependent on those side effects.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40015">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f6e766191ad638044399ec062a3fbb0b</td>
+       <td>CVE-2023-4758</td>
+       <td>2023-09-04 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Buffer Over-read in GitHub repository gpac/gpac prior to 2.3-DEV.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4758">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8a12b1b1c951d58aa541742292394cdb</td>
+       <td>CVE-2023-28072</td>
+       <td>2023-09-04 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Dell Alienware Command Center, versions prior to 5.5.51.0, contain a deserialization of untrusted data vulnerability. A local malicious user could potentially send specially crafted requests to the .NET Remoting server to run arbitrary code on the system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28072">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f2de48806e5929142a12d3514683b921</td>
+       <td>CVE-2023-4755</td>
+       <td>2023-09-04 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Use After Free in GitHub repository gpac/gpac prior to 2.3-DEV.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4755">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e74ad6fe9367bf669d04f4b3a4f0d4b</td>
+       <td>CVE-2023-4752</td>
+       <td>2023-09-04 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Use After Free in GitHub repository vim/vim prior to 9.0.1858.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4752">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a3aa8d8b42b123bb2b1e84adc9fdfd0f</td>
        <td>CVE-2023-3222</td>
        <td>2023-09-04 13:15:00 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>e5714d21ce7eed0d30bd026a9fb8b154</td>
        <td>CVE-2023-4751</td>
-       <td>2023-09-03 19:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 19:15:00</td>
        <td>Heap-based Buffer Overflow in GitHub repository vim/vim prior to 9.0.1331.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4751">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>21ad49f3cc2754b981aaaf1947d94838</td>
        <td>CVE-2023-41180</td>
-       <td>2023-09-03 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 16:15:00</td>
        <td>Incorrect certificate validation in InvokeHTTP on Apache NiFi MiNiFi C++ versions 0.13 to 0.14 allows an intermediary to present a forged certificate during TLS handshake negotation. The Disable Peer Verification property of InvokeHTTP was effectively flipped, disabling verification by default, when using HTTPS. Mitigation: Set the Disable Peer Verification property of InvokeHTTP to true when using MiNiFi C++ versions 0.13.0 or 0.14.0. Upgrading to MiNiFi C++ 0.15.0 corrects the default behavior.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41180">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>472a25b2ad05a91cd162e06fe7d53ff4</td>
        <td>CVE-2023-39374</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>ForeScout NAC SecureConnector version 11.2 - CWE-427: Uncontrolled Search Path Element</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39374">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>3658c3574d295a407039612ebcfa21ca</td>
        <td>CVE-2023-39373</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>A Hyundai model (2017) - CWE-294: Authentication Bypass by Capture-replay.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39373">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>178513411de16dc0bd066254b7bea702</td>
        <td>CVE-2023-39372</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>StarTrinity Softswitch version 2023-02-16 - Multiple CSRF (CWE-352)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39372">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>7ce40952bf546afa73361aac3e658b6f</td>
        <td>CVE-2023-39371</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>StarTrinity Softswitch version 2023-02-16 - Open Redirect (CWE-601)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39371">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>53647c62f91e76035164ac98652e628e</td>
        <td>CVE-2023-39370</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>StarTrinity Softswitch version 2023-02-16 - Persistent XSS (CWE-79)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39370">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>f66867132d966049e4448716423a62b8</td>
        <td>CVE-2023-39369</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>StarTrinity Softswitch version 2023-02-16 - Multiple Reflected XSS (CWE-79)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39369">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>542b9987bd207dc8f9dfb84780653ff6</td>
        <td>CVE-2023-37222</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>Farsight Tech Nordic AB ProVide version 14.5 - Multiple XSS vulnerabilities (CWE-79) can be exploited by a user with administrator privilege.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37222">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>1b3488efc1260a29f38458155f3b70b1</td>
        <td>CVE-2023-3703</td>
-       <td>2023-09-03 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 15:15:00</td>
        <td>Proscend Advice ICR Series routers FW version 1.76 - CWE-1392: Use of Default Credentials</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3703">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>145eaa8e660d5bec00c3014137b12c32</td>
-       <td>CVE-2023-4738</td>
-       <td>2023-09-02 20:15:00</td>
-       <td>Heap-based Buffer Overflow in GitHub repository vim/vim prior to 9.0.1848.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4738">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>184f225c5ca61c1772f4ce950951076d</td>
-       <td>CVE-2023-4736</td>
-       <td>2023-09-02 19:15:00</td>
-       <td>Untrusted Search Path in GitHub repository vim/vim prior to 9.0.1833.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4736">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7e244dcbedb1f46abae298acfd1dcc39</td>
-       <td>CVE-2023-4735</td>
-       <td>2023-09-02 18:15:00</td>
-       <td>Out-of-bounds Write in GitHub repository vim/vim prior to 9.0.1847.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4735">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d83c6f5b36c42c2879ba87a038af04ae</td>
-       <td>CVE-2023-4734</td>
-       <td>2023-09-02 18:15:00</td>
-       <td>Integer Overflow or Wraparound in GitHub repository vim/vim prior to 9.0.1846.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4734">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>94a723514c7787f6d3ff573f1ac220a6</td>
-       <td>CVE-2023-39983</td>
-       <td>2023-09-02 13:15:00</td>
-       <td>A vulnerability that poses a potential risk of polluting the MXsecurity sqlite database and the nsm-web UI has been identified in MXsecurity versions prior to v1.0.1. This vulnerability might allow an unauthenticated remote attacker to register or add devices via the nsm-web application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39983">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52cafe7fc2d05288c52a92c9b60e9bbe</td>
-       <td>CVE-2023-39982</td>
-       <td>2023-09-02 13:15:00</td>
-       <td>A vulnerability has been identified in MXsecurity versions prior to v1.0.1. The vulnerability may put the confidentiality and integrity of SSH communications at risk on the affected device. This vulnerability is attributed to a hard-coded SSH host key, which might facilitate man-in-the-middle attacks and enable the decryption of SSH traffic.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39982">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d2bcff274e271d82653a17421d5c7519</td>
-       <td>CVE-2023-39981</td>
-       <td>2023-09-02 13:15:00</td>
-       <td>A vulnerability that allows for unauthorized access has been discovered in MXsecurity versions prior to v1.0.1. This vulnerability arises from inadequate authentication measures, potentially leading to the disclosure of device information by a remote attacker.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39981">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>634de1fdf57e58f2659baa2788ca5284</td>
-       <td>CVE-2023-39980</td>
-       <td>2023-09-02 13:15:00</td>
-       <td>A vulnerability that allows the unauthorized disclosure of authenticated information has been identified in MXsecurity versions prior to v1.0.1. This vulnerability arises when special elements are not neutralized correctly, allowing remote attackers to alter SQL commands.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39980">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8db761a0956e39f43df6f20f0f4b59c6</td>
-       <td>CVE-2023-39979</td>
-       <td>2023-09-02 13:15:00</td>
-       <td>There is a vulnerability in MXsecurity versions prior to 1.0.1 that can be exploited to bypass authentication. A remote attacker might access the system if the web service authenticator has insufficient random values.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39979">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f4f874a77cabdba3a8cc5f5e9595e5f3</td>
-       <td>CVE-2023-4718</td>
-       <td>2023-09-02 04:15:00</td>
-       <td>The Font Awesome 4 Menus plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'fa' and 'fa-stack' shortcodes in versions up to, and including, 4.7.0 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers with contributor-level and above permissions to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4718">详情</a></td>
       </tr>
 
      </tbody>
@@ -1798,7 +1798,7 @@
       <tr>
        <td>440d6234bb7e85236a882abac2d92d07</td>
        <td>CVE-2023-40781</td>
-       <td>2023-09-03 20:06:02 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 20:06:02</td>
        <td>LIBMING LIBMING Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=c52c71567de1461b96beadefac13fc37">详情</a></td>
       </tr>
@@ -1806,7 +1806,7 @@
       <tr>
        <td>f9c706068b375f496d1ad6ed46ae7f21</td>
        <td>CVE-2023-41358</td>
-       <td>2023-09-03 20:06:02 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 20:06:02</td>
        <td>FRROUTING FRROUTING Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=65463d66824940cb80c9b26ba29b4dd2">详情</a></td>
       </tr>
@@ -1814,7 +1814,7 @@
       <tr>
        <td>ae0ae1fd1ab79f2bf7f7893aa94af162</td>
        <td>CVE-2023-39663</td>
-       <td>2023-09-03 20:06:02 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 20:06:02</td>
        <td>MATHJAX MATHJAX Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=0b6176707f494413b53232117c49267a">详情</a></td>
       </tr>
@@ -1822,7 +1822,7 @@
       <tr>
        <td>9ab52af6b4c0150df58fd2cc917ee044</td>
        <td>CVE-2023-4572</td>
-       <td>2023-09-03 20:05:53 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 20:05:53</td>
        <td>GOOGLE CHROME Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=63ae441481214e0e8b94ce825b4b6241">详情</a></td>
       </tr>
@@ -1830,7 +1830,7 @@
       <tr>
        <td>619a17054333bcd3898c2c9c4475a0b5</td>
        <td>CVE-2023-22877</td>
-       <td>2023-09-03 20:05:53 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 20:05:53</td>
        <td>IBM INFOSPHERE_INFORMATION_SERVER Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=30c0f5b6f562435b802ec3b1f4704f4d">详情</a></td>
       </tr>
@@ -1838,7 +1838,7 @@
       <tr>
        <td>d74ea8f6181ba8b89ec7ad8dfbd37709</td>
        <td>CVE-2023-41362</td>
-       <td>2023-09-03 20:05:32 <img src="imgs/new.gif" /></td>
+       <td>2023-09-03 20:05:32</td>
        <td>MYBB MYBB Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=7cdd190446534136bc0c8978739424dd">详情</a></td>
       </tr>
