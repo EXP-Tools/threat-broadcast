@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-09-14 20:23:23 -->
+<!-- RELEASE TIME : 2023-09-14 23:22:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f206b86950f1d4daa0901cc88b6975db</td>
+       <td>CVE-2023-30909</td>
+       <td>2023-09-14 15:15:08 <img src="imgs/new.gif" /></td>
+       <td>A remote authentication bypass issue exists in some OneView APIs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30909">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c1b39aa49825042c255f6a349166f640</td>
+       <td>CVE-2023-1108</td>
+       <td>2023-09-14 15:15:08 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in undertow. This issue makes achieving a denial of service possible due to an unexpected handshake status updated in SslConduit, where the loop never terminates.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-1108">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>20eaaa77aec269b805c4558a3850c5d1</td>
+       <td>CVE-2021-28485</td>
+       <td>2023-09-14 15:15:07 <img src="imgs/new.gif" /></td>
+       <td>Ericsson Mobile Switching Center Server (MSC-S) BC 18A and IS 3.1 releases before IS 3.1 CP22 allows Directory Traversal.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-28485">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e77c10c3af8811dd805b66984f813b3</td>
+       <td>CVE-2023-2848</td>
+       <td>2023-09-14 12:15:07 <img src="imgs/new.gif" /></td>
+       <td>Movim prior to version 0.22 is affected by a Cross-Site WebSocket Hijacking vulnerability. This was the result of a missing header validation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2848">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>087e19c381b9747d2ab9d4bac2647592</td>
+       <td>CVE-2023-38558</td>
+       <td>2023-09-14 11:15:07 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been identified in SIMATIC PCS neo (Administration Console) V4.0 (All versions), SIMATIC PCS neo (Administration Console) V4.0 Update 1 (All versions). The affected application leaks Windows admin credentials. An attacker with local access to the Administration Console could get the credentials, and impersonate the admin user, thereby gaining admin access to other Windows systems.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38558">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>46dae6384941e062e56b9117a14d37a3</td>
+       <td>CVE-2023-38557</td>
+       <td>2023-09-14 11:15:07 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been identified in Spectrum Power 7 (All versions < V23Q3). The affected product assigns improper access rights to the update script. This could allow an authenticated local attacker to inject arbitrary code and escalate privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38557">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e84711e5c20c1581df8e48e98efbbc9</td>
+       <td>CVE-2023-4516</td>
+       <td>2023-09-14 09:15:08 <img src="imgs/new.gif" /></td>
+       <td>A CWE-306: Missing Authentication for Critical Function vulnerability exists in the IGSS Update Service that could allow a local attacker to change update source, potentially leading to remote code execution when the attacker force an update containing malicious content.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4516">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>04c898f7c3c54b1231fc16fb05f609f0</td>
+       <td>CVE-2023-42503</td>
+       <td>2023-09-14 08:15:08 <img src="imgs/new.gif" /></td>
+       <td>Improper Input Validation, Uncontrolled Resource Consumption vulnerability in Apache Commons Compress in TAR parsing.This issue affects Apache Commons Compress: from 1.22 before 1.24.0. Users are recommended to upgrade to version 1.24.0, which fixes the issue. A third party can create a malformed TAR file by manipulating file modification times headers, which when parsed with Apache Commons Compress, will cause a denial of service issue via CPU consumption. In version 1.22 of Apache Commons Compress, support was added for file modification times with higher precision (issue # COMPRESS-612 [1]). The format for the PAX extended headers carrying this data consists of two numbers separated by a period [2], indicating seconds and subsecond precision (for example “1647221103.5998539”). The impacted fields are “atime”, “ctime”, “mtime” and “LIBARCHIVE.creationtime”. No input validation is performed prior to the parsing of header values. Parsing of these numbers uses the BigDecimal [3] class from the JDK which has a publicly known algorithmic complexity issue when doing operations on large numbers, causing denial of service (see issue # JDK-6560193 [4]). A third party can manipulate file time headers in a TAR file by placing a number with a very long fraction (300,000 digits) or a number with exponent notation (such as “9e9999999”) within a file modification time header, and the parsing of files with these headers will take hours instead of seconds, leading to a denial of service via exhaustion of CPU resources. This issue is similar to CVE-2012-2098 [5]. [1]: https://issues.apache.org/jira/browse/COMPRESS-612 [2]: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_05 [3]: https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html [4]: https://bugs.openjdk.org/browse/JDK-6560193 [5]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2098 Only applications using CompressorStreamFactory class (with auto-detection of file types), TarArchiveInputStream and TarFile classes to parse TAR files are impacted. Since this code was introduced in v1.22, only that version and later versions are impacted.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42503">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f33002340526f3940c4e64ebe5e5d9b3</td>
+       <td>CVE-2023-41267</td>
+       <td>2023-09-14 08:15:07 <img src="imgs/new.gif" /></td>
+       <td>In the Apache Airflow HDFS Provider, versions prior to 4.1.1, a documentation info pointed users to an install incorrect pip package. As this package name was unclaimed, in theory, an attacker could claim this package and provide code that would be executed when this package was installed. The Airflow team has since taken ownership of the package (neutralizing the risk), and fixed the doc strings in version 4.1.1</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41267">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c3382eca347a7df78808d1152607e4df</td>
+       <td>CVE-2023-38206</td>
+       <td>2023-09-14 08:15:07 <img src="imgs/new.gif" /></td>
+       <td>Adobe ColdFusion versions 2018u18 (and earlier), 2021u8 (and earlier) and 2023u2 (and earlier) are affected by an Improper Access Control vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to access the administration CFM and CFC endpoints resulting in a low-confidentiality impact. Exploitation of this issue does not require user interaction.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38206">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f65ec9f925cdbb0c3f4fe4fdec241bb2</td>
        <td>CVE-2023-4785</td>
        <td>2023-09-13 17:15:10 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-09-11 21:15:00</td>
        <td>In MtpPropertyValue of MtpProperty.h, there is a possible memory corruption due to a use after free. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-35687">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3b0475a0e90d6ce6ca96886fa8293b90</td>
-       <td>CVE-2023-41000</td>
-       <td>2023-09-11 15:16:00</td>
-       <td>GPAC through 2.2.1 has a use-after-free vulnerability in the function gf_bifs_flush_command_list in bifs/memory_decoder.c.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41000">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9307bc52f0508103772ab396c3f0d038</td>
-       <td>CVE-2023-36140</td>
-       <td>2023-09-11 15:16:00</td>
-       <td>In PHPJabbers Cleaning Business Software 1.0, there is no encryption on user passwords allowing an attacker to gain access to all user accounts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36140">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>808387b972dfe6f65eb704d981f6f234</td>
-       <td>CVE-2023-27470</td>
-       <td>2023-09-11 15:15:00</td>
-       <td>BASupSrvcUpdater.exe in N-able Take Control Agent through 7.0.41.1141 before 7.0.43 has a TOCTOU Race Condition via a pseudo-symlink at %PROGRAMDATA%\GetSupportService_N-Central\PushUpdates, leading to arbitrary file deletion.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-27470">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e6ce781f43cc84414dc9dda897b1760c</td>
-       <td>CVE-2022-23382</td>
-       <td>2023-09-11 15:15:00</td>
-       <td>Shenzhen Hichip Vision Technology IP Camera Firmware V11.4.8.1.1-20170926 has a denial of service vulnerability through sending a crafted multicast message in a local network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-23382">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e0e71c7bbb1177d9c2efe26d48dc4581</td>
-       <td>CVE-2020-24088</td>
-       <td>2023-09-11 15:15:00</td>
-       <td>An issue was discovered in MmMapIoSpace routine in Foxconn Live Update Utility 2.1.6.26, allows local attackers to escalate privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-24088">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e11037b1fd3b51f04f69fa4c4ea059b</td>
-       <td>CVE-2023-4630</td>
-       <td>2023-09-11 14:15:00</td>
-       <td>An issue has been discovered in GitLab affecting all versions starting from 10.6 before 16.1.5, all versions starting from 16.2 before 16.2.5, all versions starting from 16.3 before 16.3.1 in which any user can read limited information about any project's imports.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4630">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d8d661ae1b480f9d769a3dbb97c067a</td>
-       <td>CVE-2023-40786</td>
-       <td>2023-09-11 14:15:00</td>
-       <td>HKcms v2.3.0.230709 is vulnerable to Cross Site Scripting (XSS) allowing administrator cookies to be stolen.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40786">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e866facd6cb0baf5aeacddebe83d8616</td>
-       <td>CVE-2023-36980</td>
-       <td>2023-09-11 14:15:00</td>
-       <td>An issue in Ethereum Blockchain v0.1.1+commit.6ff4cd6 cause the balance to be zeroed out when the value of betsize+casino.balance exceeds the threshold.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36980">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7e3314b063d1e27a9fb754ba903458c4</td>
-       <td>CVE-2022-34238</td>
-       <td>2023-09-11 14:15:00</td>
-       <td>Acrobat Reader versions 22.001.20142 (and earlier), 20.005.30334 (and earlier) and 20.005.30334 (and earlier) are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to bypass mitigations such as ASLR. Exploitation of this issue requires user interaction in that a victim must open a malicious file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34238">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>104f8d64b297f5b478b7120dd587d724</td>
-       <td>CVE-2022-34227</td>
-       <td>2023-09-11 14:15:00</td>
-       <td>Adobe Acrobat Reader versions 22.001.20142 (and earlier), 20.005.30334 (and earlier) and 17.012.30229 (and earlier) are affected by a Use After Free vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-34227">详情</a></td>
       </tr>
 
      </tbody>
