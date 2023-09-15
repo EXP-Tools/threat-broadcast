@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-09-15 21:19:48 -->
+<!-- RELEASE TIME : 2023-09-15 23:21:23 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>693a75ad7e0937b6fd3316ca7a2f0837</td>
+       <td>CVE-2023-42442</td>
+       <td>2023-09-15 21:15:11 <img src="imgs/new.gif" /></td>
+       <td>JumpServer is an open source bastion host and a professional operation and maintenance security audit system. Starting in version 3.0.0 and prior to versions 3.5.5 and 3.6.4, session replays can download without authentication. Session replays stored in S3, OSS, or other cloud storage are not affected. The api `/api/v1/terminal/sessions/` permission control is broken and can be accessed anonymously. SessionViewSet permission classes set to `[RBACPermission | IsSessionAssignee]`, relation is or, so any permission matched will be allowed. Versions 3.5.5 and 3.6.4 have a fix. After upgrading, visit the api `$HOST/api/v1/terminal/sessions/?limit=1`. The expected http response code is 401 (`not_authenticated`).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42442">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>033efa9540755044f84643692a8de9d2</td>
+       <td>CVE-2023-42439</td>
+       <td>2023-09-15 21:15:11 <img src="imgs/new.gif" /></td>
+       <td>GeoNode is an open source platform that facilitates the creation, sharing, and collaborative use of geospatial data. A SSRF vulnerability exists starting in version 3.2.0, bypassing existing controls on the software. This can allow a user to request internal services for a full read SSRF, returning any data from the internal network. The application is using a whitelist, but the whitelist can be bypassed. The bypass will trick the application that the first host is a whitelisted address, but the browser will use `@` or `%40` as a credential to the host geoserver on port 8080, this will return the data to that host on the response. As of time of publication, no patched version is available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42439">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ffd9276ac3e7a431711d6c07c61e558a</td>
+       <td>CVE-2023-41901</td>
+       <td>2023-09-15 21:15:11 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** Further research determined the issue is not a vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41901">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>db8d815b5dd3856e74cd13026bfb73a2</td>
+       <td>CVE-2023-41900</td>
+       <td>2023-09-15 21:15:11 <img src="imgs/new.gif" /></td>
+       <td>Jetty is a Java based web server and servlet engine. Versions 9.4.21 through 9.4.51, 10.0.15, and 11.0.15 are vulnerable to weak authentication. If a Jetty `OpenIdAuthenticator` uses the optional nested `LoginService`, and that `LoginService` decides to revoke an already authenticated user, then the current request will still treat the user as authenticated. The authentication is then cleared from the session and subsequent requests will not be treated as authenticated. So a request on a previously authenticated session could be allowed to bypass authentication after it had been rejected by the `LoginService`. This impacts usages of the jetty-openid which have configured a nested `LoginService` and where that `LoginService` will is capable of rejecting previously authenticated users. Versions 9.4.52, 10.0.16, and 11.0.16 have a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41900">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>47d6911da8558be7e725a45d9656ba2f</td>
+       <td>CVE-2023-41889</td>
+       <td>2023-09-15 21:15:11 <img src="imgs/new.gif" /></td>
+       <td>SHIRASAGI is a Content Management System. Prior to version 1.18.0, SHIRASAGI is vulnerable to a Post-Unicode normalization issue. This happens when a logical validation or a security check is performed before a Unicode normalization. The Unicode character equivalent of a character would resurface after the normalization. The fix is initially performing the Unicode normalization and then strip for all whitespaces and then checking for a blank string. This issue has been fixed in version 1.18.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41889">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bac32f4ac6bac57b54ec3d83bca33455</td>
+       <td>CVE-2023-41887</td>
+       <td>2023-09-15 21:15:11 <img src="imgs/new.gif" /></td>
+       <td>OpenRefine is a powerful free, open source tool for working with messy data. Prior to version 3.7.5, a remote code execution vulnerability allows any unauthenticated user to execute code on the server. Version 3.7.5 has a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41887">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3a3511b2973fb1ff1c854ad331332f22</td>
+       <td>CVE-2023-41886</td>
+       <td>2023-09-15 21:15:11 <img src="imgs/new.gif" /></td>
+       <td>OpenRefine is a powerful free, open source tool for working with messy data. Prior to version 3.7.5, an arbitrary file read vulnerability allows any unauthenticated user to read a file on a server. Version 3.7.5 fixes this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41886">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>72874a4880a81f91caa47a6895dd84fc</td>
+       <td>CVE-2023-0923</td>
+       <td>2023-09-15 21:15:09 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in the Kubernetes service for notebooks in RHODS, where it does not prevent pods from other namespaces and applications from making requests to the Jupyter API. This flaw can lead to file content exposure and other issues.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0923">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>289ac4c577149654907e7c1d72e2aed9</td>
+       <td>CVE-2023-0813</td>
+       <td>2023-09-15 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in the Network Observability plugin for OpenShift console. Unless the Loki authToken configuration is set to FORWARD mode, authentication is no longer enforced, allowing any user who can connect to the OpenShift Console in an OpenShift cluster to retrieve flows without authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-0813">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>af709ad1efe7bf77a47af53292a7e030</td>
+       <td>CVE-2022-3261</td>
+       <td>2023-09-15 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in OpenStack. Multiple components show plain-text passwords in /var/log/messages during the OpenStack overcloud update run, leading to a disclosure of sensitive information problem.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-3261">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cbd8d6443f9fc379da378217ee1164ec</td>
        <td>CVE-2023-37263</td>
        <td>2023-09-15 19:15:08 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-09-14 11:15:07 <img src="imgs/new.gif" /></td>
        <td>A vulnerability has been identified in Spectrum Power 7 (All versions < V23Q3). The affected product assigns improper access rights to the update script. This could allow an authenticated local attacker to inject arbitrary code and escalate privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38557">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1e84711e5c20c1581df8e48e98efbbc9</td>
-       <td>CVE-2023-4516</td>
-       <td>2023-09-14 09:15:08 <img src="imgs/new.gif" /></td>
-       <td>A CWE-306: Missing Authentication for Critical Function vulnerability exists in the IGSS Update Service that could allow a local attacker to change update source, potentially leading to remote code execution when the attacker force an update containing malicious content.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4516">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>04c898f7c3c54b1231fc16fb05f609f0</td>
-       <td>CVE-2023-42503</td>
-       <td>2023-09-14 08:15:08 <img src="imgs/new.gif" /></td>
-       <td>Improper Input Validation, Uncontrolled Resource Consumption vulnerability in Apache Commons Compress in TAR parsing.This issue affects Apache Commons Compress: from 1.22 before 1.24.0. Users are recommended to upgrade to version 1.24.0, which fixes the issue. A third party can create a malformed TAR file by manipulating file modification times headers, which when parsed with Apache Commons Compress, will cause a denial of service issue via CPU consumption. In version 1.22 of Apache Commons Compress, support was added for file modification times with higher precision (issue # COMPRESS-612 [1]). The format for the PAX extended headers carrying this data consists of two numbers separated by a period [2], indicating seconds and subsecond precision (for example “1647221103.5998539”). The impacted fields are “atime”, “ctime”, “mtime” and “LIBARCHIVE.creationtime”. No input validation is performed prior to the parsing of header values. Parsing of these numbers uses the BigDecimal [3] class from the JDK which has a publicly known algorithmic complexity issue when doing operations on large numbers, causing denial of service (see issue # JDK-6560193 [4]). A third party can manipulate file time headers in a TAR file by placing a number with a very long fraction (300,000 digits) or a number with exponent notation (such as “9e9999999”) within a file modification time header, and the parsing of files with these headers will take hours instead of seconds, leading to a denial of service via exhaustion of CPU resources. This issue is similar to CVE-2012-2098 [5]. [1]: https://issues.apache.org/jira/browse/COMPRESS-612 [2]: https://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_05 [3]: https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html [4]: https://bugs.openjdk.org/browse/JDK-6560193 [5]: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2012-2098 Only applications using CompressorStreamFactory class (with auto-detection of file types), TarArchiveInputStream and TarFile classes to parse TAR files are impacted. Since this code was introduced in v1.22, only that version and later versions are impacted.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42503">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f33002340526f3940c4e64ebe5e5d9b3</td>
-       <td>CVE-2023-41267</td>
-       <td>2023-09-14 08:15:07 <img src="imgs/new.gif" /></td>
-       <td>In the Apache Airflow HDFS Provider, versions prior to 4.1.1, a documentation info pointed users to an install incorrect pip package. As this package name was unclaimed, in theory, an attacker could claim this package and provide code that would be executed when this package was installed. The Airflow team has since taken ownership of the package (neutralizing the risk), and fixed the doc strings in version 4.1.1</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41267">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c3382eca347a7df78808d1152607e4df</td>
-       <td>CVE-2023-38206</td>
-       <td>2023-09-14 08:15:07 <img src="imgs/new.gif" /></td>
-       <td>Adobe ColdFusion versions 2018u18 (and earlier), 2021u8 (and earlier) and 2023u2 (and earlier) are affected by an Improper Access Control vulnerability that could result in a Security feature bypass. An attacker could leverage this vulnerability to access the administration CFM and CFC endpoints resulting in a low-confidentiality impact. Exploitation of this issue does not require user interaction.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38206">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f65ec9f925cdbb0c3f4fe4fdec241bb2</td>
-       <td>CVE-2023-4785</td>
-       <td>2023-09-13 17:15:10</td>
-       <td>Lack of error handling in the TCP server in Google's gRPC starting version 1.23 on posix-compatible platforms (ex. Linux) allows an attacker to cause a denial of service by initiating a significant number of connections with the server. Note that gRPC C++ Python, and Ruby are affected, but gRPC Java, and Go are NOT affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4785">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d224716b8bebe51e6a027b8472b0983c</td>
-       <td>CVE-2023-4155</td>
-       <td>2023-09-13 17:15:10</td>
-       <td>A flaw was found in KVM AMD Secure Encrypted Virtualization (SEV) in the Linux kernel. A KVM guest using SEV-ES or SEV-SNP with multiple vCPUs can trigger a double fetch race condition vulnerability and invoke the `VMGEXIT` handler recursively. If an attacker manages to call the handler multiple times, they can trigger a stack overflow and cause a denial of service or potentially guest-to-host escape in kernel configurations without stack guard pages (`CONFIG_VMAP_STACK`).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4155">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52e07353a58983079788d4fb415575cf</td>
-       <td>CVE-2023-3301</td>
-       <td>2023-09-13 17:15:10</td>
-       <td>A flaw was found in QEMU. The async nature of hot-unplug enables a race scenario where the net device backend is cleared before the virtio-net pci frontend has been unplugged. A malicious guest could use this time window to trigger an assertion and cause a denial of service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3301">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>49f1158604673f7d186e6610b9223c64</td>
-       <td>CVE-2023-3280</td>
-       <td>2023-09-13 17:15:09</td>
-       <td>A problem with a protection mechanism in the Palo Alto Networks Cortex XDR agent on Windows devices allows a local user to disable the agent.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3280">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f34b30f40a459914bd37783c0d41c93d</td>
-       <td>CVE-2023-3255</td>
-       <td>2023-09-13 17:15:09</td>
-       <td>A flaw was found in the QEMU built-in VNC server while processing ClientCutText messages. A wrong exit condition may lead to an infinite loop when inflating an attacker controlled zlib buffer in the `inflate_buffer` function. This could allow a remote authenticated client who is able to send a clipboard to the VNC server to trigger a denial of service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3255">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>75f738f86a5e16d1e325a2bbf4c1f909</td>
-       <td>CVE-2023-2680</td>
-       <td>2023-09-13 17:15:09</td>
-       <td>This CVE exists because of an incomplete fix for CVE-2021-3750. More specifically, the qemu-kvm package as released for Red Hat Enterprise Linux 9.1 via RHSA-2022:7967 included a version of qemu-kvm that was actually missing the fix for CVE-2021-3750.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-2680">详情</a></td>
       </tr>
 
      </tbody>
