@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-09-21 20:22:33 -->
+<!-- RELEASE TIME : 2023-09-21 22:25:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a41132e7a4615dffb9b1f344ad988e2f</td>
+       <td>CVE-2023-42807</td>
+       <td>2023-09-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Frappe LMS is an open source learning management system. In versions 1.0.0 and prior, on the People Page of LMS, there was an SQL Injection vulnerability. The issue has been fixed in the `main` branch. Users won't face this issue if they are using the latest main branch of the app.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42807">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ad12fe53b1190b1c43bebc6e231d67d9</td>
+       <td>CVE-2023-42806</td>
+       <td>2023-09-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Hydra is the layer-two scalability solution for Cardano. Prior to version 0.13.0, not signing and verifying `$\mathsf{cid}$` allows an attacker (which must be a participant of this head) to use a snapshot from an old head instance with the same participants to close the head or contest the state with it. This can lead to an incorrect distribution of value (= value extraction attack; hard, but possible) or prevent the head to finalize because the value available is not consistent with the closed utxo state (= denial of service; easy). A patch is planned for version 0.13.0. As a workaround, rotate keys between heads so not to re-use keys and not result in the same multi-signature participants.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42806">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c704cadd717b97342de1d9e54b3e7f35</td>
+       <td>CVE-2023-42805</td>
+       <td>2023-09-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>quinn-proto is a state machine for the QUIC transport protocol. Prior to versions 0.9.5 and 0.10.5, receiving unknown QUIC frames in a QUIC packet could result in a panic. The problem has been fixed in 0.9.5 and 0.10.5 maintenance releases.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42805">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5a5fa2721cdb307840660b9aea920163</td>
+       <td>CVE-2023-42458</td>
+       <td>2023-09-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Zope is an open-source web application server. Prior to versions 4.8.10 and 5.8.5, there is a stored cross site scripting vulnerability for SVG images. Note that an image tag with an SVG image as source is never vulnerable, even when the SVG image contains malicious code. To exploit the vulnerability, an attacker would first need to upload an image, and then trick a user into following a specially crafted link. Patches are available in Zope 4.8.10 and 5.8.5. As a workaround, make sure the "Add Documents, Images, and Files" permission is only assigned to trusted roles. By default, only the Manager has this permission.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42458">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c1ef3debfae4f123a7f49b3440c63644</td>
+       <td>CVE-2023-34577</td>
+       <td>2023-09-21 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>SQL injection vulnerability in Prestashop opartplannedpopup 1.4.11 and earlier allows remote attackers to run arbitrary SQL commands via OpartPlannedPopupModuleFrontController::prepareHook() method.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34577">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d2665d9176f2a01f92472fbd8c960b5</td>
+       <td>CVE-2023-42456</td>
+       <td>2023-09-21 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>Sudo-rs, a memory safe implementation of sudo and su, allows users to not have to enter authentication at every sudo attempt, but instead only requiring authentication every once in a while in every terminal or process group. Only once a configurable timeout has passed will the user have to re-authenticate themselves. Supporting this functionality is a set of session files (timestamps) for each user, stored in `/var/run/sudo-rs/ts`. These files are named according to the username from which the sudo attempt is made (the origin user). An issue was discovered in versions prior to 0.2.1 where usernames containing the `.` and `/` characters could result in the corruption of specific files on the filesystem. As usernames are generally not limited by the characters they can contain, a username appearing to be a relative path can be constructed. For example we could add a user to the system containing the username `../../../../bin/cp`. When logged in as a user with that name, that user could run `sudo -K` to clear their session record file. The session code then constructs the path to the session file by concatenating the username to the session file storage directory, resulting in a resolved path of `/bin/cp`. The code then clears that file, resulting in the `cp` binary effectively being removed from the system. An attacker needs to be able to login as a user with a constructed username. Given that such a username is unlikely to exist on an existing system, they will also need to be able to create the users with the constructed usernames. The issue is patched in version 0.2.1 of sudo-rs. Sudo-rs now uses the uid for the user instead of their username for determining the filename. Note that an upgrade to this version will result in existing session files being ignored and users will be forced to re-authenticate. It also fully eliminates any possibility of path traversal, given that uids are always integer values. The `sudo -K` and `sudo -k` commands can run, even if a user has no sudo access. As a workaround, make sure that one's system does not contain any users with a specially crafted username. While this is the case and while untrusted users do not have the ability to create arbitrary users on the system, one should not be able to exploit this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42456">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f463a55fd8c986743d78c035e143b461</td>
+       <td>CVE-2023-42457</td>
+       <td>2023-09-21 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>plone.rest allows users to use HTTP verbs such as GET, POST, PUT, DELETE, etc. in Plone. Starting in the 2.x branch and prior to versions 2.0.1 and 3.0.1, when the `++api++` traverser is accidentally used multiple times in a url, handling it takes increasingly longer, making the server less responsive. Patches are available in `plone.rest` 2.0.1 and 3.0.1. Series 1.x is not affected. As a workaround, one may redirect `/++api++/++api++` to `/++api++` in one's frontend web server (nginx, Apache).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42457">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>71fb4e65038bc255edaf07dbec76bac5</td>
+       <td>CVE-2023-41048</td>
+       <td>2023-09-21 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>plone.namedfile allows users to handle `File` and `Image` fields targeting, but not depending on, Plone Dexterity content. Prior to versions 5.6.1, 6.0.3, 6.1.3, and 6.2.1, there is a stored cross site scripting vulnerability for SVG images. A security hotfix from 2021 already partially fixed this by making sure SVG images are always downloaded instead of shown inline. But the same problem still exists for scales of SVG images. Note that an image tag with an SVG image as source is not vulnerable, even when the SVG image contains malicious code. To exploit the vulnerability, an attacker would first need to upload an image, and then trick a user into following a specially crafted link. Patches are available in versions 5.6.1 (for Plone 5.2), 6.0.3 (for Plone 6.0.0-6.0.4), 6.1.3 (for Plone 6.0.5-6.0.6), and 6.2.1 (for Plone 6.0.7). There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41048">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76bf447ee9f0afb2854c3a8ff53ccddb</td>
+       <td>CVE-2023-40183</td>
+       <td>2023-09-21 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>DataEase is an open source data visualization and analysis tool. Prior to version 1.18.11, DataEase has a vulnerability that allows an attacker to to obtain user cookies. The program only uses the `ImageIO.read()` method to determine whether the file is an image file or not. There is no whitelisting restriction on file suffixes. This allows the attacker to synthesize the attack code into an image for uploading and change the file extension to html. The attacker may steal user cookies by accessing links. The vulnerability has been fixed in v1.18.11. There are no known workarounds.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40183">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ab04749c9f3ddc0445a3f44a7398b9f9</td>
+       <td>CVE-2023-43637</td>
+       <td>2023-09-21 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>Due to the implementation of "deriveVaultKey", prior to version 7.10, the generated vault key would always have the last 16 bytes predetermined to be "arfoobarfoobarfo". This issue happens because "deriveVaultKey" calls "retrieveCloudKey" (which will always return "foobarfoobarfoobarfoobarfoobarfo" as the key), and then merges the 32byte randomly generated key with this key (by takeing 16bytes from each, see "mergeKeys"). This makes the key a lot weaker. This issue does not persist in devices that were initialized on/after version 7.10, but devices that were initialized before that and updated to a newer version still have this issue. Roll an update that enforces the full 32bytes key usage.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-43637">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5bfb281162000bc06fb8845f130a5aca</td>
        <td>CVE-2023-43135</td>
        <td>2023-09-20 22:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-09-20 18:15:00 <img src="imgs/new.gif" /></td>
        <td>A reflected cross-site scripting (XSS) vulnerability in OpenKnowledgeMaps Head Start versions 4, 5, 6, 7 as well as Visual Project Explorer 1.0, allows remote attackers to execute arbitrary JavaScript in the web browser of a user, by including a malicious payload into the 'service' parameter in 'headstart_snapshot.php'.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40618">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f114b1a453dd2679c443d6f1c99a376b</td>
-       <td>CVE-2023-5054</td>
-       <td>2023-09-19 07:15:51</td>
-       <td>The Super Store Finder plugin for WordPress is vulnerable to unauthenticated arbitrary email creation and relay in versions up to, and including, 6.9.2. This is due to insufficient restrictions on the sendMail.php file that allows direct access. This makes it possible for unauthenticated attackers to send emails utilizing the vulnerable site's server, with arbitrary content. Please note that this vulnerability has already been publicly disclosed with an exploit which is why we are publishing the details without a patch available, we are attempting to initiate contact with the developer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5054">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3ea21828198aeef90f482065e2c6e27f</td>
-       <td>CVE-2023-26143</td>
-       <td>2023-09-19 05:17:10</td>
-       <td>Versions of the package blamer before 1.0.4 are vulnerable to Arbitrary Argument Injection via the blameByFile() API. The library does not sanitize for user input or validate the given file path conforms to a specific schema, nor does it properly pass command-line flags to the git binary using the double-dash POSIX characters (--) to communicate the end of options.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26143">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>45fcaa9a44a30fecab3e4f19f2b74338</td>
-       <td>CVE-2023-42399</td>
-       <td>2023-09-19 04:15:55</td>
-       <td>Cross Site Scripting vulnerability in xdsoft.net Jodit Editor v.4.0.0-beta.86 allows a remote attacker to obtain sensitive information via the rich text editor component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42399">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>785364ebdf6d6701458acaeba37ad2c3</td>
-       <td>CVE-2023-5060</td>
-       <td>2023-09-19 03:15:08</td>
-       <td>Cross-site Scripting (XSS) - DOM in GitHub repository librenms/librenms prior to 23.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5060">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>27689c04c58a249bcb8e365a3512ea68</td>
-       <td>CVE-2023-41599</td>
-       <td>2023-09-19 02:15:58</td>
-       <td>An issue in the component /common/DownController.java of JFinalCMS v5.0.0 allows attackers to execute a directory traversal.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41599">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>97cb88a559d97524c4d6b88d1e56efcd</td>
-       <td>CVE-2022-28357</td>
-       <td>2023-09-19 02:15:54</td>
-       <td>NATS nats-server 2.2.0 through 2.7.4 allows directory traversal because of an unintended path to a management action from a management account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-28357">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>81f2ed0446b79a4799e107a0863b51d0</td>
-       <td>CVE-2023-40788</td>
-       <td>2023-09-19 00:15:34</td>
-       <td>SpringBlade <=V3.6.0 is vulnerable to Incorrect Access Control due to incorrect configuration in the default gateway resulting in unauthorized access to error logs</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40788">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>efa5965579beded63b89260cb295da91</td>
-       <td>CVE-2021-26837</td>
-       <td>2023-09-19 00:15:33</td>
-       <td>SQL Injection vulnerability in SearchTextBox parameter in Fortra (Formerly HelpSystems) DeliverNow before version 1.2.18, allows attackers to execute arbitrary code, escalate privileges, and gain sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-26837">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d75a3573520b8e80616692df319f654c</td>
-       <td>CVE-2023-42454</td>
-       <td>2023-09-18 22:15:47</td>
-       <td>SQLpage is a SQL-only webapp builder. Someone using SQLpage versions prior to 0.11.1, whose SQLpage instance is exposed publicly, with a database connection string specified in the `sqlpage/sqlpage.json` configuration file (not in an environment variable), with the web_root is the current working directory (the default), and with their database exposed publicly, is vulnerable to an attacker retrieving database connection information from SQLPage and using it to connect to their database directly. Version 0.11.0 fixes this issue. Some workarounds are available. Using an environment variable instead of the configuration file to specify the database connection string prevents exposing it on vulnerable versions. Using a different web root (that is not a parent of the SQLPage configuration directory) fixes the issue. One should also avoid exposing one's database publicly.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42454">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7dcf01e57fdaefbc3b62d1506a8a094e</td>
-       <td>CVE-2023-42446</td>
-       <td>2023-09-18 22:15:47</td>
-       <td>Pow is a authentication and user management solution for Phoenix and Plug-based apps. Starting in version 1.0.14 and prior to version 1.0.34, use of `Pow.Store.Backend.MnesiaCache` is susceptible to session hijacking as expired keys are not being invalidated correctly on startup. A session may expire when all `Pow.Store.Backend.MnesiaCache` instances have been shut down for a period that is longer than a session's remaining TTL. Version 1.0.34 contains a patch for this issue. As a workaround, expired keys, including all expired sessions, can be manually invalidated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42446">详情</a></td>
       </tr>
 
      </tbody>
