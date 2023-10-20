@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-10-20 12:40:57 -->
+<!-- RELEASE TIME : 2023-10-20 14:26:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -364,6 +364,86 @@
       </tr>
 
       <tr>
+       <td>7d86ef7c201f86bdd71bf7a24e2bdc6e</td>
+       <td>CVE-2023-46267</td>
+       <td>2023-10-20 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>Roundcube before 1.4.15, 1.5.x before 1.5.5, and 1.6.x before 1.6.4 allows XSS via a text/html e-mail message containing an SVG image with a USE element. This is related to wash_uri in rcube_washtml.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46267">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa404682e78eb698ee16d530f806584b</td>
+       <td>CVE-2023-45471</td>
+       <td>2023-10-20 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>The QAD Search Server is vulnerable to Stored Cross-Site Scripting (XSS) in versions up to, and including, 1.0.0.315 due to insufficient checks on indexes. This makes it possible for unauthenticated attackers to create a new index and inject a malicious web script into its name, that will execute whenever a user accesses the search page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45471">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2f88d7161bf7ae328cab3cbe05a3a93f</td>
+       <td>CVE-2023-45394</td>
+       <td>2023-10-20 04:15:00 <img src="imgs/new.gif" /></td>
+       <td>Stored Cross-Site Scripting (XSS) vulnerability in the Company field in the "Request a Quote" Section of Small CRM v3.0 allows an attacker to store and execute malicious javascript code in the Admin panel which leads to Admin account takeover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45394">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>292479fba4f250d1e1e1e32106727714</td>
+       <td>CVE-2022-4531</td>
+       <td>2023-10-20 03:15:00 <img src="imgs/new.gif" /></td>
+       <td>** REJECT ** Not a valid vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4531">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>91875a0e3d601a03f368a2ecb019b4a8</td>
+       <td>CVE-2023-5655</td>
+       <td>2023-10-20 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>The AI ChatBot plugin for WordPress is vulnerable to Cross-Site Request Forgery in version 4.9.2. This is due to missing or incorrect nonce validation on the corresponding functions. This makes it possible for unauthenticated attackers to invoke those functions via a forged request granted they can trick a site administrator into performing an action such as clicking on a link. This vulnerability is the same as CVE-2023-5534, but was reintroduced in version 4.9.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5655">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d634e3d07c489560c6bb165d187b075</td>
+       <td>CVE-2023-5647</td>
+       <td>2023-10-20 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>The AI ChatBot plugin for WordPress is vulnerable to Arbitrary File Deletion in version 4.9.2. This makes it possible for authenticated attackers with subscriber privileges to delete arbitrary files on the server, which makes it possible to take over affected sites as well as others sharing the same hosting account. This vulnerability is the same as CVE-2023-5212 but was accidentally reintroduced in version 4.9.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5647">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2fc1ce0fb9a213e236fbfaa60161f9b1</td>
+       <td>CVE-2023-5646</td>
+       <td>2023-10-20 02:15:00 <img src="imgs/new.gif" /></td>
+       <td>The AI ChatBot for WordPress is vulnerable to Directory Traversal in version 4.9.2 via the qcld_openai_upload_pagetraining_file function. This allows subscriber-level attackers to append "<?php" to any existing file on the server resulting in potential DoS when appended to critical files such as wp-config.php. This vulnerability is the same as CVE-2023-5241, but was reintroduced in version 4.9.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5646">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5f3b4e7ca008944dac4e25464a5f2a57</td>
+       <td>CVE-2023-46115</td>
+       <td>2023-10-20 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Tauri is a framework for building binaries for all major desktop platforms. This advisory is not describing a vulnerability in the Tauri code base itself but a commonly used misconfiguration which could lead to leaking of the private key and updater key password into bundled Tauri applications using the Vite frontend in a specific configuration. The Tauri documentation used an insecure example configuration in the `Vite guide` to showcase how to use Tauri together with Vite. Copying the following snippet `envPrefix: ['VITE_', 'TAURI_'],` from this guide into the `vite.config.ts` of a Tauri project leads to bundling the `TAURI_PRIVATE_KEY` and `TAURI_KEY_PASSWORD` into the Vite frontend code and therefore leaking this value to the released Tauri application. Using the `envPrefix: ['VITE_'],` or any other framework than Vite means you are not impacted by this advisory. Users are advised to rotate their updater private key if they are affected by this (requires Tauri CLI >=1.5.5). After updating the envPrefix configuration, generate a new private key with `tauri signer generate`, saving the new private key and updating the updater's `pubkey` value on `tauri.conf.json` with the new public key. To update your existing application, the next application build must be signed with the older private key in order to be accepted by the existing application.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46115">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e938cbd79a0dc78440e419b2f399e09</td>
+       <td>CVE-2023-41894</td>
+       <td>2023-10-20 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Home assistant is an open source home automation. The assessment verified that webhooks available in the webhook component are triggerable via the `*.ui.nabu.casa` URL without authentication, even when the webhook is marked as Only accessible from the local network. This issue is facilitated by the SniTun proxy, which sets the source address to 127.0.0.1 on all requests sent to the public URL and forwarded to the local Home Assistant. This issue has been addressed in version 2023.9.0 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41894">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>034eb51ac3cc0f03016bdd67f4677747</td>
+       <td>CVE-2023-41893</td>
+       <td>2023-10-20 00:15:00 <img src="imgs/new.gif" /></td>
+       <td>Home assistant is an open source home automation. The audit team’s analyses confirmed that the `redirect_uri` and `client_id` are alterable when logging in. Consequently, the code parameter utilized to fetch the `access_token` post-authentication will be sent to the URL specified in the aforementioned parameters. Since an arbitrary URL is permitted and `homeassistant.local` represents the preferred, default domain likely used and trusted by many users, an attacker could leverage this weakness to manipulate a user and retrieve account access. Notably, this attack strategy is plausible if the victim has exposed their Home Assistant to the Internet, since after acquiring the victim’s `access_token` the adversary would need to utilize it directly towards the instance to achieve any pertinent malicious actions. To achieve this compromise attempt, the attacker must send a link with a `redirect_uri` that they control to the victim’s own Home Assistant instance. In the eventuality the victim authenticates via said link, the attacker would obtain code sent to the specified URL in `redirect_uri`, which can then be leveraged to fetch an `access_token`. Pertinently, an attacker could increase the efficacy of this strategy by registering a near identical domain to `homeassistant.local`, which at first glance may appear legitimate and thereby obfuscate any malicious intentions. This issue has been addressed in version 2023.9.0 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41893">详情</a></td>
+      </tr>
+
+      <tr>
        <td>1902776077414b2faab21b1c5bf78287</td>
        <td>CVE-2023-37503</td>
        <td>2023-10-19 03:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-10-18 23:15:00</td>
        <td>zzzcms v2.2.0 was discovered to contain an open redirect vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45909">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>abfefed17be6ae94bb86bd8a3a83f867</td>
-       <td>CVE-2023-45811</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>Synchrony deobfuscator is a javascript cleaner & deobfuscator. A `__proto__` pollution vulnerability exists in versions before v2.4.4. Successful exploitation could lead to arbitrary code execution. A `__proto__` pollution vulnerability exists in the `LiteralMap` transformer allowing crafted input to modify properties in the Object prototype. A fix has been released in `deobfuscator@2.4.4`. Users are advised to upgrade. Users unable to upgrade should launch node with the [--disable-proto=delete][disable-proto] or [--disable-proto=throw][disable-proto] flags</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45811">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4462e3afee73e2796bd8302f8f730ee6</td>
-       <td>CVE-2023-45810</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>OpenFGA is a flexible authorization/permission engine built for developers and inspired by Google Zanzibar. Affected versions of OpenFGA are vulnerable to a denial of service attack. When a number of `ListObjects` calls are executed, in some scenarios, those calls are not releasing resources even after a response has been sent, and given a sufficient call volume the service as a whole becomes unresponsive. This issue has been addressed in version 1.3.4 and the upgrade is considered backwards compatible. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45810">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b9b3235b501c79108f7b96e5e2c54449</td>
-       <td>CVE-2023-42507</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>Stack-based buffer overflow vulnerability exists in OnSinView2 versions 2.0.1 and earlier. If this vulnerability is exploited, information may be disclosed or arbitrary code may be executed by having a user open a specially crafted OnSinView2 project file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42507">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2b745326fb1ae1102bfd4aa79d19a997</td>
-       <td>CVE-2023-42506</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>Improper restriction of operations within the bounds of a memory buffer issue exists in OnSinView2 versions 2.0.1 and earlier. If this vulnerability is exploited, information may be disclosed or arbitrary code may be executed by having a user open a specially crafted OnSinView2 project file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-42506">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ebc40786ecc41385bcdd76b6db1e48d</td>
-       <td>CVE-2023-41715</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>SonicOS post-authentication Improper Privilege Management vulnerability in the SonicOS SSL VPN Tunnel allows users to elevate their privileges inside the tunnel.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41715">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f700d5d171947e2f9614f3b65170fc5a</td>
-       <td>CVE-2023-41713</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>SonicOS Use of Hard-coded Password vulnerability in the 'dynHandleBuyToolbar' demo function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41713">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>26cb9ba01708cf9afac835cf0deb946a</td>
-       <td>CVE-2023-41712</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>SonicOS post-authentication Stack-Based Buffer Overflow Vulnerability in the SSL VPN plainprefs.exp URL endpoint leads to a firewall crash.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41712">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>62942e25c05f4fb3f6e6764b25344844</td>
-       <td>CVE-2023-41711</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>SonicOS post-authentication Stack-Based Buffer Overflow Vulnerability in the sonicwall.exp, prefs.exp URL endpoints lead to a firewall crash.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41711">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9142b0e3f63e645798e18eb0fd88b604</td>
-       <td>CVE-2023-39280</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>SonicOS p ost-authentication Stack-Based Buffer Overflow vulnerability in the ssoStats-s.xml, ssoStats-s.wri URL endpoints leads to a firewall crash.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39280">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>43d18dd0aa8f052a07a161e673a5083f</td>
-       <td>CVE-2023-39279</td>
-       <td>2023-10-17 23:15:00</td>
-       <td>SonicOS post-authentication Stack-Based Buffer Overflow vulnerability in the getPacketReplayData.json URL endpoint leads to a firewall crash.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39279">详情</a></td>
       </tr>
 
      </tbody>
@@ -1716,6 +1716,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>61762239541286b243b8c49716a62337</td>
+       <td>CVE-2023-4829</td>
+       <td>2023-10-20 20:21:28 <img src="imgs/new.gif" /></td>
+       <td>FROXLOR FROXLOR Vulnerability</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=9bd34e982e1d47b698b40d319ae642be">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0e52aba1163da9313d933d2ec9ec2fa2</td>
+       <td>CVE-2023-5554</td>
+       <td>2023-10-20 20:21:28 <img src="imgs/new.gif" /></td>
+       <td>LINECORP LINE Vulnerability</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=9a086da191544e979752cf5050ff37c4">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e18e28c072f01888b80bae2b1d1ba36</td>
+       <td>CVE-2023-36841</td>
+       <td>2023-10-20 20:21:28 <img src="imgs/new.gif" /></td>
+       <td>JUNIPER JUNOS Vulnerability</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=57cfca1784964959825adb3729feae7f">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>058e55de755861927e13d09222dbaa20</td>
+       <td>CVE-2023-41682</td>
+       <td>2023-10-20 20:21:28 <img src="imgs/new.gif" /></td>
+       <td>FORTINET FORTISANDBOX Vulnerability</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=5744740de1f64096ac65b7f05e88af3a">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>233eac430224b007fd88399dea52437f</td>
+       <td>CVE-2023-45068</td>
+       <td>2023-10-20 20:21:23 <img src="imgs/new.gif" /></td>
+       <td>SUPSYSTIC CONTACT_FORM Vulnerability</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=53b7255d8c4b4ea1b5bc470f1d531b0e">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b0d15d5fc9b87dbe247472e5317c41ac</td>
+       <td>CVE-2023-36843</td>
+       <td>2023-10-20 20:21:23 <img src="imgs/new.gif" /></td>
+       <td>JUNIPER JUNOS Vulnerability</td>
+       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=363d8de0ae374296a0d23897e9d30741">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2722ba8c40906a8ff9f8e7fff3205919</td>
        <td>CVE-2023-41681</td>
        <td>2023-10-19 20:17:58 <img src="imgs/new.gif" /></td>
@@ -1905,54 +1953,6 @@
        <td>2023-10-15 20:14:20</td>
        <td>GOOGLE CHROME Vulnerability</td>
        <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6d27eaf29f2741208d85d41d27b4ed31">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5fbb695764eb64aa594479bff4b60719</td>
-       <td>CVE-2023-5218</td>
-       <td>2023-10-15 20:14:19</td>
-       <td>GOOGLE CHROME Vulnerability</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=ceb077c4e6374171ac35abc8e8e8ec1a">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>50a64449df6e29fe9e42094e7e3854e8</td>
-       <td>CVE-2023-5474</td>
-       <td>2023-10-15 20:13:26</td>
-       <td>GOOGLE CHROME Vulnerability</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=6a8dd2338438418884f420df1cf53361">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>005829633a799a694bf0022ed54a16e6</td>
-       <td>CVE-2023-5478</td>
-       <td>2023-10-15 20:13:25</td>
-       <td>GOOGLE CHROME Vulnerability</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=eae75b8badfb4005942351835aeede03">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1b8c9b19111f7729759fa85cef2eecff</td>
-       <td>CVE-2023-5483</td>
-       <td>2023-10-15 20:13:25</td>
-       <td>GOOGLE CHROME Vulnerability</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=23e69bd74c1247fea7c2823a5da83a5c">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0f0c460fd8b381aa91d007434a1323ac</td>
-       <td>CVE-2023-5486</td>
-       <td>2023-10-15 20:13:25</td>
-       <td>GOOGLE CHROME Vulnerability</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=20c278c5b688431ba21e26bdd88f236a">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5e7234902dadc960ff4aa193d385855f</td>
-       <td>CVE-2023-25607</td>
-       <td>2023-10-15 20:13:24</td>
-       <td>FORTINET Multiple product Vulnerability</td>
-       <td><a target="_blank" href="https://redqueen.tj-un.com/IntelDetails.html?id=02bfd5cd371f4d00b8b8b4119039488f">详情</a></td>
       </tr>
 
      </tbody>
