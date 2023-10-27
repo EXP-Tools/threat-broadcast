@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-10-27 16:29:00 -->
+<!-- RELEASE TIME : 2023-10-27 18:27:43 -->
 <html lang="zh-cn">
 
  <head>
@@ -2300,6 +2300,38 @@
       </tr>
 
       <tr>
+       <td>2508bd0e66c7d220123d55f0f369ecdd</td>
+       <td>CVE-2023-45679</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger memory allocation failure in `start_decoder`. In that case the function returns early, but some of the pointers in `f-&gt;comment_list` are left initialized and later `setup_free` is called on these pointers in `vorbis_deinit`. This issue may lead to code execution.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45679">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a4a02c6ae3f08cdc069ca9a470e26e05</td>
+       <td>CVE-2023-45678</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger out of buffer write in `start_decoder` because at maximum `m-&gt;submaps` can be 16 but `submap_floor` and `submap_residue` are declared as arrays of 15 elements. This issue may lead to code execution.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45678">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e1bc4b934c50dbc763f83c4c567c7edc</td>
+       <td>CVE-2023-45677</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger out of bounds write in `f-&gt;vendor[len] = (char)'\0';`. The root cause is that if `len` read in `start_decoder` is a negative number and `setup_malloc` successfully allocates memory in that case, but memory write is done with a negative index `len`. Similarly if len is INT_MAX the integer overflow len+1 happens in `f-&gt;vendor = (char*)setup_malloc(f, sizeof(char) * (len+1));` and `f-&gt;comment_list[i] = (char*)setup_malloc(f, sizeof(char) * (len+1));`. This issue may lead to code execution.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45677">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e8740370a25b504ad14ab071873c9e21</td>
+       <td>CVE-2023-45676</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger out of bounds write in `f-&gt;vendor[i] = get8_packet(f);`. The root cause is an integer overflow in `setup_malloc`. A sufficiently large value in the variable `sz` overflows with `sz+7` in and the negative value passes the maximum available memory buffer check. This issue may lead to code execution.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45676">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cf83f2f1ef38d672ab03cc74d848d5fe</td>
        <td>CVE-2023-46287</td>
        <td>2023-10-20 14:15:12 </td>
@@ -2433,38 +2465,6 @@
        <td>2023-10-19 22:15:11 </td>
        <td>TinyMCE is an open source rich text editor. A cross-site scripting (XSS) vulnerability was discovered in TinyMCE&acirc;&euro;&trade;s Notification Manager API. The vulnerability exploits TinyMCE's unfiltered notification system, which is used in error handling. The conditions for this exploit requires carefully crafted malicious content to have been inserted into the editor and a notification to have been triggered. When a notification was opened, the HTML within the text argument was displayed unfiltered in the notification. The vulnerability allowed arbitrary JavaScript execution when an notification presented in the TinyMCE UI for the current user.  This issue could also be exploited by any integration which uses a TinyMCE notification to display unfiltered HTML content. This vulnerability has been patched in TinyMCE 5.10.8 and TinyMCE 6.7.1 by ensuring that the HTML displayed in the notification is sanitized, preventing the exploit. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45819">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a60b0761d97df0660820f9e2f163261d</td>
-       <td>CVE-2023-45818</td>
-       <td>2023-10-19 22:15:10 </td>
-       <td>TinyMCE is an open source rich text editor. A mutation cross-site scripting (mXSS) vulnerability was discovered in TinyMCE&acirc;&euro;&trade;s core undo and redo functionality. When a carefully-crafted HTML snippet passes the XSS sanitisation layer, it is manipulated as a string by internal trimming functions before being stored in the undo stack. If the HTML snippet is restored from the undo stack, the combination of the string manipulation and reparative parsing by either the browser's native [DOMParser API](https://developer.mozilla.org/en-US/docs/Web/API/DOMParser) (TinyMCE 6) or the SaxParser API (TinyMCE 5) mutates the HTML maliciously, allowing an XSS payload to be executed. This vulnerability has been patched in TinyMCE 5.10.8 and TinyMCE 6.7.1 by ensuring HTML is trimmed using node-level manipulation instead of string manipulation. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45818">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d023e5ae79f9bc2c39fdf5ebc47bec59</td>
-       <td>CVE-2023-45280</td>
-       <td>2023-10-19 22:15:09 </td>
-       <td>Yamcs 5.8.6 allows XSS (issue 2 of 2). It comes with a Bucket as its primary storage mechanism. Buckets allow for the upload of any file. There's a way to upload an HTML file containing arbitrary JavaScript and then navigate to it. Once the user opens the file, the browser will execute the arbitrary JavaScript.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45280">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b93c4a7e10a6469a8df32bfaa481ab99</td>
-       <td>CVE-2023-45279</td>
-       <td>2023-10-19 22:15:09 </td>
-       <td>Yamcs 5.8.6 allows XSS (issue 1 of 2). It comes with a Bucket as its primary storage mechanism. Buckets allow for the upload of any file. There's a way to upload a display referencing a malicious JavaScript file to the bucket. The user can then open the uploaded display by selecting Telemetry from the menu and navigating to the display.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45279">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f746c8e582e7600a2b958e0ea03ad1e1</td>
-       <td>CVE-2023-44690</td>
-       <td>2023-10-19 22:15:09 </td>
-       <td>Inadequate encryption strength in mycli 1.27.0 allows attackers to view sensitive information via /mycli/config.py</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-44690">详情</a></td>
       </tr>
 
      </tbody>
