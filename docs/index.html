@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-10-27 14:26:42 -->
+<!-- RELEASE TIME : 2023-10-27 16:29:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -2276,6 +2276,30 @@
       </tr>
 
       <tr>
+       <td>902856d78a83174b74280d9c146db5bb</td>
+       <td>CVE-2023-45682</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger out of bounds read in `DECODE` macro when `var` is negative. As it can be seen in the definition of `DECODE_RAW` a negative `var` is a valid value. This issue may be used to leak internal memory allocation information.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45682">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>456ce75402ce1d54c9c0962b469a4821</td>
+       <td>CVE-2023-45681</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger memory write past an allocated heap buffer in `start_decoder`. The root cause is a potential integer overflow in `sizeof(char*) * (f-&gt;comment_list_length)` which may make `setup_malloc` allocate less memory than required. Since there is another integer overflow an attacker may overflow it too to force `setup_malloc` to return 0 and make the exploit more reliable. This issue may lead to code execution.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45681">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e563c1b617d76b8f9b07b565b574003</td>
+       <td>CVE-2023-45680</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger memory allocation failure in `start_decoder`. In that case the function returns early, the `f-&gt;comment_list` is set to `NULL`, but `f-&gt;comment_list_length` is not reset. Later in `vorbis_deinit` it tries to dereference the `NULL` pointer. This issue may lead to denial of service.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45680">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cf83f2f1ef38d672ab03cc74d848d5fe</td>
        <td>CVE-2023-46287</td>
        <td>2023-10-20 14:15:12 </td>
@@ -2441,30 +2465,6 @@
        <td>2023-10-19 22:15:09 </td>
        <td>Inadequate encryption strength in mycli 1.27.0 allows attackers to view sensitive information via /mycli/config.py</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-44690">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b95aa154c4e50f11099ead187d5e2f5</td>
-       <td>CVE-2023-45992</td>
-       <td>2023-10-19 19:15:16 </td>
-       <td>Cross Site Scripting vulnerability in Ruckus Wireless (CommScope) Ruckus CloudPath v.5.12.54414 allows a remote attacker to escalate privileges via a crafted script to the macaddress parameter in the onboarding portal.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45992">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a6d5d5e30483cda36d7fbdc560265ac3</td>
-       <td>CVE-2023-45820</td>
-       <td>2023-10-19 19:15:15 </td>
-       <td>Directus is a real-time API and App dashboard for managing SQL database content. In affected versions any Directus installation that has websockets enabled can be crashed if the websocket server receives an invalid frame. A malicious user could leverage this bug to crash Directus. This issue has been addressed in version 10.6.2. Users are advised to upgrade. Users unable to upgrade should avoid using websockets.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45820">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a3321ac3cd6145f8ca72c2e4197af26f</td>
-       <td>CVE-2023-45281</td>
-       <td>2023-10-19 17:15:10 </td>
-       <td>An issue in Yamcs 5.8.6 allows attackers to obtain the session cookie via upload of crafted HTML file.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45281">详情</a></td>
       </tr>
 
      </tbody>
