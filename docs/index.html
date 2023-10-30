@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-10-30 14:27:04 -->
+<!-- RELEASE TIME : 2023-10-30 16:30:11 -->
 <html lang="zh-cn">
 
  <head>
@@ -2428,6 +2428,22 @@
       </tr>
 
       <tr>
+       <td>1c678804bc277c363634372e6401b6c7</td>
+       <td>CVE-2023-45675</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_vorbis is a single file MIT licensed library for processing ogg vorbis files. A crafted file may trigger out of bounds write in `f-&gt;vendor[len] = (char)'\0';`. The root cause is that if the len read in `start_decoder` is `-1` and `len + 1` becomes 0 when passed to `setup_malloc`. The `setup_malloc` behaves differently when `f-&gt;alloc.alloc_buffer` is pre-allocated. Instead of returning `NULL` as in `malloc` case it shifts the pre-allocated buffer by zero and returns the currently available memory block. This issue may lead to code execution.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45675">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c352ed0d542b396e1b02b2323da80b48</td>
+       <td>CVE-2023-45667</td>
+       <td>2023-10-21 00:15:09 </td>
+       <td>stb_image is a single file MIT licensed library for processing images.If `stbi__load_gif_main` in `stbi_load_gif_from_memory` fails it returns a null pointer and may keep the `z` variable uninitialized. In case the caller also sets the flip vertically flag, it continues and calls `stbi__vertical_flip_slices` with the null pointer result value and the uninitialized `z` value. This may result in a program crash.</td>
+       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-45667">详情</a></td>
+      </tr>
+
+      <tr>
        <td>67d124e80a102be25cecfa057a6cb823</td>
        <td>CVE-2023-43346</td>
        <td>2023-10-20 23:15:08 </td>
@@ -2449,22 +2465,6 @@
        <td>2023-10-20 22:15:10 </td>
        <td>Cross Site Scripting vulnerability in CMSmadesimple v.2.2.18 allows a local attacker to execute arbitrary code via a crafted script to the extra parameter in the news menu component.</td>
        <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-43353">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>343c6a8b740358056481b4403fc41373</td>
-       <td>CVE-2023-3965</td>
-       <td>2023-10-20 16:15:19 </td>
-       <td>The nsc theme for WordPress is vulnerable to Reflected Cross-Site Scripting via prototype pollution in versions up to, and including, 1.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3965">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5aeff2f7b430f9dbed7894988d81a502</td>
-       <td>CVE-2023-3962</td>
-       <td>2023-10-20 16:15:19 </td>
-       <td>The Winters theme for WordPress is vulnerable to Reflected Cross-Site Scripting via prototype pollution in versions up to, and including, 1.4.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-3962">详情</a></td>
       </tr>
 
      </tbody>
