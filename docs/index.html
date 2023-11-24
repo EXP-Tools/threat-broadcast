@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-11-24 11:20:58 -->
+<!-- RELEASE TIME : 2023-11-24 21:20:33 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>1fd1e0e72e18979988cc0b96cd99aa0b</td>
+       <td>CVE-2023-48708</td>
+       <td>2023-11-24 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>CodeIgniter Shield is an authentication and authorization provider for CodeIgniter 4. In affected versions successful login attempts are recorded with the raw tokens stored in the log table. If a malicious person somehow views the data in the log table they can obtain a raw token which can then be used to send a request with that user's authority. This issue has been addressed in version 1.0.0-beta.8. Users are advised to upgrade. Users unable to upgrade should disable logging for successful login attempts by the configuration files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48708">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6bcd6b92905deb1a86f3abc131348abd</td>
+       <td>CVE-2023-48707</td>
+       <td>2023-11-24 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>CodeIgniter Shield is an authentication and authorization provider for CodeIgniter 4. The `secretKey` value is an important key for HMAC SHA256 authentication and in affected versions was stored in the database in cleartext form. If a malicious person somehow had access to the data in the database, they could use the key and secretKey for HMAC SHA256 authentication to send requests impersonating that corresponding user. This issue has been addressed in version 1.0.0-beta.8. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48707">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>93861fa69694fecf816516f13d29b7c6</td>
+       <td>CVE-2023-48312</td>
+       <td>2023-11-24 18:15:00 <img src="imgs/new.gif" /></td>
+       <td>capsule-proxy is a reverse proxy for the capsule operator project. Affected versions are subject to a privilege escalation vulnerability which is based on a missing check if the user is authenticated based on the `TokenReview` result. All the clusters running with the `anonymous-auth` Kubernetes API Server setting disable (set to `false`) are affected since it would be possible to bypass the token review mechanism, interacting with the upper Kubernetes API Server. This privilege escalation cannot be exploited if you're relying only on client certificates (SSL/TLS). This vulnerability has been addressed in version 0.4.6. Users are advised to upgrade.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48312">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>90e9aa23e755e4d6196bae15493a06e3</td>
+       <td>CVE-2023-48712</td>
+       <td>2023-11-24 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>Warpgate is an open source SSH, HTTPS and MySQL bastion host for Linux. In affected versions there is a privilege escalation vulnerability through a non-admin user's account. Limited users can impersonate another user's account if only single-factor authentication is configured. If a user knows an admin username, opens the login screen and attempts to authenticate with an incorrect password they can subsequently enter a valid non-admin username and password they will be logged in as the admin user. All installations prior to version 0.9.0 are affected. All users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48712">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b00a17b48227a5b18ed38874bd566d8</td>
+       <td>CVE-2023-48711</td>
+       <td>2023-11-24 17:15:00 <img src="imgs/new.gif" /></td>
+       <td>google-translate-api-browser is an npm package which interfaces with the google translate web api. A Server-Side Request Forgery (SSRF) Vulnerability is present in applications utilizing the `google-translate-api-browser` package and exposing the `translateOptions` to the end user. An attacker can set a malicious `tld`, causing the application to return unsafe URLs pointing towards local resources. The `translateOptions.tld` field is not properly sanitized before being placed in the Google translate URL. This can allow an attacker with control over the `translateOptions` to set the `tld` to a payload such as `@127.0.0.1`. This causes the full URL to become `https://translate.google.@127.0.0.1/...`, where `translate.google.` is the username used to connect to localhost. An attacker can send requests within internal networks and the local host. Should any HTTPS application be present on the internal network with a vulnerability exploitable via a GET call, then it would be possible to exploit this using this vulnerability. This issue has been addressed in release version 4.1.3. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48711">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f9f98dc8b613304c4124443787ba4e1e</td>
+       <td>CVE-2023-6276</td>
+       <td>2023-11-24 16:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical has been found in Tongda OA 2017 up to 11.9. This affects an unknown part of the file general/wiki/cp/ct/delete.php. The manipulation of the argument PROJ_ID_STR leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 11.10 is able to address this issue. It is recommended to upgrade the affected component. The identifier VDB-246105 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6276">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>972d68f43a937ad60d6092e5dfb8d903</td>
+       <td>CVE-2023-6275</td>
+       <td>2023-11-24 15:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in TOTVS Fluig Platform 1.6.x/1.7.x/1.8.0/1.8.1. It has been rated as problematic. Affected by this issue is some unknown functionality of the file /mobileredir/openApp.jsp of the component mobileredir. The manipulation of the argument redirectUrl/user with the input "><script>alert(document.domain)</script> leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-246104. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6275">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bdb7d5fa7c02f5fc52caa446bfe1bf76</td>
+       <td>CVE-2023-6274</td>
+       <td>2023-11-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Beijing Baichuo Smart S80 up to 20231108. It has been declared as critical. Affected by this vulnerability is an unknown functionality of the file /sysmanage/updatelib.php of the component PHP File Handler. The manipulation of the argument file_upload leads to unrestricted upload. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-246103. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6274">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ab6dc7bcd351327c4ab88bbd6fc113e</td>
+       <td>CVE-2023-46575</td>
+       <td>2023-11-24 14:15:00 <img src="imgs/new.gif" /></td>
+       <td>A SQL injection vulnerability in Meshery before 0.6.179 allows a remote attacker to obtain sensitive information and execute arbitrary code via the order parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46575">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1007ffc88c5a721b8165e44bde7d6056</td>
+       <td>CVE-2023-38914</td>
+       <td>2023-11-24 13:15:00 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: This candidate was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38914">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f73903b0b49abb8c3295df7a9e221e6e</td>
        <td>CVE-2023-44303</td>
        <td>2023-11-24 03:15:00 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-11-23 00:15:00 <img src="imgs/new.gif" /></td>
        <td>The use of __proto__ in process.mainModule.__proto__.require() can bypass the policy mechanism and require modules outside of the policy.json definition. This vulnerability affects all users using the experimental policy mechanism in all active release lines: v16, v18 and, v20. Please note that at the time this CVE was issued, the policy is an experimental feature of Node.js</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-30581">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>92789a39f2e972599f6d7db8bc3060a0</td>
-       <td>CVE-2023-23978</td>
-       <td>2023-11-23 00:15:00 <img src="imgs/new.gif" /></td>
-       <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in SwitchWP WP Client Reports plugin <= 1.0.16 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-23978">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>212773823efcdd813d3d8a5adb112dd4</td>
-       <td>CVE-2023-48107</td>
-       <td>2023-11-22 23:15:00</td>
-       <td>Buffer Overflow vulnerability in zlib-ng minizip-ng v.4.0.2 allows an attacker to execute arbitrary code via a crafted file to the mz_path_has_slash function in the mz_os.c file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48107">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b72170225481c758836af3a619760ed5</td>
-       <td>CVE-2023-48701</td>
-       <td>2023-11-21 23:15:00</td>
-       <td>Statamic CMS is a Laravel and Git powered content management system (CMS). Prior to versions 3.4.15 an 4.36.0, HTML files crafted to look like images may be uploaded regardless of mime validation. This is only applicable on front-end forms using the "Forms" feature containing an assets field, or within the control panel which requires authentication. This issue has been patched on 3.4.15 and 4.36.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48701">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d706a221ba26181d93fd5893fb28e14</td>
-       <td>CVE-2023-48700</td>
-       <td>2023-11-21 23:15:00</td>
-       <td>The Nautobot Device Onboarding plugin uses the netmiko and NAPALM libraries to simplify the onboarding process of a new device into Nautobot down to, in many cases, an IP Address and a Location. Starting in version 2.0.0 and prior to version 3.0.0, credentials provided to onboarding task are visible via Job Results from an execution of an Onboarding Task. Version 3.0.0 fixes this issue; no known workarounds are available. Mitigation recommendations include deleting all Job Results for any onboarding task to remove clear text credentials from database entries that were run while on v2.0.X, upgrading to v3.0.0, and rotating any exposed credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48700">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>51e7e39e0ff1698b288079dc32c9c9a1</td>
-       <td>CVE-2023-48699</td>
-       <td>2023-11-21 23:15:00</td>
-       <td>fastbots is a library for fast bot and scraper development using selenium and the Page Object Model (POM) design. Prior to version 0.1.5, an attacker could modify the locators.ini locator file with python code that without proper validation it's executed and it could lead to rce. The vulnerability is in the function `def __locator__(self, locator_name: str)` in `page.py`. In order to mitigate this issue, upgrade to fastbots version 0.1.5 or above.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48699">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>41f610c9780cfe72a8cfcba0eff844b9</td>
-       <td>CVE-2023-48307</td>
-       <td>2023-11-21 23:15:00</td>
-       <td>Nextcloud Mail is the mail app for Nextcloud, a self-hosted productivity platform. Starting in version 1.13.0 and prior to version 2.2.8 and 3.3.0, an attacker can use an unprotected endpoint in the Mail app to perform a SSRF attack. Nextcloud Mail app versions 2.2.8 and 3.3.0 contain a patch for this issue. As a workaround, disable the mail app.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48307">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>991c5c78a28e1566dddc37d753f1995a</td>
-       <td>CVE-2023-48306</td>
-       <td>2023-11-21 23:15:00</td>
-       <td>Nextcloud Server provides data storage for Nextcloud, an open source cloud platform. Starting in version 25.0.0 and prior to versions 25.0.11, 26.0.6, and 27.1.0 of Nextcloud Server and starting in version 22.0.0 and prior to versions 22.2.10.16, 23.0.12.11, 24.0.12.7, 25.0.11, 26.0.6, and 27.1.0 of Nextcloud Enterprise Server, the DNS pin middleware was vulnerable to DNS rebinding allowing an attacker to perform SSRF as a final result. Nextcloud Server 25.0.11, 26.0.6, and 27.1.0 and Nextcloud Enterprise Server 22.2.10.16, 23.0.12.11, 24.0.12.7, 25.0.11, 26.0.6, and 27.1.0 contain patches for this issue. No known workarounds are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48306">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>916ff5a1c68c6e07cfc4095f9ea6384d</td>
-       <td>CVE-2023-48305</td>
-       <td>2023-11-21 23:15:00</td>
-       <td>Nextcloud Server provides data storage for Nextcloud, an open source cloud platform. Starting in version 25.0.0 and prior to versions 25.0.11, 26.0.6, and 27.1.0 of Nextcloud Server and Nextcloud Enterprise Server, when the log level was set to debug, the user_ldap app logged user passwords in plaintext into the log file. If the log file was then leaked or shared in any way the users' passwords would be leaked. Nextcloud Server and Nextcloud Enterprise Server versions 25.0.11, 26.0.6, and 27.1.0 contain a patch for this issue. As a workaround, change config setting `loglevel` to `1` or higher (should always be higher than 1 in production environments).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48305">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a8b47b1f692c0e25041b279e1dd88713</td>
-       <td>CVE-2023-6248</td>
-       <td>2023-11-21 22:15:00</td>
-       <td>The Syrus4 IoT gateway utilizes an unsecured MQTT server to download and execute arbitrary commands, allowing a remote unauthenticated attacker to execute code on any Syrus4 device connected to the cloud service. The MQTT server also leaks the location, video and diagnostic data from each connected device. An attacker who knows the IP address of the server is able to connect and perform the following operations: * Get location data of the vehicle the device is connected to * Send CAN bus messages via the ECU module ( https://syrus.digitalcomtech.com/docs/ecu-1 https://syrus.digitalcomtech.com/docs/ecu-1 ) * Immobilize the vehicle via the safe-immobilizer module ( https://syrus.digitalcomtech.com/docs/system-tools#safe-immobilization https://syrus.digitalcomtech.com/docs/system-tools#safe-immobilization ) * Get live video through the connected video camera * Send audio messages to the driver ( https://syrus.digitalcomtech.com/docs/system-tools#apx-tts https://syrus.digitalcomtech.com/docs/system-tools#apx-tts )</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6248">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8aee7bfd4811cee6f89047f6e153c6d2</td>
-       <td>CVE-2023-49105</td>
-       <td>2023-11-21 22:15:00</td>
-       <td>An issue was discovered in ownCloud owncloud/core before 10.13.1. An attacker can access, modify, or delete any file without authentication if the username of a victim is known, and the victim has no signing-key configured. This occurs because pre-signed URLs can be accepted even when no signing-key is configured for the owner of the files. The earliest affected version is 10.6.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49105">详情</a></td>
       </tr>
 
      </tbody>
