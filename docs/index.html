@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-12-06 23:23:50 -->
+<!-- RELEASE TIME : 2023-12-07 01:33:39 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d61176ed6019d7dda694e2fe94757b09</td>
+       <td>CVE-2023-49096</td>
+       <td>2023-12-06 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>Jellyfin is a Free Software Media System for managing and streaming media. In affected versions there is an argument injection in the VideosController, specifically the `/Videos/<itemId>/stream` and `/Videos/<itemId>/stream.<container>` endpoints which are present in the current Jellyfin version. Additional endpoints in the AudioController might also be vulnerable, as they differ only slightly in execution. Those endpoints are reachable by an unauthenticated user. In order to exploit this vulnerability an unauthenticated attacker has to guess an itemId, which is a completely random GUID. It’s a very unlikely case even for a large media database with lots of items. Without an additional information leak, this vulnerability shouldn’t be directly exploitable, even if the instance is reachable from the Internet. There are a lot of query parameters that get accepted by the method. At least two of those, videoCodec and audioCodec are vulnerable to the argument injection. The values can be traced through a lot of code and might be changed in the process. However, the fallback is to always use them as-is, which means we can inject our own arguments. Those arguments land in the command line of FFmpeg. Because UseShellExecute is always set to false, we can’t simply terminate the FFmpeg command and execute our own. It should only be possible to add additional arguments to FFmpeg, which is powerful enough as it stands. There is probably a way of overwriting an arbitrary file with malicious content. This vulnerability has been addressed in version 10.8.13. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49096">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02439a4cad92443bd05ced17c1393013</td>
+       <td>CVE-2023-48123</td>
+       <td>2023-12-06 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>An issue in Netgate pfSense Plus v.23.05.1 and before and pfSense CE v.2.7.0 allows a remote attacker to execute arbitrary code via a crafted request to the packet_capture.php file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48123">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>95124316056b645bfdd5e15450ac28ae</td>
+       <td>CVE-2023-46751</td>
+       <td>2023-12-06 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in the function gdev_prn_open_printer_seekable() in Artifex Ghostscript through 10.02.0 allows remote attackers to crash the application via a dangling pointer.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46751">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a2ee44d842d8064bafaf5619a32969bc</td>
+       <td>CVE-2023-6393</td>
+       <td>2023-12-06 17:15:07 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in the Quarkus Cache Runtime. When request processing utilizes a Uni cached using @CacheResult and the cached Uni reuses the initial "completion" context, the processing switches to the cached Uni instead of the request context. This is a problem if the cached Uni context contains sensitive information, and could allow a malicious user to benefit from a POST request returning the response that is meant for another user, gaining access to sensitive data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6393">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>585864085369f34932b2caacf0737e51</td>
+       <td>CVE-2023-45285</td>
+       <td>2023-12-06 17:15:07 <img src="imgs/new.gif" /></td>
+       <td>Using go get to fetch a module with the ".git" suffix may unexpectedly fallback to the insecure "git://" protocol if the module is unavailable via the secure "https://" and "git+ssh://" protocols, even if GOINSECURE is not set for said module. This only affects users who are not using the module proxy and are fetching modules directly (i.e. GOPROXY=off).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45285">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fae130155f87a468c794ae4c3e0da7dc</td>
+       <td>CVE-2023-39326</td>
+       <td>2023-12-06 17:15:07 <img src="imgs/new.gif" /></td>
+       <td>A malicious HTTP sender can use chunk extensions to cause a receiver reading from a request or response body to read many more bytes from the network than are in the body. A malicious HTTP client can further exploit this to cause a server to automatically read a large amount of data (up to about 1GiB) when a handler fails to read the entire body of a request. Chunk extensions are a little-used HTTP feature which permit including additional metadata in a request or response body sent using the chunked encoding. The net/http chunked encoding reader discards this metadata. A sender can exploit this by inserting a large metadata segment with each byte transferred. The chunk reader now produces an error if the ratio of real body to encoded bytes grows too small.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39326">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b2a876a3a0afcefd496ee46178716064</td>
+       <td>CVE-2023-39539</td>
+       <td>2023-12-06 16:15:07 <img src="imgs/new.gif" /></td>
+       <td>AMI AptioV contains a vulnerability in BIOS where a User may cause an unrestricted upload of a PNG Logo file with dangerous type by Local access. A successful exploit of this vulnerability may lead to a loss of Confidentiality, Integrity, and/or Availability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39539">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6dd8e427de70f56e9f5a33375b5b9c10</td>
+       <td>CVE-2023-39538</td>
+       <td>2023-12-06 16:15:07 <img src="imgs/new.gif" /></td>
+       <td>AMI AptioV contains a vulnerability in BIOS where a User may cause an unrestricted upload of a BMP Logo file with dangerous type by Local access. A successful exploit of this vulnerability may lead to a loss of Confidentiality, Integrity, and/or Availability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39538">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>229402b3cfdb30f6343605440b22c721</td>
+       <td>CVE-2023-36655</td>
+       <td>2023-12-06 16:15:07 <img src="imgs/new.gif" /></td>
+       <td>The login REST API in ProLion CryptoSpike 3.0.15P2 (when LDAP or Active Directory is used as the users store) allows a remote blocked user to login and obtain an authentication token by specifying a username with different uppercase/lowercase character combination.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-36655">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1fd9a442ff6fcd669331c8a2e43becb2</td>
+       <td>CVE-2023-48859</td>
+       <td>2023-12-06 15:15:06 <img src="imgs/new.gif" /></td>
+       <td>TOTOLINK A3002RU version 2.0.0-B20190902.1958 has a post-authentication RCE due to incorrect access control, allows attackers to bypass front-end security restrictions and execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48859">详情</a></td>
+      </tr>
+
+      <tr>
        <td>297f2dba01606413f747265f6a59994b</td>
        <td>CVE-2023-6527</td>
        <td>2023-12-06 05:15:10 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>159254516de3c122789a69cc4a8a3406</td>
        <td>CVE-2023-6448</td>
-       <td>2023-12-05 18:15:12 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 18:15:12</td>
        <td>Unitronics Vision Series PLCs and HMIs use default administrative passwords. An unauthenticated attacker with network access to a PLC or HMI can take administrative control of the system.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6448">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>7cccad3b742078ac2dcb8e79bf0e1fbf</td>
        <td>CVE-2023-46674</td>
-       <td>2023-12-05 18:15:12 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 18:15:12</td>
        <td>An issue was identified that allowed the unsafe deserialization of java objects from hadoop or spark configuration properties that could have been modified by authenticated users. Elastic would like to thank Yakov Shafranovich, with Amazon Web Services for reporting this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46674">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>9562f9cc422667c48ba5224b13408c39</td>
        <td>CVE-2023-45287</td>
-       <td>2023-12-05 17:15:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 17:15:08</td>
        <td>Before Go 1.20, the RSA based TLS key exchanges used the math/big library, which is not constant time. RSA blinding was applied to prevent timing attacks, but analysis shows this may not have been fully effective. In particular it appears as if the removal of PKCS#1 padding may leak timing information, which in turn could be used to recover session key bits. In Go 1.20, the crypto/tls library switched to a fully constant time RSA implementation, which we do not believe exhibits any timing side channels.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45287">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>fd491e0bc761718afcb9584413434f79</td>
        <td>CVE-2023-45085</td>
-       <td>2023-12-05 17:15:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 17:15:08</td>
        <td>An issue exists in SoftIron HyperCloud where compute nodes may come online immediately without following the correct initialization process. In this instance, workloads may be scheduled on these nodes and deploy to a failed or erroneous state, which impacts the availability of these workloads that may be deployed during this time window. This issue impacts HyperCloud versions from 2.0.0 to before 2.0.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45085">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>9f7ce6184ec94049d119aadaad116d57</td>
        <td>CVE-2023-45084</td>
-       <td>2023-12-05 17:15:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 17:15:08</td>
        <td>An issue exists in SoftIron HyperCloud where drive caddy removal and reinsertion without a reboot may erroneously cause the system to recognize the caddy as new media and wipe all data on the drives due to a missing synchronization flaw, which impacts data availability and integrity. This issue only impacts SoftIron HyperCloud "density" storage nodes running HyperCloud software versions 1.0 to before 2.0.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45084">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>004869b74d6059788c13070e4e75541e</td>
        <td>CVE-2023-45083</td>
-       <td>2023-12-05 17:15:07 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 17:15:07</td>
        <td>An Improper Privilege Management vulnerability exists in HyperCloud that will impact the ability for a user to authenticate against the management plane. An authenticated admin-level user may be able to delete the "admin" or "serveradmin" users, which prevents authentication from subsequently succeeding. This issue affects HyperCloud versions 1.0 to any release before 2.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45083">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>43cb9401ebb24907eacb269a5d6463b4</td>
        <td>CVE-2023-44298</td>
-       <td>2023-12-05 16:15:07 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 16:15:07</td>
        <td>Dell PowerEdge platforms 16G Intel E5 BIOS and Dell Precision BIOS, version 1.4.4, contain active debug code security vulnerability. An unauthenticated physical attacker could potentially exploit this vulnerability, leading to information tampering, code execution, denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-44298">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>b628c11650631befb0e31d32db44ce19</td>
        <td>CVE-2023-44297</td>
-       <td>2023-12-05 16:15:07 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 16:15:07</td>
        <td>Dell PowerEdge platforms 16G Intel E5 BIOS and Dell Precision BIOS, version 1.4.4, contain active debug code security vulnerability. An unauthenticated physical attacker could potentially exploit this vulnerability, leading to information disclosure, information tampering, code execution, denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-44297">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>e399574c41cd41be0f0c1d98c9bde76e</td>
        <td>CVE-2023-6357</td>
-       <td>2023-12-05 15:15:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 15:15:08</td>
        <td>A low-privileged remote attacker could exploit the vulnerability and inject additional system commands via file system libraries which could give the attacker full control of the device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6357">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>7906055877763a205f92b4bdbdd6a664</td>
        <td>CVE-2023-6180</td>
-       <td>2023-12-05 15:15:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 15:15:08</td>
        <td>The tokio-boring library in version 4.0.0 is affected by a memory leak issue that can lead to excessive resource consumption and potential DoS by resource exhaustion. The set_ex_data function used by the library did not deallocate memory used by pre-existing data in memory each time after completing a TLS connection causing the program to consume more resources with each new connection.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6180">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b9f4587dfcbbb8a7234833fb9fc7db7b</td>
-       <td>CVE-2023-41835</td>
-       <td>2023-12-05 09:15:07 <img src="imgs/new.gif" /></td>
-       <td>When a Multipart request is performed but some of the fields exceed the maxStringLength limit, the upload files will remain in struts.multipart.saveDir even if the request has been denied. Users are recommended to upgrade to versions Struts 2.5.32 or 6.1.2.2 or Struts 6.3.0.1 or greater, which fixe this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41835">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f109b8a80c2a1950de8ac0c804d62c81</td>
-       <td>CVE-2023-6269</td>
-       <td>2023-12-05 08:15:08 <img src="imgs/new.gif" /></td>
-       <td>An argument injection vulnerability has been identified in the administrative web interface of the Atos Unify OpenScape products "Session Border Controller" (SBC) and "Branch", before version V10 R3.4.0, and OpenScape "BCF" before versions V10R10.12.00 and V10R11.05.02. This allows an unauthenticated attacker to gain root access to the appliance via SSH (scope change) and also bypass authentication for the administrative interface and gain access as an arbitrary (administrative) user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6269">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b9cf7f8ea6c5e63166d3b10ee8d24cc3</td>
-       <td>CVE-2023-5188</td>
-       <td>2023-12-05 08:15:07 <img src="imgs/new.gif" /></td>
-       <td>The MMS Interpreter of WagoAppRTU in versions below 1.4.6.0 which is used by the WAGO Telecontrol Configurator is vulnerable to malformed packets. An remote unauthenticated attacker could send specifically crafted packets that lead to a denial-of-service condition until restart of the affected device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5188">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cfc0bb88c85cc13fdc3c47d8b0db5bee</td>
-       <td>CVE-2023-49070</td>
-       <td>2023-12-05 08:15:07 <img src="imgs/new.gif" /></td>
-       <td>Pre-auth RCE in Apache Ofbiz 18.12.09. It's due to XML-RPC no longer maintained still present. This issue affects Apache OFBiz: before 18.12.10. Users are recommended to upgrade to version 18.12.10</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49070">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>482a49f0eaadeeef70129cf254633c03</td>
-       <td>CVE-2023-43472</td>
-       <td>2023-12-05 07:15:07 <img src="imgs/new.gif" /></td>
-       <td>An issue in MLFlow versions 2.8.1 and before allows a remote attacker to obtain sensitive information via a crafted request to REST API.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-43472">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f2e84d1d96a29ad950f8e296c7456546</td>
-       <td>CVE-2023-44295</td>
-       <td>2023-12-05 06:15:49 <img src="imgs/new.gif" /></td>
-       <td>Dell PowerScale OneFS versions 8.2.2.x through 9.6.0.x contains an improper control of a resource through its lifetime vulnerability. A low privilege attacker could potentially exploit this vulnerability, leading to loss of information, and information disclosure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-44295">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b6ae8de0c4533b476342391214c7da80</td>
-       <td>CVE-2023-44288</td>
-       <td>2023-12-05 06:15:48 <img src="imgs/new.gif" /></td>
-       <td>Dell PowerScale OneFS, 8.2.2.x through 9.6.0.x, contains an improper control of a resource through its lifetime vulnerability. An unauthenticated network attacker could potentially exploit this vulnerability, leading to denial of service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-44288">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12e351e7b4f104e23a61d77b316d76ae</td>
-       <td>CVE-2023-39248</td>
-       <td>2023-12-05 06:15:48 <img src="imgs/new.gif" /></td>
-       <td>Dell OS10 Networking Switches running 10.5.2.x and above contain an Uncontrolled Resource Consumption (Denial of Service) vulnerability, when switches are configured with VLT and VRRP. A remote unauthenticated user can cause the network to be flooded leading to Denial of Service for actual network users. This is a high severity vulnerability as it allows an attacker to cause an outage of network. Dell recommends customers to upgrade at the earliest opportunity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-39248">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>63def42f5249d2c5edfdde4de9feb285</td>
-       <td>CVE-2023-37572</td>
-       <td>2023-12-05 06:15:48 <img src="imgs/new.gif" /></td>
-       <td>Softing OPC Suite version 5.25 and before has Incorrect Access Control, allows attackers to obtain sensitive information via weak permissions in OSF_discovery service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37572">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d0aaeda86faf0ea43eafcc133825d6e9</td>
-       <td>CVE-2022-47531</td>
-       <td>2023-12-05 06:15:48 <img src="imgs/new.gif" /></td>
-       <td>An issue was discovered in Ericsson Evolved Packet Gateway (EPG) versions 3.x before 3.25 and 2.x before 2.16, allows authenticated users to bypass system CLI and execute commands they are authorized to execute directly in the UNIX shell.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-47531">详情</a></td>
       </tr>
 
      </tbody>
@@ -2094,7 +2094,7 @@
       <tr>
        <td>ea1febdaf01096075899e8306901c70b</td>
        <td>CVE-2023-39416</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Proself操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87528">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>0153038bd7e2d3d92372dd06d2e19007</td>
        <td>CVE-2023-40735</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Butterfly Button信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87527">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>02082d95089787d8af2a3ce3cf0a73b8</td>
        <td>CVE-2023-39745</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>TP-LINK TL-WR941ND、TL-WR940N和TL-WR841N缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87526">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>f53756256fd32944bf8b0dcc985f9899</td>
        <td>CVE-2022-24989</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>TerraMaster NAS注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87525">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>2b82f565eb2822a4ef748a60b42811a1</td>
        <td>CVE-2023-40711</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Veilid越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87524">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>2b1a5bb6ac62b283b21f2e349a78de6b</td>
        <td>CVE-2023-2971</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Typora路径遍历漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87523">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>9217d0729a70ba362e4dff481f0de689</td>
        <td>CVE-2023-38839</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Minimati SQL注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87522">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>0a53551ea17a264681cee92b3b08d559</td>
        <td>CVE-2023-27471</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Insyde InsydeH2O with Kernel拒绝服务漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87521">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>ed37b711ef39b64785499bac11045f99</td>
        <td>CVE-2023-40072</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>ELECOM WAB-S600-PS和WAB-S300操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87520">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>26e461d4fc6d0c4bbf797d4339a1f32c</td>
        <td>CVE-2023-39445</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>ELECOM LAN-WH300N/RE隐藏功能漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87519">详情</a></td>
       </tr>
@@ -2174,7 +2174,7 @@
       <tr>
        <td>4500feaf42db51c27482ca9ee5626b60</td>
        <td>CVE-2023-4394</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Linux Kernel内存错误引用漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87518">详情</a></td>
       </tr>
@@ -2182,7 +2182,7 @@
       <tr>
        <td>9c4e6591a71870d1246afd3fc5546b3e</td>
        <td>CVE-2023-38902</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Ruijie RG-EW Series Routers命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87517">详情</a></td>
       </tr>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>6b9ef0785a45c67a169bd8019ad667d8</td>
        <td>CVE-2023-25647</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>ZTE Mobile Phones权限和访问控制错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87516">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>04ba2bc78bcadeeff88315c08df9f6a1</td>
        <td>CVE-2023-4392</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>Control iD Gerencia Web信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87515">详情</a></td>
       </tr>
@@ -2206,7 +2206,7 @@
       <tr>
        <td>8d4a079923b781ee4c7f8dca2717bb85</td>
        <td>CVE-2023-35893</td>
-       <td>2023-12-05 09:22:08 <img src="imgs/new.gif" /></td>
+       <td>2023-12-05 09:22:08</td>
        <td>IBM Security Guardium操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/87514">详情</a></td>
       </tr>
