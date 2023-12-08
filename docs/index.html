@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-12-08 21:21:25 -->
+<!-- RELEASE TIME : 2023-12-08 22:27:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -364,6 +364,62 @@
       </tr>
 
       <tr>
+       <td>575b84277afdefc31a34d8ed8fc87b9d</td>
+       <td>CVE-2023-46157</td>
+       <td>2023-12-08 13:15:07 <img src="imgs/new.gif" /></td>
+       <td>File-Manager in MGT CloudPanel 2.0.0 through 2.3.2 allows the lowest privilege user to achieve OS command injection by changing file ownership and changing file permissions to 4755.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46157">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c352c48e927fa74e71158fc62f4a7346</td>
+       <td>CVE-2023-45866</td>
+       <td>2023-12-08 06:15:45 <img src="imgs/new.gif" /></td>
+       <td>Bluetooth HID Hosts in BlueZ may permit an unauthenticated Peripheral role HID Device to initiate and establish an encrypted connection, and accept HID keyboard reports, potentially permitting injection of HID messages when no user interaction has occurred in the Central role to authorize such access. An example affected package is bluez 5.64-0ubuntu1 in Ubuntu 22.04LTS. NOTE: in some cases, a CVE-2020-0556 mitigation would have already addressed this Bluetooth HID Hosts issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45866">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8351e67a95955c4d61ff087a59c25527</td>
+       <td>CVE-2023-32460</td>
+       <td>2023-12-08 06:15:45 <img src="imgs/new.gif" /></td>
+       <td>Dell PowerEdge BIOS contains an improper privilege management security vulnerability. An unauthenticated local attacker could potentially exploit this vulnerability, leading to privilege escalation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32460">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>87066a11e1bafb911bf7a51428cd2188</td>
+       <td>CVE-2023-48929</td>
+       <td>2023-12-08 05:15:08 <img src="imgs/new.gif" /></td>
+       <td>Franklin Fueling Systems System Sentinel AnyWare (SSA) version 1.6.24.492 is vulnerable to Session Fixation. The 'sid' parameter in the group_status.asp resource allows an attacker to escalate privileges and obtain sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48929">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bd3466080335b12e99b5491349e90088</td>
+       <td>CVE-2023-48928</td>
+       <td>2023-12-08 05:15:08 <img src="imgs/new.gif" /></td>
+       <td>Franklin Fueling Systems System Sentinel AnyWare (SSA) version 1.6.24.492 is vulnerable to Open Redirect. The 'path' parameter of the prefs.asp resource allows an attacker to redirect a victim user to an arbitrary web site using a crafted URL.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48928">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>042576cdf43902747506e7b468012562</td>
+       <td>CVE-2023-26158</td>
+       <td>2023-12-08 05:15:07 <img src="imgs/new.gif" /></td>
+       <td>All versions of the package mockjs are vulnerable to Prototype Pollution via the Util.extend function due to missing check if the attribute resolves to the object prototype. By adding or modifying attributes of an object prototype, it is possible to create attributes that exist on every object, or replace critical attributes with malicious ones. This can be problematic if the software depends on existence or non-existence of certain attributes, or uses pre-defined attributes of object prototype (such as hasOwnProperty, toString or valueOf). User controlled inputs inside the extend() method of the Mock.Handler, Mock.Random, Mock.RE.Handler or Mock.Util, will allow an attacker to exploit this vulnerability. Workaround By using a denylist of dangerous attributes, this weakness can be eliminated. Add the following line in the Util.extend function: js js if (["__proto__", "constructor", "prototype"].includes(name)) continue js // src/mock/handler.js Util.extend = function extend() { var target = arguments[0] || {}, i = 1, length = arguments.length, options, name, src, copy, clone if (length === 1) { target = this i = 0 } for (; i < length; i++) { options = arguments[i] if (!options) continue for (name in options) { if (["__proto__", "constructor", "prototype"].includes(name)) continue src = target[name] copy = options[name] if (target === copy) continue if (copy === undefined) continue if (Util.isArray(copy) || Util.isObject(copy)) { if (Util.isArray(copy)) clone = src && Util.isArray(src) ? src : [] if (Util.isObject(copy)) clone = src && Util.isObject(src) ? src : {} target[name] = Util.extend(clone, copy) } else { target[name] = copy } } } return target }</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-26158">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9e2526df109e8ff5710a37e3f5a67e7b</td>
+       <td>CVE-2023-48122</td>
+       <td>2023-12-08 04:15:06 <img src="imgs/new.gif" /></td>
+       <td>An issue in microweber v.2.0.1 and fixed in v.2.0.4 allows a remote attacker to obtain sensitive information via the HTTP GET method.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48122">详情</a></td>
+      </tr>
+
+      <tr>
        <td>456a1aba1dd1120102e5a8a306afdd36</td>
        <td>CVE-2023-43305</td>
        <td>2023-12-08 02:15:06 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
        <td>Tenda W30E V16.01.0.12(4843) contains a stack overflow vulnerability via the function formDeleteMeshNode.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49411">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>29a2559c080bd2e9de6341c8565ba07c</td>
-       <td>CVE-2023-49409</td>
-       <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
-       <td>Tenda AX3 V16.03.12.11 was discovered to contain a Command Execution vulnerability via the function /goform/telnet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49409">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6c802ca1449dc75a902dee18cd6f7c1b</td>
-       <td>CVE-2023-49408</td>
-       <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
-       <td>Tenda AX3 V16.03.12.11 was discovered to contain a stack overflow via the function set_device_name.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49408">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a0bf29a1821b7c75e29f6a9b98089ce</td>
-       <td>CVE-2023-49406</td>
-       <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
-       <td>Tenda W30E V16.01.0.12(4843) was discovered to contain a Command Execution vulnerability via the function /goform/telnet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49406">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>112115b3c2eecd72b47aa03523ba2409</td>
-       <td>CVE-2023-49405</td>
-       <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
-       <td>Tenda W30E V16.01.0.12(4843) was discovered to contain a stack overflow via the function UploadCfg.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49405">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>60a2f57c08c1d69be46a4cf3b3369191</td>
-       <td>CVE-2023-49404</td>
-       <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
-       <td>Tenda W30E V16.01.0.12(4843) was discovered to contain a stack overflow via the function formAdvancedSetListSet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49404">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f2da95f8d774b2e4ac29166fda806c47</td>
-       <td>CVE-2023-48958</td>
-       <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
-       <td>gpac 2.3-DEV-rev617-g671976fcc-master contains memory leaks in gf_mpd_resolve_url media_tools/mpd.c:4589.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48958">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>45f57ff1330c4c9ee596cec4c815c3f0</td>
-       <td>CVE-2023-47440</td>
-       <td>2023-12-07 18:15:08 <img src="imgs/new.gif" /></td>
-       <td>Gladys Assistant v4.27.0 and prior is vulnerable to Directory Traversal. The patch of CVE-2023-43256 was found to be incomplete, allowing authenticated attackers to extract sensitive files in the host machine.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-47440">详情</a></td>
       </tr>
 
      </tbody>
