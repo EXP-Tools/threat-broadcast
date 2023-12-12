@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2023-12-12 11:21:17 -->
+<!-- RELEASE TIME : 2023-12-12 23:23:41 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>db38d7451df73a33f135cbf54f350859</td>
+       <td>CVE-2023-50252</td>
+       <td>2023-12-12 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>php-svg-lib is an SVG file parsing / rendering library. Prior to version 0.5.1, when handling `<use>` tag that references an `<image>` tag, it merges the attributes from the `<use>` tag to the `<image>` tag. The problem pops up especially when the `href` attribute from the `<use>` tag has not been sanitized. This can lead to an unsafe file read that can cause PHAR Deserialization vulnerability in PHP prior to version 8. Version 0.5.1 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50252">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b4f9e9ef4069a2846055aca5765843e5</td>
+       <td>CVE-2023-50251</td>
+       <td>2023-12-12 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>php-svg-lib is an SVG file parsing / rendering library. Prior to version 0.5.1, when parsing the attributes passed to a `use` tag inside an svg document, an attacker can cause the system to go to an infinite recursion. Depending on the system configuration and attack pattern this could exhaust the memory available to the executing process and/or to the server itself. An attacker sending multiple request to a system to render the above payload can potentially cause resource exhaustion to the point that the system is unable to handle incoming request. Version 0.5.1 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50251">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c05bf0f44b67478d89fa195d1f4472e2</td>
+       <td>CVE-2023-48225</td>
+       <td>2023-12-12 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>Laf is a cloud development platform. Prior to version 1.0.0-beta.13, the control of LAF app enV is not strict enough, and in certain scenarios of privatization environment, it may lead to sensitive information leakage in secret and configmap. In ES6 syntax, if an obj directly references another obj, the name of the obj itself will be used as the key, and the entire object structure will be integrated intact. When constructing the deployment instance of the app, env was found from the database and directly inserted into the template, resulting in controllability here. Sensitive information in the secret and configmap can be read through the k8s envFrom field. In a privatization environment, when `namespaceConf. fixed` is marked, it may lead to the leakage of sensitive information in the system. As of time of publication, it is unclear whether any patches or workarounds exist.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48225">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a5cf6fbfe5a9a9d2c7f94c88f189cd16</td>
+       <td>CVE-2023-50247</td>
+       <td>2023-12-12 20:15:08 <img src="imgs/new.gif" /></td>
+       <td>h2o is an HTTP server with support for HTTP/1.x, HTTP/2 and HTTP/3. The QUIC stack (quicly), as used by H2O up to commit 43f86e5 (in version 2.3.0-beta and prior), is susceptible to a state exhaustion attack. When H2O is serving HTTP/3, a remote attacker can exploit this vulnerability to progressively increase the memory retained by the QUIC stack. This can eventually cause H2O to abort due to memory exhaustion. The vulnerability has been resolved in commit d67e81d03be12a9d53dc8271af6530f40164cd35. HTTP/1 and HTTP/2 are not affected by this vulnerability as they do not use QUIC. Administrators looking to mitigate this issue without upgrading can disable HTTP/3 support.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50247">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7ede9ab149a23045d6184e6bf166a583</td>
+       <td>CVE-2023-49279</td>
+       <td>2023-12-12 20:15:08 <img src="imgs/new.gif" /></td>
+       <td>Umbraco is an ASP.NET content management system (CMS). Starting in version 7.0.0 and prior to versions 7.15.11, 8.18.9, 10.7.0, 11.5.0, and 12.2.0, a user with access to the backoffice can upload SVG files that include scripts. If the user can trick another user to load the media directly in a browser, the scripts can be executed. Versions 7.15.11, 8.18.9, 10.7.0, 11.5.0, and 12.2.0 contain a patch for this issue. Some workarounds are available. Implement the server side file validation or serve all media from an different host (e.g cdn) than where Umbraco is hosted.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49279">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f78baafed8fd7cf1170087a0140886e6</td>
+       <td>CVE-2023-49278</td>
+       <td>2023-12-12 20:15:08 <img src="imgs/new.gif" /></td>
+       <td>Umbraco is an ASP.NET content management system (CMS). Starting in version 8.0.0 and prior to versions 8.18.10, 10.8.1, and 12.3.4, a brute force exploit can be used to collect valid usernames. Versions 8.18.10, 10.8.1, and 12.3.4 contain a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49278">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>04fd93c7dd7e97b9c19ea430760b0e77</td>
+       <td>CVE-2023-49274</td>
+       <td>2023-12-12 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>Umbraco is an ASP.NET content management system (CMS). Starting in version 8.0.0 and prior to versions 8.18.10, 10.8.1, and 12.3.4, a user enumeration attack is possible when SMTP is not set up correctly, but reset password is enabled. Versions 8.18.10, 10.8.1, and 12.3.4 contain a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-49274">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>00622df8840e4f23ed1b5bca232c687d</td>
+       <td>CVE-2023-41337</td>
+       <td>2023-12-12 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>h2o is an HTTP server with support for HTTP/1.x, HTTP/2 and HTTP/3. In version 2.3.0-beta2 and prior, when h2o is configured to listen to multiple addresses or ports with each of them using different backend servers managed by multiple entities, a malicious backend entity that also has the opportunity to observe or inject packets exchanged between the client and h2o may misdirect HTTPS requests going to other backends and observe the contents of that HTTPS request being sent. The attack involves a victim client trying to resume a TLS connection and an attacker redirecting the packets to a different address or port than that intended by the client. The attacker must already have been configured by the administrator of h2o to act as a backend to one of the addresses or ports that the h2o instance listens to. Session IDs and tickets generated by h2o are not bound to information specific to the server address, port, or the X.509 certificate, and therefore it is possible for an attacker to force the victim connection to wrongfully resume against a different server address or port on which the same h2o instance is listening. Once a TLS session is misdirected to resume to a server address / port that is configured to use an attacker-controlled server as the backend, depending on the configuration, HTTPS requests from the victim client may be forwarded to the attacker's server. An H2O instance is vulnerable to this attack only if the instance is configured to listen to different addresses or ports using the listen directive at the host level and the instance is configured to connect to backend servers managed by multiple entities. A patch is available at commit 35760540337a47e5150da0f4a66a609fad2ef0ab. As a workaround, one may stop using using host-level listen directives in favor of global-level ones.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-41337">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ef4926bb55a263b32fff12e7c6859a36</td>
+       <td>CVE-2023-34064</td>
+       <td>2023-12-12 20:15:06 <img src="imgs/new.gif" /></td>
+       <td>Workspace ONE Launcher contains a Privilege Escalation Vulnerability. A malicious actor with physical access to Workspace ONE Launcher could utilize the Edge Panel feature to bypass setup to gain access to sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-34064">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>07c6c829cc890247f5d4c316f6ae2f07</td>
+       <td>CVE-2023-6687</td>
+       <td>2023-12-12 19:15:08 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered by Elastic whereby Elastic Agent would log a raw event in its own logs at the WARN or ERROR level if ingesting that event to Elasticsearch failed with any 4xx HTTP status code except 409 or 429. Depending on the nature of the event that Elastic Agent attempted to ingest, this could lead to the insertion of sensitive or private information in the Elastic Agent logs. Elastic has released 8.11.3 and 7.17.16 that prevents this issue by limiting these types of logs to DEBUG level logging, which is disabled by default.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6687">详情</a></td>
+      </tr>
+
+      <tr>
        <td>25791e7bf1caa941d5ebc4f9514cdeb5</td>
        <td>CVE-2023-41120</td>
        <td>2023-12-12 07:15:45 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2023-12-10 19:15:07</td>
        <td>An issue was discovered in Zammad before 6.2.0. In several subsystems, SSL/TLS was used to establish connections to external services without proper validation of hostname and certificate authority. This is exploitable by man-in-the-middle attackers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50454">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b3130aa6b98db0358e1a8254aab8138a</td>
-       <td>CVE-2023-50453</td>
-       <td>2023-12-10 19:15:07</td>
-       <td>An issue was discovered in Zammad before 6.2.0. It uses the public endpoint /api/v1/signshow for its login screen. This endpoint returns internal configuration data of user object attributes, such as selectable values, which should not be visible to the public.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50453">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d0ae090f56c7b167469011ae41317fc0</td>
-       <td>CVE-2022-48614</td>
-       <td>2023-12-10 19:15:07</td>
-       <td>Special:Ask in Semantic MediaWiki before 4.0.2 allows Reflected XSS.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-48614">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f15150ea8e70904cee71ff324e1c962</td>
-       <td>CVE-2023-5870</td>
-       <td>2023-12-10 18:15:07</td>
-       <td>A flaw was found in PostgreSQL involving the pg_cancel_backend role that signals background workers, including the logical replication launcher, autovacuum workers, and the autovacuum launcher. Successful exploitation requires a non-core extension with a less-resilient background worker and would affect that specific background worker only. This issue may allow a remote high privileged user to launch a denial of service (DoS) attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5870">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c1ed494f85bbcc1e7dd1be219604e061</td>
-       <td>CVE-2023-5869</td>
-       <td>2023-12-10 18:15:07</td>
-       <td>A flaw was found in PostgreSQL that allows authenticated database users to execute arbitrary code through missing overflow checks during SQL array value modification. This issue exists due to an integer overflow during array modification where a remote user can trigger the overflow by providing specially crafted data. This enables the execution of arbitrary code on the target system, allowing users to write arbitrary bytes to memory and extensively read the server's memory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5869">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1657eee4224a1e1617435353ccb16be</td>
-       <td>CVE-2023-5868</td>
-       <td>2023-12-10 18:15:07</td>
-       <td>A memory disclosure vulnerability was found in PostgreSQL that allows remote users to access sensitive information by exploiting certain aggregate function calls with 'unknown'-type arguments. Handling 'unknown'-type values from string literals without type designation can disclose bytes, potentially revealing notable and confidential information. This issue exists due to excessive data output in aggregate function calls, enabling remote users to read some portion of system memory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5868">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>50e9bb51cc98f8c019a829fca7f64017</td>
-       <td>CVE-2023-50449</td>
-       <td>2023-12-10 18:15:07</td>
-       <td>JFinalCMS 5.0.0 could allow a remote attacker to read files via ../ Directory Traversal in the /common/down/file fileKey parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50449">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ae424f9a6e9478af42c3a41101a24fb3</td>
-       <td>CVE-2023-47254</td>
-       <td>2023-12-09 08:15:06</td>
-       <td>An OS Command Injection in the CLI interface on DrayTek Vigor167 version 5.2.2, allows remote attackers to execute arbitrary system commands and escalate privileges via any account created within the web interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-47254">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3bec66b37857bdc96fbd1e3738934429</td>
-       <td>CVE-2023-6120</td>
-       <td>2023-12-09 07:15:08</td>
-       <td>The Welcart e-Commerce plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 2.9.6 via the upload_certificate_file function. This makes it possible for administrators to upload .pem or .crt files to arbitrary locations on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6120">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4fb3205632fcb169d93f28a685c3a638</td>
-       <td>CVE-2023-5756</td>
-       <td>2023-12-09 07:15:07</td>
-       <td>The Digital Publications by Supsystic plugin for WordPress is vulnerable to Cross-Site Request Forgery in versions up to, and including, 1.7.6. This is due to missing or incorrect nonce validation on the AJAX action handler. This makes it possible for unauthenticated attackers to execute AJAX actions via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5756">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21a827916f916cfef980413db96cba9a</td>
-       <td>CVE-2023-46932</td>
-       <td>2023-12-09 07:15:07</td>
-       <td>Heap Buffer Overflow vulnerability in GPAC version 2.3-DEV-rev617-g671976fcc-master, allows attackers to execute arbitrary code and cause a denial of service (DoS) via str2ulong class in src/media_tools/avilib.c in gpac/MP4Box.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46932">详情</a></td>
       </tr>
 
      </tbody>
