@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-01-23 05:28:01 -->
+<!-- RELEASE TIME : 2024-01-23 18:29:23 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3e0b7c1d0d237da80a26fd87f17bf6b7</td>
+       <td>CVE-2024-23340</td>
+       <td>2024-01-22 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>@hono/node-server is an adapter that allows users to run Hono applications on Node.js. Since v1.3.0, @hono/node-server has used its own Request object with `url` behavior that is unexpected. In the standard API, if the URL contains `..`, here called "double dots", the URL string returned by Request will be in the resolved path. However, the `url` in @hono/node-server's Request as does not resolve double dots, so `http://localhost/static/.. /foo.txt` is returned. This causes vulnerabilities when using `serveStatic`. Modern web browsers and a latest `curl` command resolve double dots on the client side, so this issue doesn't affect those using either of those tools. However, problems may occur if accessed by a client that does not resolve them. Version 1.4.1 includes the change to fix this issue. As a workaround, don't use `serveStatic`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23340">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c956ec6f8d082fdc0f07cc295ae7e870</td>
+       <td>CVE-2024-23339</td>
+       <td>2024-01-22 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>hoolock is a suite of lightweight utilities designed to maintain a small footprint when bundled. Starting in version 2.0.0 and prior to version 2.2.1, utility functions related to object paths (`get`, `set`, and `update`) did not block attempts to access or alter object prototypes. Starting in version 2.2.1, the `get`, `set` and `update` functions throw a `TypeError` when a user attempts to access or alter inherited properties.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23339">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>62d6073bf55dd61aea754f1f55f6b9b2</td>
+       <td>CVE-2021-42141</td>
+       <td>2024-01-22 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Contiki-NG tinyDTLS through 2018-08-30. One incorrect handshake could complete with different epoch numbers in the packets Client_Hello, Client_key_exchange, and Change_cipher_spec, which may cause denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-42141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>663295d7c88f1c5e433c4d4d9bbf95ae</td>
+       <td>CVE-2024-23678</td>
+       <td>2024-01-22 21:15:10 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise for Windows versions below 9.0.8 and 9.1.3, Splunk Enterprise does not correctly sanitize path input data. This results in the unsafe deserialization of untrusted data from a separate disk partition on the machine. This vulnerability only affects Splunk Enterprise for Windows.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23678">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fc7e2ea10a613eb6d3fe3ce7c0e9bf9b</td>
+       <td>CVE-2024-23677</td>
+       <td>2024-01-22 21:15:10 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 9.0.8, the Splunk RapidDiag utility discloses server responses from external applications in a log file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23677">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>db78d623296d72f4899c27766a7f2423</td>
+       <td>CVE-2024-23676</td>
+       <td>2024-01-22 21:15:10 <img src="imgs/new.gif" /></td>
+       <td>In Splunk versions below 9.0.8 and 9.1.3, the “mrollup” SPL command lets a low-privileged user view metrics on an index that they do not have permission to view. This vulnerability requires user interaction from a high-privileged user to exploit.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23676">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce1a7c739655a11c001ac56a417fb561</td>
+       <td>CVE-2024-23675</td>
+       <td>2024-01-22 21:15:10 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 9.0.8 and 9.1.3, Splunk app key value store (KV Store) improperly handles permissions for users that use the REST application programming interface (API). This can potentially result in the deletion of KV Store collections.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23675">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>82d251ad982a4afbdd43ef097a569de1</td>
+       <td>CVE-2023-47141</td>
+       <td>2024-01-22 21:15:09 <img src="imgs/new.gif" /></td>
+       <td>IIBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 11.5 could allow an authenticated user with CONNECT privileges to cause a denial of service using a specially crafted query. IBM X-Force ID: 270264.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-47141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>448b7f707fc189f0ed3d277aca6b029b</td>
+       <td>CVE-2023-24135</td>
+       <td>2024-01-22 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>Jensen of Scandinavia Eagle 1200AC V15.03.06.33_en was discovered to contain a command injection vulnerability in the function formWriteFacMac. This vulnerability allows attackers to execute arbitrary commands via manipulation of the mac parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-24135">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0c4a33e007a8ec59b081b0b69c486b75</td>
+       <td>CVE-2023-7194</td>
+       <td>2024-01-22 20:15:47 <img src="imgs/new.gif" /></td>
+       <td>The Meris WordPress theme through 1.1.2 does not sanitise and escape some parameters before outputting them back in the page, leading to Reflected Cross-Site Scripting which could be used against high privilege users such as admin</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-7194">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c73043ce25329e121258fea1e5cc54ca</td>
        <td>CVE-2024-0782</td>
        <td>2024-01-22 17:15:09 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-01-21 06:15:08</td>
        <td>A vulnerability, which was classified as problematic, has been found in go4rayyan Scumblr up to 2.0.1a. Affected by this issue is some unknown functionality of the component Task Handler. The manipulation leads to cross site scripting. The attack may be launched remotely. Upgrading to version 2.0.2 is able to address this issue. The patch is identified as 5c9120f2362ddb7cbe48f2c4620715adddc4ee35. It is recommended to upgrade the affected component. VDB-251570 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2016-15037">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b3d489cb17eb775feb99042531e10b94</td>
-       <td>CVE-2024-23726</td>
-       <td>2024-01-21 04:15:19</td>
-       <td>Ubee DDW365 XCNDDW365 and DDW366 XCNDXW3WB devices have predictable default WPA2 PSKs that could lead to unauthorized remote access. A remote attacker (in proximity to a Wi-Fi network) can derive the default WPA2-PSK value by observing a beacon frame. A PSK is generated by using the first six characters of the SSID and the last six of the BSSID, decrementing the last digit.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23726">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0bf883b42001e654711a636792b2ccd3</td>
-       <td>CVE-2024-23725</td>
-       <td>2024-01-21 04:15:19</td>
-       <td>Ghost before 5.76.0 allows XSS via a post excerpt in excerpt.js. An XSS payload can be rendered in post summaries.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23725">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>05ddc3b28875b4610054ce7380cedeca</td>
-       <td>CVE-2024-0521</td>
-       <td>2024-01-20 21:15:43</td>
-       <td>Code Injection in paddlepaddle/paddle</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0521">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e6c044e82d6c80d6e1ee0b9bd3b77260</td>
-       <td>CVE-2023-7063</td>
-       <td>2024-01-20 09:15:07</td>
-       <td>The WPForms Pro plugin for WordPress is vulnerable to Stored Cross-Site Scripting via form submission parameters in all versions up to, and including, 1.8.5.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-7063">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d772c8fc41e1cd5d0d9b52b95df33a34</td>
-       <td>CVE-2024-0679</td>
-       <td>2024-01-20 06:15:44</td>
-       <td>The ColorMag theme for WordPress is vulnerable to unauthorized access due to a missing capability check on the plugin_action_callback() function in all versions up to, and including, 3.1.2. This makes it possible for authenticated attackers, with subscriber-level access and above, to install and activate arbitrary plugins.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0679">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f59d685eaf4efab37c2f8e73e1cea673</td>
-       <td>CVE-2024-0623</td>
-       <td>2024-01-20 06:15:44</td>
-       <td>The VK Block Patterns plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.31.1.1. This is due to missing or incorrect nonce validation on the vbp_clear_patterns_cache() function. This makes it possible for unauthenticated attackers to clear the patterns cache via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0623">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c15d8b9e961bff91ac9de4353e41ebb</td>
-       <td>CVE-2023-46447</td>
-       <td>2024-01-20 05:15:08</td>
-       <td>The POPS! Rebel application 5.0 for Android, in POPS! Rebel Bluetooth Glucose Monitoring System, sends unencrypted glucose measurements over BLE.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46447">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c20fb409aa612887853fe2ac1030e04</td>
-       <td>CVE-2023-51925</td>
-       <td>2024-01-20 02:15:07</td>
-       <td>An arbitrary file upload vulnerability in the nccloud.web.arcp.taskmonitor.action.ArcpUploadAction.doAction() method of YonBIP v3_23.05 allows attackers to execute arbitrary code via uploading a crafted file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51925">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d82956abe153384f993a06b8fe4f2d9</td>
-       <td>CVE-2023-51924</td>
-       <td>2024-01-20 02:15:07</td>
-       <td>An arbitrary file upload vulnerability in the uap.framework.rc.itf.IResourceManager interface of YonBIP v3_23.05 allows attackers to execute arbitrary code via uploading a crafted file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51924">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdb9c5fdd64789e1f9c3b7df84f669b6</td>
-       <td>CVE-2023-51906</td>
-       <td>2024-01-20 02:15:07</td>
-       <td>An issue in yonyou YonBIP v3_23.05 allows a remote attacker to execute arbitrary code via a crafted script to the ServiceDispatcherServlet uap.framework.rc.itf.IResourceManager component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51906">详情</a></td>
       </tr>
 
      </tbody>
