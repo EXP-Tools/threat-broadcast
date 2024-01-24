@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-01-24 08:29:36 -->
+<!-- RELEASE TIME : 2024-01-24 11:24:20 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c496ed1cc4bb1cae3665fd123b01848d</td>
+       <td>CVE-2022-4964</td>
+       <td>2024-01-24 01:15:07 <img src="imgs/new.gif" /></td>
+       <td>Ubuntu's pipewire-pulse in snap grants microphone access even when the snap interface for audio-record is not set.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4964">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5295fdc49a1caf40f021bd92d53f336</td>
+       <td>CVE-2024-23638</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Squid is a caching proxy for the Web. Due to an expired pointer reference bug, Squid prior to version 6.6 is vulnerable to a Denial of Service attack against Cache Manager error responses. This problem allows a trusted client to perform Denial of Service when generating error pages for Client Manager reports. Squid older than 5.0.5 have not been tested and should be assumed to be vulnerable. All Squid-5.x up to and including 5.9 are vulnerable. All Squid-6.x up to and including 6.5 are vulnerable. This bug is fixed by Squid version 6.6. In addition, patches addressing this problem for the stable releases can be found in Squid's patch archives. As a workaround, prevent access to Cache Manager using Squid's main access control: `http_access deny manager`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23638">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>22c26d9ac7a729edc05e6c41ad7b21ab</td>
+       <td>CVE-2024-23633</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Label Studio, an open source data labeling tool had a remote import feature allowed users to import data from a remote web source, that was downloaded and could be viewed on the website. Prior to version 1.10.1, this feature could had been abused to download a HTML file that executed malicious JavaScript code in the context of the Label Studio website. Executing arbitrary JavaScript could result in an attacker performing malicious actions on Label Studio users if they visit the crafted avatar image. For an example, an attacker can craft a JavaScript payload that adds a new Django Super Administrator user if a Django administrator visits the image. `data_import/uploader.py` lines 125C5 through 146 showed that if a URL passed the server side request forgery verification checks, the contents of the file would be downloaded using the filename in the URL. The downloaded file path could then be retrieved by sending a request to `/api/projects/{project_id}/file-uploads?ids=[{download_id}]` where `{project_id}` was the ID of the project and `{download_id}` was the ID of the downloaded file. Once the downloaded file path was retrieved by the previous API endpoint, `data_import/api.py`lines 595C1 through 616C62 demonstrated that the `Content-Type` of the response was determined by the file extension, since `mimetypes.guess_type` guesses the `Content-Type` based on the file extension. Since the `Content-Type` was determined by the file extension of the downloaded file, an attacker could import in a `.html` file that would execute JavaScript when visited. Version 1.10.1 contains a patch for this issue. Other remediation strategies are also available. For all user provided files that are downloaded by Label Studio, set the `Content-Security-Policy: sandbox;` response header when viewed on the site. The `sandbox` directive restricts a page's actions to prevent popups, execution of plugins and scripts and enforces a `same-origin` policy. Alternatively, restrict the allowed file extensions that may be downloaded.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23633">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f36545111ea92c87f0dc3b1d1d0e8d2f</td>
+       <td>CVE-2024-23453</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Android Spoon application version 7.11.1 to 8.6.0 uses hard-coded credentials, which may allow a local attacker to retrieve the hard-coded API key when the application binary is reverse-engineered. This API key may be used for unexpected access of the associated service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23453">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dac3863ae3b5384f61a0bce58837d309</td>
+       <td>CVE-2024-0814</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Incorrect security UI in Payments in Google Chrome prior to 121.0.6167.85 allowed a remote attacker to potentially spoof security UI via a crafted HTML page. (Chromium security severity: Medium)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0814">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>889b4ace6f176e46512cdd5cc54d4d60</td>
+       <td>CVE-2024-0813</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Use after free in Reading Mode in Google Chrome prior to 121.0.6167.85 allowed an attacker who convinced a user to install a malicious extension to potentially exploit heap corruption via specific UI interaction. (Chromium security severity: Medium)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0813">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ced745e8f3c00c97574c8d534cd67ac9</td>
+       <td>CVE-2024-0812</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Inappropriate implementation in Accessibility in Google Chrome prior to 121.0.6167.85 allowed a remote attacker to potentially exploit object corruption via a crafted HTML page. (Chromium security severity: High)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0812">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6ee8476395fa6303fd41c5a9d35a1d5e</td>
+       <td>CVE-2024-0811</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Inappropriate implementation in Extensions API in Google Chrome prior to 121.0.6167.85 allowed an attacker who convinced a user to install a malicious extension to leak cross-origin data via a crafted Chrome Extension. (Chromium security severity: Low)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0811">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e9686b1675bd6ec663a2bfb7ffa8c3b2</td>
+       <td>CVE-2024-0810</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Insufficient policy enforcement in DevTools in Google Chrome prior to 121.0.6167.85 allowed an attacker who convinced a user to install a malicious extension to leak cross-origin data via a crafted Chrome Extension. (Chromium security severity: Medium)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0810">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e361ae61550ea5d54fd07be56b189df0</td>
+       <td>CVE-2024-0809</td>
+       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
+       <td>Inappropriate implementation in Autofill in Google Chrome prior to 121.0.6167.85 allowed a remote attacker to bypass Autofill restrictions via a crafted HTML page. (Chromium security severity: Low)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0809">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3e0b7c1d0d237da80a26fd87f17bf6b7</td>
        <td>CVE-2024-23340</td>
        <td>2024-01-22 23:15:08</td>
@@ -441,86 +521,6 @@
        <td>2024-01-22 13:15:25</td>
        <td>A use-after-free flaw was found in the __ext4_remount in fs/ext4/super.c in ext4 in the Linux kernel. This flaw allows a local user to cause an information leak problem while freeing the old quota file names before a potential failure, leading to a use-after-free.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0775">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0fee861c7c13eac09b0b39488c46174d</td>
-       <td>CVE-2023-52354</td>
-       <td>2024-01-22 06:15:07</td>
-       <td>chasquid before 1.13 allows SMTP smuggling because LF-terminated lines are accepted.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52354">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fe286c960b16bf098566a4fc5883bd26</td>
-       <td>CVE-2017-20189</td>
-       <td>2024-01-22 06:15:07</td>
-       <td>In Clojure before 1.9.0, classes can be used to construct a serialized object that executes arbitrary code upon deserialization. This is relevant if a server deserializes untrusted objects.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2017-20189">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4b821e7ea2bd165a43fa088c08cd7b3d</td>
-       <td>CVE-2024-22113</td>
-       <td>2024-01-22 05:15:09</td>
-       <td>Open redirect vulnerability in Access analysis CGI An-Analyzer released in 2023 December 31 and earlier allows a remote unauthenticated attacker to redirect users to arbitrary websites and conduct phishing attacks via a specially crafted URL.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-22113">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d4da4218e30cf2a855eaf2e80a5b6246</td>
-       <td>CVE-2024-21484</td>
-       <td>2024-01-22 05:15:08</td>
-       <td>Versions of the package jsrsasign before 11.0.0 are vulnerable to Observable Discrepancy via the RSA PKCS1.5 or RSAOAEP decryption process. An attacker can decrypt ciphertexts by exploiting this vulnerability. Exploiting this vulnerability requires the attacker to have access to a large number of ciphertexts encrypted with the same key. Workaround This vulnerability can be mitigated by finding and replacing RSA and RSAOAEP decryption with another crypto library.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-21484">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bee7a9f5fa89b9258d42b9849ca5870b</td>
-       <td>CVE-2023-47352</td>
-       <td>2024-01-22 05:15:08</td>
-       <td>Technicolor TC8715D devices have predictable default WPA2 security passwords. An attacker who scans for SSID and BSSID values may be able to predict these passwords.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-47352">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>122b8b90474160415716ce334f628a52</td>
-       <td>CVE-2024-23771</td>
-       <td>2024-01-22 04:15:07</td>
-       <td>darkhttpd before 1.15 uses strcmp (which is not constant time) to verify authentication, which makes it easier for remote attackers to bypass authentication via a timing side channel.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23771">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>adfc420428eaadcaf201a76318bb66d8</td>
-       <td>CVE-2024-23770</td>
-       <td>2024-01-22 04:15:07</td>
-       <td>darkhttpd through 1.15 allows local users to discover credentials (for --auth) by listing processes and their arguments.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23770">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ec03f201de9e2a54835606b25c0c0ef3</td>
-       <td>CVE-2023-6531</td>
-       <td>2024-01-21 10:15:07</td>
-       <td>A use-after-free flaw was found in the Linux Kernel due to a race problem in the unix garbage collector's deletion of SKB races with unix_stream_read_generic() on the socket that the SKB is queued on.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6531">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a47263e0fbdcf33b07bd2ef05cf420c1</td>
-       <td>CVE-2024-0769</td>
-       <td>2024-01-21 08:15:07</td>
-       <td>** UNSUPPORTED WHEN ASSIGNED ** A vulnerability was found in D-Link DIR-859 1.06B01. It has been rated as critical. Affected by this issue is some unknown functionality of the file /hedwig.cgi of the component HTTP POST Request Handler. The manipulation of the argument service with the input ../../../../htdocs/webinc/getcfg/DHCPS6.BRIDGE-1.xml leads to path traversal. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-251666 is the identifier assigned to this vulnerability. NOTE: This vulnerability only affects products that are no longer supported by the maintainer. NOTE: Vendor was contacted early and confirmed immediately that the product is end-of-life. It should be retired and replaced.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0769">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e21a82db027dba50f5872b741c8797de</td>
-       <td>CVE-2016-15037</td>
-       <td>2024-01-21 06:15:08</td>
-       <td>A vulnerability, which was classified as problematic, has been found in go4rayyan Scumblr up to 2.0.1a. Affected by this issue is some unknown functionality of the component Task Handler. The manipulation leads to cross site scripting. The attack may be launched remotely. Upgrading to version 2.0.2 is able to address this issue. The patch is identified as 5c9120f2362ddb7cbe48f2c4620715adddc4ee35. It is recommended to upgrade the affected component. VDB-251570 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2016-15037">详情</a></td>
       </tr>
 
      </tbody>
