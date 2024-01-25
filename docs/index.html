@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-01-25 11:21:40 -->
+<!-- RELEASE TIME : 2024-01-25 12:43:11 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,62 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9089b2ba0eb72b3e5a56e3352bd4b6db</td>
+       <td>CVE-2023-33760</td>
+       <td>2024-01-25 08:15:08 <img src="imgs/new.gif" /></td>
+       <td>SpliceCom Maximiser Soft PBX v1.5 and before was discovered to utilize a default SSL certificate. This issue can allow attackers to eavesdrop on communications via a man-in-the-middle attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33760">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d03311c34d865b00d28ae17aba6bb8df</td>
+       <td>CVE-2023-33759</td>
+       <td>2024-01-25 08:15:08 <img src="imgs/new.gif" /></td>
+       <td>SpliceCom Maximiser Soft PBX v1.5 and before does not restrict excessive authentication attempts, allowing attackers to bypass authentication via a brute force attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33759">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>693f532ec934da72729cd8611f6c5079</td>
+       <td>CVE-2023-33758</td>
+       <td>2024-01-25 08:15:08 <img src="imgs/new.gif" /></td>
+       <td>Splicecom Maximiser Soft PBX v1.5 and before was discovered to contain a cross-site scripting (XSS) vulnerability via the CLIENT_NAME and DEVICE_GUID fields in the login component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33758">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>54b9c8272909490cde1e7da562f33509</td>
+       <td>CVE-2023-33757</td>
+       <td>2024-01-25 08:15:08 <img src="imgs/new.gif" /></td>
+       <td>A lack of SSL certificate validation in Splicecom iPCS (iOS App) v1.3.4, iPCS2 (iOS App) v2.8 and before, and iPCS (Android App) v1.8.5 and before allows attackers to eavesdrop on communications via a man-in-the-middle attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-33757">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b1d4013679087aa7798997004f107e3d</td>
+       <td>CVE-2024-23307</td>
+       <td>2024-01-25 07:15:09 <img src="imgs/new.gif" /></td>
+       <td>Integer Overflow or Wraparound vulnerability in Linux Linux kernel kernel on Linux, x86, ARM (md, raid, raid5 modules) allows Forced Integer Overflow.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23307">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>256abd5df1cc614777fe961d5c6bf2a7</td>
+       <td>CVE-2024-22099</td>
+       <td>2024-01-25 07:15:08 <img src="imgs/new.gif" /></td>
+       <td>NULL Pointer Dereference vulnerability in Linux Linux kernel kernel on Linux, x86, ARM (net, bluetooth modules) allows Overflow Buffers. This vulnerability is associated with program files /net/bluetooth/rfcomm/core.C. This issue affects Linux kernel: v2.6.12-rc2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-22099">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c75ad38060719264f5006eb479791f1</td>
+       <td>CVE-2023-50785</td>
+       <td>2024-01-25 06:15:50 <img src="imgs/new.gif" /></td>
+       <td>Zoho ManageEngine ADAudit Plus before 7270 allows admin users to view names of arbitrary directories via path traversal.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50785">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c237cd8d8254c30399c87a5013166700</td>
        <td>CVE-2024-23985</td>
        <td>2024-01-25 05:15:08 <img src="imgs/new.gif" /></td>
@@ -465,62 +521,6 @@
        <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
        <td>Label Studio, an open source data labeling tool had a remote import feature allowed users to import data from a remote web source, that was downloaded and could be viewed on the website. Prior to version 1.10.1, this feature could had been abused to download a HTML file that executed malicious JavaScript code in the context of the Label Studio website. Executing arbitrary JavaScript could result in an attacker performing malicious actions on Label Studio users if they visit the crafted avatar image. For an example, an attacker can craft a JavaScript payload that adds a new Django Super Administrator user if a Django administrator visits the image. `data_import/uploader.py` lines 125C5 through 146 showed that if a URL passed the server side request forgery verification checks, the contents of the file would be downloaded using the filename in the URL. The downloaded file path could then be retrieved by sending a request to `/api/projects/{project_id}/file-uploads?ids=[{download_id}]` where `{project_id}` was the ID of the project and `{download_id}` was the ID of the downloaded file. Once the downloaded file path was retrieved by the previous API endpoint, `data_import/api.py`lines 595C1 through 616C62 demonstrated that the `Content-Type` of the response was determined by the file extension, since `mimetypes.guess_type` guesses the `Content-Type` based on the file extension. Since the `Content-Type` was determined by the file extension of the downloaded file, an attacker could import in a `.html` file that would execute JavaScript when visited. Version 1.10.1 contains a patch for this issue. Other remediation strategies are also available. For all user provided files that are downloaded by Label Studio, set the `Content-Security-Policy: sandbox;` response header when viewed on the site. The `sandbox` directive restricts a page's actions to prevent popups, execution of plugins and scripts and enforces a `same-origin` policy. Alternatively, restrict the allowed file extensions that may be downloaded.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23633">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f36545111ea92c87f0dc3b1d1d0e8d2f</td>
-       <td>CVE-2024-23453</td>
-       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
-       <td>Android Spoon application version 7.11.1 to 8.6.0 uses hard-coded credentials, which may allow a local attacker to retrieve the hard-coded API key when the application binary is reverse-engineered. This API key may be used for unexpected access of the associated service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23453">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dac3863ae3b5384f61a0bce58837d309</td>
-       <td>CVE-2024-0814</td>
-       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
-       <td>Incorrect security UI in Payments in Google Chrome prior to 121.0.6167.85 allowed a remote attacker to potentially spoof security UI via a crafted HTML page. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0814">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>889b4ace6f176e46512cdd5cc54d4d60</td>
-       <td>CVE-2024-0813</td>
-       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
-       <td>Use after free in Reading Mode in Google Chrome prior to 121.0.6167.85 allowed an attacker who convinced a user to install a malicious extension to potentially exploit heap corruption via specific UI interaction. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0813">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ced745e8f3c00c97574c8d534cd67ac9</td>
-       <td>CVE-2024-0812</td>
-       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Accessibility in Google Chrome prior to 121.0.6167.85 allowed a remote attacker to potentially exploit object corruption via a crafted HTML page. (Chromium security severity: High)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0812">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ee8476395fa6303fd41c5a9d35a1d5e</td>
-       <td>CVE-2024-0811</td>
-       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Extensions API in Google Chrome prior to 121.0.6167.85 allowed an attacker who convinced a user to install a malicious extension to leak cross-origin data via a crafted Chrome Extension. (Chromium security severity: Low)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0811">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e9686b1675bd6ec663a2bfb7ffa8c3b2</td>
-       <td>CVE-2024-0810</td>
-       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
-       <td>Insufficient policy enforcement in DevTools in Google Chrome prior to 121.0.6167.85 allowed an attacker who convinced a user to install a malicious extension to leak cross-origin data via a crafted Chrome Extension. (Chromium security severity: Medium)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0810">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e361ae61550ea5d54fd07be56b189df0</td>
-       <td>CVE-2024-0809</td>
-       <td>2024-01-24 00:15:08 <img src="imgs/new.gif" /></td>
-       <td>Inappropriate implementation in Autofill in Google Chrome prior to 121.0.6167.85 allowed a remote attacker to bypass Autofill restrictions via a crafted HTML page. (Chromium security severity: Low)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0809">详情</a></td>
       </tr>
 
      </tbody>
