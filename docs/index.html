@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-02-08 03:23:51 -->
+<!-- RELEASE TIME : 2024-02-08 09:22:43 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>479116192245ec9ff6a728dc9d09567e</td>
+       <td>CVE-2024-24350</td>
+       <td>2024-02-08 01:15:27 <img src="imgs/new.gif" /></td>
+       <td>File Upload vulnerability in Software Publico e-Sic Livre v.2.0 and before allows a remote attacker to execute arbitrary code via the extension filtering component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24350">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>77c21347e652d860e89e006d0de6afb2</td>
+       <td>CVE-2024-24026</td>
+       <td>2024-02-08 01:15:27 <img src="imgs/new.gif" /></td>
+       <td>An arbitrary File upload vulnerability exists in Novel-Plus v4.3.0-RC1 and prior versions at com.java2nb.system.controller.SysUserController: uploadImg(). An attacker can pass in specially crafted filename parameter to perform arbitrary File download.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24026">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>333849acd4a5c1a2af3f3b7d161d2252</td>
+       <td>CVE-2024-24025</td>
+       <td>2024-02-08 01:15:27 <img src="imgs/new.gif" /></td>
+       <td>An arbitrary File upload vulnerability exists in Novel-Plus v4.3.0-RC1 and prior at com.java2nb.common.controller.FileController: upload(). An attacker can pass in specially crafted filename parameter to perform arbitrary File download.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24025">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4291a34c7d76bd9ad26182719fe6a8f1</td>
+       <td>CVE-2024-24024</td>
+       <td>2024-02-08 01:15:27 <img src="imgs/new.gif" /></td>
+       <td>An arbitrary File download vulnerability exists in Novel-Plus v4.3.0-RC1 and prior at com.java2nb.common.controller.FileController: fileDownload(). An attacker can pass in specially crafted filePath and fieName parameters to perform arbitrary File download.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24024">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>25c7166099e951170ba8abfb2e515c5d</td>
+       <td>CVE-2024-24023</td>
+       <td>2024-02-08 01:15:27 <img src="imgs/new.gif" /></td>
+       <td>A SQL injection vulnerability exists in Novel-Plus v4.3.0-RC1 and prior. An attacker can pass specially crafted offset, limit, and sort parameters to perform SQL injection via /novel/bookContent/list.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24023">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>95ba57c5db4c1e3295d2538b15d2d63b</td>
+       <td>CVE-2024-24018</td>
+       <td>2024-02-08 01:15:27 <img src="imgs/new.gif" /></td>
+       <td>A SQL injection vulnerability exists in Novel-Plus v4.3.0-RC1 and prior versions. An attacker can pass in crafted offset, limit, and sort parameters to perform SQL injection via /system/dataPerm/list</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24018">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>96e1de53cecadc04d3dea58ed660b48f</td>
+       <td>CVE-2023-48974</td>
+       <td>2024-02-08 01:15:26 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting vulnerability in Axigen WebMail v.10.5.7 and before allows a remote attacker to escalate privileges via a crafted script to the serverName_input parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48974">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0e17b051a9f235afaa8fb218b16197a7</td>
+       <td>CVE-2024-24806</td>
+       <td>2024-02-07 22:15:10 <img src="imgs/new.gif" /></td>
+       <td>libuv is a multi-platform support library with a focus on asynchronous I/O. The `uv_getaddrinfo` function in `src/unix/getaddrinfo.c` (and its windows counterpart `src/win/getaddrinfo.c`), truncates hostnames to 256 characters before calling `getaddrinfo`. This behavior can be exploited to create addresses like `0x00007f000001`, which are considered valid by `getaddrinfo` and could allow an attacker to craft payloads that resolve to unintended IP addresses, bypassing developer checks. The vulnerability arises due to how the `hostname_ascii` variable (with a length of 256 bytes) is handled in `uv_getaddrinfo` and subsequently in `uv__idna_toascii`. When the hostname exceeds 256 characters, it gets truncated without a terminating null byte. As a result attackers may be able to access internal APIs or for websites (similar to MySpace) that allows users to have `username.example.com` pages. Internal services that crawl or cache these user pages can be exposed to SSRF attacks if a malicious user chooses a long vulnerable username. This issue has been addressed in release version 1.48.0. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24806">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c00a2531e0b8c99f91b3a8f4cb5aff41</td>
+       <td>CVE-2024-23448</td>
+       <td>2024-02-07 22:15:09 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered whereby APM Server could log at ERROR level, a response from Elasticsearch indicating that indexing the document failed and that response would contain parts of the original document. Depending on the nature of the document that the APM Server attempted to ingest, this could lead to the insertion of sensitive or private information in the APM Server logs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23448">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>130dc4379d0320843f5025e232b3bb0f</td>
+       <td>CVE-2024-1066</td>
+       <td>2024-02-07 22:15:09 <img src="imgs/new.gif" /></td>
+       <td>An issue has been discovered in GitLab EE affecting all versions from 13.3.0 prior to 16.6.7, 16.7 prior to 16.7.5, and 16.8 prior to 16.8.2 which allows an attacker to do a resource exhaustion using GraphQL `vulnerabilitiesCountByDay`</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1066">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5fd316ba46becb79942111931f7389ef</td>
        <td>CVE-2023-39196</td>
        <td>2024-02-07 13:15:07 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-02-06 22:16:15</td>
        <td>An issue was discovered in Django 3.2 before 3.2.24, 4.2 before 4.2.10, and Django 5.0 before 5.0.2. The intcomma template filter was subject to a potential denial-of-service attack when used with very long strings.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24680">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d245b0556cc6addaa2d595933004946c</td>
-       <td>CVE-2024-24577</td>
-       <td>2024-02-06 22:16:15</td>
-       <td>libgit2 is a portable C implementation of the Git core methods provided as a linkable library with a solid API, allowing to build Git functionality into your application. Using well-crafted inputs to `git_index_add` can cause heap corruption that could be leveraged for arbitrary code execution. There is an issue in the `has_dir_name` function in `src/libgit2/index.c`, which frees an entry that should not be freed. The freed entry is later used and overwritten with potentially bad actor-controlled data leading to controlled heap corruption. Depending on the application that uses libgit2, this could lead to arbitrary code execution. This issue has been patched in version 1.6.5 and 1.7.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24577">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4f73cb8188ae30ceed60b94d5cd285eb</td>
-       <td>CVE-2024-24575</td>
-       <td>2024-02-06 22:16:15</td>
-       <td>libgit2 is a portable C implementation of the Git core methods provided as a linkable library with a solid API, allowing to build Git functionality into your application. Using well-crafted inputs to `git_revparse_single` can cause the function to enter an infinite loop, potentially causing a Denial of Service attack in the calling application. The revparse function in `src/libgit2/revparse.c` uses a loop to parse the user-provided spec string. There is an edge-case during parsing that allows a bad actor to force the loop conditions to access arbitrary memory. Potentially, this could also leak memory if the extracted rev spec is reflected back to the attacker. As such, libgit2 versions before 1.4.0 are not affected. Users should upgrade to version 1.6.5 or 1.7.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24575">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc4640c1fd2fa6fc131b1a52229b49b5</td>
-       <td>CVE-2024-24254</td>
-       <td>2024-02-06 22:16:15</td>
-       <td>PX4 Autopilot 1.14 and earlier, due to the lack of synchronization mechanism for loading geofence data, has a Race Condition vulnerability in the geofence.cpp and mission_feasibility_checker.cpp. This will result in the drone uploading overlapping geofences and mission routes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24254">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8ac77da03e6bdcbff1f866cb76be7087</td>
-       <td>CVE-2024-22520</td>
-       <td>2024-02-06 22:16:14</td>
-       <td>An issue discovered in Dronetag Drone Scanner 1.5.2 allows attackers to impersonate other drones via transmission of crafted data packets.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-22520">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0e5f699c7503f2b425bf14966023bfbf</td>
-       <td>CVE-2024-22519</td>
-       <td>2024-02-06 22:16:14</td>
-       <td>An issue discovered in OpenDroneID OSM 3.5.1 allows attackers to impersonate other drones via transmission of crafted data packets.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-22519">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>43d900364f3f2ad56099786f7826a4d8</td>
-       <td>CVE-2024-1261</td>
-       <td>2024-02-06 22:16:14</td>
-       <td>A vulnerability classified as critical was found in Juanpao JPShop up to 1.5.02. This vulnerability affects the function actionIndex of the file /api/controllers/merchant/app/ComboController.php of the component API. The manipulation of the argument pic_url leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-253000.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1261">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b021f0ba66cdc88f28544dcef4990bd8</td>
-       <td>CVE-2024-1260</td>
-       <td>2024-02-06 22:16:14</td>
-       <td>A vulnerability classified as critical has been found in Juanpao JPShop up to 1.5.02. This affects the function actionIndex of the file /api/controllers/admin/app/ComboController.php of the component API. The manipulation of the argument pic_url leads to unrestricted upload. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-252999.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1260">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7842924e67633e99aea4706dcc910bcc</td>
-       <td>CVE-2023-45735</td>
-       <td>2024-02-06 22:16:14</td>
-       <td>A potential attacker with access to the Westermo Lynx device may be able to execute malicious code that could affect the correct functioning of the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45735">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dae7829bbe21f9d04ed12231e555d045</td>
-       <td>CVE-2023-45227</td>
-       <td>2024-02-06 22:16:14</td>
-       <td>An attacker with access to the web application with vulnerable software could introduce arbitrary JavaScript by injecting a cross-site scripting payload into the "dns.0.server" parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45227">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1cfa5bb9577a960efad0195808d9dad</td>
-       <td>CVE-2024-0690</td>
-       <td>2024-02-06 12:15:55</td>
-       <td>An information disclosure flaw was found in ansible-core due to a failure to respect the ANSIBLE_NO_LOG configuration in some scenarios. It was discovered that information is still included in the output in certain tasks, such as loop items. Depending on the task, this issue may include sensitive information, such as decrypted secret values.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0690">详情</a></td>
       </tr>
 
      </tbody>
