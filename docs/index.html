@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-02-12 03:23:40 -->
+<!-- RELEASE TIME : 2024-02-12 22:26:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,54 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6f31033eeb01582e6f7026c776e4fb77</td>
+       <td>CVE-2024-25744</td>
+       <td>2024-02-12 05:15:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel before 6.6.7, an untrusted VMM can trigger int80 syscall handling at any given point. This is related to arch/x86/coco/tdx/tdx.c and arch/x86/mm/mem_encrypt_amd.c.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25744">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c7066a1278fbaaa7394cb5700fbf70e2</td>
+       <td>CVE-2024-25741</td>
+       <td>2024-02-12 03:15:32 <img src="imgs/new.gif" /></td>
+       <td>printer_write in drivers/usb/gadget/function/f_printer.c in the Linux kernel through 6.7.4 does not properly call usb_ep_queue, which might allow attackers to cause a denial of service or have unspecified other impact.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25741">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7ab020082ecbf46287d59ee94c2596ba</td>
+       <td>CVE-2024-25740</td>
+       <td>2024-02-12 03:15:32 <img src="imgs/new.gif" /></td>
+       <td>A memory leak flaw was found in the UBI driver in drivers/mtd/ubi/attach.c in the Linux kernel through 6.7.4 for UBI_IOCATT, because kobj->name is not released.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25740">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e4cf737008a30ca57ff4412f12dbe41b</td>
+       <td>CVE-2024-25739</td>
+       <td>2024-02-12 03:15:32 <img src="imgs/new.gif" /></td>
+       <td>create_empty_lvol in drivers/mtd/ubi/vtbl.c in the Linux kernel through 6.7.4 can attempt to allocate zero bytes, and crash, because of a missing check for ubi->leb_size.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25739">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>060f7bf21981a500e82c1c0eefef12a8</td>
+       <td>CVE-2023-52429</td>
+       <td>2024-02-12 03:15:32 <img src="imgs/new.gif" /></td>
+       <td>dm_table_create in drivers/md/dm-table.c in the Linux kernel through 6.7.4 can attempt to (in alloc_targets) allocate more than INT_MAX bytes, and crash, because of a missing check for struct dm_ioctl.target_count.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52429">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8fa5a716a7437bfdae163da7d9ecc0e1</td>
+       <td>CVE-2024-1433</td>
+       <td>2024-02-11 23:15:07 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as problematic, was found in KDE Plasma Workspace up to 5.93.0. This affects the function EventPluginsManager::enabledPlugins of the file components/calendar/eventpluginsmanager.cpp of the component Theme File Handler. The manipulation of the argument pluginId leads to path traversal. It is possible to initiate the attack remotely. The complexity of an attack is rather high. The exploitability is told to be difficult. The patch is named 6cdf42916369ebf4ad5bd876c4dfa0170d7b2f01. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-253407. NOTE: This requires write access to user's home or the installation of third party global themes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1433">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2ee0f376aaf6f42762853e62d254d63a</td>
        <td>CVE-2024-25728</td>
        <td>2024-02-11 22:15:08 <img src="imgs/new.gif" /></td>
@@ -473,54 +521,6 @@
        <td>2024-02-09 20:15:54</td>
        <td>Concrete CMS version 9 before 9.2.5 is vulnerable to stored XSS in file tags and description attributes since administrator entered file attributes are not sufficiently sanitized in the Edit Attributes page. A rogue administrator could put malicious code into the file tags or description attributes and, when another administrator opens the same file for editing, the malicious code could execute. The Concrete CMS Security team scored this 2.4 with CVSS v3 vector AV:N/AC:L/PR:H/UI:R/S:U/C:L/I:N/A:N.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1245">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>119ac16e4f90a44137e4d8579dd035e3</td>
-       <td>CVE-2024-1247</td>
-       <td>2024-02-09 19:15:24</td>
-       <td>Concrete CMS version 9 before 9.2.5 is vulnerable to stored XSS via the Role Name field since there is insufficient validation of administrator provided data for that field. A rogue administrator could inject malicious code into the Role Name field which might be executed when users visit the affected page. The Concrete CMS Security team scored this 2 with CVSS v3 vector AV:N/AC:H/PR:H/UI:R/S:U/C:N/I:L/A:N https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator . Concrete versions below 9 do not include group types so they are not affected by this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1247">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7fba4b2a2dce70a2f4fd714c549c895a</td>
-       <td>CVE-2023-50386</td>
-       <td>2024-02-09 18:15:08</td>
-       <td>Improper Control of Dynamically-Managed Code Resources, Unrestricted Upload of File with Dangerous Type, Inclusion of Functionality from Untrusted Control Sphere vulnerability in Apache Solr.This issue affects Apache Solr: from 6.0.0 through 8.11.2, from 9.0.0 before 9.4.1. In the affected versions, Solr ConfigSets accepted Java jar and class files to be uploaded through the ConfigSets API. When backing up Solr Collections, these configSet files would be saved to disk when using the LocalFileSystemRepository (the default for backups). If the backup was saved to a directory that Solr uses in its ClassPath/ClassLoaders, then the jar and class files would be available to use with any ConfigSet, trusted or untrusted. When Solr is run in a secure way (Authorization enabled), as is strongly suggested, this vulnerability is limited to extending the Backup permissions with the ability to add libraries. Users are recommended to upgrade to version 8.11.3 or 9.4.1, which fix the issue. In these versions, the following protections have been added: * Users are no longer able to upload files to a configSet that could be executed via a Java ClassLoader. * The Backup API restricts saving backups to directories that are used in the ClassLoader.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50386">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>763b7748b2e954de4bd023c6cab61f4c</td>
-       <td>CVE-2023-50298</td>
-       <td>2024-02-09 18:15:08</td>
-       <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache Solr.This issue affects Apache Solr: from 6.0.0 through 8.11.2, from 9.0.0 before 9.4.1. Solr Streaming Expressions allows users to extract data from other Solr Clouds, using a "zkHost" parameter. When original SolrCloud is setup to use ZooKeeper credentials and ACLs, they will be sent to whatever "zkHost" the user provides. An attacker could setup a server to mock ZooKeeper, that accepts ZooKeeper requests with credentials and ACLs and extracts the sensitive information, then send a streaming expression using the mock server's address in "zkHost". Streaming Expressions are exposed via the "/streaming" handler, with "read" permissions. Users are recommended to upgrade to version 8.11.3 or 9.4.1, which fix the issue. From these versions on, only zkHost values that have the same server address (regardless of chroot), will use the given ZooKeeper credentials and ACLs when connecting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50298">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c2ef9aa4822fe109a011853f0ed7302</td>
-       <td>CVE-2023-50292</td>
-       <td>2024-02-09 18:15:08</td>
-       <td>Incorrect Permission Assignment for Critical Resource, Improper Control of Dynamically-Managed Code Resources vulnerability in Apache Solr. This issue affects Apache Solr: from 8.10.0 through 8.11.2, from 9.0.0 before 9.3.0. The Schema Designer was introduced to allow users to more easily configure and test new Schemas and configSets. However, when the feature was created, the "trust" (authentication) of these configSets was not considered. External library loading is only available to configSets that are "trusted" (created by authenticated users), thus non-authenticated users are unable to perform Remote Code Execution. Since the Schema Designer loaded configSets without taking their "trust" into account, configSets that were created by unauthenticated users were allowed to load external libraries when used in the Schema Designer. Users are recommended to upgrade to version 9.3.0, which fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50292">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dfcddebbae4da0abacf7b4b259fb76f3</td>
-       <td>CVE-2023-50291</td>
-       <td>2024-02-09 18:15:08</td>
-       <td>Insufficiently Protected Credentials vulnerability in Apache Solr. This issue affects Apache Solr: from 6.0.0 through 8.11.2, from 9.0.0 before 9.3.0. One of the two endpoints that publishes the Solr process' Java system properties, /admin/info/properties, was only setup to hide system properties that had "password" contained in the name. There are a number of sensitive system properties, such as "basicauth" and "aws.secretKey" do not contain "password", thus their values were published via the "/admin/info/properties" endpoint. This endpoint populates the list of System Properties on the home screen of the Solr Admin page, making the exposed credentials visible in the UI. This /admin/info/properties endpoint is protected under the "config-read" permission. Therefore, Solr Clouds with Authorization enabled will only be vulnerable through logged-in users that have the "config-read" permission. Users are recommended to upgrade to version 9.3.0 or 8.11.3, which fixes the issue. A single option now controls hiding Java system property for all endpoints, "-Dsolr.hiddenSysProps". By default all known sensitive properties are hidden (including "-Dbasicauth"), as well as any property with a name containing "secret" or "password". Users who cannot upgrade can also use the following Java system property to fix the issue: '-Dsolr.redaction.system.pattern=.*(password|secret|basicauth).*'</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50291">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>15e3e3d53f57ee77b40e714db1fd75e5</td>
-       <td>CVE-2024-24308</td>
-       <td>2024-02-09 08:15:08</td>
-       <td>SQL Injection vulnerability in Boostmyshop (boostmyshopagent) module for Prestashop versions 1.1.9 and before, allows remote attackers to escalate privileges and obtain sensitive information via changeOrderCarrier.php, relayPoint.php, and shippingConfirmation.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24308">详情</a></td>
       </tr>
 
      </tbody>
