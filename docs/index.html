@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-03-02 23:21:56 -->
+<!-- RELEASE TIME : 2024-03-03 01:27:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -30,7 +30,7 @@
       <tr>
        <td>cab02a763bf285b3dc009731f40f8c29</td>
        <td>CVE-2024-25065</td>
-       <td>2024-03-01 09:06:25 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 09:06:25</td>
        <td>CVE-2024-25065：Apache OFBiz目录遍历漏洞通告</td>
        <td><a target="_blank" href="https://cert.360.cn/warning/detail?id=65e1987dc09f255b91b17e2f">详情</a></td>
       </tr>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>731612b4a1d978bd48b8a9b718db2d5c</td>
+       <td>CVE-2024-26621</td>
+       <td>2024-03-02 22:15:50 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm: huge_memory: don't force huge page alignment on 32 bit commit efa7df3e3bb5 ("mm: align larger anonymous mappings on THP boundaries") caused two issues [1] [2] reported on 32 bit system or compat userspace. It doesn't make too much sense to force huge page alignment on 32 bit system due to the constrained virtual address space. [1] https://lore.kernel.org/linux-mm/d0a136a0-4a31-46bc-adf4-2db109a61672@kernel.org/ [2] https://lore.kernel.org/linux-mm/CAJuCfpHXLdQy1a2B6xN2d7quTYwg2OoZseYPZTRpU0eHHKD-sQ@mail.gmail.com/</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-26621">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b0f73b335f6384968ae083435c03d84a</td>
+       <td>CVE-2024-25865</td>
+       <td>2024-03-02 22:15:50 <img src="imgs/new.gif" /></td>
+       <td>Cross Site Scripting (XSS) vulnerability in hexo-theme-anzhiyu v1.6.12, allows remote attackers to execute arbitrary code via the algolia search function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25865">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>543df4fe2599a18d863fca60cbbd3a66</td>
+       <td>CVE-2024-0968</td>
+       <td>2024-03-02 22:15:50 <img src="imgs/new.gif" /></td>
+       <td>Cross-site Scripting (XSS) - DOM in GitHub repository langchain-ai/chat-langchain prior to 0.0.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0968">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c080c2c9a647dae67836b65c0f99c7f1</td>
+       <td>CVE-2024-0795</td>
+       <td>2024-03-02 22:15:49 <img src="imgs/new.gif" /></td>
+       <td>If an attacked was given access to an instance with the admin or manager role there is no backend authentication that would prevent the attacked from creating a new user with an `admin` role and then be able to use this new account to have elevated privileges on the instance</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0795">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>92edcd3329479dc6e46c7e48cfb495c5</td>
+       <td>CVE-2023-52582</td>
+       <td>2024-03-02 22:15:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: netfs: Only call folio_start_fscache() one time for each folio If a network filesystem using netfs implements a clamp_length() function, it can set subrequest lengths smaller than a page size. When we loop through the folios in netfs_rreq_unlock_folios() to set any folios to be written back, we need to make sure we only call folio_start_fscache() once for each folio. Otherwise, this simple testcase: mount -o fsc,rsize=1024,wsize=1024 127.0.0.1:/export /mnt/nfs dd if=/dev/zero of=/mnt/nfs/file.bin bs=4096 count=1 1+0 records in 1+0 records out 4096 bytes (4.1 kB, 4.0 KiB) copied, 0.0126359 s, 324 kB/s echo 3 > /proc/sys/vm/drop_caches cat /mnt/nfs/file.bin > /dev/null will trigger an oops similar to the following: page dumped because: VM_BUG_ON_FOLIO(folio_test_private_2(folio)) ------------[ cut here ]------------ kernel BUG at include/linux/netfs.h:44! ... CPU: 5 PID: 134 Comm: kworker/u16:5 Kdump: loaded Not tainted 6.4.0-rc5 ... RIP: 0010:netfs_rreq_unlock_folios+0x68e/0x730 [netfs] ... Call Trace: netfs_rreq_assess+0x497/0x660 [netfs] netfs_subreq_terminated+0x32b/0x610 [netfs] nfs_netfs_read_completion+0x14e/0x1a0 [nfs] nfs_read_completion+0x2f9/0x330 [nfs] rpc_free_task+0x72/0xa0 [sunrpc] rpc_async_release+0x46/0x70 [sunrpc] process_one_work+0x3bd/0x710 worker_thread+0x89/0x610 kthread+0x181/0x1c0 ret_from_fork+0x29/0x50</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52582">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bbcffe3daa4204c41f3e0d2aec790700</td>
+       <td>CVE-2023-52581</td>
+       <td>2024-03-02 22:15:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: netfilter: nf_tables: fix memleak when more than 255 elements expired When more than 255 elements expired we're supposed to switch to a new gc container structure. This never happens: u8 type will wrap before reaching the boundary and nft_trans_gc_space() always returns true. This means we recycle the initial gc container structure and lose track of the elements that came before. While at it, don't deref 'gc' after we've passed it to call_rcu.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52581">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a1a7b8f9ea2ce14375a6716d7dc8ab67</td>
+       <td>CVE-2023-52580</td>
+       <td>2024-03-02 22:15:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net/core: Fix ETH_P_1588 flow dissector When a PTP ethernet raw frame with a size of more than 256 bytes followed by a 0xff pattern is sent to __skb_flow_dissect, nhoff value calculation is wrong. For example: hdr->message_length takes the wrong value (0xffff) and it does not replicate real header length. In this case, 'nhoff' value was overridden and the PTP header was badly dissected. This leads to a kernel crash. net/core: flow_dissector net/core flow dissector nhoff = 0x0000000e net/core flow dissector hdr->message_length = 0x0000ffff net/core flow dissector nhoff = 0x0001000d (u16 overflow) ... skb linear: 00000000: 00 a0 c9 00 00 00 00 a0 c9 00 00 00 88 skb frag: 00000000: f7 ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff Using the size of the ptp_header struct will allow the corrected calculation of the nhoff value. net/core flow dissector nhoff = 0x0000000e net/core flow dissector nhoff = 0x00000030 (sizeof ptp_header) ... skb linear: 00000000: 00 a0 c9 00 00 00 00 a0 c9 00 00 00 88 f7 ff ff skb linear: 00000010: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff skb linear: 00000020: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff skb frag: 00000000: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff Kernel trace: [ 74.984279] ------------[ cut here ]------------ [ 74.989471] kernel BUG at include/linux/skbuff.h:2440! [ 74.995237] invalid opcode: 0000 [#1] PREEMPT SMP NOPTI [ 75.001098] CPU: 4 PID: 0 Comm: swapper/4 Tainted: G U 5.15.85-intel-ese-standard-lts #1 [ 75.011629] Hardware name: Intel Corporation A-Island (CPU:AlderLake)/A-Island (ID:06), BIOS SB_ADLP.01.01.00.01.03.008.D-6A9D9E73-dirty Mar 30 2023 [ 75.026507] RIP: 0010:eth_type_trans+0xd0/0x130 [ 75.031594] Code: 03 88 47 78 eb c7 8b 47 68 2b 47 6c 48 8b 97 c0 00 00 00 83 f8 01 7e 1b 48 85 d2 74 06 66 83 3a ff 74 09 b8 00 04 00 00 eb ab <0f> 0b b8 00 01 00 00 eb a2 48 85 ff 74 eb 48 8d 54 24 06 31 f6 b9 [ 75.052612] RSP: 0018:ffff9948c0228de0 EFLAGS: 00010297 [ 75.058473] RAX: 00000000000003f2 RBX: ffff8e47047dc300 RCX: 0000000000001003 [ 75.066462] RDX: ffff8e4e8c9ea040 RSI: ffff8e4704e0a000 RDI: ffff8e47047dc300 [ 75.074458] RBP: ffff8e4704e2acc0 R08: 00000000000003f3 R09: 0000000000000800 [ 75.082466] R10: 000000000000000d R11: ffff9948c0228dec R12: ffff8e4715e4e010 [ 75.090461] R13: ffff9948c0545018 R14: 0000000000000001 R15: 0000000000000800 [ 75.098464] FS: 0000000000000000(0000) GS:ffff8e4e8fb00000(0000) knlGS:0000000000000000 [ 75.107530] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 [ 75.113982] CR2: 00007f5eb35934a0 CR3: 0000000150e0a002 CR4: 0000000000770ee0 [ 75.121980] PKRU: 55555554 [ 75.125035] Call Trace: [ 75.127792] <IRQ> [ 75.130063] ? eth_get_headlen+0xa4/0xc0 [ 75.134472] igc_process_skb_fields+0xcd/0x150 [ 75.139461] igc_poll+0xc80/0x17b0 [ 75.143272] __napi_poll+0x27/0x170 [ 75.147192] net_rx_action+0x234/0x280 [ 75.151409] __do_softirq+0xef/0x2f4 [ 75.155424] irq_exit_rcu+0xc7/0x110 [ 75.159432] common_interrupt+0xb8/0xd0 [ 75.163748] </IRQ> [ 75.166112] <TASK> [ 75.168473] asm_common_interrupt+0x22/0x40 [ 75.173175] RIP: 0010:cpuidle_enter_state+0xe2/0x350 [ 75.178749] Code: 85 c0 0f 8f 04 02 00 00 31 ff e8 39 6c 67 ff 45 84 ff 74 12 9c 58 f6 c4 02 0f 85 50 02 00 00 31 ff e8 52 b0 6d ff fb 45 85 f6 <0f> 88 b1 00 00 00 49 63 ce 4c 2b 2c 24 48 89 c8 48 6b d1 68 48 c1 [ 75.199757] RSP: 0018:ffff9948c013bea8 EFLAGS: 00000202 [ 75.205614] RAX: ffff8e4e8fb00000 RBX: ffffb948bfd23900 RCX: 000000000000001f [ 75.213619] RDX: 0000000000000004 RSI: ffffffff94206161 RDI: ffffffff94212e20 [ 75.221620] RBP: 0000000000000004 R08: 000000117568973a R09: 0000000000000001 [ 75.229622] R10: 000000000000afc8 R11: ffff8e4e8fb29ce4 R12: ffffffff945ae980 [ 75.237628] R13: 000000117568973a R14: 0000000000000004 R15: 0000000000000000 [ 75.245635] ? ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52580">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66f53e072784e023142b9a2b1ab68788</td>
+       <td>CVE-2023-52579</td>
+       <td>2024-03-02 22:15:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ipv4: fix null-deref in ipv4_link_failure Currently, we assume the skb is associated with a device before calling __ip_options_compile, which is not always the case if it is re-routed by ipvs. When skb->dev is NULL, dev_net(skb->dev) will become null-dereference. This patch adds a check for the edge case and switch to use the net_device from the rtable when skb->dev is NULL.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52579">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7fd5ece39edf5a817580af319959fe42</td>
+       <td>CVE-2023-52578</td>
+       <td>2024-03-02 22:15:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: bridge: use DEV_STATS_INC() syzbot/KCSAN reported data-races in br_handle_frame_finish() [1] This function can run from multiple cpus without mutual exclusion. Adopt SMP safe DEV_STATS_INC() to update dev->stats fields. Handles updates to dev->stats.tx_dropped while we are at it. [1] BUG: KCSAN: data-race in br_handle_frame_finish / br_handle_frame_finish read-write to 0xffff8881374b2178 of 8 bytes by interrupt on cpu 1: br_handle_frame_finish+0xd4f/0xef0 net/bridge/br_input.c:189 br_nf_hook_thresh+0x1ed/0x220 br_nf_pre_routing_finish_ipv6+0x50f/0x540 NF_HOOK include/linux/netfilter.h:304 [inline] br_nf_pre_routing_ipv6+0x1e3/0x2a0 net/bridge/br_netfilter_ipv6.c:178 br_nf_pre_routing+0x526/0xba0 net/bridge/br_netfilter_hooks.c:508 nf_hook_entry_hookfn include/linux/netfilter.h:144 [inline] nf_hook_bridge_pre net/bridge/br_input.c:272 [inline] br_handle_frame+0x4c9/0x940 net/bridge/br_input.c:417 __netif_receive_skb_core+0xa8a/0x21e0 net/core/dev.c:5417 __netif_receive_skb_one_core net/core/dev.c:5521 [inline] __netif_receive_skb+0x57/0x1b0 net/core/dev.c:5637 process_backlog+0x21f/0x380 net/core/dev.c:5965 __napi_poll+0x60/0x3b0 net/core/dev.c:6527 napi_poll net/core/dev.c:6594 [inline] net_rx_action+0x32b/0x750 net/core/dev.c:6727 __do_softirq+0xc1/0x265 kernel/softirq.c:553 run_ksoftirqd+0x17/0x20 kernel/softirq.c:921 smpboot_thread_fn+0x30a/0x4a0 kernel/smpboot.c:164 kthread+0x1d7/0x210 kernel/kthread.c:388 ret_from_fork+0x48/0x60 arch/x86/kernel/process.c:147 ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:304 read-write to 0xffff8881374b2178 of 8 bytes by interrupt on cpu 0: br_handle_frame_finish+0xd4f/0xef0 net/bridge/br_input.c:189 br_nf_hook_thresh+0x1ed/0x220 br_nf_pre_routing_finish_ipv6+0x50f/0x540 NF_HOOK include/linux/netfilter.h:304 [inline] br_nf_pre_routing_ipv6+0x1e3/0x2a0 net/bridge/br_netfilter_ipv6.c:178 br_nf_pre_routing+0x526/0xba0 net/bridge/br_netfilter_hooks.c:508 nf_hook_entry_hookfn include/linux/netfilter.h:144 [inline] nf_hook_bridge_pre net/bridge/br_input.c:272 [inline] br_handle_frame+0x4c9/0x940 net/bridge/br_input.c:417 __netif_receive_skb_core+0xa8a/0x21e0 net/core/dev.c:5417 __netif_receive_skb_one_core net/core/dev.c:5521 [inline] __netif_receive_skb+0x57/0x1b0 net/core/dev.c:5637 process_backlog+0x21f/0x380 net/core/dev.c:5965 __napi_poll+0x60/0x3b0 net/core/dev.c:6527 napi_poll net/core/dev.c:6594 [inline] net_rx_action+0x32b/0x750 net/core/dev.c:6727 __do_softirq+0xc1/0x265 kernel/softirq.c:553 do_softirq+0x5e/0x90 kernel/softirq.c:454 __local_bh_enable_ip+0x64/0x70 kernel/softirq.c:381 __raw_spin_unlock_bh include/linux/spinlock_api_smp.h:167 [inline] _raw_spin_unlock_bh+0x36/0x40 kernel/locking/spinlock.c:210 spin_unlock_bh include/linux/spinlock.h:396 [inline] batadv_tt_local_purge+0x1a8/0x1f0 net/batman-adv/translation-table.c:1356 batadv_tt_purge+0x2b/0x630 net/batman-adv/translation-table.c:3560 process_one_work kernel/workqueue.c:2630 [inline] process_scheduled_works+0x5b8/0xa30 kernel/workqueue.c:2703 worker_thread+0x525/0x730 kernel/workqueue.c:2784 kthread+0x1d7/0x210 kernel/kthread.c:388 ret_from_fork+0x48/0x60 arch/x86/kernel/process.c:147 ret_from_fork_asm+0x11/0x20 arch/x86/entry/entry_64.S:304 value changed: 0x00000000000d7190 -> 0x00000000000d7191 Reported by Kernel Concurrency Sanitizer on: CPU: 0 PID: 14848 Comm: kworker/u4:11 Not tainted 6.6.0-rc1-syzkaller-00236-gad8a69f361b9 #0</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52578">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>82b1b9b4d8d02ee7722fa991f0fd4377</td>
+       <td>CVE-2023-52577</td>
+       <td>2024-03-02 22:15:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: dccp: fix dccp_v4_err()/dccp_v6_err() again dh->dccph_x is the 9th byte (offset 8) in "struct dccp_hdr", not in the "byte 7" as Jann claimed. We need to make sure the ICMP messages are big enough, using more standard ways (no more assumptions). syzbot reported: BUG: KMSAN: uninit-value in pskb_may_pull_reason include/linux/skbuff.h:2667 [inline] BUG: KMSAN: uninit-value in pskb_may_pull include/linux/skbuff.h:2681 [inline] BUG: KMSAN: uninit-value in dccp_v6_err+0x426/0x1aa0 net/dccp/ipv6.c:94 pskb_may_pull_reason include/linux/skbuff.h:2667 [inline] pskb_may_pull include/linux/skbuff.h:2681 [inline] dccp_v6_err+0x426/0x1aa0 net/dccp/ipv6.c:94 icmpv6_notify+0x4c7/0x880 net/ipv6/icmp.c:867 icmpv6_rcv+0x19d5/0x30d0 ip6_protocol_deliver_rcu+0xda6/0x2a60 net/ipv6/ip6_input.c:438 ip6_input_finish net/ipv6/ip6_input.c:483 [inline] NF_HOOK include/linux/netfilter.h:304 [inline] ip6_input+0x15d/0x430 net/ipv6/ip6_input.c:492 ip6_mc_input+0xa7e/0xc80 net/ipv6/ip6_input.c:586 dst_input include/net/dst.h:468 [inline] ip6_rcv_finish+0x5db/0x870 net/ipv6/ip6_input.c:79 NF_HOOK include/linux/netfilter.h:304 [inline] ipv6_rcv+0xda/0x390 net/ipv6/ip6_input.c:310 __netif_receive_skb_one_core net/core/dev.c:5523 [inline] __netif_receive_skb+0x1a6/0x5a0 net/core/dev.c:5637 netif_receive_skb_internal net/core/dev.c:5723 [inline] netif_receive_skb+0x58/0x660 net/core/dev.c:5782 tun_rx_batched+0x83b/0x920 tun_get_user+0x564c/0x6940 drivers/net/tun.c:2002 tun_chr_write_iter+0x3af/0x5d0 drivers/net/tun.c:2048 call_write_iter include/linux/fs.h:1985 [inline] new_sync_write fs/read_write.c:491 [inline] vfs_write+0x8ef/0x15c0 fs/read_write.c:584 ksys_write+0x20f/0x4c0 fs/read_write.c:637 __do_sys_write fs/read_write.c:649 [inline] __se_sys_write fs/read_write.c:646 [inline] __x64_sys_write+0x93/0xd0 fs/read_write.c:646 do_syscall_x64 arch/x86/entry/common.c:50 [inline] do_syscall_64+0x41/0xc0 arch/x86/entry/common.c:80 entry_SYSCALL_64_after_hwframe+0x63/0xcd Uninit was created at: slab_post_alloc_hook+0x12f/0xb70 mm/slab.h:767 slab_alloc_node mm/slub.c:3478 [inline] kmem_cache_alloc_node+0x577/0xa80 mm/slub.c:3523 kmalloc_reserve+0x13d/0x4a0 net/core/skbuff.c:559 __alloc_skb+0x318/0x740 net/core/skbuff.c:650 alloc_skb include/linux/skbuff.h:1286 [inline] alloc_skb_with_frags+0xc8/0xbd0 net/core/skbuff.c:6313 sock_alloc_send_pskb+0xa80/0xbf0 net/core/sock.c:2795 tun_alloc_skb drivers/net/tun.c:1531 [inline] tun_get_user+0x23cf/0x6940 drivers/net/tun.c:1846 tun_chr_write_iter+0x3af/0x5d0 drivers/net/tun.c:2048 call_write_iter include/linux/fs.h:1985 [inline] new_sync_write fs/read_write.c:491 [inline] vfs_write+0x8ef/0x15c0 fs/read_write.c:584 ksys_write+0x20f/0x4c0 fs/read_write.c:637 __do_sys_write fs/read_write.c:649 [inline] __se_sys_write fs/read_write.c:646 [inline] __x64_sys_write+0x93/0xd0 fs/read_write.c:646 do_syscall_x64 arch/x86/entry/common.c:50 [inline] do_syscall_64+0x41/0xc0 arch/x86/entry/common.c:80 entry_SYSCALL_64_after_hwframe+0x63/0xcd CPU: 0 PID: 4995 Comm: syz-executor153 Not tainted 6.6.0-rc1-syzkaller-00014-ga747acc0b752 #0 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 08/04/2023</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52577">详情</a></td>
+      </tr>
+
+      <tr>
        <td>42ce76da5a56aed243099041b3dd6d18</td>
        <td>CVE-2024-27355</td>
-       <td>2024-03-01 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 23:15:08</td>
        <td>An issue was discovered in phpseclib 1.x before 1.0.23, 2.x before 2.0.47, and 3.x before 3.0.36. When processing the ASN.1 object identifier of a certificate, a sub identifier may be provided that leads to a denial of service (CPU consumption for decodeOID).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27355">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>805ca4e51235c8cad26b76c0774144a5</td>
        <td>CVE-2024-27354</td>
-       <td>2024-03-01 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 23:15:08</td>
        <td>An issue was discovered in phpseclib 1.x before 1.0.23, 2.x before 2.0.47, and 3.x before 3.0.36. An attacker can construct a malformed certificate containing an extremely large prime to cause a denial of service (CPU consumption for an isPrime primality check). NOTE: this issue was introduced when attempting to fix CVE-2023-27560.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27354">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>3206d7ba5180c6659a4674c068a60f80</td>
        <td>CVE-2024-25438</td>
-       <td>2024-03-01 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 23:15:08</td>
        <td>A cross-site scripting (XSS) vulnerability in the Submission module of Pkp Ojs v3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Input subject field under the Add Discussion function.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25438">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>3101beb6d1ac4f691e93467411eadd90</td>
        <td>CVE-2024-25436</td>
-       <td>2024-03-01 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 23:15:08</td>
        <td>A cross-site scripting (XSS) vulnerability in the Production module of Pkp Ojs v3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Input subject field under the Add Discussion function.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25436">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>e4640c0432916282fc34ac587db1ac51</td>
        <td>CVE-2024-25434</td>
-       <td>2024-03-01 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 23:15:08</td>
        <td>A cross-site scripting (XSS) vulnerability in Pkp Ojs v3.3 allows attackers to execute arbitrary web scripts or HTML via a crafted payload injected into the Publicname parameter.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25434">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>86c4353875d8d63e0c5db52522356759</td>
        <td>CVE-2024-24512</td>
-       <td>2024-03-01 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 23:15:08</td>
        <td>Cross Site Scripting vulnerability in Pkp OJS v.3.4 allows an attacker to execute arbitrary code via the input subtitle component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24512">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>252de7585926ef786c4ac086994f663e</td>
        <td>CVE-2024-24511</td>
-       <td>2024-03-01 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 23:15:08</td>
        <td>Cross Site Scripting vulnerability in Pkp OJS v.3.4 allows an attacker to execute arbitrary code via the Input Title component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-24511">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>c16f3acd01166eecc1256643d2601954</td>
        <td>CVE-2024-27747</td>
-       <td>2024-03-01 22:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 22:15:47</td>
        <td>File Upload vulnerability in Petrol Pump Mangement Software v.1.0 allows an attacker to execute arbitrary code via a crafted payload to the email Image parameter in the profile.php component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27747">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>79515fc1ff735ae61dcdbf39e9f1593f</td>
        <td>CVE-2024-27746</td>
-       <td>2024-03-01 22:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 22:15:47</td>
        <td>SQL Injection vulnerability in Petrol Pump Mangement Software v.1.0 allows an attacker to execute arbitrary code via a crafted payload to the email address parameter in the index.php component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27746">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>c2affcc595c8f6e1b46bbe2cde17729c</td>
        <td>CVE-2024-27744</td>
-       <td>2024-03-01 22:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 22:15:47</td>
        <td>Cross Site Scripting vulnerability in Petrol Pump Mangement Software v.1.0 allows an attacker to execute arbitrary code via a crafted payload to the image parameter in the profile.php component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27744">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>1454c58931a4c2ceda1e35ce536a5baf</td>
        <td>CVE-2024-1859</td>
-       <td>2024-03-01 07:15:06 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:15:06</td>
        <td>The Slider Responsive Slideshow – Image slider, Gallery slideshow plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 1.3.8 via deserialization of untrusted input to the awl_slider_responsive_shortcode function. This makes it possible for authenticated attackers, with contributor-level access and above, to inject a PHP Object. No known POP chain is present in the vulnerable plugin. If a POP chain is present via an additional plugin or theme installed on the target system, it could allow the attacker to delete arbitrary files, retrieve sensitive data, or execute code.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1859">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>8e63907c98cf19174d7de00c873bd5c5</td>
        <td>CVE-2024-25386</td>
-       <td>2024-03-01 06:15:48 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 06:15:48</td>
        <td>Directory Traversal vulnerability in DICOM® Connectivity Framework by laurelbridge before v.2.7.6b allows a remote attacker to execute arbitrary code via the format_logfile.pl file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25386">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>74907a40ff79c5120f27fe470b2909bb</td>
        <td>CVE-2024-25293</td>
-       <td>2024-03-01 06:15:48 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 06:15:48</td>
        <td>mjml-app versions 3.0.4 and 3.1.0-beta were discovered to contain a remote code execution (RCE) via the href attribute.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25293">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>62ed9f977bd3b589cd6bc508a1b1de93</td>
        <td>CVE-2024-22891</td>
-       <td>2024-03-01 06:15:48 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 06:15:48</td>
        <td>Nteract v.0.28.0 was discovered to contain a remote code execution (RCE) vulnerability via the Markdown link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-22891">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>b57462397a929e8b7380e78bc1ec926d</td>
        <td>CVE-2023-50312</td>
-       <td>2024-03-01 03:15:06 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 03:15:06</td>
        <td>IBM WebSphere Application Server Liberty 17.0.0.3 through 24.0.0.2 could provide weaker than expected security for outbound TLS connections caused by a failure to honor user configuration. IBM X-Force ID: 274711.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50312">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>f7993308b2b06a5cf9e99469302773a5</td>
        <td>CVE-2023-47716</td>
-       <td>2024-03-01 03:15:06 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 03:15:06</td>
        <td>IBM CP4BA - Filenet Content Manager Component 5.5.8.0, 5.5.10.0, and 5.5.11.0 could allow a user to gain the privileges of another user under unusual circumstances. IBM X-Force ID: 271656.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-47716">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>4096a46255b296ddb38f53cf213cbd7d</td>
        <td>CVE-2023-38366</td>
-       <td>2024-03-01 03:15:06 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 03:15:06</td>
        <td>IBM Filenet Content Manager Component 5.5.8.0, 5.5.10.0, and 5.5.11.0 could allow a remote attacker to traverse directories on the system. An attacker could send a specially crafted URL request containing "dot dot" sequences (/../) to view arbitrary files on the system. IBM X-Force ID: 261115.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-38366">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>7caafe4f06964af6c771d1ceadf727c7</td>
        <td>CVE-2023-50324</td>
-       <td>2024-03-01 02:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 02:15:07</td>
        <td>IBM Cognos Command Center 10.2.4.1 and 10.2.5 exposes details the X-AspNet-Version Response Header that could allow an attacker to obtain information of the application environment to conduct further attacks. IBM X-Force ID: 275038.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50324">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>72219e915863a9cee8d63ebbd81e3cf8</td>
        <td>CVE-2023-50305</td>
-       <td>2024-03-01 02:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 02:15:07</td>
        <td>IBM Engineering Requirements Management DOORS 9.7.2.7 does not require that users should have strong passwords by default, which makes it easier for attackers to compromise user accounts. IBM X-Force ID: 273336.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50305">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>ec43e6ff20ab8cbc2e442d44f0510687</td>
        <td>CVE-2023-28949</td>
-       <td>2024-03-01 02:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 02:15:07</td>
        <td>IBM Engineering Requirements Management DOORS 9.7.2.7 is vulnerable to cross-site request forgery which could allow an attacker to execute malicious and unauthorized actions transmitted from a user that the website trusts. IBM X-Force ID: 251216.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-28949">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>48909ac72999763450510eff941da5a3</td>
-       <td>CVE-2024-1435</td>
-       <td>2024-02-29 05:15:09</td>
-       <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Tainacan.Org Tainacan.This issue affects Tainacan: from n/a through 0.20.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1435">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bab2f177a09cf90f09ff35ca27336a61</td>
-       <td>CVE-2024-1341</td>
-       <td>2024-02-29 05:15:09</td>
-       <td>The Advanced iFrame plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's advanced_iframe shortcode in all versions up to, and including, 2024.1 due to the plugin allowing users to include JS files from external sources through the additional_js attribute. This makes it possible for authenticated attackers with contributor-level and above permissions to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1341">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76974ed9f0c800a712994933c324d0f1</td>
-       <td>CVE-2023-51696</td>
-       <td>2024-02-29 05:15:09</td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in СleanTalk - Anti-Spam Protection Spam protection, Anti-Spam, FireWall by CleanTalk.This issue affects Spam protection, Anti-Spam, FireWall by CleanTalk: from n/a through 6.20.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51696">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a4c00b7896568ad7e617bf93ee58cf78</td>
-       <td>CVE-2023-51531</td>
-       <td>2024-02-29 05:15:09</td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Thrive Themes Thrive Automator.This issue affects Thrive Automator: from n/a through 1.17.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51531">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69d0529964c1d55e058327bbd9041bec</td>
-       <td>CVE-2023-51530</td>
-       <td>2024-02-29 05:15:08</td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in GS Plugins Logo Slider – Logo Showcase, Logo Carousel, Logo Gallery and Client Logo Presentation.This issue affects Logo Slider – Logo Showcase, Logo Carousel, Logo Gallery and Client Logo Presentation: from n/a through 3.5.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51530">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ca1810241297b97df01fe79adbce9ed0</td>
-       <td>CVE-2023-51529</td>
-       <td>2024-02-29 05:15:08</td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in HasThemes HT Mega – Absolute Addons For Elementor.This issue affects HT Mega – Absolute Addons For Elementor: from n/a through 2.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51529">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c36ab91505c09bda156cf9fc115a7296</td>
-       <td>CVE-2023-51528</td>
-       <td>2024-02-29 05:15:08</td>
-       <td>Cross-Site Request Forgery (CSRF) vulnerability in Senol Sahin AI Power: Complete AI Pack – Powered by GPT-4.This issue affects AI Power: Complete AI Pack – Powered by GPT-4: from n/a through 1.8.12.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51528">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>851a193ac96ec11c8fe1ff763f65593c</td>
-       <td>CVE-2024-1468</td>
-       <td>2024-02-29 04:15:06</td>
-       <td>The Avada | Website Builder For WordPress & WooCommerce theme for WordPress is vulnerable to arbitrary file uploads due to missing file type validation in the ajax_import_options() function in all versions up to, and including, 7.11.4. This makes it possible for authenticated attackers, with contributor-level access and above, to upload arbitrary files on the affected site's server which may make remote code execution possible.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1468">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fd252474c9819ed115294eab0dad62ce</td>
-       <td>CVE-2024-0689</td>
-       <td>2024-02-29 03:15:06</td>
-       <td>The Custom Field Suite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via a meta import in all versions up to, and including, 2.6.4 due to insufficient input sanitization and output escaping on the meta values. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0689">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4fe09973f71e15680b41384f83ca9d83</td>
-       <td>CVE-2021-39090</td>
-       <td>2024-02-29 03:15:06</td>
-       <td>IBM Cloud Pak for Security (CP4S) 1.10.0.0 through 1.10.6.0 could allow a remote attacker to obtain sensitive information, caused by the failure to properly enable HTTP Strict Transport Security. An attacker could exploit this vulnerability to obtain sensitive information using man in the middle techniques. IBM X-Force ID: 216388.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-39090">详情</a></td>
       </tr>
 
      </tbody>
@@ -1974,7 +1974,7 @@
       <tr>
        <td>658e37d0e3744c18e6fe7ae30cc7a8c7</td>
        <td>CVE-2023-46851</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Apache Allura输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91013">详情</a></td>
       </tr>
@@ -1982,7 +1982,7 @@
       <tr>
        <td>65e49614c3e940a2c0e7a49ed64d4b1f</td>
        <td>CVE-2023-5506</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>WordPress ImageMapper Plugin授权错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91012">详情</a></td>
       </tr>
@@ -1990,7 +1990,7 @@
       <tr>
        <td>b562666422ad8dafd89dcb4092bdeffa</td>
        <td>CVE-2023-42551</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Account敏感通信漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91011">详情</a></td>
       </tr>
@@ -1998,7 +1998,7 @@
       <tr>
        <td>224ce80dec1b53540efb1d357dc79fbc</td>
        <td>CVE-2023-42539</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Health PendingIntent劫持漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91010">详情</a></td>
       </tr>
@@ -2006,7 +2006,7 @@
       <tr>
        <td>22065445da0d5b32aeeb0a31e4c0cd4b</td>
        <td>CVE-2023-42540</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Account访问控制错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91009">详情</a></td>
       </tr>
@@ -2014,7 +2014,7 @@
       <tr>
        <td>512dc7d352633ad822607f657cad5951</td>
        <td>CVE-2023-42541</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Push Service授权错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91008">详情</a></td>
       </tr>
@@ -2022,7 +2022,7 @@
       <tr>
        <td>b95b46e740f8ab84aa8b2319511220f8</td>
        <td>CVE-2023-42542</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Push Service访问控制错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91007">详情</a></td>
       </tr>
@@ -2030,7 +2030,7 @@
       <tr>
        <td>f014beea98db150fa6a84cf78b98cbbb</td>
        <td>CVE-2023-42543</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Bixby Voice意图验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91006">详情</a></td>
       </tr>
@@ -2038,7 +2038,7 @@
       <tr>
        <td>d51e0c237df616f7e0c0707e54a353ff</td>
        <td>CVE-2023-42546</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Account敏感通信漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91005">详情</a></td>
       </tr>
@@ -2046,7 +2046,7 @@
       <tr>
        <td>9a77308676f732685fe39e9fcc5150d4</td>
        <td>CVE-2023-42547</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Account敏感通信漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91004">详情</a></td>
       </tr>
@@ -2054,7 +2054,7 @@
       <tr>
        <td>eef48ca9ca59e86e64c1e0420008efde</td>
        <td>CVE-2023-42548</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Account敏感通信漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91003">详情</a></td>
       </tr>
@@ -2062,7 +2062,7 @@
       <tr>
        <td>3e2fc39b67533e3cc57e20adccd38416</td>
        <td>CVE-2023-42549</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Account敏感通信漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91002">详情</a></td>
       </tr>
@@ -2070,7 +2070,7 @@
       <tr>
        <td>0dacb97a82982926b9b78a2f5e051e39</td>
        <td>CVE-2023-42550</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Account敏感通信漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91001">详情</a></td>
       </tr>
@@ -2078,7 +2078,7 @@
       <tr>
        <td>752c331e631cc42737ced6bae4cd3e89</td>
        <td>CVE-2023-42532</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Mobile Devices证书验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91000">详情</a></td>
       </tr>
@@ -2086,7 +2086,7 @@
       <tr>
        <td>11d6aa8869ea9b1185a506d51f2ee58a</td>
        <td>CVE-2023-42533</td>
-       <td>2024-03-01 07:19:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-01 07:19:01</td>
        <td>Samsung Mobile Devices输入验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/90999">详情</a></td>
       </tr>
