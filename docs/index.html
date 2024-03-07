@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-03-06 21:19:54 -->
+<!-- RELEASE TIME : 2024-03-07 01:08:31 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>bcf056f6392e9c7a9510f8294a383740</td>
+       <td>CVE-2024-27917</td>
+       <td>2024-03-06 20:15:48 <img src="imgs/new.gif" /></td>
+       <td>Shopware is an open commerce platform based on Symfony Framework and Vue. The Symfony Session Handler pops the Session Cookie and assigns it to the Response. Since Shopware 6.5.8.0, the 404 pages are cached to improve the performance of 404 pages. So the cached Response which contains a Session Cookie when the Browser accessing the 404 page, has no cookies yet. The Symfony Session Handler is in use, when no explicit Session configuration has been done. When Redis is in use for Sessions using the PHP Redis extension, this exploiting code is not used. Shopware version 6.5.8.7 contains a patch for this issue. As a workaround, use Redis for Sessions, as this does not trigger the exploit code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27917">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4c1a2fe45d699bbdc3e6c767e1c5f594</td>
+       <td>CVE-2024-27915</td>
+       <td>2024-03-06 20:15:47 <img src="imgs/new.gif" /></td>
+       <td>Sulu is a PHP content management system. Starting in verson 2.2.0 and prior to version 2.4.17 and 2.5.13, access to pages is granted regardless of role permissions for webspaces which have a security system configured and permission check enabled. Webspaces without do not have this issue. The problem is patched in versions 2.4.17 and 2.5.13. Some workarounds are available. One may apply the patch to `vendor/symfony/security-http/HttpUtils.php` manually or avoid installing `symfony/security-http` versions greater equal than `v5.4.30` or `v6.3.6`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27915">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0d79cab92c1436582e965179cd50c1e</td>
+       <td>CVE-2024-27308</td>
+       <td>2024-03-06 20:15:47 <img src="imgs/new.gif" /></td>
+       <td>Mio is a Metal I/O library for Rust. When using named pipes on Windows, mio will under some circumstances return invalid tokens that correspond to named pipes that have already been deregistered from the mio registry. The impact of this vulnerability depends on how mio is used. For some applications, invalid tokens may be ignored or cause a warning or a crash. On the other hand, for applications that store pointers in the tokens, this vulnerability may result in a use-after-free. For users of Tokio, this vulnerability is serious and can result in a use-after-free in Tokio. The vulnerability is Windows-specific, and can only happen if you are using named pipes. Other IO resources are not affected. This vulnerability has been fixed in mio v0.8.11. All versions of mio between v0.7.2 and v0.8.10 are vulnerable. Tokio is vulnerable when you are using a vulnerable version of mio AND you are using at least Tokio v1.30.0. Versions of Tokio prior to v1.30.0 will ignore invalid tokens, so they are not vulnerable. Vulnerable libraries that use mio can work around this issue by detecting and ignoring invalid tokens.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27308">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c07e9b9b6b9acb10667975fa4aa693e3</td>
+       <td>CVE-2024-27307</td>
+       <td>2024-03-06 20:15:47 <img src="imgs/new.gif" /></td>
+       <td>JSONata is a JSON query and transformation language. Starting in version 1.4.0 and prior to version 1.8.7 and 2.0.4, a malicious expression can use the transform operator to override properties on the `Object` constructor and prototype. This may lead to denial of service, remote code execution or other unexpected behavior in applications that evaluate user-provided JSONata expressions. This issue has been fixed in JSONata versions 1.8.7 and 2.0.4. Applications that evaluate user-provided expressions should update ASAP to prevent exploitation. As a workaround, one may apply the patch manually.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27307">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f49e911f7e0cc4a3986461bc64f5d427</td>
+       <td>CVE-2023-48703</td>
+       <td>2024-03-06 20:15:47 <img src="imgs/new.gif" /></td>
+       <td>RobotsAndPencils go-saml, a SAML client library written in Go, contains an authentication bypass vulnerability in all known versions. This is due to how the `xmlsec1` command line tool is called internally to verify the signature of SAML assertions. When `xmlsec1` is used without defining the enabled key data, the origin of the public key for the signature verification is, unfortunately, not restricted. That means an attacker can sign the SAML assertions themselves and provide the required public key (e.g. an RSA key) directly embedded in the SAML token. Projects still using RobotsAndPencils/go-saml should move to another SAML library or alternatively remove support for SAML from their projects. The vulnerability can likely temporarily be fixed by forking the go-saml project and adding the command line argument `--enabled-key-data` and specifying a value such as `x509` or `raw-x509-cert` when calling the `xmlsec1` binary in the verify function. Please note that this workaround must be carefully tested before it can be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-48703">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ea95d9e88f5b6c26b5612f223c42e3a5</td>
        <td>CVE-2024-2176</td>
        <td>2024-03-06 19:15:09 <img src="imgs/new.gif" /></td>
@@ -366,7 +406,7 @@
       <tr>
        <td>76fe749e528b0e0ba03347d2879ef0d0</td>
        <td>CVE-2024-25858</td>
-       <td>2024-03-05 21:15:09 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:09</td>
        <td>In Foxit PDF Reader before 2024.1 and PDF Editor before 2024.1, code execution via JavaScript could occur because of an unoptimized prompt message for users to review parameters of commands.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25858">详情</a></td>
       </tr>
@@ -374,7 +414,7 @@
       <tr>
        <td>c7582ee4f5d6421d0d4b5f101909241c</td>
        <td>CVE-2024-2179</td>
-       <td>2024-03-05 21:15:09 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:09</td>
        <td>Concrete CMS version 9 before 9.2.7 is vulnerable to Stored XSS via the Name field of a Group type since there is insufficient validation of administrator provided data for that field. A rogue administrator could inject malicious code into the Name field which might be executed when users visit the affected page. The Concrete CMS security team gave this vulnerability a CVSS v3.1 score of 2.2 with a vector of AV:N/AC:H/PR:H/UI:N/S:U/C:L/I:N/A:N Concrete versions below 9 do not include group types so they are not affected by this vulnerability. Thanks Luca Fuda for reporting.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2179">详情</a></td>
       </tr>
@@ -382,7 +422,7 @@
       <tr>
        <td>c01f995d91e3d4add2ffe5dcf5720d77</td>
        <td>CVE-2024-25616</td>
-       <td>2024-03-05 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:08</td>
        <td>Aruba has identified certain configurations of ArubaOS that can lead to partial disclosure of sensitive information in the IKE_AUTH negotiation process. The scenarios in which disclosure of potentially sensitive information can occur are complex, and depend on factors beyond the control of attackers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25616">详情</a></td>
       </tr>
@@ -390,7 +430,7 @@
       <tr>
        <td>4c64d1c8ff764f6a383dc6c3838eecd1</td>
        <td>CVE-2024-25615</td>
-       <td>2024-03-05 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:08</td>
        <td>An unauthenticated Denial-of-Service (DoS) vulnerability exists in the Spectrum service accessed via the PAPI protocol in ArubaOS 8.x. Successful exploitation of this vulnerability results in the ability to interrupt the normal operation of the affected service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25615">详情</a></td>
       </tr>
@@ -398,7 +438,7 @@
       <tr>
        <td>d2ba4c9f567c010245c39bd0260ab3e7</td>
        <td>CVE-2024-25614</td>
-       <td>2024-03-05 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:08</td>
        <td>There is an arbitrary file deletion vulnerability in the CLI used by ArubaOS. Successful exploitation of this vulnerability results in the ability to delete arbitrary files on the underlying operating system, which could lead to denial-of-service conditions and impact the integrity of the controller.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25614">详情</a></td>
       </tr>
@@ -406,7 +446,7 @@
       <tr>
        <td>e705e2061906416d27b57c3e4074b308</td>
        <td>CVE-2024-25613</td>
-       <td>2024-03-05 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:08</td>
        <td>Authenticated command injection vulnerabilities exist in the ArubaOS command line interface. Successful exploitation of these vulnerabilities result in the ability to execute arbitrary commands as a privileged user on the underlying operating system.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25613">详情</a></td>
       </tr>
@@ -414,7 +454,7 @@
       <tr>
        <td>3f4e1a8c85044a2e281dcf0d05ecfd39</td>
        <td>CVE-2024-25612</td>
-       <td>2024-03-05 21:15:08 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:08</td>
        <td>Authenticated command injection vulnerabilities exist in the ArubaOS command line interface. Successful exploitation of these vulnerabilities result in the ability to execute arbitrary commands as a privileged user on the underlying operating system.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25612">详情</a></td>
       </tr>
@@ -422,7 +462,7 @@
       <tr>
        <td>2446b3bb481e971a6e8caae83c710a33</td>
        <td>CVE-2024-25611</td>
-       <td>2024-03-05 21:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:07</td>
        <td>Authenticated command injection vulnerabilities exist in the ArubaOS command line interface. Successful exploitation of these vulnerabilities result in the ability to execute arbitrary commands as a privileged user on the underlying operating system.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-25611">详情</a></td>
       </tr>
@@ -430,7 +470,7 @@
       <tr>
        <td>f4da2c7f26d24bae12b910f0f5709b9f</td>
        <td>CVE-2024-1356</td>
-       <td>2024-03-05 21:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 21:15:07</td>
        <td>Authenticated command injection vulnerabilities exist in the ArubaOS command line interface. Successful exploitation of these vulnerabilities result in the ability to execute arbitrary commands as a privileged user on the underlying operating system.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1356">详情</a></td>
       </tr>
@@ -438,7 +478,7 @@
       <tr>
        <td>cfaced957e458a6bb6cf534426fd3853</td>
        <td>CVE-2024-23296</td>
-       <td>2024-03-05 20:16:01 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 20:16:01</td>
        <td>A memory corruption issue was addressed with improved validation. This issue is fixed in iOS 17.4 and iPadOS 17.4. An attacker with arbitrary kernel read and write capability may be able to bypass kernel memory protections. Apple is aware of a report that this issue may have been exploited.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23296">详情</a></td>
       </tr>
@@ -446,7 +486,7 @@
       <tr>
        <td>1873223624a39db8a7f22136ac03b74f</td>
        <td>CVE-2023-5457</td>
-       <td>2024-03-05 12:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 12:15:47</td>
        <td>A CWE-1269 “Product Released in Non-Release Configuration” vulnerability in the Django web framework used by the web application (due to the “debug” configuration parameter set to “True”) allows a remote unauthenticated attacker to access critical information and have other unspecified impacts to the confidentiality, integrity, and availability of the application. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5457">详情</a></td>
       </tr>
@@ -454,7 +494,7 @@
       <tr>
        <td>14f1c64c3610663195a17c8238fb1ca2</td>
        <td>CVE-2023-45600</td>
-       <td>2024-03-05 12:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 12:15:47</td>
        <td>A CWE-613 “Insufficient Session Expiration” vulnerability in the web application, due to the session cookie “sessionid” lasting two weeks, facilitates session hijacking attacks against victims. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45600">详情</a></td>
       </tr>
@@ -462,7 +502,7 @@
       <tr>
        <td>aee793937be7d1f0b77643b9d8f48ad5</td>
        <td>CVE-2023-45599</td>
-       <td>2024-03-05 12:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 12:15:47</td>
        <td>A CWE-646 “Reliance on File Name or Extension of Externally-Supplied File” vulnerability in the “iec61850” functionality of the web application allows a remote authenticated attacker to upload any arbitrary type of file into the device. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45599">详情</a></td>
       </tr>
@@ -470,7 +510,7 @@
       <tr>
        <td>71725617b66d3572ec2cf45a3e29b93a</td>
        <td>CVE-2023-45598</td>
-       <td>2024-03-05 12:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 12:15:47</td>
        <td>A CWE-862 “Missing Authorization” vulnerability in the “measure” functionality of the web application allows a remote unauthenticated attacker to access confidential measure information. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45598">详情</a></td>
       </tr>
@@ -478,49 +518,9 @@
       <tr>
        <td>647110526d2142de6ced38a4a72ee32a</td>
        <td>CVE-2023-45597</td>
-       <td>2024-03-05 12:15:47 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 12:15:47</td>
        <td>A CWE-1236 “Improper Neutralization of Formula Elements in a CSV File” vulnerability in the “file_configuration” functionality of the web application (concerning the function “export_file”) allows a remote authenticated attacker to inject arbitrary formulas inside generated CSV files. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45597">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f78b306978ef587c235655f4c807b83e</td>
-       <td>CVE-2023-45596</td>
-       <td>2024-03-05 12:15:46 <img src="imgs/new.gif" /></td>
-       <td>A CWE-862 “Missing Authorization” vulnerability in the “file_configuration” functionality of the web application allows a remote unauthenticated attacker to access confidential configuration files. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1c82b48c669f3e2e25e48e768272111</td>
-       <td>CVE-2023-45595</td>
-       <td>2024-03-05 12:15:46 <img src="imgs/new.gif" /></td>
-       <td>A CWE-434 “Unrestricted Upload of File with Dangerous Type” vulnerability in the “file_configuration” functionality of the web application allows a remote authenticated attacker to upload any arbitrary type of file into the device. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>85e7e8d532909dbb900575fabb8ee748</td>
-       <td>CVE-2023-45594</td>
-       <td>2024-03-05 12:15:46 <img src="imgs/new.gif" /></td>
-       <td>A CWE-552 “Files or Directories Accessible to External Parties” vulnerability in the embedded Chromium browser allows a physical attacker to arbitrarily download/upload files to/from the file system, with unspecified impacts to the confidentiality, integrity, and availability of the device. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45594">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d55e3514d3305e66045c69f9c12a2e0</td>
-       <td>CVE-2023-45593</td>
-       <td>2024-03-05 12:15:46 <img src="imgs/new.gif" /></td>
-       <td>A CWE-693 “Protection Mechanism Failure” vulnerability in the embedded Chromium browser (concerning the handling of alternative URLs, other than “ http://localhost” http://localhost” ) allows a physical attacker to read arbitrary files on the file system, alter the configuration of the embedded browser, and have other unspecified impacts to the confidentiality, integrity, and availability of the device. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45593">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ef3b5fb8c7a2242fd818ce0e611f1911</td>
-       <td>CVE-2023-45592</td>
-       <td>2024-03-05 12:15:46 <img src="imgs/new.gif" /></td>
-       <td>A CWE-250 “Execution with Unnecessary Privileges” vulnerability in the embedded Chromium browser (due to the binary being executed with the “--no-sandbox” option and with root privileges) exacerbates the impacts of successful attacks executed against the browser. This issue affects: AiLux imx6 bundle below version imx6_1.0.7-2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-45592">详情</a></td>
       </tr>
 
      </tbody>
@@ -2094,7 +2094,7 @@
       <tr>
        <td>214a0018cfa480cd3d62a88a150adf1c</td>
        <td>CVE-2023-41357</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Galaxy Software Services Vitals ESP危险类型文件不受限上传漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91123">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>19a14b73c689a7c7b320e6be67ec363c</td>
        <td>CVE-2023-41343</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Ragic跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91122">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>2a395997ed3f061929dc4de73f8935b2</td>
        <td>CVE-2023-45024</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Best Practical Request Tracker信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91121">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>d95df145aa19d637866f3527123004c1</td>
        <td>CVE-2023-36621</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Boomerang Parental Control授权错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91120">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>8ce2f0209315f76ef2e918a6bbe627ab</td>
        <td>CVE-2023-41260</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Best Practical Request Tracker信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91119">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>73968726d35f204920b0bd14d5c77d8e</td>
        <td>CVE-2023-34260</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Kyocera TASKalfa 4053ci Printers路径遍历漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91118">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>e40dcdc4c8909a7870506aa4331a5a8d</td>
        <td>CVE-2023-34259</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Kyocera TASKalfa 4053ci Printers目录遍历漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91117">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>57e10f9252e5edd613456eaf6847832e</td>
        <td>CVE-2023-36620</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Boomerang Parental Control授权错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91116">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>a57869efe886594ff82e3be29c115bbe</td>
        <td>CVE-2023-41347</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>ASUS RT-AX55操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91115">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>47615b2fde548cf30bbb21235ef27617</td>
        <td>CVE-2023-41346</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>ASUS RT-AX55操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91114">详情</a></td>
       </tr>
@@ -2174,7 +2174,7 @@
       <tr>
        <td>1f7ac34772acff74f45f9f6d40a84040</td>
        <td>CVE-2023-41345</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>ASUS RT-AX55操作系统命令注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91113">详情</a></td>
       </tr>
@@ -2182,7 +2182,7 @@
       <tr>
        <td>68017357c74e99bdb37c648f948a3a9c</td>
        <td>CVE-2023-38965</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Lost and Found Information System授权绕过漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91112">详情</a></td>
       </tr>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>5487400ae7f7c9b4fb83e28213827a59</td>
        <td>CVE-2023-42027</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>IBM CICS TX和TXSeries for Multiplatforms跨站请求伪造漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91111">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>c46842b9cca70ea542188e234ce94ba6</td>
        <td>CVE-2023-41259</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Best Practical Request Tracker信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91110">详情</a></td>
       </tr>
@@ -2206,7 +2206,7 @@
       <tr>
        <td>e26197855ea1af60fa9b4d5770956e1b</td>
        <td>CVE-2023-44271</td>
-       <td>2024-03-05 09:20:26 <img src="imgs/new.gif" /></td>
+       <td>2024-03-05 09:20:26</td>
        <td>Pillow拒绝服务漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/91109">详情</a></td>
       </tr>
