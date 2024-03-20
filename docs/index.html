@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-03-20 07:22:11 -->
+<!-- RELEASE TIME : 2024-03-20 23:24:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>20d9fcea8d5595ac37fc062d52644d50</td>
+       <td>CVE-2024-28868</td>
+       <td>2024-03-20 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>Umbraco is an ASP.NET content management system. Umbraco 10 prior to 10.8.4 with access to the native login screen is vulnerable to a possible user enumeration attack. This issue was fixed in version 10.8.5. As a workaround, one may disable the native login screen by exclusively using external logins.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-28868">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>87ed097c3d61fd6ea3117067beb3b605</td>
+       <td>CVE-2024-2716</td>
+       <td>2024-03-20 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Campcodes Complete Online DJ Booking System 1.0. It has been classified as problematic. This affects an unknown part of the file /admin/contactus.php. The manipulation of the argument email leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-257469 was assigned to this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2716">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5b75cb30b6824d511af1b902aba23a0e</td>
+       <td>CVE-2024-2715</td>
+       <td>2024-03-20 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Campcodes Complete Online DJ Booking System 1.0 and classified as problematic. Affected by this issue is some unknown functionality of the file /admin/user-search.php. The manipulation of the argument searchdata leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-257468.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2715">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>443e85f6b15bbdf853a8d996ed95920e</td>
+       <td>CVE-2024-2714</td>
+       <td>2024-03-20 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in Campcodes Complete Online DJ Booking System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file /admin/booking-bwdates-reports-details.php. The manipulation of the argument fromdate leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-257467.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2714">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c79030abe5ab935db1d1a1b1145d8ca7</td>
+       <td>CVE-2024-28231</td>
+       <td>2024-03-20 20:15:08 <img src="imgs/new.gif" /></td>
+       <td>eprosima Fast DDS is a C++ implementation of the Data Distribution Service standard of the Object Management Group. Prior to versions 2.14.0, 2.13.4, 2.12.3, 2.10.4, and 2.6.8, manipulated DATA Submessage can cause a heap overflow error in the Fast-DDS process, causing the process to be terminated remotely. Additionally, the payload_size in the DATA Submessage packet is declared as uint32_t. When a negative number, such as -1, is input into this variable, it results in an Integer Overflow (for example, -1 gets converted to 0xFFFFFFFF). This eventually leads to a heap-buffer-overflow, causing the program to terminate. Versions 2.14.0, 2.13.4, 2.12.3, 2.10.4, and 2.6.8 contain a fix for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-28231">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e23f563078ccf1ac64ba80dfce00c82</td>
+       <td>CVE-2024-28179</td>
+       <td>2024-03-20 20:15:08 <img src="imgs/new.gif" /></td>
+       <td>Jupyter Server Proxy allows users to run arbitrary external processes alongside their Jupyter notebook servers and provides authenticated web access. Prior to versions 3.2.3 and 4.1.1, Jupyter Server Proxy did not check user authentication appropriately when proxying websockets, allowing unauthenticated access to anyone who had network access to the Jupyter server endpoint. This vulnerability can allow unauthenticated remote access to any websocket endpoint set up to be accessible via Jupyter Server Proxy. In many cases, this leads to remote unauthenticated arbitrary code execution, due to how affected instances use websockets. The websocket endpoints exposed by `jupyter_server` itself is not affected. Projects that do not rely on websockets are also not affected. Versions 3.2.3 and 4.1.1 contain a fix for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-28179">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cb2c88e8ab201bd2d6e8cb9624fe5b5f</td>
+       <td>CVE-2024-27286</td>
+       <td>2024-03-20 20:15:08 <img src="imgs/new.gif" /></td>
+       <td>Zulip is an open-source team collaboration. When a user moves a Zulip message, they have the option to move all messages in the topic, move only subsequent messages as well, or move just a single message. If the user chose to just move one message, and was moving it from a public stream to a private stream, Zulip would successfully move the message, -- but active users who did not have access to the private stream, but whose client had already received the message, would continue to see the message in the public stream until they reloaded their client. Additionally, Zulip did not remove view permissions on the message from recently-active users, allowing the message to show up in the "All messages" view or in search results, but not in "Inbox" or "Recent conversations" views. While the bug has been present since moving messages between streams was first introduced in version 3.0, this option became much more common starting in Zulip 8.0, when the default option in the picker for moving the very last message in a conversation was changed. This issue is fixed in Zulip Server 8.3. No known workarounds are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-27286">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a90f1c1002bd2bb2bfc972cd7034e32a</td>
+       <td>CVE-2024-23721</td>
+       <td>2024-03-20 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>A Directory Traversal issue was discovered in process_post on Draytek Vigor3910 4.3.2.5 devices. When sending a certain POST request, it calls the function and exports information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-23721">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4fca07e342ef1fa0441873cce65eea97</td>
+       <td>CVE-2024-2711</td>
+       <td>2024-03-20 18:15:12 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Tenda AC10U 15.03.06.48. It has been rated as critical. Affected by this issue is the function addWifiMacFilter of the file /goform/addWifiMacFilter. The manipulation of the argument deviceMac leads to stack-based buffer overflow. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-257462 is the identifier assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2711">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>30e6a506d525c7e2e2468c5079e95d76</td>
+       <td>CVE-2024-2710</td>
+       <td>2024-03-20 18:15:11 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Tenda AC10U 15.03.06.49. It has been declared as critical. Affected by this vulnerability is the function setSchedWifi of the file /goform/openSchedWifi. The manipulation of the argument schedStartTime leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-257461 was assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2710">详情</a></td>
+      </tr>
+
+      <tr>
        <td>adeb0e0c00576ea167cf0aef811fae9e</td>
        <td>CVE-2024-29027</td>
        <td>2024-03-19 19:15:06 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-03-18 18:15:17</td>
        <td>Adobe Experience Manager versions 6.5.19 and earlier are affected by a reflected Cross-Site Scripting (XSS) vulnerability. If an attacker is able to convince a victim to visit a URL referencing a vulnerable page, malicious JavaScript content may be executed within the context of the victim's browser.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-26103">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2dd9b3d6905d813869fdf6cdef59d290</td>
-       <td>CVE-2024-2599</td>
-       <td>2024-03-18 14:15:13</td>
-       <td>File upload restriction evasion vulnerability in AMSS++ version 4.31. This vulnerability could allow an authenticated user to potentially obtain RCE through webshell, compromising the entire infrastructure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2599">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d052e1696ae33145a05bce0fb82972df</td>
-       <td>CVE-2024-2598</td>
-       <td>2024-03-18 14:15:13</td>
-       <td>Vulnerability in AMSS++ version 4.31, which does not sufficiently encode user-controlled input, resulting in a Cross-Site Scripting (XSS) vulnerability through /amssplus/modules/book/main/select_send_2.php, in multiple parameters. This vulnerability could allow a remote attacker to send a specially crafted URL to an authenticated user and steal their session cookie credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2598">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0464a219d721640699d8f16dd90811cb</td>
-       <td>CVE-2024-2597</td>
-       <td>2024-03-18 14:15:13</td>
-       <td>Vulnerability in AMSS++ version 4.31, which does not sufficiently encode user-controlled input, resulting in a Cross-Site Scripting (XSS) vulnerability through /amssplus/modules/book/main/bookdetail_school_person.php, in the 'b_id' parameter. This vulnerability could allow a remote attacker to send a specially crafted URL to an authenticated user and steal their session cookie credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2597">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>53d558fadb9a6e5e07c0475b71fe8e01</td>
-       <td>CVE-2024-2596</td>
-       <td>2024-03-18 14:15:12</td>
-       <td>Vulnerability in AMSS++ version 4.31, which does not sufficiently encode user-controlled input, resulting in a Cross-Site Scripting (XSS) vulnerability through /amssplus/modules/mail/main/select_send.php, in multiple parameters. This vulnerability could allow a remote attacker to send a specially crafted URL to an authenticated user and steal their session cookie credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ac0c2077bbbb1e7c40e18581df0dba87</td>
-       <td>CVE-2024-2595</td>
-       <td>2024-03-18 14:15:12</td>
-       <td>Vulnerability in AMSS++ version 4.31, which does not sufficiently encode user-controlled input, resulting in a Cross-Site Scripting (XSS) vulnerability through /amssplus/modules/book/main/bookdetail_khet_person.php, in the 'b_id' parameter. This vulnerability could allow a remote attacker to send a specially crafted URL to an authenticated user and steal their session cookie credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>872ec9869ef77112472dc8a00d4cc4d2</td>
-       <td>CVE-2024-2594</td>
-       <td>2024-03-18 14:15:12</td>
-       <td>Vulnerability in AMSS++ version 4.31, which does not sufficiently encode user-controlled input, resulting in a Cross-Site Scripting (XSS) vulnerability through /amssplus/admin/index.php, in multiple parameters. This vulnerability could allow a remote attacker to send a specially crafted URL to an authenticated user and steal their session cookie credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2594">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c01b700db1e0155b57328eaf095f63b5</td>
-       <td>CVE-2024-2593</td>
-       <td>2024-03-18 14:15:12</td>
-       <td>Vulnerability in AMSS++ version 4.31, which does not sufficiently encode user-controlled input, resulting in a Cross-Site Scripting (XSS) vulnerability through /amssplus/modules/book/main/bookdetail_group.php, in the 'b_id' parameter. This vulnerability could allow a remote attacker to send a specially crafted URL to an authenticated user and steal their session cookie credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2593">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad45b1dc2266f849f80c6733d1d652c2</td>
-       <td>CVE-2024-2592</td>
-       <td>2024-03-18 14:15:11</td>
-       <td>Vulnerability in AMSS++ version 4.31 that allows SQL injection through /amssplus/modules/person/pic_show.php, in the 'person_id' parameter. This vulnerability could allow a remote attacker to send a specially crafted SQL query to the server and retrieve all the information stored in the DB.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2592">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6603cdd81603d1ca4da22d29e6d79179</td>
-       <td>CVE-2024-2591</td>
-       <td>2024-03-18 14:15:11</td>
-       <td>Vulnerability in AMSS++ version 4.31 that allows SQL injection through /amssplus/modules/book/main/bookdetail_group.php, in multiple parameters. This vulnerability could allow a remote attacker to send a specially crafted SQL query to the server and retrieve all the information stored in the DB.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2591">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2166ce4bc3cac388474fe3921728c2f3</td>
-       <td>CVE-2024-2590</td>
-       <td>2024-03-18 14:15:11</td>
-       <td>Vulnerability in AMSS++ version 4.31 that allows SQL injection through /amssplus/modules/mail/main/select_send.php, in the 'sd_index' parameter. This vulnerability could allow a remote attacker to send a specially crafted SQL query to the server and retrieve all the information stored in the DB.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2590">详情</a></td>
       </tr>
 
      </tbody>
