@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-05-08 03:25:22 -->
+<!-- RELEASE TIME : 2024-05-08 07:25:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ee4d6349ce5e5820111c2f9faf97110a</td>
+       <td>CVE-2024-4418</td>
+       <td>2024-05-08 03:15:07 <img src="imgs/new.gif" /></td>
+       <td>A race condition leading to a stack use-after-free flaw was found in libvirt. Due to a bad assumption in the virNetClientIOEventLoop() method, the `data` pointer to a stack-allocated virNetClientIOEventData structure ended up being used in the virNetClientIOEventFD callback while the data pointer's stack frame was concurrently being "freed" when returning from virNetClientIOEventLoop(). The 'virtproxyd' daemon can be used to trigger requests. If libvirt is configured with fine-grained access control, this issue, in theory, allows a user to escape their otherwise limited access. This flaw allows a local, unprivileged user to access virtproxyd without authenticating. Remote users would need to authenticate before they could access it.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4418">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e4aa475ad5c994cbd6aaadbbc024b14b</td>
+       <td>CVE-2024-4393</td>
+       <td>2024-05-08 03:15:07 <img src="imgs/new.gif" /></td>
+       <td>The Social Connect plugin for WordPress is vulnerable to authentication bypass in versions up to, and including, 1.2. This is due to insufficient verification on the OpenID server being supplied during the social login through the plugin. This makes it possible for unauthenticated attackers to log in as any existing user on the site, such as an administrator, if they have access to the email.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4393">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4fa9d1071d1d5f6ae3d0b1278b123840</td>
+       <td>CVE-2024-4162</td>
+       <td>2024-05-08 03:15:06 <img src="imgs/new.gif" /></td>
+       <td>A buffer error in Panasonic KW Watcher versions 1.00 through 2.83 may allow attackers malicious read access to memory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4162">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>acb1dd99034b22e19bbceb314bbd00db</td>
+       <td>CVE-2024-2860</td>
+       <td>2024-05-08 02:15:09 <img src="imgs/new.gif" /></td>
+       <td>The PostgreSQL implementation in Brocade SANnav versions before 2.3.0a is vulnerable to an incorrect local authentication flaw. An attacker accessing the VM where the Brocade SANnav is installed can gain access to sensitive data inside the PostgreSQL database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2860">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>87e8581c949994b12aacc97f24a9d939</td>
+       <td>CVE-2024-2746</td>
+       <td>2024-05-08 02:15:09 <img src="imgs/new.gif" /></td>
+       <td>Incomplete fix for CVE-2024-1929 The problem with CVE-2024-1929 was that the dnf5 D-Bus daemon accepted arbitrary configuration parameters from unprivileged users, which allowed a local root exploit by tricking the daemon into loading a user controlled "plugin". All of this happened before Polkit authentication was even started. The dnf5 library code does not check whether non-root users control the directory in question. On one hand, this poses a Denial-of-Service attack vector by making the daemonoperate on a blocking file (e.g. named FIFO special file) or a very large file that causes an out-of-memory situation (e.g. /dev/zero). On the other hand, this can be used to let the daemon process privileged files like /etc/shadow. The file in question is parsed as an INI file. Error diagnostics resulting from parsing privileged files could cause information leaks, if these diagnostics are accessible to unprivileged users. In the case of libdnf5, no such user accessible diagnostics should exist, though. Also, a local attacker can place a valid repository configuration file in this directory. This configuration file allows to specify a plethora of additional configuration options. This makes various additional code paths in libdnf5 accessible to the attacker.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2746">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5aa7fe79f5f805d1b88b5ed25e66fc70</td>
+       <td>CVE-2024-1930</td>
+       <td>2024-05-08 02:15:09 <img src="imgs/new.gif" /></td>
+       <td>No Limit on Number of Open Sessions / Bad Session Close Behaviour in dnf5daemon-server before 5.1.17 allows a malicious user to impact Availability via No Limit on Number of Open Sessions. There is no limit on how many sessions D-Bus clients may create using the `open_session()` D-Bus method. For each session a thread is created in dnf5daemon-server. This spends a couple of hundred megabytes of memory in the process. Further connections will become impossible, likely because no more threads can be spawned by the D-Bus service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1930">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7b3a71c97d206d3b26244f96efd1cfc4</td>
+       <td>CVE-2024-1929</td>
+       <td>2024-05-08 02:15:09 <img src="imgs/new.gif" /></td>
+       <td>Local Root Exploit via Configuration Dictionary in dnf5daemon-server before 5.1.17 allows a malicious user to impact Confidentiality and Integrity via Configuration Dictionary. There are issues with the D-Bus interface long before Polkit is invoked. The `org.rpm.dnf.v0.SessionManager.open_session` method takes a key/value map of configuration entries. A sub-entry in this map, placed under the "config" key, is another key/value map. The configuration values found in it will be forwarded as configuration overrides to the `libdnf5::Base` configuration. Practically all libdnf5 configuration aspects can be influenced here. Already when opening the session via D-Bus, the libdnf5 will be initialized using these override configuration values. There is no sanity checking of the content of this "config" map, which is untrusted data. It is possible to make the library loading a plug-in shared library under control of an unprivileged user, hence achieving root access.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1929">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>52fa672bbd3a7f22a0f78fd08f91a0ee</td>
+       <td>CVE-2024-4456</td>
+       <td>2024-05-08 01:15:06 <img src="imgs/new.gif" /></td>
+       <td>In affected versions of Octopus Server with certain access levels it was possible to embed a Cross-Site Scripting payload on the audit page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4456">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ef976b03caaeb0cdf5fee42b6b02e889</td>
+       <td>CVE-2023-40490</td>
+       <td>2024-05-07 23:15:16 <img src="imgs/new.gif" /></td>
+       <td>Maxon Cinema 4D SKP File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Maxon Cinema 4D. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of SKP files. The issue results from the lack of validating the existence of an object prior to performing operations on the object. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-21438.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40490">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e5dfcdbfb82e43fab4e5369d9a56145</td>
+       <td>CVE-2023-37325</td>
+       <td>2024-05-07 23:15:16 <img src="imgs/new.gif" /></td>
+       <td>D-Link DAP-2622 DDP Set SSID List Missing Authentication Vulnerability. This vulnerability allows network-adjacent attackers to make unauthorized changes to device configuration on affected installations of D-Link DAP-2622 routers. Authentication is not required to exploit this vulnerability. The specific flaw exists within the DDP service. The issue results from the lack of authentication prior to allowing access to functionality. An attacker can leverage this vulnerability to manipulate wireless authentication settings. Was ZDI-CAN-20104.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37325">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2d9be68420cba2948c175e712a063298</td>
        <td>CVE-2024-2913</td>
        <td>2024-05-07 00:15:08 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-05-06 03:15:09</td>
        <td>In keyInstall, there is a possible out of bounds write due to a missing bounds check. This could lead to local escalation of privilege with System execution privileges needed. User interaction is not needed for exploitation. Patch ID: ALPS08587881; Issue ID: ALPS08587881.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-20057">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a64fd3ea990ec616bdbf594b16b0e6e</td>
-       <td>CVE-2024-4493</td>
-       <td>2024-05-05 03:15:07</td>
-       <td>A vulnerability, which was classified as critical, was found in Tenda i21 1.0.0.14(4656). Affected is the function formSetAutoPing. The manipulation of the argument ping1/ping2 leads to stack-based buffer overflow. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-263082 is the identifier assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4493">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>72fe7aa0e375a66197448fea1aa700ca</td>
-       <td>CVE-2024-34490</td>
-       <td>2024-05-05 03:15:07</td>
-       <td>In Maxima through 5.47.0 before 51704c, the plotting facilities make use of predictable names under /tmp. Thus, the contents may be controlled by a local attacker who can create files in advance with these names. This affects, for example, plot2d.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34490">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fc24713ce3a9173484ce6b5457714923</td>
-       <td>CVE-2024-34489</td>
-       <td>2024-05-05 03:15:07</td>
-       <td>OFPHello in parser.py in Faucet SDN Ryu 4.34 allows attackers to cause a denial of service (infinite loop) via length=0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34489">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0cc1c8dd6314f422d5b4c25fa3ef8af3</td>
-       <td>CVE-2024-34488</td>
-       <td>2024-05-05 03:15:07</td>
-       <td>OFPMultipartReply in parser.py in Faucet SDN Ryu 4.34 allows attackers to cause a denial of service (infinite loop) via b.length=0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34488">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db0165496031b41f4575154155f0f1e3</td>
-       <td>CVE-2024-34487</td>
-       <td>2024-05-05 03:15:07</td>
-       <td>OFPFlowStats in parser.py in Faucet SDN Ryu 4.34 allows attackers to cause a denial of service (infinite loop) via inst.length=0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34487">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4364e0e862f93ef28657ee90fb05e3cf</td>
-       <td>CVE-2024-34486</td>
-       <td>2024-05-05 03:15:07</td>
-       <td>OFPPacketQueue in parser.py in Faucet SDN Ryu 4.34 allows attackers to cause a denial of service (infinite loop) via OFPQueueProp.len=0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34486">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d43a7635a07e7d333585d0738dc300fe</td>
-       <td>CVE-2024-34484</td>
-       <td>2024-05-05 02:15:07</td>
-       <td>OFPBucket in parser.py in Faucet SDN Ryu 4.34 allows attackers to cause a denial of service (infinite loop) via action.len=0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34484">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c36c5f3ab5c1f39bfa19caa675010301</td>
-       <td>CVE-2024-34483</td>
-       <td>2024-05-05 02:15:06</td>
-       <td>OFPGroupDescStats in parser.py in Faucet SDN Ryu 4.34 allows attackers to cause a denial of service (infinite loop) via OFPBucket.len=0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34483">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21c9f7c337ff541d7e2fc92a89dfb471</td>
-       <td>CVE-2024-4492</td>
-       <td>2024-05-05 01:15:06</td>
-       <td>A vulnerability, which was classified as critical, has been found in Tenda i21 1.0.0.14(4656). This issue affects the function formOfflineSet of the file /goform/setStaOffline. The manipulation of the argument GO/ssidIndex leads to stack-based buffer overflow. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-263081 was assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4492">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a052594ee52aa6cdd21db8de39c800a</td>
-       <td>CVE-2024-34478</td>
-       <td>2024-05-05 01:15:06</td>
-       <td>btcd before 0.24.0 does not correctly implement the consensus rules outlined in BIP 68 and BIP 112, making it susceptible to consensus failures. Specifically, it uses the transaction version as a signed integer when it is supposed to be treated as unsigned. There can be a chain split and loss of funds.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34478">详情</a></td>
       </tr>
 
      </tbody>
@@ -1972,6 +1972,126 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f38cd5d0e49cdfd96593ab8c576d0638</td>
+       <td>CVE-2023-42938</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>iTunes for Windows权限提升漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94576">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>931980481d5e62d65c3120fa34d53dea</td>
+       <td>CVE-2024-25653</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>Delinea PAM Secret Server访问控制错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94575">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>af5ab7402edbcffba782efc76f1210d5</td>
+       <td>CVE-2024-22346</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>IBM i权限许可和访问控制漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94574">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5bc0ade68ac7e2329634c900b220f236</td>
+       <td>CVE-2024-27265</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>IBM Integration Bus for z/OS跨站请求伪造漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94573">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f858d7f1ae681d2d3ecdc32e0afda767</td>
+       <td>CVE-2024-28181</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>TurboBoost Commands注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94572">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7bf2d005016eff3535919c62d7bdeb48</td>
+       <td>CVE-2024-22398</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>SonicWALL Email Security Appliance路径遍历漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94571">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8601f610d9c3f317f18c8788cb5291d8</td>
+       <td>CVE-2023-38575</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>Intel Processors信息泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94570">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8427c43f1fac1d903d18294509959f3c</td>
+       <td>CVE-2024-1654</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>PaperCut NG/MF远程代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94569">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d948e23703c002e321c1fdb7af74b87</td>
+       <td>CVE-2024-25649</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>Delinea PAM Secret Server和Distributed Engine信息泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94568">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b9d00a7f8c74c7705c627b0363c1fac4</td>
+       <td>CVE-2024-25651</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>Delinea PAM Secret Server信息泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94567">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>88f9842fbf1d0cb3b8e2d319f10c7cde</td>
+       <td>CVE-2024-25652</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>Delinea PAM Secret Server信息泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94566">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>15fe0c1350cd6213263aeb04266c9fbc</td>
+       <td>CVE-2023-43490</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>Intel Xeon Processors计算错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94565">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f03ef7fb3d699a842e1a1fec38587f7f</td>
+       <td>CVE-2024-28390</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>PrestaShop访问控制错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94564">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3658d37af87f97dbf3c350b1e1954e31</td>
+       <td>CVE-2024-28391</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>PrestaShop SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94563">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9395eea460da83a16ff89b2b9b9824c2</td>
+       <td>CVE-2024-28746</td>
+       <td>2024-05-08 07:23:31 <img src="imgs/new.gif" /></td>
+       <td>Apache Airflow权限保留错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94562">详情</a></td>
+      </tr>
+
+      <tr>
        <td>d3b4fd9837f6546b2bfa1ca69f70cddf</td>
        <td>CVE-2024-28193</td>
        <td>2024-05-07 07:26:52 <img src="imgs/new.gif" /></td>
@@ -2089,126 +2209,6 @@
        <td>2024-05-07 07:26:52 <img src="imgs/new.gif" /></td>
        <td>Western Digital SanDisk PrivateAccess DLL劫持漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94495">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3b5656ddf12b384ebc85b927640549b</td>
-       <td>CVE-2023-48383</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>NETVISION INFORMATION airPASS路径遍历漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94537">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7fef99a9163f2d933f8b3d75db1e970a</td>
-       <td>CVE-2024-0533</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>Tenda A15堆栈缓冲区溢出漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94536">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6f2bee6528bfcca73911a0c94a52faca</td>
-       <td>CVE-2024-0532</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>Tenda A15堆栈缓冲区溢出漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94535">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c33c1bca9468e52129e659f953d2da7a</td>
-       <td>CVE-2024-0531</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>Tenda A15堆栈缓冲区溢出漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94534">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fce4f8f3d9b413fb8500f3c47bca98d6</td>
-       <td>CVE-2024-0530</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>CXBSoft Post-Office SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94533">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c0bae53a86a90bb410f3a4f956e1d92b</td>
-       <td>CVE-2024-0529</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>CXBSoft Post-Office SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94532">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>202ac73778954ebcb4f3bbb942711ec6</td>
-       <td>CVE-2024-0528</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>CXBSoft Post-Office SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94531">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>29da3af117d22d7dc90c7f5f406bef47</td>
-       <td>CVE-2023-5253</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>Nozomi Networks Guardian访问控制错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94530">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f3794d390b40b3c9e2da34180e1e4dc</td>
-       <td>CVE-2023-6915</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>Linux Kernel空指针解引用漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94529">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b732168a1519bcedf3166663e2a26c8d</td>
-       <td>CVE-2023-46749</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>Apache Shiro路径遍历漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94528">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>46572a5f45380d25c67937d4501d7a77</td>
-       <td>CVE-2024-0548</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>FreeFloat FTP Server命令拒绝服务漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94527">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb7df21e92dee2c4af829c367b2966b3</td>
-       <td>CVE-2024-0547</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>Ability FTP Server命令拒绝服务漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94526">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>29d6f20452439c43f4a6a3569e3d76b3</td>
-       <td>CVE-2024-0546</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>EasyFTP命令拒绝服务漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94525">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d5f9149443004fd4767459bd07734d7</td>
-       <td>CVE-2024-0545</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>CodeCanyon RISE Rise Ultimate Project Manager输入验证错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94524">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0bed997cc19ccb5aae04bb814d5dd84a</td>
-       <td>CVE-2024-0543</td>
-       <td>2024-05-07 03:23:17 <img src="imgs/new.gif" /></td>
-       <td>CodeAstro Real Estate Management System SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/94523">详情</a></td>
       </tr>
 
      </tbody>
