@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-06-09 18:25:40 -->
+<!-- RELEASE TIME : 2024-06-10 09:23:57 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c0e4344319766a4566ae7dc235a9c005</td>
+       <td>CVE-2024-37880</td>
+       <td>2024-06-10 02:15:47 <img src="imgs/new.gif" /></td>
+       <td>The Kyber reference implementation before 9b8d306, when compiled by LLVM Clang through 18.x with some common optimization options, has a timing side channel that allows attackers to recover an ML-KEM 512 secret key in minutes. This occurs because poly_frommsg in poly.c does not prevent Clang from emitting a vulnerable secret-dependent branch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37880">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4166e55bc0c06d9d39b49485d5d1c774</td>
+       <td>CVE-2024-5389</td>
+       <td>2024-06-09 23:15:50 <img src="imgs/new.gif" /></td>
+       <td>In lunary-ai/lunary version 1.2.13, an insufficient granularity of access control vulnerability allows users to create, update, get, and delete prompt variations for datasets not owned by their organization. This issue arises due to the application not properly validating the ownership of dataset prompts and their variations against the organization or project of the requesting user. As a result, unauthorized modifications to dataset prompts can occur, leading to altered or removed dataset prompts without proper authorization. This vulnerability impacts the integrity and consistency of dataset information, potentially affecting the results of experiments.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5389">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f4860d9cc50856f07bf8e2c16ded64c7</td>
+       <td>CVE-2024-4577</td>
+       <td>2024-06-09 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>In PHP versions 8.1.* before 8.1.29, 8.2.* before 8.2.20, 8.3.* before 8.3.8, when using Apache and PHP-CGI on Windows, if the system is set up to use certain code pages, Windows may use "Best-Fit" behavior to replace characters in command line given to Win32 API functions. PHP CGI module may misinterpret those characters as PHP options, which may allow a malicious user to pass options to PHP binary being run, and thus reveal the source code of scripts, run arbitrary PHP code on the server, etc.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4577">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bf97971c33a1e581c48d385539faf720</td>
+       <td>CVE-2024-37570</td>
+       <td>2024-06-09 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>On Mitel 6869i 4.5.0.41 devices, the Manual Firmware Update (upgrade.html) page does not perform sanitization on the username and path parameters (sent by an authenticated user) before appending flags to the busybox ftpget command. This leads to $() command execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37570">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f4a453b747dc92b407662639f35788fd</td>
+       <td>CVE-2024-37569</td>
+       <td>2024-06-09 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered on Mitel 6869i through 4.5.0.41 and 5.x through 5.0.0.1018 devices. A command injection vulnerability exists in the hostname parameter taken in by the provis.html endpoint. The provis.html endpoint performs no sanitization on the hostname parameter (sent by an authenticated user), which is subsequently written to disk. During boot, the hostname parameter is executed as part of a series of shell commands. Attackers can achieve remote code execution in the root context by placing shell metacharacters in the hostname parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37569">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a0c902abdd10e55cbf374837fa57a7b8</td>
+       <td>CVE-2024-2408</td>
+       <td>2024-06-09 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>The openssl_private_decrypt function in PHP, when using PKCS1 padding (OPENSSL_PKCS1_PADDING, which is the default), is vulnerable to the Marvin Attack unless it is used with an OpenSSL version that includes the changes from this pull request: https://github.com/openssl/openssl/pull/13817 (rsa_pkcs1_implicit_rejection). These changes are part of OpenSSL 3.2 and have also been backported to stable versions of various Linux distributions, as well as to the PHP builds provided for Windows since the previous release. All distributors and builders should ensure that this version is used to prevent PHP from being vulnerable. PHP Windows builds for the versions 8.1.29, 8.2.20 and 8.3.8 and above include OpenSSL patches that fix the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2408">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>00bed84b7584d22f021f210fda8bd7f9</td>
+       <td>CVE-2024-5585</td>
+       <td>2024-06-09 19:15:52 <img src="imgs/new.gif" /></td>
+       <td>In PHP versions 8.1.* before 8.1.29, 8.2.* before 8.2.20, 8.3.* before 8.3.8, the fix for CVE-2024-1874 does not work if the command name includes trailing spaces. Original issue: when using proc_open() command with array syntax, due to insufficient escaping, if the arguments of the executed command are controlled by a malicious user, the user can supply arguments that would execute arbitrary commands in Windows shell.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5585">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a1673fb75663ed4e0166da896102a35c</td>
+       <td>CVE-2024-5458</td>
+       <td>2024-06-09 19:15:52 <img src="imgs/new.gif" /></td>
+       <td>In PHP versions 8.1.* before 8.1.29, 8.2.* before 8.2.20, 8.3.* before 8.3.8, due to a code logic error, filtering functions such as filter_var when validating URLs (FILTER_VALIDATE_URL) for certain types of URLs the function will result in invalid user information (username + password part of URLs) being treated as valid user information. This may lead to the downstream code accepting invalid URLs as valid and parsing them incorrectly.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5458">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>40b4aeecd7d4ef145d2d0aabf047ba37</td>
+       <td>CVE-2024-37568</td>
+       <td>2024-06-09 19:15:52 <img src="imgs/new.gif" /></td>
+       <td>lepture Authlib before 1.3.1 has algorithm confusion with asymmetric public keys. Unless an algorithm is specified in a jwt.decode call, HMAC verification is allowed with any asymmetric public key. (This is similar to CVE-2022-29217 and CVE-2024-33663.)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37568">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>97075a2f94240dfa4e0f42ec4bd00f85</td>
+       <td>CVE-2024-35748</td>
+       <td>2024-06-09 19:15:52 <img src="imgs/new.gif" /></td>
+       <td>Missing Authorization vulnerability in OPMC WooCommerce Dropshipping.This issue affects WooCommerce Dropshipping: from n/a through 5.0.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-35748">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bc93d53e90c6e1b19f03e6f0a1d4a4ba</td>
        <td>CVE-2024-32824</td>
        <td>2024-06-09 13:15:53 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>3bb913c3c2f8c9ffbbc9464c97028639</td>
        <td>CVE-2024-37407</td>
-       <td>2024-06-08 13:15:58 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:58</td>
        <td>Libarchive before 3.7.4 allows name out-of-bounds access when a ZIP archive has an empty-name file and mac-ext is enabled. This occurs in slurp_central_directory in archive_read_support_format_zip.c.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37407">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>cc244e85a7dab442690ed23fc44bec84</td>
        <td>CVE-2024-36970</td>
-       <td>2024-06-08 13:15:58 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: wifi: iwlwifi: Use request_module_nowait This appears to work around a deadlock regression that came in with the LED merge in 6.9. The deadlock happens on my system with 24 iwlwifi radios, so maybe it something like all worker threads are busy and some work that needs to complete cannot complete. [also remove unnecessary "load_module" var and now-wrong comment]</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-36970">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>6c2889fd2a3436c62a259b5e11574e91</td>
        <td>CVE-2024-36969</td>
-       <td>2024-06-08 13:15:58 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: drm/amd/display: Fix division by zero in setup_dsc_config When slice_height is 0, the division by slice_height in the calculation of the number of slices will cause a division by zero driver crash. This leaves the kernel in a state that requires a reboot. This patch adds a check to avoid the division by zero. The stack trace below is for the 6.8.4 Kernel. I reproduced the issue on a Z16 Gen 2 Lenovo Thinkpad with a Apple Studio Display monitor connected via Thunderbolt. The amdgpu driver crashed with this exception when I rebooted the system with the monitor connected. kernel: ? die (arch/x86/kernel/dumpstack.c:421 arch/x86/kernel/dumpstack.c:434 arch/x86/kernel/dumpstack.c:447) kernel: ? do_trap (arch/x86/kernel/traps.c:113 arch/x86/kernel/traps.c:154) kernel: ? setup_dsc_config (drivers/gpu/drm/amd/amdgpu/../display/dc/dsc/dc_dsc.c:1053) amdgpu kernel: ? do_error_trap (./arch/x86/include/asm/traps.h:58 arch/x86/kernel/traps.c:175) kernel: ? setup_dsc_config (drivers/gpu/drm/amd/amdgpu/../display/dc/dsc/dc_dsc.c:1053) amdgpu kernel: ? exc_divide_error (arch/x86/kernel/traps.c:194 (discriminator 2)) kernel: ? setup_dsc_config (drivers/gpu/drm/amd/amdgpu/../display/dc/dsc/dc_dsc.c:1053) amdgpu kernel: ? asm_exc_divide_error (./arch/x86/include/asm/idtentry.h:548) kernel: ? setup_dsc_config (drivers/gpu/drm/amd/amdgpu/../display/dc/dsc/dc_dsc.c:1053) amdgpu kernel: dc_dsc_compute_config (drivers/gpu/drm/amd/amdgpu/../display/dc/dsc/dc_dsc.c:1109) amdgpu After applying this patch, the driver no longer crashes when the monitor is connected and the system is rebooted. I believe this is the same issue reported for 3113.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-36969">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>e89fa782f7f10fd44413234de72a298b</td>
        <td>CVE-2024-36968</td>
-       <td>2024-06-08 13:15:58 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: Bluetooth: L2CAP: Fix div-by-zero in l2cap_le_flowctl_init() l2cap_le_flowctl_init() can cause both div-by-zero and an integer overflow since hdev->le_mtu may not fall in the valid range. Move MTU from hci_dev to hci_conn to validate MTU and stop the connection process earlier if MTU is invalid. Also, add a missing validation in read_buffer_size() and make it return an error value if the validation fails. Now hci_conn_add() returns ERR_PTR() as it can fail due to the both a kzalloc failure and invalid MTU value. divide error: 0000 [#1] PREEMPT SMP KASAN NOPTI CPU: 0 PID: 67 Comm: kworker/u5:0 Tainted: G W 6.9.0-rc5+ #20 Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014 Workqueue: hci0 hci_rx_work RIP: 0010:l2cap_le_flowctl_init+0x19e/0x3f0 net/bluetooth/l2cap_core.c:547 Code: e8 17 17 0c 00 66 41 89 9f 84 00 00 00 bf 01 00 00 00 41 b8 02 00 00 00 4c 89 fe 4c 89 e2 89 d9 e8 27 17 0c 00 44 89 f0 31 d2 <66> f7 f3 89 c3 ff c3 4d 8d b7 88 00 00 00 4c 89 f0 48 c1 e8 03 42 RSP: 0018:ffff88810bc0f858 EFLAGS: 00010246 RAX: 00000000000002a0 RBX: 0000000000000000 RCX: dffffc0000000000 RDX: 0000000000000000 RSI: ffff88810bc0f7c0 RDI: ffffc90002dcb66f RBP: ffff88810bc0f880 R08: aa69db2dda70ff01 R09: 0000ffaaaaaaaaaa R10: 0084000000ffaaaa R11: 0000000000000000 R12: ffff88810d65a084 R13: dffffc0000000000 R14: 00000000000002a0 R15: ffff88810d65a000 FS: 0000000000000000(0000) GS:ffff88811ac00000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000000020000100 CR3: 0000000103268003 CR4: 0000000000770ef0 PKRU: 55555554 Call Trace: <TASK> l2cap_le_connect_req net/bluetooth/l2cap_core.c:4902 [inline] l2cap_le_sig_cmd net/bluetooth/l2cap_core.c:5420 [inline] l2cap_le_sig_channel net/bluetooth/l2cap_core.c:5486 [inline] l2cap_recv_frame+0xe59d/0x11710 net/bluetooth/l2cap_core.c:6809 l2cap_recv_acldata+0x544/0x10a0 net/bluetooth/l2cap_core.c:7506 hci_acldata_packet net/bluetooth/hci_core.c:3939 [inline] hci_rx_work+0x5e5/0xb20 net/bluetooth/hci_core.c:4176 process_one_work kernel/workqueue.c:3254 [inline] process_scheduled_works+0x90f/0x1530 kernel/workqueue.c:3335 worker_thread+0x926/0xe70 kernel/workqueue.c:3416 kthread+0x2e3/0x380 kernel/kthread.c:388 ret_from_fork+0x5c/0x90 arch/x86/kernel/process.c:147 ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:244 </TASK> Modules linked in: ---[ end trace 0000000000000000 ]---</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-36968">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>1073883b0710da4d48dff533f951a445</td>
        <td>CVE-2024-36967</td>
-       <td>2024-06-08 13:15:58 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: KEYS: trusted: Fix memory leak in tpm2_key_encode() 'scratch' is never freed. Fix this by calling kfree() in the success, and in the error case.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-36967">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>1dcd64e6f4b32e5aac5fe2c2aa0478ff</td>
        <td>CVE-2024-36966</td>
-       <td>2024-06-08 13:15:57 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:57</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: erofs: reliably distinguish block based and fscache mode When erofs_kill_sb() is called in block dev based mode, s_bdev may not have been initialised yet, and if CONFIG_EROFS_FS_ONDEMAND is enabled, it will be mistaken for fscache mode, and then attempt to free an anon_dev that has never been allocated, triggering the following warning: ============================================ ida_free called for id=0 which is not allocated. WARNING: CPU: 14 PID: 926 at lib/idr.c:525 ida_free+0x134/0x140 Modules linked in: CPU: 14 PID: 926 Comm: mount Not tainted 6.9.0-rc3-dirty #630 RIP: 0010:ida_free+0x134/0x140 Call Trace: <TASK> erofs_kill_sb+0x81/0x90 deactivate_locked_super+0x35/0x80 get_tree_bdev+0x136/0x1e0 vfs_get_tree+0x2c/0xf0 do_new_mount+0x190/0x2f0 [...] ============================================ Now when erofs_kill_sb() is called, erofs_sb_info must have been initialised, so use sbi->fsid to distinguish between the two modes.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-36966">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>9daf6bc3b1b0b67e4c704c437aede44b</td>
        <td>CVE-2024-36965</td>
-       <td>2024-06-08 13:15:57 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:57</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: remoteproc: mediatek: Make sure IPI buffer fits in L2TCM The IPI buffer location is read from the firmware that we load to the System Companion Processor, and it's not granted that both the SRAM (L2TCM) size that is defined in the devicetree node is large enough for that, and while this is especially true for multi-core SCP, it's still useful to check on single-core variants as well. Failing to perform this check may make this driver perform R/W operations out of the L2TCM boundary, resulting (at best) in a kernel panic. To fix that, check that the IPI buffer fits, otherwise return a failure and refuse to boot the relevant SCP core (or the SCP at all, if this is single core).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-36965">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>1591aa59d7c2e1ca3298b2af0547d230</td>
        <td>CVE-2024-35752</td>
-       <td>2024-06-08 13:15:57 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:57</td>
        <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Enea Overclokk Stellissimo Text Box allows Stored XSS.This issue affects Stellissimo Text Box: from n/a through 1.1.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-35752">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>e799b5dbbf11c3252782062bd7833194</td>
        <td>CVE-2024-35751</td>
-       <td>2024-06-08 13:15:57 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:57</td>
        <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Creative Motion, Will Bontrager Software, LLC Woody ad snippets allows Stored XSS.This issue affects Woody ad snippets: from n/a through 2.4.10.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-35751">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>795be7078de2e866ff7a1a7aa240bd5f</td>
        <td>CVE-2024-35750</td>
-       <td>2024-06-08 13:15:57 <img src="imgs/new.gif" /></td>
+       <td>2024-06-08 13:15:57</td>
        <td>Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in wpdevart Responsive Image Gallery, Gallery Album.This issue affects Responsive Image Gallery, Gallery Album: from n/a through 2.0.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-35750">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>66b8fe3f074f392c7ebf65ac15b5e9d1</td>
-       <td>CVE-2024-5637</td>
-       <td>2024-06-07 11:15:53</td>
-       <td>The Market Exporter plugin for WordPress is vulnerable to unauthorized loss of data due to a missing capability check on the 'remove_files' function in all versions up to, and including, 2.0.19. This makes it possible for authenticated attackers, with Subscriber-level access and above, to use path traversal to delete arbitrary files on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5637">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71c1caa9d252d4e9363b777f58bd5aed</td>
-       <td>CVE-2024-5732</td>
-       <td>2024-06-07 10:15:12</td>
-       <td>A vulnerability was found in Clash up to 0.20.1 on Windows. It has been declared as critical. This vulnerability affects unknown code of the component Proxy Port. The manipulation leads to improper authentication. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. It is recommended to change the configuration settings. VDB-267406 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5732">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ccd166e3a772c34db4e1b4e337b85b63</td>
-       <td>CVE-2024-5645</td>
-       <td>2024-06-07 10:15:12</td>
-       <td>The Envo Extra plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘button_css_id’ parameter within the Button widget in all versions up to, and including, 1.8.23 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5645">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c98a2be9013aaf21e6aec672ea311d01</td>
-       <td>CVE-2024-5481</td>
-       <td>2024-06-07 10:15:11</td>
-       <td>The Photo Gallery by 10Web – Mobile-Friendly Image Gallery plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 1.8.23 via the esc_dir function. This makes it possible for authenticated attackers to cut and paste (copy) the contents of arbitrary files on the server, which can contain sensitive information, and to cut (delete) arbitrary directories, including the root WordPress directory. By default this can be exploited by administrators only. In the premium version of the plugin, administrators can give gallery edit permissions to lower level users, which might make this exploitable by users as low as contributors.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5481">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1349dc512a400b9543eac61e5e75216f</td>
-       <td>CVE-2024-5426</td>
-       <td>2024-06-07 10:15:11</td>
-       <td>The Photo Gallery by 10Web – Mobile-Friendly Image Gallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘svg’ parameter in all versions up to, and including, 1.8.23 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. By default, this can only be exploited by administrators, but the ability to use and configure Photo Gallery can be extended to contributors on pro versions of the plugin.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5426">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8e39965ae28467f9fc2bde37d89734f3</td>
-       <td>CVE-2023-5424</td>
-       <td>2024-06-07 10:15:10</td>
-       <td>The WS Form LITE plugin for WordPress is vulnerable to CSV Injection in versions up to, and including, 1.9.217. This allows unauthenticated attackers to embed untrusted input into exported CSV files, which can result in code execution when these files are downloaded and opened on a local system with a vulnerable configuration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-5424">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ace4b39ac81056089373d7f18ca32de8</td>
-       <td>CVE-2024-4703</td>
-       <td>2024-06-07 08:15:32</td>
-       <td>The One Page Express Companion plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's one_page_express_contact_form shortcode in all versions up to, and including, 1.6.37 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4703">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d25602c6211dd1464cfc7bb01d1dded7</td>
-       <td>CVE-2024-4489</td>
-       <td>2024-06-07 07:15:47</td>
-       <td>The Royal Elementor Addons and Templates plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘custom_upload_mimes’ function in versions up to, and including, 1.3.976 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4489">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>72d552ff9091d77ef3e698b046f5de73</td>
-       <td>CVE-2024-4488</td>
-       <td>2024-06-07 07:15:47</td>
-       <td>The Royal Elementor Addons and Templates for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘inline_list’ parameter in versions up to, and including, 1.3.976 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4488">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>91b951d2af717f8420e52971b1a854dc</td>
-       <td>CVE-2024-4451</td>
-       <td>2024-06-07 07:15:46</td>
-       <td>The Colibri Page Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's colibri_video_player shortcode in all versions up to, and including, 1.0.276 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4451">详情</a></td>
       </tr>
 
      </tbody>
