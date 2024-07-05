@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-07-05 12:37:44 -->
+<!-- RELEASE TIME : 2024-07-05 15:22:54 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7b4eecbbd268cfd9d3f0e92162dd37dd</td>
+       <td>CVE-2024-6523</td>
+       <td>2024-07-05 11:15:10 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in ZKTeco BioTime up to 9.5.2. It has been classified as problematic. Affected is an unknown function of the component system-group-add Handler. The manipulation of the argument user with the input <script>alert('XSS')</script> leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. VDB-270366 is the identifier assigned to this vulnerability. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6523">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c3bbdd816e23e76ecdfb28bbdcc4795</td>
+       <td>CVE-2024-6298</td>
+       <td>2024-07-05 11:15:10 <img src="imgs/new.gif" /></td>
+       <td>Improper Input Validation vulnerability in ABB ASPECT-Enterprise on Linux, ABB NEXUS Series on Linux, ABB MATRIX Series on Linux allows Remote Code Inclusion.This issue affects ASPECT-Enterprise: through 3.08.01; NEXUS Series: through 3.08.01; MATRIX Series: through 3.08.01.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6298">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>07964a61233d466eb1750d4d6cb437d3</td>
+       <td>CVE-2024-6209</td>
+       <td>2024-07-05 11:15:10 <img src="imgs/new.gif" /></td>
+       <td>Unauthorized file access in WEB Server in ABB ASPECT - Enterprise v <=3.08.01; NEXUS Series v <=3.08.01 ; MATRIX Series v<=3.08.01 allows Attacker to access files unauthorized</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6209">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f9d1e32981f0f288418380e9a9d7dd71</td>
+       <td>CVE-2024-39485</td>
+       <td>2024-07-05 07:15:10 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: media: v4l: async: Properly re-initialise notifier entry in unregister The notifier_entry of a notifier is not re-initialised after unregistering the notifier. This leads to dangling pointers being left there so use list_del_init() to return the notifier_entry an empty list.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39485">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d3b1ab113cdfb92f78d2955b50c63e9</td>
+       <td>CVE-2024-39484</td>
+       <td>2024-07-05 07:15:10 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mmc: davinci: Don't strip remove function when driver is builtin Using __exit for the remove function results in the remove callback being discarded with CONFIG_MMC_DAVINCI=y. When such a device gets unbound (e.g. using sysfs or hotplug), the driver is just removed without the cleanup being performed. This results in resource leaks. Fix it by compiling in the remove callback unconditionally. This also fixes a W=1 modpost warning: WARNING: modpost: drivers/mmc/host/davinci_mmc: section mismatch in reference: davinci_mmcsd_driver+0x10 (section: .data) -> davinci_mmcsd_remove (section: .exit.text)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39484">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c231220a7c330db7187ecd9d79c5c17</td>
+       <td>CVE-2024-39483</td>
+       <td>2024-07-05 07:15:10 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: KVM: SVM: WARN on vNMI + NMI window iff NMIs are outright masked When requesting an NMI window, WARN on vNMI support being enabled if and only if NMIs are actually masked, i.e. if the vCPU is already handling an NMI. KVM's ABI for NMIs that arrive simultanesouly (from KVM's point of view) is to inject one NMI and pend the other. When using vNMI, KVM pends the second NMI simply by setting V_NMI_PENDING, and lets the CPU do the rest (hardware automatically sets V_NMI_BLOCKING when an NMI is injected). However, if KVM can't immediately inject an NMI, e.g. because the vCPU is in an STI shadow or is running with GIF=0, then KVM will request an NMI window and trigger the WARN (but still function correctly). Whether or not the GIF=0 case makes sense is debatable, as the intent of KVM's behavior is to provide functionality that is as close to real hardware as possible. E.g. if two NMIs are sent in quick succession, the probability of both NMIs arriving in an STI shadow is infinitesimally low on real hardware, but significantly larger in a virtual environment, e.g. if the vCPU is preempted in the STI shadow. For GIF=0, the argument isn't as clear cut, because the window where two NMIs can collide is much larger in bare metal (though still small). That said, KVM should not have divergent behavior for the GIF=0 case based on whether or not vNMI support is enabled. And KVM has allowed simultaneous NMIs with GIF=0 for over a decade, since commit 7460fb4a3400 ("KVM: Fix simultaneous NMIs"). I.e. KVM's GIF=0 handling shouldn't be modified without a *really* good reason to do so, and if KVM's behavior were to be modified, it should be done irrespective of vNMI support.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39483">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>73a2557a0cd2fd4be21d8541da4e2989</td>
+       <td>CVE-2024-39482</td>
+       <td>2024-07-05 07:15:10 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: bcache: fix variable length array abuse in btree_iter btree_iter is used in two ways: either allocated on the stack with a fixed size MAX_BSETS, or from a mempool with a dynamic size based on the specific cache set. Previously, the struct had a fixed-length array of size MAX_BSETS which was indexed out-of-bounds for the dynamically-sized iterators, which causes UBSAN to complain. This patch uses the same approach as in bcachefs's sort_iter and splits the iterator into a btree_iter with a flexible array member and a btree_iter_stack which embeds a btree_iter as well as a fixed-length data array.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39482">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>939fee4e7c40495134ad557dee6838e6</td>
+       <td>CVE-2024-39481</td>
+       <td>2024-07-05 07:15:10 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: media: mc: Fix graph walk in media_pipeline_start The graph walk tries to follow all links, even if they are not between pads. This causes a crash with, e.g. a MEDIA_LNK_FL_ANCILLARY_LINK link. Fix this by allowing the walk to proceed only for MEDIA_LNK_FL_DATA_LINK links.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39481">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6c80a5bec53fb762cbd6899c16261f4f</td>
+       <td>CVE-2024-39480</td>
+       <td>2024-07-05 07:15:10 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: kdb: Fix buffer overflow during tab-complete Currently, when the user attempts symbol completion with the Tab key, kdb will use strncpy() to insert the completed symbol into the command buffer. Unfortunately it passes the size of the source buffer rather than the destination to strncpy() with predictably horrible results. Most obviously if the command buffer is already full but cp, the cursor position, is in the middle of the buffer, then we will write past the end of the supplied buffer. Fix this by replacing the dubious strncpy() calls with memmove()/memcpy() calls plus explicit boundary checks to make sure we have enough space before we start moving characters around.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39480">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e2a2856be4325cfef781996e2e0b07ed</td>
+       <td>CVE-2024-39479</td>
+       <td>2024-07-05 07:15:10 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/i915/hwmon: Get rid of devm When both hwmon and hwmon drvdata (on which hwmon depends) are device managed resources, the expectation, on device unbind, is that hwmon will be released before drvdata. However, in i915 there are two separate code paths, which both release either drvdata or hwmon and either can be released before the other. These code paths (for device unbind) are as follows (see also the bug referenced below): Call Trace: release_nodes+0x11/0x70 devres_release_group+0xb2/0x110 component_unbind_all+0x8d/0xa0 component_del+0xa5/0x140 intel_pxp_tee_component_fini+0x29/0x40 [i915] intel_pxp_fini+0x33/0x80 [i915] i915_driver_remove+0x4c/0x120 [i915] i915_pci_remove+0x19/0x30 [i915] pci_device_remove+0x32/0xa0 device_release_driver_internal+0x19c/0x200 unbind_store+0x9c/0xb0 and Call Trace: release_nodes+0x11/0x70 devres_release_all+0x8a/0xc0 device_unbind_cleanup+0x9/0x70 device_release_driver_internal+0x1c1/0x200 unbind_store+0x9c/0xb0 This means that in i915, if use devm, we cannot gurantee that hwmon will always be released before drvdata. Which means that we have a uaf if hwmon sysfs is accessed when drvdata has been released but hwmon hasn't. The only way out of this seems to be do get rid of devm_ and release/free everything explicitly during device unbind. v2: Change commit message and other minor code changes v3: Cleanup from i915_hwmon_register on error (Armin Wolf) v4: Eliminate potential static analyzer warning (Rodrigo) Eliminate fetch_and_zero (Jani) v5: Restore previous logic for ddat_gt->hwmon_dev error return (Andi)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39479">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c868b3e5e84d93cd46a2745b336f5d87</td>
        <td>CVE-2024-32754</td>
        <td>2024-07-04 11:15:10 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-07-03 08:15:09</td>
        <td>The The Plus Addons for Elementor – Elementor Addons, Page Templates, Widgets, Mega Menu, WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Countdown' widget in all versions up to, and including, 5.6.1 due to insufficient input sanitization and output escaping on user supplied 'text_days' attribute. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4482">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b70227dbf1642174570fced1dda7334</td>
-       <td>CVE-2024-6440</td>
-       <td>2024-07-02 11:15:11</td>
-       <td>A vulnerability was found in SourceCodester Home Owners Collection Management System 1.0. It has been classified as critical. Affected is an unknown function of the file /classes/Master.php?f=delete_category. The manipulation of the argument id leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-270168.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6440">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>939c826fc592e8398fca103bb8c71a99</td>
-       <td>CVE-2024-6439</td>
-       <td>2024-07-02 11:15:11</td>
-       <td>A vulnerability was found in SourceCodester Home Owners Collection Management System 1.0 and classified as critical. This issue affects some unknown processing of the file /classes/Users.php?f=save. The manipulation of the argument img leads to unrestricted upload. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-270167.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6439">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b673c171a5ae5f66f2dbff4ed048149</td>
-       <td>CVE-2024-6438</td>
-       <td>2024-07-02 11:15:11</td>
-       <td>A vulnerability has been found in Hitout Carsale 1.0 and classified as critical. This vulnerability affects unknown code of the file OrderController.java. The manipulation of the argument orderBy leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-270166 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6438">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b05dea8e8558b5cedf0aa276962cbf0</td>
-       <td>CVE-2024-6264</td>
-       <td>2024-07-02 11:15:10</td>
-       <td>The Post Meta Data Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘$meta_key’ parameter in all versions up to, and including, 1.2.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6264">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6658648ff9198ec6d891b6a637c62123</td>
-       <td>CVE-2024-6099</td>
-       <td>2024-07-02 11:15:10</td>
-       <td>The LearnPress – WordPress LMS Plugin plugin for WordPress is vulnerable to unauthenticated bypass to user registration in versions up to, and including, 4.2.6.8.1. This is due to missing checks in the 'check_validate_fields' function in the checkout. This makes it possible for unauthenticated attackers to register as the default role on the site, even if registration is disabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6099">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5391a80592b737bd7731fa734f7193e</td>
-       <td>CVE-2024-6088</td>
-       <td>2024-07-02 11:15:10</td>
-       <td>The LearnPress – WordPress LMS Plugin plugin for WordPress is vulnerable to unauthorized user registration due to a missing capability check on the 'register' function in all versions up to, and including, 4.2.6.8.1. This makes it possible for unauthenticated attackers to bypass disabled user registration to create a new account with the default role.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6088">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d92b3366a3521445bb7e53fcc0451a1b</td>
-       <td>CVE-2024-4268</td>
-       <td>2024-07-02 11:15:10</td>
-       <td>The Ultimate Blocks – WordPress Blocks Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's blocks in all versions up to, and including, 3.1.9 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4268">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5dac148e832cc8129bd25e8805a70571</td>
-       <td>CVE-2024-6012</td>
-       <td>2024-07-02 10:15:09</td>
-       <td>The Cost Calculator Builder plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'embed-create-page' and 'embed-insert-pages' functions in all versions up to, and including, 3.2.12. This makes it possible for authenticated attackers, with Subscriber-level access and above, to create arbitrary posts and append arbitrary content to existing posts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6012">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0c6d3931567571b09f0e78b05be5775f</td>
-       <td>CVE-2024-6011</td>
-       <td>2024-07-02 10:15:09</td>
-       <td>The Cost Calculator Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘textarea.description’ parameter in all versions up to, and including, 3.2.12 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Administrator-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6011">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad927e1c87132d3c28ea9e92e3582f46</td>
-       <td>CVE-2024-34601</td>
-       <td>2024-07-02 10:15:08</td>
-       <td>Improper verification of intent by broadcast receiver vulnerability in GalaxyStore prior to version 4.5.81.0 allows local attackers to launch unexported activities of GalaxyStore.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-34601">详情</a></td>
       </tr>
 
      </tbody>
