@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-07-07 15:22:08 -->
+<!-- RELEASE TIME : 2024-07-08 03:24:47 -->
 <html lang="zh-cn">
 
  <head>
@@ -366,7 +366,7 @@
       <tr>
        <td>e5eaa9a99ff3e71e953bed8c6500c770</td>
        <td>CVE-2024-39486</td>
-       <td>2024-07-06 10:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-06 10:15:03</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: drm/drm_file: Fix pid refcounting race filp->pid is supposed to be a refcounted pointer; however, before this patch, drm_file_update_pid() only increments the refcount of a struct pid after storing a pointer to it in filp->pid and dropping the dev->filelist_mutex, making the following race possible: process A process B ========= ========= begin drm_file_update_pid mutex_lock(&dev->filelist_mutex) rcu_replace_pointer(filp->pid, <pid B>, 1) mutex_unlock(&dev->filelist_mutex) begin drm_file_update_pid mutex_lock(&dev->filelist_mutex) rcu_replace_pointer(filp->pid, <pid A>, 1) mutex_unlock(&dev->filelist_mutex) get_pid(<pid A>) synchronize_rcu() put_pid(<pid B>) *** pid B reaches refcount 0 and is freed here *** get_pid(<pid B>) *** UAF *** synchronize_rcu() put_pid(<pid A>) As far as I know, this race can only occur with CONFIG_PREEMPT_RCU=y because it requires RCU to detect a quiescent state in code that is not explicitly calling into the scheduler. This race leads to use-after-free of a "struct pid". It is probably somewhat hard to hit because process A has to pass through a synchronize_rcu() operation while process B is between mutex_unlock() and get_pid(). Fix it by ensuring that by the time a pointer to the current task's pid is stored in the file, an extra reference to the pid has been taken. This fix also removes the condition for synchronize_rcu(); I think that optimization is unnecessary complexity, since in that case we would usually have bailed out on the lockless check above.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39486">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>4b46ed80d99f7928d5b1a60dc6edc018</td>
        <td>CVE-2024-37260</td>
-       <td>2024-07-06 10:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-06 10:15:03</td>
        <td>Server-Side Request Forgery (SSRF) vulnerability in Theme-Ruby Foxiz.This issue affects Foxiz: from n/a through 2.3.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37260">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>c49314b3c4d81a4b10b98dd0845a2e00</td>
        <td>CVE-2024-37234</td>
-       <td>2024-07-06 10:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-07-06 10:15:02</td>
        <td>URL Redirection to Untrusted Site ('Open Redirect') vulnerability in Kodezen Limited Academy LMS.This issue affects Academy LMS: from n/a through 2.0.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37234">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>6c8ab36a79de8f5edda7f0d8dfb98855</td>
        <td>CVE-2024-37208</td>
-       <td>2024-07-06 10:15:01 <img src="imgs/new.gif" /></td>
+       <td>2024-07-06 10:15:01</td>
        <td>Server-Side Request Forgery (SSRF) vulnerability in Robert Macchi WP Scraper.This issue affects WP Scraper: from n/a through 5.7.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37208">详情</a></td>
       </tr>
@@ -398,7 +398,7 @@
       <tr>
        <td>98e88d0ed8a33e856b9294c2435624d4</td>
        <td>CVE-2024-5616</td>
-       <td>2024-07-06 09:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-07-06 09:15:02</td>
        <td>A Cross-Site Request Forgery (CSRF) vulnerability exists in mudler/LocalAI versions up to and including 2.15.0, which allows attackers to trick victims into deleting installed models. By crafting a malicious HTML page, an attacker can cause the deletion of a model, such as 'gpt-4-vision-preview', without the victim's consent. The vulnerability is due to insufficient CSRF protection mechanisms on the model deletion functionality.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5616">详情</a></td>
       </tr>
@@ -406,7 +406,7 @@
       <tr>
        <td>61b24074a3e1b94655a5968d0b4d3beb</td>
        <td>CVE-2024-40594</td>
-       <td>2024-07-06 05:15:09 <img src="imgs/new.gif" /></td>
+       <td>2024-07-06 05:15:09</td>
        <td>The OpenAI ChatGPT app before 2024-07-05 for macOS opts out of the sandbox, and stores conversations in cleartext in a location accessible to other apps.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40594">详情</a></td>
       </tr>
@@ -2100,6 +2100,78 @@
       </tr>
 
       <tr>
+       <td>6fb5a6b64efa0dfadf909b7e90559688</td>
+       <td>CVE-2023-27347</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>G Data本地权限提升漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98094">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66fbe1e259e48a64f5c3ff03ec26ec67</td>
+       <td>CVE-2023-27348</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>PDF-XChange Editor内存错误引用远程代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98093">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0c42d1f5dc5f8d86004721a8faec0591</td>
+       <td>CVE-2023-27349</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>SUSE Linux Enterprise Server数据索引错误远程代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98092">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dfab0c77f2f42ce84cef25c72e726b06</td>
+       <td>CVE-2023-27356</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>NETGEAR RAX30 logCtrl命令注入远程代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98091">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8d26302cf4baf7872d18231a51cb1464</td>
+       <td>CVE-2023-27357</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>NETGEAR RAX30信息泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98090">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c4419861bbe9a7c28f927faba323d1d7</td>
+       <td>CVE-2023-27358</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>NETGEAR RAX30 SQL注入远程代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98089">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4f7d3f7d4c25a6f407aed646227da544</td>
+       <td>CVE-2023-27359</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>TP-LINK AX1800竞争条件漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98088">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4034cd66a5edd59f8ff223dc78933e58</td>
+       <td>CVE-2023-27346</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>TP-LINK AX1800栈缓冲区溢出远程代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98087">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9bc9be0afb7bc425d51847a5d4cac672</td>
+       <td>CVE-2023-27360</td>
+       <td>2024-07-05 03:22:40</td>
+       <td>NETGEAR RAX30远程代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98086">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f4b6da0ef1980906b73963d42f72850b</td>
        <td>CVE-2023-27341</td>
        <td>2024-07-05 03:21:13</td>
@@ -2145,78 +2217,6 @@
        <td>2024-07-05 03:21:13</td>
        <td>PDF-XChange Editor越界写入远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98044">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6c52bbf33caf0a160f9c03994738cfb</td>
-       <td>CVE-2023-27344</td>
-       <td>2024-07-05 03:21:13</td>
-       <td>PDF-XChange Editor越界写入远程代码执行漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98043">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e57e86790f91b65edf47dd6ecc22f28</td>
-       <td>CVE-2024-3244</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress EmbedPress Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98003">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3becf5cb1cd99b8ea6512431b47beb73</td>
-       <td>CVE-2024-2311</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress Avada Theme跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98002">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>835d45b061424c7ff503105f3041d5eb</td>
-       <td>CVE-2024-2325</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress Link Library Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98001">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8b0f6df7a23fae232da82fd787fc954d</td>
-       <td>CVE-2024-2306</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress Revslider Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98000">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b83ddf816de57582399e72a6c8ab144c</td>
-       <td>CVE-2024-2327</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress Global Elementor Buttons Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/97999">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7a530b47318d0c794bde62ae9ac191f6</td>
-       <td>CVE-2024-2305</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress Cards for Beaver Builder Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/97998">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>81f6678fb5519e6244ad5f47e61cb410</td>
-       <td>CVE-2024-3167</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress Ocean Extra Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/97997">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d9fa5501f57eaa2ff8f0b6b879c1bbb5</td>
-       <td>CVE-2024-2302</td>
-       <td>2024-07-04 09:23:08</td>
-       <td>WordPress Easy Digital Downloads Plugin信息泄露漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/97996">详情</a></td>
       </tr>
 
      </tbody>
