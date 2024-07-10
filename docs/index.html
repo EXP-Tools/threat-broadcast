@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-07-10 09:22:11 -->
+<!-- RELEASE TIME : 2024-07-10 15:23:52 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c47563640828c203dcca097299cde42e</td>
+       <td>CVE-2024-6556</td>
+       <td>2024-07-10 09:15:02 <img src="imgs/new.gif" /></td>
+       <td>The SmartCrawl WordPress SEO checker, SEO analyzer, SEO optimizer plugin for WordPress is vulnerable to Full Path Disclosure in all versions up to, and including, 3.10.8. This is due the plugin utilizing mobiledetect without preventing direct access to the files. This makes it possible for unauthenticated attackers to retrieve the full path of the web application, which can be used to aid other attacks. The information displayed is not useful on its own, and requires another vulnerability to be present for damage to an affected website.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6556">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a223d05c5f168cdda11fdd8c548d5639</td>
+       <td>CVE-2024-6422</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can manipulate the device via Telnet, stop processes, read, delete and change data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6422">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5d6b3d3686fddcbb4d4c7a01681ae34</td>
+       <td>CVE-2024-6421</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can read out sensitive device information through a incorrectly configured FTP service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6421">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6971d5c0325e151e3989939c0c5be894</td>
+       <td>CVE-2024-5664</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>The MP3 Audio Player – Music Player, Podcast Player & Radio by Sonaar plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'id' attribute within the plugin's sonaar_audioplayer shortcode in all versions up to, and including, 5.5 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5664">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3ce2c4793d1b3b06d4d5158f0d6a6e0f</td>
+       <td>CVE-2024-39493</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: crypto: qat - Fix ADF_DEV_RESET_SYNC memory leak Using completion_done to determine whether the caller has gone away only works after a complete call. Furthermore it's still possible that the caller has not yet called wait_for_completion, resulting in another potential UAF. Fix this by making the caller use cancel_work_sync and then freeing the memory safely.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39493">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e3a5fc9be63d921485b3e3bd8720d4a8</td>
+       <td>CVE-2024-39492</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mailbox: mtk-cmdq: Fix pm_runtime_get_sync() warning in mbox shutdown The return value of pm_runtime_get_sync() in cmdq_mbox_shutdown() will return 1 when pm runtime state is active, and we don't want to get the warning message in this case. So we change the return value < 0 for WARN_ON().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39492">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>db4e4d78ee1de64ab9abc099065fa275</td>
+       <td>CVE-2024-39491</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ALSA: hda: cs35l56: Fix lifetime of cs_dsp instance The cs_dsp instance is initialized in the driver probe() so it should be freed in the driver remove(). Also fix a missing call to cs_dsp_remove() in the error path of cs35l56_hda_common_probe(). The call to cs_dsp_remove() was being done in the component unbind callback cs35l56_hda_unbind(). This meant that if the driver was unbound and then re-bound it would be using an uninitialized cs_dsp instance. It is best to initialize the cs_dsp instance in probe() so that it can return an error if it fails. The component binding API doesn't have any error handling so there's no way to handle a failure if cs_dsp was initialized in the bind.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>efea5be77d4b07204b894d8cdd0bdc26</td>
+       <td>CVE-2024-39490</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ipv6: sr: fix missing sk_buff release in seg6_input_core The seg6_input() function is responsible for adding the SRH into a packet, delegating the operation to the seg6_input_core(). This function uses the skb_cow_head() to ensure that there is sufficient headroom in the sk_buff for accommodating the link-layer header. In the event that the skb_cow_header() function fails, the seg6_input_core() catches the error but it does not release the sk_buff, which will result in a memory leak. This issue was introduced in commit af3b5158b89d ("ipv6: sr: fix BUG due to headroom too small after SRH push") and persists even after commit 7a3f5b0de364 ("netfilter: add netfilter hooks to SRv6 data plane"), where the entire seg6_input() code was refactored to deal with netfilter hooks. The proposed patch addresses the identified memory leak by requiring the seg6_input_core() function to release the sk_buff in the event that skb_cow_head() fails.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39490">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d4419ca777c7295694edea8aeb2ef32a</td>
+       <td>CVE-2024-39489</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ipv6: sr: fix memleak in seg6_hmac_init_algo seg6_hmac_init_algo returns without cleaning up the previous allocations if one fails, so it's going to leak all that memory and the crypto tfms. Update seg6_hmac_exit to only free the memory when allocated, so we can reuse the code directly.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39489">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7649d585f311192d9ce37bda100bb1a8</td>
+       <td>CVE-2024-39488</td>
+       <td>2024-07-10 08:15:11 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: arm64: asm-bug: Add .align 2 to the end of __BUG_ENTRY When CONFIG_DEBUG_BUGVERBOSE=n, we fail to add necessary padding bytes to bug_table entries, and as a result the last entry in a bug table will be ignored, potentially leading to an unexpected panic(). All prior entries in the table will be handled correctly. The arm64 ABI requires that struct fields of up to 8 bytes are naturally-aligned, with padding added within a struct such that struct are suitably aligned within arrays. When CONFIG_DEBUG_BUGVERPOSE=y, the layout of a bug_entry is: struct bug_entry { signed int bug_addr_disp; // 4 bytes signed int file_disp; // 4 bytes unsigned short line; // 2 bytes unsigned short flags; // 2 bytes } ... with 12 bytes total, requiring 4-byte alignment. When CONFIG_DEBUG_BUGVERBOSE=n, the layout of a bug_entry is: struct bug_entry { signed int bug_addr_disp; // 4 bytes unsigned short flags; // 2 bytes < implicit padding > // 2 bytes } ... with 8 bytes total, with 6 bytes of data and 2 bytes of trailing padding, requiring 4-byte alginment. When we create a bug_entry in assembly, we align the start of the entry to 4 bytes, which implicitly handles padding for any prior entries. However, we do not align the end of the entry, and so when CONFIG_DEBUG_BUGVERBOSE=n, the final entry lacks the trailing padding bytes. For the main kernel image this is not a problem as find_bug() doesn't depend on the trailing padding bytes when searching for entries: for (bug = __start___bug_table; bug < __stop___bug_table; ++bug) if (bugaddr == bug_addr(bug)) return bug; However for modules, module_bug_finalize() depends on the trailing bytes when calculating the number of entries: mod->num_bugs = sechdrs[i].sh_size / sizeof(struct bug_entry); ... and as the last bug_entry lacks the necessary padding bytes, this entry will not be counted, e.g. in the case of a single entry: sechdrs[i].sh_size == 6 sizeof(struct bug_entry) == 8; sechdrs[i].sh_size / sizeof(struct bug_entry) == 0; Consequently module_find_bug() will miss the last bug_entry when it does: for (i = 0; i < mod->num_bugs; ++i, ++bug) if (bugaddr == bug_addr(bug)) goto out; ... which can lead to a kenrel panic due to an unhandled bug. This can be demonstrated with the following module: static int __init buginit(void) { WARN(1, "hello\n"); return 0; } static void __exit bugexit(void) { } module_init(buginit); module_exit(bugexit); MODULE_LICENSE("GPL"); ... which will trigger a kernel panic when loaded: ------------[ cut here ]------------ hello Unexpected kernel BRK exception at EL1 Internal error: BRK handler: 00000000f2000800 [#1] PREEMPT SMP Modules linked in: hello(O+) CPU: 0 PID: 50 Comm: insmod Tainted: G O 6.9.1 #8 Hardware name: linux,dummy-virt (DT) pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--) pc : buginit+0x18/0x1000 [hello] lr : buginit+0x18/0x1000 [hello] sp : ffff800080533ae0 x29: ffff800080533ae0 x28: 0000000000000000 x27: 0000000000000000 x26: ffffaba8c4e70510 x25: ffff800080533c30 x24: ffffaba8c4a28a58 x23: 0000000000000000 x22: 0000000000000000 x21: ffff3947c0eab3c0 x20: ffffaba8c4e3f000 x19: ffffaba846464000 x18: 0000000000000006 x17: 0000000000000000 x16: ffffaba8c2492834 x15: 0720072007200720 x14: 0720072007200720 x13: ffffaba8c49b27c8 x12: 0000000000000312 x11: 0000000000000106 x10: ffffaba8c4a0a7c8 x9 : ffffaba8c49b27c8 x8 : 00000000ffffefff x7 : ffffaba8c4a0a7c8 x6 : 80000000fffff000 x5 : 0000000000000107 x4 : 0000000000000000 x3 : 0000000000000000 x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff3947c0eab3c0 Call trace: buginit+0x18/0x1000 [hello] do_one_initcall+0x80/0x1c8 do_init_module+0x60/0x218 load_module+0x1ba4/0x1d70 __do_sys_init_module+0x198/0x1d0 __arm64_sys_init_module+0x1c/0x28 invoke_syscall+0x48/0x114 el0_svc ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39488">详情</a></td>
+      </tr>
+
+      <tr>
        <td>52a13b8ab1b96141485c048c7cd4ff7e</td>
        <td>CVE-2024-5946</td>
        <td>2024-07-09 11:15:16 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-07-08 02:15:01</td>
        <td>IBM System Management for i 7.2, 7.3, and 7.4 could allow a local user to gain elevated privileges due to an unqualified library program call. A malicious actor could cause user-controlled code to run with administrator privilege. IBM X-Force ID: 295227.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-38330">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>418378fa44a218eeac6a0f55ffc3a344</td>
-       <td>CVE-2024-40605</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the Foreground skin for MediaWiki through 1.42.1. There is stored XSS via MediaWiki:Sidebar top-level menu entries.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40605">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>22b411875a3d4e1575b9a33937180dd0</td>
-       <td>CVE-2024-40604</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the Nimbus skin for MediaWiki through 1.42.1. There is Stored XSS via MediaWiki:Nimbus-sidebar menu and submenu entries.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40604">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6afc03f123df88e5a53cbcdfe1be0a50</td>
-       <td>CVE-2024-40603</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the ArticleRatings extension for MediaWiki through 1.42.1. Special:ChangeRating allows CSRF to alter data via a GET request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40603">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>388657c90e69da41057c70a532569c89</td>
-       <td>CVE-2024-40602</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the Tempo skin for MediaWiki through 1.42.1. There is stored XSS via MediaWiki:Sidebar top-level menu entries.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40602">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e73319086dfd71065e6fd0b02187a6bf</td>
-       <td>CVE-2024-40601</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the MediaWikiChat extension for MediaWiki through 1.42.1. CSRF can occur in API modules.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40601">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb97e4866ab1104516b9dbd0e27515e7</td>
-       <td>CVE-2024-40600</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the Metrolook skin for MediaWiki through 1.42.1. There is stored XSS via MediaWiki:Sidebar top-level menu entries.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40600">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7fabc90625fdaa8ed561192cb7ed3a41</td>
-       <td>CVE-2024-40599</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the GuMaxDD skin for MediaWiki through 1.42.1. There is stored XSS via MediaWiki:Sidebar top-level menu entries.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40599">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2ffebf53eed1f68500cff51dce553d4b</td>
-       <td>CVE-2024-40598</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the CheckUser extension for MediaWiki through 1.42.1. The API can expose suppressed information for log events. (The log_deleted attribute is not applied to entries.)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40598">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>17eb45b2379764936627d89417a2dcf6</td>
-       <td>CVE-2024-40597</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the CheckUser extension for MediaWiki through 1.42.1. It can expose suppressed information for log events. (The log_deleted attribute is not respected.)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40597">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>425dcf0f472cfb925aee1f6f7b2ab2ea</td>
-       <td>CVE-2024-40596</td>
-       <td>2024-07-07 00:15:10</td>
-       <td>An issue was discovered in the CheckUser extension for MediaWiki through 1.42.1. The Special:Investigate feature can expose suppressed information for log events. (TimelineService does not support properly suppressing.)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40596">详情</a></td>
       </tr>
 
      </tbody>
