@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-07-15 15:25:03 -->
+<!-- RELEASE TIME : 2024-07-16 01:28:22 -->
 <html lang="zh-cn">
 
  <head>
@@ -366,7 +366,7 @@
       <tr>
        <td>6d0983a97d0c492b804c34ee9bbc3a8a</td>
        <td>CVE-2023-52885</td>
-       <td>2024-07-14 08:15:01 <img src="imgs/new.gif" /></td>
+       <td>2024-07-14 08:15:01</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: SUNRPC: Fix UAF in svc_tcp_listen_data_ready() After the listener svc_sock is freed, and before invoking svc_tcp_accept() for the established child sock, there is a window that the newsock retaining a freed listener svc_sock in sk_user_data which cloning from parent. In the race window, if data is received on the newsock, we will observe use-after-free report in svc_tcp_listen_data_ready(). Reproduce by two tasks: 1. while :; do rpc.nfsd 0 ; rpc.nfsd; done 2. while :; do echo "" | ncat -4 127.0.0.1 2049 ; done KASAN report: ================================================================== BUG: KASAN: slab-use-after-free in svc_tcp_listen_data_ready+0x1cf/0x1f0 [sunrpc] Read of size 8 at addr ffff888139d96228 by task nc/102553 CPU: 7 PID: 102553 Comm: nc Not tainted 6.3.0+ #18 Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 11/12/2020 Call Trace: <IRQ> dump_stack_lvl+0x33/0x50 print_address_description.constprop.0+0x27/0x310 print_report+0x3e/0x70 kasan_report+0xae/0xe0 svc_tcp_listen_data_ready+0x1cf/0x1f0 [sunrpc] tcp_data_queue+0x9f4/0x20e0 tcp_rcv_established+0x666/0x1f60 tcp_v4_do_rcv+0x51c/0x850 tcp_v4_rcv+0x23fc/0x2e80 ip_protocol_deliver_rcu+0x62/0x300 ip_local_deliver_finish+0x267/0x350 ip_local_deliver+0x18b/0x2d0 ip_rcv+0x2fb/0x370 __netif_receive_skb_one_core+0x166/0x1b0 process_backlog+0x24c/0x5e0 __napi_poll+0xa2/0x500 net_rx_action+0x854/0xc90 __do_softirq+0x1bb/0x5de do_softirq+0xcb/0x100 </IRQ> <TASK> ... </TASK> Allocated by task 102371: kasan_save_stack+0x1e/0x40 kasan_set_track+0x21/0x30 __kasan_kmalloc+0x7b/0x90 svc_setup_socket+0x52/0x4f0 [sunrpc] svc_addsock+0x20d/0x400 [sunrpc] __write_ports_addfd+0x209/0x390 [nfsd] write_ports+0x239/0x2c0 [nfsd] nfsctl_transaction_write+0xac/0x110 [nfsd] vfs_write+0x1c3/0xae0 ksys_write+0xed/0x1c0 do_syscall_64+0x38/0x90 entry_SYSCALL_64_after_hwframe+0x72/0xdc Freed by task 102551: kasan_save_stack+0x1e/0x40 kasan_set_track+0x21/0x30 kasan_save_free_info+0x2a/0x50 __kasan_slab_free+0x106/0x190 __kmem_cache_free+0x133/0x270 svc_xprt_free+0x1e2/0x350 [sunrpc] svc_xprt_destroy_all+0x25a/0x440 [sunrpc] nfsd_put+0x125/0x240 [nfsd] nfsd_svc+0x2cb/0x3c0 [nfsd] write_threads+0x1ac/0x2a0 [nfsd] nfsctl_transaction_write+0xac/0x110 [nfsd] vfs_write+0x1c3/0xae0 ksys_write+0xed/0x1c0 do_syscall_64+0x38/0x90 entry_SYSCALL_64_after_hwframe+0x72/0xdc Fix the UAF by simply doing nothing in svc_tcp_listen_data_ready() if state != TCP_LISTEN, that will avoid dereferencing svsk for all child socket.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52885">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>2a4b63d57c0e3a978301b4fbc867a5fb</td>
        <td>CVE-2024-6730</td>
-       <td>2024-07-14 02:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-14 02:15:03</td>
        <td>A vulnerability was found in Nanjing Xingyuantu Technology SparkShop up to 1.1.6. It has been rated as critical. This issue affects some unknown processing of the file /api/Common/uploadFile. The manipulation of the argument file leads to unrestricted upload. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-271403.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6730">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>8af0b02674cd01b58ee357c0543fff72</td>
        <td>CVE-2024-6729</td>
-       <td>2024-07-14 02:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-07-14 02:15:02</td>
        <td>A vulnerability was found in SourceCodester Kortex Lite Advocate Office Management System 1.0. It has been declared as critical. This vulnerability affects unknown code of the file /control/add_act.php. The manipulation of the argument aname leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. VDB-271402 is the identifier assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6729">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>2eafabe0b90d4189f4ca12bcfc02a174</td>
        <td>CVE-2024-6728</td>
-       <td>2024-07-14 01:15:01 <img src="imgs/new.gif" /></td>
+       <td>2024-07-14 01:15:01</td>
        <td>A vulnerability was found in itsourcecode Tailoring Management System 1.0. It has been classified as critical. This affects an unknown part of the file typeedit.php. The manipulation of the argument id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-271401 was assigned to this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6728">详情</a></td>
       </tr>
