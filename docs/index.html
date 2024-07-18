@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-07-17 15:25:53 -->
+<!-- RELEASE TIME : 2024-07-18 01:25:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -366,7 +366,7 @@
       <tr>
        <td>b068c090a4ada1ecc868575f34e2f03a</td>
        <td>CVE-2024-6621</td>
-       <td>2024-07-16 11:15:10 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 11:15:10</td>
        <td>The RSS Aggregator – RSS Import, News Feeds, Feed to Post, and Autoblogging plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'wprss_activate_feed_source' and 'wprss_pause_feed_source' functions in all versions up to, and including, 4.23.11. This makes it possible for authenticated attackers, with Subscriber-level access and above, to activate or pause existing RSS feeds.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6621">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>4b79bc9d2c58875adb44f972259a1fef</td>
        <td>CVE-2024-6457</td>
-       <td>2024-07-16 11:15:10 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 11:15:10</td>
        <td>The HUSKY – Products Filter Professional for WooCommerce plugin for WordPress is vulnerable to time-based SQL Injection via the ‘woof_author’ parameter in all versions up to, and including, 1.3.6 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6457">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>850899d43c1eb3ed75a35a4ea92f06dc</td>
        <td>CVE-2024-6579</td>
-       <td>2024-07-16 10:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 10:15:03</td>
        <td>The Web and WooCommerce Addons for WPBakery Builder plugin for WordPress is vulnerable to unauthorized plugin settings modification due to a missing capability check on several plugin functions in all versions up to, and including, 1.4.5. This makes it possible for authenticated attackers, with Subscriber-level access and above, to change some of the plugin settings.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6579">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>f4d88b56136c8eb5988afa519068a0b8</td>
        <td>CVE-2024-39887</td>
-       <td>2024-07-16 10:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 10:15:03</td>
        <td>An SQL Injection vulnerability in Apache Superset exists due to improper neutralization of special elements used in SQL commands. Specifically, certain engine-specific functions are not checked, which allows attackers to bypass Apache Superset's SQL authorization. To mitigate this, a new configuration key named DISALLOWED_SQL_FUNCTIONS has been introduced. This key disallows the use of the following PostgreSQL functions: version, query_to_xml, inet_server_addr, and inet_client_addr. Additional functions can be added to this list for increased protection. This issue affects Apache Superset: before 4.0.2. Users are recommended to upgrade to version 4.0.2, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39887">详情</a></td>
       </tr>
@@ -398,7 +398,7 @@
       <tr>
        <td>cec48a1283ae095d37bd0f71655025fc</td>
        <td>CVE-2023-52886</td>
-       <td>2024-07-16 10:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 10:15:02</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: USB: core: Fix race by not overwriting udev->descriptor in hub_port_init() Syzbot reported an out-of-bounds read in sysfs.c:read_descriptors(): BUG: KASAN: slab-out-of-bounds in read_descriptors+0x263/0x280 drivers/usb/core/sysfs.c:883 Read of size 8 at addr ffff88801e78b8c8 by task udevd/5011 CPU: 0 PID: 5011 Comm: udevd Not tainted 6.4.0-rc6-syzkaller-00195-g40f71e7cd3c6 #0 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 05/27/2023 Call Trace: <TASK> __dump_stack lib/dump_stack.c:88 [inline] dump_stack_lvl+0xd9/0x150 lib/dump_stack.c:106 print_address_description.constprop.0+0x2c/0x3c0 mm/kasan/report.c:351 print_report mm/kasan/report.c:462 [inline] kasan_report+0x11c/0x130 mm/kasan/report.c:572 read_descriptors+0x263/0x280 drivers/usb/core/sysfs.c:883 ... Allocated by task 758: ... __do_kmalloc_node mm/slab_common.c:966 [inline] __kmalloc+0x5e/0x190 mm/slab_common.c:979 kmalloc include/linux/slab.h:563 [inline] kzalloc include/linux/slab.h:680 [inline] usb_get_configuration+0x1f7/0x5170 drivers/usb/core/config.c:887 usb_enumerate_device drivers/usb/core/hub.c:2407 [inline] usb_new_device+0x12b0/0x19d0 drivers/usb/core/hub.c:2545 As analyzed by Khazhy Kumykov, the cause of this bug is a race between read_descriptors() and hub_port_init(): The first routine uses a field in udev->descriptor, not expecting it to change, while the second overwrites it. Prior to commit 45bf39f8df7f ("USB: core: Don't hold device lock while reading the "descriptors" sysfs file") this race couldn't occur, because the routines were mutually exclusive thanks to the device locking. Removing that locking from read_descriptors() exposed it to the race. The best way to fix the bug is to keep hub_port_init() from changing udev->descriptor once udev has been initialized and registered. Drivers expect the descriptors stored in the kernel to be immutable; we should not undermine this expectation. In fact, this change should have been made long ago. So now hub_port_init() will take an additional argument, specifying a buffer in which to store the device descriptor it reads. (If udev has not yet been initialized, the buffer pointer will be NULL and then hub_port_init() will store the device descriptor in udev as before.) This eliminates the data race responsible for the out-of-bounds read. The changes to hub_port_init() appear more extensive than they really are, because of indentation changes resulting from an attempt to avoid writing to other parts of the usb_device structure after it has been initialized. Similar changes should be made to the code that reads the BOS descriptor, but that can be handled in a separate patch later on. This patch is sufficient to fix the bug found by syzbot.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52886">详情</a></td>
       </tr>
@@ -406,7 +406,7 @@
       <tr>
        <td>2afe9bdb18843573cef96648d376c365</td>
        <td>CVE-2024-6570</td>
-       <td>2024-07-16 09:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:15:03</td>
        <td>The Glossary plugin for WordPress is vulnerable to Full Path Disclosure in all versions up to, and including, 2.2.26. This is due the plugin utilizing wpdesk and not preventing direct access to the test files along with display_errors being enabled. This makes it possible for unauthenticated attackers to retrieve the full path of the web application, which can be used to aid other attacks. The information displayed is not useful on its own, and requires another vulnerability to be present for damage to an affected website.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6570">详情</a></td>
       </tr>
@@ -414,7 +414,7 @@
       <tr>
        <td>f8574bc245dd0a05b55b5951a38fa3eb</td>
        <td>CVE-2024-6565</td>
-       <td>2024-07-16 09:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:15:03</td>
        <td>The AForms — Form Builder for Price Calculator & Cost Estimation plugin for WordPress is vulnerable to Full Path Disclosure in all versions up to, and including, 2.2.6. This is due to the plugin utilizing the aura library and allowing direct access to the phpunit test files. This makes it possible for unauthenticated attackers to retrieve the full path of the web application, which can be used to aid other attacks. The information displayed is not useful on its own, and requires another vulnerability to be present for damage to an affected website.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6565">详情</a></td>
       </tr>
@@ -422,7 +422,7 @@
       <tr>
        <td>8b0aceba47526d936001a60b7f9b3ba6</td>
        <td>CVE-2024-5852</td>
-       <td>2024-07-16 09:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:15:03</td>
        <td>The WordPress File Upload plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 4.24.7 via the 'uploadpath' parameter of the wordpress_file_upload shortcode. This makes it possible for authenticated attackers, with Contributor-level access and above, to upload limited files to arbitrary locations on the web server.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5852">详情</a></td>
       </tr>
@@ -430,7 +430,7 @@
       <tr>
        <td>c8825b85fe6c15b7feb3f4d5be677845</td>
        <td>CVE-2024-3779</td>
-       <td>2024-07-16 09:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:15:02</td>
        <td>Denial of service vulnerability present shortly after product installation or upgrade, potentially allowed an attacker to render ESET’s security product inoperable, provided non-default preconditions were met.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-3779">详情</a></td>
       </tr>
@@ -438,7 +438,7 @@
       <tr>
        <td>0dc649c43ea5439b744a205c32ae33fb</td>
        <td>CVE-2024-3587</td>
-       <td>2024-07-16 09:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:15:02</td>
        <td>The Premium Portfolio Features for Phlox theme plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's Grid Portfolios Widget in all versions up to, and including, 2.3.2 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-3587">详情</a></td>
       </tr>
@@ -2102,7 +2102,7 @@
       <tr>
        <td>da77ae8c6cdcbcdab4c13718baf5cccf</td>
        <td>CVE-2024-25423</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>MAXON CINEMA 4D越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98810">详情</a></td>
       </tr>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>ef3f4fe668c31546dc2bd34012e8f9ff</td>
        <td>CVE-2024-23127</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD堆缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98809">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>4f53b733c6d2d656f997f281d84ac7e5</td>
        <td>CVE-2023-4895</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>GitLab EE信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98808">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>f63ca031409ffdc9e26576ea78527c77</td>
        <td>CVE-2024-23121</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98807">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>b6c6f6b6433f9210781976dd877e4868</td>
        <td>CVE-2024-23122</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98806">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>b26d7212558ecd96e9d6b2b2beffc6ab</td>
        <td>CVE-2024-1525</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>GitLab EE访问控制错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98805">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>2c3c69d45cba9757c7153e046ede0714</td>
        <td>CVE-2024-0446</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98804">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>a1437ac9850524c19ff0dbd5d9944eda</td>
        <td>CVE-2024-23120</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98803">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>0b3397a3f6d6cfadf59de9b0737094cc</td>
        <td>CVE-2024-23123</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98802">详情</a></td>
       </tr>
@@ -2174,7 +2174,7 @@
       <tr>
        <td>46f208ebe17986e76d0d7c17363b884a</td>
        <td>CVE-2024-23126</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD堆栈缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98801">详情</a></td>
       </tr>
@@ -2182,7 +2182,7 @@
       <tr>
        <td>e0c368d1221825ca76429f7644f972aa</td>
        <td>CVE-2024-23124</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD越界写入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98800">详情</a></td>
       </tr>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>1d33f364b74948d40924919d4e3d0ca6</td>
        <td>CVE-2023-3509</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>GitLab访问控制错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98799">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>8cc53acc17d2be7fbccb8dfd7319613c</td>
        <td>CVE-2024-1709</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>ConnectWise ScreenConnect身份认证绕过漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98798">详情</a></td>
       </tr>
@@ -2206,7 +2206,7 @@
       <tr>
        <td>2ea11b8ed4c0e5bdde3902be94bc306e</td>
        <td>CVE-2024-23125</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>Autodesk AutoCAD堆栈缓冲区溢出漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98797">详情</a></td>
       </tr>
@@ -2214,7 +2214,7 @@
       <tr>
        <td>5aa887d29ed70141dae3ed4d78eb0494</td>
        <td>CVE-2022-45177</td>
-       <td>2024-07-16 09:22:00 <img src="imgs/new.gif" /></td>
+       <td>2024-07-16 09:22:00</td>
        <td>LIVEBOX Collaboration vDesk可观察响应差异漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/98796">详情</a></td>
       </tr>
