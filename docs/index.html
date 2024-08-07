@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-08-07 01:29:46 -->
+<!-- RELEASE TIME : 2024-08-07 21:23:16 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7e2d7d9a003a456577432f74340a30d1</td>
+       <td>CVE-2024-7583</td>
+       <td>2024-08-07 16:15:48 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as critical, has been found in Tenda i22 1.0.0.3(4687). This issue affects the function formApPortalOneKeyAuth of the file /goform/apPortalOneKeyAuth. The manipulation of the argument data leads to buffer overflow. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7583">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f20e0ba44daf6197ad93a9fcd03381b5</td>
+       <td>CVE-2024-7582</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical was found in Tenda i22 1.0.0.3(4687). This vulnerability affects the function formApPortalAccessCodeAuth of the file /goform/apPortalAccessCodeAuth. The manipulation of the argument accessCode/data/acceInfo leads to buffer overflow. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7582">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a8e63a5e832ca992f314e1308525ff43</td>
+       <td>CVE-2024-42250</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: cachefiles: add missing lock protection when polling Add missing lock protection in poll routine when iterating xarray, otherwise: Even with RCU read lock held, only the slot of the radix tree is ensured to be pinned there, while the data structure (e.g. struct cachefiles_req) stored in the slot has no such guarantee. The poll routine will iterate the radix tree and dereference cachefiles_req accordingly. Thus RCU read lock is not adequate in this case and spinlock is needed here.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42250">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5736391dadac440d9acdab81546f0263</td>
+       <td>CVE-2024-42249</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: spi: don't unoptimize message in spi_async() Calling spi_maybe_unoptimize_message() in spi_async() is wrong because the message is likely to be in the queue and not transferred yet. This can corrupt the message while it is being used by the controller driver. spi_maybe_unoptimize_message() is already called in the correct place in spi_finalize_current_message() to balance the call to spi_maybe_optimize_message() in spi_async().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42249">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cfce4f87c16d1797cbf9785257d1fb67</td>
+       <td>CVE-2024-42248</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: tty: serial: ma35d1: Add a NULL check for of_node The pdev->dev.of_node can be NULL if the "serial" node is absent. Add a NULL check to return an error in such cases.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42248">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d3e2f9da446b3f5add2c241aae4b6f7</td>
+       <td>CVE-2024-42247</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: wireguard: allowedips: avoid unaligned 64-bit memory accesses On the parisc platform, the kernel issues kernel warnings because swap_endian() tries to load a 128-bit IPv6 address from an unaligned memory location: Kernel: unaligned access to 0x55f4688c in wg_allowedips_insert_v6+0x2c/0x80 [wireguard] (iir 0xf3010df) Kernel: unaligned access to 0x55f46884 in wg_allowedips_insert_v6+0x38/0x80 [wireguard] (iir 0xf2010dc) Avoid such unaligned memory accesses by instead using the get_unaligned_be64() helper macro. [Jason: replace src[8] in original patch with src+8]</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42247">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bc4fc5c1111f95ffa5319300e0724e0c</td>
+       <td>CVE-2024-42246</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net, sunrpc: Remap EPERM in case of connection failure in xs_tcp_setup_socket When using a BPF program on kernel_connect(), the call can return -EPERM. This causes xs_tcp_setup_socket() to loop forever, filling up the syslog and causing the kernel to potentially freeze up. Neil suggested: This will propagate -EPERM up into other layers which might not be ready to handle it. It might be safer to map EPERM to an error we would be more likely to expect from the network system - such as ECONNREFUSED or ENETDOWN. ECONNREFUSED as error seems reasonable. For programs setting a different error can be out of reach (see handling in 4fbac77d2d09) in particular on kernels which do not have f10d05966196 ("bpf: Make BPF_PROG_RUN_ARRAY return -err instead of allow boolean"), thus given that it is better to simply remap for consistent behavior. UDP does handle EPERM in xs_udp_send_request().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42246">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0afa580c8a18e2ae29f403cf1107a1e2</td>
+       <td>CVE-2024-42245</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: Revert "sched/fair: Make sure to try to detach at least one movable task" This reverts commit b0defa7ae03ecf91b8bfd10ede430cff12fcbd06. b0defa7ae03ec changed the load balancing logic to ignore env.max_loop if all tasks examined to that point were pinned. The goal of the patch was to make it more likely to be able to detach a task buried in a long list of pinned tasks. However, this has the unfortunate side effect of creating an O(n) iteration in detach_tasks(), as we now must fully iterate every task on a cpu if all or most are pinned. Since this load balance code is done with rq lock held, and often in softirq context, it is very easy to trigger hard lockups. We observed such hard lockups with a user who affined O(10k) threads to a single cpu. When I discussed this with Vincent he initially suggested that we keep the limit on the number of tasks to detach, but increase the number of tasks we can search. However, after some back and forth on the mailing list, he recommended we instead revert the original patch, as it seems likely no one was actually getting hit by the original issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42245">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>86f45fc3f55a8a7393dc496839bff629</td>
+       <td>CVE-2024-42244</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: USB: serial: mos7840: fix crash on resume Since commit c49cfa917025 ("USB: serial: use generic method if no alternative is provided in usb serial layer"), USB serial core calls the generic resume implementation when the driver has not provided one. This can trigger a crash on resume with mos7840 since support for multiple read URBs was added back in 2011. Specifically, both port read URBs are now submitted on resume for open ports, but the context pointer of the second URB is left set to the core rather than mos7840 port structure. Fix this by implementing dedicated suspend and resume functions for mos7840. Tested with Delock 87414 USB 2.0 to 4x serial adapter. [ johan: analyse crash and rewrite commit message; set busy flag on resume; drop bulk-in check; drop unnecessary usb_kill_urb() ]</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42244">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c5f1168d4b38c6c79311c9608eba03a4</td>
+       <td>CVE-2024-42243</td>
+       <td>2024-08-07 16:15:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm/filemap: make MAX_PAGECACHE_ORDER acceptable to xarray Patch series "mm/filemap: Limit page cache size to that supported by xarray", v2. Currently, xarray can't support arbitrary page cache size. More details can be found from the WARN_ON() statement in xas_split_alloc(). In our test whose code is attached below, we hit the WARN_ON() on ARM64 system where the base page size is 64KB and huge page size is 512MB. The issue was reported long time ago and some discussions on it can be found here [1]. [1] https://www.spinics.net/lists/linux-xfs/msg75404.html In order to fix the issue, we need to adjust MAX_PAGECACHE_ORDER to one supported by xarray and avoid PMD-sized page cache if needed. The code changes are suggested by David Hildenbrand. PATCH[1] adjusts MAX_PAGECACHE_ORDER to that supported by xarray PATCH[2-3] avoids PMD-sized page cache in the synchronous readahead path PATCH[4] avoids PMD-sized page cache for shmem files if needed Test program ============ # cat test.c #define _GNU_SOURCE #include <stdio.h> #include <stdlib.h> #include <unistd.h> #include <string.h> #include <fcntl.h> #include <errno.h> #include <sys/syscall.h> #include <sys/mman.h> #define TEST_XFS_FILENAME "/tmp/data" #define TEST_SHMEM_FILENAME "/dev/shm/data" #define TEST_MEM_SIZE 0x20000000 int main(int argc, char **argv) { const char *filename; int fd = 0; void *buf = (void *)-1, *p; int pgsize = getpagesize(); int ret; if (pgsize != 0x10000) { fprintf(stderr, "64KB base page size is required\n"); return -EPERM; } system("echo force > /sys/kernel/mm/transparent_hugepage/shmem_enabled"); system("rm -fr /tmp/data"); system("rm -fr /dev/shm/data"); system("echo 1 > /proc/sys/vm/drop_caches"); /* Open xfs or shmem file */ filename = TEST_XFS_FILENAME; if (argc > 1 && !strcmp(argv[1], "shmem")) filename = TEST_SHMEM_FILENAME; fd = open(filename, O_CREAT | O_RDWR | O_TRUNC); if (fd < 0) { fprintf(stderr, "Unable to open <%s>\n", filename); return -EIO; } /* Extend file size */ ret = ftruncate(fd, TEST_MEM_SIZE); if (ret) { fprintf(stderr, "Error %d to ftruncate()\n", ret); goto cleanup; } /* Create VMA */ buf = mmap(NULL, TEST_MEM_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0); if (buf == (void *)-1) { fprintf(stderr, "Unable to mmap <%s>\n", filename); goto cleanup; } fprintf(stdout, "mapped buffer at 0x%p\n", buf); ret = madvise(buf, TEST_MEM_SIZE, MADV_HUGEPAGE); if (ret) { fprintf(stderr, "Unable to madvise(MADV_HUGEPAGE)\n"); goto cleanup; } /* Populate VMA */ ret = madvise(buf, TEST_MEM_SIZE, MADV_POPULATE_WRITE); if (ret) { fprintf(stderr, "Error %d to madvise(MADV_POPULATE_WRITE)\n", ret); goto cleanup; } /* Punch the file to enforce xarray split */ ret = fallocate(fd, FALLOC_FL_KEEP_SIZE | FALLOC_FL_PUNCH_HOLE, TEST_MEM_SIZE - pgsize, pgsize); if (ret) fprintf(stderr, "Error %d to fallocate()\n", ret); cleanup: if (buf != (void *)-1) munmap(buf, TEST_MEM_SIZE); if (fd > 0) close(fd); return 0; } # gcc test.c -o test # cat /proc/1/smaps | grep KernelPageSize | head -n 1 KernelPageSize: 64 kB # ./test shmem : ------------[ cut here ]------------ WARNING: CPU: 17 PID: 5253 at lib/xarray.c:1025 xas_split_alloc+0xf8/0x128 Modules linked in: nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib \ nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct \ nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 \ ip_set nf_tables rfkill nfnetlink vfat fat virtio_balloon \ drm fuse xfs libcrc32c crct10dif_ce ghash_ce sha2_ce sha256_arm64 \ virtio_net sha1_ce net_failover failover virtio_console virtio_blk \ dimlib virtio_mmio CPU: 17 PID: 5253 Comm: test Kdump: loaded Tainted: G W 6.10.0-rc5-gavin+ #12 Hardware name: QEMU KVM Virtual Machine, BIOS edk2-20240524-1.el9 05/24/2024 pstate: 83400005 (Nzcv daif +PAN -UAO +TC ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42243">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f697336e7809cad0689d54c27418d3f9</td>
        <td>CVE-2024-41913</td>
        <td>2024-08-06 14:16:04 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-08-05 06:16:41</td>
        <td>The wp-eMember WordPress plugin before v10.7.0 does not have CSRF check in some places, and is missing sanitisation as well as escaping, which could allow attackers to make logged in admin add Stored XSS payloads via a CSRF attack</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5081">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c6a3d6452518db6242073457ef0efb5</td>
-       <td>CVE-2024-35143</td>
-       <td>2024-08-04 13:15:57</td>
-       <td>IBM Planning Analytics Local 2.0 and 2.1 connects to a MongoDB server. MongoDB, a document-oriented database system, is listening on the remote port, and it is configured to allow connections without password authentication. A remote attacker can gain unauthorized access to the database. IBM X-Force ID: 292420.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-35143">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33bc249f0454eb4446c0f1025dc92d0b</td>
-       <td>CVE-2024-7455</td>
-       <td>2024-08-04 12:16:01</td>
-       <td>A vulnerability, which was classified as critical, was found in itsourcecode Tailoring Management System 1.0. This affects an unknown part of the file partedit.php. The manipulation of the argument id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-273549 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7455">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>568e242d54a4cd1efd4e7c25d0375e44</td>
-       <td>CVE-2024-7454</td>
-       <td>2024-08-04 09:15:37</td>
-       <td>A vulnerability, which was classified as critical, has been found in SourceCodester Clinics Patient Management System 1.0. Affected by this issue is the function patient_name of the file patients.php. The manipulation leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-273548.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7454">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fb957b384f3d1a1d0e3c945406488cfa</td>
-       <td>CVE-2024-7453</td>
-       <td>2024-08-04 05:16:09</td>
-       <td>A vulnerability was found in FastAdmin 1.5.0.20240328. It has been declared as problematic. This vulnerability affects unknown code of the file /[admins_url].php/general/attachment/edit/ids/4?dialog=1 of the component Attachment Management Section. The manipulation of the argument row[url]/row[imagewidth]/row[imageheight] leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-273544.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7453">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3cc7c23458a94f8dfb704d315ead0c59</td>
-       <td>CVE-2024-7452</td>
-       <td>2024-08-04 04:17:04</td>
-       <td>A vulnerability was found in itsourcecode Placement Management System 1.0. It has been classified as critical. This affects an unknown part of the file view_company.php. The manipulation of the argument id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-273543.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7452">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ecf34756d999ae9df329b23fdb491a50</td>
-       <td>CVE-2024-7451</td>
-       <td>2024-08-04 04:17:03</td>
-       <td>A vulnerability was found in itsourcecode Placement Management System 1.0 and classified as critical. Affected by this issue is some unknown functionality of the file apply_now.php. The manipulation of the argument id leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. VDB-273542 is the identifier assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7451">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0fec8e964355cea4481d49972b034236</td>
-       <td>CVE-2024-7450</td>
-       <td>2024-08-04 03:15:38</td>
-       <td>A vulnerability has been found in itsourcecode Placement Management System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file /resume_upload.php of the component Image Handler. The manipulation of the argument fileToUpload leads to unrestricted upload. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The identifier VDB-273541 was assigned to this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7450">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d19796cd2aa4b89d7c5273e503287c0</td>
-       <td>CVE-2024-7449</td>
-       <td>2024-08-04 03:15:38</td>
-       <td>A vulnerability, which was classified as critical, was found in itsourcecode Placement Management System 1.0. Affected is an unknown function of the file login.php. The manipulation of the argument email leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of this vulnerability is VDB-273540.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7449">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b86cc5d7ac25bfd9e66a924292d3b71d</td>
-       <td>CVE-2024-6331</td>
-       <td>2024-08-04 00:15:47</td>
-       <td>stitionai/devika main branch as of commit cdfb782b0e634b773b10963c8034dc9207ba1f9f is vulnerable to Local File Read (LFI) by Prompt Injection. The integration of Google Gimini 1.0 Pro with `HarmBlockThreshold.BLOCK_NONE` for `HarmCategory.HARM_CATEGORY_HATE_SPEECH` and `HarmCategory.HARM_CATEGORY_HARASSMENT` in `safety_settings` disables content protection. This allows malicious commands to be executed, such as reading sensitive file contents like `/etc/passwd`.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6331">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e92cbdf1943838764b1ee621d9e31e37</td>
-       <td>CVE-2024-7446</td>
-       <td>2024-08-03 21:15:39</td>
-       <td>A vulnerability, which was classified as critical, was found in itsourcecode Ticket Reservation System 1.0. This affects an unknown part of the file list_tickets.php. The manipulation of the argument prefSeat_id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The associated identifier of this vulnerability is VDB-273531.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7446">详情</a></td>
       </tr>
 
      </tbody>
