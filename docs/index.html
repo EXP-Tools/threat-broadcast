@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-08-21 03:24:57 -->
+<!-- RELEASE TIME : 2024-08-21 09:24:38 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>ec9ac2e431f0ff7b1df83fa01223745d</td>
+       <td>CVE-2024-6339</td>
+       <td>2024-08-21 08:15:04 <img src="imgs/new.gif" /></td>
+       <td>The Phlox PRO theme for WordPress is vulnerable to Reflected Cross-Site Scripting via search parameters in all versions up to, and including, 5.16.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6339">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>152ee15e2c1d065e4ae5f23be4c4eda8</td>
+       <td>CVE-2023-52914</td>
+       <td>2024-08-21 07:15:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: io_uring/poll: add hash if ready poll request can't complete inline If we don't, then we may lose access to it completely, leading to a request leak. This will eventually stall the ring exit process as well.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52914">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e058af0d3f4672f4728ad359d9772eec</td>
+       <td>CVE-2023-52913</td>
+       <td>2024-08-21 07:15:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/i915: Fix potential context UAFs gem_context_register() makes the context visible to userspace, and which point a separate thread can trigger the I915_GEM_CONTEXT_DESTROY ioctl. So we need to ensure that nothing uses the ctx ptr after this. And we need to ensure that adding the ctx to the xarray is the *last* thing that gem_context_register() does with the ctx pointer. [tursulin: Stable and fixes tags add/tidy.] (cherry picked from commit bed4b455cf5374e68879be56971c1da563bcd90c)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52913">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a8d30d10bf2cd7b699b4364f086d1fff</td>
+       <td>CVE-2023-52912</td>
+       <td>2024-08-21 07:15:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/amdgpu: Fixed bug on error when unloading amdgpu Fixed bug on error when unloading amdgpu. The error message is as follows: [ 377.706202] kernel BUG at drivers/gpu/drm/drm_buddy.c:278! [ 377.706215] invalid opcode: 0000 [#1] PREEMPT SMP NOPTI [ 377.706222] CPU: 4 PID: 8610 Comm: modprobe Tainted: G IOE 6.0.0-thomas #1 [ 377.706231] Hardware name: ASUS System Product Name/PRIME Z390-A, BIOS 2004 11/02/2021 [ 377.706238] RIP: 0010:drm_buddy_free_block+0x26/0x30 [drm_buddy] [ 377.706264] Code: 00 00 00 90 0f 1f 44 00 00 48 8b 0e 89 c8 25 00 0c 00 00 3d 00 04 00 00 75 10 48 8b 47 18 48 d3 e0 48 01 47 28 e9 fa fe ff ff <0f> 0b 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 41 54 55 48 89 f5 53 [ 377.706282] RSP: 0018:ffffad2dc4683cb8 EFLAGS: 00010287 [ 377.706289] RAX: 0000000000000000 RBX: ffff8b1743bd5138 RCX: 0000000000000000 [ 377.706297] RDX: ffff8b1743bd5160 RSI: ffff8b1743bd5c78 RDI: ffff8b16d1b25f70 [ 377.706304] RBP: ffff8b1743bd59e0 R08: 0000000000000001 R09: 0000000000000001 [ 377.706311] R10: ffff8b16c8572400 R11: ffffad2dc4683cf0 R12: ffff8b16d1b25f70 [ 377.706318] R13: ffff8b16d1b25fd0 R14: ffff8b1743bd59c0 R15: ffff8b16d1b25f70 [ 377.706325] FS: 00007fec56c72c40(0000) GS:ffff8b1836500000(0000) knlGS:0000000000000000 [ 377.706334] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 [ 377.706340] CR2: 00007f9b88c1ba50 CR3: 0000000110450004 CR4: 00000000003706e0 [ 377.706347] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000 [ 377.706354] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400 [ 377.706361] Call Trace: [ 377.706365] <TASK> [ 377.706369] drm_buddy_free_list+0x2a/0x60 [drm_buddy] [ 377.706376] amdgpu_vram_mgr_fini+0xea/0x180 [amdgpu] [ 377.706572] amdgpu_ttm_fini+0x12e/0x1a0 [amdgpu] [ 377.706650] amdgpu_bo_fini+0x22/0x90 [amdgpu] [ 377.706727] gmc_v11_0_sw_fini+0x26/0x30 [amdgpu] [ 377.706821] amdgpu_device_fini_sw+0xa1/0x3c0 [amdgpu] [ 377.706897] amdgpu_driver_release_kms+0x12/0x30 [amdgpu] [ 377.706975] drm_dev_release+0x20/0x40 [drm] [ 377.707006] release_nodes+0x35/0xb0 [ 377.707014] devres_release_all+0x8b/0xc0 [ 377.707020] device_unbind_cleanup+0xe/0x70 [ 377.707027] device_release_driver_internal+0xee/0x160 [ 377.707033] driver_detach+0x44/0x90 [ 377.707039] bus_remove_driver+0x55/0xe0 [ 377.707045] pci_unregister_driver+0x3b/0x90 [ 377.707052] amdgpu_exit+0x11/0x6c [amdgpu] [ 377.707194] __x64_sys_delete_module+0x142/0x2b0 [ 377.707201] ? fpregs_assert_state_consistent+0x22/0x50 [ 377.707208] ? exit_to_user_mode_prepare+0x3e/0x190 [ 377.707215] do_syscall_64+0x38/0x90 [ 377.707221] entry_SYSCALL_64_after_hwframe+0x63/0xcd</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52912">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>49866b23c4bf57ac5c6e763be780a64b</td>
+       <td>CVE-2023-52911</td>
+       <td>2024-08-21 07:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/msm: another fix for the headless Adreno GPU Fix another oops reproducible when rebooting the board with the Adreno GPU working in the headless mode (e.g. iMX platforms). Unable to handle kernel NULL pointer dereference at virtual address 00000000 when read [00000000] *pgd=74936831, *pte=00000000, *ppte=00000000 Internal error: Oops: 17 [#1] ARM CPU: 0 PID: 51 Comm: reboot Not tainted 6.2.0-rc1-dirty #11 Hardware name: Freescale i.MX53 (Device Tree Support) PC is at msm_atomic_commit_tail+0x50/0x970 LR is at commit_tail+0x9c/0x188 pc : [<c06aa430>] lr : [<c067a214>] psr: 600e0013 sp : e0851d30 ip : ee4eb7eb fp : 00090acc r10: 00000058 r9 : c2193014 r8 : c4310000 r7 : c4759380 r6 : 07bef61d r5 : 00000000 r4 : 00000000 r3 : c44cc440 r2 : 00000000 r1 : 00000000 r0 : 00000000 Flags: nZCv IRQs on FIQs on Mode SVC_32 ISA ARM Segment none Control: 10c5387d Table: 74910019 DAC: 00000051 Register r0 information: NULL pointer Register r1 information: NULL pointer Register r2 information: NULL pointer Register r3 information: slab kmalloc-1k start c44cc400 pointer offset 64 size 1024 Register r4 information: NULL pointer Register r5 information: NULL pointer Register r6 information: non-paged memory Register r7 information: slab kmalloc-128 start c4759380 pointer offset 0 size 128 Register r8 information: slab kmalloc-2k start c4310000 pointer offset 0 size 2048 Register r9 information: non-slab/vmalloc memory Register r10 information: non-paged memory Register r11 information: non-paged memory Register r12 information: non-paged memory Process reboot (pid: 51, stack limit = 0xc80046d9) Stack: (0xe0851d30 to 0xe0852000) 1d20: c4759380 fbd77200 000005ff 002b9c70 1d40: c4759380 c4759380 00000000 07bef61d 00000600 c0d6fe7c c2193014 00000058 1d60: 00090acc c067a214 00000000 c4759380 c4310000 00000000 c44cc854 c067a89c 1d80: 00000000 00000000 00000000 c4310468 00000000 c4759380 c4310000 c4310468 1da0: c4310470 c0643258 c4759380 00000000 00000000 c0c4ee24 00000000 c44cc810 1dc0: 00000000 c0c4ee24 00000000 c44cc810 00000000 0347d2a8 e0851e00 e0851e00 1de0: c4759380 c067ad20 c4310000 00000000 c44cc810 c27f8718 c44cc854 c067adb8 1e00: c4933000 00000002 00000001 00000000 00000000 c2130850 00000000 c2130854 1e20: c25fc488 00000000 c0ff162c 00000000 00000001 00000002 00000000 00000000 1e40: c43102c0 c43102c0 00000000 0347d2a8 c44cc810 c44cc814 c2133da8 c06d1a60 1e60: 00000000 00000000 00079028 c2012f24 fee1dead c4933000 00000058 c01431e4 1e80: 01234567 c0143a20 00000000 00000000 00000000 00000000 00000000 00000000 1ea0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 1ec0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 1ee0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 1f00: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 1f20: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 1f40: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 1f60: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 1f80: 00000000 00000000 00000000 0347d2a8 00000002 00000004 00000078 00000058 1fa0: c010028c c0100060 00000002 00000004 fee1dead 28121969 01234567 00079028 1fc0: 00000002 00000004 00000078 00000058 0002fdc5 00000000 00000000 00090acc 1fe0: 00000058 becc9c64 b6e97e05 b6e0e5f6 600e0030 fee1dead 00000000 00000000 msm_atomic_commit_tail from commit_tail+0x9c/0x188 commit_tail from drm_atomic_helper_commit+0x160/0x188 drm_atomic_helper_commit from drm_atomic_commit+0xac/0xe0 drm_atomic_commit from drm_atomic_helper_disable_all+0x1b0/0x1c0 drm_atomic_helper_disable_all from drm_atomic_helper_shutdown+0x88/0x140 drm_atomic_helper_shutdown from device_shutdown+0x16c/0x240 device_shutdown from kernel_restart+0x38/0x90 kernel_restart from __do_sys_reboot+0x ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52911">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5eca4054dba6c695984187f70e71d833</td>
+       <td>CVE-2023-52910</td>
+       <td>2024-08-21 07:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: iommu/iova: Fix alloc iova overflows issue In __alloc_and_insert_iova_range, there is an issue that retry_pfn overflows. The value of iovad->anchor.pfn_hi is ~0UL, then when iovad->cached_node is iovad->anchor, curr_iova->pfn_hi + 1 will overflow. As a result, if the retry logic is executed, low_pfn is updated to 0, and then new_pfn < low_pfn returns false to make the allocation successful. This issue occurs in the following two situations: 1. The first iova size exceeds the domain size. When initializing iova domain, iovad->cached_node is assigned as iovad->anchor. For example, the iova domain size is 10M, start_pfn is 0x1_F000_0000, and the iova size allocated for the first time is 11M. The following is the log information, new->pfn_lo is smaller than iovad->cached_node. Example log as follows: [ 223.798112][T1705487] sh: [name:iova&]__alloc_and_insert_iova_range start_pfn:0x1f0000,retry_pfn:0x0,size:0xb00,limit_pfn:0x1f0a00 [ 223.799590][T1705487] sh: [name:iova&]__alloc_and_insert_iova_range success start_pfn:0x1f0000,new->pfn_lo:0x1efe00,new->pfn_hi:0x1f08ff 2. The node with the largest iova->pfn_lo value in the iova domain is deleted, iovad->cached_node will be updated to iovad->anchor, and then the alloc iova size exceeds the maximum iova size that can be allocated in the domain. After judging that retry_pfn is less than limit_pfn, call retry_pfn+1 to fix the overflow issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52910">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>78d314ee19196e83da95e01034732d21</td>
+       <td>CVE-2023-52909</td>
+       <td>2024-08-21 07:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: nfsd: fix handling of cached open files in nfsd4_open codepath Commit fb70bf124b05 ("NFSD: Instantiate a struct file when creating a regular NFSv4 file") added the ability to cache an open fd over a compound. There are a couple of problems with the way this currently works: It's racy, as a newly-created nfsd_file can end up with its PENDING bit cleared while the nf is hashed, and the nf_file pointer is still zeroed out. Other tasks can find it in this state and they expect to see a valid nf_file, and can oops if nf_file is NULL. Also, there is no guarantee that we'll end up creating a new nfsd_file if one is already in the hash. If an extant entry is in the hash with a valid nf_file, nfs4_get_vfs_file will clobber its nf_file pointer with the value of op_file and the old nf_file will leak. Fix both issues by making a new nfsd_file_acquirei_opened variant that takes an optional file pointer. If one is present when this is called, we'll take a new reference to it instead of trying to open the file. If the nfsd_file already has a valid nf_file, we'll just ignore the optional file and pass the nfsd_file back as-is. Also rework the tracepoints a bit to allow for an "opened" variant and don't try to avoid counting acquisitions in the case where we already have a cached open file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52909">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>15761bfc5b5562b9c0c881f89ae4640c</td>
+       <td>CVE-2023-52908</td>
+       <td>2024-08-21 07:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/amdgpu: Fix potential NULL dereference Fix potential NULL dereference, in the case when "man", the resource manager might be NULL, when/if we print debug information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52908">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7e83569ea7bedbb472282351eb7dc943</td>
+       <td>CVE-2023-52907</td>
+       <td>2024-08-21 07:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: nfc: pn533: Wait for out_urb's completion in pn533_usb_send_frame() Fix a use-after-free that occurs in hcd when in_urb sent from pn533_usb_send_frame() is completed earlier than out_urb. Its callback frees the skb data in pn533_send_async_complete() that is used as a transfer buffer of out_urb. Wait before sending in_urb until the callback of out_urb is called. To modify the callback of out_urb alone, separate the complete function of out_urb and ack_urb. Found by a modified version of syzkaller. BUG: KASAN: use-after-free in dummy_timer Call Trace: memcpy (mm/kasan/shadow.c:65) dummy_perform_transfer (drivers/usb/gadget/udc/dummy_hcd.c:1352) transfer (drivers/usb/gadget/udc/dummy_hcd.c:1453) dummy_timer (drivers/usb/gadget/udc/dummy_hcd.c:1972) arch_static_branch (arch/x86/include/asm/jump_label.h:27) static_key_false (include/linux/jump_label.h:207) timer_expire_exit (include/trace/events/timer.h:127) call_timer_fn (kernel/time/timer.c:1475) expire_timers (kernel/time/timer.c:1519) __run_timers (kernel/time/timer.c:1790) run_timer_softirq (kernel/time/timer.c:1803)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52907">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>05d1cb12e0f8d1cf12f787cfd7b9be19</td>
+       <td>CVE-2023-52906</td>
+       <td>2024-08-21 07:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net/sched: act_mpls: Fix warning during failed attribute validation The 'TCA_MPLS_LABEL' attribute is of 'NLA_U32' type, but has a validation type of 'NLA_VALIDATE_FUNCTION'. This is an invalid combination according to the comment above 'struct nla_policy': " Meaning of `validate' field, use via NLA_POLICY_VALIDATE_FN: NLA_BINARY Validation function called for the attribute. All other Unused - but note that it's a union " This can trigger the warning [1] in nla_get_range_unsigned() when validation of the attribute fails. Despite being of 'NLA_U32' type, the associated 'min'/'max' fields in the policy are negative as they are aliased by the 'validate' field. Fix by changing the attribute type to 'NLA_BINARY' which is consistent with the above comment and all other users of NLA_POLICY_VALIDATE_FN(). As a result, move the length validation to the validation function. No regressions in MPLS tests: # ./tdc.py -f tc-tests/actions/mpls.json [...] # echo $? 0 [1] WARNING: CPU: 0 PID: 17743 at lib/nlattr.c:118 nla_get_range_unsigned+0x1d8/0x1e0 lib/nlattr.c:117 Modules linked in: CPU: 0 PID: 17743 Comm: syz-executor.0 Not tainted 6.1.0-rc8 #3 Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.13.0-48-gd9c812dda519-prebuilt.qemu.org 04/01/2014 RIP: 0010:nla_get_range_unsigned+0x1d8/0x1e0 lib/nlattr.c:117 [...] Call Trace: <TASK> __netlink_policy_dump_write_attr+0x23d/0x990 net/netlink/policy.c:310 netlink_policy_dump_write_attr+0x22/0x30 net/netlink/policy.c:411 netlink_ack_tlv_fill net/netlink/af_netlink.c:2454 [inline] netlink_ack+0x546/0x760 net/netlink/af_netlink.c:2506 netlink_rcv_skb+0x1b7/0x240 net/netlink/af_netlink.c:2546 rtnetlink_rcv+0x18/0x20 net/core/rtnetlink.c:6109 netlink_unicast_kernel net/netlink/af_netlink.c:1319 [inline] netlink_unicast+0x5e9/0x6b0 net/netlink/af_netlink.c:1345 netlink_sendmsg+0x739/0x860 net/netlink/af_netlink.c:1921 sock_sendmsg_nosec net/socket.c:714 [inline] sock_sendmsg net/socket.c:734 [inline] ____sys_sendmsg+0x38f/0x500 net/socket.c:2482 ___sys_sendmsg net/socket.c:2536 [inline] __sys_sendmsg+0x197/0x230 net/socket.c:2565 __do_sys_sendmsg net/socket.c:2574 [inline] __se_sys_sendmsg net/socket.c:2572 [inline] __x64_sys_sendmsg+0x42/0x50 net/socket.c:2572 do_syscall_x64 arch/x86/entry/common.c:50 [inline] do_syscall_64+0x2b/0x70 arch/x86/entry/common.c:80 entry_SYSCALL_64_after_hwframe+0x63/0xcd</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52906">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e060b06d2f262ff13ea69f12d4f5e6a6</td>
        <td>CVE-2024-43202</td>
        <td>2024-08-20 07:29:43 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-08-19 02:15:04</td>
        <td>Pi-hole before 6 allows unauthenticated admin/api.php?setTempUnit= calls to change the temperature units of the web dashboard. NOTE: the supplier reportedly does "not consider the bug a security issue" but the specific motivation for letting arbitrary persons change the value (Celsius, Fahrenheit, or Kelvin), seen by the device owner, is unclear.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44069">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad370b0a0027a439e3fea42889abb2d0</td>
-       <td>CVE-2024-7903</td>
-       <td>2024-08-18 07:15:03</td>
-       <td>A vulnerability was found in DedeBIZ 6.3.0. It has been declared as critical. Affected by this vulnerability is an unknown functionality of the file admin/media_add.php of the component File Extension Handler. The manipulation of the argument upfile1 leads to unrestricted upload. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7903">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fee971a4109444f6b30acd4653284bdc</td>
-       <td>CVE-2024-7902</td>
-       <td>2024-08-17 22:15:04</td>
-       <td>A vulnerability was found in pkp ojs up to 3.4.0-6 and classified as problematic. Affected by this issue is some unknown functionality of the file /login/signOut. The manipulation of the argument source with the input .example.com leads to open redirect. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7902">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c83b8b5be2d1dc745cefe0478293ba9</td>
-       <td>CVE-2024-7901</td>
-       <td>2024-08-17 21:15:03</td>
-       <td>A vulnerability has been found in Scada-LTS 2.7.8 and classified as problematic. Affected by this vulnerability is an unknown functionality of the file /Scada-LTS/app.shtm#/alarms/Scada of the component Message Handler. The manipulation leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7901">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55618c7a77ae784e1ac428c92489cbcc</td>
-       <td>CVE-2024-7900</td>
-       <td>2024-08-17 20:15:04</td>
-       <td>A vulnerability, which was classified as problematic, was found in xiaohe4966 TpMeCMS 1.3.3.2. Affected is an unknown function of the file /h.php/general/config?ref=addtabs of the component Basic Configuration Handler. The manipulation of the argument Site Name/Beian/Contact address/copyright/technical support leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7900">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e427a41c08cb99c5c8eab760457fb81a</td>
-       <td>CVE-2024-7899</td>
-       <td>2024-08-17 19:15:03</td>
-       <td>A vulnerability, which was classified as critical, has been found in InnoCMS 0.3.1. This issue affects some unknown processing of the file /panel/pages/1/edit of the component Backend. The manipulation leads to code injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7899">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c2c93fb575b6457005d938874462b0ea</td>
-       <td>CVE-2024-7898</td>
-       <td>2024-08-17 18:15:04</td>
-       <td>A vulnerability classified as critical was found in Tosei Online Store Management System ネット店舗管理システム 4.02/4.03/4.04. This vulnerability affects unknown code of the component Backend. The manipulation leads to use of default credentials. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7898">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aeefbca84743d1852227dbd6ff8da31d</td>
-       <td>CVE-2024-7897</td>
-       <td>2024-08-17 15:15:11</td>
-       <td>A vulnerability classified as critical has been found in Tosei Online Store Management System ネット店舗管理システム 4.02/4.03/4.04. This affects an unknown part of the file /cgi-bin/tosei_kikai.php. The manipulation of the argument kikaibangou leads to command injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7897">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>27f3a8120f78d4e060b3adff62ab3796</td>
-       <td>CVE-2024-7896</td>
-       <td>2024-08-17 14:15:12</td>
-       <td>A vulnerability was found in Tosei Online Store Management System ネット店舗管理システム 4.02/4.03/4.04. It has been rated as critical. Affected by this issue is some unknown functionality of the file /cgi-bin/p1_ftpserver.php. The manipulation of the argument adr_txt leads to command injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7896">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6590326bdb34edeaba4b39f28b70a506</td>
-       <td>CVE-2024-7703</td>
-       <td>2024-08-17 12:15:04</td>
-       <td>The ARMember – Membership Plugin, Content Restriction, Member Levels, User Profile & User signup plugin for WordPress is vulnerable to Stored Cross-Site Scripting via SVG File uploads in all versions up to, and including, 4.0.37 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses the SVG file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7703">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>768853ce869715ae842b8dc504d9c068</td>
-       <td>CVE-2024-43860</td>
-       <td>2024-08-17 10:15:10</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: remoteproc: imx_rproc: Skip over memory region when node value is NULL In imx_rproc_addr_init() "nph = of_count_phandle_with_args()" just counts number of phandles. But phandles may be empty. So of_parse_phandle() in the parsing loop (0 < a < nph) may return NULL which is later dereferenced. Adjust this issue by adding NULL-return check. Found by Linux Verification Center (linuxtesting.org) with SVACE. [Fixed title to fit within the prescribed 70-75 charcters]</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-43860">详情</a></td>
       </tr>
 
      </tbody>
