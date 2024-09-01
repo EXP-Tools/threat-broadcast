@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-09-01 01:53:28 -->
+<!-- RELEASE TIME : 2024-09-01 15:24:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>241827295878b1c3de31f448e48cbb51</td>
+       <td>CVE-2024-8368</td>
+       <td>2024-09-01 05:15:12 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in code-projects Hospital Management System 1.0. It has been rated as critical. Affected by this issue is some unknown functionality of the file index.php of the component Login. The manipulation of the argument username leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8368">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>84e745187733f3bd8abf34c2c0b7677c</td>
+       <td>CVE-2024-8367</td>
+       <td>2024-09-01 04:15:14 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in HM Courts & Tribunals Service Probate Back Office up to c1afe0cdb2b2766d9e24872c4e827f8b82a6cd31. It has been classified as problematic. Affected is an unknown function of the file src/main/java/uk/gov/hmcts/probate/service/NotificationService.java of the component Markdown Handler. The manipulation leads to injection. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The patch is identified as d90230d7cf575e5b0852d56660104c8bd2503c34. It is recommended to apply a patch to fix this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8367">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ba49bfe37ea992741c83ca6834c7b358</td>
+       <td>CVE-2024-8366</td>
+       <td>2024-08-31 18:15:13 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in code-projects Pharmacy Management System 1.0. It has been classified as problematic. This affects an unknown part of the file /index.php?id=userProfileEdit of the component Update My Profile Page. The manipulation of the argument fname/lname/email with the input <script>alert(1)</script> leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8366">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e554dac4fea56a9fca331823cca32385</td>
+       <td>CVE-2024-44946</td>
+       <td>2024-08-31 14:15:04 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: kcm: Serialise kcm_sendmsg() for the same socket. syzkaller reported UAF in kcm_release(). [0] The scenario is 1. Thread A builds a skb with MSG_MORE and sets kcm->seq_skb. 2. Thread A resumes building skb from kcm->seq_skb but is blocked by sk_stream_wait_memory() 3. Thread B calls sendmsg() concurrently, finishes building kcm->seq_skb and puts the skb to the write queue 4. Thread A faces an error and finally frees skb that is already in the write queue 5. kcm_release() does double-free the skb in the write queue When a thread is building a MSG_MORE skb, another thread must not touch it. Let's add a per-sk mutex and serialise kcm_sendmsg(). [0]: BUG: KASAN: slab-use-after-free in __skb_unlink include/linux/skbuff.h:2366 [inline] BUG: KASAN: slab-use-after-free in __skb_dequeue include/linux/skbuff.h:2385 [inline] BUG: KASAN: slab-use-after-free in __skb_queue_purge_reason include/linux/skbuff.h:3175 [inline] BUG: KASAN: slab-use-after-free in __skb_queue_purge include/linux/skbuff.h:3181 [inline] BUG: KASAN: slab-use-after-free in kcm_release+0x170/0x4c8 net/kcm/kcmsock.c:1691 Read of size 8 at addr ffff0000ced0fc80 by task syz-executor329/6167 CPU: 1 PID: 6167 Comm: syz-executor329 Tainted: G B 6.8.0-rc5-syzkaller-g9abbc24128bc #0 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 01/25/2024 Call trace: dump_backtrace+0x1b8/0x1e4 arch/arm64/kernel/stacktrace.c:291 show_stack+0x2c/0x3c arch/arm64/kernel/stacktrace.c:298 __dump_stack lib/dump_stack.c:88 [inline] dump_stack_lvl+0xd0/0x124 lib/dump_stack.c:106 print_address_description mm/kasan/report.c:377 [inline] print_report+0x178/0x518 mm/kasan/report.c:488 kasan_report+0xd8/0x138 mm/kasan/report.c:601 __asan_report_load8_noabort+0x20/0x2c mm/kasan/report_generic.c:381 __skb_unlink include/linux/skbuff.h:2366 [inline] __skb_dequeue include/linux/skbuff.h:2385 [inline] __skb_queue_purge_reason include/linux/skbuff.h:3175 [inline] __skb_queue_purge include/linux/skbuff.h:3181 [inline] kcm_release+0x170/0x4c8 net/kcm/kcmsock.c:1691 __sock_release net/socket.c:659 [inline] sock_close+0xa4/0x1e8 net/socket.c:1421 __fput+0x30c/0x738 fs/file_table.c:376 ____fput+0x20/0x30 fs/file_table.c:404 task_work_run+0x230/0x2e0 kernel/task_work.c:180 exit_task_work include/linux/task_work.h:38 [inline] do_exit+0x618/0x1f64 kernel/exit.c:871 do_group_exit+0x194/0x22c kernel/exit.c:1020 get_signal+0x1500/0x15ec kernel/signal.c:2893 do_signal+0x23c/0x3b44 arch/arm64/kernel/signal.c:1249 do_notify_resume+0x74/0x1f4 arch/arm64/kernel/entry-common.c:148 exit_to_user_mode_prepare arch/arm64/kernel/entry-common.c:169 [inline] exit_to_user_mode arch/arm64/kernel/entry-common.c:178 [inline] el0_svc+0xac/0x168 arch/arm64/kernel/entry-common.c:713 el0t_64_sync_handler+0x84/0xfc arch/arm64/kernel/entry-common.c:730 el0t_64_sync+0x190/0x194 arch/arm64/kernel/entry.S:598 Allocated by task 6166: kasan_save_stack mm/kasan/common.c:47 [inline] kasan_save_track+0x40/0x78 mm/kasan/common.c:68 kasan_save_alloc_info+0x70/0x84 mm/kasan/generic.c:626 unpoison_slab_object mm/kasan/common.c:314 [inline] __kasan_slab_alloc+0x74/0x8c mm/kasan/common.c:340 kasan_slab_alloc include/linux/kasan.h:201 [inline] slab_post_alloc_hook mm/slub.c:3813 [inline] slab_alloc_node mm/slub.c:3860 [inline] kmem_cache_alloc_node+0x204/0x4c0 mm/slub.c:3903 __alloc_skb+0x19c/0x3d8 net/core/skbuff.c:641 alloc_skb include/linux/skbuff.h:1296 [inline] kcm_sendmsg+0x1d3c/0x2124 net/kcm/kcmsock.c:783 sock_sendmsg_nosec net/socket.c:730 [inline] __sock_sendmsg net/socket.c:745 [inline] sock_sendmsg+0x220/0x2c0 net/socket.c:768 splice_to_socket+0x7cc/0xd58 fs/splice.c:889 do_splice_from fs/splice.c:941 [inline] direct_splice_actor+0xec/0x1d8 fs/splice.c:1164 splice_direct_to_actor+0x438/0xa0c fs/splice.c:1108 do_splice_direct_actor ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dfe32e345eb2f358a9a6f441e8d6f224</td>
+       <td>CVE-2022-4539</td>
+       <td>2024-08-31 10:15:04 <img src="imgs/new.gif" /></td>
+       <td>The Web Application Firewall plugin for WordPress is vulnerable to IP Address Spoofing in versions up to, and including, 2.1.2. This is due to insufficient restrictions on where the IP Address information is being retrieved for request logging and login restrictions. Attackers can supply the X-Forwarded-For header with with a different IP Address that will be logged and can be used to bypass settings that may have blocked out an IP address or country from logging in.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-4539">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>41e21898101dbd2c1ab2c2945b099c11</td>
+       <td>CVE-2024-8108</td>
+       <td>2024-08-31 09:15:07 <img src="imgs/new.gif" /></td>
+       <td>The Share This Image plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'alignment' parameter in all versions up to, and including, 2.01 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8108">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b02058d761aa2e3a3a78c23605ff1eef</td>
+       <td>CVE-2024-7717</td>
+       <td>2024-08-31 09:15:07 <img src="imgs/new.gif" /></td>
+       <td>The WP Events Manager plugin for WordPress is vulnerable to time-based SQL Injection via the ‘order’ parameter in all versions up to, and including, 2.1.11 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7717">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b837e21b553479f7d66d01115d96d5d</td>
+       <td>CVE-2024-0111</td>
+       <td>2024-08-31 09:15:06 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA CUDA Toolkit contains a vulnerability in command 'cuobjdump' where a user may cause a crash or produce incorrect output by passing a malformed ELF file. A successful exploit of this vulnerability may lead to a limited denial of service or data tampering.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0111">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6c2b7e1809071b6cf3decfef471d04bf</td>
+       <td>CVE-2024-0110</td>
+       <td>2024-08-31 09:15:05 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA CUDA Toolkit contains a vulnerability in command `cuobjdump` where a user may cause an out-of-bound write by passing in a malformed ELF file. A successful exploit of this vulnerability may lead to code execution or denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0110">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bbaef98426239e727c0ae093a44436f7</td>
+       <td>CVE-2024-0109</td>
+       <td>2024-08-31 09:15:05 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA CUDA Toolkit contains a vulnerability in command `cuobjdump` where a user may cause a crash by passing in a malformed ELF file. A successful exploit of this vulnerability may cause an out of bounds read in the unprivileged process memory which could lead to a limited denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-0109">详情</a></td>
+      </tr>
+
+      <tr>
        <td>67293214b13c744b8aea3ea7bb76883d</td>
        <td>CVE-2024-39578</td>
        <td>2024-08-31 08:15:04 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-08-30 05:15:12</td>
        <td>The Betheme theme for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 27.5.6 via deserialization of untrusted input of the 'mfn-page-items' post meta value. This makes it possible for authenticated attackers, with contributor-level access and above, to inject a PHP Object. No known POP chain is present in the vulnerable plugin. If a POP chain is present via an additional plugin or theme installed on the target system, it could allow the attacker to delete arbitrary files, retrieve sensitive data, or execute code.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-2694">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ca2b89001dd1fd2fb2f81f13f78a3e17</td>
-       <td>CVE-2024-4428</td>
-       <td>2024-08-29 07:49:03</td>
-       <td>Improper Privilege Management vulnerability in Menulux Information Technologies Managment Portal allows Collect Data as Provided by Users.This issue affects Managment Portal: through 21.05.2024.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-4428">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d3c1668362fb12bff7de0ce900102826</td>
-       <td>CVE-2024-43700</td>
-       <td>2024-08-29 07:36:13</td>
-       <td>xfpt versions prior to 1.01 fails to handle appropriately some parameters inside the input data, resulting in a stack-based buffer overflow vulnerability. When a user of the affected product is tricked to process a specially crafted file, arbitrary code may be executed on the user's environment.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-43700">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4dc6bcb8bda58ec951619cc1774f4abc</td>
-       <td>CVE-2024-7132</td>
-       <td>2024-08-29 06:00:03</td>
-       <td>The Page Builder Gutenberg Blocks WordPress plugin before 3.1.13 does not escape the content of post embed via one of its block, which could allow users with the capability to publish posts (editor and admin by default) to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed (for example in multisite setup)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7132">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e3761ffe21fd440ec3c6fe24367dec71</td>
-       <td>CVE-2024-6927</td>
-       <td>2024-08-29 06:00:03</td>
-       <td>The Viral Signup WordPress plugin through 2.1 does not sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed (for example in multisite setup)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6927">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b2a7692fa36eddbcf3bdae4983684acb</td>
-       <td>CVE-2024-5417</td>
-       <td>2024-08-29 06:00:02</td>
-       <td>The Gutentor WordPress plugin before 3.3.6 does not validate and escape some of its block options before outputting them back in a page/post where the block is embed, which could allow users with the contributor role and above to perform Stored Cross-Site Scripting attacks</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5417">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d0024d5daf466a87f2fc5426879b6222</td>
-       <td>CVE-2024-7607</td>
-       <td>2024-08-29 05:30:57</td>
-       <td>The Front End Users plugin for WordPress is vulnerable to time-based SQL Injection via the ‘order’ parameter in all versions up to, and including, 3.2.28 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Contributor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7607">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c1cd813c489aaf4f4b49030621ca161</td>
-       <td>CVE-2024-5987</td>
-       <td>2024-08-29 05:30:57</td>
-       <td>The WP Accessibility Helper (WAH) plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'save_contrast_variations' and 'save_empty_contrast_variations' functions in all versions up to, and including, 0.6.2.8. This makes it possible for authenticated attackers, with Subscriber-level access and above, to edit or delete contrast settings. Please note these issues were patched in 0.6.2.8, though it broke functionality and the vendor has not responded to our follow-ups.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5987">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0069c99b1c99cf7eb0199a9718fb3b6b</td>
-       <td>CVE-2024-3944</td>
-       <td>2024-08-29 05:30:56</td>
-       <td>The WP To Do plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Comment in all versions up to, and including, 1.3.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-3944">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77a00201cacf88e4851f4af1acb0c181</td>
-       <td>CVE-2024-7606</td>
-       <td>2024-08-29 05:30:55</td>
-       <td>The Front End Users plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'user-search' shortcode in all versions up to, and including, 3.2.28 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7606">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>95651df0dc5ef6181f1ea4171ea0726e</td>
-       <td>CVE-2024-38303</td>
-       <td>2024-08-29 04:34:53</td>
-       <td>Dell PowerEdge Platform, 14G Intel BIOS version(s) prior to 2.22.x, contains an Improper Input Validation vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to Information disclosure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-38303">详情</a></td>
       </tr>
 
      </tbody>
