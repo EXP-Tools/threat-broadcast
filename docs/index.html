@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-09-05 15:24:08 -->
+<!-- RELEASE TIME : 2024-09-06 15:25:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a4a2eaa6a3679feff64f42da4ab147ca</td>
+       <td>CVE-2023-52916</td>
+       <td>2024-09-06 09:15:03 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: media: aspeed: Fix memory overwrite if timing is 1600x900 When capturing 1600x900, system could crash when system memory usage is tight. The way to reproduce this issue: 1. Use 1600x900 to display on host 2. Mount ISO through 'Virtual media' on OpenBMC's web 3. Run script as below on host to do sha continuously #!/bin/bash while [ [1] ]; do find /media -type f -printf '"%h/%f"\n' | xargs sha256sum done 4. Open KVM on OpenBMC's web The size of macro block captured is 8x8. Therefore, we should make sure the height of src-buf is 8 aligned to fix this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52916">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9e5edcf949d32c4992e35ecd271c4377</td>
+       <td>CVE-2023-52915</td>
+       <td>2024-09-06 09:15:02 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: media: dvb-usb-v2: af9035: Fix null-ptr-deref in af9035_i2c_master_xfer In af9035_i2c_master_xfer, msg is controlled by user. When msg[i].buf is null and msg[i].len is zero, former checks on msg[i].buf would be passed. Malicious data finally reach af9035_i2c_master_xfer. If accessing msg[i].buf[0] without sanity check, null ptr deref would happen. We add check on msg[i].len to prevent crash. Similar commit: commit 0ed554fd769a ("media: dvb-usb: az6027: fix null-ptr-deref in az6027_i2c_xfer()")</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-52915">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8587dc882a0a39395634c1701f35ad8c</td>
+       <td>CVE-2024-8427</td>
+       <td>2024-09-06 07:15:03 <img src="imgs/new.gif" /></td>
+       <td>The Frontend Post Submission Manager Lite – Frontend Posting WordPress Plugin plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the save_global_settings and process_form_edit functions in all versions up to, and including, 1.2.2. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update the plugin's settings and forms.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8427">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01fa7c2a4d274ebddca1c6639e9067a6</td>
+       <td>CVE-2024-8317</td>
+       <td>2024-09-06 07:15:03 <img src="imgs/new.gif" /></td>
+       <td>The WP AdCenter – Ad Manager & Adsense Ads plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘ad_alignment’ attribute in all versions up to, and including, 2.5.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8317">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0622c48b4a4d3361b5541c8fd26a06d3</td>
+       <td>CVE-2024-8292</td>
+       <td>2024-09-06 07:15:03 <img src="imgs/new.gif" /></td>
+       <td>The WP-Recall – Registration, Profile, Commerce & More plugin for WordPress is vulnerable to privilege escalation/account takeover in all versions up to, and including, 16.26.8. This is due to to plugin not properly verifying a user's identity during new order creation. This makes it possible for unauthenticated attackers to supply any email through the user_email field and update the password for that user during new order creation. This requires the commerce addon to be enabled in order to exploit.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8292">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e878dd20971a6e2843472e929e11a443</td>
+       <td>CVE-2024-7349</td>
+       <td>2024-09-06 07:15:02 <img src="imgs/new.gif" /></td>
+       <td>The LifterLMS – WP LMS for eLearning, Online Courses, & Quizzes plugin for WordPress is vulnerable to blind SQL Injection via the 'order' parameter in all versions up to, and including, 7.7.5 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7349">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1469b61f60f833eec943ef8ece5e9d94</td>
+       <td>CVE-2024-6792</td>
+       <td>2024-09-06 06:15:02 <img src="imgs/new.gif" /></td>
+       <td>The WP ULike WordPress plugin before 4.7.2.1 does not properly sanitize user display names when rendering on a public page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6792">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a65b1135d277a03173c4908300bc6e9a</td>
+       <td>CVE-2024-45751</td>
+       <td>2024-09-06 05:15:13 <img src="imgs/new.gif" /></td>
+       <td>tgt (aka Linux target framework) before 1.0.93 attempts to achieve entropy by calling rand without srand. The PRNG seed is always 1, and thus the sequence of challenges is always identical.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45751">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01cdf6523d61c5d89a642e556308cf3f</td>
+       <td>CVE-2024-39585</td>
+       <td>2024-09-06 05:15:13 <img src="imgs/new.gif" /></td>
+       <td>Dell SmartFabric OS10 Software, version(s) 10.5.5.4 through 10.5.5.10 and 10.5.6.x, contain(s) an Use of Hard-coded Password vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Client-side request forgery and Information disclosure.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-39585">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fd42ee6c45e901285cb7dfeb9e964e90</td>
+       <td>CVE-2024-38486</td>
+       <td>2024-09-06 05:15:13 <img src="imgs/new.gif" /></td>
+       <td>Dell SmartFabric OS10 Software, version(s) 10.5.5.4 through 10.5.5.10 and 10.5.6.x , contain(s) an Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-38486">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b287915f41e51da29950425b9111220e</td>
        <td>CVE-2024-6929</td>
        <td>2024-09-05 10:15:03 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>9ad5f6e43e9fc270a8817dc06fe22570</td>
        <td>CVE-2024-7821</td>
-       <td>2024-09-04 10:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 10:15:03</td>
        <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7821">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>0634121234224077e7de6445bf0fc2c7</td>
        <td>CVE-2024-8289</td>
-       <td>2024-09-04 09:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 09:15:04</td>
        <td>The MultiVendorX – The Ultimate WooCommerce Multivendor Marketplace Solution plugin for WordPress is vulnerable to privilege escalation/de-escalation and account takeover due to an insufficient capability check on the update_item_permissions_check and create_item_permissions_check functions in all versions up to, and including, 4.2.0. This makes it possible for unauthenticated attackers to change the password of any user with the vendor role, create new users with the vendor role, and demote other users like administrators to the vendor role.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8289">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>35a06ff1084d6d07b5bcc3ddd948e1d5</td>
        <td>CVE-2024-7870</td>
-       <td>2024-09-04 09:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 09:15:04</td>
        <td>The PixelYourSite – Your smart PIXEL (TAG) & API Manager and the PixelYourSite PRO plugins for WordPress are vulnerable to Sensitive Information Exposure in all versions up to, and including, 9.7.1 and 10.4.2, respectively, through publicly exposed log files. This makes it possible for unauthenticated attackers to view potentially sensitive information contained in the exposed log files, and to delete log files.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7870">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>ad4e26f876935ae5a804dd148b01301e</td>
        <td>CVE-2024-45507</td>
-       <td>2024-09-04 09:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 09:15:04</td>
        <td>Server-Side Request Forgery (SSRF), Improper Control of Generation of Code ('Code Injection') vulnerability in Apache OFBiz. This issue affects Apache OFBiz: before 18.12.16. Users are recommended to upgrade to version 18.12.16, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45507">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>6178bbc473228da2f4458016e4de843e</td>
        <td>CVE-2024-45195</td>
-       <td>2024-09-04 09:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 09:15:04</td>
        <td>Direct Request ('Forced Browsing') vulnerability in Apache OFBiz. This issue affects Apache OFBiz: before 18.12.16. Users are recommended to upgrade to version 18.12.16, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45195">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>18e3756524a662a30ae4feddc04f454d</td>
        <td>CVE-2024-8318</td>
-       <td>2024-09-04 08:15:03 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 08:15:03</td>
        <td>The Attributes for Blocks plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘attributesForBlocks’ parameter in all versions up to, and including, 1.0.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8318">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>f5eb2670c247d298533731afb9a608b3</td>
        <td>CVE-2024-8123</td>
-       <td>2024-09-04 07:15:05 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 07:15:05</td>
        <td>The The Ultimate WordPress Toolkit – WP Extended plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.0.8 via the duplicate_post function due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with Contributor-level access and above, to duplicate posts written by other authors including admins. This includes the ability to duplicate password-protected posts, which reveals their contents.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8123">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>f150034b54994c231f52fad91fdf46bc</td>
        <td>CVE-2024-8121</td>
-       <td>2024-09-04 07:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 07:15:04</td>
        <td>The The Ultimate WordPress Toolkit – WP Extended plugin for WordPress is vulnerable to unauthorized modification of user names due to a missing capability check on the wpext_change_admin_name() function in all versions up to, and including, 3.0.8. This makes it possible for authenticated attackers, with Subscriber-level access and above, to change an admin's username to a username of their liking as long as the default 'admin' was used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8121">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>4bf5179e24ade3db3af2585a173391ff</td>
        <td>CVE-2024-8119</td>
-       <td>2024-09-04 07:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 07:15:04</td>
        <td>The The Ultimate WordPress Toolkit – WP Extended plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the page parameter in all versions up to, and including, 3.0.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8119">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>1b17834e8bb0a19a354faea3d360fbfd</td>
        <td>CVE-2024-8117</td>
-       <td>2024-09-04 07:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-09-04 07:15:04</td>
        <td>The The Ultimate WordPress Toolkit – WP Extended plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the ‘selected_option’ parameter in all versions up to, and including, 3.0.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8117">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77ea58e2de4ed902d61432037fa18fb8</td>
-       <td>CVE-2024-8374</td>
-       <td>2024-09-03 10:15:06</td>
-       <td>UltiMaker Cura slicer versions 5.7.0-beta.1 through 5.7.2 are vulnerable to code injection via the 3MF format reader (/plugins/ThreeMFReader.py). The vulnerability arises from improper handling of the drop_to_buildplate property within 3MF files, which are ZIP archives containing the model data. When a 3MF file is loaded in Cura, the value of the drop_to_buildplate property is passed to the Python eval() function without proper sanitization, allowing an attacker to execute arbitrary code by crafting a malicious 3MF file. This vulnerability poses a significant risk as 3MF files are commonly shared via 3D model databases.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8374">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>35ac9738005f92c54db9addd741aa1c8</td>
-       <td>CVE-2024-45587</td>
-       <td>2024-09-03 10:15:06</td>
-       <td>This vulnerability exists in Symphony XTS Web Trading platform version 2.0.0.1_P160 due to improper access controls on APIs in the Transaction module of vulnerable application. An authenticated remote attacker could exploit this vulnerability by manipulating parameters through HTTP request which could lead to compromise of other user accounts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45587">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>be3e1e033b83f0ee498f3642ef5e430f</td>
-       <td>CVE-2024-45586</td>
-       <td>2024-09-03 10:15:06</td>
-       <td>This vulnerability exists due to improper access controls on APIs in the Authentication module of Symphony XTS Web Trading and Mobile Trading platforms (version 2.0.0.1_P160). An authenticated remote attacker could exploit this vulnerability by manipulating parameters through HTTP request which could lead to unauthorized account take over belonging to other users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45586">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8042569f6e641780b595c30078be8ef5</td>
-       <td>CVE-2024-3655</td>
-       <td>2024-09-03 10:15:06</td>
-       <td>Use After Free vulnerability in Arm Ltd Bifrost GPU Kernel Driver, Arm Ltd Valhall GPU Kernel Driver, Arm Ltd Arm 5th Gen GPU Architecture Kernel Driver allows a local non-privileged user to make improper GPU memory processing operations to gain access to already freed memory.This issue affects Bifrost GPU Kernel Driver: from r43p0 through r49p0; Valhall GPU Kernel Driver: from r43p0 through r49p0; Arm 5th Gen GPU Architecture Kernel Driver: from r43p0 through r49p0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-3655">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>183381cfb4f87410f8030bd0261e9522</td>
-       <td>CVE-2024-38811</td>
-       <td>2024-09-03 10:15:05</td>
-       <td>VMware Fusion (13.x before 13.6) contains a code-execution vulnerability due to the usage of an insecure environment variable. A malicious actor with standard user privileges may exploit this vulnerability to execute code in the context of the Fusion application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-38811">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1269d3e201fe0112afdac37ee8af1d66</td>
-       <td>CVE-2024-37136</td>
-       <td>2024-09-03 06:15:14</td>
-       <td>Dell Path to PowerProtect, versions 1.1, 1.2, contains an Exposure of Private Personal Information to an Unauthorized Actor vulnerability. A remote high privileged attacker could potentially exploit this vulnerability, leading to information exposure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-37136">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6c167e14655b97ef2098990cb4c18678</td>
-       <td>CVE-2024-7261</td>
-       <td>2024-09-03 03:15:03</td>
-       <td>The improper neutralization of special elements in the parameter "host" in the CGI program of Zyxel NWA1123ACv3 firmware version 6.70(ABVT.4) and earlier, WAC500 firmware version 6.70(ABVS.4) and earlier, WAX655E firmware version 7.00(ACDO.1) and earlier, WBE530 firmware version 7.00(ACLE.1) and earlier, and USG LITE 60AX firmware version V2.00(ACIP.2) could allow an unauthenticated attacker to execute OS commands by sending a crafted cookie to a vulnerable device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7261">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>981c5f288f152c79e587a08460fc137c</td>
-       <td>CVE-2024-42061</td>
-       <td>2024-09-03 03:15:03</td>
-       <td>A reflected cross-site scripting (XSS) vulnerability in the CGI program "dynamic_script.cgi" of Zyxel ATP series firmware versions from V4.32 through V5.38, USG FLEX series firmware versions from V4.50 through V5.38, USG FLEX 50(W) series firmware versions from V4.16 through V5.38, and USG20(W)-VPN series firmware versions from V4.16 through V5.38 could allow an attacker to trick a user into visiting a crafted URL with the XSS payload. The attacker could obtain browser-based information if the malicious script is executed on the victim’s browser.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42061">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>31edb251c4ff2a372056aaf1b05141ee</td>
-       <td>CVE-2024-7203</td>
-       <td>2024-09-03 02:15:05</td>
-       <td>A post-authentication command injection vulnerability in Zyxel ATP series firmware versions from V4.60 through V5.38 and USG FLEX series firmware versions from V4.60 through V5.38 could allow an authenticated attacker with administrator privileges to execute some operating system (OS) commands on an affected device by executing a crafted CLI command.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7203">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3acdaca1f42eb793939643d0199b45bf</td>
-       <td>CVE-2024-6343</td>
-       <td>2024-09-03 02:15:05</td>
-       <td>A buffer overflow vulnerability in the CGI program of Zyxel ATP series firmware versions from V4.32 through V5.38, USG FLEX series firmware versions from V4.50 through V5.38, USG FLEX 50(W) series firmware versions from V4.16 through V5.38, and USG20(W)-VPN series firmware versions from V4.16 through V5.38 could allow an authenticated attacker with administrator privileges to cause denial of service (DoS) conditions by sending a crafted HTTP request to a vulnerable device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6343">详情</a></td>
       </tr>
 
      </tbody>
