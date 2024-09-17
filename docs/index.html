@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-09-17 15:25:51 -->
+<!-- RELEASE TIME : 2024-09-17 21:21:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c6fb9ee30bfeed62c3facc3399909fcf</td>
+       <td>CVE-2024-8956</td>
+       <td>2024-09-17 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>PTZOptics PT30X-SDI/NDI-xx before firmware 6.3.40 is vulnerable to an insufficient authentication issue. The camera does not properly enforce authentication to /cgi-bin/param.cgi when requests are sent without an HTTP Authorization header. The result is a remote and unauthenticated attacker can leak sensitive data such as usernames, password hashes, and configurations details. Additionally, the attacker can update individual configuration values or overwrite the whole file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8956">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5fb160e4575048077c63f8a843d3f0b7</td>
+       <td>CVE-2024-8951</td>
+       <td>2024-09-17 20:15:07 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as problematic was found in SourceCodester Resort Reservation System 1.0. Affected by this vulnerability is an unknown functionality of the file manage_fee.php. The manipulation of the argument toview leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8951">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>865fbddc3fe9359eeb2cab5c5be5b183</td>
+       <td>CVE-2024-45812</td>
+       <td>2024-09-17 20:15:06 <img src="imgs/new.gif" /></td>
+       <td>Vite a frontend build tooling framework for javascript. Affected versions of vite were discovered to contain a DOM Clobbering vulnerability when building scripts to `cjs`/`iife`/`umd` output format. The DOM Clobbering gadget in the module can lead to cross-site scripting (XSS) in web pages where scriptless attacker-controlled HTML elements (e.g., an img tag with an unsanitized name attribute) are present. DOM Clobbering is a type of code-reuse attack where the attacker first embeds a piece of non-script, seemingly benign HTML markups in the webpage (e.g. through a post or comment) and leverages the gadgets (pieces of js code) living in the existing javascript code to transform it into executable code. We have identified a DOM Clobbering vulnerability in Vite bundled scripts, particularly when the scripts dynamically import other scripts from the assets folder and the developer sets the build output format to `cjs`, `iife`, or `umd`. In such cases, Vite replaces relative paths starting with `__VITE_ASSET__` using the URL retrieved from `document.currentScript`. However, this implementation is vulnerable to a DOM Clobbering attack. The `document.currentScript` lookup can be shadowed by an attacker via the browser's named DOM tree element access mechanism. This manipulation allows an attacker to replace the intended script element with a malicious HTML element. When this happens, the src attribute of the attacker-controlled element is used as the URL for importing scripts, potentially leading to the dynamic loading of scripts from an attacker-controlled server. This vulnerability can result in cross-site scripting (XSS) attacks on websites that include Vite-bundled files (configured with an output format of `cjs`, `iife`, or `umd`) and allow users to inject certain scriptless HTML tags without properly sanitizing the name or id attributes. This issue has been patched in versions 5.4.6, 5.3.6, 5.2.14, 4.5.5, and 3.2.11. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45812">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>93ee35b99c6b9506eb86095e5fd3275d</td>
+       <td>CVE-2024-45811</td>
+       <td>2024-09-17 20:15:05 <img src="imgs/new.gif" /></td>
+       <td>Vite a frontend build tooling framework for javascript. In affected versions the contents of arbitrary files can be returned to the browser. `@fs` denies access to files outside of Vite serving allow list. Adding `?import&raw` to the URL bypasses this limitation and returns the file content if it exists. This issue has been patched in versions 5.4.6, 5.3.6, 5.2.14, 4.5.5, and 3.2.11. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45811">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1982b5a859ff03c89528f78d29cae784</td>
+       <td>CVE-2024-45606</td>
+       <td>2024-09-17 20:15:05 <img src="imgs/new.gif" /></td>
+       <td>Sentry is a developer-first error tracking and performance monitoring platform. An authenticated user can mute alert rules from arbitrary organizations and projects with a know rule ID. The user does not need to be a member of the organization or have permissions on the project. In our review, we have identified no instances where alerts have been muted by unauthorized parties. A patch was issued to ensure authorization checks are properly scoped on requests to mute alert rules. Authenticated users who do not have the necessary permissions are no longer able to mute alerts. Sentry SaaS users do not need to take any action. Self-Hosted Sentry users should upgrade to version **24.9.0** or higher. The rule mute feature was generally available as of 23.6.0 but users with early access may have had the feature as of 23.4.0. Affected users are advised to upgrade to version 24.9.0. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45606">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d3d3d0c6b5608cd1f42b9b69cd55b0df</td>
+       <td>CVE-2024-45605</td>
+       <td>2024-09-17 20:15:05 <img src="imgs/new.gif" /></td>
+       <td>Sentry is a developer-first error tracking and performance monitoring platform. An authenticated user delete the user issue alert notifications for arbitrary users given a know alert ID. A patch was issued to ensure authorization checks are properly scoped on requests to delete user alert notifications. Sentry SaaS users do not need to take any action. Self-Hosted Sentry users should upgrade to version 24.9.0 or higher. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45605">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>926c7713bcd9cdc40f6353ff4470746a</td>
+       <td>CVE-2024-45604</td>
+       <td>2024-09-17 20:15:04 <img src="imgs/new.gif" /></td>
+       <td>Contao is an Open Source CMS. In affected versions authenticated users in the back end can list files outside the document root in the file selector widget. Users are advised to update to Contao 4.13.49. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45604">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1b26e74ee6288dcf0d7e6807c2c710b0</td>
+       <td>CVE-2024-45398</td>
+       <td>2024-09-17 20:15:04 <img src="imgs/new.gif" /></td>
+       <td>Contao is an Open Source CMS. In affected versions a back end user with access to the file manager can upload malicious files and execute them on the server. Users are advised to update to Contao 4.13.49, 5.3.15 or 5.4.3. Users unable to update are advised to configure their web server so it does not execute PHP files and other scripts in the Contao file upload directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45398">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ee3e2c65d775627190ea69745b059f15</td>
+       <td>CVE-2024-8949</td>
+       <td>2024-09-17 19:15:30 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical has been found in SourceCodester Online Eyewear Shop 1.0. This affects an unknown part of the file /classes/Master.php of the component Cart Content Handler. The manipulation of the argument cart_id/id leads to improper ownership management. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>44c23077f1ee827bdbdf0efe2117cfdd</td>
+       <td>CVE-2024-8948</td>
+       <td>2024-09-17 19:15:29 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in MicroPython 1.23.0. It has been rated as critical. Affected by this issue is the function mpz_as_bytes of the file py/objint.c. The manipulation leads to heap-based buffer overflow. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The patch is identified as 908ab1ceca15ee6fd0ef82ca4cba770a3ec41894. It is recommended to apply a patch to fix this issue. In micropython objint component, converting zero from int to bytes leads to heap buffer-overflow-write at mpz_as_bytes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8948">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e932dab7aaf442789b80e57a592b5b0c</td>
        <td>CVE-2024-8767</td>
        <td>2024-09-17 09:15:03 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-09-16 06:15:12 <img src="imgs/new.gif" /></td>
        <td>OMFLOW from The SYSCOM Group does not properly restrict access to the system settings modification functionality, allowing remote attackers with regular privileges to update system settings or create accounts with administrator privileges, thereby gaining control of the server.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8779">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1b13b6dbb392496a33c34cb41d51d2d3</td>
-       <td>CVE-2024-44059</td>
-       <td>2024-09-15 09:15:04</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in MediaRon LLC Custom Query Blocks allows Stored XSS.This issue affects Custom Query Blocks: from n/a through 5.3.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44059">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f8541efaf79f571f69fe89a99dda557b</td>
-       <td>CVE-2024-44058</td>
-       <td>2024-09-15 09:15:03</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in CryoutCreations Parabola allows Stored XSS.This issue affects Parabola: from n/a through 2.4.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44058">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a52b06ce91d4cfd88a070a31f6a8ae03</td>
-       <td>CVE-2024-44057</td>
-       <td>2024-09-15 09:15:03</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in CryoutCreations Nirvana allows Stored XSS.This issue affects Nirvana: from n/a through 1.6.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44057">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa070c36173f1fe6291bd28777138265</td>
-       <td>CVE-2024-44056</td>
-       <td>2024-09-15 09:15:02</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in CryoutCreations Mantra allows Stored XSS.This issue affects Mantra: from n/a through 3.3.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44056">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eadd8fd6e4485d88ee42a61783efcfa9</td>
-       <td>CVE-2024-44054</td>
-       <td>2024-09-15 09:15:02</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in CryoutCreations Fluida allows Stored XSS.This issue affects Fluida: from n/a through 1.8.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44054">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>17eb2eb31053c65ca12764f010de6428</td>
-       <td>CVE-2024-44053</td>
-       <td>2024-09-15 09:15:02</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Mohammad Arif Opor Ayam allows Reflected XSS.This issue affects Opor Ayam: from n/a through 1.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-44053">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a272d2e8b9368fc7767508aad3677fa2</td>
-       <td>CVE-2024-45460</td>
-       <td>2024-09-15 08:15:14</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Manu225 Flipping Cards allows Stored XSS.This issue affects Flipping Cards: from n/a through 1.30.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45460">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>375569c0a41cf4efc5e288a06ba12f29</td>
-       <td>CVE-2024-45459</td>
-       <td>2024-09-15 08:15:13</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in PickPlugins Product Slider for WooCommerce allows Reflected XSS.This issue affects Product Slider for WooCommerce: from n/a through 1.13.50.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45459">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>501698fbd71027f6d98ae7caa8f6a2e7</td>
-       <td>CVE-2024-45458</td>
-       <td>2024-09-15 08:15:13</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Spiffy Plugins Spiffy Calendar allows Reflected XSS.This issue affects Spiffy Calendar: from n/a through 4.9.13.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45458">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>652eff9b7722ca446e447c69ac0075de</td>
-       <td>CVE-2024-45457</td>
-       <td>2024-09-15 08:15:13</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Spiffy Plugins Spiffy Calendar allows Stored XSS.This issue affects Spiffy Calendar: from n/a through 4.9.13.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45457">详情</a></td>
       </tr>
 
      </tbody>
