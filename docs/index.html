@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-10-20 21:21:23 -->
+<!-- RELEASE TIME : 2024-10-21 21:22:30 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>15c1d80b8627a4bbb931f777dc3cad42</td>
+       <td>CVE-2024-50065</td>
+       <td>2024-10-21 19:39:53 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ntfs3: Change to non-blocking allocation in ntfs_d_hash d_hash is done while under "rcu-walk" and should not sleep. __get_name() allocates using GFP_KERNEL, having the possibility to sleep when under memory pressure. Change the allocation to GFP_NOWAIT.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50065">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bbbb53699e7a1956d5fd9c6e744b3c4b</td>
+       <td>CVE-2024-50064</td>
+       <td>2024-10-21 19:39:52 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: zram: free secondary algorithms names We need to kfree() secondary algorithms names when reset zram device that had multi-streams, otherwise we leak memory. [senozhatsky@chromium.org: kfree(NULL) is legal] Link: https://lkml.kernel.org/r/20240917013021.868769-1-senozhatsky@chromium.org</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50064">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>170f26057e8b0a48413ff3a9e770de72</td>
+       <td>CVE-2024-50063</td>
+       <td>2024-10-21 19:39:51 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: bpf: Prevent tail call between progs attached to different hooks bpf progs can be attached to kernel functions, and the attached functions can take different parameters or return different return values. If prog attached to one kernel function tail calls prog attached to another kernel function, the ctx access or return value verification could be bypassed. For example, if prog1 is attached to func1 which takes only 1 parameter and prog2 is attached to func2 which takes two parameters. Since verifier assumes the bpf ctx passed to prog2 is constructed based on func2's prototype, verifier allows prog2 to access the second parameter from the bpf ctx passed to it. The problem is that verifier does not prevent prog1 from passing its bpf ctx to prog2 via tail call. In this case, the bpf ctx passed to prog2 is constructed from func1 instead of func2, that is, the assumption for ctx access verification is bypassed. Another example, if BPF LSM prog1 is attached to hook file_alloc_security, and BPF LSM prog2 is attached to hook bpf_lsm_audit_rule_known. Verifier knows the return value rules for these two hooks, e.g. it is legal for bpf_lsm_audit_rule_known to return positive number 1, and it is illegal for file_alloc_security to return positive number. So verifier allows prog2 to return positive number 1, but does not allow prog1 to return positive number. The problem is that verifier does not prevent prog1 from calling prog2 via tail call. In this case, prog2's return value 1 will be used as the return value for prog1's hook file_alloc_security. That is, the return value rule is bypassed. This patch adds restriction for tail call to prevent such bypasses.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50063">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>87f38e370d5358a7207964167d3677a2</td>
+       <td>CVE-2024-50062</td>
+       <td>2024-10-21 19:39:51 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: RDMA/rtrs-srv: Avoid null pointer deref during path establishment For RTRS path establishment, RTRS client initiates and completes con_num of connections. After establishing all its connections, the information is exchanged between the client and server through the info_req message. During this exchange, it is essential that all connections have been established, and the state of the RTRS srv path is CONNECTED. So add these sanity checks, to make sure we detect and abort process in error scenarios to avoid null pointer deref.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50062">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>30af04feb4bc93f58a1efd04945f2408</td>
+       <td>CVE-2024-50061</td>
+       <td>2024-10-21 19:39:50 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: i3c: master: cdns: Fix use after free vulnerability in cdns_i3c_master Driver Due to Race Condition In the cdns_i3c_master_probe function, &master->hj_work is bound with cdns_i3c_master_hj. And cdns_i3c_master_interrupt can call cnds_i3c_master_demux_ibis function to start the work. If we remove the module which will call cdns_i3c_master_remove to make cleanup, it will free master->base through i3c_master_unregister while the work mentioned above will be used. The sequence of operations that may lead to a UAF bug is as follows: CPU0 CPU1 | cdns_i3c_master_hj cdns_i3c_master_remove | i3c_master_unregister(&master->base) | device_unregister(&master->dev) | device_release | //free master->base | | i3c_master_do_daa(&master->base) | //use master->base Fix it by ensuring that the work is canceled before proceeding with the cleanup in cdns_i3c_master_remove.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50061">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5446fcba56345b34eaea750df08325f4</td>
+       <td>CVE-2024-50060</td>
+       <td>2024-10-21 19:39:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: io_uring: check if we need to reschedule during overflow flush In terms of normal application usage, this list will always be empty. And if an application does overflow a bit, it'll have a few entries. However, nothing obviously prevents syzbot from running a test case that generates a ton of overflow entries, and then flushing them can take quite a while. Check for needing to reschedule while flushing, and drop our locks and do so if necessary. There's no state to maintain here as overflows always prune from head-of-list, hence it's fine to drop and reacquire the locks at the end of the loop.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50060">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e769a4f9718f8120eba211294c35462</td>
+       <td>CVE-2024-50059</td>
+       <td>2024-10-21 19:39:49 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ntb: ntb_hw_switchtec: Fix use after free vulnerability in switchtec_ntb_remove due to race condition In the switchtec_ntb_add function, it can call switchtec_ntb_init_sndev function, then &sndev->check_link_status_work is bound with check_link_status_work. switchtec_ntb_link_notification may be called to start the work. If we remove the module which will call switchtec_ntb_remove to make cleanup, it will free sndev through kfree(sndev), while the work mentioned above will be used. The sequence of operations that may lead to a UAF bug is as follows: CPU0 CPU1 | check_link_status_work switchtec_ntb_remove | kfree(sndev); | | if (sndev->link_force_down) | // use sndev Fix it by ensuring that the work is canceled before proceeding with the cleanup in switchtec_ntb_remove.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50059">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b81d4aff4b8d6dae45d4f629ae9371c0</td>
+       <td>CVE-2024-50058</td>
+       <td>2024-10-21 19:39:48 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: serial: protect uart_port_dtr_rts() in uart_shutdown() too Commit af224ca2df29 (serial: core: Prevent unsafe uart port access, part 3) added few uport == NULL checks. It added one to uart_shutdown(), so the commit assumes, uport can be NULL in there. But right after that protection, there is an unprotected "uart_port_dtr_rts(uport, false);" call. That is invoked only if HUPCL is set, so I assume that is the reason why we do not see lots of these reports. Or it cannot be NULL at this point at all for some reason :P. Until the above is investigated, stay on the safe side and move this dereference to the if too. I got this inconsistency from Coverity under CID 1585130. Thanks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50058">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9640bc7e33da554f67a41695970e1dc3</td>
+       <td>CVE-2024-50057</td>
+       <td>2024-10-21 19:39:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: usb: typec: tipd: Free IRQ only if it was requested before In polling mode, if no IRQ was requested there is no need to free it. Call devm_free_irq() only if client->irq is set. This fixes the warning caused by the tps6598x module removal: WARNING: CPU: 2 PID: 333 at kernel/irq/devres.c:144 devm_free_irq+0x80/0x8c ... ... Call trace: devm_free_irq+0x80/0x8c tps6598x_remove+0x28/0x88 [tps6598x] i2c_device_remove+0x2c/0x9c device_remove+0x4c/0x80 device_release_driver_internal+0x1cc/0x228 driver_detach+0x50/0x98 bus_remove_driver+0x6c/0xbc driver_unregister+0x30/0x60 i2c_del_driver+0x54/0x64 tps6598x_i2c_driver_exit+0x18/0xc3c [tps6598x] __arm64_sys_delete_module+0x184/0x264 invoke_syscall+0x48/0x110 el0_svc_common.constprop.0+0xc8/0xe8 do_el0_svc+0x20/0x2c el0_svc+0x28/0x98 el0t_64_sync_handler+0x13c/0x158 el0t_64_sync+0x190/0x194</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50057">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ab76efe39ff5121ea545467666dd4d10</td>
+       <td>CVE-2024-50056</td>
+       <td>2024-10-21 19:39:47 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: usb: gadget: uvc: Fix ERR_PTR dereference in uvc_v4l2.c Fix potential dereferencing of ERR_PTR() in find_format_by_pix() and uvc_v4l2_enum_format(). Fix the following smatch errors: drivers/usb/gadget/function/uvc_v4l2.c:124 find_format_by_pix() error: 'fmtdesc' dereferencing possible ERR_PTR() drivers/usb/gadget/function/uvc_v4l2.c:392 uvc_v4l2_enum_format() error: 'fmtdesc' dereferencing possible ERR_PTR() Also, fix similar issue in uvc_v4l2_try_format() for potential dereferencing of ERR_PTR().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50056">详情</a></td>
+      </tr>
+
+      <tr>
        <td>43720ddb4fb6ee722f4c7219c49124f9</td>
        <td>CVE-2024-44000</td>
        <td>2024-10-20 12:15:03 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>ea3ea005a7e8fc1d4974549c338202d1</td>
        <td>CVE-2024-10154</td>
-       <td>2024-10-19 19:15:04 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 19:15:04</td>
        <td>A vulnerability was found in PHPGurukul Boat Booking System 1.0 and classified as critical. Affected by this issue is some unknown functionality of the file status.php of the component Check Booking Status Page. The manipulation of the argument emailid leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10154">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>871cad819f1aa28e22269c14eebb99fb</td>
        <td>CVE-2024-10153</td>
-       <td>2024-10-19 18:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 18:15:02</td>
        <td>A vulnerability has been found in PHPGurukul Boat Booking System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file book-boat.php?bid=1 of the component Book a Boat Page. The manipulation of the argument nopeople leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10153">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>70046f0bb1f638be05df5965f69952b2</td>
        <td>CVE-2024-10142</td>
-       <td>2024-10-19 17:15:10 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 17:15:10</td>
        <td>A vulnerability has been found in code-projects Blood Bank System 1.0 and classified as problematic. This vulnerability affects unknown code of the file /viewrequest.php. The manipulation leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10142">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>fb155329cff9a3a8194605e4121381e2</td>
        <td>CVE-2024-10141</td>
-       <td>2024-10-19 15:15:14 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 15:15:14</td>
        <td>A vulnerability, which was classified as problematic, was found in jsbroks COCO Annotator 0.11.1. This affects an unknown part of the component Session Handler. The manipulation of the argument SECRET_KEY leads to predictable from observable state. It is possible to initiate the attack remotely. The complexity of an attack is rather high. The exploitability is told to be difficult. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10141">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>c8fbbf9c1da36c993a13ea896b00d3d9</td>
        <td>CVE-2024-10140</td>
-       <td>2024-10-19 15:15:14 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 15:15:14</td>
        <td>A vulnerability, which was classified as critical, has been found in code-projects Pharmacy Management System 1.0. Affected by this issue is some unknown functionality of the file /manage_supplier.php. The manipulation of the argument id leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10140">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>84aaf2766f1e50de533264c768434267</td>
        <td>CVE-2024-10139</td>
-       <td>2024-10-19 14:15:02 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 14:15:02</td>
        <td>A vulnerability classified as critical was found in code-projects Pharmacy Management System 1.0. Affected by this vulnerability is an unknown functionality of the file /add_new_supplier.php. The manipulation of the argument name leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10139">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>5ebdf62ee24c8a466bd89954ce41d498</td>
        <td>CVE-2024-10138</td>
-       <td>2024-10-19 13:15:12 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 13:15:12</td>
        <td>A vulnerability classified as critical has been found in code-projects Pharmacy Management System 1.0. Affected is an unknown function of the file /add_new_purchase.php?action=is_supplier. The manipulation of the argument name leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10138">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>46813227c1a7cbbd853636a9f2af424f</td>
        <td>CVE-2024-10137</td>
-       <td>2024-10-19 13:15:11 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 13:15:11</td>
        <td>A vulnerability was found in code-projects Pharmacy Management System 1.0. It has been rated as critical. This issue affects some unknown processing of the file /manage_medicine.php?action=delete. The manipulation of the argument id leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10137">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>50a8e4e5cd026f4ea92cba7129e094db</td>
        <td>CVE-2024-10136</td>
-       <td>2024-10-19 12:15:14 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 12:15:14</td>
        <td>A vulnerability was found in code-projects Pharmacy Management System 1.0. It has been declared as critical. This vulnerability affects unknown code of the file /manage_invoice.php. The manipulation of the argument invoice_number leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10136">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>3bbf45e5ecb43f4584a22dd135f29d22</td>
        <td>CVE-2024-10135</td>
-       <td>2024-10-19 12:15:13 <img src="imgs/new.gif" /></td>
+       <td>2024-10-19 12:15:13</td>
        <td>A vulnerability was found in ESAFENET CDG 5. It has been classified as critical. This affects the function actionDelNetSecConfig of the file /com/esafenet/servlet/netSec/NetSecConfigService.java. The manipulation of the argument id leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10135">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d5eaea8a1964d2753bbbf48fdce87af5</td>
-       <td>CVE-2024-9593</td>
-       <td>2024-10-18 17:32:30</td>
-       <td>The Time Clock plugin and Time Clock Pro plugin for WordPress are vulnerable to Remote Code Execution in versions up to, and including, 1.2.2 (for Time Clock) and 1.1.4 (for Time Clock Pro) via the 'etimeclockwp_load_function_callback' function. This allows unauthenticated attackers to execute code on the server. The invoked function's parameters cannot be specified.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9593">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c1fd585d7ecdd8376099867759f107e</td>
-       <td>CVE-2024-48016</td>
-       <td>2024-10-18 17:15:13</td>
-       <td>Dell Secure Connect Gateway (SCG) 5.0 Appliance - SRS, version(s) 5.24, contains a Use of a Broken or Risky Cryptographic Algorithm vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to information disclosure. The attacker may be able to use exposed credentials to access the system with privileges of the compromised account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48016">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aef74f56042e3eb03f29c3d1a14c3bf5</td>
-       <td>CVE-2024-47241</td>
-       <td>2024-10-18 17:15:12</td>
-       <td>Dell Secure Connect Gateway (SCG) 5.0 Appliance - SRS, version(s) 5.24, contains an Improper Certificate Validation vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to unauthorized access and modification of transmitted data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-47241">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb38bdf04e7e0e3e9e46ad592f21db0f</td>
-       <td>CVE-2024-10120</td>
-       <td>2024-10-18 17:15:12</td>
-       <td>A vulnerability has been found in wfh45678 Radar up to 1.0.8 and classified as critical. This vulnerability affects unknown code of the file /services/v1/common/upload. The manipulation of the argument file leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10120">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2f66161dc9ea142d59abc83d82de1c0d</td>
-       <td>CVE-2023-6080</td>
-       <td>2024-10-18 17:15:12</td>
-       <td>Lakeside Software’s SysTrack LsiAgent Installer version 10.7.8 for Windows contains a local privilege escalation vulnerability which allows attackers SYSTEM level access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-6080">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2cdc2fe19c705160d7f3f276e2d34cf3</td>
-       <td>CVE-2024-42508</td>
-       <td>2024-10-18 16:15:04</td>
-       <td>This vulnerability could be exploited, leading to unauthorized disclosure of information to authenticated users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42508">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6950808924ae9df095474983b372d08</td>
-       <td>CVE-2024-9537</td>
-       <td>2024-10-18 15:15:04</td>
-       <td>ScienceLogic SL1 (formerly EM7) is affected by an unspecified vulnerability involving an unspecified third-party component packaged with SL1. The vulnerability is addressed in SL1 versions 12.1.3+, 12.2.3+, and 12.3+. Remediations have been made available for all SL1 versions back to version lines 10.1.x, 10.2.x, 11.1.x, 11.2.x, and 11.3.x.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9537">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f99caf02a2da17d8c58d996c9b1e4109</td>
-       <td>CVE-2024-47240</td>
-       <td>2024-10-18 12:15:02</td>
-       <td>Dell Secure Connect Gateway (SCG) 5.24 contains an Incorrect Default Permissions vulnerability. A local attacker with low privileges can access the file system and could potentially exploit this vulnerability to gain write access to unauthorized data and cause a version update failure condition.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-47240">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ff5d447f35d171a18b823d8c4dedbe04</td>
-       <td>CVE-2024-9674</td>
-       <td>2024-10-18 11:15:02</td>
-       <td>The Debrandify · Remove or Replace WordPress Branding plugin for WordPress is vulnerable to Stored Cross-Site Scripting via SVG File uploads in all versions up to, and including, 1.1.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses the SVG file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9674">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>522a222c96fa368d0ef0d9c4f7885f04</td>
-       <td>CVE-2024-43300</td>
-       <td>2024-10-18 11:15:02</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Bert Kößler Movie Database allows Stored XSS.This issue affects Movie Database: from n/a through 1.0.11.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-43300">详情</a></td>
       </tr>
 
      </tbody>
