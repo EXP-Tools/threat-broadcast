@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-10-22 21:22:05 -->
+<!-- RELEASE TIME : 2024-10-23 03:29:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -366,7 +366,7 @@
       <tr>
        <td>15c1d80b8627a4bbb931f777dc3cad42</td>
        <td>CVE-2024-50065</td>
-       <td>2024-10-21 19:39:53 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:53</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: ntfs3: Change to non-blocking allocation in ntfs_d_hash d_hash is done while under "rcu-walk" and should not sleep. __get_name() allocates using GFP_KERNEL, having the possibility to sleep when under memory pressure. Change the allocation to GFP_NOWAIT.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50065">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>bbbb53699e7a1956d5fd9c6e744b3c4b</td>
        <td>CVE-2024-50064</td>
-       <td>2024-10-21 19:39:52 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:52</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: zram: free secondary algorithms names We need to kfree() secondary algorithms names when reset zram device that had multi-streams, otherwise we leak memory. [senozhatsky@chromium.org: kfree(NULL) is legal] Link: https://lkml.kernel.org/r/20240917013021.868769-1-senozhatsky@chromium.org</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50064">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>170f26057e8b0a48413ff3a9e770de72</td>
        <td>CVE-2024-50063</td>
-       <td>2024-10-21 19:39:51 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:51</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: bpf: Prevent tail call between progs attached to different hooks bpf progs can be attached to kernel functions, and the attached functions can take different parameters or return different return values. If prog attached to one kernel function tail calls prog attached to another kernel function, the ctx access or return value verification could be bypassed. For example, if prog1 is attached to func1 which takes only 1 parameter and prog2 is attached to func2 which takes two parameters. Since verifier assumes the bpf ctx passed to prog2 is constructed based on func2's prototype, verifier allows prog2 to access the second parameter from the bpf ctx passed to it. The problem is that verifier does not prevent prog1 from passing its bpf ctx to prog2 via tail call. In this case, the bpf ctx passed to prog2 is constructed from func1 instead of func2, that is, the assumption for ctx access verification is bypassed. Another example, if BPF LSM prog1 is attached to hook file_alloc_security, and BPF LSM prog2 is attached to hook bpf_lsm_audit_rule_known. Verifier knows the return value rules for these two hooks, e.g. it is legal for bpf_lsm_audit_rule_known to return positive number 1, and it is illegal for file_alloc_security to return positive number. So verifier allows prog2 to return positive number 1, but does not allow prog1 to return positive number. The problem is that verifier does not prevent prog1 from calling prog2 via tail call. In this case, prog2's return value 1 will be used as the return value for prog1's hook file_alloc_security. That is, the return value rule is bypassed. This patch adds restriction for tail call to prevent such bypasses.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50063">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>87f38e370d5358a7207964167d3677a2</td>
        <td>CVE-2024-50062</td>
-       <td>2024-10-21 19:39:51 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:51</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: RDMA/rtrs-srv: Avoid null pointer deref during path establishment For RTRS path establishment, RTRS client initiates and completes con_num of connections. After establishing all its connections, the information is exchanged between the client and server through the info_req message. During this exchange, it is essential that all connections have been established, and the state of the RTRS srv path is CONNECTED. So add these sanity checks, to make sure we detect and abort process in error scenarios to avoid null pointer deref.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50062">详情</a></td>
       </tr>
@@ -398,7 +398,7 @@
       <tr>
        <td>30af04feb4bc93f58a1efd04945f2408</td>
        <td>CVE-2024-50061</td>
-       <td>2024-10-21 19:39:50 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:50</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: i3c: master: cdns: Fix use after free vulnerability in cdns_i3c_master Driver Due to Race Condition In the cdns_i3c_master_probe function, &master->hj_work is bound with cdns_i3c_master_hj. And cdns_i3c_master_interrupt can call cnds_i3c_master_demux_ibis function to start the work. If we remove the module which will call cdns_i3c_master_remove to make cleanup, it will free master->base through i3c_master_unregister while the work mentioned above will be used. The sequence of operations that may lead to a UAF bug is as follows: CPU0 CPU1 | cdns_i3c_master_hj cdns_i3c_master_remove | i3c_master_unregister(&master->base) | device_unregister(&master->dev) | device_release | //free master->base | | i3c_master_do_daa(&master->base) | //use master->base Fix it by ensuring that the work is canceled before proceeding with the cleanup in cdns_i3c_master_remove.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50061">详情</a></td>
       </tr>
@@ -406,7 +406,7 @@
       <tr>
        <td>5446fcba56345b34eaea750df08325f4</td>
        <td>CVE-2024-50060</td>
-       <td>2024-10-21 19:39:49 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:49</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: io_uring: check if we need to reschedule during overflow flush In terms of normal application usage, this list will always be empty. And if an application does overflow a bit, it'll have a few entries. However, nothing obviously prevents syzbot from running a test case that generates a ton of overflow entries, and then flushing them can take quite a while. Check for needing to reschedule while flushing, and drop our locks and do so if necessary. There's no state to maintain here as overflows always prune from head-of-list, hence it's fine to drop and reacquire the locks at the end of the loop.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50060">详情</a></td>
       </tr>
@@ -414,7 +414,7 @@
       <tr>
        <td>2e769a4f9718f8120eba211294c35462</td>
        <td>CVE-2024-50059</td>
-       <td>2024-10-21 19:39:49 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:49</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: ntb: ntb_hw_switchtec: Fix use after free vulnerability in switchtec_ntb_remove due to race condition In the switchtec_ntb_add function, it can call switchtec_ntb_init_sndev function, then &sndev->check_link_status_work is bound with check_link_status_work. switchtec_ntb_link_notification may be called to start the work. If we remove the module which will call switchtec_ntb_remove to make cleanup, it will free sndev through kfree(sndev), while the work mentioned above will be used. The sequence of operations that may lead to a UAF bug is as follows: CPU0 CPU1 | check_link_status_work switchtec_ntb_remove | kfree(sndev); | | if (sndev->link_force_down) | // use sndev Fix it by ensuring that the work is canceled before proceeding with the cleanup in switchtec_ntb_remove.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50059">详情</a></td>
       </tr>
@@ -422,7 +422,7 @@
       <tr>
        <td>b81d4aff4b8d6dae45d4f629ae9371c0</td>
        <td>CVE-2024-50058</td>
-       <td>2024-10-21 19:39:48 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:48</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: serial: protect uart_port_dtr_rts() in uart_shutdown() too Commit af224ca2df29 (serial: core: Prevent unsafe uart port access, part 3) added few uport == NULL checks. It added one to uart_shutdown(), so the commit assumes, uport can be NULL in there. But right after that protection, there is an unprotected "uart_port_dtr_rts(uport, false);" call. That is invoked only if HUPCL is set, so I assume that is the reason why we do not see lots of these reports. Or it cannot be NULL at this point at all for some reason :P. Until the above is investigated, stay on the safe side and move this dereference to the if too. I got this inconsistency from Coverity under CID 1585130. Thanks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50058">详情</a></td>
       </tr>
@@ -430,7 +430,7 @@
       <tr>
        <td>9640bc7e33da554f67a41695970e1dc3</td>
        <td>CVE-2024-50057</td>
-       <td>2024-10-21 19:39:47 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:47</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: usb: typec: tipd: Free IRQ only if it was requested before In polling mode, if no IRQ was requested there is no need to free it. Call devm_free_irq() only if client->irq is set. This fixes the warning caused by the tps6598x module removal: WARNING: CPU: 2 PID: 333 at kernel/irq/devres.c:144 devm_free_irq+0x80/0x8c ... ... Call trace: devm_free_irq+0x80/0x8c tps6598x_remove+0x28/0x88 [tps6598x] i2c_device_remove+0x2c/0x9c device_remove+0x4c/0x80 device_release_driver_internal+0x1cc/0x228 driver_detach+0x50/0x98 bus_remove_driver+0x6c/0xbc driver_unregister+0x30/0x60 i2c_del_driver+0x54/0x64 tps6598x_i2c_driver_exit+0x18/0xc3c [tps6598x] __arm64_sys_delete_module+0x184/0x264 invoke_syscall+0x48/0x110 el0_svc_common.constprop.0+0xc8/0xe8 do_el0_svc+0x20/0x2c el0_svc+0x28/0x98 el0t_64_sync_handler+0x13c/0x158 el0t_64_sync+0x190/0x194</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50057">详情</a></td>
       </tr>
@@ -438,7 +438,7 @@
       <tr>
        <td>ab76efe39ff5121ea545467666dd4d10</td>
        <td>CVE-2024-50056</td>
-       <td>2024-10-21 19:39:47 <img src="imgs/new.gif" /></td>
+       <td>2024-10-21 19:39:47</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: usb: gadget: uvc: Fix ERR_PTR dereference in uvc_v4l2.c Fix potential dereferencing of ERR_PTR() in find_format_by_pix() and uvc_v4l2_enum_format(). Fix the following smatch errors: drivers/usb/gadget/function/uvc_v4l2.c:124 find_format_by_pix() error: 'fmtdesc' dereferencing possible ERR_PTR() drivers/usb/gadget/function/uvc_v4l2.c:392 uvc_v4l2_enum_format() error: 'fmtdesc' dereferencing possible ERR_PTR() Also, fix similar issue in uvc_v4l2_try_format() for potential dereferencing of ERR_PTR().</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50056">详情</a></td>
       </tr>
@@ -2100,123 +2100,123 @@
       </tr>
 
       <tr>
-       <td>823afd4956c023ea5c4e93ebb2278c17</td>
-       <td>CVE-2024-5864</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>WordPress Easy Affiliate Links Plugin未授权数据修改漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103254">详情</a></td>
+       <td>431be099f8e7dec410033878e1b37e6b</td>
+       <td>CVE-2023-33327</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>WordPress plugin Leyka权限管理不当漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103422">详情</a></td>
       </tr>
 
       <tr>
-       <td>cc9f4ee9a546c6908f58f99f137dbaf4</td>
-       <td>CVE-2024-5728</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>WordPress Animated AL List Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103253">详情</a></td>
+       <td>9b5608c0f4610df0b97066d154114571</td>
+       <td>CVE-2024-31466</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Aruba Networks ArubaOS缓冲区溢出漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103421">详情</a></td>
       </tr>
 
       <tr>
-       <td>bdcaebe4b92adb4103d27ed8d2c75957</td>
-       <td>CVE-2024-5729</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>WordPress Simple AL Slider Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103252">详情</a></td>
+       <td>707128f01028404aa73932d93b248679</td>
+       <td>CVE-2024-3044</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>The Document Foundation LibreOffice输入验证错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103420">详情</a></td>
       </tr>
 
       <tr>
-       <td>e232b593deeba23337f2b05da7fdb6c9</td>
-       <td>CVE-2024-30110</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>HCL Technologies HCL DRYiCE AEX输入验证错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103251">详情</a></td>
+       <td>b8c530a9832780e6e8280006a79e7125</td>
+       <td>CVE-2024-4562</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Progress Software WhatsUp Gold代码问题漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103419">详情</a></td>
       </tr>
 
       <tr>
-       <td>50a23c5d0f01bad81688d2302a43ac95</td>
-       <td>CVE-2024-2795</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>WordPress SEO SIMPLE PACK Plugin信息泄露漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103250">详情</a></td>
+       <td>9d653b6ea53cae123927def679300bd7</td>
+       <td>CVE-2024-31556</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Peter Deed Reportico Web任意代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103418">详情</a></td>
       </tr>
 
       <tr>
-       <td>477a2734888014ecc9d71ca2bc372074</td>
-       <td>CVE-2024-39351</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>Synology Camera Firmware操作系统命令注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103249">详情</a></td>
+       <td>e77939b69785823cbe0378a1e4aa32a1</td>
+       <td>CVE-2020-26312</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Dotscience Dotmesh任意读取写入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103417">详情</a></td>
       </tr>
 
       <tr>
-       <td>27c1336c2ecd4f38c852bc443c2d0026</td>
-       <td>CVE-2024-39349</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>Synology Camera Firmware缓冲区溢出漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103248">详情</a></td>
+       <td>30de8588223818017d1e72f0c330a1ab</td>
+       <td>CVE-2022-28132</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>T-Soft E-Commerce SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103416">详情</a></td>
       </tr>
 
       <tr>
-       <td>e982764b63ea6871fdb770326ed147f1</td>
-       <td>CVE-2023-47802</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>Synology Camera Firmware操作系统命令注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103247">详情</a></td>
+       <td>40bdb02a521d2db37f467ad941fd9a08</td>
+       <td>CVE-2021-22280</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>B&amp;R Industrial Automation Studio任意代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103415">详情</a></td>
       </tr>
 
       <tr>
-       <td>cb07d96a4d6d1136238a64fc18eeecec</td>
-       <td>CVE-2024-6071</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>PTC Creo Elements/Direct License Server授权错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103246">详情</a></td>
+       <td>6133f4204c6d8fdd945780cfe510ab0b</td>
+       <td>CVE-2024-32465</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Git路径遍历漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103414">详情</a></td>
       </tr>
 
       <tr>
-       <td>88057e066371bcbcc4bbba17a860321d</td>
-       <td>CVE-2024-6296</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>WordPress Stackable – Page Builder Gutenberg Blocks Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103245">详情</a></td>
+       <td>84aa491a82ce04ba763db3ff0d664645</td>
+       <td>CVE-2024-3676</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Proofpoint Enterprise Protection输入验证错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103413">详情</a></td>
       </tr>
 
       <tr>
-       <td>7faa1c73ed602c016e24cf84c1441da1</td>
-       <td>CVE-2024-5727</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>WordPress Widget4Call Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103244">详情</a></td>
+       <td>2e64755ba96a16cae2d22abda4c8dd60</td>
+       <td>CVE-2024-32002</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Git任意代码执行漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103412">详情</a></td>
       </tr>
 
       <tr>
-       <td>b28c440aa0acc4c0cbf7fc271b089519</td>
-       <td>CVE-2024-36075</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>Netwrix CoSoSys Endpoint Protector任意代码执行漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103243">详情</a></td>
+       <td>f6cb4662a288e37877051fe862e2a47b</td>
+       <td>CVE-2024-2637</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>B&amp;R Industrial Automation代码问题漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103411">详情</a></td>
       </tr>
 
       <tr>
-       <td>be24b5900a4b19323c7c1cd2fe1a573e</td>
-       <td>CVE-2024-36074</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>Netwrix CoSoSys Endpoint Protector远程代码执行漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103242">详情</a></td>
+       <td>bc3787d7e41b98a5ccde2162f84bcfb0</td>
+       <td>CVE-2024-0862</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Proofpoint Enterprise Protection服务器端请求伪造漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103410">详情</a></td>
       </tr>
 
       <tr>
-       <td>e5a22a268baf8134df41db419a08337c</td>
-       <td>CVE-2024-36073</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>Netwrix CoSoSys Endpoint Protector远程代码执行漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103241">详情</a></td>
+       <td>368bac8445adc91b785e16d8b1ff7c2f</td>
+       <td>CVE-2024-4778</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Mozilla Firefox内存安全错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103409">详情</a></td>
       </tr>
 
       <tr>
-       <td>bcac95e8224db0a6ddbf043f4d1267e6</td>
-       <td>CVE-2024-22260</td>
-       <td>2024-10-18 09:23:32</td>
-       <td>VMware Workspace One UEM信息泄露漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103240">详情</a></td>
+       <td>4cff5fe5283a293aa3940e7dc3a36b6d</td>
+       <td>CVE-2024-4771</td>
+       <td>2024-10-22 03:26:57 <img src="imgs/new.gif" /></td>
+       <td>Mozilla Firefox内存释放后重用漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103408">详情</a></td>
       </tr>
 
      </tbody>
