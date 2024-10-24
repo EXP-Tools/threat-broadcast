@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-10-24 01:45:14 -->
+<!-- RELEASE TIME : 2024-10-24 03:29:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,46 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4fb0bb949f2e8050bf1802188ae2b3d3</td>
+       <td>CVE-2023-50355</td>
+       <td>2024-10-23 23:15:12 <img src="imgs/new.gif" /></td>
+       <td>HCL Sametime is impacted by the error messages containing sensitive information. An attacker can use this information to launch another, more focused attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-50355">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7e53c40ef0dd619e17f27d243cbfbcf</td>
+       <td>CVE-2024-48213</td>
+       <td>2024-10-23 22:15:02 <img src="imgs/new.gif" /></td>
+       <td>RockOA v2.6.5 is vulnerable to Directory Traversal in webmain/system/beifen/beifenAction.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48213">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c3c4f53fe12e4503c06ab818c8cff949</td>
+       <td>CVE-2024-40432</td>
+       <td>2024-10-23 22:15:02 <img src="imgs/new.gif" /></td>
+       <td>A lack of input validation in Realtek SD card reader driver before 10.0.26100.21374 through the implementation of the IOCTL_SFFDISK_DEVICE_COMMAND control of the SD card reader driver allows a privileged attacker to crash the OS.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40432">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>22029d0b9bd83484ed76062e45939beb</td>
+       <td>CVE-2024-40431</td>
+       <td>2024-10-23 22:15:02 <img src="imgs/new.gif" /></td>
+       <td>A lack of input validation in Realtek SD card reader driver before 10.0.26100.21374 through the implementation of the IOCTL_SCSI_PASS_THROUGH control of the SD card reader driver allows an attacker to write to predictable kernel memory locations, even as a low-privileged user.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40431">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>498b423cec46bfa9168d78491a089fe5</td>
+       <td>CVE-2024-9899</td>
+       <td>2024-10-23 21:15:15 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2023-2143. Reason: This candidate is a reservation duplicate of CVE-2023-2143. Notes: All CVE users should reference CVE-2023-2143 instead of this candidate. All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9899">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3fc569a5162910a61ba6ed864ebe8d2a</td>
        <td>CVE-2024-10301</td>
        <td>2024-10-23 20:15:05 <img src="imgs/new.gif" /></td>
@@ -481,46 +521,6 @@
        <td>2024-10-21 19:39:50</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: i3c: master: cdns: Fix use after free vulnerability in cdns_i3c_master Driver Due to Race Condition In the cdns_i3c_master_probe function, &master->hj_work is bound with cdns_i3c_master_hj. And cdns_i3c_master_interrupt can call cnds_i3c_master_demux_ibis function to start the work. If we remove the module which will call cdns_i3c_master_remove to make cleanup, it will free master->base through i3c_master_unregister while the work mentioned above will be used. The sequence of operations that may lead to a UAF bug is as follows: CPU0 CPU1 | cdns_i3c_master_hj cdns_i3c_master_remove | i3c_master_unregister(&master->base) | device_unregister(&master->dev) | device_release | //free master->base | | i3c_master_do_daa(&master->base) | //use master->base Fix it by ensuring that the work is canceled before proceeding with the cleanup in cdns_i3c_master_remove.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50061">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5446fcba56345b34eaea750df08325f4</td>
-       <td>CVE-2024-50060</td>
-       <td>2024-10-21 19:39:49</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: io_uring: check if we need to reschedule during overflow flush In terms of normal application usage, this list will always be empty. And if an application does overflow a bit, it'll have a few entries. However, nothing obviously prevents syzbot from running a test case that generates a ton of overflow entries, and then flushing them can take quite a while. Check for needing to reschedule while flushing, and drop our locks and do so if necessary. There's no state to maintain here as overflows always prune from head-of-list, hence it's fine to drop and reacquire the locks at the end of the loop.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50060">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e769a4f9718f8120eba211294c35462</td>
-       <td>CVE-2024-50059</td>
-       <td>2024-10-21 19:39:49</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: ntb: ntb_hw_switchtec: Fix use after free vulnerability in switchtec_ntb_remove due to race condition In the switchtec_ntb_add function, it can call switchtec_ntb_init_sndev function, then &sndev->check_link_status_work is bound with check_link_status_work. switchtec_ntb_link_notification may be called to start the work. If we remove the module which will call switchtec_ntb_remove to make cleanup, it will free sndev through kfree(sndev), while the work mentioned above will be used. The sequence of operations that may lead to a UAF bug is as follows: CPU0 CPU1 | check_link_status_work switchtec_ntb_remove | kfree(sndev); | | if (sndev->link_force_down) | // use sndev Fix it by ensuring that the work is canceled before proceeding with the cleanup in switchtec_ntb_remove.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50059">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b81d4aff4b8d6dae45d4f629ae9371c0</td>
-       <td>CVE-2024-50058</td>
-       <td>2024-10-21 19:39:48</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: serial: protect uart_port_dtr_rts() in uart_shutdown() too Commit af224ca2df29 (serial: core: Prevent unsafe uart port access, part 3) added few uport == NULL checks. It added one to uart_shutdown(), so the commit assumes, uport can be NULL in there. But right after that protection, there is an unprotected "uart_port_dtr_rts(uport, false);" call. That is invoked only if HUPCL is set, so I assume that is the reason why we do not see lots of these reports. Or it cannot be NULL at this point at all for some reason :P. Until the above is investigated, stay on the safe side and move this dereference to the if too. I got this inconsistency from Coverity under CID 1585130. Thanks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50058">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9640bc7e33da554f67a41695970e1dc3</td>
-       <td>CVE-2024-50057</td>
-       <td>2024-10-21 19:39:47</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: usb: typec: tipd: Free IRQ only if it was requested before In polling mode, if no IRQ was requested there is no need to free it. Call devm_free_irq() only if client->irq is set. This fixes the warning caused by the tps6598x module removal: WARNING: CPU: 2 PID: 333 at kernel/irq/devres.c:144 devm_free_irq+0x80/0x8c ... ... Call trace: devm_free_irq+0x80/0x8c tps6598x_remove+0x28/0x88 [tps6598x] i2c_device_remove+0x2c/0x9c device_remove+0x4c/0x80 device_release_driver_internal+0x1cc/0x228 driver_detach+0x50/0x98 bus_remove_driver+0x6c/0xbc driver_unregister+0x30/0x60 i2c_del_driver+0x54/0x64 tps6598x_i2c_driver_exit+0x18/0xc3c [tps6598x] __arm64_sys_delete_module+0x184/0x264 invoke_syscall+0x48/0x110 el0_svc_common.constprop.0+0xc8/0xe8 do_el0_svc+0x20/0x2c el0_svc+0x28/0x98 el0t_64_sync_handler+0x13c/0x158 el0t_64_sync+0x190/0x194</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50057">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ab76efe39ff5121ea545467666dd4d10</td>
-       <td>CVE-2024-50056</td>
-       <td>2024-10-21 19:39:47</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: usb: gadget: uvc: Fix ERR_PTR dereference in uvc_v4l2.c Fix potential dereferencing of ERR_PTR() in find_format_by_pix() and uvc_v4l2_enum_format(). Fix the following smatch errors: drivers/usb/gadget/function/uvc_v4l2.c:124 find_format_by_pix() error: 'fmtdesc' dereferencing possible ERR_PTR() drivers/usb/gadget/function/uvc_v4l2.c:392 uvc_v4l2_enum_format() error: 'fmtdesc' dereferencing possible ERR_PTR() Also, fix similar issue in uvc_v4l2_try_format() for potential dereferencing of ERR_PTR().</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50056">详情</a></td>
       </tr>
 
      </tbody>
@@ -1980,6 +1980,22 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5a6288b74393b6803785a53805fb290f</td>
+       <td>CVE-2024-34773</td>
+       <td>2024-10-24 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Siemens Solid Edge堆栈溢出漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103513">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>94fbad778260793135ad7160c830d5c0</td>
+       <td>CVE-2024-34772</td>
+       <td>2024-10-24 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Siemens Solid Edge越界读取漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103512">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bafd4d34456ad711cd71e59682cfcafa</td>
        <td>CVE-2024-38770</td>
        <td>2024-10-23 09:23:04 <img src="imgs/new.gif" /></td>
@@ -2100,123 +2116,107 @@
       </tr>
 
       <tr>
-       <td>48bfab927606d08a2c41f778118bb2dc</td>
-       <td>CVE-2024-39243</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>skycaiji特殊元素注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103305">详情</a></td>
+       <td>00cac77a4525ca6077c50a6012ce72d2</td>
+       <td>CVE-2024-4859</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Solidus跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103511">详情</a></td>
       </tr>
 
       <tr>
-       <td>67f172ae6b65289103851fd1b341ff69</td>
-       <td>CVE-2024-37139</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Dell PowerProtect DD资源生命周期内控制错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103298">详情</a></td>
+       <td>44447c9656f44bdbd1be60a069ea3aac</td>
+       <td>CVE-2024-4624</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>WordPress plugin Essential Addons for Elementor存储型跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103509">详情</a></td>
       </tr>
 
       <tr>
-       <td>9088019df3489ba96068b107629c9abc</td>
-       <td>CVE-2024-37140</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Dell PowerProtect DD操作系统命令注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103297">详情</a></td>
+       <td>26cf52447cb255c2fa1182b2e43fab46</td>
+       <td>CVE-2024-27109</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>General Electric Healthcare Imaging凭据保护不足漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103508">详情</a></td>
       </tr>
 
       <tr>
-       <td>ad6f540133477542f4f16e7f9d9d0629</td>
-       <td>CVE-2024-39242</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>skycaiji跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103296">详情</a></td>
+       <td>5a795b8ce42a014712f4fec8778ec231</td>
+       <td>CVE-2024-4473</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>WordPress plugin Sydney Toolbox存储型跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103507">详情</a></td>
       </tr>
 
       <tr>
-       <td>08c2273d6ab9402febae6ddfdcef23fe</td>
-       <td>CVE-2024-4105</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Yokogawa FAST/TOOLS跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103295">详情</a></td>
+       <td>3b1dc6ec860ed8db842d8df66bd858cb</td>
+       <td>CVE-2024-4445</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>WordPress plugin WP Compress未授权的数据修改漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103506">详情</a></td>
       </tr>
 
       <tr>
-       <td>40bcff65fd918e6233d6e9bfdd8e9183</td>
-       <td>CVE-2024-6354</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Devolutions Remote Desktop Manager访问控制错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103294">详情</a></td>
+       <td>a884fe0b2b97e5c401c2d03065c47764</td>
+       <td>CVE-2024-4440</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>WordPress plugin 140+ Widgets | Best Addons For Elementor存储型跨站脚本漏洞（CVE-2024-4440</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103505">详情</a></td>
       </tr>
 
       <tr>
-       <td>b874c4db3665537460ac1c4eb91bc757</td>
-       <td>CVE-2024-29176</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Dell PowerProtect DD缓冲区溢出漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103291">详情</a></td>
+       <td>6191d5599fc3805c4619835c860afd90</td>
+       <td>CVE-2024-4860</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>WordPress plugin RSS Aggregator跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103504">详情</a></td>
       </tr>
 
       <tr>
-       <td>834f7f778589c27c2f835af3646b709e</td>
-       <td>CVE-2024-5181</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>mudler/localai命令注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103290">详情</a></td>
+       <td>96c72de7bb42bc6c5d4ae09f53330f45</td>
+       <td>CVE-2024-4871</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Red Hat Satellite拒绝服务漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103503">详情</a></td>
       </tr>
 
       <tr>
-       <td>a3462a302c4c31920ba1add2f5843d25</td>
-       <td>CVE-2024-25947</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Dell iDRAC Service Module越界读取漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103289">详情</a></td>
+       <td>f1cdd149ec2f903c54eae2c84b547162</td>
+       <td>CVE-2023-24203</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Carlo MonterSimple Customer Relationship Management System跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103502">详情</a></td>
       </tr>
 
       <tr>
-       <td>0e3a860ca1dfd6577189c09be91c48d0</td>
-       <td>CVE-2024-38950</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Libde265堆缓冲区溢出漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103288">详情</a></td>
+       <td>ff6b28de55aa1e47e71836202f848a96</td>
+       <td>CVE-2023-24</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Carlo Montero Simple Customer Relationship Management System SQL注入漏洞（CVE-2023-24</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103501">详情</a></td>
       </tr>
 
       <tr>
-       <td>1c78a0f559a09b646b202cf29e81a597</td>
-       <td>CVE-2024-33327</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>LumisXP跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103286">详情</a></td>
+       <td>bcef828bd2481fe7612f4a220a0913ca</td>
+       <td>CVE-2023-36640</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Fortinet格式化字符串错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103500">详情</a></td>
       </tr>
 
       <tr>
-       <td>9c676a5dbdaeba0073c9d7a36d93eabb</td>
-       <td>CVE-2024-33328</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>LumisXP跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103285">详情</a></td>
+       <td>67cda467bf0c3d7d59abdb8261a342c4</td>
+       <td>CVE-2023-40720</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Fortinet FortiVoice授权绕过漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103499">详情</a></td>
       </tr>
 
       <tr>
-       <td>97d9f057fd185e05e67f1442cca8c204</td>
-       <td>CVE-2024-37141</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Dell PowerProtect DD开放重定向漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103280">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55cb6bd3d1aa57aecb4d8efa2cd84b09</td>
-       <td>CVE-2024-33329</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>LumisXP硬编码凭据使用漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103275">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>870e00c88eaef86568aff65e3bddbf15</td>
-       <td>CVE-2023-26877</td>
-       <td>2024-10-22 12:43:01</td>
-       <td>Softexpert Excellence Suite文件上传漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103270">详情</a></td>
+       <td>c7d0933ad94f03cbc7f3804d09e99ca9</td>
+       <td>CVE-2023-44247</td>
+       <td>2024-10-23 03:26:58 <img src="imgs/new.gif" /></td>
+       <td>Fortinet FortiOS双重释放漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/103498">详情</a></td>
       </tr>
 
      </tbody>
