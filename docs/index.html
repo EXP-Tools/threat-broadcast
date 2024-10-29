@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-10-29 03:31:11 -->
+<!-- RELEASE TIME : 2024-10-29 06:33:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3a963cb4f7bb51d4286db8ed29aaa4dd</td>
+       <td>CVE-2024-22065</td>
+       <td>2024-10-29 02:15:06 <img src="imgs/new.gif" /></td>
+       <td>There is a command injection vulnerability in ZTE MF258 Pro product. Due to insufficient validation of Ping Diagnosis interface parameter, an authenticated attacker could use the vulnerability to execute arbitrary commands.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-22065">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ddb8f486649e5375dac1263e44c1278b</td>
+       <td>CVE-2024-10479</td>
+       <td>2024-10-29 02:15:06 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as problematic, was found in LinZhaoguan pb-cms up to 2.0.1. Affected is an unknown function of the file /admin#themes of the component Theme Management Module. The manipulation leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10479">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e630b890be515cade39ce51b6551910b</td>
+       <td>CVE-2024-50088</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: btrfs: fix uninitialized pointer free in add_inode_ref() The add_inode_ref() function does not initialize the "name" struct when it is declared. If any of the following calls to "read_one_inode() returns NULL, dir = read_one_inode(root, parent_objectid); if (!dir) { ret = -ENOENT; goto out; } inode = read_one_inode(root, inode_objectid); if (!inode) { ret = -EIO; goto out; } then "name.name" would be freed on "out" before being initialized. out: ... kfree(name.name); This issue was reported by Coverity with CID 1526744.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50088">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>40d73462addc9716f6c99dab73ad7e22</td>
+       <td>CVE-2024-50087</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: btrfs: fix uninitialized pointer free on read_alloc_one_name() error The function read_alloc_one_name() does not initialize the name field of the passed fscrypt_str struct if kmalloc fails to allocate the corresponding buffer. Thus, it is not guaranteed that fscrypt_str.name is initialized when freeing it. This is a follow-up to the linked patch that fixes the remaining instances of the bug introduced by commit e43eec81c516 ("btrfs: use struct qstr instead of name and namelen pairs").</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50087">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6b92b80e732491ce9fd00632eb5e4240</td>
+       <td>CVE-2024-50086</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix user-after-free from session log off There is racy issue between smb2 session log off and smb2 session setup. It will cause user-after-free from session log off. This add session_lock when setting SMB2_SESSION_EXPIRED and referece count to session struct not to free session while it is being used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50086">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c73be78197080d70157867579885566</td>
+       <td>CVE-2024-50085</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mptcp: pm: fix UaF read in mptcp_pm_nl_rm_addr_or_subflow Syzkaller reported this splat: ================================================================== BUG: KASAN: slab-use-after-free in mptcp_pm_nl_rm_addr_or_subflow+0xb44/0xcc0 net/mptcp/pm_netlink.c:881 Read of size 4 at addr ffff8880569ac858 by task syz.1.2799/14662 CPU: 0 UID: 0 PID: 14662 Comm: syz.1.2799 Not tainted 6.12.0-rc2-syzkaller-00307-g36c254515dc6 #0 Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2~bpo12+1 04/01/2014 Call Trace: <TASK> __dump_stack lib/dump_stack.c:94 [inline] dump_stack_lvl+0x116/0x1f0 lib/dump_stack.c:120 print_address_description mm/kasan/report.c:377 [inline] print_report+0xc3/0x620 mm/kasan/report.c:488 kasan_report+0xd9/0x110 mm/kasan/report.c:601 mptcp_pm_nl_rm_addr_or_subflow+0xb44/0xcc0 net/mptcp/pm_netlink.c:881 mptcp_pm_nl_rm_subflow_received net/mptcp/pm_netlink.c:914 [inline] mptcp_nl_remove_id_zero_address+0x305/0x4a0 net/mptcp/pm_netlink.c:1572 mptcp_pm_nl_del_addr_doit+0x5c9/0x770 net/mptcp/pm_netlink.c:1603 genl_family_rcv_msg_doit+0x202/0x2f0 net/netlink/genetlink.c:1115 genl_family_rcv_msg net/netlink/genetlink.c:1195 [inline] genl_rcv_msg+0x565/0x800 net/netlink/genetlink.c:1210 netlink_rcv_skb+0x165/0x410 net/netlink/af_netlink.c:2551 genl_rcv+0x28/0x40 net/netlink/genetlink.c:1219 netlink_unicast_kernel net/netlink/af_netlink.c:1331 [inline] netlink_unicast+0x53c/0x7f0 net/netlink/af_netlink.c:1357 netlink_sendmsg+0x8b8/0xd70 net/netlink/af_netlink.c:1901 sock_sendmsg_nosec net/socket.c:729 [inline] __sock_sendmsg net/socket.c:744 [inline] ____sys_sendmsg+0x9ae/0xb40 net/socket.c:2607 ___sys_sendmsg+0x135/0x1e0 net/socket.c:2661 __sys_sendmsg+0x117/0x1f0 net/socket.c:2690 do_syscall_32_irqs_on arch/x86/entry/common.c:165 [inline] __do_fast_syscall_32+0x73/0x120 arch/x86/entry/common.c:386 do_fast_syscall_32+0x32/0x80 arch/x86/entry/common.c:411 entry_SYSENTER_compat_after_hwframe+0x84/0x8e RIP: 0023:0xf7fe4579 Code: b8 01 10 06 03 74 b4 01 10 07 03 74 b0 01 10 08 03 74 d8 01 00 00 00 00 00 00 00 00 00 00 00 00 00 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d b4 26 00 00 00 00 8d b4 26 00 00 00 00 RSP: 002b:00000000f574556c EFLAGS: 00000296 ORIG_RAX: 0000000000000172 RAX: ffffffffffffffda RBX: 000000000000000b RCX: 0000000020000140 RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000 RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000 R10: 0000000000000000 R11: 0000000000000296 R12: 0000000000000000 R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000 </TASK> Allocated by task 5387: kasan_save_stack+0x33/0x60 mm/kasan/common.c:47 kasan_save_track+0x14/0x30 mm/kasan/common.c:68 poison_kmalloc_redzone mm/kasan/common.c:377 [inline] __kasan_kmalloc+0xaa/0xb0 mm/kasan/common.c:394 kmalloc_noprof include/linux/slab.h:878 [inline] kzalloc_noprof include/linux/slab.h:1014 [inline] subflow_create_ctx+0x87/0x2a0 net/mptcp/subflow.c:1803 subflow_ulp_init+0xc3/0x4d0 net/mptcp/subflow.c:1956 __tcp_set_ulp net/ipv4/tcp_ulp.c:146 [inline] tcp_set_ulp+0x326/0x7f0 net/ipv4/tcp_ulp.c:167 mptcp_subflow_create_socket+0x4ae/0x10a0 net/mptcp/subflow.c:1764 __mptcp_subflow_connect+0x3cc/0x1490 net/mptcp/subflow.c:1592 mptcp_pm_create_subflow_or_signal_addr+0xbda/0x23a0 net/mptcp/pm_netlink.c:642 mptcp_pm_nl_fully_established net/mptcp/pm_netlink.c:650 [inline] mptcp_pm_nl_work+0x3a1/0x4f0 net/mptcp/pm_netlink.c:943 mptcp_worker+0x15a/0x1240 net/mptcp/protocol.c:2777 process_one_work+0x958/0x1b30 kernel/workqueue.c:3229 process_scheduled_works kernel/workqueue.c:3310 [inline] worker_thread+0x6c8/0xf00 kernel/workqueue.c:3391 kthread+0x2c1/0x3a0 kernel/kthread.c:389 ret_from_fork+0x45/0x80 arch/x86/ke ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50085">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d2269df78bc9255fc4cba2c81d2836a</td>
+       <td>CVE-2024-50084</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: microchip: vcap api: Fix memory leaks in vcap_api_encode_rule_test() Commit a3c1e45156ad ("net: microchip: vcap: Fix use-after-free error in kunit test") fixed the use-after-free error, but introduced below memory leaks by removing necessary vcap_free_rule(), add it to fix it. unreferenced object 0xffffff80ca58b700 (size 192): comm "kunit_try_catch", pid 1215, jiffies 4294898264 hex dump (first 32 bytes): 00 12 7a 00 05 00 00 00 0a 00 00 00 64 00 00 00 ..z.........d... 00 00 00 00 00 00 00 00 00 04 0b cc 80 ff ff ff ................ backtrace (crc 9c09c3fe): [<0000000052a0be73>] kmemleak_alloc+0x34/0x40 [<0000000043605459>] __kmalloc_cache_noprof+0x26c/0x2f4 [<0000000040a01b8d>] vcap_alloc_rule+0x3cc/0x9c4 [<000000003fe86110>] vcap_api_encode_rule_test+0x1ac/0x16b0 [<00000000b3595fc4>] kunit_try_run_case+0x13c/0x3ac [<0000000010f5d2bf>] kunit_generic_run_threadfn_adapter+0x80/0xec [<00000000c5d82c9a>] kthread+0x2e8/0x374 [<00000000f4287308>] ret_from_fork+0x10/0x20 unreferenced object 0xffffff80cc0b0400 (size 64): comm "kunit_try_catch", pid 1215, jiffies 4294898265 hex dump (first 32 bytes): 80 04 0b cc 80 ff ff ff 18 b7 58 ca 80 ff ff ff ..........X..... 39 00 00 00 02 00 00 00 06 05 04 03 02 01 ff ff 9............... backtrace (crc daf014e9): [<0000000052a0be73>] kmemleak_alloc+0x34/0x40 [<0000000043605459>] __kmalloc_cache_noprof+0x26c/0x2f4 [<000000000ff63fd4>] vcap_rule_add_key+0x2cc/0x528 [<00000000dfdb1e81>] vcap_api_encode_rule_test+0x224/0x16b0 [<00000000b3595fc4>] kunit_try_run_case+0x13c/0x3ac [<0000000010f5d2bf>] kunit_generic_run_threadfn_adapter+0x80/0xec [<00000000c5d82c9a>] kthread+0x2e8/0x374 [<00000000f4287308>] ret_from_fork+0x10/0x20 unreferenced object 0xffffff80cc0b0700 (size 64): comm "kunit_try_catch", pid 1215, jiffies 4294898265 hex dump (first 32 bytes): 80 07 0b cc 80 ff ff ff 28 b7 58 ca 80 ff ff ff ........(.X..... 3c 00 00 00 00 00 00 00 01 2f 03 b3 ec ff ff ff <......../...... backtrace (crc 8d877792): [<0000000052a0be73>] kmemleak_alloc+0x34/0x40 [<0000000043605459>] __kmalloc_cache_noprof+0x26c/0x2f4 [<000000006eadfab7>] vcap_rule_add_action+0x2d0/0x52c [<00000000323475d1>] vcap_api_encode_rule_test+0x4d4/0x16b0 [<00000000b3595fc4>] kunit_try_run_case+0x13c/0x3ac [<0000000010f5d2bf>] kunit_generic_run_threadfn_adapter+0x80/0xec [<00000000c5d82c9a>] kthread+0x2e8/0x374 [<00000000f4287308>] ret_from_fork+0x10/0x20 unreferenced object 0xffffff80cc0b0900 (size 64): comm "kunit_try_catch", pid 1215, jiffies 4294898266 hex dump (first 32 bytes): 80 09 0b cc 80 ff ff ff 80 06 0b cc 80 ff ff ff ................ 7d 00 00 00 01 00 00 00 00 00 00 00 ff 00 00 00 }............... backtrace (crc 34181e56): [<0000000052a0be73>] kmemleak_alloc+0x34/0x40 [<0000000043605459>] __kmalloc_cache_noprof+0x26c/0x2f4 [<000000000ff63fd4>] vcap_rule_add_key+0x2cc/0x528 [<00000000991e3564>] vcap_val_rule+0xcf0/0x13e8 [<00000000fc9868e5>] vcap_api_encode_rule_test+0x678/0x16b0 [<00000000b3595fc4>] kunit_try_run_case+0x13c/0x3ac [<0000000010f5d2bf>] kunit_generic_run_threadfn_adapter+0x80/0xec [<00000000c5d82c9a>] kthread+0x2e8/0x374 [<00000000f4287308>] ret_from_fork+0x10/0x20 unreferenced object 0xffffff80cc0b0980 (size 64): comm "kunit_try_catch", pid 1215, jiffies 4294898266 hex dump (first 32 bytes): 18 b7 58 ca 80 ff ff ff 00 09 0b cc 80 ff ff ff ..X............. 67 00 00 00 00 00 00 00 01 01 74 88 c0 ff ff ff g.........t..... backtrace (crc 275fd9be): [<0000000052a0be73>] kmemleak_alloc+0x34/0x40 [<0000000043605459>] __kmalloc_cache_noprof+0x26c/0x2f4 [<000000000ff63fd4>] vcap_rule_add_key+0x2cc/0x528 [<000000001396a1a2>] test_add_de ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50084">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bd0e21b4e3bb0cb7ffff1e0f63e4d3fd</td>
+       <td>CVE-2024-50083</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: tcp: fix mptcp DSS corruption due to large pmtu xmit Syzkaller was able to trigger a DSS corruption: TCP: request_sock_subflow_v4: Possible SYN flooding on port [::]:20002. Sending cookies. ------------[ cut here ]------------ WARNING: CPU: 0 PID: 5227 at net/mptcp/protocol.c:695 __mptcp_move_skbs_from_subflow+0x20a9/0x21f0 net/mptcp/protocol.c:695 Modules linked in: CPU: 0 UID: 0 PID: 5227 Comm: syz-executor350 Not tainted 6.11.0-syzkaller-08829-gaf9c191ac2a0 #0 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 08/06/2024 RIP: 0010:__mptcp_move_skbs_from_subflow+0x20a9/0x21f0 net/mptcp/protocol.c:695 Code: 0f b6 dc 31 ff 89 de e8 b5 dd ea f5 89 d8 48 81 c4 50 01 00 00 5b 41 5c 41 5d 41 5e 41 5f 5d c3 cc cc cc cc e8 98 da ea f5 90 <0f> 0b 90 e9 47 ff ff ff e8 8a da ea f5 90 0f 0b 90 e9 99 e0 ff ff RSP: 0018:ffffc90000006db8 EFLAGS: 00010246 RAX: ffffffff8ba9df18 RBX: 00000000000055f0 RCX: ffff888030023c00 RDX: 0000000000000100 RSI: 00000000000081e5 RDI: 00000000000055f0 RBP: 1ffff110062bf1ae R08: ffffffff8ba9cf12 R09: 1ffff110062bf1b8 R10: dffffc0000000000 R11: ffffed10062bf1b9 R12: 0000000000000000 R13: dffffc0000000000 R14: 00000000700cec61 R15: 00000000000081e5 FS: 000055556679c380(0000) GS:ffff8880b8600000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000000020287000 CR3: 0000000077892000 CR4: 00000000003506f0 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400 Call Trace: <IRQ> move_skbs_to_msk net/mptcp/protocol.c:811 [inline] mptcp_data_ready+0x29c/0xa90 net/mptcp/protocol.c:854 subflow_data_ready+0x34a/0x920 net/mptcp/subflow.c:1490 tcp_data_queue+0x20fd/0x76c0 net/ipv4/tcp_input.c:5283 tcp_rcv_established+0xfba/0x2020 net/ipv4/tcp_input.c:6237 tcp_v4_do_rcv+0x96d/0xc70 net/ipv4/tcp_ipv4.c:1915 tcp_v4_rcv+0x2dc0/0x37f0 net/ipv4/tcp_ipv4.c:2350 ip_protocol_deliver_rcu+0x22e/0x440 net/ipv4/ip_input.c:205 ip_local_deliver_finish+0x341/0x5f0 net/ipv4/ip_input.c:233 NF_HOOK+0x3a4/0x450 include/linux/netfilter.h:314 NF_HOOK+0x3a4/0x450 include/linux/netfilter.h:314 __netif_receive_skb_one_core net/core/dev.c:5662 [inline] __netif_receive_skb+0x2bf/0x650 net/core/dev.c:5775 process_backlog+0x662/0x15b0 net/core/dev.c:6107 __napi_poll+0xcb/0x490 net/core/dev.c:6771 napi_poll net/core/dev.c:6840 [inline] net_rx_action+0x89b/0x1240 net/core/dev.c:6962 handle_softirqs+0x2c5/0x980 kernel/softirq.c:554 do_softirq+0x11b/0x1e0 kernel/softirq.c:455 </IRQ> <TASK> __local_bh_enable_ip+0x1bb/0x200 kernel/softirq.c:382 local_bh_enable include/linux/bottom_half.h:33 [inline] rcu_read_unlock_bh include/linux/rcupdate.h:919 [inline] __dev_queue_xmit+0x1764/0x3e80 net/core/dev.c:4451 dev_queue_xmit include/linux/netdevice.h:3094 [inline] neigh_hh_output include/net/neighbour.h:526 [inline] neigh_output include/net/neighbour.h:540 [inline] ip_finish_output2+0xd41/0x1390 net/ipv4/ip_output.c:236 ip_local_out net/ipv4/ip_output.c:130 [inline] __ip_queue_xmit+0x118c/0x1b80 net/ipv4/ip_output.c:536 __tcp_transmit_skb+0x2544/0x3b30 net/ipv4/tcp_output.c:1466 tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline] tcp_mtu_probe net/ipv4/tcp_output.c:2547 [inline] tcp_write_xmit+0x641d/0x6bf0 net/ipv4/tcp_output.c:2752 __tcp_push_pending_frames+0x9b/0x360 net/ipv4/tcp_output.c:3015 tcp_push_pending_frames include/net/tcp.h:2107 [inline] tcp_data_snd_check net/ipv4/tcp_input.c:5714 [inline] tcp_rcv_established+0x1026/0x2020 net/ipv4/tcp_input.c:6239 tcp_v4_do_rcv+0x96d/0xc70 net/ipv4/tcp_ipv4.c:1915 sk_backlog_rcv include/net/sock.h:1113 [inline] __release_sock+0x214/0x350 net/core/sock.c:3072 release_sock+0x61/0x1f0 net/core/sock.c:3626 mptcp_push_ ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50083">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd8c3092e9d37beebf9d8daf8d4ae2af</td>
+       <td>CVE-2024-50082</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: blk-rq-qos: fix crash on rq_qos_wait vs. rq_qos_wake_function race We're seeing crashes from rq_qos_wake_function that look like this: BUG: unable to handle page fault for address: ffffafe180a40084 #PF: supervisor write access in kernel mode #PF: error_code(0x0002) - not-present page PGD 100000067 P4D 100000067 PUD 10027c067 PMD 10115d067 PTE 0 Oops: Oops: 0002 [#1] PREEMPT SMP PTI CPU: 17 UID: 0 PID: 0 Comm: swapper/17 Not tainted 6.12.0-rc3-00013-geca631b8fe80 #11 Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.16.0-0-gd239552ce722-prebuilt.qemu.org 04/01/2014 RIP: 0010:_raw_spin_lock_irqsave+0x1d/0x40 Code: 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 0f 1f 44 00 00 41 54 9c 41 5c fa 65 ff 05 62 97 30 4c 31 c0 ba 01 00 00 00 <f0> 0f b1 17 75 0a 4c 89 e0 41 5c c3 cc cc cc cc 89 c6 e8 2c 0b 00 RSP: 0018:ffffafe180580ca0 EFLAGS: 00010046 RAX: 0000000000000000 RBX: ffffafe180a3f7a8 RCX: 0000000000000011 RDX: 0000000000000001 RSI: 0000000000000003 RDI: ffffafe180a40084 RBP: 0000000000000000 R08: 00000000001e7240 R09: 0000000000000011 R10: 0000000000000028 R11: 0000000000000888 R12: 0000000000000002 R13: ffffafe180a40084 R14: 0000000000000000 R15: 0000000000000003 FS: 0000000000000000(0000) GS:ffff9aaf1f280000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: ffffafe180a40084 CR3: 000000010e428002 CR4: 0000000000770ef0 DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000 DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400 PKRU: 55555554 Call Trace: <IRQ> try_to_wake_up+0x5a/0x6a0 rq_qos_wake_function+0x71/0x80 __wake_up_common+0x75/0xa0 __wake_up+0x36/0x60 scale_up.part.0+0x50/0x110 wb_timer_fn+0x227/0x450 ... So rq_qos_wake_function() calls wake_up_process(data->task), which calls try_to_wake_up(), which faults in raw_spin_lock_irqsave(&p->pi_lock). p comes from data->task, and data comes from the waitqueue entry, which is stored on the waiter's stack in rq_qos_wait(). Analyzing the core dump with drgn, I found that the waiter had already woken up and moved on to a completely unrelated code path, clobbering what was previously data->task. Meanwhile, the waker was passing the clobbered garbage in data->task to wake_up_process(), leading to the crash. What's happening is that in between rq_qos_wake_function() deleting the waitqueue entry and calling wake_up_process(), rq_qos_wait() is finding that it already got a token and returning. The race looks like this: rq_qos_wait() rq_qos_wake_function() ============================================================== prepare_to_wait_exclusive() data->got_token = true; list_del_init(&curr->entry); if (data.got_token) break; finish_wait(&rqw->wait, &data.wq); ^- returns immediately because list_empty_careful(&wq_entry->entry) is true ... return, go do something else ... wake_up_process(data->task) (NO LONGER VALID!)-^ Normally, finish_wait() is supposed to synchronize against the waker. But, as noted above, it is returning immediately because the waitqueue entry has already been removed from the waitqueue. The bug is that rq_qos_wake_function() is accessing the waitqueue entry AFTER deleting it. Note that autoremove_wake_function() wakes the waiter and THEN deletes the waitqueue entry, which is the proper order. Fix it by swapping the order. We also need to use list_del_init_careful() to match the list_empty_careful() in finish_wait().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50082">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>57a556583e5968f3b07afdb1c1ea1ade</td>
+       <td>CVE-2024-50081</td>
+       <td>2024-10-29 01:15:05 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: blk-mq: setup queue ->tag_set before initializing hctx Commit 7b815817aa58 ("blk-mq: add helper for checking if one CPU is mapped to specified hctx") needs to check queue mapping via tag set in hctx's cpuhp handler. However, q->tag_set may not be setup yet when the cpuhp handler is enabled, then kernel oops is triggered. Fix the issue by setup queue tag_set before initializing hctx.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50081">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5a13893a1a6c4fdce720193dc4855a7d</td>
        <td>CVE-2024-48936</td>
        <td>2024-10-28 04:15:02 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-10-26 21:15:13</td>
        <td>CommonRegexJS is a CommonRegex port for JavaScript. All available versions contain one or more regular expressions that are vulnerable to Regular Expression Denial of Service (ReDoS). As of time of publication, no known patches are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-26305">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e7d31a012fd393ebbc4f95a7573b9ae6</td>
-       <td>CVE-2024-47821</td>
-       <td>2024-10-25 23:15:02</td>
-       <td>pyLoad is a free and open-source Download Manager. The folder `/.pyload/scripts` has scripts which are run when certain actions are completed, for e.g. a download is finished. By downloading a executable file to a folder in /scripts and performing the respective action, remote code execution can be achieved in versions on the 0.5 branch prior to 0.5.0b3.dev87. A file can be downloaded to such a folder by changing the download folder to a folder in `/scripts` path and using the `/flashgot` API to download the file. This vulnerability allows an attacker with access to change the settings on a pyload server to execute arbitrary code and completely compromise the system. Version 0.5.0b3.dev87 fixes this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-47821">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c31ba2bb146465ff0c4f1dbb1f0a7035</td>
-       <td>CVE-2024-48239</td>
-       <td>2024-10-25 22:15:02</td>
-       <td>An issue was discovered in WTCMS 1.0. In the plupload method in \AssetController.class.php, the app parameters aren't processed, resulting in Cross Site Scripting (XSS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48239">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0771f77852d5a6063e21c2370999de89</td>
-       <td>CVE-2024-48238</td>
-       <td>2024-10-25 22:15:02</td>
-       <td>WTCMS 1.0 is vulnerable to SQL Injection in the edit_post method of /Admin\Controller\NavControl.class.php via the parentid parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48238">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b9efd3bcc2b7fb7670ddc2294814a3c6</td>
-       <td>CVE-2024-48237</td>
-       <td>2024-10-25 22:15:02</td>
-       <td>WTCMS 1.0 is vulnerable to Incorrect Access Control in \Common\Controller\HomebaseController.class.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48237">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>baebb3c3823cfa120cf8937278c28206</td>
-       <td>CVE-2024-48236</td>
-       <td>2024-10-25 22:15:02</td>
-       <td>An issue in ofcms 1.1.2 allows a remote attacker to execute arbitrary code via the FileOutputStream function in the write String method of the ofcms-admin\src\main\java\com\ofsoft\cms\core\uitle\FileUtils.java file</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48236">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5c6cf8e9ebc0285aed324239c250d3d</td>
-       <td>CVE-2024-48235</td>
-       <td>2024-10-25 22:15:02</td>
-       <td>An issue in ofcms 1.1.2 allows a remote attacker to execute arbitrary code via the save method of the TemplateController.java file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48235">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>851fc70aaaec820f691f450a33483101</td>
-       <td>CVE-2024-48234</td>
-       <td>2024-10-25 22:15:02</td>
-       <td>An issue was discovered in mipjz 5.0.5. In the push method of app\tag\controller\ApiAdminTag.php the value of the postAddress parameter is not processed and is directly passed into curl_exec execution and output, resulting in Server-side request forgery (SSRF) vulnerability that can read server files.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48234">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>349919d58d959cfb551c73f4a9adbf17</td>
-       <td>CVE-2024-48228</td>
-       <td>2024-10-25 22:15:02</td>
-       <td>An issue was found in funadmin 5.0.2. The selectfiles method in \backend\controller\sys\Attachh.php directly stores the passed parameters and values into the param parameter without filtering, resulting in Cross Site Scripting (XSS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48228">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>504847fae09731dfadee325817ffe7bc</td>
-       <td>CVE-2024-48396</td>
-       <td>2024-10-25 21:15:04</td>
-       <td>AIML Chatbot 1.0 (fixed in 2.0) is vulnerable to Cross Site Scripting (XSS). The vulnerability is exploited through the message input field, where attackers can inject malicious HTML or JavaScript code. The chatbot fails to sanitize these inputs, leading to the execution of malicious scripts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48396">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1f7dfb476d5a3c63387905fb54cc088a</td>
-       <td>CVE-2024-48233</td>
-       <td>2024-10-25 21:15:04</td>
-       <td>mipjz 5.0.5 is vulnerable to Cross Site Scripting (XSS) in \app\setting\controller\ApiAdminSetting.php via the ICP parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48233">详情</a></td>
       </tr>
 
      </tbody>
