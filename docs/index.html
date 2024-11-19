@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-11-19 03:34:27 -->
+<!-- RELEASE TIME : 2024-11-19 09:26:51 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8872b1763d373668a6ee642d38c378fd</td>
+       <td>CVE-2024-8403</td>
+       <td>2024-11-19 06:15:17 <img src="imgs/new.gif" /></td>
+       <td>Improper Validation of Specified Type of Input vulnerability in Mitsubishi Electric Corporation MELSEC iQ-F Series FX5-ENET versions 1.100 and later and FX5-ENET/IP versions 1.100 to 1.104 allows a remote attacker to cause a Denial of Service condition in Ethernet communication of the products by sending specially crafted SLMP packets.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8403">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c15c94dd2ffebd2b66b63a01e14757d8</td>
+       <td>CVE-2024-10103</td>
+       <td>2024-11-19 06:15:17 <img src="imgs/new.gif" /></td>
+       <td>In the process of testing the MailPoet WordPress plugin before 5.3.2, a vulnerability was found that allows you to implement Stored XSS on behalf of the editor by embedding malicious script, which entails account takeover backdoor</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10103">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b5bbbe581b31ba13b566974ac7e82b4a</td>
+       <td>CVE-2024-21539</td>
+       <td>2024-11-19 05:15:16 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package @eslint/plugin-kit before 0.2.3 are vulnerable to Regular Expression Denial of Service (ReDoS) due to improper input sanitization. An attacker can increase the CPU usage and crash the program by exploiting this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-21539">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d17013225d5c5192622fa5cafb8859c8</td>
+       <td>CVE-2024-50302</td>
+       <td>2024-11-19 02:16:32 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: HID: core: zero-initialize the report buffer Since the report buffer is used by all kinds of drivers in various ways, let's zero-initialize it during allocation to make sure that it can't be ever used to leak kernel memory via specially-crafted report.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50302">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f4985a0c0bc7213a58a8401136570131</td>
+       <td>CVE-2024-50301</td>
+       <td>2024-11-19 02:16:32 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: security/keys: fix slab-out-of-bounds in key_task_permission KASAN reports an out of bounds read: BUG: KASAN: slab-out-of-bounds in __kuid_val include/linux/uidgid.h:36 BUG: KASAN: slab-out-of-bounds in uid_eq include/linux/uidgid.h:63 [inline] BUG: KASAN: slab-out-of-bounds in key_task_permission+0x394/0x410 security/keys/permission.c:54 Read of size 4 at addr ffff88813c3ab618 by task stress-ng/4362 CPU: 2 PID: 4362 Comm: stress-ng Not tainted 5.10.0-14930-gafbffd6c3ede #15 Call Trace: __dump_stack lib/dump_stack.c:82 [inline] dump_stack+0x107/0x167 lib/dump_stack.c:123 print_address_description.constprop.0+0x19/0x170 mm/kasan/report.c:400 __kasan_report.cold+0x6c/0x84 mm/kasan/report.c:560 kasan_report+0x3a/0x50 mm/kasan/report.c:585 __kuid_val include/linux/uidgid.h:36 [inline] uid_eq include/linux/uidgid.h:63 [inline] key_task_permission+0x394/0x410 security/keys/permission.c:54 search_nested_keyrings+0x90e/0xe90 security/keys/keyring.c:793 This issue was also reported by syzbot. It can be reproduced by following these steps(more details [1]): 1. Obtain more than 32 inputs that have similar hashes, which ends with the pattern '0xxxxxxxe6'. 2. Reboot and add the keys obtained in step 1. The reproducer demonstrates how this issue happened: 1. In the search_nested_keyrings function, when it iterates through the slots in a node(below tag ascend_to_node), if the slot pointer is meta and node->back_pointer != NULL(it means a root), it will proceed to descend_to_node. However, there is an exception. If node is the root, and one of the slots points to a shortcut, it will be treated as a keyring. 2. Whether the ptr is keyring decided by keyring_ptr_is_keyring function. However, KEYRING_PTR_SUBTYPE is 0x2UL, the same as ASSOC_ARRAY_PTR_SUBTYPE_MASK. 3. When 32 keys with the similar hashes are added to the tree, the ROOT has keys with hashes that are not similar (e.g. slot 0) and it splits NODE A without using a shortcut. When NODE A is filled with keys that all hashes are xxe6, the keys are similar, NODE A will split with a shortcut. Finally, it forms the tree as shown below, where slot 6 points to a shortcut. NODE A +------>+---+ ROOT | | 0 | xxe6 +---+ | +---+ xxxx | 0 | shortcut : : xxe6 +---+ | +---+ xxe6 : : | | | xxe6 +---+ | +---+ | 6 |---+ : : xxe6 +---+ +---+ xxe6 : : | f | xxe6 +---+ +---+ xxe6 | f | +---+ 4. As mentioned above, If a slot(slot 6) of the root points to a shortcut, it may be mistakenly transferred to a key*, leading to a read out-of-bounds read. To fix this issue, one should jump to descend_to_node if the ptr is a shortcut, regardless of whether the node is root or not. [1] https://lore.kernel.org/linux-kernel/1cfa878e-8c7b-4570-8606-21daf5e13ce7@huaweicloud.com/ [jarkko: tweaked the commit message a bit to have an appropriate closes tag.]</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50301">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5ec95d194deb1a9211d5bb46eec6d44</td>
+       <td>CVE-2024-50300</td>
+       <td>2024-11-19 02:16:32 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: regulator: rtq2208: Fix uninitialized use of regulator_config Fix rtq2208 driver uninitialized use to cause kernel error.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50300">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4fa2330b69373be63ec81fa7308639bb</td>
+       <td>CVE-2024-50299</td>
+       <td>2024-11-19 02:16:32 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: sctp: properly validate chunk size in sctp_sf_ootb() A size validation fix similar to that in Commit 50619dbf8db7 ("sctp: add size validation when walking chunks") is also required in sctp_sf_ootb() to address a crash reported by syzbot: BUG: KMSAN: uninit-value in sctp_sf_ootb+0x7f5/0xce0 net/sctp/sm_statefuns.c:3712 sctp_sf_ootb+0x7f5/0xce0 net/sctp/sm_statefuns.c:3712 sctp_do_sm+0x181/0x93d0 net/sctp/sm_sideeffect.c:1166 sctp_endpoint_bh_rcv+0xc38/0xf90 net/sctp/endpointola.c:407 sctp_inq_push+0x2ef/0x380 net/sctp/inqueue.c:88 sctp_rcv+0x3831/0x3b20 net/sctp/input.c:243 sctp4_rcv+0x42/0x50 net/sctp/protocol.c:1159 ip_protocol_deliver_rcu+0xb51/0x13d0 net/ipv4/ip_input.c:205 ip_local_deliver_finish+0x336/0x500 net/ipv4/ip_input.c:233</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50299">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>07038f2daf1c507be2d790bf369691a8</td>
+       <td>CVE-2024-50298</td>
+       <td>2024-11-19 02:16:31 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: enetc: allocate vf_state during PF probes In the previous implementation, vf_state is allocated memory only when VF is enabled. However, net_device_ops::ndo_set_vf_mac() may be called before VF is enabled to configure the MAC address of VF. If this is the case, enetc_pf_set_vf_mac() will access vf_state, resulting in access to a null pointer. The simplified error log is as follows. root@ls1028ardb:~# ip link set eno0 vf 1 mac 00:0c:e7:66:77:89 [ 173.543315] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000004 [ 173.637254] pc : enetc_pf_set_vf_mac+0x3c/0x80 Message from sy [ 173.641973] lr : do_setlink+0x4a8/0xec8 [ 173.732292] Call trace: [ 173.734740] enetc_pf_set_vf_mac+0x3c/0x80 [ 173.738847] __rtnl_newlink+0x530/0x89c [ 173.742692] rtnl_newlink+0x50/0x7c [ 173.746189] rtnetlink_rcv_msg+0x128/0x390 [ 173.750298] netlink_rcv_skb+0x60/0x130 [ 173.754145] rtnetlink_rcv+0x18/0x24 [ 173.757731] netlink_unicast+0x318/0x380 [ 173.761665] netlink_sendmsg+0x17c/0x3c8</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50298">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>815c048fa3e5b9aaebbfd7dd86bcda6c</td>
+       <td>CVE-2024-50297</td>
+       <td>2024-11-19 02:16:31 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: xilinx: axienet: Enqueue Tx packets in dql before dmaengine starts Enqueue packets in dql after dma engine starts causes race condition. Tx transfer starts once dma engine is started and may execute dql dequeue in completion before it gets queued. It results in following kernel crash while running iperf stress test: kernel BUG at lib/dynamic_queue_limits.c:99! <snip> Internal error: Oops - BUG: 00000000f2000800 [#1] SMP pc : dql_completed+0x238/0x248 lr : dql_completed+0x3c/0x248 Call trace: dql_completed+0x238/0x248 axienet_dma_tx_cb+0xa0/0x170 xilinx_dma_do_tasklet+0xdc/0x290 tasklet_action_common+0xf8/0x11c tasklet_action+0x30/0x3c handle_softirqs+0xf8/0x230 <snip> Start dmaengine after enqueue in dql fixes the crash.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50297">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>41d78ba4d9fcf42d722237f0db2a154c</td>
+       <td>CVE-2024-50296</td>
+       <td>2024-11-19 02:16:31 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: hns3: fix kernel crash when uninstalling driver When the driver is uninstalled and the VF is disabled concurrently, a kernel crash occurs. The reason is that the two actions call function pci_disable_sriov(). The num_VFs is checked to determine whether to release the corresponding resources. During the second calling, num_VFs is not 0 and the resource release function is called. However, the corresponding resource has been released during the first invoking. Therefore, the problem occurs: [15277.839633][T50670] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000020 ... [15278.131557][T50670] Call trace: [15278.134686][T50670] klist_put+0x28/0x12c [15278.138682][T50670] klist_del+0x14/0x20 [15278.142592][T50670] device_del+0xbc/0x3c0 [15278.146676][T50670] pci_remove_bus_device+0x84/0x120 [15278.151714][T50670] pci_stop_and_remove_bus_device+0x6c/0x80 [15278.157447][T50670] pci_iov_remove_virtfn+0xb4/0x12c [15278.162485][T50670] sriov_disable+0x50/0x11c [15278.166829][T50670] pci_disable_sriov+0x24/0x30 [15278.171433][T50670] hnae3_unregister_ae_algo_prepare+0x60/0x90 [hnae3] [15278.178039][T50670] hclge_exit+0x28/0xd0 [hclge] [15278.182730][T50670] __se_sys_delete_module.isra.0+0x164/0x230 [15278.188550][T50670] __arm64_sys_delete_module+0x1c/0x30 [15278.193848][T50670] invoke_syscall+0x50/0x11c [15278.198278][T50670] el0_svc_common.constprop.0+0x158/0x164 [15278.203837][T50670] do_el0_svc+0x34/0xcc [15278.207834][T50670] el0_svc+0x20/0x30 For details, see the following figure. rmmod hclge disable VFs ---------------------------------------------------- hclge_exit() sriov_numvfs_store() ... device_lock() pci_disable_sriov() hns3_pci_sriov_configure() pci_disable_sriov() sriov_disable() sriov_disable() if !num_VFs : if !num_VFs : return; return; sriov_del_vfs() sriov_del_vfs() ... ... klist_put() klist_put() ... ... num_VFs = 0; num_VFs = 0; device_unlock(); In this patch, when driver is removing, we get the device_lock() to protect num_VFs, just like sriov_numvfs_store().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-50296">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f13c6a916fc4f8ce3a727003ebd2686e</td>
        <td>CVE-2024-52947</td>
        <td>2024-11-18 06:15:06 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-11-16 22:15:07</td>
        <td>Deserialization of Untrusted Data vulnerability in Stephen Cui Xin allows Object Injection.This issue affects Xin: from n/a through 1.0.8.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-52412">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b44f471e0082731fc905e8f310d7d799</td>
-       <td>CVE-2024-10614</td>
-       <td>2024-11-16 06:15:07</td>
-       <td>The Customer Reviews for WooCommerce plugin for WordPress is vulnerable to unauthorized access due to a missing capability check on the cancel_import() function in all versions up to, and including, 5.61.0. This makes it possible for authenticated attackers, with Subscriber-level access and above, to cancel and import or check on the status.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10614">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d055b6d14fed56a3a9a044ffb37faa5</td>
-       <td>CVE-2024-8856</td>
-       <td>2024-11-16 05:15:13</td>
-       <td>The Backup and Staging by WP Time Capsule plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type validation in the the UploadHandler.php file and no direct file access prevention in all versions up to, and including, 1.22.21. This makes it possible for unauthenticated attackers to upload arbitrary files on the affected site's server which may make remote code execution possible.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8856">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>10873207d2cc76e7e059d6313ffb8124</td>
-       <td>CVE-2024-10728</td>
-       <td>2024-11-16 05:15:12</td>
-       <td>The Post Grid Gutenberg Blocks and WordPress Blog Plugin – PostX plugin for WordPress is vulnerable to unauthorized plugin installation/activation due to a missing capability check on the 'install_required_plugin_callback' function in all versions up to, and including, 4.1.16. This makes it possible for authenticated attackers, with Subscriber-level access and above, to install and activate arbitrary plugins which can be leveraged to achieve remote code execution if another vulnerable plugin is installed and activated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10728">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb3f5a856495407f13b418201c1098dc</td>
-       <td>CVE-2024-9938</td>
-       <td>2024-11-16 04:15:08</td>
-       <td>The Bounce Handler MailPoet 3 plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'page' parameter in all versions up to, and including, 1.3.21 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9938">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e151991dccad3b6a649dc489bd6d70c</td>
-       <td>CVE-2024-9935</td>
-       <td>2024-11-16 04:15:08</td>
-       <td>The PDF Generator Addon for Elementor Page Builder plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 1.7.5 via the rtw_pgaepb_dwnld_pdf() function. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9935">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8cfa7d06362c62da007e072fe5ac3f81</td>
-       <td>CVE-2024-9850</td>
-       <td>2024-11-16 04:15:07</td>
-       <td>The SVG Case Study plugin for WordPress is vulnerable to Stored Cross-Site Scripting via SVG File uploads in all versions up to, and including, 1.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses the SVG file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9850">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23c58e7fc2b350e57edd618bf1d77666</td>
-       <td>CVE-2024-9849</td>
-       <td>2024-11-16 04:15:07</td>
-       <td>The 3D FlipBook, PDF Viewer, PDF Embedder – Real 3D FlipBook WordPress Plugin plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type validation in the 'r3dfb_save_thumbnail_callback' function in all versions up to, and including, 4.6. This makes it possible for authenticated attackers, with Author-level access and above, to upload arbitrary files on the affected site's server which may make remote code execution possible.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9849">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5595d8366dc51ca6ed370ea9ef60a873</td>
-       <td>CVE-2024-9839</td>
-       <td>2024-11-16 04:15:07</td>
-       <td>The The Uix Slideshow plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 1.6.5. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9839">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0b44cf579dbd476a5f40e6015684338d</td>
-       <td>CVE-2024-9615</td>
-       <td>2024-11-16 04:15:07</td>
-       <td>The BulkPress plugin for WordPress is vulnerable to Reflected Cross-Site Scripting due to the use of add_query_arg without appropriate escaping on the URL in all versions up to, and including, 0.3.5. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9615">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e3458f6f07e9ea0ff81d3f0d5ec3c72b</td>
-       <td>CVE-2024-9386</td>
-       <td>2024-11-16 04:15:07</td>
-       <td>The Exclusive Divi – Divi Preloader, Modules for Divi & Extra Theme plugin for WordPress is vulnerable to Stored Cross-Site Scripting via SVG File uploads in all versions up to, and including, 1.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses the SVG file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9386">详情</a></td>
       </tr>
 
      </tbody>
