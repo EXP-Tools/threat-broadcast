@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-12-06 09:27:06 -->
+<!-- RELEASE TIME : 2024-12-06 15:26:59 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8005fbdff62ad91ebee53bd77371e395</td>
+       <td>CVE-2024-53908</td>
+       <td>2024-12-06 12:15:18 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Django 5.1 before 5.1.4, 5.0 before 5.0.10, and 4.2 before 4.2.17. Direct usage of the django.db.models.fields.json.HasKey lookup, when an Oracle database is used, is subject to SQL injection if untrusted data is used as an lhs value. (Applications that use the jsonfield.has_key lookup via __ are unaffected.)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53908">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7253661668b501a0d706e87c088607e6</td>
+       <td>CVE-2024-53907</td>
+       <td>2024-12-06 12:15:17 <img src="imgs/new.gif" /></td>
+       <td>An issue was discovered in Django 5.1 before 5.1.4, 5.0 before 5.0.10, and 4.2 before 4.2.17. The strip_tags() method and striptags template filter are subject to a potential denial-of-service attack via certain inputs containing large sequences of nested incomplete HTML entities.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53907">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aeeca185f6a39a0d6feb34c5fb4481fe</td>
+       <td>CVE-2024-11730</td>
+       <td>2024-12-06 11:15:08 <img src="imgs/new.gif" /></td>
+       <td>The KiviCare – Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to SQL Injection via the 'sort[]' parameter of the static_data_list AJAX action in all versions up to, and including, 3.6.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with doctor/receptionist-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11730">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a36d578b67a33d37c17b3d1c55928b73</td>
+       <td>CVE-2024-11729</td>
+       <td>2024-12-06 11:15:07 <img src="imgs/new.gif" /></td>
+       <td>The KiviCare – Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to SQL Injection via the 'service_list[0][service_id]' parameter of the get_widget_payment_options AJAX action in all versions up to, and including, 3.6.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Custom-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11729">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>50a08c3bc6f1547803d624e6d51e90af</td>
+       <td>CVE-2024-53142</td>
+       <td>2024-12-06 10:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: initramfs: avoid filename buffer overrun The initramfs filename field is defined in Documentation/driver-api/early-userspace/buffer-format.rst as: 37 cpio_file := ALGN(4) + cpio_header + filename + "\0" + ALGN(4) + data ... 55 ============= ================== ========================= 56 Field name Field size Meaning 57 ============= ================== ========================= ... 70 c_namesize 8 bytes Length of filename, including final \0 When extracting an initramfs cpio archive, the kernel's do_name() path handler assumes a zero-terminated path at @collected, passing it directly to filp_open() / init_mkdir() / init_mknod(). If a specially crafted cpio entry carries a non-zero-terminated filename and is followed by uninitialized memory, then a file may be created with trailing characters that represent the uninitialized memory. The ability to create an initramfs entry would imply already having full control of the system, so the buffer overrun shouldn't be considered a security vulnerability. Append the output of the following bash script to an existing initramfs and observe any created /initramfs_test_fname_overrunAA* path. E.g. ./reproducer.sh | gzip >> /myinitramfs It's easiest to observe non-zero uninitialized memory when the output is gzipped, as it'll overflow the heap allocated @out_buf in __gunzip(), rather than the initrd_start+initrd_size block. ---- reproducer.sh ---- nilchar="A" # change to "\0" to properly zero terminate / pad magic="070701" ino=1 mode=$(( 0100777 )) uid=0 gid=0 nlink=1 mtime=1 filesize=0 devmajor=0 devminor=1 rdevmajor=0 rdevminor=0 csum=0 fname="initramfs_test_fname_overrun" namelen=$(( ${#fname} + 1 )) # plus one to account for terminator printf "%s%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%08x%s" \ $magic $ino $mode $uid $gid $nlink $mtime $filesize \ $devmajor $devminor $rdevmajor $rdevminor $namelen $csum $fname termpadlen=$(( 1 + ((4 - ((110 + $namelen) & 3)) % 4) )) printf "%.s${nilchar}" $(seq 1 $termpadlen) ---- reproducer.sh ---- Symlink filename fields handled in do_symlink() won't overrun past the data segment, due to the explicit zero-termination of the symlink target. Fix filename buffer overrun by aborting the initramfs FSM if any cpio entry doesn't carry a zero-terminator at the expected (name_len - 1) offset.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53142">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>446cb57aad8e203330b2f4a409919171</td>
+       <td>CVE-2024-53141</td>
+       <td>2024-12-06 10:15:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: netfilter: ipset: add missing range check in bitmap_ip_uadt When tb[IPSET_ATTR_IP_TO] is not present but tb[IPSET_ATTR_CIDR] exists, the values of ip and ip_to are slightly swapped. Therefore, the range check for ip should be done later, but this part is missing and it seems that the vulnerability occurs. So we should add missing range checks and remove unnecessary range checks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9f4784c901b298a45c9f1c898f6d8d6</td>
+       <td>CVE-2024-11728</td>
+       <td>2024-12-06 10:15:05 <img src="imgs/new.gif" /></td>
+       <td>The KiviCare – Clinic & Patient Management System (EHR) plugin for WordPress is vulnerable to SQL Injection via the 'visit_type[service_id]' parameter of the tax_calculated_data AJAX action in all versions up to, and including, 3.6.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11728">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d32dcd98baedc0c631969fbd321592f5</td>
+       <td>CVE-2024-11460</td>
+       <td>2024-12-06 10:15:05 <img src="imgs/new.gif" /></td>
+       <td>The Verowa Connect plugin for WordPress is vulnerable to SQL Injection via the 'search_string' parameter in all versions up to, and including, 3.0.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11460">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7b1ed8c57b92204972d8e3f27935a69b</td>
+       <td>CVE-2024-11289</td>
+       <td>2024-12-06 10:15:05 <img src="imgs/new.gif" /></td>
+       <td>The Soledad theme for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 8.5.9 via several functions like penci_archive_more_post_ajax_func, penci_more_post_ajax_func, and penci_more_featured_post_ajax_func. This makes it possible for unauthenticated attackers to include and execute PHP files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where PHP files can be uploaded and included. The exploitability of this is limited to Windows.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11289">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>47ddb5fb2820090776ef99d26c57b5a1</td>
+       <td>CVE-2024-10909</td>
+       <td>2024-12-06 10:15:05 <img src="imgs/new.gif" /></td>
+       <td>The The Pojo Forms plugin for WordPress is vulnerable to arbitrary shortcode execution via form_preview_shortcode AJAX action in all versions up to, and including, 1.4.7. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for authenticated attackers, with Subscriber-level access and above, to execute arbitrary shortcodes. This was partially fixed in version 1.4.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10909">详情</a></td>
+      </tr>
+
+      <tr>
        <td>7f913b82a9b467fdb93896a4e62811a1</td>
        <td>CVE-2024-52270</td>
        <td>2024-12-05 11:15:06 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2024-12-04 09:15:04</td>
        <td>The Classic Addons – WPBakery Page Builder plugin for WordPress is vulnerable to Limited Local PHP File Inclusion in all versions up to, and including, 3.0 via the 'style' parameter. This makes it possible for authenticated attackers, with Contributor-level access and above, and permissions granted by an Administrator, to include and execute arbitrary files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where images and other “safe” file types can be uploaded and included. The vulnerability is limited to PHP files in a Windows environment.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11952">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb2e9775a85894d4704f09c64d2bc95f</td>
-       <td>CVE-2024-11326</td>
-       <td>2024-12-03 11:15:04</td>
-       <td>The Campaign Monitor Forms by Optin Cat plugin for WordPress is vulnerable to Reflected Cross-Site Scripting due to the use of add_query_arg without appropriate escaping on the URL in all versions up to, and including, 2.5.7. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11326">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c27ec759246c4b6143afe6abd150e22f</td>
-       <td>CVE-2024-47476</td>
-       <td>2024-12-03 10:15:05</td>
-       <td>Dell NetWorker Management Console, version(s) 19.11, contain(s) an Improper Verification of Cryptographic Signature vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability, leading to Code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-47476">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cb145d1279d502a58f6f11b4c0d9f3c5</td>
-       <td>CVE-2024-45106</td>
-       <td>2024-12-03 10:15:05</td>
-       <td>Improper authentication of an HTTP endpoint in the S3 Gateway of Apache Ozone 1.4.0 allows any authenticated Kerberos user to revoke and regenerate the S3 secrets of any other user. This is only possible if: * ozone.s3g.secret.http.enabled is set to true. The default value of this configuration is false. * The user configured in ozone.s3g.kerberos.principal is also configured in ozone.s3.administrators or ozone.administrators. Users are recommended to upgrade to Apache Ozone version 1.4.1 which disables the affected endpoint.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45106">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>37ff2a3069cb370b4eae6a7f82582f40</td>
-       <td>CVE-2024-12062</td>
-       <td>2024-12-03 10:15:05</td>
-       <td>The Charity Addon for Elementor plugin for WordPress is vulnerable to Information Exposure in all versions up to, and including, 1.3.2 via the 'nacharity_elementor_template' shortcode due to insufficient restrictions on which posts can be included. This makes it possible for authenticated attackers, with Contributor-level access and above, to extract data from private or draft posts created by Elementor that they should not have access to.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-12062">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e35683925b14e304537319db4fa9a916</td>
-       <td>CVE-2024-11782</td>
-       <td>2024-12-03 10:15:05</td>
-       <td>The WP Mailster plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'mst_subscribe' shortcode in all versions up to, and including, 1.8.17.0 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11782">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55fd43999d4154b2f038abd3713f1a31</td>
-       <td>CVE-2024-11325</td>
-       <td>2024-12-03 10:15:05</td>
-       <td>The AWeber Forms by Optin Cat plugin for WordPress is vulnerable to Reflected Cross-Site Scripting due to the use of add_query_arg without appropriate escaping on the URL in all versions up to, and including, 2.5.7. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11325">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78eea2bbebfac7d693f56b959ac8c805</td>
-       <td>CVE-2024-11866</td>
-       <td>2024-12-03 09:15:05</td>
-       <td>The BMLT Tabbed Map plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'bmlt_tabbed_map' shortcode in all versions up to, and including, 1.1.8 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11866">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dab11fa1400700787b766753e088e193</td>
-       <td>CVE-2024-11844</td>
-       <td>2024-12-03 09:15:04</td>
-       <td>The IdeaPush plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the idea_push_taxonomy_save_routine function in all versions up to, and including, 8.71. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete terms for the "boards" taxonomy.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11844">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a8e87a5c7cd45c454e29bffc4b5bf64f</td>
-       <td>CVE-2024-11898</td>
-       <td>2024-12-03 08:15:06</td>
-       <td>The Scratch & Win – Giveaways and Contests. Boost subscribers, traffic, repeat visits, referrals, sales and more plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'swin-campaign' shortcode in all versions up to, and including, 2.6.9 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11898">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b2f96993ae3781ad684605ac69f217d3</td>
-       <td>CVE-2024-11853</td>
-       <td>2024-12-03 08:15:06</td>
-       <td>The jAlbum Bridge plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘ar’ parameter in all versions up to, and including, 2.0.15 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11853">详情</a></td>
       </tr>
 
      </tbody>
