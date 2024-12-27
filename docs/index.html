@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2024-12-26 12:44:01 -->
+<!-- RELEASE TIME : 2024-12-27 01:45:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9f91e6fecf135ebf646c4953d394d75d</td>
+       <td>CVE-2024-56361</td>
+       <td>2024-12-26 22:15:19 <img src="imgs/new.gif" /></td>
+       <td>LGSL (Live Game Server List) provides online status for games. Before 7.0.0, a stored cross-site scripting (XSS) vulnerability was identified in lgsl. The function lgsl_query_40 in lgsl_protocol.php has implemented an HTTP crawler. This function makes a request to the registered game server, and upon crawling the malicious /info endpoint with our payload, will render our javascript on the info page. This information is being displayed via lgsl_details.php. This vulnerability is fixed in 7.0.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56361">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8b2d9a58bce27d4e5a6e694bf98db69d</td>
+       <td>CVE-2024-55950</td>
+       <td>2024-12-26 22:15:17 <img src="imgs/new.gif" /></td>
+       <td>Tabby (formerly Terminus) is a highly configurable terminal emulator. Prior to 1.0.216, Tabby terminal emulator contains overly permissive entitlements that are unnecessary for its core functionality and plugin system, creating potential security vulnerabilities. The application currently holds powerful permissions including camera, microphone access, and the ability to access personal folders (Downloads, Documents, etc.) through Apple Events, while also maintaining dangerous entitlements that enable code injection. The concerning entitlements are com.apple.security.cs.allow-dyld-environment-variables and com.apple.security.cs.disable-library-validation. Since Tabby's plugins and themes are NodeJS-based without native libraries or frameworks, and no environment variables are used in the codebase, it is recommended to review and remove at least one of the entitlements (com.apple.security.cs.disable-library-validation or com.apple.security.cs.allow-dyld-environment-variables) to prevent DYLD_INSERT_LIBRARIES injection while maintaining full application functionality. This vulnerability is fixed in 1.0.216.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-55950">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce28fabc2f4602b4c03693dacf7e314d</td>
+       <td>CVE-2024-53850</td>
+       <td>2024-12-26 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>The Addressing GLPI plugin enables you to create IP reports for visualize IP addresses used and free on a given network.. Starting with 3.0.0 and before 3.0.3, a poor security check allows an unauthenticated attacker to determine whether data exists (by name) in GLPI.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53850">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>80ea9b4a3bd86b7de70fc1c213979fd8</td>
+       <td>CVE-2024-45805</td>
+       <td>2024-12-26 22:15:15 <img src="imgs/new.gif" /></td>
+       <td>OpenCTI is an open-source cyber threat intelligence platform. Before 6.3.0, general users can access information that can only be accessed by users with access privileges to admin and support information (SETTINGS_SUPPORT). This is due to inadequate access control for support information (http://<opencti_domain>/storage/get/support/UUID/UUID.zip), and that the UUID is available to general users using an attached query (logs query). This vulnerability is fixed in 6.3.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45805">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>daf6101aafabae68f67a6aa1536c1ff0</td>
+       <td>CVE-2024-45600</td>
+       <td>2024-12-26 22:15:13 <img src="imgs/new.gif" /></td>
+       <td>Fields is a GLPI plugin that allows users to add custom fields on GLPI items forms. Prior to 1.21.13, an authenticated user can perform a SQL injection when the plugin is active. The vulnerability is fixed in 1.21.13.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45600">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8127bd0e07f0abc96b599599a867ee81</td>
+       <td>CVE-2024-12968</td>
+       <td>2024-12-26 22:15:11 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical was found in code-projects Job Recruitment 1.0. Affected by this vulnerability is the function edit_jobpost of the file /_parse/_all_edits.php. The manipulation of the argument jobtype leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. Other parameters might be affected as well.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-12968">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c78f1f77a9f95b4e6be97835b1840f4</td>
+       <td>CVE-2024-12967</td>
+       <td>2024-12-26 22:15:09 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as critical has been found in code-projects Job Recruitment 1.0. Affected is the function fln_update of the file /_parse/_all_edits.php. The manipulation of the argument fname/lname leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-12967">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>67c451cac0e3ddb5e3ffb5086c90fe4d</td>
+       <td>CVE-2024-56510</td>
+       <td>2024-12-26 21:15:06 <img src="imgs/new.gif" /></td>
+       <td>@marp-team/marp-core is the core for Marp, which is the ecosystem to write your presentation with plain Markdown. Marp Core from v3.0.2 to v3.9.0 and v4.0.0, are vulnerable to cross-site scripting (XSS) due to improper neutralization of HTML sanitization. Marp Core v3.9.1 and v4.0.1 have been patched to fix that. If you are unable to update the package immediately, disable all HTML tags by setting html: false option in the Marp class constructor.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56510">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>74d1f757d0337d046e0116a7f945a873</td>
+       <td>CVE-2024-12966</td>
+       <td>2024-12-26 21:15:06 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in code-projects Job Recruitment 1.0. It has been rated as critical. This issue affects the function cn_update of the file /_parse/_all_edits.php. The manipulation of the argument cname/url leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-12966">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7122302dea8a094f9e3c373404554fc4</td>
+       <td>CVE-2024-12965</td>
+       <td>2024-12-26 21:15:05 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in 1000 Projects Portfolio Management System MCA 1.0. It has been declared as critical. This vulnerability affects unknown code of the file /update_ex_detail.php. The manipulation of the argument q leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-12965">详情</a></td>
+      </tr>
+
+      <tr>
        <td>90ce5651a2eae98d977740ba191c0e2d</td>
        <td>CVE-2024-12926</td>
-       <td>2024-12-25 20:15:22 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 20:15:22</td>
        <td>A vulnerability classified as critical was found in Codezips Project Management System 1.0. Affected by this vulnerability is an unknown functionality of the file /pages/forms/advanced.php. The manipulation of the argument name leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. Other parameters might be affected as well.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-12926">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>fdee02ee1991dbc119ad672df2e1abe7</td>
        <td>CVE-2024-56430</td>
-       <td>2024-12-25 18:15:22 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 18:15:22</td>
        <td>OpenFHE through 1.2.3 has a NULL pointer dereference in BinFHEContext::EvalFloor in lib/binfhe-base-scheme.cpp.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56430">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>c5a16fe351999a5b6329bb5d8c95b3e1</td>
        <td>CVE-2024-56431</td>
-       <td>2024-12-25 17:15:05 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 17:15:05</td>
        <td>oc_huff_tree_unpack in huffdec.c in libtheora in Theora through 1.0 7180717 has an invalid negative left shift.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56431">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>a4d9a307e022ceab203ce906c6a9d4f4</td>
        <td>CVE-2024-52543</td>
-       <td>2024-12-25 16:15:22 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 16:15:22</td>
        <td>Dell NativeEdge, version(s) 2.1.0.0, contain(s) a Creation of Temporary File With Insecure Permissions vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to Information disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-52543">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>255d8ddc7fba8387fb738e4ee73f12d0</td>
        <td>CVE-2024-52534</td>
-       <td>2024-12-25 16:15:21 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 16:15:21</td>
        <td>Dell ECS, version(s) prior to ECS 3.8.1.3, contain(s) an Authentication Bypass by Capture-replay vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Session theft.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-52534">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>5b1fa644f27710dd23b40c39ee5ebdcc</td>
        <td>CVE-2024-53291</td>
-       <td>2024-12-25 15:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 15:15:07</td>
        <td>Dell NativeEdge, version(s) 2.1.0.0, contain(s) an Exposure of Sensitive Information Through Metadata vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to Information disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53291">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>9643a44c4a41ca35df9ed602e46d2b4e</td>
        <td>CVE-2024-52906</td>
-       <td>2024-12-25 15:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 15:15:07</td>
        <td>IBM AIX 7.2, 7.3, VIOS 3.1, and 4.1 could allow a non-privileged local user to exploit a vulnerability in the TCP/IP kernel extension to cause a denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-52906">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>d23f634dbda08b3ca020f08cbfab0fd1</td>
        <td>CVE-2024-52535</td>
-       <td>2024-12-25 15:15:07 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 15:15:07</td>
        <td>Dell SupportAssist for Home PCs versions 4.6.1 and prior and Dell SupportAssist for Business PCs versions 4.5.0 and prior, contain a symbolic link (symlink) attack vulnerability in the software remediation component. A low-privileged authenticated user could potentially exploit this vulnerability, gaining privileges escalation, leading to arbitrary deletion of files and folders from the system.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-52535">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>fa1544079734f34b383831083b0578d8</td>
        <td>CVE-2024-47978</td>
-       <td>2024-12-25 15:15:06 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 15:15:06</td>
        <td>Dell NativeEdge, version(s) 2.1.0.0, contain(s) an Execution with Unnecessary Privileges vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-47978">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>150f8704a652411fcdd0a2d3e9652f79</td>
        <td>CVE-2024-47102</td>
-       <td>2024-12-25 15:15:06 <img src="imgs/new.gif" /></td>
+       <td>2024-12-25 15:15:06</td>
        <td>IBM AIX 7.2, 7.3, VIOS 3.1, and 4.1 could allow a non-privileged local user to exploit a vulnerability in the AIX perfstat kernel extension to cause a denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-47102">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2024-12-24 12:15:24</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: rcu/kvfree: Fix data-race in __mod_timer / kvfree_call_rcu KCSAN reports a data race when access the krcp->monitor_work.timer.expires variable in the schedule_delayed_monitor_work() function: <snip> BUG: KCSAN: data-race in __mod_timer / kvfree_call_rcu read to 0xffff888237d1cce8 of 8 bytes by task 10149 on cpu 1: schedule_delayed_monitor_work kernel/rcu/tree.c:3520 [inline] kvfree_call_rcu+0x3b8/0x510 kernel/rcu/tree.c:3839 trie_update_elem+0x47c/0x620 kernel/bpf/lpm_trie.c:441 bpf_map_update_value+0x324/0x350 kernel/bpf/syscall.c:203 generic_map_update_batch+0x401/0x520 kernel/bpf/syscall.c:1849 bpf_map_do_batch+0x28c/0x3f0 kernel/bpf/syscall.c:5143 __sys_bpf+0x2e5/0x7a0 __do_sys_bpf kernel/bpf/syscall.c:5741 [inline] __se_sys_bpf kernel/bpf/syscall.c:5739 [inline] __x64_sys_bpf+0x43/0x50 kernel/bpf/syscall.c:5739 x64_sys_call+0x2625/0x2d60 arch/x86/include/generated/asm/syscalls_64.h:322 do_syscall_x64 arch/x86/entry/common.c:52 [inline] do_syscall_64+0xc9/0x1c0 arch/x86/entry/common.c:83 entry_SYSCALL_64_after_hwframe+0x77/0x7f write to 0xffff888237d1cce8 of 8 bytes by task 56 on cpu 0: __mod_timer+0x578/0x7f0 kernel/time/timer.c:1173 add_timer_global+0x51/0x70 kernel/time/timer.c:1330 __queue_delayed_work+0x127/0x1a0 kernel/workqueue.c:2523 queue_delayed_work_on+0xdf/0x190 kernel/workqueue.c:2552 queue_delayed_work include/linux/workqueue.h:677 [inline] schedule_delayed_monitor_work kernel/rcu/tree.c:3525 [inline] kfree_rcu_monitor+0x5e8/0x660 kernel/rcu/tree.c:3643 process_one_work kernel/workqueue.c:3229 [inline] process_scheduled_works+0x483/0x9a0 kernel/workqueue.c:3310 worker_thread+0x51d/0x6f0 kernel/workqueue.c:3391 kthread+0x1d1/0x210 kernel/kthread.c:389 ret_from_fork+0x4b/0x60 arch/x86/kernel/process.c:147 ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:244 Reported by Kernel Concurrency Sanitizer on: CPU: 0 UID: 0 PID: 56 Comm: kworker/u8:4 Not tainted 6.12.0-rc2-syzkaller-00050-g5b7c893ed5ed #0 Hardware name: Google Google Compute Engine/Google Compute Engine, BIOS Google 09/13/2024 Workqueue: events_unbound kfree_rcu_monitor <snip> kfree_rcu_monitor() rearms the work if a "krcp" has to be still offloaded and this is done without holding krcp->lock, whereas the kvfree_call_rcu() holds it. Fix it by acquiring the "krcp->lock" for kfree_rcu_monitor() so both functions do not race anymore.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53160">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>916044873b020917249ba77a70db906d</td>
-       <td>CVE-2024-53961</td>
-       <td>2024-12-23 21:15:05</td>
-       <td>ColdFusion versions 2023.11, 2021.17 and earlier are affected by an Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability that could lead to arbitrary file system read. An attacker could exploit this vulnerability to access files or directories that are outside of the restricted directory set by the application. This could lead to the disclosure of sensitive information or the manipulation of system data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53961">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0bdfdc0a3a264020a14a8ced51c0f40e</td>
-       <td>CVE-2024-56363</td>
-       <td>2024-12-23 18:15:07</td>
-       <td>APTRS (Automated Penetration Testing Reporting System) is a Python and Django-based automated reporting tool designed for penetration testers and security organizations. In 1.0, there is a vulnerability in the web application's handling of user-supplied input that is incorporated into a Jinja2 template. Specifically, when user input is improperly sanitized or validated, an attacker can inject Jinja2 syntax into the template, causing the server to execute arbitrary code. For example, an attacker might be able to inject expressions like {{ config }}, {{ self.class.mro[1].subclasses() }}, or more dangerous payloads that trigger execution of arbitrary Python code. The vulnerability can be reproduced by submitting crafted input to all the template fields handled by ckeditor, that are passed directly to a Jinja2 template. If the input is rendered without sufficient sanitization, it results in the execution of malicious Jinja2 code on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56363">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c02a5c039512e91b1fa263da3030bdd</td>
-       <td>CVE-2024-56362</td>
-       <td>2024-12-23 18:15:07</td>
-       <td>Navidrome is an open source web-based music collection server and streamer. Navidrome stores the JWT secret in plaintext in the navidrome.db database file under the property table. This practice introduces a security risk because anyone with access to the database file can retrieve the secret. This vulnerability is fixed in 0.54.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56362">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5d82dec1886b1554f25b191e29880be</td>
-       <td>CVE-2024-53276</td>
-       <td>2024-12-23 18:15:07</td>
-       <td>Home-Gallery.org is a self-hosted open-source web gallery to browse personal photos and videos. In 1.15.0 and earlier, an open CORS policy in app.js may allow an attacker to view the images of home-gallery when it is using the default settings. The following express middleware allows any website to make a cross site request to home-gallery, thus allowing them to read any endpoint on home-gallery. Home-gallery is mostly safe from cross-site requests due to most of its pages requiring JavaScript, and cross-site requests such as fetch() do not render javascript. If an attacker is able to get the path of the preview images which are randomized, an attacker will be able to view such a photo. If any static files or endpoints are introduced in the future that contain sensitive information, they will be accessible to an attacker website.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53276">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>574caa9c7c9c3d90bc6dd7d924c8d89e</td>
-       <td>CVE-2024-53275</td>
-       <td>2024-12-23 18:15:07</td>
-       <td>Home-Gallery.org is a self-hosted open-source web gallery to browse personal photos and videos. In 1.15.0 and earlier, the default setup of home-gallery is vulnerable to DNS rebinding. Home-gallery is set up without TLS and user authentication by default, leaving it vulnerable to DNS rebinding. In this attack, an attacker will ask a user to visit their website. The attacker website will then change the DNS records of their domain from their IP address to the internal IP address of the home-gallery instance. To tell which IP addresses are valid, we can rebind a subdomain to each IP address we want to check, and see if there is a response. Once potential candidates have been found, the attacker can launch the attack by reading the response of the web server after the IP address has changed. When the attacker domain is fetched, the response will be from the home-gallery instance, not the attacker website, because the IP address has been changed. Due to a lack of authentication, home-gallery photos can then be extracted by the attacker website.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53275">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c4f4c0f6dd2e0c26511b977c4aa2ef6f</td>
-       <td>CVE-2024-40896</td>
-       <td>2024-12-23 17:15:08</td>
-       <td>In libxml2 2.11 before 2.11.9, 2.12 before 2.12.9, and 2.13 before 2.13.3, the SAX parser can produce events for external entities even if custom SAX handlers try to override entity content (by setting "checked"). This makes classic XXE attacks possible.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-40896">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1403001f963d453afaed49b4a7f87a82</td>
-       <td>CVE-2024-56364</td>
-       <td>2024-12-23 16:15:07</td>
-       <td>SimpleXLSX is software for parsing and retrieving data from Excel XLSx files. Starting in 1.0.12 and ending in 1.1.13, when calling the extended toHTMLEx method, it is possible to execute arbitrary JavaScript code. This vulnerability is fixed in 1.1.13.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56364">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0c0b6e3d8b9ae26107c0295f04a56493</td>
-       <td>CVE-2024-56326</td>
-       <td>2024-12-23 16:15:07</td>
-       <td>Jinja is an extensible templating engine. Prior to 3.1.5, An oversight in how the Jinja sandboxed environment detects calls to str.format allows an attacker that controls the content of a template to execute arbitrary Python code. To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates. Jinja's sandbox does catch calls to str.format and ensures they don't escape the sandbox. However, it's possible to store a reference to a malicious string's format method, then pass that to a filter that calls it. No such filters are built-in to Jinja, but could be present through custom filters in an application. After the fix, such indirect calls are also handled by the sandbox. This vulnerability is fixed in 3.1.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56326">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d43f508a82f7fa455feaf8b23dd7e104</td>
-       <td>CVE-2024-56201</td>
-       <td>2024-12-23 16:15:07</td>
-       <td>Jinja is an extensible templating engine. Prior to 3.1.5, a bug in the Jinja compiler allows an attacker that controls both the content and filename of a template to execute arbitrary Python code, regardless of if Jinja's sandbox is used. To exploit the vulnerability, an attacker needs to control both the filename and the contents of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates where the template author can also choose the template filename. This vulnerability is fixed in 3.1.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56201">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>417bcaa3adf26488a4db413aec1775a8</td>
-       <td>CVE-2024-55947</td>
-       <td>2024-12-23 16:15:07</td>
-       <td>Gogs is an open source self-hosted Git service. A malicious user is able to write a file to an arbitrary path on the server to gain SSH access to the server. The vulnerability is fixed in 0.13.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-55947">详情</a></td>
       </tr>
 
      </tbody>
