@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-01-20 18:31:03 -->
+<!-- RELEASE TIME : 2025-01-21 03:25:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -366,7 +366,7 @@
       <tr>
        <td>de48939a638f970caa51f9ec709ba4c2</td>
        <td>CVE-2024-41783</td>
-       <td>2025-01-19 15:15:21 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 15:15:21</td>
        <td>IBM Sterling Secure Proxy 6.0.0.0, 6.0.0.1, 6.0.0.2, 6.0.0.3, 6.1.0.0, and 6.2.0.0 could allow a privileged user to inject commands into the underlying operating system due to improper validation of a specified type of input.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-41783">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>d359dcd7a6132f7e4843a87239679d6c</td>
        <td>CVE-2024-41743</td>
-       <td>2025-01-19 15:15:20 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 15:15:20</td>
        <td>IBM TXSeries for Multiplatforms 10.1 could allow a remote attacker to cause a denial of service using persistent connections due to improper allocation of resources.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-41743">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>9a53550bdd172293c92317f3bd7972a3</td>
        <td>CVE-2024-41742</td>
-       <td>2025-01-19 15:15:20 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 15:15:20</td>
        <td>IBM TXSeries for Multiplatforms 10.1 is vulnerable to a denial of service, caused by improper enforcement of the timeout on individual read operations. By conducting a slowloris-type attacks, a remote attacker could exploit this vulnerability to cause a denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-41742">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>eec34ac8336beb9ed80725fdf951be59</td>
        <td>CVE-2024-38337</td>
-       <td>2025-01-19 15:15:19 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 15:15:19</td>
        <td>IBM Sterling Secure Proxy 6.0.0.0, 6.0.0.1, 6.0.0.2, 6.0.0.3, 6.1.0.0, and 6.2.0.0 could allow an unauthorized attacker to retrieve or alter sensitive information contents due to incorrect permission assignments.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-38337">详情</a></td>
       </tr>
@@ -398,7 +398,7 @@
       <tr>
        <td>657d280076176411fecda454df1640b2</td>
        <td>CVE-2024-57929</td>
-       <td>2025-01-19 12:15:27 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 12:15:27</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: dm array: fix releasing a faulty array block twice in dm_array_cursor_end When dm_bm_read_lock() fails due to locking or checksum errors, it releases the faulty block implicitly while leaving an invalid output pointer behind. The caller of dm_bm_read_lock() should not operate on this invalid dm_block pointer, or it will lead to undefined result. For example, the dm_array_cursor incorrectly caches the invalid pointer on reading a faulty array block, causing a double release in dm_array_cursor_end(), then hitting the BUG_ON in dm-bufio cache_put(). Reproduce steps: 1. initialize a cache device dmsetup create cmeta --table "0 8192 linear /dev/sdc 0" dmsetup create cdata --table "0 65536 linear /dev/sdc 8192" dmsetup create corig --table "0 524288 linear /dev/sdc $262144" dd if=/dev/zero of=/dev/mapper/cmeta bs=4k count=1 dmsetup create cache --table "0 524288 cache /dev/mapper/cmeta \ /dev/mapper/cdata /dev/mapper/corig 128 2 metadata2 writethrough smq 0" 2. wipe the second array block offline dmsteup remove cache cmeta cdata corig mapping_root=$(dd if=/dev/sdc bs=1c count=8 skip=192 \ 2>/dev/null | hexdump -e '1/8 "%u\n"') ablock=$(dd if=/dev/sdc bs=1c count=8 skip=$((4096*mapping_root+2056)) \ 2>/dev/null | hexdump -e '1/8 "%u\n"') dd if=/dev/zero of=/dev/sdc bs=4k count=1 seek=$ablock 3. try reopen the cache device dmsetup create cmeta --table "0 8192 linear /dev/sdc 0" dmsetup create cdata --table "0 65536 linear /dev/sdc 8192" dmsetup create corig --table "0 524288 linear /dev/sdc $262144" dmsetup create cache --table "0 524288 cache /dev/mapper/cmeta \ /dev/mapper/cdata /dev/mapper/corig 128 2 metadata2 writethrough smq 0" Kernel logs: (snip) device-mapper: array: array_block_check failed: blocknr 0 != wanted 10 device-mapper: block manager: array validator check failed for block 10 device-mapper: array: get_ablock failed device-mapper: cache metadata: dm_array_cursor_next for mapping failed ------------[ cut here ]------------ kernel BUG at drivers/md/dm-bufio.c:638! Fix by setting the cached block pointer to NULL on errors. In addition to the reproducer described above, this fix can be verified using the "array_cursor/damaged" test in dm-unit: dm-unit run /pdata/array_cursor/damaged --kernel-dir <KERNEL_DIR></td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57929">详情</a></td>
       </tr>
@@ -406,7 +406,7 @@
       <tr>
        <td>5bcd158a64fce146cb27cfce0d093813</td>
        <td>CVE-2024-57928</td>
-       <td>2025-01-19 12:15:26 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 12:15:26</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: netfs: Fix enomem handling in buffered reads If netfs_read_to_pagecache() gets an error from either ->prepare_read() or from netfs_prepare_read_iterator(), it needs to decrement ->nr_outstanding, cancel the subrequest and break out of the issuing loop. Currently, it only does this for two of the cases, but there are two more that aren't handled. Fix this by moving the handling to a common place and jumping to it from all four places. This is in preference to inserting a wrapper around netfs_prepare_read_iterator() as proposed by Dmitry Antipov[1].</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57928">详情</a></td>
       </tr>
@@ -414,7 +414,7 @@
       <tr>
        <td>ce1f6002f7dc4c159babd26911bd51ba</td>
        <td>CVE-2024-57927</td>
-       <td>2025-01-19 12:15:26 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 12:15:26</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: nfs: Fix oops in nfs_netfs_init_request() when copying to cache When netfslib wants to copy some data that has just been read on behalf of nfs, it creates a new write request and calls nfs_netfs_init_request() to initialise it, but with a NULL file pointer. This causes nfs_file_open_context() to oops - however, we don't actually need the nfs context as we're only going to write to the cache. Fix this by just returning if we aren't given a file pointer and emit a warning if the request was for something other than copy-to-cache. Further, fix nfs_netfs_free_request() so that it doesn't try to free the context if the pointer is NULL.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57927">详情</a></td>
       </tr>
@@ -422,7 +422,7 @@
       <tr>
        <td>9873631e568f9d23e78e7f43caf6e8da</td>
        <td>CVE-2024-57926</td>
-       <td>2025-01-19 12:15:26 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 12:15:26</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: drm/mediatek: Set private->all_drm_private[i]->drm to NULL if mtk_drm_bind returns err The pointer need to be set to NULL, otherwise KASAN complains about use-after-free. Because in mtk_drm_bind, all private's drm are set as follows. private->all_drm_private[i]->drm = drm; And drm will be released by drm_dev_put in case mtk_drm_kms_init returns failure. However, the shutdown path still accesses the previous allocated memory in drm_atomic_helper_shutdown. [ 84.874820] watchdog: watchdog0: watchdog did not stop! [ 86.512054] ================================================================== [ 86.513162] BUG: KASAN: use-after-free in drm_atomic_helper_shutdown+0x33c/0x378 [ 86.514258] Read of size 8 at addr ffff0000d46fc068 by task shutdown/1 [ 86.515213] [ 86.515455] CPU: 1 UID: 0 PID: 1 Comm: shutdown Not tainted 6.13.0-rc1-mtk+gfa1a78e5d24b-dirty #55 [ 86.516752] Hardware name: Unknown Product/Unknown Product, BIOS 2022.10 10/01/2022 [ 86.517960] Call trace: [ 86.518333] show_stack+0x20/0x38 (C) [ 86.518891] dump_stack_lvl+0x90/0xd0 [ 86.519443] print_report+0xf8/0x5b0 [ 86.519985] kasan_report+0xb4/0x100 [ 86.520526] __asan_report_load8_noabort+0x20/0x30 [ 86.521240] drm_atomic_helper_shutdown+0x33c/0x378 [ 86.521966] mtk_drm_shutdown+0x54/0x80 [ 86.522546] platform_shutdown+0x64/0x90 [ 86.523137] device_shutdown+0x260/0x5b8 [ 86.523728] kernel_restart+0x78/0xf0 [ 86.524282] __do_sys_reboot+0x258/0x2f0 [ 86.524871] __arm64_sys_reboot+0x90/0xd8 [ 86.525473] invoke_syscall+0x74/0x268 [ 86.526041] el0_svc_common.constprop.0+0xb0/0x240 [ 86.526751] do_el0_svc+0x4c/0x70 [ 86.527251] el0_svc+0x4c/0xc0 [ 86.527719] el0t_64_sync_handler+0x144/0x168 [ 86.528367] el0t_64_sync+0x198/0x1a0 [ 86.528920] [ 86.529157] The buggy address belongs to the physical page: [ 86.529972] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff0000d46fd4d0 pfn:0x1146fc [ 86.531319] flags: 0xbfffc0000000000(node=0|zone=2|lastcpupid=0xffff) [ 86.532267] raw: 0bfffc0000000000 0000000000000000 dead000000000122 0000000000000000 [ 86.533390] raw: ffff0000d46fd4d0 0000000000000000 00000000ffffffff 0000000000000000 [ 86.534511] page dumped because: kasan: bad access detected [ 86.535323] [ 86.535559] Memory state around the buggy address: [ 86.536265] ffff0000d46fbf00: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff [ 86.537314] ffff0000d46fbf80: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff [ 86.538363] >ffff0000d46fc000: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff [ 86.544733] ^ [ 86.551057] ffff0000d46fc080: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff [ 86.557510] ffff0000d46fc100: ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff ff [ 86.563928] ================================================================== [ 86.571093] Disabling lock debugging due to kernel taint [ 86.577642] Unable to handle kernel paging request at virtual address e0e9c0920000000b [ 86.581834] KASAN: maybe wild-memory-access in range [0x0752049000000058-0x075204900000005f] ...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57926">详情</a></td>
       </tr>
@@ -430,7 +430,7 @@
       <tr>
        <td>53a5e99c6046837e0c020c4e33fea592</td>
        <td>CVE-2024-57925</td>
-       <td>2025-01-19 12:15:26 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 12:15:26</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix a missing return value check bug In the smb2_send_interim_resp(), if ksmbd_alloc_work_struct() fails to allocate a node, it returns a NULL pointer to the in_work pointer. This can lead to an illegal memory write of in_work->response_buf when allocate_interim_rsp_buf() attempts to perform a kzalloc() on it. To address this issue, incorporating a check for the return value of ksmbd_alloc_work_struct() ensures that the function returns immediately upon allocation failure, thereby preventing the aforementioned illegal memory access.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57925">详情</a></td>
       </tr>
@@ -438,7 +438,7 @@
       <tr>
        <td>141b1d19c29c6ff5ae5eb764551b118e</td>
        <td>CVE-2024-57924</td>
-       <td>2025-01-19 12:15:26 <img src="imgs/new.gif" /></td>
+       <td>2025-01-19 12:15:26</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: fs: relax assertions on failure to encode file handles Encoding file handles is usually performed by a filesystem >encode_fh() method that may fail for various reasons. The legacy users of exportfs_encode_fh(), namely, nfsd and name_to_handle_at(2) syscall are ready to cope with the possibility of failure to encode a file handle. There are a few other users of exportfs_encode_{fh,fid}() that currently have a WARN_ON() assertion when ->encode_fh() fails. Relax those assertions because they are wrong. The second linked bug report states commit 16aac5ad1fa9 ("ovl: support encoding non-decodable file handles") in v6.6 as the regressing commit, but this is not accurate. The aforementioned commit only increases the chances of the assertion and allows triggering the assertion with the reproducer using overlayfs, inotify and drop_caches. Triggering this assertion was always possible with other filesystems and other reasons of ->encode_fh() failures and more particularly, it was also possible with the exact same reproducer using overlayfs that is mounted with options index=on,nfs_export=on also on kernels < v6.6. Therefore, I am not listing the aforementioned commit as a Fixes commit. Backport hint: this patch will have a trivial conflict applying to v6.6.y, and other trivial conflicts applying to stable kernels < v6.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57924">详情</a></td>
       </tr>
