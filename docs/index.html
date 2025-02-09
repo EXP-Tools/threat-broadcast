@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-02-08 09:21:39 -->
+<!-- RELEASE TIME : 2025-02-09 15:24:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5449f1701ac7d58413b7606510d88007</td>
+       <td>CVE-2025-21685</td>
+       <td>2025-02-09 12:15:29 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: platform/x86: lenovo-yoga-tab2-pro-1380-fastcharger: fix serdev race The yt2_1380_fc_serdev_probe() function calls devm_serdev_device_open() before setting the client ops via serdev_device_set_client_ops(). This ordering can trigger a NULL pointer dereference in the serdev controller's receive_buf handler, as it assumes serdev->ops is valid when SERPORT_ACTIVE is set. This is similar to the issue fixed in commit 5e700b384ec1 ("platform/chrome: cros_ec_uart: properly fix race condition") where devm_serdev_device_open() was called before fully initializing the device. Fix the race by ensuring client ops are set before enabling the port via devm_serdev_device_open(). Note, serdev_device_set_baudrate() and serdev_device_set_flow_control() calls should be after the devm_serdev_device_open() call.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21685">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>44449f389346e9e70ccb3f01e8224c7d</td>
+       <td>CVE-2025-21684</td>
+       <td>2025-02-09 12:15:29 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: gpio: xilinx: Convert gpio_lock to raw spinlock irq_chip functions may be called in raw spinlock context. Therefore, we must also use a raw spinlock for our own internal locking. This fixes the following lockdep splat: [ 5.349336] ============================= [ 5.353349] [ BUG: Invalid wait context ] [ 5.357361] 6.13.0-rc5+ #69 Tainted: G W [ 5.363031] ----------------------------- [ 5.367045] kworker/u17:1/44 is trying to lock: [ 5.371587] ffffff88018b02c0 (&chip->gpio_lock){....}-{3:3}, at: xgpio_irq_unmask (drivers/gpio/gpio-xilinx.c:433 (discriminator 8)) [ 5.380079] other info that might help us debug this: [ 5.385138] context-{5:5} [ 5.387762] 5 locks held by kworker/u17:1/44: [ 5.392123] #0: ffffff8800014958 ((wq_completion)events_unbound){+.+.}-{0:0}, at: process_one_work (kernel/workqueue.c:3204) [ 5.402260] #1: ffffffc082fcbdd8 (deferred_probe_work){+.+.}-{0:0}, at: process_one_work (kernel/workqueue.c:3205) [ 5.411528] #2: ffffff880172c900 (&dev->mutex){....}-{4:4}, at: __device_attach (drivers/base/dd.c:1006) [ 5.419929] #3: ffffff88039c8268 (request_class#2){+.+.}-{4:4}, at: __setup_irq (kernel/irq/internals.h:156 kernel/irq/manage.c:1596) [ 5.428331] #4: ffffff88039c80c8 (lock_class#2){....}-{2:2}, at: __setup_irq (kernel/irq/manage.c:1614) [ 5.436472] stack backtrace: [ 5.439359] CPU: 2 UID: 0 PID: 44 Comm: kworker/u17:1 Tainted: G W 6.13.0-rc5+ #69 [ 5.448690] Tainted: [W]=WARN [ 5.451656] Hardware name: xlnx,zynqmp (DT) [ 5.455845] Workqueue: events_unbound deferred_probe_work_func [ 5.461699] Call trace: [ 5.464147] show_stack+0x18/0x24 C [ 5.467821] dump_stack_lvl (lib/dump_stack.c:123) [ 5.471501] dump_stack (lib/dump_stack.c:130) [ 5.474824] __lock_acquire (kernel/locking/lockdep.c:4828 kernel/locking/lockdep.c:4898 kernel/locking/lockdep.c:5176) [ 5.478758] lock_acquire (arch/arm64/include/asm/percpu.h:40 kernel/locking/lockdep.c:467 kernel/locking/lockdep.c:5851 kernel/locking/lockdep.c:5814) [ 5.482429] _raw_spin_lock_irqsave (include/linux/spinlock_api_smp.h:111 kernel/locking/spinlock.c:162) [ 5.486797] xgpio_irq_unmask (drivers/gpio/gpio-xilinx.c:433 (discriminator 8)) [ 5.490737] irq_enable (kernel/irq/internals.h:236 kernel/irq/chip.c:170 kernel/irq/chip.c:439 kernel/irq/chip.c:432 kernel/irq/chip.c:345) [ 5.494060] __irq_startup (kernel/irq/internals.h:241 kernel/irq/chip.c:180 kernel/irq/chip.c:250) [ 5.497645] irq_startup (kernel/irq/chip.c:270) [ 5.501143] __setup_irq (kernel/irq/manage.c:1807) [ 5.504728] request_threaded_irq (kernel/irq/manage.c:2208)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21684">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3501c211f931268b57c5ece5c734653c</td>
+       <td>CVE-2024-57949</td>
+       <td>2025-02-09 12:15:28 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: irqchip/gic-v3-its: Don't enable interrupts in its_irq_set_vcpu_affinity() The following call-chain leads to enabling interrupts in a nested interrupt disabled section: irq_set_vcpu_affinity() irq_get_desc_lock() raw_spin_lock_irqsave() <--- Disable interrupts its_irq_set_vcpu_affinity() guard(raw_spinlock_irq) <--- Enables interrupts when leaving the guard() irq_put_desc_unlock() <--- Warns because interrupts are enabled This was broken in commit b97e8a2f7130, which replaced the original raw_spin_[un]lock() pair with guard(raw_spinlock_irq). Fix the issue by using guard(raw_spinlock). [ tglx: Massaged change log ]</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e5cdba7abd10e6f16e96fd786cd4b88a</td>
+       <td>CVE-2024-13440</td>
+       <td>2025-02-09 05:15:22 <img src="imgs/new.gif" /></td>
+       <td>The Super Store Finder plugin for WordPress is vulnerable to SQL Injection via the ‘ssf_wp_user_name’ parameter in all versions up to, and including, 7.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into an already existing query to store cross-site scripting in store reviews.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13440">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a0604f3f351f93b16ca2754563fca108</td>
+       <td>CVE-2025-0169</td>
+       <td>2025-02-08 23:15:08 <img src="imgs/new.gif" /></td>
+       <td>The DWT - Directory & Listing WordPress Theme is vulnerable to Stored Cross-Site Scripting via shortcodes in versions up to, and including, 3.3.4 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers with contributor-level and above permissions to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0169">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>82056524b7739f3e0a64af0ad9031933</td>
+       <td>CVE-2025-0517</td>
+       <td>2025-02-08 22:15:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0517">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d35ce70e89d1b504cbeba99caa6a4873</td>
+       <td>CVE-2025-0316</td>
+       <td>2025-02-08 22:15:28 <img src="imgs/new.gif" /></td>
+       <td>The WP Directorybox Manager plugin for WordPress is vulnerable to authentication bypass in versions up to, and including, 2.5. This is due to incorrect authentication in the 'wp_dp_enquiry_agent_contact_form_submit_callback' function. This makes it possible for unauthenticated attackers to log in as any existing user on the site, such as an administrator, if they have access to the username.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0316">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>59f0b3a7cd717213286d11e2b34ed83d</td>
+       <td>CVE-2024-8377</td>
+       <td>2025-02-08 22:15:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-8377">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0cb29d88ac9e428279b07bd06ed4de3b</td>
+       <td>CVE-2024-6909</td>
+       <td>2025-02-08 22:15:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6909">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bdb249c8c9906304fd1c457f0a93abb9</td>
+       <td>CVE-2024-5183</td>
+       <td>2025-02-08 22:15:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-5183">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2dbec8f7df8868ab4dbbe42f5e77dd0f</td>
        <td>CVE-2025-1096</td>
        <td>2025-02-08 01:15:07 <img src="imgs/new.gif" /></td>
@@ -294,7 +374,7 @@
       <tr>
        <td>0957f8eac5bfc06997b7a0846217ccc9</td>
        <td>CVE-2025-25187</td>
-       <td>2025-02-07 23:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 23:15:15</td>
        <td>Joplin is a free, open source note taking and to-do application, which can handle a large number of notes organised into notebooks. This vulnerability is caused by adding note titles to the document using React's `dangerouslySetInnerHTML`, without first escaping HTML entities. Joplin lacks a Content-Security-Policy with a restrictive `script-src`. This allows arbitrary JavaScript execution via inline `onclick`/`onload` event handlers in unsanitized HTML. Additionally, Joplin's main window is created with `nodeIntegration` set to `true`, allowing arbitrary JavaScript execution to result in arbitrary code execution. Anyone who 1) receives notes from unknown sources and 2) uses <kbd>ctrl</kbd>-<kbd>p</kbd> to search is impacted. This issue has been addressed in version 3.1.24 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25187">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>eb7de6166c21703ff52bff35599550ea</td>
        <td>CVE-2025-24028</td>
-       <td>2025-02-07 23:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 23:15:15</td>
        <td>Joplin is a free, open source note taking and to-do application, which can handle a large number of notes organised into notebooks. This vulnerability is caused by differences between how Joplin's HTML sanitizer handles comments and how the browser handles comments. This affects both the Rich Text Editor and the Markdown viewer. However, unlike the Rich Text Editor, the Markdown viewer is `cross-origin isolated`, which prevents JavaScript from directly accessing functions/variables in the toplevel Joplin `window`. This issue is not present in Joplin 3.1.24 and may have been introduced in `9b50539`. This is an XSS vulnerability that impacts users that open untrusted notes in the Rich Text Editor. This vulnerability has been addressed in version 3.2.12 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24028">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>5cf0497526bfde7d94624bd848298ca9</td>
        <td>CVE-2025-1114</td>
-       <td>2025-02-07 23:15:14 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 23:15:14</td>
        <td>A vulnerability classified as problematic has been found in newbee-mall 1.0. Affected is the function save of the file /admin/categories/save of the component Add Category Page. The manipulation of the argument categoryName leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1114">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>79f1661b21c7a4f164e09baf32cf7010</td>
        <td>CVE-2024-55630</td>
-       <td>2025-02-07 23:15:13 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 23:15:13</td>
        <td>Joplin is a free, open source note taking and to-do application, which can handle a large number of notes organised into notebooks. Joplin's HTML sanitizer allows the `name` attribute to be specified. If `name` is set to the same value as an existing `document` property (e.g. `querySelector`), that property is replaced with the element. This vulnerability's only known impact is denial of service. The note viewer fails to refresh until closed and re-opened with a different note. This issue has been addressed in version 3.2.8 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-55630">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>49a94d04b812a422860b5f27140dc584</td>
        <td>CVE-2025-24366</td>
-       <td>2025-02-07 22:15:14 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 22:15:14</td>
        <td>SFTPGo is an open source, event-driven file transfer solution. SFTPGo supports execution of a defined set of commands via SSH. Besides a set of default commands some optional commands can be activated, one of them being `rsync`. It is disabled in the default configuration and it is limited to the local filesystem, it does not work with cloud/remote storage backends. Due to missing sanitization of the client provided `rsync` command, an authenticated remote user can use some options of the rsync command to read or write files with the permissions of the SFTPGo server process. This issue was fixed in version v2.6.5 by checking the client provided arguments. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24366">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>66a9bcc472ebc457572cf7d542c7b11f</td>
        <td>CVE-2025-1113</td>
-       <td>2025-02-07 22:15:14 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 22:15:14</td>
        <td>A vulnerability was found in taisan tarzan-cms up to 1.0.0. It has been rated as critical. This issue affects the function upload of the file /admin#themes of the component Add Theme Handler. The manipulation leads to deserialization. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1113">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>9212daba4c7b93ef86ef20f4b3bfa582</td>
        <td>CVE-2024-57606</td>
-       <td>2025-02-07 22:15:13 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 22:15:13</td>
        <td>SQL injection vulnerability in Beijing Guoju Information Technology Co., Ltd JeecgBoot v.3.7.2 allows a remote attacker to obtain sensitive information via the getTotalData component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57606">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>e77b3b57f0978e287f199eb7370525e0</td>
        <td>CVE-2024-57357</td>
-       <td>2025-02-07 22:15:13 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 22:15:13</td>
        <td>An issue in TPLINK TL-WPA 8630 TL-WPA8630(US)_V2_2.0.4 Build 20230427 allows a remote attacker to execute arbitrary code via function sub_4256CC, which allows command injection by injecting 'devpwd'.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57357">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>066e97814b1e6b529457c53770895034</td>
        <td>CVE-2024-57279</td>
-       <td>2025-02-07 22:15:13 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 22:15:13</td>
        <td>A reflected Cross-Site Scripting (XSS) vulnerability has been identified in the LDAP User Manager <= ce92321, specifically in the /setup/index.php endpoint via the returnto parameter. This vulnerability arises due to improper sanitization of user-supplied input, allowing an attacker to inject malicious JavaScript.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57279">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>5273198a60fc7850e311bb00356e9279</td>
        <td>CVE-2024-13492</td>
-       <td>2025-02-07 06:15:30 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 06:15:30</td>
        <td>The Guten Free Options WordPress plugin through 0.9.5 does not sanitise and escape a parameter before outputting it back in the page, leading to a Reflected Cross-Site Scripting which could be used against high privilege users such as admin.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13492">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>9094e4b4bc2e5ee851d94ff9e787b774</td>
        <td>CVE-2024-13352</td>
-       <td>2025-02-07 06:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 06:15:29</td>
        <td>The Legull WordPress plugin through 1.2.2 does not sanitise and escape a parameter before outputting it back in the page, leading to a Reflected Cross-Site Scripting which could be used against high privilege users such as admin.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13352">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>b452f4d4fe0091e63b3d6c63b48d5c3b</td>
        <td>CVE-2025-1072</td>
-       <td>2025-02-07 04:15:07 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 04:15:07</td>
        <td>A Denial of Service (DoS) issue has been discovered in GitLab CE/EE affecting all versions starting from 7.14.1 prior to 17.3.7, 17.4 prior to 17.4.4, and 17.5 prior to 17.5.2. A denial of service could occur upon importing maliciously crafted content using the Fogbugz importer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1072">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>6d4c9746c1b80840f1b7990fb5671143</td>
        <td>CVE-2025-22402</td>
-       <td>2025-02-07 03:15:12 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 03:15:12</td>
        <td>Dell Update Manager Plugin, version(s) 1.5.0 through 1.6.0, contain(s) an Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Information exposure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-22402">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>b6072e08c0a4d8a430ed12a60760cb56</td>
        <td>CVE-2025-1086</td>
-       <td>2025-02-07 02:15:30 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 02:15:30</td>
        <td>A vulnerability has been found in Safetytest Cloud-Master Server up to 1.1.1 and classified as critical. This vulnerability affects unknown code of the file /static/. The manipulation leads to path traversal: '../filedir'. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1086">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>c57dc2f2bbdfd150a08306fa62c8a2b1</td>
        <td>CVE-2025-1061</td>
-       <td>2025-02-07 02:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 02:15:29</td>
        <td>The Nextend Social Login Pro plugin for WordPress is vulnerable to authentication bypass in versions up to, and including, 3.1.16. This is due to insufficient verification on the user being supplied during the Apple OAuth authenticate request through the plugin. This makes it possible for unauthenticated attackers to log in as any existing user on the site, such as an administrator, if they have access to the email.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1061">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>c128ab6192eeedc35ee7532ee3d04bc9</td>
        <td>CVE-2025-1085</td>
-       <td>2025-02-07 01:15:07 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 01:15:07</td>
        <td>A vulnerability, which was classified as problematic, was found in Animati PACS up to 1.24.12.09.03. This affects an unknown part of the file /login. The manipulation of the argument p leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1085">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>e669e168f57ce7ab8ec4853a013c9ae9</td>
        <td>CVE-2025-1084</td>
-       <td>2025-02-07 00:15:28 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 00:15:28</td>
        <td>A vulnerability, which was classified as problematic, has been found in Mindskip xzs-mysql 学之思开源考试系统 3.9.0. Affected by this issue is some unknown functionality. The manipulation leads to cross-site request forgery. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. Multiple endpoints are affected. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1084">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>5f34624e9d5cbe54d83b4afbe4be942e</td>
        <td>CVE-2025-0675</td>
-       <td>2025-02-07 00:15:28 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 00:15:28</td>
        <td>Multiple Elber products suffer from an unauthenticated device configuration and client-side hidden functionality disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0675">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>52d6ec374992ed1326e839bf283efe8f</td>
        <td>CVE-2025-0674</td>
-       <td>2025-02-07 00:15:27 <img src="imgs/new.gif" /></td>
+       <td>2025-02-07 00:15:27</td>
        <td>Multiple Elber products are affected by an authentication bypass vulnerability which allows unauthorized access to the password management functionality. Attackers can exploit this issue by manipulating the endpoint to overwrite any user's password within the system. This grants them unauthorized administrative access to protected areas of the application, compromising the device's system security.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0674">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6e12031aa590b8f6f1621a11498ad9e</td>
-       <td>CVE-2025-0522</td>
-       <td>2025-02-06 06:15:30</td>
-       <td>The LikeBot WordPress plugin through 0.85 does not have CSRF check in some places, and is missing sanitisation as well as escaping, which could allow attackers to make logged in admin add Stored XSS payloads via a CSRF attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0522">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c2a0c2a7c85575f38d2d49d756432376</td>
-       <td>CVE-2024-51547</td>
-       <td>2025-02-06 05:15:12</td>
-       <td>Use of Hard-coded Credentials vulnerability in ABB ASPECT-Enterprise, ABB NEXUS Series, ABB MATRIX Series.This issue affects ASPECT-Enterprise: through 3.08.03; NEXUS Series: through 3.08.03; MATRIX Series: through 3.08.03.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-51547">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>650f03ef75d335a269e4f77434627b79</td>
-       <td>CVE-2025-0799</td>
-       <td>2025-02-06 01:15:09</td>
-       <td>IBM App Connect enterprise 12.0.1.0 through 12.0.12.10 and 13.0.1.0 through 13.0.2.1 could allow an authenticated user to write to an arbitrary file on the system during bar configuration deployment due to improper pathname limitations on restricted directories.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0799">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1860373b8e1a1fdce2dcf01a42a50e2</td>
-       <td>CVE-2024-51450</td>
-       <td>2025-02-06 01:15:09</td>
-       <td>IBM Security Verify Directory 10.0.0 through 10.0.3 could allow a remote authenticated attacker to execute arbitrary commands on the system by sending a specially crafted request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-51450">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>788cefa826179ac7aa9ad33c64a5cb46</td>
-       <td>CVE-2024-49814</td>
-       <td>2025-02-06 01:15:08</td>
-       <td>IBM Security Verify Access Appliance 10.0.0 through 10.0.3 could allow a locally authenticated user to increase their privileges due to execution with unnecessary privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-49814">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9ea4d0db511044388981cede97361c9a</td>
-       <td>CVE-2025-1066</td>
-       <td>2025-02-06 00:15:27</td>
-       <td>OpenPLC_V3 contains an arbitrary file upload vulnerability, which could be leveraged for malvertising or phishing campaigns.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>66cdd5ad7585bb96fd96ee7ee34d6c88</td>
-       <td>CVE-2024-49800</td>
-       <td>2025-02-06 00:15:27</td>
-       <td>IBM ApplinX 11.1 stores sensitive information in cleartext in memory that could be obtained by an authenticated user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-49800">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5c6c84f61df7b5812a2b3fed43a11b8</td>
-       <td>CVE-2024-49798</td>
-       <td>2025-02-06 00:15:27</td>
-       <td>IBM ApplinX 11.1 could allow a remote attacker to obtain sensitive information when a detailed technical error message is returned in the browser. This information could be used in further attacks against the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-49798">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>346f08a18cd1726540103d4796405ba2</td>
-       <td>CVE-2024-49797</td>
-       <td>2025-02-06 00:15:27</td>
-       <td>IBM ApplinX 11.1 could allow a remote attacker to obtain sensitive information, caused by the failure to properly enable HTTP Strict Transport Security. An attacker could exploit this vulnerability to obtain sensitive information using man in the middle techniques.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-49797">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>992879a276ca85b8f04bb6f00aec98b6</td>
-       <td>CVE-2024-49796</td>
-       <td>2025-02-06 00:15:27</td>
-       <td>IBM ApplinX 11.1 could allow a remote attacker to hijack the clicking action of the victim. By persuading a victim to visit a malicious Web site, a remote attacker could exploit this vulnerability to hijack the victim's click actions and possibly launch further attacks against the victim.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-49796">详情</a></td>
       </tr>
 
      </tbody>
