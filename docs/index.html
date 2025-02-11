@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-02-10 18:32:12 -->
+<!-- RELEASE TIME : 2025-02-11 03:27:32 -->
 <html lang="zh-cn">
 
  <head>
@@ -358,7 +358,7 @@
       <tr>
        <td>5449f1701ac7d58413b7606510d88007</td>
        <td>CVE-2025-21685</td>
-       <td>2025-02-09 12:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-09 12:15:29</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: platform/x86: lenovo-yoga-tab2-pro-1380-fastcharger: fix serdev race The yt2_1380_fc_serdev_probe() function calls devm_serdev_device_open() before setting the client ops via serdev_device_set_client_ops(). This ordering can trigger a NULL pointer dereference in the serdev controller's receive_buf handler, as it assumes serdev->ops is valid when SERPORT_ACTIVE is set. This is similar to the issue fixed in commit 5e700b384ec1 ("platform/chrome: cros_ec_uart: properly fix race condition") where devm_serdev_device_open() was called before fully initializing the device. Fix the race by ensuring client ops are set before enabling the port via devm_serdev_device_open(). Note, serdev_device_set_baudrate() and serdev_device_set_flow_control() calls should be after the devm_serdev_device_open() call.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21685">详情</a></td>
       </tr>
@@ -366,7 +366,7 @@
       <tr>
        <td>44449f389346e9e70ccb3f01e8224c7d</td>
        <td>CVE-2025-21684</td>
-       <td>2025-02-09 12:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-09 12:15:29</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: gpio: xilinx: Convert gpio_lock to raw spinlock irq_chip functions may be called in raw spinlock context. Therefore, we must also use a raw spinlock for our own internal locking. This fixes the following lockdep splat: [ 5.349336] ============================= [ 5.353349] [ BUG: Invalid wait context ] [ 5.357361] 6.13.0-rc5+ #69 Tainted: G W [ 5.363031] ----------------------------- [ 5.367045] kworker/u17:1/44 is trying to lock: [ 5.371587] ffffff88018b02c0 (&chip->gpio_lock){....}-{3:3}, at: xgpio_irq_unmask (drivers/gpio/gpio-xilinx.c:433 (discriminator 8)) [ 5.380079] other info that might help us debug this: [ 5.385138] context-{5:5} [ 5.387762] 5 locks held by kworker/u17:1/44: [ 5.392123] #0: ffffff8800014958 ((wq_completion)events_unbound){+.+.}-{0:0}, at: process_one_work (kernel/workqueue.c:3204) [ 5.402260] #1: ffffffc082fcbdd8 (deferred_probe_work){+.+.}-{0:0}, at: process_one_work (kernel/workqueue.c:3205) [ 5.411528] #2: ffffff880172c900 (&dev->mutex){....}-{4:4}, at: __device_attach (drivers/base/dd.c:1006) [ 5.419929] #3: ffffff88039c8268 (request_class#2){+.+.}-{4:4}, at: __setup_irq (kernel/irq/internals.h:156 kernel/irq/manage.c:1596) [ 5.428331] #4: ffffff88039c80c8 (lock_class#2){....}-{2:2}, at: __setup_irq (kernel/irq/manage.c:1614) [ 5.436472] stack backtrace: [ 5.439359] CPU: 2 UID: 0 PID: 44 Comm: kworker/u17:1 Tainted: G W 6.13.0-rc5+ #69 [ 5.448690] Tainted: [W]=WARN [ 5.451656] Hardware name: xlnx,zynqmp (DT) [ 5.455845] Workqueue: events_unbound deferred_probe_work_func [ 5.461699] Call trace: [ 5.464147] show_stack+0x18/0x24 C [ 5.467821] dump_stack_lvl (lib/dump_stack.c:123) [ 5.471501] dump_stack (lib/dump_stack.c:130) [ 5.474824] __lock_acquire (kernel/locking/lockdep.c:4828 kernel/locking/lockdep.c:4898 kernel/locking/lockdep.c:5176) [ 5.478758] lock_acquire (arch/arm64/include/asm/percpu.h:40 kernel/locking/lockdep.c:467 kernel/locking/lockdep.c:5851 kernel/locking/lockdep.c:5814) [ 5.482429] _raw_spin_lock_irqsave (include/linux/spinlock_api_smp.h:111 kernel/locking/spinlock.c:162) [ 5.486797] xgpio_irq_unmask (drivers/gpio/gpio-xilinx.c:433 (discriminator 8)) [ 5.490737] irq_enable (kernel/irq/internals.h:236 kernel/irq/chip.c:170 kernel/irq/chip.c:439 kernel/irq/chip.c:432 kernel/irq/chip.c:345) [ 5.494060] __irq_startup (kernel/irq/internals.h:241 kernel/irq/chip.c:180 kernel/irq/chip.c:250) [ 5.497645] irq_startup (kernel/irq/chip.c:270) [ 5.501143] __setup_irq (kernel/irq/manage.c:1807) [ 5.504728] request_threaded_irq (kernel/irq/manage.c:2208)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21684">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>3501c211f931268b57c5ece5c734653c</td>
        <td>CVE-2024-57949</td>
-       <td>2025-02-09 12:15:28 <img src="imgs/new.gif" /></td>
+       <td>2025-02-09 12:15:28</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: irqchip/gic-v3-its: Don't enable interrupts in its_irq_set_vcpu_affinity() The following call-chain leads to enabling interrupts in a nested interrupt disabled section: irq_set_vcpu_affinity() irq_get_desc_lock() raw_spin_lock_irqsave() <--- Disable interrupts its_irq_set_vcpu_affinity() guard(raw_spinlock_irq) <--- Enables interrupts when leaving the guard() irq_put_desc_unlock() <--- Warns because interrupts are enabled This was broken in commit b97e8a2f7130, which replaced the original raw_spin_[un]lock() pair with guard(raw_spinlock_irq). Fix the issue by using guard(raw_spinlock). [ tglx: Massaged change log ]</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57949">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>e5cdba7abd10e6f16e96fd786cd4b88a</td>
        <td>CVE-2024-13440</td>
-       <td>2025-02-09 05:15:22 <img src="imgs/new.gif" /></td>
+       <td>2025-02-09 05:15:22</td>
        <td>The Super Store Finder plugin for WordPress is vulnerable to SQL Injection via the ‘ssf_wp_user_name’ parameter in all versions up to, and including, 7.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into an already existing query to store cross-site scripting in store reviews.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13440">详情</a></td>
       </tr>
@@ -1988,11 +1988,131 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8a0a2f16dafd4902b695c185f59a23d9</td>
+       <td>CVE-2024-10937</td>
+       <td>2025-02-11 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>WordPress Related Posts plugin访问控制错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110579">详情</a></td>
+      </tr>
+
+      <tr>
        <td>29b24d302d34ae7645bdd3d7535fca94</td>
        <td>CVE-2024-9258</td>
        <td>2025-02-10 03:27:18 <img src="imgs/new.gif" /></td>
        <td>IrfanView未初始化指针远程代码执行漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110512">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>436e8acc4fd8533969af1a1f6b086895</td>
+       <td>CVE-2024-10874</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>WordPress Quotes llama Plugin跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110610">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d1fc0a9e15647356eb9990f3b25247bb</td>
+       <td>CVE-2018-9398</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>Google Pixel越界写入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110609">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8f1b476e30e40c0f5d5c8cfaca33dfd6</td>
+       <td>CVE-2024-12187</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>1000 Projects Library Management System SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110608">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d153f1dc3424df6a263570908e70839f</td>
+       <td>CVE-2024-11265</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>WordPress Increase Maximum Upload File Size Plugin完整路径泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110607">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5a9901f15fb755271675a88b6afebaa1</td>
+       <td>CVE-2024-54221</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>WordPress FAT Services Booking plugin SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110606">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3eb5fd495de6b1ccc596badf915fcb6f</td>
+       <td>CVE-2024-9246</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>Foxit PDF Reader越界读取信息泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110605">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1a301162a7fd8234f73901b638e98336</td>
+       <td>CVE-2024-8388</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>Mozilla Firefox欺骗漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110604">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9ca31be2682f96d20380168173cbab78</td>
+       <td>CVE-2024-11188</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>WordPress Formidable Forms Plugin跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110603">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c0bfb0ac0d7a3ea969c88e8fa4558b1</td>
+       <td>CVE-2024-12185</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>Code-Projects Hotel Management System越界写入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110602">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>58affb21202b3dd1da96daac685a6bf6</td>
+       <td>CVE-2024-51210</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>Firepad越界读取漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110601">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d494790017d94c0bfb611c082c2f310a</td>
+       <td>CVE-2024-11426</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>WordPress AutoListicle Plugin跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110600">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5b063b2287b8d916cf7d9aaeb55ce608</td>
+       <td>CVE-2024-11387</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>WordPress Easy Liveblogs Plugin跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110599">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02e97084e3992626352f73a39e385ae1</td>
+       <td>CVE-2018-9416</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>Google Pixel越界写入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110598">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>29c7b7edecd8bc81ffee2fc3b5448224</td>
+       <td>CVE-2018-9462</td>
+       <td>2025-02-10 03:25:25 <img src="imgs/new.gif" /></td>
+       <td>Google Pixel越界写入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110597">详情</a></td>
       </tr>
 
       <tr>
@@ -2105,126 +2225,6 @@
        <td>2025-01-23 09:22:36</td>
        <td>F-Secure Total后置链接本地权限提升漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110498">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c9c173dc3b62200606681ce7e63415e</td>
-       <td>CVE-2024-7241</td>
-       <td>2025-01-23 09:22:36</td>
-       <td>Panda Security Dome后置链接本地权限提升漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110497">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d298ad6cebbcd7bfe9df9c090794f3e2</td>
-       <td>CVE-2024-42260</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>Linux kernel拒绝服务漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110420">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>de8f6dc6dd84f7bf4e5b1ce8843a5e62</td>
-       <td>CVE-2024-42638</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>H3C Magic B1ST硬编码密码漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110419">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8a3fd180e586d085f1804cc4eeeaadb4</td>
-       <td>CVE-2024-8370</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>Grocy跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110418">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b853ad0063d73bd1ada97729e2eab937</td>
-       <td>CVE-2024-11466</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>WordPress Intro Tour Tutorial DeepPresentation plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110417">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>20b5c8f4dacbfa185d9daf439bc1edb1</td>
-       <td>CVE-2024-8962</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>WordPress WPBITS Addons For Elementor Page Builder跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110416">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b28a2d629284952ea8daef7ccb71b3aa</td>
-       <td>CVE-2024-11935</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>WordPress Email Address Obfuscation plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110415">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a2e9de07bfa3f9d23d0e23ea6405e2c5</td>
-       <td>CVE-2023-3408</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>WordPress Bricks Theme Plugin跨站请求伪造漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110414">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c957567f58597a3d475e92cbf50c1b27</td>
-       <td>CVE-2024-11769</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>WordPress Flower Delivery by Florist One plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110413">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>574fe601265a0cad86ef332c9b0a62cc</td>
-       <td>CVE-2024-11903</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>WordPress WP eCards plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110412">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>26bdbd0d8c61553c45a8ac6bb8fa9994</td>
-       <td>CVE-2024-42293</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>Linux kernel拒绝服务漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110411">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e13929837a41edc5d130638ce18eec02</td>
-       <td>CVE-2024-53614</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>Thinkware Cloud APK硬编码凭据使用漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110410">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ca712e75d35a688f30c6b82a66f86495</td>
-       <td>CVE-2023-3416</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>WordPress tagDiv Opt-In Builder Plugin SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110409">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c02b34dfa5ff7ec76e86d9b0150b1a1e</td>
-       <td>CVE-2024-42289</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>Linux kernel空指针引用漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110408">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>03aee80df88ad91ae8bb99dabe16d564</td>
-       <td>CVE-2024-8894</td>
-       <td>2025-01-22 12:41:47</td>
-       <td>Open Design Alliance Drawings SDK越界写入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110407">详情</a></td>
       </tr>
 
      </tbody>
