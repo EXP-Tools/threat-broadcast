@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-02-12 18:32:28 -->
+<!-- RELEASE TIME : 2025-02-13 12:45:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -366,7 +366,7 @@
       <tr>
        <td>4ae92dfdfdb1dba02da6504de32a69a9</td>
        <td>CVE-2025-24976</td>
-       <td>2025-02-11 16:15:52 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:52</td>
        <td>Distribution is a toolkit to pack, ship, store, and deliver container content. Systems running registry versions 3.0.0-beta.1 through 3.0.0-rc.2 with token authentication enabled may be vulnerable to an issue in which token authentication allows an attacker to inject an untrusted signing key in a JSON web token (JWT). The issue lies in how the JSON web key (JWK) verification is performed. When a JWT contains a JWK header without a certificate chain, the code only checks if the KeyID (`kid`) matches one of the trusted keys, but doesn't verify that the actual key material matches. A fix for the issue is available at commit 5ea9aa028db65ca5665f6af2c20ecf9dc34e5fcd and expected to be a part of version 3.0.0-rc.3. There is no way to work around this issue without patching if the system requires token authentication.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24976">详情</a></td>
       </tr>
@@ -374,7 +374,7 @@
       <tr>
        <td>3c933e6855b8eb644e37b6c412fa712b</td>
        <td>CVE-2025-24973</td>
-       <td>2025-02-11 16:15:52 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:52</td>
        <td>Concorde, formerly know as Nexkey, is a fork of the federated microblogging platform Misskey. Prior to version 12.25Q1.1, due to an improper implementation of the logout process, authentication credentials remain in cookies even after a user has explicitly logged out, which may allow an attacker to steal authentication tokens. This could have devastating consequences if a user with admin privileges is (or was) using a shared device. Users who have logged in on a shared device should go to Settings > Security and regenerate their login tokens. Version 12.25Q1.1 fixes the issue. As a workaround, clear cookies and site data in the browser after logging out.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24973">详情</a></td>
       </tr>
@@ -382,7 +382,7 @@
       <tr>
        <td>71ad55cfd16291e6af7326139f78cb7d</td>
        <td>CVE-2025-24900</td>
-       <td>2025-02-11 16:15:51 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:51</td>
        <td>Concorde, formerly know as Nexkey, is a fork of the federated microblogging platform Misskey. Due to a lack of CSRF countermeasures and improper settings of cookies for MediaProxy authentication, there is a vulnerability that allows MediaProxy authentication to be bypassed. In versions prior to 12.25Q1.1, the authentication cookie does not have the SameSite attribute. This allows an attacker to bypass MediaProxy authentication and load any image without restrictions under certain circumstances. In versions prior to 12.24Q2.3, this cookie was also used to authenticate the job queue management page (bull-board), so bull-board authentication is also bypassed. This may enable attacks that have a significant impact on availability and integrity. The affected versions are too old to be covered by this advisory, but the maintainers of Concorde strongly recommend not using older versions. Version 12.25Q1.1 contains a patch. There is no effective workaround other than updating.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24900">详情</a></td>
       </tr>
@@ -390,7 +390,7 @@
       <tr>
        <td>f90019a71f9d6c77ece00edfbcf86c9b</td>
        <td>CVE-2025-24897</td>
-       <td>2025-02-11 16:15:51 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:51</td>
        <td>Misskey is an open source, federated social media platform. Starting in version 12.109.0 and prior to version 2025.2.0-alpha.0, due to a lack of CSRF protection and the lack of proper security attributes in the authentication cookies of Bull's dashboard, some of the APIs of bull-board may be subject to CSRF attacks. There is a risk of this vulnerability being used for attacks with relatively large impact on availability and integrity, such as the ability to add arbitrary jobs. This vulnerability was fixed in 2025.2.0-alpha.0. As a workaround, block all access to the `/queue` directory with a web application firewall (WAF).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24897">详情</a></td>
       </tr>
@@ -398,7 +398,7 @@
       <tr>
        <td>d93e249334f4f59acb788d5673946be5</td>
        <td>CVE-2025-24896</td>
-       <td>2025-02-11 16:15:51 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:51</td>
        <td>Misskey is an open source, federated social media platform. Starting in version 12.109.0 and prior to version 2025.2.0-alpha.0, a login token named `token` is stored in a cookie for authentication purposes in Bull Dashboard, but this remains undeleted even after logout is performed. The primary affected users will be users who have logged into Misskey using a public PC or someone else's device, but it's possible that users who have logged out of Misskey before lending their PC to someone else could also be affected. Version 2025.2.0-alpha.0 contains a fix for this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24896">详情</a></td>
       </tr>
@@ -406,7 +406,7 @@
       <tr>
        <td>16443fd19e25923b63a4923497ce8841</td>
        <td>CVE-2025-24807</td>
-       <td>2025-02-11 16:15:51 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:51</td>
        <td>eprosima Fast DDS is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). Prior to versions 2.6.10, 2.10.7, 2.14.5, 3.0.2, 3.1.2, and 3.2.0, per design, PermissionsCA is not full chain validated, nor is the expiration date validated. Access control plugin validates only the S/MIME signature which causes an expired PermissionsCA to be taken as valid. Even though this issue is responsible for allowing `governance/permissions` from an expired PermissionsCA and having the system crash when PermissionsCA is not self-signed and contains the full-chain, the impact is low. Versions 2.6.10, 2.10.7, 2.14.5, 3.0.2, 3.1.2, and 3.2.0 contain a fix for the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24807">详情</a></td>
       </tr>
@@ -414,7 +414,7 @@
       <tr>
        <td>af3569569d52e9860422780bd80ab982</td>
        <td>CVE-2025-22467</td>
-       <td>2025-02-11 16:15:50 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:50</td>
        <td>A stack-based buffer overflow in Ivanti Connect Secure before version 22.7R2.6 allows a remote authenticated attacker to achieve remote code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-22467">详情</a></td>
       </tr>
@@ -422,7 +422,7 @@
       <tr>
        <td>a1a16922ad9e707e9197bf3e5f2d9bf2</td>
        <td>CVE-2024-47908</td>
-       <td>2025-02-11 16:15:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:40</td>
        <td>OS command injection in the admin web console of Ivanti CSA before version 5.0.5 allows a remote authenticated attacker with admin privileges to achieve remote code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-47908">详情</a></td>
       </tr>
@@ -430,7 +430,7 @@
       <tr>
        <td>03dcfdc9e91e38bf99e2649ca8f7c50c</td>
        <td>CVE-2024-13843</td>
-       <td>2025-02-11 16:15:39 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:39</td>
        <td>Cleartext storage of information in Ivanti Connect Secure before version 22.7R2.6 and Ivanti Policy Secure before version 22.7R1.3 allows a local authenticated attacker with admin privileges to read sensitive data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13843">详情</a></td>
       </tr>
@@ -438,7 +438,7 @@
       <tr>
        <td>057ef1b60ed6d051e8ef7513262e7be2</td>
        <td>CVE-2024-13842</td>
-       <td>2025-02-11 16:15:39 <img src="imgs/new.gif" /></td>
+       <td>2025-02-11 16:15:39</td>
        <td>A hardcoded key in Ivanti Connect Secure before version 22.7R2.3 and Ivanti Policy Secure before version 22.7R1.3 allows a local authenticated attacker with admin privileges to read sensitive data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13842">详情</a></td>
       </tr>
@@ -1988,6 +1988,126 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a9f966616f92a221333c73e3fd977a59</td>
+       <td>CVE-2024-25584</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Dovecot数据真实性验证错误漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110961">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7dabb461cc059033d09ba11701dcd102</td>
+       <td>CVE-2024-8566</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Online Shop Store跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110960">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ffaa4a7bbb9ad036c439339432293c17</td>
+       <td>CVE-2024-8567</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Payroll Management System SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110959">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>993bc426a07384ade9401d368ce6f26c</td>
+       <td>CVE-2024-8569</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Hospital Management System SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110958">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ee5eda44df915fa04af4ed7260135fab</td>
+       <td>CVE-2024-8559</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Online Food Menu SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110957">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c072e19059fa4ebaa4881ec6a055232</td>
+       <td>CVE-2024-8570</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Tailoring Management System SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110956">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed56b1bb5165bb14b755f571dc2f76e6</td>
+       <td>CVE-2024-6445</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>DataFlowX DataDiodeX路径遍历漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110955">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b1adc44cc0a0d61bd9cec0c4f610551</td>
+       <td>CVE-2024-45405</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Gitoxide不受控制的搜索路径元素漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110954">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2a04b0416ce7de982e4d16ef262a989b</td>
+       <td>CVE-2024-8574</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>TOTOLINK AC1200操作系统命令注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110953">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d4c8ac5130c420b522d311e16b838882</td>
+       <td>CVE-2024-8557</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Food Ordering Management System SQL注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110952">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>51a3fa139b0351667834620ccf36e268</td>
+       <td>CVE-2024-8554</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Clinics Patient Management System跨站脚本漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110951">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c0aacd96c4f52dd6b07a8fb0a56f13a</td>
+       <td>CVE-2024-8555</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Clinics Patient Management System开放重定向漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110950">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b7f4829548c72a9ec0ed4b170c0527a</td>
+       <td>CVE-2024-45294</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>HL7 FHIR IG Publisher Artifacts XML外部实体注入漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>462d44e3c317f407d13ec2a65c885abc</td>
+       <td>CVE-2024-42019</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Veeam Service Provider Console信息泄露漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110948">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4c3b49bbead21ce1c42277c1f159b6d5</td>
+       <td>CVE-2024-8509</td>
+       <td>2025-02-13 12:43:32 <img src="imgs/new.gif" /></td>
+       <td>Red Hat Migration Toolkit for Virtualization不合理授权漏洞</td>
+       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110947">详情</a></td>
+      </tr>
+
+      <tr>
        <td>15546f55b774402acbadb899e43ec9aa</td>
        <td>CVE-2024-53470</td>
        <td>2025-02-12 12:42:14 <img src="imgs/new.gif" /></td>
@@ -2105,126 +2225,6 @@
        <td>2025-02-12 12:42:14 <img src="imgs/new.gif" /></td>
        <td>Rockwell Automation Arena越界读取漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110848">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fb6c65d901a37492f0463698d7fadef8</td>
-       <td>CVE-2024-11403</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>LibJXL越界读取/写入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110796">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b58936a8763a02699c9d548f4b1e30ca</td>
-       <td>CVE-2024-53261</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>SvelteKit跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110795">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e4eefd9df79aa003ef8ba902d4c17165</td>
-       <td>CVE-2024-53258</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>Autolab授权错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110794">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aac65605bdd37251affb8f0ebed6f4fe</td>
-       <td>CVE-2024-53899</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>virtualenv命令注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110793">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5eca2336534645c96d0dd6921013647</td>
-       <td>CVE-2024-45756</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>Centreon Open Tickets SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110792">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5daed2bda6ac5338ce604f850d087b4</td>
-       <td>CVE-2024-53599</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>LafeLabs Chaos跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110791">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>01eda0061c9507fde4078b4b26968c54</td>
-       <td>CVE-2024-52787</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>libre-chat路径遍历漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110790">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>656f8939c9ca3884a8a965fd4e166714</td>
-       <td>CVE-2024-8272</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>Uaudio com.uaudio.bsd.helper授权错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110789">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ea39c8d05ff6f10e43e09b5e3e3e48fc</td>
-       <td>CVE-2024-32468</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>Deno跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110788">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f9a90376428c80cc98ac50c41c0866be</td>
-       <td>CVE-2024-11483</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>Red Hat Ansible Automation Platform访问控制错误漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110787">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>836aa2809c40bcc0adc8c09239f3a305</td>
-       <td>CVE-2024-11233</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>PHP注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110786">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fecb3760da517279ddf9088d394c20ea</td>
-       <td>CVE-2024-11231</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>WordPress Plugin跨站脚本漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110785">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa78912ac8f305da606815b11036c3b1</td>
-       <td>CVE-2024-53910</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>Veritas Enterprise Vault不受信数据反序列化漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110784">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c9dc6a28d3b146879011ac22b2cf67f1</td>
-       <td>CVE-2024-12234</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>1000 Projects Beauty Parlour Management System SQL注入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110783">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>efe6065a210cda1dcf186bb035d6b336</td>
-       <td>CVE-2024-11236</td>
-       <td>2025-02-12 09:23:00 <img src="imgs/new.gif" /></td>
-       <td>PHP越界写入漏洞</td>
-       <td><a target="_blank" href="http://www.nsfocus.net/vulndb/110782">详情</a></td>
       </tr>
 
      </tbody>
