@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-02-18 12:41:43 -->
+<!-- RELEASE TIME : 2025-02-19 01:43:58 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a3338823a9695f611c7fea597d994eda</td>
+       <td>CVE-2025-26603</td>
+       <td>2025-02-18 19:15:29 <img src="imgs/new.gif" /></td>
+       <td>Vim is a greatly improved version of the good old UNIX editor Vi. Vim allows to redirect screen messages using the `:redir` ex command to register, variables and files. It also allows to show the contents of registers using the `:registers` or `:display` ex command. When redirecting the output of `:display` to a register, Vim will free the register content before storing the new content in the register. Now when redirecting the `:display` command to a register that is being displayed, Vim will free the content while shortly afterwards trying to access it, which leads to a use-after-free. Vim pre 9.1.1115 checks in the ex_display() function, that it does not try to redirect to a register while displaying this register at the same time. However this check is not complete, and so Vim does not check the `+` and `*` registers (which typically donate the X11/clipboard registers, and when a clipboard connection is not possible will fall back to use register 0 instead. In Patch 9.1.1115 Vim will therefore skip outputting to register zero when trying to redirect to the clipboard registers `*` or `+`. Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26603">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a031b256a8360d18ab6a7d4acdef007c</td>
+       <td>CVE-2025-26465</td>
+       <td>2025-02-18 19:15:29 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in OpenSSH when the VerifyHostKeyDNS option is enabled. A machine-in-the-middle attack can be performed by a malicious machine impersonating a legit server. This issue occurs due to how OpenSSH mishandles error codes in specific conditions when verifying the host key. For an attack to be considered successful, the attacker needs to manage to exhaust the client's memory resource first, turning the attack complexity high.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26465">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ebc1ce0d740c48ed625270cd8bf5f995</td>
+       <td>CVE-2025-25305</td>
+       <td>2025-02-18 19:15:29 <img src="imgs/new.gif" /></td>
+       <td>Home Assistant Core is an open source home automation that puts local control and privacy first. Affected versions are subject to a potential man-in-the-middle attacks due to missing SSL certificate verification in the project codebase and used third-party libraries. In the past, `aiohttp-session`/`request` had the parameter `verify_ssl` to control SSL certificate verification. This was a boolean value. In `aiohttp` 3.0, this parameter was deprecated in favor of the `ssl` parameter. Only when `ssl` is set to `None` or provided with a correct configured SSL context the standard SSL certificate verification will happen. When migrating integrations in Home Assistant and libraries used by Home Assistant, in some cases the `verify_ssl` parameter value was just moved to the new `ssl` parameter. This resulted in these integrations and 3rd party libraries using `request.ssl = True`, which unintentionally turned off SSL certificate verification and opened up a man-in-the-middle attack vector. This issue has been addressed in version 2024.1.6 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25305">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cdb24e09e668dc6bb0cbf0a30ebb67f2</td>
+       <td>CVE-2025-25284</td>
+       <td>2025-02-18 19:15:28 <img src="imgs/new.gif" /></td>
+       <td>The ZOO-Project is an open source processing platform, released under MIT/X11 Licence. A vulnerability in ZOO-Project's WPS (Web Processing Service) implementation allows unauthorized access to files outside the intended directory through path traversal. Specifically, the Gdal_Translate service, when processing VRT (Virtual Format) files, does not properly validate file paths referenced in the VRTRasterBand element, allowing attackers to read arbitrary files on the system. The vulnerability exists because the service doesn't properly sanitize the SourceFilename parameter in VRT files, allowing relative path traversal sequences (../). When combined with VRT's raw data handling capabilities, this allows reading arbitrary files as raw binary data and converting them to TIFF format, effectively exposing their contents. This vulnerability is particularly severe because it allows attackers to read sensitive system files, potentially exposing configuration data, credentials, or other confidential information stored on the server. An unauthenticated attacker can read arbitrary files from the system through path traversal, potentially accessing sensitive information such as configuration files, credentials, or other confidential data stored on the server. The vulnerability requires no authentication and can be exploited remotely through the WPS service. This issue has been addressed in commit `5f155a8` and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25284">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f6ec60b5b4272beb01a1dec059606f16</td>
+       <td>CVE-2025-24895</td>
+       <td>2025-02-18 19:15:28 <img src="imgs/new.gif" /></td>
+       <td>CIE.AspNetCore.Authentication is an AspNetCore Remote Authenticator for CIE 3.0. Authentication using Spid and CIE is based on the SAML2 standard which provides two entities: 1. Identity Provider (IDP): the system that authenticates users and provides identity information (SAML affirmation) to the Service Provider, in essence, is responsible for the management of the credentials and identity of users; 2. Service Provider (SP): the system that provides a service to the user and relies on the Identity Provider to authenticate the user, receives SAML assertions from the IdP to grant access to resources. The library cie-aspnetcore refers to the second entity, the SP, and implements the validation logic of SAML assertions within SAML responses. In affected versions there is no guarantee that the first signature refers to the root object, it follows that if an attacker injects an item signed as the first element, all other signatures will not be verified. The only requirement is to have an XML element legitimately signed by the IdP, a condition that is easily met using the IdP's public metadata. An attacker could create an arbitrary SAML response that would be accepted by SPs using vulnerable SDKs, allowing him to impersonate any Spid and/or CIE user. This issue has been addressed in version 2.1.0 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24895">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0253a092898ebadc2d277f04b90f2808</td>
+       <td>CVE-2025-24894</td>
+       <td>2025-02-18 19:15:28 <img src="imgs/new.gif" /></td>
+       <td>SPID.AspNetCore.Authentication is an AspNetCore Remote Authenticator for SPID. Authentication using Spid and CIE is based on the SAML2 standard which provides two entities: Identity Provider (IDP): the system that authenticates users and provides identity information (SAML affirmation) to the Service Provider, in essence, is responsible for the management of the credentials and identity of users; Service Provider (SP): the system that provides a service to the user and relies on the Identity Provider to authenticate the user, receives SAML assertions from the IdP to grant access to resources. The validation logic of the signature is central as it ensures that you cannot create a SAML response with arbitrary assertions and then impersonate other users. There is no guarantee that the first signature refers to the root object, it follows that if an attacker injects an item signed as the first element, all other signatures will not be verified. The only requirement is to have an XML element legitimately signed by the IdP, a condition that is easily met using the IdP's public metadata. An attacker could create an arbitrary SAML response that would be accepted by SPs using vulnerable SDKs, allowing him to impersonate any Spid and/or CIE user. This vulnerability has been addressed in version 3.4.0 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24894">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8c021d7dbd81f99957b78bae857440b7</td>
+       <td>CVE-2025-21608</td>
+       <td>2025-02-18 19:15:25 <img src="imgs/new.gif" /></td>
+       <td>Meshtastic is an open source mesh networking solution. In affected firmware versions crafted packets over MQTT are able to appear as a DM in client to a node even though they were not decoded with PKC. This issue has been addressed in version 2.5.19 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21608">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b6fef75d9bb0b8140e547dc6b0a2405b</td>
+       <td>CVE-2024-57056</td>
+       <td>2025-02-18 19:15:20 <img src="imgs/new.gif" /></td>
+       <td>Incorrect cookie session handling in WombatDialer before 25.02 results in the full session identity being written to system logs and could be used by a malicious attacker to impersonate an existing user session.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57056">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0d8c50169b7621f51187b3a242b50be4</td>
+       <td>CVE-2024-57055</td>
+       <td>2025-02-18 19:15:20 <img src="imgs/new.gif" /></td>
+       <td>Server-Side Access Control Bypass vulnerability in WombatDialer before 25.02 could allow unauthorized users to potentially call certain services without the necessary access level. This issue is limited to services used by the client (not the general-use JSON services) and requires reverse engineering of the proprietary serialization protocol, making it difficult to exploit.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57055">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd91f159360b85d3df459f47a04c47cd</td>
+       <td>CVE-2024-45774</td>
+       <td>2025-02-18 19:15:16 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in grub2. A specially crafted JPEG file can cause the JPEG parser of grub2 to incorrectly check the bounds of its internal buffers, resulting in an out-of-bounds write. The possibility of overwriting sensitive information to bypass secure boot protections is not discarded.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45774">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c8a8980ad290cc53b87d58fa6fb55b09</td>
        <td>CVE-2021-30369</td>
-       <td>2025-02-17 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 20:15:29</td>
        <td>Rejected reason: Was determined not a vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-30369">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>6db19621be3092cc315157754ed458de</td>
        <td>CVE-2024-13837</td>
-       <td>2025-02-17 19:15:09 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 19:15:09</td>
        <td>Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. Reason: This candidate was issued in error. Notes: All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13837">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>248b9e433a5e0bceee5123edb00515ca</td>
        <td>CVE-2025-1392</td>
-       <td>2025-02-17 16:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 16:15:16</td>
        <td>A vulnerability has been found in D-Link DIR-816 1.01TO and classified as problematic. Affected by this vulnerability is an unknown functionality of the file /cgi-bin/webproc?getpage=html/index.html&var:menu=24gwlan&var:page=24G_basic. The manipulation of the argument SSID leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. This vulnerability only affects products that are no longer supported by the maintainer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1392">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>e5e6a375ad73a29b556bc97647c0a26b</td>
        <td>CVE-2024-13879</td>
-       <td>2025-02-17 16:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 16:15:15</td>
        <td>The Stream plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 4.0.2 due to insufficient validation on the webhook feature. This makes it possible for authenticated attackers, with administrator-level access and above, to make web requests to arbitrary locations originating from the web application which can be used to query and modify information from internal services.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13879">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>2184e7310de4736732142e92a600e1ac</td>
        <td>CVE-2025-21103</td>
-       <td>2025-02-17 14:15:08 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 14:15:08</td>
        <td>Dell NetWorker Management Console, version(s) 19.11 through 19.11.0.3 & Versions prior to 19.10.0.7 contain(s) an improper neutralization of server-side vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability and run arbitrary code on the server.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21103">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>a6cb3c157348a33308a747a45397842d</td>
        <td>CVE-2025-1391</td>
-       <td>2025-02-17 14:15:08 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 14:15:08</td>
        <td>A flaw was found in the Keycloak organization feature, which allows the incorrect assignment of an organization to a user if their username or email matches the organization’s domain pattern. This issue occurs at the mapper level, leading to misrepresentation in tokens. If an application relies on these claims for authorization, it may incorrectly assume a user belongs to an organization they are not a member of, potentially granting unauthorized access or privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1391">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>7ecba84c628203055a37d731c961b3e0</td>
        <td>CVE-2025-26778</td>
-       <td>2025-02-17 12:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 12:15:29</td>
        <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in NotFound Gallery allows Stored XSS. This issue affects Gallery: from n/a through 2.2.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26778">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>e61eb0bb09f934ec7f4b263b98a7d14f</td>
        <td>CVE-2025-26775</td>
-       <td>2025-02-17 12:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 12:15:29</td>
        <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in RealMag777 BEAR allows Stored XSS. This issue affects BEAR: from n/a through 1.1.4.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26775">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>3c753f09a3f6a42bfa53a119bfcdc2ab</td>
        <td>CVE-2025-26773</td>
-       <td>2025-02-17 12:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 12:15:29</td>
        <td>Missing Authorization vulnerability in Adnan Analytify allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Analytify: from n/a through 5.5.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26773">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>2c46bf5ff82da7326a82669d528e65c3</td>
        <td>CVE-2025-26772</td>
-       <td>2025-02-17 12:15:28 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 12:15:28</td>
        <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Detheme DethemeKit For Elementor allows Stored XSS. This issue affects DethemeKit For Elementor: from n/a through 2.1.8.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26772">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-02-16 14:15:21</td>
        <td>A vulnerability classified as critical has been found in TOTOLINK X18 9.1.0cu.2024_B20220329. Affected is the function setPasswordCfg of the file /cgi-bin/cstecgi.cgi. The manipulation as part of String leads to stack-based buffer overflow. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1340">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ab8dd78d9c01784dd51bfc6289d01e2c</td>
-       <td>CVE-2025-26793</td>
-       <td>2025-02-15 15:15:23</td>
-       <td>The Web GUI configuration panel of Hirsch (formerly Identiv and Viscount) Enterphone MESH through 2024 ships with default credentials (username freedom, password viscount). The administrator is not prompted to change these credentials on initial configuration, and changing the credentials requires many steps. Attackers can use the credentials over the Internet via mesh.webadmin.MESHAdminServlet to gain access to dozens of Canadian and U.S. apartment buildings and obtain building residents' PII. NOTE: the Supplier's perspective is that the "vulnerable systems are not following manufacturers' recommendations to change the default password."</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26793">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fd008ea74fbee8aea31db90d9eea03e0</td>
-       <td>CVE-2024-13834</td>
-       <td>2025-02-15 15:15:23</td>
-       <td>The Responsive Plus – Starter Templates, Advanced Features and Customizer Settings for Responsive Theme plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 3.1.4 via the 'remote_request' function. This makes it possible for authenticated attackers, with contributor-level access and above, to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13834">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76c12c5e98d14869d75ffb9f260f83d0</td>
-       <td>CVE-2025-0822</td>
-       <td>2025-02-15 13:15:28</td>
-       <td>Bit Assist plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 1.5.2 via the fileID Parameter. This makes it possible for authenticated attackers, with Subscriber-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0822">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0812d4bce7f04465a77439010f8f7081</td>
-       <td>CVE-2024-13500</td>
-       <td>2025-02-15 12:15:30</td>
-       <td>The WP Project Manager – Task, team, and project management plugin featuring kanban board and gantt charts plugin for WordPress is vulnerable to time-based SQL Injection via the ‘orderby’ parameter in all versions up to, and including, 2.6.17 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13500">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>669bc4f637f32d935e4c9abd80189746</td>
-       <td>CVE-2024-13488</td>
-       <td>2025-02-15 12:15:30</td>
-       <td>The LTL Freight Quotes – Estes Edition plugin for WordPress is vulnerable to SQL Injection via the 'dropship_edit_id' and 'edit_id' parameters in all versions up to, and including, 3.3.7 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13488">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d4e950ca74bb9dd47cf594cb820bbe9e</td>
-       <td>CVE-2024-13439</td>
-       <td>2025-02-15 12:15:30</td>
-       <td>The Team – Team Members Showcase Plugin plugin for WordPress is vulnerable to unauthorized access due to a missing capability check on the response() function in all versions up to, and including, 4.4.9. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update the plugin's settings.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13439">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a878a50e6a24d2e5d0c3464193b9e367</td>
-       <td>CVE-2024-10581</td>
-       <td>2025-02-15 12:15:28</td>
-       <td>The DirectoryPress Frontend plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 2.7.9. This is due to missing or incorrect nonce validation on the dpfl_listingStatusChange() function. This makes it possible for unauthenticated attackers to update listing statuses via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-10581">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a97416f08874ce16799691c3aafa9d8</td>
-       <td>CVE-2025-1005</td>
-       <td>2025-02-15 10:15:08</td>
-       <td>The ElementsKit Elementor addons plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's Image Accordion widget in all versions up to, and including, 3.4.0 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1005">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>824918deb1fe4849be59976d678ac143</td>
-       <td>CVE-2024-13752</td>
-       <td>2025-02-15 10:15:08</td>
-       <td>The WP Project Manager – Task, team, and project management plugin featuring kanban board and gantt charts plugin for WordPress is vulnerable to unauthorized loss of data due to a missing capability check in the '/pm/v2/settings/notice' endpoint all versions up to, and including, 2.6.17. This makes it possible for authenticated attackers, with Subscriber-level access and above, to cause a persistent denial of service condition.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13752">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdadd407d3803c8ffd4f582191f7f2a9</td>
-       <td>CVE-2024-12562</td>
-       <td>2025-02-15 10:15:08</td>
-       <td>The s2Member Pro plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 241216 via deserialization of untrusted input from the 's2member_pro_remote_op' vulnerable parameter. This makes it possible for unauthenticated attackers to inject a PHP Object. No known POP chain is present in the vulnerable software. If a POP chain is present via an additional plugin or theme installed on the target system, it could allow the attacker to delete arbitrary files, retrieve sensitive data, or execute code.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-12562">详情</a></td>
       </tr>
 
      </tbody>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>0f35d55c5390144ffc02daa5033ca031</td>
        <td>CVE-2024-51058</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>TCPDF本地文件包含漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111182">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>0d55572c07e12755966a6c002afaf2f5</td>
        <td>CVE-2024-52008</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>Fides服务器端安全客户端实施漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111181">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>bccc8789b2b473ad0e7c436a44d28d27</td>
        <td>CVE-2024-53267</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>sigstore-java加密签名验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111180">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>f087d4afa2b744987935179a9e140e65</td>
        <td>CVE-2024-5921</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>Palo Alto Networks GlobalProtect app证书验证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111179">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>9ea13928d6be8c3f8025729a973f00ae</td>
        <td>CVE-2024-53673</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>HPE Insight Remote Support java反序列化漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111178">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>afd572acea40ec681e0c7b979185d572</td>
        <td>CVE-2024-11622</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>HPE Insight Remote Support XML外部实体注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111177">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>a1f9f5478c786f61c78156967362aa83</td>
        <td>CVE-2024-49052</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>Microsoft Azure PolicyWatch身份认证错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111176">详情</a></td>
       </tr>
@@ -2174,7 +2174,7 @@
       <tr>
        <td>4bd188b350d3eb7b427c363c64292d86</td>
        <td>CVE-2024-8236</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>WordPress Elementor Website Builder Plugin跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111175">详情</a></td>
       </tr>
@@ -2182,7 +2182,7 @@
       <tr>
        <td>ea49f4276004075ebcf936e709ec0df6</td>
        <td>CVE-2024-11668</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>GitLab CE/EE会话过期不足漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111174">详情</a></td>
       </tr>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>79dc699ee8f2e14ef1b5217d99d132b8</td>
        <td>CVE-2024-11145</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>Joomla! application反序列化漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111173">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>503c761383b1b9c10ace93a4a80efdca</td>
        <td>CVE-2024-11669</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>GitLab CE/EE授权错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111172">详情</a></td>
       </tr>
@@ -2206,7 +2206,7 @@
       <tr>
        <td>865693c72df3fb62af1ed457526a237a</td>
        <td>CVE-2024-43784</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>lakeFS权限保留错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111171">详情</a></td>
       </tr>
@@ -2214,7 +2214,7 @@
       <tr>
        <td>abbff0feb2252e3e1f2e53760221ac3f</td>
        <td>CVE-2024-52959</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>iota C.ai Conversational Platform代码注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111170">详情</a></td>
       </tr>
@@ -2222,7 +2222,7 @@
       <tr>
        <td>a19ed2cb86cf25ee29c37fe7f5443b23</td>
        <td>CVE-2024-53676</td>
-       <td>2025-02-17 09:24:40 <img src="imgs/new.gif" /></td>
+       <td>2025-02-17 09:24:40</td>
        <td>HPE Insight Remote Support目录遍历漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111169">详情</a></td>
       </tr>
