@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-02-20 12:43:50 -->
+<!-- RELEASE TIME : 2025-02-21 01:44:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8c223cd77684dc3c872cf536b72207bc</td>
+       <td>CVE-2025-27098</td>
+       <td>2025-02-20 21:15:26 <img src="imgs/new.gif" /></td>
+       <td>GraphQL Mesh is a GraphQL Federation framework and gateway for both GraphQL Federation and non-GraphQL Federation subgraphs, non-GraphQL services, such as REST and gRPC, and also databases such as MongoDB, MySQL, and PostgreSQL. Missing check vulnerability in the static file handler allows any client to access the files in the server's file system. When `staticFiles` is set in the `serve` settings in the configuration file, the following handler doesn't check if `absolutePath` is still under the directory provided as `staticFiles`. Users have two options to fix vulnerability; 1. Update `@graphql-mesh/cli` to a version higher than `0.82.21`, and if you use `@graphql-mesh/http`, update it to a version higher than `0.3.18` 2. Remove `staticFiles` option from the configuration, and use other solutions to serve static files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27098">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8934411c61d03670471329ded6f9b3dd</td>
+       <td>CVE-2025-27097</td>
+       <td>2025-02-20 21:15:26 <img src="imgs/new.gif" /></td>
+       <td>GraphQL Mesh is a GraphQL Federation framework and gateway for both GraphQL Federation and non-GraphQL Federation subgraphs, non-GraphQL services, such as REST and gRPC, and also databases such as MongoDB, MySQL, and PostgreSQL. When a user transforms on the root level or single source with transforms, and the client sends the same query with different variables, the initial variables are used in all following requests until the cache evicts DocumentNode. If a token is sent via variables, the following requests will act like the same token is sent even if the following requests have different tokens. This can cause a short memory leak but it won't grow per each request but per different operation until the cache evicts DocumentNode by LRU mechanism.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27097">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aedc07e603d3955d0a5eac2d5fbc8c8b</td>
+       <td>CVE-2025-25299</td>
+       <td>2025-02-20 20:15:46 <img src="imgs/new.gif" /></td>
+       <td>CKEditor 5 is a modern JavaScript rich-text editor with an MVC architecture. During a recent internal audit, a Cross-Site Scripting (XSS) vulnerability was discovered in the CKEditor 5 real-time collaboration package. This vulnerability affects user markers, which represent users' positions within the document. It can lead to unauthorized JavaScript code execution, which might happen with a very specific editor and token endpoint configuration. This vulnerability affects only installations with Real-time collaborative editing enabled. The problem has been recognized and patched. The fix is available in version 44.2.1 (and above). Users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25299">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d7af7311f44cec71f8aae5cecaffd66a</td>
+       <td>CVE-2025-24893</td>
+       <td>2025-02-20 20:15:46 <img src="imgs/new.gif" /></td>
+       <td>XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. Any guest can perform arbitrary remote code execution through a request to `SolrSearch`. This impacts the confidentiality, integrity and availability of the whole XWiki installation. To reproduce on an instance, without being logged in, go to `<host>/xwiki/bin/get/Main/SolrSearch?media=rss&text=%7D%7D%7D%7B%7Basync%20async%3Dfalse%7D%7D%7B%7Bgroovy%7D%7Dprintln%28"Hello%20from"%20%2B%20"%20search%20text%3A"%20%2B%20%2823%20%2B%2019%29%29%7B%7B%2Fgroovy%7D%7D%7B%7B%2Fasync%7D%7D%20`. If there is an output, and the title of the RSS feed contains `Hello from search text:42`, then the instance is vulnerable. This vulnerability has been patched in XWiki 15.10.11, 16.4.1 and 16.5.0RC1. Users are advised to upgrade. Users unable to upgrade may edit `Main.SolrSearchMacros` in `SolrSearchMacros.xml` on line 955 to match the `rawResponse` macro in `macros.vm#L2824` with a content type of `application/xml`, instead of simply outputting the content of the feed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24893">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f1f2b775fa05d515674361297047087d</td>
+       <td>CVE-2025-1265</td>
+       <td>2025-02-20 20:15:46 <img src="imgs/new.gif" /></td>
+       <td>An OS command injection vulnerability exists in Vinci Protocol Analyzer that could allow an attacker to escalate privileges and perform code execution on affected system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1265">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c45cb44c04484be28c21fe302354b19</td>
+       <td>CVE-2025-0352</td>
+       <td>2025-02-20 20:15:46 <img src="imgs/new.gif" /></td>
+       <td>Rapid Response Monitoring My Security Account App utilizes an API that could be exploited by an attacker to modify request data, potentially causing the API to return information about other users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0352">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f9a7c431daa4742eb71114765058fc75</td>
+       <td>CVE-2025-27096</td>
+       <td>2025-02-20 19:15:12 <img src="imgs/new.gif" /></td>
+       <td>WeGIA is a Web Manager for Institutions with a focus on Portuguese language. A SQL Injection vulnerability was discovered in the WeGIA application, personalizacao_upload.php endpoint. This vulnerability allow an authorized attacker to execute arbitrary SQL queries, allowing access to sensitive information. This issue has been addressed in version 3.2.14 and all users are advised to upgrade. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27096">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d31bfe6cfb4a0cadedb1349ed9e743d</td>
+       <td>CVE-2025-26618</td>
+       <td>2025-02-20 19:15:11 <img src="imgs/new.gif" /></td>
+       <td>Erlang is a programming language and runtime system for building massively scalable soft real-time systems with requirements on high availability. OTP is a set of Erlang libraries, which consists of the Erlang runtime system, a number of ready-to-use components mainly written in Erlang. Packet size is not verified properly for SFTP packets. As a result when multiple SSH packets (conforming to max SSH packet size) are received by ssh, they might be combined into an SFTP packet which will exceed the max allowed packet size and potentially cause large amount of memory to be allocated. Note that situation described above can only happen for successfully authenticated users after completing the SSH handshake. This issue has been patched in OTP versions 27.2.4, 26.2.5.9, and 25.3.2.18. There are no known workarounds for this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26618">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8c105b6dfaec1efa321763e04e300ac3</td>
+       <td>CVE-2024-7141</td>
+       <td>2025-02-20 19:15:11 <img src="imgs/new.gif" /></td>
+       <td>Versions of Gliffy Online prior to versions 4.14.0-7 contains a Cross Site Request Forgery (CSRF) flaw.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-7141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a8981324684029184d21c6267f5702f7</td>
+       <td>CVE-2023-51339</td>
+       <td>2025-02-20 19:15:11 <img src="imgs/new.gif" /></td>
+       <td>A lack of rate limiting in the 'Forgot Password' feature of PHPJabbers Event Ticketing System v1.0 allows attackers to send an excessive amount of email for a legitimate user, leading to a possible Denial of Service (DoS) via a large amount of generated e-mail messages.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51339">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e0fc12a2d0bf56cfbdbde3ceacb11b17</td>
        <td>CVE-2025-25196</td>
-       <td>2025-02-19 21:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 21:15:15</td>
        <td>OpenFGA is a high-performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar. OpenFGA < v1.8.4 (Helm chart < openfga-0.2.22, docker < v.1.8.4) are vulnerable to authorization bypass when certain Check and ListObject calls are executed. Users on OpenFGA v1.8.4 or previous, specifically under the following conditions are affected by this authorization bypass vulnerability: 1. Calling Check API or ListObjects with a model that has a relation directly assignable to both public access AND userset with the same type. 2. A type bound public access tuple is assigned to an object. 3. userset tuple is not assigned to the same object. and 4. Check request's user field is a userset that has the same type as the type bound public access tuple's user type. Users are advised to upgrade to v1.8.5 which is backwards compatible. There are no known workarounds for this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25196">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>6fc47a72b91d3eec48b25daac5376965</td>
        <td>CVE-2023-51303</td>
-       <td>2025-02-19 21:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 21:15:15</td>
        <td>PHPJabbers Event Ticketing System v1.0 is vulnerable to Multiple HTML Injection in the "lid, name, plugin_sms_api_key, plugin_sms_country_code, title, plugin_sms_api_key, title" parameters.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51303">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>c882aded41bcc384cd84bc3c086794a6</td>
        <td>CVE-2023-51302</td>
-       <td>2025-02-19 21:15:14 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 21:15:14</td>
        <td>PHPJabbers Hotel Booking System v4.0 is vulnerable to CSV Injection vulnerability which allows an attacker to execute remote code. The vulnerability exists due to insufficient input validation on Languages section Labels any parameters field in System Options that is used to construct CSV file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51302">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>c2fbddee624ec5a1782bc41d28d8c94b</td>
        <td>CVE-2023-51301</td>
-       <td>2025-02-19 21:15:14 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 21:15:14</td>
        <td>A lack of rate limiting in the "Login Section, Forgot Email" feature of PHPJabbers Hotel Booking System v4.0 allows attackers to send an excessive amount of reset requests for a legitimate user, leading to a possible Denial of Service (DoS) via a large amount of generated e-mail messages.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51301">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>d68d66dace95ca6e76510ff6cfbe7f84</td>
        <td>CVE-2023-51300</td>
-       <td>2025-02-19 21:15:14 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 21:15:14</td>
        <td>PHPJabbers Hotel Booking System v4.0 is vulnerable to Cross-Site Scripting (XSS) vulnerabilities in the "name, plugin_sms_api_key, plugin_sms_country_code, title, plugin_sms_api_key" parameters.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51300">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>6db4c1390fa2e73dfad0a35c1039d8af</td>
        <td>CVE-2023-51299</td>
-       <td>2025-02-19 20:15:35 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 20:15:35</td>
        <td>PHPJabbers Hotel Booking System v4.0 is vulnerable to HTML Injection in the "name, plugin_sms_api_key, plugin_sms_country_code, title, plugin_sms_api_key, title" parameters.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51299">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>6a3dde56998b043cf5b530696083a745</td>
        <td>CVE-2023-51298</td>
-       <td>2025-02-19 20:15:34 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 20:15:34</td>
        <td>PHPJabbers Event Booking Calendar v4.0 is vulnerable to CSV Injection vulnerability which allows an attacker to execute remote code. The vulnerability exists due to insufficient input validation on Languages section Labels any parameters field in System Options that is used to construct CSV file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51298">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>44b386a98edf4b2c1d0e248024c9503e</td>
        <td>CVE-2023-51297</td>
-       <td>2025-02-19 20:15:34 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 20:15:34</td>
        <td>A lack of rate limiting in the 'Email Settings' feature of PHPJabbers Hotel Booking System v4.0 allows attackers to send an excessive amount of email for a legitimate user, leading to a possible Denial of Service (DoS) via a large amount of generated e-mail messages.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-51297">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>5ea417988fa6b34e45581b907479381b</td>
        <td>CVE-2025-0677</td>
-       <td>2025-02-19 19:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 19:15:15</td>
        <td>A flaw was found in grub2. When performing a symlink lookup, the grub's UFS module checks the inode's data size to allocate the internal buffer to read the file content, however, it fails to check if the symlink data size has overflown. When this occurs, grub_malloc() may be called with a smaller value than needed. When further reading the data from the disk into the buffer, the grub_ufs_lookup_symlink() function will write past the end of the allocated size. An attack can leverage this by crafting a malicious filesystem, and as a result, it will corrupt data stored in the heap, allowing for arbitrary code execution used to by-pass secure boot mechanisms.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0677">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>ba54c2a22e8196d9968bb1773ad19f89</td>
        <td>CVE-2025-0624</td>
-       <td>2025-02-19 19:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 19:15:15</td>
        <td>A flaw was found in grub2. During the network boot process, when trying to search for the configuration file, grub copies data from a user controlled environment variable into an internal buffer using the grub_strcpy() function. During this step, it fails to consider the environment variable length when allocating the internal buffer, resulting in an out-of-bounds write. If correctly exploited, this issue may result in remote code execution through the same network segment grub is searching for the boot information, which can be used to by-pass secure boot protections.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0624">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-02-18 19:15:16</td>
        <td>A flaw was found in grub2. A specially crafted JPEG file can cause the JPEG parser of grub2 to incorrectly check the bounds of its internal buffers, resulting in an out-of-bounds write. The possibility of overwriting sensitive information to bypass secure boot protections is not discarded.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-45774">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c8a8980ad290cc53b87d58fa6fb55b09</td>
-       <td>CVE-2021-30369</td>
-       <td>2025-02-17 20:15:29</td>
-       <td>Rejected reason: Was determined not a vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-30369">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6db19621be3092cc315157754ed458de</td>
-       <td>CVE-2024-13837</td>
-       <td>2025-02-17 19:15:09</td>
-       <td>Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. Reason: This candidate was issued in error. Notes: All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13837">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>248b9e433a5e0bceee5123edb00515ca</td>
-       <td>CVE-2025-1392</td>
-       <td>2025-02-17 16:15:16</td>
-       <td>A vulnerability has been found in D-Link DIR-816 1.01TO and classified as problematic. Affected by this vulnerability is an unknown functionality of the file /cgi-bin/webproc?getpage=html/index.html&var:menu=24gwlan&var:page=24G_basic. The manipulation of the argument SSID leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. This vulnerability only affects products that are no longer supported by the maintainer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1392">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5e6a375ad73a29b556bc97647c0a26b</td>
-       <td>CVE-2024-13879</td>
-       <td>2025-02-17 16:15:15</td>
-       <td>The Stream plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 4.0.2 due to insufficient validation on the webhook feature. This makes it possible for authenticated attackers, with administrator-level access and above, to make web requests to arbitrary locations originating from the web application which can be used to query and modify information from internal services.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13879">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2184e7310de4736732142e92a600e1ac</td>
-       <td>CVE-2025-21103</td>
-       <td>2025-02-17 14:15:08</td>
-       <td>Dell NetWorker Management Console, version(s) 19.11 through 19.11.0.3 & Versions prior to 19.10.0.7 contain(s) an improper neutralization of server-side vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability and run arbitrary code on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21103">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a6cb3c157348a33308a747a45397842d</td>
-       <td>CVE-2025-1391</td>
-       <td>2025-02-17 14:15:08</td>
-       <td>A flaw was found in the Keycloak organization feature, which allows the incorrect assignment of an organization to a user if their username or email matches the organization’s domain pattern. This issue occurs at the mapper level, leading to misrepresentation in tokens. If an application relies on these claims for authorization, it may incorrectly assume a user belongs to an organization they are not a member of, potentially granting unauthorized access or privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1391">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7ecba84c628203055a37d731c961b3e0</td>
-       <td>CVE-2025-26778</td>
-       <td>2025-02-17 12:15:29</td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in NotFound Gallery allows Stored XSS. This issue affects Gallery: from n/a through 2.2.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26778">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e61eb0bb09f934ec7f4b263b98a7d14f</td>
-       <td>CVE-2025-26775</td>
-       <td>2025-02-17 12:15:29</td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in RealMag777 BEAR allows Stored XSS. This issue affects BEAR: from n/a through 1.1.4.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26775">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c753f09a3f6a42bfa53a119bfcdc2ab</td>
-       <td>CVE-2025-26773</td>
-       <td>2025-02-17 12:15:29</td>
-       <td>Missing Authorization vulnerability in Adnan Analytify allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Analytify: from n/a through 5.5.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26773">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c46bf5ff82da7326a82669d528e65c3</td>
-       <td>CVE-2025-26772</td>
-       <td>2025-02-17 12:15:28</td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Detheme DethemeKit For Elementor allows Stored XSS. This issue affects DethemeKit For Elementor: from n/a through 2.1.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26772">详情</a></td>
       </tr>
 
      </tbody>
@@ -2110,7 +2110,7 @@
       <tr>
        <td>186b29725f8c3e037613f2043eb994be</td>
        <td>CVE-2024-52480</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>WordPress Astoundify Jobify plugin授权缺失漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111463">详情</a></td>
       </tr>
@@ -2118,7 +2118,7 @@
       <tr>
        <td>52806aa110878dec1de1f6f2a0049cb1</td>
        <td>CVE-2024-55566</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>ColPack PRNG种子错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111462">详情</a></td>
       </tr>
@@ -2126,7 +2126,7 @@
       <tr>
        <td>c9a31257438a02d76a008cf73833a823</td>
        <td>CVE-2024-53814</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>WordPress Analytify plugin敏感信息泄露漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111461">详情</a></td>
       </tr>
@@ -2134,7 +2134,7 @@
       <tr>
        <td>b4d8b238c6fc7e06b081cbe30323420a</td>
        <td>CVE-2024-54226</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>WordPress Country Blocker plugin跨站请求伪造漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111460">详情</a></td>
       </tr>
@@ -2142,7 +2142,7 @@
       <tr>
        <td>ec94a78b4bbbc215b4b8c218e7aae6fd</td>
        <td>CVE-2024-55578</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>Zammad敏感信息插入日志文件漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111459">详情</a></td>
       </tr>
@@ -2150,7 +2150,7 @@
       <tr>
        <td>b94f832bb28133ff61d4ce1f8098a4a1</td>
        <td>CVE-2024-54253</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>WordPress Xpro Elementor Addons plugin跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111458">详情</a></td>
       </tr>
@@ -2158,7 +2158,7 @@
       <tr>
        <td>181c31f7146edea6bef60c2f0b8d79b5</td>
        <td>CVE-2024-55579</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>Qlik Sense Enterprise for Windows授权错误漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111457">详情</a></td>
       </tr>
@@ -2166,7 +2166,7 @@
       <tr>
        <td>812ce0454c690412084f2edda326cb3c</td>
        <td>CVE-2024-55580</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>Qlik Sense代码注入漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111456">详情</a></td>
       </tr>
@@ -2174,7 +2174,7 @@
       <tr>
        <td>e6083ba6da5c40b93e2f685327f5fff8</td>
        <td>CVE-2024-54251</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>WordPress Prodigy Commerce plugin授权缺失漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111455">详情</a></td>
       </tr>
@@ -2182,7 +2182,7 @@
       <tr>
        <td>3838d86b8db43380c63d4e05d44f6493</td>
        <td>CVE-2024-55582</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>Oxide敏感信息明文存储漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111454">详情</a></td>
       </tr>
@@ -2190,7 +2190,7 @@
       <tr>
        <td>78e58d77a119ff291bddd1a08bf1a4a2</td>
        <td>CVE-2024-53279</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>Synology Router Manager跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111453">详情</a></td>
       </tr>
@@ -2198,7 +2198,7 @@
       <tr>
        <td>0c5e3363424a8516f8421d9a74d8cf4b</td>
        <td>CVE-2024-53280</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>Synology Router Manager跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111452">详情</a></td>
       </tr>
@@ -2206,7 +2206,7 @@
       <tr>
        <td>ee2d4f67b97c72563fab76451abd8058</td>
        <td>CVE-2024-54228</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>WordPress Wot Elementor Widgets plugin跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111451">详情</a></td>
       </tr>
@@ -2214,7 +2214,7 @@
       <tr>
        <td>ac10ebb1ad6e6468f376323e9f85343c</td>
        <td>CVE-2024-53281</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>Synology Router Manager跨站脚本漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111450">详情</a></td>
       </tr>
@@ -2222,7 +2222,7 @@
       <tr>
        <td>2715e2dfa454f7adac741bde7307dca3</td>
        <td>CVE-2024-54255</td>
-       <td>2025-02-19 12:40:31 <img src="imgs/new.gif" /></td>
+       <td>2025-02-19 12:40:31</td>
        <td>WordPress Login Widget With Shortcode plugin开放重定向漏洞</td>
        <td><a target="_blank" href="http://www.nsfocus.net/vulndb/111449">详情</a></td>
       </tr>
