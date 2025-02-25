@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-02-24 12:45:04 -->
+<!-- RELEASE TIME : 2025-02-25 01:46:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>59b7990f07389df3a6672782b961b89e</td>
+       <td>CVE-2025-27144</td>
+       <td>2025-02-24 23:15:11 <img src="imgs/new.gif" /></td>
+       <td>Go JOSE provides an implementation of the Javascript Object Signing and Encryption set of standards in Go, including support for JSON Web Encryption (JWE), JSON Web Signature (JWS), and JSON Web Token (JWT) standards. In versions on the 4.x branch prior to version 4.0.5, when parsing compact JWS or JWE input, Go JOSE could use excessive memory. The code used strings.Split(token, ".") to split JWT tokens, which is vulnerable to excessive memory consumption when processing maliciously crafted tokens with a large number of `.` characters. An attacker could exploit this by sending numerous malformed tokens, leading to memory exhaustion and a Denial of Service. Version 4.0.5 fixes this issue. As a workaround, applications could pre-validate that payloads passed to Go JOSE do not contain an excessive number of `.` characters.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27144">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9d013c20d4ff1f62f043e65087574492</td>
+       <td>CVE-2025-27143</td>
+       <td>2025-02-24 23:15:11 <img src="imgs/new.gif" /></td>
+       <td>Better Auth is an authentication and authorization library for TypeScript. Prior to version 1.1.21, the application is vulnerable to an open redirect due to improper validation of the callbackURL parameter in the email verification endpoint and any other endpoint that accepts callback url. While the server blocks fully qualified URLs, it incorrectly allows scheme-less URLs. This results in the browser interpreting the URL as a fully qualified URL, leading to unintended redirection. An attacker can exploit this flaw by crafting a malicious verification link and tricking users into clicking it. Upon successful email verification, the user will be automatically redirected to the attacker's website, which can be used for phishing, malware distribution, or stealing sensitive authentication tokens. This CVE is a bypass of the fix for GHSA-8jhw-6pjj-8723/CVE-2024-56734. Version 1.1.21 contains an updated patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27143">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6697724f29ce8e6db371f10fd23c2ccb</td>
+       <td>CVE-2025-22974</td>
+       <td>2025-02-24 23:15:11 <img src="imgs/new.gif" /></td>
+       <td>SQL Injection vulnerability in SeaCMS v.13.2 and before allows a remote attacker to execute arbitrary code via the DoTranExecSql parameter in the phome.php component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-22974">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4f68335639a3c161989b1a17b6edf457</td>
+       <td>CVE-2024-57685</td>
+       <td>2025-02-24 23:15:10 <img src="imgs/new.gif" /></td>
+       <td>An issue in sparkshop v.1.1.7 and before allows a remote attacker to execute arbitrary code via a crafted phar file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57685">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>afb38a1c51d36595777f58db85fd3eaf</td>
+       <td>CVE-2024-56525</td>
+       <td>2025-02-24 23:15:10 <img src="imgs/new.gif" /></td>
+       <td>In Public Knowledge Project (PKP) OJS, OMP, and OPS before 3.3.0.21 and 3.4.x before 3.4.0.8, an XXE attack by the Journal Editor Role can create a new role as super admin in the journal context, and insert a backdoor plugin, by uploading a crafted XML document as a User XML Plugin.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-56525">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>befbc671e1c3065633f51daeb28f2bf0</td>
+       <td>CVE-2024-53544</td>
+       <td>2025-02-24 23:15:10 <img src="imgs/new.gif" /></td>
+       <td>NovaCHRON Zeitsysteme GmbH & Co. KG Smart Time Plus v8.x to v8.6 was discovered to contain a SQL injection vulnerability via the getCookieNames method in the smarttimeplus/MySQLConnection endpoint.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53544">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aca1215141a89bc5e4a5dde233566e2d</td>
+       <td>CVE-2024-53543</td>
+       <td>2025-02-24 23:15:10 <img src="imgs/new.gif" /></td>
+       <td>NovaCHRON Zeitsysteme GmbH & Co. KG Smart Time Plus v8.x to v8.6 was discovered to contain a SQL injection vulnerability via the addProject method in the smarttimeplus/MySQLConnection endpoint.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53543">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55e7a58663cfa33b8ac9e050a4ba8648</td>
+       <td>CVE-2024-53542</td>
+       <td>2025-02-24 23:15:09 <img src="imgs/new.gif" /></td>
+       <td>Incorrect access control in the component /iclock/Settings?restartNCS=1 of NovaCHRON Zeitsysteme GmbH & Co. KG Smart Time Plus v8.x to v8.6 allows attackers to arbitrarily restart the NCServiceManger via a crafted GET request.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53542">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7916dd43d47494d9244275e0810e4dad</td>
+       <td>CVE-2025-27141</td>
+       <td>2025-02-24 22:15:23 <img src="imgs/new.gif" /></td>
+       <td>Metabase Enterprise Edition is the enterprise version of Metabase business intelligence and data analytics software. Starting in version 1.47.0 and prior to versions 1.50.36, 1.51.14, 1.52.11, and 1.53.2 of Metabase Enterprise Edition, users with impersonation permissions may be able to see results of cached questions, even if their permissions don’t allow them to see the data. If some user runs a question which gets cached, and then an impersonated user runs that question, then the impersonated user sees the same results as the previous user. These cached results may include data the impersonated user should not have access to. This vulnerability only impacts the Enterprise Edition of Metabase and not the Open Source Edition. Versions 1.53.2, 1.52.11, 1.51.14, and 1.50.36 contains a patch. Versions on the 1.49.X, 1.48.X, and 1.47.X branches are vulnerable but do not have a patch available, so users should upgrade to a major version with an available fix. Disabling question caching is a workaround for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dd4aa619470cedc58d9c6a4ebc75623a</td>
+       <td>CVE-2025-27140</td>
+       <td>2025-02-24 22:15:22 <img src="imgs/new.gif" /></td>
+       <td>WeGIA is a Web manager for charitable institutions. An OS Command Injection vulnerability was discovered in versions prior to 3.2.15 of the WeGIA application, `importar_dump.php` endpoint. This vulnerability could allow an attacker to execute arbitrary code remotely. The command is basically a command to move a temporary file, so a webshell upload is also possible. Version 3.2.15 contains a patch for the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27140">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b5be568614beae8e1dca3f3436d3ba27</td>
        <td>CVE-2025-1594</td>
-       <td>2025-02-23 21:15:09 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 21:15:09</td>
        <td>A vulnerability, which was classified as critical, was found in FFmpeg up to 7.1. This affects the function ff_aac_search_for_tns of the file libavcodec/aacenc_tns.c of the component AAC Encoder. The manipulation leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1594">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>6048b32e3207eb594cee3c441bb3f8de</td>
        <td>CVE-2025-1593</td>
-       <td>2025-02-23 20:15:09 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 20:15:09</td>
        <td>A vulnerability classified as critical has been found in SourceCodester Best Employee Management System 1.0. This affects an unknown part of the file /_hr_soft/assets/uploadImage/Profile/ of the component Profile Picture Handler. The manipulation leads to unrestricted upload. It is possible to initiate the attack remotely.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1593">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>274dcd6714db51defdc971f9bff216b8</td>
        <td>CVE-2025-1592</td>
-       <td>2025-02-23 20:15:08 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 20:15:08</td>
        <td>A vulnerability was found in SourceCodester Best Employee Management System 1.0. It has been rated as problematic. Affected by this issue is some unknown functionality of the file /admin/Operations/Role.php of the component Add Role Page. The manipulation of the argument assign_name/description leads to cross site scripting. The attack may be launched remotely.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1592">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>89e66930126d00f37963aa3a9b0cad14</td>
        <td>CVE-2025-1591</td>
-       <td>2025-02-23 19:15:09 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 19:15:09</td>
        <td>A vulnerability was found in SourceCodester Employee Management System 1.0. It has been declared as problematic. Affected by this vulnerability is an unknown functionality of the file /department.php of the component Department Page. The manipulation of the argument Department Name leads to cross site scripting. The attack can be launched remotely.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1591">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>9b113c1fb8b553d2d233671bfbfefbf4</td>
        <td>CVE-2025-1590</td>
-       <td>2025-02-23 19:15:08 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 19:15:08</td>
        <td>A vulnerability was found in SourceCodester E-Learning System 1.0. It has been classified as critical. Affected is an unknown function of the file /admin/modules/lesson/index.php of the component List of Lessons Page. The manipulation leads to unrestricted upload. It is possible to launch the attack remotely.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1590">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>ff9b5d429d44f515f0a1d693e0dbd165</td>
        <td>CVE-2025-1589</td>
-       <td>2025-02-23 18:15:08 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 18:15:08</td>
        <td>A vulnerability was found in SourceCodester E-Learning System 1.0 and classified as problematic. This issue affects some unknown processing of the file /register.php of the component User Registration Handler. The manipulation leads to cross site scripting. The attack may be initiated remotely.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1589">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>99f325cf00f86b0f924a997809989fd9</td>
        <td>CVE-2025-1588</td>
-       <td>2025-02-23 16:15:08 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 16:15:08</td>
        <td>A vulnerability has been found in PHPGurukul Online Nurse Hiring System 1.0 and classified as critical. This vulnerability affects unknown code of the file /admin/manage-nurse.php. The manipulation of the argument profilepic leads to path traversal: '../filedir'. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The initial researcher advisory mentions contradicting vulnerability classes.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1588">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>3d5f991ed721898618d1c3b59f2d1ff4</td>
        <td>CVE-2025-1467</td>
-       <td>2025-02-23 16:15:08 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 16:15:08</td>
        <td>Versions of the package tarteaucitronjs before 1.17.0 are vulnerable to Cross-site Scripting (XSS) via the getElemWidth() and getElemHeight(). This is related to [SNYK-JS-TARTEAUCITRONJS-8366541](https://security.snyk.io/vuln/SNYK-JS-TARTEAUCITRONJS-8366541)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1467">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>12234a63bbb37088b37231e6d896d6a3</td>
        <td>CVE-2025-1587</td>
-       <td>2025-02-23 15:15:10 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 15:15:10</td>
        <td>A vulnerability was found in SourceCodester Telecom Billing Management System 1.0. It has been rated as critical. This issue affects some unknown processing of the file main.cpp of the component Add New Record. The manipulation of the argument name leads to buffer overflow. Local access is required to approach this attack. The exploit has been disclosed to the public and may be used. Other parameters might be affected as well.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1587">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>009d2e37608a020f3e98bb53d1580f23</td>
        <td>CVE-2025-1586</td>
-       <td>2025-02-23 15:15:09 <img src="imgs/new.gif" /></td>
+       <td>2025-02-23 15:15:09</td>
        <td>A vulnerability was found in code-projects Blood Bank System 1.0. It has been declared as problematic. This vulnerability affects unknown code of the file /Blood/A-.php. The manipulation of the argument Bloodname leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1586">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-02-22 16:15:31</td>
        <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in grimdonkey Magic the Gathering Card Tooltips allows Stored XSS. This issue affects Magic the Gathering Card Tooltips: from n/a through 3.5.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26756">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c311fb956d443a566e939846670b284b</td>
-       <td>CVE-2025-25282</td>
-       <td>2025-02-21 21:15:23</td>
-       <td>RAGFlow is an open-source RAG (Retrieval-Augmented Generation) engine based on deep document understanding. An authenticated user can exploit the Insecure Direct Object Reference (IDOR) vulnerability that may lead to unauthorized cross-tenant access (list tenant user accounts, add user account into other tenant). Unauthorized cross-tenant access: list user from other tenant (e.g., via GET /<tenant_id>/user/list), add user account to other tenant (POST /<tenant_id>/user). This issue has not yet been patched. Users are advised to reach out to the project maintainers to coordinate a fix.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25282">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6fe5f08df57b02c147ae2c2fdfdba5e8</td>
-       <td>CVE-2025-1555</td>
-       <td>2025-02-21 21:15:13</td>
-       <td>A vulnerability classified as critical was found in hzmanyun Education and Training System 3.1.1. This vulnerability affects the function saveImage. The manipulation of the argument file leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1555">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>759471cb488e83cfbdfc736ca6443188</td>
-       <td>CVE-2025-25772</td>
-       <td>2025-02-21 19:15:14</td>
-       <td>A Cross-Site Request Forgery (CSRF) in the component /back/UserController.java of Jspxcms v9.0 to v9.5 allows attackers to arbitrarily add Administrator accounts via a crafted request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25772">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f8a80893742f7b3ce08a549d871db0d2</td>
-       <td>CVE-2025-25770</td>
-       <td>2025-02-21 19:15:14</td>
-       <td>Wangmarket v4.10 to v5.0 was discovered to contain a Cross-Site Request Forgery (CSRF) via the component /agency/AgencyUserController.java.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25770">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c22887ce0a2592549538b855b2c00c7d</td>
-       <td>CVE-2025-25769</td>
-       <td>2025-02-21 19:15:14</td>
-       <td>Wangmarket v4.10 to v5.0 was discovered to contain a Cross-Site Request Forgery (CSRF) via the component /controller/UserController.java.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25769">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a1fd2f1881b9b25c470cdabc597a7f82</td>
-       <td>CVE-2025-25768</td>
-       <td>2025-02-21 19:15:14</td>
-       <td>MRCMS v3.1.2 was discovered to contain a server-side template injection (SSTI) vulnerability in the component \servlet\DispatcherServlet.java. This vulnerability allows attackers to execute arbitrary code via a crafted payload.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25768">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>de340ba7a7adaf1b4bae421e94547e69</td>
-       <td>CVE-2025-25767</td>
-       <td>2025-02-21 19:15:14</td>
-       <td>A vertical privilege escalation vulnerability in the component /controller/UserController.java of MRCMS v3.1.2 allows attackers to arbitrarily delete users via a crafted request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25767">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0a913e00de883aacd4b4be32cbe9b09f</td>
-       <td>CVE-2025-25605</td>
-       <td>2025-02-21 19:15:14</td>
-       <td>Totolink X5000R V9.1.0u.6369_B20230113 is vulnerable to command injection via the apcli_wps_gen_pincode function in mtkwifi.lua.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25605">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>138b49d37fb15c9da6a92f7c74dcd6e4</td>
-       <td>CVE-2025-25604</td>
-       <td>2025-02-21 19:15:14</td>
-       <td>Totolink X5000R V9.1.0u.6369_B20230113 is vulnerable to command injection via the vif_disable function in mtkwifi.lua.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-25604">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>554e3409cef83432e9a7eed3d9e49bb9</td>
-       <td>CVE-2020-19248</td>
-       <td>2025-02-21 19:15:10</td>
-       <td>SQL Injection vulnerability in PbootCMS 1.4.1 in parsing if statements in templates, resulting in a malicious user's ability to contaminate template content by searching for page contamination URLs, thus triggering vulnerabilities when the program uses eval statements to parse templates.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2020-19248">详情</a></td>
       </tr>
 
      </tbody>
