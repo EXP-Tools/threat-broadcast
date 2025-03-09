@@ -78,8 +78,7 @@
 - 【个人订阅】 在 <a href="https://github.com/lyy289065406/threat-broadcast/issues/new?title=Your+Email&amp;body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">Issues</a> 标题留下你的邮箱即可接收播报信息（若希望取消订阅，请 close issue）
 - 【~~个人订阅~~】 加入 QQ 群： 283212984
 - 【~~个人订阅~~】 关注 WeChat 公众号：
-<br/>　　**名称**： EXP技术
-<br/>　　**微信号**： exp-blog
+<br/>　　**名称**： 眈眈探求
 <br/>![](https://github.com/lyy289065406/threat-broadcast/blob/master/imgs/wechat.png)
 
 
