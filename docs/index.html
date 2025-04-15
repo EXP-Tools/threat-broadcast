@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-04-14 09:28:09 -->
+<!-- RELEASE TIME : 2025-04-15 09:27:49 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>de038cbf9c11e558253a354e70bcca73</td>
+       <td>CVE-2025-32428</td>
+       <td>2025-04-15 00:15:14 <img src="imgs/new.gif" /></td>
+       <td>Jupyter Remote Desktop Proxy allows you to run a Linux Desktop on a JupyterHub. jupyter-remote-desktop-proxy was meant to rely on UNIX sockets readable only by the current user since version 3.0.0, but when used with TigerVNC, the VNC server started by jupyter-remote-desktop-proxy were still accessible via the network. This vulnerability does not affect users having TurboVNC as the vncserver executable. This issue is fixed in 3.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32428">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed36195fe591c31319ac9a360166ed71</td>
+       <td>CVE-2025-31494</td>
+       <td>2025-04-15 00:15:14 <img src="imgs/new.gif" /></td>
+       <td>AutoGPT is a platform that allows users to create, deploy, and manage continuous artificial intelligence agents that automate complex workflows. The AutoGPT Platform's WebSocket API transmitted node execution updates to subscribers based on the graph_id+graph_version. Additionally, there was no check prohibiting users from subscribing with another user's graph_id+graph_version. As a result, node execution updates from one user's graph execution could be received by another user within the same instance. This vulnerability does not occur between different instances or between users and non-users of the platform. Single-user instances are not affected. In private instances with a user white-list, the impact is limited by the fact that all potential unintended recipients of these node execution updates must have been admitted by the administrator. This vulnerability is fixed in 0.6.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-31494">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c37491f5319161a2da40670d8cb8746f</td>
+       <td>CVE-2025-31491</td>
+       <td>2025-04-15 00:15:14 <img src="imgs/new.gif" /></td>
+       <td>AutoGPT is a platform that allows users to create, deploy, and manage continuous artificial intelligence agents that automate complex workflows. Prior to 0.6.1, AutoGPT allows of leakage of cross-domain cookies and protected headers in requests redirect. AutoGPT uses a wrapper around the requests python library, located in autogpt_platform/backend/backend/util/request.py. In this wrapper, redirects are specifically NOT followed for the first request. If the wrapper is used with allow_redirects set to True (which is the default), any redirect is not followed by the initial request, but rather re-requested by the wrapper using the new location. However, there is a fundamental flaw in manually re-requesting the new location: it does not account for security-sensitive headers which should not be sent cross-origin, such as the Authorization and Proxy-Authorization header, and cookies. For example in autogpt_platform/backend/backend/blocks/github/_api.py, an Authorization header is set when retrieving data from the GitHub API. However, if GitHub suffers from an open redirect vulnerability (such as the made-up example of https://api.github.com/repos/{owner}/{repo}/issues/comments/{comment_id}/../../../../../redirect/?url=https://joshua.hu/), and the script can be coerced into visiting it with the Authorization header, the GitHub credentials in the Authorization header will be leaked. This allows leaking auth headers and private cookies. This vulnerability is fixed in 0.6.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-31491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d8c4a68a5297467dc8e504966b034beb</td>
+       <td>CVE-2025-24797</td>
+       <td>2025-04-15 00:15:14 <img src="imgs/new.gif" /></td>
+       <td>Meshtastic is an open source mesh networking solution. A fault in the handling of mesh packets containing invalid protobuf data can result in an attacker-controlled buffer overflow, allowing an attacker to hijack execution flow, potentially resulting in remote code execution. This attack does not require authentication or user interaction, as long as the target device rebroadcasts packets on the default channel. This vulnerability fixed in 2.6.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-24797">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fa7f1843df546798eed78a85a49aafd2</td>
+       <td>CVE-2025-3593</td>
+       <td>2025-04-14 23:15:22 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in ZHENFENG13/code-projects My-Blog-layui 1.0. It has been declared as critical. This vulnerability affects the function Upload of the file /admin/upload/authorImg/. The manipulation of the argument File leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3593">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4f7b4dcd6848d359738d051266c66a9c</td>
+       <td>CVE-2025-31490</td>
+       <td>2025-04-14 23:15:21 <img src="imgs/new.gif" /></td>
+       <td>AutoGPT is a platform that allows users to create, deploy, and manage continuous artificial intelligence agents that automate complex workflows. Prior to 0.6.1, AutoGPT allows SSRF due to DNS Rebinding in requests wrapper. AutoGPT is built with a wrapper around Python's requests library, hardening the application against SSRF. The code for this wrapper can be found in autogpt_platform/backend/backend/util/request.py. The requested hostname of a URL which is being requested is validated, ensuring that it does not resolve to any local ipv4 or ipv6 addresses. However, this check is not sufficient, as a DNS server may initially respond with a non-blocked address, with a TTL of 0. This means that the initial resolution would appear as a non-blocked address. In this case, validate_url() will return the url as successful. After validate_url() has successfully returned the url, the url is then passed to the real request() function. When the real request() function is called with the validated url, request() will once again resolve the address of the hostname, because the record will not have been cached (due to TTL 0). This resolution may be in the "invalid range". This type of attack is called a "DNS Rebinding Attack". This vulnerability is fixed in 0.6.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-31490">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>df4622835e83cb5a136754405a3518a9</td>
+       <td>CVE-2025-3592</td>
+       <td>2025-04-14 22:15:17 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in ZHENFENG13/code-projects My-Blog-layui 1.0. It has been classified as problematic. This affects an unknown part of the file /admin/v1/link/edit. The manipulation leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. Multiple parameters might be affected. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3592">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1a9ffa93013cbac42c9cc376055ce135</td>
+       <td>CVE-2025-3591</td>
+       <td>2025-04-14 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in ZHENFENG13/code-projects My-Blog-layui 1.0 and classified as problematic. Affected by this issue is some unknown functionality of the file /admin/v1/blog/edit. The manipulation leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. Multiple parameters might be affected. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3591">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c5ffef34b9e667a77ae1b140c4139b24</td>
+       <td>CVE-2025-3590</td>
+       <td>2025-04-14 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in Adianti Framework up to 8.0 and classified as critical. Affected by this vulnerability is an unknown functionality. The manipulation leads to deserialization. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 8.1 is able to address this issue. It is recommended to upgrade the affected component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3590">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>33b854e5ef913805ded6ab0a77a50c98</td>
+       <td>CVE-2025-3589</td>
+       <td>2025-04-14 21:15:18 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability, which was classified as critical, was found in SourceCodester Music Class Enrollment System 1.0. Affected is an unknown function of the file /manage_class.php. The manipulation of the argument ID leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3589">详情</a></td>
+      </tr>
+
+      <tr>
        <td>38d592e468a6e69093eec454dd8b4e9b</td>
        <td>CVE-2025-3553</td>
        <td>2025-04-14 06:00:15 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>2f17290c042cce0e9dafa0d7882458cd</td>
        <td>CVE-2025-2814</td>
-       <td>2025-04-13 00:15:14 <img src="imgs/new.gif" /></td>
+       <td>2025-04-13 00:15:14</td>
        <td>Crypt::CBC versions between 1.21 and 3.04 for Perl may use the rand() function as the default source of entropy, which is not cryptographically secure, for cryptographic functions. This issue affects operating systems where "/dev/urandom'" is unavailable. In that case, Crypt::CBC will fallback to use the insecure rand() function.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2814">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-04-12 04:15:39</td>
        <td>The WordPress Mega Menu – QuadMenu plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 3.2.0. This is due to missing or incorrect nonce validation on the ajax_dismiss_notice() function. This makes it possible for unauthenticated attackers to update any user meta to a value of one, including wp_capabilities which could result in a privilege deescalation of an administrator, via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2871">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>279caafd536604746209b01bcd815906</td>
-       <td>CVE-2025-2881</td>
-       <td>2025-04-12 03:15:14</td>
-       <td>The Developer Toolbar plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.0.3 through the publicly accessible phpinfo.php script. This makes it possible for unauthenticated attackers to view potentially sensitive information contained in the exposed file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2881">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f4253a29656ec58184d58758507307c</td>
-       <td>CVE-2025-2841</td>
-       <td>2025-04-12 03:15:13</td>
-       <td>The Cart66 Cloud plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.3.7 through the publicly accessible phpinfo.php script. This makes it possible for unauthenticated attackers to view potentially sensitive information contained in the exposed file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2841">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>41a424fd0041913ab10a0b5826c6cb8c</td>
-       <td>CVE-2025-32726</td>
-       <td>2025-04-12 02:15:22</td>
-       <td>Improper access control in Visual Studio Code allows an authorized attacker to elevate privileges locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32726">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d6ffd5991d044fb37e5ca11536200820</td>
-       <td>CVE-2025-29834</td>
-       <td>2025-04-12 02:15:22</td>
-       <td>Out-of-bounds read in Microsoft Edge (Chromium-based) allows an unauthorized attacker to execute code over a network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-29834">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ea8b8bed0756ead279e00f488685172c</td>
-       <td>CVE-2025-29803</td>
-       <td>2025-04-12 02:15:20</td>
-       <td>Uncontrolled search path element in Visual Studio Tools for Applications and SQL Server Management Studio allows an authorized attacker to elevate privileges locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-29803">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e3471a40084ec45434707e9b0212bdd4</td>
-       <td>CVE-2025-2269</td>
-       <td>2025-04-12 00:15:18</td>
-       <td>The Photo Gallery by 10Web – Mobile-Friendly Image Gallery plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the ‘image_id’ parameter in all versions up to, and including, 1.8.34 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick an administrative user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2269">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7ae4b4570acf5e1439a695b7776d9ec1</td>
-       <td>CVE-2025-0129</td>
-       <td>2025-04-11 23:15:28</td>
-       <td>Prisma Access Browser: Inappropriate control behavior in Prisma Access Browser</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0129">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a10cc78f0375e428fe574bdffe4067e9</td>
-       <td>CVE-2024-11679</td>
-       <td>2025-04-11 19:15:41</td>
-       <td>An input validation weakness was reported in the TpmSetup module for some legacy System x server products that could allow a local attacker with elevated privileges to read the contents of memory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11679">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c58226d99e865bc0bfe5cc15d038217</td>
-       <td>CVE-2025-0123</td>
-       <td>2025-04-11 18:15:38</td>
-       <td>A vulnerability in the Palo Alto Networks PAN-OS® software enables unlicensed administrators to view clear-text data captured using the packet capture feature https://docs.paloaltonetworks.com/pan-os/11-0/pan-os-admin/monitoring/take-packet-captures/take-a-custom-packet-capture in decrypted HTTP/2 data streams traversing network interfaces on the firewall. HTTP/1.1 data streams are not impacted. In normal conditions, decrypted packet captures are available to firewall administrators after they obtain and install a free Decryption Port Mirror license. The license requirement ensures that this feature can only be used after approved personnel purposefully activate the license. For more information, review how to configure decryption port mirroring https://docs.paloaltonetworks.com/network-security/decryption/administration/monitoring-decryption/configure-decryption-port-mirroring . The administrator must obtain network access to the management interface (web, SSH, console, or telnet) and successfully authenticate to exploit this issue. Risk of this issue can be greatly reduced by restricting access to the management interface to only trusted administrators and from only internal IP addresses according to our recommended critical deployment guidelines https://live.paloaltonetworks.com/t5/community-blogs/tips-amp-tricks-how-to-secure-the-management-access-of-your-palo/ba-p/464431 . Customer firewall administrators do not have access to the packet capture feature in Cloud NGFW. This feature is available only to authorized Palo Alto Networks personnel permitted to perform troubleshooting. Prisma® Access is not impacted by this vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0123">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2bb070f7757bd1555b48bd99f2196e55</td>
-       <td>CVE-2025-0119</td>
-       <td>2025-04-11 18:15:38</td>
-       <td>A command injection vulnerability in the Palo Alto Networks Cortex XDR® Broker VM allows an authenticated user to execute arbitrary OS commands with root privileges on the host operating system running Broker VM.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0119">详情</a></td>
       </tr>
 
      </tbody>
