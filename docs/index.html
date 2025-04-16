@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-04-15 09:27:49 -->
+<!-- RELEASE TIME : 2025-04-16 09:27:24 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>bc3e62f6c4edfbea66d2db47668f1190</td>
+       <td>CVE-2025-27538</td>
+       <td>2025-04-16 08:15:14 <img src="imgs/new.gif" /></td>
+       <td>Mattermost versions 10.5.x <= 10.5.1, 9.11.x <= 9.11.9 fail to enforce MFA checks in PUT /api/v4/users/user-id/mfa when the requesting user differs from the target user ID, which allows users with edit_other_users permission to activate or deactivate MFA for other users, even if those users have not set up MFA.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27538">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1164ec57b5b6265a8b55e6c3b64a38ed</td>
+       <td>CVE-2025-0101</td>
+       <td>2025-04-16 08:15:13 <img src="imgs/new.gif" /></td>
+       <td>A low privileged user can set the date of the devices to the 19th of January 2038 an therefore exceed the 32-Bit time limit. This causes some functions to work unexpected or stop working at all. Both during runtime and after a restart.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0101">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eeb296bc1d8245be94c49b4b52782941</td>
+       <td>CVE-2025-3674</td>
+       <td>2025-04-16 07:00:11 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in TOTOLINK A3700R 9.1.2u.5822_B20200513. It has been declared as critical. Affected by this vulnerability is the function setUrlFilterRules of the file /cgi-bin/cstecgi.cgi. The manipulation leads to improper access controls. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3674">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b14c5e5589eaee7dd764a759cad46734</td>
+       <td>CVE-2025-3247</td>
+       <td>2025-04-16 06:15:42 <img src="imgs/new.gif" /></td>
+       <td>The Contact Form 7 plugin for WordPress is vulnerable to Order Replay in all versions up to, and including, 6.0.5 via the 'wpcf7_stripe_skip_spam_check' function due to insufficient validation on a user controlled key. This makes it possible for unauthenticated attackers to reuse a single Stripe PaymentIntent for multiple transactions. Only the first transaction is processed via Stripe, but the plugin sends a successful email message for each transaction, which may trick an administrator into fulfilling each order.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3247">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ab01bf605777e49052f20de4ef7f43e4</td>
+       <td>CVE-2025-3668</td>
+       <td>2025-04-16 05:15:33 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in TOTOLINK A3700R 9.1.2u.5822_B20200513. It has been declared as critical. This vulnerability affects the function setScheduleCfg of the file /cgi-bin/cstecgi.cgi. The manipulation leads to improper access controls. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3668">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f8bac767217c36ec93d66c870a7a7b0</td>
+       <td>CVE-2025-3667</td>
+       <td>2025-04-16 05:15:32 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in TOTOLINK A3700R 9.1.2u.5822_B20200513. It has been classified as critical. This affects the function setUPnPCfg of the file /cgi-bin/cstecgi.cgi. The manipulation leads to improper access controls. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3667">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f46da8a564b355801e22fea954679944</td>
+       <td>CVE-2025-22018</td>
+       <td>2025-04-16 05:15:31 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: atm: Fix NULL pointer dereference When MPOA_cache_impos_rcvd() receives the msg, it can trigger Null Pointer Dereference Vulnerability if both entry and holding_time are NULL. Because there is only for the situation where entry is NULL and holding_time exists, it can be passed when both entry and holding_time are NULL. If these are NULL, the entry will be passd to eg_cache_put() as parameter and it is referenced by entry->use code in it. kasan log: [ 3.316691] Oops: general protection fault, probably for non-canonical address 0xdffffc0000000006:I [ 3.317568] KASAN: null-ptr-deref in range [0x0000000000000030-0x0000000000000037] [ 3.318188] CPU: 3 UID: 0 PID: 79 Comm: ex Not tainted 6.14.0-rc2 #102 [ 3.318601] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014 [ 3.319298] RIP: 0010:eg_cache_remove_entry+0xa5/0x470 [ 3.319677] Code: c1 f7 6e fd 48 c7 c7 00 7e 38 b2 e8 95 64 54 fd 48 c7 c7 40 7e 38 b2 48 89 ee e80 [ 3.321220] RSP: 0018:ffff88800583f8a8 EFLAGS: 00010006 [ 3.321596] RAX: 0000000000000006 RBX: ffff888005989000 RCX: ffffffffaecc2d8e [ 3.322112] RDX: 0000000000000000 RSI: 0000000000000004 RDI: 0000000000000030 [ 3.322643] RBP: 0000000000000000 R08: 0000000000000000 R09: fffffbfff6558b88 [ 3.323181] R10: 0000000000000003 R11: 203a207972746e65 R12: 1ffff11000b07f15 [ 3.323707] R13: dffffc0000000000 R14: ffff888005989000 R15: ffff888005989068 [ 3.324185] FS: 000000001b6313c0(0000) GS:ffff88806d380000(0000) knlGS:0000000000000000 [ 3.325042] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 [ 3.325545] CR2: 00000000004b4b40 CR3: 000000000248e000 CR4: 00000000000006f0 [ 3.326430] Call Trace: [ 3.326725] <TASK> [ 3.326927] ? die_addr+0x3c/0xa0 [ 3.327330] ? exc_general_protection+0x161/0x2a0 [ 3.327662] ? asm_exc_general_protection+0x26/0x30 [ 3.328214] ? vprintk_emit+0x15e/0x420 [ 3.328543] ? eg_cache_remove_entry+0xa5/0x470 [ 3.328910] ? eg_cache_remove_entry+0x9a/0x470 [ 3.329294] ? __pfx_eg_cache_remove_entry+0x10/0x10 [ 3.329664] ? console_unlock+0x107/0x1d0 [ 3.329946] ? __pfx_console_unlock+0x10/0x10 [ 3.330283] ? do_syscall_64+0xa6/0x1a0 [ 3.330584] ? entry_SYSCALL_64_after_hwframe+0x47/0x7f [ 3.331090] ? __pfx_prb_read_valid+0x10/0x10 [ 3.331395] ? down_trylock+0x52/0x80 [ 3.331703] ? vprintk_emit+0x15e/0x420 [ 3.331986] ? __pfx_vprintk_emit+0x10/0x10 [ 3.332279] ? down_trylock+0x52/0x80 [ 3.332527] ? _printk+0xbf/0x100 [ 3.332762] ? __pfx__printk+0x10/0x10 [ 3.333007] ? _raw_write_lock_irq+0x81/0xe0 [ 3.333284] ? __pfx__raw_write_lock_irq+0x10/0x10 [ 3.333614] msg_from_mpoad+0x1185/0x2750 [ 3.333893] ? __build_skb_around+0x27b/0x3a0 [ 3.334183] ? __pfx_msg_from_mpoad+0x10/0x10 [ 3.334501] ? __alloc_skb+0x1c0/0x310 [ 3.334809] ? __pfx___alloc_skb+0x10/0x10 [ 3.335283] ? _raw_spin_lock+0xe0/0xe0 [ 3.335632] ? finish_wait+0x8d/0x1e0 [ 3.335975] vcc_sendmsg+0x684/0xba0 [ 3.336250] ? __pfx_vcc_sendmsg+0x10/0x10 [ 3.336587] ? __pfx_autoremove_wake_function+0x10/0x10 [ 3.337056] ? fdget+0x176/0x3e0 [ 3.337348] __sys_sendto+0x4a2/0x510 [ 3.337663] ? __pfx___sys_sendto+0x10/0x10 [ 3.337969] ? ioctl_has_perm.constprop.0.isra.0+0x284/0x400 [ 3.338364] ? sock_ioctl+0x1bb/0x5a0 [ 3.338653] ? __rseq_handle_notify_resume+0x825/0xd20 [ 3.339017] ? __pfx_sock_ioctl+0x10/0x10 [ 3.339316] ? __pfx___rseq_handle_notify_resume+0x10/0x10 [ 3.339727] ? selinux_file_ioctl+0xa4/0x260 [ 3.340166] __x64_sys_sendto+0xe0/0x1c0 [ 3.340526] ? syscall_exit_to_user_mode+0x123/0x140 [ 3.340898] do_syscall_64+0xa6/0x1a0 [ 3.341170] entry_SYSCALL_64_after_hwframe+0x77/0x7f [ 3.341533] RIP: 0033:0x44a380 [ 3.341757] Code: 0f 1f 84 00 00 00 00 00 66 90 f3 0f 1e fa 41 89 ca 64 8b 04 25 18 00 00 00 85 c00 [ ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-22018">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e801f609acb19b281c7cf98a424128b9</td>
+       <td>CVE-2025-3666</td>
+       <td>2025-04-16 04:15:23 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in TOTOLINK A3700R 9.1.2u.5822_B20200513 and classified as critical. Affected by this issue is the function setDdnsCfg of the file /cgi-bin/cstecgi.cgi. The manipulation leads to improper access controls. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3666">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>86bea25f246cd18f2682c8f2ba2ab520</td>
+       <td>CVE-2025-3698</td>
+       <td>2025-04-16 03:15:18 <img src="imgs/new.gif" /></td>
+       <td>Interface exposure vulnerability in the mobile application (com.transsion.carlcare) may lead to information leakage risk.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3698">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>622efd6bee4a41102ef90ba730a47bba</td>
+       <td>CVE-2025-3665</td>
+       <td>2025-04-16 03:15:18 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in TOTOLINK A3700R 9.1.2u.5822_B20200513 and classified as critical. Affected by this vulnerability is the function setSmartQosCfg of the file /cgi-bin/cstecgi.cgi. The manipulation leads to improper access controls. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3665">详情</a></td>
+      </tr>
+
+      <tr>
        <td>de038cbf9c11e558253a354e70bcca73</td>
        <td>CVE-2025-32428</td>
        <td>2025-04-15 00:15:14 <img src="imgs/new.gif" /></td>
@@ -318,7 +398,7 @@
       <tr>
        <td>fa7f1843df546798eed78a85a49aafd2</td>
        <td>CVE-2025-3593</td>
-       <td>2025-04-14 23:15:22 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 23:15:22</td>
        <td>A vulnerability was found in ZHENFENG13/code-projects My-Blog-layui 1.0. It has been declared as critical. This vulnerability affects the function Upload of the file /admin/upload/authorImg/. The manipulation of the argument File leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3593">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>4f7b4dcd6848d359738d051266c66a9c</td>
        <td>CVE-2025-31490</td>
-       <td>2025-04-14 23:15:21 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 23:15:21</td>
        <td>AutoGPT is a platform that allows users to create, deploy, and manage continuous artificial intelligence agents that automate complex workflows. Prior to 0.6.1, AutoGPT allows SSRF due to DNS Rebinding in requests wrapper. AutoGPT is built with a wrapper around Python's requests library, hardening the application against SSRF. The code for this wrapper can be found in autogpt_platform/backend/backend/util/request.py. The requested hostname of a URL which is being requested is validated, ensuring that it does not resolve to any local ipv4 or ipv6 addresses. However, this check is not sufficient, as a DNS server may initially respond with a non-blocked address, with a TTL of 0. This means that the initial resolution would appear as a non-blocked address. In this case, validate_url() will return the url as successful. After validate_url() has successfully returned the url, the url is then passed to the real request() function. When the real request() function is called with the validated url, request() will once again resolve the address of the hostname, because the record will not have been cached (due to TTL 0). This resolution may be in the "invalid range". This type of attack is called a "DNS Rebinding Attack". This vulnerability is fixed in 0.6.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-31490">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>df4622835e83cb5a136754405a3518a9</td>
        <td>CVE-2025-3592</td>
-       <td>2025-04-14 22:15:17 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 22:15:17</td>
        <td>A vulnerability was found in ZHENFENG13/code-projects My-Blog-layui 1.0. It has been classified as problematic. This affects an unknown part of the file /admin/v1/link/edit. The manipulation leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. Multiple parameters might be affected. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3592">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>1a9ffa93013cbac42c9cc376055ce135</td>
        <td>CVE-2025-3591</td>
-       <td>2025-04-14 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 22:15:16</td>
        <td>A vulnerability was found in ZHENFENG13/code-projects My-Blog-layui 1.0 and classified as problematic. Affected by this issue is some unknown functionality of the file /admin/v1/blog/edit. The manipulation leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. Multiple parameters might be affected. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3591">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>c5ffef34b9e667a77ae1b140c4139b24</td>
        <td>CVE-2025-3590</td>
-       <td>2025-04-14 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 22:15:16</td>
        <td>A vulnerability has been found in Adianti Framework up to 8.0 and classified as critical. Affected by this vulnerability is an unknown functionality. The manipulation leads to deserialization. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 8.1 is able to address this issue. It is recommended to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3590">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>33b854e5ef913805ded6ab0a77a50c98</td>
        <td>CVE-2025-3589</td>
-       <td>2025-04-14 21:15:18 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 21:15:18</td>
        <td>A vulnerability, which was classified as critical, was found in SourceCodester Music Class Enrollment System 1.0. Affected is an unknown function of the file /manage_class.php. The manipulation of the argument ID leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3589">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>38d592e468a6e69093eec454dd8b4e9b</td>
        <td>CVE-2025-3553</td>
-       <td>2025-04-14 06:00:15 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 06:00:15</td>
        <td>A vulnerability was found in phpshe 1.8. It has been declared as critical. This vulnerability affects the function pe_delete of the file /admin.php?mod=brand&act=del. The manipulation of the argument brand_id[] leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3553">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>7ff7d04ebe0a84a953788feb380184d0</td>
        <td>CVE-2025-2563</td>
-       <td>2025-04-14 06:00:09 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 06:00:09</td>
        <td>The User Registration & Membership WordPress plugin before 4.1.2 does not prevent users to set their account role when the Membership Addon is enabled, leading to a privilege escalation issue and allowing unauthenticated users to gain admin privileges</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2563">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>58cdd81e26cebd0582276c094ff78d99</td>
        <td>CVE-2024-9230</td>
-       <td>2025-04-14 06:00:04 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 06:00:04</td>
        <td>The PowerPress Podcasting plugin by Blubrry WordPress plugin before 11.9.18 does not sanitise and escape some of its settings when adding a podcast, which could allow author and above users to perform Stored Cross-Site Scripting attacks</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-9230">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>1aa943383beb091f467101462baf4cca</td>
        <td>CVE-2025-3552</td>
-       <td>2025-04-14 05:31:04 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 05:31:04</td>
        <td>A vulnerability was found in Lingxing ERP 2. It has been classified as critical. This affects an unknown part of the file /Api/TinyMce/UploadAjax.ashx. The manipulation of the argument File leads to unrestricted upload. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3552">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>5cd4d6fd2f3b300d8afdee0679d9901a</td>
        <td>CVE-2025-3551</td>
-       <td>2025-04-14 05:15:15 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 05:15:15</td>
        <td>A vulnerability was found in Lingxing ERP 2 and classified as critical. Affected by this issue is the function DoUpload of the file /Api/FileUpload.ashx?method=DoUpload. The manipulation of the argument File leads to unrestricted upload. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3551">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>da017eb0dba0756fafe26eb25a05f1e4</td>
        <td>CVE-2025-3550</td>
-       <td>2025-04-14 04:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 04:15:16</td>
        <td>A vulnerability has been found in wowjoy 浙江湖州华卓信息科技有限公司 Internet Doctor Workstation System 1.0 and classified as problematic. Affected by this vulnerability is an unknown functionality of the file /v1/pushConfig/detail/. The manipulation leads to improper authorization. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3550">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>92b7fa8f212345add252b3f6285fa92b</td>
        <td>CVE-2025-3572</td>
-       <td>2025-04-14 03:15:17 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 03:15:17</td>
        <td>SmartRobot from INTUMIT has a Server-Side Request Forgery vulnerability, allowing unauthenticated remote attackers to probe internal network and even access arbitrary local files on the server.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3572">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>379924fd965466546eee05298a05892e</td>
        <td>CVE-2025-3549</td>
-       <td>2025-04-14 03:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 03:15:16</td>
        <td>A vulnerability, which was classified as critical, was found in Open Asset Import Library Assimp 5.4.3. Affected is the function Assimp::MD3Importer::ValidateSurfaceHeaderOffsets of the file code/AssetLib/MD3/MD3Loader.cpp of the component File Handler. The manipulation leads to heap-based buffer overflow. The attack needs to be approached locally. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3549">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>21ba69e9e5d4b371244c683ac62366ec</td>
        <td>CVE-2025-3548</td>
-       <td>2025-04-14 03:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 03:15:16</td>
        <td>A vulnerability, which was classified as critical, has been found in Open Asset Import Library Assimp up to 5.4.3. This issue affects the function aiString::Set in the library include/assimp/types.h of the component File Handler. The manipulation leads to heap-based buffer overflow. It is possible to launch the attack on the local host. The exploit has been disclosed to the public and may be used. It is recommended to apply a patch to fix this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3548">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>d5eb4dd9dc38db53dae24f6c0e3b1664</td>
        <td>CVE-2025-3547</td>
-       <td>2025-04-14 03:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-04-14 03:15:16</td>
        <td>A vulnerability classified as critical was found in frdel Agent-Zero 0.8.1.2. This vulnerability affects unknown code of the file /get_work_dir_files. The manipulation of the argument path leads to path traversal. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3547">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2f17290c042cce0e9dafa0d7882458cd</td>
-       <td>CVE-2025-2814</td>
-       <td>2025-04-13 00:15:14</td>
-       <td>Crypt::CBC versions between 1.21 and 3.04 for Perl may use the rand() function as the default source of entropy, which is not cryptographically secure, for cryptographic functions. This issue affects operating systems where "/dev/urandom'" is unavailable. In that case, Crypt::CBC will fallback to use the insecure rand() function.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2814">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5ced00177a0233dc521b9b722b6eedca</td>
-       <td>CVE-2025-1456</td>
-       <td>2025-04-12 09:15:16</td>
-       <td>The Royal Elementor Addons and Templates plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the `widgetGrid`, `widgetCountDown`, and `widgetInstagramFeed` methods in all versions up to, and including, 1.7.1012 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1456">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>484d1bd5cfac9de36c49035034998e95</td>
-       <td>CVE-2025-1455</td>
-       <td>2025-04-12 09:15:14</td>
-       <td>The Royal Elementor Addons and Templates plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Woo Grid widget in all versions up to, and including, 1.7.1012 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1455">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78b1dfcc774b634c7342b8bd1aec4c64</td>
-       <td>CVE-2025-3418</td>
-       <td>2025-04-12 07:15:27</td>
-       <td>The WPC Admin Columns plugin for WordPress is vulnerable to privilege escalation in versions 2.0.6 to 2.1.0. This is due to the plugin not properly restricting user meta values that can be updated through the ajax_edit_save() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to update their role to that of an administrator.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3418">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c479b49dddd97dfd5dc2ce418ba1e92</td>
-       <td>CVE-2025-3292</td>
-       <td>2025-04-12 07:15:27</td>
-       <td>The User Registration & Membership – Custom Registration Form, Login Form, and User Profile plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.1.3 via the user_registration_update_profile_details() due to missing validation on the 'user_id' user controlled key. This makes it possible for unauthenticated attackers to update other user's passwords, if they have access to the user ID and email.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3292">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>18d7e4555d90a953081e8dcdfba6a0c7</td>
-       <td>CVE-2025-3282</td>
-       <td>2025-04-12 07:15:27</td>
-       <td>The User Registration & Membership – Custom Registration Form, Login Form, and User Profile plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.1.3 via the user_registration_membership_register_member() due to missing validation on the 'membership_id' user controlled key. This makes it possible for unauthenticated attackers to update any user's membership to any other active or non-active membership type.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3282">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a060a8ff83513bc210f50664af57f631</td>
-       <td>CVE-2025-3276</td>
-       <td>2025-04-12 07:15:26</td>
-       <td>The SKT Blocks – Gutenberg based Page Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Post Carousel block in all versions up to, and including, 1.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3276">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>da9d0436ec9cb0d6cb248efce6d6a634</td>
-       <td>CVE-2024-13338</td>
-       <td>2025-04-12 07:15:26</td>
-       <td>The Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS & JS, Defer plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 2.3.1. This is due to missing or incorrect nonce validation on the wclearfy_cache_delete functionality . This makes it possible for unauthenticated attackers to clear the cache via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13338">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>696b7f4ed1dad934205c2748da93ef11</td>
-       <td>CVE-2024-13337</td>
-       <td>2025-04-12 07:15:26</td>
-       <td>The Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS & JS, Defer plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 2.3.2. This is due to missing or incorrect nonce validation on the 'setup-wbcr_clearfy' page. This makes it possible for unauthenticated attackers to update the plugins settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-13337">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0c4fd638e13cbdd32615bf697926ae4a</td>
-       <td>CVE-2025-2871</td>
-       <td>2025-04-12 04:15:39</td>
-       <td>The WordPress Mega Menu – QuadMenu plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 3.2.0. This is due to missing or incorrect nonce validation on the ajax_dismiss_notice() function. This makes it possible for unauthenticated attackers to update any user meta to a value of one, including wp_capabilities which could result in a privilege deescalation of an administrator, via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2871">详情</a></td>
       </tr>
 
      </tbody>
