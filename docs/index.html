@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-05-02 03:42:55 -->
+<!-- RELEASE TIME : 2025-05-03 03:39:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2fc48c462233b7653467be01cec82a4b</td>
+       <td>CVE-2025-46723</td>
+       <td>2025-05-02 23:15:16 <img src="imgs/new.gif" /></td>
+       <td>OpenVM is a performant and modular zkVM framework built for customization and extensibility. In version 1.0.0, OpenVM is vulnerable to overflow through byte decomposition of pc in AUIPC chip. A typo results in the highest limb of pc being range checked to 8-bits instead of 6-bits. This results in the if statement never being triggered because the enumeration gives i=0,1,2, when instead the enumeration should give i=1,2,3, leaving pc_limbs[3] range checked to 8-bits instead of 6-bits. This leads to a vulnerability where the pc_limbs decomposition differs from the true pc, which means a malicious prover can make the destination register take a different value than the AUIPC instruction dictates, by making the decomposition overflow the BabyBear field. This issue has been patched in version 1.1.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-46723">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c053e6873ca7f1c021f464208b0001ab</td>
+       <td>CVE-2025-21572</td>
+       <td>2025-05-02 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>OpenGrok 1.13.25 has a reflected Cross-Site Scripting (XSS) issue when producing the history view page. This happens through improper handling of path segments. The application reflects unsanitized user input into the HTML output.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-21572">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>545c70f640ef5de8ee50e55089aaeb62</td>
+       <td>CVE-2024-55069</td>
+       <td>2025-05-02 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>ffmpeg 7.1 is vulnerable to Null Pointer Dereference in function iamf_read_header in /libavformat/iamfdec.c.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-55069">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>747dcaf73e1850fc105960a2e5d056ca</td>
+       <td>CVE-2022-21546</td>
+       <td>2025-05-02 22:15:15 <img src="imgs/new.gif" /></td>
+       <td>In newer version of the SBC specs, we have a NDOB bit that indicates there is no data buffer that gets written out. If this bit is set using commands like "sg_write_same --ndob" we will crash in target_core_iblock/file's execute_write_same handlers when we go to access the se_cmd->t_data_sg because its NULL. CVSS 3.1 Base Score 7.7 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:N/I:N/A:H).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-21546">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>00f7ef3984197e7a0695fc1da3c6a19f</td>
+       <td>CVE-2025-4218</td>
+       <td>2025-05-02 21:15:24 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in handrew browserpilot up to 0.2.51. It has been declared as critical. Affected by this vulnerability is the function GPTSeleniumAgent of the file browserpilot/browserpilot/agents/gpt_selenium_agent.py. The manipulation of the argument instructions leads to code injection. The attack needs to be approached locally. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4218">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>feba6581b03f56331eef9feb6856ac24</td>
+       <td>CVE-2025-47226</td>
+       <td>2025-05-02 21:15:23 <img src="imgs/new.gif" /></td>
+       <td>Grokability Snipe-IT before 8.1.0 has incorrect authorization for accessing asset information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-47226">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1b7a1e4b92964eebbc6c20d7f738734f</td>
+       <td>CVE-2025-4215</td>
+       <td>2025-05-02 21:15:23 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in gorhill uBlock Origin up to 1.63.3b16. It has been classified as problematic. Affected is the function currentStateChanged of the file src/js/1p-filters.js of the component UI. The manipulation leads to inefficient regular expression complexity. It is possible to launch the attack remotely. The complexity of an attack is rather high. The exploitability is told to be difficult. The exploit has been disclosed to the public and may be used. Upgrading to version 1.63.3b17 is able to address this issue. The patch is identified as eaedaf5b10d2f7857c6b77fbf7d4a80681d4d46c. It is recommended to upgrade the affected component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4215">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3a64648d5c2b77b6ebdf90e040d0ada0</td>
+       <td>CVE-2025-0782</td>
+       <td>2025-05-02 21:15:23 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the S3 bucket configuration for h2oai/h2o-3 allows public write access to the 'h2o-release' bucket. This issue affects all versions and could enable an attacker to overwrite any file in the bucket. As users download binary files such as JARs from this bucket, this vulnerability could lead to remote code execution (RCE) on any user who uses the application. Additionally, an attacker could modify the documentation to include malicious download links.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0782">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>381fd495037e52c08b6365cc34f5cfc3</td>
+       <td>CVE-2025-4214</td>
+       <td>2025-05-02 20:15:20 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in PHPGuruku Online DJ Booking Management System 1.0 and classified as critical. This issue affects some unknown processing of the file /admin/booking-bwdates-reports-details.php. The manipulation of the argument fromdate leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. Other parameters might be affected as well.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4214">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5c513feb1941fc4751c9f9ff1c0f14fc</td>
+       <td>CVE-2024-58253</td>
+       <td>2025-05-02 20:15:19 <img src="imgs/new.gif" /></td>
+       <td>In the obfstr crate before 0.4.4 for Rust, the obfstr! argument type is not restricted to string slices, leading to invalid UTF-8 conversion that produces an invalid value.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-58253">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e318295f4d74384def74dcc35cf7b7a4</td>
        <td>CVE-2025-4180</td>
-       <td>2025-05-01 22:15:18 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 22:15:18</td>
        <td>A vulnerability was found in PCMan FTP Server 2.0.7. It has been classified as critical. Affected is an unknown function of the component TRACE Command Handler. The manipulation leads to buffer overflow. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4180">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>1e37e7dbd4f1f2781cf72e2442790cf1</td>
        <td>CVE-2025-4178</td>
-       <td>2025-05-01 22:15:18 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 22:15:18</td>
        <td>A vulnerability was found in xiaowei1118 java_server up to 11a5bac8f4ba1c17e4bc1b27cad6d24868500e3a on Windows and classified as critical. This issue affects some unknown processing of the file /src/main/java/com/changyu/foryou/controller/FoodController.java of the component File Upload API. The manipulation leads to path traversal. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. This product takes the approach of rolling releases to provide continious delivery. Therefore, version details for affected and updated releases are not available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4178">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>ac48d83f8768f4f8ee43fed9d23b3207</td>
        <td>CVE-2025-43595</td>
-       <td>2025-05-01 22:15:17 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 22:15:17</td>
        <td>An insecure file system permissions vulnerability in MSP360 Backup 4.3.1.115 allows a lower privileged user to execute commands with root level privileges in the 'Online Backup' folder. Users are recommended to upgrade to MSP360 Backup 4.4 (released on 2025-04-22).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-43595">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>0e5e508211612ba45b3afe4d996a76c7</td>
        <td>CVE-2025-4176</td>
-       <td>2025-05-01 22:15:17 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 22:15:17</td>
        <td>A vulnerability has been found in PHPGurukul Blood Bank & Donor Management System 2.4 and classified as critical. This vulnerability affects unknown code of the file /admin/request-received-bydonar.php. The manipulation of the argument searchdata leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4176">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>61a1fc735e4232cb45af004172bae9f4</td>
        <td>CVE-2025-27365</td>
-       <td>2025-05-01 22:15:17 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 22:15:17</td>
        <td>IBM MQ Operator LTS 2.0.0 through 2.0.29, MQ Operator CD 3.0.0, 3.0.1, 3.1.0 through 3.1.3, 3.3.0, 3.4.0, 3.4.1, 3.5.0, 3.5.1, and MQ Operator SC2 3.2.0 through 3.2.10 Client connecting to a MQ Queue Manager can cause a SIGSEGV in the AMQRMPPA channel process terminating it.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-27365">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>1558909b4fd38051cbbbe97729ba4fc9</td>
        <td>CVE-2025-1333</td>
-       <td>2025-05-01 22:15:16 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 22:15:16</td>
        <td>IBM MQ Container when used with the IBM MQ Operator LTS 2.0.0 through 2.0.29, MQ Operator CD 3.0.0, 3.0.1, 3.1.0 through 3.1.3, 3.3.0, 3.4.0, 3.4.1, 3.5.0, 3.5.1, and MQ Operator SC2 3.2.0 through 3.2.10 and configured with Cloud Pak for Integration Keycloak could disclose sensitive information to a privileged user.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1333">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>602a68cf7ff0249aae163d7a6e73f9a3</td>
        <td>CVE-2025-4175</td>
-       <td>2025-05-01 21:15:54 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 21:15:54</td>
        <td>A vulnerability, which was classified as critical, was found in AlanBinu007 Spring-Boot-Advanced-Projects up to 3.1.3. This affects the function uploadUserProfileImage of the file /Spring-Boot-Advanced-Projects-main/Project-4.SpringBoot-AWS-S3/backend/src/main/java/com/urunov/profile/UserProfileController.jav of the component Upload Profile API Endpoint. The manipulation of the argument File leads to path traversal. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4175">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>88c245b0f9a025014e48cc57ef43b241</td>
        <td>CVE-2024-48907</td>
-       <td>2025-05-01 21:15:52 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 21:15:52</td>
        <td>Sematell ReplyOne 7.4.3.0 allows SSRF via the application server API.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48907">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>8d99066b14c062cc591ce3d6521225ce</td>
        <td>CVE-2024-48906</td>
-       <td>2025-05-01 21:15:52 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 21:15:52</td>
        <td>Sematell ReplyOne 7.4.3.0 allows XSS via a ReplyDesk e-mail attachment name.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48906">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>b2d56fbba8dc4183fe94170b21c1274e</td>
        <td>CVE-2024-48905</td>
-       <td>2025-05-01 21:15:52 <img src="imgs/new.gif" /></td>
+       <td>2025-05-01 21:15:52</td>
        <td>Sematell ReplyOne 7.4.3.0 has Insecure Permissions for the /rest/sessions endpoint.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-48905">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-04-30 22:15:15</td>
        <td>Missing "no cache" headers in HCL Leap permits sensitive data to be cached.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-37517">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c41bf1861bcd7a1b59301acbca10ee8f</td>
-       <td>CVE-2025-46550</td>
-       <td>2025-04-29 21:15:52</td>
-       <td>YesWiki is a wiki system written in PHP. Prior to version 4.5.4, the `/?BazaR` endpoint and `idformulaire` parameter are vulnerable to cross-site scripting. An attacker can use a reflected cross-site scripting attack to steal cookies from an authenticated user by having them click on a malicious link. Stolen cookies allow the attacker to take over the user’s session. This vulnerability may also allow attackers to deface the website or embed malicious content. This issue has been patched in version 4.5.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-46550">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b5b9c8307a3ad85acedbfbb1845977eb</td>
-       <td>CVE-2025-46549</td>
-       <td>2025-04-29 21:15:52</td>
-       <td>YesWiki is a wiki system written in PHP. Prior to version 4.5.4, an attacker can use a reflected cross-site scripting attack to steal cookies from an authenticated user by having them click on a malicious link. Stolen cookies allow the attacker to take over the user’s session. This vulnerability may also allow attackers to deface the website or embed malicious content. This issue has been patched in version 4.5.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-46549">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0399333068d60b31bc55b95f8ae8478a</td>
-       <td>CVE-2025-46348</td>
-       <td>2025-04-29 21:15:52</td>
-       <td>YesWiki is a wiki system written in PHP. Prior to version 4.5.4, the request to commence a site backup can be performed and downloaded without authentication. The archives are created with a predictable filename, so a malicious user could create and download an archive without being authenticated. This could result in a malicious attacker making numerous requests to create archives and fill up the file system, or by downloading the archive which contains sensitive site information. This issue has been patched in version 4.5.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-46348">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>63a7a7ee897cee24ac27a7d077eb42e7</td>
-       <td>CVE-2025-46344</td>
-       <td>2025-04-29 21:15:51</td>
-       <td>The Auth0 Next.js SDK is a library for implementing user authentication in Next.js applications. Versions starting from 4.0.1 and prior to 4.5.1, do not invoke `.setExpirationTime` when generating a JWE token for the session. As a result, the JWE does not contain an internal expiration claim. While the session cookie may expire or be cleared, the JWE remains valid. This issue has been patched in version 4.5.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-46344">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>474b5034e9cc536358002f094d20e2aa</td>
-       <td>CVE-2025-3910</td>
-       <td>2025-04-29 21:15:51</td>
-       <td>A flaw was found in Keycloak. The org.keycloak.authorization package may be vulnerable to circumventing required actions, allowing users to circumvent requirements such as setting up two-factor authentication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3910">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e27beccadc1b7d8a4e708384743076d8</td>
-       <td>CVE-2025-3501</td>
-       <td>2025-04-29 21:15:51</td>
-       <td>A flaw was found in Keycloak. By setting a verification policy to 'ALL', the trust store certificate verification is skipped, which is unintended.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3501">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5024663a3d91399e9b359a12a499bcff</td>
-       <td>CVE-2025-4080</td>
-       <td>2025-04-29 20:15:25</td>
-       <td>A vulnerability has been found in PHPGurukul Online Nurse Hiring System 1.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file /admin/view-request.php. The manipulation of the argument viewid leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4080">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3a8650a36b9955ed9c461580eda601f</td>
-       <td>CVE-2025-4078</td>
-       <td>2025-04-29 20:15:25</td>
-       <td>A vulnerability, which was classified as problematic, has been found in Wangshen SecGate 3600 2400. This issue affects some unknown processing of the file ?g=log_export_file. The manipulation of the argument file_name leads to path traversal. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4078">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8e6d66c04caa080d9352a252586daaae</td>
-       <td>CVE-2025-0520</td>
-       <td>2025-04-29 20:15:25</td>
-       <td>An unrestricted file upload vulnerability in ShowDoc caused by improper validation of file extension allows execution of arbitrary PHP, leading to remote code execution.This issue affects ShowDoc: before 2.8.7.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-0520">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3ceaaeecbe429d81de39d8abdd4dff92</td>
-       <td>CVE-2024-57698</td>
-       <td>2025-04-29 20:15:25</td>
-       <td>An issue in modernwms v.1.0 allows an attacker view the MD5 hash of the administrator password and other attributes without authentication, even after initial configuration and password change. This happens due to excessive exposure of information and the lack of adequate access control on the /user/list?culture=en-us endpoint.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-57698">详情</a></td>
       </tr>
 
      </tbody>
