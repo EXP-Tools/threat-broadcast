@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-06-27 15:27:32 -->
+<!-- RELEASE TIME : 2025-06-28 12:49:16 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>55c4a45fa724e17c21f85f1e62876ba3</td>
+       <td>CVE-2025-6816</td>
+       <td>2025-06-28 08:15:25 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability classified as problematic was found in HDF5 1.14.6. This vulnerability affects the function H5O__fsinfo_encode of the file /src/H5Ofsinfo.c. The manipulation leads to heap-based buffer overflow. It is possible to launch the attack on the local host. The exploit has been disclosed to the public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6816">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c4113529a8a92ec30af69de833e1da8</td>
+       <td>CVE-2025-5937</td>
+       <td>2025-06-28 08:15:25 <img src="imgs/new.gif" /></td>
+       <td>The MicroPayments – Fans Paysite: Paid Creator Subscriptions, Digital Assets, Wallet plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 3.2.0. This is due to missing or incorrect nonce validation on the adminOptions() function. This makes it possible for unauthenticated attackers to reset the plugin's settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5937">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ac5589801fe8c2a56e24a52019045f9f</td>
+       <td>CVE-2025-38086</td>
+       <td>2025-06-28 08:15:24 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: ch9200: fix uninitialised access during mii_nway_restart In mii_nway_restart() the code attempts to call mii->mdio_read which is ch9200_mdio_read(). ch9200_mdio_read() utilises a local buffer called "buff", which is initialised with control_read(). However "buff" is conditionally initialised inside control_read(): if (err == size) { memcpy(data, buf, size); } If the condition of "err == size" is not met, then "buff" remains uninitialised. Once this happens the uninitialised "buff" is accessed and returned during ch9200_mdio_read(): return (buff[0] | buff[1] << 8); The problem stems from the fact that ch9200_mdio_read() ignores the return value of control_read(), leading to uinit-access of "buff". To fix this we should check the return value of control_read() and return early on error.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38086">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f92aa7d7b2f16038fcc79b724b86c25e</td>
+       <td>CVE-2025-38085</td>
+       <td>2025-06-28 08:15:24 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm/hugetlb: fix huge_pmd_unshare() vs GUP-fast race huge_pmd_unshare() drops a reference on a page table that may have previously been shared across processes, potentially turning it into a normal page table used in another process in which unrelated VMAs can afterwards be installed. If this happens in the middle of a concurrent gup_fast(), gup_fast() could end up walking the page tables of another process. While I don't see any way in which that immediately leads to kernel memory corruption, it is really weird and unexpected. Fix it with an explicit broadcast IPI through tlb_remove_table_sync_one(), just like we do in khugepaged when removing page tables for a THP collapse.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38085">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>54c5c0d983407f769b0f91ad3c288356</td>
+       <td>CVE-2025-38084</td>
+       <td>2025-06-28 08:15:23 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm/hugetlb: unshare page tables during VMA split, not before Currently, __split_vma() triggers hugetlb page table unsharing through vm_ops->may_split(). This happens before the VMA lock and rmap locks are taken - which is too early, it allows racing VMA-locked page faults in our process and racing rmap walks from other processes to cause page tables to be shared again before we actually perform the split. Fix it by explicitly calling into the hugetlb unshare logic from __split_vma() in the same place where THP splitting also happens. At that point, both the VMA and the rmap(s) are write-locked. An annoying detail is that we can now call into the helper hugetlb_unshare_pmds() from two different locking contexts: 1. from hugetlb_split(), holding: - mmap lock (exclusively) - VMA lock - file rmap lock (exclusively) 2. hugetlb_unshare_all_pmds(), which I think is designed to be able to call us with only the mmap lock held (in shared mode), but currently only runs while holding mmap lock (exclusively) and VMA lock Backporting note: This commit fixes a racy protection that was introduced in commit b30c14cd6102 ("hugetlb: unshare some PMDs when splitting VMAs"); that commit claimed to fix an issue introduced in 5.13, but it should actually also go all the way back. [jannh@google.com: v2]</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38084">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b93673a1873b5a12f9cf4393de16a8b</td>
+       <td>CVE-2025-6755</td>
+       <td>2025-06-28 06:15:23 <img src="imgs/new.gif" /></td>
+       <td>The Game Users Share Buttons plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the ajaxDeleteTheme() function in all versions up to, and including, 1.3.0. This makes it possible for Subscriber-level attackers to add arbitrary file paths (such as ../../../../wp-config.php) to the themeNameId parameter of the AJAX request, which can lead to remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6755">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>71290ffbef5793d02ed0109a47e9f84e</td>
+       <td>CVE-2025-5304</td>
+       <td>2025-06-28 06:15:22 <img src="imgs/new.gif" /></td>
+       <td>The PT Project Notebooks plugin for WordPress is vulnerable to Privilege Escalation due to missing authorization in the wpnb_pto_new_users_add() function in versions 1.0.0 through 1.1.3. This makes it possible for unauthenticated attackers to elevate their privileges to that of an administrator.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5304">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>420d2e0f274e7c3888c15152bbf9aab5</td>
+       <td>CVE-2025-6252</td>
+       <td>2025-06-28 05:15:24 <img src="imgs/new.gif" /></td>
+       <td>The Qi Addons For Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via several parameters in all versions up to, and including, 1.9.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6252">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dd4e30b6cbbca8110155d70cc75dd8d5</td>
+       <td>CVE-2025-6381</td>
+       <td>2025-06-28 04:15:46 <img src="imgs/new.gif" /></td>
+       <td>The BeeTeam368 Extensions plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 2.3.4 via the handle_remove_temp_file() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to perform actions on files outside of the originally intended directory. This vulnerability can be used to delete the wp-config.php file, which can be leveraged into a site takeover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6381">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>09be8bb6a36131ef58e0e92d1cee7efc</td>
+       <td>CVE-2025-6379</td>
+       <td>2025-06-28 04:15:45 <img src="imgs/new.gif" /></td>
+       <td>The BeeTeam368 Extensions Pro plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 2.3.4 via the handle_live_fn() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to perform actions on files outside of the originally intended directory. This vulnerability can be used to delete the wp-config.php file, which can be leveraged into a site takeover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6379">详情</a></td>
+      </tr>
+
+      <tr>
        <td>73261eb4217004945a8404dd15ae98cb</td>
        <td>CVE-2025-5398</td>
        <td>2025-06-27 09:23:19 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2025-06-27 04:15:55 <img src="imgs/new.gif" /></td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53164">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4661bc06d2cbb70aaa82729bf450f63c</td>
-       <td>CVE-2025-6703</td>
-       <td>2025-06-26 09:30:03 <img src="imgs/new.gif" /></td>
-       <td>Improper Input Validation vulnerability in Mozilla neqo leads to an unexploitable crash..This issue affects neqo: from 0.4.24 through 0.13.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6703">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d3623e947ea2e9c3b8c8bc4cd5e0486</td>
-       <td>CVE-2024-11584</td>
-       <td>2025-06-26 09:25:20 <img src="imgs/new.gif" /></td>
-       <td>cloud-init through 25.1.2 includes the systemd socket unit cloud-init-hotplugd.socket with default SocketMode that grants 0666 permissions, making it world-writable. This being used for the "/run/cloud-init/hook-hotplug-cmd" FIFO. An unprivelege user could trigger hotplug-hook commands.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-11584">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e4a81e7c7b2adff8410a3e24cdd84e6a</td>
-       <td>CVE-2025-6212</td>
-       <td>2025-06-26 09:22:03 <img src="imgs/new.gif" /></td>
-       <td>The Ultra Addons for Contact Form 7 plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Database module in versions 3.5.11 to 3.5.19 due to insufficient input sanitization and output escaping. The unfiltered field names are stored alongside the sanitized values. Later, the admin-side AJAX endpoint ajax_get_table_data() returns those raw names as JSON column headers, and the client-side DataTables renderer injects them directly into the DOM without any HTML encoding. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6212">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>65e616fed14cdf2b9c1c5dbaabb9c425</td>
-       <td>CVE-2025-5842</td>
-       <td>2025-06-26 09:22:02 <img src="imgs/new.gif" /></td>
-       <td>The Modern Design Library plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘class’ parameter in all versions up to, and including, 1.1.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5842">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>13e9ebb8f2260a304eb251ec7ce2cef6</td>
-       <td>CVE-2025-5338</td>
-       <td>2025-06-26 09:22:02 <img src="imgs/new.gif" /></td>
-       <td>The Royal Elementor Addons plugin for WordPress is vulnerable to Stored Cross-Site Scripting via multiple widgets in all versions up to, and including, 1.7.1024 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5338">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed168a992c2dd131b8e293ac00978760</td>
-       <td>CVE-2024-6174</td>
-       <td>2025-06-26 09:15:25 <img src="imgs/new.gif" /></td>
-       <td>When a non-x86 platform is detected, cloud-init grants root access to a hardcoded url with a local IP address. To prevent this, cloud-init default configurations disable platform enumeration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-6174">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f47e7b2690b61589c950e9ee0edda3ab</td>
-       <td>CVE-2025-52934</td>
-       <td>2025-06-26 08:15:23 <img src="imgs/new.gif" /></td>
-       <td>Rejected reason: Not a vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52934">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>317cc7c86ab8ff93f11ed91bf7390b04</td>
-       <td>CVE-2025-5459</td>
-       <td>2025-06-26 07:15:27 <img src="imgs/new.gif" /></td>
-       <td>A user with specific node group editing permissions and a specially crafted class parameter could be used to execute commands as root on the primary host. It affects Puppet Enterprise versions 2018.1.8 through 2023.8.3 and 2025.3 and has been resolved in versions 2023.8.4 and 2025.4.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5459">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d59ba0011aff523ceaf6d5b64426aa4d</td>
-       <td>CVE-2025-5846</td>
-       <td>2025-06-26 06:15:24 <img src="imgs/new.gif" /></td>
-       <td>An issue has been discovered in GitLab EE affecting all versions from 16.10 before 17.11.5, 18.0 before 18.0.3, and 18.1 before 18.1.1 that could have allowed authenticated users to assign unrelated compliance frameworks to projects by sending crafted GraphQL mutations that bypassed framework-specific permission checks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5846">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b641c317cfdc9032aa56d4135c300bf0</td>
-       <td>CVE-2025-5315</td>
-       <td>2025-06-26 06:15:23 <img src="imgs/new.gif" /></td>
-       <td>An issue has been discovered in GitLab CE/EE affecting all versions from 17.2 before 17.11.5, 18.0 before 18.0.3, and 18.1 before 18.1.1 that could have allowed authenticated users with Guest role permissions to add child items to incident work items by sending crafted API requests that bypassed UI-enforced role restrictions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5315">详情</a></td>
       </tr>
 
      </tbody>
