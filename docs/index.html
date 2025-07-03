@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-07-02 15:27:56 -->
+<!-- RELEASE TIME : 2025-07-03 09:28:01 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f5e36b2c2d74621b1377da4f2c2bc45f</td>
+       <td>CVE-2025-5944</td>
+       <td>2025-07-03 05:15:25 <img src="imgs/new.gif" /></td>
+       <td>The Element Pack Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘data-caption’ attribute in all versions up to, and including, 8.0.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5944">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>840a29eaf137503461968fc453971c35</td>
+       <td>CVE-2025-52842</td>
+       <td>2025-07-02 20:15:31 <img src="imgs/new.gif" /></td>
+       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Laundry on Linux, MacOS allows Account Takeover. This issue affects Laundry: 2.3.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52842">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5dd94396423f176ba9f7f4e68a8c91c7</td>
+       <td>CVE-2025-52559</td>
+       <td>2025-07-02 20:15:31 <img src="imgs/new.gif" /></td>
+       <td>Zulip is an open-source team chat application. From versions 2.0.0-rc1 to before 10.4 in Zulip Server, the /digest/ URL of a server shows a preview of what the email weekly digest would contain. This URL, though not the digest itself, contains a cross-site scripting (XSS) vulnerability in both topic names and channel names. This issue has been fixed in Zulip Server 10.4. A workaround for this issue involves denying access to /digest/.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52559">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e0a46c3f3913c9d2466d1cb785f92d8</td>
+       <td>CVE-2025-43025</td>
+       <td>2025-07-02 20:15:30 <img src="imgs/new.gif" /></td>
+       <td>HP Universal Print Driver is potentially vulnerable to denial of service due to buffer overflow in versions of UPD 7.4 or older (e.g., v7.3.x, v7.2.x, v7.1.x, etc.).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-43025">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4255debcffcd2a8568cef10458969c8b</td>
+       <td>CVE-2025-34092</td>
+       <td>2025-07-02 20:15:30 <img src="imgs/new.gif" /></td>
+       <td>A cookie encryption bypass vulnerability exists in Google Chrome’s AppBound mechanism due to weak path validation logic within the elevation service. When Chrome encrypts a cookie key, it records its own executable path as validation metadata. Later, when decrypting, the elevation service compares the requesting process’s path to this stored path. However, due to path canonicalization inconsistencies, an attacker can impersonate Chrome (e.g., by naming their binary chrome.exe and placing it in a similar path) and successfully retrieve the encrypted cookie key. This allows malicious processes to retrieve cookies intended to be restricted to the Chrome process only. Confirmed in Google Chrome with AppBound Encryption enabled. Other Chromium-based browsers may be affected if they implement similar COM-based encryption mechanisms.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34092">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f80823d63e5548709d90bfe9f7cd71aa</td>
+       <td>CVE-2025-34091</td>
+       <td>2025-07-02 20:15:30 <img src="imgs/new.gif" /></td>
+       <td>A padding oracle vulnerability exists in Google Chrome’s AppBound cookie encryption mechanism due to observable decryption failure behavior in Windows Event Logs when handling malformed ciphertext in SYSTEM-DPAPI-encrypted blobs. A local attacker can repeatedly send malformed ciphertexts to the Chrome elevation service and distinguish between padding and MAC errors, enabling a padding oracle attack. This allows partial decryption of the SYSTEM-DPAPI layer and eventual recovery of the user-DPAPI encrypted cookie key, which is trivially decrypted by the attacker’s own context. This issue undermines the core purpose of AppBound Encryption by enabling low-privileged cookie theft through cryptographic misuse and verbose error feedback. Confirmed in Google Chrome with AppBound Encryption enabled. Other Chromium-based browsers may be affected if they implement similar COM-based encryption mechanisms. This behavior arises from a combination of Chrome’s AppBound implementation and the way Microsoft Windows DPAPI reports decryption failures via Event Logs. As such, the vulnerability relies on cryptographic behavior and error visibility in all supported versions of Windows.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34091">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6ea241d00eed1f59597ca94573c50dad</td>
+       <td>CVE-2025-34090</td>
+       <td>2025-07-02 20:15:30 <img src="imgs/new.gif" /></td>
+       <td>A security bypass vulnerability exists in Google Chrome AppBound cookie encryption mechanism due to insufficient validation of COM server paths during inter-process communication. A local low-privileged attacker can hijack the COM class identifier (CLSID) registration used by Chrome's elevation service and point it to a non-existent or malicious binary. When this hijack occurs, Chrome silently falls back to the legacy cookie encryption mechanism (protected only by user-DPAPI), thereby enabling cookie decryption by any user-context malware without SYSTEM-level access. This flaw bypasses the protections intended by the AppBound encryption design and allows cookie theft from Chromium-based browsers. Confirmed in Google Chrome with AppBound Encryption enabled. Other Chromium-based browsers may be affected if they implement similar COM-based encryption mechanisms.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34090">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3a801c945d6892009cabfabdc63cf41c</td>
+       <td>CVE-2025-34079</td>
+       <td>2025-07-02 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>An authenticated remote code execution vulnerability exists in NSClient++ version 0.5.2.35 when the web interface and ExternalScripts module are enabled. A remote attacker with the administrator password can authenticate to the web interface (default port 8443), inject arbitrary commands as external scripts via the /settings/query.json API, save the configuration, and trigger the script via the /query/{name} endpoint. The injected commands are executed with SYSTEM privileges, enabling full remote compromise. This capability is an intended feature, but the lack of safeguards or privilege separation makes it risky when exposed to untrusted actors.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34079">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7df81a71ee50c138ff2a4098d506d965</td>
+       <td>CVE-2025-34078</td>
+       <td>2025-07-02 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>A local privilege escalation vulnerability exists in NSClient++ 0.5.2.35 when both the web interface and ExternalScripts features are enabled. The configuration file (nsclient.ini) stores the administrative password in plaintext and is readable by local users. By extracting this password, an attacker can authenticate to the NSClient++ web interface (typically accessible on port 8443) and abuse the ExternalScripts plugin to inject and execute arbitrary commands as SYSTEM by registering a custom script, saving the configuration, and triggering it via the API. This behavior is documented but insecure, as the plaintext credential exposure undermines access isolation between local users and administrative functions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34078">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cee39c3d8d14387744eeda8a56ed51bb</td>
+       <td>CVE-2025-34076</td>
+       <td>2025-07-02 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>An authenticated local file inclusion vulnerability exists in Microweber CMS versions <= 1.2.11 through misuse of the backup management API. Authenticated users can abuse the /api/BackupV2/upload and /api/BackupV2/download endpoints to read arbitrary files from the underlying filesystem. By specifying an absolute file path in the src parameter of the upload request, the server may relocate or delete the target file depending on the web service user’s privileges. The corresponding download endpoint can then be used to retrieve the file contents, effectively enabling local file disclosure. This behavior stems from insufficient validation of user-supplied paths and inadequate restrictions on file access and backup logic.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34076">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c4c2b4054945cb5e6c795717ffe30a4b</td>
        <td>CVE-2025-46647</td>
        <td>2025-07-02 12:15:28 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>abdf2164b8c1daa50852f176d9c8136b</td>
        <td>CVE-2025-6952</td>
-       <td>2025-07-01 12:31:02 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 12:31:02</td>
        <td>A vulnerability, which was classified as problematic, has been found in Open5GS up to 2.7.5. This...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6952">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>5e0b60aea833edb7ea88130978db5a24</td>
        <td>CVE-2025-6951</td>
-       <td>2025-07-01 12:31:01 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 12:31:01</td>
        <td>A vulnerability classified as problematic was found in SAFECAM X300 up to 20250611. This...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6951">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>9784266a076550834c871f9a28b9d65d</td>
        <td>CVE-2025-5314</td>
-       <td>2025-07-01 12:31:01 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 12:31:01</td>
        <td>The Dear Flipbook – PDF Flipbook, 3D Flipbook, PDF embed, PDF viewer plugin for WordPress is...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5314">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>031fc8b16e696977df135f63280e1f26</td>
        <td>CVE-2025-49483</td>
-       <td>2025-07-01 12:31:01 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 12:31:01</td>
        <td>Improper Resource Shutdown or Release vulnerability in ASR180x 、ASR190x in tr069 modules  allows...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49483">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>16cac20c42750b11cdb7f236efb51fe1</td>
        <td>CVE-2025-49482</td>
-       <td>2025-07-01 12:31:01 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 12:31:01</td>
        <td>Improper Resource Shutdown or Release vulnerability in ASR180x 、ASR190x in tr069 modules allows...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49482">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>e13e810fdb61acc953b89f9f6f942519</td>
        <td>CVE-2025-49481</td>
-       <td>2025-07-01 12:31:01 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 12:31:01</td>
        <td>Improper Resource Shutdown or Release vulnerability in ASR180x 、ASR190x in router modules allows...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49481">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>7c31ac9fda415060b237538aa9f658c3</td>
        <td>CVE-2025-49480</td>
-       <td>2025-07-01 12:31:01 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 12:31:01</td>
        <td>Out-of-bounds access in ASR180x 、ASR190x  in lte-telephony,  This vulnerability is associated...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49480">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>f793fdf6e12468a9a455ffad539c725d</td>
        <td>CVE-2025-6224</td>
-       <td>2025-07-01 11:15:21 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 11:15:21</td>
        <td>Certificate generation in juju/utils using the cert.NewLeaf function could include private information. If this certificate were then transferred over the network in plaintext, an attacker listening on that network could sniff the certificate and trivially extract the private key from it.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6224">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>ae52807cd0a604ac50dc6c1da61912e4</td>
        <td>CVE-2025-49492</td>
-       <td>2025-07-01 11:15:21 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 11:15:21</td>
        <td>Out-of-bounds write in ASR180x in lte-telephony, May cause a buffer underrun. This vulnerability is associated with program files apps/atcmd_server/src/dev_api.C. This issue affects Falcon_Linux、Kestrel、Lapwing_Linux: before v1536.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49492">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>bae9adeea10ea5fb5c08c6429e27e035</td>
        <td>CVE-2025-49491</td>
-       <td>2025-07-01 11:15:21 <img src="imgs/new.gif" /></td>
+       <td>2025-07-01 11:15:21</td>
        <td>Improper Resource Shutdown or Release vulnerability in ASR Falcon_Linux、Kestrel、Lapwing_Linux on Linux (traffic_stat modules) allows Resource Leak Exposure. This vulnerability is associated with program files traffic_stat/traffic_service/traffic_service.C. This issue affects Falcon_Linux、Kestrel、Lapwing_Linux: before v1536.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49491">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2d8faa4ddc070116e226c0f1e228bd84</td>
-       <td>CVE-2025-52997</td>
-       <td>2025-06-30 20:15:25</td>
-       <td>File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit files. Prior to version 2.34.1, a missing password policy and brute-force protection makes the authentication process insecure. Attackers could mount a brute-force attack to retrieve the passwords of all accounts in a given instance. This issue has been patched in version 2.34.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52997">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>139f78ab7456756614b68f598ee177d0</td>
-       <td>CVE-2025-52996</td>
-       <td>2025-06-30 20:15:25</td>
-       <td>File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit files. In versions 2.32.0 and prior, the implementation of password protected links is error-prone, resulting in potential unprotected sharing of a file through a direct download link. This link can either be shared unknowingly by a user or discovered from various locations such as the browser history or the log of a proxy server used. At time of publication, no known patched versions are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52996">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76123bcee10ee48fdb736afef6ef8891</td>
-       <td>CVE-2025-52995</td>
-       <td>2025-06-30 20:15:25</td>
-       <td>File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit files. Prior to version 2.33.10, the implementation of the allowlist is erroneous, allowing a user to execute more shell commands than they are authorized for. The concrete impact of this vulnerability depends on the commands configured, and the binaries installed on the server or in the container image. Due to the missing separation of scopes on the OS-level, this could give an attacker access to all files managed the application, including the File Browser database. This issue has been patched in version 2.33.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52995">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3cd9f5e350371779115b6f22e1cc5a04</td>
-       <td>CVE-2025-52901</td>
-       <td>2025-06-30 20:15:25</td>
-       <td>File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview, rename and edit files. Prior to version 2.33.9, access tokens are used as GET parameters. The JSON Web Token (JWT) which is used as a session identifier will get leaked to anyone having access to the URLs accessed by the user. This will give an attacker full access to a user's account and, in consequence, to all sensitive files the user has access to. This issue has been patched in version 2.33.9.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52901">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3246ec7a2a6436749c83ce5f4772f97e</td>
-       <td>CVE-2025-52491</td>
-       <td>2025-06-30 20:15:25</td>
-       <td>Akamai CloudTest before 60 2025.06.09 (12989) allows SSRF.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52491">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>677a918b785fa977ccfdfccaa54287cb</td>
-       <td>CVE-2025-49493</td>
-       <td>2025-06-30 20:15:25</td>
-       <td>Akamai CloudTest before 60 2025.06.02 (12988) allows file inclusion via XML External Entity (XXE) injection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49493">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a56285df823e6ae275ac5501ba8a42b6</td>
-       <td>CVE-2025-36593</td>
-       <td>2025-06-30 19:15:23</td>
-       <td>Dell OpenManage Network Integration, versions prior to 3.8, contains an Authentication Bypass by Capture-replay vulnerability in the RADIUS protocol. An attacker with local network access could potentially exploit this vulnerability to forge a valid protocol accept message in response to a failed authentication request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36593">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>781c0f3544b0097e3cf687684b8907f7</td>
-       <td>CVE-2025-53107</td>
-       <td>2025-06-30 18:50:22</td>
-       <td>@cyanheads/git-mcp-server vulnerable to command injection in several tools</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53107">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71ea427dad3a956c836436b74d7d0548</td>
-       <td>CVE-2024-46993</td>
-       <td>2025-06-30 18:41:08</td>
-       <td>Electron vulnerable to Heap Buffer Overflow in NativeImage</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-46993">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3b7979c51e7d99a4a54a5f2723e086e4</td>
-       <td>CVE-2025-6925</td>
-       <td>2025-06-30 18:15:26</td>
-       <td>A vulnerability has been found in Dromara RuoYi-Vue-Plus 5.4.0 and classified as critical. Affected by this vulnerability is an unknown functionality of the file /src/main/java/org/dromara/demo/controller/MailController.java of the component Mail Handler. The manipulation of the argument filePath leads to path traversal. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6925">详情</a></td>
       </tr>
 
      </tbody>
