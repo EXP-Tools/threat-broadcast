@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-07-15 02:19:30 -->
+<!-- RELEASE TIME : 2025-07-16 02:10:22 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e7b78f612e9989b308431bca9f1826a3</td>
+       <td>CVE-2025-6981</td>
+       <td>2025-07-15 21:15:34 <img src="imgs/new.gif" /></td>
+       <td>An incorrect authorization vulnerability allowed unauthorized read access to the contents of internal repositories for contractor accounts when the Contractors API feature was enabled. The Contractors API is a rarely-enabled feature in private preview. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.18 and was fixed in versions 3.14.15, 3.15.10, 3.16.6 and 3.17.3</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6981">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0336559f0e67db386cc03c3e17575066</td>
+       <td>CVE-2025-53906</td>
+       <td>2025-07-15 21:15:34 <img src="imgs/new.gif" /></td>
+       <td>Vim is an open source, command line text editor. Prior to version 9.1.1551, a path traversal issue in Vim’s zip.vim plugin can allow overwriting of arbitrary files when opening specially crafted zip archives. Impact is low because this exploit requires direct user interaction. However, successfully exploitation can lead to overwriting sensitive files or placing executable code in privileged locations, depending on the permissions of the process editing the archive. The victim must edit such a file using Vim which will reveal the filename and the file content, a careful user may suspect some strange things going on. Successful exploitation could results in the ability to execute arbitrary commands on the underlying operating system. Version 9.1.1551 contains a patch for the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53906">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7b53b9061a3d2e97d32c2be729bea7c</td>
+       <td>CVE-2025-53905</td>
+       <td>2025-07-15 21:15:34 <img src="imgs/new.gif" /></td>
+       <td>Vim is an open source, command line text editor. Prior to version 9.1.1552, a path traversal issue in Vim’s tar.vim plugin can allow overwriting of arbitrary files when opening specially crafted tar archives. Impact is low because this exploit requires direct user interaction. However, successfully exploitation can lead to overwriting sensitive files or placing executable code in privileged locations, depending on the permissions of the process editing the archive. The victim must edit such a file using Vim which will reveal the filename and the file content, a careful user may suspect some strange things going on. Successful exploitation could results in the ability to execute arbitrary commands on the underlying operating system. Version 9.1.1552 contains a patch for the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53905">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>429e8310ab53fe6d03f6c335057917a3</td>
+       <td>CVE-2025-49841</td>
+       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in process_ckpt.py. The SoVITS_dropdown variable takes user input and passes it to the load_sovits_new function in process_ckpt.py. In load_sovits_new, the user input, here sovits_path is used to load a model with torch.load, leading to unsafe deserialization. At time of publication, no known patched versions are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49841">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c68552b11a6bf77be5adf8ce20b2301a</td>
+       <td>CVE-2025-49840</td>
+       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in inference_webui.py. The GPT_dropdown variable takes user input and passes it to the change_gpt_weights function. In change_gpt_weights, the user input, here gpt_path is used to load a model with torch.load, leading to unsafe deserialization. At time of publication, no known patched versions are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49840">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>84197c84b50799e85b0fd4e2403f4135</td>
+       <td>CVE-2025-49839</td>
+       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in bsroformer.py. The model_choose variable takes user input (e.g. a path to a model) and passes it to the uvr function. In uvr, a new instance of Roformer_Loader class is created with the model_path attribute containing the aformentioned user input (here called locally model_name). Note that in this step the .ckpt extension is added to the path. In the Roformer_Loader class, the user input, here called model_path, is used to load the model on that path with torch.load, which can lead to unsafe deserialization. At time of publication, no known patched versions are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49839">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e1c6d2091c16c6b7b0116cfa7e28d58</td>
+       <td>CVE-2025-49838</td>
+       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in vr.py AudioPreDeEcho. The model_choose variable takes user input (e.g. a path to a model) and passes it to the uvr function. In uvr, a new instance of AudioPreDeEcho class is created with the model_path attribute containing the aforementioned user input (here called locally model_name). Note that in this step the .pth extension is added to the path. In the AudioPreDeEcho class, the user input, here called model_path, is used to load the model on that path with torch.load, which can lead to unsafe deserialization. At time of publication, no known patched versions are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49838">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5fb6c8db57f8551d831ceff9da97e7e6</td>
+       <td>CVE-2025-49837</td>
+       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in vr.py AudioPre. The model_choose variable takes user input (e.g. a path to a model) and passes it to the uvr function. In uvr, a new instance of AudioPre class is created with the model_path attribute containing the aforementioned user input (here called locally model_name). Note that in this step the .pth extension is added to the path. In the AudioPre class, the user input, here called model_path, is used to load the model on that path with torch.load, which can lead to unsafe deserialization. At time of publication, no known patched versions are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49837">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>888bdc3dbb7836994761dc651fe43338</td>
+       <td>CVE-2025-49836</td>
+       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is a command injection vulnerability in webui.py change_label function. path_list takes user input, which is passed to the change_label function, which concatenates the user input into a command and runs it on the server, leading to arbitrary command execution. At time of publication, no known patched versions are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49836">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ede3d4542cde7af9cdadb155995e743d</td>
+       <td>CVE-2025-49835</td>
+       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is a command injection vulnerability in webui.py open_asr function. asr_inp_dir (and a number of other variables) takes user input, which is passed to the open_asr function, which concatenates the user input into a command and runs it on the server, leading to arbitrary command execution. At time of publication, no known patched versions are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49835">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3711e47a3cec6380da23db0b5f028501</td>
        <td>CVE-2025-53820</td>
-       <td>2025-07-14 21:15:28 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 21:15:28</td>
        <td>WeGIA is an open source web manager with a focus on the Portuguese language and charitable institutions. A Reflected Cross-Site Scripting (XSS) vulnerability was identified in the `index.php` endpoint of the WeGIA application prior to version 3.4.5. This vulnerability allows attackers to inject malicious scripts in the `erro` parameter. Version 3.4.5 contains a patch for the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53820">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>68024d3a22340392109c7a9dd8e6ea9d</td>
        <td>CVE-2025-53819</td>
-       <td>2025-07-14 21:15:28 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 21:15:28</td>
        <td>Nix is a package manager for Linux and other Unix systems. Builds with Nix 2.30.0 on macOS were executed with elevated privileges (root), instead of the build users. The fix was applied to Nix 2.30.1. No known workarounds are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53819">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>af23744026eb806144e706d5ef564c10</td>
        <td>CVE-2025-53818</td>
-       <td>2025-07-14 21:15:27 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 21:15:27</td>
        <td>GitHub Kanban MCP Server is a Model Context Protocol (MCP) server for managing GitHub issues in Kanban board format and streamlining LLM task management. Versions 0.3.0 and 0.4.0 of the MCP Server are written in a way that is vulnerable to command injection vulnerability attacks as part of some of its MCP Server tool definition and implementation. The MCP Server exposes the tool `add_comment` which relies on Node.js child process API `exec` to execute the GitHub (`gh`) command, is an unsafe and vulnerable API if concatenated with untrusted user input. As of time of publication, no known patches are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53818">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>67939902b5e73685822ca86e224b3f81</td>
        <td>CVE-2025-53643</td>
-       <td>2025-07-14 21:15:27 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 21:15:27</td>
        <td>AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to version 3.12.14, the Python parser is vulnerable to a request smuggling vulnerability due to not parsing trailer sections of an HTTP request. If a pure Python version of aiohttp is installed (i.e. without the usual C extensions) or AIOHTTP_NO_EXTENSIONS is enabled, then an attacker may be able to execute a request smuggling attack to bypass certain firewalls or proxy protections. Version 3.12.14 contains a patch for this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53643">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>da113ee46afb861e52782cc10a63b649</td>
        <td>CVE-2025-53640</td>
-       <td>2025-07-14 21:15:27 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 21:15:27</td>
        <td>Indico is an event management system that uses Flask-Multipass, a multi-backend authentication system for Flask. Starting in version 2.2 and prior to version 3.3.7, an endpoint used to display details of users listed in certain fields (such as ACLs) could be misused to dump basic user details (such as name, affiliation and email) in bulk. Version 3.3.7 fixes the issue. Owners of instances that allow everyone to create a user account, who wish to truly restrict access to these user details, should consider restricting user search to managers. As a workaround, it is possible to restrict access to the affected endpoints (e.g. in the webserver config), but doing so would break certain form fields which could no longer show the details of the users listed in those fields, so upgrading instead is highly recommended.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53640">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>3a3c22ae063545c8a946e0454f9e8791</td>
        <td>CVE-2025-53639</td>
-       <td>2025-07-14 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 20:15:29</td>
        <td>MeterSphere is an open source continuous testing platform. Prior to version 3.6.5-lts, the sortField parameter in certain API endpoints is not properly validated or sanitized. An attacker can supply crafted input to inject and execute arbitrary SQL statements through the sorting functionality. This could result in modification or deletion of database contents, with a potential full compromise of the application’s database integrity and availability. Version 3.6.5-lts fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53639">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>7a632ecb28be38b55871b51484686712</td>
        <td>CVE-2025-53623</td>
-       <td>2025-07-14 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 20:15:29</td>
        <td>The Job Iteration API is an an extension for ActiveJob that make jobs interruptible and resumable Versions prior to 1.11.0 have an arbitrary code execution vulnerability in the `CsvEnumerator` class. This vulnerability can be exploited by an attacker to execute arbitrary commands on the system where the application is running, potentially leading to unauthorized access, data leakage, or complete system compromise. The issue is fixed in versions `1.11.0` and above. Users can mitigate the risk by avoiding the use of untrusted input in the `CsvEnumerator` class and ensuring that any file paths are properly sanitized and validated before being passed to the class methods. Users should avoid using the `count_of_rows_in_file` method with untrusted CSV filenames.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53623">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>148814bd3d43f832a170096976bf5071</td>
        <td>CVE-2025-53101</td>
-       <td>2025-07-14 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 20:15:29</td>
        <td>ImageMagick is free and open-source software used for editing and manipulating digital images. In versions prior to 7.1.2-0 and 6.9.13-26, in ImageMagick's `magick mogrify` command, specifying multiple consecutive `%d` format specifiers in a filename template causes internal pointer arithmetic to generate an address below the beginning of the stack buffer, resulting in a stack overflow through `vsnprintf()`. Versions 7.1.2-0 and 6.9.13-26 fix the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53101">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>16db965a403e02c025fe24705cc6e969</td>
        <td>CVE-2025-53019</td>
-       <td>2025-07-14 20:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 20:15:29</td>
        <td>ImageMagick is free and open-source software used for editing and manipulating digital images. In versions prior to 7.1.2-0 and 6.9.13-26, in ImageMagick's `magick stream` command, specifying multiple consecutive `%d` format specifiers in a filename template causes a memory leak. Versions 7.1.2-0 and 6.9.13-26 fix the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53019">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>888f8eea69977299984f16f32877e9cf</td>
        <td>CVE-2025-53015</td>
-       <td>2025-07-14 20:15:28 <img src="imgs/new.gif" /></td>
+       <td>2025-07-14 20:15:28</td>
        <td>ImageMagick is free and open-source software used for editing and manipulating digital images. In versions prior to 7.1.2-0, infinite lines occur when writing during a specific XMP file conversion command. Version 7.1.2-0 fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53015">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-07-13 12:15:23</td>
        <td>A vulnerability classified as critical was found in Tenda FH1202 1.2.0.14(408). Affected by this vulnerability is the function fromNatlimit of the file /goform/Natlimit. The manipulation of the argument page leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7529">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>88ef5e00a91b7a04248e2552e18490a5</td>
-       <td>CVE-2025-7488</td>
-       <td>2025-07-12 19:32:05</td>
-       <td>A vulnerability has been found in JoeyBling SpringBoot_MyBatisPlus up to a6a825513bd688f717dbae3a196bc9c9622fea26 and classified as critical. This vulnerability affects the function Download of the file /file/download. The manipulation of the argument Name leads to path traversal. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7488">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6abb5fc3e0c3064d07fb67e16cee977f</td>
-       <td>CVE-2025-7487</td>
-       <td>2025-07-12 19:15:26</td>
-       <td>A vulnerability, which was classified as critical, was found in JoeyBling SpringBoot_MyBatisPlus up to a6a825513bd688f717dbae3a196bc9c9622fea26. This affects the function SysFileController of the file /file/upload. The manipulation of the argument portraitFile leads to unrestricted upload. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. This product takes the approach of rolling releases to provide continious delivery. Therefore, version details for affected and updated releases are not available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7487">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d8cdecbbdeb8f90e24fea7da49c03870</td>
-       <td>CVE-2025-7485</td>
-       <td>2025-07-12 19:15:25</td>
-       <td>A vulnerability classified as problematic was found in Open5GS up to 2.7.3. Affected by this vulnerability is the function ngap_recv_handler/s1ap_recv_handler/recv_handler of the component SCTP Partial Message Handler. The manipulation leads to reachable assertion. The attack needs to be approached locally. The patch is named cfa44575020f3fb045fd971358442053c8684d3d. It is recommended to apply a patch to fix this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7485">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4f3a29f076f1a285f06bf170a535c86a</td>
-       <td>CVE-2025-7484</td>
-       <td>2025-07-12 18:15:21</td>
-       <td>A vulnerability classified as critical has been found in PHPGurukul Vehicle Parking Management System 1.13. Affected is an unknown function of the file /admin/view-outgoingvehicle-detail.php. The manipulation of the argument viewid leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7484">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6e04c542c227a02fa9ad31f058643188</td>
-       <td>CVE-2025-7483</td>
-       <td>2025-07-12 18:15:21</td>
-       <td>A vulnerability was found in PHPGurukul Vehicle Parking Management System 1.13. It has been rated as critical. This issue affects some unknown processing of the file /users/forgot-password.php. The manipulation of the argument email leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7483">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c0f7aa35049738660a02c638fdadf84</td>
-       <td>CVE-2025-7482</td>
-       <td>2025-07-12 17:15:21</td>
-       <td>A vulnerability was found in PHPGurukul Vehicle Parking Management System 1.13. It has been declared as critical. This vulnerability affects unknown code of the file /users/print.php. The manipulation of the argument vid leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7482">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>32e86f0648c8227675b8eb94b1f38ec3</td>
-       <td>CVE-2025-7481</td>
-       <td>2025-07-12 17:15:20</td>
-       <td>A vulnerability was found in PHPGurukul Vehicle Parking Management System 1.13. It has been classified as critical. This affects an unknown part of the file /users/profile.php. The manipulation of the argument firstname leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. Other parameters might be affected as well.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7481">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0be0a10f0c6d8e4e2c5aa23e46bf000d</td>
-       <td>CVE-2024-41169</td>
-       <td>2025-07-12 17:15:20</td>
-       <td>The attacker can use the raft server protocol in an unauthenticated way. The attacker can see the server's resources, including directories and files. This issue affects Apache Zeppelin: from 0.10.1 up to 0.12.0. Users are recommended to upgrade to version 0.12.0, which fixes the issue by removing the Cluster Interpreter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-41169">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8998755fdf76eda5dbb60f4f330cde88</td>
-       <td>CVE-2025-7480</td>
-       <td>2025-07-12 16:15:23</td>
-       <td>A vulnerability was found in PHPGurukul Vehicle Parking Management System 1.13 and classified as critical. Affected by this issue is some unknown functionality of the file /users/signup.php. The manipulation of the argument email leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7480">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b12aa2212ca0ac548b71e1d3592c8026</td>
-       <td>CVE-2025-7479</td>
-       <td>2025-07-12 16:15:22</td>
-       <td>A vulnerability has been found in PHPGurukul Vehicle Parking Management System 1.13 and classified as critical. Affected by this vulnerability is an unknown functionality of the file /users/view--detail.php. The manipulation of the argument viewid leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7479">详情</a></td>
       </tr>
 
      </tbody>
