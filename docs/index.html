@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-07-16 02:10:22 -->
+<!-- RELEASE TIME : 2025-07-17 02:10:51 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>64a1fac2417d881343b7531b5ef3d92e</td>
+       <td>CVE-2025-34132</td>
+       <td>2025-07-16 21:26:51 <img src="imgs/new.gif" /></td>
+       <td>A command injection vulnerability exists in LILIN Digital Video Recorder (DVR) devices prior to firmware version 2.0b60_20200207 via the Server field in the NTPUpdate configuration. The web service at /z/zbin/dvr_box fails to properly sanitize input, allowing remote attackers to inject and execute arbitrary commands as root by supplying specially crafted XML data to the DVRPOST interface. 777</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34132">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5120e8dd35f910209e849d6497d7f7d3</td>
+       <td>CVE-2025-34130</td>
+       <td>2025-07-16 21:26:42 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated arbitrary file read exists in LILIN Digital Video Recorder (DVR) devices prior to firmware version 2.0b60_20200207 via the /z/zbin/net_html.cgi endpoint. This vulnerability allows attackers to read sensitive configuration files, such as /zconf/service.xml, which can then be used to facilitate further attacks including command injection. The vulnerability has been exploited in the wild in conjunction with other issues by botnets like FBot and Moobot.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34130">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8dfd26f9de5f6c68eb0d058ed08eb681</td>
+       <td>CVE-2025-34129</td>
+       <td>2025-07-16 21:26:32 <img src="imgs/new.gif" /></td>
+       <td>A command injection vulnerability exists in LILIN LILIN Digital Video Recorder (DVR) devices prior to firmware version 2.0b60_20200207 due to insufficient sanitization of the FTP and NTP Server fields in the service configuration. An attacker with access to the configuration interface can upload a malicious XML file with injected shell commands in these fields. Upon subsequent configuration syncs, these commands are executed with elevated privileges. This vulnerability was exploited in the wild by the Moobot botnets.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34129">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9bc25c1e7ab31186ad61a92b87f07f4e</td>
+       <td>CVE-2025-34123</td>
+       <td>2025-07-16 21:15:27 <img src="imgs/new.gif" /></td>
+       <td>A stack-based buffer overflow vulnerability exists in VideoCharge Studio 2.12.3.685 when processing a specially crafted .VSC configuration file. The issue occurs due to improper handling of user-supplied data in the XML 'Name' attribute, leading to an SEH overwrite condition. An attacker can exploit this vulnerability by convincing a user to open a malicious .VSC file, resulting in arbitrary code execution under the context of the user.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34123">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1c6220702abc9e62380b821ae0fd7811</td>
+       <td>CVE-2025-34121</td>
+       <td>2025-07-16 21:15:27 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated arbitrary file upload vulnerability exists in Idera Up.Time Monitoring Station versions up to and including 7.2. The `wizards/post2file.php` script accepts arbitrary POST parameters, allowing attackers to upload crafted PHP files to the webroot. Successful exploitation results in remote code execution as the web server user. NOTE: The bypass for this vulnerability is tracked as CVE-2015-9263.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34121">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>42abb64052277885ddfd22b4306759bb</td>
+       <td>CVE-2025-34120</td>
+       <td>2025-07-16 21:15:26 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated file download vulnerability exists in LimeSurvey versions from 2.0+ up to and including 2.06+ Build 151014. The application fails to validate serialized input to the admin backup endpoint (`index.php/admin/update/sa/backup`), allowing attackers to specify arbitrary file paths using a crafted `datasupdateinfo` payload. The files are packaged in a ZIP archive and made available for download without authentication. This vulnerability can be exploited to read arbitrary files on the host system, including sensitive OS and configuration files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34120">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a6b357545bdb59003266bedd864fc28b</td>
+       <td>CVE-2025-34119</td>
+       <td>2025-07-16 21:15:26 <img src="imgs/new.gif" /></td>
+       <td>A remote file disclosure vulnerability exists in EasyCafe Server 2.2.14, exploitable by unauthenticated remote attackers via TCP port 831. The server listens for a custom protocol where opcode 0x43 can be used to request arbitrary files by absolute path. If the file exists and is accessible, its content is returned without authentication. This flaw allows attackers to retrieve sensitive files such as system configuration, password files, or application data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34119">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>72b40df0938009bca507aaae6595ec0a</td>
+       <td>CVE-2025-34118</td>
+       <td>2025-07-16 21:15:26 <img src="imgs/new.gif" /></td>
+       <td>A path traversal vulnerability exists in Linknat VOS Manager versions prior to 2.1.9.07, including VOS2009 and early VOS3000 builds, that allows unauthenticated remote attackers to read arbitrary files on the server. The vulnerability is accessible via multiple localized subpaths such as '/eng/', '/chs/', or '/cht/', where the 'js/lang_en_us.js' or equivalent files are loaded. By injecting encoded traversal sequences such as '%c0%ae%c0%ae' into the request path, attackers can bypass input validation and disclose sensitive files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34118">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>37842bdaae96d07aed37c0e33e41dddf</td>
+       <td>CVE-2025-34117</td>
+       <td>2025-07-16 21:15:26 <img src="imgs/new.gif" /></td>
+       <td>A remote code execution vulnerability exists in multiple Netcore and Netis routers models with firmware released prior to August 2014 due to the presence of an undocumented backdoor listener on UDP port 53413. Exact version boundaries remain undocumented. An unauthenticated remote attacker can send specially crafted UDP packets to execute arbitrary commands on the affected device. This backdoor uses a hardcoded authentication mechanism and accepts shell commands post-authentication. Some device models include a non-standard implementation of the `echo` command, which may affect exploitability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34117">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d37dc90a019694d285d14a534085959</td>
+       <td>CVE-2025-34128</td>
+       <td>2025-07-16 21:10:31 <img src="imgs/new.gif" /></td>
+       <td>A buffer overflow vulnerability exists in the X360 VideoPlayer ActiveX control (VideoPlayer.ocx) version 2.6 when handling overly long arguments to the ConvertFile() method. An attacker can exploit this vulnerability by supplying crafted input to cause memory corruption and execute arbitrary code within the context of the current process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34128">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e7b78f612e9989b308431bca9f1826a3</td>
        <td>CVE-2025-6981</td>
-       <td>2025-07-15 21:15:34 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:34</td>
        <td>An incorrect authorization vulnerability allowed unauthorized read access to the contents of internal repositories for contractor accounts when the Contractors API feature was enabled. The Contractors API is a rarely-enabled feature in private preview. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.18 and was fixed in versions 3.14.15, 3.15.10, 3.16.6 and 3.17.3</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6981">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>0336559f0e67db386cc03c3e17575066</td>
        <td>CVE-2025-53906</td>
-       <td>2025-07-15 21:15:34 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:34</td>
        <td>Vim is an open source, command line text editor. Prior to version 9.1.1551, a path traversal issue in Vim’s zip.vim plugin can allow overwriting of arbitrary files when opening specially crafted zip archives. Impact is low because this exploit requires direct user interaction. However, successfully exploitation can lead to overwriting sensitive files or placing executable code in privileged locations, depending on the permissions of the process editing the archive. The victim must edit such a file using Vim which will reveal the filename and the file content, a careful user may suspect some strange things going on. Successful exploitation could results in the ability to execute arbitrary commands on the underlying operating system. Version 9.1.1551 contains a patch for the vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53906">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>e7b53b9061a3d2e97d32c2be729bea7c</td>
        <td>CVE-2025-53905</td>
-       <td>2025-07-15 21:15:34 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:34</td>
        <td>Vim is an open source, command line text editor. Prior to version 9.1.1552, a path traversal issue in Vim’s tar.vim plugin can allow overwriting of arbitrary files when opening specially crafted tar archives. Impact is low because this exploit requires direct user interaction. However, successfully exploitation can lead to overwriting sensitive files or placing executable code in privileged locations, depending on the permissions of the process editing the archive. The victim must edit such a file using Vim which will reveal the filename and the file content, a careful user may suspect some strange things going on. Successful exploitation could results in the ability to execute arbitrary commands on the underlying operating system. Version 9.1.1552 contains a patch for the vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53905">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>429e8310ab53fe6d03f6c335057917a3</td>
        <td>CVE-2025-49841</td>
-       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:32</td>
        <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in process_ckpt.py. The SoVITS_dropdown variable takes user input and passes it to the load_sovits_new function in process_ckpt.py. In load_sovits_new, the user input, here sovits_path is used to load a model with torch.load, leading to unsafe deserialization. At time of publication, no known patched versions are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49841">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>c68552b11a6bf77be5adf8ce20b2301a</td>
        <td>CVE-2025-49840</td>
-       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:32</td>
        <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in inference_webui.py. The GPT_dropdown variable takes user input and passes it to the change_gpt_weights function. In change_gpt_weights, the user input, here gpt_path is used to load a model with torch.load, leading to unsafe deserialization. At time of publication, no known patched versions are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49840">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>84197c84b50799e85b0fd4e2403f4135</td>
        <td>CVE-2025-49839</td>
-       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:32</td>
        <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in bsroformer.py. The model_choose variable takes user input (e.g. a path to a model) and passes it to the uvr function. In uvr, a new instance of Roformer_Loader class is created with the model_path attribute containing the aformentioned user input (here called locally model_name). Note that in this step the .ckpt extension is added to the path. In the Roformer_Loader class, the user input, here called model_path, is used to load the model on that path with torch.load, which can lead to unsafe deserialization. At time of publication, no known patched versions are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49839">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>6e1c6d2091c16c6b7b0116cfa7e28d58</td>
        <td>CVE-2025-49838</td>
-       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:32</td>
        <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in vr.py AudioPreDeEcho. The model_choose variable takes user input (e.g. a path to a model) and passes it to the uvr function. In uvr, a new instance of AudioPreDeEcho class is created with the model_path attribute containing the aforementioned user input (here called locally model_name). Note that in this step the .pth extension is added to the path. In the AudioPreDeEcho class, the user input, here called model_path, is used to load the model on that path with torch.load, which can lead to unsafe deserialization. At time of publication, no known patched versions are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49838">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>5fb6c8db57f8551d831ceff9da97e7e6</td>
        <td>CVE-2025-49837</td>
-       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:32</td>
        <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is an unsafe deserialization vulnerability in vr.py AudioPre. The model_choose variable takes user input (e.g. a path to a model) and passes it to the uvr function. In uvr, a new instance of AudioPre class is created with the model_path attribute containing the aforementioned user input (here called locally model_name). Note that in this step the .pth extension is added to the path. In the AudioPre class, the user input, here called model_path, is used to load the model on that path with torch.load, which can lead to unsafe deserialization. At time of publication, no known patched versions are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49837">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>888bdc3dbb7836994761dc651fe43338</td>
        <td>CVE-2025-49836</td>
-       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:32</td>
        <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is a command injection vulnerability in webui.py change_label function. path_list takes user input, which is passed to the change_label function, which concatenates the user input into a command and runs it on the server, leading to arbitrary command execution. At time of publication, no known patched versions are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49836">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>ede3d4542cde7af9cdadb155995e743d</td>
        <td>CVE-2025-49835</td>
-       <td>2025-07-15 21:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-07-15 21:15:32</td>
        <td>GPT-SoVITS-WebUI is a voice conversion and text-to-speech webUI. In versions 20250228v3 and prior, there is a command injection vulnerability in webui.py open_asr function. asr_inp_dir (and a number of other variables) takes user input, which is passed to the open_asr function, which concatenates the user input into a command and runs it on the server, leading to arbitrary command execution. At time of publication, no known patched versions are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-49835">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-07-14 20:15:28</td>
        <td>ImageMagick is free and open-source software used for editing and manipulating digital images. In versions prior to 7.1.2-0, infinite lines occur when writing during a specific XMP file conversion command. Version 7.1.2-0 fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53015">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d26ed1457682bfdd4ea26f101f8a05da</td>
-       <td>CVE-2025-7538</td>
-       <td>2025-07-13 19:15:23</td>
-       <td>A vulnerability classified as critical was found in Campcodes Sales and Inventory System 1.0. This vulnerability affects unknown code of the file /pages/product_update.php. The manipulation of the argument image leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7538">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>47991bcc41081780ad7e5d053b96d00f</td>
-       <td>CVE-2025-7537</td>
-       <td>2025-07-13 19:15:23</td>
-       <td>A vulnerability classified as critical has been found in Campcodes Sales and Inventory System 1.0. This affects an unknown part of the file /pages/product_update.php. The manipulation of the argument ID leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7537">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bf878fc2a02ce6905a4c66e2067395e0</td>
-       <td>CVE-2025-7536</td>
-       <td>2025-07-13 18:15:23</td>
-       <td>A vulnerability was found in Campcodes Sales and Inventory System 1.0. It has been rated as critical. Affected by this issue is some unknown functionality of the file /pages/receipt_credit.php. The manipulation of the argument sid leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7536">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5d39d77259290b0e52481fad5c687dc</td>
-       <td>CVE-2025-7535</td>
-       <td>2025-07-13 18:15:22</td>
-       <td>A vulnerability was found in Campcodes Sales and Inventory System 1.0. It has been declared as critical. Affected by this vulnerability is an unknown functionality of the file /pages/reprint_cash.php. The manipulation of the argument sid leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7535">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ff480e2783a505901ae019197740ba28</td>
-       <td>CVE-2025-7534</td>
-       <td>2025-07-13 17:15:23</td>
-       <td>A vulnerability was found in PHPGurukul Student Result Management System 2.0. It has been classified as critical. Affected is an unknown function of the file /notice-details.php of the component GET Parameter Handler. The manipulation of the argument nid leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7534">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3138de5812b1eaad0e218b68605037a</td>
-       <td>CVE-2025-7533</td>
-       <td>2025-07-13 17:15:23</td>
-       <td>A vulnerability was found in code-projects Job Diary 1.0 and classified as critical. This issue affects some unknown processing of the file /view-details.php. The manipulation of the argument job_id leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7533">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d26ca19e1c2154fdba6127d7ac2074bb</td>
-       <td>CVE-2025-7532</td>
-       <td>2025-07-13 16:15:21</td>
-       <td>A vulnerability has been found in Tenda FH1202 1.2.0.14(408) and classified as critical. This vulnerability affects the function fromwebExcptypemanFilter of the file /goform/webExcptypemanFilter. The manipulation of the argument page leads to stack-based buffer overflow. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7532">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>57b5ef215188dc842829631e52dc12ee</td>
-       <td>CVE-2025-7531</td>
-       <td>2025-07-13 16:15:21</td>
-       <td>A vulnerability, which was classified as critical, was found in Tenda FH1202 1.2.0.14(408). This affects the function fromPptpUserSetting of the file /goform/PPTPUserSetting. The manipulation of the argument delno leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7531">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>99ce8686edb8f0cadc340811e60e551a</td>
-       <td>CVE-2025-7530</td>
-       <td>2025-07-13 15:15:22</td>
-       <td>A vulnerability, which was classified as critical, has been found in Tenda FH1202 1.2.0.14(408). Affected by this issue is the function fromPptpUserAdd of the file /goform/PPTPDClient. The manipulation of the argument Username leads to stack-based buffer overflow. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7530">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b937782a790ed6d02cd6d2f6db01277e</td>
-       <td>CVE-2025-7529</td>
-       <td>2025-07-13 12:15:23</td>
-       <td>A vulnerability classified as critical was found in Tenda FH1202 1.2.0.14(408). Affected by this vulnerability is the function fromNatlimit of the file /goform/Natlimit. The manipulation of the argument page leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7529">详情</a></td>
       </tr>
 
      </tbody>
