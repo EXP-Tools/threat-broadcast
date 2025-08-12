@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-08-11 18:39:17 -->
+<!-- RELEASE TIME : 2025-08-12 18:38:24 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4bbf086b9da64b2823f9d986bc870be2</td>
+       <td>CVE-2025-8452</td>
+       <td>2025-08-12 16:15:29 <img src="imgs/new.gif" /></td>
+       <td>By using the "uscan" protocol provided by the eSCL specification, an attacker can discover the serial number of multi-function printers that implement the Brother-provided firmware. This serial number can, in turn, can be leveraged by the flaw described by CVE-2024-51978 to calculate the default administrator password. This flaw is similar to CVE-2024-51977, with the only difference being the protocol by which an attacker can use to learn the remote device's serial number. The eSCL/uscan vector is typically only exposed on the local network. Any discovery service that implements the eSCL specification can be used to exploit this vulnerability, and one such implementation is the runZero Explorer. Changing the default administrator password will render this vulnerability virtually worthless, since the calculated default administrator password would no longer be the correct password.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8452">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>463484a42f3a9b7e607b719b3700baac</td>
+       <td>CVE-2025-55164</td>
+       <td>2025-08-12 16:15:29 <img src="imgs/new.gif" /></td>
+       <td>content-security-policy-parser parses content security policy directives. A prototype pollution vulnerability exists in versions 0.5.0 and earlier, wherein if a policy name is called __proto__, one can override the Object prototype. This issue has been patched in version 0.6.0. A workaround involves disabling prototype method in NodeJS, neutralizing all possible prototype pollution attacks. Provide either --disable-proto=delete (recommended) or --disable-proto=throw as an argument to node to enable this feature.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55164">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>477010b2a93674f802461344b99614ae</td>
+       <td>CVE-2025-55011</td>
+       <td>2025-08-12 16:15:28 <img src="imgs/new.gif" /></td>
+       <td>Kanboard is project management software that focuses on the Kanban methodology. Prior to version 1.2.47, the createTaskFile method in the API does not validate whether the task_id parameter is a valid task id, nor does it check for path traversal. As a result, a malicious actor could write a file anywhere on the system the app user controls. The impact is limited due to the filename being hashed and having no extension. This issue has been patched in version 1.2.47.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55011">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce70b4f9ddae29774e912c300dfe1730</td>
+       <td>CVE-2025-55010</td>
+       <td>2025-08-12 16:15:28 <img src="imgs/new.gif" /></td>
+       <td>Kanboard is project management software that focuses on the Kanban methodology. Prior to version 1.2.47, an unsafe deserialization vulnerability in the ProjectEventActvityFormatter allows admin users the ability to instantiate arbitrary php objects by modifying the event["data"] field in the project_activities table. A malicious actor can update this field to use a php gadget to write a web shell into the /plugins folder, which then gives remote code execution on the host system. This issue has been patched in version 1.2.47.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55010">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f7bea67e1c64f8b8b2f314c89523ccb</td>
+       <td>CVE-2025-54864</td>
+       <td>2025-08-12 16:15:28 <img src="imgs/new.gif" /></td>
+       <td>Hydra is a continuous integration service for Nix based projects. Prior to commit f7bda02, /api/push-github and /api/push-gitea are called by the corresponding forge without HTTP Basic authentication. Both forges do however feature HMAC signing with a secret key. Triggering an evaluation can be very taxing on the infrastructure when large evaluations are done, introducing potential denial of service attacks on the host running the evaluator. This issue has been patched by commit f7bda02. A workaround involves blocking /api/push-github and /api/push-gitea via a reverse proxy.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54864">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>06262d01d8c5ad740d0f7d0ff3e395c1</td>
+       <td>CVE-2025-54800</td>
+       <td>2025-08-12 16:15:28 <img src="imgs/new.gif" /></td>
+       <td>Hydra is a continuous integration service for Nix based projects. Prior to commit dea1e16, a malicious package can introduce arbitrary JavaScript code into the Hydra database that is automatically evaluated in a client's browser when anyone visits the build page. This could be done by a third-party project as part of its build process. This also happens in other places like with hydra-release-name. This issue has been patched by commit dea1e16. A workaround involves either not building untrusted packages or not visiting the builds page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54800">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e61ab54c3e544380889974ba0ecb442d</td>
+       <td>CVE-2025-38500</td>
+       <td>2025-08-12 16:15:27 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: xfrm: interface: fix use-after-free after changing collect_md xfrm interface collect_md property on xfrm interfaces can only be set on device creation, thus xfrmi_changelink() should fail when called on such interfaces. The check to enforce this was done only in the case where the xi was returned from xfrmi_locate() which doesn't look for the collect_md interface, and thus the validation was never reached. Calling changelink would thus errornously place the special interface xi in the xfrmi_net->xfrmi hash, but since it also exists in the xfrmi_net->collect_md_xfrmi pointer it would lead to a double free when the net namespace was taken down [1]. Change the check to use the xi from netdev_priv which is available earlier in the function to prevent changes in xfrm collect_md interfaces. [1] resulting oops: [ 8.516540] kernel BUG at net/core/dev.c:12029! [ 8.516552] Oops: invalid opcode: 0000 [#1] SMP NOPTI [ 8.516559] CPU: 0 UID: 0 PID: 12 Comm: kworker/u80:0 Not tainted 6.15.0-virtme #5 PREEMPT(voluntary) [ 8.516565] Hardware name: QEMU Ubuntu 24.04 PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014 [ 8.516569] Workqueue: netns cleanup_net [ 8.516579] RIP: 0010:unregister_netdevice_many_notify+0x101/0xab0 [ 8.516590] Code: 90 0f 0b 90 48 8b b0 78 01 00 00 48 8b 90 80 01 00 00 48 89 56 08 48 89 32 4c 89 80 78 01 00 00 48 89 b8 80 01 00 00 eb ac 90 <0f> 0b 48 8b 45 00 4c 8d a0 88 fe ff ff 48 39 c5 74 5c 41 80 bc 24 [ 8.516593] RSP: 0018:ffffa93b8006bd30 EFLAGS: 00010206 [ 8.516598] RAX: ffff98fe4226e000 RBX: ffffa93b8006bd58 RCX: ffffa93b8006bc60 [ 8.516601] RDX: 0000000000000004 RSI: 0000000000000000 RDI: dead000000000122 [ 8.516603] RBP: ffffa93b8006bdd8 R08: dead000000000100 R09: ffff98fe4133c100 [ 8.516605] R10: 0000000000000000 R11: 00000000000003d2 R12: ffffa93b8006be00 [ 8.516608] R13: ffffffff96c1a510 R14: ffffffff96c1a510 R15: ffffa93b8006be00 [ 8.516615] FS: 0000000000000000(0000) GS:ffff98fee73b7000(0000) knlGS:0000000000000000 [ 8.516619] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 [ 8.516622] CR2: 00007fcd2abd0700 CR3: 000000003aa40000 CR4: 0000000000752ef0 [ 8.516625] PKRU: 55555554 [ 8.516627] Call Trace: [ 8.516632] <TASK> [ 8.516635] ? rtnl_is_locked+0x15/0x20 [ 8.516641] ? unregister_netdevice_queue+0x29/0xf0 [ 8.516650] ops_undo_list+0x1f2/0x220 [ 8.516659] cleanup_net+0x1ad/0x2e0 [ 8.516664] process_one_work+0x160/0x380 [ 8.516673] worker_thread+0x2aa/0x3c0 [ 8.516679] ? __pfx_worker_thread+0x10/0x10 [ 8.516686] kthread+0xfb/0x200 [ 8.516690] ? __pfx_kthread+0x10/0x10 [ 8.516693] ? __pfx_kthread+0x10/0x10 [ 8.516697] ret_from_fork+0x82/0xf0 [ 8.516705] ? __pfx_kthread+0x10/0x10 [ 8.516709] ret_from_fork_asm+0x1a/0x30 [ 8.516718] </TASK></td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38500">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a98d387133ffc243acf1407d66cb920b</td>
+       <td>CVE-2025-3089</td>
+       <td>2025-08-12 16:15:27 <img src="imgs/new.gif" /></td>
+       <td>ServiceNow has addressed a Broken Access Control vulnerability that was identified in the ServiceNow AI Platform. This vulnerability could allow a low privileged user to bypass access controls and perform a limited set of actions typically reserved for higher privileged users, potentially leading to unauthorized data modifications. This issue is addressed in the listed patches and family releases, which have been made available to hosted and self-hosted customers, as well as partners.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3089">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9fcef870d7bae50caadd8266d13acd3f</td>
+       <td>CVE-2025-8310</td>
+       <td>2025-08-12 15:15:31 <img src="imgs/new.gif" /></td>
+       <td>Missing authorization in the admin console of Ivanti Virtual Application Delivery Controller before version 22.9 allows a remote authenticated attacker to take over admin accounts by resetting the password</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8310">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>134c5d43bd01c99d92fea37c8a2a930b</td>
+       <td>CVE-2025-8297</td>
+       <td>2025-08-12 15:15:31 <img src="imgs/new.gif" /></td>
+       <td>Incomplete restriction of configuration in Ivanti Avalanche before version 6.4.8.8008 allows a remote authenticated attacker with admin privileges to achieve remote code execution</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8297">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a5cd436e95f64f665563a80508889076</td>
        <td>CVE-2025-8864</td>
        <td>2025-08-11 14:15:28 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>3fbc72abb462c7325abfc298e1628e31</td>
        <td>CVE-2025-8810</td>
-       <td>2025-08-10 14:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 14:15:32</td>
        <td>A vulnerability classified as critical was found in Tenda AC20 16.03.08.05. Affected by this vulnerability is the function strcpy of the file /goform/SetFirewallCfg. The manipulation of the argument firewallEn leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8810">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>af8dfc16af1594fa708a255b03357101</td>
        <td>CVE-2025-8812</td>
-       <td>2025-08-10 14:02:06 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 14:02:06</td>
        <td>A vulnerability, which was classified as problematic, was found in atjiu pybbs up to 6.0.0. This affects an unknown part of the file /api/settings of the component Admin Panel. The manipulation leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of the patch is 2fe4a51afbce0068c291bc1818bbc8f7f3b01a22. It is recommended to apply a patch to fix this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8812">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>ee9cba4f233e240f9461898a34479945</td>
        <td>CVE-2025-8806</td>
-       <td>2025-08-10 12:30:24 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 12:30:24</td>
        <td>A vulnerability was found in zhilink 智互联(深圳)科技有限公司 ADP Application Developer Platform 应用开发者平台 1.0...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8806">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>262d5d26dca205978a2d06a42959372c</td>
        <td>CVE-2025-8804</td>
-       <td>2025-08-10 12:30:24 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 12:30:24</td>
        <td>A vulnerability has been found in Open5GS up to 2.7.5 and classified as problematic. Affected by...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8804">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>2c6ecdd74d79fdc0b734578c43da2cc0</td>
        <td>CVE-2025-8808</td>
-       <td>2025-08-10 12:15:30 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 12:15:30</td>
        <td>A vulnerability was found in xujeff tianti 天梯 up to 2.3. It has been rated as problematic. This issue affects the function exportOrder of the file /tianti-module-admin/user/ajax/save of the component com.jeff.tianti.controller. The manipulation leads to csv injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8808">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>9b88062f7c0c3467f299870996291d40</td>
        <td>CVE-2025-8807</td>
-       <td>2025-08-10 12:15:30 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 12:15:30</td>
        <td>A vulnerability was found in xujeff tianti 天梯 up to 2.3. It has been declared as critical. This vulnerability affects unknown code of the file /tianti-module-admin/user/ajax/save. The manipulation leads to missing authorization. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8807">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>c7d9bbe7ea47101f1f0dcc6c4762db57</td>
        <td>CVE-2025-8805</td>
-       <td>2025-08-10 11:15:29 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 11:15:29</td>
        <td>A vulnerability was found in Open5GS up to 2.7.5 and classified as problematic. Affected by this issue is the function smf_gsm_state_wait_pfcp_deletion of the file src/smf/gsm-sm.c of the component SMF. The manipulation leads to denial of service. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 2.7.6 is able to address this issue. The patch is identified as c58b8f081986aaf2a312d73a0a17985518b47fe6. It is recommended to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8805">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>d52f13a5f406552c694dbc256f0242c4</td>
        <td>CVE-2025-8803</td>
-       <td>2025-08-10 09:32:07 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 09:32:07</td>
        <td>A vulnerability, which was classified as problematic, was found in Open5GS up to 2.7.5. Affected is the function gmm_state_de_registered/gmm_state_exception of the file src/amf/gmm-sm.c of the component AMF. The manipulation leads to denial of service. It is possible to launch the attack remotely. Upgrading to version 2.7.6 is able to address this issue. The name of the patch is 1f30edac27f69f61cff50162e980fe58fdeb30ca. It is recommended to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8803">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>5397d31907dc388fac0ea4fd34fe53fe</td>
        <td>CVE-2025-8802</td>
-       <td>2025-08-10 09:15:27 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 09:15:27</td>
        <td>A vulnerability classified as problematic was found in Open5GS up to 2.7.5. This vulnerability affects the function smf_state_operational of the file src/smf/smf-sm.c of the component SMF. The manipulation of the argument stream leads to denial of service. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. Upgrading to version v2.7.6 is able to address this issue. The patch is identified as f168f7586a4fa536cee95ae60ac437d997f15b97. It is recommended to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8802">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>c6c83b8af94217b7daa371e99706bf24</td>
        <td>CVE-2025-8801</td>
-       <td>2025-08-10 09:15:26 <img src="imgs/new.gif" /></td>
+       <td>2025-08-10 09:15:26</td>
        <td>A vulnerability classified as problematic has been found in Open5GS up to 2.7.5. This affects the function gmm_state_exception of the file src/amf/gmm-sm.c of the component AMF. The manipulation leads to denial of service. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 2.7.6 is able to address this issue. The identifier of the patch is f47f2bd4f7274295c5fbb19e2f806753d183d09a. It is recommended to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8801">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8e1d20e9889699f119ee32bbd44cd46e</td>
-       <td>CVE-2025-8794</td>
-       <td>2025-08-10 06:30:28 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, has been found in LitmusChaos Litmus up to...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8794">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cfbe3c5af9e86943a629136ea215c770</td>
-       <td>CVE-2025-8792</td>
-       <td>2025-08-10 06:30:27 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability classified as problematic has been found in LitmusChaos Litmus up to 3.19.0....</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8792">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>afbfa9229cbf5238fa4c9db82cf15ce9</td>
-       <td>CVE-2025-52136</td>
-       <td>2025-08-10 06:30:27 <img src="imgs/new.gif" /></td>
-       <td>In EMQX before 5.8.6, administrators can install arbitrary novel plugins via the Dashboard web...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52136">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55cdd7b106e09c1b55e58892650ddfaa</td>
-       <td>CVE-2025-8795</td>
-       <td>2025-08-10 06:15:25 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as critical, was found in LitmusChaos Litmus up to 3.19.0. This affects an unknown part of the file /auth/login. The manipulation of the argument projectID leads to improper access controls. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8795">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d9d6f45dc95e303a26a971c67de4419</td>
-       <td>CVE-2025-8790</td>
-       <td>2025-08-10 03:15:32 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Portabilis i-Educar up to 2.9.0. It has been declared as critical. This vulnerability affects unknown code of the file /module/Api/pessoa of the component API Endpoint. The manipulation of the argument ID leads to improper authorization. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8790">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b7d0c44e5b9d5e8cf89e6e9431e403c8</td>
-       <td>CVE-2025-8788</td>
-       <td>2025-08-10 03:15:31 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Portabilis i-Diario up to 1.5.0 and classified as problematic. Affected by this issue is some unknown functionality of the file /planos-de-aula-por-areas-de-conhecimento/ of the component Informações adicionais. The manipulation of the argument Parecer/Conteúdos/Objetivos leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8788">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e3a1576d420bf49b09e6745deadfba3d</td>
-       <td>CVE-2025-8787</td>
-       <td>2025-08-10 02:15:26 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in Portabilis i-Diario up to 1.5.0 and classified as problematic. Affected by this vulnerability is an unknown functionality of the file /registros-de-conteudos-por-disciplina/ of the component Registro das atividades. The manipulation of the argument Registro de atividades/Conteúdos leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8787">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>649676d818901595beb7e99c11990ecc</td>
-       <td>CVE-2025-8789</td>
-       <td>2025-08-10 02:02:05 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was found in Portabilis i-Educar up to 2.9.0. It has been classified as problematic. This affects an unknown part of the file /module/Api/Diario of the component API Endpoint. The manipulation leads to authorization bypass. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8789">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cb0ee93dc2be19326da4f76c5c9ecb02</td>
-       <td>CVE-2025-8786</td>
-       <td>2025-08-10 01:15:32 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, was found in Portabilis i-Diario up to 1.5.0. Affected is an unknown function of the file /registros-de-conteudos-por-areas-de-conhecimento/ of the component Registro das atividades. The manipulation of the argument Registro de atividades/Conteúdos leads to cross site scripting. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8786">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8f6e518cb26e1709e34b59d156f635b6</td>
-       <td>CVE-2025-8785</td>
-       <td>2025-08-10 00:15:26 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability, which was classified as problematic, has been found in Portabilis i-Educar up to 2.9. This issue affects some unknown processing of the file /intranet/educar_usuario_lst.php. The manipulation of the argument nm_pessoa/matricula/matricula_interna leads to cross site scripting. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8785">详情</a></td>
       </tr>
 
      </tbody>
