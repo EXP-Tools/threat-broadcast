@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-08-15 21:21:36 -->
+<!-- RELEASE TIME : 2025-08-16 21:22:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>56811c8271597888d50c93f55196dce8</td>
+       <td>CVE-2023-4515</td>
+       <td>2025-08-16 14:15:27 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: validate command request size In commit 2b9b8f3b68ed ("ksmbd: validate command payload size"), except for SMB2_OPLOCK_BREAK_HE command, the request size of other commands is not checked, it's not expected. Fix it by add check for request size of other commands.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4515">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b42c7e24a39b4ac97860691f727d566</td>
+       <td>CVE-2023-4130</td>
+       <td>2025-08-16 14:15:27 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix wrong next length validation of ea buffer in smb2_set_ea() There are multiple smb2_ea_info buffers in FILE_FULL_EA_INFORMATION request from client. ksmbd find next smb2_ea_info using ->NextEntryOffset of current smb2_ea_info. ksmbd need to validate buffer length Before accessing the next ea. ksmbd should check buffer length using buf_len, not next variable. next is the start offset of current ea that got from previous ea.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-4130">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c8783792e0c55416a3b4d7d0d6893a9a</td>
+       <td>CVE-2023-3867</td>
+       <td>2025-08-16 14:15:27 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix out of bounds read in smb2_sess_setup ksmbd does not consider the case of that smb2 session setup is in compound request. If this is the second payload of the compound, OOB read issue occurs while processing the first payload in the smb2_sess_setup().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3867">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ad9b265c98740f257ab544df37981ac2</td>
+       <td>CVE-2023-3866</td>
+       <td>2025-08-16 14:15:27 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: validate session id and tree id in the compound request This patch validate session id and tree id in compound request. If first operation in the compound is SMB2 ECHO request, ksmbd bypass session and tree validation. So work->sess and work->tcon could be NULL. If secound request in the compound access work->sess or tcon, It cause NULL pointer dereferecing error.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3866">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>36985bf278a376f9a24ee6d0a3f89e2b</td>
+       <td>CVE-2023-3865</td>
+       <td>2025-08-16 14:15:27 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: fix out-of-bound read in smb2_write ksmbd_smb2_check_message doesn't validate hdr->NextCommand. If ->NextCommand is bigger than Offset + Length of smb2 write, It will allow oversized smb2 write length. It will cause OOB read in smb2_write.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-3865">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd1bb3e011f4ca313998acc276c9d375</td>
+       <td>CVE-2023-32249</td>
+       <td>2025-08-16 14:15:27 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: not allow guest user on multichannel This patch return STATUS_NOT_SUPPORTED if binding session is guest.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32249">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bdf851eefa44e129e04553318d53bcac</td>
+       <td>CVE-2023-32246</td>
+       <td>2025-08-16 14:15:26 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ksmbd: call rcu_barrier() in ksmbd_server_exit() racy issue is triggered the bug by racing between closing a connection and rmmod. In ksmbd, rcu_barrier() is not called at module unload time, so nothing prevents ksmbd from getting unloaded while it still has RCU callbacks pending. It leads to trigger unintended execution of kernel code locally and use to defeat protections such as Kernel Lockdown</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-32246">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4110d17fcc4d8fd5d29a3abc981963c6</td>
+       <td>CVE-2025-8878</td>
+       <td>2025-08-16 12:15:32 <img src="imgs/new.gif" /></td>
+       <td>The The Paid Membership Plugin, Ecommerce, User Registration Form, Login Form, User Profile & Restrict Content – ProfilePress plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 4.16.4. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8878">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>925eb8ed64ee4171aae32a1f99fb9516</td>
+       <td>CVE-2025-8143</td>
+       <td>2025-08-16 12:15:31 <img src="imgs/new.gif" /></td>
+       <td>The Soledad theme for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘pcsml_smartlists_h’ parameter in all versions up to, and including, 8.6.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8143">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e53d67e5da06b1a7e3db7d49e1097f6b</td>
+       <td>CVE-2025-8142</td>
+       <td>2025-08-16 12:15:31 <img src="imgs/new.gif" /></td>
+       <td>The Soledad theme for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 8.6.7 via the 'header_layout' parameter. This makes it possible for authenticated attackers, with Contributor-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8142">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8a61c8174aac55a580fb71f1208edf76</td>
        <td>CVE-2025-55285</td>
        <td>2025-08-15 18:15:27 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>d149c811fd0749fd3d1eb357142a3817</td>
        <td>CVE-2025-8967</td>
-       <td>2025-08-14 16:15:42 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:42</td>
        <td>A vulnerability was determined in itsourcecode Online Tour and Travel Management System 1.0. Affected is an unknown function of the file /admin/operations/packages.php. The manipulation of the argument pname leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8967">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>0e8ad277f898d8f049b52f5c71f1b707</td>
        <td>CVE-2025-8966</td>
-       <td>2025-08-14 16:15:42 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:42</td>
        <td>A vulnerability was found in itsourcecode Online Tour and Travel Management System 1.0. This issue affects some unknown processing of the file /admin/operations/tax.php. The manipulation of the argument tname leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8966">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>a9834cafa743fd548a547e6068a86147</td>
        <td>CVE-2025-8965</td>
-       <td>2025-08-14 16:15:41 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:41</td>
        <td>A vulnerability has been found in linlinjava litemall up to 1.8.0. This vulnerability affects the function create of the file litemall-admin-api/src/main/java/org/linlinjava/litemall/admin/web/AdminStorageController.java of the component Endpoint. The manipulation of the argument File leads to unrestricted upload. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8965">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>5593a388b010dd435f4e9923bfce642f</td>
        <td>CVE-2025-54867</td>
-       <td>2025-08-14 16:15:39 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:39</td>
        <td>Youki is a container runtime written in Rust. Prior to version 0.5.5, if /proc and /sys in the rootfs are symbolic links, they can potentially be exploited to gain access to the host root filesystem. This issue has been patched in version 0.5.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54867">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>f9bf9a9f322b3123fe52cd48db1c006a</td>
        <td>CVE-2025-54409</td>
-       <td>2025-08-14 16:15:39 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:39</td>
        <td>AIDE is an advanced intrusion detection environment. From versions 0.13 to 0.19.1, there is a null pointer dereference vulnerability in AIDE. An attacker can crash the program during report printing or database listing after setting extended file attributes with an empty attribute value or with a key containing a comma. A local user might exploit this to cause a local denial of service. This issue has been patched in version 0.19.2. A workaround involves removing xattrs group from rules matching files on affected file systems.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54409">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>50f4008d754672ec1cd1856617ed985d</td>
        <td>CVE-2025-54389</td>
-       <td>2025-08-14 16:15:37 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:37</td>
        <td>AIDE is an advanced intrusion detection environment. Prior to version 0.19.2, there is an improper output neutralization vulnerability in AIDE. An attacker can craft a malicious filename by including terminal escape sequences to hide the addition or removal of the file from the report and/or tamper with the log output. A local user might exploit this to bypass the AIDE detection of malicious files. Additionally the output of extended attribute key names and symbolic links targets are also not properly neutralized. This issue has been patched in version 0.19.2. A workaround involves configuring AIDE to write the report output to a regular file, redirecting stdout to a regular file, or redirecting the log output written to stderr to a regular file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54389">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>f8247a4f7459bd4b5bb4f553de371dc5</td>
        <td>CVE-2025-53631</td>
-       <td>2025-08-14 16:15:36 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:36</td>
        <td>flaskBlog is a blog app built with Flask. In versions 2.8.1 and prior, improper sanitization of postContent when submitting POST requests to /createpost leads to arbitrary JavaScript execution (XSS) on all pages the post is reflected on including /, /post/[ID], /admin/posts, and /user/[ID] of the user that made the post. At time of publication, there are no public patches available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53631">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>f0d131d3f6d54cec21f24959fcfe22c2</td>
        <td>CVE-2025-50518</td>
-       <td>2025-08-14 16:15:35 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:35</td>
        <td>A use-after-free vulnerability exists in the coap_delete_pdu_lkd function within coap_pdu.c of the libcoap library. This issue occurs due to improper handling of memory after the freeing of a PDU object, leading to potential memory corruption or the possibility of executing arbitrary code.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-50518">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>a4519e7680614b1eccf71830f4169cc0</td>
        <td>CVE-2025-36047</td>
-       <td>2025-08-14 16:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:32</td>
        <td>IBM WebSphere Application Server Liberty 18.0.0.2 through 25.0.0.8 is vulnerable to a denial of service, caused by sending a specially-crafted request. A remote attacker could exploit this vulnerability to cause the server to consume memory resources.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36047">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>3ebbd7c17d8a9970bc9b2b6726595cf4</td>
        <td>CVE-2025-33142</td>
-       <td>2025-08-14 16:15:31 <img src="imgs/new.gif" /></td>
+       <td>2025-08-14 16:15:31</td>
        <td>IBM WebSphere Application Server 8.5 and 9.0 could provide weaker than expected security for TLS connections.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-33142">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6499a3fe3e922d69640583c282ed2fcb</td>
-       <td>CVE-2025-8941</td>
-       <td>2025-08-13 15:15:41</td>
-       <td>A flaw was found in linux-pam. The pam_namespace module may improperly handle user-controlled paths, allowing local users to exploit symlink attacks and race conditions to elevate their privileges to root. This CVE provides a "complete" fix for CVE-2025-6020.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8941">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0f41ac3af7987cf2fdfd829889eff227</td>
-       <td>CVE-2025-55163</td>
-       <td>2025-08-13 15:15:39</td>
-       <td>Netty is an asynchronous, event-driven network application framework. Prior to versions 4.1.124.Final and 4.2.4.Final, Netty is vulnerable to MadeYouReset DDoS. This is a logical vulnerability in the HTTP/2 protocol, that uses malformed HTTP/2 control frames in order to break the max concurrent streams limit - which results in resource exhaustion and distributed denial of service. This issue has been patched in versions 4.1.124.Final and 4.2.4.Final.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55163">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c5e884819f6267ff0488f9f9a1dcfbe</td>
-       <td>CVE-2025-54809</td>
-       <td>2025-08-13 15:15:38</td>
-       <td>F5 Access for Android before version 3.1.2 which uses HTTPS does not verify the remote endpoint identity. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54809">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b8a5e01d713d03e4e9324a027e8a7a0b</td>
-       <td>CVE-2025-54500</td>
-       <td>2025-08-13 15:15:38</td>
-       <td>An HTTP/2 implementation flaw allows a denial-of-service (DoS) that uses malformed HTTP/2 control frames in order to break the max concurrent streams limit (HTTP/2 MadeYouReset Attack). Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54500">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ffb6088d2bc2591578c2bdbdab99e9b2</td>
-       <td>CVE-2025-53859</td>
-       <td>2025-08-13 15:15:37</td>
-       <td>NGINX Open Source and NGINX Plus have a vulnerability in the ngx_mail_smtp_module that might allow an unauthenticated attacker to over-read NGINX SMTP authentication process memory; as a result, the server side may leak arbitrary bytes sent in a request to the authentication server. This issue happens during the NGINX SMTP authentication process and requires the attacker to make preparations against the target system to extract the leaked data. The issue affects NGINX only if (1) it is built with the ngx_mail_smtp_module, (2) the smtp_auth directive is configured with method "none," and (3) the authentication server returns the "Auth-Wait" response header. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-53859">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6fa5f035e93cee0bc16ef339b7fdb6f</td>
-       <td>CVE-2025-52585</td>
-       <td>2025-08-13 15:15:35</td>
-       <td>When a BIG-IP LTM Client SSL profile is configured on a virtual server with SSL Forward Proxy enabled and Anonymous Diffie-Hellman (ADH) ciphers enabled, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate. Note: Software versions which have reached End of Technical Support (EoTS) are not evaluated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52585">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b75b8c595e48ebd3db32026261a20fbb</td>
-       <td>CVE-2025-51691</td>
-       <td>2025-08-13 15:15:35</td>
-       <td>Cross-Site Scripting (XSS) vulnerability found in MarkTwo commit e3a1d3f90cce4ea9c26efcbbf3a1cbfb9dcdb298 (May 2025) allows a remote attacker to execute arbitrary code via a crafted script input to the editor interface. The application does not properly sanitize user-supplied Markdown before rendering it. Successful exploitation could lead to session hijacking, credential theft, or arbitrary client-side code execution in the context of the victim's browser.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-51691">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>88b28b1c37a51e5630d7918dc415362c</td>
-       <td>CVE-2025-50690</td>
-       <td>2025-08-13 15:15:34</td>
-       <td>A Cross-Site Scripting (XSS) vulnerability exists in SpatialReference.org (OSGeo/spatialreference.org) versions prior to 2025-05-17 (commit 2120adfa17ddd535bd0f539e6c4988fa3a2cb491). The vulnerability is caused by improper handling of user input in the search query parameter. An attacker can craft a specially formed URL with malicious JavaScript code, which is then reflected back and executed in the victim's browser. This flaw allows an attacker to execute arbitrary JavaScript in the context of the victim's session, potentially leading to session hijacking, phishing attacks, data theft, or redirection to malicious sites. The issue is exposed on publicly accessible pages, making it exploitable by an unauthenticated attacker.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-50690">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>30ee6f3662038199f9f0b055df8c10ac</td>
-       <td>CVE-2025-50635</td>
-       <td>2025-08-13 15:15:34</td>
-       <td>A null pointer dereference vulnerability was discovered in Netis WF2780 v2.2.35445. The vulnerability exists in the FUN_0048a728 function of the cgitest.cgi file. Attackers can trigger this vulnerability by controlling the CONTENT_LENGTH variable, causing the program to crash and potentially leading to a denial-of-service (DoS) attack.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-50635">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f586de67fd440eb3e2bb16017cdbe54f</td>
-       <td>CVE-2025-50251</td>
-       <td>2025-08-13 15:15:34</td>
-       <td>Server side request forgery (SSRF) vulnerability in makeplane plane 0.23.1 via the password recovery.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-50251">详情</a></td>
       </tr>
 
      </tbody>
