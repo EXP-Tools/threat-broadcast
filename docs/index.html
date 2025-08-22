@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-08-21 21:22:12 -->
+<!-- RELEASE TIME : 2025-08-22 21:21:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>782bbe9fb26695891fc26ebcfd49cc4f</td>
+       <td>CVE-2025-57801</td>
+       <td>2025-08-22 20:15:33 <img src="imgs/new.gif" /></td>
+       <td>gnark is a zero-knowledge proof system framework. In versions prior to 0.14.0, the Verify function in eddsa.go and ecdsa.go used the S value from a signature without asserting that 0 ≤ S < order, leading to a signature malleability vulnerability. Because gnark’s native EdDSA and ECDSA circuits lack essential constraints, multiple distinct witnesses can satisfy the same public inputs. In protocols where nullifiers or anti-replay checks are derived from R and S, this enables signature malleability and may allow double spending. This issue has been addressed in version 0.14.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-57801">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>73f37d4c749594da1e9108ce830911c5</td>
+       <td>CVE-2022-43110</td>
+       <td>2025-08-22 20:15:31 <img src="imgs/new.gif" /></td>
+       <td>Voltronic Power ViewPower through 1.04-21353 and PowerShield Netguard before 1.04-23292 allows a remote attacker to configure the system via an unspecified web interface. An unauthenticated remote attacker can make changes to the system including: changing the web interface admin password, view/change system configuration, enumerate connected UPS devices and shut down connected UPS devices. This extends to being able to configure operating system commands that should run if the system detects a connected UPS shutting down.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-43110">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>63a0ac4d700be1abe734d6931f88e3ac</td>
+       <td>CVE-2022-31491</td>
+       <td>2025-08-22 20:15:31 <img src="imgs/new.gif" /></td>
+       <td>Voltronic Power ViewPower through 1.04-24215, ViewPower Pro through 2.0-22165, and PowerShield Netguard before 1.04-23292 allows a remote attacker to run arbitrary code via an unspecified web interface related to detection of a managed UPS shutting down. An unauthenticated attacker can use this to run arbitrary code immediately regardless of any managed UPS state or presence.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2022-31491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3fef9305faf1888e8027c91bbded99ca</td>
+       <td>CVE-2025-6791</td>
+       <td>2025-08-22 19:15:40 <img src="imgs/new.gif" /></td>
+       <td>On the monitoring event logs page, it is possible to alter the http request to insert a payload in the DB. Caused by an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Centreon web (Monitoring event logs modules) allows SQL Injection. This issue affects web: from 24.10.0 before 24.10.9, from 24.04.0 before 24.04.16, from 23.10.0 before 23.10.26.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6791">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca07881619c6239fbe4bfe4cc769d7ce</td>
+       <td>CVE-2025-55454</td>
+       <td>2025-08-22 19:15:40 <img src="imgs/new.gif" /></td>
+       <td>An authenticated arbitrary file upload vulnerability in the component /msg/sendfiles of DooTask v1.0.51 allows attackers to execute arbitrary code via uploading a crafted file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55454">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f9aa83de3f5b898634fd62d8cb208a91</td>
+       <td>CVE-2025-54813</td>
+       <td>2025-08-22 19:15:40 <img src="imgs/new.gif" /></td>
+       <td>Improper Output Neutralization for Logs vulnerability in Apache Log4cxx. When using JSONLayout, not all payload bytes are properly escaped. If an attacker-supplied message contains certain non-printable characters, these will be passed along in the message and written out as part of the JSON message. This may prevent applications that consume these logs from correctly interpreting the information within them. This issue affects Apache Log4cxx: before 1.5.0. Users are recommended to upgrade to version 1.5.0, which fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54813">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e6fa6f5d97d2ccbb88a93534ca3ac55</td>
+       <td>CVE-2025-54812</td>
+       <td>2025-08-22 19:15:39 <img src="imgs/new.gif" /></td>
+       <td>Improper Output Neutralization for Logs vulnerability in Apache Log4cxx. When using HTMLLayout, logger names are not properly escaped when writing out to the HTML file. If untrusted data is used to retrieve the name of a logger, an attacker could theoretically inject HTML or Javascript in order to hide information from logs or steal data from the user. In order to activate this, the following sequence must occur: * Log4cxx is configured to use HTMLLayout. * Logger name comes from an untrusted string * Logger with compromised name logs a message * User opens the generated HTML log file in their browser, leading to potential XSS Because logger names are generally constant strings, we assess the impact to users as LOW This issue affects Apache Log4cxx: before 1.5.0. Users are recommended to upgrade to version 1.5.0, which fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54812">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>23c3e95da9cbab969caec86a331da990</td>
+       <td>CVE-2025-51092</td>
+       <td>2025-08-22 19:15:39 <img src="imgs/new.gif" /></td>
+       <td>The LogIn-SignUp project by VishnuSivadasVS is vulnerable to SQL Injection due to unsafe construction of SQL queries in DataBase.php. The functions logIn() and signUp() build queries by directly concatenating user input and unvalidated table names without using prepared statements. While a prepareData() function exists, it is insufficient to prevent SQL injection and does not sanitize the table name.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-51092">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b39289c03b6ce89a857602a2744edd7</td>
+       <td>CVE-2025-50859</td>
+       <td>2025-08-22 19:15:39 <img src="imgs/new.gif" /></td>
+       <td>Reflected Cross-Site Scripting in the Change Template function in Easy Hosting Control Panel (EHCP) 20.04.1.b allows authenticated attackers to execute arbitrary JavaScript via the template parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-50859">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f26b0c2178f28a797d4038f227089f5f</td>
+       <td>CVE-2025-50858</td>
+       <td>2025-08-22 19:15:39 <img src="imgs/new.gif" /></td>
+       <td>Reflected Cross-Site Scripting in the List MySQL Databases function in Easy Hosting Control Panel (EHCP) 20.04.1.b allows authenticated attackers to execute arbitrary JavaScript via the action parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-50858">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2a8dfc9328b3ac60be2c63c664a602d7</td>
        <td>CVE-2025-7051</td>
        <td>2025-08-21 18:15:37 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>58bb7fc4d2bbc341a51d794a4804cffc</td>
        <td>CVE-2025-9239</td>
-       <td>2025-08-20 18:30:23 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 18:30:23</td>
        <td>A vulnerability was identified in elunez eladmin up to 2.7. Affected by this vulnerability is the...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9239">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>2241a8aa9b8b0e6388276f7e4f37af6a</td>
        <td>CVE-2025-9238</td>
-       <td>2025-08-20 18:30:22 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 18:30:22</td>
        <td>A vulnerability was determined in Swatadru Exam-Seating-Arrangement up to...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9238">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>8946d5bb9baf6d528f9dd57bf94c7ece</td>
        <td>CVE-2025-9237</td>
-       <td>2025-08-20 18:30:22 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 18:30:22</td>
        <td>A vulnerability was found in CodeAstro Ecommerce Website 1.0. This impacts an unknown function of...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9237">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>03d7d11df5ddadec7bb315fbc3424254</td>
        <td>CVE-2025-9236</td>
-       <td>2025-08-20 18:30:22 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 18:30:22</td>
        <td>A vulnerability has been found in Portabilis i-Diario up to 2.10. This affects an unknown...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9236">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>9657b1d38e19275b985bae0431d2557c</td>
        <td>CVE-2025-47054</td>
-       <td>2025-08-20 18:30:22 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 18:30:22</td>
        <td>Adobe Experience Manager versions 6.5.22 and earlier are affected by a DOM-based Cross-Site...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-47054">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>761327f8dd9a8ecd5fdee4d7819ea6f1</td>
        <td>CVE-2024-53495</td>
-       <td>2025-08-20 18:30:22 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 18:30:22</td>
        <td>Incorrect access control in the preHandle function of my-site v1.0.2.RELEASE allows attackers to...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53495">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>00dacc0fe8cac72cb0ed273c20173a82</td>
        <td>CVE-2025-55746</td>
-       <td>2025-08-20 17:58:06 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 17:58:06</td>
        <td>Directus is a real-time API and App dashboard for managing SQL database content. From 10.8.0 to before 11.9.3, a vulnerability exists in the file update mechanism which allows an unauthenticated actor to modify existing files with arbitrary contents (without changes being applied to the files' database-resident metadata) and / or upload new files, with arbitrary content and extensions, which won't show up in the Directus UI. This vulnerability is fixed in 11.9.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55746">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>7bde20f76f563b131b903041e8da8dce</td>
        <td>CVE-2025-9235</td>
-       <td>2025-08-20 17:15:39 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 17:15:39</td>
        <td>A flaw has been found in Scada-LTS up to 2.7.8.1. The impacted element is an unknown function of the file compound_events.shtm. This manipulation of the argument Name causes cross site scripting. The attack is possible to be carried out remotely. The exploit has been published and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9235">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>cc2443c36130c305b072553abbb029ef</td>
        <td>CVE-2025-9234</td>
-       <td>2025-08-20 17:15:38 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 17:15:38</td>
        <td>A vulnerability was detected in Scada-LTS up to 2.7.8.1. The affected element is an unknown function of the file maintenance_events.shtm. The manipulation of the argument Alias results in cross site scripting. The attack can be executed remotely. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9234">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>bd579ee0aed36575467e82cbd8e1406e</td>
        <td>CVE-2025-8612</td>
-       <td>2025-08-20 17:15:38 <img src="imgs/new.gif" /></td>
+       <td>2025-08-20 17:15:38</td>
        <td>AOMEI Backupper Workstation Link Following Local Privilege Escalation Vulnerability. This vulnerability allows local attackers to escalate privileges on affected installations of AOMEI Backupper Workstation. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability. User interaction on the part of an administrator is needed additionally. The specific flaw exists within the restore functionality. By creating a junction, an attacker can abuse the service to create arbitrary files. An attacker can leverage this vulnerability to escalate privileges and execute arbitrary code in the context of SYSTEM. Was ZDI-CAN-27059.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8612">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9d07f9e19f83f71f937c67ffab183cd2</td>
-       <td>CVE-2025-9148</td>
-       <td>2025-08-19 17:15:41</td>
-       <td>A vulnerability was found in CodePhiliaX Chat2DB up to 0.3.7. This affects an unknown function of the file ai/chat2db/server/web/api/controller/data/source/DataSourceController.java of the component JDBC Connection Handler. The manipulation results in sql injection. The attack can be executed remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9148">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>20cb575d9eb5f2f6064de7f50071503c</td>
-       <td>CVE-2025-9147</td>
-       <td>2025-08-19 17:15:41</td>
-       <td>A vulnerability has been found in jasonclark getsemantic up to 040c96eb8cf9947488bd01b8de99b607b0519f7d. The impacted element is an unknown function of the file /index.php. The manipulation of the argument view leads to cross site scripting. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9147">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>319b4732d47aa237446e8965b9bd7fb3</td>
-       <td>CVE-2025-54880</td>
-       <td>2025-08-19 17:15:41</td>
-       <td>Mermaid is a JavaScript based diagramming and charting tool that uses Markdown-inspired text definitions and a renderer to create and modify complex diagrams. In the default configuration of mermaid 11.9.0 and earlier, user supplied input for architecture diagram icons is passed to the d3 html() method, creating a sink for cross site scripting. This vulnerability is fixed in 11.10.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54880">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>98527613b2127925537b7c11193aab05</td>
-       <td>CVE-2025-54411</td>
-       <td>2025-08-19 17:15:40</td>
-       <td>Discourse is an open-source discussion platform. Welcome banner user name string for logged in users can be vulnerable to XSS attacks, which affect the user themselves or an admin impersonating them. Admins can temporarily alter the welcome_banner.header.logged_in_members site text to remove the preferred_display_name placeholder, or not impersonate any users for the time being. This vulnerability is fixed in 3.5.0.beta8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54411">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>79362a1fedaa1a0ea9a35f47f2eb9477</td>
-       <td>CVE-2025-52478</td>
-       <td>2025-08-19 17:15:40</td>
-       <td>n8n is a workflow automation platform. From 1.77.0 to before 1.98.2, a stored Cross-Site Scripting (XSS) vulnerability was identified in n8n, specifically in the Form Trigger node's HTML form element. An authenticated attacker can inject malicious HTML via an <iframe> with a srcdoc payload that includes arbitrary JavaScript execution. The attacker can also inject malicious Javascript by using <video> coupled <source> using an onerror event. While using iframe or a combination of video and source tag, this vulnerability allows for Account Takeover (ATO) by exfiltrating n8n-browserId and session cookies from authenticated users who visit a maliciously crafted form. Using these tokens and cookies, an attacker can impersonate the victim and change account details such as email addresses, enabling full control over the account—especially if 2FA is not enabled. Users should upgrade to version >= 1.98.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52478">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>766da9a09ae92850ecde8c70a48d0a55</td>
-       <td>CVE-2025-51506</td>
-       <td>2025-08-19 17:15:40</td>
-       <td>In the smartLibrary component of the HRForecast Suite 0.4.3, a SQL injection vulnerability was discovered in the valueKey parameter. This flaw enables any authenticated user to execute arbitrary SQL queries, via crafted payloads to valueKey to the api/smartlibrary/v2/en/dictionaries/options/lookup endpoint.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-51506">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f0ffb96eaef67ab68237e9f8055fe522</td>
-       <td>CVE-2025-38614</td>
-       <td>2025-08-19 17:15:40</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: eventpoll: Fix semi-unbounded recursion Ensure that epoll instances can never form a graph deeper than EP_MAX_NESTS+1 links. Currently, ep_loop_check_proc() ensures that the graph is loop-free and does some recursion depth checks, but those recursion depth checks don't limit the depth of the resulting tree for two reasons: - They don't look upwards in the tree. - If there are multiple downwards paths of different lengths, only one of the paths is actually considered for the depth check since commit 28d82dc1c4ed ("epoll: limit paths"). Essentially, the current recursion depth check in ep_loop_check_proc() just serves to prevent it from recursing too deeply while checking for loops. A more thorough check is done in reverse_path_check() after the new graph edge has already been created; this checks, among other things, that no paths going upwards from any non-epoll file with a length of more than 5 edges exist. However, this check does not apply to non-epoll files. As a result, it is possible to recurse to a depth of at least roughly 500, tested on v6.15. (I am unsure if deeper recursion is possible; and this may have changed with commit 8c44dac8add7 ("eventpoll: Fix priority inversion problem").) To fix it: 1. In ep_loop_check_proc(), note the subtree depth of each visited node, and use subtree depths for the total depth calculation even when a subtree has already been visited. 2. Add ep_get_upwards_depth_proc() for similarly determining the maximum depth of an upwards walk. 3. In ep_loop_check(), use these values to limit the total path length between epoll nodes to EP_MAX_NESTS edges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38614">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>162205ff882ced17c3cdead84537d5c6</td>
-       <td>CVE-2025-38613</td>
-       <td>2025-08-19 17:15:39</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: staging: gpib: fix unset padding field copy back to userspace The introduction of a padding field in the gpib_board_info_ioctl is showing up as initialized data on the stack frame being copyied back to userspace in function board_info_ioctl. The simplest fix is to initialize the entire struct to zero to ensure all unassigned padding fields are zero'd before being copied back to userspace.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38613">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4e0aa9dce1aa4f39181071464c1efe73</td>
-       <td>CVE-2025-38608</td>
-       <td>2025-08-19 17:15:39</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: bpf, ktls: Fix data corruption when using bpf_msg_pop_data() in ktls When sending plaintext data, we initially calculated the corresponding ciphertext length. However, if we later reduced the plaintext data length via socket policy, we failed to recalculate the ciphertext length. This results in transmitting buffers containing uninitialized data during ciphertext transmission. This causes uninitialized bytes to be appended after a complete "Application Data" packet, leading to errors on the receiving end when parsing TLS record.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38608">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a56915eeb76d31f0039eb2c4264d87a</td>
-       <td>CVE-2025-38607</td>
-       <td>2025-08-19 17:15:39</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: bpf: handle jset (if a & b ...) as a jump in CFG computation BPF_JSET is a conditional jump and currently verifier.c:can_jump() does not know about that. This can lead to incorrect live registers and SCC computation. E.g. in the following example: 1: r0 = 1; 2: r2 = 2; 3: if r1 & 0x7 goto +1; 4: exit; 5: r0 = r2; 6: exit; W/o this fix insn_successors(3) will return only (4), a jump to (5) would be missed and r2 won't be marked as alive at (3).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-38607">详情</a></td>
       </tr>
 
      </tbody>
