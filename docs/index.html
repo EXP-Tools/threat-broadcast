@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-10-03 15:24:43 -->
+<!-- RELEASE TIME : 2025-10-04 15:20:13 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>25b8b84f6edf228538ef7b4f94cab2a5</td>
+       <td>CVE-2025-39950</td>
+       <td>2025-10-04 08:15:48 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net/tcp: Fix a NULL pointer dereference when using TCP-AO with TCP_REPAIR A NULL pointer dereference can occur in tcp_ao_finish_connect() during a connect() system call on a socket with a TCP-AO key added and TCP_REPAIR enabled. The function is called with skb being NULL and attempts to dereference it on tcp_hdr(skb)->seq without a prior skb validation. Fix this by checking if skb is NULL before dereferencing it. The commentary is taken from bpf_skops_established(), which is also called in the same flow. Unlike the function being patched, bpf_skops_established() validates the skb before dereferencing it. int main(void){ struct sockaddr_in sockaddr; struct tcp_ao_add tcp_ao; int sk; int one = 1; memset(&sockaddr,'\0',sizeof(sockaddr)); memset(&tcp_ao,'\0',sizeof(tcp_ao)); sk = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); sockaddr.sin_family = AF_INET; memcpy(tcp_ao.alg_name,"cmac(aes128)",12); memcpy(tcp_ao.key,"ABCDEFGHABCDEFGH",16); tcp_ao.keylen = 16; memcpy(&tcp_ao.addr,&sockaddr,sizeof(sockaddr)); setsockopt(sk, IPPROTO_TCP, TCP_AO_ADD_KEY, &tcp_ao, sizeof(tcp_ao)); setsockopt(sk, IPPROTO_TCP, TCP_REPAIR, &one, sizeof(one)); sockaddr.sin_family = AF_INET; sockaddr.sin_port = htobe16(123); inet_aton("127.0.0.1", &sockaddr.sin_addr); connect(sk,(struct sockaddr *)&sockaddr,sizeof(sockaddr)); return 0; } $ gcc tcp-ao-nullptr.c -o tcp-ao-nullptr -Wall $ unshare -Urn BUG: kernel NULL pointer dereference, address: 00000000000000b6 PGD 1f648d067 P4D 1f648d067 PUD 1982e8067 PMD 0 Oops: Oops: 0000 [#1] SMP NOPTI Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 11/12/2020 RIP: 0010:tcp_ao_finish_connect (net/ipv4/tcp_ao.c:1182)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39950">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>96b605d8c6082daabf08cd1751bcdea5</td>
+       <td>CVE-2025-39949</td>
+       <td>2025-10-04 08:15:48 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: qed: Don't collect too many protection override GRC elements In the protection override dump path, the firmware can return far too many GRC elements, resulting in attempting to write past the end of the previously-kmalloc'ed dump buffer. This will result in a kernel panic with reason: BUG: unable to handle kernel paging request at ADDRESS where "ADDRESS" is just past the end of the protection override dump buffer. The start address of the buffer is: p_hwfn->cdev->dbg_features[DBG_FEATURE_PROTECTION_OVERRIDE].dump_buf and the size of the buffer is buf_size in the same data structure. The panic can be arrived at from either the qede Ethernet driver path: [exception RIP: qed_grc_dump_addr_range+0x108] qed_protection_override_dump at ffffffffc02662ed [qed] qed_dbg_protection_override_dump at ffffffffc0267792 [qed] qed_dbg_feature at ffffffffc026aa8f [qed] qed_dbg_all_data at ffffffffc026b211 [qed] qed_fw_fatal_reporter_dump at ffffffffc027298a [qed] devlink_health_do_dump at ffffffff82497f61 devlink_health_report at ffffffff8249cf29 qed_report_fatal_error at ffffffffc0272baf [qed] qede_sp_task at ffffffffc045ed32 [qede] process_one_work at ffffffff81d19783 or the qedf storage driver path: [exception RIP: qed_grc_dump_addr_range+0x108] qed_protection_override_dump at ffffffffc068b2ed [qed] qed_dbg_protection_override_dump at ffffffffc068c792 [qed] qed_dbg_feature at ffffffffc068fa8f [qed] qed_dbg_all_data at ffffffffc0690211 [qed] qed_fw_fatal_reporter_dump at ffffffffc069798a [qed] devlink_health_do_dump at ffffffff8aa95e51 devlink_health_report at ffffffff8aa9ae19 qed_report_fatal_error at ffffffffc0697baf [qed] qed_hw_err_notify at ffffffffc06d32d7 [qed] qed_spq_post at ffffffffc06b1011 [qed] qed_fcoe_destroy_conn at ffffffffc06b2e91 [qed] qedf_cleanup_fcport at ffffffffc05e7597 [qedf] qedf_rport_event_handler at ffffffffc05e7bf7 [qedf] fc_rport_work at ffffffffc02da715 [libfc] process_one_work at ffffffff8a319663 Resolve this by clamping the firmware's return value to the maximum number of legal elements the firmware should return.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a41eb487cea3386d82fe6b0512d627bb</td>
+       <td>CVE-2025-39940</td>
+       <td>2025-10-04 08:15:46 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: dm-stripe: fix a possible integer overflow There's a possible integer overflow in stripe_io_hints if we have too large chunk size. Test if the overflow happened, and if it did, don't set limits->io_min and limits->io_opt;</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39940">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d864614b168d9c9e3cb9f78101c19102</td>
+       <td>CVE-2025-39946</td>
+       <td>2025-10-04 07:31:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: tls: make sure to abort the stream if headers are bogus Normally we wait for the socket to buffer up the whole record before we service it. If the socket has a tiny buffer, however, we read out the data sooner, to prevent connection stalls. Make sure that we abort the connection when we find out late that the record is actually invalid. Retrying the parsing is fine in itself but since we copy some more data each time before we parse we can overflow the allocated skb space. Constructing a scenario in which we're under pressure without enough data in the socket to parse the length upfront is quite hard. syzbot figured out a way to do this by serving us the header in small OOB sends, and then filling in the recvbuf with a large normal send. Make sure that tls_rx_msg_size() aborts strp, if we reach an invalid record there's really no way to recover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b1fcc294b04d1d66c7c4654db609bbbe</td>
+       <td>CVE-2025-39945</td>
+       <td>2025-10-04 07:31:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: cnic: Fix use-after-free bugs in cnic_delete_task The original code uses cancel_delayed_work() in cnic_cm_stop_bnx2x_hw(), which does not guarantee that the delayed work item 'delete_task' has fully completed if it was already running. Additionally, the delayed work item is cyclic, the flush_workqueue() in cnic_cm_stop_bnx2x_hw() only blocks and waits for work items that were already queued to the workqueue prior to its invocation. Any work items submitted after flush_workqueue() is called are not included in the set of tasks that the flush operation awaits. This means that after the cyclic work items have finished executing, a delayed work item may still exist in the workqueue. This leads to use-after-free scenarios where the cnic_dev is deallocated by cnic_free_dev(), while delete_task remains active and attempt to dereference cnic_dev in cnic_delete_task(). A typical race condition is illustrated below: CPU 0 (cleanup) | CPU 1 (delayed work callback) cnic_netdev_event() | cnic_stop_hw() | cnic_delete_task() cnic_cm_stop_bnx2x_hw() | ... cancel_delayed_work() | /* the queue_delayed_work() flush_workqueue() | executes after flush_workqueue()*/ | queue_delayed_work() cnic_free_dev(dev)//free | cnic_delete_task() //new instance | dev = cp->dev; //use Replace cancel_delayed_work() with cancel_delayed_work_sync() to ensure that the cyclic delayed work item is properly canceled and that any ongoing execution of the work item completes before the cnic_dev is deallocated. Furthermore, since cancel_delayed_work_sync() uses __flush_work(work, true) to synchronously wait for any currently executing instance of the work item to finish, the flush_workqueue() becomes redundant and should be removed. This bug was identified through static analysis. To reproduce the issue and validate the fix, I simulated the cnic PCI device in QEMU and introduced intentional delays — such as inserting calls to ssleep() within the cnic_delete_task() function — to increase the likelihood of triggering the bug.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39945">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>046b00d447e54f8ce6e00115f9310f1b</td>
+       <td>CVE-2025-39937</td>
+       <td>2025-10-04 07:31:00 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: rfkill: gpio: Fix crash due to dereferencering uninitialized pointer Since commit 7d5e9737efda ("net: rfkill: gpio: get the name and type from device property") rfkill_find_type() gets called with the possibly uninitialized "const char *type_name;" local variable. On x86 systems when rfkill-gpio binds to a "BCM4752" or "LNV4752" acpi_device, the rfkill->type is set based on the ACPI acpi_device_id: rfkill->type = (unsigned)id->driver_data; and there is no "type" property so device_property_read_string() will fail and leave type_name uninitialized, leading to a potential crash. rfkill_find_type() does accept a NULL pointer, fix the potential crash by initializing type_name to NULL. Note likely sofar this has not been caught because: 1. Not many x86 machines actually have a "BCM4752"/"LNV4752" acpi_device 2. The stack happened to contain NULL where type_name is stored</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39937">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f45173b19e46d05c7accd513606c5f20</td>
+       <td>CVE-2025-39931</td>
+       <td>2025-10-04 07:30:55 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: crypto: af_alg - Set merge to zero early in af_alg_sendmsg If an error causes af_alg_sendmsg to abort, ctx->merge may contain a garbage value from the previous loop. This may then trigger a crash on the next entry into af_alg_sendmsg when it attempts to do a merge that can't be done. Fix this by setting ctx->merge to zero near the start of the loop.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39931">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2ef6c40df9f9c750c409422f9ac7aa0c</td>
+       <td>CVE-2025-9886</td>
+       <td>2025-10-04 03:33:32 <img src="imgs/new.gif" /></td>
+       <td>The Trinity Audio – Text to Speech AI audio player to convert content into audio plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 5.20.2. This is due to missing or incorrect nonce validation in the '/admin/inc/post-management.php' file. This makes it possible for unauthenticated attackers to activate/deactivate posts via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9886">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>265ebc954c8b3f18fc05af2ea5f4df49</td>
+       <td>CVE-2025-61962</td>
+       <td>2025-10-04 03:32:59 <img src="imgs/new.gif" /></td>
+       <td>In fetchmail before 6.5.6, the SMTP client can crash when authenticating upon receiving a 334...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61962">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>523c19397854600bc61d35d9a8a02d05</td>
+       <td>CVE-2025-61894</td>
+       <td>2025-10-04 03:32:58 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61894">详情</a></td>
+      </tr>
+
+      <tr>
        <td>191fdcaa786db70972e1b4920185ad23</td>
        <td>CVE-2025-59536</td>
        <td>2025-10-03 06:34:48 <img src="imgs/new.gif" /></td>
@@ -334,7 +414,7 @@
       <tr>
        <td>0248f2508445108912be2cd1886bfb1f</td>
        <td>CVE-2025-10895</td>
-       <td>2025-10-02 23:15:30 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 23:15:30</td>
        <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10895">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>2766011dd4ec1dfaac0ce3173ca6e01c</td>
        <td>CVE-2025-61668</td>
-       <td>2025-10-02 22:15:38 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 22:15:38</td>
        <td>Volto is a ReactJS-based frontend for the Plone Content Management System. Versions 16.34.0 and below, 17.0.0 through 17.22.1, 18.0.0 through 18.27.1, and 19.0.0-alpha.1 through 19.0.0-alpha.5, an anonymous user could cause the NodeJS server part of Volto to quit with an error when visiting a specific URL. This issue is fixed in versions 16.34.1, 17.22.2, 18.27.2 and 19.0.0-alpha.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61668">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>66e4d80ebdf201a505f0e518fcaa88d3</td>
        <td>CVE-2025-61666</td>
-       <td>2025-10-02 22:15:38 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 22:15:38</td>
        <td>Traccar is an open source GPS tracking system. Default installs of Traccar on Windows between versions 6.1- 6.8.1 and non default installs between versions 5.8 - 6.0 are vulnerable to unauthenticated local file inclusion attacks which can lead to leakage of passwords or any file on the file system including the Traccar configuration file. Versions 5.8 - 6.0 are only vulnerable if <entry key='web.override'>./override</entry> is set in the configuration file. Versions 6.1 - 6.8.1 are vulnerable by default as the web override is enabled by default. The vulnerable code is removed in version 6.9.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61666">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>547a6d1bcc1aa078796fe99ade755e1e</td>
        <td>CVE-2025-61600</td>
-       <td>2025-10-02 22:15:38 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 22:15:38</td>
        <td>Stalwart is a mail and collaboration server. Versions 0.13.3 and below contain an unbounded memory allocation vulnerability in the IMAP protocol parser which allows remote attackers to exhaust server memory, potentially triggering the system's out-of-memory (OOM) killer and causing a denial of service. The CommandParser implementation enforces size limits on its dynamic buffer in most parsing states, but several state handlers omit these validation checks. This issue is fixed in version 0.13.4. A workaround for this issue is to implement rate limiting and connection monitoring at the network level, however this does not provide complete protection.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61600">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>6583b6d5b07e9368e4526e247b3a2631</td>
        <td>CVE-2025-54468</td>
-       <td>2025-10-02 10:00:18 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 10:00:18</td>
        <td>A vulnerability has been identified within Rancher Manager whereby `Impersonate-Extra-*` headers are being sent to an external entity, for example `amazonaws.com`, via the `/meta/proxy` Rancher endpoint. These headers may contain identifiable and/or sensitive information e.g. email addresses.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54468">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>2866c6161f86f2d2f10e470d2379f598</td>
        <td>CVE-2025-61735</td>
-       <td>2025-10-02 09:47:49 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:47:49</td>
        <td>Server-Side Request Forgery (SSRF) vulnerability in Apache Kylin. This issue affects Apache Kylin: from 4.0.0 through 5.0.2. You are fine as long as the Kylin's system and project admin access is well protected. Users are recommended to upgrade to version 5.0.3, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61735">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>4b13df52e22d9d28f7096566b545c116</td>
        <td>CVE-2025-61733</td>
-       <td>2025-10-02 09:47:39 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:47:39</td>
        <td>Authentication Bypass Using an Alternate Path or Channel vulnerability in Apache Kylin. This issue affects Apache Kylin: from 4.0.0 through 5.0.2. Users are recommended to upgrade to version 5.0.3, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61733">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>9fdcdd0fe8f1f333cd5ea8976823f266</td>
        <td>CVE-2025-61734</td>
-       <td>2025-10-02 09:47:15 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:47:15</td>
        <td>Files or Directories Accessible to External Parties vulnerability in Apache Kylin. You are fine as long as the Kylin's system and project admin access is well protected. This issue affects Apache Kylin: from 4.0.0 through 5.0.2. Users are recommended to upgrade to version 5.0.3, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61734">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>e28c7f141d68525438b14a84565294be</td>
        <td>CVE-2025-40646</td>
-       <td>2025-10-02 09:42:30 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:42:30</td>
        <td>Exposure of sensitive information in Viday. This vulnerability could allow an attacker to obtain sensitive information about customers by intercepting HTTP requests and searching for the JWT containing sensitive user information in the JWT payload.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-40646">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>b161b501c973d20620f12371f6009ea8</td>
        <td>CVE-2025-40645</td>
-       <td>2025-10-02 09:41:36 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:41:36</td>
        <td>Exposure of sensitive information in Viday. This vulnerability could allow an unauthenticated attacker to obtain sensitive information about customers by sending an HTTP GET request to “/api/reserva/web/clients” using the “phone” parameter.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-40645">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>16b24656233ebc2907310dc114111b35</td>
        <td>CVE-2025-54292</td>
-       <td>2025-10-02 09:26:39 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:26:39</td>
        <td>Path traversal in Canonical LXD LXD-UI versions before 6.5 and 5.21.4 on all platforms allows remote authenticated attackers to access or modify unintended resources via crafted resource names embedded in URL paths.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54292">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>aaa3afb7cafb73ab26c167a7f7e67f70</td>
        <td>CVE-2025-54291</td>
-       <td>2025-10-02 09:25:42 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:25:42</td>
        <td>Information disclosure in images API in Canonical LXD before 6.5 and 5.21.4 on all platforms allows unauthenticated remote attackers to determine project existence via differing HTTP status code responses.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54291">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>6a36192c6b38ea4dd2f53354fb502cfb</td>
        <td>CVE-2025-54290</td>
-       <td>2025-10-02 09:24:12 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:24:12</td>
        <td>Information disclosure in image export API in Canonical LXD before 6.5 and 5.21.4 on Linux allows network attackers to determine project existence without authentication via crafted requests using wildcard fingerprints.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54290">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>56250fe271f5155b11641ca3e9c8c002</td>
        <td>CVE-2025-54289</td>
-       <td>2025-10-02 09:23:03 <img src="imgs/new.gif" /></td>
+       <td>2025-10-02 09:23:03</td>
        <td>Privilege Escalation in operations API in Canonical LXD 6.5 on multiple platforms allows attacker with read permissions to hijack terminal or console sessions and execute arbitrary commands via WebSocket connection hijacking format</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54289">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fac24adb8b704d1a12c1555112c35280</td>
-       <td>CVE-2025-56392</td>
-       <td>2025-09-30 20:15:39</td>
-       <td>An Insecure Direct Object Reference (IDOR) in the /dashboard/notes endpoint of Syaqui Collegetivity v1.0.0 allows attackers to impersonate other users and perform arbitrary operations via a crafted POST request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-56392">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7237e83722a7c8ae8c36b7ee754a79bc</td>
-       <td>CVE-2025-36262</td>
-       <td>2025-09-30 20:15:37</td>
-       <td>IBM Planning Analytics Local 2.0.0 through 2.0.106 and 2.1.0 through 2.1.13 could allow a malicious privileged user to bypass the UI to gain unauthorized access to sensitive information due to the improper validation of input.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36262">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>37103ef2b7102552144f12519d71c60f</td>
-       <td>CVE-2025-36132</td>
-       <td>2025-09-30 20:15:37</td>
-       <td>IBM Planning Analytics Local 2.0.0 through 2.0.106 and 2.1.0 through 2.1.13 is vulnerable to cross-site scripting. This vulnerability allows an authenticated user to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36132">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4ac757cfb09e673486b1705134d0d16e</td>
-       <td>CVE-2025-10659</td>
-       <td>2025-09-30 20:15:36</td>
-       <td>The Telenium Online Web Application is vulnerable due to a PHP endpoint accessible to unauthenticated network users that improperly handles user-supplied input. This vulnerability occurs due to the insecure termination of a regular expression check within the endpoint. Because the input is not correctly validated or sanitized, an unauthenticated attacker can inject arbitrary operating system commands through a crafted HTTP request, leading to remote code execution on the server in the context of the web application service account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10659">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2ff5a1d82b423a1c119fb990ef8b89f2</td>
-       <td>CVE-2024-55017</td>
-       <td>2025-09-30 20:15:36</td>
-       <td>Account Takeover in Corezoid 6.6.0 in the OAuth2 implementation via an open redirect in the redirect_uri parameter allows attackers to intercept authorization codes and gain unauthorized access to victim accounts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-55017">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>48473981aa54629298fef7137ff01ae6</td>
-       <td>CVE-2025-56132</td>
-       <td>2025-09-30 19:15:37</td>
-       <td>LiquidFiles filetransfer server is vulnerable to a user enumeration issue in its password reset functionality. The application returns distinguishable responses for valid and invalid email addresses, allowing unauthenticated attackers to determine the existence of user accounts. Version 4.2 introduces user-based lockout mechanisms to mitigate brute-force attacks, user enumeration remains possible by default. In versions prior to 4.2, no such user-level protection is in place, only basic IP-based rate limiting is enforced. This IP-based protection can be bypassed by distributing requests across multiple IPs (e.g., rotating IP or proxies). Effectively bypassing both login and password reset security controls. Successful exploitation allows an attacker to enumerate valid email addresses registered for the application, increasing the risk of follow-up attacks such as password spraying.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-56132">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b4df06afeb138d1ee2c3225e7eaf6c4</td>
-       <td>CVE-2025-43827</td>
-       <td>2025-09-30 19:15:37</td>
-       <td>Insecure Direct Object Reference (IDOR) vulnerability with audit events in Liferay Portal 7.4.0 through 7.4.3.117, and older unsupported versions, and Liferay DXP 2024.Q1.1 through 2024.Q1.5, 2023.Q4.0 through 2023.Q4.10, 2023.Q3.1 through 2023.Q3.10, 7.4 GA through update 92, and older unsupported versions allows remote authenticated users to from one virtual instance to view the audit events from a different virtual instance via the _com_liferay_portal_security_audit_web_portlet_AuditPortlet_auditEventId parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-43827">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c0e42f19098479a40e3571c540c325a0</td>
-       <td>CVE-2025-59538</td>
-       <td>2025-09-30 18:32:31</td>
-       <td>Argo CD Unauthenticated Remote DoS via malformed Azure DevOps git.push webhook</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-59538">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a0279946a5c2ace2e1035fe88e03fd3</td>
-       <td>CVE-2025-59537</td>
-       <td>2025-09-30 18:28:38</td>
-       <td>argo-cd vulnerable unauthenticated DoS via malformed Gogs webhook payload</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-59537">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a9a7758234a60ff0111c905ad43f6700</td>
-       <td>CVE-2025-57254</td>
-       <td>2025-09-30 18:15:51</td>
-       <td>An SQL injection vulnerability in user-login.php and index.php of Karthikg1908 Hospital Management System (HMS) 1.0 allows remote attackers to execute arbitrary SQL queries via the username and password POST parameters. The application fails to properly sanitize input before embedding it into SQL queries, leading to unauthorized access or potential data breaches. This can result in privilege escalation, account takeover, or exposure of sensitive medical data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-57254">详情</a></td>
       </tr>
 
      </tbody>
