@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-10-09 06:36:27 -->
+<!-- RELEASE TIME : 2025-10-09 18:34:10 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>620dc235a0dda28e220bb7a3518355e6</td>
+       <td>CVE-2025-9371</td>
+       <td>2025-10-09 12:15:35 <img src="imgs/new.gif" /></td>
+       <td>The Betheme theme for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘page_title’ parameter in all versions up to, and including, 28.1.6 due to insufficient input sanitization and output escaping of theme breadcrumbs. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9371">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d5d6abad75feec5575b1ae684eadbb9</td>
+       <td>CVE-2025-2934</td>
+       <td>2025-10-09 12:15:35 <img src="imgs/new.gif" /></td>
+       <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 5.2 prior to 18.2.8, 18.3 prior to 18.3.4, and 18.4 prior to 18.4.2 that could have allowed an authenticated attacker to create a denial of service condition by configuring malicious webhook endpoints that send crafted HTTP responses.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-2934">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8aefa15836b97a3238a6d43cd7c0d4f0</td>
+       <td>CVE-2025-11340</td>
+       <td>2025-10-09 12:15:35 <img src="imgs/new.gif" /></td>
+       <td>GitLab has remediated an issue in GitLab EE affecting all versions from 18.3 to 18.3.4, 18.4 to 18.4.2 that, under certain conditions, could have allowed authenticated users with read-only API tokens to perform unauthorized write operations on vulnerability records by exploiting incorrectly scoped GraphQL mutations.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11340">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c3c82b4996d7c5239031d600094e8e56</td>
+       <td>CVE-2025-10249</td>
+       <td>2025-10-09 12:15:34 <img src="imgs/new.gif" /></td>
+       <td>The Slider Revolution plugin for WordPress is vulnerable to unauthorized access and modification of data due to a missing capability check on several functions in all versions up to, and including, 6.7.37. This makes it possible for authenticated attackers, with Contributor-level access and above, to install and activate plugin add-ons, create sliders, and download arbitrary files.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10249">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>231cb2a6360d3f2f2aab7864317557bf</td>
+       <td>CVE-2025-10004</td>
+       <td>2025-10-09 12:15:34 <img src="imgs/new.gif" /></td>
+       <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.12 to 18.2.8, 18.3 to 18.3.4, and 18.4 to 18.4.2 that could make the GitLab instance unresponsive or severely degraded by sending crafted GraphQL queries requesting large repository blobs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10004">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca6b307a2849ab99b5668ddd28508413</td>
+       <td>CVE-2025-39959</td>
+       <td>2025-10-09 10:15:38 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ASoC: amd: acp: Fix incorrect retrival of acp_chip_info Use dev_get_drvdata(dev->parent) instead of dev_get_platdata(dev) to correctly obtain acp_chip_info members in the acp I2S driver. Previously, some members were not updated properly due to incorrect data access, which could potentially lead to null pointer dereferences. This issue was missed in the earlier commit ("ASoC: amd: acp: Fix NULL pointer deref in acp_i2s_set_tdm_slot"), which only addressed set_tdm_slot(). This change ensures that all relevant functions correctly retrieve acp_chip_info, preventing further null pointer dereference issues.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39959">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6fe00e940d45f21b875931cba45b483c</td>
+       <td>CVE-2025-39958</td>
+       <td>2025-10-09 10:15:37 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: iommu/s390: Make attach succeed when the device was surprise removed When a PCI device is removed with surprise hotplug, there may still be attempts to attach the device to the default domain as part of tear down via (__iommu_release_dma_ownership()), or because the removal happens during probe (__iommu_probe_device()). In both cases zpci_register_ioat() fails with a cc value indicating that the device handle is invalid. This is because the device is no longer part of the instance as far as the hypervisor is concerned. Currently this leads to an error return and s390_iommu_attach_device() fails. This triggers the WARN_ON() in __iommu_group_set_domain_nofail() because attaching to the default domain must never fail. With the device fenced by the hypervisor no DMAs to or from memory are possible and the IOMMU translations have no effect. Proceed as if the registration was successful and let the hotplug event handling clean up the device. This is similar to how devices in the error state are handled since commit 59bbf596791b ("iommu/s390: Make attach succeed even if the device is in error state") except that for removal the domain will not be registered later. This approach was also previously discussed at the link. Handle both cases, error state and removal, in a helper which checks if the error needs to be propagated or ignored. Avoid magic number condition codes by using the pre-existing, but never used, defines for PCI load/store condition codes and rename them to reflect that they apply to all PCI instructions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39958">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>062670ee2b8c6956874a38b6180f7c6f</td>
+       <td>CVE-2025-39957</td>
+       <td>2025-10-09 10:15:37 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: wifi: mac80211: increase scan_ies_len for S1G Currently the S1G capability element is not taken into account for the scan_ies_len, which leads to a buffer length validation failure in ieee80211_prep_hw_scan() and subsequent WARN in __ieee80211_start_scan(). This prevents hw scanning from functioning. To fix ensure we accommodate for the S1G capability length.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39957">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>934d9ee90259aa1328f70fa4bcfc5d46</td>
+       <td>CVE-2025-39956</td>
+       <td>2025-10-09 10:15:36 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: igc: don't fail igc_probe() on LED setup error When igc_led_setup() fails, igc_probe() fails and triggers kernel panic in free_netdev() since unregister_netdev() is not called. [1] This behavior can be tested using fault-injection framework, especially the failslab feature. [2] Since LED support is not mandatory, treat LED setup failures as non-fatal and continue probe with a warning message, consequently avoiding the kernel panic. [1] kernel BUG at net/core/dev.c:12047! Oops: invalid opcode: 0000 [#1] SMP NOPTI CPU: 0 UID: 0 PID: 937 Comm: repro-igc-led-e Not tainted 6.17.0-rc4-enjuk-tnguy-00865-gc4940196ab02 #64 PREEMPT(voluntary) Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2 04/01/2014 RIP: 0010:free_netdev+0x278/0x2b0 [...] Call Trace: <TASK> igc_probe+0x370/0x910 local_pci_probe+0x3a/0x80 pci_device_probe+0xd1/0x200 [...] [2] #!/bin/bash -ex FAILSLAB_PATH=/sys/kernel/debug/failslab/ DEVICE=0000:00:05.0 START_ADDR=$(grep " igc_led_setup" /proc/kallsyms \ | awk '{printf("0x%s", $1)}') END_ADDR=$(printf "0x%x" $((START_ADDR + 0x100))) echo $START_ADDR > $FAILSLAB_PATH/require-start echo $END_ADDR > $FAILSLAB_PATH/require-end echo 1 > $FAILSLAB_PATH/times echo 100 > $FAILSLAB_PATH/probability echo N > $FAILSLAB_PATH/ignore-gfp-wait echo $DEVICE > /sys/bus/pci/drivers/igc/bind</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39956">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>83564f164a862b456efd44757e6d242a</td>
+       <td>CVE-2025-39955</td>
+       <td>2025-10-09 10:15:36 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: tcp: Clear tcp_sk(sk)->fastopen_rsk in tcp_disconnect(). syzbot reported the splat below where a socket had tcp_sk(sk)->fastopen_rsk in the TCP_ESTABLISHED state. [0] syzbot reused the server-side TCP Fast Open socket as a new client before the TFO socket completes 3WHS: 1. accept() 2. connect(AF_UNSPEC) 3. connect() to another destination As of accept(), sk->sk_state is TCP_SYN_RECV, and tcp_disconnect() changes it to TCP_CLOSE and makes connect() possible, which restarts timers. Since tcp_disconnect() forgot to clear tcp_sk(sk)->fastopen_rsk, the retransmit timer triggered the warning and the intended packet was not retransmitted. Let's call reqsk_fastopen_remove() in tcp_disconnect(). [0]: WARNING: CPU: 2 PID: 0 at net/ipv4/tcp_timer.c:542 tcp_retransmit_timer (net/ipv4/tcp_timer.c:542 (discriminator 7)) Modules linked in: CPU: 2 UID: 0 PID: 0 Comm: swapper/2 Not tainted 6.17.0-rc5-g201825fb4278 #62 PREEMPT(voluntary) Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014 RIP: 0010:tcp_retransmit_timer (net/ipv4/tcp_timer.c:542 (discriminator 7)) Code: 41 55 41 54 55 53 48 8b af b8 08 00 00 48 89 fb 48 85 ed 0f 84 55 01 00 00 0f b6 47 12 3c 03 74 0c 0f b6 47 12 3c 04 74 04 90 <0f> 0b 90 48 8b 85 c0 00 00 00 48 89 ef 48 8b 40 30 e8 6a 4f 06 3e RSP: 0018:ffffc900002f8d40 EFLAGS: 00010293 RAX: 0000000000000002 RBX: ffff888106911400 RCX: 0000000000000017 RDX: 0000000002517619 RSI: ffffffff83764080 RDI: ffff888106911400 RBP: ffff888106d5c000 R08: 0000000000000001 R09: ffffc900002f8de8 R10: 00000000000000c2 R11: ffffc900002f8ff8 R12: ffff888106911540 R13: ffff888106911480 R14: ffff888106911840 R15: ffffc900002f8de0 FS: 0000000000000000(0000) GS:ffff88907b768000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 00007f8044d69d90 CR3: 0000000002c30003 CR4: 0000000000370ef0 Call Trace: <IRQ> tcp_write_timer (net/ipv4/tcp_timer.c:738) call_timer_fn (kernel/time/timer.c:1747) __run_timers (kernel/time/timer.c:1799 kernel/time/timer.c:2372) timer_expire_remote (kernel/time/timer.c:2385 kernel/time/timer.c:2376 kernel/time/timer.c:2135) tmigr_handle_remote_up (kernel/time/timer_migration.c:944 kernel/time/timer_migration.c:1035) __walk_groups.isra.0 (kernel/time/timer_migration.c:533 (discriminator 1)) tmigr_handle_remote (kernel/time/timer_migration.c:1096) handle_softirqs (./arch/x86/include/asm/jump_label.h:36 ./include/trace/events/irq.h:142 kernel/softirq.c:580) irq_exit_rcu (kernel/softirq.c:614 kernel/softirq.c:453 kernel/softirq.c:680 kernel/softirq.c:696) sysvec_apic_timer_interrupt (arch/x86/kernel/apic/apic.c:1050 (discriminator 35) arch/x86/kernel/apic/apic.c:1050 (discriminator 35)) </IRQ></td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-39955">详情</a></td>
+      </tr>
+
+      <tr>
        <td>7d3bae7d222130acc863531b344426d1</td>
        <td>CVE-2025-61524</td>
        <td>2025-10-08 19:15:44 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2025-10-08 10:15:37 <img src="imgs/new.gif" /></td>
        <td>A weakness has been identified in SourceCodester Hotel and Lodge Management System 1.0. The affected element is an unknown function of the file /pages/save_customer.php. Executing manipulation of the argument Contact can lead to sql injection. The attack can be executed remotely. The exploit has been made available to the public and could be exploited.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11469">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>70c7a061a37a5f186b80505c28ad77b1</td>
-       <td>CVE-2025-10645</td>
-       <td>2025-10-07 08:23:38</td>
-       <td>The WP Reset plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.05 via the WF_Licensing::log() method when debugging is enabled (default). This makes it possible for unauthenticated attackers to extract sensitive license key and site data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10645">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8cfafd9645f702c120d48c0c45bf7eec</td>
-       <td>CVE-2025-7400</td>
-       <td>2025-10-07 08:15:35</td>
-       <td>The Featured Image from URL (FIFU) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via a post's Featured Image custom fields in all versions up to, and including, 5.2.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. NOTE: This vulnerability was partially fixed in version 5.2.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7400">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c330dd3e86f7f76b175fea865ae0aac3</td>
-       <td>CVE-2025-11357</td>
-       <td>2025-10-07 08:15:34</td>
-       <td>A security flaw has been discovered in code-projects Simple Banking System 1.0. This issue affects some unknown processing of the file /createuser.php. Performing manipulation of the argument Name results in sql injection. The attack may be initiated remotely. The exploit has been released to the public and may be exploited.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11357">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2d05e33fd26fc72466d9ebb6d2756a7a</td>
-       <td>CVE-2025-11358</td>
-       <td>2025-10-07 08:02:06</td>
-       <td>A weakness has been identified in code-projects Simple Banking System 1.0. Impacted is an unknown function of the file /removeuser.php. Executing manipulation of the argument ID can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be exploited.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11358">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5925bfb4f69b9a9a0e9125c80b86964</td>
-       <td>CVE-2025-11356</td>
-       <td>2025-10-07 07:15:44</td>
-       <td>A vulnerability was found in Tenda AC23 up to 16.03.07.52. Affected by this issue is the function sscanf of the file /goform/SetStaticRouteCfg. The manipulation of the argument list results in buffer overflow. It is possible to launch the attack remotely. The exploit has been made public and could be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11356">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6aa7006151f020439aea33762667cf87</td>
-       <td>CVE-2025-11355</td>
-       <td>2025-10-07 07:15:44</td>
-       <td>A vulnerability has been found in UTT 1250GW up to v2v3.2.2-200710. Affected by this vulnerability is the function strcpy of the file /goform/aspChangeChannel. The manipulation of the argument pvid leads to buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11355">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e1263e6f95c417616ff56aa0abe4986f</td>
-       <td>CVE-2025-11354</td>
-       <td>2025-10-07 06:15:38</td>
-       <td>A flaw has been found in code-projects Online Hotel Reservation System 1.0. Affected is an unknown function of the file /admin/addslideexec.php. Executing manipulation of the argument image can lead to unrestricted upload. The attack may be performed from remote. The exploit has been published and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11354">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25e277168138b5f3a44e292dae276ebb</td>
-       <td>CVE-2025-11353</td>
-       <td>2025-10-07 06:15:36</td>
-       <td>A vulnerability was detected in code-projects Online Hotel Reservation System 1.0. This impacts an unknown function of the file /admin/addgalleryexec.php. Performing manipulation of the argument image results in unrestricted upload. The attack is possible to be carried out remotely. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11353">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77fae2a7060d0b5ba8dbba0fe144fb83</td>
-       <td>CVE-2025-10162</td>
-       <td>2025-10-07 06:15:32</td>
-       <td>The Admin and Customer Messages After Order for WooCommerce: OrderConvo WordPress plugin before 14 does not validate the path of files to be downloaded, which could allow unauthenticated attacker to read/download arbitrary files via a path traversal attack</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10162">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76d2e9d47acd2e934e97bb272af2ea04</td>
-       <td>CVE-2025-11362</td>
-       <td>2025-10-07 05:15:33</td>
-       <td>Versions of the package pdfmake before 0.3.0-beta.17 are vulnerable to Allocation of Resources Without Limits or Throttling via repeatedly redirect URL in file embedding. An attacker can cause the application to crash or become unresponsive by providing crafted input that triggers this condition.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11362">详情</a></td>
       </tr>
 
      </tbody>
