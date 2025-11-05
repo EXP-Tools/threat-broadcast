@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-11-04 01:57:38 -->
+<!-- RELEASE TIME : 2025-11-05 01:59:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>41679c14fd95570a5dfd1e9487e55ace</td>
+       <td>CVE-2025-62721</td>
+       <td>2025-11-04 22:16:39 <img src="imgs/new.gif" /></td>
+       <td>LinkAce is a self-hosted archive to collect website links. In versions 2.3.1 and below, authenticated RSS feed endpoints in the FeedController class fail to implement proper authorization checks, allowing any authenticated user to access all links, lists, and tags from all users in the system, regardless of their ownership or visibility settings. This issue is fixed in version 2.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62721">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>23d79c87853f5bbff4dc3f75525a4fd2</td>
+       <td>CVE-2025-62720</td>
+       <td>2025-11-04 22:16:38 <img src="imgs/new.gif" /></td>
+       <td>LinkAce is a self-hosted archive to collect website links. Versions 2.3.1 and below allow any authenticated user to export the entire database of links from all users in the system, including private links that should only be accessible to their owners. The HTML and CSV export functions in the ExportController class retrieve all links without applying any ownership or visibility filtering, effectively bypassing all access controls implemented elsewhere in the application. This issue is fixed in version 2.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62720">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f26154ad53aa03065bf632c70c91a561</td>
+       <td>CVE-2025-62719</td>
+       <td>2025-11-04 22:16:38 <img src="imgs/new.gif" /></td>
+       <td>LinkAce is a self-hosted archive to collect website links. In versions 2.3.0 and below, the htmlKeywordsFromUrl function in the FetchController class accepts user-provided URLs and makes HTTP requests to them without validating that the destination is not an internal or private network resource. This Server-Side Request Forgery (SSRF) vulnerability allows authenticated attackers to use the application server to perform port scanning and service discovery on internal networks. Practical impact is very limited because the function only extracts content from HTML meta keywords tags, which prevents meaningful data exfiltration from databases, APIs, or cloud metadata endpoints. This issue is fixed in version 2.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62719">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6c6da190780e3c6eb96723445524b49a</td>
+       <td>CVE-2025-62715</td>
+       <td>2025-11-04 22:16:38 <img src="imgs/new.gif" /></td>
+       <td>ClipBucket v5 is an open source video sharing platform. Versions 5.5.2-#147 and below contain a stored Cross-Site Scripting (XSS) vulnerability in ClipBucket’s Collection tags feature. An authenticated normal user can create a tag containing HTML or JavaScript, which is later rendered unescaped in collection detail and tag-list pages. As a result, arbitrary JavaScript executes in the browsers of all users who view the affected pages. This issue is fixed in version 5.5.2-#152.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62715">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>36c0c80b692e426f5efc1970043bb839</td>
+       <td>CVE-2025-62520</td>
+       <td>2025-11-04 22:16:38 <img src="imgs/new.gif" /></td>
+       <td>Mantis Bug Tracker (MantisBT) is an open source issue tracker. In versions 2.27.1 and below, due to insufficient access-level checks, any non-admin user with access to manage_config_columns_page.php can use the Copy From action to retrieve the columns configuration from a private project they have no access to. This issue is fixed in version 2.27.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62520">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f64b04db6ddbaeea079f1487f009d6c4</td>
+       <td>CVE-2025-62507</td>
+       <td>2025-11-04 22:16:38 <img src="imgs/new.gif" /></td>
+       <td>Redis is an open source, in-memory database that persists on disk. In versions 8.2.0 and above, a user can run the XACKDEL command with multiple ID's and trigger a stack buffer overflow, which may potentially lead to remote code execution. This issue is fixed in version 8.2.3. To workaround this issue without patching the redis-server executable is to prevent users from executing XACKDEL operation. This can be done using ACL to restrict XACKDEL command.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62507">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e11269e3edda13bdd565e80cbead304</td>
+       <td>CVE-2025-62369</td>
+       <td>2025-11-04 22:16:38 <img src="imgs/new.gif" /></td>
+       <td>Xibo is an open source digital signage platform with a web content management system (CMS). Versions 4.3.0 and below contain a Remote Code Execution vulnerability in the CMS Developer menu's Module Templating functionality, allowing authenticated users with "System -> Add/Edit custom modules and templates" permissions to manipulate Twig filters and execute arbitrary server-side functions as the web server user. This issue is fixed in version 4.3.1. To workaround this issue, use the 4.1 and 4.2 patch commits.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62369">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d74da78f5fdd1f9d2530f13c5ce5642</td>
+       <td>CVE-2025-56230</td>
+       <td>2025-11-04 22:16:31 <img src="imgs/new.gif" /></td>
+       <td>Tencent Docs Desktop 3.9.20 and earlier suffers from Missing SSL Certificate Validation in the update component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-56230">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f8a15eff479fd64d771f4aae68bac44e</td>
+       <td>CVE-2025-54526</td>
+       <td>2025-11-04 22:16:28 <img src="imgs/new.gif" /></td>
+       <td>Fuji Electric Monitouch V-SFT-6 is vulnerable to a stack-based buffer overflow while processing a specially crafted project file, which may allow an attacker to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54526">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c7ddba5bb693075d23f3c50e306c321b</td>
+       <td>CVE-2025-54496</td>
+       <td>2025-11-04 22:16:28 <img src="imgs/new.gif" /></td>
+       <td>A maliciously crafted project file may cause a heap-based buffer overflow in Fuji Electric Monitouch V-SFT-6, which may allow the attacker to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54496">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4363d64a6c5028785b35f973f85ff2cb</td>
        <td>CVE-2025-34501</td>
-       <td>2025-11-03 22:18:50 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 22:18:50</td>
        <td>Deck Mate 2 is distributed with static, hard-coded credentials for the root shell and web user interface, while multiple management services (SSH, HTTP, Telnet, SMB, X11) are enabled by default. If an attacker can reach these interfaces - most often through local or near-local access such as connecting to the USB or Ethernet ports beneath the table - the built-in credentials permit administrative login and full control of the system. Once authenticated, an attacker can access firmware utilities, modify controller software, and establish persistent compromise. Remote attack paths via network, cellular, or telemetry links may exist in specific configurations but generally require additional capabilities or operator error. The vendor reports that USB access has been disabled in current firmware builds.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-34501">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>58e4df91df4bd862a0c386f7114a519d</td>
        <td>CVE-2025-63593</td>
-       <td>2025-11-03 20:19:17 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 20:19:17</td>
        <td>Grav CMS1.7.49.5 is vulnerable to Cross Site Scripting (XSS).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-63593">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>58f54a8b79beb7ab406625fcbde43b71</td>
        <td>CVE-2025-12642</td>
-       <td>2025-11-03 20:17:06 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 20:17:06</td>
        <td>lighttpd1.4.80 incorrectly merged trailer fields into headers after http request parsing. This behavior can be exploited to conduct HTTP Header Smuggling attacks. Successful exploitation may allow an attacker to: * Bypass access control rules * Inject unsafe input into backend logic that trusts request headers * Execute HTTP Request Smuggling attacks under some conditions This issue affects lighttpd1.4.80</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12642">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>27cac6ffa91dd95f4f6ce7d6d65e7206</td>
        <td>CVE-2025-12531</td>
-       <td>2025-11-03 19:47:40 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 19:47:40</td>
        <td>IBM InfoSphere Information Server 11.7.0.0 through 11.7.1.6 is vulnerable to an XML external entity injection (XXE) attack when processing XML data. A remote attacker could exploit this vulnerability to expose sensitive information or consume memory resources.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12531">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>336812ce15268520b1ad7148d11a7656</td>
        <td>CVE-2025-8558</td>
-       <td>2025-11-03 19:16:16 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 19:16:16</td>
        <td>Insider Threat Management (ITM) Server versions prior to 7.17.2 contain an authentication bypass vulnerability that allows unauthenticated users on an adjacent network to perform agent unregistration when the number of registered agents exceeds the licensed limit. Successful exploitation prevents the server from receiving new events from affected agents, resulting in a partial loss of integrity and availability with no impact to confidentiality.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8558">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>1d0f5fc5188d2d815c799181b79c1384</td>
        <td>CVE-2025-45959</td>
-       <td>2025-11-03 18:16:53 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 18:16:53</td>
        <td>Rejected reason: DO NOT USE THIS CVE RECORD. ConsultIDs: none. Reason: This record was withdrawn by its CNA. Further investigation showed that it was not a security issue. Notes: none.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-45959">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>03934b5a6a4ffe85fe6de0a2ef8e2715</td>
        <td>CVE-2025-63441</td>
-       <td>2025-11-03 17:15:33 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 17:15:33</td>
        <td>Open Source Social Network (OSSN) 8.6 is vulnerable to Cross Site Scripting (XSS) via the parameter param` at endpoint u/administrator/friends.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-63441">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>444103cf3e4c6ff62c239b1d20e0bb42</td>
        <td>CVE-2025-50363</td>
-       <td>2025-11-03 17:15:33 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 17:15:33</td>
        <td>Phpgurukul Maid Hiring Management System 1.0 is vulnerable to Cross Site Scripting (XSS) in /maid-hiring.php va the name field.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-50363">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>fc3206374abe5219c7d283f5f8478b40</td>
        <td>CVE-2025-12463</td>
-       <td>2025-11-03 17:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 17:15:32</td>
        <td>An unauthenticated SQL Injection was discovered within the Geutebruck G-Cam E-Series Cameras through the `Group` parameter in the `/uapi-cgi/viewer/Param.cgi` script. This has been confirmed on the EFD-2130 camera running firmware version 1.12.0.19.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12463">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>65e10af82dc82e1d9e4cb56753a9dbf1</td>
        <td>CVE-2025-11953</td>
-       <td>2025-11-03 17:15:32 <img src="imgs/new.gif" /></td>
+       <td>2025-11-03 17:15:32</td>
        <td>The Metro Development Server, which is opened by the React Native Community CLI, binds to external interfaces by default. The server exposes an endpoint that is vulnerable to OS command injection. This allows unauthenticated network attackers to send a POST request to the server and run arbitrary executables. On Windows, the attackers can also execute arbitrary shell commands with fully controlled arguments.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11953">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-11-01 19:15:38</td>
        <td>Web UI Malfunction when setting unexpected locale via API.This issue affects BLU-IC2: through 1.19.5; BLU-IC4: through 1.19.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12600">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4eb28d6d6ae58c17508b3db5cf162312</td>
-       <td>CVE-2025-12599</td>
-       <td>2025-11-01 19:15:38</td>
-       <td>Multiple Devices are Sharing the Same Secrets for SDKSocket (TCP/5000).This issue affects BLU-IC2: through 1.19.5; BLU-IC4: through 1.19.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12599">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c8d556d4cedb2a26e6d58f4626c67bf</td>
-       <td>CVE-2025-36367</td>
-       <td>2025-11-01 12:15:35</td>
-       <td>IBM i 7.6, 7.5, 7.4, 7.3, and 7.2 is vulnerable to privilege escalation caused by an invalid IBM i SQL services authorization check. A malicious actor can use the elevated privileges of another user profile to gain root access to the host operating system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36367">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3128ed28ce1c5d05ee3bfb70196cf124</td>
-       <td>CVE-2025-6990</td>
-       <td>2025-11-01 08:15:32</td>
-       <td>The kallyas theme for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 4.24.0 via the `TH_PhpCode` pagebuilder widget. This is due to the theme not restricting access to the code editor widget for non-administrators. This makes it possible for authenticated attackers, with Contributor-level access and above, to execute code on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6990">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>122f1b82f2ab2bf7012de2304b99a7aa</td>
-       <td>CVE-2025-6988</td>
-       <td>2025-11-01 08:15:32</td>
-       <td>The kallyas theme for WordPress is vulnerable to Stored Cross-Site Scripting via several of the plugin's shortcodes in all versions up to, and including, 4.23.0 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6988">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0d51842a3921032af8415e8fbcb5ec6d</td>
-       <td>CVE-2025-6574</td>
-       <td>2025-11-01 07:15:35</td>
-       <td>The Service Finder Bookings plugin for WordPress is vulnerable to privilege escalation via account takeover in all versions up to, and excluding, 6.1. This is due to the plugin not properly validating a user's identity prior to updating their details like email. This makes it possible for authenticated attackers, with subscriber-level access and above, to change arbitrary user's email addresses, including administrators, and leverage that to reset the user's password and gain access to their account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6574">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6aa241c585aad3da1d95dee8fb7e95e2</td>
-       <td>CVE-2025-12171</td>
-       <td>2025-11-01 07:15:35</td>
-       <td>The RESTful Content Syndication plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type validation in the ingest_image() function in versions 1.1.0 to 1.5.0. This makes it possible for authenticated attackers, with Author-level access and above, to upload arbitrary files on the affected site's server which may make remote code execution possible. This requires the attacker have access to a defined third-party server as specified in the settings, so it is unlikely that this will be exploitable by contributor-level users, and more likely to be exploited by administrators who also have access to the plugin's settings.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12171">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c8646db7b290e2a6c18e86728fef0838</td>
-       <td>CVE-2025-10693</td>
-       <td>2025-10-31 19:20:16</td>
-       <td>When SmartStart Inclusion fails during the onboarding of a Z-Wave PIR sensor, the sensor will join the network as a non-secure device. This vulnerability exists in Silicon Labs' Z-Wave PIR Sensor Reference design delivered as part of SiSDK v2025.6.0 and v2025.6.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10693">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9478240a2a22ca1cfae2741569f7f98d</td>
-       <td>CVE-2025-64349</td>
-       <td>2025-10-31 19:15:51</td>
-       <td>ELOG allows an authenticated user to modify another user's profile. An attacker can edit a target user's email address, then request a password reset, and take control of the target account. By default, ELOG is not configured to allow self-registration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64349">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71a48de5c21720131b420384b9a97070</td>
-       <td>CVE-2025-64348</td>
-       <td>2025-10-31 19:15:51</td>
-       <td>ELOG allows an authenticated user to modify or overwrite the configuration file, resulting in denial of service. If the execute facility is specifically enabled with the "-x" command line flag, attackers could execute OS commands on the host machine. By default, ELOG is not configured to allow shell commands or self-registration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64348">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d76635d7f5b8568a6431d856c4d45636</td>
-       <td>CVE-2025-63458</td>
-       <td>2025-10-31 19:15:51</td>
-       <td>Tenda AX-1803 v1.0.0.1 was discovered to contain a stack overflow via the timeZone parameter in the form_fast_setting_wifi_set function. This vulnerability allows attackers to cause a Denial of Service (DoS) via a crafted request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-63458">详情</a></td>
       </tr>
 
      </tbody>
