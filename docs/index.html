@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-11-20 09:27:25 -->
+<!-- RELEASE TIME : 2025-11-21 09:27:33 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>411b6d6c2c6eb7576a847349bccf50a4</td>
+       <td>CVE-2025-64310</td>
+       <td>2025-11-21 02:36:35 <img src="imgs/new.gif" /></td>
+       <td>EPSON WebConfig and Epson Web Control for SEIKO EPSON Projector Products do not restrict excessive authentication attempts. An administrative user's password may be identified through a brute force attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64310">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7e2b61ffd2be1605bb8c7135124a95b6</td>
+       <td>CVE-2025-64762</td>
+       <td>2025-11-21 02:15:44 <img src="imgs/new.gif" /></td>
+       <td>The AuthKit library for Next.js provides convenient helpers for authentication and session management using WorkOS & AuthKit with Next.js. In authkit-nextjs version 2.11.0 and below, authenticated responses do not defensively apply anti-caching headers. In environments where CDN caching is enabled, this can result in session tokens being included in cached responses and subsequently served to multiple users. Next.js applications deployed on Vercel are unaffected unless they manually enable CDN caching by setting cache headers on authenticated paths. Patched in authkit-nextjs 2.11.1, which applies anti-caching headers to all responses behind authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64762">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b144968b896b5f11470c64d814c2863</td>
+       <td>CVE-2025-64755</td>
+       <td>2025-11-21 02:15:43 <img src="imgs/new.gif" /></td>
+       <td>Claude Code is an agentic coding tool. Prior to version 2.0.31, due to an error in sed command parsing, it was possible to bypass the Claude Code read-only validation and write to arbitrary files on the host system. This issue has been patched in version 2.0.31.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64755">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2f0adc850520ac9ebd1ddd410ff7c540</td>
+       <td>CVE-2025-64751</td>
+       <td>2025-11-21 02:15:43 <img src="imgs/new.gif" /></td>
+       <td>OpenFGA is a high-performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar. OpenFGA v1.4.0 to v1.11.0 ( openfga-0.1.34 <= Helm chart <= openfga-0.2.48, v.1.4.0 <= docker <= v.1.11.0) are vulnerable to improper policy enforcement when certain Check and ListObject calls are executed. This issue has been patched in version 1.11.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64751">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45faa97cf78beda8bc8ca90db85f7e18</td>
+       <td>CVE-2025-62426</td>
+       <td>2025-11-21 02:15:43 <img src="imgs/new.gif" /></td>
+       <td>vLLM is an inference and serving engine for large language models (LLMs). From version 0.5.5 to before 0.11.1, the /v1/chat/completions and /tokenize endpoints allow a chat_template_kwargs request parameter that is used in the code before it is properly validated against the chat template. With the right chat_template_kwargs parameters, it is possible to block processing of the API server for long periods of time, delaying all other requests. This issue has been patched in version 0.11.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62426">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>134551c2e57dfff35c4d205e959c4c48</td>
+       <td>CVE-2025-62372</td>
+       <td>2025-11-21 02:15:43 <img src="imgs/new.gif" /></td>
+       <td>vLLM is an inference and serving engine for large language models (LLMs). From version 0.5.5 to before 0.11.1, users can crash the vLLM engine serving multimodal models by passing multimodal embedding inputs with correct ndim but incorrect shape (e.g. hidden dimension is wrong), regardless of whether the model is intended to support such inputs (as defined in the Supported Models page). This issue has been patched in version 0.11.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62372">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>92af237e4a40c7bd07c8eff061711d15</td>
+       <td>CVE-2025-62164</td>
+       <td>2025-11-21 02:15:43 <img src="imgs/new.gif" /></td>
+       <td>vLLM is an inference and serving engine for large language models (LLMs). From versions 0.10.2 to before 0.11.1, a memory corruption vulnerability could lead to a crash (denial-of-service) and potentially remote code execution (RCE), exists in the Completions API endpoint. When processing user-supplied prompt embeddings, the endpoint loads serialized tensors using torch.load() without sufficient validation. Due to a change introduced in PyTorch 2.8.0, sparse tensor integrity checks are disabled by default. As a result, maliciously crafted tensors can bypass internal bounds checks and trigger an out-of-bounds memory write during the call to to_dense(). This memory corruption can crash vLLM and potentially lead to code execution on the server hosting vLLM. This issue has been patched in version 0.11.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62164">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>38f8407939b2da3d1a9e0738fa1777c9</td>
+       <td>CVE-2025-13485</td>
+       <td>2025-11-21 00:15:49 <img src="imgs/new.gif" /></td>
+       <td>A security flaw has been discovered in itsourcecode Online File Management System 1.0. This issue affects some unknown processing of the file /ajax.php?action=login. The manipulation of the argument Username results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be exploited.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13485">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3e985c9f1a3444a0a5f939db8430ff39</td>
+       <td>CVE-2025-64660</td>
+       <td>2025-11-20 23:15:56 <img src="imgs/new.gif" /></td>
+       <td>Improper access control in GitHub Copilot and Visual Studio Code allows an authorized attacker to bypass a security feature over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64660">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>528ead529e69e0f77e829b6c7e6d5d64</td>
+       <td>CVE-2025-64655</td>
+       <td>2025-11-20 23:15:56 <img src="imgs/new.gif" /></td>
+       <td>Improper authorization in Dynamics OmniChannel SDK Storage Containers allows an unauthorized attacker to elevate privileges over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64655">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c8c6aab3783c4ea66c841f6a8bd56a4a</td>
        <td>CVE-2025-13450</td>
        <td>2025-11-20 03:02:06 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>800367be3c74e48193ba5a80b211a008</td>
        <td>CVE-2025-65941</td>
-       <td>2025-11-19 04:16:06 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:06</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65941">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>d8b8957cc42bbcd3fffbf358d6ed8f89</td>
        <td>CVE-2025-65940</td>
-       <td>2025-11-19 04:16:06 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:06</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65940">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>70cf08f6bca09dbc2ffdfdcf96e092f4</td>
        <td>CVE-2025-6251</td>
-       <td>2025-11-19 04:16:06 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:06</td>
        <td>The Royal Elementor Addons and Templates plugin for WordPress is vulnerable to Stored Cross-Site Scripting via $item['field_id'] in all versions up to, and including, 1.7.1036 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6251">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>6fbd90ef57bace776c49fbfd963d8a9e</td>
        <td>CVE-2025-65939</td>
-       <td>2025-11-19 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:05</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65939">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>d7ffbf5353d91182dfc168482353f0bb</td>
        <td>CVE-2025-65938</td>
-       <td>2025-11-19 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:05</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65938">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>020b275b95124220c7aa414693b26291</td>
        <td>CVE-2025-65937</td>
-       <td>2025-11-19 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:05</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65937">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>e7834640782e2b6263ffb51db5f35604</td>
        <td>CVE-2025-65936</td>
-       <td>2025-11-19 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:05</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65936">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>03f5f258411905aa688fcefdb6db3146</td>
        <td>CVE-2025-65935</td>
-       <td>2025-11-19 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:05</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65935">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>4a413dce5a029d8686d4baf13dfd04f5</td>
        <td>CVE-2025-65934</td>
-       <td>2025-11-19 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:05</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65934">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>78a79ff282bd326ec65ac4efb5bcbccc</td>
        <td>CVE-2025-65933</td>
-       <td>2025-11-19 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2025-11-19 04:16:05</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65933">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>585248616608259b7d40d2e66b092acb</td>
-       <td>CVE-2025-52578</td>
-       <td>2025-11-18 04:15:44</td>
-       <td>Incorrect Usage of Seeds in Pseudo-Random Number Generator (CWE- 335) vulnerability in the High Sec ELM may allow a sophisticated attacker with physical access, to compromise internal device communications. This issue affects Command Centre Server: 9.30 prior to vCR9.30.251028a (distributed in 9.30.2881 (MR3)), 9.20 prior to vCR9.20.251028a (distributed in 9.20.3265 (MR5)), 9.10 prior to vCR9.10.251028a (distributed in 9.10.4135 (MR8)), all versions of 9.00 and prior.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52578">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>81b9b515f09c3860d644c52588853601</td>
-       <td>CVE-2025-52457</td>
-       <td>2025-11-18 04:15:44</td>
-       <td>Observable Timing Discrepancy (CWE-208) in HBUS devices may allow an attacker with physical access to the device to extract device-specific keys, potentially compromising further site security. This issue affects Command Centre Server: 9.30 prior to vCR9.30.251028a (distributed in 9.30.2881 (MR3)), 9.20 prior to vCR9.20.251028a (distributed in 9.20.3265 (MR5)), 9.10 prior to vCR9.10.251028a (distributed in 9.10.4135 (MR8)), all versions of 9.00 and prior.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-52457">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a900d99d07284854d949a961a8f75958</td>
-       <td>CVE-2025-12792</td>
-       <td>2025-11-18 01:15:44</td>
-       <td>The Mac App Store distribution of the Canva for Mac desktop app before 1.117.1 was built without Hardened Runtime. A local threat actor with unprivileged access could execute arbitrary code that inherits the TCC (Transparency, Consent, and Control) permissions assigned to Canva.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12792">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b797742fcbfc72e3b5491d52132c3e69</td>
-       <td>CVE-2025-13325</td>
-       <td>2025-11-18 00:15:48</td>
-       <td>A vulnerability was determined in itsourcecode Student Information System 1.0. The affected element is an unknown function of the file /enrollment_edit1.php. Executing manipulation of the argument en_id can lead to sql injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13325">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b12066db868c3fd47e41e9a8b6d7cb56</td>
-       <td>CVE-2025-13323</td>
-       <td>2025-11-18 00:15:48</td>
-       <td>A security flaw has been discovered in code-projects Simple Pizza Ordering System 1.0. Affected is an unknown function of the file /listorder.php. Performing manipulation of the argument ID results in sql injection. The attack can be initiated remotely. The exploit has been released to the public and may be exploited.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13323">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d658fbf9a623a4fb7e6f78160d27207</td>
-       <td>CVE-2025-13306</td>
-       <td>2025-11-18 00:15:48</td>
-       <td>A security vulnerability has been detected in D-Link DWR-M920, DWR-M921, DIR-822K and DIR-825M 1.1.5. Impacted is the function system of the file /boafrm/formDebugDiagnosticRun. The manipulation of the argument host leads to command injection. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13306">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>da10395988355ad6b888cafaae6decdc</td>
-       <td>CVE-2025-13230</td>
-       <td>2025-11-18 00:15:48</td>
-       <td>Type Confusion in V8 in Google Chrome prior to 142.0.7444.59 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13230">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9465392ca38c9a5c0a894f06f0164ed4</td>
-       <td>CVE-2025-13227</td>
-       <td>2025-11-18 00:15:47</td>
-       <td>Type Confusion in V8 in Google Chrome prior to 142.0.7444.59 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13227">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4e600391963ef4a35d1bd750a4314a9d</td>
-       <td>CVE-2025-13226</td>
-       <td>2025-11-18 00:15:47</td>
-       <td>Type Confusion in V8 in Google Chrome prior to 142.0.7444.59 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13226">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d5986ea4c34097d25e407fa32633574</td>
-       <td>CVE-2025-7711</td>
-       <td>2025-11-17 23:15:56</td>
-       <td>The The Classified Listing – Classified ads & Business Directory Plugin plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 5.0.3. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for authenticated attackers, with Subscriber-level access and above, to execute arbitrary shortcodes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7711">详情</a></td>
       </tr>
 
      </tbody>
