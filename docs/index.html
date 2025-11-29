@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-11-28 12:53:10 -->
+<!-- RELEASE TIME : 2025-11-29 15:24:03 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8cbdd0fd81c9f7da671ebdb699755cf3</td>
+       <td>CVE-2025-6666</td>
+       <td>2025-11-29 09:15:44 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was determined in motogadget mo.lock Ignition Lock up to 20251125. Affected by this vulnerability is an unknown functionality of the component NFC Handler. Executing manipulation can lead to use of hard-coded cryptographic key . The physical device can be targeted for the attack. A high complexity level is associated with this attack. The exploitation appears to be difficult. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6666">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>782b34c2ceedc7f9b593d502a453a384</td>
+       <td>CVE-2025-66291</td>
+       <td>2025-11-29 04:15:58 <img src="imgs/new.gif" /></td>
+       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the interview attachment retrieval endpoint in the Recruitment module serves files based solely on an authenticated session and user-supplied identifiers, without verifying whether the requester has permission to access the associated interview record. Because the server does not perform any recruitment-level authorization checks, an ESS-level user with no access to recruitment workflows can directly request interview attachment URLs and receive the corresponding files. This exposes confidential interview documents—including candidate CVs, evaluations, and supporting files—to unauthorized users. The issue arises from relying on predictable object identifiers and session presence rather than validating the user’s association with the relevant recruitment process. This issue has been patched in version 5.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66291">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0a6bcb21ac35355ba69a9456432b14cf</td>
+       <td>CVE-2025-66290</td>
+       <td>2025-11-29 04:15:58 <img src="imgs/new.gif" /></td>
+       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the application’s recruitment attachment retrieval endpoint does not enforce the required authorization checks before serving candidate files. Even users restricted to ESS-level access, who have no permission to view the Recruitment module, can directly access candidate attachment URLs. When an authenticated request is made to the attachment endpoint, the system validates the session but does not confirm that the requesting user has the necessary recruitment permissions. As a result, any authenticated user can download CVs and other uploaded documents for arbitrary candidates by issuing direct requests to the attachment endpoint, leading to unauthorized exposure of sensitive applicant data. This issue has been patched in version 5.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66290">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a5d933bc2236b44d1c7dc6362715d036</td>
+       <td>CVE-2025-66289</td>
+       <td>2025-11-29 04:15:57 <img src="imgs/new.gif" /></td>
+       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the application does not invalidate existing sessions when a user is disabled or when a password change occurs, allowing active session cookies to remain valid indefinitely. As a result, a disabled user, or an attacker using a compromised account, can continue to access protected pages and perform operations as long as a prior session remains active. Because the server performs no session revocation or session-store cleanup during these critical state changes, disabling an account or updating credentials has no effect on already-established sessions. This makes administrative disable actions ineffective and allows unauthorized users to retain full access even after an account is closed or a password is reset, exposing the system to prolonged unauthorized use and significantly increasing the impact of account takeover scenarios. This issue has been patched in version 5.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66289">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>88e9259c5103a2677a12654138de8e1c</td>
+       <td>CVE-2025-66225</td>
+       <td>2025-11-29 04:15:57 <img src="imgs/new.gif" /></td>
+       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the password reset workflow does not enforce that the username submitted in the final reset request matches the account for which the reset process was originally initiated. After obtaining a valid reset link for any account they can receive email for, an attacker can alter the username parameter in the final reset request to target a different user. Because the system accepts the supplied username without verification, the attacker can set a new password for any chosen account, including privileged accounts, resulting in full account takeover. This issue has been patched in version 5.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66225">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a9063e3a959c0662ae49c60a5039ca29</td>
+       <td>CVE-2025-66224</td>
+       <td>2025-11-29 04:15:57 <img src="imgs/new.gif" /></td>
+       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the application contains an input-neutralization flaw in its mail configuration and delivery workflow that allows user-controlled values to flow directly into the system’s sendmail command. Because these values are not sanitized or constrained before being incorporated into the command execution path, certain sendmail behaviors can be unintentionally invoked during email processing. This makes it possible for the application to write files on the server as part of the mail-handling routine, and in deployments where those files end up in web-accessible locations, the behavior can be leveraged to achieve execution of attacker-controlled content. The issue stems entirely from constructing OS-level command strings using unsanitized input within the mail-sending logic. This issue has been patched in version 5.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66224">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>62c2bf010986aea761ef67b866e698b0</td>
+       <td>CVE-2025-65892</td>
+       <td>2025-11-29 04:15:57 <img src="imgs/new.gif" /></td>
+       <td>Reflected Cross-Site Scripting (rXSS) in krpano before version 1.23.2 allows a remote unauthenticated attacker to execute arbitrary JavaScript in the victim's browser via a crafted URL to the passQueryParameters function with the xml parameter enabled.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65892">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>20658bf893b3f1f0c3358fbef4402e9c</td>
+       <td>CVE-2025-65540</td>
+       <td>2025-11-29 04:15:56 <img src="imgs/new.gif" /></td>
+       <td>Multiple Cross-Site Scripting (XSS) vulnerabilities exist in xmall v1.1 due to improper handling of user-supplied data. User input fields such as username and description are directly rendered into HTML without proper sanitization or encoding, allowing attackers to inject and execute malicious scripts.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65540">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>181cedd6d3485fef126fdfcdca3b6c2f</td>
+       <td>CVE-2025-66223</td>
+       <td>2025-11-29 03:16:00 <img src="imgs/new.gif" /></td>
+       <td>OpenObserve is a cloud-native observability platform. Prior to version 0.16.0, organization invitation tokens do not expire once issued, remain valid even after the invited user is removed from the organization, and allow multiple invitations to the same email with different roles where all issued links remain valid simultaneously. This results in broken access control where a removed or demoted user can regain access or escalate privileges. This issue has been patched in version 0.16.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66223">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>74bfbc63246d27061523998b6dce0894</td>
+       <td>CVE-2025-66221</td>
+       <td>2025-11-29 03:16:00 <img src="imgs/new.gif" /></td>
+       <td>Werkzeug is a comprehensive WSGI web application library. Prior to version 3.1.4, Werkzeug's safe_join function allows path segments with Windows device names. On Windows, there are special device names such as CON, AUX, etc that are implicitly present and readable in every directory. send_from_directory uses safe_join to safely serve files at user-specified paths under a directory. If the application is running on Windows, and the requested path ends with a special device name, the file will be opened successfully, but reading will hang indefinitely. This issue has been patched in version 3.1.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66221">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fe59cc0d60a1e07a3ccac20dd88b24bd</td>
        <td>CVE-2025-13771</td>
        <td>2025-11-28 08:15:54 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>26e7c45dcb5cc9648a19bddadfd91840</td>
        <td>CVE-2025-13441</td>
-       <td>2025-11-27 07:15:55 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 07:15:55</td>
        <td>The Hide Category by User Role for WooCommerce plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 2.3.1. This is due to a missing capability check on the admin_init hook that executes wp_cache_flush(). This makes it possible for unauthenticated attackers to flush the site's object cache via forged requests, potentially degrading site performance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13441">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>a517bf50933a1d20950c8889fd6d2441</td>
        <td>CVE-2025-13525</td>
-       <td>2025-11-27 06:15:46 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 06:15:46</td>
        <td>The WP Directory Kit plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'order_by' parameter in all versions up to, and including, 1.4.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13525">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>590bb0132e4782d0e3f8418399fb89e8</td>
        <td>CVE-2025-13143</td>
-       <td>2025-11-27 06:15:46 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 06:15:46</td>
        <td>The Poll, Survey & Quiz Maker Plugin by Opinion Stage plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 19.12.0. This is due to missing or insufficient nonce validation on the disconnect_account_action function. This makes it possible for unauthenticated attackers to disconnect the site from the Opinion Stage platform integration via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13143">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>69f1f30038377638e58792122ea1a5dc</td>
        <td>CVE-2025-12185</td>
-       <td>2025-11-27 06:15:46 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 06:15:46</td>
        <td>The StaffList plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 3.2.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12185">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>b2d3cfa835c169e8daf0269e69b60a9f</td>
        <td>CVE-2025-12123</td>
-       <td>2025-11-27 06:15:45 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 06:15:45</td>
        <td>The Customer Reviews Collector for WooCommerce plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'email-text' parameter in all versions up to, and including, 4.6.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12123">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>e23c296536e52d5993ee910e462b1842</td>
        <td>CVE-2025-7820</td>
-       <td>2025-11-27 05:16:17 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 05:16:17</td>
        <td>The SKT PayPal for WooCommerce plugin for WordPress is vulnerable to Payment Bypass in all versions up to, and including, 1.4. This is due to the plugin only enforcing client side controls instead of server-side controls when processing payments. This makes it possible for unauthenticated attackers to make confirmed purchases without actually paying for them.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-7820">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>48027174ee6266491036ac994e2a481f</td>
        <td>CVE-2025-3784</td>
-       <td>2025-11-27 05:16:15 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 05:16:15</td>
        <td>Cleartext Storage of Sensitive Information Vulnerability in GX Works2 all versions allows an attacker to disclose credential information stored in plaintext from project files. As a result, the attacker may be able to open project files protected by user authentication using disclosed credential information, and obtain or modify project information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3784">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>22015f4e8f65738bc4a61c2a944e8456</td>
        <td>CVE-2025-13680</td>
-       <td>2025-11-27 05:16:15 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 05:16:15</td>
        <td>The Tiger theme for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 101.2.1. This is due to the plugin allowing a user to update the user role through the $user->set_role() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to elevate their privileges to that of an administrator.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13680">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>21fbb5abc7ceeb4bd89fecb9154f19d1</td>
        <td>CVE-2025-13675</td>
-       <td>2025-11-27 05:16:15 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 05:16:15</td>
        <td>The Tiger theme for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 101.2.1. This is due to the 'paypal-submit.php' file not restricting what user roles a user can register with. This makes it possible for unauthenticated attackers to supply the 'administrator' role during registration and gain administrator access to the site.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13675">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>4d096c2fbeb2d19e98928754a654223d</td>
        <td>CVE-2025-13540</td>
-       <td>2025-11-27 05:16:14 <img src="imgs/new.gif" /></td>
+       <td>2025-11-27 05:16:14</td>
        <td>The Tiare Membership plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.2. This is due to the 'tiare_membership_init_rest_api_register' function not restricting what user roles a user can register with. This makes it possible for unauthenticated attackers to supply the 'administrator' role during registration and gain administrator access to the site.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13540">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69e596f72dc37d279334f21e44a4c11e</td>
-       <td>CVE-2025-13735</td>
-       <td>2025-11-26 07:16:00</td>
-       <td>Out-of-bounds Read vulnerability in ASR1903、ASR3901 in ASR Lapwing_Linux on Linux (nr_fw modules). This vulnerability is associated with program files Code/nr_fw/DLP/src/NrCgi.C. This issue affects Lapwing_Linux: before 2025/11/26.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13735">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1b89bc9a4dbbf3f3c227164759abc937</td>
-       <td>CVE-2025-9558</td>
-       <td>2025-11-26 06:15:46</td>
-       <td>There is a potential OOB Write vulnerability in the gen_prov_start function in pb_adv.c. The full length of the received data is copied into the link.rx.buf receiver buffer without any validation on the data size.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9558">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>37ff1bcabdf12f5e074f08048eb8982e</td>
-       <td>CVE-2025-9557</td>
-       <td>2025-11-26 06:15:46</td>
-       <td>‭An out-of-bound write can lead to an arbitrary code execution. Even on devices with some form of memory protection, this can still lead to‬ ‭a crash and a resultant denial of service.‬</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9557">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>15cae315a623e2fc9e6373b3bb3a7797</td>
-       <td>CVE-2025-59820</td>
-       <td>2025-11-26 06:15:45</td>
-       <td>In KDE Krita before 5.2.13, loading a manipulated TGA file could result in a heap-based buffer overflow in plugins/impex/tga/kis_tga_import.cpp (aka KisTgaImport). Control flow proceeds even when a number of pixels becomes negative.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-59820">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>96f23cff6dc435e585ddcea475ba373f</td>
-       <td>CVE-2025-55174</td>
-       <td>2025-11-26 06:15:44</td>
-       <td>In KDE Skanpage before 25.08.0, an attempt at file overwrite can result in the contents of the new file at the beginning followed by the partial contents of the old file at the end, because of use of QIODevice::ReadWrite instead of QODevice::WriteOnly.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55174">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>828abc4a6c8d9e33d77afae0feffb07c</td>
-       <td>CVE-2025-12061</td>
-       <td>2025-11-26 06:15:44</td>
-       <td>The TAX SERVICE Electronic HDM WordPress plugin before 1.2.1 does not authorization and CSRF checks in an AJAX action, allowing unauthenticated users to import and execute arbitrary SQL statements</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12061">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>04cc813e0a221014a5d1ce396443b5c0</td>
-       <td>CVE-2025-64983</td>
-       <td>2025-11-26 05:16:18</td>
-       <td>Smart Video Doorbell firmware versions prior to 2.01.078 contain an active debug code vulnerability that allows an attacker to connect via Telnet and gain access to the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-64983">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>85d4ae2a5c58e27972e6bafe91c6d326</td>
-       <td>CVE-2025-66235</td>
-       <td>2025-11-26 04:15:57</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66235">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b183728bbeee0b022b29f6c1a38ab0d</td>
-       <td>CVE-2025-66234</td>
-       <td>2025-11-26 04:15:57</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66234">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>03a38cd113686765c8c039e47c61c83f</td>
-       <td>CVE-2025-66233</td>
-       <td>2025-11-26 04:15:57</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66233">详情</a></td>
       </tr>
 
      </tbody>
