@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-12-01 12:56:31 -->
+<!-- RELEASE TIME : 2025-12-02 15:31:02 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3e1814a761a35f34932a735d82562b26</td>
+       <td>CVE-2025-13353</td>
+       <td>2025-12-02 11:15:47 <img src="imgs/new.gif" /></td>
+       <td>In gokey versions <0.2.0, a flaw in the seed decryption logic resulted in passwords incorrectly being derived solely from the initial vector and the AES-GCM authentication tag of the key seed. This issue has been fixed in gokey version 0.2.0. This is a breaking change. The fix has invalidated any passwords/secrets that were derived from the seed file (using the -s option). Even if the input seed file stays the same, version 0.2.0 gokey will generate different secrets. Impact This vulnerability impacts generated keys/secrets using a seed file as an entropy input (using the -s option). Keys/secrets generated just from the master password (without the -s option) are not impacted. The confidentiality of the seed itself is also not impacted (it is not required to regenerate the seed itself). Specific impact includes: * keys/secrets generated from a seed file may have lower entropy: it was expected that the whole seed would be used to generate keys (240 bytes of entropy input), where in vulnerable versions only 28 bytes was used * a malicious entity could have recovered all passwords, generated from a particular seed, having only the seed file in possession without the knowledge of the seed master password Patches The code logic bug has been fixed in gokey version 0.2.0 and above. Due to the deterministic nature of gokey, fixed versions will produce different passwords/secrets using seed files, as all seed entropy will be used now. System secret rotation guidance It is advised for users to regenerate passwords/secrets using the patched version of gokey (0.2.0 and above), and provision/rotate these secrets into respective systems in place of the old secret. A specific rotation procedure is system-dependent, but most common patterns are described below. Systems that do not require the old password/secret for rotation Such systems usually have a "Forgot password" facility or a similar facility allowing users to rotate their password/secrets by sending a unique "magic" link to the user's email or phone. In such cases users are advised to use this facility and input the newly generated password secret, when prompted by the system. Systems that require the old password/secret for rotation Such systems usually have a modal password rotation window usually in the user settings section requiring the user to input the old and the new password sometimes with a confirmation. To generate/recover the old password in such cases users are advised to: * temporarily download gokey version 0.1.3 https://github.com/cloudflare/gokey/releases/tag/v0.1.3 for their respective operating system to recover the old password * use gokey version 0.2.0 or above to generate the new password * populate the system provided password rotation form Systems that allow multiple credentials for the same account to be provisioned Such systems usually require a secret or a cryptographic key as a credential for access, but allow several credentials at the same time. One example is SSH: a particular user may have several authorized public keys configured on the SSH server for access. For such systems users are advised to: * generate a new secret/key/credential using gokey version 0.2.0 or above * provision the new secret/key/credential in addition to the existing credential on the system * verify that the access or required system operation is still possible with the new secret/key/credential * revoke authorization for the existing/old credential from the system Credit This vulnerability was found by Théo Cusnir ( @mister_mime https://hackerone.com/mister_mime ) and responsibly disclosed through Cloudflare's bug bounty program.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13353">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a9efaa6c878ce991ae888d518efac010</td>
+       <td>CVE-2025-13873</td>
+       <td>2025-12-02 10:16:02 <img src="imgs/new.gif" /></td>
+       <td>Stored Cross-Site Scripting (XSS) in the survey-import feature of ObjectPlanet Opinio 7.26 rev12562 on web application allows an attacker to inject arbitrary JavaScript code, which executes in the browsing context of any visitor accessing the compromised survey.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13873">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0c6dbdb56ced0cd52b86ff61e96d0556</td>
+       <td>CVE-2025-13872</td>
+       <td>2025-12-02 10:16:01 <img src="imgs/new.gif" /></td>
+       <td>Blind Server-Side Request Forgery (SSRF) in the survey-import feature of ObjectPlanet Opinio 7.26 rev12562 on Web-based platforms allows an attacker to force the server to perform HTTP GET requests via crafted import requests to an arbitrary destination.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13872">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>da9524fcf1ec8edd7d3bf0616ab3e8ea</td>
+       <td>CVE-2025-11726</td>
+       <td>2025-12-02 09:30:26 <img src="imgs/new.gif" /></td>
+       <td>The Beaver Builder – WordPress Page Builder plugin for WordPress is vulnerable to Missing...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11726">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>353ee63dade1e84cd0164c59f52286f9</td>
+       <td>CVE-2025-13724</td>
+       <td>2025-12-02 09:15:47 <img src="imgs/new.gif" /></td>
+       <td>The VikRentCar Car Rental Management System plugin for WordPress is vulnerable to time-based blind SQL Injection via the 'month' parameter in all versions up to, and including, 1.4.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13724">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e6810808246dad85e8eddd68767839f7</td>
+       <td>CVE-2025-13516</td>
+       <td>2025-12-02 09:15:47 <img src="imgs/new.gif" /></td>
+       <td>The SureMail – SMTP and Email Logs Plugin for WordPress is vulnerable to Unrestricted Upload of File with Dangerous Type in versions up to and including 1.9.0. This is due to the plugin's save_file() function in inc/emails/handler/uploads.php which duplicates all email attachments to a web-accessible directory (wp-content/uploads/suremails/attachments/) without validating file extensions or content types. Files are saved with predictable names derived from MD5 hashes of their content. While the plugin attempts to protect this directory with an Apache .htaccess file to disable PHP execution, this protection is ineffective on nginx, IIS, and Lighttpd servers, or on misconfigured Apache installations. This makes it possible for unauthenticated attackers to achieve Remote Code Execution by uploading malicious PHP files through any public form that emails attachments, calculating the predictable filename, and directly accessing the file to execute arbitrary code granted they are exploiting a site running on an affected web server configuration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13516">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7c2d6c209f6ba8371320f50329dd6209</td>
+       <td>CVE-2025-10543</td>
+       <td>2025-12-02 08:18:16 <img src="imgs/new.gif" /></td>
+       <td>In Eclipse Paho Go MQTT v3.1 library (paho.mqtt.golang) versions <=1.5.0 UTF-8 encoded strings, passed into the library, may be incorrectly encoded if their length exceeds 65535 bytes. This may lead to unexpected content in packets sent to the server (for example, part of an MQTT topic may leak into the message body in a PUBLISH packet). The issue arises because the length of the data passed in was converted from an int64/int32 (depending upon CPU) to an int16 without checks for overflows. The int16 length was then written, followed by the data (e.g. topic). This meant that when the data (e.g. topic) was over 65535 bytes then the amount of data written exceeds what the length field indicates. This could lead to a corrupt packet, or mean that the excess data leaks into another field (e.g. topic leaks into message body).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10543">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fba205129a27418152b101776f146420</td>
+       <td>CVE-2025-13696</td>
+       <td>2025-12-02 08:16:00 <img src="imgs/new.gif" /></td>
+       <td>The Zigaform plugin for WordPress is vulnerable to Sensitive Information Exposure in versions up to, and including, 7.6.5. This is due to the plugin exposing a public AJAX endpoint that retrieves form submission data without performing authorization checks to verify ownership or access rights. This makes it possible for unauthenticated attackers to extract sensitive form submission data including personal information, payment details, and other private data via the rocket_front_payment_seesummary action by enumerating sequential form_r_id values.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13696">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5db43a1da30dcbdad9f4f29b46fd9d41</td>
+       <td>CVE-2025-13007</td>
+       <td>2025-12-02 07:15:48 <img src="imgs/new.gif" /></td>
+       <td>The WP Social Ninja – Embed Social Feeds, Customer Reviews, Chat Widgets plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 3.20.3 due to insufficient input sanitization and output escaping on externally-sourced content. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page, granted they can post malicious content to a connected Google Business Profile or Facebook page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13007">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>206fdfbaf2e8dab3f49148ffefbb34fb</td>
+       <td>CVE-2025-12483</td>
+       <td>2025-12-02 07:15:46 <img src="imgs/new.gif" /></td>
+       <td>The Visualizer: Tables and Charts Manager for WordPress plugin for WordPress is vulnerable to SQL Injection via the 'query' parameter in all versions up to, and including, 3.11.12 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Contributor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Version 3.11.13 raises the minimum user-level for exploitation to administrator. 3.11.14 fully patches the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12483">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e34db35005a594a406a27836fb0026ad</td>
        <td>CVE-2025-8045</td>
        <td>2025-12-01 11:15:48 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>2cdfa604d382b9e0997ce6ff2e28119f</td>
        <td>CVE-2025-13786</td>
-       <td>2025-11-30 09:15:45 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 09:15:45</td>
        <td>A vulnerability was detected in taosir WTCMS up to 01a5f68a3dfc2fdddb44eed967bb2d4f60487665. Impacted is the function fetch of the file /index.php. Performing manipulation of the argument content results in code injection. It is possible to initiate the attack remotely. The exploit is now public and may be used. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13786">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>2fdc32b9f22aa9aaae59e88af853ed0c</td>
        <td>CVE-2025-13785</td>
-       <td>2025-11-30 08:15:45 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 08:15:45</td>
        <td>A security vulnerability has been detected in yungifez Skuul School Management System up to 2.6.5. This issue affects some unknown processing of the file /user/profile of the component Image Handler. Such manipulation leads to information disclosure. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13785">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>de51806a0bbe7eab45b67632e8081d4a</td>
        <td>CVE-2025-13784</td>
-       <td>2025-11-30 07:15:44 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 07:15:44</td>
        <td>A weakness has been identified in yungifez Skuul School Management System up to 2.6.5. This vulnerability affects unknown code of the file /dashboard/schools/1/edit of the component SVG File Handler. This manipulation causes cross site scripting. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be exploited. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13784">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>f63da0b0464ca6bc9b38af29bab29547</td>
        <td>CVE-2025-13783</td>
-       <td>2025-11-30 06:15:45 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 06:15:45</td>
        <td>A security flaw has been discovered in taosir WTCMS up to 01a5f68a3dfc2fdddb44eed967bb2d4f60487665. This affects the function check/uncheck/delete of the file application/Comment/Controller/CommentadminController.class.php of the component CommentadminController. The manipulation of the argument ids results in sql injection. The attack can be executed remotely. The exploit has been released to the public and may be exploited. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13783">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>a07d697942d07d5705deb99f2aa4eba2</td>
        <td>CVE-2025-66433</td>
-       <td>2025-11-30 05:16:12 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 05:16:12</td>
        <td>HTCondor Access Point before 25.3.1 allows an authenticated user to impersonate other users on the local machine by submitting a batch job. This is fixed in 24.12.14, 25.0.3, and 25.3.1. The earliest affected version is 24.7.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66433">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>18e3b70a5ffa688625ef2d4758939672</td>
        <td>CVE-2025-66432</td>
-       <td>2025-11-30 05:16:08 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 05:16:08</td>
        <td>In Oxide control plane 15 through 17 before 17.1, API tokens can be renewed past their expiration date.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66432">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>85d02494756f74309e91a0617772984f</td>
        <td>CVE-2025-13782</td>
-       <td>2025-11-30 04:15:58 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 04:15:58</td>
        <td>A vulnerability was identified in taosir WTCMS up to 01a5f68a3dfc2fdddb44eed967bb2d4f60487665. Affected by this issue is the function delete of the file application/Admin/Controller/SlideController.class.php of the component SlideController. The manipulation of the argument ids leads to sql injection. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13782">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>22deadba6f3f21552d84187bb55e51e8</td>
        <td>CVE-2025-66424</td>
-       <td>2025-11-30 03:15:48 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 03:15:48</td>
        <td>Tryton trytond 6.0 before 7.6.11 does not enforce access rights for data export. This is fixed in 7.6.11, 7.4.21, 7.0.40, and 6.0.70.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66424">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>5012183a7c5feb173fb6fbbd4eb11549</td>
        <td>CVE-2025-66423</td>
-       <td>2025-11-30 03:15:48 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 03:15:48</td>
        <td>Tryton trytond 6.0 before 7.6.11 does not enforce access rights for the route of the HTML editor. This is fixed in 7.6.11, 7.4.21, 7.0.40, and 6.0.70.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66423">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>f56619f50583463e4bfb9c4b505e4099</td>
        <td>CVE-2025-66422</td>
-       <td>2025-11-30 03:15:47 <img src="imgs/new.gif" /></td>
+       <td>2025-11-30 03:15:47</td>
        <td>Tryton trytond before 7.6.11 allows remote attackers to obtain sensitive trace-back (server setup) information. This is fixed in 7.6.11, 7.4.21, 7.0.40, and 6.0.70.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66422">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8cbdd0fd81c9f7da671ebdb699755cf3</td>
-       <td>CVE-2025-6666</td>
-       <td>2025-11-29 09:15:44</td>
-       <td>A vulnerability was determined in motogadget mo.lock Ignition Lock up to 20251125. Affected by this vulnerability is an unknown functionality of the component NFC Handler. Executing manipulation can lead to use of hard-coded cryptographic key . The physical device can be targeted for the attack. A high complexity level is associated with this attack. The exploitation appears to be difficult. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6666">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>782b34c2ceedc7f9b593d502a453a384</td>
-       <td>CVE-2025-66291</td>
-       <td>2025-11-29 04:15:58</td>
-       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the interview attachment retrieval endpoint in the Recruitment module serves files based solely on an authenticated session and user-supplied identifiers, without verifying whether the requester has permission to access the associated interview record. Because the server does not perform any recruitment-level authorization checks, an ESS-level user with no access to recruitment workflows can directly request interview attachment URLs and receive the corresponding files. This exposes confidential interview documents—including candidate CVs, evaluations, and supporting files—to unauthorized users. The issue arises from relying on predictable object identifiers and session presence rather than validating the user’s association with the relevant recruitment process. This issue has been patched in version 5.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66291">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0a6bcb21ac35355ba69a9456432b14cf</td>
-       <td>CVE-2025-66290</td>
-       <td>2025-11-29 04:15:58</td>
-       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the application’s recruitment attachment retrieval endpoint does not enforce the required authorization checks before serving candidate files. Even users restricted to ESS-level access, who have no permission to view the Recruitment module, can directly access candidate attachment URLs. When an authenticated request is made to the attachment endpoint, the system validates the session but does not confirm that the requesting user has the necessary recruitment permissions. As a result, any authenticated user can download CVs and other uploaded documents for arbitrary candidates by issuing direct requests to the attachment endpoint, leading to unauthorized exposure of sensitive applicant data. This issue has been patched in version 5.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66290">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5d933bc2236b44d1c7dc6362715d036</td>
-       <td>CVE-2025-66289</td>
-       <td>2025-11-29 04:15:57</td>
-       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the application does not invalidate existing sessions when a user is disabled or when a password change occurs, allowing active session cookies to remain valid indefinitely. As a result, a disabled user, or an attacker using a compromised account, can continue to access protected pages and perform operations as long as a prior session remains active. Because the server performs no session revocation or session-store cleanup during these critical state changes, disabling an account or updating credentials has no effect on already-established sessions. This makes administrative disable actions ineffective and allows unauthorized users to retain full access even after an account is closed or a password is reset, exposing the system to prolonged unauthorized use and significantly increasing the impact of account takeover scenarios. This issue has been patched in version 5.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66289">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>88e9259c5103a2677a12654138de8e1c</td>
-       <td>CVE-2025-66225</td>
-       <td>2025-11-29 04:15:57</td>
-       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the password reset workflow does not enforce that the username submitted in the final reset request matches the account for which the reset process was originally initiated. After obtaining a valid reset link for any account they can receive email for, an attacker can alter the username parameter in the final reset request to target a different user. Because the system accepts the supplied username without verification, the attacker can set a new password for any chosen account, including privileged accounts, resulting in full account takeover. This issue has been patched in version 5.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66225">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a9063e3a959c0662ae49c60a5039ca29</td>
-       <td>CVE-2025-66224</td>
-       <td>2025-11-29 04:15:57</td>
-       <td>OrangeHRM is a comprehensive human resource management (HRM) system. From version 5.0 to 5.7, the application contains an input-neutralization flaw in its mail configuration and delivery workflow that allows user-controlled values to flow directly into the system’s sendmail command. Because these values are not sanitized or constrained before being incorporated into the command execution path, certain sendmail behaviors can be unintentionally invoked during email processing. This makes it possible for the application to write files on the server as part of the mail-handling routine, and in deployments where those files end up in web-accessible locations, the behavior can be leveraged to achieve execution of attacker-controlled content. The issue stems entirely from constructing OS-level command strings using unsanitized input within the mail-sending logic. This issue has been patched in version 5.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66224">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>62c2bf010986aea761ef67b866e698b0</td>
-       <td>CVE-2025-65892</td>
-       <td>2025-11-29 04:15:57</td>
-       <td>Reflected Cross-Site Scripting (rXSS) in krpano before version 1.23.2 allows a remote unauthenticated attacker to execute arbitrary JavaScript in the victim's browser via a crafted URL to the passQueryParameters function with the xml parameter enabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65892">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>20658bf893b3f1f0c3358fbef4402e9c</td>
-       <td>CVE-2025-65540</td>
-       <td>2025-11-29 04:15:56</td>
-       <td>Multiple Cross-Site Scripting (XSS) vulnerabilities exist in xmall v1.1 due to improper handling of user-supplied data. User input fields such as username and description are directly rendered into HTML without proper sanitization or encoding, allowing attackers to inject and execute malicious scripts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65540">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>181cedd6d3485fef126fdfcdca3b6c2f</td>
-       <td>CVE-2025-66223</td>
-       <td>2025-11-29 03:16:00</td>
-       <td>OpenObserve is a cloud-native observability platform. Prior to version 0.16.0, organization invitation tokens do not expire once issued, remain valid even after the invited user is removed from the organization, and allow multiple invitations to the same email with different roles where all issued links remain valid simultaneously. This results in broken access control where a removed or demoted user can regain access or escalate privileges. This issue has been patched in version 0.16.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66223">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>74bfbc63246d27061523998b6dce0894</td>
-       <td>CVE-2025-66221</td>
-       <td>2025-11-29 03:16:00</td>
-       <td>Werkzeug is a comprehensive WSGI web application library. Prior to version 3.1.4, Werkzeug's safe_join function allows path segments with Windows device names. On Windows, there are special device names such as CON, AUX, etc that are implicitly present and readable in every directory. send_from_directory uses safe_join to safely serve files at user-specified paths under a directory. If the application is running on Windows, and the requested path ends with a special device name, the file will be opened successfully, but reading will hang indefinitely. This issue has been patched in version 3.1.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66221">详情</a></td>
       </tr>
 
      </tbody>
