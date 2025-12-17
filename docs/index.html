@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-12-16 02:07:11 -->
+<!-- RELEASE TIME : 2025-12-17 02:02:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2b03a0f21f803236f4470230e86f8c35</td>
+       <td>CVE-2025-8872</td>
+       <td>2025-12-16 20:15:49 <img src="imgs/new.gif" /></td>
+       <td>On affected platforms running Arista EOS with OSPFv3 configured, a specially crafted packet can cause the OSFPv3 process to have high CPU utilization which may result in the OSFPv3 process being restarted. This may cause disruption in the OSFPv3 routes on the switch. This issue was discovered internally by Arista and is not aware of any malicious uses of this issue in customer networks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8872">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>499f1ae2c892955315462a270ac0cf9e</td>
+       <td>CVE-2025-65834</td>
+       <td>2025-12-16 20:15:48 <img src="imgs/new.gif" /></td>
+       <td>Meltytech Shotcut 25.10.31 is vulnerable to Buffer Overflow. A memory access violation occurs when processing MLT project files with manipulated width and height parameters. By setting these values to extremely large numbers, the application attempts to allocate excessive memory during image processing, triggering a buffer overflow in the mlt_image_fill_white function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65834">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4e9e4e6c02971d41183390b8f980a736</td>
+       <td>CVE-2025-13532</td>
+       <td>2025-12-16 20:15:47 <img src="imgs/new.gif" /></td>
+       <td>Insecure defaults in the Server Agent component of Fortra's Core Privileged Access Manager (BoKS) can result in the selection of weak password hash algorithms. This issue affects BoKS Server Agent 9.0 instances that support yescrypt and are running in a BoKS 8.1 domain.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13532">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dd99b659139ac7daa03a434be78e2de8</td>
+       <td>CVE-2025-68270</td>
+       <td>2025-12-16 19:16:00 <img src="imgs/new.gif" /></td>
+       <td>The Open edX Platform is a learning management platform. Prior to commit 05d0d0936daf82c476617257aa6c35f0cd4ca060, CourseLimitedStaffRole users are able to access and edit courses in studio if they are granted the role on an org rather than on a course, and CourseLimitedStaffRole users are able to list courses they have the role on in studio even though they are not meant to have any access on the studio side for the course. Commit 05d0d0936daf82c476617257aa6c35f0cd4ca060 fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68270">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>879c9e265c9c3babdf29e0f3a4009aff</td>
+       <td>CVE-2025-68156</td>
+       <td>2025-12-16 19:16:00 <img src="imgs/new.gif" /></td>
+       <td>Expr is an expression language and expression evaluation for Go. Prior to version 1.17.7, several builtin functions in Expr, including `flatten`, `min`, `max`, `mean`, and `median`, perform recursive traversal over user-provided data structures without enforcing a maximum recursion depth. If the evaluation environment contains deeply nested or cyclic data structures, these functions may recurse indefinitely until exceed the Go runtime stack limit. This results in a stack overflow panic, causing the host application to crash. While exploitability depends on whether an attacker can influence or inject cyclic or pathologically deep data into the evaluation environment, this behavior represents a denial-of-service (DoS) risk and affects overall library robustness. Instead of returning a recoverable evaluation error, the process may terminate unexpectedly. In affected versions, evaluation of expressions that invoke certain builtin functions on untrusted or insufficiently validated data structures can lead to a process-level crash due to stack exhaustion. This issue is most relevant in scenarios where Expr is used to evaluate expressions against externally supplied or dynamically constructed environments; cyclic references (directly or indirectly) can be introduced into arrays, maps, or structs; and there are no application-level safeguards preventing deeply nested input data. In typical use cases with controlled, acyclic data, the issue may not manifest. However, when present, the resulting panic can be used to reliably crash the application, constituting a denial of service. The issue has been fixed in the v1.17.7 versions of Expr. The patch introduces a maximum recursion depth limit for affected builtin functions. When this limit is exceeded, evaluation aborts gracefully and returns a descriptive error instead of panicking. Additionally, the maximum depth can be customized by users via `builtin.MaxDepth`, allowing applications with legitimate deep structures to raise the limit in a controlled manner. Users are strongly encouraged to upgrade to the patched release, which includes both the recursion guard and comprehensive test coverage to prevent regressions. For users who cannot immediately upgrade, some mitigations are recommended. Ensure that evaluation environments cannot contain cyclic references, validate or sanitize externally supplied data structures before passing them to Expr, and/or wrap expression evaluation with panic recovery to prevent a full process crash (as a last-resort defensive measure). These workarounds reduce risk but do not fully eliminate the issue without the patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68156">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cdea3cffe08f97ff42ccd455783bd39b</td>
+       <td>CVE-2025-68155</td>
+       <td>2025-12-16 19:16:00 <img src="imgs/new.gif" /></td>
+       <td>@vitejs/plugin-rs provides React Server Components (RSC) support for Vite. Prior to version 0.5.8, the `/__vite_rsc_findSourceMapURL` endpoint in `@vitejs/plugin-rsc` allows unauthenticated arbitrary file read during development mode. An attacker can read any file accessible to the Node.js process by sending a crafted HTTP request with a `file://` URL in the `filename` query parameter. Version 0.5.8 fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68155">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>28bb03fd5cad7b0d98a74930894a19d7</td>
+       <td>CVE-2025-68154</td>
+       <td>2025-12-16 19:16:00 <img src="imgs/new.gif" /></td>
+       <td>systeminformation is a System and OS information library for node.js. In versions prior to 5.27.14, the `fsSize()` function in systeminformation is vulnerable to OS command injection on Windows systems. The optional `drive` parameter is directly concatenated into a PowerShell command without sanitization, allowing arbitrary command execution when user-controlled input reaches this function. The actual exploitability depends on how applications use this function. If an application does not pass user-controlled input to `fsSize()`, it is not vulnerable. Version 5.27.14 contains a patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68154">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6233c70b771552e0c86c01fc641bbb8d</td>
+       <td>CVE-2025-68150</td>
+       <td>2025-12-16 19:16:00 <img src="imgs/new.gif" /></td>
+       <td>Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to versions 8.6.2 and 9.1.1-alpha.1, the Instagram authentication adapter allows clients to specify a custom API URL via the `apiURL` parameter in `authData`. This enables SSRF attacks and possibly authentication bypass if malicious endpoints return fake responses to validate unauthorized users. This is fixed in versions 8.6.2 and 9.1.1-alpha.1 by hardcoding the Instagram Graph API URL `https://graph.instagram.com` and ignoring client-provided `apiURL` values. No known workarounds are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68150">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>216cdfb529e10e0582abcd5f07c8238e</td>
+       <td>CVE-2025-68146</td>
+       <td>2025-12-16 19:15:59 <img src="imgs/new.gif" /></td>
+       <td>filelock is a platform-independent file lock for Python. In versions prior to 3.20.1, a Time-of-Check-Time-of-Use (TOCTOU) race condition allows local attackers to corrupt or truncate arbitrary user files through symlink attacks. The vulnerability exists in both Unix and Windows lock file creation where filelock checks if a file exists before opening it with O_TRUNC. An attacker can create a symlink pointing to a victim file in the time gap between the check and open, causing os.open() to follow the symlink and truncate the target file. All users of filelock on Unix, Linux, macOS, and Windows systems are impacted. The vulnerability cascades to dependent libraries. The attack requires local filesystem access and ability to create symlinks (standard user permissions on Unix; Developer Mode on Windows 10+). Exploitation succeeds within 1-3 attempts when lock file paths are predictable. The issue is fixed in version 3.20.1. If immediate upgrade is not possible, use SoftFileLock instead of UnixFileLock/WindowsFileLock (note: different locking semantics, may not be suitable for all use cases); ensure lock file directories have restrictive permissions (chmod 0700) to prevent untrusted users from creating symlinks; and/or monitor lock file directories for suspicious symlinks before running trusted applications. These workarounds provide only partial mitigation. The race condition remains exploitable. Upgrading to version 3.20.1 is strongly recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68146">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6aefe88e682df5a68bc5614f5701cc6a</td>
+       <td>CVE-2025-65593</td>
+       <td>2025-12-16 19:15:59 <img src="imgs/new.gif" /></td>
+       <td>nopCommerce 4.90.0 is vulnerable to Cross Site Request Forgery (CSRF) via the Schedule Tasks functionality.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65593">详情</a></td>
+      </tr>
+
+      <tr>
        <td>229be00841ed2b2ddce584dfd5ceeb36</td>
        <td>CVE-2025-14722</td>
-       <td>2025-12-15 20:32:06 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 20:32:06</td>
        <td>A vulnerability was determined in vion707 DMadmin up to 3403cafdb42537a648c30bf8cbc8148ec60437d1. This impacts the function Add of the file Admin/Controller/AddonsController.class.php of the component Backend. Executing manipulation can lead to cross site scripting. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14722">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>37fe5105d96581ee9959fc7ab916a58f</td>
        <td>CVE-2023-53887</td>
-       <td>2025-12-15 20:28:22 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 20:28:22</td>
        <td>Zomplog 3.9 contains a cross-site scripting vulnerability that allows authenticated users to inject malicious scripts when creating new pages. Attackers can craft malicious image source and onerror attributes to execute arbitrary JavaScript code in victim's browser.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-53887">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>71fcaa419ab668804723a77b7514b422</td>
        <td>CVE-2023-53886</td>
-       <td>2025-12-15 20:28:21 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 20:28:21</td>
        <td>Xlight FTP Server 3.9.3.6 contains a stack buffer overflow vulnerability in the 'Execute Program' configuration that allows attackers to crash the application. Attackers can trigger the vulnerability by inserting 294 characters into the program execution configuration, causing a denial of service condition.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-53886">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>84279ac02c4364171d38329a79e41e08</td>
        <td>CVE-2023-53880</td>
-       <td>2025-12-15 20:28:18 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 20:28:18</td>
        <td>Lucee 5.4.2.17 contains a reflected cross-site scripting vulnerability that allows authenticated attackers to inject malicious scripts through administrative interface parameters. Attackers can craft specific payloads targeting admin pages like server.cfm and web.cfm to execute arbitrary JavaScript in victim's browser sessions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-53880">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>c2997c01007de0d362f7e694abcad4d0</td>
        <td>CVE-2023-53873</td>
-       <td>2025-12-15 20:28:15 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 20:28:15</td>
        <td>SyncBreeze 15.2.24 contains a denial of service vulnerability in the login authentication mechanism that allows attackers to crash the service. Attackers can send an oversized password parameter with repeated 'password=' values to overwhelm the login endpoint and potentially disrupt service availability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-53873">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>2a0958f5514ae88e2634e2358bb3bd6c</td>
        <td>CVE-2023-53868</td>
-       <td>2025-12-15 20:22:36 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 20:22:36</td>
        <td>Coppermine Gallery 1.6.25 contains a remote code execution vulnerability that allows authenticated attackers to upload malicious PHP files through the plugin manager. Attackers can upload a zipped PHP file with system commands to the plugin directory and execute arbitrary code by accessing the uploaded plugin script.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-53868">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>5dd574b992b9002fed2af20b45f4dae8</td>
        <td>CVE-2025-55703</td>
-       <td>2025-12-15 20:15:51 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 20:15:51</td>
        <td>An error-based SQL injection vulnerability exists in the Sunbird Power IQ 9.2.0 API. The vulnerability is due to an outdated API endpoint that applied arrays without proper input validation. This can allow attackers to manipulate SQL queries. This has been addressed in Power IQ version 9.2.1, where the API call code was updated to ensure safe handling of input values.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55703">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>4a62b7eab9aae8791b924af51ccff0c8</td>
        <td>CVE-2025-66439</td>
-       <td>2025-12-15 18:15:48 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 18:15:48</td>
        <td>An issue was discovered in Frappe ERPNext through 15.89.0. Function get_outstanding_reference_documents() at erpnext.accounts.doctype.payment_entry.payment_entry.py is vulnerable to SQL Injection. It allows an attacker to extract arbitrary data from the database by injecting SQL payloads via the from_posting_date parameter, which is directly interpolated into the query without proper sanitization or parameter binding.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66439">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>5fc1a5491de7386c915863f76834c15b</td>
        <td>CVE-2025-66438</td>
-       <td>2025-12-15 18:15:48 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 18:15:48</td>
        <td>A Server-Side Template Injection (SSTI) vulnerability exists in the Frappe ERPNext through 15.89.0 Print Format rendering mechanism. Specifically, the API frappe.www.printview.get_html_and_style() triggers the rendering of the html field inside a Print Format document using frappe.render_template(template, doc) via the get_rendered_template() call chain. Although ERPNext wraps Jinja2 in a SandboxedEnvironment, it exposes sensitive functions such as frappe.db.sql through get_safe_globals(). An authenticated attacker with permission to create or modify a Print Format can inject arbitrary Jinja expressions into the html field. Once the malicious Print Format is saved, the attacker can call get_html_and_style() with a target document (e.g., Supplier or Sales Invoice) to trigger the render process. This leads to information disclosure from the database, such as database version, schema details, or sensitive values, depending on the injected payload. Exploitation flow: Create a Print Format with SSTI payload in the html field; call the get_html_and_style() API; triggers frappe.render_template(template, doc) inside get_rendered_template(); leaks database information via frappe.db.sql or other exposed globals.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66438">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>b1c5710f78e7afc5717cb045eb8d0a1d</td>
        <td>CVE-2025-66436</td>
-       <td>2025-12-15 18:15:48 <img src="imgs/new.gif" /></td>
+       <td>2025-12-15 18:15:48</td>
        <td>An SSTI (Server-Side Template Injection) vulnerability exists in the get_terms_and_conditions method of Frappe ERPNext through 15.89.0. The function renders attacker-controlled Jinja2 templates (terms) using frappe.render_template() with a user-supplied context (doc). Although Frappe uses a custom SandboxedEnvironment, several dangerous globals such as frappe.db.sql are still available in the execution context via get_safe_globals(). An authenticated attacker with access to create or modify a Terms and Conditions document can inject arbitrary Jinja expressions into the terms field, resulting in server-side code execution within a restricted but still unsafe context. This vulnerability can be used to leak database information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66436">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-12-14 15:15:46</td>
        <td>A vulnerability was identified in Campcodes Supplier Management System 1.0. This issue affects some unknown processing of the file /admin/view_unit.php. The manipulation of the argument chkId[] leads to sql injection. Remote exploitation of the attack is possible. The exploit is publicly available and might be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14664">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>008239559c24ae6dc16c793ac2cba1ac</td>
-       <td>CVE-2025-14637</td>
-       <td>2025-12-13 19:32:06</td>
-       <td>A weakness has been identified in itsourcecode Online Pet Shop Management System 1.0. This vulnerability affects unknown code of the file /pet1/addcnp.php. This manipulation of the argument cnpname causes sql injection. The attack can be initiated remotely. The exploit has been made available to the public and could be exploited.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14637">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db0dd7526dccd24bb344fb7b537d5a46</td>
-       <td>CVE-2025-14636</td>
-       <td>2025-12-13 19:15:38</td>
-       <td>A security flaw has been discovered in Tenda AX9 22.03.01.46. This affects the function image_check of the component httpd. The manipulation results in use of weak hash. It is possible to launch the attack remotely. A high complexity level is associated with this attack. It is indicated that the exploitability is difficult. The exploit has been released to the public and may be exploited.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14636">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c84f0864173fdd84bc14abcfa8228b66</td>
-       <td>CVE-2025-14623</td>
-       <td>2025-12-13 18:15:37</td>
-       <td>A weakness has been identified in code-projects Student File Management System 1.0. This issue affects some unknown processing of the file /admin/update_student.php. This manipulation of the argument stud_id causes sql injection. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be exploited.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14623">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a154b4c641dc68edaf5ae51c5ecf1cd</td>
-       <td>CVE-2025-14622</td>
-       <td>2025-12-13 18:15:37</td>
-       <td>A security flaw has been discovered in code-projects Student File Management System 1.0. This vulnerability affects unknown code of the file /admin/save_user.php. The manipulation of the argument firstname results in sql injection. The attack can be executed remotely. The exploit has been released to the public and may be exploited.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14622">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ba9bad647a8351476daef2a76dd531f9</td>
-       <td>CVE-2025-14621</td>
-       <td>2025-12-13 17:15:35</td>
-       <td>A vulnerability was identified in code-projects Student File Management System 1.0. This affects an unknown part of the file /admin/update_user.php. The manipulation of the argument user_id leads to sql injection. Remote exploitation of the attack is possible. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14621">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>32a0da700212790c007d08eba81f9ed1</td>
-       <td>CVE-2025-9873</td>
-       <td>2025-12-13 16:16:57</td>
-       <td>The a3 Lazy Load plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 2.7.5 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9873">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>941561dc5d725a50b69de6dfc1975bfb</td>
-       <td>CVE-2025-9856</td>
-       <td>2025-12-13 16:16:57</td>
-       <td>The Popup Builder – Create highly converting, mobile friendly marketing popups. plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'sg_popup' shortcode in all versions up to, and including, 4.4.1 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9856">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>df3242d99d9bac02cdec4d8b01233bd1</td>
-       <td>CVE-2025-9488</td>
-       <td>2025-12-13 16:16:57</td>
-       <td>The Redux Framework plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘data’ parameter in all versions up to, and including, 4.5.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9488">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d2a559c99f83683236dfbdef90835c2</td>
-       <td>CVE-2025-9218</td>
-       <td>2025-12-13 16:16:57</td>
-       <td>The rtMedia for WordPress, BuddyPress and bbPress plugin for WordPress is vulnerable to to Information Disclosure due to missing authorization in the handle_rest_pre_dispatch() function when the Godam plugin is active, in versions 4.7.0 to 4.7.3. This makes it possible for unauthenticated attackers to retrieve media items associated with draft or private posts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9218">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>97188149a35c46247d62c7ea3e81a38f</td>
-       <td>CVE-2025-9207</td>
-       <td>2025-12-13 16:16:56</td>
-       <td>The TI WooCommerce Wishlist plugin for WordPress is vulnerable to HTML Injection in all versions up to, and including, 2.10.0. This is due to the plugin accepting hidden fields and not limiting the values or data that can input and is later output. This makes it possible for unauthenticated attackers to inject arbitrary HTML into wishlist items.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9207">详情</a></td>
       </tr>
 
      </tbody>
