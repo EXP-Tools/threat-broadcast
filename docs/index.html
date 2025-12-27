@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2025-12-26 09:29:14 -->
+<!-- RELEASE TIME : 2025-12-27 09:26:49 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8f84683f6e862a8a2079aa62f6591c79</td>
+       <td>CVE-2025-68952</td>
+       <td>2025-12-27 01:15:42 <img src="imgs/new.gif" /></td>
+       <td>Eigent is a multi-agent Workforce. In version 0.0.60, a 1-click Remote Code Execution (RCE) vulnerability has been identified in Eigent. This vulnerability allows an attacker to execute arbitrary code on the victim's machine or server through a specific interaction (1-click). This issue has been patched in version 0.0.61.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68952">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>69eed267470577b3ed5f8b57c0184b3c</td>
+       <td>CVE-2025-68948</td>
+       <td>2025-12-27 01:15:42 <img src="imgs/new.gif" /></td>
+       <td>SiYuan is self-hosted, open source personal knowledge management software. In versions 3.5.1 and prior, the SiYuan Note application utilizes a hardcoded cryptographic secret for its session store. This unsafe practice renders the session encryption ineffective. Since the sensitive AccessAuthCode is stored within the session cookie, an attacker who intercepts or obtains a user's encrypted session cookie (e.g., via session hijacking) can locally decrypt it using the public key. Once decrypted, the attacker can retrieve the AccessAuthCode in plain text and use it to authenticate or take over the session.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68948">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>85122081b9b3d9e1e686f669e88c8454</td>
+       <td>CVE-2025-68927</td>
+       <td>2025-12-27 01:15:42 <img src="imgs/new.gif" /></td>
+       <td>Libredesk is a self-hosted customer support desk. Prior to version 0.8.6-beta, LibreDesk is vulnerable to stored HTML injection in the contact notes feature. When adding notes via POST /api/v1/contacts/{id}/notes, the backend automatically wraps user input in <p> tags. However, by intercepting the request and removing the <p> tag, an attacker can inject arbitrary HTML elements such as forms and images, which are then stored and rendered without proper sanitization. This can lead to phishing, CSRF-style forced actions, and UI redress attacks. This issue has been patched in version 0.8.6-beta.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68927">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>95de7674319e87eafa1459ea47100294</td>
+       <td>CVE-2025-59946</td>
+       <td>2025-12-27 01:15:41 <img src="imgs/new.gif" /></td>
+       <td>NanoMQ MQTT Broker (NanoMQ) is an Edge Messaging Platform. Prior to version 0.24.2, there is a classical data racing issue about sub info list which could result in heap use after free crash. This issue has been patched in version 0.24.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-59946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7ce6292e663a0fedfd818027ac1cdeb2</td>
+       <td>CVE-2025-68932</td>
+       <td>2025-12-27 00:15:42 <img src="imgs/new.gif" /></td>
+       <td>FreshRSS is a free, self-hostable RSS aggregator. Prior to version 1.28.0, FreshRSS uses cryptographically weak random number generators (mt_rand() and uniqid()) to generate remember-me authentication tokens and challenge-response nonces. This allows attackers to predict valid session tokens, leading to account takeover through persistent session hijacking. The remember-me tokens provide permanent authentication and are the sole credential for "keep me logged in" functionality. This issue has been patched in version 1.28.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68932">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c3e121da0da061292a5229eeb5bcd08f</td>
+       <td>CVE-2025-68474</td>
+       <td>2025-12-27 00:15:42 <img src="imgs/new.gif" /></td>
+       <td>ESF-IDF is the Espressif Internet of Things (IOT) Development Framework. In versions 5.5.1, 5.4.3, 5.3.4, 5.2.6, 5.1.6, and earlier, in the avrc_vendor_msg() function of the ESP-IDF BlueDroid AVRCP stack, the allocated buffer size was validated using AVRC_MIN_CMD_LEN (20 bytes). However, the actual fixed header data written before the vendor payload exceeds this value. This totals 29 bytes written before p_msg->p_vendor_data is copied. Using the old AVRC_MIN_CMD_LEN could allow an out-of-bounds write if vendor_len approaches the buffer limit. For commands where vendor_len is large, the original buffer allocation may be insufficient, causing writes beyond the allocated memory. This can lead to memory corruption, crashes, or other undefined behavior. The overflow could be larger when assertions are disabled.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68474">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b74e548da5ef9ca62dbfa0525dd05457</td>
+       <td>CVE-2025-68473</td>
+       <td>2025-12-27 00:15:42 <img src="imgs/new.gif" /></td>
+       <td>ESF-IDF is the Espressif Internet of Things (IOT) Development Framework. In versions 5.5.1, 5.4.3, 5.3.4, 5.2.6, 5.1.6, and earlier, in the ESP-IDF Bluetooth host stack (BlueDroid), the function bta_dm_sdp_result() used a fixed-size array uuid_list[32][MAX_UUID_SIZE] to store discovered service UUIDs during the SDP (Service Discovery Protocol) process. On modern Bluetooth devices, it is possible for the number of available services to exceed this fixed limit (32). In such cases, if more than 32 services are discovered, subsequent writes to uuid_list could exceed the bounds of the array, resulting in a potential out-of-bounds write condition.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68473">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9ad3204dbd212d2924b62dd694ac8149</td>
+       <td>CVE-2025-68148</td>
+       <td>2025-12-27 00:15:42 <img src="imgs/new.gif" /></td>
+       <td>FreshRSS is a free, self-hostable RSS aggregator. From version 1.27.0 to before 1.28.0, An attacker could globally deny access to feeds via proxy modifying to 429 Retry-After for a large list of feeds on given instance, making it unusable for majority of users. This issue has been patched in version 1.28.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68148">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7d9efa8c98f85f3752d9a884f32fb5d3</td>
+       <td>CVE-2025-66203</td>
+       <td>2025-12-27 00:15:41 <img src="imgs/new.gif" /></td>
+       <td>StreamVault is a video download integration solution. Prior to version 251126, a Remote Code Execution (RCE) vulnerability exists in the stream-vault application (SpiritApplication). The application allows administrators to configure yt-dlp arguments via the /admin/api/saveConfig endpoint without sufficient validation. These arguments are stored globally and subsequently used in YtDlpUtil.java when constructing the command line to execute yt-dlp. This issue has been patched in version 251126.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66203">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a07fbcbb804648ab817a37ab7c5f8423</td>
+       <td>CVE-2025-68697</td>
+       <td>2025-12-26 22:15:52 <img src="imgs/new.gif" /></td>
+       <td>n8n is an open source workflow automation platform. Prior to version 2.0.0, in self-hosted n8n instances where the Code node runs in legacy (non-task-runner) JavaScript execution mode, authenticated users with workflow editing access can invoke internal helper functions from within the Code node. This allows a workflow editor to perform actions on the n8n host with the same privileges as the n8n process, including: reading files from the host filesystem (subject to any file-access restrictions configured on the instance and OS/container permissions), and writing files to the host filesystem (subject to the same restrictions). This issue has been patched in version 2.0.0. Workarounds for this issue involve limiting file operations by setting N8N_RESTRICT_FILE_ACCESS_TO to a dedicated directory (e.g., ~/.n8n-files) and ensure it contains no sensitive data, keeping N8N_BLOCK_FILE_ACCESS_TO_N8N_FILES=true (default) to block access to .n8n and user-defined config files, and disabling high-risk nodes (including the Code node) using NODES_EXCLUDE if workflow editors are not fully trusted.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68697">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bb9f65daa7d99e49aa0366586a9df702</td>
        <td>CVE-2025-15099</td>
        <td>2025-12-26 04:02:07 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>6c50580da9a8b8314e843281014c8172</td>
        <td>CVE-2025-15077</td>
-       <td>2025-12-25 04:02:08 <img src="imgs/new.gif" /></td>
+       <td>2025-12-25 04:02:08</td>
        <td>A security vulnerability has been detected in itsourcecode Student Management System 1.0. The affected element is an unknown function of the file /form137.php. The manipulation of the argument ID leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15077">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>77bfa9fe8d628d3196b7375961d6275d</td>
        <td>CVE-2025-15076</td>
-       <td>2025-12-25 03:32:06 <img src="imgs/new.gif" /></td>
+       <td>2025-12-25 03:32:06</td>
        <td>A weakness has been identified in Tenda CH22 1.0.0.1. Impacted is an unknown function of the file /public/. Executing manipulation can lead to path traversal. The attack can be launched remotely. The exploit has been made available to the public and could be exploited.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15076">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>07dec97914e801a59707ae077d56da8d</td>
        <td>CVE-2025-15075</td>
-       <td>2025-12-25 03:15:56 <img src="imgs/new.gif" /></td>
+       <td>2025-12-25 03:15:56</td>
        <td>A security flaw has been discovered in itsourcecode Student Management System 1.0. This issue affects some unknown processing of the file /student_p.php. Performing manipulation of the argument ID results in sql injection. The attack can be initiated remotely. The exploit has been released to the public and may be exploited.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15075">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>eb7bf71f449829048d82ea03b543768a</td>
        <td>CVE-2025-15074</td>
-       <td>2025-12-25 03:15:55 <img src="imgs/new.gif" /></td>
+       <td>2025-12-25 03:15:55</td>
        <td>A vulnerability was identified in itsourcecode Online Frozen Foods Ordering System 1.0. This vulnerability affects unknown code of the file /customer_details.php. Such manipulation leads to sql injection. It is possible to launch the attack remotely. The exploit is publicly available and might be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15074">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>d48dd4c994c1698f3f00cada96d618e6</td>
        <td>CVE-2025-68922</td>
-       <td>2025-12-25 00:16:03 <img src="imgs/new.gif" /></td>
+       <td>2025-12-25 00:16:03</td>
        <td>OpenOps before 0.6.11 allows remote code execution in the Terraform block.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68922">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2025-12-24 21:16:04</td>
        <td>ONLYOFFICE Docs before 9.2.1 allows XSS in the textarea of the comment editing form. This is related to DocumentServer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68917">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>87aa06bf7112483869e0e3f1519e9c2f</td>
-       <td>CVE-2025-15053</td>
-       <td>2025-12-24 02:15:52</td>
-       <td>A flaw has been found in code-projects Student Information System 1.0. This issue affects some unknown processing of the file /searchresults.php. Executing manipulation of the argument searchbox can lead to sql injection. The attack may be performed from remote. The exploit has been published and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15053">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6bc7a2dfe7a4dc91124c04da7d2e6b8d</td>
-       <td>CVE-2025-15052</td>
-       <td>2025-12-24 02:15:52</td>
-       <td>A vulnerability was detected in code-projects Student Information System 1.0. This vulnerability affects unknown code of the file /profile.php. Performing manipulation of the argument firstname/lastname results in cross site scripting. The attack is possible to be carried out remotely. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15052">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3b2df1f414355f39ea096e98a8bddb03</td>
-       <td>CVE-2025-15050</td>
-       <td>2025-12-24 01:16:14</td>
-       <td>A security vulnerability has been detected in code-projects Student File Management System 1.0. This affects an unknown part of the file /save_file.php. Such manipulation of the argument File leads to unrestricted upload. The attack can be executed remotely. The exploit has been disclosed publicly and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15050">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5a37d2ae8282d26b2f0e7e27a1e0ba1</td>
-       <td>CVE-2025-68696</td>
-       <td>2025-12-23 23:15:45</td>
-       <td>httparty is an API tool. In versions 0.23.2 and prior, httparty is vulnerable to SSRF. This issue can pose a risk of leaking API keys, and it can also allow third parties to issue requests to internal servers. This issue has been patched via commit 0529bcd.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68696">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d206ba38cd403c3c119a19b55e5ddf1f</td>
-       <td>CVE-2025-68669</td>
-       <td>2025-12-23 23:15:45</td>
-       <td>5ire is a cross-platform desktop artificial intelligence assistant and model context protocol client. In versions 0.15.2 and prior, an RCE vulnerability exists in useMarkdown.ts, where the markdown-it-mermaid plugin is initialized with securityLevel: 'loose'. This configuration explicitly permits the rendering of HTML tags within Mermaid diagram nodes. This issue has not been patched at time of publication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68669">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa7bd27f661daf7e6c2b5c9c7aecae95</td>
-       <td>CVE-2025-68667</td>
-       <td>2025-12-23 23:15:45</td>
-       <td>continuwuity is a Matrix homeserver written in Rust. Prior to version 0.5.0, this vulnerability allows a remote, unauthenticated attacker to force the target server to cryptographically sign arbitrary membership events. The flaw exists because the server fails to validate the origin of a signing request, provided the event's state_key is a valid user ID belonging to the target server. This issue has been patched in version 0.5.0. A workaround for this issue involves blocking access to the PUT /_matrix/federation/v2/invite/{roomId}/{eventId} endpoint using the reverse proxy.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68667">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>39d399e3fa479ac5758865cbd95e88db</td>
-       <td>CVE-2025-68665</td>
-       <td>2025-12-23 23:15:45</td>
-       <td>LangChain is a framework for building LLM-powered applications. Prior to @langchain/core versions 0.3.80 and 1.1.8, and prior to langchain versions 0.3.37 and 1.2.3, a serialization injection vulnerability exists in LangChain JS's toJSON() method (and subsequently when string-ifying objects using JSON.stringify(). The method did not escape objects with 'lc' keys when serializing free-form data in kwargs. The 'lc' key is used internally by LangChain to mark serialized objects. When user-controlled data contains this key structure, it is treated as a legitimate LangChain object during deserialization rather than plain user data. This issue has been patched in @langchain/core versions 0.3.80 and 1.1.8, and langchain versions 0.3.37 and 1.2.3</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68665">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0b1e78da864b4edb8ddf20d41ba59adc</td>
-       <td>CVE-2025-68664</td>
-       <td>2025-12-23 23:15:44</td>
-       <td>LangChain is a framework for building agents and LLM-powered applications. Prior to versions 0.3.81 and 1.2.5, a serialization injection vulnerability exists in LangChain's dumps() and dumpd() functions. The functions do not escape dictionaries with 'lc' keys when serializing free-form dictionaries. The 'lc' key is used internally by LangChain to mark serialized objects. When user-controlled data contains this key structure, it is treated as a legitimate LangChain object during deserialization rather than plain user data. This issue has been patched in versions 0.3.81 and 1.2.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68664">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>615c4f0fff827afc8d1dd0bbfe58ee9d</td>
-       <td>CVE-2025-68617</td>
-       <td>2025-12-23 23:15:44</td>
-       <td>FluidSynth is a software synthesizer based on the SoundFont 2 specifications. From versions 2.5.0 to before 2.5.2, a race condition during unloading of a DLS file can trigger a heap-based use-after-free. A concurrently running thread may be pending to unload a DLS file, leading to use of freed memory, if the synthesizer is being concurrently destroyed, or samples of the (unloaded) DLS file are concurrently used to synthesize audio. This issue has been patched in version 2.5.2. The problem will not occur, when explicitly unloading a DLS file (before synth destruction), provided that at the time of unloading, no samples of the respective file are used by active voices. The problem will not occur in versions of FluidSynth that have been compiled without native DLS support.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68617">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f3f2ab1b887061230800610a120ca43</td>
-       <td>CVE-2025-15049</td>
-       <td>2025-12-23 23:15:44</td>
-       <td>A vulnerability was identified in code-projects Online Farm System 1.0. Affected is an unknown function of the file /addProduct.php. The manipulation of the argument Username leads to sql injection. The attack may be initiated remotely. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15049">详情</a></td>
       </tr>
 
      </tbody>
