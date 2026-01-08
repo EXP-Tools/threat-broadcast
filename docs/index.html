@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-01-08 09:35:15 -->
+<!-- RELEASE TIME : 2026-01-08 18:37:48 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>43bff7c1ce605dd13ca17fa8bcfa657e</td>
+       <td>CVE-2025-66001</td>
+       <td>2026-01-08 11:15:43 <img src="imgs/new.gif" /></td>
+       <td>NeuVector supports login authentication through OpenID Connect. However, the TLS verification (which verifies the remote server's authenticity and integrity) for OpenID Connect is not enforced by default. As a result this may expose the system to man-in-the-middle (MITM) attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66001">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0fe753495c94d1fe0d175c4ff6ca46e4</td>
+       <td>CVE-2026-22242</td>
+       <td>2026-01-08 10:15:56 <img src="imgs/new.gif" /></td>
+       <td>CoreShop is a Pimcore enhanced eCommerce solution. Prior to version 4.1.8, a blind SQL injection vulnerability exists in the application that allows an authenticated administrator-level user to extract database contents using boolean-based or time-based techniques. The database account used by the application is read-only and non-DBA, limiting impact to confidential data disclosure only. No data modification or service disruption is possible. This issue has been patched in version 4.1.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22242">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e3d4448ca1fc0b24f6ef220c054c98b</td>
+       <td>CVE-2026-21894</td>
+       <td>2026-01-08 10:15:55 <img src="imgs/new.gif" /></td>
+       <td>n8n is an open source workflow automation platform. In versions from 0.150.0 to before 2.2.2, an authentication bypass vulnerability in the Stripe Trigger node allows unauthenticated parties to trigger workflows by sending forged Stripe webhook events. The Stripe Trigger creates and stores a Stripe webhook signing secret when registering the webhook endpoint, but incoming webhook requests were not verified against this secret. As a result, any HTTP client that knows the webhook URL could send a POST request containing a matching event type, causing the workflow to execute as if a legitimate Stripe event had been received. This issue affects n8n users who have active workflows using the Stripe Trigger node. An attacker could potentially fake payment or subscription events and influence downstream workflow behavior. The practical risk is reduced by the fact that the webhook URL contains a high-entropy UUID; however, authenticated n8n users with access to the workflow can view this webhook ID. This issue has been patched in version 2.2.2. A temporary workaround for this issue involves users deactivating affected workflows or restricting access to workflows containing Stripe Trigger nodes to trusted users only.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21894">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>929828e795d12cedf697217ea5da0656</td>
+       <td>CVE-2026-21874</td>
+       <td>2026-01-08 10:15:55 <img src="imgs/new.gif" /></td>
+       <td>NiceGUI is a Python-based UI framework. From versions v2.10.0 to 3.4.1, an unauthenticated attacker can exhaust Redis connections by repeatedly opening and closing browser tabs on any NiceGUI application using Redis-backed storage. Connections are never released, leading to service degradation when Redis hits its connection limit. NiceGUI continues accepting new connections - errors are logged but the app stays up with broken storage functionality. This issue has been patched in version 3.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21874">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>51cd047052c51a663f0b8e1111e998ea</td>
+       <td>CVE-2026-21873</td>
+       <td>2026-01-08 10:15:55 <img src="imgs/new.gif" /></td>
+       <td>NiceGUI is a Python-based UI framework. From versions 2.22.0 to 3.4.1, an unsafe implementation in the pushstate event listener used by ui.sub_pages allows an attacker to manipulate the fragment identifier of the URL, which they can do despite being cross-site, using an iframe. This issue has been patched in version 3.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21873">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b217d8a5778dd9eab017d833e84a15cb</td>
+       <td>CVE-2026-21872</td>
+       <td>2026-01-08 10:15:55 <img src="imgs/new.gif" /></td>
+       <td>NiceGUI is a Python-based UI framework. From versions 2.22.0 to 3.4.1, an unsafe implementation in the click event listener used by ui.sub_pages, combined with attacker-controlled link rendering on the page, causes XSS when the user actively clicks on the link. This issue has been patched in version 3.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21872">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>17a527899084b83eee52288eccb7d91b</td>
+       <td>CVE-2026-21871</td>
+       <td>2026-01-08 10:15:55 <img src="imgs/new.gif" /></td>
+       <td>NiceGUI is a Python-based UI framework. From versions 2.13.0 to 3.4.1, there is a XSS risk in NiceGUI when developers pass attacker-controlled strings into ui.navigate.history.push() or ui.navigate.history.replace(). These helpers are documented as History API wrappers for updating the browser URL without page reload. However, if the URL argument is embedded into generated JavaScript without proper escaping, a crafted payload can break out of the intended string context and execute arbitrary JavaScript in the victim’s browser. Applications that do not pass untrusted input into ui.navigate.history.push/replace are not affected. This issue has been patched in version 3.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21871">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d02d0fe4cc78f48133bb4631ecc561ed</td>
+       <td>CVE-2026-0676</td>
+       <td>2026-01-08 10:15:55 <img src="imgs/new.gif" /></td>
+       <td>Missing Authorization vulnerability in G5Theme Zorka zorka allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Zorka: from n/a through <= 1.5.7.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0676">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>16ed0eabf066acf4f502b05ad0f1525c</td>
+       <td>CVE-2026-0675</td>
+       <td>2026-01-08 10:15:55 <img src="imgs/new.gif" /></td>
+       <td>Exposure of Sensitive System Information to an Unauthorized Control Sphere vulnerability in webaware NextGEN Download Gallery nextgen-download-gallery allows Retrieve Embedded Sensitive Data.This issue affects NextGEN Download Gallery: from n/a through <= 1.6.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0675">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7cf29046729118ff86987d3975a8e628</td>
+       <td>CVE-2026-0674</td>
+       <td>2026-01-08 10:15:54 <img src="imgs/new.gif" /></td>
+       <td>Missing Authorization vulnerability in Campaign Monitor Campaign Monitor for WordPress forms-for-campaign-monitor allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Campaign Monitor for WordPress: from n/a through <= 2.9.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0674">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c69408bb3186f8708e75bcd52ca498e1</td>
        <td>CVE-2026-0697</td>
        <td>2026-01-08 05:16:02 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-01-07 06:35:59 <img src="imgs/new.gif" /></td>
        <td>The HelpDesk contact form plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.1.5. This is due to missing or incorrect nonce validation on the handle_query_args() function. This makes it possible for unauthenticated attackers to update the plugin's license ID and contact form ID settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13657">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>972c0602b557e1b4179c884d4470fe80</td>
-       <td>CVE-2025-13766</td>
-       <td>2026-01-06 09:15:53</td>
-       <td>The MasterStudy LMS WordPress Plugin – for Online Courses and Education plugin for WordPress is vulnerable to unauthorized modification and deletion of data due to a missing capability checks on multiple REST API endpoints in all versions up to, and including, 3.7.6. This makes it possible for authenticated attackers, with Subscriber-level access and above, to upload or delete arbitrary media files, delete or modify posts, and create/manage course templates</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13766">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6b105e6fc7091cb070b0535535dbd80b</td>
-       <td>CVE-2025-9294</td>
-       <td>2026-01-06 08:21:49</td>
-       <td>The Quiz and Survey Master (QSM) – Easy Quiz and Survey Maker plugin for WordPress is vulnerable to unauthorized loss of data due to a missing capability check on the qsm_dashboard_delete_result function in all versions up to, and including, 10.3.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete quiz results.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9294">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5b840c9ff6ba4e1d3cfc1ed3449fff5e</td>
-       <td>CVE-2025-5919</td>
-       <td>2026-01-06 08:21:49</td>
-       <td>The Appointment Booking and Scheduling Calendar Plugin – WP Timetics plugin for WordPress is vulnerable to unauthorized access and modification of data due to a missing capability check on the update and register_routes functions in all versions up to, and including, 1.0.36. This makes it possible for unauthenticated attackers to view and modify booking details.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5919">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cee0a84660873e86981a92482d37b683</td>
-       <td>CVE-2025-14371</td>
-       <td>2026-01-06 08:15:51</td>
-       <td>The Tag, Category, and Taxonomy Manager – AI Autotagger with OpenAI plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the taxopress_ai_add_post_term function in all versions up to, and including, 3.41.0. This makes it possible for authenticated attackers, with Contributor-level access and above, to add or remove taxonomy terms (tags, categories) on any post, including ones they do not own.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14371">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bf34e068a3790790fd80f4084bffd26a</td>
-       <td>CVE-2025-13812</td>
-       <td>2026-01-06 08:15:51</td>
-       <td>The GamiPress – Gamification plugin to reward points, achievements, badges & ranks in WordPress plugin for WordPress is vulnerable to unauthorized access of data due to a missing capability check on the gamipress_ajax_get_posts and gamipress_ajax_get_users functions in all versions up to, and including, 7.6.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to enumerate users, including their email addresses and to retrieve titles of private posts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13812">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3cfa91b410b695ca8e57063d4932dd4b</td>
-       <td>CVE-2025-12067</td>
-       <td>2026-01-06 07:22:12</td>
-       <td>The Table Field Add-on for ACF and SCF plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Table Cell Content in all versions up to, and including, 1.3.30 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12067">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f22a8e132e2d7cfaf65d262193fc36b2</td>
-       <td>CVE-2025-4776</td>
-       <td>2026-01-06 07:15:43</td>
-       <td>The Phlox theme for WordPress is vulnerable to Stored Cross-Site Scripting via the `data-caption` HTML attribute in all versions up to, and including, 2.17.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-4776">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55903625b11ba0e0a31fa6a46496dd36</td>
-       <td>CVE-2026-21748</td>
-       <td>2026-01-06 06:31:27</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21748">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>90a840ba3c02c3c6afa1ed3e0b6be5d0</td>
-       <td>CVE-2026-21744</td>
-       <td>2026-01-06 06:31:27</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21744">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a6623f119f60ffc2234b3a588d96ee4a</td>
-       <td>CVE-2025-14153</td>
-       <td>2026-01-06 06:31:27</td>
-       <td>The Page Expire Popup/Redirection for WordPress plugin for WordPress is vulnerable to time-based...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14153">详情</a></td>
       </tr>
 
      </tbody>
