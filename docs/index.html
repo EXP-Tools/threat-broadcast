@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-01-13 21:29:21 -->
+<!-- RELEASE TIME : 2026-01-14 18:41:48 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>4a632979f4e5c3a7c5a78cf5f27db4c2</td>
+       <td>CVE-2026-22211</td>
+       <td>2026-01-14 16:15:56 <img src="imgs/new.gif" /></td>
+       <td>TinyOS versions up to and including 2.1.2 contain a global buffer overflow vulnerability in the printfUART formatted output implementation used within the ZigBee / IEEE 802.15.4 networking stack. The implementation formats output into a fixed-size global buffer and concatenates strings for %s format specifiers using strcat() without verifying remaining buffer capacity. When printfUART is invoked with a caller-controlled string longer than the available space, the unbounded sprintf/strcat sequence writes past the end of debugbuf, resulting in global memory corruption. This can cause denial of service, unintended behavior, or information disclosure via corrupted adjacent global state or UART output.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22211">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76ecf1000ab863cd2b9d0478a5766d51</td>
+       <td>CVE-2026-22820</td>
+       <td>2026-01-14 15:16:05 <img src="imgs/new.gif" /></td>
+       <td>Outray openSource ngrok alternative. Prior to 0.1.5, a TOCTOU race condition vulnerability allows a user to exceed the set number of active tunnels in their subscription plan. This vulnerability is fixed in 0.1.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22820">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5dcda39b46e269da4d77565f9d667735</td>
+       <td>CVE-2026-22240</td>
+       <td>2026-01-14 15:16:05 <img src="imgs/new.gif" /></td>
+       <td>The vulnerability exists in BLUVOYIX due to an improper password storage implementation and subsequent exposure via unauthenticated APIs. An unauthenticated remote attacker could exploit this vulnerability by sending specially crafted HTTP requests to the vulnerable users API to retrieve the plaintext passwords of all user users. Successful exploitation of this vulnerability could allow the attacker to gain full access to customers' data and completely compromise the targeted platform by logging in using an exposed admin email address and password.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22240">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ecb4b1017c1a0e396c552831fe3b36c1</td>
+       <td>CVE-2026-22239</td>
+       <td>2026-01-14 15:16:05 <img src="imgs/new.gif" /></td>
+       <td>The vulnerability exists in BLUVOYIX due to design flaws in the email sending API. An unauthenticated remote attacker could exploit this vulnerability by sending specially crafted HTTP requests to the vulnerable email sending API. Successful exploitation of this vulnerability could allow the attacker to send unsolicited emails to anyone on behalf of the company.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22239">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b55563bf71b651d2433de6760774e72e</td>
+       <td>CVE-2026-22237</td>
+       <td>2026-01-14 15:16:04 <img src="imgs/new.gif" /></td>
+       <td>The vulnerability exists in BLUVOYIX due to the exposure of sensitive internal API documentation. An unauthenticated remote attacker could exploit this vulnerability by sending specially crafted HTTP requests to the APIs exposed by the documentation. Successful exploitation of this vulnerability could allow the attacker to cause damage to the targeted platform by abusing internal functionality.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22237">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d715e6c3de9b9fc18899471497da01fe</td>
+       <td>CVE-2026-22236</td>
+       <td>2026-01-14 15:16:04 <img src="imgs/new.gif" /></td>
+       <td>The vulnerability exists in BLUVOYIX due to improper authentication in the BLUVOYIX backend APIs. An unauthenticated remote attacker could exploit this vulnerability by sending specially crafted HTTP requests to the vulnerable APIs. Successful exploitation of this vulnerability could allow the attacker to gain full access to customers' data and completely compromise the targeted platform.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22236">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a9937ab7ca3486668317f0c8ae8c9f0f</td>
+       <td>CVE-2025-9142</td>
+       <td>2026-01-14 15:16:04 <img src="imgs/new.gif" /></td>
+       <td>A local user can trigger Harmony SASE Windows client to write or delete files outside the intended certificate working directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9142">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d61919a30493495b338fc351c057db1</td>
+       <td>CVE-2025-71143</td>
+       <td>2026-01-14 15:16:04 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: clk: samsung: exynos-clkout: Assign .num before accessing .hws Commit f316cdff8d67 ("clk: Annotate struct clk_hw_onecell_data with __counted_by") annotated the hws member of 'struct clk_hw_onecell_data' with __counted_by, which informs the bounds sanitizer (UBSAN_BOUNDS) about the number of elements in .hws[], so that it can warn when .hws[] is accessed out of bounds. As noted in that change, the __counted_by member must be initialized with the number of elements before the first array access happens, otherwise there will be a warning from each access prior to the initialization because the number of elements is zero. This occurs in exynos_clkout_probe() due to .num being assigned after .hws[] has been accessed: UBSAN: array-index-out-of-bounds in drivers/clk/samsung/clk-exynos-clkout.c:178:18 index 0 is out of range for type 'clk_hw *[*]' Move the .num initialization to before the first access of .hws[], clearing up the warning.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71143">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f1303289d50019bb03404156291b353d</td>
+       <td>CVE-2025-71142</td>
+       <td>2026-01-14 15:16:04 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: cpuset: fix warning when disabling remote partition A warning was triggered as follows: WARNING: kernel/cgroup/cpuset.c:1651 at remote_partition_disable+0xf7/0x110 RIP: 0010:remote_partition_disable+0xf7/0x110 RSP: 0018:ffffc90001947d88 EFLAGS: 00000206 RAX: 0000000000007fff RBX: ffff888103b6e000 RCX: 0000000000006f40 RDX: 0000000000006f00 RSI: ffffc90001947da8 RDI: ffff888103b6e000 RBP: ffff888103b6e000 R08: 0000000000000000 R09: 0000000000000000 R10: 0000000000000001 R11: ffff88810b2e2728 R12: ffffc90001947da8 R13: 0000000000000000 R14: ffffc90001947da8 R15: ffff8881081f1c00 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 00007f55c8bbe0b2 CR3: 000000010b14c000 CR4: 00000000000006f0 Call Trace: <TASK> update_prstate+0x2d3/0x580 cpuset_partition_write+0x94/0xf0 kernfs_fop_write_iter+0x147/0x200 vfs_write+0x35d/0x500 ksys_write+0x66/0xe0 do_syscall_64+0x6b/0x390 entry_SYSCALL_64_after_hwframe+0x4b/0x53 RIP: 0033:0x7f55c8cd4887 Reproduction steps (on a 16-CPU machine): # cd /sys/fs/cgroup/ # mkdir A1 # echo +cpuset > A1/cgroup.subtree_control # echo "0-14" > A1/cpuset.cpus.exclusive # mkdir A1/A2 # echo "0-14" > A1/A2/cpuset.cpus.exclusive # echo "root" > A1/A2/cpuset.cpus.partition # echo 0 > /sys/devices/system/cpu/cpu15/online # echo member > A1/A2/cpuset.cpus.partition When CPU 15 is offlined, subpartitions_cpus gets cleared because no CPUs remain available for the top_cpuset, forcing partitions to share CPUs with the top_cpuset. In this scenario, disabling the remote partition triggers a warning stating that effective_xcpus is not a subset of subpartitions_cpus. Partitions should be invalidated in this case to inform users that the partition is now invalid(cpus are shared with top_cpuset). To fix this issue: 1. Only emit the warning only if subpartitions_cpus is not empty and the effective_xcpus is not a subset of subpartitions_cpus. 2. During the CPU hotplug process, invalidate partitions if subpartitions_cpus is empty.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71142">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0ce353a94b3727766afd692e798f950</td>
+       <td>CVE-2025-71141</td>
+       <td>2026-01-14 15:16:03 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/tilcdc: Fix removal actions in case of failed probe The drm_kms_helper_poll_fini() and drm_atomic_helper_shutdown() helpers should only be called when the device has been successfully registered. Currently, these functions are called unconditionally in tilcdc_fini(), which causes warnings during probe deferral scenarios. [ 7.972317] WARNING: CPU: 0 PID: 23 at drivers/gpu/drm/drm_atomic_state_helper.c:175 drm_atomic_helper_crtc_duplicate_state+0x60/0x68 ... [ 8.005820] drm_atomic_helper_crtc_duplicate_state from drm_atomic_get_crtc_state+0x68/0x108 [ 8.005858] drm_atomic_get_crtc_state from drm_atomic_helper_disable_all+0x90/0x1c8 [ 8.005885] drm_atomic_helper_disable_all from drm_atomic_helper_shutdown+0x90/0x144 [ 8.005911] drm_atomic_helper_shutdown from tilcdc_fini+0x68/0xf8 [tilcdc] [ 8.005957] tilcdc_fini [tilcdc] from tilcdc_pdev_probe+0xb0/0x6d4 [tilcdc] Fix this by rewriting the failed probe cleanup path using the standard goto error handling pattern, which ensures that cleanup functions are only called on successfully initialized resources. Additionally, remove the now-unnecessary is_registered flag.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71141">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cf064e4fc2c38df5cd2fd9e49b878804</td>
        <td>CVE-2025-41717</td>
        <td>2026-01-13 07:48:19 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>dfe1b68db941614fabdb0f4d379b405f</td>
        <td>CVE-2025-14279</td>
-       <td>2026-01-12 09:15:50 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 09:15:50</td>
        <td>MLFlow versions up to and including 3.4.0 are vulnerable to DNS rebinding attacks due to a lack of Origin header validation in the MLFlow REST server. This vulnerability allows malicious websites to bypass Same-Origin Policy protections and execute unauthorized calls against REST endpoints. An attacker can query, update, and delete experiments via the affected endpoints, leading to potential data exfiltration, destruction, or manipulation. The issue is resolved in version 3.5.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14279">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>03c22c7dc88cac7bfee0cdd6f4ddf4a4</td>
        <td>CVE-2026-0855</td>
-       <td>2026-01-12 07:16:19 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 07:16:19</td>
        <td>Certain IP Camera models developed by Merit LILIN has a OS Command Injection vulnerability, allowing authenticated remote attackers to inject arbitrary OS commands and execute them on the device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0855">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>44b9b2b53f885e74dd539281d353f0fe</td>
        <td>CVE-2026-0854</td>
-       <td>2026-01-12 06:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 06:16:11</td>
        <td>Certain DVR/NVR models developed by Merit LILIN has a OS Command Injection vulnerability, allowing authenticated remote attackers to inject arbitrary OS commands and execute them on the device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0854">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>1c4b8cea4abca885c6c52ac01667fbe9</td>
        <td>CVE-2025-14579</td>
-       <td>2026-01-12 06:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 06:16:10</td>
        <td>The Quiz Maker WordPress plugin before 6.7.0.89 does not sanitise and escape some of its settings, which could allow high privilege users such as admin to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disallowed (for example in multisite setup).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14579">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>e688a4326f7df2fd6b301cdc129ea9f8</td>
        <td>CVE-2025-69276</td>
-       <td>2026-01-12 05:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 05:16:11</td>
        <td>Deserialization of Untrusted Data vulnerability in Broadcom DX NetOps Spectrum on Windows, Linux allows Object Injection.This issue affects DX NetOps Spectrum: 24.3.13 and earlier.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69276">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>56ed4c36be2e559cf5619608189b5569</td>
        <td>CVE-2025-69275</td>
-       <td>2026-01-12 05:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 05:16:11</td>
        <td>Dependency on Vulnerable Third-Party Component vulnerability in Broadcom DX NetOps Spectrum on Windows, Linux allows DOM-Based XSS.This issue affects DX NetOps Spectrum: 24.3.9 and earlier.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69275">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>feef7ecb92f9739934c5a375514739d5</td>
        <td>CVE-2025-69274</td>
-       <td>2026-01-12 05:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 05:16:11</td>
        <td>Authorization Bypass Through User-Controlled Key vulnerability in Broadcom DX NetOps Spectrum on Windows, Linux allows Privilege Escalation.This issue affects DX NetOps Spectrum: 24.3.10 and earlier.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69274">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>a2c576e4cf045f35e75bb16675c0e3bd</td>
        <td>CVE-2025-69273</td>
-       <td>2026-01-12 05:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 05:16:11</td>
        <td>Improper Authentication vulnerability in Broadcom DX NetOps Spectrum on Windows, Linux allows Authentication Bypass.This issue affects DX NetOps Spectrum: 24.3.10 and earlier.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69273">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>05e6e333763d1ff29d01280813f22811</td>
        <td>CVE-2025-69272</td>
-       <td>2026-01-12 05:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 05:16:11</td>
        <td>Cleartext Transmission of Sensitive Information vulnerability in Broadcom DX NetOps Spectrum on Windows, Linux allows Sniffing Attacks.This issue affects DX NetOps Spectrum: 21.2.1 and earlier.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69272">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>bae0b6aeb9bc9080e57674c79d24c215</td>
        <td>CVE-2025-69271</td>
-       <td>2026-01-12 05:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-12 05:16:11</td>
        <td>Insufficiently Protected Credentials vulnerability in Broadcom DX NetOps Spectrum on Windows, Linux allows Sniffing Attacks.This issue affects DX NetOps Spectrum: 24.3.13 and earlier.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69271">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a9ec664aedd4cbcc47b7b451082b18fe</td>
-       <td>CVE-2025-68493</td>
-       <td>2026-01-11 13:15:45</td>
-       <td>Missing XML Validation vulnerability in Apache Struts, Apache Struts. This issue affects Apache Struts: from 2.0.0 before 2.2.1; Apache Struts: from 2.2.1 through 6.1.0. Users are recommended to upgrade to version 6.1.1, which fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68493">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a7551d6b152247570f29c1b79b57cf05</td>
-       <td>CVE-2025-15506</td>
-       <td>2026-01-11 11:15:49</td>
-       <td>A vulnerability was found in AcademySoftwareFoundation OpenColorIO up to 2.5.0. This issue affects the function ConvertToRegularExpression of the file src/OpenColorIO/FileRules.cpp. Performing a manipulation results in out-of-bounds read. The attack needs to be approached locally. The exploit has been made public and could be used. The patch is named ebdbb75123c9d5f4643e041314e2bc988a13f20d. To fix this issue, it is recommended to deploy a patch. The fix was added to the 2.5.1 milestone.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15506">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f236fade5860aa7fc424564aef33d33</td>
-       <td>CVE-2026-0843</td>
-       <td>2026-01-11 09:15:50</td>
-       <td>A vulnerability has been found in jiujiujia/victor123/wxw850227 jjjfood and jjjshop_food up to 20260103. This vulnerability affects unknown code of the file /index.php/api/product.category/index. Such manipulation of the argument latitude leads to sql injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. This product is distributed under multiple different names. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0843">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f13e152318e707ce28eaf30144e3a28d</td>
-       <td>CVE-2026-0842</td>
-       <td>2026-01-11 08:16:00</td>
-       <td>A flaw has been found in Flycatcher Toys smART Sketcher up to 2.0. This affects an unknown part of the component Bluetooth Low Energy Interface. This manipulation causes missing authentication. The attack can only be done within the local network. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0842">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a49be5f3716fba7405223bb1ad0871e</td>
-       <td>CVE-2026-0841</td>
-       <td>2026-01-11 08:15:59</td>
-       <td>A vulnerability was detected in UTT 进取 520W 1.7.7-180627. Affected by this issue is the function strcpy of the file /goform/formPictureUrl. The manipulation of the argument importpictureurl results in buffer overflow. It is possible to launch the attack remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0841">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>913790c97693b8761517e7edf0541767</td>
-       <td>CVE-2026-0840</td>
-       <td>2026-01-11 07:15:49</td>
-       <td>A security vulnerability has been detected in UTT 进取 520W 1.7.7-180627. Affected by this vulnerability is the function strcpy of the file /goform/formConfigNoticeConfig. The manipulation of the argument timestart leads to buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0840">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5ccc0e23826fb329d1fc946e9467780b</td>
-       <td>CVE-2026-0839</td>
-       <td>2026-01-11 06:15:57</td>
-       <td>A weakness has been identified in UTT 进取 520W 1.7.7-180627. Affected is the function strcpy of the file /goform/APSecurity. Executing a manipulation of the argument wepkey1 can lead to buffer overflow. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0839">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a0a81b9187ec7ed9ee740fb317574598</td>
-       <td>CVE-2026-0838</td>
-       <td>2026-01-11 06:15:57</td>
-       <td>A security flaw has been discovered in UTT 进取 520W 1.7.7-180627. This impacts the function strcpy of the file /goform/ConfigWirelessBase. Performing a manipulation of the argument ssid results in buffer overflow. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0838">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b8d8fe394f331d577732dee3429a7f4c</td>
-       <td>CVE-2026-0837</td>
-       <td>2026-01-11 05:15:58</td>
-       <td>A vulnerability was identified in UTT 进取 520W 1.7.7-180627. This affects the function strcpy of the file /goform/formFireWall. Such manipulation of the argument GroupName leads to buffer overflow. The attack can be executed remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0837">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>355435b7283e625b05e96b17e33b9d95</td>
-       <td>CVE-2026-0836</td>
-       <td>2026-01-11 05:15:47</td>
-       <td>A vulnerability was determined in UTT 进取 520W 1.7.7-180627. The impacted element is the function strcpy of the file /goform/formConfigFastDirectionW. This manipulation of the argument ssid causes buffer overflow. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0836">详情</a></td>
       </tr>
 
      </tbody>
