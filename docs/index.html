@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-01-29 02:36:38 -->
+<!-- RELEASE TIME : 2026-01-30 02:36:54 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8d1ae7a9e2a63127b81adcf3bbf727fc</td>
+       <td>CVE-2026-25116</td>
+       <td>2026-01-29 22:15:56 <img src="imgs/new.gif" /></td>
+       <td>Runtipi is a personal homeserver orchestrator. Starting in version 4.5.0 and prior to version 4.7.2, an unauthenticated Path Traversal vulnerability in the `UserConfigController` allows any remote user to overwrite the system's `docker-compose.yml` configuration file. By exploiting insecure URN parsing, an attacker can replace the primary stack configuration with a malicious one, resulting in full Remote Code Execution (RCE) and host filesystem compromise the next time the instance is restarted by the operator. Version 4.7.2 fixes the vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25116">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66d9bdf35dea7674bc4679f113c2526e</td>
+       <td>CVE-2026-25063</td>
+       <td>2026-01-29 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>gradle-completion provides Bash and Zsh completion support for Gradle. A command injection vulnerability was found in gradle-completion up to and including 9.3.0 that allows arbitrary code execution when a user triggers Bash tab completion in a project containing a malicious Gradle build file. The `gradle-completion` script for Bash fails to adequately sanitize Gradle task names and task descriptions, allowing command injection via a malicious Gradle build file when the user completes a command in Bash (without them explicitly running any task in the build). For example, given a task description that includes a string between backticks, then that string would be evaluated as a command when presenting the task description in the completion list. While task execution is the core feature of Gradle, this inherent execution may lead to unexpected outcomes. The vulnerability does not affect zsh completion. The first patched version is 9.3.1. As a workaround, it is possible and effective to temporarily disable bash completion for Gradle by removing `gradle-completion` from `.bashrc` or `.bash_profile`.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25063">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a3ff548bddd7ff9cd48f3fcec7154fcd</td>
+       <td>CVE-2026-25061</td>
+       <td>2026-01-29 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>tcpflow is a TCP/IP packet demultiplexer. In versions up to and including 1.61, wifipcap parses 802.11 management frame elements and performs a length check on the wrong field when handling the TIM element. A crafted frame with a large TIM length can cause a 1-byte out-of-bounds write past `tim.bitmap[251]`. The overflow is small and DoS is the likely impact; code execution is potential, but still up in the air. The affected structure is stack-allocated in `handle_beacon()` and related handlers. As of time of publication, no known patches are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25061">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dbcdc983d2d8ae3f062453f763af4c47</td>
+       <td>CVE-2026-25047</td>
+       <td>2026-01-29 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>deepHas provides a test for the existence of a nested object key and optionally returns that key. A prototype pollution vulnerability exists in version 1.0.7 of the deephas npm package that allows an attacker to modify global object behavior. This issue was fixed in version 1.0.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25047">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>df1e23faea2897d719bf5c5b80bc5b7e</td>
+       <td>CVE-2026-24904</td>
+       <td>2026-01-29 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>TrustTunnel is an open-source VPN protocol with a rule bypass issue in versions prior to 0.9.115. In `tls_listener.rs`, `TlsListener::listen()` peeks 1024 bytes and calls `extract_client_random(...)`. If `parse_tls_plaintext` fails (for example, a fragmented/partial ClientHello split across TCP writes), `extract_client_random` returns `None`. In `rules.rs`, `RulesEngine::evaluate` only evaluates `client_random_prefix` when `client_random` is `Some(...)`. As a result, when extraction fails (`client_random == None`), any rule that relies on `client_random_prefix` matching is skipped and evaluation falls through to later rules. As an important semantics note: `client_random_prefix` is a match condition only. It does not mean "block non-matching prefixes" by itself. A rule with `client_random_prefix = ...` triggers its `action` only when the prefix matches (and the field is available to evaluate). Non-matches (or `None`) simply do not match that rule and continue to fall through. The vulnerability is fixed in version 0.9.115.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24904">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c15abab91f1c16d2c61e36da254fb2ea</td>
+       <td>CVE-2026-24846</td>
+       <td>2026-01-29 22:15:54 <img src="imgs/new.gif" /></td>
+       <td>malcontent discovers supply-chain compromises through. context, differential analysis, and YARA. Starting in version 1.8.0 and prior to version 1.20.3, malcontent could be made to create symlinks outside the intended extraction directory when scanning a specially crafted tar or deb archive. The `handleSymlink` function received arguments in the wrong order, causing the symlink target to be used as the symlink location. Additionally, symlink targets were not validated to ensure they resolved within the extraction directory. Version 1.20.3 introduces fixes that swap handleSymlink arguments, validate symlink location, and validate symlink targets that resolve within an extraction directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24846">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d7ff01f996661348164812d0910d0ee3</td>
+       <td>CVE-2026-1625</td>
+       <td>2026-01-29 22:15:54 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in D-Link DWR-M961 1.1.47. The impacted element is the function sub_4250E0 of the file /boafrm/formSmsManage of the component SMS Message. Performing a manipulation of the argument action_value results in command injection. The attack may be initiated remotely. The exploit is now public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1625">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ba61870fd0aedb5bdbb99dc0a3219d97</td>
+       <td>CVE-2026-1623</td>
+       <td>2026-01-29 21:30:31 <img src="imgs/new.gif" /></td>
+       <td>A weakness has been identified in Totolink A7000R 4.1cu.4154. Impacted is the function...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1623">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>69b778402ac5076eb6b02ce9d5e73ad3</td>
+       <td>CVE-2025-15550</td>
+       <td>2026-01-29 21:30:30 <img src="imgs/new.gif" /></td>
+       <td>birkir prime <= 0.4.0.beta.0 contains a cross-site request forgery vulnerability in its GraphQL...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15550">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1418975d5b3c4c47ecfb83deb2b68781</td>
+       <td>CVE-2025-15541</td>
+       <td>2026-01-29 21:30:30 <img src="imgs/new.gif" /></td>
+       <td>Improper link resolution in the VX800v v1.0 SFTP service allows authenticated adjacent attackers...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15541">详情</a></td>
+      </tr>
+
+      <tr>
        <td>abe8a75b20569532b8ee55f104b11db9</td>
        <td>CVE-2026-24856</td>
-       <td>2026-01-28 21:16:13 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 21:16:13</td>
        <td>iccDEV provides a set of libraries and tools that allow for the interaction, manipulation, and application of ICC color management profiles. Versions prior to 2.3.1.2 have an undefined behavior issue when floating-point NaN values are converted to unsigned short integer types during ICC profile XML parsing potentially corrupting memory structures and enabling arbitrary code execution. This vulnerability affects users of the iccDEV library who process ICC color profiles. ICC Profile Injection vulnerabilities arise when user-controllable input is incorporated into ICC profile data or other structured binary blobs in an unsafe manner. Version 2.3.1.2 contains a fix for the issue. No known workarounds are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24856">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>513c06547a6ef448cfe6bba53a38183e</td>
        <td>CVE-2026-24767</td>
-       <td>2026-01-28 21:16:12 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 21:16:12</td>
        <td>NocoDB is software for building databases as spreadsheets. Prior to version 0.301.0, a blind Server-Side Request Forgery (SSRF) vulnerability exists in the `uploadViaURL` functionality due to an unprotected `HEAD` request. While the subsequent file retrieval logic correctly enforces SSRF protections, the initial metadata request executes without validation. This allows limited outbound requests to arbitrary URLs before SSRF controls are applied. Version 0.301.0 contains a patch for the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24767">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>7998053000db8ba118d5eae7664fc788</td>
        <td>CVE-2026-1535</td>
-       <td>2026-01-28 21:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 21:16:11</td>
        <td>A security vulnerability has been detected in code-projects Online Music Site 1.0. This impacts an unknown function of the file /Administrator/PHP/AdminReply.php. Such manipulation of the argument ID leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1535">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>85594cd6e19865262f831b7191eca7dd</td>
        <td>CVE-2025-71005</td>
-       <td>2026-01-28 21:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 21:16:09</td>
        <td>A floating point exception (FPE) in the oneflow.view component of OneFlow v0.9.0 allows attackers to cause a Denial of Service (DoS) via a crafted input.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71005">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>f053df95b1340f529ae2f3cba6c5bd62</td>
        <td>CVE-2025-71002</td>
-       <td>2026-01-28 20:16:14 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 20:16:14</td>
        <td>A floating-point exception (FPE) in the flow.column_stack component of OneFlow v0.9.0 allows attackers to cause a Denial of Service (DoS) via a crafted input.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71002">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>09b94f36f5125b4ccabea6576d796edf</td>
        <td>CVE-2025-69289</td>
-       <td>2026-01-28 20:16:13 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 20:16:13</td>
        <td>Discourse is an open source discussion platform. A privilege escalation vulnerability in versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0 allows a non-admin moderator to bypass email-change restrictions, allowing a takeover of non-staff accounts. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. As a workaround, ensure moderators are trusted or enable the "require_change_email_confirmation" setting.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69289">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>38ac357dc30e88aa0f8476d0b5f6e99b</td>
        <td>CVE-2025-69218</td>
-       <td>2026-01-28 20:16:13 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 20:16:13</td>
        <td>Discourse is an open source discussion platform. In versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0, moderators can access the `top_uploads` admin report which should be restricted to admins only. This report displays direct URLs to all uploaded files on the site, including sensitive content such as user data exports, admin backups, and other private attachments that moderators should not have access to. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. There is no workaround. Limit moderator privileges to trusted users until the patch is applied.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69218">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>b360883d1b22dcaa0ccd0fd24ce4a542</td>
        <td>CVE-2025-68934</td>
-       <td>2026-01-28 20:16:12 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 20:16:12</td>
        <td>Discourse is an open source discussion platform. In versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0, authenticated users can submit crafted payloads to /drafts.json that cause O(n^2) processing in Base62.decode, tying up workers for 35-60 seconds per request. This affects all users as the shared worker pool becomes exhausted. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. Lowering the max_draft_length site setting reduces attack surface but does not fully mitigate the issue, as payloads under the limit can still trigger the slow code path.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68934">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>4254015f25847687fd66faf85d0a6141</td>
        <td>CVE-2025-68933</td>
-       <td>2026-01-28 20:16:12 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 20:16:12</td>
        <td>Discourse is an open source discussion platform. In versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0, non-admin moderators with the `moderators_change_post_ownership` setting enabled can change ownership of posts in private messages and restricted categories they cannot access, then export their data to view the content. This is a broken access control vulnerability affecting sites that grant moderators post ownership transfer permissions. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. The patch adds visibility checks for both the topic and posts before allowing ownership transfer. As a workaround, disable the `moderators_change_post_ownership` site setting to prevent non-admin moderators from using the post ownership transfer feature.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68933">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>39921b5e17c45f6379e9832dba586c3c</td>
        <td>CVE-2025-61730</td>
-       <td>2026-01-28 20:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-01-28 20:16:09</td>
        <td>During the TLS 1.3 handshake if multiple messages are sent in records that span encryption level boundaries (for instance the Client Hello and Encrypted Extensions messages), the subsequent messages may be processed before the encryption level changes. This can cause some minor information disclosure if a network-local attacker can inject messages during the handshake.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61730">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-01-27 10:15:49</td>
        <td>Missing Release of Memory after Effective Lifetime vulnerability in Is-Daouda is-Engine.This issue affects is-Engine: before 3.3.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24828">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fa5487329c01ed4a553bcd970a8e920e</td>
-       <td>CVE-2025-70368</td>
-       <td>2026-01-26 19:16:09</td>
-       <td>Worklenz version 2.1.5 contains a Stored Cross-Site Scripting (XSS) vulnerability in the Project Updates feature. An attacker can submit a malicious payload in the Updates text field which is then rendered in the reporting view without proper sanitization. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-70368">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8df5b09f48a5f76df0808db140407e43</td>
-       <td>CVE-2025-14756</td>
-       <td>2026-01-26 19:16:08</td>
-       <td>Command injection vulnerability was found in the admin interface component of TP-Link Archer MR600 v5 firmware, allowing authenticated attackers to execute system commands with a limited character length via crafted input in the browser developer console, possibly leading to service disruption or full compromise.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14756">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>48f94064b53173b0c37beaab606bc7cf</td>
-       <td>CVE-2026-24440</td>
-       <td>2026-01-26 18:16:41</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) allow account passwords to be changed through the maintenance interface without requiring verification of the existing password. This enables unauthorized password changes when access to the affected endpoint is obtained.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24440">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0309db77a2bd9faa386584dac8f08b02</td>
-       <td>CVE-2026-24439</td>
-       <td>2026-01-26 18:16:41</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) fail to include the X-Content-Type-Options: nosniff response header on web management interfaces. As a result, browsers that perform MIME sniffing may incorrectly interpret attacker-influenced responses as executable script.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24439">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8671d8391332db8dcd4d9a176e8dc206</td>
-       <td>CVE-2026-24437</td>
-       <td>2026-01-26 18:16:41</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) serve sensitive administrative content without appropriate cache-control directives. As a result, browsers may store credential-bearing responses locally, exposing them to subsequent unauthorized access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24437">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69346d221d9a517cd5a121146760769c</td>
-       <td>CVE-2026-24436</td>
-       <td>2026-01-26 18:16:41</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) do not enforce rate limiting or account lockout mechanisms on authentication endpoints. This allows attackers to perform unrestricted brute-force attempts against administrative credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24436">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0e1849df0dc14097ba123434194e9222</td>
-       <td>CVE-2026-24435</td>
-       <td>2026-01-26 18:16:41</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) implement an insecure Cross-Origin Resource Sharing (CORS) policy on authenticated administrative endpoints. The device sets Access-Control-Allow-Origin: * in combination with Access-Control-Allow-Credentials: true, allowing attacker-controlled origins to issue credentialed cross-origin requests.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24435">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>524799495082f5d4e45a5fe25976759b</td>
-       <td>CVE-2026-24433</td>
-       <td>2026-01-26 18:16:40</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) contain a stored cross-site scripting vulnerability in the user creation functionality. Insufficient input validation allows attacker-controlled script content to be stored and later executed when administrative users access the affected management pages.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24433">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0ed6284a7189393719c1c6f95ca30f22</td>
-       <td>CVE-2026-24432</td>
-       <td>2026-01-26 18:16:40</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) lack cross-site request forgery (CSRF) protections on administrative endpoints, including those used to change administrator account credentials. As a result, an attacker can craft malicious requests that, when triggered by an authenticated user’s browser, modify administrative passwords and other configuration settings.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24432">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d8b65ccc5907fa94302f958afe527109</td>
-       <td>CVE-2026-24431</td>
-       <td>2026-01-26 18:16:40</td>
-       <td>Shenzhen Tenda W30E V2 firmware versions up to and including V16.01.0.19(5037) display stored user account passwords in plaintext within the administrative web interface. Any user with access to the affected management pages can directly view credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24431">详情</a></td>
       </tr>
 
      </tbody>
