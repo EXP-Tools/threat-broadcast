@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-01-31 04:39:58 -->
+<!-- RELEASE TIME : 2026-02-01 06:58:40 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>66d7f19aff1fe5a1f788102f9499fd8c</td>
+       <td>CVE-2026-25069</td>
+       <td>2026-02-01 00:16:19 <img src="imgs/new.gif" /></td>
+       <td>SunFounder Pironman Dashboard (pm_dashboard) version 1.3.13 and prior contain a path traversal vulnerability in the log file API endpoints. An unauthenticated remote attacker can supply traversal sequences via the filename parameter to read and delete arbitrary files. Successful exploitation can disclose sensitive information and delete critical system files, resulting in data loss and potential system compromise or denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25069">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>34d55802b08e1ce3694e1ff85aa190d8</td>
+       <td>CVE-2026-1165</td>
+       <td>2026-01-31 15:15:50 <img src="imgs/new.gif" /></td>
+       <td>The Popup Box plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 6.1.1. This is due to a flawed nonce implementation in the 'publish_unpublish_popupbox' function that verifies a self-created nonce rather than one submitted in the request. This makes it possible for unauthenticated attackers to change the publish status of popups via a forged request, granted they can trick a site administrator into performing an action such as clicking a link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1165">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6ea791d7a5f6c4688deceb1eab2fbfad</td>
+       <td>CVE-2025-14554</td>
+       <td>2026-01-31 14:16:59 <img src="imgs/new.gif" /></td>
+       <td>The Sell BTC - Cryptocurrency Selling Calculator plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'orderform_data' AJAX action in all versions up to, and including, 1.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in order records that will execute whenever an administrator accesses the Orders page in the admin dashboard. The vulnerability was partially patched in version 1.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14554">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa32498e9c0e7ebb74130847b0971172</td>
+       <td>CVE-2026-23039</td>
+       <td>2026-01-31 12:16:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/gud: fix NULL fb and crtc dereferences on USB disconnect On disconnect drm_atomic_helper_disable_all() is called which sets both the fb and crtc for a plane to NULL before invoking a commit. This causes a kernel oops on every display disconnect. Add guards for those dereferences.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23039">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e52bf35c2442e307f12649075632f4e6</td>
+       <td>CVE-2026-23038</td>
+       <td>2026-01-31 12:16:07 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: pnfs/flexfiles: Fix memory leak in nfs4_ff_alloc_deviceid_node() In nfs4_ff_alloc_deviceid_node(), if the allocation for ds_versions fails, the function jumps to the out_scratch label without freeing the already allocated dsaddrs list, leading to a memory leak. Fix this by jumping to the out_err_drain_dsaddrs label, which properly frees the dsaddrs list before cleaning up other resources.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23038">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>34a21269cc9dbc55089ebfcb1478eaee</td>
+       <td>CVE-2026-23036</td>
+       <td>2026-01-31 12:16:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: btrfs: release path before iget_failed() in btrfs_read_locked_inode() In btrfs_read_locked_inode() if we fail to lookup the inode, we jump to the 'out' label with a path that has a read locked leaf and then we call iget_failed(). This can result in a ABBA deadlock, since iget_failed() triggers inode eviction and that causes the release of the delayed inode, which must lock the delayed inode's mutex, and a task updating a delayed inode starts by taking the node's mutex and then modifying the inode's subvolume btree. Syzbot reported the following lockdep splat for this: ====================================================== WARNING: possible circular locking dependency detected syzkaller #0 Not tainted ------------------------------------------------------ btrfs-cleaner/8725 is trying to acquire lock: ffff0000d6826a48 (&delayed_node->mutex){+.+.}-{4:4}, at: __btrfs_release_delayed_node+0xa0/0x9b0 fs/btrfs/delayed-inode.c:290 but task is already holding lock: ffff0000dbeba878 (btrfs-tree-00){++++}-{4:4}, at: btrfs_tree_read_lock_nested+0x44/0x2ec fs/btrfs/locking.c:145 which lock already depends on the new lock. the existing dependency chain (in reverse order) is: -> #1 (btrfs-tree-00){++++}-{4:4}: __lock_release kernel/locking/lockdep.c:5574 [inline] lock_release+0x198/0x39c kernel/locking/lockdep.c:5889 up_read+0x24/0x3c kernel/locking/rwsem.c:1632 btrfs_tree_read_unlock+0xdc/0x298 fs/btrfs/locking.c:169 btrfs_tree_unlock_rw fs/btrfs/locking.h:218 [inline] btrfs_search_slot+0xa6c/0x223c fs/btrfs/ctree.c:2133 btrfs_lookup_inode+0xd8/0x38c fs/btrfs/inode-item.c:395 __btrfs_update_delayed_inode+0x124/0xed0 fs/btrfs/delayed-inode.c:1032 btrfs_update_delayed_inode fs/btrfs/delayed-inode.c:1118 [inline] __btrfs_commit_inode_delayed_items+0x15f8/0x1748 fs/btrfs/delayed-inode.c:1141 __btrfs_run_delayed_items+0x1ac/0x514 fs/btrfs/delayed-inode.c:1176 btrfs_run_delayed_items_nr+0x28/0x38 fs/btrfs/delayed-inode.c:1219 flush_space+0x26c/0xb68 fs/btrfs/space-info.c:828 do_async_reclaim_metadata_space+0x110/0x364 fs/btrfs/space-info.c:1158 btrfs_async_reclaim_metadata_space+0x90/0xd8 fs/btrfs/space-info.c:1226 process_one_work+0x7e8/0x155c kernel/workqueue.c:3263 process_scheduled_works kernel/workqueue.c:3346 [inline] worker_thread+0x958/0xed8 kernel/workqueue.c:3427 kthread+0x5fc/0x75c kernel/kthread.c:463 ret_from_fork+0x10/0x20 arch/arm64/kernel/entry.S:844 -> #0 (&delayed_node->mutex){+.+.}-{4:4}: check_prev_add kernel/locking/lockdep.c:3165 [inline] check_prevs_add kernel/locking/lockdep.c:3284 [inline] validate_chain kernel/locking/lockdep.c:3908 [inline] __lock_acquire+0x1774/0x30a4 kernel/locking/lockdep.c:5237 lock_acquire+0x14c/0x2e0 kernel/locking/lockdep.c:5868 __mutex_lock_common+0x1d0/0x2678 kernel/locking/mutex.c:598 __mutex_lock kernel/locking/mutex.c:760 [inline] mutex_lock_nested+0x2c/0x38 kernel/locking/mutex.c:812 __btrfs_release_delayed_node+0xa0/0x9b0 fs/btrfs/delayed-inode.c:290 btrfs_release_delayed_node fs/btrfs/delayed-inode.c:315 [inline] btrfs_remove_delayed_node+0x68/0x84 fs/btrfs/delayed-inode.c:1326 btrfs_evict_inode+0x578/0xe28 fs/btrfs/inode.c:5587 evict+0x414/0x928 fs/inode.c:810 iput_final fs/inode.c:1914 [inline] iput+0x95c/0xad4 fs/inode.c:1966 iget_failed+0xec/0x134 fs/bad_inode.c:248 btrfs_read_locked_inode+0xe1c/0x1234 fs/btrfs/inode.c:4101 btrfs_iget+0x1b0/0x264 fs/btrfs/inode.c:5837 btrfs_run_defrag_inode fs/btrfs/defrag.c:237 [inline] btrfs_run_defrag_inodes+0x520/0xdc4 fs/btrf ---truncated---</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23036">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3cbbf44f927a2f103b027308e0159d5c</td>
+       <td>CVE-2026-23035</td>
+       <td>2026-01-31 12:16:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net/mlx5e: Pass netdev to mlx5e_destroy_netdev instead of priv mlx5e_priv is an unstable structure that can be memset(0) if profile attaching fails. Pass netdev to mlx5e_destroy_netdev() to guarantee it will work on a valid netdev. On mlx5e_remove: Check validity of priv->profile, before attempting to cleanup any resources that might be not there. This fixes a kernel oops in mlx5e_remove when switchdev mode fails due to change profile failure. $ devlink dev eswitch set pci/0000:00:03.0 mode switchdev Error: mlx5_core: Failed setting eswitch to offloads. dmesg: workqueue: Failed to create a rescuer kthread for wq "mlx5e": -EINTR mlx5_core 0012:03:00.1: mlx5e_netdev_init_profile:6214:(pid 37199): mlx5e_priv_init failed, err=-12 mlx5_core 0012:03:00.1 gpu3rdma1: mlx5e_netdev_change_profile: new profile init failed, -12 workqueue: Failed to create a rescuer kthread for wq "mlx5e": -EINTR mlx5_core 0012:03:00.1: mlx5e_netdev_init_profile:6214:(pid 37199): mlx5e_priv_init failed, err=-12 mlx5_core 0012:03:00.1 gpu3rdma1: mlx5e_netdev_change_profile: failed to rollback to orig profile, -12 $ devlink dev reload pci/0000:00:03.0 ==> oops BUG: kernel NULL pointer dereference, address: 0000000000000370 PGD 0 P4D 0 Oops: Oops: 0000 [#1] SMP NOPTI CPU: 15 UID: 0 PID: 520 Comm: devlink Not tainted 6.18.0-rc5+ #115 PREEMPT(voluntary) Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-2.fc40 04/01/2014 RIP: 0010:mlx5e_dcbnl_dscp_app+0x23/0x100 RSP: 0018:ffffc9000083f8b8 EFLAGS: 00010286 RAX: ffff8881126fc380 RBX: ffff8881015ac400 RCX: ffffffff826ffc45 RDX: 0000000000000000 RSI: 0000000000000001 RDI: ffff8881035109c0 RBP: ffff8881035109c0 R08: ffff888101e3e838 R09: ffff888100264e10 R10: ffffc9000083f898 R11: ffffc9000083f8a0 R12: ffff888101b921a0 R13: ffff888101b921a0 R14: ffff8881015ac9a0 R15: ffff8881015ac400 FS: 00007f789a3c8740(0000) GS:ffff88856aa59000(0000) knlGS:0000000000000000 CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033 CR2: 0000000000000370 CR3: 000000010b6c0001 CR4: 0000000000370ef0 Call Trace: <TASK> mlx5e_remove+0x57/0x110 device_release_driver_internal+0x19c/0x200 bus_remove_device+0xc6/0x130 device_del+0x160/0x3d0 ? devl_param_driverinit_value_get+0x2d/0x90 mlx5_detach_device+0x89/0xe0 mlx5_unload_one_devl_locked+0x3a/0x70 mlx5_devlink_reload_down+0xc8/0x220 devlink_reload+0x7d/0x260 devlink_nl_reload_doit+0x45b/0x5a0 genl_family_rcv_msg_doit+0xe8/0x140</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23035">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01729dd4c9b709a802d6e06aa10eef0c</td>
+       <td>CVE-2026-23034</td>
+       <td>2026-01-31 12:16:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drm/amdgpu/userq: Fix fence reference leak on queue teardown v2 The user mode queue keeps a pointer to the most recent fence in userq->last_fence. This pointer holds an extra dma_fence reference. When the queue is destroyed, we free the fence driver and its xarray, but we forgot to drop the last_fence reference. Because of the missing dma_fence_put(), the last fence object can stay alive when the driver unloads. This leaves an allocated object in the amdgpu_userq_fence slab cache and triggers This is visible during driver unload as: BUG amdgpu_userq_fence: Objects remaining on __kmem_cache_shutdown() kmem_cache_destroy amdgpu_userq_fence: Slab cache still has objects Call Trace: kmem_cache_destroy amdgpu_userq_fence_slab_fini amdgpu_exit __do_sys_delete_module Fix this by putting userq->last_fence and clearing the pointer during amdgpu_userq_fence_driver_free(). This makes sure the fence reference is released and the slab cache is empty when the module exits. v2: Update to only release userq->last_fence with dma_fence_put() (Christian) (cherry picked from commit 8e051e38a8d45caf6a866d4ff842105b577953bb)</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23034">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e852dc5898e65fd3b58acc344d5595f</td>
+       <td>CVE-2026-23033</td>
+       <td>2026-01-31 12:16:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: dmaengine: omap-dma: fix dma_pool resource leak in error paths The dma_pool created by dma_pool_create() is not destroyed when dma_async_device_register() or of_dma_controller_register() fails, causing a resource leak in the probe error paths. Add dma_pool_destroy() in both error paths to properly release the allocated dma_pool resource.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23033">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3e9171ba20224d0ec82546c4d81d0826</td>
+       <td>CVE-2026-23031</td>
+       <td>2026-01-31 12:16:06 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: can: gs_usb: gs_usb_receive_bulk_callback(): fix URB memory leak In gs_can_open(), the URBs for USB-in transfers are allocated, added to the parent->rx_submitted anchor and submitted. In the complete callback gs_usb_receive_bulk_callback(), the URB is processed and resubmitted. In gs_can_close() the URBs are freed by calling usb_kill_anchored_urbs(parent->rx_submitted). However, this does not take into account that the USB framework unanchors the URB before the complete function is called. This means that once an in-URB has been completed, it is no longer anchored and is ultimately not released in gs_can_close(). Fix the memory leak by anchoring the URB in the gs_usb_receive_bulk_callback() to the parent->rx_submitted anchor.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23031">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ab3597518bd622a6e6054267a26c4546</td>
        <td>CVE-2026-25154</td>
-       <td>2026-01-30 22:15:56 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:56</td>
        <td>LocalSend is a free, open-source app that allows users to share files and messages with nearby devices over their local network without needing an internet connection. In versions up to and including 1.17.0, when a user initiates a "Share via Link" session, the LocalSend application starts a local HTTP server to host the selected files. The client-side logic for this web interface is contained in `app/assets/web/main.js`. Note that at [0], the `handleFilesDisplay` function constructs the HTML for the file list by iterating over the files received from the server. Commit 8f3cec85aa29b2b13fed9b2f8e499e1ac9b0504c contains a patch.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25154">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>818213e26833772728fc1c074702cd50</td>
        <td>CVE-2026-1705</td>
-       <td>2026-01-30 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:55</td>
        <td>A vulnerability was detected in D-Link DSL-6641K N8.TR069.20131126. Affected by this issue is the function ad_virtual_server_vdsl of the component Web Interface. Performing a manipulation of the argument Name results in cross site scripting. It is possible to initiate the attack remotely. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1705">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>6f0aa985f5540f60c8db3cbf4f05b72d</td>
        <td>CVE-2025-36442</td>
-       <td>2026-01-30 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:55</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 11.5.0 - 11.5.9 and 12.1.0 - 12.1.3 is vulnerable to a denial of service as the server may crash under certain conditions with a specially crafted query with XML columns.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36442">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>2a34b2e0f256067a39c0cff10f2bd3a1</td>
        <td>CVE-2025-36427</td>
-       <td>2026-01-30 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:55</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 11.5.0 - 11.5.9 and 12.1.0 - 12.1.3 could allow a local user to cause a denial of service due to improper neutralization of special elements in data query logic.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36427">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>6ccf2f83d6a4fc24418e28e88e2f8191</td>
        <td>CVE-2025-36424</td>
-       <td>2026-01-30 22:15:55 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:55</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 11.5.0 - 11.5.9 and 12.1.0 - 12.1.3 could allow a local user to cause a denial of service due to improper neutralization of special elements in data query logic.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36424">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>72863200968b042ce877fa6f1b6fb094</td>
        <td>CVE-2025-36423</td>
-       <td>2026-01-30 22:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:54</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 12.1.0 - 12.1.3 could allow a local user to cause a denial of service due to improper neutralization of special elements in data query logic.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36423">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>dc5fd2f50bfdc0c05df764c6b43703d3</td>
        <td>CVE-2025-36407</td>
-       <td>2026-01-30 22:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:54</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 11.5.0 - 11.5.9 and 12.1.0 - 12.1.3 could allow a local user to cause a denial of service due to improper neutralization of special elements in data query logic.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36407">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>c02a9365e01ac56eadb5e12cbc713a02</td>
        <td>CVE-2025-36387</td>
-       <td>2026-01-30 22:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:54</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes DB2 Connect Server) 11.5.0 - 11.5.9 could allow an authenticated user to cause a denial of service when given specially crafted query.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36387">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>061443899f557661429ca9ec6c3b0a25</td>
        <td>CVE-2025-36365</td>
-       <td>2026-01-30 22:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:54</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 11.5.0 - 11.5.9 and 12.1.0 - 12.1.3 under specific configuration of cataloged remote storage aliases could allow an authenticated user to execute unauthorized commands due to an authorization bypass vulnerability using a user-controlled key.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36365">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>a6db12cd3aef5e97e503192398fadab0</td>
        <td>CVE-2025-36353</td>
-       <td>2026-01-30 22:15:53 <img src="imgs/new.gif" /></td>
+       <td>2026-01-30 22:15:53</td>
        <td>IBM Db2 for Linux, UNIX and Windows (includes Db2 Connect Server) 11.5.0 - 11.5.9 and 12.1.0 - 12.1.3 could allow a local user to cause a denial of service due to improper neutralization of special elements in data query logic.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-36353">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-01-29 21:30:30</td>
        <td>Improper link resolution in the VX800v v1.0 SFTP service allows authenticated adjacent attackers...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15541">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>abe8a75b20569532b8ee55f104b11db9</td>
-       <td>CVE-2026-24856</td>
-       <td>2026-01-28 21:16:13</td>
-       <td>iccDEV provides a set of libraries and tools that allow for the interaction, manipulation, and application of ICC color management profiles. Versions prior to 2.3.1.2 have an undefined behavior issue when floating-point NaN values are converted to unsigned short integer types during ICC profile XML parsing potentially corrupting memory structures and enabling arbitrary code execution. This vulnerability affects users of the iccDEV library who process ICC color profiles. ICC Profile Injection vulnerabilities arise when user-controllable input is incorporated into ICC profile data or other structured binary blobs in an unsafe manner. Version 2.3.1.2 contains a fix for the issue. No known workarounds are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24856">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>513c06547a6ef448cfe6bba53a38183e</td>
-       <td>CVE-2026-24767</td>
-       <td>2026-01-28 21:16:12</td>
-       <td>NocoDB is software for building databases as spreadsheets. Prior to version 0.301.0, a blind Server-Side Request Forgery (SSRF) vulnerability exists in the `uploadViaURL` functionality due to an unprotected `HEAD` request. While the subsequent file retrieval logic correctly enforces SSRF protections, the initial metadata request executes without validation. This allows limited outbound requests to arbitrary URLs before SSRF controls are applied. Version 0.301.0 contains a patch for the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24767">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7998053000db8ba118d5eae7664fc788</td>
-       <td>CVE-2026-1535</td>
-       <td>2026-01-28 21:16:11</td>
-       <td>A security vulnerability has been detected in code-projects Online Music Site 1.0. This impacts an unknown function of the file /Administrator/PHP/AdminReply.php. Such manipulation of the argument ID leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1535">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>85594cd6e19865262f831b7191eca7dd</td>
-       <td>CVE-2025-71005</td>
-       <td>2026-01-28 21:16:09</td>
-       <td>A floating point exception (FPE) in the oneflow.view component of OneFlow v0.9.0 allows attackers to cause a Denial of Service (DoS) via a crafted input.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71005">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f053df95b1340f529ae2f3cba6c5bd62</td>
-       <td>CVE-2025-71002</td>
-       <td>2026-01-28 20:16:14</td>
-       <td>A floating-point exception (FPE) in the flow.column_stack component of OneFlow v0.9.0 allows attackers to cause a Denial of Service (DoS) via a crafted input.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71002">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>09b94f36f5125b4ccabea6576d796edf</td>
-       <td>CVE-2025-69289</td>
-       <td>2026-01-28 20:16:13</td>
-       <td>Discourse is an open source discussion platform. A privilege escalation vulnerability in versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0 allows a non-admin moderator to bypass email-change restrictions, allowing a takeover of non-staff accounts. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. As a workaround, ensure moderators are trusted or enable the "require_change_email_confirmation" setting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69289">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>38ac357dc30e88aa0f8476d0b5f6e99b</td>
-       <td>CVE-2025-69218</td>
-       <td>2026-01-28 20:16:13</td>
-       <td>Discourse is an open source discussion platform. In versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0, moderators can access the `top_uploads` admin report which should be restricted to admins only. This report displays direct URLs to all uploaded files on the site, including sensitive content such as user data exports, admin backups, and other private attachments that moderators should not have access to. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. There is no workaround. Limit moderator privileges to trusted users until the patch is applied.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69218">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b360883d1b22dcaa0ccd0fd24ce4a542</td>
-       <td>CVE-2025-68934</td>
-       <td>2026-01-28 20:16:12</td>
-       <td>Discourse is an open source discussion platform. In versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0, authenticated users can submit crafted payloads to /drafts.json that cause O(n^2) processing in Base62.decode, tying up workers for 35-60 seconds per request. This affects all users as the shared worker pool becomes exhausted. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. Lowering the max_draft_length site setting reduces attack surface but does not fully mitigate the issue, as payloads under the limit can still trigger the slow code path.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68934">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4254015f25847687fd66faf85d0a6141</td>
-       <td>CVE-2025-68933</td>
-       <td>2026-01-28 20:16:12</td>
-       <td>Discourse is an open source discussion platform. In versions prior to 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0, non-admin moderators with the `moderators_change_post_ownership` setting enabled can change ownership of posts in private messages and restricted categories they cannot access, then export their data to view the content. This is a broken access control vulnerability affecting sites that grant moderators post ownership transfer permissions. This issue is patched in versions 3.5.4, 2025.11.2, 2025.12.1, and 2026.1.0. The patch adds visibility checks for both the topic and posts before allowing ownership transfer. As a workaround, disable the `moderators_change_post_ownership` site setting to prevent non-admin moderators from using the post ownership transfer feature.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-68933">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>39921b5e17c45f6379e9832dba586c3c</td>
-       <td>CVE-2025-61730</td>
-       <td>2026-01-28 20:16:09</td>
-       <td>During the TLS 1.3 handshake if multiple messages are sent in records that span encryption level boundaries (for instance the Client Hello and Encrypted Extensions messages), the subsequent messages may be processed before the encryption level changes. This can cause some minor information disclosure if a network-local attacker can inject messages during the handshake.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-61730">详情</a></td>
       </tr>
 
      </tbody>
