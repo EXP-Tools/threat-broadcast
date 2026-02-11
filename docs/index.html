@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-02-10 10:04:46 -->
+<!-- RELEASE TIME : 2026-02-11 09:59:30 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5d4ee29175cd0ae44cc9944a9c2792ef</td>
+       <td>CVE-2026-1357</td>
+       <td>2026-02-11 06:15:51 <img src="imgs/new.gif" /></td>
+       <td>The Migration, Backup, Staging – WPvivid Backup & Migration plugin for WordPress is vulnerable to Unauthenticated Arbitrary File Upload in versions up to and including 0.9.123. This is due to improper error handling in the RSA decryption process combined with a lack of path sanitization when writing uploaded files. When the plugin fails to decrypt a session key using openssl_private_decrypt(), it does not terminate execution and instead passes the boolean false value to the phpseclib library's AES cipher initialization. The library treats this false value as a string of null bytes, allowing an attacker to encrypt a malicious payload using a predictable null-byte key. Additionally, the plugin accepts filenames from the decrypted payload without sanitization, enabling directory traversal to escape the protected backup directory. This makes it possible for unauthenticated attackers to upload arbitrary PHP files to publicly accessible directories and achieve Remote Code Execution via the wpvivid_action=send_to_site parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1357">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9eacd4113d4fe549768092699918dc72</td>
+       <td>CVE-2026-1235</td>
+       <td>2026-02-11 06:15:51 <img src="imgs/new.gif" /></td>
+       <td>The WP eCommerce WordPress plugin through 3.15.1 unserializes user input via ajax actions, which could allow unauthenticated users to perform PHP Object Injection when a suitable gadget is present on the blog.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1235">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4e4b6ab389e6e11bb5922d0b0fc1c286</td>
+       <td>CVE-2025-15400</td>
+       <td>2026-02-11 06:15:47 <img src="imgs/new.gif" /></td>
+       <td>The Pix para Woocommerce WordPress plugin through 2.13.3 allows any authenticated user to trigger AJAX actions that reset payment gateway configuration options without capability or nonce checks. This permits any authenticated users, such as subscribers to clear API credentials and webhook status, causing persistent disruption of OpenPix payment functionality.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15400">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d06a0cb7b29bfb7a066016ffb3cc60e</td>
+       <td>CVE-2026-26079</td>
+       <td>2026-02-11 05:16:28 <img src="imgs/new.gif" /></td>
+       <td>Roundcube Webmail before 1.5.13 and 1.6 before 1.6.13 allows Cascading Style Sheets (CSS) injection, e.g., because comments are mishandled.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26079">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>adcdd862da8997ad57bbe39013c067ec</td>
+       <td>CVE-2026-26044</td>
+       <td>2026-02-11 05:16:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26044">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4753b22644acbe3ce273b1605414a7d9</td>
+       <td>CVE-2026-26043</td>
+       <td>2026-02-11 05:16:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26043">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ee59a8826add640e7aaa4653c04cb47f</td>
+       <td>CVE-2026-26042</td>
+       <td>2026-02-11 05:16:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26042">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4ec0d74ba28e9e59f688bed8e8004eb3</td>
+       <td>CVE-2026-26041</td>
+       <td>2026-02-11 05:16:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26041">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>896c323f17d0c181ebd892ef3028299b</td>
+       <td>CVE-2026-26040</td>
+       <td>2026-02-11 05:16:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26040">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>90e7616816baf9b4c7de942d837ac2cc</td>
+       <td>CVE-2026-26039</td>
+       <td>2026-02-11 05:16:28 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26039">详情</a></td>
+      </tr>
+
+      <tr>
        <td>eb098045807f058ae4dfc5a7518b88da</td>
        <td>CVE-2026-24328</td>
        <td>2026-02-10 04:16:05 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>54e2db2052dea0d685fc8778a39a857d</td>
        <td>CVE-2026-2215</td>
-       <td>2026-02-09 05:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:25</td>
        <td>A vulnerability was detected in rachelos WeRSS we-mp-rss up to 1.4.8. This issue affects some unknown processing of the file core/auth.py of the component JWT Handler. Performing a manipulation of the argument SECRET_KEY results in use of default cryptographic key. The attack can be initiated remotely. The attack is considered to have high complexity. The exploitability is assessed as difficult. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2215">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>22b844028e734590de2eaf6a0786be91</td>
        <td>CVE-2026-2214</td>
-       <td>2026-02-09 05:16:24 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:24</td>
        <td>A weakness has been identified in code-projects for Plugin 1.0. This affects an unknown part of the file /Administrator/PHP/AdminAddAlbum.php. This manipulation of the argument txtalbum causes cross site scripting. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2214">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>c2c3919ee77b286b311de6c08fac2765</td>
        <td>CVE-2026-2213</td>
-       <td>2026-02-09 05:16:24 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:24</td>
        <td>A security flaw has been discovered in code-projects Online Music Site 1.0. Affected by this issue is some unknown functionality of the file /Administrator/PHP/AdminAddAlbum.php. The manipulation of the argument txtimage results in unrestricted upload. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2213">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>0f6cdea251b5c9e393e850d7f961bda2</td>
        <td>CVE-2026-1615</td>
-       <td>2026-02-09 05:16:24 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:24</td>
        <td>All versions of the package jsonpath are vulnerable to Arbitrary Code Injection via unsafe evaluation of user-supplied JSON Path expressions. The library relies on the static-eval module to process JSON Path input, which is not designed to handle untrusted data safely. An attacker can exploit this vulnerability by supplying a malicious JSON Path expression that, when evaluated, executes arbitrary JavaScript code, leading to Remote Code Execution in Node.js environments or Cross-site Scripting (XSS) in browser contexts. This affects all methods that evaluate JSON Paths against objects, including .query, .nodes, .paths, .value, .parent, and .apply.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1615">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>f56ec2ef3ffdd3e105a553013e9ec9a6</td>
        <td>CVE-2025-66598</td>
-       <td>2026-02-09 05:16:24 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:24</td>
        <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product supports old SSL/TLS versions, potentially allowing an attacker to decrypt communications with the web server. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66598">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>ac8b1dde005f5f5e0dc4871b086fb104</td>
        <td>CVE-2025-66597</td>
-       <td>2026-02-09 05:16:24 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:24</td>
        <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product supports weak cryptographic algorithms, potentially allowing an attacker to decrypt communications with the web server. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66597">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>157f3e269969efb117ad9ee69a1b88e7</td>
        <td>CVE-2025-66596</td>
-       <td>2026-02-09 05:16:23 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:23</td>
        <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product does not properly validate request headers. When an attacker inserts an invalid host header, users could be redirected to malicious sites. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66596">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>acd3743b1ccb9b9ac2704017b3440c7b</td>
        <td>CVE-2025-66595</td>
-       <td>2026-02-09 05:16:23 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:23</td>
        <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product is vulnerable to Cross-Site Request Forgery (CSRF). When a user accesses a link crafted by an attacker, the user’s account could be compromised. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66595">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>656ac975b4bb5d2b640c76d6a0923557</td>
        <td>CVE-2025-66594</td>
-       <td>2026-02-09 05:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 05:16:21</td>
        <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. Detailed messages are displayed on the error page. This information could be exploited by an attacker for other attacks. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66594">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>4e21d5f2fd5d0232ee0e8ca59bac64e8</td>
        <td>CVE-2026-2212</td>
-       <td>2026-02-09 04:15:50 <img src="imgs/new.gif" /></td>
+       <td>2026-02-09 04:15:50</td>
        <td>A vulnerability was identified in code-projects Online Music Site 1.0. Affected by this vulnerability is an unknown functionality of the file /Administrator/PHP/AdminEditCategory.php. The manipulation of the argument ID leads to sql injection. The attack is possible to be carried out remotely. The exploit is publicly available and might be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2212">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>70ff07c5c713c4c8067c2f1e2eb389cc</td>
-       <td>CVE-2026-2135</td>
-       <td>2026-02-08 05:16:07</td>
-       <td>A vulnerability was detected in UTT HiPER 810 1.7.4-141218. The impacted element is the function sub_43F020 of the file /goform/formPdbUpConfig. Performing a manipulation of the argument policyNames results in command injection. It is possible to initiate the attack remotely. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2135">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>861343e41094f5e3a24a1a862d0ed0b3</td>
-       <td>CVE-2026-2134</td>
-       <td>2026-02-08 05:16:04</td>
-       <td>A security vulnerability has been detected in PHPGurukul Hospital Management System 4.0. The affected element is an unknown function of the file /hms/admin/manage-doctors.php. Such manipulation of the argument ID leads to sql injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2134">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>73ef4d73a136d36d3b330f68b5580eeb</td>
-       <td>CVE-2026-2133</td>
-       <td>2026-02-08 04:15:55</td>
-       <td>A weakness has been identified in code-projects Online Music Site 1.0. Impacted is an unknown function of the file /Administrator/PHP/AdminUpdateCategory.php. This manipulation of the argument txtimage causes unrestricted upload. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2133">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3f808c280ebaf6404f9b721d1e06bd42</td>
-       <td>CVE-2026-2132</td>
-       <td>2026-02-08 04:15:53</td>
-       <td>A security flaw has been discovered in code-projects Online Music Site 1.0. This issue affects some unknown processing of the file /Administrator/PHP/AdminUpdateCategory.php. The manipulation of the argument txtcat results in sql injection. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2132">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>429f9f4ae1240c2970e0e5c5902a7fbc</td>
-       <td>CVE-2026-2131</td>
-       <td>2026-02-08 03:15:49</td>
-       <td>A vulnerability was identified in XixianLiang HarmonyOS-mcp-server 0.1.0. This vulnerability affects the function input_text. The manipulation of the argument text leads to os command injection. Remote exploitation of the attack is possible. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2131">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78c97c9f18cecf1bae9b021a9f03570e</td>
-       <td>CVE-2026-2130</td>
-       <td>2026-02-08 03:15:46</td>
-       <td>A vulnerability was determined in BurtTheCoder mcp-maigret up to 1.0.12. This affects an unknown part of the file src/index.ts of the component search_username. Executing a manipulation of the argument Username can lead to command injection. The attack may be launched remotely. Upgrading to version 1.0.13 is able to mitigate this issue. This patch is called b1ae073c4b3e789ab8de36dc6ca8111ae9399e7a. Upgrading the affected component is advised.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2130">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>422042ee31b91b50ab05a60e2666dc4b</td>
-       <td>CVE-2026-2209</td>
-       <td>2026-02-08 02:15:57</td>
-       <td>A vulnerability was detected in WeKan up to 8.18. The affected element is the function setCreateTranslation of the file client/components/settings/translationBody.js of the component Custom Translation Handler. The manipulation results in improper authorization. The attack can be launched remotely. Upgrading to version 8.19 is sufficient to fix this issue. The patch is identified as f244a43771f6ebf40218b83b9f46dba6b940d7de. It is suggested to upgrade the affected component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2209">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f4e7c59731216692d967fb86747905a7</td>
-       <td>CVE-2026-2208</td>
-       <td>2026-02-08 02:15:57</td>
-       <td>A security vulnerability has been detected in WeKan up to 8.20. Impacted is an unknown function of the file server/publications/rules.js of the component Rules Handler. The manipulation leads to missing authorization. The attack can be initiated remotely. Upgrading to version 8.21 is recommended to address this issue. The identifier of the patch is a787bcddf33ca28afb13ff5ea9a4cb92dceac005. The affected component should be upgraded.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2208">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>001d1de8c7ef43830f5e6c8cbd2d0eab</td>
-       <td>CVE-2026-2207</td>
-       <td>2026-02-08 02:15:57</td>
-       <td>A weakness has been identified in WeKan up to 8.20. This issue affects some unknown processing of the file server/publications/activities.js of the component Activity Publication Handler. Executing a manipulation can lead to information disclosure. It is possible to launch the attack remotely. Upgrading to version 8.21 is capable of addressing this issue. This patch is called 91a936e07d2976d4246dfe834281c3aaa87f9503. You should upgrade the affected component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2207">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ca41fbdff354da21947b3790b5c0e817</td>
-       <td>CVE-2026-2206</td>
-       <td>2026-02-08 02:15:57</td>
-       <td>A security flaw has been discovered in WeKan up to 8.20. This vulnerability affects unknown code of the file server/methods/fixDuplicateLists.js of the component Administrative Repair Handler. Performing a manipulation results in improper access controls. It is possible to initiate the attack remotely. Upgrading to version 8.21 is able to resolve this issue. The patch is named 4ce181d17249778094f73d21515f7f863f554743. It is advisable to upgrade the affected component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2206">详情</a></td>
       </tr>
 
      </tbody>
