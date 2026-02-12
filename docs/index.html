@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-02-11 09:59:30 -->
+<!-- RELEASE TIME : 2026-02-12 09:57:37 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>85ea9d3ade3fcdd172fad1384284f777</td>
+       <td>CVE-2025-15577</td>
+       <td>2026-02-12 07:15:56 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated attacker can exploit this vulnerability by manipulating URL to achieve arbitrary file read access.This issue affects Valmet DNA Web Tools: C2022 and older.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15577">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>af710f7ace83c78f0bc03c3f636e006c</td>
+       <td>CVE-2026-2327</td>
+       <td>2026-02-12 06:16:02 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package markdown-it from 13.0.0 and before 14.1.1 are vulnerable to Regular Expression Denial of Service (ReDoS) due to the use of the regex /\*+$/ in the linkify function. An attacker can supply a long sequence of * characters followed by a non-matching character, which triggers excessive backtracking and may lead to a denial-of-service condition.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2327">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c43bb3c371734ce3ef2a0f5560703f66</td>
+       <td>CVE-2025-14892</td>
+       <td>2026-02-12 06:16:01 <img src="imgs/new.gif" /></td>
+       <td>The Prime Listing Manager WordPress plugin through 1.1 allows an attacker to gain administrative access without having any kind of account on the targeted site and perform unauthorized actions due to a hardcoded secret.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14892">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c74d4f1279066103911ea43975fe4eb2</td>
+       <td>CVE-2026-2391</td>
+       <td>2026-02-12 05:17:11 <img src="imgs/new.gif" /></td>
+       <td>### Summary The `arrayLimit` option in qs does not enforce limits for comma-separated values when `comma: true` is enabled, allowing attackers to cause denial-of-service via memory exhaustion. This is a bypass of the array limit enforcement, similar to the bracket notation bypass addressed in GHSA-6rw7-vpxm-498p (CVE-2025-15284). ### Details When the `comma` option is set to `true` (not the default, but configurable in applications), qs allows parsing comma-separated strings as arrays (e.g., `?param=a,b,c` becomes `['a', 'b', 'c']`). However, the limit check for `arrayLimit` (default: 20) and the optional throwOnLimitExceeded occur after the comma-handling logic in `parseArrayValue`, enabling a bypass. This permits creation of arbitrarily large arrays from a single parameter, leading to excessive memory allocation. **Vulnerable code** (lib/parse.js: lines ~40-50): ```js if (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) { return val.split(','); } if (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) { throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.'); } return val; ``` The `split(',')` returns the array immediately, skipping the subsequent limit check. Downstream merging via `utils.combine` does not prevent allocation, even if it marks overflows for sparse arrays.This discrepancy allows attackers to send a single parameter with millions of commas (e.g., `?param=,,,,,,,,...`), allocating massive arrays in memory without triggering limits. It bypasses the intent of `arrayLimit`, which is enforced correctly for indexed (`a[0]=`) and bracket (`a[]=`) notations (the latter fixed in v6.14.1 per GHSA-6rw7-vpxm-498p). ### PoC **Test 1 - Basic bypass:** ``` npm install qs ``` ```js const qs = require('qs'); const payload = 'a=' + ','.repeat(25); // 26 elements after split (bypasses arrayLimit: 5) const options = { comma: true, arrayLimit: 5, throwOnLimitExceeded: true }; try { const result = qs.parse(payload, options); console.log(result.a.length); // Outputs: 26 (bypass successful) } catch (e) { console.log('Limit enforced:', e.message); // Not thrown } ``` **Configuration:** - `comma: true` - `arrayLimit: 5` - `throwOnLimitExceeded: true` Expected: Throws "Array limit exceeded" error. Actual: Parses successfully, creating an array of length 26. ### Impact Denial of Service (DoS) via memory exhaustion.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2391">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b79ea2424b7c1837786658515ed329d</td>
+       <td>CVE-2026-26092</td>
+       <td>2026-02-12 05:17:06 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26092">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>77e1b4a696642f18bd06f53f9666fa1d</td>
+       <td>CVE-2026-26091</td>
+       <td>2026-02-12 05:17:06 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26091">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd537b29baf71ba245ad4cfab24027f0</td>
+       <td>CVE-2026-26090</td>
+       <td>2026-02-12 05:17:06 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26090">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d290385d267384fc4780dcbce864122a</td>
+       <td>CVE-2026-26089</td>
+       <td>2026-02-12 05:17:06 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26089">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a17e4ea296605df397df7f015ea5a095</td>
+       <td>CVE-2026-26088</td>
+       <td>2026-02-12 05:17:06 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26088">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa48ba75733f8b4308ea2844bc5636aa</td>
+       <td>CVE-2026-26087</td>
+       <td>2026-02-12 05:17:06 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: Not used</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26087">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5d4ee29175cd0ae44cc9944a9c2792ef</td>
        <td>CVE-2026-1357</td>
        <td>2026-02-11 06:15:51 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>eb098045807f058ae4dfc5a7518b88da</td>
        <td>CVE-2026-24328</td>
-       <td>2026-02-10 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:05</td>
        <td>SAP TAF_APPLAUNCHER within Business Server Pages allows unauthenticated attacker to craft malicious links that, when clicked by a victim, redirect them to attacker?controlled sites, potentially exposing or altering sensitive information in the victim�s browser. This results in a low impact on confidentiality and integrity, with no impact on the availability of the application.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24328">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>582f3e91f75f03cdeb28c52ff7e17aeb</td>
        <td>CVE-2026-24327</td>
-       <td>2026-02-10 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:05</td>
        <td>Due to missing authorization check in SAP Strategic Enterprise Management (Balanced Scorecard in Business Server Pages), an authenticated attacker could access information that they are otherwise unauthorized to view. This leads to low impact on confidentiality and no effect on integrity or availability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24327">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>9be68e2063dddaffe9e6494666beec6b</td>
        <td>CVE-2026-2260</td>
-       <td>2026-02-10 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:05</td>
        <td>A vulnerability was found in D-Link DCS-931L up to 1.13.0. This affects an unknown part of the file /goform/setSysAdmin. The manipulation of the argument AdminID results in os command injection. The attack can be executed remotely. The exploit has been made public and could be used. This vulnerability only affects products that are no longer supported by the maintainer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2260">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>e070d41922edf383ec0119439dd4701e</td>
        <td>CVE-2026-2259</td>
-       <td>2026-02-10 04:16:05 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:05</td>
        <td>A vulnerability has been found in aardappel lobster up to 2025.4. Affected by this issue is the function lobster::Parser::ParseStatements in the library dev/src/lobster/parser.h of the component Parsing. The manipulation leads to memory corruption. The attack can only be performed from a local environment. The exploit has been disclosed to the public and may be used. The identifier of the patch is 2f45fe860d00990e79e13250251c1dde633f1f89. Applying a patch is the recommended action to fix this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2259">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>0cdd87a1b71d855b56d7436b9d468d69</td>
        <td>CVE-2026-24326</td>
-       <td>2026-02-10 04:16:04 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:04</td>
        <td>Due to a missing authorization check in the Disconnected Operations of the SAP S/4HANA Defense & Security, an attacker with user privileges could call remote-enabled function modules to do direct update on standard SAP database table . This results in low impact on integrity, with no impact on confidentiality or availability of the application.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24326">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>e4327f55e019c3ed6e46e82809a5fe8d</td>
        <td>CVE-2026-24325</td>
-       <td>2026-02-10 04:16:04 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:04</td>
        <td>SAP BusinessObjects Enterprise does not sufficiently encode user-controlled inputs, leading to Stored Cross-Site Scripting (XSS) vulnerability. This enables an admin user to inject malicious JavaScript into a website and the injected script gets executed when the user visits the compromised page.This vulnerability has low impact on confidentiality and integrity of the data. There is no impact on the availability of the application.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24325">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>d5c7b049f450c4ec30a013fd57ebca78</td>
        <td>CVE-2026-24324</td>
-       <td>2026-02-10 04:16:04 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:04</td>
        <td>SAP BusinessObjects Business Intelligence Platform (AdminTools) allows an authenticated attacker with user privileges to execute a specific query in AdminTools that could cause the Content Management Server (CMS) to crash, rendering the CMS partially or completely unavailable and resulting in the denial of service of the Content Management Server (CMS). Successful exploitation impacts system availability, while confidentiality and integrity remain unaffected.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24324">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>536d64968e656e8f544af9adf16bc322</td>
        <td>CVE-2026-24323</td>
-       <td>2026-02-10 04:16:04 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:04</td>
        <td>The BSP applications allow an unauthenticated user to inject malicious script content via user-controlled URL parameters that are not sufficiently sanitized. When a victim accesses a crafted URL, the injected script is executed in the victim�s browser, leading to a low impact on confidentiality and integrity, and no impact on the availability of the application.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24323">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>87846a4d28ba99a1c4dbe0550e8b1656</td>
        <td>CVE-2026-24322</td>
-       <td>2026-02-10 04:16:04 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:04</td>
        <td>SAP Solution Tools Plug-In (ST-PI) contains a function module that does not perform the necessary authorization checks for authenticated users, allowing sensitive information to be disclosed. This vulnerability has a high impact on confidentiality and does not affect integrity or availability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24322">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>d881999d5f1a1f71bebbf2150f8f40e3</td>
        <td>CVE-2026-24321</td>
-       <td>2026-02-10 04:16:04 <img src="imgs/new.gif" /></td>
+       <td>2026-02-10 04:16:04</td>
        <td>SAP Commerce Cloud exposes multiple API endpoints to unauthenticated users, allowing them to submit requests to these open endpoints to retrieve sensitive information that is not intended to be publicly accessible via the front-end. This vulnerability has a low impact on confidentiality and does not affect integrity and availability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24321">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>54e2db2052dea0d685fc8778a39a857d</td>
-       <td>CVE-2026-2215</td>
-       <td>2026-02-09 05:16:25</td>
-       <td>A vulnerability was detected in rachelos WeRSS we-mp-rss up to 1.4.8. This issue affects some unknown processing of the file core/auth.py of the component JWT Handler. Performing a manipulation of the argument SECRET_KEY results in use of default cryptographic key. The attack can be initiated remotely. The attack is considered to have high complexity. The exploitability is assessed as difficult. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2215">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>22b844028e734590de2eaf6a0786be91</td>
-       <td>CVE-2026-2214</td>
-       <td>2026-02-09 05:16:24</td>
-       <td>A weakness has been identified in code-projects for Plugin 1.0. This affects an unknown part of the file /Administrator/PHP/AdminAddAlbum.php. This manipulation of the argument txtalbum causes cross site scripting. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2214">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c2c3919ee77b286b311de6c08fac2765</td>
-       <td>CVE-2026-2213</td>
-       <td>2026-02-09 05:16:24</td>
-       <td>A security flaw has been discovered in code-projects Online Music Site 1.0. Affected by this issue is some unknown functionality of the file /Administrator/PHP/AdminAddAlbum.php. The manipulation of the argument txtimage results in unrestricted upload. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2213">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0f6cdea251b5c9e393e850d7f961bda2</td>
-       <td>CVE-2026-1615</td>
-       <td>2026-02-09 05:16:24</td>
-       <td>All versions of the package jsonpath are vulnerable to Arbitrary Code Injection via unsafe evaluation of user-supplied JSON Path expressions. The library relies on the static-eval module to process JSON Path input, which is not designed to handle untrusted data safely. An attacker can exploit this vulnerability by supplying a malicious JSON Path expression that, when evaluated, executes arbitrary JavaScript code, leading to Remote Code Execution in Node.js environments or Cross-site Scripting (XSS) in browser contexts. This affects all methods that evaluate JSON Paths against objects, including .query, .nodes, .paths, .value, .parent, and .apply.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1615">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f56ec2ef3ffdd3e105a553013e9ec9a6</td>
-       <td>CVE-2025-66598</td>
-       <td>2026-02-09 05:16:24</td>
-       <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product supports old SSL/TLS versions, potentially allowing an attacker to decrypt communications with the web server. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66598">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ac8b1dde005f5f5e0dc4871b086fb104</td>
-       <td>CVE-2025-66597</td>
-       <td>2026-02-09 05:16:24</td>
-       <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product supports weak cryptographic algorithms, potentially allowing an attacker to decrypt communications with the web server. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66597">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>157f3e269969efb117ad9ee69a1b88e7</td>
-       <td>CVE-2025-66596</td>
-       <td>2026-02-09 05:16:23</td>
-       <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product does not properly validate request headers. When an attacker inserts an invalid host header, users could be redirected to malicious sites. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>acd3743b1ccb9b9ac2704017b3440c7b</td>
-       <td>CVE-2025-66595</td>
-       <td>2026-02-09 05:16:23</td>
-       <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. This product is vulnerable to Cross-Site Request Forgery (CSRF). When a user accesses a link crafted by an attacker, the user’s account could be compromised. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>656ac975b4bb5d2b640c76d6a0923557</td>
-       <td>CVE-2025-66594</td>
-       <td>2026-02-09 05:16:21</td>
-       <td>A vulnerability has been found in FAST/TOOLS provided by Yokogawa Electric Corporation. Detailed messages are displayed on the error page. This information could be exploited by an attacker for other attacks. The affected products and versions are as follows: FAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-66594">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4e21d5f2fd5d0232ee0e8ca59bac64e8</td>
-       <td>CVE-2026-2212</td>
-       <td>2026-02-09 04:15:50</td>
-       <td>A vulnerability was identified in code-projects Online Music Site 1.0. Affected by this vulnerability is an unknown functionality of the file /Administrator/PHP/AdminEditCategory.php. The manipulation of the argument ID leads to sql injection. The attack is possible to be carried out remotely. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2212">详情</a></td>
       </tr>
 
      </tbody>
