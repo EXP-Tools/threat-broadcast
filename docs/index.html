@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-02-14 13:03:32 -->
+<!-- RELEASE TIME : 2026-02-15 13:05:04 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>746708d896741b2d7652e405ab4f32d4</td>
+       <td>CVE-2026-1793</td>
+       <td>2026-02-15 04:15:54 <img src="imgs/new.gif" /></td>
+       <td>The Element Pack Addons for Elementor plugin for WordPress is vulnerable to arbitrary file reads in all versions up to, and including, 8.3.17 via the SVG widget and a lack of sufficient file validation in the 'render_svg' function. This makes it possible for authenticated attackers, with contributor-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1793">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9dfcf7222fbd73084f7eafdfc4a1c025</td>
+       <td>CVE-2026-1750</td>
+       <td>2026-02-15 04:15:54 <img src="imgs/new.gif" /></td>
+       <td>The Ecwid by Lightspeed Ecommerce Shopping Cart plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 7.0.7. This is due to a missing capability check in the 'save_custom_user_profile_fields' function. This makes it possible for authenticated attackers, with minimal permissions such as a subscriber, to supply the 'ec_store_admin_access' parameter during a profile update and gain store manager access to the site.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1750">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66987981262b0a31486613203f66532b</td>
+       <td>CVE-2026-1490</td>
+       <td>2026-02-15 04:15:53 <img src="imgs/new.gif" /></td>
+       <td>The Spam protection, Anti-Spam, FireWall by CleanTalk plugin for WordPress is vulnerable to unauthorized Arbitrary Plugin Installation due to an authorization bypass via reverse DNS (PTR record) spoofing on the 'checkWithoutToken' function in all versions up to, and including, 6.71. This makes it possible for unauthenticated attackers to install and activate arbitrary plugins which can be leveraged to achieve remote code execution if another vulnerable plugin is installed and activated. Note: This is only exploitable on sites with an invalid API key.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1490">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0d8bb06958398f9af141b7ce6509feca</td>
+       <td>CVE-2026-23210</td>
+       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ice: Fix PTP NULL pointer dereference during VSI rebuild Fix race condition where PTP periodic work runs while VSI is being rebuilt, accessing NULL vsi->rx_rings. The sequence was: 1. ice_ptp_prepare_for_reset() cancels PTP work 2. ice_ptp_rebuild() immediately queues PTP work 3. VSI rebuild happens AFTER ice_ptp_rebuild() 4. PTP work runs and accesses NULL vsi->rx_rings Fix: Keep PTP work cancelled during rebuild, only queue it after VSI rebuild completes in ice_rebuild(). Added ice_ptp_queue_work() helper function to encapsulate the logic for queuing PTP work, ensuring it's only queued when PTP is supported and the state is ICE_PTP_READY. Error log: [ 121.392544] ice 0000:60:00.1: PTP reset successful [ 121.392692] BUG: kernel NULL pointer dereference, address: 0000000000000000 [ 121.392712] #PF: supervisor read access in kernel mode [ 121.392720] #PF: error_code(0x0000) - not-present page [ 121.392727] PGD 0 [ 121.392734] Oops: Oops: 0000 [#1] SMP NOPTI [ 121.392746] CPU: 8 UID: 0 PID: 1005 Comm: ice-ptp-0000:60 Tainted: G S 6.19.0-rc6+ #4 PREEMPT(voluntary) [ 121.392761] Tainted: [S]=CPU_OUT_OF_SPEC [ 121.392773] RIP: 0010:ice_ptp_update_cached_phctime+0xbf/0x150 [ice] [ 121.393042] Call Trace: [ 121.393047] <TASK> [ 121.393055] ice_ptp_periodic_work+0x69/0x180 [ice] [ 121.393202] kthread_worker_fn+0xa2/0x260 [ 121.393216] ? __pfx_ice_ptp_periodic_work+0x10/0x10 [ice] [ 121.393359] ? __pfx_kthread_worker_fn+0x10/0x10 [ 121.393371] kthread+0x10d/0x230 [ 121.393382] ? __pfx_kthread+0x10/0x10 [ 121.393393] ret_from_fork+0x273/0x2b0 [ 121.393407] ? __pfx_kthread+0x10/0x10 [ 121.393417] ret_from_fork_asm+0x1a/0x30 [ 121.393432] </TASK></td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23210">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0e487e655e94e45345baae1d6e4c2cba</td>
+       <td>CVE-2026-23209</td>
+       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: macvlan: fix error recovery in macvlan_common_newlink() valis provided a nice repro to crash the kernel: ip link add p1 type veth peer p2 ip link set address 00:00:00:00:00:20 dev p1 ip link set up dev p1 ip link set up dev p2 ip link add mv0 link p2 type macvlan mode source ip link add invalid% link p2 type macvlan mode source macaddr add 00:00:00:00:00:20 ping -c1 -I p1 1.2.3.4 He also gave a very detailed analysis: <quote valis> The issue is triggered when a new macvlan link is created with MACVLAN_MODE_SOURCE mode and MACVLAN_MACADDR_ADD (or MACVLAN_MACADDR_SET) parameter, lower device already has a macvlan port and register_netdevice() called from macvlan_common_newlink() fails (e.g. because of the invalid link name). In this case macvlan_hash_add_source is called from macvlan_change_sources() / macvlan_common_newlink(): This adds a reference to vlan to the port's vlan_source_hash using macvlan_source_entry. vlan is a pointer to the priv data of the link that is being created. When register_netdevice() fails, the error is returned from macvlan_newlink() to rtnl_newlink_create(): if (ops->newlink) err = ops->newlink(dev, &params, extack); else err = register_netdevice(dev); if (err < 0) { free_netdev(dev); goto out; } and free_netdev() is called, causing a kvfree() on the struct net_device that is still referenced in the source entry attached to the lower device's macvlan port. Now all packets sent on the macvlan port with a matching source mac address will trigger a use-after-free in macvlan_forward_source(). </quote valis> With all that, my fix is to make sure we call macvlan_flush_sources() regardless of @create value whenever "goto destroy_macvlan_port;" path is taken. Many thanks to valis for following up on this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23209">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>26b52cd2171ffdd8b32a4d92b94c3bb2</td>
+       <td>CVE-2026-23208</td>
+       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ALSA: usb-audio: Prevent excessive number of frames In this case, the user constructed the parameters with maxpacksize 40 for rate 22050 / pps 1000, and packsize[0] 22 packsize[1] 23. The buffer size for each data URB is maxpacksize * packets, which in this example is 40 * 6 = 240; When the user performs a write operation to send audio data into the ALSA PCM playback stream, the calculated number of frames is packsize[0] * packets = 264, which exceeds the allocated URB buffer size, triggering the out-of-bounds (OOB) issue reported by syzbot [1]. Added a check for the number of single data URB frames when calculating the number of frames to prevent [1]. [1] BUG: KASAN: slab-out-of-bounds in copy_to_urb+0x261/0x460 sound/usb/pcm.c:1487 Write of size 264 at addr ffff88804337e800 by task syz.0.17/5506 Call Trace: copy_to_urb+0x261/0x460 sound/usb/pcm.c:1487 prepare_playback_urb+0x953/0x13d0 sound/usb/pcm.c:1611 prepare_outbound_urb+0x377/0xc50 sound/usb/endpoint.c:333</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23208">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d4da2a059c88203eb4f3b316eb26cb0f</td>
+       <td>CVE-2026-23207</td>
+       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: spi: tegra210-quad: Protect curr_xfer check in IRQ handler Now that all other accesses to curr_xfer are done under the lock, protect the curr_xfer NULL check in tegra_qspi_isr_thread() with the spinlock. Without this protection, the following race can occur: CPU0 (ISR thread) CPU1 (timeout path) ---------------- ------------------- if (!tqspi->curr_xfer) // sees non-NULL spin_lock() tqspi->curr_xfer = NULL spin_unlock() handle_*_xfer() spin_lock() t = tqspi->curr_xfer // NULL! ... t->len ... // NULL dereference! With this patch, all curr_xfer accesses are now properly synchronized. Although all accesses to curr_xfer are done under the lock, in tegra_qspi_isr_thread() it checks for NULL, releases the lock and reacquires it later in handle_cpu_based_xfer()/handle_dma_based_xfer(). There is a potential for an update in between, which could cause a NULL pointer dereference. To handle this, add a NULL check inside the handlers after acquiring the lock. This ensures that if the timeout path has already cleared curr_xfer, the handler will safely return without dereferencing the NULL pointer.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23207">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e2f7378a66ac0c1dc69c736fea93d54</td>
+       <td>CVE-2026-23206</td>
+       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: dpaa2-switch: prevent ZERO_SIZE_PTR dereference when num_ifs is zero The driver allocates arrays for ports, FDBs, and filter blocks using kcalloc() with ethsw->sw_attr.num_ifs as the element count. When the device reports zero interfaces (either due to hardware configuration or firmware issues), kcalloc(0, ...) returns ZERO_SIZE_PTR (0x10) instead of NULL. Later in dpaa2_switch_probe(), the NAPI initialization unconditionally accesses ethsw->ports[0]->netdev, which attempts to dereference ZERO_SIZE_PTR (address 0x10), resulting in a kernel panic. Add a check to ensure num_ifs is greater than zero after retrieving device attributes. This prevents the zero-sized allocations and subsequent invalid pointer dereference.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23206">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>be0bf2423a6e599899f6d0122f93c2fc</td>
+       <td>CVE-2026-23205</td>
+       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: smb/client: fix memory leak in smb2_open_file() Reproducer: 1. server: directories are exported read-only 2. client: mount -t cifs //${server_ip}/export /mnt 3. client: dd if=/dev/zero of=/mnt/file bs=512 count=1000 oflag=direct 4. client: umount /mnt 5. client: sleep 1 6. client: modprobe -r cifs The error message is as follows: ============================================================================= BUG cifs_small_rq (Not tainted): Objects remaining on __kmem_cache_shutdown() ----------------------------------------------------------------------------- Object 0x00000000d47521be @offset=14336 ... WARNING: mm/slub.c:1251 at __kmem_cache_shutdown+0x34e/0x440, CPU#0: modprobe/1577 ... Call Trace: <TASK> kmem_cache_destroy+0x94/0x190 cifs_destroy_request_bufs+0x3e/0x50 [cifs] cleanup_module+0x4e/0x540 [cifs] __se_sys_delete_module+0x278/0x400 __x64_sys_delete_module+0x5f/0x70 x64_sys_call+0x2299/0x2ff0 do_syscall_64+0x89/0x350 entry_SYSCALL_64_after_hwframe+0x76/0x7e ... kmem_cache_destroy cifs_small_rq: Slab cache still has objects when called from cifs_destroy_request_bufs+0x3e/0x50 [cifs] WARNING: mm/slab_common.c:532 at kmem_cache_destroy+0x16b/0x190, CPU#0: modprobe/1577</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23205">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cc3adc011acb5f962cc34c36c1b70496</td>
+       <td>CVE-2026-23204</td>
+       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net/sched: cls_u32: use skb_header_pointer_careful() skb_header_pointer() does not fully validate negative @offset values. Use skb_header_pointer_careful() instead. GangMin Kim provided a report and a repro fooling u32_classify(): BUG: KASAN: slab-out-of-bounds in u32_classify+0x1180/0x11b0 net/sched/cls_u32.c:221</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23204">详情</a></td>
+      </tr>
+
+      <tr>
        <td>853f15c8fd775a0336b38d7e7e70d023</td>
        <td>CVE-2026-1987</td>
        <td>2026-02-14 07:16:12 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>3092d6f2dbc3a3b338421699858b2440</td>
        <td>CVE-2026-2042</td>
-       <td>2026-02-13 07:34:24 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 07:34:24</td>
        <td>This vulnerability allows remote attackers to execute arbitrary code on affected installations of Nagios Host. Authentication is required to exploit this vulnerability.The specific flaw exists within the monitoringwizard module. The issue results from the lack of proper validation of a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to execute code in the context of the service account.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2042">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>326c1ee651f72a1a0f22dc1d67dc3a66</td>
        <td>CVE-2025-48023</td>
-       <td>2026-02-13 06:30:48 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 06:30:48</td>
        <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48023">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>f1c9d5b2424ca7b8aa771e8137425997</td>
        <td>CVE-2025-48022</td>
-       <td>2026-02-13 06:30:48 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 06:30:48</td>
        <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48022">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>cc94548c4443adf2807c077fcde2b3d8</td>
        <td>CVE-2025-48021</td>
-       <td>2026-02-13 06:30:48 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 06:30:48</td>
        <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48021">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>28d0a504f25ffcfee2f2d5307dc40ecb</td>
        <td>CVE-2025-15520</td>
-       <td>2026-02-13 06:30:48 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 06:30:48</td>
        <td>The RegistrationMagic  WordPress plugin before 6.0.7.2 checks nonces but not capabilities,...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15520">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>4c95abd1237d4ecf3d243082e6d8ae58</td>
        <td>CVE-2025-48020</td>
-       <td>2026-02-13 05:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 05:16:09</td>
        <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric Corporation. If affected product receives maliciously crafted packets, Vnet/IP software stack process may be terminated. The affected products and versions are as follows: Vnet/IP Interface Package (for CENTUM VP R6 VP6C3300, CENTUM VP R7 VP7C3300) R1.07.00 or earlier</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48020">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>d626943b7e591484d03a9043cf844bd0</td>
        <td>CVE-2025-48019</td>
-       <td>2026-02-13 05:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 05:16:09</td>
        <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric Corporation. If affected product receives maliciously crafted packets, Vnet/IP software stack process may be terminated. The affected products and versions are as follows: Vnet/IP Interface Package (for CENTUM VP R6 VP6C3300, CENTUM VP R7 VP7C3300) R1.07.00 or earlier</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48019">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>e34c956a4917e34c379a4e76568821f8</td>
        <td>CVE-2025-1924</td>
-       <td>2026-02-13 05:16:02 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 05:16:02</td>
        <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric Corporation. If affected product receive maliciously crafted packets, a DoS attack may cause Vnet/IP communication functions to stop or arbitrary programs to be executed. The affected products and versions are as follows: Vnet/IP Interface Package (for CENTUM VP R6 VP6C3300, CENTUM VP R7 VP7C3300) R1.07.00 or earlier</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1924">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>c60dc69488e896cd415e486dbc19b758</td>
        <td>CVE-2026-26257</td>
-       <td>2026-02-13 04:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 04:15:54</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26257">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>1e402007daef2fb78331942212dc6739</td>
        <td>CVE-2026-26256</td>
-       <td>2026-02-13 04:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-02-13 04:15:54</td>
        <td>Rejected reason: Not used</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26256">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>85ea9d3ade3fcdd172fad1384284f777</td>
-       <td>CVE-2025-15577</td>
-       <td>2026-02-12 07:15:56</td>
-       <td>An unauthenticated attacker can exploit this vulnerability by manipulating URL to achieve arbitrary file read access.This issue affects Valmet DNA Web Tools: C2022 and older.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15577">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>af710f7ace83c78f0bc03c3f636e006c</td>
-       <td>CVE-2026-2327</td>
-       <td>2026-02-12 06:16:02</td>
-       <td>Versions of the package markdown-it from 13.0.0 and before 14.1.1 are vulnerable to Regular Expression Denial of Service (ReDoS) due to the use of the regex /\*+$/ in the linkify function. An attacker can supply a long sequence of * characters followed by a non-matching character, which triggers excessive backtracking and may lead to a denial-of-service condition.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2327">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c43bb3c371734ce3ef2a0f5560703f66</td>
-       <td>CVE-2025-14892</td>
-       <td>2026-02-12 06:16:01</td>
-       <td>The Prime Listing Manager WordPress plugin through 1.1 allows an attacker to gain administrative access without having any kind of account on the targeted site and perform unauthorized actions due to a hardcoded secret.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14892">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c74d4f1279066103911ea43975fe4eb2</td>
-       <td>CVE-2026-2391</td>
-       <td>2026-02-12 05:17:11</td>
-       <td>### Summary The `arrayLimit` option in qs does not enforce limits for comma-separated values when `comma: true` is enabled, allowing attackers to cause denial-of-service via memory exhaustion. This is a bypass of the array limit enforcement, similar to the bracket notation bypass addressed in GHSA-6rw7-vpxm-498p (CVE-2025-15284). ### Details When the `comma` option is set to `true` (not the default, but configurable in applications), qs allows parsing comma-separated strings as arrays (e.g., `?param=a,b,c` becomes `['a', 'b', 'c']`). However, the limit check for `arrayLimit` (default: 20) and the optional throwOnLimitExceeded occur after the comma-handling logic in `parseArrayValue`, enabling a bypass. This permits creation of arbitrarily large arrays from a single parameter, leading to excessive memory allocation. **Vulnerable code** (lib/parse.js: lines ~40-50): ```js if (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) { return val.split(','); } if (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) { throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.'); } return val; ``` The `split(',')` returns the array immediately, skipping the subsequent limit check. Downstream merging via `utils.combine` does not prevent allocation, even if it marks overflows for sparse arrays.This discrepancy allows attackers to send a single parameter with millions of commas (e.g., `?param=,,,,,,,,...`), allocating massive arrays in memory without triggering limits. It bypasses the intent of `arrayLimit`, which is enforced correctly for indexed (`a[0]=`) and bracket (`a[]=`) notations (the latter fixed in v6.14.1 per GHSA-6rw7-vpxm-498p). ### PoC **Test 1 - Basic bypass:** ``` npm install qs ``` ```js const qs = require('qs'); const payload = 'a=' + ','.repeat(25); // 26 elements after split (bypasses arrayLimit: 5) const options = { comma: true, arrayLimit: 5, throwOnLimitExceeded: true }; try { const result = qs.parse(payload, options); console.log(result.a.length); // Outputs: 26 (bypass successful) } catch (e) { console.log('Limit enforced:', e.message); // Not thrown } ``` **Configuration:** - `comma: true` - `arrayLimit: 5` - `throwOnLimitExceeded: true` Expected: Throws "Array limit exceeded" error. Actual: Parses successfully, creating an array of length 26. ### Impact Denial of Service (DoS) via memory exhaustion.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2391">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4b79ea2424b7c1837786658515ed329d</td>
-       <td>CVE-2026-26092</td>
-       <td>2026-02-12 05:17:06</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26092">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77e1b4a696642f18bd06f53f9666fa1d</td>
-       <td>CVE-2026-26091</td>
-       <td>2026-02-12 05:17:06</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26091">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cd537b29baf71ba245ad4cfab24027f0</td>
-       <td>CVE-2026-26090</td>
-       <td>2026-02-12 05:17:06</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26090">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d290385d267384fc4780dcbce864122a</td>
-       <td>CVE-2026-26089</td>
-       <td>2026-02-12 05:17:06</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26089">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a17e4ea296605df397df7f015ea5a095</td>
-       <td>CVE-2026-26088</td>
-       <td>2026-02-12 05:17:06</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26088">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa48ba75733f8b4308ea2844bc5636aa</td>
-       <td>CVE-2026-26087</td>
-       <td>2026-02-12 05:17:06</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26087">详情</a></td>
       </tr>
 
      </tbody>
