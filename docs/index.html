@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-02-15 13:05:04 -->
+<!-- RELEASE TIME : 2026-02-16 13:18:40 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6950125ecca2bfde75d85a567bc412ff</td>
+       <td>CVE-2026-2551</td>
+       <td>2026-02-16 11:15:56 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was determined in ZenTao up to 21.7.8. Affected by this vulnerability is the function delete of the file editor/control.php of the component Backup Handler. This manipulation of the argument fileName causes path traversal. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2551">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a46ad0219014ee25116454bac340a27b</td>
+       <td>CVE-2026-2452</td>
+       <td>2026-02-16 11:15:56 <img src="imgs/new.gif" /></td>
+       <td>Emails sent by pretix can utilize placeholders that will be filled with customer data. For example, when {name} is used in an email template, it will be replaced with the buyer's name for the final email. This mechanism contained a security-relevant bug: It was possible to exfiltrate information about the pretix system through specially crafted placeholder names such as {{event.__init__.__code__.co_filename}}. This way, an attacker with the ability to control email templates (usually every user of the pretix backend) could retrieve sensitive information from the system configuration, including even database passwords or API keys. pretix does include mechanisms to prevent the usage of such malicious placeholders, however due to a mistake in the code, they were not fully effective for this plugin. Out of caution, we recommend that you rotate all passwords and API keys contained in your pretix.cfg https://docs.pretix.eu/self-hosting/config/ file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2452">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a0f0477fbf413ac38512587708fac740</td>
+       <td>CVE-2026-2451</td>
+       <td>2026-02-16 11:15:56 <img src="imgs/new.gif" /></td>
+       <td>Emails sent by pretix can utilize placeholders that will be filled with customer data. For example, when {name} is used in an email template, it will be replaced with the buyer's name for the final email. This mechanism contained a security-relevant bug: It was possible to exfiltrate information about the pretix system through specially crafted placeholder names such as {{event.__init__.__code__.co_filename}}. This way, an attacker with the ability to control email templates (usually every user of the pretix backend) could retrieve sensitive information from the system configuration, including even database passwords or API keys. pretix does include mechanisms to prevent the usage of such malicious placeholders, however due to a mistake in the code, they were not fully effective for this plugin. Out of caution, we recommend that you rotate all passwords and API keys contained in your pretix.cfg file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2451">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>514c42566a1da343f8776d69b480d7b7</td>
+       <td>CVE-2026-2415</td>
+       <td>2026-02-16 11:15:56 <img src="imgs/new.gif" /></td>
+       <td>Emails sent by pretix can utilize placeholders that will be filled with customer data. For example, when {name} is used in an email template, it will be replaced with the buyer's name for the final email. This mechanism contained two security-relevant bugs: * It was possible to exfiltrate information about the pretix system through specially crafted placeholder names such as {{event.__init__.__code__.co_filename}}. This way, an attacker with the ability to control email templates (usually every user of the pretix backend) could retrieve sensitive information from the system configuration, including even database passwords or API keys. pretix does include mechanisms to prevent the usage of such malicious placeholders, however due to a mistake in the code, they were not fully effective for the email subject. * Placeholders in subjects and plain text bodies of emails were wrongfully evaluated twice. Therefore, if the first evaluation of a placeholder again contains a placeholder, this second placeholder was rendered. This allows the rendering of placeholders controlled by the ticket buyer, and therefore the exploitation of the first issue as a ticket buyer. Luckily, the only buyer-controlled placeholder available in pretix by default (that is not validated in a way that prevents the issue) is {invoice_company}, which is very unusual (but not impossible) to be contained in an email subject template. In addition to broadening the attack surface of the first issue, this could theoretically also leak information about an order to one of the attendees within that order. However, we also consider this scenario very unlikely under typical conditions. Out of caution, we recommend that you rotate all passwords and API keys contained in your pretix.cfg https://docs.pretix.eu/self-hosting/config/ file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2415">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>039d38aa46acdd5fea223e11f49e6454</td>
+       <td>CVE-2026-2552</td>
+       <td>2026-02-16 11:02:05 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was identified in ZenTao up to 21.7.8. Affected by this issue is the function delete of the file editor/control.php of the component Committer. Such manipulation of the argument filePath leads to path traversal. Upgrading to version 21.7.9 can resolve this issue. The affected component should be upgraded.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2552">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa7da146e905deccd70cc00c71e5ae59</td>
+       <td>CVE-2024-31884</td>
+       <td>2026-02-16 10:49:01 <img src="imgs/new.gif" /></td>
+       <td>pybind: Improper use of Pybind</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-31884">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2a6787a94f8eecf16d70557dabb5bb5e</td>
+       <td>CVE-2026-2577</td>
+       <td>2026-02-16 10:16:08 <img src="imgs/new.gif" /></td>
+       <td>The WhatsApp bridge component in Nanobot binds the WebSocket server to all network interfaces (0.0.0.0) on port 3001 by default and does not require authentication for incoming connections. An unauthenticated remote attacker with network access to the bridge can connect to the WebSocket server to hijack the WhatsApp session. This allows the attacker to send messages on behalf of the user, intercept all incoming messages and media in real-time, and capture authentication QR codes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2577">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d39608e42f9586808ee22bdc2853b84d</td>
+       <td>CVE-2026-2550</td>
+       <td>2026-02-16 10:16:08 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in EFM iptime A6004MX 14.18.2. Affected is the function commit_vpncli_file_upload of the file /cgi/timepro.cgi. The manipulation results in unrestricted upload. The attack may be performed from remote. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2550">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8da1f6278797516218f6a16df473cbed</td>
+       <td>CVE-2026-2549</td>
+       <td>2026-02-16 10:16:08 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in zhanghuanhao LibrarySystem 图书馆管理系统 up to 1.1.1. This impacts an unknown function of the file BookController.java. The manipulation leads to improper access controls. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2549">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>876a617631bbc9c6d1efa65b6eb8b79b</td>
+       <td>CVE-2026-0999</td>
+       <td>2026-02-16 10:16:08 <img src="imgs/new.gif" /></td>
+       <td>Mattermost versions 11.1.x <= 11.1.2, 10.11.x <= 10.11.9, 11.2.x <= 11.2.1 fail to properly validate login method restrictions which allows an authenticated user to bypass SSO-only login requirements via userID-based authentication. Mattermost Advisory ID: MMSA-2025-00548</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0999">详情</a></td>
+      </tr>
+
+      <tr>
        <td>746708d896741b2d7652e405ab4f32d4</td>
        <td>CVE-2026-1793</td>
        <td>2026-02-15 04:15:54 <img src="imgs/new.gif" /></td>
@@ -310,7 +390,7 @@
       <tr>
        <td>0d8bb06958398f9af141b7ce6509feca</td>
        <td>CVE-2026-23210</td>
-       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 17:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: ice: Fix PTP NULL pointer dereference during VSI rebuild Fix race condition where PTP periodic work runs while VSI is being rebuilt, accessing NULL vsi->rx_rings. The sequence was: 1. ice_ptp_prepare_for_reset() cancels PTP work 2. ice_ptp_rebuild() immediately queues PTP work 3. VSI rebuild happens AFTER ice_ptp_rebuild() 4. PTP work runs and accesses NULL vsi->rx_rings Fix: Keep PTP work cancelled during rebuild, only queue it after VSI rebuild completes in ice_rebuild(). Added ice_ptp_queue_work() helper function to encapsulate the logic for queuing PTP work, ensuring it's only queued when PTP is supported and the state is ICE_PTP_READY. Error log: [ 121.392544] ice 0000:60:00.1: PTP reset successful [ 121.392692] BUG: kernel NULL pointer dereference, address: 0000000000000000 [ 121.392712] #PF: supervisor read access in kernel mode [ 121.392720] #PF: error_code(0x0000) - not-present page [ 121.392727] PGD 0 [ 121.392734] Oops: Oops: 0000 [#1] SMP NOPTI [ 121.392746] CPU: 8 UID: 0 PID: 1005 Comm: ice-ptp-0000:60 Tainted: G S 6.19.0-rc6+ #4 PREEMPT(voluntary) [ 121.392761] Tainted: [S]=CPU_OUT_OF_SPEC [ 121.392773] RIP: 0010:ice_ptp_update_cached_phctime+0xbf/0x150 [ice] [ 121.393042] Call Trace: [ 121.393047] <TASK> [ 121.393055] ice_ptp_periodic_work+0x69/0x180 [ice] [ 121.393202] kthread_worker_fn+0xa2/0x260 [ 121.393216] ? __pfx_ice_ptp_periodic_work+0x10/0x10 [ice] [ 121.393359] ? __pfx_kthread_worker_fn+0x10/0x10 [ 121.393371] kthread+0x10d/0x230 [ 121.393382] ? __pfx_kthread+0x10/0x10 [ 121.393393] ret_from_fork+0x273/0x2b0 [ 121.393407] ? __pfx_kthread+0x10/0x10 [ 121.393417] ret_from_fork_asm+0x1a/0x30 [ 121.393432] </TASK></td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23210">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>0e487e655e94e45345baae1d6e4c2cba</td>
        <td>CVE-2026-23209</td>
-       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 17:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: macvlan: fix error recovery in macvlan_common_newlink() valis provided a nice repro to crash the kernel: ip link add p1 type veth peer p2 ip link set address 00:00:00:00:00:20 dev p1 ip link set up dev p1 ip link set up dev p2 ip link add mv0 link p2 type macvlan mode source ip link add invalid% link p2 type macvlan mode source macaddr add 00:00:00:00:00:20 ping -c1 -I p1 1.2.3.4 He also gave a very detailed analysis: <quote valis> The issue is triggered when a new macvlan link is created with MACVLAN_MODE_SOURCE mode and MACVLAN_MACADDR_ADD (or MACVLAN_MACADDR_SET) parameter, lower device already has a macvlan port and register_netdevice() called from macvlan_common_newlink() fails (e.g. because of the invalid link name). In this case macvlan_hash_add_source is called from macvlan_change_sources() / macvlan_common_newlink(): This adds a reference to vlan to the port's vlan_source_hash using macvlan_source_entry. vlan is a pointer to the priv data of the link that is being created. When register_netdevice() fails, the error is returned from macvlan_newlink() to rtnl_newlink_create(): if (ops->newlink) err = ops->newlink(dev, &params, extack); else err = register_netdevice(dev); if (err < 0) { free_netdev(dev); goto out; } and free_netdev() is called, causing a kvfree() on the struct net_device that is still referenced in the source entry attached to the lower device's macvlan port. Now all packets sent on the macvlan port with a matching source mac address will trigger a use-after-free in macvlan_forward_source(). </quote valis> With all that, my fix is to make sure we call macvlan_flush_sources() regardless of @create value whenever "goto destroy_macvlan_port;" path is taken. Many thanks to valis for following up on this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23209">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>26b52cd2171ffdd8b32a4d92b94c3bb2</td>
        <td>CVE-2026-23208</td>
-       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 17:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: ALSA: usb-audio: Prevent excessive number of frames In this case, the user constructed the parameters with maxpacksize 40 for rate 22050 / pps 1000, and packsize[0] 22 packsize[1] 23. The buffer size for each data URB is maxpacksize * packets, which in this example is 40 * 6 = 240; When the user performs a write operation to send audio data into the ALSA PCM playback stream, the calculated number of frames is packsize[0] * packets = 264, which exceeds the allocated URB buffer size, triggering the out-of-bounds (OOB) issue reported by syzbot [1]. Added a check for the number of single data URB frames when calculating the number of frames to prevent [1]. [1] BUG: KASAN: slab-out-of-bounds in copy_to_urb+0x261/0x460 sound/usb/pcm.c:1487 Write of size 264 at addr ffff88804337e800 by task syz.0.17/5506 Call Trace: copy_to_urb+0x261/0x460 sound/usb/pcm.c:1487 prepare_playback_urb+0x953/0x13d0 sound/usb/pcm.c:1611 prepare_outbound_urb+0x377/0xc50 sound/usb/endpoint.c:333</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23208">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>d4da2a059c88203eb4f3b316eb26cb0f</td>
        <td>CVE-2026-23207</td>
-       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 17:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: spi: tegra210-quad: Protect curr_xfer check in IRQ handler Now that all other accesses to curr_xfer are done under the lock, protect the curr_xfer NULL check in tegra_qspi_isr_thread() with the spinlock. Without this protection, the following race can occur: CPU0 (ISR thread) CPU1 (timeout path) ---------------- ------------------- if (!tqspi->curr_xfer) // sees non-NULL spin_lock() tqspi->curr_xfer = NULL spin_unlock() handle_*_xfer() spin_lock() t = tqspi->curr_xfer // NULL! ... t->len ... // NULL dereference! With this patch, all curr_xfer accesses are now properly synchronized. Although all accesses to curr_xfer are done under the lock, in tegra_qspi_isr_thread() it checks for NULL, releases the lock and reacquires it later in handle_cpu_based_xfer()/handle_dma_based_xfer(). There is a potential for an update in between, which could cause a NULL pointer dereference. To handle this, add a NULL check inside the handlers after acquiring the lock. This ensures that if the timeout path has already cleared curr_xfer, the handler will safely return without dereferencing the NULL pointer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23207">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>1e2f7378a66ac0c1dc69c736fea93d54</td>
        <td>CVE-2026-23206</td>
-       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 17:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: dpaa2-switch: prevent ZERO_SIZE_PTR dereference when num_ifs is zero The driver allocates arrays for ports, FDBs, and filter blocks using kcalloc() with ethsw->sw_attr.num_ifs as the element count. When the device reports zero interfaces (either due to hardware configuration or firmware issues), kcalloc(0, ...) returns ZERO_SIZE_PTR (0x10) instead of NULL. Later in dpaa2_switch_probe(), the NAPI initialization unconditionally accesses ethsw->ports[0]->netdev, which attempts to dereference ZERO_SIZE_PTR (address 0x10), resulting in a kernel panic. Add a check to ensure num_ifs is greater than zero after retrieving device attributes. This prevents the zero-sized allocations and subsequent invalid pointer dereference.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23206">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>be0bf2423a6e599899f6d0122f93c2fc</td>
        <td>CVE-2026-23205</td>
-       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 17:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: smb/client: fix memory leak in smb2_open_file() Reproducer: 1. server: directories are exported read-only 2. client: mount -t cifs //${server_ip}/export /mnt 3. client: dd if=/dev/zero of=/mnt/file bs=512 count=1000 oflag=direct 4. client: umount /mnt 5. client: sleep 1 6. client: modprobe -r cifs The error message is as follows: ============================================================================= BUG cifs_small_rq (Not tainted): Objects remaining on __kmem_cache_shutdown() ----------------------------------------------------------------------------- Object 0x00000000d47521be @offset=14336 ... WARNING: mm/slub.c:1251 at __kmem_cache_shutdown+0x34e/0x440, CPU#0: modprobe/1577 ... Call Trace: <TASK> kmem_cache_destroy+0x94/0x190 cifs_destroy_request_bufs+0x3e/0x50 [cifs] cleanup_module+0x4e/0x540 [cifs] __se_sys_delete_module+0x278/0x400 __x64_sys_delete_module+0x5f/0x70 x64_sys_call+0x2299/0x2ff0 do_syscall_64+0x89/0x350 entry_SYSCALL_64_after_hwframe+0x76/0x7e ... kmem_cache_destroy cifs_small_rq: Slab cache still has objects when called from cifs_destroy_request_bufs+0x3e/0x50 [cifs] WARNING: mm/slab_common.c:532 at kmem_cache_destroy+0x16b/0x190, CPU#0: modprobe/1577</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23205">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>cc3adc011acb5f962cc34c36c1b70496</td>
        <td>CVE-2026-23204</td>
-       <td>2026-02-14 17:15:58 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 17:15:58</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: net/sched: cls_u32: use skb_header_pointer_careful() skb_header_pointer() does not fully validate negative @offset values. Use skb_header_pointer_careful() instead. GangMin Kim provided a report and a repro fooling u32_classify(): BUG: KASAN: slab-out-of-bounds in u32_classify+0x1180/0x11b0 net/sched/cls_u32.c:221</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23204">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>853f15c8fd775a0336b38d7e7e70d023</td>
        <td>CVE-2026-1987</td>
-       <td>2026-02-14 07:16:12 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:12</td>
        <td>The Scheduler Widget plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 0.1.6. This is due to the `scheduler_widget_ajax_save_event()` function lacking proper authorization checks and ownership verification when updating events. This makes it possible for authenticated attackers, with Subscriber-level access and above, to modify any event in the scheduler via the `id` parameter granted they have knowledge of the event ID.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1987">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>1ddf4222257da84b2b01d53d36d089f4</td>
        <td>CVE-2026-1944</td>
-       <td>2026-02-14 07:16:12 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:12</td>
        <td>The CallbackKiller service widget plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the cbk_save() function in all versions up to, and including, 1.2. This makes it possible for unauthenticated attackers to modify the plugin's site ID settings via the 'cbk_save_v1' AJAX action.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1944">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>fcb9de27b39e4618f42d8d65cc26c489</td>
        <td>CVE-2026-1905</td>
-       <td>2026-02-14 07:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:11</td>
        <td>The Sphere Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'width' parameter in the 'show_sphere_image' shortcode in all versions up to, and including, 1.0.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1905">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>efe27fdabcbd32033def120b4c99b275</td>
        <td>CVE-2026-1796</td>
-       <td>2026-02-14 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:10</td>
        <td>The StyleBidet plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the URL path in all versions up to, and including, 1.0.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1796">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>239d3ee4411fa2ba4b63bf4e844f9194</td>
        <td>CVE-2026-1795</td>
-       <td>2026-02-14 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:10</td>
        <td>The Address Bar Ads plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the URL Path in all versions up to, and including, 1.0.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1795">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>81cbbb327910c40865e48d1f77d8d16b</td>
        <td>CVE-2026-1394</td>
-       <td>2026-02-14 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:10</td>
        <td>The WP Quick Contact Us plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.0. This is due to missing nonce validation on the settings update functionality. This makes it possible for unauthenticated attackers to update the plugin's settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1394">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>3ab51053859be735bd49902600738ec7</td>
        <td>CVE-2026-1306</td>
-       <td>2026-02-14 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:10</td>
        <td>The midi-Synth plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type and file extension validation in the 'export' AJAX action in all versions up to, and including, 1.1.0. This makes it possible for unauthenticated attackers to upload arbitrary files on the affected site's server which may make remote code execution possible granted the attacker can obtain a valid nonce. The nonce is exposed in frontend JavaScript making it trivially accessible to unauthenticated attackers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1306">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>cd48a58b6b1515f2eef4d82d93542721</td>
        <td>CVE-2026-1303</td>
-       <td>2026-02-14 07:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:09</td>
        <td>The MailChimp Campaigns plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 3.2.4. This is due to missing capability checks on the `mailchimp_campaigns_manager_disconnect_app` function that is hooked to the AJAX action of the same name. This makes it possible for authenticated attackers, with Subscriber-level access and above, to disconnect the site from its MailChimp synchronization app, disrupting automated email campaigns and marketing integrations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1303">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>2ef49edae751705e0c9713dbdcb98a4e</td>
        <td>CVE-2026-0753</td>
-       <td>2026-02-14 07:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:09</td>
        <td>The Super Simple Contact Form plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'sscf_name' parameter in all versions up to, and including, 1.6.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0753">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>acbf4459530cf5b6fdb5bbd29f72beb8</td>
        <td>CVE-2026-0751</td>
-       <td>2026-02-14 07:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-02-14 07:16:09</td>
        <td>The Payment Page | Payment Form for Stripe plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'pricing_plan_select_text_font_family' parameter in all versions up to, and including, 1.4.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0751">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3092d6f2dbc3a3b338421699858b2440</td>
-       <td>CVE-2026-2042</td>
-       <td>2026-02-13 07:34:24</td>
-       <td>This vulnerability allows remote attackers to execute arbitrary code on affected installations of Nagios Host. Authentication is required to exploit this vulnerability.The specific flaw exists within the monitoringwizard module. The issue results from the lack of proper validation of a user-supplied string before using it to execute a system call. An attacker can leverage this vulnerability to execute code in the context of the service account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2042">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>326c1ee651f72a1a0f22dc1d67dc3a66</td>
-       <td>CVE-2025-48023</td>
-       <td>2026-02-13 06:30:48</td>
-       <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48023">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f1c9d5b2424ca7b8aa771e8137425997</td>
-       <td>CVE-2025-48022</td>
-       <td>2026-02-13 06:30:48</td>
-       <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48022">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc94548c4443adf2807c077fcde2b3d8</td>
-       <td>CVE-2025-48021</td>
-       <td>2026-02-13 06:30:48</td>
-       <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48021">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>28d0a504f25ffcfee2f2d5307dc40ecb</td>
-       <td>CVE-2025-15520</td>
-       <td>2026-02-13 06:30:48</td>
-       <td>The RegistrationMagic  WordPress plugin before 6.0.7.2 checks nonces but not capabilities,...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15520">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c95abd1237d4ecf3d243082e6d8ae58</td>
-       <td>CVE-2025-48020</td>
-       <td>2026-02-13 05:16:09</td>
-       <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric Corporation. If affected product receives maliciously crafted packets, Vnet/IP software stack process may be terminated. The affected products and versions are as follows: Vnet/IP Interface Package (for CENTUM VP R6 VP6C3300, CENTUM VP R7 VP7C3300) R1.07.00 or earlier</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48020">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d626943b7e591484d03a9043cf844bd0</td>
-       <td>CVE-2025-48019</td>
-       <td>2026-02-13 05:16:09</td>
-       <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric Corporation. If affected product receives maliciously crafted packets, Vnet/IP software stack process may be terminated. The affected products and versions are as follows: Vnet/IP Interface Package (for CENTUM VP R6 VP6C3300, CENTUM VP R7 VP7C3300) R1.07.00 or earlier</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-48019">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e34c956a4917e34c379a4e76568821f8</td>
-       <td>CVE-2025-1924</td>
-       <td>2026-02-13 05:16:02</td>
-       <td>A vulnerability has been found in Vnet/IP Interface Package provided by Yokogawa Electric Corporation. If affected product receive maliciously crafted packets, a DoS attack may cause Vnet/IP communication functions to stop or arbitrary programs to be executed. The affected products and versions are as follows: Vnet/IP Interface Package (for CENTUM VP R6 VP6C3300, CENTUM VP R7 VP7C3300) R1.07.00 or earlier</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-1924">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c60dc69488e896cd415e486dbc19b758</td>
-       <td>CVE-2026-26257</td>
-       <td>2026-02-13 04:15:54</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26257">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1e402007daef2fb78331942212dc6739</td>
-       <td>CVE-2026-26256</td>
-       <td>2026-02-13 04:15:54</td>
-       <td>Rejected reason: Not used</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26256">详情</a></td>
       </tr>
 
      </tbody>
