@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-02-16 13:18:40 -->
+<!-- RELEASE TIME : 2026-02-17 13:18:57 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,78 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9ca7c7c1e412e91023ec4c8746493500</td>
+       <td>CVE-2026-25903</td>
+       <td>2026-02-17 10:15:57 <img src="imgs/new.gif" /></td>
+       <td>Apache NiFi 1.1.0 through 2.7.2 are missing authorization when updating configuration properties on extension components that have specific Required Permissions based on the Restricted annotation. The Restricted annotation indicates additional privileges required to add the annotated component to the flow configuration, but framework authorization did not check restricted status when updating a component previously added. The missing authorization requires a more privileged user to add a restricted component to the flow configuration, but permits a less privileged user to make property configuration changes. Apache NiFi installations that do not implement different levels of authorization for Restricted components are not subject to this vulnerability because the framework enforces write permissions as the security boundary. Upgrading to Apache NiFi 2.8.0 is the recommended mitigation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25903">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>be1ad94bb92db14b0126d96dad592b18</td>
+       <td>CVE-2026-1216</td>
+       <td>2026-02-17 10:15:57 <img src="imgs/new.gif" /></td>
+       <td>The RSS Aggregator plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'template' parameter in all versions up to, and including, 5.0.10 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1216">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e175240d3b4e0c9aa51629ca0993a9d1</td>
+       <td>CVE-2026-0829</td>
+       <td>2026-02-17 07:16:31 <img src="imgs/new.gif" /></td>
+       <td>The Frontend File Manager Plugin WordPress plugin through 23.5 allows unauthenticated users to send emails through the site without any security checks. This lets attackers use the WordPress site as an open relay for spam or phishing emails to anyone. Attackers can also guess file IDs to access and share uploaded files without permission, exposing sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0829">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7ca41062972d270edc939bf67a9b3701</td>
+       <td>CVE-2026-1657</td>
+       <td>2026-02-17 06:16:18 <img src="imgs/new.gif" /></td>
+       <td>The EventPrime plugin for WordPress is vulnerable to unauthorized image file upload in all versions up to, and including, 4.2.8.4. This is due to the plugin registering the upload_file_media AJAX action as publicly accessible (nopriv-enabled) without implementing any authentication, authorization, or nonce verification despite a nonce being created. This makes it possible for unauthenticated attackers to upload image files to the WordPress uploads directory and create Media Library attachments via the ep_upload_file_media endpoint.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1657">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>49ac43530e33a40dc03af34d87d633e7</td>
+       <td>CVE-2026-2592</td>
+       <td>2026-02-17 05:16:17 <img src="imgs/new.gif" /></td>
+       <td>The Zarinpal Gateway for WooCommerce plugin for WordPress is vulnerable to Improper Access Control to Payment Status Update in all versions up to and including 5.0.16. This is due to the payment callback handler 'Return_from_ZarinPal_Gateway' failing to validate that the authority token provided in the callback URL belongs to the specific order being marked as paid. This makes it possible for unauthenticated attackers to potentially mark orders as paid without proper payment by reusing a valid authority token from a different transaction of the same amount.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2592">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>221b383f431042ddf52ba24a1a0c48f2</td>
+       <td>CVE-2026-2002</td>
+       <td>2026-02-17 05:16:17 <img src="imgs/new.gif" /></td>
+       <td>The Forminator Forms – Contact Form, Payment Form & Custom Form Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the form_name parameter in all versions up to, and including, 1.50.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level access, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The plugin allows admins to give form management permissions to lower level users, which could make this exploitable by users such as subscribers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2002">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>829aaccb211ef99ba5a8ce66ce23f1ce</td>
+       <td>CVE-2026-26220</td>
+       <td>2026-02-17 03:16:01 <img src="imgs/new.gif" /></td>
+       <td>LightLLM version 1.1.0 and prior contain an unauthenticated remote code execution vulnerability in PD (prefill-decode) disaggregation mode. The PD master node exposes WebSocket endpoints that receive binary frames and pass the data directly to pickle.loads() without authentication or validation. A remote attacker who can reach the PD master can send a crafted payload to achieve arbitrary code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26220">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4ae2322967e5a688b70496ffdd0e246e</td>
+       <td>CVE-2025-12062</td>
+       <td>2026-02-17 00:16:17 <img src="imgs/new.gif" /></td>
+       <td>The WP Maps – Store Locator,Google Maps,OpenStreetMap,Mapbox,Listing,Directory & Filters plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 4.8.6 via the fc_load_template function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to include and execute arbitrary .html files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .html file types can be uploaded and included.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12062">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>23040cfd02920a6111896f13aaa1caba</td>
+       <td>CVE-2026-2439</td>
+       <td>2026-02-16 22:22:41 <img src="imgs/new.gif" /></td>
+       <td>Concierge::Sessions versions from 0.8.1 before 0.8.5 for Perl generate insecure session ids. The generate_session_id function in Concierge::Sessions::Base defaults to using the uuidgen command to generate a UUID, with a fallback to using Perl's built-in rand function. Neither of these methods are secure, and attackers are able to guess session_ids that can grant them access to systems. Specifically, * There is no warning when uuidgen fails. The software can be quietly using the fallback rand() function with no warnings if the command fails for any reason. * The uuidgen command will generate a time-based UUID if the system does not have a high-quality random number source, because the call does not explicitly specify the --random option. Note that the system time is shared in HTTP responses. * UUIDs are identifiers whose mere possession grants access, as per RFC 9562. * The output of the built-in rand() function is predictable and unsuitable for security applications.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2439">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6950125ecca2bfde75d85a567bc412ff</td>
        <td>CVE-2026-2551</td>
        <td>2026-02-16 11:15:56 <img src="imgs/new.gif" /></td>
@@ -366,7 +438,7 @@
       <tr>
        <td>746708d896741b2d7652e405ab4f32d4</td>
        <td>CVE-2026-1793</td>
-       <td>2026-02-15 04:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-02-15 04:15:54</td>
        <td>The Element Pack Addons for Elementor plugin for WordPress is vulnerable to arbitrary file reads in all versions up to, and including, 8.3.17 via the SVG widget and a lack of sufficient file validation in the 'render_svg' function. This makes it possible for authenticated attackers, with contributor-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1793">详情</a></td>
       </tr>
@@ -374,7 +446,7 @@
       <tr>
        <td>9dfcf7222fbd73084f7eafdfc4a1c025</td>
        <td>CVE-2026-1750</td>
-       <td>2026-02-15 04:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-02-15 04:15:54</td>
        <td>The Ecwid by Lightspeed Ecommerce Shopping Cart plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 7.0.7. This is due to a missing capability check in the 'save_custom_user_profile_fields' function. This makes it possible for authenticated attackers, with minimal permissions such as a subscriber, to supply the 'ec_store_admin_access' parameter during a profile update and gain store manager access to the site.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1750">详情</a></td>
       </tr>
@@ -382,7 +454,7 @@
       <tr>
        <td>66987981262b0a31486613203f66532b</td>
        <td>CVE-2026-1490</td>
-       <td>2026-02-15 04:15:53 <img src="imgs/new.gif" /></td>
+       <td>2026-02-15 04:15:53</td>
        <td>The Spam protection, Anti-Spam, FireWall by CleanTalk plugin for WordPress is vulnerable to unauthorized Arbitrary Plugin Installation due to an authorization bypass via reverse DNS (PTR record) spoofing on the 'checkWithoutToken' function in all versions up to, and including, 6.71. This makes it possible for unauthenticated attackers to install and activate arbitrary plugins which can be leveraged to achieve remote code execution if another vulnerable plugin is installed and activated. Note: This is only exploitable on sites with an invalid API key.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1490">详情</a></td>
       </tr>
@@ -449,78 +521,6 @@
        <td>2026-02-14 07:16:12</td>
        <td>The Scheduler Widget plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 0.1.6. This is due to the `scheduler_widget_ajax_save_event()` function lacking proper authorization checks and ownership verification when updating events. This makes it possible for authenticated attackers, with Subscriber-level access and above, to modify any event in the scheduler via the `id` parameter granted they have knowledge of the event ID.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1987">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1ddf4222257da84b2b01d53d36d089f4</td>
-       <td>CVE-2026-1944</td>
-       <td>2026-02-14 07:16:12</td>
-       <td>The CallbackKiller service widget plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the cbk_save() function in all versions up to, and including, 1.2. This makes it possible for unauthenticated attackers to modify the plugin's site ID settings via the 'cbk_save_v1' AJAX action.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1944">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fcb9de27b39e4618f42d8d65cc26c489</td>
-       <td>CVE-2026-1905</td>
-       <td>2026-02-14 07:16:11</td>
-       <td>The Sphere Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'width' parameter in the 'show_sphere_image' shortcode in all versions up to, and including, 1.0.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1905">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>efe27fdabcbd32033def120b4c99b275</td>
-       <td>CVE-2026-1796</td>
-       <td>2026-02-14 07:16:10</td>
-       <td>The StyleBidet plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the URL path in all versions up to, and including, 1.0.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1796">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>239d3ee4411fa2ba4b63bf4e844f9194</td>
-       <td>CVE-2026-1795</td>
-       <td>2026-02-14 07:16:10</td>
-       <td>The Address Bar Ads plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the URL Path in all versions up to, and including, 1.0.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1795">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>81cbbb327910c40865e48d1f77d8d16b</td>
-       <td>CVE-2026-1394</td>
-       <td>2026-02-14 07:16:10</td>
-       <td>The WP Quick Contact Us plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.0. This is due to missing nonce validation on the settings update functionality. This makes it possible for unauthenticated attackers to update the plugin's settings via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1394">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3ab51053859be735bd49902600738ec7</td>
-       <td>CVE-2026-1306</td>
-       <td>2026-02-14 07:16:10</td>
-       <td>The midi-Synth plugin for WordPress is vulnerable to arbitrary file uploads due to missing file type and file extension validation in the 'export' AJAX action in all versions up to, and including, 1.1.0. This makes it possible for unauthenticated attackers to upload arbitrary files on the affected site's server which may make remote code execution possible granted the attacker can obtain a valid nonce. The nonce is exposed in frontend JavaScript making it trivially accessible to unauthenticated attackers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1306">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cd48a58b6b1515f2eef4d82d93542721</td>
-       <td>CVE-2026-1303</td>
-       <td>2026-02-14 07:16:09</td>
-       <td>The MailChimp Campaigns plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 3.2.4. This is due to missing capability checks on the `mailchimp_campaigns_manager_disconnect_app` function that is hooked to the AJAX action of the same name. This makes it possible for authenticated attackers, with Subscriber-level access and above, to disconnect the site from its MailChimp synchronization app, disrupting automated email campaigns and marketing integrations.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1303">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2ef49edae751705e0c9713dbdcb98a4e</td>
-       <td>CVE-2026-0753</td>
-       <td>2026-02-14 07:16:09</td>
-       <td>The Super Simple Contact Form plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'sscf_name' parameter in all versions up to, and including, 1.6.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0753">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>acbf4459530cf5b6fdb5bbd29f72beb8</td>
-       <td>CVE-2026-0751</td>
-       <td>2026-02-14 07:16:09</td>
-       <td>The Payment Page | Payment Form for Stripe plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'pricing_plan_select_text_font_family' parameter in all versions up to, and including, 1.4.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0751">详情</a></td>
       </tr>
 
      </tbody>
