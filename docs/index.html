@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-02-20 15:42:24 -->
+<!-- RELEASE TIME : 2026-02-26 21:38:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d3fdbfdbcf1b465cca634d9aaab33ef0</td>
+       <td>CVE-2026-27830</td>
+       <td>2026-02-25 18:35:23 <img src="imgs/new.gif" /></td>
+       <td>c3p0 vulnerable to Remote Code Execution via unsafe deserialization of userOverridesAsString property</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27830">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>149d221ca733ed881d78f5289e3ac03e</td>
+       <td>CVE-2026-3192</td>
+       <td>2026-02-25 18:31:38 <img src="imgs/new.gif" /></td>
+       <td>A security vulnerability has been detected in Chia Blockchain 2.1.0. This issue affects the...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3192">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d21e71ff230da4955c7bd12fb2cfbf70</td>
+       <td>CVE-2026-20037</td>
+       <td>2026-02-25 18:31:38 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the NX-OS CLI privilege levels of Cisco UCS Manager Software could allow an...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20037">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c2c294f31031cc465bbe711ed0bd3627</td>
+       <td>CVE-2026-27739</td>
+       <td>2026-02-25 18:23:40 <img src="imgs/new.gif" /></td>
+       <td>The Angular SSR is a server-rise rendering tool for Angular applications. Versions prior to 21.2.0-rc.1, 21.1.5, 20.3.17, and 19.2.21 have a Server-Side Request Forgery (SSRF) vulnerability in the Angular SSR request handling pipeline. The vulnerability exists because Angular’s internal URL reconstruction logic directly trusts and consumes user-controlled HTTP headers specifically the Host and `X-Forwarded-*` family to determine the application's base origin without any validation of the destination domain. Specifically, the framework didn't have checks for the host domain, path and character sanitization, and port validation. This vulnerability manifests in two primary ways: implicit relative URL resolution and explicit manual construction. When successfully exploited, this vulnerability allows for arbitrary internal request steering. This can lead to credential exfiltration, internal network probing, and a confidentiality breach. In order to be vulnerable, the victim application must use Angular SSR (Server-Side Rendering), the application must perform `HttpClient` requests using relative URLs OR manually construct URLs using the unvalidated `Host` / `X-Forwarded-*` headers using the `REQUEST` object, the application server must be reachable by an attacker who can influence these headers without strict validation from a front-facing proxy, and the infrastructure (Cloud, CDN, or Load Balancer) must not sanitize or validate incoming headers. Versions 21.2.0-rc.1, 21.1.5, 20.3.17, and 19.2.21 contain a patch. Some workarounds are available. Avoid using `req.headers` for URL construction. Instead, use trusted variables for base API paths. Those who cannot upgrade immediately should implement a middleware in their `server.ts` to enforce numeric ports and validated hostnames.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27739">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dd2aa1c236ed992721e7d6a8e99505f3</td>
+       <td>CVE-2026-21902</td>
+       <td>2026-02-25 18:23:40 <img src="imgs/new.gif" /></td>
+       <td>An Incorrect Permission Assignment for Critical Resource vulnerability in the On-Box Anomaly detection framework of Juniper Networks Junos OS Evolved on PTX Series allows an unauthenticated, network-based attacker to execute code as root. The On-Box Anomaly detection framework should only be reachable by other internal processes over the internal routing instance, but not over an externally exposed port. With the ability to access and manipulate the service to execute code as root a remote attacker can take complete control of the device. Please note that this service is enabled by default as no specific configuration is required. This issue affects Junos OS Evolved on PTX Series: * 25.4 versions before 25.4R1-S1-EVO, 25.4R2-EVO. This issue does not affect Junos OS Evolved versions before 25.4R1-EVO. This issue does not affect Junos OS.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21902">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e742de83e66b8e769f8bc87c5a384bd9</td>
+       <td>CVE-2026-27700</td>
+       <td>2026-02-25 18:02:19 <img src="imgs/new.gif" /></td>
+       <td>Hono is Vulnerable to Authentication Bypass by IP Spoofing in AWS Lambda ALB conninfo</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27700">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>580b33e6b6024999e01246d1ce093f55</td>
+       <td>CVE-2026-27727</td>
+       <td>2026-02-25 17:25:39 <img src="imgs/new.gif" /></td>
+       <td>mchange-commons-java, a library that provides Java utilities, includes code that mirrors early implementations of JNDI functionality, including support for remote `factoryClassLocation` values, by which code can be downloaded and invoked within a running application. If an attacker can provoke an application to read a maliciously crafted `jaxax.naming.Reference` or serialized object, they can provoke the download and execution of malicious code. Implementations of this functionality within the JDK were disabled by default behind a System property that defaults to `false`, `com.sun.jndi.ldap.object.trustURLCodebase`. However, since mchange-commons-java includes an independent implementation of JNDI derefencing, libraries (such as c3p0) that resolve references via that implementation could be provoked to download and execute malicious code even after the JDK was hardened. Mirroring the JDK patch, mchange-commons-java's JNDI functionality is gated by configuration parameters that default to restrictive values starting in version 0.4.0. No known workarounds are available. Versions prior to 0.4.0 should be avoided on application CLASSPATHs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27727">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>24d589494afd3bd2b496618b6ec6668c</td>
+       <td>CVE-2026-20129</td>
+       <td>2026-02-25 17:25:30 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the API user authentication of Cisco Catalyst SD-WAN Manager could allow an unauthenticated, remote attacker to gain access to an affected system as a user who has the&nbsp;netadmin role. The vulnerability is due to improper authentication for requests that are sent to the API. An attacker could exploit this vulnerability by sending a crafted request to the API of an affected system. A successful exploit could allow the attacker to execute commands with the privileges of the netadmin role. Note: Cisco Catalyst SD-WAN Manager releases 20.18 and later are not affected by this vulnerability.&nbsp;</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20129">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3393c387b75a2daf51a3cf6625e549ff</td>
+       <td>CVE-2026-20128</td>
+       <td>2026-02-25 17:25:30 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the Data Collection Agent (DCA) feature of Cisco Catalyst SD-WAN Manager could allow an authenticated, local attacker to gain DCA user privileges on an affected system. To exploit this vulnerability, the attacker must have valid&nbsp;vmanage credentials on the affected system. This vulnerability is due to the presence of a credential file for the DCA user on an affected system. An attacker could exploit this vulnerability by accessing the filesystem as a low-privileged user and reading the file that contains the DCA password from that affected system. A successful exploit could allow the attacker to access another affected system and gain DCA user privileges. Note: Cisco Catalyst SD-WAN Manager releases 20.18 and later are not affected by this vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20128">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0c2287bab2778968f57494affe9ee26a</td>
+       <td>CVE-2026-20127</td>
+       <td>2026-02-25 17:25:29 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the peering authentication in Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, and Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, could allow an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system. This vulnerability exists because the peering authentication mechanism in an affected system is not working properly. An attacker could exploit this vulnerability by sending crafted requests to an affected system. A successful exploit could allow the attacker to log in to an affected Cisco Catalyst SD-WAN Controller as an internal, high-privileged, non-root&nbsp;user account. Using this account, the attacker could access NETCONF, which would then allow the attacker to manipulate network configuration for the SD-WAN fabric.&nbsp;</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20127">详情</a></td>
+      </tr>
+
+      <tr>
        <td>15076c20218458bef7fbf69e24fe07cb</td>
        <td>CVE-2026-2486</td>
-       <td>2026-02-20 12:16:16 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 12:16:16</td>
        <td>The Master Addons For Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'ma_el_bh_table_btn_text' parameter in versions up to, and including, 2.1.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2486">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>9dc4f9d19ee822f8580fc2fa91134a8e</td>
        <td>CVE-2025-10970</td>
-       <td>2026-02-20 12:16:14 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 12:16:14</td>
        <td>Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Kolay Software Inc. Talentics allows Blind SQL Injection.This issue affects Talentics: through 20022026. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10970">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>4d4f96240a00d0a5813ceb091362a5c0</td>
        <td>CVE-2026-21620</td>
-       <td>2026-02-20 11:15:56 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 11:15:56</td>
        <td>Relative Path Traversal, Improper Isolation or Compartmentalization vulnerability in erlang otp erlang/otp (tftp_file modules), erlang otp inets (tftp_file modules), erlang otp tftp (tftp_file modules) allows Relative Path Traversal. This vulnerability is associated with program files lib/tftp/src/tftp_file.erl, src/tftp_file.Erl. This issue affects otp: from 17.0, from 07b8f441ca711f9812fad9e9115bab3c3aa92f79; otp: from 5.10 before 7.0; otp: from 1.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21620">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>7d625ef19dd7607e7710b8e6e2da52c8</td>
        <td>CVE-2026-26050</td>
-       <td>2026-02-20 09:15:54 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 09:15:54</td>
        <td>The installer for ジョブログ集計/分析ソフトウェア RICOHジョブログ集計ツール versions prior to Ver.1.3.7 contains an issue with the DLL search path, which may lead to insecurely loading Dynamic Link Libraries. As a result, arbitrary code may be executed with administrative privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26050">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>31427773f11b910df77d8f2aa6010107</td>
        <td>CVE-2026-2045</td>
-       <td>2026-02-20 08:48:35 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 08:48:35</td>
        <td>This vulnerability allows remote attackers to execute arbitrary code on affected installations of GIMP. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.The specific flaw exists within the parsing of XWD files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated buffer. An attacker can leverage this vulnerability to execute code in the context of the current process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2045">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>da2e74a8b7b87637af352295585e3015</td>
        <td>CVE-2026-2047</td>
-       <td>2026-02-20 08:47:36 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 08:47:36</td>
        <td>This vulnerability allows remote attackers to execute arbitrary code on affected installations of GIMP. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.The specific flaw exists within the parsing of ICNS files. The issue results from the lack of proper validation of the length of user-supplied data prior to copying it to a heap-based buffer. An attacker can leverage this vulnerability to execute code in the context of the current process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2047">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>3b3449d8fc109c3d0242da6d840e48d5</td>
        <td>CVE-2026-2048</td>
-       <td>2026-02-20 08:46:33 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 08:46:33</td>
        <td>This vulnerability allows remote attackers to execute arbitrary code on affected installations of GIMP. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.The specific flaw exists within the parsing of XWD files. The issue results from the lack of proper validation of user-supplied data, which can result in a write past the end of an allocated buffer. An attacker can leverage this vulnerability to execute code in the context of the current process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2048">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>6536b7fff289f98e650d9726036e6855</td>
        <td>CVE-2026-2040</td>
-       <td>2026-02-20 08:45:23 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 08:45:23</td>
        <td>This vulnerability allows local attackers to escalate privileges on affected installations of PDF-XChange Editor. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.The specific flaw exists within the TrackerUpdate process. The product loads a library from an unsecured location. An attacker can leverage this vulnerability to escalate privileges and execute code in the context of a target user.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2040">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>fc5f49f6905ad15d8448483ec49fe930</td>
        <td>CVE-2026-26370</td>
-       <td>2026-02-20 08:17:03 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 08:17:03</td>
        <td>WordPress Plugin "Survey Maker" versions 5.1.7.7 and prior contain a cross-site scripting vulnerability. If this vulnerability is exploited, an arbitrary script may be executed in the user's web browser.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26370">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>e613ad99424f45646816bc2b401d90dd</td>
        <td>CVE-2025-59819</td>
-       <td>2026-02-20 08:17:02 <img src="imgs/new.gif" /></td>
+       <td>2026-02-20 08:17:02</td>
        <td>This vulnerability allows authenticated attackers to read an arbitrary file by changing a filepath parameter into an internal system path.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-59819">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>eb59d85f8c650def919a14be406c670b</td>
        <td>CVE-2025-9953</td>
-       <td>2026-02-19 11:55:10 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 11:55:10</td>
        <td>Authorization Bypass Through User-Controlled SQL Primary Key vulnerability in DATABASE Software Training Consulting Ltd. Databank Accreditation Software allows SQL Injection.This issue affects Databank Accreditation Software: through 19022026. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9953">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>73ed16d129231e9fcd7005950e9fd6c9</td>
        <td>CVE-2025-8350</td>
-       <td>2026-02-19 11:30:04 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 11:30:04</td>
        <td>Execution After Redirect (EAR), Missing Authentication for Critical Function vulnerability in Inrove Software and Internet Services BiEticaret CMS allows Authentication Bypass, HTTP Response Splitting.This issue affects BiEticaret CMS: from 2.1.13 through 19022026. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-8350">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>21dbd00a5210d50d6395fbcf7e635eb5</td>
        <td>CVE-2025-15563</td>
-       <td>2026-02-19 11:01:56 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 11:01:56</td>
        <td>Any unauthenticated user can reset the WorkTime on-prem database configuration by sending a specific HTTP request to the WorkTime server. No authorization check is applied here.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15563">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>165145c555837204456ebef8e8b079bc</td>
        <td>CVE-2025-9062</td>
-       <td>2026-02-19 10:57:15 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 10:57:15</td>
        <td>Authorization Bypass Through User-Controlled Key vulnerability in MeCODE Informatics and Engineering Services Ltd. Envanty allows Parameter Injection.This issue affects Envanty: from 1.0.0 through 19022026. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9062">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>0d8d45020b222b4621d1e434ee0741ba</td>
        <td>CVE-2025-15562</td>
-       <td>2026-02-19 10:54:52 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 10:54:52</td>
        <td>The server API endpoint /report/internet/urls reflects received data into the HTML response without applying proper encoding or filtering. This allows an attacker to execute arbitrary JavaScript in the victim's browser if the victim opens a URL prepared by the attacker.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15562">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>2725bf476915d1f1009c19fe1089c038</td>
        <td>CVE-2025-15561</td>
-       <td>2026-02-19 10:53:18 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 10:53:18</td>
        <td>An attacker can exploit the update behavior of the WorkTime monitoring daemon to elevate privileges on the local system to NT Authority\SYSTEM. A malicious executable must be named WTWatch.exe and dropped in the C:\ProgramData\wta\ClientExe directory, which is writable by "Everyone". The executable will then be run by the WorkTime monitoring daemon.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15561">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>2ce551a0fe4daafeaf4d3e1b5a9b6338</td>
        <td>CVE-2025-15560</td>
-       <td>2026-02-19 10:48:43 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 10:48:43</td>
        <td>An authenticated attacker with minimal permissions can exploit a SQL injection in the WorkTime server "widget" API endpoint to inject SQL queries. If the Firebird backend is used, attackers are able to retrieve all data from the database backend. If the MSSQL backend is used the attacker can execute arbitrary SQL statements on the database backend and gain access to sensitive data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15560">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>ba663cda349289238886820134c4a50f</td>
        <td>CVE-2025-15559</td>
-       <td>2026-02-19 10:45:34 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 10:45:34</td>
        <td>An unauthenticated attacker can inject OS commands when calling a server API endpoint in NesterSoft WorkTime. The server API call to generate and download the WorkTime client from the WorkTime server is vulnerable in the “guid” parameter. This allows an attacker to execute arbitrary commands on the WorkTime server as NT Authority\SYSTEM with the highest privileges. Attackers are able to access or manipulate sensitive data and take over the whole server.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15559">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>babb64588245ec705d278744df5f5d59</td>
        <td>CVE-2025-13590</td>
-       <td>2026-02-19 10:05:06 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 10:05:06</td>
        <td>A malicious actor with administrative privileges can upload an arbitrary file to a user-controlled location within the deployment via a system REST API. Successful uploads may lead to remote code execution. By leveraging the vulnerability, a malicious actor may perform Remote Code Execution by uploading a specially crafted payload.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13590">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>47364d87001a2bf4c3555d7841bbf028</td>
        <td>CVE-2025-12107</td>
-       <td>2026-02-19 10:04:47 <img src="imgs/new.gif" /></td>
+       <td>2026-02-19 10:04:47</td>
        <td>Due to the use of a vulnerable third-party Velocity template engine, a malicious actor with admin privilege may inject and execute arbitrary template syntax within server-side templates. Successful exploitation of this vulnerability could allow a malicious actor with admin privilege to inject and execute arbitrary template code on the server, potentially leading to remote code execution, data manipulation, or unauthorized access to sensitive information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12107">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a23d30003860fff84f8a088ca645b9a</td>
-       <td>CVE-2025-14799</td>
-       <td>2026-02-18 11:26:03</td>
-       <td>The Brevo - Email, SMS, Web Push, Chat, and more. plugin for WordPress is vulnerable to authorization bypass due to type juggling in all versions up to, and including, 3.3.0. This is due to the use of loose comparison (==) instead of strict comparison (===) when validating the installation ID in the `/wp-json/mailin/v1/mailin_disconnect` REST API endpoint. This makes it possible for unauthenticated attackers to disconnect the Brevo integration, delete the API key, remove all subscription forms, and reset plugin settings by sending a boolean `true` value for the `id` parameter, which bypasses the authorization check through PHP type juggling.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14799">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52830806dbaa631d9401c34582efb3b9</td>
-       <td>CVE-2026-2653</td>
-       <td>2026-02-18 11:16:32</td>
-       <td>A security flaw has been discovered in admesh up to 0.98.5. This issue affects the function stl_check_normal_vector of the file src/normals.c. Performing a manipulation results in heap-based buffer overflow. The attack must be initiated from a local position. The exploit has been released to the public and may be used for attacks. It looks like this product is not really maintained anymore.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2653">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a908c6ac5fed04dd52b74150370fe2df</td>
-       <td>CVE-2026-2426</td>
-       <td>2026-02-18 11:16:32</td>
-       <td>The WP-DownloadManager plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 1.69 via the 'file' parameter in the file deletion functionality. This is due to insufficient validation of user-supplied file paths, allowing directory traversal sequences. This makes it possible for authenticated attackers, with Administrator-level access and above, to delete arbitrary files on the server, which can lead to remote code execution when critical files like wp-config.php are deleted.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2426">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a302f34c16a792ac4678fc1621239cb</td>
-       <td>CVE-2026-1942</td>
-       <td>2026-02-18 11:16:32</td>
-       <td>The Blog2Social: Social Media Auto Post & Scheduler plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the b2s_curation_draft AJAX action in all versions up to, and including, 8.7.4. The curationDraft() function only verifies current_user_can('read') without checking whether the user has edit_post permission for the target post. Combined with the plugin granting UI access and nonce exposure to all roles, this makes it possible for authenticated attackers, with Subscriber-level access and above, to overwrite the title and content of arbitrary posts and pages by supplying a target post ID via the 'b2s-draft-id' parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1942">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cce22d10bb2b0e62f74afb45d989d0a9</td>
-       <td>CVE-2025-14444</td>
-       <td>2026-02-18 11:16:30</td>
-       <td>The RegistrationMagic – Custom Registration Forms, User Registration, Payment, and User Login plugin for WordPress is vulnerable to payment bypass due to insufficient verification of data authenticity on the 'process_paypal_sdk_payment' function in all versions up to, and including, 6.0.6.9. This is due to the plugin trusting client-supplied values for payment verification without validating that the payment actually went through PayPal. This makes it possible for unauthenticated attackers to bypass paid registration by manipulating payment status and activating their account without completing a real PayPal payment.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14444">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8a127556a6a46d193f7056128a4646fc</td>
-       <td>CVE-2026-2126</td>
-       <td>2026-02-18 10:16:15</td>
-       <td>The User Submitted Posts – Enable Users to Submit Posts from the Front End plugin for WordPress is vulnerable to Incorrect Authorization in all versions up to, and including, 20260113. This is due to the `usp_get_submitted_category()` function accepting user-submitted category IDs from the POST body without validating them against the admin-configured allowed categories stored in `usp_options['categories']`. This makes it possible for unauthenticated attackers to assign submitted posts to arbitrary categories, including restricted ones, by crafting a direct POST request with manipulated `user-submitted-category[]` values, bypassing the frontend category restrictions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2126">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d9899ba4010f1027af9b3df1db0f0c2</td>
-       <td>CVE-2025-13727</td>
-       <td>2026-02-18 10:16:14</td>
-       <td>The Video Share VOD – Turnkey Video Site Builder Script plugin for WordPress is vulnerable to Stored Cross-Site Scripting via plugin settings in all versions up to, and including, 2.7.11 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with editor-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13727">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>affc76a7408dba335c3caf06a4079386</td>
-       <td>CVE-2025-11185</td>
-       <td>2026-02-18 10:16:13</td>
-       <td>The Complianz – GDPR/CCPA Cookie Consent plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's cmplz-accept-link shortcode in all versions up to, and including, 7.4.3 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-11185">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>80f797153daff361b37e64135c802130</td>
-       <td>CVE-2026-2495</td>
-       <td>2026-02-18 09:15:59</td>
-       <td>The WPNakama – Team and multi-Client Collaboration, Editorial and Project Management plugin for WordPress is vulnerable to SQL Injection via the 'order' parameter of the '/wp-json/WPNakama/v1/boards' REST API endpoint in all versions up to, and including, 0.6.5. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2495">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7a2d1e2b7b9b31681bc4d28627b6fb31</td>
-       <td>CVE-2026-2127</td>
-       <td>2026-02-18 09:15:58</td>
-       <td>The SiteOrigin Widgets Bundle plugin for WordPress is vulnerable to unauthorized arbitrary shortcode execution in all versions up to, and including, 1.70.4. This is due to a missing capability check on the `siteorigin_widget_preview_widget_action()` function which is registered via the `wp_ajax_so_widgets_preview` AJAX action. The function only verifies a nonce (`widgets_action`) but does not check user capabilities. This makes it possible for authenticated attackers, with Subscriber-level access and above, to execute arbitrary shortcodes by invoking the `SiteOrigin_Widget_Editor_Widget` via the preview endpoint. The required nonce is exposed on the public frontend when the Post Carousel widget is present on a page, embedded in the `data-ajax-url` HTML attribute.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2127">详情</a></td>
       </tr>
 
      </tbody>
