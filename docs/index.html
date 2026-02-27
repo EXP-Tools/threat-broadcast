@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-02-26 21:38:45 -->
+<!-- RELEASE TIME : 2026-02-27 21:35:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,25 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3e55d2be871b4cd378bcf271a7c45c47</td>
+       <td>CVE-2025-71210</td>
+       <td>2026-02-27 19:18:14 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in the Trend Micro Apex One management console could allow a remote attacker to upload malicious code and execute commands on affected installations.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-71210">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a24900fca47a9a8771dfbf257495f1ed</td>
+       <td>CVE-2026-24487</td>
+       <td>2026-02-25 19:43:21</td>
+       <td>OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0, an authorization bypass vulnerability in the FHIR CareTeam resource endpoint allows patient-scoped FHIR tokens to access care team data for all patients instead of being restricted to only the authenticated patient's data. This could potentially lead to unauthorized disclosure of Protected Health Information (PHI), including patient-provider relationships and care team structures across the entire system. The issue occurs because the `FhirCareTeamService` does not implement the `IPatientCompartmentResourceService` interface and does not pass the patient binding parameter to the underlying service, bypassing the patient compartment filtering mechanism. Version 8.0.0 contains a patch for this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24487">详情</a></td>
+      </tr>
+
+      <tr>
        <td>d3fdbfdbcf1b465cca634d9aaab33ef0</td>
        <td>CVE-2026-27830</td>
-       <td>2026-02-25 18:35:23 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 18:35:23</td>
        <td>c3p0 vulnerable to Remote Code Execution via unsafe deserialization of userOverridesAsString property</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27830">详情</a></td>
       </tr>
@@ -294,7 +310,7 @@
       <tr>
        <td>149d221ca733ed881d78f5289e3ac03e</td>
        <td>CVE-2026-3192</td>
-       <td>2026-02-25 18:31:38 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 18:31:38</td>
        <td>A security vulnerability has been detected in Chia Blockchain 2.1.0. This issue affects the...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3192">详情</a></td>
       </tr>
@@ -302,15 +318,39 @@
       <tr>
        <td>d21e71ff230da4955c7bd12fb2cfbf70</td>
        <td>CVE-2026-20037</td>
-       <td>2026-02-25 18:31:38 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 18:31:38</td>
        <td>A vulnerability in the NX-OS CLI privilege levels of Cisco UCS Manager Software could allow an...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20037">详情</a></td>
       </tr>
 
       <tr>
+       <td>d36a8378c23869daed75f8d2cb71bc01</td>
+       <td>CVE-2026-25554</td>
+       <td>2026-02-25 18:31:38</td>
+       <td>OpenSIPS versions 3.1 before 3.6.4 containing the auth_jwt module (prior to commit 3822d33)...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25554">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2a79278ff0114643954c4bf4f66d3748</td>
+       <td>CVE-2026-20033</td>
+       <td>2026-02-25 18:31:38</td>
+       <td>A vulnerability in Cisco Nexus 9000 Series Fabric Switches in ACI mode could allow an...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20033">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d685be118f5eb1ac40bdabe9c2f0a0a</td>
+       <td>CVE-2026-22866</td>
+       <td>2026-02-25 18:26:58</td>
+       <td>ENS DNSSEC Oracle Vulnerable to RSA Signature Forgery via Missing PKCS#1 v1.5 Padding Validation</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22866">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c2c294f31031cc465bbe711ed0bd3627</td>
        <td>CVE-2026-27739</td>
-       <td>2026-02-25 18:23:40 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 18:23:40</td>
        <td>The Angular SSR is a server-rise rendering tool for Angular applications. Versions prior to 21.2.0-rc.1, 21.1.5, 20.3.17, and 19.2.21 have a Server-Side Request Forgery (SSRF) vulnerability in the Angular SSR request handling pipeline. The vulnerability exists because Angular’s internal URL reconstruction logic directly trusts and consumes user-controlled HTTP headers specifically the Host and `X-Forwarded-*` family to determine the application's base origin without any validation of the destination domain. Specifically, the framework didn't have checks for the host domain, path and character sanitization, and port validation. This vulnerability manifests in two primary ways: implicit relative URL resolution and explicit manual construction. When successfully exploited, this vulnerability allows for arbitrary internal request steering. This can lead to credential exfiltration, internal network probing, and a confidentiality breach. In order to be vulnerable, the victim application must use Angular SSR (Server-Side Rendering), the application must perform `HttpClient` requests using relative URLs OR manually construct URLs using the unvalidated `Host` / `X-Forwarded-*` headers using the `REQUEST` object, the application server must be reachable by an attacker who can influence these headers without strict validation from a front-facing proxy, and the infrastructure (Cloud, CDN, or Load Balancer) must not sanitize or validate incoming headers. Versions 21.2.0-rc.1, 21.1.5, 20.3.17, and 19.2.21 contain a patch. Some workarounds are available. Avoid using `req.headers` for URL construction. Instead, use trusted variables for base API paths. Those who cannot upgrade immediately should implement a middleware in their `server.ts` to enforce numeric ports and validated hostnames.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27739">详情</a></td>
       </tr>
@@ -318,7 +358,7 @@
       <tr>
        <td>dd2aa1c236ed992721e7d6a8e99505f3</td>
        <td>CVE-2026-21902</td>
-       <td>2026-02-25 18:23:40 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 18:23:40</td>
        <td>An Incorrect Permission Assignment for Critical Resource vulnerability in the On-Box Anomaly detection framework of Juniper Networks Junos OS Evolved on PTX Series allows an unauthenticated, network-based attacker to execute code as root. The On-Box Anomaly detection framework should only be reachable by other internal processes over the internal routing instance, but not over an externally exposed port. With the ability to access and manipulate the service to execute code as root a remote attacker can take complete control of the device. Please note that this service is enabled by default as no specific configuration is required. This issue affects Junos OS Evolved on PTX Series: * 25.4 versions before 25.4R1-S1-EVO, 25.4R2-EVO. This issue does not affect Junos OS Evolved versions before 25.4R1-EVO. This issue does not affect Junos OS.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21902">详情</a></td>
       </tr>
@@ -326,7 +366,7 @@
       <tr>
        <td>e742de83e66b8e769f8bc87c5a384bd9</td>
        <td>CVE-2026-27700</td>
-       <td>2026-02-25 18:02:19 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 18:02:19</td>
        <td>Hono is Vulnerable to Authentication Bypass by IP Spoofing in AWS Lambda ALB conninfo</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27700">详情</a></td>
       </tr>
@@ -334,7 +374,7 @@
       <tr>
        <td>580b33e6b6024999e01246d1ce093f55</td>
        <td>CVE-2026-27727</td>
-       <td>2026-02-25 17:25:39 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 17:25:39</td>
        <td>mchange-commons-java, a library that provides Java utilities, includes code that mirrors early implementations of JNDI functionality, including support for remote `factoryClassLocation` values, by which code can be downloaded and invoked within a running application. If an attacker can provoke an application to read a maliciously crafted `jaxax.naming.Reference` or serialized object, they can provoke the download and execution of malicious code. Implementations of this functionality within the JDK were disabled by default behind a System property that defaults to `false`, `com.sun.jndi.ldap.object.trustURLCodebase`. However, since mchange-commons-java includes an independent implementation of JNDI derefencing, libraries (such as c3p0) that resolve references via that implementation could be provoked to download and execute malicious code even after the JDK was hardened. Mirroring the JDK patch, mchange-commons-java's JNDI functionality is gated by configuration parameters that default to restrictive values starting in version 0.4.0. No known workarounds are available. Versions prior to 0.4.0 should be avoided on application CLASSPATHs.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27727">详情</a></td>
       </tr>
@@ -342,7 +382,7 @@
       <tr>
        <td>24d589494afd3bd2b496618b6ec6668c</td>
        <td>CVE-2026-20129</td>
-       <td>2026-02-25 17:25:30 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 17:25:30</td>
        <td>A vulnerability in the API user authentication of Cisco Catalyst SD-WAN Manager could allow an unauthenticated, remote attacker to gain access to an affected system as a user who has the&nbsp;netadmin role. The vulnerability is due to improper authentication for requests that are sent to the API. An attacker could exploit this vulnerability by sending a crafted request to the API of an affected system. A successful exploit could allow the attacker to execute commands with the privileges of the netadmin role. Note: Cisco Catalyst SD-WAN Manager releases 20.18 and later are not affected by this vulnerability.&nbsp;</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20129">详情</a></td>
       </tr>
@@ -350,7 +390,7 @@
       <tr>
        <td>3393c387b75a2daf51a3cf6625e549ff</td>
        <td>CVE-2026-20128</td>
-       <td>2026-02-25 17:25:30 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 17:25:30</td>
        <td>A vulnerability in the Data Collection Agent (DCA) feature of Cisco Catalyst SD-WAN Manager could allow an authenticated, local attacker to gain DCA user privileges on an affected system. To exploit this vulnerability, the attacker must have valid&nbsp;vmanage credentials on the affected system. This vulnerability is due to the presence of a credential file for the DCA user on an affected system. An attacker could exploit this vulnerability by accessing the filesystem as a low-privileged user and reading the file that contains the DCA password from that affected system. A successful exploit could allow the attacker to access another affected system and gain DCA user privileges. Note: Cisco Catalyst SD-WAN Manager releases 20.18 and later are not affected by this vulnerability.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20128">详情</a></td>
       </tr>
@@ -358,7 +398,7 @@
       <tr>
        <td>0c2287bab2778968f57494affe9ee26a</td>
        <td>CVE-2026-20127</td>
-       <td>2026-02-25 17:25:29 <img src="imgs/new.gif" /></td>
+       <td>2026-02-25 17:25:29</td>
        <td>A vulnerability in the peering authentication in Cisco Catalyst SD-WAN Controller, formerly SD-WAN vSmart, and Cisco Catalyst SD-WAN Manager, formerly SD-WAN vManage, could allow an unauthenticated, remote attacker to bypass authentication and obtain administrative privileges on an affected system. This vulnerability exists because the peering authentication mechanism in an affected system is not working properly. An attacker could exploit this vulnerability by sending crafted requests to an affected system. A successful exploit could allow the attacker to log in to an affected Cisco Catalyst SD-WAN Controller as an internal, high-privileged, non-root&nbsp;user account. Using this account, the attacker could access NETCONF, which would then allow the attacker to manipulate network configuration for the SD-WAN fabric.&nbsp;</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20127">详情</a></td>
       </tr>
@@ -481,46 +521,6 @@
        <td>2026-02-19 10:54:52</td>
        <td>The server API endpoint /report/internet/urls reflects received data into the HTML response without applying proper encoding or filtering. This allows an attacker to execute arbitrary JavaScript in the victim's browser if the victim opens a URL prepared by the attacker.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15562">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2725bf476915d1f1009c19fe1089c038</td>
-       <td>CVE-2025-15561</td>
-       <td>2026-02-19 10:53:18</td>
-       <td>An attacker can exploit the update behavior of the WorkTime monitoring daemon to elevate privileges on the local system to NT Authority\SYSTEM. A malicious executable must be named WTWatch.exe and dropped in the C:\ProgramData\wta\ClientExe directory, which is writable by "Everyone". The executable will then be run by the WorkTime monitoring daemon.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15561">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2ce551a0fe4daafeaf4d3e1b5a9b6338</td>
-       <td>CVE-2025-15560</td>
-       <td>2026-02-19 10:48:43</td>
-       <td>An authenticated attacker with minimal permissions can exploit a SQL injection in the WorkTime server "widget" API endpoint to inject SQL queries. If the Firebird backend is used, attackers are able to retrieve all data from the database backend. If the MSSQL backend is used the attacker can execute arbitrary SQL statements on the database backend and gain access to sensitive data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15560">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ba663cda349289238886820134c4a50f</td>
-       <td>CVE-2025-15559</td>
-       <td>2026-02-19 10:45:34</td>
-       <td>An unauthenticated attacker can inject OS commands when calling a server API endpoint in NesterSoft WorkTime. The server API call to generate and download the WorkTime client from the WorkTime server is vulnerable in the “guid” parameter. This allows an attacker to execute arbitrary commands on the WorkTime server as NT Authority\SYSTEM with the highest privileges. Attackers are able to access or manipulate sensitive data and take over the whole server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15559">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>babb64588245ec705d278744df5f5d59</td>
-       <td>CVE-2025-13590</td>
-       <td>2026-02-19 10:05:06</td>
-       <td>A malicious actor with administrative privileges can upload an arbitrary file to a user-controlled location within the deployment via a system REST API. Successful uploads may lead to remote code execution. By leveraging the vulnerability, a malicious actor may perform Remote Code Execution by uploading a specially crafted payload.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13590">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>47364d87001a2bf4c3555d7841bbf028</td>
-       <td>CVE-2025-12107</td>
-       <td>2026-02-19 10:04:47</td>
-       <td>Due to the use of a vulnerable third-party Velocity template engine, a malicious actor with admin privilege may inject and execute arbitrary template syntax within server-side templates. Successful exploitation of this vulnerability could allow a malicious actor with admin privilege to inject and execute arbitrary template code on the server, potentially leading to remote code execution, data manipulation, or unauthorized access to sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12107">详情</a></td>
       </tr>
 
      </tbody>
