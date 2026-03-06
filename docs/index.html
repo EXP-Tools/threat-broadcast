@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-05 02:40:00 -->
+<!-- RELEASE TIME : 2026-03-06 02:37:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>031dafb6f4853ca9e6e90ce764441270</td>
+       <td>CVE-2026-3606</td>
+       <td>2026-03-05 22:02:07 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in Ettercap 0.8.4-Garofalo. Affected by this vulnerability is the function add_data_segment of the file src/ettercap/utils/etterfilter/ef_output.c of the component etterfilter. The manipulation leads to out-of-bounds read. Local access is required to approach this attack. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3606">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>17b9123d7e9ea55bf46225a58c05d08b</td>
+       <td>CVE-2026-29613</td>
+       <td>2026-03-05 22:00:11 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions prior to 2026.2.12 contain a vulnerability in the BlueBubbles (optional plugin) webhook handler in which it authenticates requests based solely on loopback remoteAddress without validating forwarding headers, allowing bypass of configured webhook passwords. When the gateway operates behind a reverse proxy, unauthenticated remote attackers can inject arbitrary BlueBubbles message and reaction events by reaching the proxy endpoint.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29613">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b72a798975240de8ffe8b883e2c0185e</td>
+       <td>CVE-2026-29612</td>
+       <td>2026-03-05 22:00:10 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions prior to 2026.2.14 decode base64-backed media inputs into buffers before enforcing decoded-size budget limits, allowing attackers to trigger large memory allocations. Remote attackers can supply oversized base64 payloads to cause memory pressure and denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29612">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dd8516adb3ed3aa3609eeb534309a486</td>
+       <td>CVE-2026-29611</td>
+       <td>2026-03-05 22:00:09 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions prior to 2026.2.14 contain a local file inclusion vulnerability in BlueBubbles extension (must be installed and enabled) media path handling that allows attackers to read arbitrary files from the local filesystem. The sendBlueBubblesMedia function fails to validate mediaPath parameters against an allowlist, enabling attackers to request sensitive files like /etc/passwd and exfiltrate them as media attachments.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29611">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>15b7c9040ed643fa02654f69f5b1d01a</td>
+       <td>CVE-2026-29610</td>
+       <td>2026-03-05 22:00:07 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions prior to 2026.2.14 contain a command hijacking vulnerability that allows attackers to execute unintended binaries by manipulating PATH environment variables through node-host execution or project-local bootstrapping. Attackers with authenticated access to node-host execution surfaces or those running OpenClaw in attacker-controlled directories can place malicious executables in PATH to override allowlisted safe-bin commands and achieve arbitrary command execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29610">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b84448782c40ef5326dd4e8bb551bc00</td>
+       <td>CVE-2026-29609</td>
+       <td>2026-03-05 22:00:06 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions prior to 2026.2.14 contain a denial of service vulnerability in the fetchWithGuard function that allocates entire response payloads in memory before enforcing maxBytes limits. Remote attackers can trigger memory exhaustion by serving oversized responses without content-length headers to cause availability loss.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29609">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9ed2bb7189232bb53660e2b7516acad</td>
+       <td>CVE-2026-29606</td>
+       <td>2026-03-05 22:00:05 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions prior to 2026.2.14 contain a webhook signature-verification bypass in the voice-call extension that allows unauthenticated requests when the tunnel.allowNgrokFreeTierLoopbackBypass option is explicitly enabled. An external attacker can send forged requests to the publicly reachable webhook endpoint without a valid X-Twilio-Signature header, resulting in unauthorized webhook event handling and potential request flooding attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29606">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b75bc95511cefd113a8030d9a656c66b</td>
+       <td>CVE-2026-28486</td>
+       <td>2026-03-05 22:00:02 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions 2026.1.16-2 prior to 2026.2.14 contain a path traversal vulnerability in archive extraction during installation commands that allows arbitrary file writes outside the intended directory. Attackers can craft malicious archives that, when extracted via skills install, hooks install, plugins install, or signal install commands, write files to arbitrary locations enabling persistence or code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28486">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>64148af9efe73910d4f0de28b6e33b8e</td>
+       <td>CVE-2026-28485</td>
+       <td>2026-03-05 21:59:59 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions 2026.1.5 prior to 2026.2.12 fail to enforce mandatory authentication on the /agent/act browser-control HTTP route, allowing unauthorized local callers to invoke privileged operations. Remote attackers on the local network or local processes can execute arbitrary browser-context actions and access sensitive in-session data by sending requests to unauthenticated endpoints.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28485">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7581256bd5a33505cdce4c0078b7a88b</td>
+       <td>CVE-2026-28484</td>
+       <td>2026-03-05 21:59:58 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw versions prior to 2026.2.15 contain an option injection vulnerability in the git-hooks/pre-commit hook that allows attackers to stage ignored files by creating maliciously-named files beginning with dashes. The hook fails to use a -- separator when piping filenames through xargs to git add, enabling attackers to inject git flags and add sensitive ignored files like .env to git history.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28484">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2a1148402c316a9e1d41bb78c8f1feab</td>
        <td>CVE-2026-27803</td>
-       <td>2026-03-04 21:40:33 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 21:40:33</td>
        <td>Vaultwarden is an unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs. Prior to version 1.35.4, when a Manager has manage=false for a given collection, they can still perform several management operations as long as they have access to the collection. This issue has been patched in version 1.35.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27803">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>ab21e44f4c5e44103ef1d5f94c768184</td>
        <td>CVE-2026-27801</td>
-       <td>2026-03-04 21:32:14 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 21:32:14</td>
        <td>Vaultwarden is an unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs. Vaultwarden versions 1.34.3 and prior are susceptible to a 2FA bypass when performing protected actions. An attacker who gains authenticated access to a user’s account can exploit this bypass to perform protected actions such as accessing the user’s API key or deleting the user’s vault and organisations the user is an admin/owner of . This issue has been patched in version 1.35.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27801">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>f57b101be3e8524de5f3cc8a2a3a04d1</td>
        <td>CVE-2025-70221</td>
-       <td>2026-03-04 21:16:02 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 21:16:02</td>
        <td>Stack buffer overflow vulnerability in D-Link DIR-513 v1.10 via the curTime parameter to goform/formLogin.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-70221">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>cd9368ca4065ffa6d2474f046eae0e7e</td>
        <td>CVE-2026-3545</td>
-       <td>2026-03-04 20:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 20:16:21</td>
        <td>Insufficient data validation in Navigation in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3545">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>ee37f760c1a96d47419cc6e5636e0c7d</td>
        <td>CVE-2026-3544</td>
-       <td>2026-03-04 20:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 20:16:21</td>
        <td>Heap buffer overflow in WebCodecs in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to perform an out of bounds memory write via a crafted HTML page. (Chromium security severity: High)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3544">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>ebd4b71a19f426e48562e6257384d9ca</td>
        <td>CVE-2026-3543</td>
-       <td>2026-03-04 20:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 20:16:21</td>
        <td>Inappropriate implementation in V8 in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to potentially perform out of bounds memory access via a crafted HTML page. (Chromium security severity: High)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3543">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>d518aee5cd7086d52eb0e3d0b1c76a33</td>
        <td>CVE-2026-3542</td>
-       <td>2026-03-04 20:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 20:16:21</td>
        <td>Inappropriate implementation in WebAssembly in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to perform out of bounds memory access via a crafted HTML page. (Chromium security severity: High)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3542">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>52917cfffba0f18799615012acf6b170</td>
        <td>CVE-2026-3541</td>
-       <td>2026-03-04 20:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 20:16:21</td>
        <td>Inappropriate implementation in CSS in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to perform an out of bounds memory read via a crafted HTML page. (Chromium security severity: High)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3541">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>98cbe4bcf2efa80d7e744ca0e18854b9</td>
        <td>CVE-2026-3540</td>
-       <td>2026-03-04 20:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 20:16:21</td>
        <td>Inappropriate implementation in WebAudio in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to perform out of bounds memory access via a crafted HTML page. (Chromium security severity: High)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3540">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>0b5ed948af2e4acf6dbad7b83e818ce9</td>
        <td>CVE-2026-3538</td>
-       <td>2026-03-04 20:16:20 <img src="imgs/new.gif" /></td>
+       <td>2026-03-04 20:16:20</td>
        <td>Integer overflow in Skia in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to potentially perform out of bounds memory access via a crafted HTML page. (Chromium security severity: Critical)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3538">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-03-03 17:46:06</td>
        <td>Underscore has unlimited recursion in _.flatten and _.isEqual, potential for DoS attack</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27601">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1aee6960c68fe1550527bb919c51fc67</td>
-       <td>CVE-2026-3337</td>
-       <td>2026-03-02 22:16:32</td>
-       <td>Observable timing discrepancy in AES-CCM decryption in AWS-LC allows an unauthenticated user to potentially determine authentication tag validity via timing analysis. The impacted implementations are through the EVP CIPHER API: EVP_aes_128_ccm, EVP_aes_192_ccm, and EVP_aes_256_ccm. Customers of AWS services do not need to take action. Applications using AWS-LC should upgrade to AWS-LC version 1.69.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3337">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fed7bf70a5d9b02e3f78e1de776a0498</td>
-       <td>CVE-2026-2256</td>
-       <td>2026-03-02 21:16:27</td>
-       <td>A command injection vulnerability in ModelScope's ms-agent versions v1.6.0rc1 and earlier exists, allowing an attacker to execute arbitrary operating system commands through crafted prompt-derived input.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2256">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25fdd2e3597b68b72e086ccc718ee136</td>
-       <td>CVE-2026-27631</td>
-       <td>2026-03-02 20:16:27</td>
-       <td>Exiv2 is a C++ library and a command-line utility to read, write, delete and modify Exif, IPTC, XMP and ICC image metadata. Prior to version 0.28.8, an uncaught exception was found in Exiv2. The vulnerability is in the preview component, which is only triggered when running Exiv2 with an extra command line argument, like -pp. Due to an integer overflow, the code attempts to create a huge std::vector, which causes Exiv2 to crash with an uncaught exception. This issue has been patched in version 0.28.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27631">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>378be0ffca8b075fcd7c7cb46fbec1ba</td>
-       <td>CVE-2026-26713</td>
-       <td>2026-03-02 20:16:27</td>
-       <td>code-projects Simple Food Order System v1.0 is vulnerable to SQL Injection in /food/routers/cancel-order.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26713">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1e984cf8e66ae6c79a9f4e27c13f9154</td>
-       <td>CVE-2026-26712</td>
-       <td>2026-03-02 20:16:26</td>
-       <td>code-projects Simple Food Order System v1.0 is vulnerable to SQL Injection in /food/view-ticket-admin.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26712">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ee4d24ef94d0b2c3b8f3428381a25b10</td>
-       <td>CVE-2026-25884</td>
-       <td>2026-03-02 20:16:26</td>
-       <td>Exiv2 is a C++ library and a command-line utility to read, write, delete and modify Exif, IPTC, XMP and ICC image metadata. Prior to version 0.28.8, an out-of-bounds read was found. The vulnerability is in the CRW image parser. This issue has been patched in version 0.28.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25884">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b4315b1b83d3defad46e2ee8d74b8f68</td>
-       <td>CVE-2026-25477</td>
-       <td>2026-03-02 20:16:26</td>
-       <td>AFFiNE is an open-source, all-in-one workspace and an operating system. Prior to version 0.26.0, there is an Open Redirect vulnerability located at the /redirect-proxy endpoint. The flaw exists in the domain validation logic, where an improperly anchored Regular Expression allows an attacker to bypass the whitelist by using malicious domains that end with a trusted string. This issue has been patched in version 0.26.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25477">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d8897d5b54585274da7b6aea4d4ac9ff</td>
-       <td>CVE-2026-21882</td>
-       <td>2026-03-02 20:16:26</td>
-       <td>theshit is a command-line utility that automatically detects and fixes common mistakes in shell commands. Prior to version 0.2.0, improper privilege dropping allows local privilege escalation via command re-execution. This issue has been patched in version 0.2.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21882">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1c2948dd62402a0fe3b2588237dce647</td>
-       <td>CVE-2026-27596</td>
-       <td>2026-03-02 19:40:48</td>
-       <td>Exiv2 is a C++ library and a command-line utility to read, write, delete and modify Exif, IPTC, XMP and ICC image metadata. Prior to version 0.28.8, an out-of-bounds read was found in Exiv2. The vulnerability is in the preview component, which is only triggered when running Exiv2 with an extra command line argument, like -pp. The out-of-bounds read is at a 4GB offset, which usually causes Exiv2 to crash. This issue has been patched in version 0.28.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27596">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c9fb52c31be7ed97e49042f3e418ead</td>
-       <td>CVE-2026-26711</td>
-       <td>2026-03-02 19:16:33</td>
-       <td>code-projects Simple Food Order System v1.0 is vulnerable to SQL Injection in /food/view-ticket.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26711">详情</a></td>
       </tr>
 
      </tbody>
