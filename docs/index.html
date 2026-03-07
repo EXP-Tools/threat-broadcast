@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-06 02:37:15 -->
+<!-- RELEASE TIME : 2026-03-07 02:30:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a5fd6178e592d7c402e929955c78e68a</td>
+       <td>CVE-2026-30847</td>
+       <td>2026-03-06 20:16:17 <img src="imgs/new.gif" /></td>
+       <td>Wekan is an open source kanban tool built with Meteor. In versions 8.31.0 through 8.33, the notificationUsers publication in Wekan publishes user documents with no field filtering, causing the ReactiveCache.getUsers() call to return all fields including highly sensitive data such as bcrypt password hashes, active session login tokens, email verification tokens, full email addresses, and any stored OAuth tokens. Unlike Meteor's default auto-publication which strips the services field for security, custom publications return whatever fields the cursor contains, meaning all subscribers receive the complete user documents. Any authenticated user who triggers this publication can harvest credentials and active session tokens for other users, enabling password cracking, session hijacking, and full account takeover. This issue has been fixed in version 8.34.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30847">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f0fa746fe23250d6a50f1333f642561</td>
+       <td>CVE-2026-30846</td>
+       <td>2026-03-06 20:16:17 <img src="imgs/new.gif" /></td>
+       <td>Wekan is an open source kanban tool built with Meteor. In versions 8.31.0 through 8.33, the globalwebhooks publication exposes all global webhook integrations—including sensitive url and token fields—without performing any authentication check on the server side. Although the subscription is normally invoked from the admin settings page, the server-side publication has no access control, meaning any DDP client, including unauthenticated ones, can subscribe and receive the data. This allows an unauthenticated attacker to retrieve global webhook URLs and authentication tokens, potentially enabling unauthorized use of those webhooks and access to connected external services. This issue has been fixed in version 8.34.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30846">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2b82f5abee7b8f1717dfc7caa4a78904</td>
+       <td>CVE-2026-30845</td>
+       <td>2026-03-06 20:16:17 <img src="imgs/new.gif" /></td>
+       <td>Wekan is an open source kanban tool built with Meteor. In versions 8.31.0 through 8.33, the board composite publication in Wekan publishes all integration data for a board without any field filtering, exposing sensitive fields including webhook URLs and authentication tokens to any subscriber. Since board publications are accessible to all board members regardless of their role (including read-only and comment-only users), and even to unauthenticated DDP clients for public boards, any user who can access a board can retrieve its webhook credentials. This token leak allows attackers to make unauthenticated requests to the exposed webhooks, potentially triggering unauthorized actions in connected external services. This issue has been fixed in version 8.34.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30845">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cbf0a31a28878be98f57071ddef09a64</td>
+       <td>CVE-2026-30844</td>
+       <td>2026-03-06 20:16:17 <img src="imgs/new.gif" /></td>
+       <td>Wekan is an open source kanban tool built with Meteor. Versions 8.32 and 8.33 are vulnerable to Server-Side Request Forgery (SSRF) via attachment URL loading. During board import in Wekan, attachment URLs from user-supplied JSON data are fetched directly by the server without any URL validation or filtering, affecting both the Wekan and Trello import flows. The parseActivities() and parseActions() methods extract user-controlled attachment URLs, which are then passed directly to Attachments.load() for download with no sanitization. This Server-Side Request Forgery (SSRF) vulnerability allows any authenticated user to make the server issue arbitrary HTTP requests, potentially accessing internal network services such as cloud instance metadata endpoints (exposing IAM credentials), internal databases, and admin panels that are otherwise unreachable from outside the network. This issue has been fixed in version 8.34.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30844">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f2fe17b14ab51124605c45bed22a6deb</td>
+       <td>CVE-2026-30843</td>
+       <td>2026-03-06 20:16:16 <img src="imgs/new.gif" /></td>
+       <td>Wekan is an open source kanban tool built with Meteor. Versions 8.32 and 8.33 have a critical Insecure Direct Object Reference (IDOR) issue which could allow unauthorized users to modify custom fields across boards through its custom fields update endpoints, potentially leading to unauthorized data manipulation. The PUT /api/boards/:boardId/custom-fields/:customFieldId endpoint in Wekan validates that the authenticated user has access to the specified boardId, but the subsequent database update uses only the custom field's _id as a filter without confirming the field actually belongs to that board. This means an attacker who owns any board can modify custom fields on any other board by supplying a foreign custom field ID, and the same flaw exists in the POST, PUT, and DELETE endpoints for dropdown items under custom fields. The required custom field IDs can be obtained by exporting a board (which only needs read access), since the exported JSON includes the IDs of all board components. The authorization check is performed against the wrong resource, allowing cross-board custom field manipulation. This issue has been fixed in version 8.34.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30843">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4ff2e561b8bb9aa2a6d270d7b001482d</td>
+       <td>CVE-2025-69654</td>
+       <td>2026-03-06 20:16:11 <img src="imgs/new.gif" /></td>
+       <td>A crafted JavaScript input executed with the QuickJS release 2025-09-13, fixed in commit fcd33c1afa7b3028531f53cd1190a3877454f6b3 (2025-12-11),`qjs` interpreter using the `-m` option and a low memory limit can cause an out-of-memory condition followed by an assertion failure in JS_FreeRuntime (list_empty(&rt->gc_obj_list)) during runtime cleanup. Although the engine reports an OOM error, it subsequently aborts with SIGABRT because the GC object list is not fully released. This results in a denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69654">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5669df32c24883a62a077545948aa9c</td>
+       <td>CVE-2026-3653</td>
+       <td>2026-03-06 19:16:23 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. Reason: This candidate was issued in error. Notes: All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3653">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c684c9dceb6061c516220ade121625ac</td>
+       <td>CVE-2026-29063</td>
+       <td>2026-03-06 19:16:21 <img src="imgs/new.gif" /></td>
+       <td>Immutable.js provides many Persistent Immutable data structures. Prior to versions 3.8.3, 4.3.7, and 5.1.5, Prototype Pollution is possible in immutable via the mergeDeep(), mergeDeepWith(), merge(), Map.toJS(), and Map.toObject() APIs. This issue has been patched in versions 3.8.3, 4.3.7, and 5.1.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29063">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4e275273e55a15d790511b4890c00c07</td>
+       <td>CVE-2025-69653</td>
+       <td>2026-03-06 19:16:11 <img src="imgs/new.gif" /></td>
+       <td>A crafted JavaScript input can trigger an internal assertion failure in QuickJS release 2025-09-13, fixed in commit 1dbba8a88eaa40d15a8a9b70bb1a0b8fb5b552e6 (2025-12-11), in file gc_decref_child in quickjs.c, when executed with the qjs interpreter using the -m option. This leads to an abort (SIGABRT) during garbage collection and causes a denial-of-service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69653">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6ba695364b0f91e3d67c475d3900581f</td>
+       <td>CVE-2025-69652</td>
+       <td>2026-03-06 19:16:10 <img src="imgs/new.gif" /></td>
+       <td>GNU Binutils thru 2.46 readelf contains a vulnerability that leads to an abort (SIGABRT) when processing a crafted ELF binary with malformed DWARF abbrev or debug information. Due to incomplete state cleanup in process_debug_info(), an invalid debug_info_p state may propagate into DWARF attribute parsing routines. When certain malformed attributes result in an unexpected data length of zero, byte_get_little_endian() triggers a fatal abort. No evidence of memory corruption or code execution was observed; the impact is limited to denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69652">详情</a></td>
+      </tr>
+
+      <tr>
        <td>031dafb6f4853ca9e6e90ce764441270</td>
        <td>CVE-2026-3606</td>
-       <td>2026-03-05 22:02:07 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:02:07</td>
        <td>A vulnerability has been found in Ettercap 0.8.4-Garofalo. Affected by this vulnerability is the function add_data_segment of the file src/ettercap/utils/etterfilter/ef_output.c of the component etterfilter. The manipulation leads to out-of-bounds read. Local access is required to approach this attack. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3606">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>17b9123d7e9ea55bf46225a58c05d08b</td>
        <td>CVE-2026-29613</td>
-       <td>2026-03-05 22:00:11 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:00:11</td>
        <td>OpenClaw versions prior to 2026.2.12 contain a vulnerability in the BlueBubbles (optional plugin) webhook handler in which it authenticates requests based solely on loopback remoteAddress without validating forwarding headers, allowing bypass of configured webhook passwords. When the gateway operates behind a reverse proxy, unauthenticated remote attackers can inject arbitrary BlueBubbles message and reaction events by reaching the proxy endpoint.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29613">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>b72a798975240de8ffe8b883e2c0185e</td>
        <td>CVE-2026-29612</td>
-       <td>2026-03-05 22:00:10 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:00:10</td>
        <td>OpenClaw versions prior to 2026.2.14 decode base64-backed media inputs into buffers before enforcing decoded-size budget limits, allowing attackers to trigger large memory allocations. Remote attackers can supply oversized base64 payloads to cause memory pressure and denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29612">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>dd8516adb3ed3aa3609eeb534309a486</td>
        <td>CVE-2026-29611</td>
-       <td>2026-03-05 22:00:09 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:00:09</td>
        <td>OpenClaw versions prior to 2026.2.14 contain a local file inclusion vulnerability in BlueBubbles extension (must be installed and enabled) media path handling that allows attackers to read arbitrary files from the local filesystem. The sendBlueBubblesMedia function fails to validate mediaPath parameters against an allowlist, enabling attackers to request sensitive files like /etc/passwd and exfiltrate them as media attachments.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29611">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>15b7c9040ed643fa02654f69f5b1d01a</td>
        <td>CVE-2026-29610</td>
-       <td>2026-03-05 22:00:07 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:00:07</td>
        <td>OpenClaw versions prior to 2026.2.14 contain a command hijacking vulnerability that allows attackers to execute unintended binaries by manipulating PATH environment variables through node-host execution or project-local bootstrapping. Attackers with authenticated access to node-host execution surfaces or those running OpenClaw in attacker-controlled directories can place malicious executables in PATH to override allowlisted safe-bin commands and achieve arbitrary command execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29610">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>b84448782c40ef5326dd4e8bb551bc00</td>
        <td>CVE-2026-29609</td>
-       <td>2026-03-05 22:00:06 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:00:06</td>
        <td>OpenClaw versions prior to 2026.2.14 contain a denial of service vulnerability in the fetchWithGuard function that allocates entire response payloads in memory before enforcing maxBytes limits. Remote attackers can trigger memory exhaustion by serving oversized responses without content-length headers to cause availability loss.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29609">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>d9ed2bb7189232bb53660e2b7516acad</td>
        <td>CVE-2026-29606</td>
-       <td>2026-03-05 22:00:05 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:00:05</td>
        <td>OpenClaw versions prior to 2026.2.14 contain a webhook signature-verification bypass in the voice-call extension that allows unauthenticated requests when the tunnel.allowNgrokFreeTierLoopbackBypass option is explicitly enabled. An external attacker can send forged requests to the publicly reachable webhook endpoint without a valid X-Twilio-Signature header, resulting in unauthorized webhook event handling and potential request flooding attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-29606">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>b75bc95511cefd113a8030d9a656c66b</td>
        <td>CVE-2026-28486</td>
-       <td>2026-03-05 22:00:02 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 22:00:02</td>
        <td>OpenClaw versions 2026.1.16-2 prior to 2026.2.14 contain a path traversal vulnerability in archive extraction during installation commands that allows arbitrary file writes outside the intended directory. Attackers can craft malicious archives that, when extracted via skills install, hooks install, plugins install, or signal install commands, write files to arbitrary locations enabling persistence or code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28486">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>64148af9efe73910d4f0de28b6e33b8e</td>
        <td>CVE-2026-28485</td>
-       <td>2026-03-05 21:59:59 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 21:59:59</td>
        <td>OpenClaw versions 2026.1.5 prior to 2026.2.12 fail to enforce mandatory authentication on the /agent/act browser-control HTTP route, allowing unauthorized local callers to invoke privileged operations. Remote attackers on the local network or local processes can execute arbitrary browser-context actions and access sensitive in-session data by sending requests to unauthenticated endpoints.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28485">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>7581256bd5a33505cdce4c0078b7a88b</td>
        <td>CVE-2026-28484</td>
-       <td>2026-03-05 21:59:58 <img src="imgs/new.gif" /></td>
+       <td>2026-03-05 21:59:58</td>
        <td>OpenClaw versions prior to 2026.2.15 contain an option injection vulnerability in the git-hooks/pre-commit hook that allows attackers to stage ignored files by creating maliciously-named files beginning with dashes. The hook fails to use a -- separator when piping filenames through xargs to git add, enabling attackers to inject git flags and add sensitive ignored files like .env to git history.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28484">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-03-04 20:16:20</td>
        <td>Integer overflow in Skia in Google Chrome prior to 145.0.7632.159 allowed a remote attacker to potentially perform out of bounds memory access via a crafted HTML page. (Chromium security severity: Critical)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3538">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a27cc208a19bd942de6b427c6d6c24d4</td>
-       <td>CVE-2025-70237</td>
-       <td>2026-03-03 20:16:44</td>
-       <td>Stack buffer overflow vulnerability in D-Link DIR-513 v1.10 via the curTime parameter to goform/formSetPortTr.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-70237">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9445565d7dfa31aff129fc96ecb173e0</td>
-       <td>CVE-2025-13734</td>
-       <td>2026-03-03 20:16:42</td>
-       <td>IBM Engineering Requirements Management DOORS Next 7.1, and 7.2 could allow an authenticated user to view and edit data beyond their authorized access permissions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13734">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eda14dfabfcd7b8041df73658f4e4d03</td>
-       <td>CVE-2025-13490</td>
-       <td>2026-03-03 20:16:42</td>
-       <td>IBM App Connect Operator versions CD 11.3.0 through 11.6.0 and 12.1.0 through 12.20.0, LTS versions 12.0.0 through 12.0.20, and IBM App Connect Enterprise Certified Containers Operands versions CD 12.0.11.2‑r1 through 12.0.12.5‑r1 and 13.0.1.0‑r1 through 13.0.6.1‑r1, and LTS versions 12.0.12‑r1 through 12.0.12‑r20, contain a vulnerability in which the IBM App Connect Enterprise Certified Container transmits data in clear text, potentially allowing an attacker to intercept and obtain sensitive information through man‑in‑the‑middle techniques.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13490">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6020a4dc1e926824c40f1319486a0f01</td>
-       <td>CVE-2024-55022</td>
-       <td>2026-03-03 20:16:41</td>
-       <td>Weintek cMT-3072XH2 easyweb v2.1.53, OS v20231011 was discovered to contain an authenticated command injection vulnerability via the HMI Name parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-55022">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>040edcbc60dcc9b63a664b286a9ad0f4</td>
-       <td>CVE-2026-1265</td>
-       <td>2026-03-03 19:42:08</td>
-       <td>IBM InfoSphere Information Server 11.7.0.0 through 11.7.1.6 is vulnerable to writing of sensitive Information in a log file.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1265">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84e683ed49a8ee1564118327d358fdd6</td>
-       <td>CVE-2026-3484</td>
-       <td>2026-03-03 19:32:09</td>
-       <td>A vulnerability was detected in PhialsBasement nmap-mcp-server up to bee6d23547d57ae02460022f7c78ac0893092e38. Affected by this issue is the function child_process.exec of the file src/index.ts of the component Nmap CLI Command Handler. The manipulation results in command injection. The attack may be performed from remote. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed. The patch is identified as 30a6b9e1c7fa6146f51e28d6ab83a2568d9a3488. It is best practice to apply a patch to resolve this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3484">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a7404c79e5d96d999a91248eb53333e0</td>
-       <td>CVE-2026-3136</td>
-       <td>2026-03-03 18:31:33</td>
-       <td>An improper authorization vulnerability in GitHub Trigger Comment Control in Google Cloud Build...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3136">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52841eda60fcb3926f91c62323ab48e4</td>
-       <td>CVE-2025-67840</td>
-       <td>2026-03-03 18:16:24</td>
-       <td>Multiple authenticated OS command injection vulnerabilities exist in the Cohesity (formerly Stone Ram) TranZman 4.0 Build 14614 through TZM_1757588060_SEP2025_FULL.depot web application API endpoints (including Scheduler and Actions pages). The appliance directly concatenates user-controlled parameters into system commands without sufficient sanitisation, allowing an authenticated admin user to inject and execute arbitrary OS commands with root privileges. An attacker can intercept legitimate requests (e.g. during job creation or execution) using a proxy and modify parameters to include shell metacharacters, achieving remote code execution on the appliance. This completely bypasses the intended CLISH restricted shell confinement and results in full system compromise. The vulnerabilities persist in Release 4.0 Build 14614 including the latest patch (as of the time of testing) TZM_1757588060_SEP2025_FULL.depot.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-67840">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d34bae9bb4f7d466bee4d1e483f4607</td>
-       <td>CVE-2026-3494</td>
-       <td>2026-03-03 18:12:12</td>
-       <td>In MariaDB server version through 11.8.5, when server audit plugin is enabled with server_audit_events variable configured with QUERY_DCL, QUERY_DDL, or QUERY_DML filtering, if an authenticated database user invokes a SQL statement prefixed with double-hyphen (—) or hash (#) style comments, the statement is not logged.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3494">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f176849ce634e9dec3a8f982a6f19533</td>
-       <td>CVE-2026-27601</td>
-       <td>2026-03-03 17:46:06</td>
-       <td>Underscore has unlimited recursion in _.flatten and _.isEqual, potential for DoS attack</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27601">详情</a></td>
       </tr>
 
      </tbody>
