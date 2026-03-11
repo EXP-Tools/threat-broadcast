@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-10 04:46:58 -->
+<!-- RELEASE TIME : 2026-03-11 04:48:14 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>17da895002c54e2206dbe99abf6114a0</td>
+       <td>CVE-2026-31838</td>
+       <td>2026-03-10 22:16:21 <img src="imgs/new.gif" /></td>
+       <td>Istio is an open platform to connect, manage, and secure microservices. Prior to 1.29.1, 1.28.5, and 1.27.8, a vulnerability in Envoy RBAC header matching could allow authorization policy bypass when policies rely on HTTP headers that may contain multiple values. An attacker could craft requests with multiple header values in a way that causes Envoy to evaluate the header differently than intended, potentially bypassing authorization checks. This may allow unauthorized requests to reach protected services when policies depend on such header-based matching conditions. This vulnerability is fixed in 1.29.1, 1.28.5, and 1.27.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31838">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c9de02f82489b919a0efff966bdbe2b5</td>
+       <td>CVE-2026-31837</td>
+       <td>2026-03-10 22:16:21 <img src="imgs/new.gif" /></td>
+       <td>Istio is an open platform to connect, manage, and secure microservices. Prior to 1.29.1, 1.28.5, and 1.27.8, a user of Istio is impacted if the JWKS resolver becomes unavailable or the fetch fails, exposing hardcoded defaults regardless of use of the RequestAuthentication resource. This vulnerability is fixed in 1.29.1, 1.28.5, and 1.27.8.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31837">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fedf869b1c3cd6c0141c0921607f07c6</td>
+       <td>CVE-2026-31834</td>
+       <td>2026-03-10 22:16:21 <img src="imgs/new.gif" /></td>
+       <td>Umbraco is an ASP.NET CMS. From 15.3.1 to before 16.5.1 and 17.2.2, A privilege escalation vulnerability has been identified in Umbraco CMS. Under certain conditions, authenticated backoffice users with permission to manage users, may be able to elevate their privileges due to insufficient authorization enforcement when modifying user group memberships. The affected functionality does not properly validate whether a user has sufficient privileges to assign highly privileged roles. This vulnerability is fixed in 16.5.1 and 17.2.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31834">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ca1be04af19407b17a7e7755f653b017</td>
+       <td>CVE-2026-31833</td>
+       <td>2026-03-10 22:16:21 <img src="imgs/new.gif" /></td>
+       <td>Umbraco is an ASP.NET CMS. From 16.2.0 to before 16.5.1 and 17.2.2, An authenticated backoffice user with access to Settings can inject malicious HTML into property type descriptions. Due to an overly permissive attributeNameCheck configuration (/.+/) in the UFM DOMPurify instance, event handler attributes such as onclick and onload, when used within Umbraco web components (umb-*, uui-*, ufm-*) were not filtered. This vulnerability is fixed in 16.5.1 and 17.2.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31833">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ae88e3b710b96faeb718f47e6a61b4c0</td>
+       <td>CVE-2026-31832</td>
+       <td>2026-03-10 22:16:21 <img src="imgs/new.gif" /></td>
+       <td>Umbraco is an ASP.NET CMS. From 14.0.0 to before 16.5.1 and 17.2.2, A broken object-level authorization vulnerability exists in a backoffice API endpoint that allows authenticated users to assign domain-related data to content nodes without proper authorization checks. The issue is caused by insufficient authorization enforcement on the affected API endpoint, whereby via an API call, domains can be set on content nodes that the editor does not have permission to access (either via user group privileges or start nodes). This vulnerability is fixed in 16.5.1 and 17.2.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31832">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2ad298b58d202c4477659b7256b53321</td>
+       <td>CVE-2026-31830</td>
+       <td>2026-03-10 22:16:21 <img src="imgs/new.gif" /></td>
+       <td>sigstore-ruby is a pure Ruby implementation of the sigstore verify command from the sigstore/cosign project. Prior to 0.2.3, Sigstore::Verifier#verify does not propagate the VerificationFailure returned by verify_in_toto when the artifact digest does not match the digest in the in-toto attestation subject. As a result, verification of DSSE bundles containing in-toto statements returns VerificationSuccess regardless of whether the artifact matches the attested subject. This vulnerability is fixed in 0.2.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31830">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a8a12b340d809f6049c458b3fc45efe4</td>
+       <td>CVE-2026-31829</td>
+       <td>2026-03-10 22:16:20 <img src="imgs/new.gif" /></td>
+       <td>Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.0.13, Flowise exposes an HTTP Node in AgentFlow and Chatflow that performs server-side HTTP requests using user-controlled URLs. By default, there are no restrictions on target hosts, including private/internal IP ranges (RFC 1918), localhost, or cloud metadata endpoints. This enables Server-Side Request Forgery (SSRF), allowing any user interacting with a publicly exposed chatflow to force the Flowise server to make requests to internal network resources that are inaccessible from the public internet. This vulnerability is fixed in 3.0.13.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31829">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1a237a1e6e1bc8489d24136042df0305</td>
+       <td>CVE-2026-31828</td>
+       <td>2026-03-10 22:16:20 <img src="imgs/new.gif" /></td>
+       <td>Parse Server is an open source backend that can be deployed to any infrastructure that can run Node.js. Prior to 9.5.2-alpha.13 and 8.6.26, the LDAP authentication adapter is vulnerable to LDAP injection. User-supplied input (authData.id) is interpolated directly into LDAP Distinguished Names (DN) and group search filters without escaping special characters. This allows an attacker with valid LDAP credentials to manipulate the bind DN structure and to bypass group membership checks. This enables privilege escalation from any authenticated LDAP user to a member of any restricted group. The vulnerability affects Parse Server deployments that use the LDAP authentication adapter with group-based access control. This vulnerability is fixed in 9.5.2-alpha.13 and 8.6.26.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31828">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b93fff36d023ae435c6fa51bd2d6c258</td>
+       <td>CVE-2026-31827</td>
+       <td>2026-03-10 22:16:20 <img src="imgs/new.gif" /></td>
+       <td>Alienbin is an anonymous code and text sharing web service. In 1.0.0 and earlier, the /save endpoint in server.js drops and recreates the MongoDB TTL index on the entire post collection for every new paste submission. When User B submits a paste with a short TTL (e.g., 30 seconds), the TTL index is recreated with expireAfterSeconds: 30 for all documents in the collection. This causes User A's paste (originally set to 7 days) to be deleted after 30 seconds. An attacker can intentionally delete all existing pastes by repeatedly submitting pastes with ttlOption=30s.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31827">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>31664a195e908634f96d66b27e47696a</td>
+       <td>CVE-2026-31826</td>
+       <td>2026-03-10 22:16:20 <img src="imgs/new.gif" /></td>
+       <td>pypdf is a free and open-source pure-python PDF library. Prior to 6.8.0, an attacker who uses this vulnerability can craft a PDF which leads to large memory usage. This requires parsing a content stream with a rather large /Length value, regardless of the actual data length inside the stream. This vulnerability is fixed in 6.8.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31826">详情</a></td>
+      </tr>
+
+      <tr>
        <td>bbaf4d0831eb89967d6b818c58dcdb7a</td>
        <td>CVE-2026-30921</td>
-       <td>2026-03-09 22:58:58 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:58:58</td>
        <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.20, OneUptime Synthetic Monitors allow low-privileged project users to submit custom Playwright code that is executed on the oneuptime-probe service. In the current implementation, this untrusted code is run inside Node's vm and is given live host Playwright objects such as browser and page. This creates a distinct server-side RCE primitive: the attacker does not need the classic this.constructor.constructor(...) sandbox escape. Instead, the attacker can directly use the injected Playwright browser object to reach browser.browserType().launch(...) and spawn an arbitrary executable on the probe host/container. This vulnerability is fixed in 10.0.20.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30921">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>adfb2d8ec3cf40277fcd0f1048dcfeaf</td>
        <td>CVE-2026-30920</td>
-       <td>2026-03-09 22:57:05 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:57:05</td>
        <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.19, OneUptime's GitHub App callback trusts attacker-controlled state and installation_id values and updates Project.gitHubAppInstallationId with isRoot: true without validating that the caller is authorized for the target project. This allows an attacker to overwrite another project's GitHub App installation binding. Related GitHub endpoints also lack effective authorization, so a valid installation ID can be used to enumerate repositories and create CodeRepository records in an arbitrary project. This vulnerability is fixed in 10.0.19.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30920">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>78d46f0563adef1b50074a95c3ab0fe5</td>
        <td>CVE-2026-30919</td>
-       <td>2026-03-09 22:54:49 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:54:49</td>
        <td>facileManager is a modular suite of web apps built with the sysadmin in mind. Prior to 6.0.4 , stored XSS (also known as persistent or second-order XSS) occurs when an application receives data from an untrusted source and includes that data in its subsequent HTTP responses in an unsafe manner. This vulnerability was found in the fmDNS module. This vulnerability is fixed in 6.0.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30919">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>76bdcaf0b07b4942a7062314bef31351</td>
        <td>CVE-2026-30918</td>
-       <td>2026-03-09 22:53:25 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:53:25</td>
        <td>facileManager is a modular suite of web apps built with the sysadmin in mind. Prior to 6.0.4 , a reflected XSS occurs when an application receives data from an untrusted source and uses it in its HTTP responses in a way that could lead to vulnerabilities. It is possible to inject malicious JavaScript code into a URL by adding a script in a parameter. This vulnerability was found in the fmDNS module. The parameter that is vulnerable to an XSS attack is log_search_query. This vulnerability is fixed in 6.0.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30918">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>610f1068624197aadc43ae77c568025b</td>
        <td>CVE-2026-30917</td>
-       <td>2026-03-09 22:50:20 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:50:20</td>
        <td>Bucket is a MediaWiki extension to store and retrieve structured data on articles. Prior to 2.1.1, a stored XSS can be inserted into any Bucket table field that has a PAGE type, which will execute whenever a user views that table's corresponding Bucket namespace page. This vulnerability is fixed in 2.1.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30917">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>4c2588c60b62071e7d77cbd7b0983e52</td>
        <td>CVE-2026-30916</td>
-       <td>2026-03-09 22:48:14 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:48:14</td>
        <td>Shescape is a simple shell escape library for JavaScript. Prior to 2.1.9, an attacker may be able to bypass escaping for the shell being used. This can result, for example, in exposure of sensitive information. This impacts users of Shescape that configure their shell to point to a file on disk that is a link to a link. The precise result of being affected depends on the actual shell used and incorrect shell identified by Shescape. This vulnerability is fixed in 2.1.9.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30916">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>1592fc4652ff0beb55ec4f3f522162b9</td>
        <td>CVE-2026-30913</td>
-       <td>2026-03-09 22:42:40 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:42:40</td>
        <td>Flarum is open-source forum software. When the flarum/nicknames extension is enabled, a registered user can set their nickname to a string that email clients interpret as a hyperlink. The nickname is inserted verbatim into plain-text notification emails, and recipients may be misled into visiting attacker-controlled domains.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30913">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>1be1b1e84d8459cc373653f9ac7c5268</td>
        <td>CVE-2026-30887</td>
-       <td>2026-03-09 22:40:04 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:40:04</td>
        <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.18, OneUptime allows project members to run custom Playwright/JavaScript code via Synthetic Monitors to test websites. However, the system executes this untrusted user code inside the insecure Node.js vm module. By leveraging a standard prototype-chain escape (this.constructor.constructor), an attacker can bypass the sandbox, gain access to the underlying Node.js process object, and execute arbitrary system commands (RCE) on the oneuptime-probe container. Furthermore, because the probe holds database/cluster credentials in its environment variables, this directly leads to a complete cluster compromise. This vulnerability is fixed in 10.0.18.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30887">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>d6fff837ace1261431c65384aa342235</td>
        <td>CVE-2026-30885</td>
-       <td>2026-03-09 22:35:59 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:35:59</td>
        <td>WWBN AVideo is an open source video platform. Prior to 25.0, the /objects/playlistsFromUser.json.php endpoint returns all playlists for any user without requiring authentication or authorization. An unauthenticated attacker can enumerate user IDs and retrieve playlist information including playlist names, video IDs, and playlist status for any user on the platform. This vulnerability is fixed in 25.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30885">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>5f214173e13f615dd62e844765dd25c1</td>
        <td>CVE-2026-30870</td>
-       <td>2026-03-09 22:31:40 <img src="imgs/new.gif" /></td>
+       <td>2026-03-09 22:31:40</td>
        <td>PowerSync Service is the server-side component of the PowerSync sync engine. In version 1.20.0, when using new sync streams with config.edition: 3, certain subquery filters were ignored when determining which data to sync to users. Depending on the sync stream configuration, this could result in authenticated users syncing data that should have been restricted. Only queries that gate synchronization using subqueries without partitioning the result set are affected. This vulnerability is fixed in 1.20.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30870">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-03-08 21:15:51</td>
        <td>A weakness has been identified in itsourcecode sanitize or validate this input 1.0. Affected is an unknown function of the file /admin/teacher-attendance.php. Executing a manipulation of the argument teacher_id can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3767">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77ed7b473100604fc01c3414a49ae6bd</td>
-       <td>CVE-2026-3683</td>
-       <td>2026-03-07 23:32:10</td>
-       <td>A vulnerability was detected in bufanyun HotGo up to 2.0. This issue affects the function ImageTransferStorage of the file /server/internal/logic/common/upload.go of the component Endpoint. The manipulation results in server-side request forgery. The attack may be launched remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3683">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa88a254b76b54441b512b0e2ea4a3f0</td>
-       <td>CVE-2026-3682</td>
-       <td>2026-03-07 23:32:07</td>
-       <td>A security vulnerability has been detected in welovemedia FFmate up to 2.0.15. This vulnerability affects the function Execute of the file /internal/service/ffmpeg/ffmpeg.go. The manipulation leads to argument injection. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3682">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eae3b868c00118f4233f5f34208fb0f1</td>
-       <td>CVE-2026-3681</td>
-       <td>2026-03-07 23:15:48</td>
-       <td>A weakness has been identified in welovemedia FFmate up to 2.0.15. This affects the function fireWebhook of the file /internal/service/webhook/webhook.go. Executing a manipulation can lead to server-side request forgery. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3681">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3cbf4cb077a3f3de8a2082092eaf813d</td>
-       <td>CVE-2026-3680</td>
-       <td>2026-03-07 23:15:47</td>
-       <td>A security flaw has been discovered in RyuzakiShinji biome-mcp-server up to 1.0.0. Affected by this issue is some unknown functionality of the file biome-mcp-server.ts. Performing a manipulation results in command injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks. The patch is named 335e1727147efeef011f1ff8b05dd751d8a660be. Applying a patch is the recommended action to fix this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3680">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4b1bd1f6f61d305a116b29c3eed4a3a0</td>
-       <td>CVE-2026-3679</td>
-       <td>2026-03-07 23:15:47</td>
-       <td>A vulnerability was identified in Tenda FH451 1.0.0.9. Affected by this vulnerability is the function formQuickIndex of the file /goform/QuickIndex. Such manipulation of the argument mit_linktype/PPPOEPassword leads to stack-based buffer overflow. It is possible to launch the attack remotely. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3679">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2f8d4906ef0dd0066b47f55e9e7b53cc</td>
-       <td>CVE-2026-3678</td>
-       <td>2026-03-07 23:15:46</td>
-       <td>A vulnerability was determined in Tenda FH451 1.0.0.9. Affected is the function sub_3C434 of the file /goform/AdvSetWan. This manipulation of the argument wanmode/PPPOEPassword causes stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3678">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>42843e02b392b591c9d89d305742c601</td>
-       <td>CVE-2026-3677</td>
-       <td>2026-03-07 22:15:50</td>
-       <td>A vulnerability was found in Tenda FH451 1.0.0.9. This impacts the function fromSetCfm of the file /goform/setcfm. The manipulation of the argument funcname/funcpara1 results in stack-based buffer overflow. The attack may be performed from remote. The exploit has been made public and could be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3677">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>54d573de663af55dc1570257b3ee14d7</td>
-       <td>CVE-2026-3675</td>
-       <td>2026-03-07 22:15:50</td>
-       <td>A vulnerability was determined in Freedom Factory dGEN1 up to 20260221. Affected by this issue is the function FakeAppReceiver of the component org.ethosmobile.ethoslauncher. Executing a manipulation can lead to improper authorization. The attack needs to be launched locally. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3675">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>32a60d78bf9ca721f86e058c77c8ef0d</td>
-       <td>CVE-2026-3674</td>
-       <td>2026-03-07 22:15:50</td>
-       <td>A vulnerability was found in Freedom Factory dGEN1 up to 20260221. Affected by this vulnerability is the function FakeAppProvider of the component org.ethosmobile.ethoslauncher. Performing a manipulation results in improper authorization. The attack must be initiated from a local position. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3674">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d989d2544796899f5c20962f659d7072</td>
-       <td>CVE-2026-3672</td>
-       <td>2026-03-07 22:15:50</td>
-       <td>A vulnerability has been found in JeecgBoot up to 3.9.1. Affected is the function isExistSqlInjectKeyword of the file /jeecg-boot/sys/api/getDictItems. Such manipulation leads to sql injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3672">详情</a></td>
       </tr>
 
      </tbody>
