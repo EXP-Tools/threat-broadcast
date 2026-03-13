@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-12 04:52:40 -->
+<!-- RELEASE TIME : 2026-03-13 04:50:03 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e9db9966f508b6da7060a7db060a7dee</td>
+       <td>CVE-2026-32612</td>
+       <td>2026-03-12 21:47:21 <img src="imgs/new.gif" /></td>
+       <td>Statmatic is a Laravel and Git powered content management system (CMS). Prior to 6.6.2, stored XSS in the control panel color mode preference allows authenticated users with control panel access to inject malicious JavaScript that executes when a higher-privileged user impersonates their account. This has been fixed in 6.6.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32612">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f0a7b5375cabed962c0efb40e72a0877</td>
+       <td>CVE-2026-32597</td>
+       <td>2026-03-12 21:41:50 <img src="imgs/new.gif" /></td>
+       <td>PyJWT is a JSON Web Token implementation in Python. Prior to 2.12.0, PyJWT does not validate the crit (Critical) Header Parameter defined in RFC 7515 §4.1.11. When a JWS token contains a crit array listing extensions that PyJWT does not understand, the library accepts the token instead of rejecting it. This violates the MUST requirement in the RFC. This vulnerability is fixed in 2.12.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32597">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f5e565c5cb2ebe551df579e78721cc5a</td>
+       <td>CVE-2026-32322</td>
+       <td>2026-03-12 21:39:38 <img src="imgs/new.gif" /></td>
+       <td>soroban-sdk is a Rust SDK for Soroban contracts. Prior to 22.0.11, 23.5.3, and 25.3.0, The Fr (scalar field) types for BN254 and BLS12-381 in soroban-sdk compared values using their raw U256 representation without first reducing modulo the field modulus r. This caused mathematically equal field elements to compare as not-equal when one or both values were unreduced (i.e., >= r). The vulnerability requires an attacker to supply crafted Fr values through contract inputs, and compare them directly without going through host-side arithmetic operations. Smart contracts that rely on Fr equality checks for security-critical logic could produce incorrect results. The impact depends on how the affected contract uses Fr equality comparisons, but can result in incorrect authorization decisions or validation bypasses in contracts that perform equality checks on user-supplied scalar values. This vulnerability is fixed in 22.0.11, 23.5.3, and 25.3.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32322">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d3b4e01ae000cfc2f2a5ddcb77c866e6</td>
+       <td>CVE-2026-32320</td>
+       <td>2026-03-12 21:34:50 <img src="imgs/new.gif" /></td>
+       <td>Ella Core is a 5G core designed for private networks. Prior to 1.5.1, Ella Core panics when processing a PathSwitchRequest containing UE Security Capabilities with zero-length NR encryption or integrity protection algorithm bitstrings, resulting in a denial of service. An attacker able to send crafted NGAP messages to Ella Core can crash the process, causing service disruption for all connected subscribers. No authentication is required. This vulnerability is fixed in 1.5.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32320">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>df92465fc1ef4287fc130425761b8044</td>
+       <td>CVE-2026-32319</td>
+       <td>2026-03-12 21:33:32 <img src="imgs/new.gif" /></td>
+       <td>Ella Core is a 5G core designed for private networks. Prior to 1.5.1, Ella Core panics when processing a malformed integrity protected NGAP/NAS message with a length under 7 bytes. An attacker able to send crafted NAS messages to Ella Core can crash the process, causing service disruption for all connected subscribers. No authentication is required. This vulnerability is fixed in 1.5.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32319">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9572e555b28f55b9847a1b7555fb035a</td>
+       <td>CVE-2026-32598</td>
+       <td>2026-03-12 21:31:12 <img src="imgs/new.gif" /></td>
+       <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.24, the password reset flow logs the complete password reset URL — containing the plaintext reset token — at INFO log level, which is enabled by default in production. Anyone with access to application logs (log aggregation, Docker logs, Kubernetes pod logs) can intercept reset tokens and perform account takeover on any user. This vulnerability is fixed in 10.0.24.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32598">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e0efb744b58b068a8a1e110e93d316c</td>
+       <td>CVE-2026-32308</td>
+       <td>2026-03-12 21:29:00 <img src="imgs/new.gif" /></td>
+       <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.23, the Markdown viewer component renders Mermaid diagrams with securityLevel: "loose" and injects the SVG output via innerHTML. This configuration explicitly allows interactive event bindings in Mermaid diagrams, enabling XSS through Mermaid's click directive which can execute arbitrary JavaScript. Any field that renders markdown (incident descriptions, status page announcements, monitor notes) is vulnerable. This vulnerability is fixed in 10.0.23.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32308">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>144da95fd33b986b0b4055b022873475</td>
+       <td>CVE-2026-32306</td>
+       <td>2026-03-12 21:27:51 <img src="imgs/new.gif" /></td>
+       <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.23, the telemetry aggregation API accepts user-controlled aggregationType, aggregateColumnName, and aggregationTimestampColumnName parameters and interpolates them directly into ClickHouse SQL queries via the .append() method (documented as "trusted SQL"). There is no allowlist, no parameterized query binding, and no input validation. An authenticated user can inject arbitrary SQL into ClickHouse, enabling full database read (including telemetry data from all tenants), data modification, and potential remote code execution via ClickHouse table functions. This vulnerability is fixed in 10.0.23.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32306">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e33736646f9d2eca85fb0abc8a83855</td>
+       <td>CVE-2026-32304</td>
+       <td>2026-03-12 21:24:51 <img src="imgs/new.gif" /></td>
+       <td>Locutus brings stdlibs of other programming languages to JavaScript for educational purposes. Prior to 3.0.14, the create_function(args, code) function passes both parameters directly to the Function constructor without any sanitization, allowing arbitrary code execution. This is distinct from CVE-2026-29091 which was call_user_func_array using eval() in v2.x. This finding affects create_function using new Function() in v3.x. This vulnerability is fixed in 3.0.14.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32304">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb4f945ffe8cb086dfedeba4ee842dc6</td>
+       <td>CVE-2026-32302</td>
+       <td>2026-03-12 21:22:29 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw is a personal AI assistant. Prior to 2026.3.11, browser-originated WebSocket connections could bypass origin validation when gateway.auth.mode was set to trusted-proxy and the request arrived with proxy headers. A page served from an untrusted origin could connect through a trusted reverse proxy, inherit proxy-authenticated identity, and establish a privileged operator session. This vulnerability is fixed in 2026.3.11.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32302">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2e018d2b313fa5e84f8c67eb2b674b53</td>
        <td>CVE-2026-3971</td>
        <td>2026-03-12 01:15:55 <img src="imgs/new.gif" /></td>
@@ -358,7 +438,7 @@
       <tr>
        <td>a0ae8b30496a2c96535d4b32fb91723c</td>
        <td>CVE-2026-3964</td>
-       <td>2026-03-11 23:16:01 <img src="imgs/new.gif" /></td>
+       <td>2026-03-11 23:16:01</td>
        <td>A weakness has been identified in OpenAkita up to 1.24.3. This impacts the function run of the file src/openakita/tools/shell.py of the component Chat API Endpoint. Executing a manipulation of the argument Message can lead to os command injection. The attack is restricted to local execution. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3964">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-03-10 22:16:20</td>
        <td>pypdf is a free and open-source pure-python PDF library. Prior to 6.8.0, an attacker who uses this vulnerability can craft a PDF which leads to large memory usage. This requires parsing a content stream with a rather large /Length value, regardless of the actual data length inside the stream. This vulnerability is fixed in 6.8.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31826">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bbaf4d0831eb89967d6b818c58dcdb7a</td>
-       <td>CVE-2026-30921</td>
-       <td>2026-03-09 22:58:58</td>
-       <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.20, OneUptime Synthetic Monitors allow low-privileged project users to submit custom Playwright code that is executed on the oneuptime-probe service. In the current implementation, this untrusted code is run inside Node's vm and is given live host Playwright objects such as browser and page. This creates a distinct server-side RCE primitive: the attacker does not need the classic this.constructor.constructor(...) sandbox escape. Instead, the attacker can directly use the injected Playwright browser object to reach browser.browserType().launch(...) and spawn an arbitrary executable on the probe host/container. This vulnerability is fixed in 10.0.20.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30921">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>adfb2d8ec3cf40277fcd0f1048dcfeaf</td>
-       <td>CVE-2026-30920</td>
-       <td>2026-03-09 22:57:05</td>
-       <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.19, OneUptime's GitHub App callback trusts attacker-controlled state and installation_id values and updates Project.gitHubAppInstallationId with isRoot: true without validating that the caller is authorized for the target project. This allows an attacker to overwrite another project's GitHub App installation binding. Related GitHub endpoints also lack effective authorization, so a valid installation ID can be used to enumerate repositories and create CodeRepository records in an arbitrary project. This vulnerability is fixed in 10.0.19.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30920">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78d46f0563adef1b50074a95c3ab0fe5</td>
-       <td>CVE-2026-30919</td>
-       <td>2026-03-09 22:54:49</td>
-       <td>facileManager is a modular suite of web apps built with the sysadmin in mind. Prior to 6.0.4 , stored XSS (also known as persistent or second-order XSS) occurs when an application receives data from an untrusted source and includes that data in its subsequent HTTP responses in an unsafe manner. This vulnerability was found in the fmDNS module. This vulnerability is fixed in 6.0.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30919">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76bdcaf0b07b4942a7062314bef31351</td>
-       <td>CVE-2026-30918</td>
-       <td>2026-03-09 22:53:25</td>
-       <td>facileManager is a modular suite of web apps built with the sysadmin in mind. Prior to 6.0.4 , a reflected XSS occurs when an application receives data from an untrusted source and uses it in its HTTP responses in a way that could lead to vulnerabilities. It is possible to inject malicious JavaScript code into a URL by adding a script in a parameter. This vulnerability was found in the fmDNS module. The parameter that is vulnerable to an XSS attack is log_search_query. This vulnerability is fixed in 6.0.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30918">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>610f1068624197aadc43ae77c568025b</td>
-       <td>CVE-2026-30917</td>
-       <td>2026-03-09 22:50:20</td>
-       <td>Bucket is a MediaWiki extension to store and retrieve structured data on articles. Prior to 2.1.1, a stored XSS can be inserted into any Bucket table field that has a PAGE type, which will execute whenever a user views that table's corresponding Bucket namespace page. This vulnerability is fixed in 2.1.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30917">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c2588c60b62071e7d77cbd7b0983e52</td>
-       <td>CVE-2026-30916</td>
-       <td>2026-03-09 22:48:14</td>
-       <td>Shescape is a simple shell escape library for JavaScript. Prior to 2.1.9, an attacker may be able to bypass escaping for the shell being used. This can result, for example, in exposure of sensitive information. This impacts users of Shescape that configure their shell to point to a file on disk that is a link to a link. The precise result of being affected depends on the actual shell used and incorrect shell identified by Shescape. This vulnerability is fixed in 2.1.9.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30916">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1592fc4652ff0beb55ec4f3f522162b9</td>
-       <td>CVE-2026-30913</td>
-       <td>2026-03-09 22:42:40</td>
-       <td>Flarum is open-source forum software. When the flarum/nicknames extension is enabled, a registered user can set their nickname to a string that email clients interpret as a hyperlink. The nickname is inserted verbatim into plain-text notification emails, and recipients may be misled into visiting attacker-controlled domains.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30913">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1be1b1e84d8459cc373653f9ac7c5268</td>
-       <td>CVE-2026-30887</td>
-       <td>2026-03-09 22:40:04</td>
-       <td>OneUptime is a solution for monitoring and managing online services. Prior to 10.0.18, OneUptime allows project members to run custom Playwright/JavaScript code via Synthetic Monitors to test websites. However, the system executes this untrusted user code inside the insecure Node.js vm module. By leveraging a standard prototype-chain escape (this.constructor.constructor), an attacker can bypass the sandbox, gain access to the underlying Node.js process object, and execute arbitrary system commands (RCE) on the oneuptime-probe container. Furthermore, because the probe holds database/cluster credentials in its environment variables, this directly leads to a complete cluster compromise. This vulnerability is fixed in 10.0.18.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30887">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d6fff837ace1261431c65384aa342235</td>
-       <td>CVE-2026-30885</td>
-       <td>2026-03-09 22:35:59</td>
-       <td>WWBN AVideo is an open source video platform. Prior to 25.0, the /objects/playlistsFromUser.json.php endpoint returns all playlists for any user without requiring authentication or authorization. An unauthenticated attacker can enumerate user IDs and retrieve playlist information including playlist names, video IDs, and playlist status for any user on the platform. This vulnerability is fixed in 25.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30885">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5f214173e13f615dd62e844765dd25c1</td>
-       <td>CVE-2026-30870</td>
-       <td>2026-03-09 22:31:40</td>
-       <td>PowerSync Service is the server-side component of the PowerSync sync engine. In version 1.20.0, when using new sync streams with config.edition: 3, certain subquery filters were ignored when determining which data to sync to users. Depending on the sync stream configuration, this could result in authenticated users syncing data that should have been restricted. Only queries that gate synchronization using subqueries without partitioning the result set are affected. This vulnerability is fixed in 1.20.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30870">详情</a></td>
       </tr>
 
      </tbody>
