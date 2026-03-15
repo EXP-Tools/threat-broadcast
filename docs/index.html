@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-14 04:47:51 -->
+<!-- RELEASE TIME : 2026-03-15 07:07:41 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,73 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>dd061ec96eba6122b12642e7c4764b97</td>
+       <td>CVE-2026-4163</td>
+       <td>2026-03-14 22:32:10 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in Wavlink WL-WN579A3 220323. This issue affects the function SetName/GuestWifi of the file /cgi-bin/wireless.cgi of the component POST Request Handler. Performing a manipulation results in command injection. It is possible to initiate the attack remotely. The exploit is now public and may be used. Upgrading the affected component is recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4163">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eaf1ba33fc481e3070e292f9d4b2fe3e</td>
+       <td>CVE-2026-4179</td>
+       <td>2026-03-14 21:51:33 <img src="imgs/new.gif" /></td>
+       <td>Issues in stm32 USB device driver (drivers/usb/device/usb_dc_stm32.c) can lead to an infinite while loop.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4179">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>96244f76b3b8dd7b3b723d107fb8fd38</td>
+       <td>CVE-2026-32774</td>
+       <td>2026-03-14 21:44:07 <img src="imgs/new.gif" /></td>
+       <td>Vulnogram 1.0.0 contains a stored cross-site scripting vulnerability in comment hypertext handling that allows attackers to inject malicious scripts. Remote attackers can inject XSS payloads through comments to execute arbitrary JavaScript in victims' browsers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32774">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c2284f253d6ebc190de0cd5ccd73f14e</td>
+       <td>CVE-2026-0849</td>
+       <td>2026-03-14 21:05:36 <img src="imgs/new.gif" /></td>
+       <td>Malformed ATAES132A responses with an oversized length field overflow a 52-byte stack buffer in the Zephyr crypto driver, allowing a compromised device or bus attacker to corrupt kernel memory and potentially hijack execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0849">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>14a9bf40d0e1cc0f3c43a2fb5ca83605</td>
+       <td>CVE-2026-1870</td>
+       <td>2026-03-14 13:24:42 <img src="imgs/new.gif" /></td>
+       <td>The Thim Kit for Elementor – Pre-built Templates & Widgets for Elementor plugin for WordPress is vulnerable to unauthorized access of data due to a missing validation checks on the 'thim-ekit/archive-course/get-courses' REST endpoint callback function in all versions up to, and including, 1.3.7. This makes it possible for unauthenticated attackers to disclose private or draft LearnPress course content by supplying post_status in the params_url payload.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1870">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8f8f859801130729cb710d0ed0cb5da7</td>
+       <td>CVE-2025-54920</td>
+       <td>2026-03-14 09:01:50 <img src="imgs/new.gif" /></td>
+       <td>This issue affects Apache Spark: before 3.5.7 and 4.0.1. Users are recommended to upgrade to version 3.5.7 or 4.0.1 and above, which fixes the issue. Summary Apache Spark 3.5.4 and earlier versions contain a code execution vulnerability in the Spark History Web UI due to overly permissive Jackson deserialization of event log data. This allows an attacker with access to the Spark event logs directory to inject malicious JSON payloads that trigger deserialization of arbitrary classes, enabling command execution on the host running the Spark History Server. Details The vulnerability arises because the Spark History Server uses Jackson polymorphic deserialization with @JsonTypeInfo.Id.CLASS on SparkListenerEvent objects, allowing an attacker to specify arbitrary class names in the event JSON. This behavior permits instantiating unintended classes, such as org.apache.hive.jdbc.HiveConnection, which can perform network calls or other malicious actions during deserialization. The attacker can exploit this by injecting crafted JSON content into the Spark event log files, which the History Server then deserializes on startup or when loading event logs. For example, the attacker can force the History Server to open a JDBC connection to a remote attacker-controlled server, demonstrating remote command injection capability. Proof of Concept: 1. Run Spark with event logging enabled, writing to a writable directory (spark-logs). 2. Inject the following JSON at the beginning of an event log file: { "Event": "org.apache.hive.jdbc.HiveConnection", "uri": "jdbc:hive2://<IP>:<PORT>/", "info": { "hive.metastore.uris": "thrift://<IP>:<PORT>" } } 3. Start the Spark History Server with logs pointing to the modified directory. 4. The Spark History Server initiates a JDBC connection to the attacker’s server, confirming the injection. Impact An attacker with write access to Spark event logs can execute arbitrary code on the server running the History Server, potentially compromising the entire system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54920">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>50d4e3dfe52fcb28e65fc7878d982a08</td>
+       <td>CVE-2026-1948</td>
+       <td>2026-03-14 03:24:14 <img src="imgs/new.gif" /></td>
+       <td>The NEX-Forms – Ultimate Forms Plugin for WordPress plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the deactivate_license() function in all versions up to, and including, 9.1.9. This makes it possible for authenticated attackers, with Subscriber-level access and above, to to deactivate the plugin license.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1948">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a1cfbab742f640d3c0d253218b3593a8</td>
+       <td>CVE-2025-65587</td>
+       <td>2026-03-14 03:12:15 <img src="imgs/new.gif" /></td>
+       <td>Version 1.6.1 of the Flash Payments package graphql-upload-minimal is vulnerable to prototype pollution. This vulnerability, located in the processRequest() function, allows an attacker to inject special property names into the operations.variables object and pollute global object prototypes, ultimately impacting the entire Node.js process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65587">详情</a></td>
+      </tr>
+
+      <tr>
        <td>beaa6c5c1ad6e34de6adb3cddb0d60f0</td>
        <td>CVE-2026-0385</td>
-       <td>2026-03-13 21:55:20 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:55:20</td>
        <td>Microsoft Edge (Chromium-based) for Android Spoofing Vulnerability</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0385">详情</a></td>
       </tr>
@@ -294,7 +358,7 @@
       <tr>
        <td>e21b852e448a11eeedefc9496d0bd901</td>
        <td>CVE-2026-32732</td>
-       <td>2026-03-13 21:43:22 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:43:22</td>
        <td>Lean 4 VS Code Extension is a Visual Studio Code extension for the Lean 4 proof assistant. Projects that use @leanprover/unicode-input-component are vulnerable to an XSS exploit in 0.1.9 of the package and lower. The component re-inserted text in the input element back into the input element as unescaped HTML. The issue has been resolved in 0.2.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32732">详情</a></td>
       </tr>
@@ -302,7 +366,7 @@
       <tr>
        <td>9f86646d1045626bc170acbcd9169c4b</td>
        <td>CVE-2026-32729</td>
-       <td>2026-03-13 21:41:11 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:41:11</td>
        <td>Runtipi is a personal homeserver orchestrator. Prior to 4.8.1, The Runtipi /api/auth/verify-totp endpoint does not enforce any rate limiting, attempt counting, or account lockout mechanism. An attacker who has obtained a user's valid credentials (via phishing, credential stuffing, or data breach) can brute-force the 6-digit TOTP code to completely bypass two-factor authentication. The TOTP verification session persists for 24 hours (default cache TTL), providing an excessive window during which the full 1,000,000-code keyspace (000000–999999) can be exhausted. At practical request rates (~500 req/s), the attack completes in approximately 33 minutes in the worst case. This vulnerability is fixed in 4.8.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32729">详情</a></td>
       </tr>
@@ -310,7 +374,7 @@
       <tr>
        <td>579735197416c21029858a5cc19f2b20</td>
        <td>CVE-2026-32724</td>
-       <td>2026-03-13 21:39:19 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:39:19</td>
        <td>PX4 autopilot is a flight control solution for drones. Prior to 1.17.0-rc1, a heap-use-after-free is detected in the MavlinkShell::available() function. The issue is caused by a race condition between the MAVLink receiver thread (which handles shell creation/destruction) and the telemetry sender thread (which polls the shell for available output). The issue is remotely triggerable via MAVLink SERIAL_CONTROL messages (ID 126), which can be sent by an external ground station or automated script. This vulnerability is fixed in 1.17.0-rc1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32724">详情</a></td>
       </tr>
@@ -318,7 +382,7 @@
       <tr>
        <td>93b665ea2cf36c62e0fdd7f9bf1c4479</td>
        <td>CVE-2026-3227</td>
-       <td>2026-03-13 21:38:31 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:38:31</td>
        <td>A command injection vulnerability was identified in TP-Link TL-WR802N v4, TL-WR841N v14, and TL-WR840N v6 due to improper neutralization of special elements used in an OS command. In the router configuration import function allows an authenticated attacker to upload a crafted configuration file that results in execution of OS commands with root privileges during port-trigger processing. Successful exploitation allows an authenticated attacker to execute system commands with root privileges, leading to full device compromise.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3227">详情</a></td>
       </tr>
@@ -326,7 +390,7 @@
       <tr>
        <td>1f1ebce1c30ee5f85431996817e85124</td>
        <td>CVE-2026-32720</td>
-       <td>2026-03-13 21:27:52 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:27:52</td>
        <td>The CTFer.io Monitoring component is in charge of the collection, process and storage of various signals (i.e. logs, metrics and distributed traces). Prior to 0.2.1, due to a mis-written NetworkPolicy, a malicious actor can pivot from a component to any other namespace. This breaks the security-by-default property expected as part of the deployment program, leading to a potential lateral movement. This vulnerability is fixed in 0.2.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32720">详情</a></td>
       </tr>
@@ -334,7 +398,7 @@
       <tr>
        <td>13a875f83189578ec355b7f1188b9eed</td>
        <td>CVE-2026-32719</td>
-       <td>2026-03-13 21:25:31 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:25:31</td>
        <td>AnythingLLM is an application that turns pieces of content into context that any LLM can use as references during chatting. In 1.11.1 and earlier, The ImportedPlugin.importCommunityItemFromUrl() function in server/utils/agents/imported.js downloads a ZIP file from a community hub URL and extracts it using AdmZip.extractAllTo() without validating file paths within the archive. This enables a Zip Slip path traversal attack that can lead to arbitrary code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32719">详情</a></td>
       </tr>
@@ -342,7 +406,7 @@
       <tr>
        <td>f4bc545869fdb5db9b79aa4b1a8175f5</td>
        <td>CVE-2026-32717</td>
-       <td>2026-03-13 21:23:48 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:23:48</td>
        <td>AnythingLLM is an application that turns pieces of content into context that any LLM can use as references during chatting. In 1.11.1 and earlier, in multi-user mode, AnythingLLM blocks suspended users on the normal JWT-backed session path, but it does not block them on the browser extension API key path. If a user already has a valid brx-... browser extension API key, that key continues to work after suspension. As a result, a suspended user can still access browser extension endpoints, read reachable workspace metadata, and continue upload or embed operations even though normal authenticated requests are rejected.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32717">详情</a></td>
       </tr>
@@ -350,7 +414,7 @@
       <tr>
        <td>ab30f7c4c9ce2ebbf0744dda605a6257</td>
        <td>CVE-2026-32715</td>
-       <td>2026-03-13 21:22:00 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:22:00</td>
        <td>AnythingLLM is an application that turns pieces of content into context that any LLM can use as references during chatting. In 1.11.1 and earlier, The two generic system-preferences endpoints allow manager role access, while every other surface that touches the same settings is restricted to admin only. Because of this inconsistency, a manager can call the generic endpoints directly to read plaintext SQL database credentials and overwrite admin-only global settings such as the default system prompt and the Community Hub API key.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32715">详情</a></td>
       </tr>
@@ -358,7 +422,7 @@
       <tr>
        <td>00bb18906d4b8cac61052e9a005aa12f</td>
        <td>CVE-2026-32713</td>
-       <td>2026-03-13 21:20:09 <img src="imgs/new.gif" /></td>
+       <td>2026-03-13 21:20:09</td>
        <td>PX4 autopilot is a flight control solution for drones. Prior to 1.17.0-rc2, A logic error in the PX4 Autopilot MAVLink FTP session validation uses incorrect boolean logic (&& instead of ||), allowing BurstReadFile and WriteFile operations to proceed with invalid sessions or closed file descriptors. This enables an unauthenticated attacker to put the FTP subsystem into an inconsistent state, trigger operations on invalid file descriptors, and bypass session isolation checks. This vulnerability is fixed in 1.17.0-rc2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32713">详情</a></td>
       </tr>
@@ -457,70 +521,6 @@
        <td>2026-03-12 01:15:55</td>
        <td>A flaw has been found in Tenda i3 1.0.0.6(2204). Affected is the function formwrlSSIDget of the file /goform/wifiSSIDget. Executing a manipulation of the argument index can lead to stack-based buffer overflow. The attack may be launched remotely. The exploit has been published and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3970">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1127e29f6714f093764d037d9bbda7b3</td>
-       <td>CVE-2026-3969</td>
-       <td>2026-03-12 01:15:55</td>
-       <td>A vulnerability was detected in FeMiner wms up to 1.0. This impacts an unknown function of the file /wms-master/src/basic/depart/depart_add_bg.php of the component Basic Organizational Structure Module. Performing a manipulation of the argument Name results in sql injection. The attack may be initiated remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3969">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a560b916091602261b60a921475c915a</td>
-       <td>CVE-2026-3968</td>
-       <td>2026-03-12 01:15:54</td>
-       <td>A vulnerability has been found in AutohomeCorp frostmourne up to 1.0. This affects the function scriptEngine.eval of the file ExpressionRule.java of the component Oracle Nashorn JavaScript Engine. Such manipulation of the argument EXPRESSION leads to code injection. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3968">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b0135f58dee2beacc574ce952f26c87d</td>
-       <td>CVE-2023-43010</td>
-       <td>2026-03-12 01:15:54</td>
-       <td>The issue was addressed with improved memory handling. This issue is fixed in iOS 17.2 and iPadOS 17.2, macOS Sonoma 14.2, Safari 17.2, iOS 16.7.15 and iPadOS 16.7.15, iOS 15.8.7 and iPadOS 15.8.7. Processing maliciously crafted web content may lead to memory corruption.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-43010">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdea59280c17f2d061369652aa5b85ca</td>
-       <td>CVE-2026-3967</td>
-       <td>2026-03-12 00:16:12</td>
-       <td>A flaw has been found in Alfresco Activiti up to 7.19/8.8.0. Affected by this issue is the function deserialize/createObjectInputStream of the file activiti-core/activiti-engine/src/main/java/org/activiti/engine/impl/variable/SerializableType.java of the component Process Variable Serialization System. This manipulation causes deserialization. Remote exploitation of the attack is possible. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3967">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed5cdb85ed5e267672cac17ef0bba7eb</td>
-       <td>CVE-2026-3966</td>
-       <td>2026-03-12 00:16:12</td>
-       <td>A vulnerability was detected in 648540858 wvp-GB28181-pro up to 2.7.4-20260107. Affected by this vulnerability is the function getDownloadFilePath of the file /src/main/java/com/genersoft/iot/vmp/media/abl/ABLMediaNodeServerService.java of the component IP Address Handler. The manipulation of the argument MediaServer.streamIp results in server-side request forgery. The attack may be launched remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3966">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e49c22fe5e7e82a780aaf8ad3e97de52</td>
-       <td>CVE-2026-3965</td>
-       <td>2026-03-12 00:16:11</td>
-       <td>A security vulnerability has been detected in whyour qinglong up to 2.20.1. Affected is an unknown function of the file back/loaders/express.ts of the component API Interface. The manipulation of the argument command leads to protection mechanism failure. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 2.20.2 is able to address this issue. The identifier of the patch is 6bec52dca158481258315ba0fc2f11206df7b719. It is advisable to upgrade the affected component. The code maintainer was informed beforehand about the issues. He reacted very fast and highly professional.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3965">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>039ffed7f77a6a7375668b50285d36c2</td>
-       <td>CVE-2026-2808</td>
-       <td>2026-03-12 00:16:11</td>
-       <td>HashiCorp Consul and Consul Enterprise 1.18.20 up to 1.21.10 and 1.22.4 are vulnerable to arbitrary file read when configured with Kubernetes authentication. This vulnerability, CVE-2026-2808, is fixed in Consul 1.18.21, 1.21.11 and 1.22.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2808">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a0ae8b30496a2c96535d4b32fb91723c</td>
-       <td>CVE-2026-3964</td>
-       <td>2026-03-11 23:16:01</td>
-       <td>A weakness has been identified in OpenAkita up to 1.24.3. This impacts the function run of the file src/openakita/tools/shell.py of the component Chat API Endpoint. Executing a manipulation of the argument Message can lead to os command injection. The attack is restricted to local execution. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3964">详情</a></td>
       </tr>
 
      </tbody>
