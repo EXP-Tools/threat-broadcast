@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-16 16:11:07 -->
+<!-- RELEASE TIME : 2026-03-17 16:10:51 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9bcc80b93388e4a8e86b2fef7f90d392</td>
+       <td>CVE-2026-4271</td>
+       <td>2026-03-17 12:30:20 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libsoup, a library for handling HTTP requests. This vulnerability, known as a...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4271">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7bfc69069a1ecef6d3725c15183c5874</td>
+       <td>CVE-2025-31966</td>
+       <td>2026-03-17 12:30:20 <img src="imgs/new.gif" /></td>
+       <td>HCL Sametime is vulnerable to broken server-side validation. While the application performs...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-31966">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>189b156ab1c19903afc5dd296f757e6c</td>
+       <td>CVE-2026-30911</td>
+       <td>2026-03-17 11:16:11 <img src="imgs/new.gif" /></td>
+       <td>Apache Airflow versions 3.1.0 through 3.1.7 missing authorization vulnerability in the Execution API's Human-in-the-Loop (HITL) endpoints that allows any authenticated task instance to read, approve, or reject HITL workflows belonging to any other task instance. Users are recommended to upgrade to Apache Airflow 3.1.8 or later, which resolves this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30911">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fdca579da20883c806544a3c17615fae</td>
+       <td>CVE-2026-28779</td>
+       <td>2026-03-17 11:16:11 <img src="imgs/new.gif" /></td>
+       <td>Apache Airflow versions 3.1.0 through 3.1.7 session token (_token) in cookies is set to path=/ regardless of the configured [webserver] base_url or [api] base_url. This allows any application co-hosted under the same domain to capture valid Airflow session tokens from HTTP request headers, allowing full session takeover without attacking Airflow itself. Users are recommended to upgrade to Apache Airflow 3.1.8 or later, which resolves this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28779">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4be0d11524f2fd77526f7212c1fb6c5a</td>
+       <td>CVE-2026-28563</td>
+       <td>2026-03-17 11:16:11 <img src="imgs/new.gif" /></td>
+       <td>Apache Airflow versions 3.1.0 through 3.1.7 /ui/dependencies endpoint returns the full DAG dependency graph without filtering by authorized DAG IDs. This allows an authenticated user with only DAG Dependencies permission to enumerate DAGs they are not authorized to view. Users are recommended to upgrade to Apache Airflow 3.1.8 or later, which resolves this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28563">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cec02fc8ef4435c5a64303e9989d10d2</td>
+       <td>CVE-2026-26929</td>
+       <td>2026-03-17 11:16:11 <img src="imgs/new.gif" /></td>
+       <td>Apache Airflow versions 3.0.0 through 3.1.7 FastAPI DagVersion listing API does not apply per-DAG authorization filtering when the request is made with dag_id set to "~" (wildcard for all DAGs). As a result, version metadata of DAGs that the requester is not authorized to access is returned. Users are recommended to upgrade to Apache Airflow 3.1.8 or later, which resolves this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-26929">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>32957ce382cbb6a8357c4046019c3bbf</td>
+       <td>CVE-2026-3634</td>
+       <td>2026-03-17 10:16:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libsoup. An attacker controlling the value used to set the Content-Type header can inject a Carriage Return Line Feed (CRLF) sequence due to improper input sanitization in the `soup_message_headers_set_content_type()` function. This vulnerability allows for the injection of arbitrary header-value pairs, potentially leading to HTTP header injection and response splitting attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3634">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d4db0b2c0e16606853d560c2bb5a28c</td>
+       <td>CVE-2026-3633</td>
+       <td>2026-03-17 10:16:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libsoup. A remote attacker, by controlling the method parameter of the `soup_message_new()` function, could inject arbitrary headers and additional request data. This vulnerability, known as CRLF (Carriage Return Line Feed) injection, occurs because the method value is not properly escaped during request line construction, potentially leading to HTTP request injection.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3633">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6b72ed0c1acdee01ef0e372cafea3e89</td>
+       <td>CVE-2026-3632</td>
+       <td>2026-03-17 10:16:00 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libsoup, a library used by applications to send network requests. This vulnerability occurs because libsoup does not properly validate hostnames, allowing special characters to be injected into HTTP headers. A remote attacker could exploit this to perform HTTP smuggling, where they can send hidden, malicious requests alongside legitimate ones. In certain situations, this could lead to Server-Side Request Forgery (SSRF), enabling an attacker to force the server to make unauthorized requests to other internal or external systems. The impact is low, as SoupServer is not actually used in internet infrastructure.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3632">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e48ddd7e37f2d90749da86baf5fd24d0</td>
+       <td>CVE-2026-23241</td>
+       <td>2026-03-17 10:16:00 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: audit: add missing syscalls to read class The "at" variant of getxattr() and listxattr() are missing from the audit read class. Calling getxattrat() or listxattrat() on a file to read its extended attributes will bypass audit rules such as: -w /tmp/test -p rwa -k test_rwa The current patch adds missing syscalls to the audit read class.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23241">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2d5e81bb83d5b5e5a7e1c330656076ae</td>
        <td>CVE-2026-4265</td>
        <td>2026-03-16 12:07:14 <img src="imgs/new.gif" /></td>
@@ -374,7 +454,7 @@
       <tr>
        <td>cdab9c10efb83b136f31ddb0784ebc08</td>
        <td>CVE-2026-4198</td>
-       <td>2026-03-15 23:32:19 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 23:32:19</td>
        <td>A vulnerability was determined in hypermodel-labs mcp-server-auto-commit 1.0.0. Affected by this vulnerability is the function getGitChanges of the file index.ts. This manipulation causes command injection. The attack can only be executed locally. The exploit has been publicly disclosed and may be utilized. Patch name: f7d992c830c5f2ec5749852e66c0195e3ed7fe30. Applying a patch is the recommended action to fix this issue. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4198">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>6e330a384a65f90a5a051fd584398add</td>
        <td>CVE-2026-4197</td>
-       <td>2026-03-15 23:32:15 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 23:32:15</td>
        <td>A vulnerability was found in D-Link DNS-120, DNR-202L, DNS-315L, DNS-320, DNS-320L, DNS-320LW, DNS-321, DNR-322L, DNS-323, DNS-325, DNS-326, DNS-327L, DNR-326, DNS-340L, DNS-343, DNS-345, DNS-726-4, DNS-1100-4, DNS-1200-05 and DNS-1550-04 up to 20260205. Affected is the function RSS_Get_Update_Status/RSS_Update/RSS_Channel_AutoDownlaod/RSS_Add/RSS_Channel_Item_Downlaod/RSS_History_Item_List/RSS_Item_List of the file /cgi-bin/download_mgr.cgi. The manipulation results in command injection. The attack may be performed from remote. The exploit has been made public and could be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4197">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>27e3de5002bbb95b80997cdeedc62998</td>
        <td>CVE-2026-4196</td>
-       <td>2026-03-15 23:32:11 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 23:32:11</td>
        <td>A vulnerability has been found in D-Link DNS-120, DNR-202L, DNS-315L, DNS-320, DNS-320L, DNS-320LW, DNS-321, DNR-322L, DNS-323, DNS-325, DNS-326, DNS-327L, DNR-326, DNS-340L, DNS-343, DNS-345, DNS-726-4, DNS-1100-4, DNS-1200-05 and DNS-1550-04 up to 20260205. This impacts the function cgi_recovery/cgi_backup_now/cgi_set_schedule/cgi_set_rsync_server of the file /cgi-bin/remote_backup.cgi. The manipulation leads to command injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4196">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>faffc189b32b413853ebc41284a1f9c5</td>
        <td>CVE-2026-4195</td>
-       <td>2026-03-15 23:02:19 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 23:02:19</td>
        <td>A flaw has been found in D-Link DNS-120, DNR-202L, DNS-315L, DNS-320, DNS-320L, DNS-320LW, DNS-321, DNR-322L, DNS-323, DNS-325, DNS-326, DNS-327L, DNR-326, DNS-340L, DNS-343, DNS-345, DNS-726-4, DNS-1100-4, DNS-1200-05 and DNS-1550-04 up to 20260205. This affects an unknown function of the file /cgi-bin/wizard_mgr.cgi. Executing a manipulation can lead to command injection. The attack can be executed remotely. The exploit has been published and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4195">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>fdf3df6516751b4b2241648109a6b2e2</td>
        <td>CVE-2026-4194</td>
-       <td>2026-03-15 23:02:14 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 23:02:14</td>
        <td>A vulnerability was detected in D-Link DNS-120, DNR-202L, DNS-315L, DNS-320, DNS-320L, DNS-320LW, DNS-321, DNR-322L, DNS-323, DNS-325, DNS-326, DNS-327L, DNR-326, DNS-340L, DNS-343, DNS-345, DNS-726-4, DNS-1100-4, DNS-1200-05 and DNS-1550-04 up to 20260205. The impacted element is the function cgi_set_wto of the file /cgi-bin/system_mgr.cgi. Performing a manipulation results in improper access controls. Remote exploitation of the attack is possible. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4194">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>7906f3dcff6ee7871805414d2c0f7410</td>
        <td>CVE-2026-4193</td>
-       <td>2026-03-15 23:02:10 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 23:02:10</td>
        <td>A security vulnerability has been detected in D-Link DIR-823G 1.0.2B05. The affected element is the function GetDDNSSettings/GetDeviceDomainName/GetDeviceSettings/GetDMZSettings/GetFirewallSettings/GetGuestNetworkSettings/GetLanWanConflictInfo/GetLocalMacAddress/GetNetworkSettings/GetQoSSettings/GetRouterInformationSettings/GetRouterLanSettings/GetWanSettings/SetAccessCtlList/SetAccessCtlSwitch/SetDeviceSettings/SetGuestWLanSettings/SetIPv4FirewallSettings/SetNetworkSettings/SetNetworkTomographySettings/SetNTPServerSettings/SetRouterLanSettings/SetStaticClientInfo/SetStaticRouteSettings/SetWLanRadioSecurity/SetWPSSettings/UpdateClientInfo of the component goahead. Such manipulation leads to improper access controls. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. This vulnerability only affects products that are no longer supported by the maintainer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4193">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>cfed8688acaf200a0b40111b565f20b3</td>
        <td>CVE-2026-4192</td>
-       <td>2026-03-15 20:32:09 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 20:32:09</td>
        <td>A vulnerability has been found in AvinashBole quip-mcp-server 1.0.0. Affected by this vulnerability is the function setupToolHandlers of the file src/index.ts. Such manipulation leads to command injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4192">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>2dbb3ea2c8b8b5d750511bb7342374ac</td>
        <td>CVE-2026-4191</td>
-       <td>2026-03-15 20:02:09 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 20:02:09</td>
        <td>A flaw has been found in JawherKl node-api-postgres up to 2.5. Affected is the function path.extname of the file index.js of the component Profile Picture Handler. This manipulation causes unrestricted upload. The attack is possible to be carried out remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4191">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>ea0351329f8a5f5de9362d3957dbc515</td>
        <td>CVE-2026-4190</td>
-       <td>2026-03-15 19:32:16 <img src="imgs/new.gif" /></td>
+       <td>2026-03-15 19:32:16</td>
        <td>A vulnerability was detected in JawherKl node-api-postgres up to 2.5. This impacts the function User.getAll of the file models/user.js. The manipulation of the argument sort results in sql injection. The attack can be executed remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4190">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dd061ec96eba6122b12642e7c4764b97</td>
-       <td>CVE-2026-4163</td>
-       <td>2026-03-14 22:32:10</td>
-       <td>A vulnerability was detected in Wavlink WL-WN579A3 220323. This issue affects the function SetName/GuestWifi of the file /cgi-bin/wireless.cgi of the component POST Request Handler. Performing a manipulation results in command injection. It is possible to initiate the attack remotely. The exploit is now public and may be used. Upgrading the affected component is recommended.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4163">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eaf1ba33fc481e3070e292f9d4b2fe3e</td>
-       <td>CVE-2026-4179</td>
-       <td>2026-03-14 21:51:33</td>
-       <td>Issues in stm32 USB device driver (drivers/usb/device/usb_dc_stm32.c) can lead to an infinite while loop.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4179">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>96244f76b3b8dd7b3b723d107fb8fd38</td>
-       <td>CVE-2026-32774</td>
-       <td>2026-03-14 21:44:07</td>
-       <td>Vulnogram 1.0.0 contains a stored cross-site scripting vulnerability in comment hypertext handling that allows attackers to inject malicious scripts. Remote attackers can inject XSS payloads through comments to execute arbitrary JavaScript in victims' browsers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32774">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c2284f253d6ebc190de0cd5ccd73f14e</td>
-       <td>CVE-2026-0849</td>
-       <td>2026-03-14 21:05:36</td>
-       <td>Malformed ATAES132A responses with an oversized length field overflow a 52-byte stack buffer in the Zephyr crypto driver, allowing a compromised device or bus attacker to corrupt kernel memory and potentially hijack execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0849">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>14a9bf40d0e1cc0f3c43a2fb5ca83605</td>
-       <td>CVE-2026-1870</td>
-       <td>2026-03-14 13:24:42</td>
-       <td>The Thim Kit for Elementor – Pre-built Templates & Widgets for Elementor plugin for WordPress is vulnerable to unauthorized access of data due to a missing validation checks on the 'thim-ekit/archive-course/get-courses' REST endpoint callback function in all versions up to, and including, 1.3.7. This makes it possible for unauthenticated attackers to disclose private or draft LearnPress course content by supplying post_status in the params_url payload.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1870">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8f8f859801130729cb710d0ed0cb5da7</td>
-       <td>CVE-2025-54920</td>
-       <td>2026-03-14 09:01:50</td>
-       <td>This issue affects Apache Spark: before 3.5.7 and 4.0.1. Users are recommended to upgrade to version 3.5.7 or 4.0.1 and above, which fixes the issue. Summary Apache Spark 3.5.4 and earlier versions contain a code execution vulnerability in the Spark History Web UI due to overly permissive Jackson deserialization of event log data. This allows an attacker with access to the Spark event logs directory to inject malicious JSON payloads that trigger deserialization of arbitrary classes, enabling command execution on the host running the Spark History Server. Details The vulnerability arises because the Spark History Server uses Jackson polymorphic deserialization with @JsonTypeInfo.Id.CLASS on SparkListenerEvent objects, allowing an attacker to specify arbitrary class names in the event JSON. This behavior permits instantiating unintended classes, such as org.apache.hive.jdbc.HiveConnection, which can perform network calls or other malicious actions during deserialization. The attacker can exploit this by injecting crafted JSON content into the Spark event log files, which the History Server then deserializes on startup or when loading event logs. For example, the attacker can force the History Server to open a JDBC connection to a remote attacker-controlled server, demonstrating remote command injection capability. Proof of Concept: 1. Run Spark with event logging enabled, writing to a writable directory (spark-logs). 2. Inject the following JSON at the beginning of an event log file: { "Event": "org.apache.hive.jdbc.HiveConnection", "uri": "jdbc:hive2://<IP>:<PORT>/", "info": { "hive.metastore.uris": "thrift://<IP>:<PORT>" } } 3. Start the Spark History Server with logs pointing to the modified directory. 4. The Spark History Server initiates a JDBC connection to the attacker’s server, confirming the injection. Impact An attacker with write access to Spark event logs can execute arbitrary code on the server running the History Server, potentially compromising the entire system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-54920">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>50d4e3dfe52fcb28e65fc7878d982a08</td>
-       <td>CVE-2026-1948</td>
-       <td>2026-03-14 03:24:14</td>
-       <td>The NEX-Forms – Ultimate Forms Plugin for WordPress plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the deactivate_license() function in all versions up to, and including, 9.1.9. This makes it possible for authenticated attackers, with Subscriber-level access and above, to to deactivate the plugin license.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1948">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a1cfbab742f640d3c0d253218b3593a8</td>
-       <td>CVE-2025-65587</td>
-       <td>2026-03-14 03:12:15</td>
-       <td>Version 1.6.1 of the Flash Payments package graphql-upload-minimal is vulnerable to prototype pollution. This vulnerability, located in the processRequest() function, allows an attacker to inject special property names into the operations.variables object and pollute global object prototypes, ultimately impacting the entire Node.js process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-65587">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>beaa6c5c1ad6e34de6adb3cddb0d60f0</td>
-       <td>CVE-2026-0385</td>
-       <td>2026-03-13 21:55:20</td>
-       <td>Microsoft Edge (Chromium-based) for Android Spoofing Vulnerability</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0385">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e21b852e448a11eeedefc9496d0bd901</td>
-       <td>CVE-2026-32732</td>
-       <td>2026-03-13 21:43:22</td>
-       <td>Lean 4 VS Code Extension is a Visual Studio Code extension for the Lean 4 proof assistant. Projects that use @leanprover/unicode-input-component are vulnerable to an XSS exploit in 0.1.9 of the package and lower. The component re-inserted text in the input element back into the input element as unescaped HTML. The issue has been resolved in 0.2.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32732">详情</a></td>
       </tr>
 
      </tbody>
