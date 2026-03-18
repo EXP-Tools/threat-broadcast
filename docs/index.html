@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-18 16:11:04 -->
+<!-- RELEASE TIME : 2026-03-18 19:11:38 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>650419fb42a1cbad12ae67f57aa355a5</td>
+       <td>CVE-2026-32609</td>
+       <td>2026-03-18 15:16:30 <img src="imgs/new.gif" /></td>
+       <td>Glances is an open-source system cross-platform monitoring tool. The GHSA-gh4x fix (commit 5d3de60) addressed unauthenticated configuration secrets exposure on the `/api/v4/config` endpoints by introducing `as_dict_secure()` redaction. However, the `/api/v4/args` and `/api/v4/args/{item}` endpoints were not addressed by this fix. These endpoints return the complete command-line arguments namespace via `vars(self.args)`, which includes the password hash (salt + pbkdf2_hmac), SNMP community strings, SNMP authentication keys, and the configuration file path. When Glances runs without `--password` (the default), these endpoints are accessible without any authentication. Version 4.5.2 provides a more complete fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32609">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>62225a4b406567ff3ddbff7af9016435</td>
+       <td>CVE-2026-3278</td>
+       <td>2026-03-18 14:16:40 <img src="imgs/new.gif" /></td>
+       <td>Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in OpenText™ ZENworks Service Desk allows Cross-Site Scripting (XSS). The vulnerability could allow an attacker to execute arbitrary JavaScript leading to unauthorized actions on behalf of the user.This issue affects ZENworks Service Desk: 25.2, 25.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3278">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>97d5df37382ca329fc2a0c7fc6fe269f</td>
+       <td>CVE-2026-32694</td>
+       <td>2026-03-18 14:16:40 <img src="imgs/new.gif" /></td>
+       <td>In Juju from version 3.0.0 through 3.6.18, when a secret owner grants permissions to a secret to a grantee, the secret owner relies exclusively on a predictable XID of the secret to verify ownership. This allows a malicious grantee which can request secrets to predict past secrets granted by the same secret owner to different grantees, allowing them to use the resources granted by those past secrets. Successful exploitation relies on a very specific configuration, specific data semantic, and the administrator having the need to deploy at least two different applications, one of them controlled by the attacker.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32694">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b29196b06867d51dbabb233a4988285f</td>
+       <td>CVE-2026-25449</td>
+       <td>2026-03-18 14:16:39 <img src="imgs/new.gif" /></td>
+       <td>Deserialization of Untrusted Data vulnerability in Shinetheme Traveler allows Object Injection.This issue affects Traveler: from n/a before 3.2.8.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25449">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9b3d1e0ef96fdb3a027d0aa23a57ea0</td>
+       <td>CVE-2026-32693</td>
+       <td>2026-03-18 13:16:18 <img src="imgs/new.gif" /></td>
+       <td>In Juju from version 3.0.0 through 3.6.18, the authorization of the "secret-set" tool is not performed correctly, which allows a grantee to update the secret content, and can lead to reading or updating other secrets. When the "secret-set" tool logs an error in an exploitation attempt, the secret is still updated contrary to expectations, and the new value is visible to both the owner and the grantee.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32693">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>64c949ef447562c83a1f8501d86bad5b</td>
+       <td>CVE-2026-32692</td>
+       <td>2026-03-18 13:16:18 <img src="imgs/new.gif" /></td>
+       <td>An authorization bypass vulnerability in the Vault secrets back-end implementation of Juju versions 3.1.6 through 3.6.18 allows an authenticated unit agent to perform unauthorized updates to secret revisions. With sufficient information, an attacker can poison any existing secret revision within the scope of that Vault secret back-end.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32692">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>97631f123fa2c4efa2b0dc37ad900311</td>
+       <td>CVE-2026-32691</td>
+       <td>2026-03-18 13:16:18 <img src="imgs/new.gif" /></td>
+       <td>A race condition in the secrets management subsystem of Juju versions 3.0.0 through 3.6.18 allows an authenticated unit agent to claim ownership of a newly initialized secret. Between generating a Juju Secret ID and creating the secret's first revision, an attacker authenticated as another unit agent can claim ownership of a known secret. This leads to the attacking unit being able to read the content of the initial secret revision.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32691">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b18175af997b2063849bd147b8887e9e</td>
+       <td>CVE-2026-33265</td>
+       <td>2026-03-18 12:16:19 <img src="imgs/new.gif" /></td>
+       <td>In LibreChat 0.8.1-rc2, a logged-in user obtains a JWT for both the LibreChat API and the RAG API.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33265">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f8841d615582f62447bcd02df9873a14</td>
+       <td>CVE-2025-41258</td>
+       <td>2026-03-18 12:16:18 <img src="imgs/new.gif" /></td>
+       <td>LibreChat version 0.8.1-rc2 uses the same JWT secret for the user session mechanism and RAG API which compromises the service-level authentication of the RAG API.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-41258">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>828876f3faabdca82919c85aa6b6bbab</td>
+       <td>CVE-2026-23248</td>
+       <td>2026-03-18 11:16:16 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: perf/core: Fix refcount bug and potential UAF in perf_mmap Syzkaller reported a refcount_t: addition on 0; use-after-free warning in perf_mmap. The issue is caused by a race condition between a failing mmap() setup and a concurrent mmap() on a dependent event (e.g., using output redirection). In perf_mmap(), the ring_buffer (rb) is allocated and assigned to event->rb with the mmap_mutex held. The mutex is then released to perform map_range(). If map_range() fails, perf_mmap_close() is called to clean up. However, since the mutex was dropped, another thread attaching to this event (via inherited events or output redirection) can acquire the mutex, observe the valid event->rb pointer, and attempt to increment its reference count. If the cleanup path has already dropped the reference count to zero, this results in a use-after-free or refcount saturation warning. Fix this by extending the scope of mmap_mutex to cover the map_range() call. This ensures that the ring buffer initialization and mapping (or cleanup on failure) happens atomically effectively, preventing other threads from accessing a half-initialized or dying ring buffer.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23248">详情</a></td>
+      </tr>
+
+      <tr>
        <td>59258a8bf3c62ef0e5c7f71443ac97ba</td>
        <td>CVE-2026-4318</td>
        <td>2026-03-17 15:16:19 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-03-16 12:04:18</td>
        <td>Mattermost versions 11.3.x <= 11.3.0, 11.2.x <= 11.2.2, 10.11.x <= 10.11.10 fail to properly validate User-Agent header tokens which allows an authenticated attacker to cause a request panic via a specially crafted User-Agent header. Mattermost Advisory ID: MMSA-2026-00586</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25783">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>da84154b09231c2686de8bdcb88958b4</td>
-       <td>CVE-2026-24458</td>
-       <td>2026-03-16 12:02:23</td>
-       <td>Mattermost versions 11.3.x <= 11.3.0, 11.2.x <= 11.2.2, 10.11.x <= 10.11.10 fail to properly handle very long passwords, which allows an attacker to overload the server CPU and memory via executing login attempts with multi-megabyte passwords. Mattermost Advisory ID: MMSA-2026-00587</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24458">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5e5de09fbf90992b721442e65e282dbb</td>
-       <td>CVE-2026-4237</td>
-       <td>2026-03-16 12:02:10</td>
-       <td>A flaw has been found in itsourcecode Free Hotel Reservation System 1.0. This vulnerability affects unknown code of the file /hotel/admin/mod_reports/index.php. Executing a manipulation of the argument Home can lead to sql injection. The attack may be performed from remote. The exploit has been published and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4237">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>924a21476eaa238ce8d850c6337d03b7</td>
-       <td>CVE-2026-2462</td>
-       <td>2026-03-16 12:00:21</td>
-       <td>Mattermost versions 11.3.x <= 11.3.0, 11.2.x <= 11.2.2, 10.11.x <= 10.11.10 fail to restrict plugin installation on CI test instances with default admin credentials which allows an unauthenticated attacker to achieve remote code execution and exfiltrate sensitive configuration data including AWS and SMTP credentials via uploading a malicious plugin after changing the import directory. Mattermost Advisory ID: MMSA-2025-00528</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2462">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2acf2c6fbbc7635390e589ae1d28e9f7</td>
-       <td>CVE-2026-2578</td>
-       <td>2026-03-16 11:58:09</td>
-       <td>Mattermost versions 11.3.x <= 11.3.0 fail to preserve the redacted state of burn-on-read posts during deletion which allows channel members to access unrevealed burn-on-read message contents via the WebSocket post deletion event.. Mattermost Advisory ID: MMSA-2026-00579</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2578">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3671bc78842107c36b9dfd40be97ac39</td>
-       <td>CVE-2025-69246</td>
-       <td>2026-03-16 11:54:50</td>
-       <td>Raytha CMS does not have any brute force protection mechanism implemented. It allows an attacker to send multiple automated logon requests without triggering lockout, throttling, or step-up challenges. This issue was fixed in version 1.4.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69246">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc6210d494928b5a7dd4589788240d8b</td>
-       <td>CVE-2025-69245</td>
-       <td>2026-03-16 11:54:42</td>
-       <td>Raytha CMS is vulnerable to Reflected XSS via returnUrl parameter in logon functionality. An attacker can craft a malicious URL which, when opened by the authenticated victim, results in arbitrary JavaScript execution in the victim’s browser. This issue was fixed in 1.4.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69245">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fbca602b42ac237819802d3c10d0740b</td>
-       <td>CVE-2025-69243</td>
-       <td>2026-03-16 11:54:32</td>
-       <td>Raytha CMS is vulnerable to User Enumeration in password reset functionality. Difference in messages could allow an attacker to determine if the login is valid or not, enabling a brute force attack with valid logins. This issue was fixed in version 1.5.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69243">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b045f89d4b96fa6ec80b035444b5fae</td>
-       <td>CVE-2025-69242</td>
-       <td>2026-03-16 11:54:19</td>
-       <td>Raytha CMS is vulnerable to reflected XSS via the backToListUrl parameter. An attacker can craft a malicious URL which, when opened by authenticated victim, results in arbitrary JavaScript execution in the victim’s browser. This issue was fixed in version 1.4.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69242">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d9c1bebf6c19bbe2aa1e95608429c16</td>
-       <td>CVE-2026-4201</td>
-       <td>2026-03-16 00:32:43</td>
-       <td>A weakness has been identified in glowxq glowxq-oj up to 6f7c723090472057252040fd2bbbdaa1b5ed2393. This vulnerability affects the function Upload of the file business/business-system/src/main/java/com/glowxq/system/admin/controller/SysFileController.java. Executing a manipulation can lead to unrestricted upload. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4201">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cdab9c10efb83b136f31ddb0784ebc08</td>
-       <td>CVE-2026-4198</td>
-       <td>2026-03-15 23:32:19</td>
-       <td>A vulnerability was determined in hypermodel-labs mcp-server-auto-commit 1.0.0. Affected by this vulnerability is the function getGitChanges of the file index.ts. This manipulation causes command injection. The attack can only be executed locally. The exploit has been publicly disclosed and may be utilized. Patch name: f7d992c830c5f2ec5749852e66c0195e3ed7fe30. Applying a patch is the recommended action to fix this issue. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4198">详情</a></td>
       </tr>
 
      </tbody>
