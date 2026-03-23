@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-22 21:32:49 -->
+<!-- RELEASE TIME : 2026-03-23 10:08:16 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>dd85919e000891acd1b9ccc51da0e601</td>
+       <td>CVE-2026-23555</td>
+       <td>2026-03-23 07:16:07 <img src="imgs/new.gif" /></td>
+       <td>Any guest issuing a Xenstore command accessing a node using the (illegal) node path "/local/domain/", will crash xenstored due to a clobbered error indicator in xenstored when verifying the node path. Note that the crash is forced via a failing assert() statement in xenstored. In case xenstored is being built with NDEBUG #defined, an unprivileged guest trying to access the node path "/local/domain/" will result in it no longer being serviced by xenstored, other guests (including dom0) will still be serviced, but xenstored will use up all cpu time it can get.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23555">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c593d61f0384397ec5f7327ce3d50bb</td>
+       <td>CVE-2026-23554</td>
+       <td>2026-03-23 07:16:07 <img src="imgs/new.gif" /></td>
+       <td>The Intel EPT paging code uses an optimization to defer flushing of any cached EPT state until the p2m lock is dropped, so that multiple modifications done under the same locked region only issue a single flush. Freeing of paging structures however is not deferred until the flushing is done, and can result in freed pages transiently being present in cached state. Such stale entries can point to memory ranges not owned by the guest, thus allowing access to unintended memory regions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23554">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>00c05bcad59f279ccd5e71d3e0de3bdb</td>
+       <td>CVE-2025-13997</td>
+       <td>2026-03-23 07:16:05 <img src="imgs/new.gif" /></td>
+       <td>The King Addons for Elementor – 4,000+ ready Elementor sections, 650+ templates, 70+ FREE widgets for Elementor plugin for WordPress is vulnerable to unauthenticated API key disclosure in all versions up to, and including, 51.1.49 due to the plugin adding the API keys to the HTML source code via render_full_form function. This makes it possible for unauthenticated attackers to extract site's Mailchimp, Facebook and Google API keys and secrets. This vulnerability requires the Premium license to be installed</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13997">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aad5e5213c95bf4ab22dfddc1d0b0394</td>
+       <td>CVE-2025-10734</td>
+       <td>2026-03-23 06:30:28 <img src="imgs/new.gif" /></td>
+       <td>The ReviewX – WooCommerce Product Reviews with Multi-Criteria, Reminder Emails, Google Reviews,...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10734">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>81da1c409a1d7f69f6c1c00f6294b527</td>
+       <td>CVE-2026-4603</td>
+       <td>2026-03-23 06:16:22 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package jsrsasign before 11.1.1 are vulnerable to Division by zero due to the RSASetPublic/KEYUTIL parsing path in ext/rsa.js and the BigInteger.modPowInt reduction logic in ext/jsbn.js. An attacker can force RSA public-key operations (e.g., verify and encryption) to collapse to deterministic zero outputs and hide “invalid key” errors by supplying a JWK whose modulus decodes to zero.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4603">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5f288d75f7997c7bf1d7c4187b495d38</td>
+       <td>CVE-2026-4602</td>
+       <td>2026-03-23 06:16:22 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package jsrsasign before 11.1.1 are vulnerable to Incorrect Conversion between Numeric Types due to handling negative exponents in ext/jsbn2.js. An attacker can force the computation of incorrect modular inverses and break signature verification by calling modPow with a negative exponent.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4602">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d34e0755130e2df869c5c228eddc4497</td>
+       <td>CVE-2026-4601</td>
+       <td>2026-03-23 06:16:21 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package jsrsasign before 11.1.1 are vulnerable to Missing Cryptographic Step via the KJUR.crypto.DSA.signWithMessageHash process in the DSA signing implementation. An attacker can recover the private key by forcing r or s to be zero, so the library emits an invalid signature without retrying, and then solves for x from the resulting signature.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4601">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c4e7eb39205b87c055f169db03104818</td>
+       <td>CVE-2026-4600</td>
+       <td>2026-03-23 06:16:21 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package jsrsasign before 11.1.1 are vulnerable to Improper Verification of Cryptographic Signature via the DSA domain-parameter validation in KJUR.crypto.DSA.setPublic (and the related DSA/X509 verification flow in src/dsa-2.0.js). An attacker can forge DSA signatures or X.509 certificates that X509.verifySignature() accepts by supplying malicious domain parameters such as g=1, y=1, and a fixed r=1, which make the verification equation true for any hash.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4600">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7652f110f765c670a8ea0de94389a269</td>
+       <td>CVE-2026-4599</td>
+       <td>2026-03-23 06:16:21 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package jsrsasign from 7.0.0 and before 11.1.1 are vulnerable to Incomplete Comparison with Missing Factors via the getRandomBigIntegerZeroToMax and getRandomBigIntegerMinToMax functions in src/crypto-1.1.js; an attacker can recover the private key by exploiting the incorrect compareTo checks that accept out-of-range candidates and thus bias DSA nonces during signature generation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4599">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c97ac79785b421d52ef171ae20dcc73e</td>
+       <td>CVE-2026-4598</td>
+       <td>2026-03-23 06:16:21 <img src="imgs/new.gif" /></td>
+       <td>Versions of the package jsrsasign before 11.1.1 are vulnerable to Infinite loop via the bnModInverse function in ext/jsbn2.js when the BigInteger.modInverse implementation receives zero or negative inputs, allowing an attacker to hang the process permanently by supplying such crafted values (e.g., modInverse(0, m) or modInverse(-1, m)).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4598">详情</a></td>
+      </tr>
+
+      <tr>
        <td>2d05572bcf830f8e8af50da59b686d3b</td>
        <td>CVE-2026-4558</td>
        <td>2026-03-22 18:16:06 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>a3508c77a2b0984cdadb6b04ae5a3884</td>
        <td>CVE-2026-2756</td>
-       <td>2026-03-21 18:16:01 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 18:16:01</td>
        <td>A security vulnerability has been detected in OmniPEMF NeoRhythm up to 20260308. This affects an unknown function of the component BLE Interface. Such manipulation leads to missing authentication. The attack can only be initiated within the local network. This attack is characterized by high complexity. The exploitability is reported as difficult. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2756">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>6a1527ae121a5cd0629ffdec5bcc2221</td>
        <td>CVE-2019-25582</td>
-       <td>2026-03-21 16:16:02 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:02</td>
        <td>i-doit CMDB 1.12 contains an arbitrary file download vulnerability that allows authenticated attackers to download sensitive files by manipulating the file parameter in index.php. Attackers can send GET requests to index.php with file_manager=image and supply arbitrary file paths like src/config.inc.php to retrieve configuration files and sensitive system data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25582">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>3d13be6941a1bc275685141fac2b6a0f</td>
        <td>CVE-2019-25581</td>
-       <td>2026-03-21 16:16:02 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:02</td>
        <td>i-doit CMDB 1.12 contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the objGroupID parameter. Attackers can send GET requests with crafted SQL payloads in the objGroupID parameter to extract sensitive database information including usernames, database names, and version details.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25581">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>7b98434a9db28db4a815bfdb090f3d16</td>
        <td>CVE-2019-25580</td>
-       <td>2026-03-21 16:16:02 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:02</td>
        <td>ownDMS 4.7 contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the IMG parameter. Attackers can send GET requests to pdfstream.php, imagestream.php, or anyfilestream.php with crafted SQL payloads in the IMG parameter to extract sensitive database information including version and database names.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25580">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>27c55491e60cc472615ba01fef9ecbe7</td>
        <td>CVE-2019-25579</td>
-       <td>2026-03-21 16:16:01 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:01</td>
        <td>phpTransformer 2016.9 contains a directory traversal vulnerability that allows unauthenticated attackers to access arbitrary files by manipulating the path parameter. Attackers can send requests to the jQueryFileUploadmaster server endpoint with traversal sequences ../../../../../../ to list and retrieve files outside the intended directory.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25579">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>3e7b0a8a79e9c1dd9e50248f305b6e3c</td>
        <td>CVE-2019-25578</td>
-       <td>2026-03-21 16:16:01 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:01</td>
        <td>phpTransformer 2016.9 contains an SQL injection vulnerability that allows remote attackers to execute arbitrary SQL queries by injecting malicious code through the idnews parameter. Attackers can send crafted GET requests to GeneratePDF.php with SQL payloads in the idnews parameter to extract sensitive database information or manipulate queries.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25578">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>6a2139a90986a87994bda22621f5c530</td>
        <td>CVE-2019-25577</td>
-       <td>2026-03-21 16:16:01 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:01</td>
        <td>SeoToaster Ecommerce 3.0.0 contains a local file inclusion vulnerability that allows authenticated attackers to read arbitrary files by manipulating path parameters in backend theme endpoints. Attackers can send POST requests to /backend/backend_theme/editcss/ or /backend/backend_theme/editjs/ with directory traversal sequences in the getcss or getjs parameters to retrieve file contents.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25577">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>0ca38cec63b69c26eebe76765b957bae</td>
        <td>CVE-2019-25576</td>
-       <td>2026-03-21 16:16:01 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:01</td>
        <td>Kepler Wallpaper Script 1.1 contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code into the category parameter. Attackers can send GET requests to the category endpoint with URL-encoded SQL UNION statements to extract database information including usernames, database names, and MySQL version details.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25576">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>98a594b9f3e79bcb42906be554cdc7b1</td>
        <td>CVE-2019-25575</td>
-       <td>2026-03-21 16:16:01 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:01</td>
        <td>SimplePress CMS 1.0.7 contains an SQL injection vulnerability that allows unauthenticated attackers to execute arbitrary SQL queries by injecting malicious code through the 'p' and 's' parameters. Attackers can send GET requests with crafted SQL payloads to extract sensitive database information including usernames, database names, and version details.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25575">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>b74fbc57f62fe85a364ff4e629e0bfb3</td>
        <td>CVE-2019-25574</td>
-       <td>2026-03-21 16:16:00 <img src="imgs/new.gif" /></td>
+       <td>2026-03-21 16:16:00</td>
        <td>Green CMS 2.x contains a path traversal vulnerability that allows authenticated attackers to download arbitrary files and directories by injecting directory traversal sequences. Attackers can manipulate the theme_name parameter in the themeexporthandle action or supply base64-encoded file paths to the downfile action to retrieve sensitive files outside intended directories.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25574">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6f25f0927878e9a073b6faa6b6918e32</td>
-       <td>CVE-2026-33210</td>
-       <td>2026-03-19 12:45:53</td>
-       <td>Ruby JSON has a format string injection vulnerability</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33210">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8879002354c6b889065193a4fd3d3897</td>
-       <td>CVE-2026-33237</td>
-       <td>2026-03-19 12:43:23</td>
-       <td>AVideo has SSRF in Scheduler Plugin via callbackURL Missing `isSSRFSafeURL()` Validation</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33237">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8ded44e20bcc2297a598f2d06263e59b</td>
-       <td>CVE-2026-3658</td>
-       <td>2026-03-19 12:16:18</td>
-       <td>The Appointment Booking Calendar — Simply Schedule Appointments Booking Plugin plugin for WordPress is vulnerable to SQL Injection via the 'fields' parameter in all versions up to, and including, 1.6.10.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database, including usernames, email addresses, and password hashes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3658">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>680022b79b0768a4912e85b2525b0ac3</td>
-       <td>CVE-2026-3511</td>
-       <td>2026-03-19 12:16:18</td>
-       <td>Improper Restriction of XML External Entity Reference vulnerability in XMLUtils.java in Slovensko.Digital Autogram allows remote unauthenticated attacker to conduct SSRF (Server Side Request Forgery) attacks and obtain unauthorized access to local files on filesystems running the vulnerable application. Successful exploitation requires the victim to visit a specially crafted website that sends request containing a specially crafted XML document to /sign endpoint of the local HTTP server run by the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3511">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>08a629c1422d73a81d8a1249882c0138</td>
-       <td>CVE-2006-10003</td>
-       <td>2026-03-19 12:16:17</td>
-       <td>XML::Parser versions through 2.47 for Perl has an off-by-one heap buffer overflow in st_serial_stack. In the case (stackptr == stacksize - 1), the stack will NOT be expanded. Then the new value will be written at location (++stackptr), which equals stacksize and therefore falls just outside the allocated buffer. The bug can be observed when parsing an XML file with very deep element nesting</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2006-10003">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7e0e13384af53badb7d07244a054080a</td>
-       <td>CVE-2006-10002</td>
-       <td>2026-03-19 12:16:16</td>
-       <td>XML::Parser versions through 2.47 for Perl could overflow the pre-allocated buffer size cause a heap corruption (double free or corruption) and crashes. A :utf8 PerlIO layer, parse_stream() in Expat.xs could overflow the XML input buffer because Perl's read() returns decoded characters while SvPV() gives back multi-byte UTF-8 bytes that can exceed the pre-allocated buffer size. This can cause heap corruption (double free or corruption) and crashes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2006-10002">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>35ec7add9320964b52b5d1b8834953cf</td>
-       <td>CVE-2025-14716</td>
-       <td>2026-03-19 11:16:14</td>
-       <td>Improper Authentication vulnerability in Secomea GateManager (webserver modules) allows Authentication Bypass.This issue affects GateManager: 11.4;0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-14716">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>635c70af29c31cbd4db98a13f8407c43</td>
-       <td>CVE-2026-27070</td>
-       <td>2026-03-19 09:16:18</td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WPEverest Everest Forms Pro allows Stored XSS.This issue affects Everest Forms Pro: from n/a through 1.9.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27070">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0a13942aa66cbf0e938e4437849be84f</td>
-       <td>CVE-2026-27068</td>
-       <td>2026-03-19 09:16:18</td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Ryan Howard Website LLMs.Txt allows Reflected XSS.This issue affects Website LLMs.Txt: from n/a through 8.2.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27068">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8cbfe7dd81574711b7d49aaa57750990</td>
-       <td>CVE-2026-27067</td>
-       <td>2026-03-19 09:16:17</td>
-       <td>Unrestricted Upload of File with Dangerous Type vulnerability in Syarif Mobile App Editor allows Upload a Web Shell to a Web Server.This issue affects Mobile App Editor: from n/a through 1.3.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27067">详情</a></td>
       </tr>
 
      </tbody>
