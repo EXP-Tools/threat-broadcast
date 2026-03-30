@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-03-29 13:10:23 -->
+<!-- RELEASE TIME : 2026-03-30 21:50:14 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f83fdef38d077c6191f319a0c360c443</td>
+       <td>CVE-2026-4416</td>
+       <td>2026-03-30 07:52:21 <img src="imgs/new.gif" /></td>
+       <td>The Performance Library component of Gigabyte Control Center has an Insecure Deserialization vulnerability. Authenticated local attackers can send a malicious serialized payload to the EasyTune Engine service, resulting in privilege escalation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4416">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9a48e24265b548ebf2826cd34432f922</td>
+       <td>CVE-2026-5121</td>
+       <td>2026-03-30 07:47:28 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libarchive. On 32-bit systems, an integer overflow vulnerability exists in the zisofs block pointer allocation logic. A remote attacker can exploit this by providing a specially crafted ISO9660 image, which can lead to a heap buffer overflow. This could potentially allow for arbitrary code execution on the affected system.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5121">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a72dfa71d91ed1f32b81af36375b0871</td>
+       <td>CVE-2026-25704</td>
+       <td>2026-03-30 07:44:39 <img src="imgs/new.gif" /></td>
+       <td>A Privilege Dropping / Lowering Errors/Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability in cosmic-greeter can allow an attacker to regain privileges that should have been dropped and abuse them in the racy checking logic. This issue affects cosmic-greeter before https://github.Com/pop-os/cosmic-greeter/pull/426.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25704">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e54f1075f372488fbc593a172ee36908</td>
+       <td>CVE-2026-4415</td>
+       <td>2026-03-30 07:36:16 <img src="imgs/new.gif" /></td>
+       <td>Gigabyte Control Center developed by GIGABYTE has an Arbitrary File Write vulnerability. When the pairing feature is enabled, unauthenticated remote attackers can write arbitrary files to any location on the underlying operating system, leading to arbitrary code execution or privilege escalation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4415">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5daface450e8e4b99e1b36f9ac443b5e</td>
+       <td>CVE-2025-3716</td>
+       <td>2026-03-30 07:30:30 <img src="imgs/new.gif" /></td>
+       <td>User enumeration in ESET Protect (on-prem) via Response Timing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-3716">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4688fdaf1b399568763eff035fd8028f</td>
+       <td>CVE-2025-15379</td>
+       <td>2026-03-30 07:16:57 <img src="imgs/new.gif" /></td>
+       <td>A command injection vulnerability exists in MLflow's model serving container initialization code, specifically in the `_install_model_dependencies_to_env()` function. When deploying a model with `env_manager=LOCAL`, MLflow reads dependency specifications from the model artifact's `python_env.yaml` file and directly interpolates them into a shell command without sanitization. This allows an attacker to supply a malicious model artifact and achieve arbitrary command execution on systems that deploy the model. The vulnerability affects versions 3.8.0 and is fixed in version 3.8.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15379">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a78190d4907c49a6497b390c0cfef513</td>
+       <td>CVE-2026-3945</td>
+       <td>2026-03-30 07:05:23 <img src="imgs/new.gif" /></td>
+       <td>An integer overflow vulnerability in the HTTP chunked transfer encoding parser in tinyproxy up to and including version 1.11.3 allows an unauthenticated remote attacker to cause a denial of service (DoS). The issue occurs because chunk size values are parsed using strtol() without properly validating overflow conditions (e.g., errno == ERANGE). A crafted chunk size such as 0x7fffffffffffffff (LONG_MAX) bypasses the existing validation check (chunklen < 0), leading to a signed integer overflow during arithmetic operations (chunklen + 2). This results in incorrect size calculations, causing the proxy to attempt reading an extremely large amount of request-body data and holding worker connections open indefinitely. An attacker can exploit this behavior to exhaust all available worker slots, preventing new connections from being accepted and causing complete service unavailability. Upstream addressed this issue in commit bb7edc4; however, the latest stable release (1.11.3) remains affected at the time of publication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3945">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>134f6ff609aac0a7a89f66b14ad6a6d8</td>
+       <td>CVE-2026-2328</td>
+       <td>2026-03-30 06:55:31 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can exploit insufficient input validation to access backend components beyond their intended scope via path traversal, resulting in exposure of sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2328">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>00c7830222c0ea7fef4abbabe4508340</td>
+       <td>CVE-2026-5107</td>
+       <td>2026-03-30 06:16:05 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in FRRouting FRR up to 10.5.1. This affects the function process_type2_route of the file bgpd/bgp_evpn.c of the component EVPN Type-2 Route Handler. The manipulation leads to improper access controls. The attack can be initiated remotely. The attack is considered to have high complexity. The exploitability is reported as difficult. The identifier of the patch is 7676cad65114aa23adde583d91d9d29e2debd045. To fix this issue, it is recommended to deploy a patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5107">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>69008c6a5352589d00d8b53841023e62</td>
+       <td>CVE-2026-5106</td>
+       <td>2026-03-30 05:15:59 <img src="imgs/new.gif" /></td>
+       <td>A flaw has been found in code-projects Exam Form Submission 1.0. The impacted element is an unknown function of the file /admin/update_fst.php. Executing a manipulation of the argument sname can lead to cross site scripting. It is possible to launch the attack remotely. The exploit has been published and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5106">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e4ddc360687f3ce2004e597f29872dbd</td>
        <td>CVE-2026-5043</td>
        <td>2026-03-29 12:15:57 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>2f0cb65a2027c70ba17ff89e42a82695</td>
        <td>CVE-2026-4994</td>
-       <td>2026-03-28 10:16:32 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 10:16:32</td>
        <td>A vulnerability was found in wandb OpenUI up to 1.0/3.5-turb. Affected is the function generic_exception_handler of the file backend/openui/server.py of the component APIStatusError Handler. The manipulation of the argument key results in information exposure through error message. Access to the local network is required for this attack. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4994">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>957e0f67a5d19a85974dbf8109bdca8f</td>
        <td>CVE-2026-4993</td>
-       <td>2026-03-28 10:16:31 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 10:16:31</td>
        <td>A vulnerability has been found in wandb OpenUI up to 0.0.0.0/1.0. This impacts an unknown function of the file backend/openui/config.py. The manipulation of the argument LITELLM_MASTER_KEY leads to hard-coded credentials. An attack has to be approached locally. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4993">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>ff931cd3ed6111870bc62363416716f7</td>
        <td>CVE-2026-2442</td>
-       <td>2026-03-28 10:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 10:16:30</td>
        <td>The Page Builder: Pagelayer – Drag and Drop website builder plugin for WordPress is vulnerable to Improper Neutralization of CRLF Sequences ('CRLF Injection') in all versions up to, and including, 2.0.7. This is due to the contact form handler performing placeholder substitution on attacker-controlled form fields and then passing the resulting values into email headers without removing CR/LF characters. This makes it possible for unauthenticated attackers to inject arbitrary email headers (for example Bcc / Cc) and abuse form email delivery via the 'email' parameter granted they can target a contact form configured to use placeholders in mail template headers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2442">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>7cfe4f98023ce7ab15c457554d6f0dc8</td>
        <td>CVE-2026-23399</td>
-       <td>2026-03-28 08:15:56 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 08:15:56</td>
        <td>In the Linux kernel, the following vulnerability has been resolved: nf_tables: nft_dynset: fix possible stateful expression memleak in error path If cloning the second stateful expression in the element via GFP_ATOMIC fails, then the first stateful expression remains in place without being released. unreferenced object (percpu) 0x607b97e9cab8 (size 16): comm "softirq", pid 0, jiffies 4294931867 hex dump (first 16 bytes on cpu 3): 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 backtrace (crc 0): pcpu_alloc_noprof+0x453/0xd80 nft_counter_clone+0x9c/0x190 [nf_tables] nft_expr_clone+0x8f/0x1b0 [nf_tables] nft_dynset_new+0x2cb/0x5f0 [nf_tables] nft_rhash_update+0x236/0x11c0 [nf_tables] nft_dynset_eval+0x11f/0x670 [nf_tables] nft_do_chain+0x253/0x1700 [nf_tables] nft_do_chain_ipv4+0x18d/0x270 [nf_tables] nf_hook_slow+0xaa/0x1e0 ip_local_deliver+0x209/0x330</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23399">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>be54637e7f9dab92c56182a9ec35e760</td>
        <td>CVE-2026-1307</td>
-       <td>2026-03-28 07:15:55 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 07:15:55</td>
        <td>The Ninja Forms - The Contact Form Builder That Grows With You plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.14.1 via a callback function for the admin_enqueue_scripts action handler in blocks/bootstrap.php. This makes it possible for authenticated attackers, with Contributor-level access and above, to gain access to an authorization token to view form submissions for arbitrary forms, which could potentially contain sensitive information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1307">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>76c09a4c97b6ebfad3fec681d500db6c</td>
        <td>CVE-2025-15445</td>
-       <td>2026-03-28 06:16:00 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 06:16:00</td>
        <td>The Restaurant Cafeteria WordPress theme through 0.4.6 exposes insecure admin-ajax actions without nonce or capability checks, allowing any logged-in user, like subscriber, to perform privileged operations. An attacker can install and activate a from a user-supplied URL, leading to arbitrary PHP code execution, and also import demo content that rewrites site configuration, including Restaurant Cafeteria WordPress theme through 0.4.6_mods, pages, menus, and front page settings.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15445">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>bfa1379f2ecdeec49c045b9be84918be</td>
        <td>CVE-2025-12886</td>
-       <td>2026-03-28 04:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 04:16:49</td>
        <td>The Oxygen Theme theme for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 6.0.8 via the laborator_calc_route AJAX action. This makes it possible for unauthenticated attackers to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12886">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>80a6e0d44ac2fc0e488858dc03fd2bf8</td>
        <td>CVE-2026-4987</td>
-       <td>2026-03-28 02:16:14 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 02:16:14</td>
        <td>The SureForms – Contact Form, Payment Form & Other Custom Form Builder plugin for WordPress is vulnerable to Payment Amount Bypass in all versions up to, and including, 2.5.2. This is due to the create_payment_intent() function performing a payment validation solely based on the value of a user-controlled parameter. This makes it possible for unauthenticated attackers to bypass configured form payment-amount validation and create underpriced payment/subscription intents by setting form_id to 0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4987">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>5fa35dc2bc353a79110d8c99ec8896fa</td>
        <td>CVE-2026-1679</td>
-       <td>2026-03-28 00:16:04 <img src="imgs/new.gif" /></td>
+       <td>2026-03-28 00:16:04</td>
        <td>The eswifi socket offload driver copies user-provided payloads into a fixed buffer without checking available space; oversized sends overflow `eswifi->buf`, corrupting kernel memory (CWE-120). Exploit requires local code that can call the socket send API; no remote attacker can reach it directly.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1679">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-03-27 23:17:19</td>
        <td>A flaw has been found in wandb OpenUI up to 1.0. This affects the function create_share/get_share of the file backend/openui/server.py of the component HTMLAnnotator Component. Executing a manipulation of the argument ID can lead to HTML injection. The attack may be performed from remote. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4992">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>357f5952dd1e014767538edcbd05edd3</td>
-       <td>CVE-2026-4622</td>
-       <td>2026-03-27 12:16:21</td>
-       <td>OS Command Injection vulnerability in NEC Platforms, Ltd. Aterm Series allows a attacker to execute arbitrary OS commands via network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4622">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6da8f29214b85679e3f35ec25d7b8282</td>
-       <td>CVE-2026-4621</td>
-       <td>2026-03-27 12:16:20</td>
-       <td>Hidden Functionality vulnerability in NEC Platforms, Ltd. Aterm Series allows a attacker to enable telnet via network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4621">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>15673b286674cab2ecfe50cb6700e9db</td>
-       <td>CVE-2026-4620</td>
-       <td>2026-03-27 12:16:20</td>
-       <td>OS Command Injection vulnerability in NEC Platforms, Ltd. Aterm Series allows a attacker to execute arbitrary OS commands via network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4620">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8accc4e560a4061510e9be810abc3fcd</td>
-       <td>CVE-2026-4619</td>
-       <td>2026-03-27 12:16:20</td>
-       <td>Path Traversal vulnerability in NEC Platforms, Ltd. Aterm Series allows a attacker to wtite over any file via network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4619">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f7feb44d95dc9c566d96fadd4515cc2a</td>
-       <td>CVE-2026-4309</td>
-       <td>2026-03-27 12:16:20</td>
-       <td>Missing Authorization vulnerability in NEC Platforms, Ltd. Aterm Series allows a attacker to get a specific device information and change the settings via network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4309">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d114c19f24937f0519ccee6ab51d6c6</td>
-       <td>CVE-2026-25101</td>
-       <td>2026-03-27 12:16:20</td>
-       <td>Bludit allows user's session identifier to be set before authentication. The value of this session ID stays the same after authentication. This behavior enables an attacker to fix a session ID for a victim and later hijack the authenticated session. This issue was fixed in version 3.17.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25101">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f9b0ac58285056d090a63b595e61545a</td>
-       <td>CVE-2026-25100</td>
-       <td>2026-03-27 12:16:20</td>
-       <td>Bludit is vulnerable to Stored Cross-Site Scripting (XSS) in its image upload functionality. An authenticated attacker with content upload privileges (such as Author, Editor, or Administrator) can upload an SVG file containing a malicious payload, which is executed when a victim visits the URL of the uploaded resource. The uploaded resource itself is accessible without authentication. The vendor was notified early about this vulnerability, but stopped responding in the middle of coordination. All versions up to 3.18.2 are considered to be vulnerable, future versions might also be vulnerable.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25100">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9dfc619fac8fc9261aa88a0dcb342db3</td>
-       <td>CVE-2026-25099</td>
-       <td>2026-03-27 12:16:19</td>
-       <td>Bludit’s API plugin allows an authenticated attacker with a valid API token to upload files of any type and extension without restriction, which can then be executed, leading to Remote Code Execution. This issue was fixed in 3.18.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25099">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ee186dddabc5a43b8757f2d9b5f81f0</td>
-       <td>CVE-2023-7339</td>
-       <td>2026-03-27 11:16:01</td>
-       <td>Stack-based buffer overflow vulnerability in Softing Industrial Automation GmbH gateways allows overflow buffers. This issue affects pnGate: through 1.30 epGate: through 1.30 mbGate: through 1.30 smartLink HW-DP: through 1.30 smartLink HW-PN: through 1.01.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-7339">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d601b7ba780c2869d506519ca1b236b5</td>
-       <td>CVE-2026-3457</td>
-       <td>2026-03-27 09:16:20</td>
-       <td>Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in Thales Sentinel LDK Runtime on Windows allows Stored XSS.This issue affects Sentinel LDK Runtime: before 10.22.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3457">详情</a></td>
       </tr>
 
      </tbody>
