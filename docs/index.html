@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-01 16:09:18 -->
+<!-- RELEASE TIME : 2026-04-02 16:04:46 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7263bf0557dc93c1005dce30ef092189</td>
+       <td>CVE-2026-23416</td>
+       <td>2026-04-02 12:16:20 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm/mseal: update VMA end correctly on merge Previously we stored the end of the current VMA in curr_end, and then upon iterating to the next VMA updated curr_start to curr_end to advance to the next VMA. However, this doesn't take into account the fact that a VMA might be updated due to a merge by vma_modify_flags(), which can result in curr_end being stale and thus, upon setting curr_start to curr_end, ending up with an incorrect curr_start on the next iteration. Resolve the issue by setting curr_end to vma->vm_end unconditionally to ensure this value remains updated should this occur. While we're here, eliminate this entire class of bug by simply setting const curr_[start/end] to be clamped to the input range and VMAs, which also happens to simplify the logic.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23416">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>81058c56ab0c5c7e75db2606075ed269</td>
+       <td>CVE-2026-23412</td>
+       <td>2026-04-02 12:16:20 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: netfilter: bpf: defer hook memory release until rcu readers are done Yiming Qian reports UaF when concurrent process is dumping hooks via nfnetlink_hooks: BUG: KASAN: slab-use-after-free in nfnl_hook_dump_one.isra.0+0xe71/0x10f0 Read of size 8 at addr ffff888003edbf88 by task poc/79 Call Trace: <TASK> nfnl_hook_dump_one.isra.0+0xe71/0x10f0 netlink_dump+0x554/0x12b0 nfnl_hook_get+0x176/0x230 [..] Defer release until after concurrent readers have completed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23412">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01a2fad5dcc14a0dc5d694615cd1cbbc</td>
+       <td>CVE-2026-5326</td>
+       <td>2026-04-02 11:16:23 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was identified in SourceCodester Leave Application System 1.0. Impacted is an unknown function of the file /index.php?page=manage_user of the component User Information Handler. Such manipulation of the argument ID leads to authorization bypass. The attack can be executed remotely. The exploit is publicly available and might be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5326">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2c99c0ba6c9f1125238cdcf4af5a9a9d</td>
+       <td>CVE-2026-32145</td>
+       <td>2026-04-02 11:16:21 <img src="imgs/new.gif" /></td>
+       <td>Allocation of Resources Without Limits or Throttling vulnerability in gleam-wisp wisp allows a denial of service via multipart form body parsing. The multipart_body function bypasses configured max_body_size and max_files_size limits. When a multipart boundary is not present in a chunk, the parser takes the MoreRequiredForBody path, which appends the chunk to the output but passes the quota unchanged to the recursive call. Only the final chunk containing the boundary is counted via decrement_quota. The same pattern exists in multipart_headers, where MoreRequiredForHeaders recurses without calling decrement_body_quota. An unauthenticated attacker can exhaust server memory or disk by sending arbitrarily large multipart form submissions in a single HTTP request. This issue affects wisp: from 0.2.0 before 2.2.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32145">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7acd792b22f6006095e64044bbc3c9d3</td>
+       <td>CVE-2026-5246</td>
+       <td>2026-04-02 10:16:17 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was determined in Cesanta Mongoose up to 7.20. Affected is the function mg_tls_verify_cert_signature of the file mongoose.c of the component P-384 Public Key Handler. Executing a manipulation can lead to authorization bypass. The attack can be executed remotely. Attacks of this nature are highly complex. The exploitability is told to be difficult. The exploit has been publicly disclosed and may be utilized. Upgrading to version 7.21 is able to address this issue. This patch is called 0d882f1b43ff2308b7486a56a9d60cd6dba8a3f1. The affected component should be upgraded. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5246">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0388cbc18a1e490032d74cdaf203b415</td>
+       <td>CVE-2026-5245</td>
+       <td>2026-04-02 10:16:17 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Cesanta Mongoose up to 7.20. This impacts the function handle_mdns_record of the file mongoose.c of the component mDNS Record Handler. Performing a manipulation of the argument buf results in stack-based buffer overflow. Remote exploitation of the attack is possible. A high degree of complexity is needed for the attack. The exploitability is said to be difficult. The exploit has been made public and could be used. Upgrading to version 7.21 will fix this issue. The patch is named 0d882f1b43ff2308b7486a56a9d60cd6dba8a3f1. You should upgrade the affected component. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5245">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aae68fbebe607353df66f4bcbc5fa6fb</td>
+       <td>CVE-2026-33617</td>
+       <td>2026-04-02 10:16:17 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can access a configuration file containing database credentials. This can result in a some loss of confidentiality, but there is no endpoint exposed to use these credentials.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33617">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9d2b54d618543f2fc7efe04e08c3c9c1</td>
+       <td>CVE-2026-33616</td>
+       <td>2026-04-02 10:16:17 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can exploit an unauthenticated blind SQL Injection vulnerability in the mb24api endpoint due to improper neutralization of special elements in a SQL SELECT command. This can result in a total loss of confidentiality.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33616">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>61bd0d07e86a99d7a928f12088c6d8c2</td>
+       <td>CVE-2026-33615</td>
+       <td>2026-04-02 10:16:16 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can exploit an unauthenticated SQL Injection vulnerability in the setinfo endpoint due to improper neutralization of special elements in a SQL UPDATE command. This can result in a total loss of integrity and availability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33615">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7e0b85b87125d996c6d085029667676</td>
+       <td>CVE-2026-33614</td>
+       <td>2026-04-02 10:16:16 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can exploit an unauthenticated SQL Injection vulnerability in the getinfo endpoint due to improper neutralization of special elements in a SQL SELECT command. This can result in a total loss of confidentiality.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33614">详情</a></td>
+      </tr>
+
+      <tr>
        <td>baa05470fe8effd600164a7f7b365f89</td>
        <td>CVE-2026-5271</td>
        <td>2026-04-01 14:16:59 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-03-30 05:15:59</td>
        <td>A flaw has been found in code-projects Exam Form Submission 1.0. The impacted element is an unknown function of the file /admin/update_fst.php. Executing a manipulation of the argument sname can lead to cross site scripting. It is possible to launch the attack remotely. The exploit has been published and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5106">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e4ddc360687f3ce2004e597f29872dbd</td>
-       <td>CVE-2026-5043</td>
-       <td>2026-03-29 12:15:57</td>
-       <td>A weakness has been identified in Belkin F9K1122 1.00.33. The impacted element is the function formSetPassword of the file /goform/formSetPassword of the component Parameter Handler. This manipulation of the argument webpage causes stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5043">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1f0b279c8f1612885e1437593f2c62ab</td>
-       <td>CVE-2026-5042</td>
-       <td>2026-03-29 11:16:34</td>
-       <td>A security flaw has been discovered in Belkin F9K1122 1.00.33. The affected element is the function formCrossBandSwitch of the file /goform/formCrossBandSwitch of the component Parameter Handler. The manipulation of the argument webpage results in stack-based buffer overflow. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5042">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>00d6fd6f893371e675f06c825c61fcbf</td>
-       <td>CVE-2026-5041</td>
-       <td>2026-03-29 10:15:56</td>
-       <td>A vulnerability was identified in code-projects Chamber of Commerce Membership Management System 1.0. Impacted is the function fwrite of the file admin/pageMail.php. The manipulation of the argument mailSubject/mailMessage leads to command injection. The attack may be initiated remotely. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5041">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0eb1a1e29e9d2437f38f613f444b81c8</td>
-       <td>CVE-2026-5037</td>
-       <td>2026-03-29 09:15:56</td>
-       <td>A vulnerability was determined in mxml up to 4.0.4. This issue affects the function index_sort of the file mxml-index.c of the component mxmlIndexNew. Executing a manipulation of the argument tempr can lead to stack-based buffer overflow. The attack is restricted to local execution. The exploit has been publicly disclosed and may be utilized. This patch is called 6e27354466092a1ac65601e01ce6708710bb9fa5. A patch should be applied to remediate this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5037">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e164747409df710df93118c4b101755</td>
-       <td>CVE-2026-5036</td>
-       <td>2026-03-29 08:15:56</td>
-       <td>A vulnerability was found in Tenda 4G06 04.06.01.29. This vulnerability affects the function fromDhcpListClient of the file /goform/DhcpListClient of the component Endpoint. Performing a manipulation of the argument page results in stack-based buffer overflow. The attack can be initiated remotely. The exploit has been made public and could be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5036">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>475a2904865354ab668564da2479964a</td>
-       <td>CVE-2026-5035</td>
-       <td>2026-03-29 07:15:56</td>
-       <td>A vulnerability has been found in code-projects Accounting System 1.0. This affects an unknown part of the file /view_work.php of the component Parameter Handler. Such manipulation of the argument en_id leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5035">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6f697e4a08828e39e40f254f9f24e8a5</td>
-       <td>CVE-2026-5034</td>
-       <td>2026-03-29 06:16:12</td>
-       <td>A flaw has been found in code-projects Accounting System 1.0. Affected by this issue is some unknown functionality of the file /edit_costumer.php of the component Parameter Handler. This manipulation of the argument cos_id causes sql injection. It is possible to initiate the attack remotely. The exploit has been published and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5034">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a83413f5ff7b668395bc9e8fd42ffb0e</td>
-       <td>CVE-2026-5033</td>
-       <td>2026-03-29 06:16:11</td>
-       <td>A vulnerability was detected in code-projects Accounting System 1.0. Affected by this vulnerability is an unknown functionality of the file /view_costumer.php of the component Parameter Handler. The manipulation of the argument cos_id results in sql injection. The attack may be performed from remote. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5033">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3a23ad779c8bfbe4766c842351af5e84</td>
-       <td>CVE-2026-5031</td>
-       <td>2026-03-29 05:15:55</td>
-       <td>A vulnerability was found in BichitroGan ISP Billing Software 2025.3.20. Impacted is an unknown function of the file /?_route=settings/users-view/ of the component Endpoint. The manipulation of the argument ID results in improper control of resource identifiers. The attack can be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5031">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>425e6ee82bdd5bfc46f814008f68b1cc</td>
-       <td>CVE-2026-5030</td>
-       <td>2026-03-29 05:15:55</td>
-       <td>A vulnerability has been found in Totolink NR1800X 9.1.0u.6279_B20210910. This issue affects the function NTPSyncWithHost of the file /cgi-bin/cstecgi.cgi of the component Telnet Service. The manipulation of the argument host_time leads to command injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5030">详情</a></td>
       </tr>
 
      </tbody>
