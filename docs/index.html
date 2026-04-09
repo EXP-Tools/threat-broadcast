@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-08 16:18:45 -->
+<!-- RELEASE TIME : 2026-04-09 19:17:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3b76461741a3c9642202209e4765a2a5</td>
+       <td>CVE-2026-4901</td>
+       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>Hydrosystem Control System saves sensitive information into a log file. Critically, user credentials are logged allowing the attacker to obtain further authorized access into the system. Combined with vulnerability CVE-2026-34184, these sensitive information could be accessed by an unauthorized user.This issue was fixed in Hydrosystem Control System version 9.8.5</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4901">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bfe6f72a3e71ea8aa6901ba6b54b6c07</td>
+       <td>CVE-2026-34538</td>
+       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>Apache Airflow versions 3.0.0 through 3.1.8 DagRun wait endpoint returns XCom result values even to users who only have DAG Run read permissions, such as the Viewer role.This behavior conflicts with the FAB RBAC model, which treats XCom as a separate protected resource, and with the security model documentation that defines the Viewer role as read-only. Airflow uses the FAB Auth Manager to manage access control on a per-resource basis. The Viewer role is intended to be read-only by default, and the security model documentation defines Viewer users as those who can inspect DAGs without accessing sensitive execution results. Users are recommended to upgrade to Apache Airflow 3.2.0 which resolves this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34538">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>553ee5d45245cb1b078916fa56e59a10</td>
+       <td>CVE-2026-34185</td>
+       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>Hydrosystem Control System is vulnerable to SQL Injection across most scripts and input parameters. Because no protections are in place, an authenticated attacker can inject arbitrary SQL commands, potentially gaining full control over the database.This issue was fixed in Hydrosystem Control System version 9.8.5</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34185">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2e5cf6ffb92a4dcccf5e9699e66d8334</td>
+       <td>CVE-2026-34184</td>
+       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>Hydrosystem Control System does not enforce authorization for some directories. This allows an unauthorized attacker to read all files in these directories and even execute some of them. Critically the attacker could run PHP scripts directly on the connected database.This issue was fixed in Hydrosystem Control System version 9.8.5</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34184">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>59bb06fc5017c316de57277099405848</td>
+       <td>CVE-2026-34179</td>
+       <td>2026-04-09 10:16:21 <img src="imgs/new.gif" /></td>
+       <td>In Canonical LXD versions 4.12 through 6.7, the doCertificateUpdate function in lxd/certificates.go does not validate the Type field when handling PUT/PATCH requests to /1.0/certificates/{fingerprint} for restricted TLS certificate users, allowing a remote authenticated attacker to escalate privileges to cluster admin.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34179">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f373b46e97eb29d9c3c4740c0e6ad490</td>
+       <td>CVE-2026-34178</td>
+       <td>2026-04-09 10:16:21 <img src="imgs/new.gif" /></td>
+       <td>In Canonical LXD before 6.8, the backup import path validates project restrictions against backup/index.yaml in the supplied tar archive but creates the instance from backup/container/backup.yaml, a separate file in the same archive that is never checked against project restrictions. An authenticated remote attacker with instance-creation permission in a restricted project can craft a backup archive where backup.yaml carries restricted settings such as security.privileged=true or raw.lxc directives, bypassing all project restriction enforcement and allowing full host compromise.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34178">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>73b1dca8df2ee2598e11aec066fd488d</td>
+       <td>CVE-2026-34177</td>
+       <td>2026-04-09 10:16:21 <img src="imgs/new.gif" /></td>
+       <td>Canonical LXD versions 4.12 through 6.7 contain an incomplete denylist in isVMLowLevelOptionForbidden (lxd/project/limits/permissions.go), which omits raw.apparmor and raw.qemu.conf from the set of keys blocked under the restricted.virtual-machines.lowlevel=block project restriction. A remote attacker with can_edit permission on a VM instance in a restricted project can inject an AppArmor rule and a QEMU chardev configuration that bridges the LXD Unix socket into the guest VM, enabling privilege escalation to LXD cluster administrator and subsequently to host root.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34177">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cccfebb1288773752753b208d64af906</td>
+       <td>CVE-2025-62188</td>
+       <td>2026-04-09 10:16:20 <img src="imgs/new.gif" /></td>
+       <td>An Exposure of Sensitive Information to an Unauthorized Actor vulnerability exists in Apache DolphinScheduler. This vulnerability may allow unauthorized actors to access sensitive information, including database credentials. This issue affects Apache DolphinScheduler versions 3.1.*. Users are recommended to upgrade to: * version ≥ 3.2.0 if using 3.1.x As a temporary workaround, users who cannot upgrade immediately may restrict the exposed management endpoints by setting the following environment variable: ``` MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,metrics,prometheus ``` Alternatively, add the following configuration to the application.yaml file: ``` management: endpoints: web: exposure: include: health,metrics,prometheus ``` This issue has been reported as CVE-2023-48796: https://cveprocess.apache.org/cve5/CVE-2023-48796</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62188">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>afaabbb0fce1179fea852c792f42ac29</td>
+       <td>CVE-2026-5854</td>
+       <td>2026-04-09 07:16:05 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in Totolink A7100RU 7.4cu.2313_b20191024. Affected by this issue is the function setWiFiEasyCfg of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. Performing a manipulation of the argument merge results in os command injection. It is possible to initiate the attack remotely. The exploit is now public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5854">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a6ee63e7dae8e382977c78a60b918dab</td>
+       <td>CVE-2026-5853</td>
+       <td>2026-04-09 07:16:05 <img src="imgs/new.gif" /></td>
+       <td>A security vulnerability has been detected in Totolink A7100RU 7.4cu.2313_b20191024. Affected by this vulnerability is the function setIpv6LanCfg of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. Such manipulation of the argument addrPrefixLen leads to os command injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5853">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fae13183289423e042aea29a58daac37</td>
        <td>CVE-2026-5735</td>
-       <td>2026-04-07 13:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:47</td>
        <td>Memory safety bugs present in Firefox 149.0.1 and Thunderbird 149.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 149.0.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5735">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>952003e45b3a507d7b523eb91c10f531</td>
        <td>CVE-2026-5734</td>
-       <td>2026-04-07 13:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:47</td>
        <td>Memory safety bugs present in Firefox ESR 140.9.0, Thunderbird ESR 140.9.0, Firefox 149.0.1 and Thunderbird 149.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 149.0.2 and Firefox ESR < 140.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5734">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>7839c3b9ba11224511031d51e8997596</td>
        <td>CVE-2026-5733</td>
-       <td>2026-04-07 13:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:47</td>
        <td>Incorrect boundary conditions in the Graphics: WebGPU component. This vulnerability affects Firefox < 149.0.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5733">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>21ac72465a06a441b5c6a7e5feb34e80</td>
        <td>CVE-2026-5732</td>
-       <td>2026-04-07 13:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:47</td>
        <td>Incorrect boundary conditions, integer overflow in the Graphics: Text component. This vulnerability affects Firefox < 149.0.2 and Firefox ESR < 140.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5732">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>54a36a18373d481a94a28a397c6a80a0</td>
        <td>CVE-2026-5731</td>
-       <td>2026-04-07 13:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:47</td>
        <td>Memory safety bugs present in Firefox ESR 115.34.0, Firefox ESR 140.9.0, Thunderbird ESR 140.9.0, Firefox 149.0.1 and Thunderbird 149.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 149.0.2, Firefox ESR < 115.34.1, and Firefox ESR < 140.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5731">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>251bd1f0aee30d09b7d21dd61bb90e4f</td>
        <td>CVE-2026-3466</td>
-       <td>2026-04-07 13:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:47</td>
        <td>Insufficient sanitization of dashboard dashlet title links in Checkmk 2.2.0 (EOL), Checkmk 2.3.0 before 2.3.0p46, Checkmk 2.4.0 before 2.4.0p25, and Checkmk 2.5.0 (beta) before 2.5.0b3 allows an attacker with dashboard creation privileges to perform stored cross-site scripting (XSS) attacks by tricking a victim into clicking a crafted dashlet title link on a shared dashboard.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3466">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>8d050e2f61ea6f759a5000c0b2ff06e8</td>
        <td>CVE-2026-33866</td>
-       <td>2026-04-07 13:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:47</td>
        <td>MLflow is vulnerable to an authorization bypass affecting the AJAX endpoint used to download saved model artifacts. Due to missing access‑control validation, a user without permissions to a given experiment can directly query this endpoint and retrieve model artifacts they are not authorized to access. This issue affects MLflow version through 3.10.1</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33866">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>aea7fc360d0a7a3d58e3630ef0cbba71</td>
        <td>CVE-2026-33865</td>
-       <td>2026-04-07 13:16:46 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:46</td>
        <td>MLflow is vulnerable to Stored Cross-Site Scripting (XSS) caused by unsafe parsing of YAML-based MLmodel artifacts in its web interface. An authenticated attacker can upload a malicious MLmodel file containing a payload that executes when another user views the artifact in the UI. This allows actions such as session hijacking or performing operations on behalf of the victim. This issue affects MLflow version through 3.10.1</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33865">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>11c18113fa43f4c66fa0c3693a195526</td>
        <td>CVE-2026-32144</td>
-       <td>2026-04-07 13:16:46 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:46</td>
        <td>Improper Certificate Validation vulnerability in Erlang OTP public_key (pubkey_ocsp module) allows OCSP designated-responder authorization bypass via missing signature verification. The OCSP response validation in public_key:pkix_ocsp_validate/5 does not verify that a CA-designated responder certificate was cryptographically signed by the issuing CA. Instead, it only checks that the responder certificate's issuer name matches the CA's subject name and that the certificate has the OCSPSigning extended key usage. An attacker who can intercept or control OCSP responses can create a self-signed certificate with a matching issuer name and the OCSPSigning EKU, and use it to forge OCSP responses that mark revoked certificates as valid. This affects SSL/TLS clients using OCSP stapling, which may accept connections to servers with revoked certificates, potentially transmitting sensitive data to compromised servers. Applications using the public_key:pkix_ocsp_validate/5 API directly are also affected, with impact depending on usage context. This vulnerability is associated with program files lib/public_key/src/pubkey_ocsp.erl and program routines pubkey_ocsp:is_authorized_responder/3. This issue affects OTP from OTP 27.0 until OTP 28.4.2 and 27.3.4.10 corresponding to public_key from 1.16 until 1.20.3 and 1.17.1.2, and ssl from 11.2 until 11.5.4 and 11.2.12.7.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32144">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>7f9ffb982c201279253dbd4780ba618c</td>
        <td>CVE-2026-28808</td>
-       <td>2026-04-07 13:16:46 <img src="imgs/new.gif" /></td>
+       <td>2026-04-07 13:16:46</td>
        <td>Incorrect Authorization vulnerability in Erlang OTP (inets modules) allows unauthenticated access to CGI scripts protected by directory rules when served via script_alias. When script_alias maps a URL prefix to a directory outside DocumentRoot, mod_auth evaluates directory-based access controls against the DocumentRoot-relative path while mod_cgi executes the script at the ScriptAlias-resolved path. This path mismatch allows unauthenticated access to CGI scripts that directory rules were meant to protect. This vulnerability is associated with program files lib/inets/src/http_server/mod_alias.erl, lib/inets/src/http_server/mod_auth.erl, and lib/inets/src/http_server/mod_cgi.erl. This issue affects OTP from OTP 17.0 until OTP 28.4.2, 27.3.4.10 and 26.2.5.19 corresponding to inets from 5.10 until 9.6.2, 9.3.2.4 and 9.1.0.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28808">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-04-06 16:16:36</td>
        <td>vLLM is an inference and serving engine for large language models (LLMs). From 0.1.0 to before 0.19.0, a Denial of Service vulnerability exists in the vLLM OpenAI-compatible API server. Due to the lack of an upper bound validation on the n parameter in the ChatCompletionRequest and CompletionRequest Pydantic models, an unauthenticated attacker can send a single HTTP request with an astronomically large n value. This completely blocks the Python asyncio event loop and causes immediate Out-Of-Memory crashes by allocating millions of request object copies in the heap before the request even reaches the scheduling queue. This vulnerability is fixed in 0.19.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34756">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b942732852539d1642574a7b912d1fa</td>
-       <td>CVE-2026-5558</td>
-       <td>2026-04-05 10:16:19</td>
-       <td>A flaw has been found in PHPGurukul PHPGurukul Online Shopping Portal Project up to 2.1. Impacted is an unknown function of the file /pending-orders.php of the component Parameter Handler. This manipulation of the argument ID causes sql injection. The attack is possible to be carried out remotely. The exploit has been published and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5558">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>81ddae9d17b9f98e5438140c1c4174c4</td>
-       <td>CVE-2026-5557</td>
-       <td>2026-04-05 10:16:19</td>
-       <td>A vulnerability was detected in badlogic pi-mono up to 0.58.4. This issue affects some unknown processing of the file packages/mom/src/slack.ts of the component pi-mom Slack Bot. The manipulation results in authentication bypass using alternate channel. The attack can be executed remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5557">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>62adb2484d603ea8fbd09f744a59d0cd</td>
-       <td>CVE-2026-5556</td>
-       <td>2026-04-05 10:16:19</td>
-       <td>A security vulnerability has been detected in badlogic pi-mono up to 0.58.4. This vulnerability affects the function discoverAndLoadExtensions of the file packages/coding-agent/src/core/extensions/loader.ts. The manipulation leads to code injection. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5556">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0987d21227c0ff85006410bfe035f9cb</td>
-       <td>CVE-2026-5555</td>
-       <td>2026-04-05 10:16:19</td>
-       <td>A weakness has been identified in code-projects Concert Ticket Reservation System 1.0. This affects an unknown part of the file /ConcertTicketReservationSystem-master/login.php of the component Parameter Handler. Executing a manipulation of the argument Email can lead to sql injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5555">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>64a57e857c6cd3fdb859fdeee2104094</td>
-       <td>CVE-2026-5554</td>
-       <td>2026-04-05 10:16:18</td>
-       <td>A security flaw has been discovered in code-projects Concert Ticket Reservation System 1.0. Affected by this issue is some unknown functionality of the file /ConcertTicketReservationSystem-master/process_search.php of the component Parameter Handler. Performing a manipulation of the argument searching results in sql injection. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5554">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76a159db9d9774a51e5acba27cc53390</td>
-       <td>CVE-2026-5553</td>
-       <td>2026-04-05 09:16:19</td>
-       <td>A vulnerability was identified in itsourcecode Online Cellphone System 1.0. Affected by this vulnerability is an unknown functionality of the file /cp/available.php of the component Parameter Handler. Such manipulation of the argument Name leads to sql injection. The attack can be launched remotely. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5553">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc8b59fb160e9b733421ae26349566b0</td>
-       <td>CVE-2026-5552</td>
-       <td>2026-04-05 09:16:18</td>
-       <td>A weakness has been identified in PHPGurukul Online Shopping Portal Project 2.1. This issue affects some unknown processing of the file /sub-category.php of the component Parameter Handler. This manipulation of the argument pid causes sql injection. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5552">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0318a50bffb23c1a5a539825e25a844b</td>
-       <td>CVE-2026-5551</td>
-       <td>2026-04-05 09:16:17</td>
-       <td>A security flaw has been discovered in itsourcecode Free Hotel Reservation System 1.0. This vulnerability affects unknown code of the file /hotel/admin/login.php of the component Parameter Handler. The manipulation of the argument email results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5551">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>404c2c656a5516d5cd11f6aa8a850d85</td>
-       <td>CVE-2026-5550</td>
-       <td>2026-04-05 08:16:25</td>
-       <td>A vulnerability was identified in Tenda AC10 16.03.10.10_multi_TDE01. This affects the function fromSysToolChangePwd of the file /bin/httpd. The manipulation leads to stack-based buffer overflow. The attack may be initiated remotely. Multiple endpoints might be affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5550">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d79cbb641f9ce16033a420fa00b669a</td>
-       <td>CVE-2026-5549</td>
-       <td>2026-04-05 08:16:24</td>
-       <td>A vulnerability was determined in Tenda AC10 16.03.10.10_multi_TDE01. Affected by this issue is some unknown functionality of the file /webroot_ro/pem/privkeySrv.pem of the component RSA 2048-bit Private Key Handler. Executing a manipulation can lead to use of hard-coded cryptographic key . The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5549">详情</a></td>
       </tr>
 
      </tbody>
