@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-09 19:17:45 -->
+<!-- RELEASE TIME : 2026-04-10 19:03:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c360bbbd586bba931cf5c520f1b62ac8</td>
+       <td>CVE-2026-33141</td>
+       <td>2026-04-10 18:01:26 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 2.0.0-RC.3, an Insecure Direct Object Reference (IDOR) vulnerability in the REST API stats endpoint allows any authenticated user (including low-privilege students with ROLE_USER) to read any other user's learning progress, certificates, and gradebook scores for any course, without enrollment or supervisory relationship. This vulnerability is fixed in 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>daa7aaf4c28fc32b17713a133b41013f</td>
+       <td>CVE-2026-32892</td>
+       <td>2026-04-10 17:56:57 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 1.11.38 and 2.0.0-RC.3, Chamilo LMS contains an OS Command Injection vulnerability in the file move function. The move() function in fileManage.lib.php passes user-controlled path values directly into exec() shell commands without using escapeshellarg(). When a user moves a document via document.php, the move_to POST parameter — which only passes through Security::remove_XSS() (an HTML-only filter) — is concatenated directly into shell commands such as exec("mv $source $target"). By default, Chamilo allows all authenticated users to create courses (allow_users_to_create_courses = true). Any user who is a teacher in a course (including self-created courses) can move documents, making this vulnerability exploitable by any authenticated user. The attacker must first place a directory with shell metacharacters in its name on the filesystem (achievable via Course Backup Import), then move a document into that directory to trigger arbitrary command execution as the web server user (www-data). This vulnerability is fixed in 1.11.38 and 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32892">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9e3a88f170df07506110b6f2f82cb94f</td>
+       <td>CVE-2026-1502</td>
+       <td>2026-04-10 17:54:44 <img src="imgs/new.gif" /></td>
+       <td>CR/LF bytes were not rejected by HTTP client proxy tunnel headers or host.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1502">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>891b2691b8d92d0305d9001618fa6162</td>
+       <td>CVE-2026-32932</td>
+       <td>2026-04-10 17:51:58 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 1.11.38 and 2.0.0-RC.3, an Open Redirect vulnerability in the session course edit page allows an attacker to redirect an authenticated administrator to an arbitrary external URL after saving coach assignment changes. The redirect also leaks the id_session parameter to the attacker's server. This vulnerability is fixed in 1.11.38 and 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32932">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c65c9ef54eab450471a40157c6c920f8</td>
+       <td>CVE-2026-32931</td>
+       <td>2026-04-10 17:50:40 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 1.11.38 and 2.0.0-RC.3, an unrestricted file upload vulnerability in the exercise sound upload function allows an authenticated teacher to upload a PHP webshell by spoofing the Content-Type header to audio/mpeg. The uploaded file retains its original .php extension and is placed in a web-accessible directory, enabling Remote Code Execution as the web server user (www-data). This vulnerability is fixed in 1.11.38 and 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32931">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fc790f8668d32691bfa4b0e368a931b3</td>
+       <td>CVE-2026-32930</td>
+       <td>2026-04-10 17:48:51 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 1.11.38 and 2.0.0-RC.3, an Insecure Direct Object Reference (IDOR) vulnerability in the gradebook evaluation edit page allows any authenticated teacher to view and modify the settings (name, max score, weight) of evaluations belonging to any other course by manipulating the editeval GET parameter. This vulnerability is fixed in 1.11.38 and 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32930">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b009bad6823d5cbf1c95f10c75cbb1c7</td>
+       <td>CVE-2026-32894</td>
+       <td>2026-04-10 17:44:24 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 1.11.38 and 2.0.0-RC.3, an Insecure Direct Object Reference (IDOR) vulnerability in the gradebook result view page allows any authenticated teacher to delete any student's grade result across the entire platform by manipulating the delete_mark or resultdelete GET parameters. No ownership or course-scope verification is performed. This vulnerability is fixed in 1.11.38 and 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32894">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7782e0a9b6fa193c9573e8edf56a1ede</td>
+       <td>CVE-2026-32893</td>
+       <td>2026-04-10 17:42:24 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 2.0.0-RC.3, a Reflected Cross-Site Scripting (XSS) vulnerability in the exercise question list admin panel allows an attacker to execute arbitrary JavaScript in an authenticated teacher's browser. The pagination code merges all $_GET parameters via array_merge() and outputs the result via http_build_query() directly into HTML href attributes without htmlspecialchars() encoding. This vulnerability is fixed in 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32893">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3e97fb21d580005a60a5a75126d4f1d8</td>
+       <td>CVE-2026-31941</td>
+       <td>2026-04-10 17:37:50 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 1.11.38 and 2.0.0-RC.3, Chamilo LMS contains a Server-Side Request Forgery (SSRF) vulnerability in the Social Wall feature. The endpoint read_url_with_open_graph accepts a URL from the user via the social_wall_new_msg_main POST parameter and performs two server-side HTTP requests to that URL without validating whether the target is an internal or external resource. This allows an authenticated attacker to force the server to make arbitrary HTTP requests to internal services, scan internal ports, and access cloud instance metadata. This vulnerability is fixed in 1.11.38 and 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31941">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c6c4de10200aec58fbcb1884c41fdc5b</td>
+       <td>CVE-2026-31940</td>
+       <td>2026-04-10 17:35:10 <img src="imgs/new.gif" /></td>
+       <td>Chamilo LMS is a learning management system. Prior to 1.11.38 and 2.0.0-RC.3, in main/lp/aicc_hacp.php, user-controlled request parameters are directly used to set the PHP session ID before loading global bootstrap. This leads to session fixation. This vulnerability is fixed in 1.11.38 and 2.0.0-RC.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-31940">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3b76461741a3c9642202209e4765a2a5</td>
        <td>CVE-2026-4901</td>
        <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-04-07 13:16:46</td>
        <td>Incorrect Authorization vulnerability in Erlang OTP (inets modules) allows unauthenticated access to CGI scripts protected by directory rules when served via script_alias. When script_alias maps a URL prefix to a directory outside DocumentRoot, mod_auth evaluates directory-based access controls against the DocumentRoot-relative path while mod_cgi executes the script at the ScriptAlias-resolved path. This path mismatch allows unauthenticated access to CGI scripts that directory rules were meant to protect. This vulnerability is associated with program files lib/inets/src/http_server/mod_alias.erl, lib/inets/src/http_server/mod_auth.erl, and lib/inets/src/http_server/mod_cgi.erl. This issue affects OTP from OTP 17.0 until OTP 28.4.2, 27.3.4.10 and 26.2.5.19 corresponding to inets from 5.10 until 9.6.2, 9.3.2.4 and 9.1.0.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28808">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d1b0f8438721432798024e2ff9147baa</td>
-       <td>CVE-2026-5704</td>
-       <td>2026-04-06 16:16:42</td>
-       <td>A flaw was found in tar. A remote attacker could exploit this vulnerability by crafting a malicious archive, leading to hidden file injection with fully attacker-controlled content. This bypasses pre-extraction inspection mechanisms, potentially allowing an attacker to introduce malicious files onto a system without detection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5704">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d6bec59540a5f140cc77ff4081d4e92</td>
-       <td>CVE-2026-5666</td>
-       <td>2026-04-06 16:16:41</td>
-       <td>A vulnerability was detected in code-projects Online FIR System 1.0. Affected by this issue is some unknown functionality of the file /complaints.sql of the component SQL Database Backup File Handler. The manipulation results in insecure storage of sensitive information. The attack may be performed from remote. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5666">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>448273ca98f34ec9c8ebad904731867e</td>
-       <td>CVE-2026-5665</td>
-       <td>2026-04-06 16:16:41</td>
-       <td>A security vulnerability has been detected in code-projects Online FIR System 1.0. Affected by this vulnerability is an unknown functionality of the file /Login/checklogin.php of the component Login. The manipulation of the argument email/password leads to sql injection. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5665">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>145b13eb21f855466b69b45262706526</td>
-       <td>CVE-2026-34982</td>
-       <td>2026-04-06 16:16:38</td>
-       <td>Vim is an open source, command line text editor. Prior to version 9.2.0276, a modeline sandbox bypass in Vim allows arbitrary OS command execution when a user opens a crafted file. The `complete`, `guitabtooltip` and `printheader` options are missing the `P_MLE` flag, allowing a modeline to be executed. Additionally, the `mapset()` function lacks a `check_secure()` call, allowing it to be abused from sandboxed expressions. Commit 9.2.0276 fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34982">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e57873ce98bc77e62d6fb284b622124</td>
-       <td>CVE-2026-34969</td>
-       <td>2026-04-06 16:16:38</td>
-       <td>Nhost is an open source Firebase alternative with GraphQL. Prior to 0.48.0, the auth service's OAuth provider callback flow places the refresh token directly into the redirect URL as a query parameter. Refresh tokens in URLs are logged in browser history, server access logs, HTTP Referer headers, and proxy/CDN logs. Note that the refresh token is one-time use and all of these leak vectors are on owned infrastructure or services integrated by the application developer. This vulnerability is fixed in 0.48.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34969">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a41a691a2ad3b82b951f3af41e7c97c</td>
-       <td>CVE-2026-34951</td>
-       <td>2026-04-06 16:16:38</td>
-       <td>Workbench is a suite of tools for administrators and developers to interact with Salesforce.com organizations via the Force.com APIs. Prior to 65.0.0, Workbench contains a reflected cross-site scripting vulnerability via the footerScripts parameter, which does not sanitize user-supplied input before rendering it in the page response. Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Workbench allows XSS Targeting Error Pages. This vulnerability is fixed in 65.0.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34951">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a8701c54974f8c7018e3d22a6a61717b</td>
-       <td>CVE-2026-34950</td>
-       <td>2026-04-06 16:16:38</td>
-       <td>fast-jwt provides fast JSON Web Token (JWT) implementation. In 6.1.0 and earlier, the publicKeyPemMatcher regex in fast-jwt/src/crypto.js uses a ^ anchor that is defeated by any leading whitespace in the key string, re-enabling the exact same JWT algorithm confusion attack that CVE-2023-48223 patched.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34950">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb868c1b60e574f88c62cd0cac9a21c3</td>
-       <td>CVE-2026-34940</td>
-       <td>2026-04-06 16:16:37</td>
-       <td>KubeAI is an AI inference operator for kubernetes. Prior to 0.23.2, the ollamaStartupProbeScript() function in internal/modelcontroller/engine_ollama.go constructs a shell command string using fmt.Sprintf with unsanitized model URL components (ref, modelParam). This shell command is executed via bash -c as a Kubernetes startup probe. An attacker who can create or update Model custom resources can inject arbitrary shell commands that execute inside model server pods. This vulnerability is fixed in 0.23.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34940">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>143b38a6abbe60df1fa5cbf2ee97f6a4</td>
-       <td>CVE-2026-34764</td>
-       <td>2026-04-06 16:16:36</td>
-       <td>Electron is a framework for writing cross-platform desktop applications using JavaScript, HTML and CSS. From 33.0.0-alpha.1 to before 39.8.5, 40.8.5, 41.1.0, and 42.0.0-alpha.5, apps that use offscreen rendering with GPU shared textures may be vulnerable to a use-after-free. Under certain conditions, the release() callback provided on a paint event texture can outlive its backing native state, and invoking it after that point dereferences freed memory in the main process, which may lead to a crash or memory corruption. Apps are only affected if they use offscreen rendering with webPreferences.offscreen: { useSharedTexture: true }. Apps that do not enable shared-texture offscreen rendering are not affected. To mitigate this issue, ensure texture.release() is called promptly after the texture has been consumed, before the texture object becomes unreachable. This vulnerability is fixed in 39.8.5, 40.8.5, 41.1.0, and 42.0.0-alpha.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34764">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bd537a6b604d159946a1ed029517b7ba</td>
-       <td>CVE-2026-34756</td>
-       <td>2026-04-06 16:16:36</td>
-       <td>vLLM is an inference and serving engine for large language models (LLMs). From 0.1.0 to before 0.19.0, a Denial of Service vulnerability exists in the vLLM OpenAI-compatible API server. Due to the lack of an upper bound validation on the n parameter in the ChatCompletionRequest and CompletionRequest Pydantic models, an unauthenticated attacker can send a single HTTP request with an astronomically large n value. This completely blocks the Python asyncio event loop and causes immediate Out-Of-Memory crashes by allocating millions of request object copies in the heap before the request even reaches the scheduling queue. This vulnerability is fixed in 0.19.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34756">详情</a></td>
       </tr>
 
      </tbody>
