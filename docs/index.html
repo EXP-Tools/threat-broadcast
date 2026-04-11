@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-10 19:03:26 -->
+<!-- RELEASE TIME : 2026-04-11 18:55:56 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>cfc00dae1cb3673b1cf704127e4d090e</td>
+       <td>CVE-2026-32146</td>
+       <td>2026-04-11 14:16:03 <img src="imgs/new.gif" /></td>
+       <td>Improper path validation vulnerability in the Gleam compiler's handling of git dependencies allows arbitrary file system modification during dependency download. Dependency names from gleam.toml and manifest.toml are incorporated into filesystem paths without sufficient validation or confinement to the intended dependency directory, allowing attacker-controlled paths (via relative traversal such as ../ or absolute paths) to target filesystem locations outside that directory. When resolving git dependencies (e.g. via gleam deps download), the computed path is used for filesystem operations including directory deletion and creation. This vulnerability occurs during the dependency resolution and download phase, which is generally expected to be limited to fetching and preparing dependencies within a confined directory. A malicious direct or transitive git dependency can exploit this issue to delete and overwrite arbitrary directories outside the intended dependency directory, including attacker-chosen absolute paths, potentially causing data loss. In some environments, this may be further leveraged to achieve code execution, for example by overwriting git hooks or shell configuration files. This issue affects Gleam from 1.9.0-rc1 until 1.15.3 and 1.16.0-rc1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32146">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0174da1a13d34988eb117802c79cd16</td>
+       <td>CVE-2026-23900</td>
+       <td>2026-04-11 14:16:03 <img src="imgs/new.gif" /></td>
+       <td>Various stored XSS vulnerabilities in the maps- and icon rendering logic in Phoca Maps component 5.0.0-6.0.2 have been discovered.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23900">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>31d2f7672fb38642b7436bde9564b408</td>
+       <td>CVE-2026-5809</td>
+       <td>2026-04-11 08:16:05 <img src="imgs/new.gif" /></td>
+       <td>The wpForo Forum plugin for WordPress is vulnerable to Arbitrary File Deletion in versions up to and including 3.0.2. This is due to a two-step logic flaw: the topic_add() and topic_edit() action handlers accept arbitrary user-supplied data[*] arrays from $_REQUEST and store them as postmeta without restricting which fields may contain array values. Because 'body' is included in the allowed topic fields list, an attacker can supply data[body][fileurl] with an arbitrary file path (e.g., wp-config.php or an absolute server path). This poisoned fileurl is persisted to the plugin's custom postmeta database table. Subsequently, when the attacker submits wpftcf_delete[]=body on a topic_edit request, the add_file() method retrieves the stored postmeta record, extracts the attacker-controlled fileurl, passes it through wpforo_fix_upload_dir() which only rewrites legitimate wpforo upload paths and returns all other paths unchanged, and then calls wp_delete_file() on the unvalidated path. This makes it possible for authenticated attackers, with subscriber-level access and above, to delete arbitrary files writable by the PHP process on the server, including critical files such as wp-config.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5809">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c60fe204cb9f5d9a1b50b68cff0c1c3b</td>
+       <td>CVE-2026-34621</td>
+       <td>2026-04-11 07:16:03 <img src="imgs/new.gif" /></td>
+       <td>Acrobat Reader versions 24.001.30356, 26.001.21367 and earlier are affected by an Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34621">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b819046aa39a023cc1d09cae7de9c139</td>
+       <td>CVE-2026-5226</td>
+       <td>2026-04-11 02:16:03 <img src="imgs/new.gif" /></td>
+       <td>The Optimole – Optimize Images in Real Time plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via URL paths in versions up to, and including, 4.2.3 This is due to insufficient output escaping on user-supplied URL paths in the get_current_url() function, which are inserted into JavaScript code via str_replace() without proper JavaScript context escaping in the replace_content() function. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5226">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>78a6a2253730c359b833966c0ba127f6</td>
+       <td>CVE-2026-5217</td>
+       <td>2026-04-11 02:16:02 <img src="imgs/new.gif" /></td>
+       <td>The Optimole – Optimize Images | Convert WebP & AVIF | CDN & Lazy Load | Image Optimization plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 4.2.2. This is due to insufficient input sanitization and output escaping on the user-supplied 's' parameter (srcset descriptor) in the unauthenticated /wp-json/optimole/v1/optimizations REST endpoint. The endpoint validates requests using an HMAC signature and timestamp, but these values are exposed directly in the frontend HTML making them accessible to any visitor. The plugin uses sanitize_text_field() on the descriptor value of rest.php, which strips HTML tags but does not escape double quotes. The poisoned descriptor is then stored via transients (backed by the WordPress options table) and later retrieved and injected verbatim into the srcset attribute of tag_replacer.php without proper escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts into pages that will execute whenever a user accesses the injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5217">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9535a55a53b17e9fcf26000a9ffd9508</td>
+       <td>CVE-2026-5207</td>
+       <td>2026-04-11 02:16:02 <img src="imgs/new.gif" /></td>
+       <td>The LifterLMS plugin for WordPress is vulnerable to SQL Injection via the 'order' parameter in all versions up to, and including, 9.2.1. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Instructor-level access and above who have the edit_post capability on the quiz, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5207">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>df5fb3dd348efc917435e18f223620fb</td>
+       <td>CVE-2026-5144</td>
+       <td>2026-04-11 02:16:02 <img src="imgs/new.gif" /></td>
+       <td>The BuddyPress Groupblog plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.9.3. This is due to the group blog settings handler accepting the `groupblog-blogid`, `default-member`, and `groupblog-silent-add` parameters from user input without proper authorization checks. The `groupblog-blogid` parameter allows any group admin (including Subscribers who create their own group) to associate their group with any blog on the Multisite network, including the main site (blog ID 1). The `default-member` parameter accepts any WordPress role, including `administrator`, without validation against a whitelist. When combined with `groupblog-silent-add`, any user who joins the attacker's group is automatically added to the targeted blog with the injected role. This makes it possible for authenticated attackers, with Subscriber-level access and above, to escalate any user (including themselves via a second account) to Administrator on the main site of the Multisite network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5144">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c44b695a39c60dfe2a4c38d4d70f7a47</td>
+       <td>CVE-2026-4979</td>
+       <td>2026-04-11 02:16:02 <img src="imgs/new.gif" /></td>
+       <td>The UsersWP – Front-end login form, User Registration, User Profile & Members Directory plugin for WP plugin for WordPress is vulnerable to blind Server-Side Request Forgery in all versions up to, and including, 1.2.58. This is due to insufficient URL origin validation in the process_image_crop() method when processing avatar/banner image crop operations. The function accepts a user-controlled URL via the uwp_crop POST parameter and only validates it using esc_url() for sanitization and wp_check_filetype() for extension verification, without enforcing that the URL references a local uploads file. The URL is then passed to uwp_resizeThumbnailImage() which uses it in PHP image processing functions (getimagesize(), imagecreatefrom*()) that support URL wrappers and perform outbound HTTP requests. This makes it possible for authenticated attackers with subscriber-level access and above to coerce the WordPress server into making arbitrary HTTP requests to attacker-controlled or internal network destinations, enabling internal network scanning and potential access to sensitive services.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4979">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f749ea73421e33abdecdd23d757b56df</td>
+       <td>CVE-2026-4895</td>
+       <td>2026-04-11 02:16:02 <img src="imgs/new.gif" /></td>
+       <td>The GreenShift - Animation and Page Builder Blocks plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 12.8.9 This is due to insufficient input sanitization and output escaping in the gspb_greenShift_block_script_assets() function. The function uses str_replace() to insert 'fetchpriority="high"' before 'src=' attributes when processing greenshift-blocks/image blocks with the disablelazy attribute enabled. Because this replacement operates on the entire HTML string without parsing, contributors can inject the string 'src=' into HTML attribute values (such as class attributes). When the str_replace executes, the double quotes in the replacement string break out of the attribute context, allowing injection of malicious HTML attributes like onfocus with JavaScript payloads. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4895">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c360bbbd586bba931cf5c520f1b62ac8</td>
        <td>CVE-2026-33141</td>
        <td>2026-04-10 18:01:26 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>3b76461741a3c9642202209e4765a2a5</td>
        <td>CVE-2026-4901</td>
-       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:22</td>
        <td>Hydrosystem Control System saves sensitive information into a log file. Critically, user credentials are logged allowing the attacker to obtain further authorized access into the system. Combined with vulnerability CVE-2026-34184, these sensitive information could be accessed by an unauthorized user.This issue was fixed in Hydrosystem Control System version 9.8.5</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4901">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>bfe6f72a3e71ea8aa6901ba6b54b6c07</td>
        <td>CVE-2026-34538</td>
-       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:22</td>
        <td>Apache Airflow versions 3.0.0 through 3.1.8 DagRun wait endpoint returns XCom result values even to users who only have DAG Run read permissions, such as the Viewer role.This behavior conflicts with the FAB RBAC model, which treats XCom as a separate protected resource, and with the security model documentation that defines the Viewer role as read-only. Airflow uses the FAB Auth Manager to manage access control on a per-resource basis. The Viewer role is intended to be read-only by default, and the security model documentation defines Viewer users as those who can inspect DAGs without accessing sensitive execution results. Users are recommended to upgrade to Apache Airflow 3.2.0 which resolves this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34538">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>553ee5d45245cb1b078916fa56e59a10</td>
        <td>CVE-2026-34185</td>
-       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:22</td>
        <td>Hydrosystem Control System is vulnerable to SQL Injection across most scripts and input parameters. Because no protections are in place, an authenticated attacker can inject arbitrary SQL commands, potentially gaining full control over the database.This issue was fixed in Hydrosystem Control System version 9.8.5</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34185">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>2e5cf6ffb92a4dcccf5e9699e66d8334</td>
        <td>CVE-2026-34184</td>
-       <td>2026-04-09 10:16:22 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:22</td>
        <td>Hydrosystem Control System does not enforce authorization for some directories. This allows an unauthorized attacker to read all files in these directories and even execute some of them. Critically the attacker could run PHP scripts directly on the connected database.This issue was fixed in Hydrosystem Control System version 9.8.5</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34184">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>59bb06fc5017c316de57277099405848</td>
        <td>CVE-2026-34179</td>
-       <td>2026-04-09 10:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:21</td>
        <td>In Canonical LXD versions 4.12 through 6.7, the doCertificateUpdate function in lxd/certificates.go does not validate the Type field when handling PUT/PATCH requests to /1.0/certificates/{fingerprint} for restricted TLS certificate users, allowing a remote authenticated attacker to escalate privileges to cluster admin.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34179">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>f373b46e97eb29d9c3c4740c0e6ad490</td>
        <td>CVE-2026-34178</td>
-       <td>2026-04-09 10:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:21</td>
        <td>In Canonical LXD before 6.8, the backup import path validates project restrictions against backup/index.yaml in the supplied tar archive but creates the instance from backup/container/backup.yaml, a separate file in the same archive that is never checked against project restrictions. An authenticated remote attacker with instance-creation permission in a restricted project can craft a backup archive where backup.yaml carries restricted settings such as security.privileged=true or raw.lxc directives, bypassing all project restriction enforcement and allowing full host compromise.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34178">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>73b1dca8df2ee2598e11aec066fd488d</td>
        <td>CVE-2026-34177</td>
-       <td>2026-04-09 10:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:21</td>
        <td>Canonical LXD versions 4.12 through 6.7 contain an incomplete denylist in isVMLowLevelOptionForbidden (lxd/project/limits/permissions.go), which omits raw.apparmor and raw.qemu.conf from the set of keys blocked under the restricted.virtual-machines.lowlevel=block project restriction. A remote attacker with can_edit permission on a VM instance in a restricted project can inject an AppArmor rule and a QEMU chardev configuration that bridges the LXD Unix socket into the guest VM, enabling privilege escalation to LXD cluster administrator and subsequently to host root.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34177">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>cccfebb1288773752753b208d64af906</td>
        <td>CVE-2025-62188</td>
-       <td>2026-04-09 10:16:20 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 10:16:20</td>
        <td>An Exposure of Sensitive Information to an Unauthorized Actor vulnerability exists in Apache DolphinScheduler. This vulnerability may allow unauthorized actors to access sensitive information, including database credentials. This issue affects Apache DolphinScheduler versions 3.1.*. Users are recommended to upgrade to: * version ≥ 3.2.0 if using 3.1.x As a temporary workaround, users who cannot upgrade immediately may restrict the exposed management endpoints by setting the following environment variable: ``` MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,metrics,prometheus ``` Alternatively, add the following configuration to the application.yaml file: ``` management: endpoints: web: exposure: include: health,metrics,prometheus ``` This issue has been reported as CVE-2023-48796: https://cveprocess.apache.org/cve5/CVE-2023-48796</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-62188">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>afaabbb0fce1179fea852c792f42ac29</td>
        <td>CVE-2026-5854</td>
-       <td>2026-04-09 07:16:05 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 07:16:05</td>
        <td>A vulnerability was detected in Totolink A7100RU 7.4cu.2313_b20191024. Affected by this issue is the function setWiFiEasyCfg of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. Performing a manipulation of the argument merge results in os command injection. It is possible to initiate the attack remotely. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5854">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>a6ee63e7dae8e382977c78a60b918dab</td>
        <td>CVE-2026-5853</td>
-       <td>2026-04-09 07:16:05 <img src="imgs/new.gif" /></td>
+       <td>2026-04-09 07:16:05</td>
        <td>A security vulnerability has been detected in Totolink A7100RU 7.4cu.2313_b20191024. Affected by this vulnerability is the function setIpv6LanCfg of the file /cgi-bin/cstecgi.cgi of the component CGI Handler. Such manipulation of the argument addrPrefixLen leads to os command injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5853">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fae13183289423e042aea29a58daac37</td>
-       <td>CVE-2026-5735</td>
-       <td>2026-04-07 13:16:47</td>
-       <td>Memory safety bugs present in Firefox 149.0.1 and Thunderbird 149.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 149.0.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5735">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>952003e45b3a507d7b523eb91c10f531</td>
-       <td>CVE-2026-5734</td>
-       <td>2026-04-07 13:16:47</td>
-       <td>Memory safety bugs present in Firefox ESR 140.9.0, Thunderbird ESR 140.9.0, Firefox 149.0.1 and Thunderbird 149.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 149.0.2 and Firefox ESR < 140.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5734">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7839c3b9ba11224511031d51e8997596</td>
-       <td>CVE-2026-5733</td>
-       <td>2026-04-07 13:16:47</td>
-       <td>Incorrect boundary conditions in the Graphics: WebGPU component. This vulnerability affects Firefox < 149.0.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5733">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>21ac72465a06a441b5c6a7e5feb34e80</td>
-       <td>CVE-2026-5732</td>
-       <td>2026-04-07 13:16:47</td>
-       <td>Incorrect boundary conditions, integer overflow in the Graphics: Text component. This vulnerability affects Firefox < 149.0.2 and Firefox ESR < 140.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5732">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>54a36a18373d481a94a28a397c6a80a0</td>
-       <td>CVE-2026-5731</td>
-       <td>2026-04-07 13:16:47</td>
-       <td>Memory safety bugs present in Firefox ESR 115.34.0, Firefox ESR 140.9.0, Thunderbird ESR 140.9.0, Firefox 149.0.1 and Thunderbird 149.0.1. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability affects Firefox < 149.0.2, Firefox ESR < 115.34.1, and Firefox ESR < 140.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5731">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>251bd1f0aee30d09b7d21dd61bb90e4f</td>
-       <td>CVE-2026-3466</td>
-       <td>2026-04-07 13:16:47</td>
-       <td>Insufficient sanitization of dashboard dashlet title links in Checkmk 2.2.0 (EOL), Checkmk 2.3.0 before 2.3.0p46, Checkmk 2.4.0 before 2.4.0p25, and Checkmk 2.5.0 (beta) before 2.5.0b3 allows an attacker with dashboard creation privileges to perform stored cross-site scripting (XSS) attacks by tricking a victim into clicking a crafted dashlet title link on a shared dashboard.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3466">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d050e2f61ea6f759a5000c0b2ff06e8</td>
-       <td>CVE-2026-33866</td>
-       <td>2026-04-07 13:16:47</td>
-       <td>MLflow is vulnerable to an authorization bypass affecting the AJAX endpoint used to download saved model artifacts. Due to missing access‑control validation, a user without permissions to a given experiment can directly query this endpoint and retrieve model artifacts they are not authorized to access. This issue affects MLflow version through 3.10.1</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33866">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aea7fc360d0a7a3d58e3630ef0cbba71</td>
-       <td>CVE-2026-33865</td>
-       <td>2026-04-07 13:16:46</td>
-       <td>MLflow is vulnerable to Stored Cross-Site Scripting (XSS) caused by unsafe parsing of YAML-based MLmodel artifacts in its web interface. An authenticated attacker can upload a malicious MLmodel file containing a payload that executes when another user views the artifact in the UI. This allows actions such as session hijacking or performing operations on behalf of the victim. This issue affects MLflow version through 3.10.1</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33865">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>11c18113fa43f4c66fa0c3693a195526</td>
-       <td>CVE-2026-32144</td>
-       <td>2026-04-07 13:16:46</td>
-       <td>Improper Certificate Validation vulnerability in Erlang OTP public_key (pubkey_ocsp module) allows OCSP designated-responder authorization bypass via missing signature verification. The OCSP response validation in public_key:pkix_ocsp_validate/5 does not verify that a CA-designated responder certificate was cryptographically signed by the issuing CA. Instead, it only checks that the responder certificate's issuer name matches the CA's subject name and that the certificate has the OCSPSigning extended key usage. An attacker who can intercept or control OCSP responses can create a self-signed certificate with a matching issuer name and the OCSPSigning EKU, and use it to forge OCSP responses that mark revoked certificates as valid. This affects SSL/TLS clients using OCSP stapling, which may accept connections to servers with revoked certificates, potentially transmitting sensitive data to compromised servers. Applications using the public_key:pkix_ocsp_validate/5 API directly are also affected, with impact depending on usage context. This vulnerability is associated with program files lib/public_key/src/pubkey_ocsp.erl and program routines pubkey_ocsp:is_authorized_responder/3. This issue affects OTP from OTP 27.0 until OTP 28.4.2 and 27.3.4.10 corresponding to public_key from 1.16 until 1.20.3 and 1.17.1.2, and ssl from 11.2 until 11.5.4 and 11.2.12.7.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32144">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f9ffb982c201279253dbd4780ba618c</td>
-       <td>CVE-2026-28808</td>
-       <td>2026-04-07 13:16:46</td>
-       <td>Incorrect Authorization vulnerability in Erlang OTP (inets modules) allows unauthenticated access to CGI scripts protected by directory rules when served via script_alias. When script_alias maps a URL prefix to a directory outside DocumentRoot, mod_auth evaluates directory-based access controls against the DocumentRoot-relative path while mod_cgi executes the script at the ScriptAlias-resolved path. This path mismatch allows unauthenticated access to CGI scripts that directory rules were meant to protect. This vulnerability is associated with program files lib/inets/src/http_server/mod_alias.erl, lib/inets/src/http_server/mod_auth.erl, and lib/inets/src/http_server/mod_cgi.erl. This issue affects OTP from OTP 17.0 until OTP 28.4.2, 27.3.4.10 and 26.2.5.19 corresponding to inets from 5.10 until 9.6.2, 9.3.2.4 and 9.1.0.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28808">详情</a></td>
       </tr>
 
      </tbody>
