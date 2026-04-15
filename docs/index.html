@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-14 21:56:42 -->
+<!-- RELEASE TIME : 2026-04-15 21:57:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9bfd83a87cc8a4b02808a7986ef6ee0f</td>
+       <td>CVE-2026-20205</td>
+       <td>2026-04-15 15:17:58 <img src="imgs/new.gif" /></td>
+       <td>In Splunk MCP Server app versions below 1.0.3 , a user who holds a role with access to the Splunk `_internal` index or possesses the high-privilege capability `mcp_tool_admin` could view users session and authorization tokens in clear text.<br><br>The vulnerability would require either local access to the log files or administrative access to internal indexes, which by default only the admin role receives. <br><br>Review roles and capabilities on your instance and restrict internal index access to administrator-level roles. See [Define roles on the Splunk platform with capabilities](https://docs.splunk.com/Documentation/Splunk/latest/Security/Rolesandcapabilities) and [Connecting to MCP Server and Admin settings](https://help.splunk.com/en/splunk-enterprise/mcp-server-for-splunk-platform/connecting-to-mcp-server-and-admin-settings) in the Splunk documentation for more information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20205">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0eee974daa01057b9c16f158350065b</td>
+       <td>CVE-2026-20203</td>
+       <td>2026-04-15 15:17:56 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 10.2.2, 10.0.5, 9.4.10, and 9.3.11, and Splunk Cloud Platform versions below 10.4.2603.0, 10.3.2512.6, 10.2.2510.10, 10.1.2507.19, 10.0.2503.13, and 9.3.2411.127, a low-privileged user that does not hold the `admin` or `power` Splunk roles, has write permission on the app, and does not hold the high-privilege capability `accelerate_datamodel`, could turn on or off Data Model Acceleration due to improper access control.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20203">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4cc7faa3c95f63325e9e417823d67e5d</td>
+       <td>CVE-2026-20204</td>
+       <td>2026-04-15 15:17:54 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 10.2.1, 10.0.5, 9.4.10, and 9.3.11, and Splunk Cloud Platform versions below 10.4.2603.0, 10.3.2512.5, 10.2.2510.9, 10.1.2507.19, 10.0.2503.13, and 9.3.2411.127, a low-privileged user that does not hold the `admin` or `power` Splunk roles could potentially perform a Remote Code Execution (RCE) by uploading a malicious file to the `$SPLUNK_HOME/var/run/splunk/apptemp` directory due to improper handling and insufficient isolation of temporary files within the `apptemp` directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20204">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cc3d78b0850ea0ea8367fada89c754a0</td>
+       <td>CVE-2026-20202</td>
+       <td>2026-04-15 15:17:43 <img src="imgs/new.gif" /></td>
+       <td>In Splunk Enterprise versions below 10.2.2, 10.0.5, 9.4.10, and 9.3.11, and Splunk Cloud Platform versions below 10.4.2603.0, 10.3.2512.6, 10.2.2510.10, 10.1.2507.20, 10.0.2503.13, and 9.3.2411.127, a user who holds a role that contains the high-privilege capability `edit_user`could create a specially crafted username that includes a null byte or a non-UTF-8 percent-encoded byte due to improper input validation.<br><br>This could lead to inconsistent conversion of usernames into a proper format for storage and account management inconsistencies, such as being unable to edit or delete affected users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20202">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>85d22f587452b6c85933835e222c5ff3</td>
+       <td>CVE-2025-12141</td>
+       <td>2026-04-15 14:59:41 <img src="imgs/new.gif" /></td>
+       <td>In Grafana's alerting system, users with edit permissions for a contact point, specifically the permissions “alert.notifications:write” or “alert.notifications.receivers:test” that are granted as part of the fixed role "Contact Point Writer", which is part of the basic role Editor - can edit contact points created by other users, modify the endpoint URL to a controlled server. By invoking the test functionality, attackers can capture and extract redacted secure settings, such as authentication credentials for third-party services (e.g., Slack tokens). This leads to unauthorized access and potential compromise of external integrations.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12141">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>58a0ee5b75f5cf15c469f26c82059cba</td>
+       <td>CVE-2026-4682</td>
+       <td>2026-04-15 14:32:31 <img src="imgs/new.gif" /></td>
+       <td>Certain HP DeskJet All in One devices may be vulnerable to remote code execution caused by a buffer overflow when specially crafted Web Services for Devices (WSD) scan requests are improperly validated and handled by the MFP. WSD Scan is a Microsoft Windows–based network scanning protocol that allows a PC to discover scanners (and MFPs) on a network and send scan jobs to them without requiring vendor specific drivers or utilities.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4682">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b57de971fd858c1154a8be31709c91ef</td>
+       <td>CVE-2026-4667</td>
+       <td>2026-04-15 14:22:55 <img src="imgs/new.gif" /></td>
+       <td>HP System Optimizer might potentially be vulnerable to escalation of privilege. HP is releasing an update to mitigate this potential vulnerability.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4667">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7b74d6a256d0acd00e134b0c20301cc7</td>
+       <td>CVE-2026-25219</td>
+       <td>2026-04-15 12:30:17 <img src="imgs/new.gif" /></td>
+       <td>The `access_key` and `connection_string` connection properties were not marked as sensitive names in secrets masker. This means that user with read permission could see the values in Connection UI, as well as when Connection was accidentaly logged to logs, those values could be seen in the logs. Azure Service Bus used those properties to store sensitive values. Possibly other providers could be also affected if they used the same fields to store sensitive data. If you used Azure Service Bus connection with those values set or if you have other connections with those values storing sensitve values, you should upgrade Airflow to 3.1.8</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25219">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d2f757f84b3eb93f0e21131633ec9ad</td>
+       <td>CVE-2026-4145</td>
+       <td>2026-04-15 12:28:19 <img src="imgs/new.gif" /></td>
+       <td>During an internal security assessment, a potential vulnerability was discovered in Lenovo Software Fix that could allow a local authenticated user to perform arbitrary code execution with elevated privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4145">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3d0b616ffb441c0673964764b3912459</td>
+       <td>CVE-2026-4135</td>
+       <td>2026-04-15 12:28:12 <img src="imgs/new.gif" /></td>
+       <td>During an internal security assessment, a potential vulnerability was discovered in Lenovo Software Fix, that during installation could allow a local authenticated user to perform an arbitrary file write with elevated privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4135">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b9deea669d0c65f4e0ecef32ce6beec2</td>
        <td>CVE-2026-40683</td>
        <td>2026-04-14 20:16:48 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>0b272f0aeb0e9dbc426d8967b080f94a</td>
        <td>CVE-2026-6231</td>
-       <td>2026-04-13 16:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:36</td>
        <td>The bson_validate function may return early on specific inputs and incorrectly report success. This behavior could result in skipping validation for BSON data, allowing malformed or invalid UTF-8 sequences to bypass validation and be processed incorrectly. The issue may affect applications that rely on these functions to validate untrusted BSON data before further processing. This issue affects MongoDB C Driver versions prior to 1.30.5, MongoDB C Driver version 2.0.0 and MongoDB C Driver version 2.0.1</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6231">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>e714bc99a72bd05830d44c0929171cbd</td>
        <td>CVE-2026-6188</td>
-       <td>2026-04-13 16:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:36</td>
        <td>A flaw has been found in SourceCodester Pharmacy Sales and Inventory System 1.0. Impacted is an unknown function of the file /ajax.php?action=delete_sales. This manipulation of the argument ID causes sql injection. It is possible to initiate the attack remotely. The exploit has been published and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6188">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>d53d5c0438712005fe09a1a48a02d7ba</td>
        <td>CVE-2026-6187</td>
-       <td>2026-04-13 16:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:36</td>
        <td>A vulnerability was detected in SourceCodester Pharmacy Sales and Inventory System 1.0. This issue affects some unknown processing of the file /ajax.php?action=chk_prod_availability. The manipulation of the argument ID results in sql injection. The attack may be performed from remote. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6187">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>aa6b96c8e67a4f41f62612396e070d07</td>
        <td>CVE-2026-6186</td>
-       <td>2026-04-13 16:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:35</td>
        <td>A security vulnerability has been detected in UTT HiPER 1200GW up to 2.5.3-170306. This vulnerability affects the function strcpy of the file /goform/formNatStaticMap. The manipulation of the argument NatBind leads to buffer overflow. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6186">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>9daf5895e4f5ef5ea157b1e88c37482f</td>
        <td>CVE-2026-6184</td>
-       <td>2026-04-13 16:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:35</td>
        <td>A weakness has been identified in code-projects Simple Content Management System 1.0. This affects an unknown part of the file /web/admin/welcome.php. Executing a manipulation of the argument News Title can lead to cross site scripting. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6184">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>a0cd3eda6e91397219913a8be2852076</td>
        <td>CVE-2026-36938</td>
-       <td>2026-04-13 16:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:30</td>
        <td>Sourcecodester Online Resort Management System v1.0 is vulnerable to SQL injection in /orms/admin/rooms/view_room.php.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-36938">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>39d98d382a2a5cfc103b32aa32d915d9</td>
        <td>CVE-2026-36937</td>
-       <td>2026-04-13 16:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:29</td>
        <td>Sourcecodester Online Resort Management System v1.0 is vulnerable to SQL injection in /orms/admin/reservations/view_details.php.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-36937">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>9345094ca4214e0c786462b7b1b8fdd4</td>
        <td>CVE-2026-34188</td>
-       <td>2026-04-13 16:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:27</td>
        <td>Improper Neutralization of Special Elements used in an OS Command vulnerability allows OS Command Injection via Event Response execution. This issue affects Pandora FMS: from 777 through 800</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34188">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>6a591a4ee9fe5b3d84cde8d8b05b2fbf</td>
        <td>CVE-2026-34186</td>
-       <td>2026-04-13 16:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:27</td>
        <td>Improper Neutralization of Special Elements used in an SQL Command vulnerability allows SQL Injection via custom fields. This issue affects Pandora FMS: from 777 through 800</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34186">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>527ed5305c64db77d99df900bbe99bfb</td>
        <td>CVE-2026-30813</td>
-       <td>2026-04-13 16:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-04-13 16:16:26</td>
        <td>Improper Neutralization of Special Elements used in an SQL Command vulnerability allows SQL Injection via module search. This issue affects Pandora FMS: from 777 through 800</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30813">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>16c7a6a9e587a48c7474d5af0ac8c8d8</td>
-       <td>CVE-2019-25713</td>
-       <td>2026-04-12 13:16:34</td>
-       <td>MyT-PM 1.5.1 contains an SQL injection vulnerability that allows authenticated attackers to execute arbitrary SQL queries by injecting malicious code through the Charge[group_total] parameter. Attackers can submit crafted POST requests to the /charge/admin endpoint with error-based, time-based blind, or stacked query payloads to extract sensitive database information or manipulate data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25713">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>99c5a316d13ef04fc1412a009f06cb18</td>
-       <td>CVE-2019-25712</td>
-       <td>2026-04-12 13:16:34</td>
-       <td>BlueAuditor 1.7.2.0 contains a buffer overflow vulnerability in the registration key field that allows local attackers to crash the application by submitting an oversized key value. Attackers can trigger a denial of service by entering a 256-byte buffer of repeated characters in the Key registration field, causing the application to crash during registration processing.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25712">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a53218d978d22f50b610d377787ed0b</td>
-       <td>CVE-2019-25711</td>
-       <td>2026-04-12 13:16:34</td>
-       <td>SpotFTP Password Recover 2.4.2 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an oversized buffer in the Name field during registration. Attackers can generate a 256-byte payload, paste it into the Name input field, and trigger a crash when submitting the registration code.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25711">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a7f533c5e27a3a64da4896402acf582c</td>
-       <td>CVE-2019-25710</td>
-       <td>2026-04-12 13:16:34</td>
-       <td>Dolibarr ERP-CRM 8.0.4 contains an SQL injection vulnerability in the rowid parameter of the admin dict.php endpoint that allows attackers to execute arbitrary SQL queries. Attackers can inject malicious SQL code through the rowid POST parameter to extract sensitive database information using error-based SQL injection techniques.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25710">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f461a6f38815fbbbc7b5f0aa668ff8c7</td>
-       <td>CVE-2019-25709</td>
-       <td>2026-04-12 13:16:33</td>
-       <td>CF Image Hosting Script 1.6.5 allows unauthenticated attackers to download and decode the application database by accessing the imgdb.db file in the upload/data directory. Attackers can extract delete IDs stored in plaintext from the deserialized database and use them to delete all pictures via the d parameter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25709">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a15663d291838be110ab901f7b618f09</td>
-       <td>CVE-2019-25708</td>
-       <td>2026-04-12 13:16:33</td>
-       <td>Heatmiser Wifi Thermostat 1.7 contains a cross-site request forgery vulnerability that allows attackers to change administrator credentials by tricking authenticated users into submitting malicious requests. Attackers can craft HTML forms targeting the networkSetup.htm endpoint with parameters usnm, usps, and cfps to modify the admin username and password without user consent.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25708">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fca092f4de120258b6606a1adfd76899</td>
-       <td>CVE-2019-25707</td>
-       <td>2026-04-12 13:16:33</td>
-       <td>eBrigade ERP 4.5 contains an SQL injection vulnerability that allows authenticated attackers to execute arbitrary SQL queries by injecting malicious code through the 'id' parameter. Attackers can send GET requests to pdf.php with crafted SQL payloads in the 'id' parameter to extract sensitive database information including table names and schema details.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25707">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>20353ca1edfdda747824f569c34f28a9</td>
-       <td>CVE-2019-25706</td>
-       <td>2026-04-12 13:16:33</td>
-       <td>Across DR-810 contains an unauthenticated file disclosure vulnerability that allows remote attackers to download the rom-0 backup file containing sensitive information by sending a simple GET request. Attackers can access the rom-0 endpoint without authentication to retrieve and decompress the backup file, exposing router passwords and other sensitive configuration data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25706">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>92e11c33dacc368efd10928d2015d645</td>
-       <td>CVE-2019-25705</td>
-       <td>2026-04-12 13:16:33</td>
-       <td>Echo Mirage 3.1 contains a stack buffer overflow vulnerability that allows local attackers to crash the application or execute arbitrary code by supplying an oversized string in the Rules action field. Attackers can create a malicious text file with a crafted payload exceeding buffer boundaries and paste it into the action field through the Rules dialog to trigger the overflow and overwrite the return address.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25705">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3621291f427072479a767afed43d631b</td>
-       <td>CVE-2019-25703</td>
-       <td>2026-04-12 13:16:33</td>
-       <td>ImpressCMS 1.3.11 contains a time-based blind SQL injection vulnerability that allows authenticated attackers to manipulate database queries by injecting SQL code through the 'bid' parameter. Attackers can send POST requests to the admin.php endpoint with malicious 'bid' values containing SQL commands to extract sensitive database information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2019-25703">详情</a></td>
       </tr>
 
      </tbody>
