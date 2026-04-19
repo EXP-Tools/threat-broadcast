@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-18 02:57:11 -->
+<!-- RELEASE TIME : 2026-04-19 03:33:32 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>2948a45504805f018310e63f50225170</td>
+       <td>CVE-2026-41242</td>
+       <td>2026-04-18 17:16:13 <img src="imgs/new.gif" /></td>
+       <td>protobufjs compiles protobuf definitions into JavaScript (JS) functions. In versions prior to 8.0.1 and 7.5.5, attackers can inject arbitrary code in the "type" fields of protobuf definitions, which will then execute during object decoding using that definition. Versions 8.0.1 and 7.5.5 patch the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41242">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>91db8f54fcc1c5878565e9a76a3e11b3</td>
+       <td>CVE-2026-40948</td>
+       <td>2026-04-18 14:16:10 <img src="imgs/new.gif" /></td>
+       <td>The Keycloak authentication manager in `apache-airflow-providers-keycloak` did not generate or validate the OAuth 2.0 `state` parameter on the login / login-callback flow, and did not use PKCE. An attacker with a Keycloak account in the same realm could deliver a crafted callback URL to a victim's browser and cause the victim to be logged into the attacker's Airflow session (login-CSRF / session fixation), where any credentials the victim subsequently stored in Airflow Connections would be harvestable by the attacker. Users are advised to upgrade `apache-airflow-providers-keycloak` to 0.7.0 or later.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40948">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cf0a8b9e3abcbf20bd4144010038b106</td>
+       <td>CVE-2026-2986</td>
+       <td>2026-04-18 12:16:11 <img src="imgs/new.gif" /></td>
+       <td>The Contextual Related Posts plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'other_attributes' parameter in versions up to, and including, 4.2.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2986">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4c33941040f656c2f0871b7d080e606d</td>
+       <td>CVE-2026-2505</td>
+       <td>2026-04-18 10:16:12 <img src="imgs/new.gif" /></td>
+       <td>The Categories Images plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 3.3.1, via the 'z_taxonomy_image' shortcode. This is due to the shortcode rendering path passing attacker-controlled class input into a fallback image builder that concatenates HTML attributes without proper escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts that execute when users interact with the injected frontend page via the 'class' shortcode attribute.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2505">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3034f3c0596a87a0f0e169d374362383</td>
+       <td>CVE-2026-0894</td>
+       <td>2026-04-18 10:16:12 <img src="imgs/new.gif" /></td>
+       <td>The Content Blocks (Custom Post Widget) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's content_block shortcode in all versions up to, and including, 3.3.9 due to insufficient input sanitization and output escaping on user supplied values consumed from user-created content blocks. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0894">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ccd69cac4333bfefddf6db5a19ff3757</td>
+       <td>CVE-2026-41254</td>
+       <td>2026-04-18 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>Little CMS (lcms2) through 2.18 has an integer overflow in CubeSize in cmslut.c because the overflow check is performed after the multiplication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41254">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8c358ab569ae27307ff832bca00c9b26</td>
+       <td>CVE-2026-32690</td>
+       <td>2026-04-18 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>Secrets in Variables saved as JSON dictionaries were not properly redacted - in case thee variables were retrieved by the user the secrets stored as nested fields were not masked. If you do not store variables with sensitive values in JSON form, you are not affected. Otherwise please upgrade to Apache Airflow 3.2.0 that has the fix implemented</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32690">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f7138bd5b3bd480b09fe9767890dff64</td>
+       <td>CVE-2026-32228</td>
+       <td>2026-04-18 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>UI / API User with asset materialize permission could trigger dags they had no access to. Users are advised to migrate to Airflow version 3.2.0 that fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32228">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bbcf6a0b3f5fbb4ebd9dc02d416e59ea</td>
+       <td>CVE-2026-30912</td>
+       <td>2026-04-18 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>In case of SQL errors, exception/stack trace of errors was exposed in API even if "api/expose_stack_traces" was set to false. That could lead to exposing additional information to potential attacker. Users are recommended to upgrade to Apache Airflow 3.2.0, which fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30912">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b47a83433290fc276d2152c7d59ad13</td>
+       <td>CVE-2026-30898</td>
+       <td>2026-04-18 07:16:10 <img src="imgs/new.gif" /></td>
+       <td>An example of BashOperator in Airflow documentation suggested a way of passing dag_run.conf in the way that could cause unsanitized user input to be used to escalate privileges of UI user to allow execute code on worker. Users should review if any of their own DAGs have adopted this incorrect advice.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30898">详情</a></td>
+      </tr>
+
+      <tr>
        <td>409ec9717a89373ce1963b37e39f6ee5</td>
        <td>CVE-2026-33093</td>
-       <td>2026-04-17 19:17:15 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 19:17:15</td>
        <td>Anviz CX7 Firmware is vulnerable to an unauthenticated POST to the device that captures a photo with the front facing camera, exposing visual information about the deployment environment.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33093">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>0cdcf5c801823508f4cc62b5c1530ee7</td>
        <td>CVE-2026-35215</td>
-       <td>2026-04-17 18:59:23 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:59:23</td>
        <td>Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, the sdl_desc() function does not validate the length of a decoded SDL descriptor from a slice packet. A zero-length descriptor is later used to calculate the number of slice items, causing a division by zero. An unauthenticated attacker can exploit this by sending a crafted slice packet to crash the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-35215">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>16a815290875ad794983e666a2d91806</td>
        <td>CVE-2026-34232</td>
-       <td>2026-04-17 18:52:11 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:52:11</td>
        <td>Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, the xdr_status_vector() function does not handle the isc_arg_cstring type when decoding an op_response packet, causing a server crash when one is encountered in the status vector. An unauthenticated attacker can exploit this by sending a crafted op_response packet to the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34232">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>4e448e3bfd4674f60ecb2f44f9a4ea9b</td>
        <td>CVE-2026-33337</td>
-       <td>2026-04-17 18:48:47 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:48:47</td>
        <td>Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, when deserializing a slice packet, the xdr_datum() function does not validate that a cstring length conforms to the slice descriptor bounds, allowing a cstring longer than the allocated buffer to overflow it. An unauthenticated attacker can exploit this by sending a crafted packet to the server, potentially causing a crash or other security impact. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33337">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>294fa2ae9847f2411561c92f4a24eabd</td>
        <td>CVE-2026-6437</td>
-       <td>2026-04-17 18:41:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:41:36</td>
        <td>Improper neutralization of argument delimiters in the volume handling component in AWS EFS CSI Driver (aws-efs-csi-driver) before v3.0.1 allows remote authenticated users with PersistentVolume creation permissions to inject arbitrary mount options via comma injection. To remediate this issue, users should upgrade to version v3.0.1</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6437">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>a87bde1bc0e257f1b2af59bfb06bd8b8</td>
        <td>CVE-2026-28224</td>
-       <td>2026-04-17 18:38:58 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:38:58</td>
        <td>Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, when the server receives an op_crypt_key_callback packet without prior authentication, the port_server_crypt_callback handler is not initialized, resulting in a null pointer dereference and server crash. An unauthenticated attacker who knows only the server's IP and port can exploit this to crash the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28224">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>f33dca5ecf239a9081522e5f63324967</td>
        <td>CVE-2026-28214</td>
-       <td>2026-04-17 18:35:46 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:35:46</td>
        <td>Firebird is an open-source relational database management system. In versions prior to 5.0.4, 4.0.7 and 3.0.14, the ClumpletReader::getClumpletSize() function can overflow the totalLength value when parsing a Wide type clumplet, causing an infinite loop. An authenticated user with INSERT privileges on any table can exploit this via a crafted Batch Parameter Block to cause a denial of service against the server. This issue has been fixed in versions 5.0.4, 4.0.7 and 3.0.14.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-28214">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>781c6feeeef80680b5b25a38561357fa</td>
        <td>CVE-2026-5718</td>
-       <td>2026-04-17 18:31:54 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:31:54</td>
        <td>The Drag and Drop Multiple File Upload for Contact Form 7 plugin for WordPress is vulnerable to...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5718">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>54e8e03f9abfd4eccbe3846208452ba7</td>
        <td>CVE-2026-5710</td>
-       <td>2026-04-17 18:31:53 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:31:53</td>
        <td>The Drag and Drop Multiple File Upload for Contact Form 7 plugin for WordPress is vulnerable to...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5710">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>3e49fdba24b6177faf1dbb504c8ec38f</td>
        <td>CVE-2026-40525</td>
-       <td>2026-04-17 18:19:12 <img src="imgs/new.gif" /></td>
+       <td>2026-04-17 18:19:12</td>
        <td>OpenViking prior to commit c7bb167 contains an authentication bypass vulnerability in the VikingBot OpenAPI HTTP route surface where the authentication check fails open when the api_key configuration value is unset or empty. Remote attackers with network access to the exposed service can invoke privileged bot-control functionality without providing a valid X-API-Key header, including submitting attacker-controlled prompts, creating or using bot sessions, and accessing downstream tools, integrations, secrets, or data accessible to the bot.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40525">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-04-16 19:16:32</td>
        <td>Dell PowerScale OneFS, versions prior to 9.12.0.0, contains an improper resource shutdown or release vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-43935">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9bfd83a87cc8a4b02808a7986ef6ee0f</td>
-       <td>CVE-2026-20205</td>
-       <td>2026-04-15 15:17:58</td>
-       <td>In Splunk MCP Server app versions below 1.0.3 , a user who holds a role with access to the Splunk `_internal` index or possesses the high-privilege capability `mcp_tool_admin` could view users session and authorization tokens in clear text.<br><br>The vulnerability would require either local access to the log files or administrative access to internal indexes, which by default only the admin role receives. <br><br>Review roles and capabilities on your instance and restrict internal index access to administrator-level roles. See [Define roles on the Splunk platform with capabilities](https://docs.splunk.com/Documentation/Splunk/latest/Security/Rolesandcapabilities) and [Connecting to MCP Server and Admin settings](https://help.splunk.com/en/splunk-enterprise/mcp-server-for-splunk-platform/connecting-to-mcp-server-and-admin-settings) in the Splunk documentation for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20205">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d0eee974daa01057b9c16f158350065b</td>
-       <td>CVE-2026-20203</td>
-       <td>2026-04-15 15:17:56</td>
-       <td>In Splunk Enterprise versions below 10.2.2, 10.0.5, 9.4.10, and 9.3.11, and Splunk Cloud Platform versions below 10.4.2603.0, 10.3.2512.6, 10.2.2510.10, 10.1.2507.19, 10.0.2503.13, and 9.3.2411.127, a low-privileged user that does not hold the `admin` or `power` Splunk roles, has write permission on the app, and does not hold the high-privilege capability `accelerate_datamodel`, could turn on or off Data Model Acceleration due to improper access control.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20203">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4cc7faa3c95f63325e9e417823d67e5d</td>
-       <td>CVE-2026-20204</td>
-       <td>2026-04-15 15:17:54</td>
-       <td>In Splunk Enterprise versions below 10.2.1, 10.0.5, 9.4.10, and 9.3.11, and Splunk Cloud Platform versions below 10.4.2603.0, 10.3.2512.5, 10.2.2510.9, 10.1.2507.19, 10.0.2503.13, and 9.3.2411.127, a low-privileged user that does not hold the `admin` or `power` Splunk roles could potentially perform a Remote Code Execution (RCE) by uploading a malicious file to the `$SPLUNK_HOME/var/run/splunk/apptemp` directory due to improper handling and insufficient isolation of temporary files within the `apptemp` directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20204">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cc3d78b0850ea0ea8367fada89c754a0</td>
-       <td>CVE-2026-20202</td>
-       <td>2026-04-15 15:17:43</td>
-       <td>In Splunk Enterprise versions below 10.2.2, 10.0.5, 9.4.10, and 9.3.11, and Splunk Cloud Platform versions below 10.4.2603.0, 10.3.2512.6, 10.2.2510.10, 10.1.2507.20, 10.0.2503.13, and 9.3.2411.127, a user who holds a role that contains the high-privilege capability `edit_user`could create a specially crafted username that includes a null byte or a non-UTF-8 percent-encoded byte due to improper input validation.<br><br>This could lead to inconsistent conversion of usernames into a proper format for storage and account management inconsistencies, such as being unable to edit or delete affected users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20202">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>85d22f587452b6c85933835e222c5ff3</td>
-       <td>CVE-2025-12141</td>
-       <td>2026-04-15 14:59:41</td>
-       <td>In Grafana's alerting system, users with edit permissions for a contact point, specifically the permissions “alert.notifications:write” or “alert.notifications.receivers:test” that are granted as part of the fixed role "Contact Point Writer", which is part of the basic role Editor - can edit contact points created by other users, modify the endpoint URL to a controlled server. By invoking the test functionality, attackers can capture and extract redacted secure settings, such as authentication credentials for third-party services (e.g., Slack tokens). This leads to unauthorized access and potential compromise of external integrations.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-12141">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>58a0ee5b75f5cf15c469f26c82059cba</td>
-       <td>CVE-2026-4682</td>
-       <td>2026-04-15 14:32:31</td>
-       <td>Certain HP DeskJet All in One devices may be vulnerable to remote code execution caused by a buffer overflow when specially crafted Web Services for Devices (WSD) scan requests are improperly validated and handled by the MFP. WSD Scan is a Microsoft Windows–based network scanning protocol that allows a PC to discover scanners (and MFPs) on a network and send scan jobs to them without requiring vendor specific drivers or utilities.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4682">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b57de971fd858c1154a8be31709c91ef</td>
-       <td>CVE-2026-4667</td>
-       <td>2026-04-15 14:22:55</td>
-       <td>HP System Optimizer might potentially be vulnerable to escalation of privilege. HP is releasing an update to mitigate this potential vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4667">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b74d6a256d0acd00e134b0c20301cc7</td>
-       <td>CVE-2026-25219</td>
-       <td>2026-04-15 12:30:17</td>
-       <td>The `access_key` and `connection_string` connection properties were not marked as sensitive names in secrets masker. This means that user with read permission could see the values in Connection UI, as well as when Connection was accidentaly logged to logs, those values could be seen in the logs. Azure Service Bus used those properties to store sensitive values. Possibly other providers could be also affected if they used the same fields to store sensitive data. If you used Azure Service Bus connection with those values set or if you have other connections with those values storing sensitve values, you should upgrade Airflow to 3.1.8</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25219">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2d2f757f84b3eb93f0e21131633ec9ad</td>
-       <td>CVE-2026-4145</td>
-       <td>2026-04-15 12:28:19</td>
-       <td>During an internal security assessment, a potential vulnerability was discovered in Lenovo Software Fix that could allow a local authenticated user to perform arbitrary code execution with elevated privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4145">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d0b616ffb441c0673964764b3912459</td>
-       <td>CVE-2026-4135</td>
-       <td>2026-04-15 12:28:12</td>
-       <td>During an internal security assessment, a potential vulnerability was discovered in Lenovo Software Fix, that during installation could allow a local authenticated user to perform an arbitrary file write with elevated privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4135">详情</a></td>
       </tr>
 
      </tbody>
