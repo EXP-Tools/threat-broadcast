@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-21 03:27:27 -->
+<!-- RELEASE TIME : 2026-04-21 08:03:01 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>cae9ee55c73ed5087dc1facea4be88ab</td>
+       <td>CVE-2026-40264</td>
+       <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
+       <td>OpenBao is an open source identity-based secrets management system. OpenBao's namespaces provide multi-tenant separation. Prior to version 2.5.3, a tenant who leaks token accessors can have their token revoked or renewed by a privileged administrator in another tenant. This is addressed in v2.5.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40264">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>13f05c8f64738d37842f7fba9c1d94dc</td>
+       <td>CVE-2026-39946</td>
+       <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
+       <td>OpenBao is an open source identity-based secrets management system. Prior to version 2.5.3, when OpenBao revoked privileges on a role in the PostgreSQL database secrets engine, OpenBao failed to use proper database quoting on schema names provided by PostgreSQL. This could lead to role revocation failures, or more rarely, SQL injection as the management user. This vulnerability was original from HashiCorp Vault. The vulnerability is addressed in v2.5.3. As a workaround, audit table schemas and ensure database users cannot create new schemas and grant privileges on them.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8748a65a330df99f7ab0e7208e420d04</td>
+       <td>CVE-2026-39861</td>
+       <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
+       <td>Claude Code is an agentic coding tool. Prior to version 2.1.64, Claude Code's sandbox did not prevent sandboxed processes from creating symlinks pointing to locations outside the workspace. When Claude Code subsequently wrote to a path within such a symlink, its unsandboxed process followed the symlink and wrote to the target location outside the workspace without prompting the user for confirmation. This allowed a sandbox escape where neither the sandboxed command nor the unsandboxed app could independently write outside the workspace, but their combination could write to arbitrary locations, potentially leading to code execution outside the sandbox. Reliably exploiting this required the ability to add untrusted content into a Claude Code context window to trigger sandboxed code execution via prompt injection. Users on standard Claude Code auto-update have received this fix automatically. Users performing manual updates are advised to update to version 2.1.64 or later.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39861">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e49a3742b09d226fd16240ae119909f2</td>
+       <td>CVE-2026-39396</td>
+       <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
+       <td>OpenBao is an open source identity-based secrets management system. Prior to version 2.5.3, `ExtractPluginFromImage()` in OpenBao's OCI plugin downloader extracts a plugin binary from a container image by streaming decompressed tar data via `io.Copy` with no upper bound on the number of bytes written. An attacker who controls or compromises the OCI registry referenced in the victim's configuration can serve a crafted image containing a decompression bomb that decompresses to an arbitrarily large file. The SHA256 integrity check occurs after the full file is written to disk, meaning the hash mismatch is detected only after the damage (disk exhaustion) has already occurred. This allow the attacker to replace **legit plugin image** with no need to change its signature. Version 2.5.3 contains a patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39396">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>beccbca0b096b05ba62a4521ee687c87</td>
+       <td>CVE-2026-39388</td>
+       <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
+       <td>OpenBao is an open source identity-based secrets management system. Prior to version 2.5.3, OpenBao's Certificate authentication method, when a token renewal is requested and `disable_binding=true` is set, attempts to verify the current request's presented mTLS certificate matches the original. Token renewals for other authentication methods do not require any supplied login information. Due to incorrect matching, the certificate authentication method would allow renewal of tokens for which the attacker had a sibling certificate+key signed by the same CA, but which did not necessarily match the original role or the originally supplied certificate. This implies an attacker could still authenticate to OpenBao in a similar scope, however, token renewal implies that an attacker may be able to extend the lifetime of dynamic leases held by the original token. This attack requires knowledge of either the original token or its accessor. This vulnerability is original from HashiCorp Vault. This is addressed in v2.5.3. As a workaround, ensure privileged roles are tightly scoped to single certificates.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39388">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b988998f30e0542eb109c444ac81773d</td>
+       <td>CVE-2026-39386</td>
+       <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
+       <td>Neko is a a self-hosted virtual browser that runs in Docker and uses WebRTC In versions 3.0.0 through 3.0.10 and 3.1.0 through 3.1.1, any authenticated user can immediately obtain full administrative control of the entire Neko instance (member management, room settings, broadcast control, session termination, etc.). This results in a complete compromise of the instance. The vulnerability has been patched in v3.0.11 and v3.1.2. If upgrading is not immediately possible, the following mitigations can reduce risk: Restrict access to trusted users only (avoid granting accounts to untrusted parties); ensure all user passwords are strong and only shared with trusted individuals; run the instance only when needed; avoid leaving it continuously exposed; place the instance behind authentication layers such as a reverse proxy with additional access controls; disable or restrict access to the /api/profile endpoint if feasible; and/or monitor for suspicious privilege changes or unexpected administrative actions. Note that these are temporary mitigations and do not fully eliminate the vulnerability. Upgrading is strongly recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39386">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>57203961bd85b963fed50db6d3b8f9ab</td>
+       <td>CVE-2026-39378</td>
+       <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
+       <td>The nbconvert tool, jupyter nbconvert, converts Jupyter notebooks to various other formats via Jinja templates. In versions 6.5 through 7.17.0, when `HTMLExporter.embed_images=True`, nbconvert's markdown renderer allows arbitrary file read via path traversal in image references. A malicious notebook can exfiltrate sensitive files from the conversion host by embedding them as base64 data URIs in the output HTML. nbconvert 7.17.1 contains a fix. As a workaround, do not enable `HTMLExporter.embed_images`; it is not enabled by default.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39378">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1de063baa8f18e7c3e91b75f89082c98</td>
+       <td>CVE-2026-39377</td>
+       <td>2026-04-21 01:16:05 <img src="imgs/new.gif" /></td>
+       <td>The nbconvert tool, jupyter nbconvert, converts Jupyter notebooks to various other formats via Jinja templates. Versions 6.5 through 7.17.0 allow arbitrary file writes to locations outside the intended output directory when processing notebooks containing crafted cell attachment filenames. The `ExtractAttachmentsPreprocessor` passes attachment filenames directly to the filesystem without sanitization, enabling path traversal attacks. This vulnerability provides complete control over both the destination path and file extension. Version 7.17.1 contains a patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39377">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5b7f81324820b6f15e5ca9e499c15f8</td>
+       <td>CVE-2026-39320</td>
+       <td>2026-04-21 01:16:05 <img src="imgs/new.gif" /></td>
+       <td>Signal K Server is a server application that runs on a central hub in a boat. Versions prior to 2.25.0 are vulnerable to an unauthenticated Regular Expression Denial of Service (ReDoS) attack within the WebSocket subscription handling logic. By injecting unescaped regex metacharacters into the `context` parameter of a stream subscription, an attacker can force the server's Node.js event loop into a catastrophic backtracking loop when evaluating long string identifiers (like the server's self UUID). This results in a total Denial of Service (DoS) where the server CPU spikes to 100% and becomes completely unresponsive to further API or socket requests. Version 2.25.0 contains a fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39320">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1027caa33fa80e428ca826c51989960f</td>
+       <td>CVE-2026-41331</td>
+       <td>2026-04-21 00:16:31 <img src="imgs/new.gif" /></td>
+       <td>OpenClaw before 2026.3.31 contains a resource consumption vulnerability in Telegram audio preflight transcription that allows unauthorized group senders to trigger transcription processing. Attackers can exploit insufficient allowlist enforcement to cause resource or billing consumption by initiating audio preflight operations before authorization checks are applied.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41331">详情</a></td>
+      </tr>
+
+      <tr>
        <td>c10c9430055e970e4955b9d4307be9ec</td>
        <td>CVE-2026-6729</td>
        <td>2026-04-20 22:01:38 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-04-19 11:16:14</td>
        <td>A vulnerability was identified in kodcloud KodExplorer up to 4.52. This impacts the function fileGet of the file /app/controller/share.class.php of the component fileGet Endpoint. Such manipulation of the argument fileUrl leads to improper authentication. The attack can be launched remotely. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6569">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2948a45504805f018310e63f50225170</td>
-       <td>CVE-2026-41242</td>
-       <td>2026-04-18 17:16:13</td>
-       <td>protobufjs compiles protobuf definitions into JavaScript (JS) functions. In versions prior to 8.0.1 and 7.5.5, attackers can inject arbitrary code in the "type" fields of protobuf definitions, which will then execute during object decoding using that definition. Versions 8.0.1 and 7.5.5 patch the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41242">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>91db8f54fcc1c5878565e9a76a3e11b3</td>
-       <td>CVE-2026-40948</td>
-       <td>2026-04-18 14:16:10</td>
-       <td>The Keycloak authentication manager in `apache-airflow-providers-keycloak` did not generate or validate the OAuth 2.0 `state` parameter on the login / login-callback flow, and did not use PKCE. An attacker with a Keycloak account in the same realm could deliver a crafted callback URL to a victim's browser and cause the victim to be logged into the attacker's Airflow session (login-CSRF / session fixation), where any credentials the victim subsequently stored in Airflow Connections would be harvestable by the attacker. Users are advised to upgrade `apache-airflow-providers-keycloak` to 0.7.0 or later.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40948">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cf0a8b9e3abcbf20bd4144010038b106</td>
-       <td>CVE-2026-2986</td>
-       <td>2026-04-18 12:16:11</td>
-       <td>The Contextual Related Posts plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'other_attributes' parameter in versions up to, and including, 4.2.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2986">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c33941040f656c2f0871b7d080e606d</td>
-       <td>CVE-2026-2505</td>
-       <td>2026-04-18 10:16:12</td>
-       <td>The Categories Images plugin for WordPress is vulnerable to Stored Cross-Site Scripting in versions up to, and including, 3.3.1, via the 'z_taxonomy_image' shortcode. This is due to the shortcode rendering path passing attacker-controlled class input into a fallback image builder that concatenates HTML attributes without proper escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts that execute when users interact with the injected frontend page via the 'class' shortcode attribute.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-2505">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3034f3c0596a87a0f0e169d374362383</td>
-       <td>CVE-2026-0894</td>
-       <td>2026-04-18 10:16:12</td>
-       <td>The Content Blocks (Custom Post Widget) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's content_block shortcode in all versions up to, and including, 3.3.9 due to insufficient input sanitization and output escaping on user supplied values consumed from user-created content blocks. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0894">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ccd69cac4333bfefddf6db5a19ff3757</td>
-       <td>CVE-2026-41254</td>
-       <td>2026-04-18 07:16:10</td>
-       <td>Little CMS (lcms2) through 2.18 has an integer overflow in CubeSize in cmslut.c because the overflow check is performed after the multiplication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41254">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8c358ab569ae27307ff832bca00c9b26</td>
-       <td>CVE-2026-32690</td>
-       <td>2026-04-18 07:16:10</td>
-       <td>Secrets in Variables saved as JSON dictionaries were not properly redacted - in case thee variables were retrieved by the user the secrets stored as nested fields were not masked. If you do not store variables with sensitive values in JSON form, you are not affected. Otherwise please upgrade to Apache Airflow 3.2.0 that has the fix implemented</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32690">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f7138bd5b3bd480b09fe9767890dff64</td>
-       <td>CVE-2026-32228</td>
-       <td>2026-04-18 07:16:10</td>
-       <td>UI / API User with asset materialize permission could trigger dags they had no access to. Users are advised to migrate to Airflow version 3.2.0 that fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32228">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bbcf6a0b3f5fbb4ebd9dc02d416e59ea</td>
-       <td>CVE-2026-30912</td>
-       <td>2026-04-18 07:16:10</td>
-       <td>In case of SQL errors, exception/stack trace of errors was exposed in API even if "api/expose_stack_traces" was set to false. That could lead to exposing additional information to potential attacker. Users are recommended to upgrade to Apache Airflow 3.2.0, which fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30912">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b47a83433290fc276d2152c7d59ad13</td>
-       <td>CVE-2026-30898</td>
-       <td>2026-04-18 07:16:10</td>
-       <td>An example of BashOperator in Airflow documentation suggested a way of passing dag_run.conf in the way that could cause unsanitized user input to be used to escalate privileges of UI user to allow execute code on worker. Users should review if any of their own DAGs have adopted this incorrect advice.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30898">详情</a></td>
       </tr>
 
      </tbody>
