@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-04-21 08:03:01 -->
+<!-- RELEASE TIME : 2026-04-22 03:25:25 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f044453ce549a07009f8cb7185fbfba4</td>
+       <td>CVE-2026-5921</td>
+       <td>2026-04-21 23:16:22 <img src="imgs/new.gif" /></td>
+       <td>A server-side request forgery (SSRF) vulnerability was identified in GitHub Enterprise Server that allowed an attacker to extract sensitive environment variables from the instance through a timing side-channel attack against the notebook rendering service. When private mode was disabled, the notebook viewer followed HTTP redirects without revalidating the destination host, enabling an unauthenticated SSRF to internal services. By chaining this with regex filter queries against an internal API and measuring response time differences, an attacker could infer secret values character by character. Exploitation required that private mode be disabled and that the attacker be able to chain the instance's open redirect endpoint through an external redirect to reach internal services. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.21 and was fixed in versions 3.14.26, 3.15.21, 3.16.17, 3.17.14, 3.18.8, 3.19.5, and 3.20.1. This vulnerability was reported via the GitHub Bug Bounty program.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5921">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d1edf89f5bee94a9a288cc84fdb1e560</td>
+       <td>CVE-2026-5845</td>
+       <td>2026-04-21 23:16:22 <img src="imgs/new.gif" /></td>
+       <td>An improper authorization vulnerability in scoped user-to-server (ghu_) token authorization in GitHub Enterprise Server allows an authenticated attacker to access private repositories outside the intended installation scope, which can include write operations, via an authorization fallback that treated a revoked/deleted installation as a global installation context, which could be chained with token revocation timing and SSH push attribution to obtain and reuse a victim-scoped token. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.21 and was fixed in versions 3.20.1, 3.19.5, 3.18.8, 3.17.14, 3.16.17, 3.15.21, and 3.14.26. This vulnerability was reported via the GitHub Bug Bounty program.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5845">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5e122a151dd017f375109f9f672c7c9e</td>
+       <td>CVE-2026-5512</td>
+       <td>2026-04-21 23:16:22 <img src="imgs/new.gif" /></td>
+       <td>An improper authorization vulnerability was identified in GitHub Enterprise Server that allowed an authenticated attacker to determine the names of private repositories by their numeric ID. The mobile upload policy API endpoint did not perform an early authorization check, and validation error messages included the full repository name for repositories the caller did not have access to. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.21 and was fixed in versions 3.20.1, 3.19.5, 3.18.8, 3.17.14, 3.16.17, 3.15.21, and 3.14.26. This vulnerability was reported via the GitHub Bug Bounty program.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5512">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d97e7e4daee4aec9d7d1463a0ff4f230</td>
+       <td>CVE-2026-4872</td>
+       <td>2026-04-21 23:16:22 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4872">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>894187451ed98b48cf215568e815e095</td>
+       <td>CVE-2026-4821</td>
+       <td>2026-04-21 23:16:22 <img src="imgs/new.gif" /></td>
+       <td>An improper neutralization of special elements vulnerability was identified in GitHub Enterprise Server that allowed an authenticated Management Console administrator to execute arbitrary OS commands via shell metacharacter injection in proxy configuration fields such as http_proxy. Exploitation of this vulnerability required access to the GitHub Enterprise Server instance and administrator privileges to the Management Console. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.21 and was fixed in versions 3.20.1, 3.19.5, 3.18.8, 3.17.14, 3.16.17, 3.15.21, 3.14.26. This vulnerability was reported via the GitHub Bug Bounty program.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4821">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f860657264de78fd56d72064d861ca1</td>
+       <td>CVE-2026-4296</td>
+       <td>2026-04-21 23:16:21 <img src="imgs/new.gif" /></td>
+       <td>An incorrect regular expression vulnerability was identified in GitHub Enterprise Server that allowed an attacker to bypass OAuth redirect URI validation. An attacker with knowledge of a first-party OAuth application's registered callback URL could craft a malicious authorization link that, when clicked by a victim, would redirect the OAuth authorization code to an attacker-controlled domain. This could allow the attacker to gain unauthorized access to the victim's account with the scopes granted to the OAuth application. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.21 and was fixed in versions 3.20.1, 3.19.5, 3.18.8, 3.17.14, 3.16.17, 3.15.21, 3.14.26. This vulnerability was reported via the GitHub Bug Bounty program.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4296">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f378923393cca5c106c0fb952b4e03c</td>
+       <td>CVE-2026-41063</td>
+       <td>2026-04-21 23:16:21 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo is an open source video platform. In versions 29.0 and below, the incomplete XSS fix in AVideo's `ParsedownSafeWithLinks` class overrides `inlineMarkup` for raw HTML but does not override `inlineLink()` or `inlineUrlTag()`, allowing `javascript:` URLs in markdown link syntax to bypass sanitization. Commit cae8f0dadbdd962c89b91d0095c76edb8aadcacf contains an updated fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41063">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fc9db0a099e35507e2eabf0abf9c065c</td>
+       <td>CVE-2026-41062</td>
+       <td>2026-04-21 23:16:21 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo is an open source video platform. In versions 29.0 and below, the directory traversal fix introduced in commit 2375eb5e0 for `objects/aVideoEncoderReceiveImage.json.php` only checks the URL path component (via `parse_url($url, PHP_URL_PATH)`) for `..` sequences. However, the downstream function `try_get_contents_from_local()` in `objects/functionsFile.php` uses `explode('/videos/', $url)` on the **full URL string** including the query string. An attacker can place the `/videos/../../` traversal payload in the query string to bypass the security check and read arbitrary files from the server filesystem. Commit bd11c16ec894698e54e2cdae25026c61ad1ed441 contains an updated fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41062">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>04052dd10cea8e3459b1c77300bc1707</td>
+       <td>CVE-2026-41061</td>
+       <td>2026-04-21 23:16:21 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo is an open source video platform. In versions 29.0 and below, the `isValidDuration()` regex at `objects/video.php:918` uses `/^[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/` without a `$` end anchor, allowing arbitrary HTML/JavaScript to be appended after a valid duration prefix. The crafted duration is stored in the database and rendered without HTML escaping via `echo Video::getCleanDuration()` on trending pages, playlist pages, and video gallery thumbnails, resulting in stored cross-site scripting. Commit bcba324644df8b4ed1f891462455f1cd26822a45 contains a fix.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41061">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6707bb0c5026e6cc484e3c8f1f25c7b6</td>
+       <td>CVE-2026-41060</td>
+       <td>2026-04-21 23:16:21 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo is an open source video platform. In versions 29.0 and below, the `isSSRFSafeURL()` function in `objects/functions.php` contains a same-domain shortcircuit (lines 4290-4296) that allows any URL whose hostname matches `webSiteRootURL` to bypass all SSRF protections. Because the check compares only the hostname and ignores the port, an attacker can reach arbitrary ports on the AVideo server by using the site's public hostname with a non-standard port. The response body is saved to a web-accessible path, enabling full exfiltration. Commit a0156a6398362086390d949190f9d52a823000ba fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41060">详情</a></td>
+      </tr>
+
+      <tr>
        <td>cae9ee55c73ed5087dc1facea4be88ab</td>
        <td>CVE-2026-40264</td>
        <td>2026-04-21 01:16:06 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>c10c9430055e970e4955b9d4307be9ec</td>
        <td>CVE-2026-6729</td>
-       <td>2026-04-20 22:01:38 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 22:01:38</td>
        <td>HKUDS OpenHarness prior to PR #159 remediation contains a session key derivation vulnerability that allows authenticated participants in shared chats or threads to hijack other users' sessions by exploiting a shared ohmo session key that lacks sender identity verification. Attackers can reuse another user's conversation state and replace or interrupt their active tasks by colliding into the same session boundary through the shared chat or thread scope.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6729">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>d95bf26edb11c6df777961f8795aac70</td>
        <td>CVE-2026-0930</td>
-       <td>2026-04-20 21:28:33 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:28:33</td>
        <td>Potential read out of bounds case with wolfSSHd on Windows while handling a terminal resize request. An authenticated user could trigger the out of bounds read after establishing a connection which would leak the adjacent stack memory to the pseudo-console output.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0930">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>0db378b8cf3836fd9b16b6a475d7311f</td>
        <td>CVE-2026-22051</td>
-       <td>2026-04-20 21:27:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:27:36</td>
        <td>StorageGRID (formerly StorageGRID Webscale) versions prior to 11.9.0.13 and 12.0.0.6 are susceptible to a Information Disclosure vulnerability. Successful exploit could allow an authenticated attacker with low privileges to run arbitrary metrics queries, revealing metric results that they do not have access to.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22051">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>b3757e3167e6feb9ab52ec256b7d708f</td>
        <td>CVE-2026-5928</td>
-       <td>2026-04-20 21:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:16:36</td>
        <td>Calling the ungetwc function on a FILE stream with wide characters encoded in a character set that has overlaps between its single byte and multi-byte character encodings, in the GNU C Library version 2.43 or earlier, may result in an attempt to read bytes before an allocated buffer, potentially resulting in unintentional disclosure of neighboring data in the heap, or a program crash. A bug in the wide character pushback implementation (_IO_wdefault_pbackfail in libio/wgenops.c) causes ungetwc() to operate on the regular character buffer (fp->_IO_read_ptr) instead of the actual wide-stream read pointer (fp->_wide_data->_IO_read_ptr). The program crash may happen in cases where fp->_IO_read_ptr is not initialized and hence points to NULL. The buffer under-read requires a special situation where the input character encoding is such that there are overlaps between single byte representations and multibyte representations in that encoding, resulting in spurious matches. The spurious match case is not possible in the standard Unicode character sets.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5928">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>654cdd1a3f0368e620a76cd882cae20c</td>
        <td>CVE-2026-5450</td>
-       <td>2026-04-20 21:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:16:36</td>
        <td>Calling the scanf family of functions with a %mc (malloc'd character match) in the GNU C Library version 2.7 to version 2.43 with a format width specifier with an explicit width greater than 1024 could result in a one byte heap buffer overflow.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5450">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>243d903307389c744d4261e87f98d9c9</td>
        <td>CVE-2026-5358</td>
-       <td>2026-04-20 21:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:16:36</td>
        <td>The obsolete nis_local_principal function in the GNU C Library version 2.43 and older may overflow a buffer in the data section, which could allow an attacker to spoof a crafted response to a UDP request generated by this function and overwrite neighboring static data in the requesting application. NIS support is obsolete and has been deprecated in the GNU C Library since version 2.26 and is only maintained for legacy usage. Applications should port away from NIS to more modern identity and access management services.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5358">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>e960eb12921e79ac9088c35b16750efd</td>
        <td>CVE-2026-4852</td>
-       <td>2026-04-20 21:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:16:36</td>
        <td>The Image Source Control Lite – Show Image Credits and Captions plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'Image Source' attachment field in all versions up to, and including, 3.9.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4852">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>b56d9df942f4d5224ace90b7e02eae81</td>
        <td>CVE-2026-34403</td>
-       <td>2026-04-20 21:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:16:36</td>
        <td>Nginx UI is a web user interface for the Nginx web server. Prior to version 2.3.5, all WebSocket endpoints in nginx-ui use a gorilla/websocket Upgrader with CheckOrigin unconditionally returning true, allowing Cross-Site WebSocket Hijacking (CSWSH). Combined with the fact that authentication tokens are stored in browser cookies (set via JavaScript without HttpOnly or explicit SameSite attributes), a malicious webpage can establish authenticated WebSocket connections to the nginx-ui instance when a logged-in administrator visits the attacker-controlled page. Version 2.3.5 patches the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-34403">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>c3785141be616484ed9fdc4d9f9ce912</td>
        <td>CVE-2026-33626</td>
-       <td>2026-04-20 21:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:16:35</td>
        <td>LMDeploy is a toolkit for compressing, deploying, and serving large language models. Versions prior to 0.12.3 have a Server-Side Request Forgery (SSRF) vulnerability in LMDeploy's vision-language module. The `load_image()` function in `lmdeploy/vl/utils.py` fetches arbitrary URLs without validating internal/private IP addresses, allowing attackers to access cloud metadata services, internal networks, and sensitive resources. Version 0.12.3 patches the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33626">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>d3c7f9ba95d6db1295a6e407ea683911</td>
        <td>CVE-2026-33432</td>
-       <td>2026-04-20 21:16:34 <img src="imgs/new.gif" /></td>
+       <td>2026-04-20 21:16:34</td>
        <td>Roxy-WI is a web interface for managing Haproxy, Nginx, Apache and Keepalived servers. In versions up to and including 8.2.8.2, when LDAP authentication is enabled, Roxy-WI constructs an LDAP search filter by directly concatenating the user-supplied login username into the filter string without escaping LDAP special characters. An unauthenticated attacker can inject LDAP filter metacharacters into the username field to manipulate the search query, cause the directory to return an unintended user entry, and bypass authentication entirely — gaining access to the application without knowing any valid password. As of time of publication, no known patches are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33432">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5c9c3d31c0658caa83461202069a8506</td>
-       <td>CVE-2026-6579</td>
-       <td>2026-04-19 22:00:17</td>
-       <td>A weakness has been identified in liangliangyy DjangoBlog up to 2.1.0.0. This impacts an unknown function of the file blog/views.py of the component Clean Endpoint. This manipulation causes missing authentication. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6579">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2f3aa4bfc81ae918f10fae7e4f0a13b2</td>
-       <td>CVE-2026-6578</td>
-       <td>2026-04-19 21:15:14</td>
-       <td>A security flaw has been discovered in liangliangyy DjangoBlog up to 2.1.0.0. This affects an unknown function of the file djangoblog/settings.py of the component Setting Handler. The manipulation of the argument SECRET_KEY results in hard-coded credentials. The attack can be launched remotely. The attack requires a high level of complexity. The exploitability is reported as difficult. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6578">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>999cce9be77fa98fa937ed709ce1b9d3</td>
-       <td>CVE-2026-6577</td>
-       <td>2026-04-19 20:16:28</td>
-       <td>A vulnerability was identified in liangliangyy DjangoBlog up to 2.1.0.0. The impacted element is an unknown function of the file owntracks/views.py of the component logtracks Endpoint. The manipulation leads to missing authentication. The attack can be initiated remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6577">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6922509c28f7523ac02ea8692878fc96</td>
-       <td>CVE-2026-6576</td>
-       <td>2026-04-19 19:16:14</td>
-       <td>A vulnerability was determined in liangliangyy DjangoBlog up to 2.1.0.0. The affected element is the function CommandHandler of the file servermanager/api/commonapi.py of the component WeChat Bot Interface. Executing a manipulation of the argument Source can lead to command injection. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6576">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>95b0306abc9a14788b2686abeb853f3f</td>
-       <td>CVE-2026-6574</td>
-       <td>2026-04-19 14:16:11</td>
-       <td>A vulnerability has been found in osuuu LightPicture up to 1.2.2. This issue affects some unknown processing of the file /public/install/lp.sql of the component API Upload Endpoint. Such manipulation of the argument key leads to hard-coded credentials. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6574">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>02188a7a1400e7426748a57c75aa2af0</td>
-       <td>CVE-2026-6573</td>
-       <td>2026-04-19 13:16:46</td>
-       <td>A vulnerability was detected in PHPEMS 11.0. This affects the function temppage of the file /app/exam/controller/exams.master.php of the component Instant Exam Creation Handler. The manipulation of the argument uploadfile results in server-side request forgery. The attack can be executed remotely. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6573">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aadc5bc845032fccd8c711e5a4623b00</td>
-       <td>CVE-2026-6572</td>
-       <td>2026-04-19 13:16:45</td>
-       <td>A security vulnerability has been detected in Collabora KodExplorer up to 4.52. Affected by this issue is some unknown functionality of the file /app/controller/share.class.php of the component fileUpload Endpoint. The manipulation of the argument fileUpload leads to improper authorization. Remote exploitation of the attack is possible. The attack's complexity is rated as high. The exploitation is known to be difficult. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6572">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>af307d7e677290b184e313f85550fd9d</td>
-       <td>CVE-2026-6571</td>
-       <td>2026-04-19 12:16:33</td>
-       <td>A weakness has been identified in kodcloud KodExplorer up to 4.52. Affected by this vulnerability is the function roleGroupAction of the file /app/controller/systemRole.class.php. Executing a manipulation of the argument group_role can lead to authorization bypass. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6571">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7cf2f11047a90c97af44700cd656c8cf</td>
-       <td>CVE-2026-6570</td>
-       <td>2026-04-19 12:16:32</td>
-       <td>A security flaw has been discovered in kodcloud KodExplorer up to 4.52. Affected is the function initInstall of the file /app/controller/systemMember.class.php. Performing a manipulation of the argument path results in authorization bypass. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6570">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6356e47825bebd40a1d38bf718fe8a24</td>
-       <td>CVE-2026-6569</td>
-       <td>2026-04-19 11:16:14</td>
-       <td>A vulnerability was identified in kodcloud KodExplorer up to 4.52. This impacts the function fileGet of the file /app/controller/share.class.php of the component fileGet Endpoint. Such manipulation of the argument fileUrl leads to improper authentication. The attack can be launched remotely. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6569">详情</a></td>
       </tr>
 
      </tbody>
