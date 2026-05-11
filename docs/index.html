@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-05-10 16:00:22 -->
+<!-- RELEASE TIME : 2026-05-11 15:26:34 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c2b12be7fd79edaeda369fa0951e6f95</td>
+       <td>CVE-2026-43826</td>
+       <td>2026-05-11 09:16:26 <img src="imgs/new.gif" /></td>
+       <td>The OpenSearch logging provider, when configured with a `host` URL that embeds credentials (for example `https://user:password@server.example.com:9200`), wrote the full host URL — including the embedded credentials — into task logs. Any user with task-log read permission could harvest the backend credentials. Users are advised to upgrade to `apache-airflow-providers-opensearch` 1.9.1 or later and, as a defense-in-depth measure, configure the backend credentials via a secret backend rather than embedding them in the `[opensearch] host` URL.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-43826">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>24c7973eaa6b7246d931e2f9da3aedde</td>
+       <td>CVE-2026-41018</td>
+       <td>2026-05-11 09:16:25 <img src="imgs/new.gif" /></td>
+       <td>The Elasticsearch logging provider, when configured with a `host` URL that embeds credentials (for example `https://user:password@server.example.com:9200`), wrote the full host URL — including the embedded credentials — into task logs. Any user with task-log read permission could harvest the backend credentials. Users are advised to upgrade to `apache-airflow-providers-elasticsearch` 6.5.3 or later and, as a defense-in-depth measure, configure the backend credentials via a secret backend rather than embedding them in the `[elasticsearch] host` URL.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41018">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>323ae150b0ce53842f60c8a8f26aa0e6</td>
+       <td>CVE-2026-5084</td>
+       <td>2026-05-11 08:16:16 <img src="imgs/new.gif" /></td>
+       <td>WebDyne::Session versions through 2.075 for Perl generates the session id insecurely. The session handler generates the session id from an MD5 hash seeded with a call to the built-in rand() function. The rand function is passed a maximum value based on the process id, the epoch time and the reference address of the object, but this information will have no effect on the overall quality of the seed of the message digest. The rand function is seeded by 32-bits and is predictable. It is considered unsuitable for cryptographic purposes. Predictable session ids could allow an attacker to gain access to systems. Note that WebDyne::Session versions 1.042 and earlier appear to be in separate distributions from WebDyne.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5084">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bcfccd1c892bc6d9e08a60ba85274c90</td>
+       <td>CVE-2026-43500</td>
+       <td>2026-05-11 08:16:16 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present The DATA-packet handler in rxrpc_input_call_event() and the RESPONSE handler in rxrpc_verify_response() copy the skb to a linear one before calling into the security ops only when skb_cloned() is true. An skb that is not cloned but still carries externally-owned paged fragments (e.g. SKBFL_SHARED_FRAG set by splice() into a UDP socket via __ip_append_data, or a chained skb_has_frag_list()) falls through to the in-place decryption path, which binds the frag pages directly into the AEAD/skcipher SGL via skb_to_sgvec(). Extend the gate to also unshare when skb_has_frag_list() or skb_has_shared_frag() is true. This catches the splice-loopback vector and other externally-shared frag sources while preserving the zero-copy fast path for skbs whose frags are kernel-private (e.g. NIC page_pool RX, GRO). The OOM/trace handling already in place is reused.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-43500">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>066e100c810b1111c3578877d16179ee</td>
+       <td>CVE-2026-8276</td>
+       <td>2026-05-11 06:16:10 <img src="imgs/new.gif" /></td>
+       <td>A flaw has been found in bettercap up to 2.41.5. Affected by this issue is some unknown functionality of the file modules/mysql_server/mysql_server.go of the component MySQL Server. Executing a manipulation can lead to integer coercion error. The attack can be launched remotely. The attack requires a high level of complexity. The exploitation is known to be difficult. The exploit has been published and may be used. This patch is called 0eaa375c5e5446bfba94a290eff92967a5deac9e. It is advisable to implement a patch to correct this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8276">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0f8dd1156ad3e7bf751cbbad8ddb08a8</td>
+       <td>CVE-2026-8275</td>
+       <td>2026-05-11 06:16:09 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in bettercap up to 2.41.5. Affected by this vulnerability is the function ippReadChunkedBody of the file modules/zerogod/zerogod_ipp_primitives.go of the component zerogod IPP Service. Performing a manipulation results in integer coercion error. The attack can be initiated remotely. The attack is considered to have high complexity. The exploitation appears to be difficult. The exploit is now public and may be used. The patch is named 3731d5576cffae9eefe3721cd46a40933304129f. To fix this issue, it is recommended to deploy a patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8275">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>71c5965595fdbb870ea10ec62c5674d8</td>
+       <td>CVE-2026-6433</td>
+       <td>2026-05-11 06:16:09 <img src="imgs/new.gif" /></td>
+       <td>The Custom css-js-php WordPress plugin through 2.0.7 does not properly sanitize user input before using it in a SQL query, and the result is passed to eval(), allowing unauthenticated users to execute arbitrary PHP code on the server.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6433">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f18220020ce286e1b51442c6288c5842</td>
+       <td>CVE-2026-1677</td>
+       <td>2026-05-11 06:16:08 <img src="imgs/new.gif" /></td>
+       <td>Zephyr sockets created with `IPPROTO_TLS_1_3` can still negotiate a TLS 1.2 connection when both TLS versions are enabled in Kconfig, because the socket-level protocol selection is not propagated to mbedTLS (e.g. via `mbedtls_ssl_conf_min_tls_version`). The ClientHello advertises both versions and the peer can establish TLS 1.2, so applications that assumed `IPPROTO_TLS_1_3` enforces TLS 1.3 may silently use TLS 1.2 and remain exposed to TLS 1.2-specific weaknesses. As a workaround, the `TLS_CIPHERSUITE_LIST` socket option can be restricted to TLS 1.3-only cipher suites.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1677">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>06298390a60d64d8dd5c607784bbfd76</td>
+       <td>CVE-2026-8274</td>
+       <td>2026-05-11 05:16:16 <img src="imgs/new.gif" /></td>
+       <td>A security vulnerability has been detected in npitre cramfs-tools up to 2.1. Affected is the function do_directory of the file cramfsck.c of the component Directory Handler. Such manipulation leads to path traversal. The attack can only be performed from a local environment. The exploit has been disclosed publicly and may be used. Upgrading to version 2.2 is able to address this issue. The name of the patch is 2fc492747115b24d8a07eddd27a2d45229cb273c. Upgrading the affected component is recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8274">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f99d801912b542b461861f1871e12085</td>
+       <td>CVE-2026-8273</td>
+       <td>2026-05-11 05:16:16 <img src="imgs/new.gif" /></td>
+       <td>A weakness has been identified in D-Link DNS-320 2.06B01. This impacts the function cgi_set_host/cgi_set_ntp/cgi_fan_control/cgi_merge_user of the file /cgi-bin/system_mgr.cgi. This manipulation causes os command injection. It is possible to initiate the attack remotely.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8273">详情</a></td>
+      </tr>
+
+      <tr>
        <td>22ac5f144d321d6929d9a984fdd8cd4a</td>
        <td>CVE-2026-8244</td>
        <td>2026-05-10 10:16:13 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>9082d96777847d4ab2af99a51e6ed2ad</td>
        <td>CVE-2026-8187</td>
-       <td>2026-05-09 11:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 11:16:28</td>
        <td>A flaw has been found in Open5GS up to 2.7.7. This impacts the function _gtpv1_u_recv_cb of the file src/upf/gtp-path.c of the component UPF. Executing a manipulation can lead to resource consumption. The attack may be performed from remote. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8187">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>bafed5b26881ce011c5df8a183099f75</td>
        <td>CVE-2026-8185</td>
-       <td>2026-05-09 11:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 11:16:28</td>
        <td>A security vulnerability has been detected in UGREEN CM933 1.1.59.4319. The impacted element is an unknown function of the component Administrative Interface. Such manipulation leads to missing authentication. The attack requires being on the local network. You should upgrade the affected component. The vendor replied: "We have successfully confirmed and reproduced the issue. We take this matter very seriously and have incorporated the fix into our development schedule. The issue is scheduled to be resolved in the release version coming in late April."</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8185">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>c2d117566850aec5e195f2c3398a5112</td>
        <td>CVE-2026-3828</td>
-       <td>2026-05-09 09:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 09:16:09</td>
        <td>Some Hikvision switch products (discontinued since December 2023) are vulnerable to authenticated remote command execution due to insufficient input validation. Attackers with valid credentials can exploit this flaw by sending crafted packets containing malicious commands to affected devices, leading to arbitrary command execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3828">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>8c5c830fb392c166d9ae19c0997a616c</td>
        <td>CVE-2026-32683</td>
-       <td>2026-05-09 09:16:08 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 09:16:08</td>
        <td>Some EZVIZ products utilize older versions of cloud feature modules with legacy API interfaces, which pose a data transmission risk. Attackers can exploit this by eavesdropping on network requests to obtain data.Users are advised to upgrade the app to the latest version and enable the video encryption feature.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32683">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>db4d7773e2c2ebe7c931318fb3c4a09c</td>
        <td>CVE-2026-1749</td>
-       <td>2026-05-09 09:16:08 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 09:16:08</td>
        <td>There is an Access Control Vulnerability in some HikCentral Professional versions. This could allow an unauthenticated user to obtain the admin permission.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1749">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>ecd03b0fcd04b39e92ec1957d8f4c908</td>
        <td>CVE-2026-42560</td>
-       <td>2026-05-09 06:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 06:16:10</td>
        <td>auth provides authentication via oauth2, direct and email. From versions 1.18.0 to before 1.25.2 and 2.0.0 to before 2.1.2, the Patreon OAuth provider maps every authenticated Patreon account to the same local user.ID, instead of deriving a unique ID from the Patreon account returned by Patreon. In practice, this means all Patreon-authenticated users of an application using this library are collapsed into a single local identity. Any application that trusts token.User.ID as the stable account key can end up mixing or fully merging unrelated Patreon users, which can lead to cross-account access, privilege confusion, and subscription-state leakage. This issue has been patched in versions 1.25.2 and 2.1.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42560">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>25aef981c5d21e2c8c169bace41c25af</td>
        <td>CVE-2026-42311</td>
-       <td>2026-05-09 06:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 06:16:10</td>
        <td>Pillow is a Python imaging library. From version 10.3.0 to before version 12.2.0, processing a malicious PSD file could lead to memory corruption, potentially resulting in a crash or arbitrary code execution. This issue has been patched in version 12.2.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42311">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>465fcae3f57d6ebbc42842d4e5bde014</td>
        <td>CVE-2026-42310</td>
-       <td>2026-05-09 06:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 06:16:10</td>
        <td>Pillow is a Python imaging library. From version 4.2.0 to before version 12.2.0, an attacker can supply a malicious PDF that causes the process to hang indefinitely, consuming 100% CPU and making the application unresponsive. This issue has been patched in version 12.2.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42310">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>d6590009cf8892d2efe7cddacfb34671</td>
        <td>CVE-2026-42309</td>
-       <td>2026-05-09 06:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 06:16:10</td>
        <td>Pillow is a Python imaging library. From version 11.2.1 to before version 12.2.0, passing nested lists as coordinates to APIs that accept coordinates such as ImagePath.Path, ImageDraw.ImageDraw.polygon and ImageDraw.ImageDraw.line could cause a heap buffer overflow, as nested lists were recursively unpacked beyond the allocated buffer. Coordinate lists are now validated to contain exactly two numeric coordinates. This issue has been patched in version 12.2.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42309">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>4aab6eda0557ffdc1bc60d20274f068f</td>
        <td>CVE-2026-42308</td>
-       <td>2026-05-09 06:16:09 <img src="imgs/new.gif" /></td>
+       <td>2026-05-09 06:16:09</td>
        <td>Pillow is a Python imaging library. Prior to version 12.2.0, if a font advances for each glyph by an exceeding large amount, when Pillow keeps track of the current position, it may lead to an integer overflow. This issue has been patched in version 12.2.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42308">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>954556893341002905cc9f07b45b03b1</td>
-       <td>CVE-2026-8149</td>
-       <td>2026-05-08 07:16:29</td>
-       <td>A vulnerability in Legion of the Bouncy Castle Inc. BC-FJA BC-FIPS on Linux, X86_64, AVX, AVX-512f. This vulnerability is associated with program files gcm128w, gcm512w. This issue affects BC-FJA: from 2.1.0 through 2.1.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8149">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25f192ac4b0464e5294d172874eae300</td>
-       <td>CVE-2026-8069</td>
-       <td>2026-05-08 07:16:29</td>
-       <td>PredatorSense version 3.00.3136 to 3.00.3196 contain Local Privilege Escalation (LPE) vulnerability.The program exposes a Windows Named Pipe that uses a custom protocol to invoke internal functions. However, this Named Pipe is misconfigured, allowing any authenticated local user to execute arbitrary code with NT AUTHORITY\SYSTEM privileges and to delete arbitrary files with SYSTEM privileges. By leveraging this, an attacker can execute arbitrary code on the target system with elevated privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8069">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>90311826e3e9cffab3befffa42805c95</td>
-       <td>CVE-2026-44916</td>
-       <td>2026-05-08 07:16:29</td>
-       <td>In OpenStack Ironic through 35.x, instance_info['ks_template'] is rendered without sandboxing.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44916">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f039981c2d0da16a8f7951e23c28aefe</td>
-       <td>CVE-2025-69691</td>
-       <td>2026-05-08 07:16:28</td>
-       <td>Netgate pfSense CE 2.8.0 allows code execution in the XMLRPC API via pfsense.exec_php. NOTE: the Supplier disputes this because the API call is only available to admins and they are intentionally allowed to execute PHP code.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-69691">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e11047d407dd7c874ba6ccd0129d9914</td>
-       <td>CVE-2025-67888</td>
-       <td>2026-05-08 07:16:28</td>
-       <td>An issue was discovered in Control Web Panel (CWP) before 0.9.8.1209. User input passed via the "key" GET parameter to /admin/index.php (when the "api" parameter is set) is not properly sanitized before being used to execute OS commands. This can be exploited by unauthenticated attackers to inject and execute arbitrary OS commands with the privileges of root on the web server. Softaculous or SitePad must be present.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-67888">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5606f425ca5fe0cd7333a0abc20c043f</td>
-       <td>CVE-2025-55449</td>
-       <td>2026-05-08 07:16:28</td>
-       <td>AstrBotDevs AstrBot 3.5.15 has Advanced_System_for_Text_Response_and_Bot_Operations_Tool as the hardcoded private key used to sign a JWT.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-55449">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e1f1fdbdd99777321738ff0454f9962e</td>
-       <td>CVE-2023-46453</td>
-       <td>2026-05-08 07:16:27</td>
-       <td>Certain GL.iNet devices with 4.x firmware allow authentication bypass (resulting in administrative control of the device) via a username that is both a valid SQL statement and a valid regular expression. For example, this affects version 4.3.7 on GL-MT3000 GL-AR300M GL-B1300 GL-AX1800 GL-AR750S GL-MT2500 GL-AXT1800 GL-X3000 and GL-SFT1200.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2023-46453">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ffd13d11f3f8bcd09c772f6905e50bfe</td>
-       <td>CVE-2024-53326</td>
-       <td>2026-05-08 06:16:10</td>
-       <td>LINQPad before 5.52.01 Pro edition is vulnerable to Unsafe Deserialization in LINQPad.AutoRefManager::PopulateFromCache(), leading to code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-53326">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78add5da2a7d8cbb6f7e0b80fc0121dd</td>
-       <td>CVE-2024-51092</td>
-       <td>2026-05-08 06:16:10</td>
-       <td>LibreNMS before 24.10.0 allows a remote attacker to execute arbitrary code via OS command injection involving AboutController.php's index(), SettingsController.php's update(), and PollDevice.php's initRrdDirectory().</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-51092">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>02d5d57dc434a2801585544418f5dbdb</td>
-       <td>CVE-2024-46508</td>
-       <td>2026-05-08 06:16:09</td>
-       <td>yeti-platform yeti before 2.1.12 allows attackers to generate valid JWT tokens is the secret is not changed (by setting YETI_AUTH_SECRET_KEY to a value other than SECRET).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-46508">详情</a></td>
       </tr>
 
      </tbody>
