@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-05-12 22:16:39 -->
+<!-- RELEASE TIME : 2026-05-13 20:02:43 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6ad293b1949688a1af08cab7d054dcde</td>
+       <td>CVE-2026-8463</td>
+       <td>2026-05-13 14:18:17 <img src="imgs/new.gif" /></td>
+       <td>Crypt::Argon2 versions from 0.017 before 0.031 for Perl perform a heap out-of-bounds read in argon2_verify on empty encoded input. The auto-detect form of argon2_verify passes encoded_len - 1 as the length argument to memchr without checking that encoded_len is non-zero. When the encoded string is empty, the size_t subtraction underflows to SIZE_MAX and memchr scans adjacent heap memory looking for a '$' separator byte. A caller that invokes argon2_verify against a stored hash that may legitimately be empty (for example a placeholder row or a NULL column materialised as an empty string) reads out-of-bounds heap memory, which can crash the process or leak the position of an adjacent '$' byte into subsequent parsing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8463">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f0927db19167b9c063b06b6ebc4bde53</td>
+       <td>CVE-2026-8369</td>
+       <td>2026-05-13 14:18:16 <img src="imgs/new.gif" /></td>
+       <td>Improper Input Validation in the NAT64 translator in The OpenThread Authors OpenThread before commit 26a882d on all platforms allows an attacker on the adjacent IPv4 network to inject corrupted IPv6 packets into the Thread mesh or bypass security checks via crafted IPv4 packets with options.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8369">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e7cbe1b6937784a5f54d2060a775e73</td>
+       <td>CVE-2026-4609</td>
+       <td>2026-05-13 14:17:58 <img src="imgs/new.gif" /></td>
+       <td>The ProfileGrid – User Profiles, Groups and Communities plugin for WordPress is vulnerable to unauthorized access due to a missing capability check on the pm_invite_user function in all versions up to, and including, 5.9.8.4. This makes it possible for authenticated attackers, with Subscriber-level access and above, to add themselves or any registered user to any ProfileGrid group, including closed and paid groups, bypassing all authorization and payment gates.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4609">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fad8fa54f94e49a2d33c07dfea0b49c8</td>
+       <td>CVE-2026-4608</td>
+       <td>2026-05-13 14:17:58 <img src="imgs/new.gif" /></td>
+       <td>The ProfileGrid – User Profiles, Groups and Communities plugin for WordPress is vulnerable to blind SQL Injection via the 'rid' parameter in all versions up to, and including, 5.9.8.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Subscriber-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4608">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5fe3e97c95b8d0f4758a18201d1e1993</td>
+       <td>CVE-2026-4607</td>
+       <td>2026-05-13 14:17:58 <img src="imgs/new.gif" /></td>
+       <td>The ProfileGrid – User Profiles, Groups and Communities plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 5.9.8.4. This is due to the plugin not properly verifying that a user is authorized to perform an action via the pm_set_group_order, pm_set_group_items, and pm_set_field_order AJAX actions. This makes it possible for authenticated attackers, with Subscriber-level access and above, to modify site-wide ProfileGrid group settings including group menu order, group list order, group icon display, and field ordering.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4607">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>919cb273a89cdce4ab9657a26c623874</td>
+       <td>CVE-2026-39806</td>
+       <td>2026-05-13 14:17:35 <img src="imgs/new.gif" /></td>
+       <td>Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in mtrudel bandit allows unauthenticated remote denial of service via worker process exhaustion. 'Elixir.Bandit.HTTP1.Socket':do_read_chunked_data!/5 in lib/bandit/http1/socket.ex terminates only when the last-chunk line 0\r\n is followed immediately by the empty trailer line \r\n. RFC 9112 §7.1.2 permits zero or more trailer fields between them. When trailers are present, none of the match clauses fit: the catch-all arm computes a negative to_read, calls read_available!/2, receives <<>> on timeout, and tail-recurses with unchanged state. The worker process is pinned for the lifetime of the TCP connection. A handful of concurrent connections sending RFC-conformant chunked requests with trailer fields is sufficient to exhaust the Bandit worker pool and render the server unresponsive to all further traffic. No authentication, special headers, or large payload is required. Proxies such as NGINX and HAProxy legitimately forward trailer-bearing requests, so servers behind such proxies may be affected without any malicious client involvement. This issue affects bandit: from 1.6.1 before 1.11.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39806">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d51f0e9887787cf4db3a9ffded7ae451</td>
+       <td>CVE-2026-39803</td>
+       <td>2026-05-13 14:17:32 <img src="imgs/new.gif" /></td>
+       <td>Allocation of Resources Without Limits or Throttling vulnerability in mtrudel bandit allows unauthenticated remote denial of service via memory exhaustion. The chunked clause of 'Elixir.Bandit.HTTP1.Socket':read_data/2 in lib/bandit/http1/socket.ex ignores the caller-supplied :length option when reading HTTP/1 chunked request bodies. Instead of capping the accumulated body at the configured limit (e.g. Plug.Parsers' default 8 MB), do_read_chunked_data!/5 buffers every received chunk into an iolist unconditionally and materializes the entire body as a single binary. The function always returns {:ok, body, ...}, so callers cannot interpose a 413 response. Because Plug.Parsers runs before routing and authentication in the standard Phoenix endpoint, an unauthenticated attacker needs no valid route or credentials. Sending a single Transfer-Encoding: chunked POST request with an arbitrarily large body to any path causes the BEAM process to exhaust available memory and be terminated by the OS OOM killer. The content-length path in the same function correctly enforces the limit and is not affected. This issue affects bandit: from 1.4.0 before 1.11.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39803">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>08ba2fe97cf2bc8509af59e886a4fb41</td>
+       <td>CVE-2026-37430</td>
+       <td>2026-05-13 14:17:32 <img src="imgs/new.gif" /></td>
+       <td>An arbitrary file upload vulnerability in the ShopOrderImportController.java component of qihang-wms commit 75c15a allows attackers to execute arbitrary code via uploading a crafted file.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-37430">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>344fba322c8d39c4f746f535ac78fb15</td>
+       <td>CVE-2026-37429</td>
+       <td>2026-05-13 14:17:32 <img src="imgs/new.gif" /></td>
+       <td>qihang-wms commit 75c15a was discovered to contain a SQL injection vulnerability via the datascope parameter in the SysUserMapper.xml file. This vulnerability allows attackers to access sensitive database information, including users' Personally Identifiable Information (PII) via a crafted SQL statement.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-37429">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b49bf4dfb8e163de867386dff8aa52ae</td>
+       <td>CVE-2026-37428</td>
+       <td>2026-05-13 14:17:27 <img src="imgs/new.gif" /></td>
+       <td>qihang-wms commit 75c15a was discovered to contain a SQL injection vulnerability via the datascope parameter in the SysDeptMapper.xml file. This vulnerability allows attackers to access sensitive database information, including users' Personally Identifiable Information (PII).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-37428">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4d7f8d8845cffa5920ebb59008b1e211</td>
        <td>CVE-2026-4827</td>
        <td>2026-05-12 13:17:35 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>b484688c7ea914c772583df39f8fd02e</td>
        <td>CVE-2026-42595</td>
-       <td>2026-05-11 13:51:09 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 13:51:09</td>
        <td>Gotenberg: Server-Side Request Forgery via Chromium URL Endpoint with Redirect-Based Deny-List Bypass</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42595">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>2559673c8aefce23073d548f05a5ada5</td>
        <td>CVE-2026-8288</td>
-       <td>2026-05-11 13:16:12 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 13:16:12</td>
        <td>A vulnerability was determined in Open5GS up to 2.7.7. This affects the function gsm_handle_pdu_session_modification_qos_flow_descriptions of the file src/smf/gsm-handler.c of the component SMF. Executing a manipulation of the argument n1SmMsg can lead to denial of service. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized. The pull request to fix this issue awaits acceptance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8288">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>7415f5dd154f0b0461818b6404c2aadc</td>
        <td>CVE-2025-9973</td>
-       <td>2026-05-11 12:16:11 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 12:16:11</td>
        <td>Due to not validating the organization context when executing adaptive authentication flows, the WSO2 Identity Server allows adaptive authentication logic to be triggered on unintended organizations. A malicious actor with privileges to configure adaptive authentication within one organization can leverage this functionality to execute authentication logic on other organizations and sub-organizations. This flaw allows bypassing authorization boundaries between organizations, leading to unauthorized access to critical operations and user accounts in other organizations. When adaptive authentication is enabled in a multi-organization deployment, a malicious actor with privileges to configure adaptive authentication in one organization could exploit this feature to perform critical operations in other organizations without authorization. This may result in privilege escalation, unauthorized access to resources, and potential account takeover across organizations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-9973">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>c3a6dc0435238b044999e7925b715e31</td>
        <td>CVE-2025-10470</td>
-       <td>2026-05-11 12:16:10 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 12:16:10</td>
        <td>The Magic Link authentication flow accepts multiple invalid authentication requests without adequate rate limiting or resource control, leading to uncontrolled memory usage growth. This vulnerability can result in a denial-of-service condition, causing service unavailability for deployments that utilize the Magic Link authenticator. The impact is limited to these specific deployments and requires repeated invalid authentication attempts to trigger.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-10470">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>51a3c1af569f111d5e63f8d745cb05cc</td>
        <td>CVE-2026-6956</td>
-       <td>2026-05-11 10:16:15 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 10:16:15</td>
        <td>ATutor is vulnerable to Reflected XSS in /install/install.php endpoint. An attacker can provide a specially crafted URL that, when opened, results in arbitrary JavaScript execution in the victim's browser. Product is no longer actively supported. Maintainers of this project were notified early about this vulnerability, but did not respond with the details of the vulnerability or vulnerable version range. Only version 2.2.4 was tested and confirmed as vulnerable, other versions were not tested but might also be vulnerable.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6956">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>8653e2b13090b544e2119f141107c118</td>
        <td>CVE-2026-6909</td>
-       <td>2026-05-11 10:16:15 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 10:16:15</td>
        <td>ATutor is vulnerable to Reflected XSS in /install/upgrade.php endpoint. An attacker can provide a specially crafted URL that, when opened, results in arbitrary JavaScript execution in the victim's browser. Product is no longer actively supported. Maintainers of this project were notified early about this vulnerability, but did not respond with the details of the vulnerability or vulnerable version range. Only version 2.2.4 was tested and confirmed as vulnerable, other versions were not tested but might also be vulnerable.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6909">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>d9e59c4de3ea711d459e78eb3a66eca4</td>
        <td>CVE-2026-41951</td>
-       <td>2026-05-11 10:16:13 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 10:16:13</td>
        <td>Path traversal vulnerability exists in GROWI v7.5.0 and earlier, which may allow an attacker to execute arbitrary EJS templates on the server when an email server is running in GROWI.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41951">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>a3cc238ca2d507da7ee6214d54cfaf7d</td>
        <td>CVE-2026-40636</td>
-       <td>2026-05-11 10:16:13 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 10:16:13</td>
        <td>Dell ECS versions 3.8.1.0 through 3.8.1.7 and Dell ObjectScale versions prior to 4.3.0.0, contains a use of hard-coded credentials vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability, leading to filesystem access for attacker.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40636">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>528b863f5410d5f0a9589aff00b44c5c</td>
        <td>CVE-2026-35157</td>
-       <td>2026-05-11 10:16:13 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 10:16:13</td>
        <td>Dell ECS versions 3.8.1.0 through 3.8.1.7 and Dell ObjectScale versions prior to 4.3.0.0, contains an improper neutralization of formula elements in a CSV File vulnerability in the UI. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to remote execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-35157">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>813aac8e904ce2335907cdfe11be6984</td>
        <td>CVE-2026-32658</td>
-       <td>2026-05-11 10:16:13 <img src="imgs/new.gif" /></td>
+       <td>2026-05-11 10:16:13</td>
        <td>Dell Automation Platform versions prior to 2.0.0.0, contains a missing authorization vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32658">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c2b12be7fd79edaeda369fa0951e6f95</td>
-       <td>CVE-2026-43826</td>
-       <td>2026-05-11 09:16:26 <img src="imgs/new.gif" /></td>
-       <td>The OpenSearch logging provider, when configured with a `host` URL that embeds credentials (for example `https://user:password@server.example.com:9200`), wrote the full host URL — including the embedded credentials — into task logs. Any user with task-log read permission could harvest the backend credentials. Users are advised to upgrade to `apache-airflow-providers-opensearch` 1.9.1 or later and, as a defense-in-depth measure, configure the backend credentials via a secret backend rather than embedding them in the `[opensearch] host` URL.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-43826">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>24c7973eaa6b7246d931e2f9da3aedde</td>
-       <td>CVE-2026-41018</td>
-       <td>2026-05-11 09:16:25 <img src="imgs/new.gif" /></td>
-       <td>The Elasticsearch logging provider, when configured with a `host` URL that embeds credentials (for example `https://user:password@server.example.com:9200`), wrote the full host URL — including the embedded credentials — into task logs. Any user with task-log read permission could harvest the backend credentials. Users are advised to upgrade to `apache-airflow-providers-elasticsearch` 6.5.3 or later and, as a defense-in-depth measure, configure the backend credentials via a secret backend rather than embedding them in the `[elasticsearch] host` URL.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41018">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>323ae150b0ce53842f60c8a8f26aa0e6</td>
-       <td>CVE-2026-5084</td>
-       <td>2026-05-11 08:16:16 <img src="imgs/new.gif" /></td>
-       <td>WebDyne::Session versions through 2.075 for Perl generates the session id insecurely. The session handler generates the session id from an MD5 hash seeded with a call to the built-in rand() function. The rand function is passed a maximum value based on the process id, the epoch time and the reference address of the object, but this information will have no effect on the overall quality of the seed of the message digest. The rand function is seeded by 32-bits and is predictable. It is considered unsuitable for cryptographic purposes. Predictable session ids could allow an attacker to gain access to systems. Note that WebDyne::Session versions 1.042 and earlier appear to be in separate distributions from WebDyne.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5084">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bcfccd1c892bc6d9e08a60ba85274c90</td>
-       <td>CVE-2026-43500</td>
-       <td>2026-05-11 08:16:16 <img src="imgs/new.gif" /></td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present The DATA-packet handler in rxrpc_input_call_event() and the RESPONSE handler in rxrpc_verify_response() copy the skb to a linear one before calling into the security ops only when skb_cloned() is true. An skb that is not cloned but still carries externally-owned paged fragments (e.g. SKBFL_SHARED_FRAG set by splice() into a UDP socket via __ip_append_data, or a chained skb_has_frag_list()) falls through to the in-place decryption path, which binds the frag pages directly into the AEAD/skcipher SGL via skb_to_sgvec(). Extend the gate to also unshare when skb_has_frag_list() or skb_has_shared_frag() is true. This catches the splice-loopback vector and other externally-shared frag sources while preserving the zero-copy fast path for skbs whose frags are kernel-private (e.g. NIC page_pool RX, GRO). The OOM/trace handling already in place is reused.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-43500">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>066e100c810b1111c3578877d16179ee</td>
-       <td>CVE-2026-8276</td>
-       <td>2026-05-11 06:16:10 <img src="imgs/new.gif" /></td>
-       <td>A flaw has been found in bettercap up to 2.41.5. Affected by this issue is some unknown functionality of the file modules/mysql_server/mysql_server.go of the component MySQL Server. Executing a manipulation can lead to integer coercion error. The attack can be launched remotely. The attack requires a high level of complexity. The exploitation is known to be difficult. The exploit has been published and may be used. This patch is called 0eaa375c5e5446bfba94a290eff92967a5deac9e. It is advisable to implement a patch to correct this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8276">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0f8dd1156ad3e7bf751cbbad8ddb08a8</td>
-       <td>CVE-2026-8275</td>
-       <td>2026-05-11 06:16:09 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was detected in bettercap up to 2.41.5. Affected by this vulnerability is the function ippReadChunkedBody of the file modules/zerogod/zerogod_ipp_primitives.go of the component zerogod IPP Service. Performing a manipulation results in integer coercion error. The attack can be initiated remotely. The attack is considered to have high complexity. The exploitation appears to be difficult. The exploit is now public and may be used. The patch is named 3731d5576cffae9eefe3721cd46a40933304129f. To fix this issue, it is recommended to deploy a patch.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8275">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>71c5965595fdbb870ea10ec62c5674d8</td>
-       <td>CVE-2026-6433</td>
-       <td>2026-05-11 06:16:09 <img src="imgs/new.gif" /></td>
-       <td>The Custom css-js-php WordPress plugin through 2.0.7 does not properly sanitize user input before using it in a SQL query, and the result is passed to eval(), allowing unauthenticated users to execute arbitrary PHP code on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6433">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f18220020ce286e1b51442c6288c5842</td>
-       <td>CVE-2026-1677</td>
-       <td>2026-05-11 06:16:08 <img src="imgs/new.gif" /></td>
-       <td>Zephyr sockets created with `IPPROTO_TLS_1_3` can still negotiate a TLS 1.2 connection when both TLS versions are enabled in Kconfig, because the socket-level protocol selection is not propagated to mbedTLS (e.g. via `mbedtls_ssl_conf_min_tls_version`). The ClientHello advertises both versions and the peer can establish TLS 1.2, so applications that assumed `IPPROTO_TLS_1_3` enforces TLS 1.3 may silently use TLS 1.2 and remain exposed to TLS 1.2-specific weaknesses. As a workaround, the `TLS_CIPHERSUITE_LIST` socket option can be restricted to TLS 1.3-only cipher suites.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1677">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>06298390a60d64d8dd5c607784bbfd76</td>
-       <td>CVE-2026-8274</td>
-       <td>2026-05-11 05:16:16 <img src="imgs/new.gif" /></td>
-       <td>A security vulnerability has been detected in npitre cramfs-tools up to 2.1. Affected is the function do_directory of the file cramfsck.c of the component Directory Handler. Such manipulation leads to path traversal. The attack can only be performed from a local environment. The exploit has been disclosed publicly and may be used. Upgrading to version 2.2 is able to address this issue. The name of the patch is 2fc492747115b24d8a07eddd27a2d45229cb273c. Upgrading the affected component is recommended.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8274">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f99d801912b542b461861f1871e12085</td>
-       <td>CVE-2026-8273</td>
-       <td>2026-05-11 05:16:16 <img src="imgs/new.gif" /></td>
-       <td>A weakness has been identified in D-Link DNS-320 2.06B01. This impacts the function cgi_set_host/cgi_set_ntp/cgi_fan_control/cgi_merge_user of the file /cgi-bin/system_mgr.cgi. This manipulation causes os command injection. It is possible to initiate the attack remotely.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8273">详情</a></td>
       </tr>
 
      </tbody>
