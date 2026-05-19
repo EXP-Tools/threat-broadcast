@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-05-18 22:07:03 -->
+<!-- RELEASE TIME : 2026-05-19 22:20:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>071cc037a63b292aca15081116ab6e0a</td>
+       <td>CVE-2026-33633</td>
+       <td>2026-05-19 17:36:07 <img src="imgs/new.gif" /></td>
+       <td>Kitty is a cross-platform GPU based terminal. Versions 0.46.2 and below contain a heap buffer overflow in load_image_data() that allows any process which can write to the terminal's stdin to crash kitty immediately. The vulnerability is triggered by a single APC graphics protocol command with a PNG format declaration (f=100) whose payload exceeds twice the initial buffer capacity. The overflow is attacker-controlled in both length and content, causing DoS and potentially escalation to RCE itself. This issue has been fixed in version 0.47.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33633">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ddac1551cb8530683fea51788f84c054</td>
+       <td>CVE-2026-6009</td>
+       <td>2026-05-19 17:23:40 <img src="imgs/new.gif" /></td>
+       <td>Java Deserialisation Vulnerability in Jaspersoft Reports Library leads to Remote Code Execution (RCE), potentially allowing code execution on the affected system</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6009">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2c1699d458d5053eaf34edf2ec27ef3b</td>
+       <td>CVE-2026-32134</td>
+       <td>2026-05-19 17:22:13 <img src="imgs/new.gif" /></td>
+       <td>NanoMQ MQTT Broker (NanoMQ) is an all-around Edge Messaging Platform. In versions 0.24.10 and below, when NanoMQ handles high-concurrency reconnect traffic using a reconnect-collision payload, the broker can crash due to a NULL pointer dereference during MQTT session resumption for clean_start=0 clients. The transport's p_peer callback (tcptran_pipe_peer()) iterates cpipe->subinfol while copying session metadata from the cached old pipe to the new reconnecting pipe, without checking whether the pointer is NULL. Under a reconnect race, cpipe->subinfol can be freed and set to NULL before session restore invokes this function, resulting in a remote unauthenticated Denial-of-Service (process crash) condition. This issue has been fixed in version 0.24.11.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-32134">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4015c0cac58a4dc64c57ba6f2451a906</td>
+       <td>CVE-2026-5511</td>
+       <td>2026-05-19 17:16:23 <img src="imgs/new.gif" /></td>
+       <td>In the web management interface of Archer AX72 (SG) v1, the network diagnostic feature improperly handles invalid user input, resulting in limited exposure of diagnostic command usage information. An authenticated attacker with administrative privileges could exploit this issue to confirm the presence of the diagnostic utility and view its valid command-line syntax and options. The exposed information is limited in scope and does not include sensitive system data.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5511">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1b017c4e397aae30ee989448525ef833</td>
+       <td>CVE-2026-47358</td>
+       <td>2026-05-19 17:16:23 <img src="imgs/new.gif" /></td>
+       <td>Terrascan v1.18.3 and prior are vulnerable to Server-Side Request Forgery (SSRF) via external URL resolution in uploaded IaC templates when running in server mode. When Terrascan parses uploaded ARM templates or CloudFormation templates, it resolves external URLs referenced within those templates via hashicorp/go-getter with all default detectors enabled, including FileDetector. An unauthenticated remote attacker can upload an ARM template containing a templateLink.uri or parametersLink.uri field, or a CloudFormation template containing an AWS::CloudFormation::Stack TemplateURL field, pointing to an attacker-controlled URL. Terrascan will fetch the attacker-controlled URL server-side. Unlike SSRF via the remote scan endpoint, file:// URLs are directly usable without requiring an X-Terraform-Get redirect, enabling local file read. This affects deployments running terrascan in server mode (terrascan server), which binds to 0.0.0.0 with no authentication. Note: Terrascan was archived in August 2023 and no patch will be released.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47358">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c63b01fff06d934c3868cfc50edb194e</td>
+       <td>CVE-2026-47357</td>
+       <td>2026-05-19 17:16:22 <img src="imgs/new.gif" /></td>
+       <td>Terrascan v1.18.3 and prior are vulnerable to Server-Side Request Forgery (SSRF) via the remote_url parameter in the remote directory scan endpoint (POST /v1/{iac}/{iacVersion}/{cloud}/remote/dir/scan) when running in server mode. An unauthenticated remote attacker can supply an attacker-controlled HTTP URL as remote_url with remote_type set to "http". The URL is passed directly to hashicorp/go-getter (v1.7.5) without validation. Go-getter's HttpGetter supports the X-Terraform-Get response header, allowing the attacker's server to redirect the download to a file:// URL, enabling local file read. Additionally, HttpGetter has Netrc set to true, causing it to read ~/.netrc and send stored credentials to attacker-controlled hostnames. This affects deployments running terrascan in server mode (terrascan server), which binds to 0.0.0.0 with no authentication. Note: Terrascan was archived in August 2023 and no patch will be released.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47357">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f3717e4f84ce1e3f7fc769bf393e0059</td>
+       <td>CVE-2026-47356</td>
+       <td>2026-05-19 17:16:22 <img src="imgs/new.gif" /></td>
+       <td>Terrascan v1.18.3 and prior are vulnerable to Server-Side Request Forgery (SSRF) via the webhook_url parameter in the file scan endpoint (POST /v1/{iac}/{iacVersion}/{cloud}/local/file/scan) when running in server mode. An unauthenticated remote attacker can supply an arbitrary URL as the webhook_url multipart form parameter. After scanning the uploaded file, Terrascan sends an HTTP POST request to the attacker-controlled URL containing the full scan results as a JSON body, with the attacker-supplied webhook_token forwarded as a Bearer token in the Authorization header. The retryable HTTP client retries up to 10 times on failure. This affects deployments running terrascan in server mode (terrascan server), which binds to 0.0.0.0 with no authentication. Note: Terrascan was archived in August 2023 and no patch will be released.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47356">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5cac7a2fc005c1acb025537c07b7b7ee</td>
+       <td>CVE-2026-36829</td>
+       <td>2026-05-19 17:16:22 <img src="imgs/new.gif" /></td>
+       <td>An authentication bypass vulnerability exists in the embedded HTTP server of Panabit PAP-XM320 up to and including v7.7. The server validates session cookies using a filesystem existence check based on a user-controlled cookie value without proper sanitization, allowing directory traversal and bypass of authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-36829">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d9e9e9c81483339ca0dbbc4238d98211</td>
+       <td>CVE-2026-36828</td>
+       <td>2026-05-19 17:16:22 <img src="imgs/new.gif" /></td>
+       <td>A command injection vulnerability exists in the /cgi-bin/tools/ajax_cmd endpoint of Panabit PAP-XM320 up to and including v7.7. The CGI component allows authenticated users to execute arbitrary shell commands with root privileges via the action=runcmd parameter.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-36828">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2302948e4885609461e21c24f5fe0084</td>
+       <td>CVE-2026-36827</td>
+       <td>2026-05-19 17:16:21 <img src="imgs/new.gif" /></td>
+       <td>A command injection vulnerability exists in Panabit PAP-XM320 up to and including V7.7. The web management interface invokes the backend helper /usr/sbin/pappiw and passes user-controlled parameters to it. The helper performs unsafe argument processing using eval, which allows command injection when attacker-controlled input is included in the arguments. As a result, an authenticated remote attacker with access to the management interface may execute arbitrary shell commands.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-36827">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ba584b3a4ecf2571af757920016fc224</td>
        <td>CVE-2026-45495</td>
        <td>2026-05-18 18:17:38 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>2e87f1514981d7d19b4846f2c03bfd82</td>
        <td>CVE-2026-46720</td>
-       <td>2026-05-17 18:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 18:16:27</td>
        <td>Net::Statsd::Tiny versions before 0.3.8 for Perl allowed metric injections. The metric names and set values were not checked for newlines, colons or pipes. Metrics generated from untrusted sources could inject additional statsd metrics.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46720">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>213f7f81bcf43f335e78d70988cdaabd</td>
        <td>CVE-2026-8759</td>
-       <td>2026-05-17 15:16:20 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 15:16:20</td>
        <td>A vulnerability was identified in xiandafu beetl up to 3.20.2. Affected is an unknown function of the file beetl-classic-integration/beetl-spring-classic/src/main/java/org/beetl/ext/spring/SpELFunction.java of the component SpELFunction. The manipulation leads to improper neutralization of special elements used in an expression language statement. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8759">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>99f4b1c5fd9961476a19d2f979124cd1</td>
        <td>CVE-2026-8758</td>
-       <td>2026-05-17 14:16:22 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 14:16:22</td>
        <td>A vulnerability was determined in Metasoft 美特软件 MetaCRM up to 6.4.0 Beta06. This impacts an unknown function of the file /common/jsp/upload3.jsp. Executing a manipulation of the argument File can lead to unrestricted upload. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8758">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>e5c18dd3b277848d0a2031499c8d1d34</td>
        <td>CVE-2026-8757</td>
-       <td>2026-05-17 14:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 14:16:21</td>
        <td>A vulnerability was found in adenhq hive up to 0.11.0. This affects the function _read_events_tail of the file core/framework/server/routes_sessions.py of the component Delete Request Handler. Performing a manipulation results in path traversal. The attack may be initiated remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8757">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>ec31d7a9274ad1c7f09ba9983e1c0161</td>
        <td>CVE-2026-8756</td>
-       <td>2026-05-17 13:16:46 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 13:16:46</td>
        <td>A vulnerability has been found in fishaudio Bert-VITS2 up to 8f7fbd8c4770965225d258db548da27dc8dd934c. The impacted element is the function generate_config of the file webui_preprocess.py of the component Gradio Interface. Such manipulation of the argument data_dir leads to path traversal. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8756">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>61937f9a4b015f438bdfc2e459eccc47</td>
        <td>CVE-2026-8755</td>
-       <td>2026-05-17 13:16:46 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 13:16:46</td>
        <td>A flaw has been found in fishaudio Bert-VITS2 up to 8f7fbd8c4770965225d258db548da27dc8dd934c. The affected element is the function _get_all_models of the file hiyoriUI.py of the component Model Handler. This manipulation causes path traversal. The attack can be initiated remotely. The exploit has been published and may be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8755">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>e3e1ce1e22b2550d68ea7a98cb7036cb</td>
        <td>CVE-2026-8754</td>
-       <td>2026-05-17 13:16:46 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 13:16:46</td>
        <td>A vulnerability was detected in AstrBotDevs AstrBot up to 4.23.5. Impacted is the function post_file of the file astrbot/dashboard/routes/chat.py of the component File Upload Handler. The manipulation of the argument filename results in path traversal. It is possible to launch the attack remotely. The exploit is now public and may be used. Upgrading to version 4.23.6 is recommended to address this issue. The patch is identified as aaec41e5054569ceaa1113593a34da7568e2d211. You should upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8754">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>5993999aea4f511703df1006fa6b6679</td>
        <td>CVE-2026-8753</td>
-       <td>2026-05-17 13:16:45 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 13:16:45</td>
        <td>A security vulnerability has been detected in kalcaddle Kodbox up to 1.64. This issue affects the function parseVideoInfo of the file /workspace/source-code/plugins/fileThumb/lib/VideoResize.class.php of the component fileThumb Plugin. The manipulation of the argument ffmpegBin leads to command injection. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8753">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>9f7b54de507d58bc43a82a9cc2b3d961</td>
        <td>CVE-2018-25339</td>
-       <td>2026-05-17 13:16:45 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 13:16:45</td>
        <td>Zechat 1.5 contains a SQL injection vulnerability in the v parameter that allows unauthenticated attackers to extract database information using time-based blind techniques. Attackers can exploit the v parameter with sleep-based blind injection to confirm vulnerability and extract data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2018-25339">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>d72ecab92af9c7315c7410381d695cdf</td>
        <td>CVE-2018-25338</td>
-       <td>2026-05-17 13:16:45 <img src="imgs/new.gif" /></td>
+       <td>2026-05-17 13:16:45</td>
        <td>Zechat 1.5 contains a SQL injection vulnerability in the hashtag parameter that allows unauthenticated attackers to extract database information using union-based techniques. Attackers can exploit the hashtag parameter with union-based payloads to retrieve table and column names.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2018-25338">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23afd667d05d386bc221cec437386ae6</td>
-       <td>CVE-2021-47981</td>
-       <td>2026-05-16 16:16:23</td>
-       <td>Quick.CMS 6.7 contains a cross-site scripting vulnerability in the sliders form that allows authenticated attackers to inject malicious scripts by submitting XSS payloads through the sDescription parameter. Attackers can craft CSRF forms targeting the admin.php?p=sliders-form endpoint to execute arbitrary JavaScript in victim browsers when the form is submitted.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47981">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76c57cfcc049d5900f7793f5cad4b1fd</td>
-       <td>CVE-2021-47980</td>
-       <td>2026-05-16 16:16:23</td>
-       <td>Fuel CMS 1.4.13 contains a blind SQL injection vulnerability that allows authenticated attackers to manipulate database queries by injecting SQL code through the 'col' parameter in the Activity Log interface. Attackers can send requests to the logs endpoint with malicious SQL payloads in the 'col' parameter to extract database information based on response time delays.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47980">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d96203062d067b8a46c86896b4718026</td>
-       <td>CVE-2021-47979</td>
-       <td>2026-05-16 16:16:23</td>
-       <td>WordPress Plugin Backup and Restore 1.0.3 contains an arbitrary file deletion vulnerability that allows authenticated attackers to delete files by manipulating parameters in AJAX requests. Attackers can send POST requests to admin-ajax.php with crafted file_name and folder_name parameters to delete arbitrary files from the WordPress installation directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47979">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0b5f26b1f1ea73c2d7acf37b38900015</td>
-       <td>CVE-2021-47978</td>
-       <td>2026-05-16 16:16:23</td>
-       <td>ProcessMaker 3.5.4 contains a local file inclusion vulnerability that allows unauthenticated attackers to read arbitrary files by exploiting improper path traversal validation. Attackers can send requests with directory traversal sequences to access sensitive system files like /etc/passwd without authentication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47978">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>16e3d58267a01022e4ca1027e39ee005</td>
-       <td>CVE-2021-47977</td>
-       <td>2026-05-16 16:16:23</td>
-       <td>WordPress Plugin Anti-Malware Security and Bruteforce Firewall 4.20.59 contains a directory traversal vulnerability that allows unauthenticated attackers to read arbitrary files by manipulating the file parameter. Attackers can send requests to the duplicator_download action via admin-ajax.php with path traversal sequences to access sensitive system files outside the intended directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47977">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f9118936d863caf88dbf105f4d4dda1</td>
-       <td>CVE-2021-47976</td>
-       <td>2026-05-16 16:16:23</td>
-       <td>TextPattern CMS 4.9.0-dev contains a remote code execution vulnerability that allows authenticated attackers to upload arbitrary PHP files by exploiting the plugin upload functionality. Attackers can authenticate, retrieve a CSRF token from the plugin event page, and upload malicious PHP files to the textpattern/tmp/ directory for code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47976">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>be42724f022a8ea74cc057a3a909f3ac</td>
-       <td>CVE-2021-47975</td>
-       <td>2026-05-16 16:16:22</td>
-       <td>WP Learn Manager 1.1.2 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to inject malicious scripts through the fieldtitle parameter. Attackers can submit POST requests to the jslm_fieldordering page with XSS payloads in the fieldtitle field to execute arbitrary JavaScript when administrators view the field ordering interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47975">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8041b33fe33b3ce05174fb12d53e82e8</td>
-       <td>CVE-2021-47974</td>
-       <td>2026-05-16 16:16:22</td>
-       <td>VX Search 13.5.28 contains an unquoted service path vulnerability in both VX Search Server and VX Search Enterprise services that allows local attackers to escalate privileges. Attackers can place malicious executables in unquoted path directories like C:\Program Files\VX Search to execute arbitrary code with LocalSystem privileges when services restart.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47974">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e12361cb5e4bcd60f5453ea5c26be797</td>
-       <td>CVE-2021-47973</td>
-       <td>2026-05-16 16:16:22</td>
-       <td>Sticky Notes Widget 3.0.6 contains a denial of service vulnerability that allows attackers to crash the application by pasting excessively long character strings into note fields. Attackers can generate a payload containing 350000 repeated characters and paste it twice into a new note to trigger an application crash on iOS devices.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47973">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f02e741142142f3f493fd73f0ac8cb66</td>
-       <td>CVE-2021-47972</td>
-       <td>2026-05-16 16:16:22</td>
-       <td>Sticky Notes & Color Widgets 1.4.2 contains a denial of service vulnerability that allows attackers to crash the application by creating notes with excessively long character strings. Attackers can paste large payloads of repeated characters into note fields to trigger application crashes and make the application stop responding.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2021-47972">详情</a></td>
       </tr>
 
      </tbody>
