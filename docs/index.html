@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-05-23 03:52:45 -->
+<!-- RELEASE TIME : 2026-05-26 04:09:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c38ddcfece779475ee2a093464a8d136</td>
+       <td>CVE-2026-9465</td>
+       <td>2026-05-25 14:15:38 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Tiandy Easy7 Integrated Management Platform 7.17.0. This vulnerability affects unknown code of the file /Easy7/apps/WebService/GetDBDataEx.jsp. Performing a manipulation of the argument strTBName results in sql injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9465">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7559a8fbb7e5a06a31597c3efed57457</td>
+       <td>CVE-2026-9078</td>
+       <td>2026-05-25 14:05:47 <img src="imgs/new.gif" /></td>
+       <td>Firefox for iOS displayed specially crafted right-to-left (RTL) and internationalized domain names (IDNs) incorrectly in link preview UI surfaces. A crafted RTL hostname could visually reorder portions of the displayed domain, causing attacker-controlled sites to appear as trusted origins. This vulnerability was fixed in Firefox for iOS 151.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9078">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6af296f34a85d070ff17b5756e8deb8b</td>
+       <td>CVE-2026-47073</td>
+       <td>2026-05-25 14:00:49 <img src="imgs/new.gif" /></td>
+       <td>Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. The WebSocket client in src/hackney_ws.erl imposes no upper bound on memory consumption in three code paths. First, read_handshake_response/3 accumulates received bytes into a growing buffer with no size cap; the per-receive timeout resets on every chunk, so a server that streams bytes without ever sending \r\n\r\n causes the buffer to grow until memory is exhausted. Second, parse_payload/9 and parse_active_payload/8 do not validate the declared frame payload length against any limit; because RFC 6455 allows payload lengths up to 2^63-1 bytes, a server that announces a very large frame and dribbles bytes causes the accumulation buffer to grow until OOM. Third, the frag_buffer field in #ws_data{} accumulates continuation frames indefinitely; a server that sends an endless stream of non-final (nofin) fragmented frames without ever sending a final (fin) frame grows frag_buffer without bound. In all three cases the attacker only needs to control the WebSocket server the hackney client connects to, with no authentication or special client configuration required. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47073">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c9cdff9e95b1a8f5ed15dba5400f3595</td>
+       <td>CVE-2026-47067</td>
+       <td>2026-05-25 14:00:48 <img src="imgs/new.gif" /></td>
+       <td>Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. The URL parser in src/hackney_url.erl converts every unrecognized URL scheme to a permanent BEAM atom via binary_to_atom/2. BEAM atoms are never garbage-collected and the atom table defaults to a hard limit of 1,048,576 entries. An attacker who can supply URLs with attacker-chosen scheme prefixes — directly as request targets, as configured webhook URLs, or via Location headers followed during redirects — can exhaust the atom table and crash the entire BEAM VM with system_limit. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47067">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8aef6a44455925cdd114850e946592c4</td>
+       <td>CVE-2026-47072</td>
+       <td>2026-05-25 14:00:47 <img src="imgs/new.gif" /></td>
+       <td>Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in benoitc hackney allows HTTP Request/Response Splitting. The WebSocket upgrade code in src/hackney_ws.erl copies the host, path, headers (ExtraHeaders), and protocols options from the caller-supplied opts map into the internal #ws_data{} record in init/1 and then splices them verbatim into the raw HTTP/1.1 upgrade request by binary concatenation in do_handshake/1. No CRLF or NUL stripping is performed at any of these four injection sites. An attacker who controls any of these options — for example by forwarding URL components or header values from untrusted input into hackney_ws:start_link/1 — can inject arbitrary HTTP headers into the outbound WebSocket upgrade request, leading to header injection, credential spoofing toward the upstream server, log and cache poisoning, or request smuggling via intermediary proxies. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47072">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed156435609a4f7bec94433f87142e45</td>
+       <td>CVE-2026-47076</td>
+       <td>2026-05-25 14:00:46 <img src="imgs/new.gif" /></td>
+       <td>Interpretation Conflict vulnerability in benoitc hackney allows Server Side Request Forgery. hackney_url:normalize/2 URL-decodes the host component after the URL has been parsed into a #hackney_url{} record. OTP's uri_string:parse/1 and inet:parse_address/1 do not decode percent-escapes in the host, so a URL such as http://%31%32%37%2E%30%2E%30%2E%31/ is seen by a caller's allowlist validator with host %31%32%37%2E%30%2E%30%2E%31 (not an IP address), which passes the allowlist check. hackney's normalizer then decodes the host to 127.0.0.1 and opens a TCP connection to loopback. Because hackney:request/5 always calls hackney_url:normalize/2 with no opt-out, every request that takes a binary or list URL is affected. The same technique reaches cloud instance metadata services (169.254.169.254), RFC1918 networks, and any admin interface listening on localhost. This issue affects hackney: from 0.13.0 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47076">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dd0c5fb7fafa7c706dbd2be9cf27927c</td>
+       <td>CVE-2026-47070</td>
+       <td>2026-05-25 14:00:46 <img src="imgs/new.gif" /></td>
+       <td>Sensitive Data Exposure vulnerability in benoitc hackney allows Retrieve Embedded Sensitive Data. The HTTP/3 redirect handler in src/hackney_h3.erl passes the original request headers unchanged to the redirect target without performing any cross-origin check. When a client issues an HTTP/3 request with follow_redirect enabled and includes Authorization or Cookie headers, a server responding with a 3xx redirect to a different host will cause the client to forward those credentials verbatim to the new origin. The main hackney.erl module has maybe_strip_auth_on_redirect/2 (guarded by the location_trusted option) to address CVE-2018-1000007, but hackney_h3.erl is missing this protection entirely. This issue affects hackney: from 3.1.1 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47070">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0602d7b6db2bf1792a629b353919d12d</td>
+       <td>CVE-2026-47075</td>
+       <td>2026-05-25 14:00:45 <img src="imgs/new.gif" /></td>
+       <td>Improper Neutralization of CRLF Sequences vulnerability in benoitc hackney allows HTTP Request Splitting. hackney does not percent-encode carriage return (\r) or line feed (\n) characters in the URL query component before constructing the HTTP/1.1 request target. Characters outside the grammar defined in RFC 3986 Section 3.4 must be percent-encoded, but hackney_url:make_url/3 passes the query binary directly without validation or escaping. An attacker who can control all or part of a URL passed to hackney can inject raw CRLF sequences into the query string, which are then sent as HTTP line breaks in the request target. This enables injection of arbitrary HTTP headers or splitting of the HTTP request. This issue affects hackney: from 0 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47075">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>901ec2ef33416d3179b52e458c01e819</td>
+       <td>CVE-2026-47077</td>
+       <td>2026-05-25 14:00:42 <img src="imgs/new.gif" /></td>
+       <td>Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. hackney_h3:await_response_loop/6 accumulates the HTTP/3 response body in memory without any size cap. The after Timeout clause is a per-message inactivity timer that resets on every received chunk, housekeeping message, or settings frame — it is not a wall-clock deadline. A malicious HTTP/3 server that emits one small chunk every Timeout - 1 ms with Fin = false and never sends a final frame keeps the loop alive indefinitely while the accumulation buffer grows linearly without bound, eventually exhausting the BEAM process heap and causing an out-of-memory condition. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47077">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9cd4b83e7bab38c77a73fe04046021a8</td>
+       <td>CVE-2026-47071</td>
+       <td>2026-05-25 14:00:41 <img src="imgs/new.gif" /></td>
+       <td>Uncontrolled Resource Consumption vulnerability in benoitc hackney allows Flooding. The SOCKS5 transport in src/hackney_socks5.erl correctly applies the caller-supplied timeout to the SOCKS5 negotiation phase, but then upgrades the connection to TLS using the two-argument form ssl:connect/2, which defaults to an infinite timeout. The Timeout value is in scope at the call site but is not forwarded. A hostile SOCKS5 proxy that completes the SOCKS5 handshake normally and then goes silent (or sends a partial TLS ServerHello and stalls) will cause the connecting process to block indefinitely, regardless of the connect_timeout or recv_timeout options supplied by the caller. This issue affects hackney: from 0.10.0 before 4.0.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47071">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8cba8a501ea0b954e120479fddd3efe3</td>
        <td>CVE-2025-26483</td>
-       <td>2026-05-22 13:33:26 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:33:26</td>
        <td>Dell PowerFlex Manager, versions 4.6.2 and prior, contains an Open Redirect Vulnerability. An unauthenticated attacker could potentially exploit this vulnerability, leading to a targeted application user being redirected to arbitrary web URLs. The vulnerability could be leveraged by attackers to conduct phishing attacks that cause users to divulge sensitive information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26483">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>147e5055d22b44af2d5208b9fed2a3f8</td>
        <td>CVE-2026-8997</td>
-       <td>2026-05-22 13:26:17 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:26:17</td>
        <td>vifm is vulnerable to a heap buffer overflow during the history merge process when saving the state file (vifminfo.json). This flaw occurs because the application lacks a runtime check on the length of history entries in release builds, potentially allowing a crafted long path or command in the history to cause memory corruption or application crashes. Releases from 0.12.1 to 0.14.3 (including) are considered vulnerable. This issue was fixed in commit 23063c7</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8997">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>a7e45f07eacc6e5ae541a160dcc293b3</td>
        <td>CVE-2025-32745</td>
-       <td>2026-05-22 13:23:22 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:23:22</td>
        <td>Dell PowerFlex Manager, version(s) <=4.6.2, contain(s) an Improper Certificate Validation vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Information tampering.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32745">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>2c08f41afb0db48ae446d6a16bea137d</td>
        <td>CVE-2026-9277</td>
-       <td>2026-05-22 13:22:38 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:22:38</td>
        <td>shell-quote's `quote()` function did not validate object-token inputs against the operator model used by `parse()`. The `.op` field was backslash-escaped character by character using `/(.)/g`, which in JavaScript does not match line terminators (\n, \r, U+2028, U+2029). A line terminator in `.op` therefore passed through unescaped into the output; POSIX shells treat a literal newline as a command separator, so any content after it would execute as a second command. The vulnerable code path is reachable in two ways: (1) direct construction of `{ op: '...\n...' }` from external input, and (2) via `parse(cmd, envFn)` when `envFn` returns object tokens whose `.op` is attacker-influenced. Both are documented API surface. Fixed by replacing the per-character escape with strict shape validation: `.op` must match the parser's control-operator allowlist; `{ op: 'glob', pattern }` validates `pattern` and forbids line terminators; `{ comment }` validates `comment` and forbids line terminators; any other object shape throws `TypeError`.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9277">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>a1314172209eb178650cd13816eb1667</td>
        <td>CVE-2026-8673</td>
-       <td>2026-05-22 13:18:16 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:18:16</td>
        <td>Unprotected transport of credentials vulnerability in syslink software AG Avantra on Linux, Windows allows Sniffing Attacks. This issue affects Avantra: before 25.3.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8673">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>41994a9d92aee61a86594c2a8af7b172</td>
        <td>CVE-2026-8672</td>
-       <td>2026-05-22 13:17:05 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:17:05</td>
        <td>Use of default password vulnerability in syslink software AG Avantra on Linux, Windows allows Try Common or Default Usernames and Passwords. This issue affects Avantra: before 25.3.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8672">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>6ece0965ba15fb5ca4b8b40d7fee94bc</td>
        <td>CVE-2026-8671</td>
-       <td>2026-05-22 13:15:28 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:15:28</td>
        <td>Insertion of sensitive information into log file vulnerability in syslink software AG Avantra on Linux, Windows allows Resource Leak Exposure. This issue affects Avantra: before 25.3.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8671">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>12966be36aee81a4da6ce8e1f804ab28</td>
        <td>CVE-2025-32746</td>
-       <td>2026-05-22 13:13:03 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:13:03</td>
        <td>Dell PowerFlex Manager, version(s) <=4.6.2, contain(s) an Insecure Storage of Sensitive Information vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability, leading to unauthorized access to sensitive information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32746">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>858cd4ce89b70f644fe62c47feee9777</td>
        <td>CVE-2026-8670</td>
-       <td>2026-05-22 13:12:52 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:12:52</td>
        <td>Insufficient session expiration vulnerability in syslink software AG Avantra on Linux, Windows allows Reusing Session IDs (aka Session Replay). This issue affects Avantra: before 25.3.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8670">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>43e28480af80c9a38437d908359df62a</td>
        <td>CVE-2025-32747</td>
-       <td>2026-05-22 13:02:32 <img src="imgs/new.gif" /></td>
+       <td>2026-05-22 13:02:32</td>
        <td>Dell PowerFlex Manager, version(s) <=4.6.2, contain(s) an Incorrect Privilege Assignment vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32747">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-05-21 18:16:21</td>
        <td>Open ISES Tickets before 3.44.2 contains hardcoded MySQL database credentials in loader.php (a public-facing database utility) that are committed to the source repository. Any actor with access to the public source tree (or an unauthenticated attacker with read access to the file on a deployed installation) can read the username, password, and database name and use them to connect to the database if it is reachable from their network.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48241">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb16d913b10fe467a0366fe9da9f0c65</td>
-       <td>CVE-2026-30691</td>
-       <td>2026-05-20 18:16:26</td>
-       <td>Cross-Site Scripting (XSS) vulnerability in @cyntler/react-doc-viewer v1.17.1 allows remote attackers to execute arbitrary JavaScript via a crafted .txt file. The TXTRenderer component fails to sanitize file content and explicitly casts raw data as a ReactNode</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30691">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>78c3f09116c2bf954feab0f3c8342869</td>
-       <td>CVE-2026-20240</td>
-       <td>2026-05-20 18:16:26</td>
-       <td>In Splunk Enterprise versions below 10.2.2, 10.0.5, 9.4.11, and 9.3.12, and Splunk Cloud Platform versions below 10.4.2603.1, 10.3.2512.9, 10.2.2510.11, 10.1.2507.21, 10.0.2503.13, and 9.3.2411.129, a low-privileged user that does not hold the ‘admin’ or ‘power’ Splunk roles could cause a Denial of Service by exploiting the `coldToFrozen.sh` script in the `splunk_archiver` app to rename critical Splunk directories, making the instance non-functional.<br><br>The Denial of Service is possible because of missing input validation in the `coldToFrozen.sh` script, which accepts arbitrary file paths and renames them without restricting operations to safe directories.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20240">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2988078980c0e315287ae3b73d3fd32c</td>
-       <td>CVE-2026-20239</td>
-       <td>2026-05-20 18:16:26</td>
-       <td>In Splunk Enterprise versions below 10.2.2 and 10.0.5, and Splunk Cloud Platform versions below 10.3.2512.8, 10.2.2510.11, 10.1.2507.21, and 10.0.2503.13, a user with a role that has access to the `_internal` index could view session cookies and response bodies that contain sensitive data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20239">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3156288cc6708a0eec7e634b51bfbdcf</td>
-       <td>CVE-2026-20238</td>
-       <td>2026-05-20 18:16:26</td>
-       <td>In Splunk AI Toolkit versions below 5.7.3, a low-privileged user that does not hold the 'admin' or 'power' roles could access confidential data that was restricted through `srchFilter` configurations on custom roles.<br><br>The app contains an `authorize.conf` configuration file with a `srchFilter` entry that modifies the built-in ‘user’ role. Because the Splunk platform combines inherited search filters with the `OR` SPL operator, the injected filter overrides more restrictive filters on child roles.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20238">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5ba61dbd6026d34549698ad936c0d70f</td>
-       <td>CVE-2026-9101</td>
-       <td>2026-05-20 17:16:32</td>
-       <td>Prototype pollution in csv parsing logic during import can lead to untrusted file paths (but not arguments) entering shell.openExternal after specific user behavior leading to "1-click" command execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9101">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f28eb8f39dc62fc5428e9f87697fd63d</td>
-       <td>CVE-2026-9100</td>
-       <td>2026-05-20 17:16:32</td>
-       <td>The MongoDB C Driver's legacy GridFS API accepts malformed file metadata from the database without adequate validation. Crafted documents in a GridFS collection may cause any application that reads those files via the legacy API to either crash (via a division-by-zero) or silently leak process memory contents (via an out-of-bounds read).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9100">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1500cec64eb75d1af367fffd30d0561d</td>
-       <td>CVE-2026-9087</td>
-       <td>2026-05-20 17:16:32</td>
-       <td>A flaw was found in Keycloak. The cross-session verification proof is keyed only by (local userId, idpAlias) and is not bound to the upstream identity that was actually verified, so a second upstream account on the same IdP can consume it and get linked to the victim's local account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9087">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eac8347dc2e460ff51e9672a4a0d1895</td>
-       <td>CVE-2026-8342</td>
-       <td>2026-05-20 17:16:29</td>
-       <td>Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. Reason: This candidate was issued in error. Notes: All references and descriptions in this candidate have been removed to prevent accidental usage.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8342">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4185e7995dacc3c5498b1cc175a8a2b0</td>
-       <td>CVE-2026-7613</td>
-       <td>2026-05-20 17:16:29</td>
-       <td>The Cost of Goods by PixelYourSite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'csvdata[0][cost_of_goods_value]' parameter in versions up to, and including, 1.2.12 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7613">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b0de99a3d0a65d170b1c3ee78d522efb</td>
-       <td>CVE-2026-44926</td>
-       <td>2026-05-20 17:16:24</td>
-       <td>InfoScale CmdServer before 7.4.2 mishandles access control.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44926">详情</a></td>
       </tr>
 
      </tbody>
