@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-05-27 04:22:54 -->
+<!-- RELEASE TIME : 2026-05-28 04:12:52 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>81ed023ad0a238ba19992e31023a9432</td>
+       <td>CVE-2026-47270</td>
+       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.9.0, pam_usb is a PAM module loaded into the host process (sudo, login, GDM, GNOME Shell). Display managers such as GDM run multiple concurrent authentication threads. Three functions used by the deny_remote feature called the non-reentrant strtok(), which stores state in a single global pointer. If two authentications race, one thread's strtok() call can overwrite the other's in-progress tokenisation pointer, causing incorrect parsing of the tmux session data or the /proc environ scan that backs the remote-session detection logic. Additionally, pusb_tmux_get_client_tty() passed the raw pointer returned by getenv(TMUX) directly to strtok(). getenv() returns a pointer into the live process environment block; strtok() inserts NUL bytes into that block, permanently corrupting the TMUX variable for subsequent code running in the same process. In long-lived display managers this affects all future authentications in that process. The combined effect can cause deny_remote=true to return an incorrect decision for a remote session, or an incorrect decision for a local session, depending on thread interleaving. This vulnerability is fixed in 0.9.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47270">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2fedd501406552ae9632d9cf0790f9cb</td>
+       <td>CVE-2026-47269</td>
+       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.9.0, pam_usb's deny_remote feature checks utmpx ut_addr_v6 to detect whether an authentication request originates from a remote session. The outer guard was if (utent->ut_addr_v6[0] != 0), which only tests the first 32-bit word of the 128-bit address field. IPv4-mapped IPv6 addresses (::ffff:x.x.x.x) store the IPv4 address in ut_addr_v6[3] with ut_addr_v6[0] == 0. On systems where the SSH daemon listens on :: (IPv6 wildcard) with AddressFamily any -- common on Ubuntu and Debian -- incoming IPv4 connections are recorded in utmpx as IPv4-mapped IPv6 addresses. The outer check evaluates to false, the remote-detection block is skipped entirely, and the session is treated as local. deny_remote=true does not block the authentication. An attacker with physical access to a registered USB device can authenticate over SSH on an affected system as if they were sitting at a local terminal, bypassing the deny_remote restriction. This vulnerability is fixed in 0.9.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47269">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aaefd37b7d7dda92e5e22dbc89540278</td>
+       <td>CVE-2026-45137</td>
+       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>Anchor is a framework providing several convenient developer tools for writing Solana programs. From 1.0.0 to before 1.0.2, an logic error causes anchor programs to accept any program id when requiring the system program id, causing false assumptions resulting in potential arbitrary cpi in programs that invoke system program instructions. In the TryFrom<&'a AccountInfo<'a>> implementation for Program<'a, T>, the id of T is compared with Pubkey::default() to check whether anchor should allow any executable account, or a specific account, because when no T is supplied, T defaults to (), which implements Id::id() by returning Pubkey::default(). This results in T = () and T = System (which has Pubkey::default() as the id) having the same behavior, both allow any executable account. Programs built with anchor assume that the anchor runtime verifies passed in programs of type Program<'a, System> are in fact the system program. This false assumption can lead to arbitrary CPI or payment bypassing when programs try making CPI calls to the system program using the passed in system program due to the fact that the attacker can pass in any program instead of the system program. This vulnerability is fixed in 1.0.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45137">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>417c34c3e1e5b2f0fbb2bb2fcaaa69b7</td>
+       <td>CVE-2026-45136</td>
+       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>claude-code-cache-fix is a cache optimization proxy for Claude Code. From 3.5.0 to before 3.5.2, tools/quota-statusline.sh (introduced in v3.5.0) interpolates Claude Code's hook stdin payload directly into a Python triple-quoted string literal. A ''' byte sequence in any user-controlled field of the payload closes the literal early and lets following bytes execute as Python in the user's Claude Code process. This vulnerability is fixed in 3.5.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45136">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>59c1eed4e32aa832c952c61d64a661b4</td>
+       <td>CVE-2026-44713</td>
+       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, src/tmux.c reads the user's $TMUX environment variable, splits it on commas, and interpolates the socket-path component directly into a shell command passed to popen(). Because the value is placed inside double-quotes without sanitisation, any value containing " terminates the quoted string and injects arbitrary shell syntax. popen() runs as root inside the PAM stack. This vulnerability is fixed in 0.8.7.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44713">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cda83ed237c6daae3fab2196167d0a18</td>
+       <td>CVE-2026-44712</td>
+       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, a crafted UUID such as $(id>/tmp/rce) in the config causes root RCE when pamusb-conf --reset-pads is run. A USB device with a crafted filesystem UUID (some controllers allow this) can inject the payload at --add-device time. Also, userName from the XML config is passed to os.system() in pamusb-agent, which invokes a shell. This vulnerability is fixed in 0.8.7.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44712">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>46a2a0df3ddbc68664649a7e0c43f2e3</td>
+       <td>CVE-2026-44711</td>
+       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, symlink attacks on pad directory and pad files enable authentication bypass and root file corruption. This vulnerability is fixed in 0.8.7.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44711">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>93620a624f40b32f8f66deb85c18479b</td>
+       <td>CVE-2026-44710</td>
+       <td>2026-05-27 21:16:17 <img src="imgs/new.gif" /></td>
+       <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, src/device.c passed the return values of udisks_drive_get_serial(), udisks_drive_get_vendor(), and udisks_drive_get_model() directly to strcmp() without NULL checks. The GIO/UDisks API documentation states these accessors can return NULL for devices that do not expose the corresponding field. Passing NULL to strcmp() is undefined behaviour (typically a SIGSEGV). This vulnerability is fixed in 0.8.7.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44710">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a44fa8e1f2dd9be01196495172b6e398</td>
+       <td>CVE-2026-44709</td>
+       <td>2026-05-27 21:16:17 <img src="imgs/new.gif" /></td>
+       <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, pamusb-pinentry reads the PINENTRY_FALLBACK_APP environment variable and executes it directly without any validation. Any process that can set environment variables before pamusb-pinentry is invoked can point PINENTRY_FALLBACK_APP at an arbitrary binary or script and have it executed with the privileges of the pam_usb tool chain. This vulnerability is fixed in 0.8.7.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44709">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0b3dbc04c1fd80012d1e45088e35fbdf</td>
+       <td>CVE-2026-44660</td>
+       <td>2026-05-27 21:16:17 <img src="imgs/new.gif" /></td>
+       <td>UltraJSON is a fast JSON encoder and decoder written in pure C with bindings for Python 3.7+. Prior to 5.12.1, when ujson.dump() writes to a file-like object and the write operation raises an exception, the serialized JSON string object is not decremented, leaking memory. Each failed write operation leaks the full size of the serialized payload. This vulnerability is fixed in 5.12.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44660">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b4ebc4ac7d53444472fd3f368eaad069</td>
        <td>CVE-2026-25426</td>
-       <td>2026-05-26 19:32:38 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 19:32:38</td>
        <td>Missing Authorization vulnerability in Magepeople inc. Taxi Booking Manager for WooCommerce allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Taxi Booking Manager for WooCommerce: from n/a through 2.0.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25426">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>7b8682d701c55e075ceda28a8419c9e7</td>
        <td>CVE-2026-27331</td>
-       <td>2026-05-26 19:29:09 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 19:29:09</td>
        <td>Missing Authorization vulnerability in Magepeople inc. WpTravelly allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects WpTravelly: from n/a through 2.1.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-27331">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>a15fec55d275fc704ea1444e18dd20a8</td>
        <td>CVE-2026-48689</td>
-       <td>2026-05-26 19:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 19:16:28</td>
        <td>FastNetMon Community Edition through 1.2.9 contains an off-by-one heap-based buffer overflow in the dynamic_binary_buffer_t class (src/dynamic_binary_buffer.hpp). Five methods (append_dynamic_buffer, append_data_as_pointer, append_data_as_object_ptr, memcpy_from_ptr, memcpy_from_object_ptr) use an incorrect bounds check of the form 'if (offset + length > maximum_internal_storage_size + 1)' instead of the correct 'if (offset + length > maximum_internal_storage_size)'. This allows writing exactly one byte past the end of the heap-allocated buffer. The class is used pervasively in BGP message encoding/decoding, NetFlow template processing, and Flow Spec NLRI construction. An attacker who can send network traffic (NetFlow, sFlow, IPFIX, or BGP) to a FastNetMon instance can trigger this overflow, potentially achieving arbitrary code execution by corrupting heap metadata. Notably, the append_byte() method uses the correct bounds check, confirming the inconsistency.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48689">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>d31fe27100c0a9666da71202e8cf62f3</td>
        <td>CVE-2026-4051</td>
-       <td>2026-05-26 19:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 19:16:28</td>
        <td>IBM Engineering Lifecycle Management 7.0.3 ( through ) Interim Fix 021, 7.1.0 ( through ) Interim Fix 009, and 7.2.0 ( through ) Interim Fix 001 could allow an attacker with administrative privileges to execute remote code due to exposed method that is not properly restricted.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4051">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>1952c3661a6f4afaff78c551ad770c4b</td>
        <td>CVE-2026-3660</td>
-       <td>2026-05-26 19:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 19:16:27</td>
        <td>IBM Engineering Lifecycle Management 7.0.3 ( through ) Interim Fix 021, 7.1.0 ( through ) Interim Fix 009, and 7.2.0 ( through ) Interim Fix 001 could allow an unauthenticated remote attacker to update server property files that would allow them to gain unauthorized access to the application.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3660">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>9eae12ba9740d58fdb843d1d2bc07564</td>
        <td>CVE-2026-3603</td>
-       <td>2026-05-26 19:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 19:16:27</td>
        <td>IBM Engineering Lifecycle Management 7.0.3 Interim Fix 001 through Interim Fix 021, 7.1.0 Interim Fix 001 through Interim Fix 009, and 7.2.0 and 7.2.0 Interim Fix 001 is vulnerable to an XML external entity injection (XXE) attack when processing XML data. An authenticated attacker could exploit this vulnerability to expose sensitive information or consume memory resources.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3603">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>54132d913d103bbde5c731cc161393a7</td>
        <td>CVE-2026-9642</td>
-       <td>2026-05-26 19:14:41 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 19:14:41</td>
        <td>There is a mitigation bypass / (incomplete fix) for CVE-2025-62582 (Unauthenticated Remote Database Access)An unauthenticated remote attacker can access configured databases in a DIAView project.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9642">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>47951eeab5cbf5039640b15c6dadb87f</td>
        <td>CVE-2026-8855</td>
-       <td>2026-05-26 18:31:51 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 18:31:51</td>
        <td>IBM HTTP Server 8.5, and 9.0 is vulnerable to remote code execution and denial of service in...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8855">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>01eee2e66d2c6dd897aceb2cafcbb064</td>
        <td>CVE-2026-8854</td>
-       <td>2026-05-26 18:31:51 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 18:31:51</td>
        <td>IBM HTTP Server 8.5, and 9.0 is vulnerable to denial of service via the optional module...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8854">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>0532066bc79142c229957c47cafb6125</td>
        <td>CVE-2026-8835</td>
-       <td>2026-05-26 18:31:51 <img src="imgs/new.gif" /></td>
+       <td>2026-05-26 18:31:51</td>
        <td>IBM HTTP Server 8.5, and 9.0 is vulnerable to invalid pointer dereference. A privileged user,...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8835">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-05-25 14:00:41</td>
        <td>Uncontrolled Resource Consumption vulnerability in benoitc hackney allows Flooding. The SOCKS5 transport in src/hackney_socks5.erl correctly applies the caller-supplied timeout to the SOCKS5 negotiation phase, but then upgrades the connection to TLS using the two-argument form ssl:connect/2, which defaults to an infinite timeout. The Timeout value is in scope at the call site but is not forwarded. A hostile SOCKS5 proxy that completes the SOCKS5 handshake normally and then goes silent (or sends a partial TLS ServerHello and stalls) will cause the connecting process to block indefinitely, regardless of the connect_timeout or recv_timeout options supplied by the caller. This issue affects hackney: from 0.10.0 before 4.0.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47071">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8cba8a501ea0b954e120479fddd3efe3</td>
-       <td>CVE-2025-26483</td>
-       <td>2026-05-22 13:33:26</td>
-       <td>Dell PowerFlex Manager, versions 4.6.2 and prior, contains an Open Redirect Vulnerability. An unauthenticated attacker could potentially exploit this vulnerability, leading to a targeted application user being redirected to arbitrary web URLs. The vulnerability could be leveraged by attackers to conduct phishing attacks that cause users to divulge sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-26483">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>147e5055d22b44af2d5208b9fed2a3f8</td>
-       <td>CVE-2026-8997</td>
-       <td>2026-05-22 13:26:17</td>
-       <td>vifm is vulnerable to a heap buffer overflow during the history merge process when saving the state file (vifminfo.json). This flaw occurs because the application lacks a runtime check on the length of history entries in release builds, potentially allowing a crafted long path or command in the history to cause memory corruption or application crashes. Releases from 0.12.1 to 0.14.3 (including) are considered vulnerable. This issue was fixed in commit 23063c7</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8997">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a7e45f07eacc6e5ae541a160dcc293b3</td>
-       <td>CVE-2025-32745</td>
-       <td>2026-05-22 13:23:22</td>
-       <td>Dell PowerFlex Manager, version(s) <=4.6.2, contain(s) an Improper Certificate Validation vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Information tampering.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32745">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2c08f41afb0db48ae446d6a16bea137d</td>
-       <td>CVE-2026-9277</td>
-       <td>2026-05-22 13:22:38</td>
-       <td>shell-quote's `quote()` function did not validate object-token inputs against the operator model used by `parse()`. The `.op` field was backslash-escaped character by character using `/(.)/g`, which in JavaScript does not match line terminators (\n, \r, U+2028, U+2029). A line terminator in `.op` therefore passed through unescaped into the output; POSIX shells treat a literal newline as a command separator, so any content after it would execute as a second command. The vulnerable code path is reachable in two ways: (1) direct construction of `{ op: '...\n...' }` from external input, and (2) via `parse(cmd, envFn)` when `envFn` returns object tokens whose `.op` is attacker-influenced. Both are documented API surface. Fixed by replacing the per-character escape with strict shape validation: `.op` must match the parser's control-operator allowlist; `{ op: 'glob', pattern }` validates `pattern` and forbids line terminators; `{ comment }` validates `comment` and forbids line terminators; any other object shape throws `TypeError`.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9277">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a1314172209eb178650cd13816eb1667</td>
-       <td>CVE-2026-8673</td>
-       <td>2026-05-22 13:18:16</td>
-       <td>Unprotected transport of credentials vulnerability in syslink software AG Avantra on Linux, Windows allows Sniffing Attacks. This issue affects Avantra: before 25.3.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8673">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>41994a9d92aee61a86594c2a8af7b172</td>
-       <td>CVE-2026-8672</td>
-       <td>2026-05-22 13:17:05</td>
-       <td>Use of default password vulnerability in syslink software AG Avantra on Linux, Windows allows Try Common or Default Usernames and Passwords. This issue affects Avantra: before 25.3.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8672">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ece0965ba15fb5ca4b8b40d7fee94bc</td>
-       <td>CVE-2026-8671</td>
-       <td>2026-05-22 13:15:28</td>
-       <td>Insertion of sensitive information into log file vulnerability in syslink software AG Avantra on Linux, Windows allows Resource Leak Exposure. This issue affects Avantra: before 25.3.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8671">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12966be36aee81a4da6ce8e1f804ab28</td>
-       <td>CVE-2025-32746</td>
-       <td>2026-05-22 13:13:03</td>
-       <td>Dell PowerFlex Manager, version(s) <=4.6.2, contain(s) an Insecure Storage of Sensitive Information vulnerability. An unauthenticated attacker with local access could potentially exploit this vulnerability, leading to unauthorized access to sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32746">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>858cd4ce89b70f644fe62c47feee9777</td>
-       <td>CVE-2026-8670</td>
-       <td>2026-05-22 13:12:52</td>
-       <td>Insufficient session expiration vulnerability in syslink software AG Avantra on Linux, Windows allows Reusing Session IDs (aka Session Replay). This issue affects Avantra: before 25.3.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8670">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>43e28480af80c9a38437d908359df62a</td>
-       <td>CVE-2025-32747</td>
-       <td>2026-05-22 13:02:32</td>
-       <td>Dell PowerFlex Manager, version(s) <=4.6.2, contain(s) an Incorrect Privilege Assignment vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-32747">详情</a></td>
       </tr>
 
      </tbody>
