@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-05-28 04:12:52 -->
+<!-- RELEASE TIME : 2026-05-29 04:14:54 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>cfb4fd38b3bedb0404629b4d2b2559b3</td>
+       <td>CVE-2026-9208</td>
+       <td>2026-05-27 22:16:37</td>
+       <td>Tanium addressed an unauthorized code execution vulnerability in Connect.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9208">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9e89aa1884e0f1e6fd05d58b8d5b06cf</td>
+       <td>CVE-2026-45152</td>
+       <td>2026-05-27 22:16:36</td>
+       <td>uniget is a universal installer and updater for (container) tools. Prior to 0.27.1, a command injection vulnerability exists in uniget due to unsafe execution of the check field from metadata files using /bin/bash -c. Because the check field is loaded directly from untrusted JSON metadata without validation or sanitization, an attacker can craft malicious metadata that executes arbitrary shell commands on the victim’s system when common uniget operations such as describe, install, update, or inspect are performed. This vulnerability can lead to arbitrary code execution with the privileges of the user running uniget. This vulnerability is fixed in 0.27.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45152">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eac4cc06a9bddf0c501a4c5e5ce8deac</td>
+       <td>CVE-2026-45083</td>
+       <td>2026-05-27 22:16:36</td>
+       <td>The Goobi viewer is a web application that allows digitised material to be displayed in a web browser. From 4.8.0 to before 26.04.1, the Goobi viewer REST endpoint POST /api/v1/index/stream accepted an arbitrary Solr streaming expression from unauthenticated network clients and forwarded it to the backend Solr server without restriction. An attacker could read the complete Solr index and, in default Solr deployments, also modify or delete indexed records. This vulnerability is fixed in 26.04.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45083">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c141a38beffc86e30f9b6f1369e103c8</td>
+       <td>CVE-2026-44720</td>
+       <td>2026-05-27 22:16:36</td>
+       <td>OpenLearnX is an open-source, decentralized learning and assessment platform. Prior to 2.0.4, a critical authentication vulnerability was identified in OpenLearnX that could allow unauthorized access to user accounts under specific conditions. This vulnerability is fixed in 2.0.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44720">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45480ca5c3b8e99c99d641974291466c</td>
+       <td>CVE-2026-44247</td>
+       <td>2026-05-27 22:16:35</td>
+       <td>Volcano is a Kubernetes-native batch scheduling system. Prior to v1.14.2, v1.13.3, and v1.12.4, the Volcano webhook server does not enforce a size limit on incoming HTTP request bodies. Any in-cluster pod that can reach the webhook endpoint may send an arbitrarily large request body, potentially causing the webhook server to be killed by OOM. All Volcano deployments with the webhook server exposed to in-cluster traffic are affected. This vulnerability is fixed in v1.14.2, v1.13.3, and v1.12.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44247">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f25126eb93834a33e65455561e839246</td>
+       <td>CVE-2026-46538</td>
+       <td>2026-05-27 21:56:55</td>
+       <td>Microsoft UFO open-source framework for intelligent automation across devices and platforms. In 3.0.1-4-ge2626659, Microsoft UFO's constellation client tracks pending task responses by session_id only and does not verify that a TASK_END message came from the device that originally received the task. When the constellation sends a task to a target device, it records a pending Future under a session key. The pending task record stores the expected device ID, but the completion path ignores that binding. If another authenticated peer device sends a forged TASK_END with the same session_id, the constellation accepts the response and completes the victim device's pending Future with attacker-controlled result data. This is an authenticated cross-device task-result injection issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46538">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ed5405e0cd465e287c9489930b4c596</td>
+       <td>CVE-2026-46416</td>
+       <td>2026-05-27 21:56:14</td>
+       <td>Microsoft UFO open-source framework for intelligent automation across devices and platforms. In 3.0.1-4-ge2626659, Microsoft UFO creates one shared UFOWebSocketHandler instance and reuses it for multiple authenticated WebSocket connections. The handler stores per-connection protocol objects in mutable instance fields. Each new WebSocket connection overwrites those fields. Later, message handlers send responses through the shared fields instead of through protocol objects bound to the originating connection. As a result, the most recently connected authenticated client can receive protocol responses that belong to another authenticated client.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46416">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>647b479ad1f648015c863cdcec9743d9</td>
+       <td>CVE-2026-46414</td>
+       <td>2026-05-27 21:54:51</td>
+       <td>Microsoft UFO open-source framework for intelligent automation across devices and platforms. In 3.0.1-4-ge2626659, Microsoft UFO's WebSocket control plane trusts client-supplied identity and role fields in task messages. A client connection can register as a normal device, but later send a TASK message claiming client_type="constellation" and target_id=<victim-device-id>. The server trusts the role and target values from the wire message rather than enforcing the role registered for that WebSocket connection. As a result, any authenticated WebSocket client with the shared server token can spoof the higher-privilege constellation role and dispatch attacker-controlled tasks to another connected device. The same client registry also allows duplicate client_id registration, overwriting an existing live client's stored websocket, role, and task protocol. This is an authenticated WebSocket role/identity spoofing issue leading to peer task hijacking.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46414">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b9cacdb206a72b8581be5937e1ee1817</td>
+       <td>CVE-2026-46402</td>
+       <td>2026-05-27 21:54:06</td>
+       <td>Microsoft UFO open-source framework for intelligent automation across devices and platforms. In 3.0.1-4-ge2626659, Microsoft UFO uses the user-controlled task_name value directly when constructing session log paths. An authenticated client can supply path traversal sequences in task_name and cause UFO to create log directories and log files outside the intended logs/ directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46402">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>139e17d3452f23a28978482a3b6b0f42</td>
+       <td>CVE-2026-46544</td>
+       <td>2026-05-27 21:53:11</td>
+       <td>Microsoft UFO open-source framework for intelligent automation across devices and platforms. In 3.0.1-4-ge2626659, Microsoft UFO accepts client-supplied session_id values in WebSocket task messages and reuses an existing in-memory session object if that session_id already exists. If a prior session has completed and remains in memory with populated results, a different authenticated client can send a new TASK message using the same session_id. The server re-enters the existing session object and sends the stale stored result to the new requester through the normal send_task_end() callback path. This is an authenticated cross-client stale result replay issue. The issue requires that the attacker knows or can predict a live or recently completed session_id.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46544">详情</a></td>
+      </tr>
+
+      <tr>
        <td>81ed023ad0a238ba19992e31023a9432</td>
        <td>CVE-2026-47270</td>
-       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:18</td>
        <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.9.0, pam_usb is a PAM module loaded into the host process (sudo, login, GDM, GNOME Shell). Display managers such as GDM run multiple concurrent authentication threads. Three functions used by the deny_remote feature called the non-reentrant strtok(), which stores state in a single global pointer. If two authentications race, one thread's strtok() call can overwrite the other's in-progress tokenisation pointer, causing incorrect parsing of the tmux session data or the /proc environ scan that backs the remote-session detection logic. Additionally, pusb_tmux_get_client_tty() passed the raw pointer returned by getenv(TMUX) directly to strtok(). getenv() returns a pointer into the live process environment block; strtok() inserts NUL bytes into that block, permanently corrupting the TMUX variable for subsequent code running in the same process. In long-lived display managers this affects all future authentications in that process. The combined effect can cause deny_remote=true to return an incorrect decision for a remote session, or an incorrect decision for a local session, depending on thread interleaving. This vulnerability is fixed in 0.9.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47270">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>2fedd501406552ae9632d9cf0790f9cb</td>
        <td>CVE-2026-47269</td>
-       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:18</td>
        <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.9.0, pam_usb's deny_remote feature checks utmpx ut_addr_v6 to detect whether an authentication request originates from a remote session. The outer guard was if (utent->ut_addr_v6[0] != 0), which only tests the first 32-bit word of the 128-bit address field. IPv4-mapped IPv6 addresses (::ffff:x.x.x.x) store the IPv4 address in ut_addr_v6[3] with ut_addr_v6[0] == 0. On systems where the SSH daemon listens on :: (IPv6 wildcard) with AddressFamily any -- common on Ubuntu and Debian -- incoming IPv4 connections are recorded in utmpx as IPv4-mapped IPv6 addresses. The outer check evaluates to false, the remote-detection block is skipped entirely, and the session is treated as local. deny_remote=true does not block the authentication. An attacker with physical access to a registered USB device can authenticate over SSH on an affected system as if they were sitting at a local terminal, bypassing the deny_remote restriction. This vulnerability is fixed in 0.9.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47269">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>aaefd37b7d7dda92e5e22dbc89540278</td>
        <td>CVE-2026-45137</td>
-       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:18</td>
        <td>Anchor is a framework providing several convenient developer tools for writing Solana programs. From 1.0.0 to before 1.0.2, an logic error causes anchor programs to accept any program id when requiring the system program id, causing false assumptions resulting in potential arbitrary cpi in programs that invoke system program instructions. In the TryFrom<&'a AccountInfo<'a>> implementation for Program<'a, T>, the id of T is compared with Pubkey::default() to check whether anchor should allow any executable account, or a specific account, because when no T is supplied, T defaults to (), which implements Id::id() by returning Pubkey::default(). This results in T = () and T = System (which has Pubkey::default() as the id) having the same behavior, both allow any executable account. Programs built with anchor assume that the anchor runtime verifies passed in programs of type Program<'a, System> are in fact the system program. This false assumption can lead to arbitrary CPI or payment bypassing when programs try making CPI calls to the system program using the passed in system program due to the fact that the attacker can pass in any program instead of the system program. This vulnerability is fixed in 1.0.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45137">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>417c34c3e1e5b2f0fbb2bb2fcaaa69b7</td>
        <td>CVE-2026-45136</td>
-       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:18</td>
        <td>claude-code-cache-fix is a cache optimization proxy for Claude Code. From 3.5.0 to before 3.5.2, tools/quota-statusline.sh (introduced in v3.5.0) interpolates Claude Code's hook stdin payload directly into a Python triple-quoted string literal. A ''' byte sequence in any user-controlled field of the payload closes the literal early and lets following bytes execute as Python in the user's Claude Code process. This vulnerability is fixed in 3.5.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45136">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>59c1eed4e32aa832c952c61d64a661b4</td>
        <td>CVE-2026-44713</td>
-       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:18</td>
        <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, src/tmux.c reads the user's $TMUX environment variable, splits it on commas, and interpolates the socket-path component directly into a shell command passed to popen(). Because the value is placed inside double-quotes without sanitisation, any value containing " terminates the quoted string and injects arbitrary shell syntax. popen() runs as root inside the PAM stack. This vulnerability is fixed in 0.8.7.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44713">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>cda83ed237c6daae3fab2196167d0a18</td>
        <td>CVE-2026-44712</td>
-       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:18</td>
        <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, a crafted UUID such as $(id>/tmp/rce) in the config causes root RCE when pamusb-conf --reset-pads is run. A USB device with a crafted filesystem UUID (some controllers allow this) can inject the payload at --add-device time. Also, userName from the XML config is passed to os.system() in pamusb-agent, which invokes a shell. This vulnerability is fixed in 0.8.7.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44712">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>46a2a0df3ddbc68664649a7e0c43f2e3</td>
        <td>CVE-2026-44711</td>
-       <td>2026-05-27 21:16:18 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:18</td>
        <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, symlink attacks on pad directory and pad files enable authentication bypass and root file corruption. This vulnerability is fixed in 0.8.7.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44711">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>93620a624f40b32f8f66deb85c18479b</td>
        <td>CVE-2026-44710</td>
-       <td>2026-05-27 21:16:17 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:17</td>
        <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, src/device.c passed the return values of udisks_drive_get_serial(), udisks_drive_get_vendor(), and udisks_drive_get_model() directly to strcmp() without NULL checks. The GIO/UDisks API documentation states these accessors can return NULL for devices that do not expose the corresponding field. Passing NULL to strcmp() is undefined behaviour (typically a SIGSEGV). This vulnerability is fixed in 0.8.7.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44710">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>a44fa8e1f2dd9be01196495172b6e398</td>
        <td>CVE-2026-44709</td>
-       <td>2026-05-27 21:16:17 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:17</td>
        <td>pam_usb provides hardware authentication for Linux using ordinary removable media. Prior to 0.8.7, pamusb-pinentry reads the PINENTRY_FALLBACK_APP environment variable and executes it directly without any validation. Any process that can set environment variables before pamusb-pinentry is invoked can point PINENTRY_FALLBACK_APP at an arbitrary binary or script and have it executed with the privileges of the pam_usb tool chain. This vulnerability is fixed in 0.8.7.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44709">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>0b3dbc04c1fd80012d1e45088e35fbdf</td>
        <td>CVE-2026-44660</td>
-       <td>2026-05-27 21:16:17 <img src="imgs/new.gif" /></td>
+       <td>2026-05-27 21:16:17</td>
        <td>UltraJSON is a fast JSON encoder and decoder written in pure C with bindings for Python 3.7+. Prior to 5.12.1, when ujson.dump() writes to a file-like object and the write operation raises an exception, the serialized JSON string object is not decremented, leaking memory. Each failed write operation leaks the full size of the serialized payload. This vulnerability is fixed in 5.12.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44660">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-05-26 18:31:51</td>
        <td>IBM HTTP Server 8.5, and 9.0 is vulnerable to invalid pointer dereference. A privileged user,...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8835">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c38ddcfece779475ee2a093464a8d136</td>
-       <td>CVE-2026-9465</td>
-       <td>2026-05-25 14:15:38</td>
-       <td>A vulnerability was found in Tiandy Easy7 Integrated Management Platform 7.17.0. This vulnerability affects unknown code of the file /Easy7/apps/WebService/GetDBDataEx.jsp. Performing a manipulation of the argument strTBName results in sql injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9465">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7559a8fbb7e5a06a31597c3efed57457</td>
-       <td>CVE-2026-9078</td>
-       <td>2026-05-25 14:05:47</td>
-       <td>Firefox for iOS displayed specially crafted right-to-left (RTL) and internationalized domain names (IDNs) incorrectly in link preview UI surfaces. A crafted RTL hostname could visually reorder portions of the displayed domain, causing attacker-controlled sites to appear as trusted origins. This vulnerability was fixed in Firefox for iOS 151.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9078">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6af296f34a85d070ff17b5756e8deb8b</td>
-       <td>CVE-2026-47073</td>
-       <td>2026-05-25 14:00:49</td>
-       <td>Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. The WebSocket client in src/hackney_ws.erl imposes no upper bound on memory consumption in three code paths. First, read_handshake_response/3 accumulates received bytes into a growing buffer with no size cap; the per-receive timeout resets on every chunk, so a server that streams bytes without ever sending \r\n\r\n causes the buffer to grow until memory is exhausted. Second, parse_payload/9 and parse_active_payload/8 do not validate the declared frame payload length against any limit; because RFC 6455 allows payload lengths up to 2^63-1 bytes, a server that announces a very large frame and dribbles bytes causes the accumulation buffer to grow until OOM. Third, the frag_buffer field in #ws_data{} accumulates continuation frames indefinitely; a server that sends an endless stream of non-final (nofin) fragmented frames without ever sending a final (fin) frame grows frag_buffer without bound. In all three cases the attacker only needs to control the WebSocket server the hackney client connects to, with no authentication or special client configuration required. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47073">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c9cdff9e95b1a8f5ed15dba5400f3595</td>
-       <td>CVE-2026-47067</td>
-       <td>2026-05-25 14:00:48</td>
-       <td>Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. The URL parser in src/hackney_url.erl converts every unrecognized URL scheme to a permanent BEAM atom via binary_to_atom/2. BEAM atoms are never garbage-collected and the atom table defaults to a hard limit of 1,048,576 entries. An attacker who can supply URLs with attacker-chosen scheme prefixes — directly as request targets, as configured webhook URLs, or via Location headers followed during redirects — can exhaust the atom table and crash the entire BEAM VM with system_limit. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47067">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8aef6a44455925cdd114850e946592c4</td>
-       <td>CVE-2026-47072</td>
-       <td>2026-05-25 14:00:47</td>
-       <td>Improper Neutralization of CRLF Sequences ('CRLF Injection') vulnerability in benoitc hackney allows HTTP Request/Response Splitting. The WebSocket upgrade code in src/hackney_ws.erl copies the host, path, headers (ExtraHeaders), and protocols options from the caller-supplied opts map into the internal #ws_data{} record in init/1 and then splices them verbatim into the raw HTTP/1.1 upgrade request by binary concatenation in do_handshake/1. No CRLF or NUL stripping is performed at any of these four injection sites. An attacker who controls any of these options — for example by forwarding URL components or header values from untrusted input into hackney_ws:start_link/1 — can inject arbitrary HTTP headers into the outbound WebSocket upgrade request, leading to header injection, credential spoofing toward the upstream server, log and cache poisoning, or request smuggling via intermediary proxies. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47072">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed156435609a4f7bec94433f87142e45</td>
-       <td>CVE-2026-47076</td>
-       <td>2026-05-25 14:00:46</td>
-       <td>Interpretation Conflict vulnerability in benoitc hackney allows Server Side Request Forgery. hackney_url:normalize/2 URL-decodes the host component after the URL has been parsed into a #hackney_url{} record. OTP's uri_string:parse/1 and inet:parse_address/1 do not decode percent-escapes in the host, so a URL such as http://%31%32%37%2E%30%2E%30%2E%31/ is seen by a caller's allowlist validator with host %31%32%37%2E%30%2E%30%2E%31 (not an IP address), which passes the allowlist check. hackney's normalizer then decodes the host to 127.0.0.1 and opens a TCP connection to loopback. Because hackney:request/5 always calls hackney_url:normalize/2 with no opt-out, every request that takes a binary or list URL is affected. The same technique reaches cloud instance metadata services (169.254.169.254), RFC1918 networks, and any admin interface listening on localhost. This issue affects hackney: from 0.13.0 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47076">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dd0c5fb7fafa7c706dbd2be9cf27927c</td>
-       <td>CVE-2026-47070</td>
-       <td>2026-05-25 14:00:46</td>
-       <td>Sensitive Data Exposure vulnerability in benoitc hackney allows Retrieve Embedded Sensitive Data. The HTTP/3 redirect handler in src/hackney_h3.erl passes the original request headers unchanged to the redirect target without performing any cross-origin check. When a client issues an HTTP/3 request with follow_redirect enabled and includes Authorization or Cookie headers, a server responding with a 3xx redirect to a different host will cause the client to forward those credentials verbatim to the new origin. The main hackney.erl module has maybe_strip_auth_on_redirect/2 (guarded by the location_trusted option) to address CVE-2018-1000007, but hackney_h3.erl is missing this protection entirely. This issue affects hackney: from 3.1.1 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47070">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0602d7b6db2bf1792a629b353919d12d</td>
-       <td>CVE-2026-47075</td>
-       <td>2026-05-25 14:00:45</td>
-       <td>Improper Neutralization of CRLF Sequences vulnerability in benoitc hackney allows HTTP Request Splitting. hackney does not percent-encode carriage return (\r) or line feed (\n) characters in the URL query component before constructing the HTTP/1.1 request target. Characters outside the grammar defined in RFC 3986 Section 3.4 must be percent-encoded, but hackney_url:make_url/3 passes the query binary directly without validation or escaping. An attacker who can control all or part of a URL passed to hackney can inject raw CRLF sequences into the query string, which are then sent as HTTP line breaks in the request target. This enables injection of arbitrary HTTP headers or splitting of the HTTP request. This issue affects hackney: from 0 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47075">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>901ec2ef33416d3179b52e458c01e819</td>
-       <td>CVE-2026-47077</td>
-       <td>2026-05-25 14:00:42</td>
-       <td>Allocation of Resources Without Limits or Throttling vulnerability in benoitc hackney allows Flooding. hackney_h3:await_response_loop/6 accumulates the HTTP/3 response body in memory without any size cap. The after Timeout clause is a per-message inactivity timer that resets on every received chunk, housekeeping message, or settings frame — it is not a wall-clock deadline. A malicious HTTP/3 server that emits one small chunk every Timeout - 1 ms with Fin = false and never sends a final frame keeps the loop alive indefinitely while the accumulation buffer grows linearly without bound, eventually exhausting the BEAM process heap and causing an out-of-memory condition. This issue affects hackney: from 2.0.0 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47077">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9cd4b83e7bab38c77a73fe04046021a8</td>
-       <td>CVE-2026-47071</td>
-       <td>2026-05-25 14:00:41</td>
-       <td>Uncontrolled Resource Consumption vulnerability in benoitc hackney allows Flooding. The SOCKS5 transport in src/hackney_socks5.erl correctly applies the caller-supplied timeout to the SOCKS5 negotiation phase, but then upgrades the connection to TLS using the two-argument form ssl:connect/2, which defaults to an infinite timeout. The Timeout value is in scope at the call site but is not forwarded. A hostile SOCKS5 proxy that completes the SOCKS5 handshake normally and then goes silent (or sends a partial TLS ServerHello and stalls) will cause the connecting process to block indefinitely, regardless of the connect_timeout or recv_timeout options supplied by the caller. This issue affects hackney: from 0.10.0 before 4.0.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47071">详情</a></td>
       </tr>
 
      </tbody>
