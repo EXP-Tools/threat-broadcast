@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-01 21:39:19 -->
+<!-- RELEASE TIME : 2026-06-02 23:05:40 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c17d2e29f2ef6ace38b6860c694a11c9</td>
+       <td>CVE-2026-49943</td>
+       <td>2026-06-02 17:16:37 <img src="imgs/new.gif" /></td>
+       <td>CZ.NIC BIRD Internet Routing Daemon through 2.19.0 contains a stack-based buffer overflow in the BGP AS_PATH mask matching implementation in nest/a-path.c. The as_path_match() function uses a fixed-size stack array of 2048 + 1 pm_pos entries, while parse_path() expands AS_PATH segments from a received BGP UPDATE without enforcing a corresponding capacity limit. When RFC 8654 BGP Extended Messages are enabled and a BIRD filter evaluates an AS path mask expression such as "bgp_path ~ [= ... =]", an established BGP peer can send a long AS_PATH containing more than 2048 expanded ASNs. This causes parse_path()/as_path_match() to write beyond the fixed stack buffer, resulting in a crash of the daemon. NOTE: reportedly, the Supplier's position is that a fix is not being prioritized because all network operators should already be rejecting routes with unusually long attributes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49943">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a645e5e87d3524724ad7049090a17a51</td>
+       <td>CVE-2026-40715</td>
+       <td>2026-06-02 17:16:29 <img src="imgs/new.gif" /></td>
+       <td>Dell ThinOS 10, versions prior to ThinOS10 2602_10.0765, contain an Improper Access Control vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Privilege Escalation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40715">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d05f563cd69abcdd93085f2ceabc9e3d</td>
+       <td>CVE-2026-40713</td>
+       <td>2026-06-02 17:16:29 <img src="imgs/new.gif" /></td>
+       <td>Dell ThinOS 10, versions prior to ThinOS10 2602_10.0765, contain an Improper Access control vulnerability. An unauthenticated attacker with physical access could potentially exploit this vulnerability, leading to Information exposure.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40713">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c422ae55c807c0d2808d878dc02d84e</td>
+       <td>CVE-2026-40571</td>
+       <td>2026-06-02 17:16:29 <img src="imgs/new.gif" /></td>
+       <td>NamelessMC is website software for Minecraft servers. In version 2.2.4, `core/classes/Misc/ProfilePostReactionContext.php` only verifies that the wall post exists and does not enforce blocked/private-profile visibility. This means that authenticated low-privileged users can add reactions to private or blocking profile posts. Version 2.2.5 contains a patch.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40571">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f475e34c77f5583858eac3e504e4c7e6</td>
+       <td>CVE-2026-40314</td>
+       <td>2026-06-02 17:16:28 <img src="imgs/new.gif" /></td>
+       <td>NamelessMC is website software for Minecraft servers. In version 2.2.4,`core/classes/Misc/ProfilePostReactionContext.php` only verifies that the wall post exists and does not enforce blocked/private-profile visibility. `modules/Core/queries/reactions.php` allows unauthenticated GET requests for reaction details. This means that unauthenticated visitors can read reaction participants and timestamps for private profile posts and uthenticated low-privileged users can add reactions to private or blocking profile posts. Version 2.2.5 fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40314">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>976b33547eb14b3bc131435b744187fd</td>
+       <td>CVE-2026-24221</td>
+       <td>2026-06-02 17:16:27 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA NVTabular contains a vulnerability where an attacker could cause improper deserialization of untrusted data. A successful exploit of this vulnerability might lead to code execution, data tampering and information disclosure.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24221">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dec0ffcf04caf877e823f3a8500afae6</td>
+       <td>CVE-2026-0611</td>
+       <td>2026-06-02 17:16:25 <img src="imgs/new.gif" /></td>
+       <td>Spacelabs Healthcare Sentinel versions 10.5.x and higher and 11.x.x before 11.6.0 contain an unauthenticated remote code execution vulnerability through a deprecated .NET Remoting HTTP channel exposed on port 8989 that allows attackers to perform arbitrary file read and write operations by supplying valid .NET URI endpoints. Attackers can write ASPX webshells to the IIS wwwroot directory to achieve unauthenticated remote code execution on the system. Port 8989 is not exposed in a default Sentinel installation; exploitation requires that the .NET Remoting port has been explicitly made network-accessible through deliberate configuration or network policy changes.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0611">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b85e46c0e95e78c7bff744b64671ded4</td>
+       <td>CVE-2024-42206</td>
+       <td>2026-06-02 17:16:22 <img src="imgs/new.gif" /></td>
+       <td>HCL iReflection Third party vulnerable and outdated components issue was detected in the web application</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42206">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c47fae5bda58aa33002093992cfb2a7e</td>
+       <td>CVE-2026-10606</td>
+       <td>2026-06-02 16:30:08 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was determined in DedeCMS 5.7.88. The affected element is the function TrimMsg of the file /plus/feedback.php of the component Feedback Handler. Executing a manipulation of the argument msg can lead to sql injection. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10606">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0b5fcecdd949d5b5eeded8560e6e0b13</td>
+       <td>CVE-2026-9590</td>
+       <td>2026-06-02 16:16:45 <img src="imgs/new.gif" /></td>
+       <td>Improper access control in the permission validation component in Devolutions Server 2026.1.19 and earlier allows an authenticated user with entry edit privileges to modify asset information without the required permission.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9590">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6242e03e5c50507fc57e5752ff8dc160</td>
        <td>CVE-2026-8206</td>
        <td>2026-06-01 17:35:00 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>8bdf8d5ffbe15b93434f01257b743fbe</td>
        <td>CVE-2026-10156</td>
-       <td>2026-05-31 00:16:33 <img src="imgs/new.gif" /></td>
+       <td>2026-05-31 00:16:33</td>
        <td>A vulnerability was determined in Open5GS up to 2.7.7. This affects the function handle_amf_info in the library /lib/sbi/nnrf-handler.c of the component nf-instances Endpoint. Executing a manipulation of the argument nf_info_pool can lead to resource consumption. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. Applying a patch is advised to resolve this issue. The issue report is flagged as already-fixed.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10156">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>b8aacaacc69af8ad49dcb64de92efac7</td>
        <td>CVE-2026-10155</td>
-       <td>2026-05-31 00:16:33 <img src="imgs/new.gif" /></td>
+       <td>2026-05-31 00:16:33</td>
        <td>A vulnerability was found in Bdtask Multi-Store Inventory Management System 1.0. The impacted element is the function accounts_report_search of the file application/modules/accounts/controllers/Accounts.php of the component Accounts Report Handler. Performing a manipulation of the argument dtpToDate results in sql injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10155">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>60bf8ed80d8fffb46aca89a7e2af06eb</td>
        <td>CVE-2026-10154</td>
-       <td>2026-05-31 00:16:33 <img src="imgs/new.gif" /></td>
+       <td>2026-05-31 00:16:33</td>
        <td>A vulnerability has been found in Dolibarr ERP CRM 23.0.0/23.0.1/23.0.2. The affected element is an unknown function of the file htdocs/user/messaging.php. Such manipulation of the argument ID leads to authorization bypass. The attack can be executed remotely. Upgrading to version 23.0.3 is sufficient to fix this issue. The name of the patch is 119b3606c7a701747a57a1f18b1a9e7666f678e2. It is suggested to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10154">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-05-30 16:17:04</td>
        <td>A vulnerability was determined in Shibby Tomato up to 1.28. Affected is the function rip_zebra_read_ipv4 of the file /usr/sbin/ripd of the component Zserv Handler. Executing a manipulation can lead to stack-based buffer overflow. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. This project is superseded by FreshTomato. This vulnerability only affects products that are no longer supported by the maintainer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10124">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1b04f4baebad7ac7fad3e53a4bab2969</td>
-       <td>CVE-2026-10120</td>
-       <td>2026-05-30 15:16:15</td>
-       <td>A vulnerability was detected in TRENDnet TEW-432BRP 3.10B20. The affected element is the function formSetFirewallRule of the file /goform/formSetFirewallRule. The manipulation of the argument firewall_name results in stack-based buffer overflow. The attack can be executed remotely. The exploit is now public and may be used. The vendor explains: "This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities." This vulnerability only affects products that are no longer supported by the maintainer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10120">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>82693311f7d9777616fa90e50eb471f8</td>
-       <td>CVE-2026-10122</td>
-       <td>2026-05-30 15:15:07</td>
-       <td>A vulnerability has been found in TRENDnet TEW-432BRP 3.10B20. This affects the function formSetProtocolFilter of the file /goform/formSetProtocolFilter. Such manipulation of the argument protocol_name leads to stack-based buffer overflow. The attack may be performed from remote. The exploit has been disclosed to the public and may be used. The vendor explains: "This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities." This vulnerability only affects products that are no longer supported by the maintainer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10122">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>82856a4abdd622cd443332a3d59461c0</td>
-       <td>CVE-2026-10121</td>
-       <td>2026-05-30 15:00:13</td>
-       <td>A flaw has been found in TRENDnet TEW-432BRP 3.10B20. The impacted element is the function formSetUrlFilter of the file /goform/formSetUrlFilter. This manipulation of the argument keyword_list/keyword causes stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been published and may be used. The vendor explains: "This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities." This vulnerability only affects products that are no longer supported by the maintainer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10121">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>006678ca347916121712f754d219e77f</td>
-       <td>CVE-2026-10119</td>
-       <td>2026-05-30 14:16:24</td>
-       <td>A security vulnerability has been detected in TRENDnet TEW-432BRP 3.10B20. Impacted is the function formSetMACFilter of the file /goform/formSetMACFilter. The manipulation of the argument filter_name leads to stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The vendor explains: "This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities." This vulnerability only affects products that are no longer supported by the maintainer.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10119">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9dcda0e505deb505ab4084bb7daefc91</td>
-       <td>CVE-2026-46242</td>
-       <td>2026-05-30 13:16:21</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: eventpoll: fix ep_remove struct eventpoll / struct file UAF ep_remove() (via ep_remove_file()) cleared file->f_ep under file->f_lock but then kept using @file inside the critical section (is_file_epoll(), hlist_del_rcu() through the head, spin_unlock). A concurrent __fput() taking the eventpoll_release() fastpath in that window observed the transient NULL, skipped eventpoll_release_file() and ran to f_op->release / file_free(). For the epoll-watches-epoll case, f_op->release is ep_eventpoll_release() -> ep_clear_and_put() -> ep_free(), which kfree()s the watched struct eventpoll. Its embedded ->refs hlist_head is exactly where epi->fllink.pprev points, so the subsequent hlist_del_rcu()'s "*pprev = next" scribbles into freed kmalloc-192 memory. In addition, struct file is SLAB_TYPESAFE_BY_RCU, so the slot backing @file could be recycled by alloc_empty_file() -- reinitializing f_lock and f_ep -- while ep_remove() is still nominally inside that lock. The upshot is an attacker-controllable kmem_cache_free() against the wrong slab cache. Pin @file via epi_fget() at the top of ep_remove() and gate the critical section on the pin succeeding. With the pin held @file cannot reach refcount zero, which holds __fput() off and transitively keeps the watched struct eventpoll alive across the hlist_del_rcu() and the f_lock use, closing both UAFs. If the pin fails @file has already reached refcount zero and its __fput() is in flight. Because we bailed before clearing f_ep, that path takes the eventpoll_release() slow path into eventpoll_release_file() and blocks on ep->mtx until the waiter side's ep_clear_and_put() drops it. The bailed epi's share of ep->refcount stays intact, so the trailing ep_refcount_dec_and_test() in ep_clear_and_put() cannot free the eventpoll out from under eventpoll_release_file(); the orphaned epi is then cleaned up there. A successful pin also proves we are not racing eventpoll_release_file() on this epi, so drop the now-redundant re-check of epi->dying under f_lock. The cheap lockless READ_ONCE(epi->dying) fast-path bailout stays.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46242">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f5c7321a7aa27b0afeb3fa33568ce1b6</td>
-       <td>CVE-2026-10117</td>
-       <td>2026-05-30 13:16:20</td>
-       <td>A weakness has been identified in Open5GS up to 2.7.7. This issue affects the function ogs_pool_id_calloc in the library /lib/sbi/nghttp2-server.c. Executing a manipulation can lead to denial of service. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. It is best practice to apply a patch to resolve this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10117">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fc54f325bbb59410b48fbd3fefc337cf</td>
-       <td>CVE-2026-10116</td>
-       <td>2026-05-30 12:16:23</td>
-       <td>A security flaw has been discovered in Open5GS up to 2.7.7. This vulnerability affects the function ogs_sbi_xact_add in the library /lib/core/ogs-timer.c of the component ue-authentications Endpoint. Performing a manipulation results in denial of service. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. Applying a patch is the recommended action to fix this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10116">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8611a7b02ea067c812c29ee29423bad0</td>
-       <td>CVE-2026-10115</td>
-       <td>2026-05-30 11:17:05</td>
-       <td>A vulnerability was identified in Open5GS up to 2.7.7. This affects an unknown part in the library lib/sbi/nnrf-handler.c of the component Shared NF-profile Parser. Such manipulation leads to denial of service. The attack can be launched remotely. The exploit is publicly available and might be used. It is advisable to implement a patch to correct this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10115">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6093f9d581d3214bae47b8ea595c167d</td>
-       <td>CVE-2026-10114</td>
-       <td>2026-05-30 11:17:05</td>
-       <td>A vulnerability was determined in Open5GS up to 2.7.7. Affected by this issue is the function handle_scp_info in the library lib/sbi/nnrf-handler.c of the component Shared NF-profile Parser. This manipulation causes out-of-bounds write. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. To fix this issue, it is recommended to deploy a patch.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10114">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>23152db7df35be98e355c634b98b1ba7</td>
-       <td>CVE-2026-9757</td>
-       <td>2026-05-30 10:16:23</td>
-       <td>The GEO my WP plugin for WordPress is vulnerable to SQL Injection via the 'swlatlng' and 'nelatlng' parameters in all versions up to, and including, 4.5.5 The parameters are read from $_SERVER['QUERY_STRING'] via parse_str() (bypassing WordPress's wp_magic_quotes protection, which only covers $_POST/$_GET/$_COOKIE/$_REQUEST), then each is split on ',' via explode() and the resulting fragments are interpolated directly into a SQL BETWEEN clause in gmw_get_locations_within_boundaries_sql() without is_numeric() validation, (float) casting, esc_sql(), or $wpdb->prepare(). This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. Exploitation requires the site to host the Posts Locator search-results shortcode (`[gmw form="results" form_id=N]`) on a public page and to have at least one published post with an associated gmw_location row.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9757">详情</a></td>
       </tr>
 
      </tbody>
