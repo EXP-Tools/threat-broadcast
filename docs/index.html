@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-04 22:24:23 -->
+<!-- RELEASE TIME : 2026-06-05 22:20:01 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e7e33990edd82ac3c57e9cbf6638191d</td>
+       <td>CVE-2026-8714</td>
+       <td>2026-06-05 17:17:04 <img src="imgs/new.gif" /></td>
+       <td>A denial-of-service vulnerability exists in the RTSP server component of TP-Link Tapo C520WS v2 due to improper handling of syntactically invalid input. Crafted inputs can trigger a processing error, causing the RTSP service to enter non-responsive state. Successful exploitation may cause the RTSP in a denial-of-service condition.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8714">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76701c918efb5cb2a686266aa258f349</td>
+       <td>CVE-2026-7473</td>
+       <td>2026-06-05 17:17:02 <img src="imgs/new.gif" /></td>
+       <td>On affected platforms running Arista EOS where a tunnel decapsulation configuration—such as VXLAN (Virtual Extensible LAN), decap-groups, or a GRE (Generic Routing Encapsulation) tunnel interface—is present, the switch will incorrectly decapsulate and forward other unexpected tunneled packet with a destination IP matching its configured decapsulation IP. This occurs because the switch does not verify the tunnel protocol type, potentially leading to the unexpected processing of non-configured tunnel traffic. This issue has been reported as being exploited in the wild.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7473">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c5cf8c9ec041ceaa95ddd22829a6b2bd</td>
+       <td>CVE-2026-48112</td>
+       <td>2026-06-05 17:16:49 <img src="imgs/new.gif" /></td>
+       <td>7-Zip is a file archiver with a high compression ratio. Versions 9.18 through 26.00 contain a heap out-of-bounds read in 7-Zip Ar handler BSD SYMDEF parser. A 4-byte heap out-of-bounds read exists in the Unix ar archive parser in 7-Zip. When parsing a BSD-style __.SYMDEF symbol table, the ParseLibSymbols function reads a 32-bit namesSize field via Get32 at a position that can equal the buffer size, reading 4 bytes past the end of the heap allocation. This reads uninitialized heap data under the default allocator. Version 26.01 patches the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48112">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>79666db430a8a0ca9dace8b801a4c5e7</td>
+       <td>CVE-2026-48111</td>
+       <td>2026-06-05 17:16:48 <img src="imgs/new.gif" /></td>
+       <td>7-Zip is a file archiver with a high compression ratio. Versions 9.21 through 26.00 contain an off-by-one out-of-bounds read vulnerability in the ParseDepedencyExpression function of the UEFI firmware image parser(CPP/7zip/Archive/UefiHandler.cpp). The function validates an attacker-controlled opcode byte using > instead of >= against the element count of the 10-entry kExpressionCommands static array, allowing an opcode value of 10 to read one pointer slot (8 bytes on x64) past the end of the array in .rodata. The out-of-bounds value is then dereferenced as a const char * and passed through strlen and memcpy into the archive's Characts property, which may cause either a denial of service (access violation when the adjacent bytes do not form a valid readable pointer) or a minor information disclosure of an adjacent .rdata string literal into archive metadata. The vulnerability is reached automatically during IInArchive::Open() via the call path OpenFv/OpenCapsule → ParseVolume → ParseSections when processing a SECTION_DXE_DEPEX (0x13) or SECTION_PEI_DEPEX (0x1B) section whose first body byte is 0x0A, and the UEFI handler is enabled by default in stock 7z.dll with signature-based detection for both UEFIc and UEFIf formats. The outcome (crash vs. silent leak) is deterministic per build but linker-layout dependent, with no write primitive and no disclosure of heap data, secrets, or ASLR base addresses. Version 26.01 fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48111">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>160a78c13cdd069041b08b1088d453e0</td>
+       <td>CVE-2026-48104</td>
+       <td>2026-06-05 17:16:48 <img src="imgs/new.gif" /></td>
+       <td>7-Zip is a file archiver with a high compression ratio. Versions 9.18 through 26.00 contain an uninitialized heap read in the SquashFS archive handler caused by a sparsely populated index array. In the SquashFS handler, _blockToNode is allocated with capacity for every metadata block but populated only when an inode crosses a block boundary, so a crafted image with few inodes spanning many blocks leaves most slots holding raw heap contents (the underlying allocator does not zero-initialize POD storage). When OpenDir looks up an attacker-influenced blockIndex (derived from the RootInode superblock field), it reads two of these uninitialized slots and passes them as the left/right bounds of a binary search over _nodesPos, which dereferences the midpoint without bounds checking; if the resulting value happens to match the search key, the returned index is used to read a full node struct from _nodes whose fields feed further directory parsing, forming a chained OOB read primitive that is heap-layout-dependent and not reliably triggerable. The SquashFS handler is enabled by default in stock 7z.dll and the issue triggers during Open() with no interaction beyond opening the file; impact is denial of service from wild-pointer dereference and potential heap information disclosure, with no write primitive. Version 26.01 fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48104">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>84ed5990927ddb67e6899a5c12529eb3</td>
+       <td>CVE-2026-48103</td>
+       <td>2026-06-05 17:16:48 <img src="imgs/new.gif" /></td>
+       <td>7-Zip is a file archiver with a high compression ratio. Versions 9.34 through 26.00 contain an off-by-one heap out-of-bounds read in the WIM (Windows Imaging) archive handler's security descriptor lookup. In CHandler::GetSecurity (CPP/7zip/Archive/Wim/WimHandler.cpp), the per-image SecurOffsets table holds numEntries + 1 cumulative offsets, but the check securityId >= SecurOffsets.Size() admits securityId == numEntries, and the function then reads SecurOffsets[securityId + 1], fetching one UInt32 past the end of the heap-allocated CRecordVector (which performs no bounds checking on operator[]). The securityId is attacker-controlled at offset +0xC of any directory entry in WIM metadata, and the handler is registered for .wim, .swm, .esd, and .ppkg and enabled by default in stock 7z.dll; the OOB triggers zero-click in the GUI because 7zFM.exe's ListView calls GetRawProp(kpidNtSecure) for every item during listing (ASan-confirmed), and is also reachable via CLI listing with 7zz l -slt. Impact is limited to denial of service under hardened allocators and minor information disclosure, since the OOB value is only consumed arithmetically as a length and is not surfaced to the attacker; there is no write primitive.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48103">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5bc81016ca6db66b42076679953d28f1</td>
+       <td>CVE-2026-11339</td>
+       <td>2026-06-05 17:16:46 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in D-Link DWR-M920 up to 1.1.50. The affected element is the function sub_41CF20 of the file /boafrm/formUSSDSetup. The manipulation of the argument ussdValue results in command injection. It is possible to launch the attack remotely. The exploit is now public and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11339">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c3bd159bff5ffdfc6c6c196abf386c4</td>
+       <td>CVE-2026-11338</td>
+       <td>2026-06-05 17:16:44 <img src="imgs/new.gif" /></td>
+       <td>A security vulnerability has been detected in SourceCodester Ship Ferry Ticket Reservation System 1.0. Impacted is an unknown function of the file /admin/?page=user/manage_user. The manipulation of the argument Username leads to cross site scripting. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11338">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a31c055a35bce25fa8ab4b181fd3d36f</td>
+       <td>CVE-2026-11337</td>
+       <td>2026-06-05 17:16:42 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in tittuvarghese CollegeManagementSystem 3e476335cfbfb9a049e09f474c7ec885f69a9df3/a38852979f7e27ae67b610dce5979500ef8ebe01. Affected by this vulnerability is an unknown functionality of the file /dashboard_page/forms/fetch.php. The manipulation of the argument department_name results in cross site scripting. The attack may be launched remotely. The exploit has been made public and could be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11337">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01aad9ccdb4c4374ab1e688d09e44a3a</td>
+       <td>CVE-2025-5090</td>
+       <td>2026-06-05 17:16:30 <img src="imgs/new.gif" /></td>
+       <td>CVX is not resilient to unexpected messages from a connected switch. This leads to agent crashes on CVX causing instability in the CVX cluster. An attacker could use this behavior to create a denial of service (DoS) scenario. Note that this would require the attacker to have a high privilege access to the connected switch to be able to send custom TCP packets to the CVX.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-5090">详情</a></td>
+      </tr>
+
+      <tr>
        <td>35cdb957fddff34d5300944e34a2d2be</td>
        <td>CVE-2026-50266</td>
        <td>2026-06-04 17:16:33 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>782e3b6dd5a26b0f1f924fef83b4660d</td>
        <td>CVE-2026-46273</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:ibmveth: Disable GSO for...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46273">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>eec265edfc624a9ec22ae86ac83ac185</td>
        <td>CVE-2026-46272</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:coresight: tmc-etr: Fix race...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46272">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>6ba9f16c2ac025bdb9c10026b58a769a</td>
        <td>CVE-2026-46271</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:wifi: ath12k: do WoW...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46271">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>4ae7032f88fa36245573aefd7d7c9770</td>
        <td>CVE-2026-46270</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:power: supply: rt9455: Fix...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46270">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>e8d6812b751a5c1ef90717fd594aee99</td>
        <td>CVE-2026-46269</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:pinctrl: canaan: k230: Fix...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46269">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>65a569f5884114637b1313fc44627b67</td>
        <td>CVE-2026-46268</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:PCI/P2PDMA: Fix...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46268">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>d3589fe14a887887cd992e26da4b9322</td>
        <td>CVE-2026-46267</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:nfc: hci: shdlc: Stop timers...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46267">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>bcd70eff2cab8391617a5dff4289dbd7</td>
        <td>CVE-2026-46266</td>
-       <td>2026-06-03 18:33:13 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:13</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:inet: RAW sockets using...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46266">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>da04501d23ff91bc9ca12456507e0fc2</td>
        <td>CVE-2026-46265</td>
-       <td>2026-06-03 18:33:12 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:12</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:RDMA/hns: Fix WQ_MEM_RECLAIM...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46265">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>25da911abdc32788a9fabbee81f88d00</td>
        <td>CVE-2026-46264</td>
-       <td>2026-06-03 18:33:12 <img src="imgs/new.gif" /></td>
+       <td>2026-06-03 18:33:12</td>
        <td>In the Linux kernel, the following vulnerability has been resolved:drm/xe/pf: Fix sysfs...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-46264">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c17d2e29f2ef6ace38b6860c694a11c9</td>
-       <td>CVE-2026-49943</td>
-       <td>2026-06-02 17:16:37</td>
-       <td>CZ.NIC BIRD Internet Routing Daemon through 2.19.0 contains a stack-based buffer overflow in the BGP AS_PATH mask matching implementation in nest/a-path.c. The as_path_match() function uses a fixed-size stack array of 2048 + 1 pm_pos entries, while parse_path() expands AS_PATH segments from a received BGP UPDATE without enforcing a corresponding capacity limit. When RFC 8654 BGP Extended Messages are enabled and a BIRD filter evaluates an AS path mask expression such as "bgp_path ~ [= ... =]", an established BGP peer can send a long AS_PATH containing more than 2048 expanded ASNs. This causes parse_path()/as_path_match() to write beyond the fixed stack buffer, resulting in a crash of the daemon. NOTE: reportedly, the Supplier's position is that a fix is not being prioritized because all network operators should already be rejecting routes with unusually long attributes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49943">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a645e5e87d3524724ad7049090a17a51</td>
-       <td>CVE-2026-40715</td>
-       <td>2026-06-02 17:16:29</td>
-       <td>Dell ThinOS 10, versions prior to ThinOS10 2602_10.0765, contain an Improper Access Control vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Privilege Escalation.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40715">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d05f563cd69abcdd93085f2ceabc9e3d</td>
-       <td>CVE-2026-40713</td>
-       <td>2026-06-02 17:16:29</td>
-       <td>Dell ThinOS 10, versions prior to ThinOS10 2602_10.0765, contain an Improper Access control vulnerability. An unauthenticated attacker with physical access could potentially exploit this vulnerability, leading to Information exposure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40713">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c422ae55c807c0d2808d878dc02d84e</td>
-       <td>CVE-2026-40571</td>
-       <td>2026-06-02 17:16:29</td>
-       <td>NamelessMC is website software for Minecraft servers. In version 2.2.4, `core/classes/Misc/ProfilePostReactionContext.php` only verifies that the wall post exists and does not enforce blocked/private-profile visibility. This means that authenticated low-privileged users can add reactions to private or blocking profile posts. Version 2.2.5 contains a patch.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40571">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f475e34c77f5583858eac3e504e4c7e6</td>
-       <td>CVE-2026-40314</td>
-       <td>2026-06-02 17:16:28</td>
-       <td>NamelessMC is website software for Minecraft servers. In version 2.2.4,`core/classes/Misc/ProfilePostReactionContext.php` only verifies that the wall post exists and does not enforce blocked/private-profile visibility. `modules/Core/queries/reactions.php` allows unauthenticated GET requests for reaction details. This means that unauthenticated visitors can read reaction participants and timestamps for private profile posts and uthenticated low-privileged users can add reactions to private or blocking profile posts. Version 2.2.5 fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-40314">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>976b33547eb14b3bc131435b744187fd</td>
-       <td>CVE-2026-24221</td>
-       <td>2026-06-02 17:16:27</td>
-       <td>NVIDIA NVTabular contains a vulnerability where an attacker could cause improper deserialization of untrusted data. A successful exploit of this vulnerability might lead to code execution, data tampering and information disclosure.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24221">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dec0ffcf04caf877e823f3a8500afae6</td>
-       <td>CVE-2026-0611</td>
-       <td>2026-06-02 17:16:25</td>
-       <td>Spacelabs Healthcare Sentinel versions 10.5.x and higher and 11.x.x before 11.6.0 contain an unauthenticated remote code execution vulnerability through a deprecated .NET Remoting HTTP channel exposed on port 8989 that allows attackers to perform arbitrary file read and write operations by supplying valid .NET URI endpoints. Attackers can write ASPX webshells to the IIS wwwroot directory to achieve unauthenticated remote code execution on the system. Port 8989 is not exposed in a default Sentinel installation; exploitation requires that the .NET Remoting port has been explicitly made network-accessible through deliberate configuration or network policy changes.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0611">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b85e46c0e95e78c7bff744b64671ded4</td>
-       <td>CVE-2024-42206</td>
-       <td>2026-06-02 17:16:22</td>
-       <td>HCL iReflection Third party vulnerable and outdated components issue was detected in the web application</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42206">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c47fae5bda58aa33002093992cfb2a7e</td>
-       <td>CVE-2026-10606</td>
-       <td>2026-06-02 16:30:08</td>
-       <td>A vulnerability was determined in DedeCMS 5.7.88. The affected element is the function TrimMsg of the file /plus/feedback.php of the component Feedback Handler. Executing a manipulation of the argument msg can lead to sql injection. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10606">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0b5fcecdd949d5b5eeded8560e6e0b13</td>
-       <td>CVE-2026-9590</td>
-       <td>2026-06-02 16:16:45</td>
-       <td>Improper access control in the permission validation component in Devolutions Server 2026.1.19 and earlier allows an authenticated user with entry edit privileges to modify asset information without the required permission.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9590">详情</a></td>
       </tr>
 
      </tbody>
