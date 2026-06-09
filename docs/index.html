@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-08 22:42:54 -->
+<!-- RELEASE TIME : 2026-06-09 15:18:26 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7a901e3957c2ecf8c4d12e97c4b83902</td>
+       <td>CVE-2026-49742</td>
+       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>Backend users with file download permissions were able to download files from the fallback storage of the file abstraction layer (FAL) via the Media Module. Since the fallback storage resolves paths relative to the server's document root, this could expose sensitive files such as log files. This issue affects TYPO3 CMS versions 11.0.0-11.5.50, 12.0.0-12.4.45, 13.0.0-13.4.30 and 14.0.0-14.3.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49742">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>16f2efc96ba04a7c77133ea8895801f4</td>
+       <td>CVE-2026-49741</td>
+       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>Backend users with write access to the form_definition database table were able to directly create, update, or delete form definition records via DataHandler, bypassing the Form Framework's persistence validation and permission checks. This allowed injecting arbitrary form configurations, re-enabling attack vectors originally addressed in TYPO3-CORE-SA-2018-003, including SQL injection and privilege escalation. This issue affects TYPO3 CMS versions 14.0.0-14.3.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49741">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>188b74c61c4349c8d377103162522e85</td>
+       <td>CVE-2026-49740</td>
+       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>TYPO3's cache frontend (VariableFrontend) and persistent key-value store (Registry) deserialized PHP payloads without integrity validation or class restrictions. An attacker with write access to the underlying storage backend (cache store or sys_registry database table) could inject a crafted serialized payload to trigger PHP Object Injection, potentially exploiting a gadget chain to achieve Remote Code Execution or other high-impact effects. Exploiting this vulnerability requires direct local write access to the storage, such as the SQL database or file system. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49740">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0db8922f1c285b846e25e2d7e0386461</td>
+       <td>CVE-2026-49738</td>
+       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>The path allowance check in GeneralUtility::isAllowedAbsPath() performed a plain string prefix comparison without requiring a directory separator boundary, causing a path like /var/www/html-other/secret.yaml to be incorrectly accepted as valid when the project root was /var/www/html. Administrator users with access to the File Abstraction Layer were able to create new file storage definitions pointing to directories outside the project root, bypassing this path check. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49738">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5292e8521be3781aa1c82838edb5fe3e</td>
+       <td>CVE-2026-47352</td>
+       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>Authenticated backend users were able to retrieve file metadata via several Backend API routes without proper permission checks, allowing access to files outside their permitted file mounts or storages. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47352">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4982502f1be9a06ba504b69ae2bd6139</td>
+       <td>CVE-2026-47351</td>
+       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
+       <td>Backend users were able to insert arbitrary records and files into the TYPO3 clipboard without proper read permission checks, which allowed users to gather information about records and files they were not authorized to view. This issue affects TYPO3 CMS versions 10.4.0-13.4.30 and 14.0.0-14.3.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47351">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>68d7d6777100ad0e30a5ca435e0aab04</td>
+       <td>CVE-2026-47350</td>
+       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
+       <td>Backend users were able to move records to a different page without having edit permissions on the source page. This issue affects TYPO3 CMS versions 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47350">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>50f8113e5819cf3b0f9afcb721199109</td>
+       <td>CVE-2026-47349</td>
+       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
+       <td>Backend users with access to the Recycler module were able to restore soft-deleted records on pages or for tables they were not authorized to modify. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47349">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>32373156117e648a607a50a59bd835c5</td>
+       <td>CVE-2026-47348</td>
+       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
+       <td>Editors with access to create or modify page content were able to include HTML markup in page titles that were stored in the search index without sanitization. When displayed in frontend search results via the Indexed Search plugin, these titles were rendered without proper output encoding, resulting in a Cross-Site Scripting vulnerability. This issue affects TYPO3 CMS versions 13.0.0-13.4.30 and 14.0.0-14.3.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47348">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>44ef8c2547fd3d7a9340c04578476d4f</td>
+       <td>CVE-2026-47347</td>
+       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
+       <td>Applications that use GeneralUtility::sanitizeLocalUrl to allow only local URLs are vulnerable to open redirect attacks if the URL is used after it has passed the aforementioned sanitization checks. This enables attackers to redirect users to external content and carry out phishing attacks. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.50, 12.0.0-12.4.45, 13.0.0-13.4.30 and 14.0.0-14.3.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47347">详情</a></td>
+      </tr>
+
+      <tr>
        <td>992af82672559b099b0399fd8d1a4238</td>
        <td>CVE-2026-42890</td>
        <td>2026-06-08 18:21:26 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>b6897631d079e8b08d8672d172ec3533</td>
        <td>CVE-2026-49494</td>
-       <td>2026-06-07 13:16:20 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 13:16:20</td>
        <td>Comodo Internet Security's firewall driver Inspect.sys contains an integer underflow in its IPv6 packet parser. The parser decrements an unsigned 64-bit payload-length value (taken from the IPv6 fixed header's payload length field) by the size of each IPv6 extension header without validating it, so a packet whose declared payload length is smaller than the sum of its extension-header lengths underflows the value to a near-maximal 64-bit integer. Because IPv6 parsing occurs before firewall rule enforcement, a remote, unauthenticated attacker can send a single crafted IPv6 packet - even to a host with all ports blocked - to trigger an out-of-bounds read (and, on a separate code path, an oversized memcpy) in the Windows kernel at DISPATCH_LEVEL, crashing the system (BSOD).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49494">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>59db8757e485b1fdd7b824e14697252f</td>
        <td>CVE-2026-11459</td>
-       <td>2026-06-07 10:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 10:16:21</td>
        <td>A security vulnerability has been detected in SecureAge CatchPulse up to 10.9.1. Impacted is an unknown function in the library saappctl.sys of the component IOCTL Handler. The manipulation leads to information disclosure. Local access is required to approach this attack. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11459">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>af066bf329a6157653caac3e345db1d9</td>
        <td>CVE-2026-11458</td>
-       <td>2026-06-07 09:16:22 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 09:16:22</td>
        <td>A weakness has been identified in erzhongxmu JeeWMS up to 141740afb2ba14d441c82a833d0a418d07ca2d69. This issue affects some unknown processing of the file /base-boot/actuator of the component Boot Actuator Endpoint. Executing a manipulation can lead to information disclosure. The attack can be executed remotely. The exploit has been made available to the public and could be used for attacks. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11458">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>c91690c29677b030f12e754f568fa8f0</td>
        <td>CVE-2026-11457</td>
-       <td>2026-06-07 09:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 09:16:21</td>
        <td>A security flaw has been discovered in erzhongxmu JeeWMS up to 141740afb2ba14d441c82a833d0a418d07ca2d69. This vulnerability affects unknown code of the file /base-boot/jmreport/testConnection of the component JimuReport test-connection Endpoint. Performing a manipulation of the argument dbType/dbDriver/dbUrl/dbUsername/dbPassword results in injection. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11457">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>61fe2912bc67ceb49793a51a0af3ee5f</td>
        <td>CVE-2026-11456</td>
-       <td>2026-06-07 09:16:21 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 09:16:21</td>
        <td>A vulnerability was identified in Chanjet CRM 1.0. This affects an unknown part of the file /tools/jxf_dump_systable.php of the component HTTP GET Request Handler. Such manipulation of the argument gblOrgID leads to sql injection. The attack may be launched remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11456">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>a55369c2ed8b4a68cfb366ed06ccbb3d</td>
        <td>CVE-2026-11455</td>
-       <td>2026-06-07 09:16:20 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 09:16:20</td>
        <td>A vulnerability was determined in FoundationAgents MetaGPT up to 0.8.2. Affected by this issue is the function check_cmd_exists of the file metagpt/utils/common.py. This manipulation of the argument mermaid.path causes command injection. The attack may be initiated remotely. A high degree of complexity is needed for the attack. The exploitation is known to be difficult. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11455">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>2df20d2f907fdbc88c12f2a965730c51</td>
        <td>CVE-2026-11453</td>
-       <td>2026-06-07 04:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 04:16:30</td>
        <td>A vulnerability was found in Tiobon Employee Self-Service System up to 7.2. Affected by this vulnerability is an unknown functionality of the file /Blog/BlogSearch.aspx of the component Login Endpoint. The manipulation of the argument Keyword results in sql injection. The attack can be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11453">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>5e13a916c731c1d2438eb31f495a84ad</td>
        <td>CVE-2026-11452</td>
-       <td>2026-06-07 04:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 04:16:29</td>
        <td>A vulnerability has been found in GL.iNet GL-MT3000 up to 4.4.5. Affected is the function FUN_0042e200 of the file /cgi-bin/glc of the component SET_USER_PWD Handler. The manipulation of the argument Password leads to command injection. The attack can be initiated remotely. Upgrading to version 4.8.1 is able to address this issue. The affected component should be upgraded. The vendor explains: " The current code escapes single quotes in the password parameter and handles it inside a shell single‑quote context. The payloads in the report, which rely on $() or backticks to trigger command substitution, are not executed under the current code path. We tested on a GL‑MT3000 device running firmware 4.8.1 using similar payloads, and no command‑execution marker file was created."</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11452">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>bce1b2fd31a96ed482c134f6c4379b56</td>
        <td>CVE-2026-11451</td>
-       <td>2026-06-07 04:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 04:16:29</td>
        <td>A flaw has been found in GL.iNet GL-MT3000 4.4.5. This impacts the function snprintf of the file /cgi-bin/glc of the component FTP Protocol Handler. Executing a manipulation of the argument media_dir can lead to command injection. It is possible to launch the attack remotely. Upgrading to version 4.8.1 will fix this issue. You should upgrade the affected component. The vendor explains: "In version 4.8.1, before writing media_dir to the FTP configuration command, the code escapes single quotes using escape_single_quote(). The payloads in the report—which rely on closing a single quote, appending commands with a semicolon, and commenting out the tail with #—cannot escape execution under the current code path. We also verified this on a GL‑MT3000 device running firmware version 4.8.1 using similar payloads calling the /NAS_API_SET_PROTO_CONFIG interface. Although the interface returned success, the marker file intended to prove command execution was not created; the payload was written into /etc/vsftpd.conf only as ordinary configuration content and did not trigger any shell command execution. Therefore, with the current firmware version and default runtime environment, we could not reproduce the claimed “unauthorized command injection in set_proto_config”."</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11451">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>8c1a87431ed8d93586c33b3e780dae79</td>
        <td>CVE-2026-11450</td>
-       <td>2026-06-07 03:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-06-07 03:16:27</td>
        <td>A vulnerability was detected in GL.iNet GL-MT3000 4.4.5. This affects the function dlopen in the library /usr/lib/oui-httpd/rpc/ of the component Path Normalization Handler. Performing a manipulation of the argument dev_name results in command injection. It is possible to initiate the attack remotely. Upgrading to version 4.7 mitigates this issue. It is advisable to upgrade the affected component. The vendor confirms: " From version 4.7 onward, we have enabled method‑level validation at the HTTP /rpc layer. nas‑web.eject_disk is no longer in the whitelist of allowed methods. Consequently, directly calling eject_disk through the default /rpc endpoint returns Invalid params, preventing entry into subsequent dangerous functions and blocking the remote exploit chain described in the report."</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11450">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0499437d637247809d3fd7c7f116201f</td>
-       <td>CVE-2026-11438</td>
-       <td>2026-06-06 17:16:41</td>
-       <td>A vulnerability has been found in theonedev onedev up to 15.0.5. Affected by this vulnerability is an unknown functionality of the file /projects. The manipulation of the argument project.forkedFromId leads to improper authorization. The attack is possible to be carried out remotely. Upgrading to version 15.0.6 addresses this issue. Upgrading the affected component is recommended.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11438">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>939d617d467ba1ec21cbe91033096674</td>
-       <td>CVE-2026-11437</td>
-       <td>2026-06-06 17:16:41</td>
-       <td>A flaw has been found in perfree go-fastdfs-web up to 1.3.7. Affected is the function checkServer of the file /install/checkServer of the component Installation Endpoint. Executing a manipulation can lead to server-side request forgery. The attack can be executed remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11437">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>86da0429aa89ca13a1c0a4774b212d51</td>
-       <td>CVE-2026-11436</td>
-       <td>2026-06-06 16:16:55</td>
-       <td>A vulnerability was detected in Mage AI up to 0.9.79. This impacts the function useMutation of the file mage_ai/frontend/components/Sessions/SignForm/index.tsx of the component Sign-in Flow. Performing a manipulation of the argument query.redirect_url results in cross site scripting. Remote exploitation of the attack is possible. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11436">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2983c183b6783ed60be19e3114950cbc</td>
-       <td>CVE-2026-11435</td>
-       <td>2026-06-06 16:16:54</td>
-       <td>A security vulnerability has been detected in Jinher OA 1.0. This affects an unknown function of the file nextselectplan.aspx. Such manipulation of the argument httpOID leads to sql injection. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11435">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5c607dbc7737892ba080e193c528d64c</td>
-       <td>CVE-2026-11434</td>
-       <td>2026-06-06 15:16:27</td>
-       <td>A weakness has been identified in FluentCMS 0.0.5. The impacted element is an unknown function of the file /admin/blocks of the component Blocks Plugin. This manipulation causes cross site scripting. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11434">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5136a6d6dce64bb5bce79fa95c27f0f4</td>
-       <td>CVE-2026-11413</td>
-       <td>2026-06-06 14:16:20</td>
-       <td>A security vulnerability has been detected in JingDong JD Cloud Box AX6600 4.5.3.r4546. The impacted element is the function set_macfilter of the file /sbin/jdcweb_rpc. The manipulation leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11413">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cf1ccfa9a27e19848f95ab83faa5b2d1</td>
-       <td>CVE-2026-11412</td>
-       <td>2026-06-06 11:16:49</td>
-       <td>A weakness has been identified in Jinher OA C6. The affected element is an unknown function of the file /C6/JHSoft.Web.ModuleCount/GetFormSn.aspx. Executing a manipulation of the argument queryID can lead to sql injection. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11412">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>62a019b8798ce334dbabe0edf01f6523</td>
-       <td>CVE-2026-11411</td>
-       <td>2026-06-06 11:16:49</td>
-       <td>A security flaw has been discovered in iAI Lab PDF AI App 4.21.0 on Android. Impacted is the function getExternalCacheDir of the component chatpdf.pro. Performing a manipulation of the argument _display_name results in path traversal. The attack requires a local approach. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11411">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f837340ebea7a9fa87f817568d29b957</td>
-       <td>CVE-2026-11408</td>
-       <td>2026-06-06 11:16:48</td>
-       <td>A vulnerability was identified in vertex-app vertex up to 2026.02.12. This issue affects some unknown processing of the file app/model/LogMod.js of the component Log Viewer Endpoint. Such manipulation of the argument req.query leads to os command injection. The attack can be executed remotely. The exploit is publicly available and might be used. The name of the patch is 805d82e7100d49b79b3beb1b9420e8e458987198. It is best practice to apply a patch to resolve this issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11408">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e697c0395638defc21cb431492e7a303</td>
-       <td>CVE-2026-11406</td>
-       <td>2026-06-06 10:16:27</td>
-       <td>A vulnerability was determined in GL.iNet MT3000 up to 4.4.5. This vulnerability affects unknown code of the file ovpnclient.sh of the component OpenVPN Client Import Workflow. This manipulation causes command injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. Upgrading to version 4.9.0_beta3-1012-0513-1778656146 is able to resolve this issue. You should upgrade the affected component. The vendor confirms: "This issue has been addressed by implementing malicious checks on OpenVPN configuration files to prevent command injection attacks carried through malicious configuration files."</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11406">详情</a></td>
       </tr>
 
      </tbody>
