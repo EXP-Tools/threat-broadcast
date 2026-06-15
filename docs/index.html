@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-10 20:39:11 -->
+<!-- RELEASE TIME : 2026-06-15 23:05:39 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5641783c22b06880b1ca37be8f913d33</td>
+       <td>CVE-2026-9863</td>
+       <td>2026-06-15 16:16:35 <img src="imgs/new.gif" /></td>
+       <td>Fortra BoKS Manager contains an OS command injection vulnerability in the client upgrade and patch tooling for legacy tar-based client installations. A malicious or compromised legacy tar-installed client selected for upgrade or patching may be able to cause commands to be executed on the BoKS Master during client version handling.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9863">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ff54abeece466beda89388b6cd6a4ecf</td>
+       <td>CVE-2026-9862</td>
+       <td>2026-06-15 16:16:35 <img src="imgs/new.gif" /></td>
+       <td>Fortra's Core Privileged Access Manager (BoKS) contains an OS command injection vulnerability in the boks_autoregisterd service. A remote attacker with network access to the service may be able to cause commands to be executed with the privileges of the service during the autoregistration processing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9862">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>24d6078ed6c7fc4ebaf7b5ed1d095da0</td>
+       <td>CVE-2026-9595</td>
+       <td>2026-06-15 16:16:35 <img src="imgs/new.gif" /></td>
+       <td>Impact: When a user-configured proxy on webpack-dev-server has a broad context (e.g. /) and ws: true, it also intercepts the dev server's own HMR WebSocket and forwards it to the proxy target. This leaks the browser's cookies and Origin header to the backend, bypasses the dev server's Host/Origin validation, and corrupts the HMR socket (both HMR and the proxy end up writing to the same socket). Patches: Fixed in webpack-dev-server@5.2.5. Workarounds: Scope user-defined proxy context to specific paths instead of /, or omit ws: true from the proxy entry when WebSocket forwarding is not required.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9595">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d85c83dad16630191d6420626e616017</td>
+       <td>CVE-2026-8683</td>
+       <td>2026-06-15 16:16:34 <img src="imgs/new.gif" /></td>
+       <td>Mattermost Desktop App versions <=6.1 5.5.13.0 fail to account for attempting to open extremely long URLs in the Mattermost Desktop App which allows a malicious server owner to crash the application via including a script to call window.open on a very large URL. Mattermost Advisory ID: MMSA-2026-00652</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8683">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>82d4780d9ebd026a2b96d6baab2d4b22</td>
+       <td>CVE-2026-5038</td>
+       <td>2026-06-15 16:16:34 <img src="imgs/new.gif" /></td>
+       <td>Impact: multer versions 2.0.0-alpha.1 through 2.1.1 and 3.0.0-alpha.1 are vulnerable to a Denial of Service when using diskStorage. Aborted or malformed multipart uploads leave orphaned partial files on disk because the Readable.pipe() call does not propagate the stream destroy signal to the underlying fs.WriteStream. An attacker can exhaust disk space by triggering many aborted uploads, with no application bug required. Patches: Users should upgrade to multer 2.2.0 (2.x line) or 3.0.0-alpha.2 (3.x prerelease). Both versions track in-flight write streams and clean them up on the abort path. Workarounds: None.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5038">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>108aa57cc07a346f68f54f7470b2da08</td>
+       <td>CVE-2026-10634</td>
+       <td>2026-06-15 16:16:32 <img src="imgs/new.gif" /></td>
+       <td>Zephyr's native TCP stack iterates the global connection list in net_tcp_foreach() (subsys/net/ip/tcp.c) using the SYS_SLIST_FOR_EACH_CONTAINER_SAFE macro, which caches a pointer to the next list node. Prior to this fix the function released tcp_lock while invoking the per-connection callback and re-acquired it afterwards. During that window a concurrent tcp_conn_release(), running on the dedicated TCP work-queue thread when a connection's reference count drops to zero (e.g. a remote peer closing or resetting the connection), can remove and k_mem_slab_free() the cached next connection. When the iterator advances it dereferences the freed (and possibly reallocated) slab memory — a use-after-free that can crash the system (denial of service) and, if the slot has been reused, cause the callback to operate on an attacker-influenced object (potential information disclosure or further fault). net_tcp_foreach() is reached in production via the 'net conn' network shell command and via net_tcp_close_all_for_iface() on interface-down; the freeing side is driven by ordinary TCP traffic. The fix moves the connection/context teardown in tcp_conn_release() inside the tcp_lock critical section and keeps tcp_lock held across the callback in net_tcp_foreach(). The defect was introduced with the modern (TCP2) stack in 2020 and affects releases up to and including v4.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10634">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7cd852b4a4187579fcfa4c01aafa242</td>
+       <td>CVE-2025-15659</td>
+       <td>2026-06-15 16:16:32 <img src="imgs/new.gif" /></td>
+       <td>Contributor Cross Site Scripting (XSS) in Elizaibots <= 1.0.2 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15659">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0aed37aec31a42ab478e6c54cfeb6065</td>
+       <td>CVE-2025-15658</td>
+       <td>2026-06-15 16:16:31 <img src="imgs/new.gif" /></td>
+       <td>Administrator Cross Site Scripting (XSS) in WP Emmet <= 0.3.4 versions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15658">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9368e19cfac7c0998d99b4d57a393de9</td>
+       <td>CVE-2026-6517</td>
+       <td>2026-06-15 14:16:37 <img src="imgs/new.gif" /></td>
+       <td>Mattermost Desktop App versions <=6.1 5.5.13.0 fail to restrict the allow list of domains to which NTLM credentials were forwarded to in the Mattermost Desktop App which allows any user on a server without the image proxy enabled to intercept other users credentials via embedding an image that routes to an external web server. Mattermost Advisory ID: MMSA-2026-00651</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6517">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3a89323626a237896fe16b3f563d0ab2</td>
+       <td>CVE-2026-5242</td>
+       <td>2026-06-15 14:16:37 <img src="imgs/new.gif" /></td>
+       <td>Improper neutralization of formula elements in a CSV file vulnerability in MIA Technology Inc. Pizzy Library allows Code Injection. This issue affects Pizzy Library: from 1.0.0.26250 before 1.3.9.26250.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5242">详情</a></td>
+      </tr>
+
+      <tr>
        <td>abdd92b0a7bb587ba3169becad4288b3</td>
        <td>CVE-2026-9045</td>
-       <td>2026-06-10 15:16:43 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:43</td>
        <td>During an internal security assessment, a potential vulnerability was discovered in Lenovo Accessories and Display Manager for Enterprise for Windows that could allow a local authenticated user to execute arbitrary code with elevated privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9045">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>a30ec0a007f57c891d5f7bc721bab2be</td>
        <td>CVE-2026-8637</td>
-       <td>2026-06-10 15:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:42</td>
        <td>A potential uncontrolled search path vulnerability was reported in the LanSchool Classic client application that could allow a local authenticated user to execute arbitrary code with elevated privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8637">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>360bf764465805e6d005eda00c2fa7a1</td>
        <td>CVE-2026-8335</td>
-       <td>2026-06-10 15:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:42</td>
        <td>A missing authentication check on the Aix‑DB "/llm/process_llm_out" endpoint allows unauthenticated clients to execute arbitrary "SELECT" SQL queries and retrieve database data, as the endpoint lacks the token validation enforced on all other application endpoints. All releases up to 1.2.4 are considered vulnerable. Status of next releases is unknown as the vulnerability has not been addressed by any patch.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8335">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>957544f984085324de865692dd09f52f</td>
        <td>CVE-2026-7516</td>
-       <td>2026-06-10 15:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:42</td>
        <td>A vulnerability was identified in the Lenovo Android Application, distributed exclusively on tablets in the Chinese market, that could allow a website visited by the built-in browser to overwrite system clipboard contents.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7516">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>076ad7a8deb7f4548139000493872c8c</td>
        <td>CVE-2026-6090</td>
-       <td>2026-06-10 15:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:42</td>
        <td>A potential authentication bypass was reported in Lenovo Smart Connect for Windows that could allow a local authenticated user to execute arbitrary code with elevated privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6090">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>10c7810098b18186396a72bb7fe8722e</td>
        <td>CVE-2026-53689</td>
-       <td>2026-06-10 15:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:42</td>
        <td>libnfs through 6.0.2 before 55c18ea does not validate a string size, leading to an integer overflow during a connection to a crafted NFS server. This occurs in libnfs_zdr_string in lib/libnfs-zdr.c.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53689">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>950e979ff7832d8df8400a00fe971f6b</td>
        <td>CVE-2026-53476</td>
-       <td>2026-06-10 15:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:42</td>
        <td>A flaw was found in assisted-migration-agent. An unauthenticated attacker, located on the same local area network (LAN), can exploit a path traversal vulnerability. By crafting a specially designed gzipped tarball, the attacker can bypass security checks and write arbitrary files to the system. This could ultimately lead to the execution of unauthorized code on the appliance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53476">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>3748214508a2fa82fdf639bdf7917187</td>
        <td>CVE-2026-53475</td>
-       <td>2026-06-10 15:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:42</td>
        <td>A flaw was found in assisted-migration-agent. The application hardcodes insecure Transport Layer Security (TLS) connections when communicating with vCenter. This vulnerability allows a Man-in-the-Middle (MITM) attacker to intercept and harvest vCenter administrator credentials. This can lead to unauthorized access to vCenter.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53475">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>8de6ee2f46cfcb1141431d9eed5b33af</td>
        <td>CVE-2026-53474</td>
-       <td>2026-06-10 15:16:41 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:41</td>
        <td>A flaw was found in migration-planner. A remote authenticated attacker could exploit this vulnerability by uploading a specially crafted RVTools .xlsx file. Due to improper input sanitization, malicious SQL embedded within a spreadsheet cell is executed when cluster names are processed. This SQL Injection allows for arbitrary file reading on the system, potentially exposing sensitive information such as Kubernetes service account tokens and other credentials, which could lead to a full compromise of the SaaS environment.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53474">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>7dbd66b76f4b44cbf89f25db6b807c74</td>
        <td>CVE-2026-53473</td>
-       <td>2026-06-10 15:16:41 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 15:16:41</td>
        <td>A flaw was found in migration-planner-ui-app. An attacker can register a malicious discovery agent with a specially crafted credentialUrl containing JavaScript code. When an organizational user clicks this link in the user interface, the embedded malicious code executes within the user's browser session. This cross-site scripting (XSS) vulnerability allows the attacker to compromise the victim's Red Hat Single Sign-On (SSO) session, potentially leading to unauthorized cross-tenant data access and API actions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53473">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>7072eb1c1e87dc99fdf4fd4f8be7e88b</td>
        <td>CVE-2026-24066</td>
-       <td>2026-06-10 12:33:23 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 12:33:23</td>
        <td>Slate Digital Connect 1.37.0 for macOS installs a privileged helper tool, com.slatedigital...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24066">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>65f0d72b3fa17e6be310581d8dd8fafa</td>
        <td>CVE-2026-3018</td>
-       <td>2026-06-10 10:16:31 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 10:16:31</td>
        <td>The Newsletters plugin for WordPress is vulnerable to time-based SQL Injection via the ‘wpmlsubscriber_id’ parameter in all versions up to, and including, 4.13 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3018">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>4c093f99e3e11cbe2d86e96e25c6e110</td>
        <td>CVE-2026-11853</td>
-       <td>2026-06-10 10:16:31 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 10:16:31</td>
        <td>Debusine is an integrated solution to build, distribute and maintain a Debian-based distribution. Debian source packages (.dsc) and upload artifacts (.changes) are manifest files that name the files that make up the artifact. The parser used to read these files in Debusine accepted arbitrary fully user-controlled paths. The mergeuploads task could be abused to create arbitrary symbolic links on a worker, overwriting any file that the worker user has access to.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11853">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>4da6ea0ee487953d8498500930afaf60</td>
        <td>CVE-2026-11852</td>
-       <td>2026-06-10 10:16:31 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 10:16:31</td>
        <td>Debusine is an integrated solution to build, distribute and maintain a Debian-based distribution. Files managed by debusine are organized into artifacts. The endpoints that create and delete relationships between artifacts enforced no permissions checks beyond being able to see the artifacts in question.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11852">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>a6053c729852311cf34ffec982794979</td>
        <td>CVE-2025-6254</td>
-       <td>2026-06-10 10:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 10:16:29</td>
        <td>The Doctreat Core plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.6.8. This is due to the doctreat_process_registration() function not properly restricting the roles that a user can register with. This makes it possible for unauthenticated attackers to register as an administrator user.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6254">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>046bfcde49211c79832a83f2c986943d</td>
        <td>CVE-2026-9019</td>
-       <td>2026-06-10 08:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 08:16:25</td>
        <td>The Easy Image Collage plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'grid[properties][borderColor]' and 'grid[images][N][attachment_url]' Parameters in all versions up to, and including, 1.13.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Because the data is stored via update_post_meta() rather than wp_insert_post() post content, WordPress's unfiltered_html restriction does not apply, meaning Authors cannot be blocked from this attack path by capability controls alone.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9019">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>9a816bb6e8041929120c8a2f4924b898</td>
        <td>CVE-2026-8853</td>
-       <td>2026-06-10 08:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 08:16:25</td>
        <td>The MW WP Form plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'memo' parameter in all versions up to, and including, 5.1.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with editor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Because the memo value is stored via update_post_meta() rather than wp_insert_post(), WordPress's built-in kses and unfiltered_html protections do not apply, allowing attackers to break out of the textarea element via injected closing tags regardless of role-based content filtering.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8853">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>5d6ae5b44cce5a7349b05bd8e1806707</td>
        <td>CVE-2026-8613</td>
-       <td>2026-06-10 08:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 08:16:25</td>
        <td>The aThemes Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'title_tag' Widget Setting in all versions up to, and including, 1.1.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This affects the Posts Timeline widget as well as the Posts Carousel widget across its default, Banner, and Modern skins, all of which omit the whitelist validation that is correctly applied in the Posts List widget.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8613">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>ef3f577d742834705b1f1a11a0c6f66f</td>
        <td>CVE-2026-10721</td>
-       <td>2026-06-10 08:16:22 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 08:16:22</td>
        <td>Concrete CMS below 9.5.2 is vulnerable to PHP Object Injection via unserialize() calls in the in Permission, Cache, and Search components. An unauthenticated attacker may trigger arbitrary PHP object instantiation if a malicious serialized payload has been placed in the database. Thanks XananasX7 for reporting.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10721">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>5f3063a1ae4384da8067526332bced4f</td>
        <td>CVE-2026-9067</td>
-       <td>2026-06-10 07:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-06-10 07:16:25</td>
        <td>The Schema & Structured Data for WP & AMP WordPress plugin before 1.60 does not check user capabilities on its frontend AJAX file-upload handlers and does not validate the actual content of uploaded files against the endpoint's intended media type, allowing unauthenticated users to upload any file type accepted by WordPress's media library through endpoints that should only accept images or videos.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9067">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7a901e3957c2ecf8c4d12e97c4b83902</td>
-       <td>CVE-2026-49742</td>
-       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
-       <td>Backend users with file download permissions were able to download files from the fallback storage of the file abstraction layer (FAL) via the Media Module. Since the fallback storage resolves paths relative to the server's document root, this could expose sensitive files such as log files. This issue affects TYPO3 CMS versions 11.0.0-11.5.50, 12.0.0-12.4.45, 13.0.0-13.4.30 and 14.0.0-14.3.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49742">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>16f2efc96ba04a7c77133ea8895801f4</td>
-       <td>CVE-2026-49741</td>
-       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
-       <td>Backend users with write access to the form_definition database table were able to directly create, update, or delete form definition records via DataHandler, bypassing the Form Framework's persistence validation and permission checks. This allowed injecting arbitrary form configurations, re-enabling attack vectors originally addressed in TYPO3-CORE-SA-2018-003, including SQL injection and privilege escalation. This issue affects TYPO3 CMS versions 14.0.0-14.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49741">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>188b74c61c4349c8d377103162522e85</td>
-       <td>CVE-2026-49740</td>
-       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
-       <td>TYPO3's cache frontend (VariableFrontend) and persistent key-value store (Registry) deserialized PHP payloads without integrity validation or class restrictions. An attacker with write access to the underlying storage backend (cache store or sys_registry database table) could inject a crafted serialized payload to trigger PHP Object Injection, potentially exploiting a gadget chain to achieve Remote Code Execution or other high-impact effects. Exploiting this vulnerability requires direct local write access to the storage, such as the SQL database or file system. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49740">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0db8922f1c285b846e25e2d7e0386461</td>
-       <td>CVE-2026-49738</td>
-       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
-       <td>The path allowance check in GeneralUtility::isAllowedAbsPath() performed a plain string prefix comparison without requiring a directory separator boundary, causing a path like /var/www/html-other/secret.yaml to be incorrectly accepted as valid when the project root was /var/www/html. Administrator users with access to the File Abstraction Layer were able to create new file storage definitions pointing to directories outside the project root, bypassing this path check. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49738">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5292e8521be3781aa1c82838edb5fe3e</td>
-       <td>CVE-2026-47352</td>
-       <td>2026-06-09 11:16:53 <img src="imgs/new.gif" /></td>
-       <td>Authenticated backend users were able to retrieve file metadata via several Backend API routes without proper permission checks, allowing access to files outside their permitted file mounts or storages. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47352">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4982502f1be9a06ba504b69ae2bd6139</td>
-       <td>CVE-2026-47351</td>
-       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
-       <td>Backend users were able to insert arbitrary records and files into the TYPO3 clipboard without proper read permission checks, which allowed users to gather information about records and files they were not authorized to view. This issue affects TYPO3 CMS versions 10.4.0-13.4.30 and 14.0.0-14.3.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47351">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>68d7d6777100ad0e30a5ca435e0aab04</td>
-       <td>CVE-2026-47350</td>
-       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
-       <td>Backend users were able to move records to a different page without having edit permissions on the source page. This issue affects TYPO3 CMS versions 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47350">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>50f8113e5819cf3b0f9afcb721199109</td>
-       <td>CVE-2026-47349</td>
-       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
-       <td>Backend users with access to the Recycler module were able to restore soft-deleted records on pages or for tables they were not authorized to modify. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.51, 12.0.0-12.4.46, 13.0.0-13.4.31 and 14.0.0-14.3.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47349">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>32373156117e648a607a50a59bd835c5</td>
-       <td>CVE-2026-47348</td>
-       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
-       <td>Editors with access to create or modify page content were able to include HTML markup in page titles that were stored in the search index without sanitization. When displayed in frontend search results via the Indexed Search plugin, these titles were rendered without proper output encoding, resulting in a Cross-Site Scripting vulnerability. This issue affects TYPO3 CMS versions 13.0.0-13.4.30 and 14.0.0-14.3.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47348">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>44ef8c2547fd3d7a9340c04578476d4f</td>
-       <td>CVE-2026-47347</td>
-       <td>2026-06-09 11:16:52 <img src="imgs/new.gif" /></td>
-       <td>Applications that use GeneralUtility::sanitizeLocalUrl to allow only local URLs are vulnerable to open redirect attacks if the URL is used after it has passed the aforementioned sanitization checks. This enables attackers to redirect users to external content and carry out phishing attacks. This issue affects TYPO3 CMS versions before 10.4.57, 11.0.0-11.5.50, 12.0.0-12.4.45, 13.0.0-13.4.30 and 14.0.0-14.3.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47347">详情</a></td>
       </tr>
 
      </tbody>
