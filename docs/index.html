@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-15 23:05:39 -->
+<!-- RELEASE TIME : 2026-06-16 21:10:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0c7ad3c0647b49432b1d6c393f93a119</td>
+       <td>CVE-2026-53776</td>
+       <td>2026-06-16 17:16:42 <img src="imgs/new.gif" /></td>
+       <td>Perry before 0.5.1166 contains a JWT validation vulnerability that allows remote attackers to bypass token expiration by exploiting the unconditional setting of validate_exp = false in the verify_decode helper within the stdlib JWT verification path. Attackers in possession of a previously issued bearer token can present expired tokens to any jwt.verify() call and retain authenticated access indefinitely, bypassing force-expired sessions such as user logout or administrative revocation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53776">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed714d898628c2906dbc7c8cb3ca369a</td>
+       <td>CVE-2026-44932</td>
+       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>Passing of unsanitized strings from DHCP replies into the wicked dhcp client before wicked 0.6.79 could be used by attackers operating a malicious DHCP server to execute code on the local machine.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44932">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b51192a17361de2556e6cab36141934e</td>
+       <td>CVE-2026-42089</td>
+       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>Yeoman Environment provides an API to discover, create, and run generators, and to configure where and how a generator is resolved. Versions 2.9.0 through 6.0.0 install missing local generator packages from caller-supplied package names without user confirmation. In downstream consumers that pass attacker-controlled project configuration into this path, this can result in arbitrary package installation and code execution during CLI bootstrap. The vulnerable method is installLocalGenerators(), which calls repository.install() directly without prompting the user. This issue has been fixed in version 6.0.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42089">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>523b34b51ad4fcaf69bc1b4aa8c75d59</td>
+       <td>CVE-2026-39927</td>
+       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39927">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02a2542a968beb9bf1f7ab65a2f15ecc</td>
+       <td>CVE-2026-39926</td>
+       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39926">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f61c0b5dbefa9b1f466210e90468f4c1</td>
+       <td>CVE-2026-24228</td>
+       <td>2026-06-16 17:16:39 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA NeMo Framework for Linux contains a vulnerability where an attacker may cause deserialization of untrusted data. A successful exploit of this vulnerability may lead to code execution, escalation of privileges, data tampering, and information disclosure.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24228">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d09e5bd16c41b182301ce7462b53feb</td>
+       <td>CVE-2026-24155</td>
+       <td>2026-06-16 17:16:39 <img src="imgs/new.gif" /></td>
+       <td>NVIDIA NeMo Framework for all platforms contains a code injection vulnerability. A successful exploit of this vulnerability might lead to code execution, escalation of privileges, information disclosure, and data tampering.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24155">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>80ce2775981ea0b44c30d28d3bf55261</td>
+       <td>CVE-2026-12412</td>
+       <td>2026-06-16 17:16:39 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: loading template...</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12412">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>59bdcb540a8e82d76ca59d5646c6e484</td>
+       <td>CVE-2026-12003</td>
+       <td>2026-06-16 17:16:31 <img src="imgs/new.gif" /></td>
+       <td>To allow builds of Python to be run from an in-tree layout (rather than an installed file layout), the VPATH variable is defined at build time and used to locate certain landmarks - specifically, Modules/setup.local. When this landmark is found relative to VPATH relative to the executable, Python assumes it is running in a source tree and generates a different default sys.path. This code remains in release builds, so that release-ready builds can be built in-tree. On Windows, since builds are written to 'PCbuild/', the value of VPATH is set to '..\..', which results in a landmark of '..\..\Modules\setup.local'. This path is outside the install directory of Python, and may have different permissions, potentially allowing a low-privilege user to create the landmark and an alternative `Lib` folder that will be discovered by an otherwise restricted install. Such a setup occurs with the legacy default install location for all users (in the now superseded EXE installer), due to how Windows allows all users to create folders in the root directory of their OS drive. Our recommended mitigation on Windows is to migrate away from the legacy installer and use the new [Python install manager](https://www.python.org/downloads/latest/pymanager/) to install for the current user. Installs where the directory two levels above the Python installation directory have equivalent permissions are unaffected (in general, a per-user install cannot be modified at all by other users, removing any escalation of privilege risk, and could be directly modified by a privileged user, making the potential tampering irrelevant). Alternative mitigations might include preemptively creating and restricting access to a `Modules` directory. Be aware that only 3.13 and 3.14 will receive updated legacy installers - earlier fixes are only provided as sources. Platforms other than Windows allow VPATH to be overridden, but as they don't usually use a separated directory in the build for binaries, are unlikely to have a landmark reference outside of the install directory. The landmark detection involving VPATH is a fallback for when a more specific landmark - .\pybuilddir.txt - is absent, and was included for compatibility. Future releases of Python will no longer include the fallback, and so builds will need to generate or preserve the pybuilddir.txt file in order to work in-tree. This landmark file has been generated on Windows since 3.11, and on other platforms for longer.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12003">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>13ff62b1f22d57a5ab94ee4416210736</td>
+       <td>CVE-2026-10649</td>
+       <td>2026-06-16 17:16:30 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in Pacemaker. An unauthenticated remote attacker can exploit an integer overflow vulnerability in the remote message decompression process. By sending a specially crafted compressed remote message before authentication, an attacker can cause memory corruption, leading to a denial of service (DoS) in the CIB remote listener. This can result in the affected service crashing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10649">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5641783c22b06880b1ca37be8f913d33</td>
        <td>CVE-2026-9863</td>
        <td>2026-06-15 16:16:35 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-06-10 15:16:41</td>
        <td>A flaw was found in migration-planner-ui-app. An attacker can register a malicious discovery agent with a specially crafted credentialUrl containing JavaScript code. When an organizational user clicks this link in the user interface, the embedded malicious code executes within the user's browser session. This cross-site scripting (XSS) vulnerability allows the attacker to compromise the victim's Red Hat Single Sign-On (SSO) session, potentially leading to unauthorized cross-tenant data access and API actions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53473">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7072eb1c1e87dc99fdf4fd4f8be7e88b</td>
-       <td>CVE-2026-24066</td>
-       <td>2026-06-10 12:33:23</td>
-       <td>Slate Digital Connect 1.37.0 for macOS installs a privileged helper tool, com.slatedigital...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>65f0d72b3fa17e6be310581d8dd8fafa</td>
-       <td>CVE-2026-3018</td>
-       <td>2026-06-10 10:16:31</td>
-       <td>The Newsletters plugin for WordPress is vulnerable to time-based SQL Injection via the ‘wpmlsubscriber_id’ parameter in all versions up to, and including, 4.13 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3018">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4c093f99e3e11cbe2d86e96e25c6e110</td>
-       <td>CVE-2026-11853</td>
-       <td>2026-06-10 10:16:31</td>
-       <td>Debusine is an integrated solution to build, distribute and maintain a Debian-based distribution. Debian source packages (.dsc) and upload artifacts (.changes) are manifest files that name the files that make up the artifact. The parser used to read these files in Debusine accepted arbitrary fully user-controlled paths. The mergeuploads task could be abused to create arbitrary symbolic links on a worker, overwriting any file that the worker user has access to.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11853">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4da6ea0ee487953d8498500930afaf60</td>
-       <td>CVE-2026-11852</td>
-       <td>2026-06-10 10:16:31</td>
-       <td>Debusine is an integrated solution to build, distribute and maintain a Debian-based distribution. Files managed by debusine are organized into artifacts. The endpoints that create and delete relationships between artifacts enforced no permissions checks beyond being able to see the artifacts in question.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11852">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a6053c729852311cf34ffec982794979</td>
-       <td>CVE-2025-6254</td>
-       <td>2026-06-10 10:16:29</td>
-       <td>The Doctreat Core plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.6.8. This is due to the doctreat_process_registration() function not properly restricting the roles that a user can register with. This makes it possible for unauthenticated attackers to register as an administrator user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-6254">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>046bfcde49211c79832a83f2c986943d</td>
-       <td>CVE-2026-9019</td>
-       <td>2026-06-10 08:16:25</td>
-       <td>The Easy Image Collage plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'grid[properties][borderColor]' and 'grid[images][N][attachment_url]' Parameters in all versions up to, and including, 1.13.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Because the data is stored via update_post_meta() rather than wp_insert_post() post content, WordPress's unfiltered_html restriction does not apply, meaning Authors cannot be blocked from this attack path by capability controls alone.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9019">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a816bb6e8041929120c8a2f4924b898</td>
-       <td>CVE-2026-8853</td>
-       <td>2026-06-10 08:16:25</td>
-       <td>The MW WP Form plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'memo' parameter in all versions up to, and including, 5.1.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with editor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Because the memo value is stored via update_post_meta() rather than wp_insert_post(), WordPress's built-in kses and unfiltered_html protections do not apply, allowing attackers to break out of the textarea element via injected closing tags regardless of role-based content filtering.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8853">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d6ae5b44cce5a7349b05bd8e1806707</td>
-       <td>CVE-2026-8613</td>
-       <td>2026-06-10 08:16:25</td>
-       <td>The aThemes Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'title_tag' Widget Setting in all versions up to, and including, 1.1.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This affects the Posts Timeline widget as well as the Posts Carousel widget across its default, Banner, and Modern skins, all of which omit the whitelist validation that is correctly applied in the Posts List widget.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8613">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ef3f577d742834705b1f1a11a0c6f66f</td>
-       <td>CVE-2026-10721</td>
-       <td>2026-06-10 08:16:22</td>
-       <td>Concrete CMS below 9.5.2 is vulnerable to PHP Object Injection via unserialize() calls in the in Permission, Cache, and Search components. An unauthenticated attacker may trigger arbitrary PHP object instantiation if a malicious serialized payload has been placed in the database. Thanks XananasX7 for reporting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10721">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5f3063a1ae4384da8067526332bced4f</td>
-       <td>CVE-2026-9067</td>
-       <td>2026-06-10 07:16:25</td>
-       <td>The Schema & Structured Data for WP & AMP WordPress plugin before 1.60 does not check user capabilities on its frontend AJAX file-upload handlers and does not validate the actual content of uploaded files against the endpoint's intended media type, allowing unauthenticated users to upload any file type accepted by WordPress's media library through endpoints that should only accept images or videos.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9067">详情</a></td>
       </tr>
 
      </tbody>
