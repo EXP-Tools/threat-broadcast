@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-17 20:23:10 -->
+<!-- RELEASE TIME : 2026-06-18 20:33:06 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5b75fddb79e3ae327858d80957822dfa</td>
+       <td>CVE-2026-10735</td>
+       <td>2026-06-18 02:48:48 <img src="imgs/new.gif" /></td>
+       <td>Multiple plugins by ShapedPlugin contain a backdoor in various versions. This makes it possible for unauthenticated attackers to achieve backdoor access to sites with the compromised copy of the software installed. CVE-2026-49777 is a duplicate of this CVE.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10735">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3f83cd030c6ae6f56e0d221f8ce4168b</td>
+       <td>CVE-2026-48764</td>
+       <td>2026-06-17 23:29:49 <img src="imgs/new.gif" /></td>
+       <td>TypeBot is a chatbot builder tool. In versions prior to 3.17.2, SSRF validation is implemented by resolving a hostname once and checking whether the resolved IP belongs to a forbidden range allowing for DNS rebinding bypass. The root cause is a time-of-check to time-of-use gap in the SSRF guard. The validator resolves the hostname and approves it, but the later request path performs a fresh resolution and connects to whatever IP the hostname maps to at that moment. The actual outbound request is then performed later using the original hostname, without pinning the validated IP to the network connection. An attacker who can supply a URL to a public bot that performs a server-side HTTP Request block or server-side script fetch can use DNS rebinding to pass the initial validation and still force the server to connect to a private or metadata address during the real request. This enables server-side access to private network services, cloud metadata endpoints, and other internal HTTP targets that the validator was intended to block. The exact downstream impact depends on the reachable internal services. Concrete consequences include metadata disclosure, access to internal admin panels, credential theft from metadata services, and further compromise through internal-only HTTP interfaces. This issue has been fixed in version 3.17.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48764">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c9cac80275edebca1daa06ff895f268d</td>
+       <td>CVE-2026-53676</td>
+       <td>2026-06-17 22:53:56 <img src="imgs/new.gif" /></td>
+       <td>ThingsBoard contains a prototype pollution vulnerability which may lead to arbitrary code execution within a sandboxed context by a user who can log in to the affected product with the tenant administrator privilege (TENANT_ADMIN).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53676">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3e4c6e7b4445ed61e18cf90a10cb6486</td>
+       <td>CVE-2026-45357</td>
+       <td>2026-06-17 22:32:20 <img src="imgs/new.gif" /></td>
+       <td>LiquidJS is a Shopify/GitHub Pages compatible template engine written in pure JavaScript. In versions 10.25.7 and below, the date filter's strftime implementation parses width specifiers like %9999999d and forwards the captured width unchecked into pad()/padStart(), leading to memory and render limit bypass. In src/util/underscore.ts, the pad loop performs unbounded string concatenation without consulting the Context's memoryLimit or renderLimit, so a single small template ({{ x | date: '%5000000d' }}) produces megabytes of output and unbounded CPU. The memoryLimit and renderLimit options the docs (src/liquid-options.ts:87-92) advertise as DoS controls — and which the docstring explicitly mentions for strftime — are entirely bypassed. Exploitation can cause large memory allocations, high CPU usage, or OOM crashes per render. This issue has been fixed in version 10.26.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45357">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>538e366b861ddb0384b0d120899e8340</td>
+       <td>CVE-2026-44646</td>
+       <td>2026-06-17 22:25:15 <img src="imgs/new.gif" /></td>
+       <td>LiquidJS is a Shopify/GitHub Pages compatible template engine written in pure JavaScript. In versions 10.25.7 and below, Context.spawn() creates a child Context for the {% render %} tag but does not propagate the parent context's resolved ownPropertyOnly value, resulting in a silent bypass. The new context re-derives ownPropertyOnly from opts.ownPropertyOnly (the instance-level option), silently discarding any RenderOptions.ownPropertyOnly override that was supplied to parseAndRender(). As a result, a developer who runs a Liquid instance with the backwards-compatible ownPropertyOnly:false and then locks down an untrusted render with parseAndRender(..., { ownPropertyOnly: true }) still leaks prototype-chain properties from inside any {% render %} partial. This is a distinct exploit surface from the previously identified array-filter variants (where, reject, group_by, find, find_index, has) — the underlying root cause in Context.spawn() is shared, but {% render %} is a separately reachable sink that needs no filter usage. This issue has been fixed in version 10.26.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44646">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>956248dbaba1de27493fecfb409b3d88</td>
+       <td>CVE-2026-54533</td>
+       <td>2026-06-17 22:17:08 <img src="imgs/new.gif" /></td>
+       <td>vantage6 is an open-source infrastructure for privacy preserving analysis. Prior to version 5.0.0, malicious algorithms can potentially access other algorithms input and output files. Version 5.0.0 fixes the issue. As a workaround, verify and restrict the algorithm containers that are allowed to run on the node.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54533">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>709b908b5d54437a345e5379f64eccb3</td>
+       <td>CVE-2026-8049</td>
+       <td>2026-06-17 22:16:25 <img src="imgs/new.gif" /></td>
+       <td>In SignalRGB versions prior to 1.3.7.0, the \\.\SignalIo device object is created without an explicit SDDL security descriptor and without FILE_DEVICE_SECURE_OPEN. This results in overly permissive default access control, allowing any authenticated local user to obtain a handle to the device and issue privileged IOCTLs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8049">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>50b8dbbeb3e6b1a3dc557559037436a2</td>
+       <td>CVE-2026-54386</td>
+       <td>2026-06-17 22:16:24 <img src="imgs/new.gif" /></td>
+       <td>marimo before 0.23.9 contains a reflected cross-site scripting vulnerability in the notebook page that allows unauthenticated attackers to inject arbitrary JavaScript by exploiting improper escaping of single quotes in the file query parameter reflected into an inline JavaScript string literal. Attackers can craft a malicious link with a payload beginning with __new__ to bypass the 404 check and inject JavaScript into the page, which executes without Content-Security-Policy restrictions in the origin of a victim's marimo server.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54386">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>235b6ddfe380617c0e75ea11eb651db3</td>
+       <td>CVE-2026-48820</td>
+       <td>2026-06-17 22:16:22 <img src="imgs/new.gif" /></td>
+       <td>CakePHP is a rapid development framework for PHP. In versions 4.5.11 and earlier, 4.6.0 through 4.6.3, 5.0.0 through 5.1.6, 5.2.0 through 5.2.12, and 5.3.0 through 5.3.5, View::_getElementFileName() does not check that the resolved element path is within the application/plugin view template paths. When element names are created with specifically crafted user-supplied data this weakness can be leveraged to include other PHP files on the server. Patched releases are available in 5.3.6, 5.2.13, 5.1.7, 4.6.4, and 4.5.11.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48820">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dc14fee6f86b77812499745ac695a0d2</td>
+       <td>CVE-2026-54445</td>
+       <td>2026-06-17 22:14:51 <img src="imgs/new.gif" /></td>
+       <td>vantage6 is an open-source infrastructure for privacy preserving analysis. Versions prior to 5.0.0 provide an initial user with username `root` and password `root`. This is not ideal because attackers know that almost all vantage6 servers have a user with username `root` that probably has admin rights, and the initial password is very weak and it is possible that administrators forget to reset it. Version 5.0.0 fixes the issue. As a workaround, it is possible to delete the `root` user after it has been used to create other users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54445">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b04c3c24b97c3395ac5720e93c6a74fd</td>
        <td>CVE-2026-35066</td>
        <td>2026-06-17 14:58:41 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>0c7ad3c0647b49432b1d6c393f93a119</td>
        <td>CVE-2026-53776</td>
-       <td>2026-06-16 17:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:42</td>
        <td>Perry before 0.5.1166 contains a JWT validation vulnerability that allows remote attackers to bypass token expiration by exploiting the unconditional setting of validate_exp = false in the verify_decode helper within the stdlib JWT verification path. Attackers in possession of a previously issued bearer token can present expired tokens to any jwt.verify() call and retain authenticated access indefinitely, bypassing force-expired sessions such as user logout or administrative revocation.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53776">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>ed714d898628c2906dbc7c8cb3ca369a</td>
        <td>CVE-2026-44932</td>
-       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:40</td>
        <td>Passing of unsanitized strings from DHCP replies into the wicked dhcp client before wicked 0.6.79 could be used by attackers operating a malicious DHCP server to execute code on the local machine.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44932">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>b51192a17361de2556e6cab36141934e</td>
        <td>CVE-2026-42089</td>
-       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:40</td>
        <td>Yeoman Environment provides an API to discover, create, and run generators, and to configure where and how a generator is resolved. Versions 2.9.0 through 6.0.0 install missing local generator packages from caller-supplied package names without user confirmation. In downstream consumers that pass attacker-controlled project configuration into this path, this can result in arbitrary package installation and code execution during CLI bootstrap. The vulnerable method is installLocalGenerators(), which calls repository.install() directly without prompting the user. This issue has been fixed in version 6.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42089">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>523b34b51ad4fcaf69bc1b4aa8c75d59</td>
        <td>CVE-2026-39927</td>
-       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:40</td>
        <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39927">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>02a2542a968beb9bf1f7ab65a2f15ecc</td>
        <td>CVE-2026-39926</td>
-       <td>2026-06-16 17:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:40</td>
        <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-39926">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>f61c0b5dbefa9b1f466210e90468f4c1</td>
        <td>CVE-2026-24228</td>
-       <td>2026-06-16 17:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:39</td>
        <td>NVIDIA NeMo Framework for Linux contains a vulnerability where an attacker may cause deserialization of untrusted data. A successful exploit of this vulnerability may lead to code execution, escalation of privileges, data tampering, and information disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24228">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>2d09e5bd16c41b182301ce7462b53feb</td>
        <td>CVE-2026-24155</td>
-       <td>2026-06-16 17:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:39</td>
        <td>NVIDIA NeMo Framework for all platforms contains a code injection vulnerability. A successful exploit of this vulnerability might lead to code execution, escalation of privileges, information disclosure, and data tampering.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24155">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>80ce2775981ea0b44c30d28d3bf55261</td>
        <td>CVE-2026-12412</td>
-       <td>2026-06-16 17:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:39</td>
        <td>Rejected reason: loading template...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12412">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>59bdcb540a8e82d76ca59d5646c6e484</td>
        <td>CVE-2026-12003</td>
-       <td>2026-06-16 17:16:31 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:31</td>
        <td>To allow builds of Python to be run from an in-tree layout (rather than an installed file layout), the VPATH variable is defined at build time and used to locate certain landmarks - specifically, Modules/setup.local. When this landmark is found relative to VPATH relative to the executable, Python assumes it is running in a source tree and generates a different default sys.path. This code remains in release builds, so that release-ready builds can be built in-tree. On Windows, since builds are written to 'PCbuild/', the value of VPATH is set to '..\..', which results in a landmark of '..\..\Modules\setup.local'. This path is outside the install directory of Python, and may have different permissions, potentially allowing a low-privilege user to create the landmark and an alternative `Lib` folder that will be discovered by an otherwise restricted install. Such a setup occurs with the legacy default install location for all users (in the now superseded EXE installer), due to how Windows allows all users to create folders in the root directory of their OS drive. Our recommended mitigation on Windows is to migrate away from the legacy installer and use the new [Python install manager](https://www.python.org/downloads/latest/pymanager/) to install for the current user. Installs where the directory two levels above the Python installation directory have equivalent permissions are unaffected (in general, a per-user install cannot be modified at all by other users, removing any escalation of privilege risk, and could be directly modified by a privileged user, making the potential tampering irrelevant). Alternative mitigations might include preemptively creating and restricting access to a `Modules` directory. Be aware that only 3.13 and 3.14 will receive updated legacy installers - earlier fixes are only provided as sources. Platforms other than Windows allow VPATH to be overridden, but as they don't usually use a separated directory in the build for binaries, are unlikely to have a landmark reference outside of the install directory. The landmark detection involving VPATH is a fallback for when a more specific landmark - .\pybuilddir.txt - is absent, and was included for compatibility. Future releases of Python will no longer include the fallback, and so builds will need to generate or preserve the pybuilddir.txt file in order to work in-tree. This landmark file has been generated on Windows since 3.11, and on other platforms for longer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12003">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>13ff62b1f22d57a5ab94ee4416210736</td>
        <td>CVE-2026-10649</td>
-       <td>2026-06-16 17:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-06-16 17:16:30</td>
        <td>A flaw was found in Pacemaker. An unauthenticated remote attacker can exploit an integer overflow vulnerability in the remote message decompression process. By sending a specially crafted compressed remote message before authentication, an attacker can cause memory corruption, leading to a denial of service (DoS) in the CIB remote listener. This can result in the affected service crashing.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10649">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5641783c22b06880b1ca37be8f913d33</td>
-       <td>CVE-2026-9863</td>
-       <td>2026-06-15 16:16:35</td>
-       <td>Fortra BoKS Manager contains an OS command injection vulnerability in the client upgrade and patch tooling for legacy tar-based client installations. A malicious or compromised legacy tar-installed client selected for upgrade or patching may be able to cause commands to be executed on the BoKS Master during client version handling.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9863">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ff54abeece466beda89388b6cd6a4ecf</td>
-       <td>CVE-2026-9862</td>
-       <td>2026-06-15 16:16:35</td>
-       <td>Fortra's Core Privileged Access Manager (BoKS) contains an OS command injection vulnerability in the boks_autoregisterd service. A remote attacker with network access to the service may be able to cause commands to be executed with the privileges of the service during the autoregistration processing.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9862">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>24d6078ed6c7fc4ebaf7b5ed1d095da0</td>
-       <td>CVE-2026-9595</td>
-       <td>2026-06-15 16:16:35</td>
-       <td>Impact: When a user-configured proxy on webpack-dev-server has a broad context (e.g. /) and ws: true, it also intercepts the dev server's own HMR WebSocket and forwards it to the proxy target. This leaks the browser's cookies and Origin header to the backend, bypasses the dev server's Host/Origin validation, and corrupts the HMR socket (both HMR and the proxy end up writing to the same socket). Patches: Fixed in webpack-dev-server@5.2.5. Workarounds: Scope user-defined proxy context to specific paths instead of /, or omit ws: true from the proxy entry when WebSocket forwarding is not required.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9595">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d85c83dad16630191d6420626e616017</td>
-       <td>CVE-2026-8683</td>
-       <td>2026-06-15 16:16:34</td>
-       <td>Mattermost Desktop App versions <=6.1 5.5.13.0 fail to account for attempting to open extremely long URLs in the Mattermost Desktop App which allows a malicious server owner to crash the application via including a script to call window.open on a very large URL. Mattermost Advisory ID: MMSA-2026-00652</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8683">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>82d4780d9ebd026a2b96d6baab2d4b22</td>
-       <td>CVE-2026-5038</td>
-       <td>2026-06-15 16:16:34</td>
-       <td>Impact: multer versions 2.0.0-alpha.1 through 2.1.1 and 3.0.0-alpha.1 are vulnerable to a Denial of Service when using diskStorage. Aborted or malformed multipart uploads leave orphaned partial files on disk because the Readable.pipe() call does not propagate the stream destroy signal to the underlying fs.WriteStream. An attacker can exhaust disk space by triggering many aborted uploads, with no application bug required. Patches: Users should upgrade to multer 2.2.0 (2.x line) or 3.0.0-alpha.2 (3.x prerelease). Both versions track in-flight write streams and clean them up on the abort path. Workarounds: None.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5038">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>108aa57cc07a346f68f54f7470b2da08</td>
-       <td>CVE-2026-10634</td>
-       <td>2026-06-15 16:16:32</td>
-       <td>Zephyr's native TCP stack iterates the global connection list in net_tcp_foreach() (subsys/net/ip/tcp.c) using the SYS_SLIST_FOR_EACH_CONTAINER_SAFE macro, which caches a pointer to the next list node. Prior to this fix the function released tcp_lock while invoking the per-connection callback and re-acquired it afterwards. During that window a concurrent tcp_conn_release(), running on the dedicated TCP work-queue thread when a connection's reference count drops to zero (e.g. a remote peer closing or resetting the connection), can remove and k_mem_slab_free() the cached next connection. When the iterator advances it dereferences the freed (and possibly reallocated) slab memory — a use-after-free that can crash the system (denial of service) and, if the slot has been reused, cause the callback to operate on an attacker-influenced object (potential information disclosure or further fault). net_tcp_foreach() is reached in production via the 'net conn' network shell command and via net_tcp_close_all_for_iface() on interface-down; the freeing side is driven by ordinary TCP traffic. The fix moves the connection/context teardown in tcp_conn_release() inside the tcp_lock critical section and keeps tcp_lock held across the callback in net_tcp_foreach(). The defect was introduced with the modern (TCP2) stack in 2020 and affects releases up to and including v4.4.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10634">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e7cd852b4a4187579fcfa4c01aafa242</td>
-       <td>CVE-2025-15659</td>
-       <td>2026-06-15 16:16:32</td>
-       <td>Contributor Cross Site Scripting (XSS) in Elizaibots <= 1.0.2 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15659">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0aed37aec31a42ab478e6c54cfeb6065</td>
-       <td>CVE-2025-15658</td>
-       <td>2026-06-15 16:16:31</td>
-       <td>Administrator Cross Site Scripting (XSS) in WP Emmet <= 0.3.4 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-15658">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9368e19cfac7c0998d99b4d57a393de9</td>
-       <td>CVE-2026-6517</td>
-       <td>2026-06-15 14:16:37</td>
-       <td>Mattermost Desktop App versions <=6.1 5.5.13.0 fail to restrict the allow list of domains to which NTLM credentials were forwarded to in the Mattermost Desktop App which allows any user on a server without the image proxy enabled to intercept other users credentials via embedding an image that routes to an external web server. Mattermost Advisory ID: MMSA-2026-00651</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6517">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3a89323626a237896fe16b3f563d0ab2</td>
-       <td>CVE-2026-5242</td>
-       <td>2026-06-15 14:16:37</td>
-       <td>Improper neutralization of formula elements in a CSV file vulnerability in MIA Technology Inc. Pizzy Library allows Code Injection. This issue affects Pizzy Library: from 1.0.0.26250 before 1.3.9.26250.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5242">详情</a></td>
       </tr>
 
      </tbody>
