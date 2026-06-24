@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-22 22:50:24 -->
+<!-- RELEASE TIME : 2026-06-24 04:08:24 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>eb2d2f679b52b8c8942162d1bc8f27ea</td>
+       <td>CVE-2026-54762</td>
+       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>Traefik is an HTTP reverse proxy and load balancer. From 3.7.0-ea.1 until 3.7.5, there is a medium severity vulnerability in Traefik's Kubernetes Ingress NGINX provider that causes affected routes to fail open. When an Ingress explicitly enables BasicAuth or DigestAuth through the supported nginx.ingress.kubernetes.io/auth-type and auth-secret annotations, but the referenced auth Secret cannot be resolved or parsed, Traefik logs the resolution error, skips installing the authentication middleware, and still emits a router to the backend service. A route that operators intended to protect is therefore published to the data plane without its authentication control, allowing unauthenticated access to the backend. The trigger is an invalid or unresolved auth dependency — a missing, malformed, unreadable, or policy-denied Secret — rather than an intentionally unprotected route. This vulnerability is fixed in 3.7.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54762">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aa1f00ce6226fb989196fb511852ec90</td>
+       <td>CVE-2026-54761</td>
+       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 3.6.21 and 3.7.5, there is a high severity vulnerability in Traefik's Kubernetes Gateway provider affecting the crossProviderNamespaces allowlist. For HTTPRoute rules that declare multiple (WRR) backendRefs, Traefik evaluates the allowlist against the target backendRef.namespace instead of the route's own namespace. As a result, an HTTPRoute created in a namespace that is not allow-listed can reference a cross-provider TraefikService such as api@internal, dashboard@internal or rest@internal by pointing backendRef.namespace at an allow-listed namespace covered by a Gateway API ReferenceGrant, exposing internal Traefik services on the data plane. Exploitation requires the ability to create an accepted HTTPRoute and a matching ReferenceGrant from an allow-listed namespace; it does not require any change to Traefik static configuration, RBAC, or the deployment itself. This vulnerability is fixed in 3.6.21 and 3.7.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54761">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8069ace04088d2238bdb566617079937</td>
+       <td>CVE-2026-54555</td>
+       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>rtk filters and compresses command outputs before they reach your LLM context. Prior to 0.42.2, the permission splitter did not conservatively split or reject several shell constructs that Bash treats as command execution boundaries or nested execution. As a result, a command beginning with an allowed prefix such as git could hide a second command behind one of these constructs. rtk rewrite returned exit code 0, causing the Claude hook to emit permissionDecision: "allow". The rewritten command still contained the hidden command, so it ran without the user confirmation or denial that the permission rules were intended to enforce. This vulnerability is fixed in 0.42.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54555">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>89381ca00a9f68462ffeea5c6e2479ce</td>
+       <td>CVE-2026-54328</td>
+       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi versions with temporary npm or git extension package installs used predictable paths under the operating system temporary directory. On Linux-based multi-user systems, a local attacker who can write to the shared temporary directory could prepare the expected package location before another user runs pi with a temporary extension package source. Pi could then load attacker-controlled extension code in the victim user's process. This vulnerability is fixed in 0.78.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54328">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>49988084a9c346d591fad256f37f8cd6</td>
+       <td>CVE-2026-54327</td>
+       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi stored API keys and OAuth credentials in auth.json. A race condition in the file write path could briefly create or rewrite this file with permissions derived from the process umask before tightening the file to owner-only permissions. This vulnerability is fixed in 0.78.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54327">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4db78a10ccb78c444253ebdfc109ec90</td>
+       <td>CVE-2026-54326</td>
+       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi HTML exports render session Markdown into a static HTML file. It did not consistently reject unsafe Markdown link and image URL schemes. In versions with scheme filtering, C0 control characters in the URL scheme could bypass the check because browsers normalize those characters before navigation. This vulnerability is fixed in 0.78.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54326">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>230937ba8a02b18368fc94b0386d951d</td>
+       <td>CVE-2026-54325</td>
+       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>Pi is a minimal terminal coding harness. Pi before 0.79.0 loaded project-local configuration and resources from a repository's .pi directory without first asking the user to trust that repository. This included project-local extensions, which are executable TypeScript or JavaScript modules loaded into the Pi process. An attacker who controls a repository could place Pi-specific project resources in that repository. If a user then started Pi from that working tree, the project-local extension code could run with the same privileges as the local Pi process without the user having a convenient way to make a trust decision. This vulnerability is fixed in 0.79.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54325">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4806347841f2fcb79d75537479a1e1b5</td>
+       <td>CVE-2026-53622</td>
+       <td>2026-06-23 20:16:48 <img src="imgs/new.gif" /></td>
+       <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 3.7.3, there is a critical vulnerability in Traefik's HTTP/3 (QUIC) TLS configuration selection that allows unauthenticated clients to bypass router-specific mTLS enforcement. When HTTP/3 is enabled on an entrypoint, the TLS handshake selects the applicable TLS configuration through an exact, case-sensitive lookup on the SNI value, which fails to match wildcard host patterns (e.g., *.example.com) or case variants of the configured hostname. Because the handshake falls back to the default TLS configuration — which may not require client certificates — a client can complete the QUIC handshake without presenting a certificate, while the subsequent HTTP routing layer still dispatches the request to a backend protected by a router-specific mTLS policy. The issue affects deployments where HTTP/3 is enabled, a router uses a wildcard Host rule or case-insensitive hostname matching, a router-specific TLSOptions enforces client certificate authentication, and UDP access to the entrypoint is reachable by an attacker. This vulnerability is fixed in 3.7.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53622">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ed33ef552d8fa70b93bc519146b939ba</td>
+       <td>CVE-2026-48491</td>
+       <td>2026-06-23 20:16:48 <img src="imgs/new.gif" /></td>
+       <td>Traefik is an HTTP reverse proxy and load balancer. From 3.7.0 until 3.7.3, there is a high severity vulnerability in Traefik's domain-fronting protection (SNICheck) that allows an unauthenticated client to bypass mutual TLS enforced through wildcard router TLSOptions. When a router uses a wildcard host rule such as Host(*.example.com) with stricter TLS options (for example RequireAndVerifyClientCert), SNICheck resolves the TLS options for the HTTP Host header using exact map lookups only and never applies wildcard matching. If another permissive SNI is served on the same entrypoint, an attacker can complete the TLS handshake under the permissive options and then send an HTTP Host header targeting the wildcard-protected backend, reaching it without presenting a client certificate. This affects the regular HTTPS / HTTP-2 path and does not require HTTP/3. This vulnerability is fixed in 3.7.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>36b2372697a3885bde84baa666b4347f</td>
+       <td>CVE-2026-48020</td>
+       <td>2026-06-23 20:16:47 <img src="imgs/new.gif" /></td>
+       <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 2.11.48, 3.6.19, and 3.7.3, there is a high severity vulnerability in Traefik's StripPrefix middleware that allows an unauthenticated attacker to bypass route-level authentication and authorization. When a public router matches on a PathPrefix rule and applies the StripPrefix middleware, a request path containing .. or its percent-encoded form %2e%2e can match the public route at routing time and then, after the prefix is stripped and the path is normalized, resolve to a path served by a separate, authenticated router. As a result, an attacker can reach protected backend paths — such as admin or internal configuration endpoints — without satisfying the authentication middleware attached to the protected router. This vulnerability is fixed in 2.11.48, 3.6.19, and 3.7.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48020">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8fdac6912df56a87f88e1b7feba7da40</td>
        <td>CVE-2026-44274</td>
-       <td>2026-06-22 20:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 20:16:29</td>
        <td>Dell Wyse Management Suite (WMS), versions prior to WMS 2605, contain an Improper Link Resolution Before File Access vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Unauthorized access.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44274">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>4d95345a14a16b3d9cd730c04264ad4c</td>
        <td>CVE-2026-44273</td>
-       <td>2026-06-22 20:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 20:16:29</td>
        <td>Dell Wyse Management Suite (WMS), versions prior to WMS 2605, contain a Use of Default Credentials vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to Information Disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44273">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>ebdf81e642510aabb3742e96ab0c1a96</td>
        <td>CVE-2026-44272</td>
-       <td>2026-06-22 20:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 20:16:29</td>
        <td>Dell Wyse Management Suite (WMS), versions prior to WMS 2605, contain an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44272">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>6a061a4e8bdcd302f0d2f8135b142168</td>
        <td>CVE-2026-44271</td>
-       <td>2026-06-22 20:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 20:16:29</td>
        <td>Dell Wyse Management Suite (WMS), versions prior to WMS 2605, contain an Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44271">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>8a35165dd12bdc42dd43210457f50fb8</td>
        <td>CVE-2026-30041</td>
-       <td>2026-06-22 19:45:53 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 19:45:53</td>
        <td>An integer overflow vulnerability exists in the PSD parser of FastStone Image Viewer, versions 8.3 and earlier. The vulnerability is caused by a lack of proper validation for the height value in PSD files, leading to a subsequent heap-based buffer overflow. Successful exploitation could allow a remote attacker to execute arbitrary code or cause a persistent denial-of-service (crash) via a crafted PSD file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30041">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>57b94b44db230e9f294dd82e0268eebd</td>
        <td>CVE-2026-30040</td>
-       <td>2026-06-22 19:45:51 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 19:45:51</td>
        <td>A critical heap-based buffer overflow vulnerability exists in FastStone Image Viewer, versions 8.3 and earlier. The issue is triggered during the parsing of JPEG 2000 (JP2) files due to a malformed QCD (quantization default, 0xFF5C) marker in the FSViewer.exe process. By exploiting this flaw, a remote attacker can overwrite the EIP (instruction pointer) and execute arbitrary code in the context of the current process via a crafted JP2 file. Notably, this issue does not require the victim to directly open the crafted JP2 file. When the application enumerates directories during automatic thumbnail generation, files within two directory levels are parsed by the JP2 decoder. If the malicious JP2 file is present within this enumeration range (for example in the user’s Downloads folder), the vulnerability is triggered automatically.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-30040">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>bb2833dbcdac9bfa70a8f24c11b5dbb9</td>
        <td>CVE-2026-55443</td>
-       <td>2026-06-22 19:17:21 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 19:17:21</td>
        <td>LangChain is a framework for building agents and LLM-powered applications. Prior to 1.3.9, several LangChain components that resolve filesystem paths or expand search patterns do not consistently confine the resolved path to the intended root directory. Affected behaviors include: a file-search agent middleware that validates a starting directory but not the search pattern or the resolved target of matched files, so glob patterns and symlinks can reach files outside the configured root; prompt- and chain/agent-configuration loaders that accept path fields and resolve them without confining the result to a trusted base or rejecting symlink targets; and path-prefix authorization checks that compare by string prefix without a path-segment boundary, so a sibling path sharing the prefix is accepted. When these components receive path values, search patterns, or workspace contents influenced by an untrusted source — including an LLM acting on untrusted input — the result can be disclosure of files outside the intended boundary. This vulnerability is fixed in 1.3.9.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55443">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>a70b211ae081363ff3919580089df482</td>
        <td>CVE-2026-54300</td>
-       <td>2026-06-22 19:17:21 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 19:17:21</td>
        <td>@astrojs/netlify is an adapter that allows Astro to deploy your hybrid or server rendered site to Netlify. Prior to 7.0.13, @astrojs/netlify converts Astro image.remotePatterns into Netlify Image CDN images.remote_images regular expressions with broader semantics than Astro's canonical matcher. A single wildcard hostname such as *.example.com is converted to an optional subdomain regex, so the apex host matches. A single wildcard pathname such as /ok/* is converted without end anchoring, so deeper paths match by prefix. This vulnerability is fixed in 7.0.13.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54300">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>777504fe0bd13950d1d71e3118d4c030</td>
        <td>CVE-2026-54299</td>
-       <td>2026-06-22 19:17:21 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 19:17:21</td>
        <td>Astro is a web framework. Prior to 6.4.6, Astro SSR apps with prerendered error pages (/404 or /500 using export const prerender = true) fetch those pages over HTTP at runtime when an error occurs. The URL for this fetch is derived from request.url, which in turn gets its origin from the incoming Host header. When the Host header is not validated against allowedDomains, an attacker can point the fetch at an arbitrary host and read the response. This vulnerability is fixed in 6.4.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54299">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>4215fe4cddc5d2f521b5d41b833ad2cf</td>
        <td>CVE-2026-54298</td>
-       <td>2026-06-22 19:17:21 <img src="imgs/new.gif" /></td>
+       <td>2026-06-22 19:17:21</td>
        <td>Astro is a web framework. Prior to 6.4.6, the spreadAttributes function in Astro's server-side rendering pipeline iterates over object keys and passes them directly to addAttribute, which interpolates the key into the HTML output without escaping. When a developer uses the spread syntax {...props} on an HTML element and the object keys come from an untrusted source (API, CMS, URL parameters), an attacker can inject arbitrary HTML attributes including event handlers like onmousemove, onclick, or break out of the attribute context entirely to inject new elements. This vulnerability is fixed in 6.4.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54298">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>779ee36829faf4ed0d9dee4058cf0bd6</td>
        <td>CVE-2026-56412</td>
-       <td>2026-06-21 17:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 17:16:44</td>
        <td>libexpat before 2.8.2 does not consider XML_TOK_DATA_CHARS in doCdataSection and thus lacks handler call depth tracking for various calls from within handlers in cases of a policy violation. Thus, a use-after-free can occur. NOTE: this issue exists because of an incomplete fix for CVE-2026-50219.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56412">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>d6e284edc131a8f83e5620bf12ee515d</td>
        <td>CVE-2026-56411</td>
-       <td>2026-06-21 17:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 17:16:44</td>
        <td>xmlwf in libexpat before 2.8.2 has an integer overflow in endDoctypeDecl via NOTATION declarations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56411">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>04b7bccdc69de2158d1112fa00760ec3</td>
        <td>CVE-2026-56410</td>
-       <td>2026-06-21 16:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:28</td>
        <td>xmlwf in libexpat before 2.8.2 has an integer overflow in resolveSystemId.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56410">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>19e070631a2ab19790d10f1fcdc4e997</td>
        <td>CVE-2026-56409</td>
-       <td>2026-06-21 16:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:28</td>
        <td>xmlwf in libexpat before 2.8.2 has an integer overflow for the output filename when -d outputDir is used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56409">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>6ed289488ad5a40ac8e5207e1bd6b865</td>
        <td>CVE-2026-56408</td>
-       <td>2026-06-21 16:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:28</td>
        <td>libexpat before 2.8.2 has an integer overflow in copyString.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56408">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>9821c9cb02ebf7605e7c3c36e003e3df</td>
        <td>CVE-2026-56407</td>
-       <td>2026-06-21 16:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:27</td>
        <td>libexpat before 2.8.2 has an integer overflow in doProlog that is related to storeEntityValue and entity textLen.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56407">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>7c24ee04a65b564bed6c30982538df7b</td>
        <td>CVE-2026-56406</td>
-       <td>2026-06-21 16:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:27</td>
        <td>libexpat before 2.8.2 has an integer overflow in XML_ParseBuffer because it lacked a check that was present in XML_Parse.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56406">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>ad3a8c187cec5b0a65513bef66b8a8b9</td>
        <td>CVE-2026-56405</td>
-       <td>2026-06-21 16:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:27</td>
        <td>libexpat before 2.8.2 has an integer overflow in getAttributeId.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56405">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>48e89f4f3aa4a94eb73ea7477695e762</td>
        <td>CVE-2026-56404</td>
-       <td>2026-06-21 16:16:27 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:27</td>
        <td>libexpat before 2.8.2 has an integer overflow in addBinding.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56404">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>16235c98283803d67c6ba5e8da33df93</td>
        <td>CVE-2026-56403</td>
-       <td>2026-06-21 16:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-06-21 16:16:26</td>
        <td>libexpat before 2.8.2 has an integer overflow in storeAtts.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56403">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e50bc6bebb8ed6d0de4682604ede2a24</td>
-       <td>CVE-2026-5366</td>
-       <td>2026-06-20 17:16:26</td>
-       <td>Prefect version 3.6.23 is vulnerable to remote code execution due to improper handling of user-controlled input in the `GitRepository` storage class. The `commit_sha` parameter, which is passed to git commands, lacks validation and does not include a `--` separator to distinguish user input from git flags. This allows attackers to inject arbitrary git flags, such as `--upload-pack`, enabling execution of external programs. Additionally, the `directories` parameter can be exploited to inject git flags during sparse-checkout operations. These vulnerabilities allow any user with deployment creation permissions to execute arbitrary commands on worker machines, compromising shared work pools in multi-tenant environments.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5366">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4e8a6215d723539af77ebbfb329e1326</td>
-       <td>CVE-2026-56332</td>
-       <td>2026-06-20 16:17:06</td>
-       <td>Capgo before 12.128.2 contains an open redirect vulnerability in the confirm-signup endpoint that allows attackers to redirect users to arbitrary external websites. The confirmation_url parameter is not validated, enabling attackers to craft malicious links for phishing and credential harvesting attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56332">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ebd12e8617ca6c6e6107cc9250bf625f</td>
-       <td>CVE-2026-56330</td>
-       <td>2026-06-20 16:17:06</td>
-       <td>Capgo before 12.128.2 contains an open redirect vulnerability in stripe_portal and stripe_checkout endpoints that accept unvalidated callbackUrl, successUrl, and cancelUrl parameters. Authenticated attackers can craft malicious billing URLs to redirect users to attacker-controlled domains for phishing and credential harvesting.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56330">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e0842cc5d217c6bab5a012373bdb0d6</td>
-       <td>CVE-2026-56325</td>
-       <td>2026-06-20 16:17:05</td>
-       <td>Capgo before 12.128.2 uses ILIKE pattern matching instead of exact matching for app_id lookup in the preview subdomain resolver, allowing underscore characters in app_id to act as SQL wildcards. Attackers can create apps with app_ids differing by one character at underscore positions to cause unintended pattern matches, breaking preview functionality for legitimate apps or causing app-id confusion.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56325">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2cc24a792f4c80e838e53b2b296fca70</td>
-       <td>CVE-2026-56319</td>
-       <td>2026-06-20 16:17:05</td>
-       <td>Capgo before 12.128.2 contains an information disclosure vulnerability in the GET /statistics/app/:app_id endpoint that allows app-limited API keys to distinguish existing sibling app IDs through differential error responses. Attackers can enumerate real app IDs outside their allowed scope by observing 500 PGRST116 errors for inaccessible apps versus 401 errors for nonexistent apps, breaking tenant isolation.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56319">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8ff4403a805fb36dba94a9bc96544586</td>
-       <td>CVE-2026-56317</td>
-       <td>2026-06-20 16:17:05</td>
-       <td>Nuxt before 4.4.7 (and the 3.x branch before 3.21.7) contains a cross-site scripting vulnerability in the NoScript component that writes slot content to innerHTML without escaping. Attackers can inject malicious scripts through untrusted data in NoScript slots, such as route.query parameters, which execute in the document context when the noscript tag is implicitly closed by script tags.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56317">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b05892ea219df050cd8c327af9451a90</td>
-       <td>CVE-2026-56307</td>
-       <td>2026-06-20 16:17:05</td>
-       <td>Cap-go before 12.128.12 contains a broken cursor pagination vulnerability in the /private/devices endpoint on the Cloudflare/workerd path that allows authenticated attackers to cause duplicate-page loops and make later rows unreachable. Attackers with app.read_devices access can exploit non-advancing cursor filters to trigger infinite pagination loops, prevent dataset traversal, and cause repeated processing in device-management workflows.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56307">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f26b8f236462ec5734fe401baecd710c</td>
-       <td>CVE-2026-56304</td>
-       <td>2026-06-20 16:17:05</td>
-       <td>picklescan before 1.0.1 contains an unsafe pickle deserialization vulnerability allowing unauthenticated attackers to create arbitrary zero-byte files via logging.FileHandler class instantiation. Attackers can exploit this by crafting malicious pickle payloads to bypass RCE blocklists and create lock files or other filesystem artifacts, potentially causing denial of service or application disruption.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56304">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d84e7a15112910400b04c934b191d8d</td>
-       <td>CVE-2026-56295</td>
-       <td>2026-06-20 16:17:05</td>
-       <td>Capgo before 12.128.2 contains an authorization bypass vulnerability in webhook management endpoints that allows non-expiring API keys to bypass the require_apikey_expiration organization policy. The checkWebhookPermission function fails to call apikeyHasOrgRightWithPolicy, enabling attackers with legacy non-expiring keys to list, create, and delete webhooks despite explicit organizational policy requiring key expiration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56295">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6a2cca0a58e3160aa605a7fa6114476</td>
-       <td>CVE-2026-56294</td>
-       <td>2026-06-20 16:17:05</td>
-       <td>capacitor-native-biometric before 12.128.2 contains an authentication bypass vulnerability where the onAuthenticationSucceeded() method fails to validate CryptoObject parameters. Attackers can hook the onAuthenticationSucceeded() function using dynamic instrumentation to bypass biometric authentication without valid credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56294">详情</a></td>
       </tr>
 
      </tbody>
