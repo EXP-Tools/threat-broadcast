@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-24 04:08:24 -->
+<!-- RELEASE TIME : 2026-06-25 04:08:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>fb030bb16973f928fcaf6baaf92d666e</td>
+       <td>CVE-2026-53950</td>
+       <td>2026-06-24 19:17:12 <img src="imgs/new.gif" /></td>
+       <td>@tryghost/activitypub is Ghost’s social/federation client app. Prior to 3.1.0, the ActivityPub client in Ghost was vulnerable to JavaScript injection on posts shared by a maliciously customised ActivityPub server. This vulnerability is fixed in 3.1.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53950">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e2d7e99decf7878956e8d751d11f8bc5</td>
+       <td>CVE-2026-53949</td>
+       <td>2026-06-24 19:17:12 <img src="imgs/new.gif" /></td>
+       <td>Ghost is a Node.js content management system. From 5.46.1 until 6.21.2, the validation applied to filters on the public API endpoints could be partially bypassed, making it possible to reveal private fields via a brute force attack. If SQLite was used as the database password hashes were fully accessible. If MySQL was used as the database the password hashes' case (uppercase / lowercase) would have been lost, which would likely have rendered a further brute force attack on the discovered hashes fruitless. This vulnerability is fixed in 6.21.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e0c839d6a97103a99e88d45821520672</td>
+       <td>CVE-2026-53948</td>
+       <td>2026-06-24 19:17:12 <img src="imgs/new.gif" /></td>
+       <td>Ghost is a Node.js content management system. From 6.19.4 until 6.21.1, insufficient validation of the client-supplied Content-Type on Ghost's Admin API file upload endpoint allowed uploaded files to be served from the site with an attacker-chosen content type on S3/GCS storage backends. On installations that serve uploaded files from the same origin as the site, this could have been used to facilitate stored cross-site scripting against site visitors or staff. This vulnerability is fixed in 6.21.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53948">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>397c6973deea785ce4c2758c82a558e0</td>
+       <td>CVE-2026-53947</td>
+       <td>2026-06-24 19:17:12 <img src="imgs/new.gif" /></td>
+       <td>Ghost is a Node.js content management system. From 5.18.0 until 6.21.1, a discrepancy in responses from the members signin endpoints made it possible for an unauthenticated attacker to determine whether a given email address belongs to a registered member of a Ghost site. This vulnerability is fixed in 6.21.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53947">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>04e3e1bba630e43c2fc957187f647f46</td>
+       <td>CVE-2026-53946</td>
+       <td>2026-06-24 19:17:12 <img src="imgs/new.gif" /></td>
+       <td>Ghost is a Node.js content management system. From 6.19.4 until 6.21.1, when re-rendering posts, Ghost would refetch missing image dimensions by issuing an outbound HTTP request to the URL stored on an image card — without restricting that URL to trusted image hosts. An authenticated staff user able to create or edit posts could therefore point an image card at an attacker-chosen host and cause the Ghost server to request it on their behalf, including hosts on internal networks or cloud instance metadata endpoints that would not normally be reachable from the public internet. This vulnerability is fixed in 6.21.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53946">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7b6def2356a3c17664402f134c34c5c2</td>
+       <td>CVE-2026-53945</td>
+       <td>2026-06-24 19:17:12 <img src="imgs/new.gif" /></td>
+       <td>Ghost is a Node.js content management system. From 6.0.9 until 6.21.1, Ghost’s private-IP check for outbound HTTP requests could be bypassed via DNS rebinding, allowing an attacker to coerce the Ghost server into reaching hosts on internal networks through features that issue external fetches. This vulnerability is fixed in 6.21.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53945">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5340c583136de953ab7cc727a231aed</td>
+       <td>CVE-2026-53944</td>
+       <td>2026-06-24 19:17:11 <img src="imgs/new.gif" /></td>
+       <td>Ghost is a Node.js content management system. From 6.0.9 until 6.21.1, when making an external request, it is possible to bypass the IP filter that ensures the request isn't going to an internal service using an IPv6 literal which maps to a private IPv4 address. This vulnerability is fixed in 6.21.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53944">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>419f62d3728ff84144f42f38d9905b31</td>
+       <td>CVE-2026-53943</td>
+       <td>2026-06-24 19:17:11 <img src="imgs/new.gif" /></td>
+       <td>Ghost is a Node.js content management system. From until 6.37.0, when Ghost is behind a shared caching layer that results in cached content being shared between different visitors, an unauthenticated user could send an x-ghost-preview header that altered the rendered frontend response. In affected cache configurations, that response could be stored and served to subsequent visitors requesting the same page, allowing cache poisoning of request-specific preview output. When running Ghost's frontend and admin panel on the same domain this could be used to take over staff user accounts. When running these on different domains staff accounts have no exposure. This vulnerability is fixed in 6.37.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53943">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>65f72bb015bfeeeef8ef9295285c0a5c</td>
+       <td>CVE-2026-49980</td>
+       <td>2026-06-24 19:17:11 <img src="imgs/new.gif" /></td>
+       <td>Rclone is a command-line program to sync files and directories to and from different cloud storage providers. From 1.46.0 until 1.74.3, rclone rcd --rc-serve accepts unauthenticated GET and HEAD requests to paths of the form: /[remote:path]/object. The remote value is parsed from the URL and passed to normal backend initialization. Inline remote configuration can set backend options that execute local commands during initialization. As a result, a single unauthenticated GET or HEAD request can execute a command as the rclone process user. This vulnerability is fixed in 1.74.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49980">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>77fc6ceafd61ddcf1c4f94916389968d</td>
+       <td>CVE-2026-49247</td>
+       <td>2026-06-24 19:17:11 <img src="imgs/new.gif" /></td>
+       <td>Jellyfin is an open source self hosted media server. From 10.9.0 until 10.11.10, the POST /ClientLog/Document endpoint accepts the Authorization header's Client and Version fields and uses them unsanitized as components of the on-disk filename when persisting client-uploaded log documents. As a result, any authenticated non-admin user can include ../ sequences in the Client field to cause Jellyfin to write attacker-controlled content to arbitrary paths reachable by the Jellyfin service user, with a forced .log suffix. This vulnerability is fixed in 10.11.10.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49247">详情</a></td>
+      </tr>
+
+      <tr>
        <td>eb2d2f679b52b8c8942162d1bc8f27ea</td>
        <td>CVE-2026-54762</td>
-       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:49</td>
        <td>Traefik is an HTTP reverse proxy and load balancer. From 3.7.0-ea.1 until 3.7.5, there is a medium severity vulnerability in Traefik's Kubernetes Ingress NGINX provider that causes affected routes to fail open. When an Ingress explicitly enables BasicAuth or DigestAuth through the supported nginx.ingress.kubernetes.io/auth-type and auth-secret annotations, but the referenced auth Secret cannot be resolved or parsed, Traefik logs the resolution error, skips installing the authentication middleware, and still emits a router to the backend service. A route that operators intended to protect is therefore published to the data plane without its authentication control, allowing unauthenticated access to the backend. The trigger is an invalid or unresolved auth dependency — a missing, malformed, unreadable, or policy-denied Secret — rather than an intentionally unprotected route. This vulnerability is fixed in 3.7.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54762">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>aa1f00ce6226fb989196fb511852ec90</td>
        <td>CVE-2026-54761</td>
-       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:49</td>
        <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 3.6.21 and 3.7.5, there is a high severity vulnerability in Traefik's Kubernetes Gateway provider affecting the crossProviderNamespaces allowlist. For HTTPRoute rules that declare multiple (WRR) backendRefs, Traefik evaluates the allowlist against the target backendRef.namespace instead of the route's own namespace. As a result, an HTTPRoute created in a namespace that is not allow-listed can reference a cross-provider TraefikService such as api@internal, dashboard@internal or rest@internal by pointing backendRef.namespace at an allow-listed namespace covered by a Gateway API ReferenceGrant, exposing internal Traefik services on the data plane. Exploitation requires the ability to create an accepted HTTPRoute and a matching ReferenceGrant from an allow-listed namespace; it does not require any change to Traefik static configuration, RBAC, or the deployment itself. This vulnerability is fixed in 3.6.21 and 3.7.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54761">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>8069ace04088d2238bdb566617079937</td>
        <td>CVE-2026-54555</td>
-       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:49</td>
        <td>rtk filters and compresses command outputs before they reach your LLM context. Prior to 0.42.2, the permission splitter did not conservatively split or reject several shell constructs that Bash treats as command execution boundaries or nested execution. As a result, a command beginning with an allowed prefix such as git could hide a second command behind one of these constructs. rtk rewrite returned exit code 0, causing the Claude hook to emit permissionDecision: "allow". The rewritten command still contained the hidden command, so it ran without the user confirmation or denial that the permission rules were intended to enforce. This vulnerability is fixed in 0.42.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54555">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>89381ca00a9f68462ffeea5c6e2479ce</td>
        <td>CVE-2026-54328</td>
-       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:49</td>
        <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi versions with temporary npm or git extension package installs used predictable paths under the operating system temporary directory. On Linux-based multi-user systems, a local attacker who can write to the shared temporary directory could prepare the expected package location before another user runs pi with a temporary extension package source. Pi could then load attacker-controlled extension code in the victim user's process. This vulnerability is fixed in 0.78.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54328">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>49988084a9c346d591fad256f37f8cd6</td>
        <td>CVE-2026-54327</td>
-       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:49</td>
        <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi stored API keys and OAuth credentials in auth.json. A race condition in the file write path could briefly create or rewrite this file with permissions derived from the process umask before tightening the file to owner-only permissions. This vulnerability is fixed in 0.78.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54327">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>4db78a10ccb78c444253ebdfc109ec90</td>
        <td>CVE-2026-54326</td>
-       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:49</td>
        <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi HTML exports render session Markdown into a static HTML file. It did not consistently reject unsafe Markdown link and image URL schemes. In versions with scheme filtering, C0 control characters in the URL scheme could bypass the check because browsers normalize those characters before navigation. This vulnerability is fixed in 0.78.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54326">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>230937ba8a02b18368fc94b0386d951d</td>
        <td>CVE-2026-54325</td>
-       <td>2026-06-23 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:49</td>
        <td>Pi is a minimal terminal coding harness. Pi before 0.79.0 loaded project-local configuration and resources from a repository's .pi directory without first asking the user to trust that repository. This included project-local extensions, which are executable TypeScript or JavaScript modules loaded into the Pi process. An attacker who controls a repository could place Pi-specific project resources in that repository. If a user then started Pi from that working tree, the project-local extension code could run with the same privileges as the local Pi process without the user having a convenient way to make a trust decision. This vulnerability is fixed in 0.79.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54325">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>4806347841f2fcb79d75537479a1e1b5</td>
        <td>CVE-2026-53622</td>
-       <td>2026-06-23 20:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:48</td>
        <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 3.7.3, there is a critical vulnerability in Traefik's HTTP/3 (QUIC) TLS configuration selection that allows unauthenticated clients to bypass router-specific mTLS enforcement. When HTTP/3 is enabled on an entrypoint, the TLS handshake selects the applicable TLS configuration through an exact, case-sensitive lookup on the SNI value, which fails to match wildcard host patterns (e.g., *.example.com) or case variants of the configured hostname. Because the handshake falls back to the default TLS configuration — which may not require client certificates — a client can complete the QUIC handshake without presenting a certificate, while the subsequent HTTP routing layer still dispatches the request to a backend protected by a router-specific mTLS policy. The issue affects deployments where HTTP/3 is enabled, a router uses a wildcard Host rule or case-insensitive hostname matching, a router-specific TLSOptions enforces client certificate authentication, and UDP access to the entrypoint is reachable by an attacker. This vulnerability is fixed in 3.7.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53622">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>ed33ef552d8fa70b93bc519146b939ba</td>
        <td>CVE-2026-48491</td>
-       <td>2026-06-23 20:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:48</td>
        <td>Traefik is an HTTP reverse proxy and load balancer. From 3.7.0 until 3.7.3, there is a high severity vulnerability in Traefik's domain-fronting protection (SNICheck) that allows an unauthenticated client to bypass mutual TLS enforced through wildcard router TLSOptions. When a router uses a wildcard host rule such as Host(*.example.com) with stricter TLS options (for example RequireAndVerifyClientCert), SNICheck resolves the TLS options for the HTTP Host header using exact map lookups only and never applies wildcard matching. If another permissive SNI is served on the same entrypoint, an attacker can complete the TLS handshake under the permissive options and then send an HTTP Host header targeting the wildcard-protected backend, reaching it without presenting a client certificate. This affects the regular HTTPS / HTTP-2 path and does not require HTTP/3. This vulnerability is fixed in 3.7.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48491">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>36b2372697a3885bde84baa666b4347f</td>
        <td>CVE-2026-48020</td>
-       <td>2026-06-23 20:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-06-23 20:16:47</td>
        <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 2.11.48, 3.6.19, and 3.7.3, there is a high severity vulnerability in Traefik's StripPrefix middleware that allows an unauthenticated attacker to bypass route-level authentication and authorization. When a public router matches on a PathPrefix rule and applies the StripPrefix middleware, a request path containing .. or its percent-encoded form %2e%2e can match the public route at routing time and then, after the prefix is stripped and the path is normalized, resolve to a path served by a separate, authenticated router. As a result, an attacker can reach protected backend paths — such as admin or internal configuration endpoints — without satisfying the authentication middleware attached to the protected router. This vulnerability is fixed in 2.11.48, 3.6.19, and 3.7.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48020">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-06-22 19:17:21</td>
        <td>Astro is a web framework. Prior to 6.4.6, the spreadAttributes function in Astro's server-side rendering pipeline iterates over object keys and passes them directly to addAttribute, which interpolates the key into the HTML output without escaping. When a developer uses the spread syntax {...props} on an HTML element and the object keys come from an untrusted source (API, CMS, URL parameters), an attacker can inject arbitrary HTML attributes including event handlers like onmousemove, onclick, or break out of the attribute context entirely to inject new elements. This vulnerability is fixed in 6.4.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54298">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>779ee36829faf4ed0d9dee4058cf0bd6</td>
-       <td>CVE-2026-56412</td>
-       <td>2026-06-21 17:16:44</td>
-       <td>libexpat before 2.8.2 does not consider XML_TOK_DATA_CHARS in doCdataSection and thus lacks handler call depth tracking for various calls from within handlers in cases of a policy violation. Thus, a use-after-free can occur. NOTE: this issue exists because of an incomplete fix for CVE-2026-50219.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56412">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d6e284edc131a8f83e5620bf12ee515d</td>
-       <td>CVE-2026-56411</td>
-       <td>2026-06-21 17:16:44</td>
-       <td>xmlwf in libexpat before 2.8.2 has an integer overflow in endDoctypeDecl via NOTATION declarations.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56411">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>04b7bccdc69de2158d1112fa00760ec3</td>
-       <td>CVE-2026-56410</td>
-       <td>2026-06-21 16:16:28</td>
-       <td>xmlwf in libexpat before 2.8.2 has an integer overflow in resolveSystemId.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56410">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>19e070631a2ab19790d10f1fcdc4e997</td>
-       <td>CVE-2026-56409</td>
-       <td>2026-06-21 16:16:28</td>
-       <td>xmlwf in libexpat before 2.8.2 has an integer overflow for the output filename when -d outputDir is used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56409">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ed289488ad5a40ac8e5207e1bd6b865</td>
-       <td>CVE-2026-56408</td>
-       <td>2026-06-21 16:16:28</td>
-       <td>libexpat before 2.8.2 has an integer overflow in copyString.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56408">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9821c9cb02ebf7605e7c3c36e003e3df</td>
-       <td>CVE-2026-56407</td>
-       <td>2026-06-21 16:16:27</td>
-       <td>libexpat before 2.8.2 has an integer overflow in doProlog that is related to storeEntityValue and entity textLen.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56407">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7c24ee04a65b564bed6c30982538df7b</td>
-       <td>CVE-2026-56406</td>
-       <td>2026-06-21 16:16:27</td>
-       <td>libexpat before 2.8.2 has an integer overflow in XML_ParseBuffer because it lacked a check that was present in XML_Parse.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56406">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad3a8c187cec5b0a65513bef66b8a8b9</td>
-       <td>CVE-2026-56405</td>
-       <td>2026-06-21 16:16:27</td>
-       <td>libexpat before 2.8.2 has an integer overflow in getAttributeId.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56405">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>48e89f4f3aa4a94eb73ea7477695e762</td>
-       <td>CVE-2026-56404</td>
-       <td>2026-06-21 16:16:27</td>
-       <td>libexpat before 2.8.2 has an integer overflow in addBinding.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56404">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>16235c98283803d67c6ba5e8da33df93</td>
-       <td>CVE-2026-56403</td>
-       <td>2026-06-21 16:16:26</td>
-       <td>libexpat before 2.8.2 has an integer overflow in storeAtts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56403">详情</a></td>
       </tr>
 
      </tbody>
