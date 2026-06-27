@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-26 04:15:20 -->
+<!-- RELEASE TIME : 2026-06-27 04:02:21 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>471fcf406ef0fa30a47847813773dce7</td>
+       <td>CVE-2026-54753</td>
+       <td>2026-06-26 19:16:43 <img src="imgs/new.gif" /></td>
+       <td>Nx is a monorepo solution for TypeScript and polyglot codebases. From 17.0.4 until 22.7.2 and 23.0.0-beta.2, the local HTTP server started by nx graph sent Access-Control-Allow-Origin: * on every response, letting any website a developer visited read the server's responses cross-origin — including the full project graph and the output of the /help endpoint, which runs a target's configured help command. The practical impact is typically cross-origin information disclosure, but can be arbitrary command injection in rare cases. This vulnerability is fixed in 22.7.2 and 23.0.0-beta.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54753">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a02c699e53e08eeaa0ba28821ffcbb88</td>
+       <td>CVE-2026-48090</td>
+       <td>2026-06-26 19:16:41 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.37.0 until 1.37.5 and 1.38.3, the HTTP OAuth2 filter (envoy.filters.http.oauth2) can leave an in-flight async token exchange attached to a downstream stream that has already been torn down. A late AsyncClient completion can still invoke OAuth2Filter methods that use StreamDecoderFilterCallbacks after that object’s lifetime has ended, causing undefined behavior, worker crashes (availability loss), and use-after-free / invalid-vptr failures under AddressSanitizer. This is a memory-safety / lifetime issue in the data plane, not a trivial config bug. Remote code execution is not claimed here; the primary demonstrated impact is DoS via crash and UB; any further impact would be deployment- and allocator-dependent. This vulnerability is fixed in 1.37.5 and 1.38.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48090">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cfaa7b5fc7e77d4ca41617ee78cf02ae</td>
+       <td>CVE-2026-47220</td>
+       <td>2026-06-26 19:16:41 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.37.0 until 1.37.5 and 1.38.3, when the %REQUESTED_SERVER_NAME(X:Y)% is used in log format and host related options is specified, like HOST_FIRST, SNI_FIRST, it's possible to crash Envoy when the specified host header is missing in the request headers. This vulnerability is fixed in 1.37.5 and 1.38.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47220">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c2d78cfe577b25909cff6da4562b4ae3</td>
+       <td>CVE-2026-47205</td>
+       <td>2026-06-26 19:16:40 <img src="imgs/new.gif" /></td>
+       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.36.0 until 1.36.9, 1.37.5, and 1.38.3, a Use-After-Free (UAF) vulnerability leading to a sudden segmentation fault exists in Envoy's ext_authz HTTP filter when processing per-route authorization overrides concurrently with rapid downstream client disconnects. During standard request lifecycles, Envoy instantiates the ext_authz filter with a foundational authorization client object (client_). If a matched route dictates a dynamic per-route HTTP or gRPC authorization service override, the filter generates a localized client. In the vulnerable implementation, this transient client aggressively overwrote the default client_ unique pointer by executing client_ = std::move(per_route_client). When a client rapidly establishes and subsequently tears down a stream (such as rapidly refreshing a protected WebSocket endpoint), the downstream triggers the ConnectionManagerImpl::doDeferredStreamDestroy() -> ActiveStream::onResetStream() lifecycle. Envoy immediately sequences Filter::onDestroy() in an attempt to securely abort dispatched asynchronous authorization check transactions via client_->cancel(). By destructing the default client abruptly during initiateCall, a memory lifecycle misalignment occurs within the async client manager. The stream teardown fails to reliably track and cancel the dynamically bound asynchronous authorization tasks, orchestrating a sequence where a late asynchronous callback from the network evaluates against a heavily destroyed ActiveStream validation span, generating a UAF process crash. This vulnerability is fixed in 1.36.9, 1.37.5, and 1.38.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47205">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f5e8c38f8e6cfcca8ce481c5183df7d8</td>
+       <td>CVE-2026-13372</td>
+       <td>2026-06-26 19:16:39 <img src="imgs/new.gif" /></td>
+       <td>Incorrect link resolution by display name in the custom PowerShell VPN editor in Devolutions Remote Desktop Manager 2026.2.5 through 2026.2.11 allows an authenticated attacker with write access to a shared workspace to execute a PowerShell script in another user's context via a display name collision with an existing VPN script link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13372">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aee522d921d50a107905822f51dbec81</td>
+       <td>CVE-2026-48769</td>
+       <td>2026-06-26 19:13:18 <img src="imgs/new.gif" /></td>
+       <td>Incus has an arbitrary file write on its client due to trusted image hash</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48769">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9d691471c6264390cf67603e8bd77ac8</td>
+       <td>CVE-2026-48758</td>
+       <td>2026-06-26 19:11:19 <img src="imgs/new.gif" /></td>
+       <td>@sigstore/core has DSSE payloadType type-binding failure</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48758">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f6bc3a1bc04860cca98313efb32d690f</td>
+       <td>CVE-2026-48755</td>
+       <td>2026-06-26 19:03:31 <img src="imgs/new.gif" /></td>
+       <td>Incus has an argument injection in backup compression algorithm leading to AFW and ACE</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48755">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6ab72a807b22e4d4109f962cb0c0f4b6</td>
+       <td>CVE-2026-48752</td>
+       <td>2026-06-26 18:46:31 <img src="imgs/new.gif" /></td>
+       <td>Incus has arbitrary file read+write on host via templates/ symlink in malicious image</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48752">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ec3d80b06b16356cc11f8266eb351db2</td>
+       <td>CVE-2026-48751</td>
+       <td>2026-06-26 18:33:55 <img src="imgs/new.gif" /></td>
+       <td>Incus has a restricted project bypass leading to arbitrary command execution</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48751">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4ed86f7a30dab4ec0625302ce3083bd0</td>
        <td>CVE-2026-55964</td>
-       <td>2026-06-25 20:17:16 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 20:17:16</td>
        <td>Chain intermediate CA:TRUE without keyCertSign accepted as a signing CA. Intermediate CA certificates are required to have the keyCertSign key usage when a Key Usage extension is present, but chain-supplied temporary CAs (WOLFSSL_TEMP_CA) added while building a certificate path were previously exempted from this check, so an intermediate asserting CA:TRUE but lacking keyCertSign was accepted as a signing CA. The check now applies to chain-supplied temporary CAs as well; only operator-loaded root certificates (WOLFSSL_USER_CA) and self-signed roots remain exempt. Per RFC 5280 an absent Key Usage extension implies all usages, so the requirement is enforced only when the extension is actually present (extKeyUsageSet). Affects the OpenSSL-compatibility certificate-path-building path (X509_verify_cert / X509_STORE, OPENSSL_EXTRA/OPENSSL_ALL), where untrusted chain intermediates are added as temporary CAs; native (non-OpenSSL-compat) certificate verification does not create temporary CAs and is unaffected. Within those builds, the check applies unless ALLOW_INVALID_CERTSIGN is defined.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55964">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>128bb2c0c1e14d24d600711dd4f4daa9</td>
        <td>CVE-2026-55960</td>
-       <td>2026-06-25 20:17:16 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 20:17:16</td>
        <td>Un-negotiated Raw Public Key (RFC 7250) accepted in place of an X.509 certificate, bypassing chain validation. A raw public key has no chain, so ParseCertRelative() accepts it without performing any trust verification; it must therefore only be accepted when RPK was actually negotiated for that peer. The check now defaults the expected type to X.509 (per RFC 7250/8446) when no type was negotiated, comparing against the received server certificate type on the client and the selected client certificate type on the server, and rejects any mismatch, including an un-negotiated raw public key, with UNSUPPORTED_CERTIFICATE. Only affects builds with Raw Public Key support (HAVE_RPK) enabled - disabled by default in a standalone build, but included in --enable-all.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55960">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>9a5edb86088c7e0c6b050f1448520477</td>
        <td>CVE-2026-37453</td>
-       <td>2026-06-25 20:17:11 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 20:17:11</td>
        <td>Insecure Permissions vulnerability in MSI NBFoundation Service v.2.0.2506.1201 allows a remote attacker to obtain sensitive information via the MSI_SERVICE_2 pipe</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-37453">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>b6643db14d2930e5d824c49c4146bff0</td>
        <td>CVE-2026-10097</td>
-       <td>2026-06-25 20:17:09 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 20:17:09</td>
        <td>ML-KEM-1024 x64 AVX2 implicit rejection failure in the Fujisaki-Okamoto transform breaks IND-CCA2 security, allowing decapsulation to deviate from the implicit-rejection behavior required by the standard. The AVX2 constant-time ciphertext comparison used during decapsulation never compared the final 32-byte block of the 1568-byte ML-KEM-1024 ciphertext, so a ciphertext manipulated only in those final bytes would compare as equal and decapsulation returned the real shared secret instead of performing the required implicit rejection.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10097">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>ef4e5d0051ef982360c3bfe4c0600b42</td>
        <td>CVE-2026-56790</td>
-       <td>2026-06-25 19:16:45 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 19:16:45</td>
        <td>CANBoat through 6.22, fixed in commit a5a22b7, contains an off-by-one global buffer overflow in the searchForPgn() function in analyzer/pgn.c that allows remote attackers to crash the application. Attackers can deliver a crafted NMEA-2000 message with an out-of-range PGN value over CAN bus or N2K-over-IP to trigger an out-of-bounds array access and denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56790">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>80d9bda2a8c12b165909f33608dd9332</td>
        <td>CVE-2026-56789</td>
-       <td>2026-06-25 19:16:45 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 19:16:45</td>
        <td>RTKLIB through 2.4.3 contains a heap buffer overflow vulnerability in the readrnxobsb function in src/rinex.c that allows attackers to trigger memory corruption by failing to clamp satellite count values from RINEX epoch headers. Attackers can craft malicious RINEX files declaring more than 64 satellites per epoch to cause heap buffer overflow writes and out-of-bounds stack reads, crashing RTKLIB-based applications including rnx2rtkp and RTKPOST.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56789">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>7548e2453a56949ec171d6d5dea2f323</td>
        <td>CVE-2026-56788</td>
-       <td>2026-06-25 19:16:45 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 19:16:45</td>
        <td>RTKLIB through 2.4.3 contains an out-of-bounds read vulnerability in getcodepri function when processing unrecognized RINEX observation codes, allowing attackers to trigger denial of service. Crafted RINEX files with unknown observation types cause negative array indexing into the codepris table, resulting in reliable crashes and potential memory disclosure of adjacent global data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56788">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>52a11651a9b5dd9eed849cd8f675f5c1</td>
        <td>CVE-2026-56787</td>
-       <td>2026-06-25 19:16:45 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 19:16:45</td>
        <td>RTKLIB through 2.4.3 contains an off-by-one out-of-bounds read vulnerability in the decode_ssr3 function at src/rtcm3.c:1446 that allows remote attackers to trigger a global buffer overflow via crafted RTCM3 SSR messages with attacker-controlled signal mode fields. Remote attackers can exploit this vulnerability by sending malicious SSR correction streams over NTRIP or serial connections to cause denial of service or crash RTKLIB rovers and CORS servers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56787">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>d14839c4f6300c8bb4cf113ebf24860e</td>
        <td>CVE-2026-56779</td>
-       <td>2026-06-25 19:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 19:16:44</td>
        <td>MaxKB before 2.10.0 contains a server-side request forgery vulnerability in tool creation and update endpoints that allows authenticated users to make arbitrary server requests by supplying unvalidated downloadCallbackUrl and download_url parameters. Attackers with default workspace USER role can exploit this to access internal network services by providing malicious URLs to the ToolSerializer endpoints.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56779">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>755c668561e6e0383f067b170f2b8b39</td>
        <td>CVE-2026-56771</td>
-       <td>2026-06-25 19:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-06-25 19:16:44</td>
        <td>NewsBlur before version 14.5.0 contains a server-side request forgery vulnerability in the add_url endpoint that allows authenticated users to make arbitrary server requests to internal networks by failing to filter private IP addresses. Attackers can exploit this to access localhost services and cloud metadata endpoints, enabling internal network scanning and sensitive data exfiltration.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56771">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-06-24 19:17:11</td>
        <td>Jellyfin is an open source self hosted media server. From 10.9.0 until 10.11.10, the POST /ClientLog/Document endpoint accepts the Authorization header's Client and Version fields and uses them unsanitized as components of the on-disk filename when persisting client-uploaded log documents. As a result, any authenticated non-admin user can include ../ sequences in the Client field to cause Jellyfin to write attacker-controlled content to arbitrary paths reachable by the Jellyfin service user, with a forced .log suffix. This vulnerability is fixed in 10.11.10.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49247">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb2d2f679b52b8c8942162d1bc8f27ea</td>
-       <td>CVE-2026-54762</td>
-       <td>2026-06-23 20:16:49</td>
-       <td>Traefik is an HTTP reverse proxy and load balancer. From 3.7.0-ea.1 until 3.7.5, there is a medium severity vulnerability in Traefik's Kubernetes Ingress NGINX provider that causes affected routes to fail open. When an Ingress explicitly enables BasicAuth or DigestAuth through the supported nginx.ingress.kubernetes.io/auth-type and auth-secret annotations, but the referenced auth Secret cannot be resolved or parsed, Traefik logs the resolution error, skips installing the authentication middleware, and still emits a router to the backend service. A route that operators intended to protect is therefore published to the data plane without its authentication control, allowing unauthenticated access to the backend. The trigger is an invalid or unresolved auth dependency — a missing, malformed, unreadable, or policy-denied Secret — rather than an intentionally unprotected route. This vulnerability is fixed in 3.7.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54762">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa1f00ce6226fb989196fb511852ec90</td>
-       <td>CVE-2026-54761</td>
-       <td>2026-06-23 20:16:49</td>
-       <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 3.6.21 and 3.7.5, there is a high severity vulnerability in Traefik's Kubernetes Gateway provider affecting the crossProviderNamespaces allowlist. For HTTPRoute rules that declare multiple (WRR) backendRefs, Traefik evaluates the allowlist against the target backendRef.namespace instead of the route's own namespace. As a result, an HTTPRoute created in a namespace that is not allow-listed can reference a cross-provider TraefikService such as api@internal, dashboard@internal or rest@internal by pointing backendRef.namespace at an allow-listed namespace covered by a Gateway API ReferenceGrant, exposing internal Traefik services on the data plane. Exploitation requires the ability to create an accepted HTTPRoute and a matching ReferenceGrant from an allow-listed namespace; it does not require any change to Traefik static configuration, RBAC, or the deployment itself. This vulnerability is fixed in 3.6.21 and 3.7.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54761">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8069ace04088d2238bdb566617079937</td>
-       <td>CVE-2026-54555</td>
-       <td>2026-06-23 20:16:49</td>
-       <td>rtk filters and compresses command outputs before they reach your LLM context. Prior to 0.42.2, the permission splitter did not conservatively split or reject several shell constructs that Bash treats as command execution boundaries or nested execution. As a result, a command beginning with an allowed prefix such as git could hide a second command behind one of these constructs. rtk rewrite returned exit code 0, causing the Claude hook to emit permissionDecision: "allow". The rewritten command still contained the hidden command, so it ran without the user confirmation or denial that the permission rules were intended to enforce. This vulnerability is fixed in 0.42.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54555">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>89381ca00a9f68462ffeea5c6e2479ce</td>
-       <td>CVE-2026-54328</td>
-       <td>2026-06-23 20:16:49</td>
-       <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi versions with temporary npm or git extension package installs used predictable paths under the operating system temporary directory. On Linux-based multi-user systems, a local attacker who can write to the shared temporary directory could prepare the expected package location before another user runs pi with a temporary extension package source. Pi could then load attacker-controlled extension code in the victim user's process. This vulnerability is fixed in 0.78.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54328">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>49988084a9c346d591fad256f37f8cd6</td>
-       <td>CVE-2026-54327</td>
-       <td>2026-06-23 20:16:49</td>
-       <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi stored API keys and OAuth credentials in auth.json. A race condition in the file write path could briefly create or rewrite this file with permissions derived from the process umask before tightening the file to owner-only permissions. This vulnerability is fixed in 0.78.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54327">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4db78a10ccb78c444253ebdfc109ec90</td>
-       <td>CVE-2026-54326</td>
-       <td>2026-06-23 20:16:49</td>
-       <td>Pi is a minimal terminal coding harness. From 0.74.0 until 0.78.1, Pi HTML exports render session Markdown into a static HTML file. It did not consistently reject unsafe Markdown link and image URL schemes. In versions with scheme filtering, C0 control characters in the URL scheme could bypass the check because browsers normalize those characters before navigation. This vulnerability is fixed in 0.78.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54326">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>230937ba8a02b18368fc94b0386d951d</td>
-       <td>CVE-2026-54325</td>
-       <td>2026-06-23 20:16:49</td>
-       <td>Pi is a minimal terminal coding harness. Pi before 0.79.0 loaded project-local configuration and resources from a repository's .pi directory without first asking the user to trust that repository. This included project-local extensions, which are executable TypeScript or JavaScript modules loaded into the Pi process. An attacker who controls a repository could place Pi-specific project resources in that repository. If a user then started Pi from that working tree, the project-local extension code could run with the same privileges as the local Pi process without the user having a convenient way to make a trust decision. This vulnerability is fixed in 0.79.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54325">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4806347841f2fcb79d75537479a1e1b5</td>
-       <td>CVE-2026-53622</td>
-       <td>2026-06-23 20:16:48</td>
-       <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 3.7.3, there is a critical vulnerability in Traefik's HTTP/3 (QUIC) TLS configuration selection that allows unauthenticated clients to bypass router-specific mTLS enforcement. When HTTP/3 is enabled on an entrypoint, the TLS handshake selects the applicable TLS configuration through an exact, case-sensitive lookup on the SNI value, which fails to match wildcard host patterns (e.g., *.example.com) or case variants of the configured hostname. Because the handshake falls back to the default TLS configuration — which may not require client certificates — a client can complete the QUIC handshake without presenting a certificate, while the subsequent HTTP routing layer still dispatches the request to a backend protected by a router-specific mTLS policy. The issue affects deployments where HTTP/3 is enabled, a router uses a wildcard Host rule or case-insensitive hostname matching, a router-specific TLSOptions enforces client certificate authentication, and UDP access to the entrypoint is reachable by an attacker. This vulnerability is fixed in 3.7.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53622">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed33ef552d8fa70b93bc519146b939ba</td>
-       <td>CVE-2026-48491</td>
-       <td>2026-06-23 20:16:48</td>
-       <td>Traefik is an HTTP reverse proxy and load balancer. From 3.7.0 until 3.7.3, there is a high severity vulnerability in Traefik's domain-fronting protection (SNICheck) that allows an unauthenticated client to bypass mutual TLS enforced through wildcard router TLSOptions. When a router uses a wildcard host rule such as Host(*.example.com) with stricter TLS options (for example RequireAndVerifyClientCert), SNICheck resolves the TLS options for the HTTP Host header using exact map lookups only and never applies wildcard matching. If another permissive SNI is served on the same entrypoint, an attacker can complete the TLS handshake under the permissive options and then send an HTTP Host header targeting the wildcard-protected backend, reaching it without presenting a client certificate. This affects the regular HTTPS / HTTP-2 path and does not require HTTP/3. This vulnerability is fixed in 3.7.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48491">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>36b2372697a3885bde84baa666b4347f</td>
-       <td>CVE-2026-48020</td>
-       <td>2026-06-23 20:16:47</td>
-       <td>Traefik is an HTTP reverse proxy and load balancer. Prior to 2.11.48, 3.6.19, and 3.7.3, there is a high severity vulnerability in Traefik's StripPrefix middleware that allows an unauthenticated attacker to bypass route-level authentication and authorization. When a public router matches on a PathPrefix rule and applies the StripPrefix middleware, a request path containing .. or its percent-encoded form %2e%2e can match the public route at routing time and then, after the prefix is stripped and the path is normalized, resolve to a path served by a separate, authenticated router. As a result, an attacker can reach protected backend paths — such as admin or internal configuration endpoints — without satisfying the authentication middleware attached to the protected router. This vulnerability is fixed in 2.11.48, 3.6.19, and 3.7.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48020">详情</a></td>
       </tr>
 
      </tbody>
