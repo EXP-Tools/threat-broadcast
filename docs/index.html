@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-27 04:02:21 -->
+<!-- RELEASE TIME : 2026-06-28 04:23:51 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>aa0889665a445a169265a6754e70eca0</td>
+       <td>CVE-2026-49416</td>
+       <td>2026-06-27 10:16:38 <img src="imgs/new.gif" /></td>
+       <td>The CONS_HISTORY ioctl handler did not adequately validate the requested history size. A large value caused an integer overflow in the buffer size calculation, resulting in a heap allocation smaller than expected. Subsequent initialization of the buffer wrote beyond the end of the allocation. An unprivileged local user with access to a vt(4) device can trigger an out-of-bounds write in the kernel, potentially escalating privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49416">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>83f8f0bfe9723a44e5d0975a243233db</td>
+       <td>CVE-2026-49414</td>
+       <td>2026-06-27 10:16:37 <img src="imgs/new.gif" /></td>
+       <td>The ELF image activator cleared per-process ASLR preference flags for setuid binaries after the code that computes the PIE base address, rather than before. As a result, a user-requested ASLR disable was still in effect at the point where the base address was chosen. An unprivileged local user can disable ASLR for a setuid PIE binary by calling procctl(2) before execve(2). This makes exploitation of any separate memory corruption vulnerability in that binary significantly easier.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49414">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c214a62465eaf80d83bf5a042eabd50e</td>
+       <td>CVE-2026-49417</td>
+       <td>2026-06-27 09:16:24 <img src="imgs/new.gif" /></td>
+       <td>Second, the audio buffer backing a mapping could be freed when the device was closed even though the mapping remained valid. The freed memory could then be reused elsewhere while still accessible through the stale mapping. The /dev/dsp device nodes are world-accessible by default. On a system with an audio device, either issue allows an unprivileged local user to read and write kernel memory, which can be used to escalate privileges, potentially gaining full control of the affected system. At a minimum, an attacker can crash the kernel, resulting in a Denial of Service (DoS).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49417">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce360da9f094720051d958fca424fd56</td>
+       <td>CVE-2026-49413</td>
+       <td>2026-06-27 09:16:24 <img src="imgs/new.gif" /></td>
+       <td>The Linuxulator determined whether a binary was set-user-ID or set-group-ID by checking the P_SUGID process flag. During execve(2), this flag is not yet set at the point where the auxiliary vector is constructed, so AT_SECURE was incorrectly set to zero for set-user-ID and set-group-ID executables. An unprivileged local user can inject a shared library via LD_PRELOAD into a set-user-ID or set-group-ID Linux binary, gaining the privileges of that binary.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49413">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0b1eb6bcf828d71802d0550f93489225</td>
+       <td>CVE-2026-49412</td>
+       <td>2026-06-27 09:16:23 <img src="imgs/new.gif" /></td>
+       <td>The kernel handler for IPV6_MSFILTER dropped a serializing lock in order to copy the source-filter list from userspace, then reacquired the lock. During this window another thread could free the multicast filter structure, leaving the handler with a stale pointer to freed memory. An unprivileged local user can exploit this use-after-free to escalate privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49412">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>85bce0625721d7793e8a0478f841a717</td>
+       <td>CVE-2026-45259</td>
+       <td>2026-06-27 09:16:22 <img src="imgs/new.gif" /></td>
+       <td>sigqueue(2) was marked as permitted in capability mode with the introduction of Capsicum in 2011, but the implementation of kern_sigqueue did not include a capability mode check restricting signal delivery to the calling process's own PID. A process in capability mode can use sigqueue(2) to send signals to any process it could signal following standard Unix permissions, bypassing the Capsicum sandbox restriction. A compromised sandboxed process could interfere with other processes, for example by sending SIGKILL or SIGSTOP. This could be any process running as the same user, or any process, for a superuser sandboxed process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45259">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b6b9b83da5782c86d9b5c2d466d442d</td>
+       <td>CVE-2026-45258</td>
+       <td>2026-06-27 09:16:22 <img src="imgs/new.gif" /></td>
+       <td>dsp_mmap_single() validated the requested mapping by checking the sum of the user-supplied offset and length against the buffer size. This addition could overflow, so that a large offset and length wrapped around and passed the check. The offset was then narrowed from 64 to 32 bits when converted to a buffer address, yielding a mapping that extended past the audio buffer into unrelated kernel memory. The /dev/dsp device nodes are world-accessible by default. On a system with an audio device, either issue allows an unprivileged local user to read and write kernel memory, which can be used to escalate privileges, potentially gaining full control of the affected system. At a minimum, an attacker can crash the kernel, resulting in a Denial of Service (DoS).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45258">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>83faeff8198a66aa4dc61ea0c30376c6</td>
+       <td>CVE-2026-9242</td>
+       <td>2026-06-27 08:16:45 <img src="imgs/new.gif" /></td>
+       <td>The RegistrationMagic – Custom Registration Forms, User Registration, Payment, and User Login plugin for WordPress is vulnerable to Authentication Bypass via Insufficient Verification of Data Authenticity in all versions up to and including 6.0.8.6. This is due to the PayPal IPN `callback` handler being registered as a nopriv AJAX action with no authentication or nonce requirement, and critically because the handler updates the payment log database row with attacker-controlled POST data — including `payment_status` and the `custom` field encoding the target `user_id` — before PayPal IPN validation is performed, meaning the database remains poisoned even when validation subsequently fails. This makes it possible for unauthenticated attackers to authenticate as any WordPress user, including administrators, by submitting a forged IPN request that overwrites a payment log entry's `user_id` with that of a target account, then visiting the success return URL with a legitimately obtained security hash to cause the plugin to issue real WordPress authentication cookies for the targeted account.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9242">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fcf113e6ba2b6bccf0ddc7d163c9b121</td>
+       <td>CVE-2026-9233</td>
+       <td>2026-06-27 08:16:45 <img src="imgs/new.gif" /></td>
+       <td>The Quiz and Survey Master (QSM) – Easy Quiz and Survey Maker plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 11.1.4. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to create, modify, and delete quiz output templates stored in the mlw_quiz_output_templates database table, including storing unsanitized HTML content such as arbitrary script tags.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9233">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>94df36e6e6fed82c4e8dbabc84a27a3c</td>
+       <td>CVE-2026-3462</td>
+       <td>2026-06-27 08:16:44 <img src="imgs/new.gif" /></td>
+       <td>The Frisbii Pay plugin for WordPress is vulnerable to unauthorized modification of data due to missing capability checks on the 'upload_csv' and 'process_batch' functions in all versions up to, and including, 1.8.9. This makes it possible for authenticated attackers, with Subscriber-level access and above, to upload arbitrary CSV data and overwrite WooCommerce payment tokens, postmeta, and order meta records.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3462">详情</a></td>
+      </tr>
+
+      <tr>
        <td>471fcf406ef0fa30a47847813773dce7</td>
        <td>CVE-2026-54753</td>
-       <td>2026-06-26 19:16:43 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:16:43</td>
        <td>Nx is a monorepo solution for TypeScript and polyglot codebases. From 17.0.4 until 22.7.2 and 23.0.0-beta.2, the local HTTP server started by nx graph sent Access-Control-Allow-Origin: * on every response, letting any website a developer visited read the server's responses cross-origin — including the full project graph and the output of the /help endpoint, which runs a target's configured help command. The practical impact is typically cross-origin information disclosure, but can be arbitrary command injection in rare cases. This vulnerability is fixed in 22.7.2 and 23.0.0-beta.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54753">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>a02c699e53e08eeaa0ba28821ffcbb88</td>
        <td>CVE-2026-48090</td>
-       <td>2026-06-26 19:16:41 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:16:41</td>
        <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.37.0 until 1.37.5 and 1.38.3, the HTTP OAuth2 filter (envoy.filters.http.oauth2) can leave an in-flight async token exchange attached to a downstream stream that has already been torn down. A late AsyncClient completion can still invoke OAuth2Filter methods that use StreamDecoderFilterCallbacks after that object’s lifetime has ended, causing undefined behavior, worker crashes (availability loss), and use-after-free / invalid-vptr failures under AddressSanitizer. This is a memory-safety / lifetime issue in the data plane, not a trivial config bug. Remote code execution is not claimed here; the primary demonstrated impact is DoS via crash and UB; any further impact would be deployment- and allocator-dependent. This vulnerability is fixed in 1.37.5 and 1.38.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48090">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>cfaa7b5fc7e77d4ca41617ee78cf02ae</td>
        <td>CVE-2026-47220</td>
-       <td>2026-06-26 19:16:41 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:16:41</td>
        <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.37.0 until 1.37.5 and 1.38.3, when the %REQUESTED_SERVER_NAME(X:Y)% is used in log format and host related options is specified, like HOST_FIRST, SNI_FIRST, it's possible to crash Envoy when the specified host header is missing in the request headers. This vulnerability is fixed in 1.37.5 and 1.38.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47220">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>c2d78cfe577b25909cff6da4562b4ae3</td>
        <td>CVE-2026-47205</td>
-       <td>2026-06-26 19:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:16:40</td>
        <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.36.0 until 1.36.9, 1.37.5, and 1.38.3, a Use-After-Free (UAF) vulnerability leading to a sudden segmentation fault exists in Envoy's ext_authz HTTP filter when processing per-route authorization overrides concurrently with rapid downstream client disconnects. During standard request lifecycles, Envoy instantiates the ext_authz filter with a foundational authorization client object (client_). If a matched route dictates a dynamic per-route HTTP or gRPC authorization service override, the filter generates a localized client. In the vulnerable implementation, this transient client aggressively overwrote the default client_ unique pointer by executing client_ = std::move(per_route_client). When a client rapidly establishes and subsequently tears down a stream (such as rapidly refreshing a protected WebSocket endpoint), the downstream triggers the ConnectionManagerImpl::doDeferredStreamDestroy() -> ActiveStream::onResetStream() lifecycle. Envoy immediately sequences Filter::onDestroy() in an attempt to securely abort dispatched asynchronous authorization check transactions via client_->cancel(). By destructing the default client abruptly during initiateCall, a memory lifecycle misalignment occurs within the async client manager. The stream teardown fails to reliably track and cancel the dynamically bound asynchronous authorization tasks, orchestrating a sequence where a late asynchronous callback from the network evaluates against a heavily destroyed ActiveStream validation span, generating a UAF process crash. This vulnerability is fixed in 1.36.9, 1.37.5, and 1.38.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47205">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>f5e8c38f8e6cfcca8ce481c5183df7d8</td>
        <td>CVE-2026-13372</td>
-       <td>2026-06-26 19:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:16:39</td>
        <td>Incorrect link resolution by display name in the custom PowerShell VPN editor in Devolutions Remote Desktop Manager 2026.2.5 through 2026.2.11 allows an authenticated attacker with write access to a shared workspace to execute a PowerShell script in another user's context via a display name collision with an existing VPN script link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13372">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>aee522d921d50a107905822f51dbec81</td>
        <td>CVE-2026-48769</td>
-       <td>2026-06-26 19:13:18 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:13:18</td>
        <td>Incus has an arbitrary file write on its client due to trusted image hash</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48769">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>9d691471c6264390cf67603e8bd77ac8</td>
        <td>CVE-2026-48758</td>
-       <td>2026-06-26 19:11:19 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:11:19</td>
        <td>@sigstore/core has DSSE payloadType type-binding failure</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48758">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>f6bc3a1bc04860cca98313efb32d690f</td>
        <td>CVE-2026-48755</td>
-       <td>2026-06-26 19:03:31 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 19:03:31</td>
        <td>Incus has an argument injection in backup compression algorithm leading to AFW and ACE</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48755">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>6ab72a807b22e4d4109f962cb0c0f4b6</td>
        <td>CVE-2026-48752</td>
-       <td>2026-06-26 18:46:31 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 18:46:31</td>
        <td>Incus has arbitrary file read+write on host via templates/ symlink in malicious image</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48752">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>ec3d80b06b16356cc11f8266eb351db2</td>
        <td>CVE-2026-48751</td>
-       <td>2026-06-26 18:33:55 <img src="imgs/new.gif" /></td>
+       <td>2026-06-26 18:33:55</td>
        <td>Incus has a restricted project bypass leading to arbitrary command execution</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48751">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-06-25 19:16:44</td>
        <td>NewsBlur before version 14.5.0 contains a server-side request forgery vulnerability in the add_url endpoint that allows authenticated users to make arbitrary server requests to internal networks by failing to filter private IP addresses. Attackers can exploit this to access localhost services and cloud metadata endpoints, enabling internal network scanning and sensitive data exfiltration.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56771">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fb030bb16973f928fcaf6baaf92d666e</td>
-       <td>CVE-2026-53950</td>
-       <td>2026-06-24 19:17:12</td>
-       <td>@tryghost/activitypub is Ghost’s social/federation client app. Prior to 3.1.0, the ActivityPub client in Ghost was vulnerable to JavaScript injection on posts shared by a maliciously customised ActivityPub server. This vulnerability is fixed in 3.1.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53950">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e2d7e99decf7878956e8d751d11f8bc5</td>
-       <td>CVE-2026-53949</td>
-       <td>2026-06-24 19:17:12</td>
-       <td>Ghost is a Node.js content management system. From 5.46.1 until 6.21.2, the validation applied to filters on the public API endpoints could be partially bypassed, making it possible to reveal private fields via a brute force attack. If SQLite was used as the database password hashes were fully accessible. If MySQL was used as the database the password hashes' case (uppercase / lowercase) would have been lost, which would likely have rendered a further brute force attack on the discovered hashes fruitless. This vulnerability is fixed in 6.21.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53949">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e0c839d6a97103a99e88d45821520672</td>
-       <td>CVE-2026-53948</td>
-       <td>2026-06-24 19:17:12</td>
-       <td>Ghost is a Node.js content management system. From 6.19.4 until 6.21.1, insufficient validation of the client-supplied Content-Type on Ghost's Admin API file upload endpoint allowed uploaded files to be served from the site with an attacker-chosen content type on S3/GCS storage backends. On installations that serve uploaded files from the same origin as the site, this could have been used to facilitate stored cross-site scripting against site visitors or staff. This vulnerability is fixed in 6.21.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53948">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>397c6973deea785ce4c2758c82a558e0</td>
-       <td>CVE-2026-53947</td>
-       <td>2026-06-24 19:17:12</td>
-       <td>Ghost is a Node.js content management system. From 5.18.0 until 6.21.1, a discrepancy in responses from the members signin endpoints made it possible for an unauthenticated attacker to determine whether a given email address belongs to a registered member of a Ghost site. This vulnerability is fixed in 6.21.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53947">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>04e3e1bba630e43c2fc957187f647f46</td>
-       <td>CVE-2026-53946</td>
-       <td>2026-06-24 19:17:12</td>
-       <td>Ghost is a Node.js content management system. From 6.19.4 until 6.21.1, when re-rendering posts, Ghost would refetch missing image dimensions by issuing an outbound HTTP request to the URL stored on an image card — without restricting that URL to trusted image hosts. An authenticated staff user able to create or edit posts could therefore point an image card at an attacker-chosen host and cause the Ghost server to request it on their behalf, including hosts on internal networks or cloud instance metadata endpoints that would not normally be reachable from the public internet. This vulnerability is fixed in 6.21.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53946">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7b6def2356a3c17664402f134c34c5c2</td>
-       <td>CVE-2026-53945</td>
-       <td>2026-06-24 19:17:12</td>
-       <td>Ghost is a Node.js content management system. From 6.0.9 until 6.21.1, Ghost’s private-IP check for outbound HTTP requests could be bypassed via DNS rebinding, allowing an attacker to coerce the Ghost server into reaching hosts on internal networks through features that issue external fetches. This vulnerability is fixed in 6.21.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53945">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d5340c583136de953ab7cc727a231aed</td>
-       <td>CVE-2026-53944</td>
-       <td>2026-06-24 19:17:11</td>
-       <td>Ghost is a Node.js content management system. From 6.0.9 until 6.21.1, when making an external request, it is possible to bypass the IP filter that ensures the request isn't going to an internal service using an IPv6 literal which maps to a private IPv4 address. This vulnerability is fixed in 6.21.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53944">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>419f62d3728ff84144f42f38d9905b31</td>
-       <td>CVE-2026-53943</td>
-       <td>2026-06-24 19:17:11</td>
-       <td>Ghost is a Node.js content management system. From until 6.37.0, when Ghost is behind a shared caching layer that results in cached content being shared between different visitors, an unauthenticated user could send an x-ghost-preview header that altered the rendered frontend response. In affected cache configurations, that response could be stored and served to subsequent visitors requesting the same page, allowing cache poisoning of request-specific preview output. When running Ghost's frontend and admin panel on the same domain this could be used to take over staff user accounts. When running these on different domains staff accounts have no exposure. This vulnerability is fixed in 6.37.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53943">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>65f72bb015bfeeeef8ef9295285c0a5c</td>
-       <td>CVE-2026-49980</td>
-       <td>2026-06-24 19:17:11</td>
-       <td>Rclone is a command-line program to sync files and directories to and from different cloud storage providers. From 1.46.0 until 1.74.3, rclone rcd --rc-serve accepts unauthenticated GET and HEAD requests to paths of the form: /[remote:path]/object. The remote value is parsed from the URL and passed to normal backend initialization. Inline remote configuration can set backend options that execute local commands during initialization. As a result, a single unauthenticated GET or HEAD request can execute a command as the rclone process user. This vulnerability is fixed in 1.74.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49980">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77fc6ceafd61ddcf1c4f94916389968d</td>
-       <td>CVE-2026-49247</td>
-       <td>2026-06-24 19:17:11</td>
-       <td>Jellyfin is an open source self hosted media server. From 10.9.0 until 10.11.10, the POST /ClientLog/Document endpoint accepts the Authorization header's Client and Version fields and uses them unsanitized as components of the on-disk filename when persisting client-uploaded log documents. As a result, any authenticated non-admin user can include ../ sequences in the Client field to cause Jellyfin to write attacker-controlled content to arbitrary paths reachable by the Jellyfin service user, with a forced .log suffix. This vulnerability is fixed in 10.11.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49247">详情</a></td>
       </tr>
 
      </tbody>
