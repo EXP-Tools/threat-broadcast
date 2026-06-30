@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-06-29 04:43:20 -->
+<!-- RELEASE TIME : 2026-06-30 04:10:05 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>02ec48a795896a371150f4cad864353e</td>
+       <td>CVE-2026-58000</td>
+       <td>2026-06-29 19:16:42 <img src="imgs/new.gif" /></td>
+       <td>luci-proto-openvpn through 0.11.1, fixed in commit e4ff45e, contains a command injection vulnerability in the generateKey ubus method where the cl_meta parameter is interpolated into a shell command without proper escaping or quoting. An authenticated LuCI user with OpenVPN protocol configuration access can inject arbitrary shell metacharacters into cl_meta to execute commands as root via the popen function.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58000">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d882229d35a106951612acd6fdca626</td>
+       <td>CVE-2026-57999</td>
+       <td>2026-06-29 19:16:42 <img src="imgs/new.gif" /></td>
+       <td>luci-app-tailscale-community contains a command injection vulnerability in the tailscale.do_login RPC method that allows authenticated users to execute arbitrary commands as root. The vulnerability exists because user-controlled loginserver and loginserver_authkey parameters are improperly quoted within a double-quoted shell command, allowing shell substitutions like $() to be evaluated by the outer shell before argument processing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57999">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>91854818e41e5c4830673137a26b2326</td>
+       <td>CVE-2026-53427</td>
+       <td>2026-06-29 19:16:41 <img src="imgs/new.gif" /></td>
+       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in leandrocp MDEx allows stored or reflected cross-site scripting via attacker-controlled Markdown. When syntax highlighting and full info-string forwarding (render: [full_info_string: true]) are enabled, the Lumis adapter copies the value of a code fence's highlight_lines_class info-string attribute, unescaped, into the class attribute of every rendered line. comrak_nif::lumis_adapter::LumisAdapter::parse_custom_attributes in native/comrak_nif/src/lumis_adapter.rs shlex-parses the info string and stores each key=value pair verbatim, highlight_lines_config pulls highlight_lines_class into the per-line class value, and write_highlighted interpolates that value directly into the class attribute of the per-line <div>. A single-quoted shell token preserves an inner double quote through shlex parsing, so a value such as '"><script>alert(1)</script>' terminates the class attribute early and the markup that follows is emitted as live HTML. An attacker who can submit Markdown (through comments, posts, wiki pages, documentation, or any user-generated content) can inject arbitrary HTML and JavaScript that runs in the browser of every user who views the rendered output, enabling session theft, account takeover, and other client-side attacks. No authentication or special privileges are required. The vulnerable native code originally shipped inside mdex (in native/comrak_nif/src/lumis_adapter.rs) and was later extracted into the separate mdex_native package (native/mdex_native_nif/src/lumis_adapter.rs), where it remains unpatched. This issue affects mdex from 0.11.3 before 0.12.3, and mdex_native from 0.1.0 before 0.2.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53427">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>370baa86d0bff7a13928c89ca30006a5</td>
+       <td>CVE-2026-13757</td>
+       <td>2026-06-29 19:16:40 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in p11-kit. The RPC message attribute parsing functions p11_rpc_message_get_attribute() and p11_rpc_message_get_attribute_array_value() form a mutually-recursive call chain with no recursion depth limit when processing nested CKA_WRAP_TEMPLATE, CKA_UNWRAP_TEMPLATE, and CKA_DERIVE_TEMPLATE attributes. An unauthenticated attacker with local access to the p11-kit RPC Unix domain socket can send a specially crafted request with deeply nested template attributes, causing stack exhaustion and crashing the p11-kit server process and its dependent services.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13757">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7aad1b5b99502a05ce859df6088812d4</td>
+       <td>CVE-2026-57960</td>
+       <td>2026-06-29 18:16:42 <img src="imgs/new.gif" /></td>
+       <td>Hi.Events through 1.9.0 public check-in list endpoints use short_id as sole access control, allowing unauthenticated access to retrieve full attendee lists including emails and personal information. Attackers with knowledge of the short_id can call GET /api/public/check-in-lists/{short_id}/attendees to read attendee data and create or delete check-in records without authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57960">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ca3fb8ae5e33a9bf6e0b77791494851</td>
+       <td>CVE-2026-57959</td>
+       <td>2026-06-29 18:16:41 <img src="imgs/new.gif" /></td>
+       <td>Hi.Events through 1.9.0 contains a promo code validation vulnerability where reservation validates usage count before asynchronous UpdateEventStatisticsJob increments it, allowing attackers to redeem limited promo codes unlimited times. Attackers can sequentially reserve multiple orders with the same restricted promo code, each reading order_usage_count=0 and passing validation, then complete them all at discounted prices without concurrent requests.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57959">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>95c9f021e47573c3c02745f181632219</td>
+       <td>CVE-2026-57958</td>
+       <td>2026-06-29 18:16:41 <img src="imgs/new.gif" /></td>
+       <td>Mixpost through 2.6.0 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to execute arbitrary JavaScript in authenticated users' browsers by crafting malicious OAuth callback URLs with unsanitized error query parameters. Attackers can exploit the OAuth callback controller's failure to sanitize error parameters before rendering them through Laravel flash messages via the Vue v-html directive to hijack authenticated user sessions or perform unauthorized actions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57958">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>91a34e27e3fed4f871c6af3700bfdfb9</td>
+       <td>CVE-2026-57957</td>
+       <td>2026-06-29 18:16:41 <img src="imgs/new.gif" /></td>
+       <td>Papermark through 0.22.0 contains a cross-origin resource sharing (CORS) misconfiguration vulnerability that allows unauthenticated remote attackers to perform credentialed cross-origin requests by exploiting the TUS-based viewer upload endpoint reflecting arbitrary request Origins with Access-Control-Allow-Credentials set to true. Attackers can lure authenticated victims to malicious pages that silently issue credentialed cross-origin requests to upload arbitrary files into victim datarooms and read credentialed responses.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57957">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e0ebbab078a37a829a040de0ff67c57e</td>
+       <td>CVE-2026-57956</td>
+       <td>2026-06-29 18:16:40 <img src="imgs/new.gif" /></td>
+       <td>SigNoz through 0.130.1 contains a broken access control vulnerability that allows authenticated users to access other organizations' alert rules by supplying a target rule UUID, as the alert rule store predicates fail to filter by organization ID. Attackers can read, edit, and delete alert rules belonging to other organizations by exploiting the missing tenant isolation check, bypassing multi-tenant access controls.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57956">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5cf9e217ce68da865269110c47e37495</td>
+       <td>CVE-2026-57955</td>
+       <td>2026-06-29 18:16:40 <img src="imgs/new.gif" /></td>
+       <td>SigNoz through 0.130.1 contains a SQL injection vulnerability that allows authenticated attackers to execute arbitrary ClickHouse queries by injecting URL-encoded quotes into the rule ID path parameter of the alert-history endpoints. Attackers can manipulate the unsanitized rule ID interpolated into ClickHouse queries to read all stored traces, logs, and metrics, or abuse the url() function to perform server-side request forgery.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57955">详情</a></td>
+      </tr>
+
+      <tr>
        <td>756278f85e233c178af7228d19732a8a</td>
        <td>CVE-2026-13509</td>
-       <td>2026-06-28 22:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 22:16:48</td>
        <td>A vulnerability has been found in RAGapp up to 0.1.5. Affected is the function FileHandler.upload_file/FileHandler.remove_file of the file src/ragapp/backend/controllers/files.py of the component Knowledge File Handler. Such manipulation leads to path traversal. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The pull request to fix this issue awaits acceptance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13509">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>a21deaa2ce7e669d21b5d0a5828dadd7</td>
        <td>CVE-2026-13508</td>
-       <td>2026-06-28 22:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 22:16:48</td>
        <td>A flaw has been found in khoj-ai khoj up to 2.0.0-beta.28. This impacts an unknown function of the file src/khoj/routers/api_chat.py of the component Conversation Sharing Handler. This manipulation of the argument conversation.agent causes incorrect authorization. Remote exploitation of the attack is possible. The exploit has been published and may be used. The pull request to fix this issue awaits acceptance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13508">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>95aa70920fbdd529e3d436f0bc21d597</td>
        <td>CVE-2026-13507</td>
-       <td>2026-06-28 22:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 22:16:47</td>
        <td>A vulnerability was detected in volcengine OpenViking up to 0.3.21. This affects the function str_to_uint64 of the file openviking/storage/vectordb/utils/str_to_uint64.py of the component Local VectorDB Primary-key Label Handler. The manipulation of the argument ID results in insufficient verification of data authenticity. The attack may be launched remotely. Attacks of this nature are highly complex. The exploitability is reported as difficult. The pull request to fix this issue awaits acceptance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13507">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>2e5084600c35fa751928c67e7c911454</td>
        <td>CVE-2026-49048</td>
-       <td>2026-06-28 19:16:52 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 19:16:52</td>
        <td>The Joomla extension JoomCCK exposes a front-end controller task, that builds two SQL statements by directly concatenating a user-supplied request parameter into the query string without escaping or parameterisation.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49048">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>6ebd0c7fb16bcf81e6bf1b3d361c1c81</td>
        <td>CVE-2026-13504</td>
-       <td>2026-06-28 16:16:33 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 16:16:33</td>
        <td>A vulnerability has been found in code-projects Project Management System 1.0. This vulnerability affects unknown code of the file /mail.php of the component Mail Compose Page. Such manipulation leads to cross site scripting. The attack may be performed from remote. The exploit has been disclosed to the public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13504">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>d3d6174c454b5a68cb54e10b759e76f5</td>
        <td>CVE-2026-13503</td>
-       <td>2026-06-28 16:16:32 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 16:16:32</td>
        <td>A vulnerability was detected in antlr ANTLR4 up to 4.13.2. Affected by this issue is the function getImportedVocabFile of the file tool/src/org/antlr/v4/parse/TokenVocabParser.java of the component tokenVocab Grammar Option Handler. The manipulation results in path traversal. The attack can be executed remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13503">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>0fc13e1bb42783745e3d967075c28a96</td>
        <td>CVE-2026-13502</td>
-       <td>2026-06-28 15:16:53 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 15:16:53</td>
        <td>A flaw has been found in antlr ANTLR4 up to 4.13.2. This affects the function ObjectInputStream.readObject of the file antlr4-maven-plugin/src/main/java/org/antlr/mojo/antlr4/GrammarDependencies.java of the component Maven Plugin. This manipulation causes time-of-check time-of-use. The attack is restricted to local execution. A high degree of complexity is needed for the attack. It is indicated that the exploitability is difficult. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13502">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>640b9ffdf5c43a24fb0dc8752659832c</td>
        <td>CVE-2026-13501</td>
-       <td>2026-06-28 15:16:52 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 15:16:52</td>
        <td>A security vulnerability has been detected in antlr ANTLR4 up to 4.13.2. Affected by this vulnerability is the function GoTarget of the file tool/src/org/antlr/v4/codegen/target/GoTarget.java of the component gofmt. The manipulation leads to command injection. The attack can only be performed from a local environment. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13501">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>af799acc1184248a243189d37fe87368</td>
        <td>CVE-2026-13500</td>
-       <td>2026-06-28 15:16:51 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 15:16:51</td>
        <td>A weakness has been identified in antlr ANTLR4 up to 4.13.2. Affected is an unknown function of the file tool/src/org/antlr/v4/codegen/model/OutputFile.java of the component Grammar Action Block Handler. Executing a manipulation can lead to code injection. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13500">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>dc6ff389851d66eb8a87d52a03dc4bac</td>
        <td>CVE-2026-13499</td>
-       <td>2026-06-28 14:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-06-28 14:16:28</td>
        <td>A security flaw has been discovered in yashpokharna2555 restaurent-management-system. This impacts an unknown function of the file login_register.php of the component Registration Handler. Performing a manipulation of the argument Username results in cross site scripting. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13499">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-06-27 08:16:44</td>
        <td>The Frisbii Pay plugin for WordPress is vulnerable to unauthorized modification of data due to missing capability checks on the 'upload_csv' and 'process_batch' functions in all versions up to, and including, 1.8.9. This makes it possible for authenticated attackers, with Subscriber-level access and above, to upload arbitrary CSV data and overwrite WooCommerce payment tokens, postmeta, and order meta records.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3462">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>471fcf406ef0fa30a47847813773dce7</td>
-       <td>CVE-2026-54753</td>
-       <td>2026-06-26 19:16:43</td>
-       <td>Nx is a monorepo solution for TypeScript and polyglot codebases. From 17.0.4 until 22.7.2 and 23.0.0-beta.2, the local HTTP server started by nx graph sent Access-Control-Allow-Origin: * on every response, letting any website a developer visited read the server's responses cross-origin — including the full project graph and the output of the /help endpoint, which runs a target's configured help command. The practical impact is typically cross-origin information disclosure, but can be arbitrary command injection in rare cases. This vulnerability is fixed in 22.7.2 and 23.0.0-beta.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54753">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a02c699e53e08eeaa0ba28821ffcbb88</td>
-       <td>CVE-2026-48090</td>
-       <td>2026-06-26 19:16:41</td>
-       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.37.0 until 1.37.5 and 1.38.3, the HTTP OAuth2 filter (envoy.filters.http.oauth2) can leave an in-flight async token exchange attached to a downstream stream that has already been torn down. A late AsyncClient completion can still invoke OAuth2Filter methods that use StreamDecoderFilterCallbacks after that object’s lifetime has ended, causing undefined behavior, worker crashes (availability loss), and use-after-free / invalid-vptr failures under AddressSanitizer. This is a memory-safety / lifetime issue in the data plane, not a trivial config bug. Remote code execution is not claimed here; the primary demonstrated impact is DoS via crash and UB; any further impact would be deployment- and allocator-dependent. This vulnerability is fixed in 1.37.5 and 1.38.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48090">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cfaa7b5fc7e77d4ca41617ee78cf02ae</td>
-       <td>CVE-2026-47220</td>
-       <td>2026-06-26 19:16:41</td>
-       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.37.0 until 1.37.5 and 1.38.3, when the %REQUESTED_SERVER_NAME(X:Y)% is used in log format and host related options is specified, like HOST_FIRST, SNI_FIRST, it's possible to crash Envoy when the specified host header is missing in the request headers. This vulnerability is fixed in 1.37.5 and 1.38.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47220">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c2d78cfe577b25909cff6da4562b4ae3</td>
-       <td>CVE-2026-47205</td>
-       <td>2026-06-26 19:16:40</td>
-       <td>Envoy is an open source edge and service proxy designed for cloud-native applications. From 1.36.0 until 1.36.9, 1.37.5, and 1.38.3, a Use-After-Free (UAF) vulnerability leading to a sudden segmentation fault exists in Envoy's ext_authz HTTP filter when processing per-route authorization overrides concurrently with rapid downstream client disconnects. During standard request lifecycles, Envoy instantiates the ext_authz filter with a foundational authorization client object (client_). If a matched route dictates a dynamic per-route HTTP or gRPC authorization service override, the filter generates a localized client. In the vulnerable implementation, this transient client aggressively overwrote the default client_ unique pointer by executing client_ = std::move(per_route_client). When a client rapidly establishes and subsequently tears down a stream (such as rapidly refreshing a protected WebSocket endpoint), the downstream triggers the ConnectionManagerImpl::doDeferredStreamDestroy() -> ActiveStream::onResetStream() lifecycle. Envoy immediately sequences Filter::onDestroy() in an attempt to securely abort dispatched asynchronous authorization check transactions via client_->cancel(). By destructing the default client abruptly during initiateCall, a memory lifecycle misalignment occurs within the async client manager. The stream teardown fails to reliably track and cancel the dynamically bound asynchronous authorization tasks, orchestrating a sequence where a late asynchronous callback from the network evaluates against a heavily destroyed ActiveStream validation span, generating a UAF process crash. This vulnerability is fixed in 1.36.9, 1.37.5, and 1.38.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47205">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f5e8c38f8e6cfcca8ce481c5183df7d8</td>
-       <td>CVE-2026-13372</td>
-       <td>2026-06-26 19:16:39</td>
-       <td>Incorrect link resolution by display name in the custom PowerShell VPN editor in Devolutions Remote Desktop Manager 2026.2.5 through 2026.2.11 allows an authenticated attacker with write access to a shared workspace to execute a PowerShell script in another user's context via a display name collision with an existing VPN script link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13372">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aee522d921d50a107905822f51dbec81</td>
-       <td>CVE-2026-48769</td>
-       <td>2026-06-26 19:13:18</td>
-       <td>Incus has an arbitrary file write on its client due to trusted image hash</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48769">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9d691471c6264390cf67603e8bd77ac8</td>
-       <td>CVE-2026-48758</td>
-       <td>2026-06-26 19:11:19</td>
-       <td>@sigstore/core has DSSE payloadType type-binding failure</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48758">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f6bc3a1bc04860cca98313efb32d690f</td>
-       <td>CVE-2026-48755</td>
-       <td>2026-06-26 19:03:31</td>
-       <td>Incus has an argument injection in backup compression algorithm leading to AFW and ACE</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48755">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ab72a807b22e4d4109f962cb0c0f4b6</td>
-       <td>CVE-2026-48752</td>
-       <td>2026-06-26 18:46:31</td>
-       <td>Incus has arbitrary file read+write on host via templates/ symlink in malicious image</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48752">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ec3d80b06b16356cc11f8266eb351db2</td>
-       <td>CVE-2026-48751</td>
-       <td>2026-06-26 18:33:55</td>
-       <td>Incus has a restricted project bypass leading to arbitrary command execution</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48751">详情</a></td>
       </tr>
 
      </tbody>
