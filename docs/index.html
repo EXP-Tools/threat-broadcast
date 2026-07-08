@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-07 04:00:02 -->
+<!-- RELEASE TIME : 2026-07-08 03:26:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>aafeed16d10d10837675b8a782cd27a1</td>
+       <td>CVE-2026-59707</td>
+       <td>2026-07-07 21:17:29 <img src="imgs/new.gif" /></td>
+       <td>LocalAI contains an unauthenticated server-side request forgery vulnerability in the POST /models/apply endpoint that allows attackers to fetch arbitrary internal URLs. The endpoint passes unsanitized gallery URL fields directly to gallery.GetGalleryConfigFromURLWithContext without proper validation, enabling attackers to force the server to issue HTTP GET requests to private and loopback ranges with partial response content leaked through error messages.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59707">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>45a0e981608a0e810f9d9874c2a401c9</td>
+       <td>CVE-2026-58583</td>
+       <td>2026-07-07 21:17:29 <img src="imgs/new.gif" /></td>
+       <td>FluxInk (formerly Sunia SPB Peripheral) Color Management Driver (TcnPeripheral64.sys) 1.0.7.2 allows local privilege escalation for a standard user account via arbitrary physical memory mapping at \Device\PhysicalMemory. Fixed in version 1.0.7.6. The fixed driver is currently available in the Windows 11 25H2 HLK (Hardware Lab Kit). The fixed driver may be available through Windows Update or from Lenovo directly.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58583">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fe40a4fe4ff36c5d67b5700046f9029d</td>
+       <td>CVE-2026-58473</td>
+       <td>2026-07-07 21:17:29 <img src="imgs/new.gif" /></td>
+       <td>Cognee before 1.2.0 contains an improper access control vulnerability that allows unauthenticated attackers to overwrite the global LLM provider configuration by self-registering an account and calling the settings endpoint, which performs no admin or superuser check. Attackers can redirect all LLM operations instance-wide to an attacker-controlled endpoint by exploiting the process-wide singleton configuration cache, enabling exfiltration of prompts, uploaded documents, extracted entities, and knowledge graph content from all users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58473">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5c97907d1d58f89c5d092e098a5597e7</td>
+       <td>CVE-2026-58472</td>
+       <td>2026-07-07 21:17:28 <img src="imgs/new.gif" /></td>
+       <td>GNU Wget through 1.25.0, fixed in commit dd692d9, contains a heap buffer overflow vulnerability in the html_quote_string() function in src/convert.c that allows a remote attacker to trigger memory corruption by supplying a crafted HTML attribute with a large number of characters requiring entity encoding. A server-supplied HTML attribute causes a signed integer counter to overflow during output size accumulation, resulting in an undersized heap allocation and subsequent heap buffer overflow during the copy phase.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58472">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>706da711896f4a3569e00b32f4fe5958</td>
+       <td>CVE-2026-58471</td>
+       <td>2026-07-07 21:17:28 <img src="imgs/new.gif" /></td>
+       <td>GNU Wget through 1.25.0, fixed in commit c2640fe, contains a heap buffer overflow vulnerability in the convert_fname() function within src/url.c that allows remote attackers to trigger memory corruption through a server-supplied filename requiring character set conversion. When the output buffer is too small during iconv E2BIG reallocation, the reallocation logic miscalculates the remaining space, leading to a heap buffer overflow that can be exploited via a maliciously crafted server response.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58471">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>66f8b96164730e5dd6179d844578ec5d</td>
+       <td>CVE-2026-58470</td>
+       <td>2026-07-07 21:17:28 <img src="imgs/new.gif" /></td>
+       <td>GNU Wget through 1.25.0, fixed in commit 43d3ba9, contains an integer overflow vulnerability in the parse_content_range() function within src/http.c that allows server-controlled values to cause signed integer arithmetic to overflow. Attackers can supply malicious Content-Range header values to trigger undefined behavior and download desynchronization in the affected client.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58470">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c44607ecd5c0d09df6b2a0c3e662c13f</td>
+       <td>CVE-2026-58469</td>
+       <td>2026-07-07 21:17:28 <img src="imgs/new.gif" /></td>
+       <td>GNU Wget through 1.25.0, fixed in commit 37a40fc, contains a heap buffer underread vulnerability in the clean_metalink_string() function within src/metalink.c that allows a malicious server to trigger memory corruption by serving a Metalink document containing a whitespace-only URL. Attackers can cause the function to decrement a pointer past the start of the buffer when processing an all-whitespace Metalink URL, potentially leading to abnormal program behavior.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58469">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b2d255191e5b6f84ea8584488d54fbd1</td>
+       <td>CVE-2026-57172</td>
+       <td>2026-07-07 21:17:28 <img src="imgs/new.gif" /></td>
+       <td>DataEase is an open source data visualization and analysis tool. Prior to 2.10.24, ShareSecretManage uses a hardcoded default share link signature key, allowing an attacker who can obtain a passwordless share for a resource and user to use the known key link-pwd-fit2cloud to forge linkToken JWTs, bypass TokenFilter verification, and access backend resources as the share creator even if the original share has been revoked. This issue is fixed in version 2.10.24.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57172">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6652fda996c4f5e792696d43365d09a3</td>
+       <td>CVE-2026-55647</td>
+       <td>2026-07-07 21:17:28 <img src="imgs/new.gif" /></td>
+       <td>DataEase is an open source data visualization and analysis tool. Prior to 2.10.24, dashboard text components render stored component content with Vue v-html without server-side HTML sanitization, allowing an authenticated user who can edit dashboard component data to inject HTML with executable event handlers that execute when another user or shared-link visitor views the dashboard. This issue is fixed in version 2.10.24.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55647">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b7dbe6bab1bb49f0904abe7fd7580e00</td>
+       <td>CVE-2026-55635</td>
+       <td>2026-07-07 21:17:27 <img src="imgs/new.gif" /></td>
+       <td>DataEase is an open source data visualization and analysis tool. Prior to 2.10.24, chart quota and Y-axis filters embed attacker-controlled filter values directly into generated SQL in Quota2SQLObj.getYWheres() without applying the SQL literal validation and escaping used by other filter paths, allowing an authenticated user who can create or modify chart definitions or submit chart data requests containing quota filters to inject SQL into queries executed against configured datasources. This issue is fixed in version 2.10.24.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55635">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f10b5a712c7f9e7f380493f0d7302266</td>
        <td>CVE-2026-13356</td>
        <td>2026-07-07 00:30:59 <img src="imgs/new.gif" /></td>
@@ -294,7 +374,7 @@
       <tr>
        <td>a5c7961e7c7df7d263f1aec1d6dab015</td>
        <td>CVE-2026-53646</td>
-       <td>2026-07-06 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 23:16:56</td>
        <td>FOSSBilling is a free, open-source billing and client management system. In versions 0.5.6 through 0.7.2, when a `ClientPasswordReset` record already exists for a client (from a previous unexpired reset request), subsequent calls to the `reset_password` guest API endpoint reuse the existing token instead of generating a new one. The 15-minute validity window is anchored to the first request's `created_at` timestamp, not the time of the most recent email. An attacker who obtained the original reset link remains able to use it even after the victim requests a new reset, because the original token is never invalidated or rotated. Version 0.8.0 patches the issue. Some workarounds are available. Configure a reverse proxy (e.g., Nginx, Apache, Cloudflare) to apply per-IP rate limiting to the `/client/reset-password` endpoint to minimize the window of opportunity, and/or manually clear expired `client_password_reset` records from the database after a client reports a suspected compromise.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53646">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>6f8ba5ee1cc1c0c59433be4f3c2283a7</td>
        <td>CVE-2026-53645</td>
-       <td>2026-07-06 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 23:16:56</td>
        <td>FOSSBilling is a free, open-source billing and client management system. Versions prior to 0.8.0 allow a low-privileged staff account to grant arbitrary module permissions to itself through the admin API, resulting in persistent privilege escalation. A staff user that only has `staff.create_and_edit_staff` can call `/api/admin/staff/permissions_update` targeting their own account and write any permission structure, bypassing the intended role-based access control boundary. Version 0.8.0 patches the issue. Some workarounds are available. Restrict the `staff.create_and_edit_staff` permission to only highly trusted staff members and/or use a reverse proxy or WAF to restrict access to `/api/admin/staff/permissions_update` to specific trusted roles.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53645">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>73c9c98a55826d49d071e406c1fa9a82</td>
        <td>CVE-2026-53644</td>
-       <td>2026-07-06 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 23:16:56</td>
        <td>FOSSBilling is a free, open-source billing and client management system. Versions 0.5.3 through 0.7.2 allow authenticated clients to both read and reset API key service secrets for orders that are no longer in an `active` state (e.g., `suspended`, `canceled`). The root cause is missing order-state validation in two client API endpoints, despite an `isActive()` helper already existing in the `Serviceapikey` module and the frontend UI correctly gating access on `order.status == 'active'`. Version 0.8.0 contains a fix. Some workarounds are available. If the `Serviceapikey` module is not needed, uninstall it to remove the affected endpoints. One may also use a reverse proxy or WAF to restrict access to `/api/client/order/service` and `/api/client/serviceapikey/reset` based on application-level order-state logic.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53644">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>a097305b50e59ac9e55412fca38415c8</td>
        <td>CVE-2026-53643</td>
-       <td>2026-07-06 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 23:16:56</td>
        <td>FOSSBilling is a free, open-source billing and client management system. Versions prior to 0.8.0 allow low-privileged staff accounts to perform unauthorized actions via admin API endpoints. The root cause is a combination of the `can_always_access` module flag (which grants all staff access to certain modules) and insufficient permission checks or unsafe parameter handling on individual endpoints. Version 0.8.0 contains a fix. Some workarounds are available. Restrict staff accounts to only those who need access to sensitive settings and/or use a reverse proxy or WAF to restrict access to the affected endpoints to trusted IP addresses or higher-privilege roles.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53643">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>7d4f9e152b0a5109a38a4c604c179bb0</td>
        <td>CVE-2026-53642</td>
-       <td>2026-07-06 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 23:16:56</td>
        <td>FOSSBilling is a free, open-source billing and client management system. In versions 0.5.6 through 0.7.2, when the "Require Email Confirmation" setting is enabled, a logged-in client with an unverified email address (`email_approved = 0`) can access all client-area pages (e.g. `/client/balance`, `/client/order/list`, `/client/invoice`) and read real account data, including wallet balances and transaction history. The API-side enforcement correctly restricts unverified clients to only profile-related endpoints, but the page-side enforcement is overly permissive, allowing any request whose path starts with `/client`. Version 0.8.0 contains a fix. No known workarounds that don't involve modifying the source code are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53642">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>c4ba4f5da828db61c5d5c7c4d656eef5</td>
        <td>CVE-2026-53641</td>
-       <td>2026-07-06 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 23:16:55</td>
        <td>FOSSBilling is a free, open-source billing and client management system. Versions 0.6.0 through 0.7.2 have a stored cross-site scripting (XSS) vulnerability in the client-facing email history views of FOSSBilling. Email HTML content (`content_html`) is rendered into a JavaScript template literal using the `|raw` filter, bypassing all output escaping. An attacker with admin access can inject malicious JavaScript payloads into email content that execute in the browser of any client who views their email history. Version 0.8.0 contains a fix. Some workarounds are available. Restrict admin account access, audit email content in the database for suspicious payloads, and/or monitor client accounts for unusual activity.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53641">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>1ea82e0bd697d4ebb17fbc9c2c8e1d47</td>
        <td>CVE-2026-53640</td>
-       <td>2026-07-06 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 23:16:55</td>
        <td>FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, low-privileged staff accounts may read sensitive data via admin API endpoints that lack permission checks. While sibling write endpoints correctly enforce fine-grained permissions, the corresponding read endpoints have no authorization guards. Version 0.8.0 contains a fix. Some workarounds are available. Restrict staff accounts to only those who need access to sensitive data and/or use a reverse proxy or WAF to restrict access to the affected endpoints.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53640">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>92fe9fd39f3492e1507f31f0423869b1</td>
        <td>CVE-2026-59710</td>
-       <td>2026-07-06 22:16:50 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 22:16:50</td>
        <td>showdown contains a stored cross-site scripting vulnerability in the parseHeaders function of src/subParsers/makehtml/tables.js that fails to properly escape table header ID attributes. Attackers can inject arbitrary HTML and script-executing SVG elements through double-quote characters in markdown table headers, achieving stored XSS when untrusted markdown is rendered with the default github flavor configuration.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59710">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>e3efb70045750852ad79f9706fbbd806</td>
        <td>CVE-2026-43928</td>
-       <td>2026-07-06 22:16:50 <img src="imgs/new.gif" /></td>
+       <td>2026-07-06 22:16:50</td>
        <td>FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, the PayPalEmail payment adapter accepts PayPal IPN callbacks and credits the IPN-supplied amount (`mc_gross`) to the client's balance without validating it against the invoice total. Combined with a $0.05 floating-point epsilon tolerance in the invoice credit-payment logic, this allows a client to underpay an invoice by up to $0.04 and still have it marked as fully paid. Version 0.8.0 patches the issue. There is no effective workaround without modifying the source code. Merchants using the PayPalEmail adapter should monitor IPN transactions for amounts that do not match their corresponding invoice totals, and manually review and refund suspicious payments.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-43928">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-07-05 13:16:55</td>
        <td>A vulnerability was identified in mjperpinosa stumasy up to 327d1b0f2915ba79d7ef8ebb74553e987609d9be. Impacted is the function eval of the file application/pages/imba_calculator/calculate.php. The manipulation of the argument mathematical_sentence leads to code injection. The attack is possible to be carried out remotely. The exploit is publicly available and might be used. This product adopts a rolling release strategy to maintain continuous delivery. Therefore, version details for affected or updated releases cannot be specified. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14749">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52181f28830c3c9bc25d69d325aa3b93</td>
-       <td>CVE-2026-14628</td>
-       <td>2026-07-04 13:16:30</td>
-       <td>A vulnerability was detected in NousResearch hermes-agent up to 2026.5.16. This impacts the function extract_media of the file gateway/platforms/base.py of the component Live Webhook Endpoint. Performing a manipulation results in path traversal. The attack may be initiated remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14628">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33929c03f719297855f429e97b6cdc64</td>
-       <td>CVE-2026-14627</td>
-       <td>2026-07-04 13:16:30</td>
-       <td>A security vulnerability has been detected in NousResearch hermes-agent up to 0.15.2. This affects the function DiscordAdapter._is_allowed_user of the file gateway/platforms/discord.py of the component Discord Platform Integration. Such manipulation leads to improper authentication. The attack can be launched remotely. This attack is characterized by high complexity. The exploitability is reported as difficult. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14627">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>098fcfeb8bda5da3d09eff749f5c9060</td>
-       <td>CVE-2025-13475</td>
-       <td>2026-07-04 13:16:30</td>
-       <td>In multi-tenanted deployments, the application consent management mechanism fails to correctly isolate consent scopes between tenants. Consent granted by a user for a specific SaaS application within one tenant can be incorrectly applied to SaaS applications with the same name in other tenants, leading to unintended cross-tenant consent sharing. This vulnerability may result in the exposure of user data across tenants, enabling SaaS applications in different tenants to access and modify information without explicit user authorization. This can lead to unauthorized data access and privacy violations. This vulnerability has no impact if the deployment does not support multi-tenancy.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2025-13475">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9503cedb20236d7ff9a4f82dfcf2cb3c</td>
-       <td>CVE-2026-53362</td>
-       <td>2026-07-04 12:17:02</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: ipv6: account for fraggap on the paged allocation path In __ip6_append_data(), when the paged-allocation branch is taken (MSG_MORE / NETIF_F_SG / large fraglen), alloclen and pagedlen are computed as alloclen = fragheaderlen + transhdrlen; pagedlen = datalen - transhdrlen; datalen already includes fraggap (datalen = length + fraggap). When fraggap is non-zero, this is not the first skb and transhdrlen is zero. The fraggap bytes carried over from the previous skb are copied just past the fragment headers in the new skb's linear area. The linear area is therefore undersized by fraggap bytes while pagedlen is overstated by the same amount, and the copy writes past skb->end into the trailing skb_shared_info. An unprivileged user can trigger this via a UDPv6 socket using MSG_MORE together with MSG_SPLICE_PAGES. The bad accounting was introduced by commit 773ba4fe9104 ("ipv6: avoid partial copy for zc"). Before commit ce650a166335 ("udp6: Fix __ip6_append_data()'s handling of MSG_SPLICE_PAGES"), the negative copy value caused -EINVAL to be returned. That later commit allowed MSG_SPLICE_PAGES to proceed in this case, making the corruption triggerable. The non-paged branch sets alloclen to fraglen, which already accounts for fraggap because datalen does. Bring the paged branch in line by adding fraggap to alloclen and subtracting it from pagedlen. After this adjustment, copy no longer collapses to -fraggap on the paged path, so remove the stale comment describing that old arithmetic. Since a negative copy is no longer expected for a valid MSG_SPLICE_PAGES case, remove the MSG_SPLICE_PAGES exception from the negative copy check.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53362">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>06aedaf4293262fca1d792ad014cf796</td>
-       <td>CVE-2026-53361</td>
-       <td>2026-07-04 12:17:02</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: af_unix: Set gc_in_progress to true in unix_gc(). Igor Ushakov reported that unix_gc() could run with gc_in_progress being false if the work is scheduled while running: Thread 1 Thread 2 Thread 3 -------- -------- -------- unix_schedule_gc() unix_schedule_gc() `- if (!gc_in_progress) `- if (!gc_in_progress) |- gc_in_progress = true | `- queue_work() | unix_gc() <----------------/ | | |- gc_in_progress = true ... `- queue_work() | | `- gc_in_progress = false | | unix_gc() <---------------------------------------------' | ... /* gc_in_progress == false */ | `- gc_in_progress = false unix_peek_fpl() relies on gc_in_progress not to confuse GC by MSG_PEEK. Let's set gc_in_progress to true in unix_gc().</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53361">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d02f9b1a29017432b69538e593de0e1</td>
-       <td>CVE-2026-53360</td>
-       <td>2026-07-04 12:17:01</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: KVM: SEV: Require in-GHCB scratch area if GHCB v2+ is in use As per the GHCB spec, when using GHCB v2+ require the software scratch area to reside in the GHCB's shared buffer. Note, things like Page State Change (PSC) requests _rely_ on this behavior, as the guest can't provide a length when making the request, i.e. the size of the guest payload is bounded by the size of the shared buffer. Failure to force usage of the GHCB, and a slew of other flaws, lets a malicious SNP guest corrupt host kernel heap memory, and leak host heap layout information. setup_vmgexit_scratch() allocates a buffer via kvzalloc(exit_info_2), where exit_info_2 is guest-controlled. With exit_info_2=24, this yields a 24-byte allocation in kmalloc-cg-32 (32-byte slab objects). The buffer holds an 8-byte psc_hdr followed by 8-byte psc_entry structs, so only entries[0] and entries[1] are in-bounds. snp_begin_psc() validates end_entry against VMGEXIT_PSC_MAX_COUNT (253) but NOT against the actual buffer size: idx_end = hdr->end_entry; if (idx_end >= VMGEXIT_PSC_MAX_COUNT) { // checks 253, not buffer snp_complete_psc(svm, ...); return 1; } for (idx = idx_start; idx <= idx_end; idx++) { entry_start = entries[idx]; // OOB when idx >= 2 The guest sets end_entry=10+, causing the host to iterate entries[2+] which are OOB into adjacent slab objects. For each OOB entry: - The host reads 8 bytes (OOB READ / info leak oracle) - If the data passes PSC validation, __snp_complete_one_psc() writes cur_page = 1 or 512 into the entry (OOB WRITE, sev.c:3806) - If validation fails, the error response reveals whether adjacent memory is zero vs non-zero (information disclosure to guest) The guest controls allocation size (exit_info_2), entry range (cur_entry/end_entry), and can fire unlimited VMGEXITs to repeatedly hit different slab positions. By exploiting the variety of bugs, a malicious SEV-SNP guest can: - OOB read adjacent kmalloc-cg-32 objects (heap layout disclosure) - OOB write cur_page bits into adjacent objects (heap corruption) - Trigger use-after-free conditions across VMGEXITs E.g. with KASAN enabled, a single insmod of the PoC guest module produces 73 KASAN reports: BUG: KASAN: slab-out-of-bounds in snp_begin_psc+0x126/0x890 Read of size 8 at addr ffff888219ffb5e0 by task qemu-system-x86/2199 BUG: KASAN: slab-out-of-bounds in snp_begin_psc+0x468/0x890 Write of size 8 at addr ffff888351566648 by task qemu-system-x86/2199 The buggy address belongs to the object at ffff888XXXXXXXXX which belongs to the cache kmalloc-cg-32 of size 32 The buggy address is located N bytes to the right of allocated 32-byte region [ffff888XXXXXXXXX, ffff888XXXXXXXXX) Breakdown: 62 slab-out-of-bounds (reads + writes past allocation) 7 slab-use-after-free 4 use-after-free All credit to Stan for the wonderful description and reproducer! [sean: write changelog]</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53360">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3aff12b02e5b8d8e74a4c82e1d5a660</td>
-       <td>CVE-2026-53359</td>
-       <td>2026-07-04 12:17:01</td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: KVM: x86: Fix shadow paging use-after-free due to unexpected role Commit 0cb2af2ea66ad ("KVM: x86: Fix shadow paging use-after-free due to unexpected GFN") fixed a shadow paging mismatch between stored and computed GFNs; the bug could be triggered by changing a PDE mapping from outside the guest, and then deleting a memslot. The rmap_remove() call would miss entries created after the PDE change because the GFN of the leaf SPTE does not match the GFN of the struct kvm_mmu_page. A similar hole however remains if the modified PDE points to a non-leaf page. In this case the gfn can be made to match, but the role does not match: the original large 2MB page creates a kvm_mmu_page with direct=1, while the new 4KB needs a kvm_mmu_page with direct=0. However, kvm_mmu_get_child_sp() does not compare the role, and therefore reuses the page. The next step is installing a leaf (4KB) SPTE on the new path which records an rmap entry under the gfn resolved by the walk. But when that child is zapped its parent kvm_mmu_page has direct=1 and kvm_mmu_page_get_gfn() computes the gfn for the 4KB page as sp->gfn + index instead of using sp->shadowed_translation[] (or sp->gfns[] in older kernels). It therefore fails to remove the recorded entry. When the memslot is dropped the shadow page is freed but the rmap entry survives, as in the scenario that was already fixed. Code that later walks that gfn (dirty logging, MMU notifier invalidation, and so on) dereferences an sptep that lies in the freed page, causing the use-after-free.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53359">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c2c1f1f063406d5e432f9a790bb4830</td>
-       <td>CVE-2026-14626</td>
-       <td>2026-07-04 12:16:53</td>
-       <td>A weakness has been identified in NousResearch hermes-agent up to 2026.4.30. The impacted element is the function AIAgent.run_conversation of the file run_agent.py of the component HTTP API. This manipulation of the argument todos causes denial of service. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14626">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>972b2e02079b8da3d2edbb69e4686945</td>
-       <td>CVE-2026-14625</td>
-       <td>2026-07-04 12:16:53</td>
-       <td>A security flaw has been discovered in NousResearch hermes-agent up to 0.15.2. The affected element is the function shell.exec of the file tui_gateway/server.py. The manipulation results in protection mechanism failure. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14625">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d33deed583ef21afdebf413fe369276b</td>
-       <td>CVE-2026-12196</td>
-       <td>2026-07-04 12:16:53</td>
-       <td>HestiaCP panel cronjob feature is affected by a broken access control vulnerability. Low privilege users can modify the panel cronjob to execute scripts HestiaCP management scripts with passwordless sudo. This could result in the takeover of administrator users in the application and the underlying webserver.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12196">详情</a></td>
       </tr>
 
      </tbody>
