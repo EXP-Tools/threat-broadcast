@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-09 03:53:45 -->
+<!-- RELEASE TIME : 2026-07-10 03:54:41 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a66e0a19229712f522bde40a65192dbc</td>
+       <td>CVE-2026-59858</td>
+       <td>2026-07-09 23:17:06 <img src="imgs/new.gif" /></td>
+       <td>Vim is an open source, command line text editor. Prior to 9.2.0735, the C omni-completion script in runtime/autoload/ccomplete.vim interpolates the typeref: or typename: extension field of a tags entry, without escaping, into a :vimgrep pattern that is run through :execute. Because :vimgrep honors the bar as a command separator, a crafted tag field can close the search pattern and append an arbitrary Ex command; opening a hostile .c file whose project tags file contains such an entry and invoking C omni-completion runs that command as the editing user. This issue is fixed in version 9.2.0735.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59858">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6571a3eb8671a1f423e4cd9e9b42258b</td>
+       <td>CVE-2026-59857</td>
+       <td>2026-07-09 23:17:06 <img src="imgs/new.gif" /></td>
+       <td>Vim is an open source, command line text editor. Prior to 9.2.0725, the single-byte branch of spell_soundfold_sal() in src/spell.c translates a word through a spell file's SAL sound-folding rules into a caller-owned result buffer, but its result writes are guarded with reslen < MAXWLEN, allowing reslen to reach MAXWLEN before res[reslen] = NUL writes one byte past the end of the MAXWLEN-element stack buffer. A boundary-length word passed to soundfold(), or reached via sound-based spell suggestion while a SAL-based spell language is active under a non-multibyte 8-bit encoding, can corrupt the eval_soundfold() stack frame and crash the editor. This issue is fixed in version 9.2.0725.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59857">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>69562ab52314be21552c5011f91d3ccc</td>
+       <td>CVE-2026-59856</td>
+       <td>2026-07-09 23:17:06 <img src="imgs/new.gif" /></td>
+       <td>Vim is an open source, command line text editor. Prior to 9.2.0736, the PHP omni-completion script in runtime/autoload/phpcomplete.vim interpolates a class or trait name, taken from the contents of the edited buffer, into a search() pattern that is run via win_execute() without escaping. A name containing a single quote can terminate the search() string argument early, and because the bar is honored as an Ex command separator, the remainder of the name is run as Ex commands; via the :! command this allows arbitrary operating-system command execution when a victim opens a crafted PHP file and invokes omni-completion. This issue is fixed in version 9.2.0736.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59856">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>323670e4ccd3c95b613108d9d38ef2fa</td>
+       <td>CVE-2026-59855</td>
+       <td>2026-07-09 23:17:06 <img src="imgs/new.gif" /></td>
+       <td>SiYuan is an open-source personal knowledge management system. Prior to 3.7.1, Asset.render in app/src/asset/index.ts interpolates the unsanitized this.path value into HTML assigned to innerHTML, allowing a crafted asset link containing a double quote to break out of the src attribute, inject an event handler, and execute JavaScript that can run OS commands in the Electron renderer. This issue is fixed in versions 3.7.1-alpha.2 and 3.7.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59855">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>31dff4764486c3a9a140449ca377bbf1</td>
+       <td>CVE-2026-59854</td>
+       <td>2026-07-09 23:17:06 <img src="imgs/new.gif" /></td>
+       <td>SiYuan is an open-source personal knowledge management system. Prior to 3.7.1, POST /api/file/globalCopyFiles accepts attacker-supplied absolute source paths and relies on util.IsSensitivePath in kernel/util/path.go, whose denylist misses common home-directory credential files such as .git-credentials, .netrc, .pgpass, .kube/config, .docker/config.json, and .gnupg, allowing an authenticated administrator or API-token user to copy those files into the workspace and exfiltrate them through the file API. This issue is fixed in versions 3.7.1-alpha.2 and 3.7.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59854">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f34bed396efa2f236fb89823c4bc4f46</td>
+       <td>CVE-2026-59853</td>
+       <td>2026-07-09 23:17:06 <img src="imgs/new.gif" /></td>
+       <td>SiYuan is an open-source personal knowledge management system. Prior to 3.7.1, the /api/storage/getCriteria endpoint returns saved search criteria from data/storage/criteria.json without the publish-access filtering used by sibling storage endpoints, allowing a publish-mode Reader to read private document paths, notebook, document, and block IDs, and search and replace keywords for unpublished documents. This issue is fixed in versions 3.7.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59853">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0051c4a1853c0403b8e8e4ac9e8bf34f</td>
+       <td>CVE-2026-59834</td>
+       <td>2026-07-09 23:17:05 <img src="imgs/new.gif" /></td>
+       <td>SiYuan is an open-source personal knowledge management system. Prior to 3.7.1, the block search endpoint POST /api/search/fullTextSearchBlock concatenates attacker-controlled paths values into SQL predicates used by non-SQL search modes, allowing an unauthenticated publish visitor to inject a UNION SELECT and return rows from hidden documents by projecting an allowed visible box and path. This issue is fixed in versions 3.7.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59834">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f92cb69d6e02ba36ecc1571fcc3d928d</td>
+       <td>CVE-2026-59833</td>
+       <td>2026-07-09 23:17:05 <img src="imgs/new.gif" /></td>
+       <td>SiYuan is an open-source personal knowledge management system. Prior to 3.7.1, SiYuan renders note and package content to HTML through the Lute engine with sanitization enabled, but Lute's dangerous javascript scheme block does not check form action or SVG xlink:href attributes, allowing stored cross-site scripting in document export-preview and Bazaar package README render paths that can execute OS commands in the Electron desktop renderer. This issue is fixed in versions 3.7.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59833">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d797b85186760b080b9f1c3f9b05063e</td>
+       <td>CVE-2026-59832</td>
+       <td>2026-07-09 23:17:05 <img src="imgs/new.gif" /></td>
+       <td>SiYuan is an open-source personal knowledge management system. Prior to 3.7.1, the /snippets/*filepath route handler serveSnippets in kernel/server/serve.go joins a single-decoded request path with the snippets directory without subpath containment or sensitive-path checks, allowing an authenticated request such as /snippets/%2e%2e/%2e%2e/conf/conf.json to read workspace secrets and the document database. This issue is fixed in versions 3.7.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59832">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1df8c28c7614c483320ac94eb89c0a35</td>
+       <td>CVE-2026-59831</td>
+       <td>2026-07-09 23:17:05 <img src="imgs/new.gif" /></td>
+       <td>GitHub CLI (gh) is GitHub’s official command line tool. From 2.10.0 through 2.95.0, connecting to a malicious Codespace with gh codespace jupyter can allow command execution because the command opens a JupyterLab URL supplied by a process inside the Codespace without validating that it is a loopback HTTP or HTTPS address, allowing a crafted vscode:// or vscode-insiders:// URL to be handed to VS Code. This issue is fixed in version 2.96.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59831">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e6e4d60891238087a3ef2158cff07ff9</td>
        <td>CVE-2026-59723</td>
-       <td>2026-07-08 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:56</td>
        <td>Cline is an autonomous coding agent as an SDK, IDE extension, or CLI assistant. Prior to 3.0.30, the Cline Hub dashboard server launched by the cline dashboard command accepts WebSocket connections on the /browser endpoint without validating the Origin header, and when ROOM_SECRET is unset for local 127.0.0.1 binds, isAuthorizedBrowserRequest() allows attacker-controlled websites to send desktopCommand frames that read workspace state, mutate MCP and provider settings, and trigger command execution when a provider or model is configured. This issue is fixed in version 3.0.30.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59723">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>12e980fe7cc976ffc2c207b5c5a58ed1</td>
        <td>CVE-2026-54784</td>
-       <td>2026-07-08 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:56</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. In version 1.9.0, CoreWCF SPNEGO SecurityContextToken negotiation can expose the proof key recovered from the RSTR when TransportWithMessageCredential with Windows client credentials and session establishment are used, allowing an observer to impersonate the authenticated Windows principal and decrypt or forge WS-SecureConversation traffic. This issue is fixed in version 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54784">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>bb8014666d21bf76fb0f9a5a74ecc8f5</td>
        <td>CVE-2026-54783</td>
-       <td>2026-07-08 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:56</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF WS-Security endorsing and supporting signature verification does not ensure the selected ds:Signature covers the expected Security header target, allowing an attacker with one captured signed SOAP envelope to replay arbitrary service operations as the victim principal. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54783">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>87061f3b67560d391c27f7db4c521cbe</td>
        <td>CVE-2026-54782</td>
-       <td>2026-07-08 23:16:56 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:56</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF SAML 1.1 and SAML 2.0 token validation does not correctly resolve the issuer signing key or require signed tokens when IdentityConfiguration is used with federated bindings, allowing an unauthenticated remote attacker to impersonate any principal the trusted STS could issue. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54782">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>820b9759b64d9af6080d0d12898b238a</td>
        <td>CVE-2026-54781</td>
-       <td>2026-07-08 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:55</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF SAML token validation does not enforce SubjectConfirmation method URIs or holder-of-key proof keys in SamlSecurityTokenHandler, allowing holder-of-key downgrade or custom confirmation method assertions to authenticate a subject without proving authority over the assertion. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54781">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>f3ec5a85e8526661540280027d510de9</td>
        <td>CVE-2026-54780</td>
-       <td>2026-07-08 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:55</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, the CoreWCF WS-Security 1.0 receive pipeline validates ds:SignedInfo SignatureMethod against the configured SecurityAlgorithmSuite but does not validate each ds:Reference DigestMethod, allowing a sender to use a rejected digest algorithm such as SHA-1 while the message is still accepted. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54780">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>3d74fe07b29f0bb72b7b04bb7ce9c598</td>
        <td>CVE-2026-54779</td>
-       <td>2026-07-08 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:55</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF SAML token replay protection is inoperative because DefaultTokenReplayCache.TryAdd does not reject duplicate tokens when DetectReplayedTokens is enabled, allowing a captured token to be reused. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54779">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>0fe0dbbcd34737ee9b95152b4c5557d3</td>
        <td>CVE-2026-54778</td>
-       <td>2026-07-08 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:55</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF UnixDomainSocket POSIX peer identity resolution uses non-reentrant getpwuid and getgrgid calls, allowing concurrent connections to attribute one connection's identity to another or crash the host process under contention. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54778">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>7c61979405a0765e76b2da27d08e2ce4</td>
        <td>CVE-2026-54776</td>
-       <td>2026-07-08 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:55</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, a CoreWCF service hosted on Unix Domain Sockets with PosixIdentity client credentials can accept connections that skip the application/unixposix stream upgrade before dispatching messages, bypassing framing-layer identity checks in UnixPosixIdentitySecurityUpgradeProvider. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54776">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>b7331a02a4aa70e12d9150e6d72f0a00</td>
        <td>CVE-2026-54775</td>
-       <td>2026-07-08 23:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-07-08 23:16:55</td>
        <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, a CoreWCF service listening on a Kafka topic stops processing new records from that topic when KafkaTransportPump receives a null-value tombstone record, causing a persistent endpoint denial of service for attackers with produce permission. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54775">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-07-07 21:17:27</td>
        <td>DataEase is an open source data visualization and analysis tool. Prior to 2.10.24, chart quota and Y-axis filters embed attacker-controlled filter values directly into generated SQL in Quota2SQLObj.getYWheres() without applying the SQL literal validation and escaping used by other filter paths, allowing an authenticated user who can create or modify chart definitions or submit chart data requests containing quota filters to inject SQL into queries executed against configured datasources. This issue is fixed in version 2.10.24.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55635">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f10b5a712c7f9e7f380493f0d7302266</td>
-       <td>CVE-2026-13356</td>
-       <td>2026-07-07 00:30:59</td>
-       <td>A malicious webpage could interrupt a pending navigation by enqueuing a synchronous JavaScript...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13356">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5c7961e7c7df7d263f1aec1d6dab015</td>
-       <td>CVE-2026-53646</td>
-       <td>2026-07-06 23:16:56</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. In versions 0.5.6 through 0.7.2, when a `ClientPasswordReset` record already exists for a client (from a previous unexpired reset request), subsequent calls to the `reset_password` guest API endpoint reuse the existing token instead of generating a new one. The 15-minute validity window is anchored to the first request's `created_at` timestamp, not the time of the most recent email. An attacker who obtained the original reset link remains able to use it even after the victim requests a new reset, because the original token is never invalidated or rotated. Version 0.8.0 patches the issue. Some workarounds are available. Configure a reverse proxy (e.g., Nginx, Apache, Cloudflare) to apply per-IP rate limiting to the `/client/reset-password` endpoint to minimize the window of opportunity, and/or manually clear expired `client_password_reset` records from the database after a client reports a suspected compromise.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53646">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6f8ba5ee1cc1c0c59433be4f3c2283a7</td>
-       <td>CVE-2026-53645</td>
-       <td>2026-07-06 23:16:56</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. Versions prior to 0.8.0 allow a low-privileged staff account to grant arbitrary module permissions to itself through the admin API, resulting in persistent privilege escalation. A staff user that only has `staff.create_and_edit_staff` can call `/api/admin/staff/permissions_update` targeting their own account and write any permission structure, bypassing the intended role-based access control boundary. Version 0.8.0 patches the issue. Some workarounds are available. Restrict the `staff.create_and_edit_staff` permission to only highly trusted staff members and/or use a reverse proxy or WAF to restrict access to `/api/admin/staff/permissions_update` to specific trusted roles.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53645">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>73c9c98a55826d49d071e406c1fa9a82</td>
-       <td>CVE-2026-53644</td>
-       <td>2026-07-06 23:16:56</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. Versions 0.5.3 through 0.7.2 allow authenticated clients to both read and reset API key service secrets for orders that are no longer in an `active` state (e.g., `suspended`, `canceled`). The root cause is missing order-state validation in two client API endpoints, despite an `isActive()` helper already existing in the `Serviceapikey` module and the frontend UI correctly gating access on `order.status == 'active'`. Version 0.8.0 contains a fix. Some workarounds are available. If the `Serviceapikey` module is not needed, uninstall it to remove the affected endpoints. One may also use a reverse proxy or WAF to restrict access to `/api/client/order/service` and `/api/client/serviceapikey/reset` based on application-level order-state logic.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53644">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a097305b50e59ac9e55412fca38415c8</td>
-       <td>CVE-2026-53643</td>
-       <td>2026-07-06 23:16:56</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. Versions prior to 0.8.0 allow low-privileged staff accounts to perform unauthorized actions via admin API endpoints. The root cause is a combination of the `can_always_access` module flag (which grants all staff access to certain modules) and insufficient permission checks or unsafe parameter handling on individual endpoints. Version 0.8.0 contains a fix. Some workarounds are available. Restrict staff accounts to only those who need access to sensitive settings and/or use a reverse proxy or WAF to restrict access to the affected endpoints to trusted IP addresses or higher-privilege roles.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53643">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d4f9e152b0a5109a38a4c604c179bb0</td>
-       <td>CVE-2026-53642</td>
-       <td>2026-07-06 23:16:56</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. In versions 0.5.6 through 0.7.2, when the "Require Email Confirmation" setting is enabled, a logged-in client with an unverified email address (`email_approved = 0`) can access all client-area pages (e.g. `/client/balance`, `/client/order/list`, `/client/invoice`) and read real account data, including wallet balances and transaction history. The API-side enforcement correctly restricts unverified clients to only profile-related endpoints, but the page-side enforcement is overly permissive, allowing any request whose path starts with `/client`. Version 0.8.0 contains a fix. No known workarounds that don't involve modifying the source code are available.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53642">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c4ba4f5da828db61c5d5c7c4d656eef5</td>
-       <td>CVE-2026-53641</td>
-       <td>2026-07-06 23:16:55</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. Versions 0.6.0 through 0.7.2 have a stored cross-site scripting (XSS) vulnerability in the client-facing email history views of FOSSBilling. Email HTML content (`content_html`) is rendered into a JavaScript template literal using the `|raw` filter, bypassing all output escaping. An attacker with admin access can inject malicious JavaScript payloads into email content that execute in the browser of any client who views their email history. Version 0.8.0 contains a fix. Some workarounds are available. Restrict admin account access, audit email content in the database for suspicious payloads, and/or monitor client accounts for unusual activity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53641">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1ea82e0bd697d4ebb17fbc9c2c8e1d47</td>
-       <td>CVE-2026-53640</td>
-       <td>2026-07-06 23:16:55</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, low-privileged staff accounts may read sensitive data via admin API endpoints that lack permission checks. While sibling write endpoints correctly enforce fine-grained permissions, the corresponding read endpoints have no authorization guards. Version 0.8.0 contains a fix. Some workarounds are available. Restrict staff accounts to only those who need access to sensitive data and/or use a reverse proxy or WAF to restrict access to the affected endpoints.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53640">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>92fe9fd39f3492e1507f31f0423869b1</td>
-       <td>CVE-2026-59710</td>
-       <td>2026-07-06 22:16:50</td>
-       <td>showdown contains a stored cross-site scripting vulnerability in the parseHeaders function of src/subParsers/makehtml/tables.js that fails to properly escape table header ID attributes. Attackers can inject arbitrary HTML and script-executing SVG elements through double-quote characters in markdown table headers, achieving stored XSS when untrusted markdown is rendered with the default github flavor configuration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59710">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e3efb70045750852ad79f9706fbbd806</td>
-       <td>CVE-2026-43928</td>
-       <td>2026-07-06 22:16:50</td>
-       <td>FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, the PayPalEmail payment adapter accepts PayPal IPN callbacks and credits the IPN-supplied amount (`mc_gross`) to the client's balance without validating it against the invoice total. Combined with a $0.05 floating-point epsilon tolerance in the invoice credit-payment logic, this allows a client to underpay an invoice by up to $0.04 and still have it marked as fully paid. Version 0.8.0 patches the issue. There is no effective workaround without modifying the source code. Merchants using the PayPalEmail adapter should monitor IPN transactions for amounts that do not match their corresponding invoice totals, and manually review and refund suspicious payments.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-43928">详情</a></td>
       </tr>
 
      </tbody>
