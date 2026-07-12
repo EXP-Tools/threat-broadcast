@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-11 08:06:17 -->
+<!-- RELEASE TIME : 2026-07-12 08:26:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8c2c7f44d08b2cfd8df7f3f4aeb9b1fb</td>
+       <td>CVE-2026-15472</td>
+       <td>2026-07-12 02:16:16 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was determined in Eleveo Call Recording Software 9.7.0. This vulnerability affects unknown code of the file /callrec/composeEmailAction.do. Executing a manipulation can lead to improper authorization. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15472">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>72ebafe7120fd47920ca8aa6f8dd2a3f</td>
+       <td>CVE-2026-15471</td>
+       <td>2026-07-12 02:16:14 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in Eleveo Call Recording Software 9.7.0. This affects an unknown part of the file /callrec/pci_dss_status.jsp. Performing a manipulation results in improper authorization. Remote exploitation of the attack is possible. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15471">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>028ecb58f77f621d5c52f6ea3b1a1a06</td>
+       <td>CVE-2026-15475</td>
+       <td>2026-07-12 02:15:07 <img src="imgs/new.gif" /></td>
+       <td>A weakness has been identified in MiniTool Partition Wizard up to 13.6. The affected element is an unknown function in the library pwdrvio.sys of the component Signed Kernel Driver. This manipulation causes improper access controls. The attack can only be executed locally. The exploit has been made available to the public and could be used for attacks. Upgrading to version 13.9 is sufficient to fix this issue. The affected component should be upgraded. The vendor was contacted early about this disclosure.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15475">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>204486e4b8cc6eb4f653e1086dbf69c9</td>
+       <td>CVE-2026-15474</td>
+       <td>2026-07-12 02:00:08 <img src="imgs/new.gif" /></td>
+       <td>A security flaw has been discovered in Eleveo Call Recording Software 9.7.0. Impacted is an unknown function of the file /callrec/audio.jsp of the component Call Recording Handler. The manipulation of the argument callId results in improper authorization. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15474">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2833f053a6d8b5aebffb19419a08507b</td>
+       <td>CVE-2026-15473</td>
+       <td>2026-07-12 01:30:08 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was identified in Eleveo Call Recording Software 9.7.0. This issue affects some unknown processing of the file /callrec/restoreCallAction.do of the component Recorded Calls Page. The manipulation leads to improper authorization. The attack is possible to be carried out remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15473">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5c67d7cb27c4912d1e449a1557568876</td>
+       <td>CVE-2026-15470</td>
+       <td>2026-07-12 00:16:17 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in Eleveo Call Recording Software 9.7.0. Affected by this issue is some unknown functionality of the file /callrec/group.jsp. Such manipulation leads to improper authorization. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15470">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>59a05e1435273445e55c8ccbd4924cf5</td>
+       <td>CVE-2026-58281</td>
+       <td>2026-07-11 21:16:23 <img src="imgs/new.gif" /></td>
+       <td>Deserialization of untrusted data in Microsoft Edge (Chromium-based) allows an unauthorized attacker to execute code over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58281">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a4eb92fe2c4eef67a91f038b1f712057</td>
+       <td>CVE-2026-10660</td>
+       <td>2026-07-11 17:16:23 <img src="imgs/new.gif" /></td>
+       <td>The Bluetooth BAP Broadcast Assistant GATT client in subsys/bluetooth/audio/bap_broadcast_assistant.c reassembled remote Broadcast Receive State data into a single file-static net_buf_simple (att_buf, BT_ATT_MAX_ATTRIBUTE_LEN = 512 bytes) shared by all connection instances, while the BUSY flag, long-read handle, and reset/offset state were per-connection. When the device acts as a Broadcast Assistant connected to multiple Scan Delegator peripherals, notification and long-read callbacks from different connections interleave on the shared buffer: the append in notify_handler (net_buf_simple_add_mem at the not-busy branch) performs no tailroom check, so receive-state notifications from two or more delegators accumulate on the same 512-byte buffer and, with a sufficiently large configured ATT MTU (BT_L2CAP_TX_MTU up to 2000) and two-to-three concurrent connections, write past the buffer into adjacent .bss (net_buf_simple_add only asserts in debug builds). Even below the overflow threshold, one connection's net_buf_simple_reset zeroes the shared length while another connection's reassembly and GATT read offset are in flight, mixing one peer's data into another's parse. A malicious or compromised Scan Delegator (or two colluding peers) over BLE can trigger this, causing out-of-bounds writes (memory corruption / denial of service) and cross-connection data corruption. The fix moves the buffer into the per-connection instance struct so each connection reassembles into its own buffer. Affects Zephyr releases shipping the Broadcast Assistant with the shared buffer, including v4.4.0 and earlier.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10660">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>81f86bd78fc75a40cf40ca3b9d220ab1</td>
+       <td>CVE-2026-61870</td>
+       <td>2026-07-11 14:16:24 <img src="imgs/new.gif" /></td>
+       <td>ImageMagick before 7.1.2-26 contains a memory leak vulnerability in the VIFF encoder when memory allocation fails. Attackers can trigger allocation failures by processing specially crafted VIFF images to exhaust available memory and cause denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61870">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a3aba1ec267ecae877574b5c83caede5</td>
+       <td>CVE-2026-61861</td>
+       <td>2026-07-11 14:16:24 <img src="imgs/new.gif" /></td>
+       <td>ImageMagick before 7.1.2-26 contains a use-after-free vulnerability in the FormatMagickCaption method when memory allocation fails. Attackers can trigger memory allocation failures to cause a dangling pointer to reference freed memory, potentially enabling denial of service or code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61861">详情</a></td>
+      </tr>
+
+      <tr>
        <td>8dea40540512c4e34086475141f1dcf1</td>
        <td>CVE-2026-13756</td>
        <td>2026-07-11 02:16:17 <img src="imgs/new.gif" /></td>
@@ -302,7 +382,7 @@
       <tr>
        <td>590844ade1bb6fe7301217d2b2bb6bf5</td>
        <td>CVE-2026-55175</td>
-       <td>2026-07-10 23:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:48</td>
        <td>Spinnaker is an open source, multi-cloud continuous delivery platform. Prior to versions 2026.1.1, 2026.0.3, 2025.4.4, and 2025.3.4 on their respective release lines, Kustomize bake operations allow unsafe YAML tag processing in rosco manifests. This can lead to remote code execution on rosco pods when performing Kustomize bakes. This issue is fixed in versions 2026.1.1, 2026.0.3, 2025.4.4, and 2025.3.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55175">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>0d09422cdc593c6b9faa05a6c4ddae4a</td>
        <td>CVE-2026-44383</td>
-       <td>2026-07-10 23:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:48</td>
        <td>Multiple connections to the backend using the same charging station ID are allowed, which could allow an attacker to deploy multiple instances of malicious OCPP clients to overwhelm the backend.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44383">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>6cfd10b1e4fd7b2d28611cf4b8824c72</td>
        <td>CVE-2026-42952</td>
-       <td>2026-07-10 23:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:48</td>
        <td>Previously, there was no throttling on repeated authentication attempts to the charging station backend, which could allow an attacker to execute a denial-of-service attack.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42952">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>c122a3c64a8a37a6fc908731ff2c9754</td>
        <td>CVE-2026-20744</td>
-       <td>2026-07-10 23:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:47</td>
        <td>The charging station websocket endpoint accepts connections without proper authentication, which could lead to privilege escalation.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-20744">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>a1a9c34c32568b5a3552e8b4f73187f9</td>
        <td>CVE-2026-15089</td>
-       <td>2026-07-10 23:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:47</td>
        <td>vulnerability in Drupal Commerce guest registration allows . This issue affects Commerce guest registration versions: *.*.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15089">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>512a0e19c8924da99df203e4b981cc65</td>
        <td>CVE-2026-15087</td>
-       <td>2026-07-10 23:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:47</td>
        <td>vulnerability in Drupal Clean RESTful allows . This issue affects Clean RESTful versions: *.*.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15087">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>5e258f7e0640c6f3d28765c017dc4802</td>
        <td>CVE-2026-15086</td>
-       <td>2026-07-10 23:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:47</td>
        <td>vulnerability in Drupal Raw Formatter [Meta Tag Formatter] allows . This issue affects Raw Formatter [Meta Tag Formatter] versions: *.*.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15086">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>d39af8f5d96912bfbe1237b9354ba841</td>
        <td>CVE-2026-14480</td>
-       <td>2026-07-10 23:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-07-10 23:16:47</td>
        <td>OpenPLC Runtime v3 contains an authenticated arbitrary file write vulnerability in the legacy web UI program‑upload workflow. The application stores an attacker‑supplied filename (prog_file) directly into the Programs.File database field and later uses this value as the destination path for an uploaded file without validating or restricting the path. Because Python os.path.join() honors attacker‑controlled absolute paths, an authenticated user can write arbitrary files anywhere writable by the OpenPLC webserver process. In the default build pipeline, all C++ source files within the OpenPLC runtime core directory are automatically compiled into the executable runtime binary. By writing a malicious .cpp file into this directory, an authenticated attacker can escalate the arbitrary file write into arbitrary native code execution when the operator triggers a normal program compilation and runtime start.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14480">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-07-09 23:17:05</td>
        <td>GitHub CLI (gh) is GitHub’s official command line tool. From 2.10.0 through 2.95.0, connecting to a malicious Codespace with gh codespace jupyter can allow command execution because the command opens a JupyterLab URL supplied by a process inside the Codespace without validating that it is a loopback HTTP or HTTPS address, allowing a crafted vscode:// or vscode-insiders:// URL to be handed to VS Code. This issue is fixed in version 2.96.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59831">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e6e4d60891238087a3ef2158cff07ff9</td>
-       <td>CVE-2026-59723</td>
-       <td>2026-07-08 23:16:56</td>
-       <td>Cline is an autonomous coding agent as an SDK, IDE extension, or CLI assistant. Prior to 3.0.30, the Cline Hub dashboard server launched by the cline dashboard command accepts WebSocket connections on the /browser endpoint without validating the Origin header, and when ROOM_SECRET is unset for local 127.0.0.1 binds, isAuthorizedBrowserRequest() allows attacker-controlled websites to send desktopCommand frames that read workspace state, mutate MCP and provider settings, and trigger command execution when a provider or model is configured. This issue is fixed in version 3.0.30.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59723">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12e980fe7cc976ffc2c207b5c5a58ed1</td>
-       <td>CVE-2026-54784</td>
-       <td>2026-07-08 23:16:56</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. In version 1.9.0, CoreWCF SPNEGO SecurityContextToken negotiation can expose the proof key recovered from the RSTR when TransportWithMessageCredential with Windows client credentials and session establishment are used, allowing an observer to impersonate the authenticated Windows principal and decrypt or forge WS-SecureConversation traffic. This issue is fixed in version 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54784">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb8014666d21bf76fb0f9a5a74ecc8f5</td>
-       <td>CVE-2026-54783</td>
-       <td>2026-07-08 23:16:56</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF WS-Security endorsing and supporting signature verification does not ensure the selected ds:Signature covers the expected Security header target, allowing an attacker with one captured signed SOAP envelope to replay arbitrary service operations as the victim principal. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54783">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>87061f3b67560d391c27f7db4c521cbe</td>
-       <td>CVE-2026-54782</td>
-       <td>2026-07-08 23:16:56</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF SAML 1.1 and SAML 2.0 token validation does not correctly resolve the issuer signing key or require signed tokens when IdentityConfiguration is used with federated bindings, allowing an unauthenticated remote attacker to impersonate any principal the trusted STS could issue. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54782">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>820b9759b64d9af6080d0d12898b238a</td>
-       <td>CVE-2026-54781</td>
-       <td>2026-07-08 23:16:55</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF SAML token validation does not enforce SubjectConfirmation method URIs or holder-of-key proof keys in SamlSecurityTokenHandler, allowing holder-of-key downgrade or custom confirmation method assertions to authenticate a subject without proving authority over the assertion. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54781">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3ec5a85e8526661540280027d510de9</td>
-       <td>CVE-2026-54780</td>
-       <td>2026-07-08 23:16:55</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, the CoreWCF WS-Security 1.0 receive pipeline validates ds:SignedInfo SignatureMethod against the configured SecurityAlgorithmSuite but does not validate each ds:Reference DigestMethod, allowing a sender to use a rejected digest algorithm such as SHA-1 while the message is still accepted. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54780">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d74fe07b29f0bb72b7b04bb7ce9c598</td>
-       <td>CVE-2026-54779</td>
-       <td>2026-07-08 23:16:55</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF SAML token replay protection is inoperative because DefaultTokenReplayCache.TryAdd does not reject duplicate tokens when DetectReplayedTokens is enabled, allowing a captured token to be reused. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54779">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0fe0dbbcd34737ee9b95152b4c5557d3</td>
-       <td>CVE-2026-54778</td>
-       <td>2026-07-08 23:16:55</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, CoreWCF UnixDomainSocket POSIX peer identity resolution uses non-reentrant getpwuid and getgrgid calls, allowing concurrent connections to attribute one connection's identity to another or crash the host process under contention. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54778">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7c61979405a0765e76b2da27d08e2ce4</td>
-       <td>CVE-2026-54776</td>
-       <td>2026-07-08 23:16:55</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, a CoreWCF service hosted on Unix Domain Sockets with PosixIdentity client credentials can accept connections that skip the application/unixposix stream upgrade before dispatching messages, bypassing framing-layer identity checks in UnixPosixIdentitySecurityUpgradeProvider. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54776">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b7331a02a4aa70e12d9150e6d72f0a00</td>
-       <td>CVE-2026-54775</td>
-       <td>2026-07-08 23:16:55</td>
-       <td>CoreWCF is a port of the service side of Windows Communication Foundation (WCF) to .NET Core. Prior to 1.8.1 and 1.9.1, a CoreWCF service listening on a Kafka topic stops processing new records from that topic when KafkaTransportPump receives a null-value tombstone record, causing a persistent endpoint denial of service for attackers with produce permission. This issue is fixed in versions 1.8.1 and 1.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54775">详情</a></td>
       </tr>
 
      </tbody>
