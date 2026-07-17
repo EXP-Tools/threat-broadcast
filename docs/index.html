@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-16 08:23:43 -->
+<!-- RELEASE TIME : 2026-07-17 08:19:43 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0a1bb68170f6bd400282772715d4f8d0</td>
+       <td>CVE-2026-62387</td>
+       <td>2026-07-17 02:18:12 <img src="imgs/new.gif" /></td>
+       <td>The Grav API plugin (getgrav/grav-plugin-api) before 1.0.0-rc.16 shipped Access-Control-Allow-Origin: * as its default CORS configuration on all responses, including authenticated endpoints and preflight (OPTIONS) responses. Because the plugin accepts credentials via the Authorization and X-API-Token headers (set programmatically by JavaScript rather than via cookies), an attacker who obtains a valid access token (e.g., via log leakage, Referer headers, browser history, or network capture) can issue fully authenticated cross-origin requests from any malicious website to read sensitive data and perform write operations as the token's user. Fixed in 1.0.0-rc.16.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62387">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1074b956e6c02be4ae3ea2c2878a114a</td>
+       <td>CVE-2026-62386</td>
+       <td>2026-07-17 02:18:11 <img src="imgs/new.gif" /></td>
+       <td>The Grav API plugin (getgrav/grav-plugin-api) before 1.0.0-rc.16 accepts JWT access tokens through the ?token= URL query parameter on every API route (JwtAuthenticator::extractBearerToken fallback). Because tokens are embedded in URLs, they are logged verbatim in web server access logs, leaked via the Referer header, stored in browser history, and captured by upstream proxy and CDN logs, exposing valid admin access tokens. A leaked token grants unauthorized API access, including reading configuration and user data, creating admin accounts, modifying system settings, and deleting pages.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62386">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bdb0603d1de4047630897a9b9e7aba22</td>
+       <td>CVE-2026-62241</td>
+       <td>2026-07-17 02:18:11 <img src="imgs/new.gif" /></td>
+       <td>clawvet self-hosted API server (apps/api) before 0.7.5 hard-codes a fallback JWT secret ('clawvet-dev-secret-change-me') in auth.ts and ships it as the default in .env.example. Because GET /api/v1/scans returns scan records containing userId values without authentication, a remote unauthenticated attacker can harvest a victim's userId, forge a valid HS256 cg_session cookie offline using the known secret, and call GET /api/v1/auth/me to obtain the victim's email address, subscription plan, and secret apiKey. The published clawvet npm package (CLI only) is not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62241">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>312ab8bc853d9e2a3d17a62e6454e26f</td>
+       <td>CVE-2026-62238</td>
+       <td>2026-07-17 02:18:11 <img src="imgs/new.gif" /></td>
+       <td>OpenRemote before 1.26.0 contain an authenticated SQL injection vulnerability in the datapoint crosstab export endpoint that constructs PostgreSQL queries by concatenating asset display names into raw SQL. An authenticated attacker with asset creation or rename permissions can inject SQL through the asset name parameter and receive query results in the exported CSV response, enabling database data exfiltration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62238">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cf40188e18128acfaa407df99f4cb5c1</td>
+       <td>CVE-2026-62237</td>
+       <td>2026-07-17 02:18:11 <img src="imgs/new.gif" /></td>
+       <td>Grav before 2.0.4 contains a regular expression denial of service (ReDoS) vulnerability in the regex_replace filter and function, which are allowlisted in the Twig content sandbox. When Twig processing in page content is enabled (security.twig_content.process_enabled: true, disabled by default), an authenticated page editor can supply a catastrophically backtracking PCRE pattern that is passed directly to PHP's preg_replace(), causing unbounded CPU consumption and denial of service to the web server process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62237">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e1035127156f642a2c4be2a9e74ac832</td>
+       <td>CVE-2026-62236</td>
+       <td>2026-07-17 02:18:11 <img src="imgs/new.gif" /></td>
+       <td>grav-plugin-login before 3.8.11 contains a cross-site request forgery (CSRF) vulnerability in the login.regenerate2FASecret frontend task, which regenerates and persists a new TOTP secret for the authenticated session user without any anti-CSRF nonce or Origin/Referer check. Because Grav core dispatches the task from the GET 'task:' URI parameter and the default session cookie is SameSite=Lax, an attacker can lure a logged-in victim to an off-site page that performs a top-level GET navigation, rotating the victim's TOTP secret so their enrolled authenticator no longer matches the server, effectively forcing 2FA re-enrollment. Sites configured with session.samesite: Strict are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62236">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01ddc8520f1ad8c52a3411b22a073ffd</td>
+       <td>CVE-2026-62235</td>
+       <td>2026-07-17 02:18:11 <img src="imgs/new.gif" /></td>
+       <td>Grav Flex-Objects before version 1.4.3 contains a broken access control vulnerability in the admin-next REST API that allows authenticated users with only api.access permission to perform unauthorized CRUD operations on permission-less directories. Attackers with api.access credentials can create, read, update, delete, and export objects from any directory lacking an explicit permissions configuration, bypassing intended authorization controls.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62235">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aea41a95856a724c12a3dc3c1f0fca23</td>
+       <td>CVE-2026-62234</td>
+       <td>2026-07-17 02:18:11 <img src="imgs/new.gif" /></td>
+       <td>Grav before 2.0.4 fails to restrict cURL protocols in webhook dispatch, allowing authenticated users with api.webhooks.write permission to create webhooks with file://, dict://, or gopher:// URLs. Attackers can trigger webhook events to read local files, access process information, or pivot to internal services via unrestricted protocol handlers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62234">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d196311bc9f9e76ae9b181fef37e1eda</td>
+       <td>CVE-2026-62233</td>
+       <td>2026-07-17 02:18:10 <img src="imgs/new.gif" /></td>
+       <td>grav-plugin-api before 1.0.6 fails to validate super-admin status in createApiKey, generate2fa, and disable2fa endpoints, allowing non-super api.users.write managers to escalate to super-admin. Attackers can mint API keys bound to super-admin accounts or strip 2FA from super-admin users to achieve full instance takeover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62233">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2968ae60647251fd03fedabe2f259183</td>
+       <td>CVE-2026-62232</td>
+       <td>2026-07-17 02:18:10 <img src="imgs/new.gif" /></td>
+       <td>Grav before 2.0.4 contains a two-factor authentication bypass vulnerability in the login plugin where the regenerate2FASecret task checks only user existence, not authorization, during the pending TOTP challenge window. Attackers who know the victim's password can call this task without a CSRF nonce to overwrite the 2FA secret with an attacker-chosen value, compute a valid TOTP code, and complete authentication while reducing 2FA to password-only protection.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62232">详情</a></td>
+      </tr>
+
+      <tr>
        <td>142f23b63b12145864513ea3b65aa873</td>
        <td>CVE-2026-10797</td>
        <td>2026-07-16 03:59:53 <img src="imgs/new.gif" /></td>
@@ -342,7 +422,7 @@
       <tr>
        <td>aa1f657df58a91b07d645fe130cd11cc</td>
        <td>CVE-2026-58196</td>
-       <td>2026-07-15 23:41:21 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 23:41:21</td>
        <td>ToolHive: SSRF in remote MCP server authentication discovery (host-side, bypasses container isolation)</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58196">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>771e565b29b19c222fe13053d3f118c2</td>
        <td>CVE-2026-54504</td>
-       <td>2026-07-15 23:26:57 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 23:26:57</td>
        <td>@andrea9293/mcp-documentation-server: Web UI API binds to all interfaces without authentication by default</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54504">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>1cb15a263a7455c6854ca4473497fe52</td>
        <td>CVE-2026-50289</td>
-       <td>2026-07-15 23:09:28 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 23:09:28</td>
        <td>systeminformation: OS command injection in networkInterfaces() via interfaces(5) source-directive path on Linux</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-50289">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>1cd8e5c6201424149768a490a2135edd</td>
        <td>CVE-2026-8920</td>
-       <td>2026-07-15 02:22:57 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 02:22:57</td>
        <td>Improper Restriction of Communication Channel to Intended Endpoints and External Control of File Name or Path in Aura Wallpaper Service allow a local user to perform file operations by sending crafted commands containing an arbitrary file path and bypassing the service’s path restrictions . On specific models , this can also cause a single feature to become unavailable . Refer to the ' Security Update for Aura Wallpaper Service ' section on the ASUS Security Advisory for more information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8920">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>76efafd3374ff38f69edaa0178993029</td>
        <td>CVE-2026-8919</td>
-       <td>2026-07-15 02:22:57 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 02:22:57</td>
        <td>Permissive Cross-domain Security Policy with Untrusted Domains in ASUS GameSDK allows a remote user to obtain a local user’s NTLM hash by convincing the user to visit a crafted web page that sends a request containing a UNC path to the application’s local service endpoint. This can result in information disclosure or data tampering, may cause GameSDK to become unavailable, and may also enable access to the victim’s information on other services. Refer to the ' Security Update for ASUS GameSDK ' section on the ASUS Security Advisory for more information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8919">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>e0d8b07ee75dae19e3721a125881c5f4</td>
        <td>CVE-2026-15030</td>
-       <td>2026-07-15 02:18:13 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 02:18:13</td>
        <td>Out-of-bounds Read in ASUS System Control Interface v3, ASUS System Control Interface, and ASUS Business Manager allows a local administrator to read memory regions beyond the intended firmware boundary by supplying a crafted IOCTL request that bypasses the validation. Refer to the ' Security Update for ASUS System Control Interface ' section on the ASUS Security Advisory for more information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15030">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>547632a2e1ca97ca789f05a2d6d01a66</td>
        <td>CVE-2026-15029</td>
-       <td>2026-07-15 02:18:13 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 02:18:13</td>
        <td>Untrusted Pointer Dereference in ASUS System Control Interface v3, ASUS System Control Interface, and ASUS Business Manager allows a local administrator to perform arbitrary physical memory read and write operations via crafted IOCTL requests to the driver, bypassing OS-enforced memory protections. Refer to the ' Security Update for ASUS System Control Interface ' section on the ASUS Security Advisory for more information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15029">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>6db73d78bf6c100cbba5a67ee8d288d2</td>
        <td>CVE-2026-13585</td>
-       <td>2026-07-15 02:18:12 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 02:18:12</td>
        <td>Allocation of Resources Without Limits and Throttling and Sensitive Information in Resource Not Removed Before Reuse in the ASUS System Control Interface driver and ASUS Business Manager allow a local administrator to disclose sensitive information via crafted IOCTL requests, which, in severe cases, may lead to a Denial of Service (DoS) on the system. Refer to the ' Security Update for ASUS System Control Interface ' section on the ASUS Security Advisory for more information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13585">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>646f2540de5db124c1bc93830ba1643e</td>
        <td>CVE-2026-13385</td>
-       <td>2026-07-15 02:18:12 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 02:18:12</td>
        <td>An Improper Validation of Integrity Check Value and Improper Certificate Validation in certain ASUS router models allows a remote man-in-the-middle(MITM) user to make the router download and execute arbitrary command via a spoofed server. Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13385">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>54aa2f3f77a822f16f8f330fa5d83b6b</td>
        <td>CVE-2026-11851</td>
-       <td>2026-07-15 02:18:04 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 02:18:04</td>
        <td>Improper Neutralization of Special Elements used in an SQL Command ("SQL Injection") in the web management interface of certain ASUS router models allows a remote authenticated user to disclose confidential information via a crafted request that bypasses existing input validation Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11851">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>40e683042cb33b5bb7bd060bfd2aad66</td>
        <td>CVE-2026-9770</td>
-       <td>2026-07-15 01:17:10 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 01:17:10</td>
        <td>Kasa EC71 v4 and EC70 v4 firmware contains a static cryptographic private key stored in a read-only filesystem that is shared across devices. An attacker with access to the firmware image can extract the embedded key. Successful exploitation may allow an unauthenticated attacker on the same network to use this key in the web management service, compromising the confidentiality of encrypted communications. This may enable passive decryption of traffic or active man-in-the-middle (MITM) attacks</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9770">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>5d64c37b9cae4cb9e86201997501706e</td>
        <td>CVE-2026-13230</td>
-       <td>2026-07-15 01:16:14 <img src="imgs/new.gif" /></td>
+       <td>2026-07-15 01:16:14</td>
        <td>An information disclosure vulnerability was identified in TP-Link Kasa EC70 v4 and EC71 v4 in the local discovery mechanism, which exposes sensitive geolocation information without requiring authentication. This issue allows an attacker on the same local network to retrieve geolocation-related data through crafted responses. The vulnerability impacts confidentiality only, with no evidence of integrity of availability impact.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13230">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-07-14 23:17:34</td>
        <td>An authentication bypass vulnerability exists in certain releases of Ciena Navigator Network Control Suite (NCS), Manage Control Plan (MCP), and Blue Planet products. The issue is caused by improper handling of HTTP request paths and headers, which allows an unauthenticated attacker to manipulate requests in a manner that bypasses authentication and associated audit logging controls.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5270">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ab634c55971224ab475d20bcdeeab6fd</td>
-       <td>CVE-2026-7640</td>
-       <td>2026-07-14 02:16:57</td>
-       <td>The WP Customer Area plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'type' attribute of the `customer-area-protected-content` shortcode in all versions up to, and including, 8.3.5. This is due to insufficient input sanitization and output escaping on the shortcode attribute. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7640">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a9a735a97ebc3958fd077a443b03d68e</td>
-       <td>CVE-2026-15625</td>
-       <td>2026-07-14 02:16:54</td>
-       <td>A vulnerability was found in nextlevelbuilder GoClaw 3.11.3. Affected by this issue is the function ExecApprovalManager.CheckCommand of the file internal/tools/exec_approval.go. The manipulation results in incomplete blacklist. The attack can be executed remotely. The exploit has been made public and could be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15625">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>760b62a7726628be41ccb9127a35cd0d</td>
-       <td>CVE-2026-15624</td>
-       <td>2026-07-14 02:16:54</td>
-       <td>A vulnerability has been found in nextlevelbuilder GoClaw 3.13.3-beta.3. Affected by this vulnerability is the function bytePlusDownloadVideo of the file internal/tools/create_video_byteplus.go of the component invoke Endpoint. The manipulation of the argument output.video_url leads to server-side request forgery. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15624">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6bf5dc42117d18654a1040ffb6a749b9</td>
-       <td>CVE-2026-15622</td>
-       <td>2026-07-14 02:16:54</td>
-       <td>A flaw has been found in poco-ai poco-claw up to 0.5.4. Affected is the function get_workspace_file of the file executor_manager/app/api/v1/workspace.py of the component Workspace API. Executing a manipulation of the argument user_id can lead to authorization bypass. The attack may be launched remotely. The exploit has been published and may be used. This patch is called 67fcc88505c57f77d3fcf04eb5b89425b10cbf48. Upgrading the affected component is recommended.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15622">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0851f4402bff587d844af2ef04189dad</td>
-       <td>CVE-2026-11802</td>
-       <td>2026-07-14 02:16:52</td>
-       <td>The FoodBook Lite - Online Food Ordering System plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 1.5.6. The registration() function, accessible via the wp_ajax_nopriv_registration_action AJAX action, lacks any nonce verification or capability check, and does not check the WordPress users_can_register option before calling wp_insert_user(). This makes it possible for unauthenticated attackers to create new user accounts with the 'customer' role and receive authentication cookies, even when the site administrator has explicitly disabled user registration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11802">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e66b7a7457384b7912dea64e6921ee24</td>
-       <td>CVE-2026-11390</td>
-       <td>2026-07-14 02:16:52</td>
-       <td>The News Kit Addons For Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Site Logo Title and Single Author Box Widgets in all versions up to, and including, 1.4.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires an attacker to intercept and modify the elementor_ajax AJAX save request in order to bypass the client-side SELECT control restrictions and submit arbitrary tag-name values.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11390">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>00c88c166f3fdd8b5babaecb9dbad569</td>
-       <td>CVE-2026-58233</td>
-       <td>2026-07-14 01:16:18</td>
-       <td>SAP Change and Transport System Attach Tool (ctsattach) allows an authenticated attacker to supply a specially crafted archive file which, when processed by the application�s library, can trigger insecure deserialization and lead to remote code execution (RCE) on the system. Successful exploitation requires a victim to process the malicious archive, enabling the attacker to execute the RCE and extract sensitive information and gain control over the system and its processes. This vulnerability has a high impact on confidentiality and integrity of the data, with a low impact on the availability of the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58233">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>be4761fcc58523f0f198501f0f1cdf95</td>
-       <td>CVE-2026-44771</td>
-       <td>2026-07-14 01:16:18</td>
-       <td>SAP S/4HANA Draft operation does not perform necessary authorization checks for an authenticated user, a restricted user could access information within the entity resulting in escalation of privileges. This results in low impact on confidentiality, with no impact on integrity and availability of the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44771">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>35192a3403a6d160da99288dca89629b</td>
-       <td>CVE-2026-44770</td>
-       <td>2026-07-14 01:16:18</td>
-       <td>SAP Create Single Payment does not perform necessary authorization checks for an authenticated user, a restricted user could access specific entity set keys resulting in disclosure of information. This has low impact on confidentiality, with no impact on integrity and availability of the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44770">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>89057b8a79da8553cb7bf646bcf165e1</td>
-       <td>CVE-2026-44769</td>
-       <td>2026-07-14 01:16:18</td>
-       <td>SAP S/4HANA application Project Management (PPM-PRO) allows an attacker with high privileges to execute crafted database queries, exposing the backend database. This results in low impact on confidentiality, with no impact on integrity and availability of the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44769">详情</a></td>
       </tr>
 
      </tbody>
