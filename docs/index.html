@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-17 08:19:43 -->
+<!-- RELEASE TIME : 2026-07-18 08:01:58 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>e3917f1f692935539030b9c1bae59f9c</td>
+       <td>CVE-2026-57980</td>
+       <td>2026-07-17 22:17:59 <img src="imgs/new.gif" /></td>
+       <td>Authentication bypass using an alternate path or channel in Microsoft Edge (Chromium-based) allows an unauthorized attacker to perform tampering over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57980">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b2ed110d09239faf2c05d4ed0b91ae6</td>
+       <td>CVE-2026-56741</td>
+       <td>2026-07-17 22:17:57 <img src="imgs/new.gif" /></td>
+       <td>JLine is a Java library for handling console input. Prior to 3.30.14, 4.0.16, and 4.2.1, the JLine3 Telnet server remote-telnet module does not apply an upper bound to terminal dimensions received via the Telnet NAWS option, and TelnetIO.handleNAWS() in TelnetIO.java:856-879 reads client-supplied width and height as 16-bit unsigned integers and passes values such as 65535x65535 to setTerminalGeometry(), allowing an unauthenticated remote attacker to repeatedly alternate values and trigger continuous expensive rendering work that causes CPU exhaustion and denial of service. This issue is fixed in versions 3.30.14, 4.0.16, and 4.2.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56741">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>805919d0c80109cc7bdb47ad1c758cd7</td>
+       <td>CVE-2026-56740</td>
+       <td>2026-07-17 22:17:57 <img src="imgs/new.gif" /></td>
+       <td>JLine is a Java library for handling console input. Prior to 3.30.14, 4.0.16, and 4.2.1, the JLine3 Telnet server remote-telnet module does not limit the number of environment variables a client may inject via the Telnet NEW-ENVIRON option, and TelnetIO.readNEVariables() in TelnetIO.java:1127-1180 stores each variable pair in a HashMap held by ConnectionData, allowing an unauthenticated attacker to flood unique variable pairs before the terminating IAC SE byte and exhaust JVM heap memory with an OutOfMemoryError. This issue is fixed in versions 3.30.14, 4.0.16, and 4.2.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56740">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b34afe0b8fac3875b2fcef9e2ac1e7c</td>
+       <td>CVE-2026-56171</td>
+       <td>2026-07-17 22:17:54 <img src="imgs/new.gif" /></td>
+       <td>Exposure of private personal information to an unauthorized actor in Windows RDP allows an unauthorized attacker to disclose information over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56171">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e3ea341f65fcafef4fae54941ca46b3</td>
+       <td>CVE-2026-54335</td>
+       <td>2026-07-17 22:17:44 <img src="imgs/new.gif" /></td>
+       <td>Feathersjs is a framework for creating web APIs and real-time applications with TypeScript or JavaScript. In 5.0.44 and earlier, the _.merge(target, source) utility exported by @feathersjs/commons recursively merges source into target by iterating Object.keys(source). When source was produced by JSON.parse and contains a __proto__, constructor, or prototype key, that key is returned as an own-enumerable property; the recursive merge then resolves target['__proto__'] to Object.prototype and writes attacker-supplied properties onto it, polluting the prototype for all plain objects in the process for the lifetime of the Node process. This issue is fixed in version 5.0.45.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54335">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4c2e1a97c5d1d28a4199be80b053d39a</td>
+       <td>CVE-2026-49485</td>
+       <td>2026-07-17 22:17:16 <img src="imgs/new.gif" /></td>
+       <td>HAPI FHIR is a complete implementation of the HL7 FHIR standard for healthcare interoperability in Java. Prior to 6.9.9 and 6.9.4.2, all implementations of FHIRPathEngine accept arbitrary FHIRPath expressions and evaluate them without input validation, and the FHIRPath functions matches(), matchesFull(), and replaceMatches() pass user-controlled regular expressions to Java's Pattern.compile() and String.replaceAll() through an incomplete timeout utility. An attacker can send a resource containing an evil regex pattern that causes catastrophic backtracking, exhausting CPU resources and causing denial of service in the FHIR Validator HTTP endpoint and affected org.hl7.fhir.* modules. This issue is fixed in versions 6.9.9 and 6.9.4.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49485">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>67625fd4c8e75543ee59d86745888036</td>
+       <td>CVE-2026-48049</td>
+       <td>2026-07-17 22:17:14 <img src="imgs/new.gif" /></td>
+       <td>@hapi/inert provides static file and directory handlers for hapi.js. From 4.0.0 to 7.1.0, @hapi/inert serves static files from a directory configured with path in the directory or file handlers or relativeTo for h.file(), with confinement enforced by the confine option, but the confinement check compared the resolved absolute path against the confine directory using a raw string-prefix test, so a sibling directory such as /app/static-secret next to /app/static was incorrectly accepted and could allow an unauthenticated remote attacker to read files via /..%2fstatic-secret/secret.txt. This issue is fixed in version 7.1.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48049">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e96950c4f9aa16b8dcd239d005957806</td>
+       <td>CVE-2026-48022</td>
+       <td>2026-07-17 22:17:14 <img src="imgs/new.gif" /></td>
+       <td>@hapi/wreck is an HTTP client utility. Prior to 18.1.2, Wreck strips credential headers including Authorization, Cookie, and Proxy-Authorization before following a cross-origin redirect, but the origin check compares hostnames only and ignores scheme and port, so credentials are forwarded intact across same-host port changes and HTTPS-to-HTTP downgrades, allowing a co-tenant on an adjacent port or a network-position attacker capable of forging a redirect to capture bearer tokens, session cookies, and proxy credentials and impersonate the victim against the upstream service. This issue is fixed in version 18.1.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48022">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>726e34a006350331dc49cd702c1b04d8</td>
+       <td>CVE-2026-44979</td>
+       <td>2026-07-17 22:17:12 <img src="imgs/new.gif" /></td>
+       <td>@hapi/wreck is an HTTP client utility. Prior to 18.1.1, when @hapi/wreck follows a 3xx redirect to a different hostname, only the Authorization and Cookie headers are stripped, and the standard credential header Proxy-Authorization is forwarded intact to the redirect target, potentially exposing forward-proxy credentials to a host outside the original trust boundary when redirects are enabled through the redirects option or Wreck.defaults({ redirects: ... }). This issue is fixed in version 18.1.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44979">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fe4d82f5fe2e5fa6114f76c6c82192d7</td>
+       <td>CVE-2026-54246</td>
+       <td>2026-07-17 21:46:18 <img src="imgs/new.gif" /></td>
+       <td>Skipper's routesrv-no-auth component: All routesrv API Endpoints Lack Authentication</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54246">详情</a></td>
+      </tr>
+
+      <tr>
        <td>0a1bb68170f6bd400282772715d4f8d0</td>
        <td>CVE-2026-62387</td>
        <td>2026-07-17 02:18:12 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>142f23b63b12145864513ea3b65aa873</td>
        <td>CVE-2026-10797</td>
-       <td>2026-07-16 03:59:53 <img src="imgs/new.gif" /></td>
+       <td>2026-07-16 03:59:53</td>
        <td>CVE-2026-10797 is a CVE assigned to cover a UEFI shim bootloader security feature bypass.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10797">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>e6343a86e22403753abf33a40a93a40f</td>
        <td>CVE-2026-48863</td>
-       <td>2026-07-16 01:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-07-16 01:16:30</td>
        <td>A flaw was found in libsolv. A stack-based buffer overflow vulnerability exists in the PGP verification component due to incorrect length handling when copying EdDSA 's' MPI into a stack buffer. A remote attacker could craft a malicious Ed25519 PGP signature with mismatched MPI lengths. Processing this crafted signature could lead to a denial of service in automated package or repository processing workflows.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-48863">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>7755112a2b02e354884c93634ce962e9</td>
        <td>CVE-2026-3842</td>
-       <td>2026-07-16 01:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-07-16 01:16:30</td>
        <td>A flaw was found in QEMU. This vulnerability allows a local attacker within a guest virtual machine to write data beyond its allocated memory. This occurs when cpu_physical_memory_map() returns a shorter length than expected, leading to an out-of-bounds write. Successful exploitation could result in unauthorized access to guest memory or corruption of heap-allocated objects, potentially causing information disclosure, data integrity issues, or a denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3842">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>b9ea45c1d9bc13c75a0f8de074c46b44</td>
        <td>CVE-2026-23538</td>
-       <td>2026-07-16 01:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-07-16 01:16:30</td>
        <td>A vulnerability was identified in the Feast Feature Server's `/ws/chat` endpoint that allows remote attackers to establish persistent WebSocket connections without any authentication. By opening a large number of simultaneous connections, an attacker can exhaust server resources—such as memory, CPU, and file descriptors—leading to a complete denial of service for legitimate users.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23538">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>e9733224f2d995b9286c51e054852617</td>
        <td>CVE-2026-1609</td>
-       <td>2026-07-16 01:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-07-16 01:16:30</td>
        <td>A flaw was found in Keycloak. When the JSON Web Token (JWT) authorization grant preview feature is enabled and a user account is disabled, Keycloak fails to validate the user’s disabled status during JWT authorization grant processing. A remote attacker with low privileges can exploit this improper access control vulnerability by presenting a valid assertion token from an external identity provider to obtain a JWT for a disabled user. This allows unauthorized access to sensitive resources.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-1609">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>a23d0e76c8197c044f62f3be14176960</td>
        <td>CVE-2026-15909</td>
-       <td>2026-07-16 01:16:29 <img src="imgs/new.gif" /></td>
+       <td>2026-07-16 01:16:29</td>
        <td>A vulnerability has been found in RafyMrX TOKO-ONLINE-ROTI up to ddfe1cd587be0a0b5135d8b6e85cce2ec3aece99. Affected is an unknown function of the file proses/add.php. The manipulation of the argument kd_cs leads to authorization bypass. The attack is possible to be carried out remotely. This product adopts a rolling release strategy to maintain continuous delivery. Therefore, version details for affected or updated releases cannot be specified. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15909">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>2bb0f1e2dc87dc73f8431bc6c4a2fe97</td>
        <td>CVE-2026-15907</td>
-       <td>2026-07-16 00:16:19 <img src="imgs/new.gif" /></td>
+       <td>2026-07-16 00:16:19</td>
        <td>A flaw has been found in H3C SecPath F1000-C8300 up to 20260522. This impacts an unknown function of the file /webui/?g=log_fw_nbc_mail_jsondata. Executing a manipulation of the argument subject can lead to sql injection. The attack can be executed remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure and confirmed the existence of the vulnerability. A technical fix is planned to be released.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15907">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-07-15 23:09:28</td>
        <td>systeminformation: OS command injection in networkInterfaces() via interfaces(5) source-directive path on Linux</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-50289">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1cd8e5c6201424149768a490a2135edd</td>
-       <td>CVE-2026-8920</td>
-       <td>2026-07-15 02:22:57</td>
-       <td>Improper Restriction of Communication Channel to Intended Endpoints and External Control of File Name or Path in Aura Wallpaper Service allow a local user to perform file operations by sending crafted commands containing an arbitrary file path and bypassing the service’s path restrictions . On specific models , this can also cause a single feature to become unavailable . Refer to the ' Security Update for Aura Wallpaper Service ' section on the ASUS Security Advisory for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8920">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76efafd3374ff38f69edaa0178993029</td>
-       <td>CVE-2026-8919</td>
-       <td>2026-07-15 02:22:57</td>
-       <td>Permissive Cross-domain Security Policy with Untrusted Domains in ASUS GameSDK allows a remote user to obtain a local user’s NTLM hash by convincing the user to visit a crafted web page that sends a request containing a UNC path to the application’s local service endpoint. This can result in information disclosure or data tampering, may cause GameSDK to become unavailable, and may also enable access to the victim’s information on other services. Refer to the ' Security Update for ASUS GameSDK ' section on the ASUS Security Advisory for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8919">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e0d8b07ee75dae19e3721a125881c5f4</td>
-       <td>CVE-2026-15030</td>
-       <td>2026-07-15 02:18:13</td>
-       <td>Out-of-bounds Read in ASUS System Control Interface v3, ASUS System Control Interface, and ASUS Business Manager allows a local administrator to read memory regions beyond the intended firmware boundary by supplying a crafted IOCTL request that bypasses the validation. Refer to the ' Security Update for ASUS System Control Interface ' section on the ASUS Security Advisory for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15030">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>547632a2e1ca97ca789f05a2d6d01a66</td>
-       <td>CVE-2026-15029</td>
-       <td>2026-07-15 02:18:13</td>
-       <td>Untrusted Pointer Dereference in ASUS System Control Interface v3, ASUS System Control Interface, and ASUS Business Manager allows a local administrator to perform arbitrary physical memory read and write operations via crafted IOCTL requests to the driver, bypassing OS-enforced memory protections. Refer to the ' Security Update for ASUS System Control Interface ' section on the ASUS Security Advisory for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15029">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6db73d78bf6c100cbba5a67ee8d288d2</td>
-       <td>CVE-2026-13585</td>
-       <td>2026-07-15 02:18:12</td>
-       <td>Allocation of Resources Without Limits and Throttling and Sensitive Information in Resource Not Removed Before Reuse in the ASUS System Control Interface driver and ASUS Business Manager allow a local administrator to disclose sensitive information via crafted IOCTL requests, which, in severe cases, may lead to a Denial of Service (DoS) on the system. Refer to the ' Security Update for ASUS System Control Interface ' section on the ASUS Security Advisory for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13585">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>646f2540de5db124c1bc93830ba1643e</td>
-       <td>CVE-2026-13385</td>
-       <td>2026-07-15 02:18:12</td>
-       <td>An Improper Validation of Integrity Check Value and Improper Certificate Validation in certain ASUS router models allows a remote man-in-the-middle(MITM) user to make the router download and execute arbitrary command via a spoofed server. Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13385">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>54aa2f3f77a822f16f8f330fa5d83b6b</td>
-       <td>CVE-2026-11851</td>
-       <td>2026-07-15 02:18:04</td>
-       <td>Improper Neutralization of Special Elements used in an SQL Command ("SQL Injection") in the web management interface of certain ASUS router models allows a remote authenticated user to disclose confidential information via a crafted request that bypasses existing input validation Refer to the ' Security Update for ASUS Router Firmware ' section on the ASUS Security Advisory for more information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11851">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>40e683042cb33b5bb7bd060bfd2aad66</td>
-       <td>CVE-2026-9770</td>
-       <td>2026-07-15 01:17:10</td>
-       <td>Kasa EC71 v4 and EC70 v4 firmware contains a static cryptographic private key stored in a read-only filesystem that is shared across devices. An attacker with access to the firmware image can extract the embedded key. Successful exploitation may allow an unauthenticated attacker on the same network to use this key in the web management service, compromising the confidentiality of encrypted communications. This may enable passive decryption of traffic or active man-in-the-middle (MITM) attacks</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9770">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d64c37b9cae4cb9e86201997501706e</td>
-       <td>CVE-2026-13230</td>
-       <td>2026-07-15 01:16:14</td>
-       <td>An information disclosure vulnerability was identified in TP-Link Kasa EC70 v4 and EC71 v4 in the local discovery mechanism, which exposes sensitive geolocation information without requiring authentication. This issue allows an attacker on the same local network to retrieve geolocation-related data through crafted responses. The vulnerability impacts confidentiality only, with no evidence of integrity of availability impact.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-13230">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7d8bc5bf9ae1469556b24ebb8006abcd</td>
-       <td>CVE-2026-5270</td>
-       <td>2026-07-14 23:17:34</td>
-       <td>An authentication bypass vulnerability exists in certain releases of Ciena Navigator Network Control Suite (NCS), Manage Control Plan (MCP), and Blue Planet products. The issue is caused by improper handling of HTTP request paths and headers, which allows an unauthenticated attacker to manipulate requests in a manner that bypasses authentication and associated audit logging controls.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-5270">详情</a></td>
       </tr>
 
      </tbody>
