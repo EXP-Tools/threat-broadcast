@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-19 08:27:26 -->
+<!-- RELEASE TIME : 2026-07-20 09:26:33 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f60c38a243ad09a6ba2ea86b191998a6</td>
+       <td>CVE-2026-45138</td>
+       <td>2026-07-20 00:16:58 <img src="imgs/new.gif" /></td>
+       <td>CI4MS is a CodeIgniter 4-based content management system skeleton. Prior to version 0.31.9.0, the custom `html_purify` validation rule used to sanitize blog post bodies relies on by-reference mutation (`?string &$str`), but CodeIgniter 4's validator passes a local copy of the value, so the sanitized text is silently discarded. The Blog controller writes `$lanData['content']` directly into `blog_langs.content`, and the public template echoes it without escaping — yielding stored XSS executable in any visitor's browser, including the superadmin when previewing or editing posts. Version 0.31.9.0 patches the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-45138">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>493662af4d9e7e1d289ba888cbbc5487</td>
+       <td>CVE-2026-44359</td>
+       <td>2026-07-20 00:16:58 <img src="imgs/new.gif" /></td>
+       <td>Meshtastic is an open source mesh networking solution. Prior to version 2.7.21.1370b23, the Meshtastic GitHub repository's main_matrix.yml workflow is triggered by pull_request_target and multiple jobs check out the attacker's fork code and execute it with access to repository secrets and elevated GITHUB_TOKEN permissions. No approval gate exists. Pull requests from external users with author_association: "NONE" triggered the CI workflow automatically. The workflow directly executes attacker-controlled files from the fork checkout. This issue could have resulted in supply chain compromise, self-hosted runner compromise, and/or repository takeover for the repo. This issue is separate from GHSA-6mwm-v2vv-pp96, which addressed a command injection via github.head_ref in the setup job of the same workflow. That fix correctly moved to environment variables. However, the more critical fork checkout vulnerability across the check, build, and build-debian-src jobs was not addressed. Version 2.7.21.1370b23 contains a patch for thie issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44359">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a98d02e735d5cd40bcf6515836913260</td>
+       <td>CVE-2026-42566</td>
+       <td>2026-07-20 00:16:58 <img src="imgs/new.gif" /></td>
+       <td>Meshtastic is an open source mesh networking solution. Prior to version 2.7.23.b246bcd, a single node advertising a User.long_name that contains a malformed character encoding can render other radios unusable over BLE when managed through the iOS app. The malformed name does not need to be maliciously crafted — it can arise from ordinary buffer truncation and has been observed occurring naturally in the wild. At least one code path could place a null terminator in the middle of a multibyte sequence, leaving a malformed User.long_name in the node database. The problem surfaced downstream: the iOS app enforced encoding validation and therefore cannot parse a node database once it contains a poisoned entry. This caused BLE sync to enter a fail/retry loop, resulting in loss of control over the affected device. For a typical user managing their radio with the iOS app, the device becomes effectively unusable until the poisoned node ages out of the on-device database, or unless they have an alternate management path (e.g., the Python CLI, which can be used to identify and remove the offending entries manually). Because the malformed name propagates through the mesh, the temporary presence of a single affected node can degrade BLE management for iOS users across a wide geographical area for an extended period. Less technical users have no straightforward recovery path. Starting in version 2.7.23.b246bcd, the firmware has added input sanitization and regression tests demonstrating recovery for already-poisoned devices. The apps have also taken steps to ensure more graceful handling of malformed encoding sequences as well.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42566">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>462e3763ecfd1def0df1e6387f68d776</td>
+       <td>CVE-2026-12484</td>
+       <td>2026-07-19 20:16:28 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in keras-team/keras version 3.15.0 allows unsafe deserialization of attacker-controlled PyTorch pickle data through the public `keras.layers.TorchModuleWrapper.from_config` method. This method invokes `torch.load(..., weights_only=False)` without requiring an explicit unsafe opt-in, such as a `safe_mode=False` parameter. When called outside a `SafeModeScope(True)` context, the absence of an ambient safe mode state permits unsafe deserialization by default. This issue can lead to arbitrary code execution if untrusted Keras layer configurations are processed using this method. The vulnerability arises because the method does not enforce safe deserialization practices unless explicitly guarded by Keras safe mode.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12484">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>49a53d23fa531f622028b47422d3489b</td>
+       <td>CVE-2026-64186</td>
+       <td>2026-07-19 16:18:01 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: iommu/amd: Remove latent out-of-bounds access in IOMMU debugfs In iommu_mmio_write() and iommu_capability_write(), the variables dbg_mmio_offset and dbg_cap_offset are declared as int. However, they are populated using kstrtou32_from_user(). If a user provides a sufficiently large value, it can become a negative integer. Prior to this patch, the AMD IOMMU debugfs implementation was already protected by different mechanisms. 1. #define OFS_IN_SZ 8 ensures the user string <= 8 bytes, so e.g. 0xffffffff isn't a valid input. if (cnt > OFS_IN_SZ) return -EINVAL; 2. Implicit type promotion in iommu_mmio_write(), dbg_mmio_offset is int and iommu->mmio_phys_end is u64 if (dbg_mmio_offset > iommu->mmio_phys_end - sizeof(u64)) return -EINVAL; 3. The show handlers would currently catch the negative number and refuse to perform the read. Replace kstrtou32_from_user() with kstrtos32_from_user() to parse the input, and check for negative values to explicitly prevent out-of-bounds memory accesses directly in iommu_mmio_write() and iommu_capability_write().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64186">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d1eedd238bd31e766f6c910bd96397a</td>
+       <td>CVE-2026-64185</td>
+       <td>2026-07-19 16:18:00 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: sysfs: don't remove existing directory on update failure When sysfs_update_group() is called for a named group and create_files() fails (e.g. -ENOMEM), internal_create_group() calls kernfs_remove(kn) on the group directory. In the update path, kn was obtained via kernfs_find_and_get() and refers to a directory that already existed before this call. Removing it silently destroys a sysfs group that the caller did not create. Only remove the directory if we created it ourselves. On update failure the directory remains as it is left empty by remove_files() inside create_files(), but can be repopulated by a retry.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64185">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5f69363b3ce47e1f521bbf8eb4ec9c7e</td>
+       <td>CVE-2026-64184</td>
+       <td>2026-07-19 16:18:00 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm/damon/sysfs-schemes: call missing mem_cgroup_iter_break() damon_sysfs_memcg_path_to_id() breaks mem_cgroup_iter() loop without calling mem_cgroup_iter_break(). This leaks the cgroup reference. Fix the issue by calling mem_cgroup_iter_break() before the break. The issue was discovered [1] by Sashiko.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64184">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f144367f6a0eb6e3a4ab9688c1254610</td>
+       <td>CVE-2026-64183</td>
+       <td>2026-07-19 16:18:00 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: efi: Allocate runtime workqueue before ACPI init Since commit 5894cf571e14 ("acpi/prmt: Use EFI runtime sandbox to invoke PRM handlers") ACPI PRM calls are delegated to a workqueue which runs in a kernel thread, making it easier to detect and mitigate faulting memory accesses performed by the firmware. Rafael reports that such PRM accesses may occur before efisubsys_init() executes, which is where the workqueue is allocated, leading to NULL pointer dereferences. Since acpi_init() [which triggers the early PRM accesses] executes as a subsys_initcall() as well, and has its own dependencies that may be sensitive to initcall ordering, deferring acpi_init() is not an option. So instead, split off the workqueue allocation into its own postcore initcall, as this is the only missing piece to allow EFI runtime calls to be made. This ensures that EFI runtime call (including PRM calls) are accessible to all code running at subsys_initcall() level.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64183">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>378f5eb87d54c820185be9295a800d73</td>
+       <td>CVE-2026-64182</td>
+       <td>2026-07-19 16:18:00 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: drivers/base/memory: fix memory block reference leak in poison accounting memblk_nr_poison_inc() and memblk_nr_poison_sub() look up a memory block via find_memory_block_by_id(), which acquires a reference to the memory block device. Both helpers use the returned memory block without dropping that reference, leaking the device reference on each successful lookup. Drop the reference after updating nr_hwpoison.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64182">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>07993e974811a2920b0fb73f99fd3cab</td>
+       <td>CVE-2026-64181</td>
+       <td>2026-07-19 16:18:00 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm: fix __vm_normal_page() to handle missing support for pmd_special()/pud_special() On x86 32-bit with THP enabled, zap_huge_pmd() is seen to generate a "WARNING: mm/memory.c:735 at __vm_normal_page+0x6a/0x7d", from the VM_WARN_ON_ONCE(is_zero_pfn(pfn) || is_huge_zero_pfn(pfn)); followed by "BUG: Bad rss-counter state"s, then later "BUG: Bad page state"s when reclaim gets to call shrink_huge_zero_folio_scan(). It's as if the _PAGE_SPECIAL bit never got set in the huge_zero pmd: and indeed, whereas pte_special() and pte_mkspecial() are subject to a dedicated CONFIG_ARCH_HAS_PTE_SPECIAL, pmd_special() and pmd_mkspecial() are subject to CONFIG_ARCH_SUPPORTS_PMD_PFNMAP, which is never enabled on any 32-bit architecture. While the problem was exposed through commit d80a9cb1a64a ("mm/huge_memory: add and use normal_or_softleaf_folio_pmd()"), it was an oversight in commit af38538801c6 ("mm/memory: factor out common code from vm_normal_page_*()") and would result in other problems: * huge zero folio accounted in smaps, pagemap (PAGE_IS_FILE) and numamaps as file-backed THP * folio_walk_start() returning the folio even without FW_ZEROPAGE set. Callers seem to tolerate that, though. ... and triggering the VM_WARN_ON_ONE(), although never reported so far. To fix it, teach vm_normal_page_pmd()/vm_normal_page_pud() to consider whether pmd_special/pud_special is actually implemented.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64181">详情</a></td>
+      </tr>
+
+      <tr>
        <td>acb1b546f35d532e1bedb8773bc7ada0</td>
        <td>CVE-2026-16218</td>
        <td>2026-07-19 06:30:25 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-07-17 21:46:18</td>
        <td>Skipper's routesrv-no-auth component: All routesrv API Endpoints Lack Authentication</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54246">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0a1bb68170f6bd400282772715d4f8d0</td>
-       <td>CVE-2026-62387</td>
-       <td>2026-07-17 02:18:12</td>
-       <td>The Grav API plugin (getgrav/grav-plugin-api) before 1.0.0-rc.16 shipped Access-Control-Allow-Origin: * as its default CORS configuration on all responses, including authenticated endpoints and preflight (OPTIONS) responses. Because the plugin accepts credentials via the Authorization and X-API-Token headers (set programmatically by JavaScript rather than via cookies), an attacker who obtains a valid access token (e.g., via log leakage, Referer headers, browser history, or network capture) can issue fully authenticated cross-origin requests from any malicious website to read sensitive data and perform write operations as the token's user. Fixed in 1.0.0-rc.16.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62387">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1074b956e6c02be4ae3ea2c2878a114a</td>
-       <td>CVE-2026-62386</td>
-       <td>2026-07-17 02:18:11</td>
-       <td>The Grav API plugin (getgrav/grav-plugin-api) before 1.0.0-rc.16 accepts JWT access tokens through the ?token= URL query parameter on every API route (JwtAuthenticator::extractBearerToken fallback). Because tokens are embedded in URLs, they are logged verbatim in web server access logs, leaked via the Referer header, stored in browser history, and captured by upstream proxy and CDN logs, exposing valid admin access tokens. A leaked token grants unauthorized API access, including reading configuration and user data, creating admin accounts, modifying system settings, and deleting pages.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62386">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bdb0603d1de4047630897a9b9e7aba22</td>
-       <td>CVE-2026-62241</td>
-       <td>2026-07-17 02:18:11</td>
-       <td>clawvet self-hosted API server (apps/api) before 0.7.5 hard-codes a fallback JWT secret ('clawvet-dev-secret-change-me') in auth.ts and ships it as the default in .env.example. Because GET /api/v1/scans returns scan records containing userId values without authentication, a remote unauthenticated attacker can harvest a victim's userId, forge a valid HS256 cg_session cookie offline using the known secret, and call GET /api/v1/auth/me to obtain the victim's email address, subscription plan, and secret apiKey. The published clawvet npm package (CLI only) is not affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62241">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>312ab8bc853d9e2a3d17a62e6454e26f</td>
-       <td>CVE-2026-62238</td>
-       <td>2026-07-17 02:18:11</td>
-       <td>OpenRemote before 1.26.0 contain an authenticated SQL injection vulnerability in the datapoint crosstab export endpoint that constructs PostgreSQL queries by concatenating asset display names into raw SQL. An authenticated attacker with asset creation or rename permissions can inject SQL through the asset name parameter and receive query results in the exported CSV response, enabling database data exfiltration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62238">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cf40188e18128acfaa407df99f4cb5c1</td>
-       <td>CVE-2026-62237</td>
-       <td>2026-07-17 02:18:11</td>
-       <td>Grav before 2.0.4 contains a regular expression denial of service (ReDoS) vulnerability in the regex_replace filter and function, which are allowlisted in the Twig content sandbox. When Twig processing in page content is enabled (security.twig_content.process_enabled: true, disabled by default), an authenticated page editor can supply a catastrophically backtracking PCRE pattern that is passed directly to PHP's preg_replace(), causing unbounded CPU consumption and denial of service to the web server process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62237">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e1035127156f642a2c4be2a9e74ac832</td>
-       <td>CVE-2026-62236</td>
-       <td>2026-07-17 02:18:11</td>
-       <td>grav-plugin-login before 3.8.11 contains a cross-site request forgery (CSRF) vulnerability in the login.regenerate2FASecret frontend task, which regenerates and persists a new TOTP secret for the authenticated session user without any anti-CSRF nonce or Origin/Referer check. Because Grav core dispatches the task from the GET 'task:' URI parameter and the default session cookie is SameSite=Lax, an attacker can lure a logged-in victim to an off-site page that performs a top-level GET navigation, rotating the victim's TOTP secret so their enrolled authenticator no longer matches the server, effectively forcing 2FA re-enrollment. Sites configured with session.samesite: Strict are not affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62236">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>01ddc8520f1ad8c52a3411b22a073ffd</td>
-       <td>CVE-2026-62235</td>
-       <td>2026-07-17 02:18:11</td>
-       <td>Grav Flex-Objects before version 1.4.3 contains a broken access control vulnerability in the admin-next REST API that allows authenticated users with only api.access permission to perform unauthorized CRUD operations on permission-less directories. Attackers with api.access credentials can create, read, update, delete, and export objects from any directory lacking an explicit permissions configuration, bypassing intended authorization controls.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62235">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aea41a95856a724c12a3dc3c1f0fca23</td>
-       <td>CVE-2026-62234</td>
-       <td>2026-07-17 02:18:11</td>
-       <td>Grav before 2.0.4 fails to restrict cURL protocols in webhook dispatch, allowing authenticated users with api.webhooks.write permission to create webhooks with file://, dict://, or gopher:// URLs. Attackers can trigger webhook events to read local files, access process information, or pivot to internal services via unrestricted protocol handlers.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62234">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d196311bc9f9e76ae9b181fef37e1eda</td>
-       <td>CVE-2026-62233</td>
-       <td>2026-07-17 02:18:10</td>
-       <td>grav-plugin-api before 1.0.6 fails to validate super-admin status in createApiKey, generate2fa, and disable2fa endpoints, allowing non-super api.users.write managers to escalate to super-admin. Attackers can mint API keys bound to super-admin accounts or strip 2FA from super-admin users to achieve full instance takeover.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62233">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2968ae60647251fd03fedabe2f259183</td>
-       <td>CVE-2026-62232</td>
-       <td>2026-07-17 02:18:10</td>
-       <td>Grav before 2.0.4 contains a two-factor authentication bypass vulnerability in the login plugin where the regenerate2FASecret task checks only user existence, not authorization, during the pending TOTP challenge window. Attackers who know the victim's password can call this task without a CSRF nonce to overwrite the 2FA secret with an attacker-chosen value, compute a valid TOTP code, and complete authentication while reducing 2FA to password-only protection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62232">详情</a></td>
       </tr>
 
      </tbody>
