@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-25 10:38:10 -->
+<!-- RELEASE TIME : 2026-07-26 10:47:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c52dc27014f644def9a5578cb3c37e8d</td>
+       <td>CVE-2026-64530</td>
+       <td>2026-07-26 07:16:41 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net/sched: cls_api: Handle TC_ACT_CONSUMED in tcf_qevent_handle tcf_classify() can return TC_ACT_CONSUMED while the skb is held by the defragmentation engine (e.g. act_ct on out-of-order fragments). When that happens the skb is no longer owned by the caller and must not be touched again. tcf_qevent_handle() did not handle TC_ACT_CONSUMED: it fell through the switch and returned the skb to the caller as if classification had passed. The only qdisc that wires up qevents today is RED, via three call sites (qe_mark on RED_PROB_MARK/HARD_MARK, qe_early_drop on congestion_drop) red_enqueue() was continuing to operate on an skb it no longer owns in this case -- enqueueing it, dropping it, or updating statistics. Resulting in a UAF. tc qdisc add dev eth0 root handle 1: red ... qevent early_drop block 10 tc filter add block 10 ... action ct (with ct defrag enabled and traffic that produces out-of-order fragments, e.g. a fragmented UDP stream) Handle TC_ACT_CONSUMED in tcf_qevent_handle() the same way the ingress and egress fast paths do: treat it as stolen and return NULL without touching the skb. Unlike the TC_ACT_STOLEN case, the skb must not be dropped/freed here, as it is no longer owned by us.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64530">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c122920bcbc9f6b535afb3135c0cfd1b</td>
+       <td>CVE-2024-14040</td>
+       <td>2026-07-26 07:16:39 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: nexthop: Increase weight to u16 In CLOS networks, as link failures occur at various points in the network, ECMP weights of the involved nodes are adjusted to compensate. With high fan-out of the involved nodes, and overall high number of nodes, a (non-)ECMP weight ratio that we would like to configure does not fit into 8 bits. Instead of, say, 255:254, we might like to configure something like 1000:999. For these deployments, the 8-bit weight may not be enough. To that end, in this patch increase the next hop weight from u8 to u16. Increasing the width of an integral type can be tricky, because while the code still compiles, the types may not check out anymore, and numerical errors come up. To prevent this, the conversion was done in two steps. First the type was changed from u8 to a single-member structure, which invalidated all uses of the field. This allowed going through them one by one and audit for type correctness. Then the structure was replaced with a vanilla u16 again. This should ensure that no place was missed. The UAPI for configuring nexthop group members is that an attribute NHA_GROUP carries an array of struct nexthop_grp entries: struct nexthop_grp { __u32 id; /* nexthop id - must exist */ __u8 weight; /* weight of this nexthop */ __u8 resvd1; __u16 resvd2; }; The field resvd1 is currently validated and required to be zero. We can lift this requirement and carry high-order bits of the weight in the reserved field: struct nexthop_grp { __u32 id; /* nexthop id - must exist */ __u8 weight; /* weight of this nexthop */ __u8 weight_high; __u16 resvd2; }; Keeping the fields split this way was chosen in case an existing userspace makes assumptions about the width of the weight field, and to sidestep any endianness issues. The weight field is currently encoded as the weight value minus one, because weight of 0 is invalid. This same trick is impossible for the new weight_high field, because zero must mean actual zero. With this in place: - Old userspace is guaranteed to carry weight_high of 0, therefore configuring 8-bit weights as appropriate. When dumping nexthops with 16-bit weight, it would only show the lower 8 bits. But configuring such nexthops implies existence of userspace aware of the extension in the first place. - New userspace talking to an old kernel will work as long as it only attempts to configure 8-bit weights, where the high-order bits are zero. Old kernel will bounce attempts at configuring >8-bit weights. Renaming reserved fields as they are allocated for some purpose is commonly done in Linux. Whoever touches a reserved field is doing so at their own risk. nexthop_grp::resvd1 in particular is currently used by at least strace, however they carry an own copy of UAPI headers, and the conversion should be trivial. A helper is provided for decoding the weight out of the two fields. Forcing a conversion seems preferable to bending backwards and introducing anonymous unions or whatever.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-14040">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e16f24833c64ff16805e0cd2b2fec44</td>
+       <td>CVE-2026-63720</td>
+       <td>2026-07-26 05:16:23 <img src="imgs/new.gif" /></td>
+       <td>datamodel-code-generator prior to version 0.70.0 contains a code injection vulnerability that allows attackers who control input schemas to achieve remote code execution by supplying a malicious customBasePath value containing embedded newlines and a dot-free Python expression. The crafted value is emitted verbatim into a generated 'from ... import ...' statement without identifier validation, causing arbitrary Python code to execute when the generated module is imported.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63720">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>73f7631aefaabe87b2acb7209181e0d1</td>
+       <td>CVE-2026-17434</td>
+       <td>2026-07-26 04:16:46 <img src="imgs/new.gif" /></td>
+       <td>A flaw has been found in nanocoai NanoClaw up to 2.0.64. Affected is the function handleAddMcpServer of the file src/modules/self-mod/request.ts of the component add_mcp_server. Executing a manipulation can lead to improper authorization. The attack may be launched remotely. The exploit has been published and may be used. This patch is called e5b928783d5c485637565eb07d2967922dfbf8d8. A patch should be applied to remediate this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17434">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fab102799dd16b48912d45a08b82e7a5</td>
+       <td>CVE-2026-17433</td>
+       <td>2026-07-26 03:16:32 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in nanocoai NanoClaw up to 2.0.64. This impacts the function createChatSdkBridge.setup of the file src/channels/chat-sdk-bridge.ts of the component MCP Server Approval. Performing a manipulation results in improper authorization. The attack needs to be approached locally. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17433">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4dbf82e3312b419a798b2da9c6a8b8d7</td>
+       <td>CVE-2026-15962</td>
+       <td>2026-07-26 02:16:28 <img src="imgs/new.gif" /></td>
+       <td>The Fluent Forms Pro Add On Pack plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 6.2.6 via deserialization of untrusted input. This makes it possible for authenticated attackers, with Subscriber-level access and above, to inject a PHP Object. The additional presence of a POP chain allows attackers to change user passwords and potentially take over administrator accounts. Note: This can only be exploited if user update integration is enabled and a user meta field is mapped.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15962">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c72b2fb8c12f7ac83dc496babd84e3bb</td>
+       <td>CVE-2026-17432</td>
+       <td>2026-07-26 01:16:25 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in NousResearch hermes-agent 2026.6.5. Affected by this vulnerability is an unknown functionality of the file hermes-agent/plugins/platforms/simplex/adapter.py of the component SimpleX Gateway Authorization. The manipulation of the argument contactId results in improper access controls. The attack may be launched remotely. A high complexity level is associated with this attack. The exploitation appears to be difficult. The exploit is now public and may be used. The patch is identified as 490c486ff65b766d9de0fe0e6f26e1778aaa8fb3. Applying a patch is advised to resolve this issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17432">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>26b7c3f4815c72da6e0380452de1fa9e</td>
+       <td>CVE-2026-10681</td>
+       <td>2026-07-25 14:16:28 <img src="imgs/new.gif" /></td>
+       <td>In Zephyr's userspace dynamic-objects subsystem, thread_idx_alloc() in kernel/userspace/userspace.c allocated a new thread permission index from the global _thread_idx_map[] bitmap without holding lists_lock. On SMP systems, two user-mode threads invoking the k_object_alloc(K_OBJ_THREAD) syscall concurrently can both observe the same low free bit, perform the same non-atomic RMW to clear it, and return the identical tidx. The two newly created K_OBJ_THREAD objects are then assigned the same thread_id, so the two user threads alias a single bit position in every kernel object's perms[] bitfield: any subsequent grant of access on a kernel object to one thread is implicitly a grant to the other, defeating userspace ACL isolation. A secondary lost-update window between the unlocked &=~BIT() in alloc and the locked |= BIT() in thread_idx_free() can also leak entries from the thread-index pool. The defect is reachable from any user-mode thread via the unrestricted __syscall k_object_alloc and is gated on CONFIG_USERSPACE, CONFIG_DYNAMIC_OBJECTS, and CONFIG_SMP. The flaw was introduced when the per-thread permission index was added in 2018 and is present in every release up to and including v4.4.0. Fixed by holding lists_lock across the bitmap RMW and the permissions clear (and inlining the obj_list traversal that previously took the lock itself).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10681">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aefbb78bdf3edbe882cc5cb0e491b4de</td>
+       <td>CVE-2026-66013</td>
+       <td>2026-07-25 11:17:19 <img src="imgs/new.gif" /></td>
+       <td>OpenRemote before 1.26.2 contains an authentication bypass vulnerability in the console registration API that allows unauthenticated attackers to update existing console assets by supplying a known asset identifier. Attackers can overwrite push notification tokens and console metadata without authentication or ownership validation, redirecting notifications or denying delivery to legitimate consoles.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66013">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>706c7d5c2e5d8ef5a9576cadb7663184</td>
+       <td>CVE-2026-66012</td>
+       <td>2026-07-25 11:17:19 <img src="imgs/new.gif" /></td>
+       <td>SiYuan before v3.7.2 contains a missing authorization vulnerability in the POST /mcp kernel endpoint, which is gated only by a general auth check (model.CheckAuth) with no admin-role or read-only enforcement. This exposes 31 MCP tools, including a file tool with list/read/write/delete/rename/copy actions across the entire workspace. When the Publish server is enabled in anonymous mode (Conf.Publish.Enable=true and Conf.Publish.Auth.Enable=false), the Publish reverse proxy attaches an anonymous RoleReader JWT to proxied requests, allowing a remote unauthenticated attacker to reach /mcp. The attacker can read conf/conf.json to extract accessAuthCode, api.token, and cookieKey in plaintext, write arbitrary files in the workspace, and plant a plugin into data/plugins/ that executes with nodeIntegration:true and no contextIsolation on the next desktop launch, leading to administrator takeover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66012">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6935c30a518c7e27c33aa1b7e74bc53c</td>
        <td>CVE-2026-66374</td>
        <td>2026-07-25 01:16:26 <img src="imgs/new.gif" /></td>
@@ -302,7 +382,7 @@
       <tr>
        <td>7217a1396646b5f9889b42bff1526eb1</td>
        <td>CVE-2026-66339</td>
-       <td>2026-07-24 23:16:52 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:52</td>
        <td>A flaw was found in libsoup. After a CONNECT tunnel is established through an HTTP proxy, libsoup incorrectly attaches the Proxy-Authorization header to subsequent HTTPS requests sent through that tunnel to the destination server. This allows the destination server to capture proxy credentials, leading to information disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66339">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>555d270fd4e6282ce7d75662869f3926</td>
        <td>CVE-2026-66338</td>
-       <td>2026-07-24 23:16:52 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:52</td>
        <td>A flaw was found in libsoup. The chunked transfer encoding parser uses a permissive parsing function for chunk sizes that silently accepts inputs violating RFC 9112, including leading whitespace, plus sign prefixes, and trailing invalid characters. When libsoup operates behind a strict frontend proxy, this parsing differential can be exploited to smuggle HTTP requests.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66338">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>9b83b0bd03aade6e37783876b534aa6d</td>
        <td>CVE-2026-66337</td>
-       <td>2026-07-24 23:16:51 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:51</td>
        <td>A flaw was found in libsoup. An unsigned integer underflow in the soup_filter_input_stream_read_until() function causes a heap buffer over-read when parsing multipart HTTP responses. A malicious HTTP server can exploit this by sending a crafted multipart response, potentially causing the client application to crash or disclose sensitive heap memory.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66337">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>32230c1318b80a30cbff27c6073997fd</td>
        <td>CVE-2026-61892</td>
-       <td>2026-07-24 23:16:51 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:51</td>
        <td>Weintek cMT3092X HMI allows a non-privileged user to modify tokens to escalate privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61892">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>961f49a5d5b74341c81d671e8a916a96</td>
        <td>CVE-2026-61886</td>
-       <td>2026-07-24 23:16:51 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:51</td>
        <td>Weintek cMT3092X HMI stores user account passwords in plaintext.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61886">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>20f706edcdbb1c4b45b7a9da5350f193</td>
        <td>CVE-2026-60135</td>
-       <td>2026-07-24 23:16:51 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:51</td>
        <td>An attacker can modify data that should be restricted to read‑only access.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-60135">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>9728bb5c2e287c0d5a21828d7be8bb3d</td>
        <td>CVE-2026-60134</td>
-       <td>2026-07-24 23:16:50 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:50</td>
        <td>Weintek cMT3092X HMI allows a non-privileged user to modify cookies to gain elevated privileges.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-60134">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>5958059db0ba387ccbf01249d124f40d</td>
        <td>CVE-2026-16280</td>
-       <td>2026-07-24 23:16:50 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 23:16:50</td>
        <td>An integer overflow when calculating physical offsets for sparse PMRs may result in 32-bit truncation of address computations for PMRs larger than 4 GB. This can lead to incorrect GPU MMU mappings and may allow a non-privileged user to trigger access to unintended physical memory, resulting in memory corruption or information disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16280">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>306d9cf628a57170c345009a8e1704f7</td>
        <td>CVE-2026-16910</td>
-       <td>2026-07-24 08:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:26</td>
        <td>A flaw was found in Red Hat Quay's notification webhook feature. The Slack and generic webhook notification handlers accept user-supplied URLs without SSRF validation, allowing a repository administrator to make the Quay worker issue POST requests to internal network addresses or cloud infrastructure endpoints that should not be reachable from the application.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16910">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>f35238f4ef12d8652bf5d74b7e8b49dc</td>
        <td>CVE-2026-16519</td>
-       <td>2026-07-24 08:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:26</td>
        <td>A DLL hijacking vulnerability exists in the GeoVision GV-IP Device Utility desktop application. The application loads one or more dynamic-link libraries (DLLs) from an unsafe search path, allowing a local attacker to place a malicious DLL in a location searched before the legitimate library location.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16519">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>fd4785577f28e86a8d99c34c45f16bec</td>
        <td>CVE-2026-15755</td>
-       <td>2026-07-24 08:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:26</td>
        <td>The Open User Map – Interactive Leaflet Maps plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Shortcode Attributes in all versions up to, and including, 1.4.45 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The attack does not require post publication; a Contributor submitting a post for pending review is sufficient, as the payload executes when an Administrator opens the pending-review preview.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15755">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>6f9d67147422dbb01718de6fb1672d58</td>
        <td>CVE-2026-15665</td>
-       <td>2026-07-24 08:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:26</td>
        <td>The Fluent Support – Helpdesk & Customer Support Ticket System plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'redirect-to' Shortcode Attribute in all versions up to, and including, 2.3.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The XSS payload is in a hidden attribute so it only fires in specific browsers when specific access keys are used making exploitation unlikely.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15665">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>3b2b03cf930315f7c23dc61263c5ab49</td>
        <td>CVE-2026-15653</td>
-       <td>2026-07-24 08:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:26</td>
        <td>The Visualizer – Tables & Charts Manager with Built-in AI Generator plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'backend-title' parameter in all versions up to, and including, 4.0.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15653">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>25596e343863785b414e9614480481a8</td>
        <td>CVE-2026-15648</td>
-       <td>2026-07-24 08:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:26</td>
        <td>The Brands for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'width' Shortcode Attribute in all versions up to, and including, 3.8.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15648">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>fe6285476b9f71a71724bdc95021f436</td>
        <td>CVE-2026-15464</td>
-       <td>2026-07-24 08:16:26 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:26</td>
        <td>The WP Hotel Booking plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'widget_search' Shortcode Attribute in all versions up to, and including, 2.3.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is only exploitable on browsers where access keys can be used as the payload is stored in a hidden attribute.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15464">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>cce4b1dde5abd549e47e174a2ed294fb</td>
        <td>CVE-2026-15334</td>
-       <td>2026-07-24 08:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:25</td>
        <td>The Cozy Blocks – Page Builder for Gutenberg Editor & FSE with 600+ Patterns, 58 Blocks & Templates plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'icon.view' Block Attribute in all versions up to, and including, 2.2.11 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15334">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>4547ea86808e1ce07fdaa0b35b16e047</td>
        <td>CVE-2026-15333</td>
-       <td>2026-07-24 08:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:25</td>
        <td>The Cozy Blocks – Page Builder for Gutenberg Editor & FSE with 600+ Patterns, 58 Blocks & Templates plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'cozyCustomFont' Block Attribute in all versions up to, and including, 2.2.11 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15333">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>54341e776bf7aeaeecf8f9e3eb1eff16</td>
        <td>CVE-2026-12654</td>
-       <td>2026-07-24 08:16:25 <img src="imgs/new.gif" /></td>
+       <td>2026-07-24 08:16:25</td>
        <td>The Payment Plugins for Stripe WooCommerce plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.0.7. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to mark arbitrary pending asynchronous WooCommerce orders as paid by forging a charge.pending event with attacker-controlled metadata.order_id, metadata.gateway_id, and a charge object carrying status=succeeded and captured=true, triggering payment_complete() and downstream fulfillment flows with an attacker-supplied transaction ID. Exploitation requires the merchant to have left the webhook_secret_test or webhook_secret_live option blank, which is the plugin's default state until a Stripe-issued whsec_ value is manually configured; once a non-empty secret is set, the signature verification cannot be bypassed.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12654">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c97a618682d2b380f51ce4cc878794ef</td>
-       <td>CVE-2026-9729</td>
-       <td>2026-07-23 08:16:25</td>
-       <td>The Webpushr Push Notifications plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'webpushr_notification_title' and 'webpushr_notification_body' parameters in versions up to, and including, 4.39.0. This is due to insufficient input sanitization in the save_send_notification_flag() function and missing output escaping in the wpp_notification_box() function, which concatenates raw post meta values directly into HTML attribute and textarea contexts. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9729">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>31283f3236174a0ffce816d3c626b284</td>
-       <td>CVE-2026-59678</td>
-       <td>2026-07-23 08:16:25</td>
-       <td>An Incorrect Authorization vulnerability in Linux-Gaming PortProtonQt allows any users to mount and unmount arbitrary file systems and modify the network configuration via NetworkManager. This issue affects PortProtonQt before 0d0f0950ebd948cdf82e8c3e1ebd2bcb9b8bafbe.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59678">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>845b590bbfc92e1f9ff8a80decba7da7</td>
-       <td>CVE-2026-59677</td>
-       <td>2026-07-23 08:16:24</td>
-       <td>A Missing Authorization vulnerability in selinux policycoreutils seunshares allows a user that is running in unconfined context to kill e.g. root-owned processes running also in unconfined context This issue affects policycoreutils through 3.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59677">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c79b8227320ea3cb7d911d06bf1d7904</td>
-       <td>CVE-2026-12421</td>
-       <td>2026-07-23 08:16:23</td>
-       <td>The ARforms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'password' Field Values in all versions up to, and including, 7.2.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12421">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77c1945bf816b5b7bd1d1b77ce69f70f</td>
-       <td>CVE-2026-9577</td>
-       <td>2026-07-23 07:16:32</td>
-       <td>The Post Status Notifier Lite WordPress plugin before 1.13.0 does not properly escape the `mod` URL parameter before reflecting it into the admin settings page (`admin.php?page=post-status-notifier-lite`), leading to a Reflected Cross-Site Scripting vulnerability that fires in the administrator's session when they are tricked into following a crafted URL.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9577">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fc6ccd275e17bb5000aeaabf88e3703f</td>
-       <td>CVE-2026-9066</td>
-       <td>2026-07-23 07:16:32</td>
-       <td>The WP Compress WordPress plugin before 7.10.04 does not validate the value of a query parameter that controls the asset CDN host before using it to build the URLs of JavaScript files emitted on the page, leading to Reflected XSS. When a visitor follows a crafted link, the WP Compress WordPress plugin before 7.10.04's loader injects script elements pointing to an attacker-controlled origin, which lets the attacker execute arbitrary JavaScript in the visitor's session on the target site.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4a6152a56fea526ffa4d6c72abc15b91</td>
-       <td>CVE-2026-59676</td>
-       <td>2026-07-23 07:16:32</td>
-       <td>A Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability in seunshare of selinux policycoreutils allows a user calling seunshare that is running in the unconfined SELinux domain to delete arbitrary root-owned files, This issue affects policycoreutils through 3.10.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59676">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>47176a35a83dc88134ae37e146f47479</td>
-       <td>CVE-2026-14291</td>
-       <td>2026-07-23 07:16:32</td>
-       <td>The security-ninja-premium WordPress plugin before 5.290 does not verify the second authentication factor in one of its two-factor authentication code paths, allowing an unauthenticated attacker who knows a user's password to complete authentication without the one-time code and bypass enforced two-factor authentication for any account, including administrators. The affected two-factor module ships only in the premium build.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14291">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6c3d72e83dd56493070f86a1a1351a3</td>
-       <td>CVE-2026-12082</td>
-       <td>2026-07-23 07:16:31</td>
-       <td>The Praison AI SEO WordPress plugin before 5.0.7 does not perform authorization checks on several of its REST API routes, allowing unauthenticated users to modify the permalink of any published post and to read Praison AI SEO WordPress plugin before 5.0.7 configuration data.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12082">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb31584dc4b4de4aac61c17bf44658a9</td>
-       <td>CVE-2026-7534</td>
-       <td>2026-07-23 06:16:50</td>
-       <td>The SUMO Reward Points plugin for WordPress is vulnerable to Unauthenticated Stored Cross-Site Scripting via the REST API endpoint `/wp-json/wc-srp/v1/earning` in versions up to, and including, 32.7.0. This is due to the `user_has_cap` filter in the `SRP_REST_Earning_Controller` class unconditionally granting the custom `rs_earning_read` capability to all users — including unauthenticated visitors — combined with missing sanitization of the `reason` parameter in the `create_items()` function and missing output escaping in the `column_default()` method of `SRP_Master_Log`. This makes it possible for unauthenticated attackers to inject arbitrary web scripts into the reward points log that will execute whenever an administrator accesses the Master Log or User Reward Points admin pages.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7534">详情</a></td>
       </tr>
 
      </tbody>
