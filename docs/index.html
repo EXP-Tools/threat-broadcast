@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-29 11:30:06 -->
+<!-- RELEASE TIME : 2026-07-30 11:13:39 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>5397cacde7cb14e1b84bbd315e73995f</td>
+       <td>CVE-2026-18353</td>
+       <td>2026-07-30 08:16:28 <img src="imgs/new.gif" /></td>
+       <td>PIA's `POST /v1/upload/sbom` endpoint accepts a Bearer JWT and checks its **unverified** `iss` claim against an issuer allowlist using Python's `urlparse` before performing OIDC discovery with `requests`. Because `urlparse` and `requests`/`urllib3` parse an authority string containing a backslash (e.g. `https://attacker-host\@ci.eclipse.org/`) into *different* hostnames, an attacker can craft an issuer that passes the allowlist check yet drives `requests` — and subsequently `urllib.request.urlopen` for JWKS retrieval — to connect to an arbitrary attacker-chosen host, port, and scheme.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18353">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5209ace13d0a9f045c7263d62acbd15c</td>
+       <td>CVE-2026-7849</td>
+       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>Due to improper neutralization of special elements, an unauthenticated remote attacker is able to inject a command into the system configuration which is subsequently executed as root.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7849">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>129771667733a3e3b582c9bc5501868c</td>
+       <td>CVE-2026-44108</td>
+       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>Due to a flaw in the execution order of scripts during shutdown, the firewall is terminated prematurely during system shutdown. This creates a temporary window in which internal services may become externally accessible, potentially allowing an unauthenticated remote attacker to connect to these services, resulting in full system compromise.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44108">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>710b9a2e2fc3ebec0a2398d1d9559e20</td>
+       <td>CVE-2026-44107</td>
+       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>A reboot of the charging controller can be triggered via Modbus TCP without authentication. Therefore, when the Modbus functionality is enabled by opening the port that CharxModbusServer is listening, an unauthenticated attacker can perform a Denial-of-Service attack.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44107">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f13fab791070b330d99fe259491ea258</td>
+       <td>CVE-2026-44106</td>
+       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>A privilege escalation vulnerability in the init-script for user-applications allows a low-privileged local user to execute arbitrary commands as root, resulting in full system compromise.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44106">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6f029223c0a48f4f8b9fb9c657314841</td>
+       <td>CVE-2026-44105</td>
+       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>The credentials for the local user "user-app" may be exposed in log files, potentially enabling a low-privileged local attacker with access to the logs to authenticate via SSH as the limited user "user-app". Charging could be interrupted.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44105">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d63246a3e86916b59c8207b7a9c8680a</td>
+       <td>CVE-2026-44104</td>
+       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>The firmware update process for the basemodule of the charging controller only validates the CRC32 checksum without cryptographic signature verification. This allows an unauthenticated remote attacker to install a modified firmware, resulting in full system compromise.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44104">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>abd544fc2bab3b7cab57251258901b2f</td>
+       <td>CVE-2026-44103</td>
+       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can inject malicious firmware into the internal charging module because the JupiCore service transmits firmware updates without performing integrity or verification check. Successful exploitation may compromise the integrity of the affected device. This vulnerability could be used in chain with CVE-2026-44104.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44103">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e91e42ef8d7801c7aa537b7f87d6a3e0</td>
+       <td>CVE-2026-44102</td>
+       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can trigger a firmware update download via the OCPP backend by supplying an invalid firmware file. This will cause the file to remain accessible for a short period before it is deleted due to improper locking during the cleanup process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44102">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f6d1447611bb038270ebcef8a56767bb</td>
+       <td>CVE-2026-44101</td>
+       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>Due to missing authentication the CHARX OCPP Agent service allows an unauthenticated remote attacker to reconfigure the backend connection. This can lead to Denial-of-Service and confidential data being disclosed to the attacker.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44101">详情</a></td>
+      </tr>
+
+      <tr>
        <td>87aaff753c870c9abd281d9fd614b317</td>
        <td>CVE-2026-58150</td>
        <td>2026-07-29 08:16:31 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>b03b1d8a7c42ba6be2528afc57e2b9af</td>
        <td>CVE-2026-55977</td>
-       <td>2026-07-28 08:17:16 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:16</td>
        <td>Successful exploitation of this vulnerability could allow an attacker with local network access to bypass the application's rate-limiting mechanism, enabling brute-forcing of the screen-sharing code and potentially displaying harmful content on the affected screen.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55977">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>1798ec946415bb3b9e68c2665d285303</td>
        <td>CVE-2026-15730</td>
-       <td>2026-07-28 08:17:15 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:15</td>
        <td>The GamiPress – Gamification plugin to reward points, achievements, badges & ranks in WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'heading_size' Shortcode Attribute in all versions up to, and including, 7.9.9.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The wp_kses_post filter applied at post save does not neutralize this payload because only the inert shortcode text is stored in post_content; the dangerous HTML is synthesized at render time by the shortcode handler, entirely bypassing save-time sanitization.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15730">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>4a687b6ad7ecad2fdf4d04ed9039ad05</td>
        <td>CVE-2026-15673</td>
-       <td>2026-07-28 08:17:15 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:15</td>
        <td>The SMS Alert – SMS & OTP for WooCommerce, Order Notifications & Abandoned Cart Recovery plugin for WordPress is vulnerable to generic SQL Injection via 'checkout_payment_plans' and 'order_status' Settings in all versions up to, and including, 3.9.7 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. This is a second-order SQL injection: the malicious payload is stored in the 'checkout_payment_plans' and 'order_status' settings via update_option() and executed later when the cod_to_prepaid_cart_notification_sendsms_hook WP-Cron event fires SA_CodTOPrepaid::sendSms().</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15673">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>8ce1a84696fd93acabb2761e97aa4edf</td>
        <td>CVE-2026-15671</td>
-       <td>2026-07-28 08:17:14 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:14</td>
        <td>The SMS Alert – SMS & OTP for WooCommerce, Order Notifications & Abandoned Cart Recovery plugin for WordPress is vulnerable to generic SQL Injection via the 'id' parameter in all versions up to, and including, 3.9.7 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15671">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>80dd4e446fb67caf350e1f2e43e654bf</td>
        <td>CVE-2026-15670</td>
-       <td>2026-07-28 08:17:14 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:14</td>
        <td>The SMS Alert – SMS & OTP for WooCommerce, Order Notifications & Abandoned Cart Recovery plugin for WordPress is vulnerable to time-based SQL Injection via the 'orderby' parameter in all versions up to, and including, 3.9.7 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15670">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>76a0b912df51e528f953ce189be7d742</td>
        <td>CVE-2026-15014</td>
-       <td>2026-07-28 08:17:14 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:14</td>
        <td>The SMS Alert – SMS & OTP for WooCommerce, Order Notifications & Abandoned Cart Recovery plugin for WordPress is vulnerable to Authentication Bypass leading to Account Takeover in all versions up to, and including, 3.9.7 via the `billing_phone` parameter. This is due to the `processRegistration()` function using a phone-unbound `$_SESSION['sa_mobile_verified']` boolean flag as the sole gate before issuing an authentication cookie — the flag is set to `true` after any successful OTP validation without being bound to the specific phone number that was verified. This makes it possible for unauthenticated attackers to complete OTP verification for a phone number they control, then resubmit the registration request with a victim's `billing_phone` value to have `wp_set_auth_cookie()` called for the resolved victim account, enabling full authentication as any existing WordPress user whose registered phone number is known or guessable, including administrators.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15014">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>b04909266c310e35ebab37b9deeaa181</td>
        <td>CVE-2026-12741</td>
-       <td>2026-07-28 08:17:14 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:14</td>
        <td>The WP Fast Total Search – The Power of Indexed Search plugin for WordPress is vulnerable to generic SQL Injection via the 'form_data[s]' parameter in all versions up to, and including, 1.80.280 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12741">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>762030d3db63aadec9c176b731defb9a</td>
        <td>CVE-2026-11756</td>
-       <td>2026-07-28 08:17:14 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:14</td>
        <td>A Deserialization of Untrusted Data vulnerability affecting Station Launcher App in 3DEXPERIENCE platform from Release 3DEXPERIENCE R2023x through Release 3DEXPERIENCE R2026x could lead to an unauthenticated remote code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11756">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>9def3cb2a6db4593dffc3de8ccd6cbac</td>
        <td>CVE-2024-14041</td>
-       <td>2026-07-28 08:17:12 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 08:17:12</td>
        <td>In Bouncy Castle for Java from 1.73 to before 1.78, three ML-KEM (CRYSTALS-Kyber) routines divided secret-derived polynomial coefficients by the modulus q: Poly.toMsg, which decodes the decrypted message, and the ciphertext compression routines Poly.compressPoly and PolyVec.compressPolyVec. An attacker able to measure the timing of a large number of decapsulations performed with the same long-term private key can recover that key. These are the KyberSlash1 (Poly.toMsg) and KyberSlash2 (ciphertext compression) divisions. Compression performed during encapsulation operates on values that become the public ciphertext and is not affected.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-14041">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>bbb4e14eb0d0f9aa7aeee600dc78bee9</td>
        <td>CVE-2026-6251</td>
-       <td>2026-07-28 07:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-07-28 07:16:42</td>
        <td>The Chaty Pro plugin for WordPress is vulnerable to Authenticated Time-Based Blind SQL Injection in versions up to and including 3.5.5. This is due to the fetch_custom_field() function in admin/class-admin-base.php retrieving the widget_id POST parameter via filter_input(INPUT_POST, ...) and directly concatenating the value into a raw SQL query in a numeric context without using $wpdb->prepare() or any integer casting. Additionally, the nonce verification check is performed after the SQL query has already executed, providing no protection against the injection. This makes it possible for authenticated attackers with subscriber-level access and above to inject arbitrary SQL commands, potentially leading to unauthorized extraction of sensitive database contents including user credentials and configuration data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6251">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c6025bee4c23d04da569fe975e354fcc</td>
-       <td>CVE-2026-9830</td>
-       <td>2026-07-27 07:16:30</td>
-       <td>The bookingpress-appointment-booking-pro WordPress plugin before 5.7.3 does not correctly invoke its REST permission callback, leaving every route in one of its API namespaces reachable without authentication and allowing unauthenticated attackers to read customer booking data and modify other users' bookings.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9830">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>596ae430d22fc87f25d3b53cb42cceff</td>
-       <td>CVE-2026-66412</td>
-       <td>2026-07-27 07:16:30</td>
-       <td>Leantime 3.6.2 and prior contains a broken access control vulnerability that allows authenticated users to read milestone data from projects they are not assigned to by supplying arbitrary integer milestone IDs to the tickets.getMilestone JSON-RPC endpoint. Attackers can enumerate integer milestone IDs through the JSON-RPC API to access project planning information, milestone titles, descriptions, and timelines across all projects on the instance regardless of project membership.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66412">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aedfc9b2a130dad6208443e01d66d8c7</td>
-       <td>CVE-2026-14827</td>
-       <td>2026-07-27 07:16:26</td>
-       <td>The Calendar WordPress plugin before 1.3.18 does not properly escape a user-supplied event field before outputting it inside an HTML attribute on a public-facing page, allowing users with the Contributor role to inject arbitrary JavaScript that executes in the browser of anyone viewing the calendar.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14827">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69f23ebdcf378fba5d70f06cedf001b3</td>
-       <td>CVE-2026-14820</td>
-       <td>2026-07-27 07:16:26</td>
-       <td>The Quiz and Survey Master (QSM) WordPress plugin before 11.1.3 does not implement rate limiting or standard failed-login auditing on its front-end credential-check functionality and returns distinct responses for valid and invalid accounts, allowing unauthenticated attackers to enumerate valid usernames and to brute-force passwords while bypassing brute-force protection Quiz and Survey Master (QSM) WordPress plugin before 11.1.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14820">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6f1937ef98d620b880260840cbf2461d</td>
-       <td>CVE-2026-14568</td>
-       <td>2026-07-27 07:16:25</td>
-       <td>The User Frontend: AI Powered Frontend Post Submission, User Directory, User Profile, Membership & User Registration WordPress plugin before 4.3.8 does not correctly verify ownership before deleting an attachment, allowing unauthenticated attackers to permanently delete author-less attachments such as guest uploads and User Frontend: AI Powered Frontend Post Submission, User Directory, User Profile, Membership & User Registration WordPress plugin before 4.3.8-installed placeholder media.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14568">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2d2780cb3bf3af3bf046c43816b995b8</td>
-       <td>CVE-2026-14289</td>
-       <td>2026-07-27 07:16:25</td>
-       <td>The FacturaONE para WooCommerce con VeriFactu WordPress plugin before 5.37 does not authenticate one of its request handlers, whose only protection is derived from a cryptographic key that is empty in the default, unconfigured state, allowing unauthenticated attackers to write an arbitrary file into a web-accessible directory and achieve remote code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14289">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a050ac5889e1b7e63c518c2bfd41671a</td>
-       <td>CVE-2026-14236</td>
-       <td>2026-07-27 07:16:25</td>
-       <td>The Contact Form 7 WordPress plugin before 2.5 does not validate the host of a user-supplied return URL before using it as the success and cancel redirect targets of a Stripe checkout, allowing an unauthenticated attacker to redirect a victim, via a crafted link, to an arbitrary external site after the checkout flow.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14236">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>153bd3541ee914a1c752a1e7891cc1c8</td>
-       <td>CVE-2026-14235</td>
-       <td>2026-07-27 07:16:25</td>
-       <td>The Download Manager WordPress plugin before 3.3.62 does not bind its temporary download token to the requesting session nor expire it promptly, making the token a long-lived, multi-use, portable bearer token, so that an attacker who obtains one leaked download key can repeatedly download a role- or password-protected package file without authorization.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14235">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d2f9e1f616be4deace4102c491e2c9cf</td>
-       <td>CVE-2026-14203</td>
-       <td>2026-07-27 07:16:25</td>
-       <td>The Smart Manager WordPress plugin before 8.92.0 does not properly encode a post field before rendering it into an HTML attribute in its management grid, allowing users with the Contributor role or above to inject JavaScript that executes in the browser session of an administrator who views the grid.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14203">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>420c4d7a88274c1e018ab70d30fe6def</td>
-       <td>CVE-2026-14190</td>
-       <td>2026-07-27 07:16:25</td>
-       <td>The Sina Extension for Elementor WordPress plugin before 3.10.2 does not escape a value reconstructed from request input in one of its unauthenticated AJAX handlers before reflecting it into the HTML response, allowing unauthenticated attackers to execute arbitrary JavaScript in the browser of anyone who triggers a crafted request.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14190">详情</a></td>
       </tr>
 
      </tbody>
