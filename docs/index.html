@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-07-31 14:22:18 -->
+<!-- RELEASE TIME : 2026-08-01 13:42:23 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>1298c44310f9a59cb91bd7e9e719a5d8</td>
+       <td>CVE-2026-6453</td>
+       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>The CubeWP Framework plugin for WordPress is vulnerable to SQL Injection in all versions up to and including 1.1.30. This is due to insufficient input sanitization in the cubewp_remove_relation() AJAX function, specifically the use of wp_unslash() on the relation_id parameter before interpolating it directly into a raw SQL query without using $wpdb->prepare(). The wp_unslash() call explicitly removes the backslash escaping that WordPress's wp_magic_quotes() adds to all $_POST data, neutralizing the only layer of SQL injection protection. The sanitize_text_field() function applied afterward offers no SQL protection. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries to the existing query.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6453">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d596f114c9326b8b39e879cc7c10c3f4</td>
+       <td>CVE-2026-18435</td>
+       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'toggleIcon' Block Attribute in all versions up to, and including, 3.7.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18435">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02c05d37ece8bda2f94518c3efff4854</td>
+       <td>CVE-2026-18344</td>
+       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>The Wp Responsive Thumbnail Slider plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'id' parameter in versions up to, and excluding, 1.1.53. This is due to insufficient input sanitization and output escaping in the responsive_thumbnail_image_management() function, which echoes $_GET['id'] directly into a double-quoted HTML attribute with no esc_attr() call. The only guard is a loose PHP numeric comparison ($_GET['id']>0) that a string beginning with a numeric prefix trivially satisfies, and the addslashes() applied by wp_magic_quotes() is inert in HTML-attribute context because backslash is not an HTML escape character. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a specially crafted link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18344">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>adf09d217b212c9bf9d28bc51e9d59e9</td>
+       <td>CVE-2026-18062</td>
+       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Identity Block Inner Image Content in all versions up to, and including, 3.7.8.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is only triggerable when the block's urlTransparent attribute is set to a non-empty value, as this is a required precondition for the vulnerable code path in build_html() to be reached.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18062">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c585af24672e4203a09f37fdac715dd7</td>
+       <td>CVE-2026-18059</td>
+       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>The PixelYourSite – Your smart PIXEL (TAG) & API Manager plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 11.2.1 via the getWooPurchaseEventParams. This makes it possible for unauthenticated attackers to extract WooCommerce purchase metadata — including product names, product IDs, quantities, per-item prices, order totals, currency, and order/transaction IDs — for any existing order by supplying an invalid or arbitrary order key. This is exploitable against any known or enumerated order ID, as the plugin resolves the order from the URL path variable alone and emits the full woo_purchase tracking payload into the page HTML via the pysOptions JavaScript object across its Facebook, Google Analytics, and Google Tag Manager integrations regardless of key validity.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18059">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>60e0cb768bafdc62c5a16f6bef5eb808</td>
+       <td>CVE-2026-17605</td>
+       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>The Payment forms, Buy now buttons, and Invoicing System | GetPaid plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 2.8.56 via the getpaid_payment_form_element function. This makes it possible for authenticated attackers, with administrator-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17605">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>011fc52adf95d1a1d45c2cf898d289cc</td>
+       <td>CVE-2026-17580</td>
+       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>The Advanced Views – Display Custom Fields (ACF, Pods, MetaBox), Posts, CPT and Woo Products anywhere in Gutenberg, Elementor, Divi, Beaver… plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.9.1 via the register_rest_routes. This makes it possible for authenticated attackers, with subscriber-level access and above, to extract sensitive admin-authored editor content — including template markup, CSS code, JavaScript code, and PHP controller variables — for any Layout or Post Selection post on the site.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17580">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f0418b7eba3538bc5664c7b6bd986c67</td>
+       <td>CVE-2026-17571</td>
+       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>The Fluent Forms – Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via 'param' in all versions up to, and including, 6.2.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17571">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>33d2c20394dd10780176005c9179f98c</td>
+       <td>CVE-2026-17555</td>
+       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>The WPvivid Backup & Migration plugin for WordPress is vulnerable to SQL Injection via the export_data parameter in versions up to, and including, 0.9.131. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. The values are received in prepare_export_post(), passed through sanitize_text_field() and stripslashes(), JSON-decoded, and the attacker-controlled JSON object keys are collected as $posts_ids without integer casting. They are stored in the export task options and later joined with commas and interpolated directly into a `WHERE ID IN (...)` clause inside a $wpdb->get_results() call in export_post_to_xml() (unquoted, numeric context), with no $wpdb->prepare() or esc_sql(). This makes it possible for authenticated attackers, with Administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17555">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d0f21a335472f570832a9e229effd012</td>
+       <td>CVE-2026-16685</td>
+       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'icon' Shortcode Attribute in all versions up to, and including, 3.3.66 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. wp_kses_post() does not neutralize the payload because it operates on post content at save time and does not process shortcode attribute values that are emitted unescaped at render time.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16685">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f4ae6f5214f1439456e4b4a0dbe7887b</td>
        <td>CVE-2026-65313</td>
        <td>2026-07-31 09:16:59 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>5397cacde7cb14e1b84bbd315e73995f</td>
        <td>CVE-2026-18353</td>
-       <td>2026-07-30 08:16:28 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 08:16:28</td>
        <td>PIA's `POST /v1/upload/sbom` endpoint accepts a Bearer JWT and checks its **unverified** `iss` claim against an issuer allowlist using Python's `urlparse` before performing OIDC discovery with `requests`. Because `urlparse` and `requests`/`urllib3` parse an authority string containing a backslash (e.g. `https://attacker-host\@ci.eclipse.org/`) into *different* hostnames, an attacker can craft an issuer that passes the allowlist check yet drives `requests` — and subsequently `urllib.request.urlopen` for JWKS retrieval — to connect to an arbitrary attacker-chosen host, port, and scheme.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18353">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>5209ace13d0a9f045c7263d62acbd15c</td>
        <td>CVE-2026-7849</td>
-       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:59</td>
        <td>Due to improper neutralization of special elements, an unauthenticated remote attacker is able to inject a command into the system configuration which is subsequently executed as root.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7849">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>129771667733a3e3b582c9bc5501868c</td>
        <td>CVE-2026-44108</td>
-       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:59</td>
        <td>Due to a flaw in the execution order of scripts during shutdown, the firewall is terminated prematurely during system shutdown. This creates a temporary window in which internal services may become externally accessible, potentially allowing an unauthenticated remote attacker to connect to these services, resulting in full system compromise.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44108">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>710b9a2e2fc3ebec0a2398d1d9559e20</td>
        <td>CVE-2026-44107</td>
-       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:59</td>
        <td>A reboot of the charging controller can be triggered via Modbus TCP without authentication. Therefore, when the Modbus functionality is enabled by opening the port that CharxModbusServer is listening, an unauthenticated attacker can perform a Denial-of-Service attack.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44107">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>f13fab791070b330d99fe259491ea258</td>
        <td>CVE-2026-44106</td>
-       <td>2026-07-30 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:59</td>
        <td>A privilege escalation vulnerability in the init-script for user-applications allows a low-privileged local user to execute arbitrary commands as root, resulting in full system compromise.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44106">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>6f029223c0a48f4f8b9fb9c657314841</td>
        <td>CVE-2026-44105</td>
-       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:58</td>
        <td>The credentials for the local user "user-app" may be exposed in log files, potentially enabling a low-privileged local attacker with access to the logs to authenticate via SSH as the limited user "user-app". Charging could be interrupted.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44105">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>d63246a3e86916b59c8207b7a9c8680a</td>
        <td>CVE-2026-44104</td>
-       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:58</td>
        <td>The firmware update process for the basemodule of the charging controller only validates the CRC32 checksum without cryptographic signature verification. This allows an unauthenticated remote attacker to install a modified firmware, resulting in full system compromise.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44104">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>abd544fc2bab3b7cab57251258901b2f</td>
        <td>CVE-2026-44103</td>
-       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:58</td>
        <td>An unauthenticated remote attacker can inject malicious firmware into the internal charging module because the JupiCore service transmits firmware updates without performing integrity or verification check. Successful exploitation may compromise the integrity of the affected device. This vulnerability could be used in chain with CVE-2026-44104.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44103">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>e91e42ef8d7801c7aa537b7f87d6a3e0</td>
        <td>CVE-2026-44102</td>
-       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:58</td>
        <td>An unauthenticated remote attacker can trigger a firmware update download via the OCPP backend by supplying an invalid firmware file. This will cause the file to remain accessible for a short period before it is deleted due to improper locking during the cleanup process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44102">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>f6d1447611bb038270ebcef8a56767bb</td>
        <td>CVE-2026-44101</td>
-       <td>2026-07-30 07:16:58 <img src="imgs/new.gif" /></td>
+       <td>2026-07-30 07:16:58</td>
        <td>Due to missing authentication the CHARX OCPP Agent service allows an unauthenticated remote attacker to reconfigure the backend connection. This can lead to Denial-of-Service and confidential data being disclosed to the attacker.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-44101">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>87aaff753c870c9abd281d9fd614b317</td>
-       <td>CVE-2026-58150</td>
-       <td>2026-07-29 08:16:31</td>
-       <td>Apache Traffic Server does not reject Transfer-Encoding in HTTP/2 requests, allowing downgrade request smuggling. This issue affects Apache Traffic Server: from 8.0.0 through 8.1.9, from 9.0.0 through 9.2.14, from 10.0.0 through 10.1.3. Users are recommended to upgrade to version 9.2.15 or 10.1.4, which fix the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58150">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bb14eb40b085ba22ed3fe8b7fc0a333a</td>
-       <td>CVE-2026-57834</td>
-       <td>2026-07-29 08:16:31</td>
-       <td>Apache Traffic Server allows request smuggling if chunked messages are malformed. This issue affects Apache Traffic Server: from 8.0.0 through 8.1.9, from 9.0.0 through 9.2.14, from 10.0.0 through 10.1.3. Users are recommended to upgrade to version 9.2.15 or 10.1.4, which fix the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57834">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b2be4c9083d3111b6477507266706046</td>
-       <td>CVE-2026-41920</td>
-       <td>2026-07-29 08:16:31</td>
-       <td>Improper Access Control vulnerability in Apache Traffic Server. This issue affects Apache Traffic Server: from 9.0.0 through 9.1.14, from 10.0.0 through 10.1.3. Users are recommended to upgrade to version 9.1.15 or 10.1.4, which fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-41920">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8aece70e99b62de46361142a3cbb6ce9</td>
-       <td>CVE-2026-35226</td>
-       <td>2026-07-29 08:16:31</td>
-       <td>An out‑of‑bounds write vulnerability in the CODESYS PROFINET Controller allows an unauthenticated attacker on the same network segment to send malformed PROFINET communication data that triggers an exception in the affected PLC application. The exception is handled by the CODESYS Control runtime system and results in a controlled stop of the PLC application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-35226">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8081a025394533a6dcfe7fd1e32fe7ae</td>
-       <td>CVE-2026-33930</td>
-       <td>2026-07-29 08:16:31</td>
-       <td>Apache Traffic Server copies the client Host header into a fixed-size stack buffer without a bound during redirect handling, so an over-long Host header overflows the stack when redirect following is enabled. This issue affects Apache Traffic Server: from 8.0.0 through 8.1.9, from 9.0.0 through 9.2.14, from 10.0.0 through 10.1.3. Users are recommended to upgrade to version 9.2.15 or 10.1.4, which fix the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33930">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c8cbdf758e9c580bec9260fe666c1ec1</td>
-       <td>CVE-2026-33267</td>
-       <td>2026-07-29 08:16:30</td>
-       <td>Improper Input Validation vulnerability in Apache Traffic Server. This issue affects Apache Traffic Server: from 9.2.0 through 9.2.14, from 10.1.0 through 10.1.3. Users are recommended to upgrade to version 9.2.15 or 10.1.4, which fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33267">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>65df79c17fa5d51a8d227ec2f564444f</td>
-       <td>CVE-2026-24033</td>
-       <td>2026-07-29 08:16:30</td>
-       <td>Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability in Apache Traffic Server. This issue affects Apache Traffic Server: from 10.0.0 through 10.1.3, from 9.0.0 through 9.2.14. Users are recommended to upgrade to version 9.2.15 or 10.1.4, which fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-24033">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b0733c161cfac2a33e640a2ee4401598</td>
-       <td>CVE-2026-22068</td>
-       <td>2026-07-29 08:16:30</td>
-       <td>Regular Expression without Anchors vulnerability in Apache Traffic Server. This issue affects Apache Traffic Server: from 10.0.X through 10.1.3, from 9.0.X through 9.2.14. Users are recommended to upgrade to version 9.2.15 or 10.1.4, which fixes the issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-22068">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0af6f56377ebca2ae5b1172e90f36afd</td>
-       <td>CVE-2026-18197</td>
-       <td>2026-07-29 08:16:30</td>
-       <td>Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Link Library allows Cross-Site Scripting (XSS). This issue affects Link Library: before 7.9.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18197">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d245033b5e2167375698352814e02487</td>
-       <td>CVE-2026-18192</td>
-       <td>2026-07-29 08:16:30</td>
-       <td>VIN-DS783E-E6 developed by Vacron has an Arbitrary File Read vulnerability, allowing authenticated remote attackers to exploit Relative Path Traversal to download arbitrary system files.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18192">详情</a></td>
       </tr>
 
      </tbody>
