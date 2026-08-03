@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-02 13:41:08 -->
+<!-- RELEASE TIME : 2026-08-03 14:54:27 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f3a48765cf30438d650ef7aabd18f25a</td>
+       <td>CVE-2026-69082</td>
+       <td>2026-08-03 10:16:33 <img src="imgs/new.gif" /></td>
+       <td>CTI-Transmute contained a cross-site request forgery vulnerability in the administrative user deletion functionality. The /account/delete/<id> endpoint accepted HTTP GET requests for an operation that modified application state. An unauthenticated remote attacker could construct a malicious link or embed a request targeting this endpoint and induce an authenticated CTI-Transmute administrator to visit the attacker-controlled content. If the administrator had an active session, the browser would automatically include the administrator’s session credentials, causing the selected user account to be deleted without the administrator intentionally confirming the operation. Successful exploitation requires interaction from a currently authenticated administrator who has permission to delete users. The attacker does not need a CTI-Transmute account or administrative privileges because the forged request executes using the victim administrator’s session. The vulnerability could allow an attacker to delete arbitrary user accounts, resulting in unauthorized modification of application state and denial of access for affected users. Depending on whether administrators can delete other administrators or the final administrative account, exploitation could also disrupt administration of the CTI-Transmute instance. The patch resolves the issue by restricting the deletion endpoint to HTTP POST requests and submitting the deletion through a form containing a CSRF token.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69082">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3a98f655b9aae68424843f8eb650ce38</td>
+       <td>CVE-2026-69079</td>
+       <td>2026-08-03 10:16:33 <img src="imgs/new.gif" /></td>
+       <td>CTI-Transmute contains an uncontrolled resource-consumption vulnerability in the unauthenticated /activity_timeline endpoint. The endpoint accepts a user-controlled days query parameter that was not restricted to a reasonable range. A remote, unauthenticated attacker could submit an excessively large value for this parameter, causing the application to retrieve and process activity data over an arbitrarily large period. This could consume excessive database, CPU, or memory resources, delay the processing of concurrent requests, or trigger an internal server error. Repeated requests could further degrade the availability of the CTI-Transmute website. The vulnerability is corrected by clamping the requested timeline range to a minimum of one day and a maximum of 1,095 days.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69079">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f63a973bd78e8907d946a0aa5a5f2e19</td>
+       <td>CVE-2026-69078</td>
+       <td>2026-08-03 10:16:33 <img src="imgs/new.gif" /></td>
+       <td>CTI-Transmute is affected by a server-side request forgery vulnerability in the evaluation report PDF-generation functionality. User-controlled CTI content, including conversion names, descriptions, and comments, is converted from Markdown to HTML and rendered as a PDF using WeasyPrint. Before the patch, the renderer used WeasyPrint’s default URL-fetching behavior without restricting the protocols or destinations that could be referenced by the generated HTML. An attacker able to supply content included in an evaluation report could inject crafted resource references using schemes such as http://, https://, or file://. When the report was rendered, CTI-Transmute could fetch these resources using the application server’s network connectivity and filesystem privileges. Successful exploitation could allow an attacker to: * access services available only from the CTI-Transmute server or its internal network; * probe internal hosts and service endpoints; * retrieve local files readable by the application process; and * expose fetched content through the generated PDF, depending on the referenced resource type and rendering context. The vulnerability is corrected by providing WeasyPrint with a restrictive URL fetcher that permits only self-contained data: URIs. The externally hosted Google Fonts stylesheet was also removed so that PDF generation performs no intentional network or filesystem fetches.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69078">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9a5dc57940df8f4e7a1ff339614fab8c</td>
+       <td>CVE-2026-68742</td>
+       <td>2026-08-03 10:16:33 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in SSSD. The sss_nss_protocol_parse_addr() function in the NSS responder does not validate the addrlen field against the remaining packet body size. A local attacker can exploit this via a crafted GETHOSTBYADDR request to the NSS responder socket, causing an out-of-bounds read and process crash, resulting in a denial of service.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68742">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3d54ac90cea327f3399f37112fcbc3ef</td>
+       <td>CVE-2026-33591</td>
+       <td>2026-08-03 10:16:28 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability in Wapt Server before version 2.6.1.17813 allows a remote unauthenticated attacker to bypass security restriction using a specially crafted packet and retrieve a valid session token for the targeted account.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-33591">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e4c151050be2d852dfcd7e7e3874d6e4</td>
+       <td>CVE-2026-0392</td>
+       <td>2026-08-03 10:16:27 <img src="imgs/new.gif" /></td>
+       <td>eParakstītājs 3.0 for Windows before version 1.10.0 retrieves and executes its automatic updates over a channel that is not authenticated or integrity-protected. On each launch the application fetches an update descriptor (XML) over TLS but accepts any TLS certificate (a permissive TrustManager and a HostnameVerifier that always returns true), does not verify any digital signature on the update descriptor, and does not verify the Authenticode signature or a checksum of the downloaded installer before running it. A man-in-the-middle attacker able to redirect www.eparaksts.lv can serve a crafted update descriptor pointing to an attacker-controlled executable, which the client downloads and executes, resulting in arbitrary code execution on the victim host.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-0392">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e60d4c46540b7dd861f906568629103</td>
+       <td>CVE-2026-69075</td>
+       <td>2026-08-03 09:17:06 <img src="imgs/new.gif" /></td>
+       <td>FlowIntel is affected by a stored cross-site scripting vulnerability through multiple user-controlled or administrator-controlled fields. Persisted values—including case titles, ticket identifiers, recurring-case information, user profile attributes, organisation names, and role names—were rendered inside DOM elements subsequently compiled by Vue. Although normal HTML escaping could neutralize direct HTML markup, it did not prevent an attacker from injecting Vue interpolation expressions using the configured [[ ... ]] delimiters. An authenticated attacker able to modify one of the affected fields could store a malicious Vue expression. When another user viewed an affected case, report, profile, recurring-case page, or navigation component, Vue could evaluate the injected expression in the context of the FlowIntel application. Successful exploitation could allow arbitrary JavaScript execution in the victim’s browser under the FlowIntel origin. This could expose information available to the victim, perform actions using the victim’s authenticated session, or modify application data within the victim’s privileges. The patch introduces a dedicated vue_escape filter that escapes HTML-sensitive characters and breaks Vue interpolation delimiters before the values are rendered. The filter is applied to the affected case, account, organisation, role, configuration, and navigation fields.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69075">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1e032e8af22f3c24daef51596fb74124</td>
+       <td>CVE-2026-63563</td>
+       <td>2026-08-03 09:17:06 <img src="imgs/new.gif" /></td>
+       <td>Sharp and Toshiba Tec MFPs (multifunction printers) for a certain market have been shipped with the user authentication feature disabled in the initial configuration. When used with the initial configuration, the address book editing and a range of features related to Document Filing can be accessed without user authentication. Products intended for the Japanese market are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63563">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>70840ea9cb41f193760d60bcc022161a</td>
+       <td>CVE-2026-63545</td>
+       <td>2026-08-03 09:17:06 <img src="imgs/new.gif" /></td>
+       <td>Sharp and Toshiba Tec MFPs (multifunction printers) caches data internally when printing, and leave them uncleared. They may be accessed later by other users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63545">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8287ef52591bcf9195c00ce75fa73d75</td>
+       <td>CVE-2026-62416</td>
+       <td>2026-08-03 09:17:05 <img src="imgs/new.gif" /></td>
+       <td>Network Scanner Tool and Network Scanner Tool Lite provided by Sharp Corporation, with the initial configuration, require no authentication and accept files unlimitedly. When the affected products are used with the initial configuration, anyone can connect to them without authentication and upload files unlimitedly. This may cause a denial-of-service (DoS) condition on the PC. Furthermore, if a malicious file is uploaded, a PC user may be tricked to execute the file to attack other entities from that PC.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62416">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f9bdd992bff3c144fc06910b95c66e39</td>
        <td>CVE-2026-12231</td>
        <td>2026-08-02 09:16:33 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>1298c44310f9a59cb91bd7e9e719a5d8</td>
        <td>CVE-2026-6453</td>
-       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:02</td>
        <td>The CubeWP Framework plugin for WordPress is vulnerable to SQL Injection in all versions up to and including 1.1.30. This is due to insufficient input sanitization in the cubewp_remove_relation() AJAX function, specifically the use of wp_unslash() on the relation_id parameter before interpolating it directly into a raw SQL query without using $wpdb->prepare(). The wp_unslash() call explicitly removes the backslash escaping that WordPress's wp_magic_quotes() adds to all $_POST data, neutralizing the only layer of SQL injection protection. The sanitize_text_field() function applied afterward offers no SQL protection. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries to the existing query.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6453">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>d596f114c9326b8b39e879cc7c10c3f4</td>
        <td>CVE-2026-18435</td>
-       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:02</td>
        <td>The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'toggleIcon' Block Attribute in all versions up to, and including, 3.7.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18435">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>02c05d37ece8bda2f94518c3efff4854</td>
        <td>CVE-2026-18344</td>
-       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:02</td>
        <td>The Wp Responsive Thumbnail Slider plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'id' parameter in versions up to, and excluding, 1.1.53. This is due to insufficient input sanitization and output escaping in the responsive_thumbnail_image_management() function, which echoes $_GET['id'] directly into a double-quoted HTML attribute with no esc_attr() call. The only guard is a loose PHP numeric comparison ($_GET['id']>0) that a string beginning with a numeric prefix trivially satisfies, and the addslashes() applied by wp_magic_quotes() is inert in HTML-attribute context because backslash is not an HTML escape character. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a specially crafted link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18344">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>adf09d217b212c9bf9d28bc51e9d59e9</td>
        <td>CVE-2026-18062</td>
-       <td>2026-08-01 09:17:02 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:02</td>
        <td>The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Identity Block Inner Image Content in all versions up to, and including, 3.7.8.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is only triggerable when the block's urlTransparent attribute is set to a non-empty value, as this is a required precondition for the vulnerable code path in build_html() to be reached.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18062">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>c585af24672e4203a09f37fdac715dd7</td>
        <td>CVE-2026-18059</td>
-       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:01</td>
        <td>The PixelYourSite – Your smart PIXEL (TAG) & API Manager plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 11.2.1 via the getWooPurchaseEventParams. This makes it possible for unauthenticated attackers to extract WooCommerce purchase metadata — including product names, product IDs, quantities, per-item prices, order totals, currency, and order/transaction IDs — for any existing order by supplying an invalid or arbitrary order key. This is exploitable against any known or enumerated order ID, as the plugin resolves the order from the URL path variable alone and emits the full woo_purchase tracking payload into the page HTML via the pysOptions JavaScript object across its Facebook, Google Analytics, and Google Tag Manager integrations regardless of key validity.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18059">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>60e0cb768bafdc62c5a16f6bef5eb808</td>
        <td>CVE-2026-17605</td>
-       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:01</td>
        <td>The Payment forms, Buy now buttons, and Invoicing System | GetPaid plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 2.8.56 via the getpaid_payment_form_element function. This makes it possible for authenticated attackers, with administrator-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17605">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>011fc52adf95d1a1d45c2cf898d289cc</td>
        <td>CVE-2026-17580</td>
-       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:01</td>
        <td>The Advanced Views – Display Custom Fields (ACF, Pods, MetaBox), Posts, CPT and Woo Products anywhere in Gutenberg, Elementor, Divi, Beaver… plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.9.1 via the register_rest_routes. This makes it possible for authenticated attackers, with subscriber-level access and above, to extract sensitive admin-authored editor content — including template markup, CSS code, JavaScript code, and PHP controller variables — for any Layout or Post Selection post on the site.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17580">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>f0418b7eba3538bc5664c7b6bd986c67</td>
        <td>CVE-2026-17571</td>
-       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:01</td>
        <td>The Fluent Forms – Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via 'param' in all versions up to, and including, 6.2.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17571">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>33d2c20394dd10780176005c9179f98c</td>
        <td>CVE-2026-17555</td>
-       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:01</td>
        <td>The WPvivid Backup & Migration plugin for WordPress is vulnerable to SQL Injection via the export_data parameter in versions up to, and including, 0.9.131. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. The values are received in prepare_export_post(), passed through sanitize_text_field() and stripslashes(), JSON-decoded, and the attacker-controlled JSON object keys are collected as $posts_ids without integer casting. They are stored in the export task options and later joined with commas and interpolated directly into a `WHERE ID IN (...)` clause inside a $wpdb->get_results() call in export_post_to_xml() (unquoted, numeric context), with no $wpdb->prepare() or esc_sql(). This makes it possible for authenticated attackers, with Administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17555">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>d0f21a335472f570832a9e229effd012</td>
        <td>CVE-2026-16685</td>
-       <td>2026-08-01 09:17:01 <img src="imgs/new.gif" /></td>
+       <td>2026-08-01 09:17:01</td>
        <td>The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'icon' Shortcode Attribute in all versions up to, and including, 3.3.66 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. wp_kses_post() does not neutralize the payload because it operates on post content at save time and does not process shortcode attribute values that are emitted unescaped at render time.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16685">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f4ae6f5214f1439456e4b4a0dbe7887b</td>
-       <td>CVE-2026-65313</td>
-       <td>2026-07-31 09:16:59</td>
-       <td>A provisioning script used when installing HIPASE-250 (formerly 250 SCALA) engineering workstations sets a fixed, hard-coded x11vnc password. Because the same credential is applied to every workstation provisioned this way, an attacker with adjacent-network access who knows the password can gain VNC access to affected workstations.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65313">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>06c3dd39985edc4c5797e43dc4b555b6</td>
-       <td>CVE-2026-65311</td>
-       <td>2026-07-31 09:16:58</td>
-       <td>The HTTP server component of ANDRITZ HIPASE-250 (formerly 250 SCALA) in affected versions exposes an undocumented endpoint that changes the server's logging level and target without requiring authentication. A remote, unauthenticated attacker with network access to the service may suppress audit logging, potentially concealing other activity on the system.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65311">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db22eaea6698da7df7ad39716ea63995</td>
-       <td>CVE-2026-65310</td>
-       <td>2026-07-31 09:16:58</td>
-       <td>ANDRITZ HIPASE-250 (formerly 250 SCALA), in the default configuration of affected versions, exposes its data and configuration endpoint without any authentication and permissive CORS on every response. An unauthenticated attacker with network access can read live process values and server configuration.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65310">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f3db4a940b54b58f02d870b254e1b0df</td>
-       <td>CVE-2026-65309</td>
-       <td>2026-07-31 08:16:28</td>
-       <td>ANDRITZ HIPASE-250 (formerly 250 SCALA) in affected versions stores and transmits user passwords using a reversible format instead of a one-way password hash. This allows an attacker able to read the credential store or capture network traffic to recover all stored passwords.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65309">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ad1f03c98678e465873e6efcf88f73a4</td>
-       <td>CVE-2026-18218</td>
-       <td>2026-07-31 08:16:28</td>
-       <td>A flaw was found in the TokenManager component of the Keycloak identity management service. When an administrator attempts to revoke tokens for a specific application (client) using a "not-before" policy, the revocation may be silently ignored if the overall security realm already has an older, non-zero revocation policy in place. This issue can allow previously issued tokens to remain valid for refreshing sessions and accessing user information even after an administrator has attempted to invalidate them. ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18218">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a50f1c4589c1d82c06aa4ae119ec4372</td>
-       <td>CVE-2026-18217</td>
-       <td>2026-07-31 08:16:28</td>
-       <td>A flaw was found in the SAML protocol implementation of Keycloak, an open-source identity and access management solution. The issue occurs when Keycloak handles SAML authentication requests using the HTTP-Redirect binding. If a client is configured with a wildcard redirect URL, an attacker can craft a request that includes malicious parameters. When a user authenticates, Keycloak appends its legitimate response to the attacker's parameters. This can cause some service providers to process the attacker's data instead of the real login information, potentially leading to a user being logged into the wrong account.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18217">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e84e9e3b7c1a7f39fd4aaa097b55a44</td>
-       <td>CVE-2026-18215</td>
-       <td>2026-07-31 08:16:27</td>
-       <td>Keycloak provides a way to let users log in using Microsoft accounts while restricting access to a specific organization (tenant). A flaw was discovered where this restriction is ignored when using the token exchange feature. This means an attacker with a valid Microsoft token from a completely different organization could gain access to the Keycloak realm, potentially accessing sensitive data or performing unauthorized actions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18215">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84020bc2cd4b593920474a6ed4db55d0</td>
-       <td>CVE-2026-18214</td>
-       <td>2026-07-31 08:16:27</td>
-       <td>Keycloak allows users to log in using Google accounts and can be configured to only allow users from specific Google Workspace domains. A flaw was found where the token exchange feature, which allows swapping a Google token for a Keycloak token, does not check these domain restrictions. This means an attacker with a valid Google account from a different domain could bypass the security check and gain access to the Keycloak realm.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18214">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>bab9b23daedf9d5238fa19cd8726629b</td>
-       <td>CVE-2026-18211</td>
-       <td>2026-07-31 08:16:27</td>
-       <td>A flaw was found in the secure-client-uris client policy executor within Keycloak core services. This component is responsible for enforcing security requirements on client configurations, such as requiring encrypted connections for redirect URIs. Due to an improper check that only looks at the start of a web address rather than properly verifying the host, an attacker can bypass these security restrictions by using a specially crafted domain name. This could allow an attacker to intercept sensitive authentication codes over unencrypted connections.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18211">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c38db72b2f9a6cbebcdf150034ea4069</td>
-       <td>CVE-2026-18209</td>
-       <td>2026-07-31 08:16:27</td>
-       <td>A flaw was found in the keycloak-services component of Keycloak, which handles OpenID Connect (OIDC) authentication flows. The issue occurs because the security check designed to prevent HTTP parameter pollution only inspects the query portion of a redirect URL and ignores the fragment portion. When a client is configured with a wildcard redirect URI, an attacker can use this to inject duplicate security parameters into the login response. If a client application is not configured correctly, it might trust the attacker's injected data instead of the real security information from Keycloak, leading to session fixation or account confusion.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18209">详情</a></td>
       </tr>
 
      </tbody>
