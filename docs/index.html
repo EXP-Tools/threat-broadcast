@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-03 14:54:27 -->
+<!-- RELEASE TIME : 2026-08-04 14:29:42 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a4c72d4ddc683319fb87c5cae82b5ffc</td>
+       <td>CVE-2026-66884</td>
+       <td>2026-08-04 12:16:36 <img src="imgs/new.gif" /></td>
+       <td>Cross-Site Request Forgery vulnerability in Erlang Ecosystem Foundation oidcc_plug (Oidcc.Plug.AuthorizationCallback module) allows an attacker to make a victim's browser complete an authorization flow the victim never initiated. This vulnerability is associated with program file lib/oidcc/plug/authorization_callback.ex and program routine Oidcc.Plug.AuthorizationCallback.call/2. A callback request that carries no Oidcc.Plug.Authorize session is processed with every security check disabled rather than being rejected. call/2 substitutes permissive defaults for the absent session, and each downstream check treats its value as nothing to compare and returns :ok, so the nonce, state, PKCE, peer IP and user agent checks are all skipped. A separate clause of check_state/2 also accepts a state-less request when a verifier is present. An attacker obtains an authorization code for their own provider account, then induces the victim to visit the callback endpoint with that code and no state parameter. The application signs the victim in as the attacker, so the victim's subsequent actions occur in the attacker's account where the attacker can read them. Applications reusing one callback for both signing in and linking a provider account are further exposed to account takeover, the attacker's account becoming linked to the victim's. The permissive fallback serves no conforming flow. Third-party-initiated login reaches a relying party at a separate login initiation endpoint and causes it to send a fresh authentication request, and this library implements no such endpoint. Oidcc.Plug.Authorize always sends a state parameter, which an authorization server must echo, so no legitimate callback lacks one. This issue affects oidcc_plug: from 0.2.0-beta.1 before 0.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66884">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a64ccd01bb05b5e017fdf282a56bffda</td>
+       <td>CVE-2026-66883</td>
+       <td>2026-08-04 12:16:36 <img src="imgs/new.gif" /></td>
+       <td>Improper Handling of Case Sensitivity vulnerability in Erlang Ecosystem Foundation oidcc_plug (Oidcc.Plug.Authorize module) renders the user agent session binding inert, removing a defense in depth control against replay of a stolen session. This vulnerability is associated with program files lib/oidcc/plug/authorize.ex and lib/oidcc/plug/authorization_callback.ex, and program routines Oidcc.Plug.Authorize.call/2 and Oidcc.Plug.AuthorizationCallback.call/2. Oidcc.Plug.Authorize.call/2 reads the initiating client's user agent with get_req_header(conn, "User-Agent"). Plug lowercases incoming header names, but get_req_header/2 matches the supplied key exactly and performs no normalization of its own, so the mixed-case lookup always returns an empty list and nil is written into the session. On the callback side, Oidcc.Plug.AuthorizationCallback treats a stored nil user agent as nothing to compare and returns :ok without inspecting the request. The two behaviours combine so that the check passes unconditionally on every request, including for deployments that explicitly opted in with check_useragent: true, and an authorization callback can be completed from a different user agent than the one that initiated the flow without detection. The check fails open silently, with no error and no log entry, so a deployment cannot tell the binding is absent. The impact is limited to defense in depth. The inert check does not by itself allow an attacker to complete an authorization flow; it removes one layer that would otherwise hinder use of a stolen or leaked session, such as an exfiltrated session cookie replayed from a different client. The CSRF/state, nonce, and PKCE checks are unaffected and continue to function. Deployments that never enabled check_useragent are not affected in practice, since they never expected the binding. The corresponding lookup in Oidcc.Plug.AuthorizationCallback correctly uses the lowercase key and is not affected. This issue affects oidcc_plug: from 0.1.0-alpha.3 before 0.5.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66883">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b9be65c707a6c21a7e1c9e7f916fe379</td>
+       <td>CVE-2026-10050</td>
+       <td>2026-08-04 11:22:43 <img src="imgs/new.gif" /></td>
+       <td>In Eclipse Jetty, the Digest authentication server-side component uses ISO-8859-1 to encode the password as bytes. This was done because the initial specification for HTTP did not specify explicitly a charset, and it was assumed to be ISO-8859-1 for historical reasons. If the password contains characters that cannot be represented in ISO-8859-1, they are silently replaced by `?`. This happens with passwords that contain Chinese, Cyrillic or Greek characters, for example: `αβ123` converts to `??123`. An attacker can send a request with a digest `Authorization` header crafted with a password made of only `?` characters; the server would match any password of the same length that contains non-ISO-8859-1 characters. Recent HTTP Digest [RFC-7616](https://datatracker.ietf.org/doc/html/rfc7616) supports a `charset` parameters that defaults to UTF-8 that allows for correct encoding/decoding of passwords.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-10050">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e810f892f70eafa0bf3ae46899264e3b</td>
+       <td>CVE-2026-18772</td>
+       <td>2026-08-04 10:19:32 <img src="imgs/new.gif" /></td>
+       <td>Improper input validation vulnerability in Samsung Open Source rlottie allows Oversized Serialized Data Payloads.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18772">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e7a753f5acf36b83a8c1c1efebe331c6</td>
+       <td>CVE-2026-15721</td>
+       <td>2026-08-04 10:19:32 <img src="imgs/new.gif" /></td>
+       <td>Cleartext storage of sensitive information vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows SQL Injection. This issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15721">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c60ad35a774c74882671235fa3e73b42</td>
+       <td>CVE-2026-14838</td>
+       <td>2026-08-04 10:19:32 <img src="imgs/new.gif" /></td>
+       <td>Use of GET request method with sensitive query strings vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Session Hijacking. This issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14838">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b7ef51e0978aa832a51e746830fdb518</td>
+       <td>CVE-2026-14804</td>
+       <td>2026-08-04 10:19:32 <img src="imgs/new.gif" /></td>
+       <td>Use of hard-coded cryptographic key vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Read Sensitive Constants Within an Executable. This issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14804">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>af742771e0cd9dc5c8f2b9f2c6f4a664</td>
+       <td>CVE-2026-14465</td>
+       <td>2026-08-04 10:19:32 <img src="imgs/new.gif" /></td>
+       <td>Insufficient session expiration vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Reusing Session IDs (aka Session Replay). This issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14465">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1618e9671b619ce5972392d80630eca0</td>
+       <td>CVE-2026-14219</td>
+       <td>2026-08-04 10:19:32 <img src="imgs/new.gif" /></td>
+       <td>URL redirection to untrusted site ('open redirect') vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Phishing. This issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14219">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02e1b5c96464f65bf31dbea25c7f53a8</td>
+       <td>CVE-2026-14202</td>
+       <td>2026-08-04 10:19:32 <img src="imgs/new.gif" /></td>
+       <td>Observable response discrepancy vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Account Footprinting. This issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14202">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f3a48765cf30438d650ef7aabd18f25a</td>
        <td>CVE-2026-69082</td>
        <td>2026-08-03 10:16:33 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>f9bdd992bff3c144fc06910b95c66e39</td>
        <td>CVE-2026-12231</td>
-       <td>2026-08-02 09:16:33 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 09:16:33</td>
        <td>The Exclusive Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘ exad_infobox_image’ parameter in all versions up to, and including, 2.7.9.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12231">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>aa64abba539cd00dbd882b52c5a68c92</td>
        <td>CVE-2026-18573</td>
-       <td>2026-08-02 06:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:42</td>
        <td>A flaw was found in the keycloak-services component of Keycloak, which is used for managing authentication and authorization flows. The issue occurs when a realm administrator configures client policies to enforce specific authentication requirements on confidential clients. Due to improper evaluation of the client state during an update operation, an attacker with client management permissions can bypass these security policies by first creating a public client and then updating it to a confidential client with weaker authentication. This can result in the persistence of clients that do not comply with the intended security hardening of the realm.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18573">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>8bbdae26591f1f63363569bb002fdda1</td>
        <td>CVE-2026-18572</td>
-       <td>2026-08-02 06:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:42</td>
        <td>Keycloak provides authorization services that allow administrators to restrict access to resources based on time policies (for example, only allowing access during business hours). A flaw was discovered where a user can include a fake time value in their authorization request that overrides the actual server time. This allows the user to bypass these time-based restrictions and access protected resources at unauthorized times.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18572">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>d6fd9b2ba31404e4e7f052c6f22aa5c6</td>
        <td>CVE-2026-18571</td>
-       <td>2026-08-02 06:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:42</td>
        <td>A flaw was found in the user creation component of Keycloak when Fine-Grained Admin Permissions V2 (FGAP V2) is enabled. This issue allows a sub-administrator with permission to create users to add those users to any group, even groups the sub-administrator is not authorized to manage. This could lead to unauthorized access to sensitive information or elevated privileges for the newly created users.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18571">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>9f78cd5fad876de5546072aad48ffa44</td>
        <td>CVE-2026-18570</td>
-       <td>2026-08-02 06:16:41 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:41</td>
        <td>A flaw was found in the full-scope-disabled client-policy executor within the keycloak-services component. This component is responsible for enforcing security policies during client registration and configuration in Red Hat Build of Keycloak. The issue occurs because the executor only validates the fullScopeAllowed field when it is explicitly provided in a request. By omitting this field, a delegated user can bypass the policy, resulting in a client created with full scope access. This allows the client to obtain tokens with unauthorized role mappings.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18570">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>e79317028286659ac0d2281e1fd8c3be</td>
        <td>CVE-2026-16540</td>
-       <td>2026-08-02 06:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:40</td>
        <td>The Simply Schedule Appointments WordPress plugin before 1.6.12.6 does not correctly restrict a bulk appointment operation to the requester's own records, allowing unauthenticated users to retrieve the personal data of all appointments across the site and, on premium editions, to permanently delete them.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16540">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>6a91f8ea2aa7dadb71094a982271d0b4</td>
        <td>CVE-2026-16292</td>
-       <td>2026-08-02 06:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:40</td>
        <td>The Frontend File Manager Plugin WordPress plugin through 23.6 does not perform nonce validation on one of its file-metadata update actions, allowing an attacker to modify the metadata of a logged-in user's uploaded file via a CSRF attack, which can be leveraged to download that file. When guest uploads are enabled, the same action is reachable unauthenticated against any user's file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16292">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>a664af7591037cbcbe90607503c7b415</td>
        <td>CVE-2026-16291</td>
-       <td>2026-08-02 06:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:40</td>
        <td>The ProfileGrid WordPress plugin before 5.9.9.8 does not verify that a notification belongs to the requesting user before deleting it, allowing any authenticated user such as a Subscriber to delete other users' notifications by enumerating notification identifiers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16291">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>c04f2aed567a96c9f8eb67cc47a5a558</td>
        <td>CVE-2026-16285</td>
-       <td>2026-08-02 06:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:40</td>
        <td>The Product Attachment for WooCommerce WordPress plugin before 2.3.3 does not perform any authorization check before streaming media library files, allowing unauthenticated users to download any attachment — including private or unlinked uploads — by enumerating its numeric ID.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16285">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>f9b8dc4feccf74f0f09bd9f9136e79bb</td>
        <td>CVE-2026-16273</td>
-       <td>2026-08-02 06:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-08-02 06:16:39</td>
        <td>The Narrative Publisher WordPress plugin through 1.0.7 does not restrict write access to a REST-exposed post meta field or escape it when rendering, allowing users with contributor-level access and above to store JavaScript that executes in the browser of any higher-privileged user who views the affected post.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16273">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1298c44310f9a59cb91bd7e9e719a5d8</td>
-       <td>CVE-2026-6453</td>
-       <td>2026-08-01 09:17:02</td>
-       <td>The CubeWP Framework plugin for WordPress is vulnerable to SQL Injection in all versions up to and including 1.1.30. This is due to insufficient input sanitization in the cubewp_remove_relation() AJAX function, specifically the use of wp_unslash() on the relation_id parameter before interpolating it directly into a raw SQL query without using $wpdb->prepare(). The wp_unslash() call explicitly removes the backslash escaping that WordPress's wp_magic_quotes() adds to all $_POST data, neutralizing the only layer of SQL injection protection. The sanitize_text_field() function applied afterward offers no SQL protection. This makes it possible for authenticated attackers, with subscriber-level access and above, to append additional SQL queries to the existing query.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-6453">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d596f114c9326b8b39e879cc7c10c3f4</td>
-       <td>CVE-2026-18435</td>
-       <td>2026-08-01 09:17:02</td>
-       <td>The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'toggleIcon' Block Attribute in all versions up to, and including, 3.7.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18435">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>02c05d37ece8bda2f94518c3efff4854</td>
-       <td>CVE-2026-18344</td>
-       <td>2026-08-01 09:17:02</td>
-       <td>The Wp Responsive Thumbnail Slider plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'id' parameter in versions up to, and excluding, 1.1.53. This is due to insufficient input sanitization and output escaping in the responsive_thumbnail_image_management() function, which echoes $_GET['id'] directly into a double-quoted HTML attribute with no esc_attr() call. The only guard is a loose PHP numeric comparison ($_GET['id']>0) that a string beginning with a numeric prefix trivially satisfies, and the addslashes() applied by wp_magic_quotes() is inert in HTML-attribute context because backslash is not an HTML escape character. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a specially crafted link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18344">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>adf09d217b212c9bf9d28bc51e9d59e9</td>
-       <td>CVE-2026-18062</td>
-       <td>2026-08-01 09:17:02</td>
-       <td>The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Identity Block Inner Image Content in all versions up to, and including, 3.7.8.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is only triggerable when the block's urlTransparent attribute is set to a non-empty value, as this is a required precondition for the vulnerable code path in build_html() to be reached.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18062">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c585af24672e4203a09f37fdac715dd7</td>
-       <td>CVE-2026-18059</td>
-       <td>2026-08-01 09:17:01</td>
-       <td>The PixelYourSite – Your smart PIXEL (TAG) & API Manager plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 11.2.1 via the getWooPurchaseEventParams. This makes it possible for unauthenticated attackers to extract WooCommerce purchase metadata — including product names, product IDs, quantities, per-item prices, order totals, currency, and order/transaction IDs — for any existing order by supplying an invalid or arbitrary order key. This is exploitable against any known or enumerated order ID, as the plugin resolves the order from the URL path variable alone and emits the full woo_purchase tracking payload into the page HTML via the pysOptions JavaScript object across its Facebook, Google Analytics, and Google Tag Manager integrations regardless of key validity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18059">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>60e0cb768bafdc62c5a16f6bef5eb808</td>
-       <td>CVE-2026-17605</td>
-       <td>2026-08-01 09:17:01</td>
-       <td>The Payment forms, Buy now buttons, and Invoicing System | GetPaid plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 2.8.56 via the getpaid_payment_form_element function. This makes it possible for authenticated attackers, with administrator-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17605">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>011fc52adf95d1a1d45c2cf898d289cc</td>
-       <td>CVE-2026-17580</td>
-       <td>2026-08-01 09:17:01</td>
-       <td>The Advanced Views – Display Custom Fields (ACF, Pods, MetaBox), Posts, CPT and Woo Products anywhere in Gutenberg, Elementor, Divi, Beaver… plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.9.1 via the register_rest_routes. This makes it possible for authenticated attackers, with subscriber-level access and above, to extract sensitive admin-authored editor content — including template markup, CSS code, JavaScript code, and PHP controller variables — for any Layout or Post Selection post on the site.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17580">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f0418b7eba3538bc5664c7b6bd986c67</td>
-       <td>CVE-2026-17571</td>
-       <td>2026-08-01 09:17:01</td>
-       <td>The Fluent Forms – Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via 'param' in all versions up to, and including, 6.2.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17571">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>33d2c20394dd10780176005c9179f98c</td>
-       <td>CVE-2026-17555</td>
-       <td>2026-08-01 09:17:01</td>
-       <td>The WPvivid Backup & Migration plugin for WordPress is vulnerable to SQL Injection via the export_data parameter in versions up to, and including, 0.9.131. This is due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. The values are received in prepare_export_post(), passed through sanitize_text_field() and stripslashes(), JSON-decoded, and the attacker-controlled JSON object keys are collected as $posts_ids without integer casting. They are stored in the export task options and later joined with commas and interpolated directly into a `WHERE ID IN (...)` clause inside a $wpdb->get_results() call in export_post_to_xml() (unquoted, numeric context), with no $wpdb->prepare() or esc_sql(). This makes it possible for authenticated attackers, with Administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17555">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d0f21a335472f570832a9e229effd012</td>
-       <td>CVE-2026-16685</td>
-       <td>2026-08-01 09:17:01</td>
-       <td>The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'icon' Shortcode Attribute in all versions up to, and including, 3.3.66 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. wp_kses_post() does not neutralize the payload because it operates on post content at save time and does not process shortcode attribute values that are emitted unescaped at render time.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16685">详情</a></td>
       </tr>
 
      </tbody>
