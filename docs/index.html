@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-09 18:49:51 -->
+<!-- RELEASE TIME : 2026-08-10 19:04:14 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>9e43c5dc5eea0d7c41a0bb1855085faf</td>
+       <td>CVE-2026-72761</td>
+       <td>2026-08-10 15:17:44 <img src="imgs/new.gif" /></td>
+       <td>The webhook URL validator in `website/notifications/webhooks.py` uses `ip.is_global` to reject non-public addresses after DNS resolution. IPv6 transition addresses (NAT64 `64:ff9b::/96`, 6to4 `2002::/16`, Teredo `2001:0000::/32`) are classified as globally routable by IANA, so `is_global` returns `True` even when the embedded IPv4 targets a private, loopback, or cloud metadata destination. An attacker can register a webhook pointing at a hostname that resolves to a transition address to bypass the SSRF guard and exfiltrate vulnerability data to an internal endpoint. The vulnerability was introduced on a non-release version. The fix was already done on HEAD. It only affects organisation running the HEAD.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72761">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a2e40d6afe26d3948cd3e47d6a5a99b8</td>
+       <td>CVE-2026-72760</td>
+       <td>2026-08-10 15:17:44 <img src="imgs/new.gif" /></td>
+       <td>Affected versions of MISP cti-transmute disclose users' email addresses through the account following-list endpoint. When an authenticated user follows another account, get_following() includes the followed user's email field in the API response alongside their name, user ID, and follow date. Because the email address is not required for the functionality and other related user lists omit it, an authenticated attacker could systematically follow users and collect their email addresses. The fix removes user.email from the returned object.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72760">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f4d9bfac6f9f767034f47b5c67c05c7</td>
+       <td>CVE-2026-72759</td>
+       <td>2026-08-10 15:17:44 <img src="imgs/new.gif" /></td>
+       <td>In affected versions of MISP cti-transmute, the conversion-history details endpoint performs an incomplete authorization check. When a history record references a deleted conversion, the associated conversion lookup returns None. The previous logic only denied access when the conversion object existed and the visibility check failed. As a result, deleted conversions bypassed the authorization check and their retained history input/output could be disclosed to a user able to request the corresponding history entry. The July 22, 2026 commit changes the logic to deny access whenever the conversion is missing or the requester lacks permission</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72759">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b7be89d8782262afe7516e665b0c9e1</td>
+       <td>CVE-2026-19433</td>
+       <td>2026-08-10 15:17:43 <img src="imgs/new.gif" /></td>
+       <td>Authorization Bypass Through User-Controlled Key in the contact management component in Roskus Prospero Flow CRM before 5.4.8 allows authenticated users of any company to blindly overwrite the contact data of another company and to download that contact's personal data as a vCard via the contact's numeric identifier, because the save and export operations retrieve the record without constraining the query to the authenticated user's company.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19433">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c58f91115d218de7f892bf66d0f3cce7</td>
+       <td>CVE-2026-18412</td>
+       <td>2026-08-10 15:17:42 <img src="imgs/new.gif" /></td>
+       <td>OpenCart extensions are uploaded as zip files with .ocmod.zip extensions. Upon installation, the OpenCart v4.2.0.0 extension installer extracts these zip files, but does not validate that the extracted paths stay inside the intended extraction directory. An attacker can craft a malicious extension containing file path traversal sequences, such as ../. With this vulnerability, an attacker can write files, such as a PHP web shell, into the webroot directory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18412">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b60e264a76e4f47c1e33da8cf60e8089</td>
+       <td>CVE-2026-72751</td>
+       <td>2026-08-10 14:17:31 <img src="imgs/new.gif" /></td>
+       <td>CTI-Transmute is affected by a stored cross-site scripting (XSS) vulnerability in the conversion graph used to visualise converted MISP and STIX content. Attacker-controlled values originating from converted CTI data were passed to multiple HTML-parsing sinks in the graph user interface without sufficient neutralisation. In particular, node labels, node sublabels, edge labels, node properties, edge properties, and node types could contain crafted HTML or JavaScript content. The Pivotick graph library renders some of these values through HTML-parsing operations. Consequently, a malicious value such as an HTML element containing an event handler could be interpreted as markup rather than displayed as plain text. The first remediation explicitly notes that Pivotick rendered node and edge labels as HTML and therefore introduced escaping before data was handed to the graph renderer. A separate vulnerable sink was present in the Open raw JSON functionality. The raw object associated with a graph node was inserted into a new document using document.write() and an interpolated HTML string. Crafted JSON content could therefore break out of the intended <pre> element and inject executable markup. The fix replaced this construction with DOM APIs and assigns the JSON using textContent. The initial correction did not cover all Pivotick rendering paths. A subsequent patch addressed additional XSS vectors in the graph properties panel. Values derived from the original CTI object—including property names, property values, hash algorithm names, child attributes, edge properties, and STIX object types—could still reach Pivotick's HTML resolver. According to the patch, Pivotick's tryResolveHTMLElement processes string values using template.innerHTML, allowing malicious markup to execute when a graph node is hovered over or selected. The complete remediation therefore: * HTML-escapes node labels, node sublabels, and edge labels before they are passed to Pivotick. * Restricts graph node type values to a safe identifier character set. * Wraps node and edge property values in DOM elements populated through textContent, preventing Pivotick from treating attacker-controlled strings as HTML. * Replaces the raw-JSON popup's interpolated document.write() with DOM construction and textContent.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72751">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cbfd57c6aa202287b43f885604e46662</td>
+       <td>CVE-2026-71959</td>
+       <td>2026-08-10 14:17:26 <img src="imgs/new.gif" /></td>
+       <td>Bitwarden Server before 2026.7.2 does not verify that the caller is a member of the organization identified in a POST /collect request body, allowing any authenticated user to write forged, arbitrarily backdated entries into any organization's audit log.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71959">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>860f7831aa5f31f35040f7f612deeeba</td>
+       <td>CVE-2026-63105</td>
+       <td>2026-08-10 14:17:25 <img src="imgs/new.gif" /></td>
+       <td>ReadyEcommerce before 4.5.2 contains a stored cross-site scripting (XSS) vulnerability that allows authenticated customers to inject malicious HTML payloads through the chat and support ticket messaging systems by exploiting unsanitized rendering via the v-html directive in Messages.vue, RightChatSidebar.vue, SupportTicketMessages.vue, and SupportTicketDetails.vue. Attackers can submit crafted message content that executes arbitrary JavaScript in the browser of any shop owner or administrator who views the message, enabling session cookie theft and account takeover.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63105">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a543b7710adf5c2705dec2f0243a6bae</td>
+       <td>CVE-2026-59112</td>
+       <td>2026-08-10 14:17:25 <img src="imgs/new.gif" /></td>
+       <td>Improper verification of cryptographic signature and Improper Check for Unusual or Exceptional Conditions vulnerability in Estonian Information System Authority (RIA) libdigidocpp, DigiDoc4, DigiDoc on Android, and DigiDoc on iOS. This issue affects libdigidocpp: from 4.1.0 before 4.2.1; DigiDoc4: from 4.7.0 before 4.8.2; DigiDoc on Android: from 2.7.0 before 2.7.2; DigiDoc on iOS: from 2.8.0 before 2.8.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59112">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f6ef6149dfb47e646f06cfbd00f8ad25</td>
+       <td>CVE-2026-18503</td>
+       <td>2026-08-10 14:17:21 <img src="imgs/new.gif" /></td>
+       <td>Attacker-controlled CSV samples can trigger super-linear regular-expression work during dialect sniffing and consume significant CPU when applications pass unbounded input to csv.Sniffer.sniff().</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18503">详情</a></td>
+      </tr>
+
+      <tr>
        <td>b18b8b85d597fb8e6993d3f4dc6a361a</td>
        <td>CVE-2026-19358</td>
        <td>2026-08-09 16:16:52 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-08-09 06:18:22 <img src="imgs/new.gif" /></td>
        <td>The WP Data Access WordPress plugin before 5.5.79 does not validate the column names it accepts on one of its unauthenticated AJAX actions, and the nonce guarding that action does not cover them, allowing unauthenticated attackers to read arbitrary columns of the database table the affected front-end form is bound to, including user password hashes where that table is the users table.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18032">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f71e1fb488202516fa74ddf75045acc</td>
-       <td>CVE-2026-67620</td>
-       <td>2026-08-08 16:16:49 <img src="imgs/new.gif" /></td>
-       <td>Flowise through 3.1.4 contains a server-side request forgery vulnerability in the SSRF guard implemented in httpSecurity.ts, where the DEFAULT_DENY_LIST omits the Oracle Cloud Infrastructure metadata endpoint 192.0.0.192 and the Alibaba Cloud metadata endpoint 100.100.100.200, allowing authenticated attackers to force the server to issue arbitrary GET requests to cloud instance metadata services. Attackers can send requests to the fetch-links API endpoint with a crafted URL parameter, bypassing deny-list validation including redirect-based bypasses, to reach instance metadata services and expose instance identity data and role credentials on Oracle Cloud Infrastructure or Alibaba Cloud deployments, with unauthenticated access possible when URL-fetching nodes exist in public chatflows.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-67620">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6cc584cfc55961152f29461414e4f665</td>
-       <td>CVE-2026-42170</td>
-       <td>2026-08-08 16:16:49 <img src="imgs/new.gif" /></td>
-       <td>A heap-based buffer overflow vulnerability exists in the GIMP DDS (DirectDraw Surface) file parser. When a crafted DDS file declares a D3D9 pixel format but sets a lower bits-per-pixel (bpp) value in the header, the loader allocates an undersized heap buffer. Subsequent pixel data consumption at the real format's stride causes a write past the heap buffer boundary, leading to heap metadata corruption and potential code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42170">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b8f4404d8f4daf7ba9c7b1586b42e643</td>
-       <td>CVE-2026-19288</td>
-       <td>2026-08-08 14:16:24 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability has been found in astralisone rive-mcp-server-core up to db1d0cc4cd52589116360428b7504fd0ca748b3e. This affects an unknown part of the file packages/mcp-server/src/tools/importRiveFile.ts of the component importRiveFile Flow. Such manipulation of the argument libraryId leads to path traversal. The attack needs to be performed locally. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19288">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e665c230fb9e4af1ded87e03874db809</td>
-       <td>CVE-2026-19287</td>
-       <td>2026-08-08 14:16:22 <img src="imgs/new.gif" /></td>
-       <td>A flaw has been found in abrinsmead mindpilot-mcp 0.5.0. Affected by this issue is some unknown functionality of the component HistoryService. This manipulation of the argument ID causes path traversal. The attack needs to be launched locally. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19287">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>46852c0177a026a32714b3ac49a556b9</td>
-       <td>CVE-2026-19285</td>
-       <td>2026-08-08 13:17:10 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was detected in aaronsb memory-graph up to 5cfd2382778837b9f6399080956eee670d00452c. Affected by this vulnerability is the function JsonMemoryStorage.createDomain/JsonMemoryStorage.getMemories/JsonMemoryStorage.saveMemories of the file src/tools/memoryTools.ts. The manipulation results in path traversal. The attack must be initiated from a local position. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19285">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a478f1b7bbf8c04b8c72e5c30aa7a936</td>
-       <td>CVE-2026-19284</td>
-       <td>2026-08-08 13:17:10 <img src="imgs/new.gif" /></td>
-       <td>A security vulnerability has been detected in MauricioMilano coder-api up to 1.1.0. Affected is the function createProject of the file src/core/projects.ts of the component Projects Endpoint. The manipulation leads to command injection. The attack must be carried out locally. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19284">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0cf17f72ed887e06fb0de0f23a8fd477</td>
-       <td>CVE-2026-19282</td>
-       <td>2026-08-08 13:17:10 <img src="imgs/new.gif" /></td>
-       <td>A weakness has been identified in andreahaku llm_memory_mcp up to f11dc8bcff3ff8cf943a2945f99ff3b0bdc8a6d0. This impacts the function auto.capture of the file src/autolearn/GitHooksManager.ts of the component llm_memory_mcp. Executing a manipulation of the argument hash can lead to command injection. The attack is restricted to local execution. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19282">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1252682e202ace47e823669d63338346</td>
-       <td>CVE-2026-19281</td>
-       <td>2026-08-08 12:16:46 <img src="imgs/new.gif" /></td>
-       <td>A security flaw has been discovered in adolfosalasgomez3011 slidev-builder-mcp 2.1.0. This affects the function generateChart of the file src/tools/generateAssets.ts of the component generateAssets Tool. Performing a manipulation of the argument outputDir results in command injection. The attack is only possible with local access. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19281">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c154e9ec73b85f2d6dcdbabf2d3425ef</td>
-       <td>CVE-2026-19279</td>
-       <td>2026-08-08 11:16:50 <img src="imgs/new.gif" /></td>
-       <td>A vulnerability was identified in MIMICLab mcp-pdf-vision 1.1.0. The impacted element is the function load_pdf of the file src/index.ts. Such manipulation of the argument pdfPath/sessionId leads to command injection. The attack can only be performed from a local environment. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19279">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>472503b9cfd2eb6047f6118f65903f26</td>
-       <td>CVE-2026-68082</td>
-       <td>2026-08-08 10:16:55 <img src="imgs/new.gif" /></td>
-       <td>In the Linux kernel, the following vulnerability has been resolved: libceph: fix two unsafe bare decodes in decode_lockers() decode_lockers() in cls_lock_client.c contains two bare decode operations that allow a malicious or compromised OSD to trigger slab-out-of-bounds reads: 1. ceph_decode_32(p) at the num_lockers field has no preceding bounds check. ceph_start_decoding() accepts struct_len=0 as valid -- the internal ceph_decode_need(p, end, 0, bad) always passes -- so when an OSD sends struct_len=0, ceph_start_decoding() returns success with p == end. The immediately following bare ceph_decode_32(p) then reads 4 bytes past the validated buffer boundary. The garbage value is passed directly to kzalloc_objs() as the locker count. The sibling function decode_watchers() in osd_client.c already uses ceph_decode_32_safe() after its own ceph_start_decoding() call. decode_lockers() was the only site using the bare variant. 2. ceph_decode_8(p) after the decode_locker() loop has no preceding bounds check. If an OSD crafts num_lockers such that the loop advances p exactly to end, the subsequent bare ceph_decode_8(p) reads one byte past the validated buffer boundary. The result is passed directly into *type, which is used as a lock type discriminator by callers, giving an OSD-controlled one-byte OOB read with direct influence over the lock type field. Fix both by replacing bare operations with their safe variants: ceph_decode_32(p) -> ceph_decode_32_safe(p, end, *num_lockers, err_inval) ceph_decode_8(p) -> ceph_decode_8_safe(p, end, *type, err_free_lockers) The goto targets differ intentionally: err_inval: is a new label returning -EINVAL directly. It is used for the pre-allocation failure path where *lockers is not yet allocated and must not be passed to ceph_free_lockers(). err_free_lockers: is the existing label. It is used for the post-allocation failure path where *lockers is allocated and must be freed. ret is set to -EINVAL before ceph_decode_8_safe() so that err_free_lockers returns the correct error code on bounds violation. Without this, err_free_lockers would return a stale ret value (0 from the successful decode_locker() loop), silently swallowing the error. -EINVAL is correct for both failure paths. The data received from the OSD is structurally malformed. -ENOMEM would misrepresent the failure class to callers and to stable@ backporters triaging error paths. Attacker model: a malicious or compromised OSD in a multi-tenant Ceph deployment can trigger this against any kernel client that issues the lock.get_info class method (e.g. during RBD exclusive lock acquisition). [ idryomov: trim changelog, formatting ]</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68082">详情</a></td>
       </tr>
 
      </tbody>
