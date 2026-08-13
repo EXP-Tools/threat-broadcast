@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-12 19:09:12 -->
+<!-- RELEASE TIME : 2026-08-13 19:10:10 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f664e82ac62d7a9b71f1c9aef5395d27</td>
+       <td>CVE-2026-73557</td>
+       <td>2026-08-13 15:20:18 <img src="imgs/new.gif" /></td>
+       <td>vLLM is an inference and serving engine for large language models. From 0.20.2rc0 until 0.26.0, safe_load_prompt_embeds in vllm/renderers/embed_utils.py uses torch.sparse.check_sparse_tensor_invariants, whose process-global save, enable, and restore state can be raced by concurrent prompt_embeds parts submitted to POST /v1/chat/completions through AsyncMultiModalItemTracker.resolve_items, asyncio.gather, and the default executor, allowing an invalid sparse tensor to reach tensor.to_dense despite the CVE-2025-62164 guard when enable_prompt_embeds is enabled. This issue is fixed in version 0.26.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73557">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a35918316bdb7a026fb1d73934fa0a96</td>
+       <td>CVE-2026-73556</td>
+       <td>2026-08-13 15:20:17 <img src="imgs/new.gif" /></td>
+       <td>vLLM is an inference and serving engine for large language models. Prior to 0.26.0, the structured_outputs.regex parameter in vllm/v1/structured_output/backend_lm_format_enforcer.py is passed to lmformatenforcer.RegexParser without compile_regex_with_timeout or validation in validate_structured_output_request_lm_format_enforcer, allowing an unauthenticated /v1/completions request against the lm-format-enforcer backend to consume a CPU core and stall the structured-output engine path with a catastrophic regular expression. This issue is fixed in version 0.26.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73556">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>de82edc4c38378ab667ff89dc66ee727</td>
+       <td>CVE-2026-73509</td>
+       <td>2026-08-13 15:20:17 <img src="imgs/new.gif" /></td>
+       <td>OpenList a file list program that supports multiple storage. Prior to 4.2.4, the authenticated /api/fs/batch_rename handler in server/handles/fsbatch.go authorizes only the source directory produced by user.JoinPath(req.SrcDir) and validates renameObject.NewName with checkRelativePath, but does not validate attacker-controlled renameObject.SrcName, supplied as src_name, before concatenating it with the authorized path and passing the result to fs.Rename. A user with rename permission can use traversal segments in src_name to make path normalization select a file outside the authorized directory and configured base path, resulting in cross-user file integrity loss, limited availability impact, and file-existence disclosure through success or error responses. This issue is fixed in version 4.2.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73509">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>415bf674469d9d8baea3a205bc652239</td>
+       <td>CVE-2026-73505</td>
+       <td>2026-08-13 15:20:16 <img src="imgs/new.gif" /></td>
+       <td>Oh My Posh is the most customisable and low-latency cross platform/shell prompt renderer. Prior to 29.35.1, the setStyle() function in src/segments/path.go passed pt.Path, which includes raw folder names, to template.Render, whose function map exposes cmd, so an attacker-controlled directory name containing a Go template expression could execute arbitrary operating system commands as the current user whenever the prompt rendered inside that directory or a descendant. This issue is fixed in version 29.35.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73505">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2f053d73bb4b2247d8e989182b27a620</td>
+       <td>CVE-2026-70464</td>
+       <td>2026-08-13 15:20:01 <img src="imgs/new.gif" /></td>
+       <td>rsync daemon 2.0.0 before 3.5.0 contains a denial of service vulnerability that allows unauthenticated remote attackers to exhaust daemon connection slots by stalling the handshake process before or after module selection without triggering the I/O timeout. Attackers can open many simultaneous connections and trickle data at the minimum rate to avoid timeout, or stall entirely before module selection where no timeout applies, consuming all available connection slots and denying service to legitimate clients.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70464">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8efb182308629661017ea0987d02a812</td>
+       <td>CVE-2026-70463</td>
+       <td>2026-08-13 15:20:01 <img src="imgs/new.gif" /></td>
+       <td>rsync 3.1.0 before 3.5.0 contains an authorization bypass in auth users directive parsing. The auth users parser uses comma-only tokenization when splitting the user list, which fails to correctly handle entries of the form @Group Name where the group name contains a space. The space within the group name causes the parser to split the entry at the space boundary, discarding the deny rule associated with the group. An authenticated user whose username or group membership would be denied by an @Group Name auth users entry can connect to a restricted module because the deny rule is silently discarded during parsing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70463">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f48b36618b1288757e81864734911ea</td>
+       <td>CVE-2026-70460</td>
+       <td>2026-08-13 15:19:59 <img src="imgs/new.gif" /></td>
+       <td>rsync 2.3.3 before 3.5.0 contains a path traversal vulnerability that allows a malicious sender to escape the module root by exploiting symlinks within the module file tree when using --partial-dir or --backup-dir options. Attackers with write access to place a symlink under the module root, or who can exploit a pre-existing trusted symlink, can direct file writes to locations outside the intended module root, achieving arbitrary file write relative to the module root parent.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70460">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2cd13d0634a3dc2ab5173772cc9d1670</td>
+       <td>CVE-2026-70459</td>
+       <td>2026-08-13 15:19:59 <img src="imgs/new.gif" /></td>
+       <td>rsync 3.0.0 before 3.5.0 contains a null pointer dereference vulnerability in the daemon child process that allows remote attackers to crash the daemon by sending a file list whose first entry is a dot entry not typed as a directory. The daemon dereferences the first file list entry as a directory structure pointer without verifying the entry type, resulting in an invalid or uninitialized pointer dereference that terminates the client connection.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70459">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4125947c5b6e43d8088167a05b47c745</td>
+       <td>CVE-2026-70456</td>
+       <td>2026-08-13 15:19:59 <img src="imgs/new.gif" /></td>
+       <td>rsync 3.0.1 before 3.5.0 contains an out-of-bounds write vulnerability in the read_args() function that allows a malicious sender to corrupt adjacent heap memory by sending a crafted argument list. When the argument count causes the argv allocation to be exactly full, the trailing NULL terminator is written one slot beyond the allocation boundary, corrupting adjacent heap memory.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70456">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>01d7092f0564674aa8f207dc717025ec</td>
+       <td>CVE-2026-70455</td>
+       <td>2026-08-13 15:19:59 <img src="imgs/new.gif" /></td>
+       <td>rsync 3.4.2 before 3.5.0 contains a denial of service vulnerability that allows a remote sender to exhaust system resources by specifying the --zt short alias for --compress-threads, which bypasses the refuse options directive's string matching on long option names. Attackers can specify --zt=N with a large value to spawn an unbounded number of Zstandard worker threads on the receiver, exhausting available thread and memory resources.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70455">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ce08fa1db9a259aede770b830158f5f1</td>
        <td>CVE-2026-8667</td>
        <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>c1ca93f8db30f91fd69cf253ef6c9887</td>
        <td>CVE-2026-59131</td>
-       <td>2026-08-11 17:18:07 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:07</td>
        <td>No cwe for this issue in AMD Zen allows an authorized attacker to disclose information locally.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59131">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>417929f46b624ecf303a7cfd58459e88</td>
        <td>CVE-2026-59130</td>
-       <td>2026-08-11 17:18:07 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:07</td>
        <td>No cwe for this issue in AMD Zen allows an authorized attacker to disclose information locally.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59130">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>ba05fcbf919f7ec0e5f1ffb7f33bc17f</td>
        <td>CVE-2026-59127</td>
-       <td>2026-08-11 17:18:06 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:06</td>
        <td>Integer overflow or wraparound in Windows Installer allows an authorized attacker to elevate privileges locally.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59127">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>d9bdd1de977d7e668f61bcdab6fc2410</td>
        <td>CVE-2026-59126</td>
-       <td>2026-08-11 17:18:06 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:06</td>
        <td>Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Event Logging Service allows an authorized attacker to elevate privileges locally.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59126">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>52e27d80082407381562bc57da21f712</td>
        <td>CVE-2026-59124</td>
-       <td>2026-08-11 17:18:06 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:06</td>
        <td>Deserialization of untrusted data in Microsoft High Performance Computing (HPC) Pack allows an unauthorized attacker to execute code over a network.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59124">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>3d589f6888744205cb0e92293a24fc4d</td>
        <td>CVE-2026-59122</td>
-       <td>2026-08-11 17:18:06 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:06</td>
        <td>Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Telephony Service allows an authorized attacker to elevate privileges locally.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59122">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>beaea3b2a5c2c72394eb11ca6513009f</td>
        <td>CVE-2026-58639</td>
-       <td>2026-08-11 17:18:05 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:05</td>
        <td>Server-side request forgery (ssrf) in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58639">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>d7edd8fcc023bfc63e190ba95dd88d14</td>
        <td>CVE-2026-57104</td>
-       <td>2026-08-11 17:18:04 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:04</td>
        <td>Improper neutralization of input during web page generation ('cross-site scripting') in Azure Storage Explorer allows an unauthorized attacker to elevate privileges over a network.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57104">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>eb6fff728425a5b7cc30d30ee5c5fbd5</td>
        <td>CVE-2026-56179</td>
-       <td>2026-08-11 17:18:04 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:04</td>
        <td>Origin validation error in Windows Network Address Translation (NAT) allows an unauthorized attacker to perform spoofing over an adjacent network.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56179">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>3bde9ec08e1774933ca6d62e55525e71</td>
        <td>CVE-2026-54123</td>
-       <td>2026-08-11 17:18:03 <img src="imgs/new.gif" /></td>
+       <td>2026-08-11 17:18:03</td>
        <td>Exposure of sensitive information to an unauthorized actor in Microsoft Defender for Endpoint allows an authorized attacker to disclose information locally.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54123">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e43c5dc5eea0d7c41a0bb1855085faf</td>
-       <td>CVE-2026-72761</td>
-       <td>2026-08-10 15:17:44</td>
-       <td>The webhook URL validator in `website/notifications/webhooks.py` uses `ip.is_global` to reject non-public addresses after DNS resolution. IPv6 transition addresses (NAT64 `64:ff9b::/96`, 6to4 `2002::/16`, Teredo `2001:0000::/32`) are classified as globally routable by IANA, so `is_global` returns `True` even when the embedded IPv4 targets a private, loopback, or cloud metadata destination. An attacker can register a webhook pointing at a hostname that resolves to a transition address to bypass the SSRF guard and exfiltrate vulnerability data to an internal endpoint. The vulnerability was introduced on a non-release version. The fix was already done on HEAD. It only affects organisation running the HEAD.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72761">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a2e40d6afe26d3948cd3e47d6a5a99b8</td>
-       <td>CVE-2026-72760</td>
-       <td>2026-08-10 15:17:44</td>
-       <td>Affected versions of MISP cti-transmute disclose users' email addresses through the account following-list endpoint. When an authenticated user follows another account, get_following() includes the followed user's email field in the API response alongside their name, user ID, and follow date. Because the email address is not required for the functionality and other related user lists omit it, an authenticated attacker could systematically follow users and collect their email addresses. The fix removes user.email from the returned object.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72760">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7f4d9bfac6f9f767034f47b5c67c05c7</td>
-       <td>CVE-2026-72759</td>
-       <td>2026-08-10 15:17:44</td>
-       <td>In affected versions of MISP cti-transmute, the conversion-history details endpoint performs an incomplete authorization check. When a history record references a deleted conversion, the associated conversion lookup returns None. The previous logic only denied access when the conversion object existed and the visibility check failed. As a result, deleted conversions bypassed the authorization check and their retained history input/output could be disclosed to a user able to request the corresponding history entry. The July 22, 2026 commit changes the logic to deny access whenever the conversion is missing or the requester lacks permission</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72759">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3b7be89d8782262afe7516e665b0c9e1</td>
-       <td>CVE-2026-19433</td>
-       <td>2026-08-10 15:17:43</td>
-       <td>Authorization Bypass Through User-Controlled Key in the contact management component in Roskus Prospero Flow CRM before 5.4.8 allows authenticated users of any company to blindly overwrite the contact data of another company and to download that contact's personal data as a vCard via the contact's numeric identifier, because the save and export operations retrieve the record without constraining the query to the authenticated user's company.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19433">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c58f91115d218de7f892bf66d0f3cce7</td>
-       <td>CVE-2026-18412</td>
-       <td>2026-08-10 15:17:42</td>
-       <td>OpenCart extensions are uploaded as zip files with .ocmod.zip extensions. Upon installation, the OpenCart v4.2.0.0 extension installer extracts these zip files, but does not validate that the extracted paths stay inside the intended extraction directory. An attacker can craft a malicious extension containing file path traversal sequences, such as ../. With this vulnerability, an attacker can write files, such as a PHP web shell, into the webroot directory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18412">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b60e264a76e4f47c1e33da8cf60e8089</td>
-       <td>CVE-2026-72751</td>
-       <td>2026-08-10 14:17:31</td>
-       <td>CTI-Transmute is affected by a stored cross-site scripting (XSS) vulnerability in the conversion graph used to visualise converted MISP and STIX content. Attacker-controlled values originating from converted CTI data were passed to multiple HTML-parsing sinks in the graph user interface without sufficient neutralisation. In particular, node labels, node sublabels, edge labels, node properties, edge properties, and node types could contain crafted HTML or JavaScript content. The Pivotick graph library renders some of these values through HTML-parsing operations. Consequently, a malicious value such as an HTML element containing an event handler could be interpreted as markup rather than displayed as plain text. The first remediation explicitly notes that Pivotick rendered node and edge labels as HTML and therefore introduced escaping before data was handed to the graph renderer. A separate vulnerable sink was present in the Open raw JSON functionality. The raw object associated with a graph node was inserted into a new document using document.write() and an interpolated HTML string. Crafted JSON content could therefore break out of the intended <pre> element and inject executable markup. The fix replaced this construction with DOM APIs and assigns the JSON using textContent. The initial correction did not cover all Pivotick rendering paths. A subsequent patch addressed additional XSS vectors in the graph properties panel. Values derived from the original CTI object—including property names, property values, hash algorithm names, child attributes, edge properties, and STIX object types—could still reach Pivotick's HTML resolver. According to the patch, Pivotick's tryResolveHTMLElement processes string values using template.innerHTML, allowing malicious markup to execute when a graph node is hovered over or selected. The complete remediation therefore: * HTML-escapes node labels, node sublabels, and edge labels before they are passed to Pivotick. * Restricts graph node type values to a safe identifier character set. * Wraps node and edge property values in DOM elements populated through textContent, preventing Pivotick from treating attacker-controlled strings as HTML. * Replaces the raw-JSON popup's interpolated document.write() with DOM construction and textContent.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-72751">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cbfd57c6aa202287b43f885604e46662</td>
-       <td>CVE-2026-71959</td>
-       <td>2026-08-10 14:17:26</td>
-       <td>Bitwarden Server before 2026.7.2 does not verify that the caller is a member of the organization identified in a POST /collect request body, allowing any authenticated user to write forged, arbitrarily backdated entries into any organization's audit log.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71959">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>860f7831aa5f31f35040f7f612deeeba</td>
-       <td>CVE-2026-63105</td>
-       <td>2026-08-10 14:17:25</td>
-       <td>ReadyEcommerce before 4.5.2 contains a stored cross-site scripting (XSS) vulnerability that allows authenticated customers to inject malicious HTML payloads through the chat and support ticket messaging systems by exploiting unsanitized rendering via the v-html directive in Messages.vue, RightChatSidebar.vue, SupportTicketMessages.vue, and SupportTicketDetails.vue. Attackers can submit crafted message content that executes arbitrary JavaScript in the browser of any shop owner or administrator who views the message, enabling session cookie theft and account takeover.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63105">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a543b7710adf5c2705dec2f0243a6bae</td>
-       <td>CVE-2026-59112</td>
-       <td>2026-08-10 14:17:25</td>
-       <td>Improper verification of cryptographic signature and Improper Check for Unusual or Exceptional Conditions vulnerability in Estonian Information System Authority (RIA) libdigidocpp, DigiDoc4, DigiDoc on Android, and DigiDoc on iOS. This issue affects libdigidocpp: from 4.1.0 before 4.2.1; DigiDoc4: from 4.7.0 before 4.8.2; DigiDoc on Android: from 2.7.0 before 2.7.2; DigiDoc on iOS: from 2.8.0 before 2.8.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59112">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f6ef6149dfb47e646f06cfbd00f8ad25</td>
-       <td>CVE-2026-18503</td>
-       <td>2026-08-10 14:17:21</td>
-       <td>Attacker-controlled CSV samples can trigger super-linear regular-expression work during dialect sniffing and consume significant CPU when applications pass unbounded input to csv.Sniffer.sniff().</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18503">详情</a></td>
       </tr>
 
      </tbody>
