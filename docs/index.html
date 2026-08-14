@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-13 19:10:10 -->
+<!-- RELEASE TIME : 2026-08-14 21:29:55 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>63501a8e843a471c2492ccfe63cabfd4</td>
+       <td>CVE-2026-73846</td>
+       <td>2026-08-14 17:20:36 <img src="imgs/new.gif" /></td>
+       <td>CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, canonicalizeParams in src/utils/cache.ts serializes request parameters with unescaped ampersand, equals-sign, and vertical-bar delimiters, allowing different logical parameter sets used by buildCacheKey to collide and an attacker to prime a shared cache with a response for a victim's distinct query. This issue is fixed in version 0.4.112.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73846">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f19218b379271ded44f9707434459b12</td>
+       <td>CVE-2026-73845</td>
+       <td>2026-08-14 17:20:36 <img src="imgs/new.gif" /></td>
+       <td>CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, the ckan_get_mqa_quality and ckan_get_mqa_quality_details tools in src/tools/quality.ts use isValidMqaServer to validate the server_url parameter with a prefix-only regular expression for dati.gov.it, allowing suffix-host and URL-userinfo values to target an attacker-controlled host and return a spoofed response. This issue is fixed in version 0.4.112.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73845">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5f46974d78b042ac56a47af926e05c22</td>
+       <td>CVE-2026-73844</td>
+       <td>2026-08-14 17:20:36 <img src="imgs/new.gif" /></td>
+       <td>CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, error paths reflect raw upstream response bodies and internal exception messages back to the caller instead of a sanitized, generic message. When the server is pointed at (or redirected/SSRF'd to) a host that returns a non-CKAN response, or when an internal exception occurs, the caller receives verbatim upstream content and internal detail (hostnames, internal IPs, DB errors, stack fragments). This vulnerability is fixed in 0.4.112.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73844">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e1cd9cd8eda562aa9ebf6bcdfa9a048a</td>
+       <td>CVE-2026-73107</td>
+       <td>2026-08-14 17:20:32 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73107">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>53a53d8b4eb58b7c7c11149fcf9d4ad2</td>
+       <td>CVE-2026-49989</td>
+       <td>2026-08-14 17:18:27 <img src="imgs/new.gif" /></td>
+       <td>CrateDB is a distributed SQL database. Prior to versions 6.2.8 and 6.3.2, any authenticated user can read or delete any blob whose SHA-1 digest they know, and can plant new blobs unconditionally, in any blob table, regardless of `GRANT`s. CrateDB has two ways to access blob storage: SQL (`SELECT ... FROM blob.<table>` and friends) and the blob HTTP API (`GET|PUT|DELETE /_blobs/{table}/{digest}`). The SQL path goes through `AccessControl`, which is what enforces privilege grants; that's why `SELECT digest FROM blob.secret_blobs` fails for a user who has no grants on the table. The HTTP path authenticates the request but never asks `AccessControl` whether the authenticated user is allowed to touch the table. So a user with no grants gets `MissingPrivilegeException` from SQL and `200 OK` plus the blob bytes from `GET /_blobs/secret_blobs/<digest>`. Deployments that don't use `BLOB TABLE` are unaffected. Authentication itself still works; the bug is strictly that being authenticated as anyone is treated as sufficient for any blob op. Versions 6.2.8 and 6.3.2 fix the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49989">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0785ed94e24d03931a0a2f1cc0e07094</td>
+       <td>CVE-2026-49986</td>
+       <td>2026-08-14 17:18:27 <img src="imgs/new.gif" /></td>
+       <td>The Cortex MCP server (`neuro-cortex-memory`), a cross-platform persistent memory MCP, prior to version 3.17.1 treats the `CLAUDE_PROJECT_DIR` environment variable — automatically set by Claude Code to the currently open project directory — as a trusted Cortex developer checkout. When the `open_visualization` tool is invoked, `_find_dev_source()` resolves the user's active project directory as a candidate Cortex source root. The only validation performed by `_is_cortex_root()` is a check for the presence of an `mcp_server/` subdirectory and a `ui/unified-viz.html` file. An attacker who places these two marker files in a malicious repository can cause Cortex to execute an arbitrary `mcp_server/server/visualize_bootstrap.py` from that directory via `subprocess.run([sys.executable, ...])`, achieving code execution with the privileges of the victim's local user process. Version 3.17.1 fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49986">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>922a0972b7714125d4bd67fff95dd0f6</td>
+       <td>CVE-2026-49826</td>
+       <td>2026-08-14 17:18:27 <img src="imgs/new.gif" /></td>
+       <td>Concourse is a container-based automation system written in Go. Prior to version 8.2.3, an attacker is able to craft and send a user a URL that will redirect the user from the Concourse web server to any other site. This could be used in a phishing attack to steal user's credentials. This has been fixed in 8.2.3. No known workarounds are available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49826">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cc4e59226b337d749e9b82bb030bff13</td>
+       <td>CVE-2026-47766</td>
+       <td>2026-08-14 17:18:18 <img src="imgs/new.gif" /></td>
+       <td>crun is an open source OCI Container Runtime fully written in C. Prior to version 1.28, crun's default device setup opens the container rootfs `/dev` directory without `O_NOFOLLOW`. If an OCI bundle contains `rootfs/dev` as a symlink and the bundle configuration does not mount `/dev`, crun follows that symlink and creates the default device nodes and stdio symlinks at the symlink target outside the container rootfs. In a local rootful crun replay, this created fixed device nodes and symlinks outside the rootfs before crun returned failure. A pre-existing file named `ptmx` in the target directory was also replaced by crun's forced `ptmx -> pts/ptmx` symlink. Version 1.28 fixes the issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47766">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>79cae1ed9dd5fba62eb4946f655373f0</td>
+       <td>CVE-2026-47192</td>
+       <td>2026-08-14 17:18:15 <img src="imgs/new.gif" /></td>
+       <td>kas is a setup tool for bitbake based projects. Starting in version 4.8 and prior to version 5.3, kas checks out and processes repositories regarding configuration includes prior to validating signatures of those repositories. This may allow to replace on original repository with one under the control of an attacker under very specific conditions. First of all, the attacker must have gained control of a repository that a kas file of the victim is referencing. Furthermore, the following conditions must be fulfilled: the victim's kas configuration must include a configuration file from the attacked repository; the repository state is referenced by tag, and no commit ID is specified (this is triggering a warning, though); the key used for validating the tag or commit signature is stored as file in a repository; no fingerprint for the key is specified; and the `_source_dir` key must not be set by the victim when calling kas (e.g. by avoiding a local `.config.yaml`). Given these conditions, the attacker could modify the included kas configuration in way that the key used to validate the tag signature of the attacker's repository could be replaced by an attacker-chosen key. No other exploit possibilities have been identified so far, but this does not rule out that those may exist. All patches have been released along with kas version 5.3. As a workaround, pin the expected signature key via its fingerprint, also when storing it as file in a repository.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47192">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>598d113dafae4586ba93fb70945ce69d</td>
+       <td>CVE-2026-47191</td>
+       <td>2026-08-14 17:18:15 <img src="imgs/new.gif" /></td>
+       <td>kas is a setup tool for bitbake based projects. Prior to version 5.3, when relying solely on a git commit ID (SHA-1 or SHA-256) to qualify if a checkout of a repository is equivalent to the state validated while adding its commit ID to a kas configuration, users may be tricked to check out a branch of the same name from this repository. This implies that the referenced repository has been taken over by an attacker and modified to carry such a branch. SHA-1 commits may also be replaced by creating hash collisions, so the primary impact of this issue is on SHA-256 commit IDs. Version 5.3 fixes the issue. As a workaround, avoid relying solely on the commit ID for integrity validation of a repository that might become under control of a malicious 3rd party. If available, additional validate cryptographically signed commits or tags. Alternatively, mirror the repository to a save place, validate its integrity, and use this instead of the original one.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47191">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f664e82ac62d7a9b71f1c9aef5395d27</td>
        <td>CVE-2026-73557</td>
        <td>2026-08-13 15:20:18 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>ce08fa1db9a259aede770b830158f5f1</td>
        <td>CVE-2026-8667</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 17.6 before 19.0.6, 19...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8667">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>1c8b8769ac0be76a12e084eecd1e84ca</td>
        <td>CVE-2026-7427</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.5 before 19.0.6, 19...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-7427">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>4d48f303edf6559eb51104344225d9c9</td>
        <td>CVE-2026-73327</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>Joomla 6.1.1 contains a path traversal vulnerability in the com_joomlaupdate extension that...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73327">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>dbd12b0e634f401b164edaf2caa36a3c</td>
        <td>CVE-2026-69106</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>A low-privileged user may poison cached artifact metadata under specific conditions, potentially...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69106">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>eb8824da26bd790ee6fd4f179d53cde6</td>
        <td>CVE-2026-42018</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>JFrog Artifactory could return an internal anonymous-user token to an unauthenticated caller when...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-42018">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>83cc8119f8942e9b921375798b184c0b</td>
        <td>CVE-2026-18250</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote authenticated attacker to obtain sensitive...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18250">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>def5a4a6eb7dc2b67bf3e22db73706cb</td>
        <td>CVE-2026-18235</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote authenticated attacker to execute arbitrary...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18235">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>cbd8d1b727134f547661d80c39e9ced8</td>
        <td>CVE-2026-17420</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote authenticated attacker to bypass security...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17420">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>9ff2bf8f8ab408fef9cbee52d81474c9</td>
        <td>CVE-2026-17419</td>
-       <td>2026-08-12 18:31:22 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:22</td>
        <td>IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote authenticated attacker to modify SQL tables due...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17419">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>0a298ee09bea891dc1e79fa31344006e</td>
        <td>CVE-2026-17276</td>
-       <td>2026-08-12 18:31:21 <img src="imgs/new.gif" /></td>
+       <td>2026-08-12 18:31:21</td>
        <td>IBM i 7.6, 7.5, 7.4, and 7.3 could allow a remote authenticated attacker to escalate privileges...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-17276">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c1ca93f8db30f91fd69cf253ef6c9887</td>
-       <td>CVE-2026-59131</td>
-       <td>2026-08-11 17:18:07</td>
-       <td>No cwe for this issue in AMD Zen allows an authorized attacker to disclose information locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59131">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>417929f46b624ecf303a7cfd58459e88</td>
-       <td>CVE-2026-59130</td>
-       <td>2026-08-11 17:18:07</td>
-       <td>No cwe for this issue in AMD Zen allows an authorized attacker to disclose information locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59130">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ba05fcbf919f7ec0e5f1ffb7f33bc17f</td>
-       <td>CVE-2026-59127</td>
-       <td>2026-08-11 17:18:06</td>
-       <td>Integer overflow or wraparound in Windows Installer allows an authorized attacker to elevate privileges locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59127">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d9bdd1de977d7e668f61bcdab6fc2410</td>
-       <td>CVE-2026-59126</td>
-       <td>2026-08-11 17:18:06</td>
-       <td>Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Event Logging Service allows an authorized attacker to elevate privileges locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59126">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>52e27d80082407381562bc57da21f712</td>
-       <td>CVE-2026-59124</td>
-       <td>2026-08-11 17:18:06</td>
-       <td>Deserialization of untrusted data in Microsoft High Performance Computing (HPC) Pack allows an unauthorized attacker to execute code over a network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59124">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3d589f6888744205cb0e92293a24fc4d</td>
-       <td>CVE-2026-59122</td>
-       <td>2026-08-11 17:18:06</td>
-       <td>Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Telephony Service allows an authorized attacker to elevate privileges locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59122">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>beaea3b2a5c2c72394eb11ca6513009f</td>
-       <td>CVE-2026-58639</td>
-       <td>2026-08-11 17:18:05</td>
-       <td>Server-side request forgery (ssrf) in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-58639">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d7edd8fcc023bfc63e190ba95dd88d14</td>
-       <td>CVE-2026-57104</td>
-       <td>2026-08-11 17:18:04</td>
-       <td>Improper neutralization of input during web page generation ('cross-site scripting') in Azure Storage Explorer allows an unauthorized attacker to elevate privileges over a network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57104">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eb6fff728425a5b7cc30d30ee5c5fbd5</td>
-       <td>CVE-2026-56179</td>
-       <td>2026-08-11 17:18:04</td>
-       <td>Origin validation error in Windows Network Address Translation (NAT) allows an unauthorized attacker to perform spoofing over an adjacent network.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-56179">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3bde9ec08e1774933ca6d62e55525e71</td>
-       <td>CVE-2026-54123</td>
-       <td>2026-08-11 17:18:03</td>
-       <td>Exposure of sensitive information to an unauthorized actor in Microsoft Defender for Endpoint allows an authorized attacker to disclose information locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-54123">详情</a></td>
       </tr>
 
      </tbody>
