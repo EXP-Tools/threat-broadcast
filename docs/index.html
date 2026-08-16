@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-15 21:26:26 -->
+<!-- RELEASE TIME : 2026-08-16 21:25:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>6e91816daea3a1c51cf518eb011d1ad9</td>
+       <td>CVE-2026-74797</td>
+       <td>2026-08-16 14:16:57 <img src="imgs/new.gif" /></td>
+       <td>OpenTofu versions before 1.11.4 contain a denial of service vulnerability in the tofu init command when processing maliciously-crafted .zip archives for provider or module packages. Attackers can cause excessive CPU usage by controlling .zip archive content served during dependency installation, degrading system performance and preventing timely completion of the init process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74797">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d74f900ee4df2f9fef1cf7736803b2ee</td>
+       <td>CVE-2026-74796</td>
+       <td>2026-08-16 14:16:57 <img src="imgs/new.gif" /></td>
+       <td>OpenTofu before 1.11.7 fails to validate existing symlinks in the provider cache directory during initialization. Attackers can place a malicious symlink in a trusted working directory to cause tofu init to write provider package contents to arbitrary filesystem locations outside the working tree.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74796">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5d2ad16ba8295af6caa34e1517c27077</td>
+       <td>CVE-2026-74795</td>
+       <td>2026-08-16 14:16:57 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 6.6.0 contains an uncontrolled recursion vulnerability in its recursive-descent parser. The parser does not enforce a default expression depth limit (the ExpressionDepthLimit property in ParserOptions defaults to null/disabled), so an attacker who controls template input can supply a deeply nested template (e.g., thousands of nested parentheses or blocks) that exhausts thread stack space and raises a StackOverflowException. Because a StackOverflowException cannot be caught in .NET, this causes immediate, unrecoverable termination of the hosting process, resulting in a denial of service. Applications that process untrusted or user-supplied templates can be exploited remotely without authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74795">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6cd75d935e10d8e12b751bfed4a11a13</td>
+       <td>CVE-2026-74794</td>
+       <td>2026-08-16 14:16:57 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 6.6.0 contains an infinite recursion vulnerability in object rendering when the ObjectRecursionLimit property defaults to unlimited. Attackers can supply circular reference objects to the template context, exhausting stack space and triggering an uncatchable StackOverflowException that terminates the hosting process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74794">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d41d9c7051ad6b2f19bf285baf964efe</td>
+       <td>CVE-2026-74792</td>
+       <td>2026-08-16 14:16:57 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 7.0.0 (affected versions <= 6.6.0) contains a stack overflow vulnerability in nested array initializer parsing. Deeply nested array initializers recurse through a path (ParseArrayInitializer → ParseExpression → ParseArrayInitializer) that is not covered by the ExpressionDepthLimit counter added in the fix for GHSA-wgh7-7m3c-fx25. An attacker who can supply untrusted input to Template.Parse can trigger an uncatchable StackOverflowException that immediately terminates the process, even with the default ExpressionDepthLimit enabled.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74792">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>65d7f35d94014eb12b64d20ed1ac53a3</td>
+       <td>CVE-2026-74791</td>
+       <td>2026-08-16 14:16:57 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 7.0.0 fails to clear the CachedTemplates dictionary when TemplateContext.Reset() is called, allowing cached templates to persist across reused contexts. Attackers can exploit request-dependent ITemplateLoader implementations to access previously authorized template content from earlier renders without triggering TemplateLoader.Load() again.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74791">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>741138642cbb6e418f15f0ba94fcc9df</td>
+       <td>CVE-2026-74790</td>
+       <td>2026-08-16 14:16:57 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 7.0.0 caches TypedObjectAccessor by Type only without considering MemberFilter changes, allowing reused TemplateContext instances to expose members that should be hidden. Attackers can access filtered properties and fields by reusing a TemplateContext after tightening its MemberFilter, bypassing sandbox policies across requests or tenants.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74790">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2dcc4dd49e311fa06acb50df4223c17c</td>
+       <td>CVE-2026-74789</td>
+       <td>2026-08-16 14:16:56 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 7.0.0 (affected <= 6.6.0) applies its LoopLimit constraint only to script loop statements and not to expensive iteration performed inside built-in operators and functions. As a result, a single expression such as {{ 1..1000000 | array.size }} — or a memory-amplification expression such as {{ 'A' * 200000000 }} — can force large CPU or memory consumption even when LoopLimit is configured to a very small value, resulting in denial of service. Applications that render attacker-controlled templates and rely on LoopLimit for safe execution are affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74789">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8d8c91c1ba75ae694e9a081af350e409</td>
+       <td>CVE-2026-74788</td>
+       <td>2026-08-16 14:16:56 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 7.0.0 (affected versions <= 6.6.0) contains an uncontrolled memory allocation vulnerability in the string.pad_left and string.pad_right template functions, which perform no validation on the width parameter before delegating to .NET's String.PadLeft/PadRight. When an application exposes Scriban to untrusted template input, an attacker can supply an arbitrarily large width value (e.g., 500,000,000) to trigger ~1GB memory allocations in a single call, resulting in OutOfMemoryException and denial of service. The TemplateContext.LimitToString limit does not prevent this because it is only enforced after the string has been fully allocated.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74788">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1095722c514fc944bea8acb103ff9316</td>
+       <td>CVE-2026-74787</td>
+       <td>2026-08-16 14:16:56 <img src="imgs/new.gif" /></td>
+       <td>Scriban before 7.0.0 contains an uncontrolled recursion vulnerability in the object.to_json builtin function that lacks depth limits and circular reference detection. Attackers can craft templates with self-referencing objects to trigger unbounded recursion, causing a StackOverflowException that fatally terminates the hosting .NET process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74787">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f622afac802264599c17241afaec88de</td>
        <td>CVE-2026-19904</td>
        <td>2026-08-15 18:31:18 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>63501a8e843a471c2492ccfe63cabfd4</td>
        <td>CVE-2026-73846</td>
-       <td>2026-08-14 17:20:36 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:20:36</td>
        <td>CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, canonicalizeParams in src/utils/cache.ts serializes request parameters with unescaped ampersand, equals-sign, and vertical-bar delimiters, allowing different logical parameter sets used by buildCacheKey to collide and an attacker to prime a shared cache with a response for a victim's distinct query. This issue is fixed in version 0.4.112.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73846">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>f19218b379271ded44f9707434459b12</td>
        <td>CVE-2026-73845</td>
-       <td>2026-08-14 17:20:36 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:20:36</td>
        <td>CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, the ckan_get_mqa_quality and ckan_get_mqa_quality_details tools in src/tools/quality.ts use isValidMqaServer to validate the server_url parameter with a prefix-only regular expression for dati.gov.it, allowing suffix-host and URL-userinfo values to target an attacker-controlled host and return a spoofed response. This issue is fixed in version 0.4.112.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73845">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>5f46974d78b042ac56a47af926e05c22</td>
        <td>CVE-2026-73844</td>
-       <td>2026-08-14 17:20:36 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:20:36</td>
        <td>CKAN MCP Server is a tool for querying CKAN open data portals. Prior to 0.4.112, error paths reflect raw upstream response bodies and internal exception messages back to the caller instead of a sanitized, generic message. When the server is pointed at (or redirected/SSRF'd to) a host that returns a non-CKAN response, or when an internal exception occurs, the caller receives verbatim upstream content and internal detail (hostnames, internal IPs, DB errors, stack fragments). This vulnerability is fixed in 0.4.112.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73844">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>e1cd9cd8eda562aa9ebf6bcdfa9a048a</td>
        <td>CVE-2026-73107</td>
-       <td>2026-08-14 17:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:20:32</td>
        <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73107">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>53a53d8b4eb58b7c7c11149fcf9d4ad2</td>
        <td>CVE-2026-49989</td>
-       <td>2026-08-14 17:18:27 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:18:27</td>
        <td>CrateDB is a distributed SQL database. Prior to versions 6.2.8 and 6.3.2, any authenticated user can read or delete any blob whose SHA-1 digest they know, and can plant new blobs unconditionally, in any blob table, regardless of `GRANT`s. CrateDB has two ways to access blob storage: SQL (`SELECT ... FROM blob.<table>` and friends) and the blob HTTP API (`GET|PUT|DELETE /_blobs/{table}/{digest}`). The SQL path goes through `AccessControl`, which is what enforces privilege grants; that's why `SELECT digest FROM blob.secret_blobs` fails for a user who has no grants on the table. The HTTP path authenticates the request but never asks `AccessControl` whether the authenticated user is allowed to touch the table. So a user with no grants gets `MissingPrivilegeException` from SQL and `200 OK` plus the blob bytes from `GET /_blobs/secret_blobs/<digest>`. Deployments that don't use `BLOB TABLE` are unaffected. Authentication itself still works; the bug is strictly that being authenticated as anyone is treated as sufficient for any blob op. Versions 6.2.8 and 6.3.2 fix the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49989">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>0785ed94e24d03931a0a2f1cc0e07094</td>
        <td>CVE-2026-49986</td>
-       <td>2026-08-14 17:18:27 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:18:27</td>
        <td>The Cortex MCP server (`neuro-cortex-memory`), a cross-platform persistent memory MCP, prior to version 3.17.1 treats the `CLAUDE_PROJECT_DIR` environment variable — automatically set by Claude Code to the currently open project directory — as a trusted Cortex developer checkout. When the `open_visualization` tool is invoked, `_find_dev_source()` resolves the user's active project directory as a candidate Cortex source root. The only validation performed by `_is_cortex_root()` is a check for the presence of an `mcp_server/` subdirectory and a `ui/unified-viz.html` file. An attacker who places these two marker files in a malicious repository can cause Cortex to execute an arbitrary `mcp_server/server/visualize_bootstrap.py` from that directory via `subprocess.run([sys.executable, ...])`, achieving code execution with the privileges of the victim's local user process. Version 3.17.1 fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49986">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>922a0972b7714125d4bd67fff95dd0f6</td>
        <td>CVE-2026-49826</td>
-       <td>2026-08-14 17:18:27 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:18:27</td>
        <td>Concourse is a container-based automation system written in Go. Prior to version 8.2.3, an attacker is able to craft and send a user a URL that will redirect the user from the Concourse web server to any other site. This could be used in a phishing attack to steal user's credentials. This has been fixed in 8.2.3. No known workarounds are available.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49826">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>cc4e59226b337d749e9b82bb030bff13</td>
        <td>CVE-2026-47766</td>
-       <td>2026-08-14 17:18:18 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:18:18</td>
        <td>crun is an open source OCI Container Runtime fully written in C. Prior to version 1.28, crun's default device setup opens the container rootfs `/dev` directory without `O_NOFOLLOW`. If an OCI bundle contains `rootfs/dev` as a symlink and the bundle configuration does not mount `/dev`, crun follows that symlink and creates the default device nodes and stdio symlinks at the symlink target outside the container rootfs. In a local rootful crun replay, this created fixed device nodes and symlinks outside the rootfs before crun returned failure. A pre-existing file named `ptmx` in the target directory was also replaced by crun's forced `ptmx -> pts/ptmx` symlink. Version 1.28 fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47766">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>79cae1ed9dd5fba62eb4946f655373f0</td>
        <td>CVE-2026-47192</td>
-       <td>2026-08-14 17:18:15 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:18:15</td>
        <td>kas is a setup tool for bitbake based projects. Starting in version 4.8 and prior to version 5.3, kas checks out and processes repositories regarding configuration includes prior to validating signatures of those repositories. This may allow to replace on original repository with one under the control of an attacker under very specific conditions. First of all, the attacker must have gained control of a repository that a kas file of the victim is referencing. Furthermore, the following conditions must be fulfilled: the victim's kas configuration must include a configuration file from the attacked repository; the repository state is referenced by tag, and no commit ID is specified (this is triggering a warning, though); the key used for validating the tag or commit signature is stored as file in a repository; no fingerprint for the key is specified; and the `_source_dir` key must not be set by the victim when calling kas (e.g. by avoiding a local `.config.yaml`). Given these conditions, the attacker could modify the included kas configuration in way that the key used to validate the tag signature of the attacker's repository could be replaced by an attacker-chosen key. No other exploit possibilities have been identified so far, but this does not rule out that those may exist. All patches have been released along with kas version 5.3. As a workaround, pin the expected signature key via its fingerprint, also when storing it as file in a repository.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47192">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>598d113dafae4586ba93fb70945ce69d</td>
        <td>CVE-2026-47191</td>
-       <td>2026-08-14 17:18:15 <img src="imgs/new.gif" /></td>
+       <td>2026-08-14 17:18:15</td>
        <td>kas is a setup tool for bitbake based projects. Prior to version 5.3, when relying solely on a git commit ID (SHA-1 or SHA-256) to qualify if a checkout of a repository is equivalent to the state validated while adding its commit ID to a kas configuration, users may be tricked to check out a branch of the same name from this repository. This implies that the referenced repository has been taken over by an attacker and modified to carry such a branch. SHA-1 commits may also be replaced by creating hash collisions, so the primary impact of this issue is on SHA-256 commit IDs. Version 5.3 fixes the issue. As a workaround, avoid relying solely on the commit ID for integrity validation of a repository that might become under control of a malicious 3rd party. If available, additional validate cryptographically signed commits or tags. Alternatively, mirror the repository to a save place, validate its integrity, and use this instead of the original one.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-47191">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f664e82ac62d7a9b71f1c9aef5395d27</td>
-       <td>CVE-2026-73557</td>
-       <td>2026-08-13 15:20:18</td>
-       <td>vLLM is an inference and serving engine for large language models. From 0.20.2rc0 until 0.26.0, safe_load_prompt_embeds in vllm/renderers/embed_utils.py uses torch.sparse.check_sparse_tensor_invariants, whose process-global save, enable, and restore state can be raced by concurrent prompt_embeds parts submitted to POST /v1/chat/completions through AsyncMultiModalItemTracker.resolve_items, asyncio.gather, and the default executor, allowing an invalid sparse tensor to reach tensor.to_dense despite the CVE-2025-62164 guard when enable_prompt_embeds is enabled. This issue is fixed in version 0.26.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73557">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a35918316bdb7a026fb1d73934fa0a96</td>
-       <td>CVE-2026-73556</td>
-       <td>2026-08-13 15:20:17</td>
-       <td>vLLM is an inference and serving engine for large language models. Prior to 0.26.0, the structured_outputs.regex parameter in vllm/v1/structured_output/backend_lm_format_enforcer.py is passed to lmformatenforcer.RegexParser without compile_regex_with_timeout or validation in validate_structured_output_request_lm_format_enforcer, allowing an unauthenticated /v1/completions request against the lm-format-enforcer backend to consume a CPU core and stall the structured-output engine path with a catastrophic regular expression. This issue is fixed in version 0.26.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73556">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>de82edc4c38378ab667ff89dc66ee727</td>
-       <td>CVE-2026-73509</td>
-       <td>2026-08-13 15:20:17</td>
-       <td>OpenList a file list program that supports multiple storage. Prior to 4.2.4, the authenticated /api/fs/batch_rename handler in server/handles/fsbatch.go authorizes only the source directory produced by user.JoinPath(req.SrcDir) and validates renameObject.NewName with checkRelativePath, but does not validate attacker-controlled renameObject.SrcName, supplied as src_name, before concatenating it with the authorized path and passing the result to fs.Rename. A user with rename permission can use traversal segments in src_name to make path normalization select a file outside the authorized directory and configured base path, resulting in cross-user file integrity loss, limited availability impact, and file-existence disclosure through success or error responses. This issue is fixed in version 4.2.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73509">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>415bf674469d9d8baea3a205bc652239</td>
-       <td>CVE-2026-73505</td>
-       <td>2026-08-13 15:20:16</td>
-       <td>Oh My Posh is the most customisable and low-latency cross platform/shell prompt renderer. Prior to 29.35.1, the setStyle() function in src/segments/path.go passed pt.Path, which includes raw folder names, to template.Render, whose function map exposes cmd, so an attacker-controlled directory name containing a Go template expression could execute arbitrary operating system commands as the current user whenever the prompt rendered inside that directory or a descendant. This issue is fixed in version 29.35.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73505">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2f053d73bb4b2247d8e989182b27a620</td>
-       <td>CVE-2026-70464</td>
-       <td>2026-08-13 15:20:01</td>
-       <td>rsync daemon 2.0.0 before 3.5.0 contains a denial of service vulnerability that allows unauthenticated remote attackers to exhaust daemon connection slots by stalling the handshake process before or after module selection without triggering the I/O timeout. Attackers can open many simultaneous connections and trickle data at the minimum rate to avoid timeout, or stall entirely before module selection where no timeout applies, consuming all available connection slots and denying service to legitimate clients.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70464">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8efb182308629661017ea0987d02a812</td>
-       <td>CVE-2026-70463</td>
-       <td>2026-08-13 15:20:01</td>
-       <td>rsync 3.1.0 before 3.5.0 contains an authorization bypass in auth users directive parsing. The auth users parser uses comma-only tokenization when splitting the user list, which fails to correctly handle entries of the form @Group Name where the group name contains a space. The space within the group name causes the parser to split the entry at the space boundary, discarding the deny rule associated with the group. An authenticated user whose username or group membership would be denied by an @Group Name auth users entry can connect to a restricted module because the deny rule is silently discarded during parsing.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70463">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9f48b36618b1288757e81864734911ea</td>
-       <td>CVE-2026-70460</td>
-       <td>2026-08-13 15:19:59</td>
-       <td>rsync 2.3.3 before 3.5.0 contains a path traversal vulnerability that allows a malicious sender to escape the module root by exploiting symlinks within the module file tree when using --partial-dir or --backup-dir options. Attackers with write access to place a symlink under the module root, or who can exploit a pre-existing trusted symlink, can direct file writes to locations outside the intended module root, achieving arbitrary file write relative to the module root parent.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70460">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2cd13d0634a3dc2ab5173772cc9d1670</td>
-       <td>CVE-2026-70459</td>
-       <td>2026-08-13 15:19:59</td>
-       <td>rsync 3.0.0 before 3.5.0 contains a null pointer dereference vulnerability in the daemon child process that allows remote attackers to crash the daemon by sending a file list whose first entry is a dot entry not typed as a directory. The daemon dereferences the first file list entry as a directory structure pointer without verifying the entry type, resulting in an invalid or uninitialized pointer dereference that terminates the client connection.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70459">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4125947c5b6e43d8088167a05b47c745</td>
-       <td>CVE-2026-70456</td>
-       <td>2026-08-13 15:19:59</td>
-       <td>rsync 3.0.1 before 3.5.0 contains an out-of-bounds write vulnerability in the read_args() function that allows a malicious sender to corrupt adjacent heap memory by sending a crafted argument list. When the argument count causes the argv allocation to be exactly full, the trailing NULL terminator is written one slot beyond the allocation boundary, corrupting adjacent heap memory.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70456">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>01d7092f0564674aa8f207dc717025ec</td>
-       <td>CVE-2026-70455</td>
-       <td>2026-08-13 15:19:59</td>
-       <td>rsync 3.4.2 before 3.5.0 contains a denial of service vulnerability that allows a remote sender to exhaust system resources by specifying the --zt short alias for --compress-threads, which bypasses the refuse options directive's string matching on long option names. Attackers can specify --zt=N with a large value to spawn an unbounded number of Zstandard worker threads on the receiver, exhausting available thread and memory resources.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-70455">详情</a></td>
       </tr>
 
      </tbody>
