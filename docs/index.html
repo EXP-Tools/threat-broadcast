@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-18 09:38:57 -->
+<!-- RELEASE TIME : 2026-08-19 09:39:12 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f040d3ecd7b36d9bf036805a723e8475</td>
+       <td>CVE-2026-75981</td>
+       <td>2026-08-19 07:16:59 <img src="imgs/new.gif" /></td>
+       <td>The TranslatePress – Translate Multilingual sites with AI Translation plugin for WordPress is vulnerable to unauthenticated Stored Cross-Site Scripting in versions up to and including 3.2.5. The special gettext markers '#!trpst#' and '#!trpen#' are unconditionally rewritten to '<' and '>' by translate_page() in includes/class-translation-render.php (lines 538-539). Because those markers are plain text with no HTML-special characters, an unauthenticated attacker can embed them in a comment; the markers survive wp_kses, and when the post is viewed in a secondary language the substitution turns the attacker's '#!trpst#img ... #!trpen#' into a real <img> tag. remove_tags_from_output() only strips <script>/<style>, so an <img onerror=...> executes in the visitor's browser.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75981">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9c5fa435499949a2e0440736d2c07d9f</td>
+       <td>CVE-2026-49423</td>
+       <td>2026-08-19 07:16:28 <img src="imgs/new.gif" /></td>
+       <td>When building the iovec array for a received TLS 1.2 CBC record, ktls_ocf_tls_cbc_decrypt() incremented the iovec index for every mbuf in the chain, including mbufs that were skipped because they contained only TLS header bytes. This left uninitialized entries in the iovec array. The iovec array was allocated without zeroing. A remote TLS peer can cause the kernel to read from uninitialized iovec entries during HMAC computation, resulting in a kernel panic. The peer must be able to control TCP segmentation such that the first mbuf of a CBC record contains only the 5-byte TLS record header.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49423">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b54ade23146a7f46e130db108cbc1796</td>
+       <td>CVE-2026-15780</td>
+       <td>2026-08-19 07:16:27 <img src="imgs/new.gif" /></td>
+       <td>The WP Statistics – Simple, privacy-friendly Google Analytics alternative plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'utm_campaign' parameter in all versions up to, and including, 14.16.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload can be planted without authentication via the public /wp-statistics/v2/hit REST endpoint, because the required signature is exposed on the public homepage and a base64-encoded page_uri POST parameter overrides the previously sanitized REQUEST_URI, allowing the malicious utm_campaign value to bypass sanitization and be stored in the database.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15780">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c1c662934d16e4612d572beeb7c65a64</td>
+       <td>CVE-2026-15446</td>
+       <td>2026-08-19 07:16:27 <img src="imgs/new.gif" /></td>
+       <td>The EWWW Image Optimizer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'data-script' Lazy Load Attribute in Post Content in all versions up to, and including, 8.7.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit is achieved by embedding a crafted img element with class='lazyload' and a data-script attribute pointing to an attacker-controlled URL in post content, which the plugin's bundled lazysizes ls.unveilhooks addon then uses to dynamically create and insert a script element into the DOM at page view time.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15446">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5c76594b5b2f400608bbb9f553ba3fc3</td>
+       <td>CVE-2026-8810</td>
+       <td>2026-08-19 06:17:43 <img src="imgs/new.gif" /></td>
+       <td>On ARM platforms, a vulnerability in the architecture design of HDD Password could allow an attacker to retrieve HDD Password from UEFI variables.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8810">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>921e2061cf2b7e2a0a69858a1fad6c12</td>
+       <td>CVE-2026-49431</td>
+       <td>2026-08-19 06:17:43 <img src="imgs/new.gif" /></td>
+       <td>The ZFS_IOC_SET_PROP ioctl, used by zfs-set(8), incorrectly validated the calling user such that an unprivileged user is able to set metadata on a dataset indicating that the dataset has received properties from a zfs-recv(8) stream. Any local user can set the internal ZFS metadata flag "$hasrecvd" on datasets via ZFS_IOC_SET_PROP.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49431">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>338293b633fdbd03a575bcfab6f7706d</td>
+       <td>CVE-2026-49429</td>
+       <td>2026-08-19 06:17:42 <img src="imgs/new.gif" /></td>
+       <td>The ZFS_IOC_USERSPACE_MANY ioctl, used by zfs-userspace(8), truncated a 64-bit output buffer size to a 32-bit integer for the kernel allocation, but used the original 64-bit size as the buffer limit when writing records. A local user with the "userused" delegated ZFS permission can trigger a kernel heap overflow via the ZFS_IOC_USERSPACE_MANY ioctl, potentially escalating privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49429">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4df36e71b6d19c44fa4ac11766506e5b</td>
+       <td>CVE-2026-49428</td>
+       <td>2026-08-19 06:17:42 <img src="imgs/new.gif" /></td>
+       <td>Certain system calls, such open(2) with the O_TRUNC flag set, and fspacectl(2), could incorrectly free memory in largepage objects. These operations are not permitted on largepage objects, but the implementation did not verify this. An unprivileged local user can abuse the bug to access freed kernel memory. This can be exploited to escalate privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49428">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7dd18050101196f0d2cebdf73c5aa756</td>
+       <td>CVE-2026-49427</td>
+       <td>2026-08-19 06:17:41 <img src="imgs/new.gif" /></td>
+       <td>Pages belonging to largepage shared memory objects were not explicitly wired. When sendfile(2) transmitted such an object with the SF_NOCACHE flag, it freed the underlying pages after transmission even though existing mappings still referred to them. An unprivileged local user can abuse the bug to access freed kernel memory. This can be exploited to escalate privileges.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49427">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2a7c59c7f48f39ebb0cd52c62716d0e6</td>
+       <td>CVE-2026-49426</td>
+       <td>2026-08-19 06:17:41 <img src="imgs/new.gif" /></td>
+       <td>When auditing a system call executed via ptrace(PT_SC_REMOTE), the kernel passed the return value of an internal setup function to AUDIT_SYSCALL_EXIT() rather than the actual result of the executed system call. As a result, committed audit records for system calls which returned an error do not reflect the true outcome of the operation. That is, they indicate that the operation succeeded when it in fact failed. Audit records for system calls executed via ptrace(PT_SC_REMOTE) may show an incorrect error status. An attacker with the ability to debug a process could use this to produce misleading audit trails, potentially undermining audit-based Intrusion Detection Systems (IDS).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49426">详情</a></td>
+      </tr>
+
+      <tr>
        <td>d6d3cb9dbcea2ee969ddde901ac1c57a</td>
        <td>CVE-2026-75091</td>
        <td>2026-08-18 06:16:44 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>84bc0b4554e885cc216c514a5d534007</td>
        <td>CVE-2026-19650</td>
-       <td>2026-08-17 20:04:56 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 20:04:56</td>
        <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.2 before 18.11.11, 19.0 before 19.0.8, 19.1 before 19.1.6, and 19.2 before 19.2.4 that under certain conditions could have allowed an unauthenticated user to execute mutations via GET requests due to improper request validation in GraphQL multiplex query handling.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19650">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>c410303792725060ac98fd044994c65f</td>
        <td>CVE-2026-19478</td>
-       <td>2026-08-17 20:04:46 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 20:04:46</td>
        <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.2 before 18.11.11, 19.0 before 19.0.8, 19.1 before 19.1.6, and 19.2 before 19.2.4 that under certain conditions could allow an unauthenticated user to remotely modify or delete public projects and user data via a GraphQL directive.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19478">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>9a3c4abd0f83189bf13c98fe7eeb0002</td>
        <td>CVE-2026-71553</td>
-       <td>2026-08-17 20:03:37 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 20:03:37</td>
        <td>ApostropheCMS is an open-source Node.js content management system. In 4.32.0 and earlier, PATCH /api/v1/article/:id accepts the inherited path toString.call and passes it through the utility module to apos.util.set() and apos.util.get(), allowing an authenticated editor to overwrite the shared Object.prototype.toString function's call property and cause a persistent process-wide denial of service until restart.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71553">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>c9aea3f423ed227001ef9bb6580b4460</td>
        <td>CVE-2026-63667</td>
-       <td>2026-08-17 19:56:07 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 19:56:07</td>
        <td>ApostropheCMS is an open-source Node.js content management system. Prior to 3.6.2, the import-export module in packages/import-export/lib/formats/gzip.js constructs an attachment source path from the attacker-controlled _id, name, and extension fields in aposAttachments.json without ensuring that the resolved path remains under the extracted attachments directory, allowing an authenticated contributor to import a crafted archive, read a host file with an allowed extension, and publish the copied file at an unauthenticated uploads URL. This issue is fixed in version 3.6.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63667">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>c71ed91447c44a51825881cada940b50</td>
        <td>CVE-2026-63670</td>
-       <td>2026-08-17 19:49:51 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 19:49:51</td>
        <td>ApostropheCMS is an open-source Node.js content management system. Prior to 2.17.6, sanitizeHtml() can pass disallowed executable markup through packages/sanitize-html/index.js when textarea or xmp is included in allowedTags because a literal solidus after the raw-text end-tag name is treated as text by htmlparser2 and the ontext handler emits that content without escaping, while a browser parses the following img onerror markup as active HTML. This issue is fixed in version 2.17.6.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63670">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>ed607c52446188905c2ff3a6b47c4178</td>
        <td>CVE-2026-75014</td>
-       <td>2026-08-17 19:45:09 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 19:45:09</td>
        <td>A flaw has been found in SourceCodester Pet Grooming Management Software 1.0. This vulnerability affects unknown code of the file /admin/get_barcode_data.php. This manipulation of the argument barcode causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75014">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>65b2331b8bf386898f1fee471df65aba</td>
        <td>CVE-2026-63669</td>
-       <td>2026-08-17 19:41:52 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 19:41:52</td>
        <td>ApostropheCMS is an open-source Node.js content management system. Prior to 4.32.0, the page module's move() operation fails to enforce the destination parent's _create permission because its oldParent archive condition disables the check for ordinary moves, allowing an authenticated editor or contributor to use _targetId and _position through the page REST update endpoint to move a controlled page into a restricted subtree and make nudgeNewPeers() updateMany re-rank protected sibling pages. This issue is fixed in version 4.32.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63669">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>df6524fd25f5f7807f24f53dda1449e8</td>
        <td>CVE-2026-74234</td>
-       <td>2026-08-17 19:38:05 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 19:38:05</td>
        <td>Legora before 2026-08-14 contains a cross-site scripting vulnerability that allows attackers to achieve arbitrary JavaScript execution in a victim's browser by embedding a Mermaid block prefixed with a gray-matter JavaScript front-matter directive, causing the front-matter parser to invoke eval() before any SVG sanitization occurs. Attackers can exploit this flaw through influenced Mermaid diagram content to execute arbitrary JavaScript in the user's browser context, with elevated impact on Word and Outlook add-in surfaces where bearer session tokens are persisted in localStorage.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74234">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>24295fd8c859a476c613d549cf2ac0ac</td>
        <td>CVE-2026-57485</td>
-       <td>2026-08-17 19:31:30 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 19:31:30</td>
        <td>Stirling-PDF is a locally hosted web application that facilitates various operations on PDF files. Prior to 2.9.0, the /api/v1/pipeline/handleData endpoint in app/core/src/main/java/stirling/software/SPDF/controller/api/pipeline/PipelineProcessor.java injects the STIRLING-PDF-BACKEND-API-USER API key into pipeline subrequests, allowing an authenticated ROLE_USER to retrieve the key through /api/v1/user/get-api-key, impersonate the internal service account, bypass normal rate limits, and access internal endpoints including /api/v1/info/requests/all and /api/v1/info/load/all. This issue is fixed in version 2.9.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57485">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>d51cf061d557ee7167913fda29e7f7a7</td>
        <td>CVE-2026-75013</td>
-       <td>2026-08-17 19:30:11 <img src="imgs/new.gif" /></td>
+       <td>2026-08-17 19:30:11</td>
        <td>A vulnerability was detected in TOTOLINK EX1200L 9.3.5u.6146_B20201023. This affects the function setWizardCfg of the file /cgi-bin/cstecgi.cgi. The manipulation results in null pointer dereference. The attack can be launched remotely. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75013">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6e91816daea3a1c51cf518eb011d1ad9</td>
-       <td>CVE-2026-74797</td>
-       <td>2026-08-16 14:16:57</td>
-       <td>OpenTofu versions before 1.11.4 contain a denial of service vulnerability in the tofu init command when processing maliciously-crafted .zip archives for provider or module packages. Attackers can cause excessive CPU usage by controlling .zip archive content served during dependency installation, degrading system performance and preventing timely completion of the init process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74797">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d74f900ee4df2f9fef1cf7736803b2ee</td>
-       <td>CVE-2026-74796</td>
-       <td>2026-08-16 14:16:57</td>
-       <td>OpenTofu before 1.11.7 fails to validate existing symlinks in the provider cache directory during initialization. Attackers can place a malicious symlink in a trusted working directory to cause tofu init to write provider package contents to arbitrary filesystem locations outside the working tree.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74796">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5d2ad16ba8295af6caa34e1517c27077</td>
-       <td>CVE-2026-74795</td>
-       <td>2026-08-16 14:16:57</td>
-       <td>Scriban before 6.6.0 contains an uncontrolled recursion vulnerability in its recursive-descent parser. The parser does not enforce a default expression depth limit (the ExpressionDepthLimit property in ParserOptions defaults to null/disabled), so an attacker who controls template input can supply a deeply nested template (e.g., thousands of nested parentheses or blocks) that exhausts thread stack space and raises a StackOverflowException. Because a StackOverflowException cannot be caught in .NET, this causes immediate, unrecoverable termination of the hosting process, resulting in a denial of service. Applications that process untrusted or user-supplied templates can be exploited remotely without authentication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74795">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6cd75d935e10d8e12b751bfed4a11a13</td>
-       <td>CVE-2026-74794</td>
-       <td>2026-08-16 14:16:57</td>
-       <td>Scriban before 6.6.0 contains an infinite recursion vulnerability in object rendering when the ObjectRecursionLimit property defaults to unlimited. Attackers can supply circular reference objects to the template context, exhausting stack space and triggering an uncatchable StackOverflowException that terminates the hosting process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74794">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d41d9c7051ad6b2f19bf285baf964efe</td>
-       <td>CVE-2026-74792</td>
-       <td>2026-08-16 14:16:57</td>
-       <td>Scriban before 7.0.0 (affected versions <= 6.6.0) contains a stack overflow vulnerability in nested array initializer parsing. Deeply nested array initializers recurse through a path (ParseArrayInitializer → ParseExpression → ParseArrayInitializer) that is not covered by the ExpressionDepthLimit counter added in the fix for GHSA-wgh7-7m3c-fx25. An attacker who can supply untrusted input to Template.Parse can trigger an uncatchable StackOverflowException that immediately terminates the process, even with the default ExpressionDepthLimit enabled.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74792">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>65d7f35d94014eb12b64d20ed1ac53a3</td>
-       <td>CVE-2026-74791</td>
-       <td>2026-08-16 14:16:57</td>
-       <td>Scriban before 7.0.0 fails to clear the CachedTemplates dictionary when TemplateContext.Reset() is called, allowing cached templates to persist across reused contexts. Attackers can exploit request-dependent ITemplateLoader implementations to access previously authorized template content from earlier renders without triggering TemplateLoader.Load() again.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74791">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>741138642cbb6e418f15f0ba94fcc9df</td>
-       <td>CVE-2026-74790</td>
-       <td>2026-08-16 14:16:57</td>
-       <td>Scriban before 7.0.0 caches TypedObjectAccessor by Type only without considering MemberFilter changes, allowing reused TemplateContext instances to expose members that should be hidden. Attackers can access filtered properties and fields by reusing a TemplateContext after tightening its MemberFilter, bypassing sandbox policies across requests or tenants.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74790">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2dcc4dd49e311fa06acb50df4223c17c</td>
-       <td>CVE-2026-74789</td>
-       <td>2026-08-16 14:16:56</td>
-       <td>Scriban before 7.0.0 (affected <= 6.6.0) applies its LoopLimit constraint only to script loop statements and not to expensive iteration performed inside built-in operators and functions. As a result, a single expression such as {{ 1..1000000 | array.size }} — or a memory-amplification expression such as {{ 'A' * 200000000 }} — can force large CPU or memory consumption even when LoopLimit is configured to a very small value, resulting in denial of service. Applications that render attacker-controlled templates and rely on LoopLimit for safe execution are affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74789">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8d8c91c1ba75ae694e9a081af350e409</td>
-       <td>CVE-2026-74788</td>
-       <td>2026-08-16 14:16:56</td>
-       <td>Scriban before 7.0.0 (affected versions <= 6.6.0) contains an uncontrolled memory allocation vulnerability in the string.pad_left and string.pad_right template functions, which perform no validation on the width parameter before delegating to .NET's String.PadLeft/PadRight. When an application exposes Scriban to untrusted template input, an attacker can supply an arbitrarily large width value (e.g., 500,000,000) to trigger ~1GB memory allocations in a single call, resulting in OutOfMemoryException and denial of service. The TemplateContext.LimitToString limit does not prevent this because it is only enforced after the string has been fully allocated.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74788">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1095722c514fc944bea8acb103ff9316</td>
-       <td>CVE-2026-74787</td>
-       <td>2026-08-16 14:16:56</td>
-       <td>Scriban before 7.0.0 contains an uncontrolled recursion vulnerability in the object.to_json builtin function that lacks depth limits and circular reference detection. Attackers can craft templates with self-referencing objects to trigger unbounded recursion, causing a StackOverflowException that fatally terminates the hosting .NET process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74787">详情</a></td>
       </tr>
 
      </tbody>
