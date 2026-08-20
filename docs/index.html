@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-19 09:39:12 -->
+<!-- RELEASE TIME : 2026-08-20 12:59:52 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>440ff79d3f0a0611f9df4b15e26c4bc8</td>
+       <td>CVE-2026-18917</td>
+       <td>2026-08-20 09:54:50 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libvirt. An unprivileged local user could exploit an integer overflow vulnerability in the NodeGetFreePages RPC handler. This flaw allows crafted values to bypass a size check, leading to an undersized memory buffer. Subsequently, real NUMA node data can overwrite this buffer. This heap buffer overflow can corrupt the root libvirt daemon's memory, potentially leading to a denial of service or local privilege escalation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18917">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0a52e9a997cb8f93bf0e1a1f41d96e48</td>
+       <td>CVE-2026-77014</td>
+       <td>2026-08-20 09:16:48 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libsoup's SoupServer HTTP Range header processing. The sort_ranges() comparator in soup-message-headers.c truncates a 64-bit subtraction result to 32-bit int, flipping the sign for range offsets differing by more than INT_MAX. This causes silent omission of requested byte ranges from HTTP 206 Partial Content responses on resources larger than approximately 2 GB.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77014">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3aed10fddb7f89233f83cb424861e6f2</td>
+       <td>CVE-2026-76610</td>
+       <td>2026-08-20 09:16:48 <img src="imgs/new.gif" /></td>
+       <td>Joomla Extension - yootheme.com - Unauthenticated tag modifications in Zoo < 4.1.65 - The comment controller endpoint lacked ACL checks, allowing unauthorized tag modifications by unauthenticated users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-76610">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3e158303c9df875c33f3c7fb76add164</td>
+       <td>CVE-2026-14953</td>
+       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>A low-privileged remote attacker can enumerate all configured users and identify which accounts hold elevated privileges using the endpoint /api/user/fetch-all.php.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14953">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>25015730ab9ab365c7f7c21ab5834c78</td>
+       <td>CVE-2026-14952</td>
+       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker can retrieve sensible files from the FDS Web server, such as the backup archive at /FdsBackup.zip and additional files under /downloads/*, directly over HTTP without a valid session. These files disclose detailed railway signaling and track layout information that should not be available to unauthenticated users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14952">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>56cbc9a938c064095cc779bc7150c93f</td>
+       <td>CVE-2026-14951</td>
+       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>An low privileged remote attacker can cause authenticated users to perform unintended actions in the FDS Web interface using malicious web pages.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14951">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>26a1510868a95f1fdcec8dc66e956be1</td>
+       <td>CVE-2026-14950</td>
+       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>An unauthenticated remote attacker in possession of a valid session identifier is able to continue using the session after it should have expired. This increases the risk associated with stolen, leaked, shared, or unattended sessions and may enable unauthorized continued access to the FDS web interface.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14950">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d059a44f86b3392547d5200612874d01</td>
+       <td>CVE-2026-14949</td>
+       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>A low privileged remote attacker with a valid session can submit a request to the user creation functionality exposed through /api/user/add.php to create new accounts with arbitrary role values, including the highest privilege level used by the application.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14949">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>76a6a6ba5b6f98c85d806f8aa60d5743</td>
+       <td>CVE-2026-14948</td>
+       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>A low privileged remote attacker can hijack an active administrative session without needing to know the administrator password by extracting live plaintext session identifiers for authenticated users from downloadable error log archives.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14948">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>13d66b8c982c1b996b4c6664d80dc215</td>
+       <td>CVE-2026-14947</td>
+       <td>2026-08-20 09:16:46 <img src="imgs/new.gif" /></td>
+       <td>A high-privileged remote attacker can upload malicious ZIP archive containing directory traversal sequences such as ../ can escape the intended extraction directory and write files to arbitrary locations on the server, potentially achieve arbitrary code execution due to improper validation of archive entry paths before writing files to disk which could result in full system compromise.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14947">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f040d3ecd7b36d9bf036805a723e8475</td>
        <td>CVE-2026-75981</td>
        <td>2026-08-19 07:16:59 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>d6d3cb9dbcea2ee969ddde901ac1c57a</td>
        <td>CVE-2026-75091</td>
-       <td>2026-08-18 06:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 06:16:44</td>
        <td>The Quill Forms | Conversational Multi Step Forms, Surveys & quizzes plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 5.7.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75091">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>87c4255a6c82bf3dfade18c208a41d4c</td>
        <td>CVE-2026-15748</td>
-       <td>2026-08-18 06:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 06:16:40</td>
        <td>The Forminator Forms plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 1.56.1 via the handle_file_upload function. This is due to insufficient file type validation in handle_file_upload, where the dangerous-extension blocklist performs exact-key matching that is bypassed by pipe-alternative MIME type keys, combined with a public submission handler that trusts attacker-controlled upload field configuration injected via a forged Select field value. This makes it possible for unauthenticated attackers to upload files that may be executable, which makes remote code execution possible.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15748">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>daf0f3935efc5d074e15c4fc9841c91d</td>
        <td>CVE-2026-75151</td>
-       <td>2026-08-18 03:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 03:16:40</td>
        <td>A vulnerability has been found in SourceCodester Onlne Examination & Learning Management System 1.0. Affected by this vulnerability is an unknown functionality. The manipulation leads to cross-site request forgery. The attack can be initiated remotely.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75151">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>3f0cbce015ea54054977a18ce3e2c940</td>
        <td>CVE-2026-11801</td>
-       <td>2026-08-18 03:16:38 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 03:16:38</td>
        <td>The WPAdverts – Classifieds Plugin plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.3.2. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to retrieve internal site configuration data exposed by the classifieds-types REST endpoint, including registered post types, labels, associated taxonomies, form scheme metadata, contact options, and custom field meta keys.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-11801">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>a49dc8bc0f71c0eedb5823c57ca65c6a</td>
        <td>CVE-2026-75094</td>
-       <td>2026-08-18 02:17:30 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 02:17:30</td>
        <td>A flaw has been found in COMFAST CF-N1-S 2.6.0.1. This impacts the function sub_44B438 of the file /cgi-bin/mbox-config?method=SET&section=ptest_ssid of the component CGI Interface. This manipulation of the argument ssid causes os command injection. Remote exploitation of the attack is possible. The exploit has been published and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75094">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>01e98b106184c1ea81198011b9c5fe09</td>
        <td>CVE-2026-75093</td>
-       <td>2026-08-18 02:17:30 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 02:17:30</td>
        <td>A security vulnerability has been detected in sonos tract up to 0.23.4. This impacts the function Tensor::from_raw_dt_align of the file data/src/tensor.rs of the component ONNX Initializer Loader. Such manipulation leads to incorrect calculation of buffer size. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. The name of the patch is 66b10bda8895f4bfaf8c205361f0125cdf51f99b. It is best practice to apply a patch to resolve this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75093">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>11ceab4ff9ab3e516d3a45013b209f10</td>
        <td>CVE-2026-75090</td>
-       <td>2026-08-18 02:17:30 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 02:17:30</td>
        <td>A vulnerability was detected in EricLBuehler Mistral.rs up to 0.8.22. Affected by this issue is the function convert_gguf_to_hf_tokenizer of the file mistralrs-core/src/gguf/gguf_tokenizer.rs of the component GGUF Tokenizer. The manipulation of the argument eos_token_id/bos_token_id/unknown_token_id results in out-of-bounds read. The attack can be executed remotely. The exploit is now public and may be used. Upgrading to version 0.8.23 can resolve this issue. The patch is identified as cd5297e2ea5cb27c790bdcf2f3c2f1064a81d55e. Upgrading the affected component is recommended.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75090">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>2e4bd54e74442823014e24f5ac5dd69f</td>
        <td>CVE-2026-75089</td>
-       <td>2026-08-18 01:16:43 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 01:16:43</td>
        <td>A weakness has been identified in PHPGurukul Complaint Management System 1.0. Affected by this issue is some unknown functionality of the file user/check_availability.php. This manipulation of the argument email causes sql injection. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75089">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>83b6c5964b8fc9ddab2e06bba5786960</td>
        <td>CVE-2026-75088</td>
-       <td>2026-08-18 01:16:43 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 01:16:43</td>
        <td>A vulnerability was determined in itsourcecode Hospital Management System 1.0. This impacts an unknown function of the file /viewbilling.php. Executing a manipulation of the argument delid can lead to sql injection. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75088">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>c8194ea083c9ad20ab758c4cd9b1af67</td>
        <td>CVE-2026-75087</td>
-       <td>2026-08-18 01:16:42 <img src="imgs/new.gif" /></td>
+       <td>2026-08-18 01:16:42</td>
        <td>A vulnerability was found in itsourcecode Hospital Management System 1.0. This affects an unknown function of the file /viewdepartment.php. Performing a manipulation of the argument delid results in sql injection. The attack can be initiated remotely. The exploit has been made public and could be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75087">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84bc0b4554e885cc216c514a5d534007</td>
-       <td>CVE-2026-19650</td>
-       <td>2026-08-17 20:04:56</td>
-       <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.2 before 18.11.11, 19.0 before 19.0.8, 19.1 before 19.1.6, and 19.2 before 19.2.4 that under certain conditions could have allowed an unauthenticated user to execute mutations via GET requests due to improper request validation in GraphQL multiplex query handling.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19650">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c410303792725060ac98fd044994c65f</td>
-       <td>CVE-2026-19478</td>
-       <td>2026-08-17 20:04:46</td>
-       <td>GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.2 before 18.11.11, 19.0 before 19.0.8, 19.1 before 19.1.6, and 19.2 before 19.2.4 that under certain conditions could allow an unauthenticated user to remotely modify or delete public projects and user data via a GraphQL directive.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19478">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9a3c4abd0f83189bf13c98fe7eeb0002</td>
-       <td>CVE-2026-71553</td>
-       <td>2026-08-17 20:03:37</td>
-       <td>ApostropheCMS is an open-source Node.js content management system. In 4.32.0 and earlier, PATCH /api/v1/article/:id accepts the inherited path toString.call and passes it through the utility module to apos.util.set() and apos.util.get(), allowing an authenticated editor to overwrite the shared Object.prototype.toString function's call property and cause a persistent process-wide denial of service until restart.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71553">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c9aea3f423ed227001ef9bb6580b4460</td>
-       <td>CVE-2026-63667</td>
-       <td>2026-08-17 19:56:07</td>
-       <td>ApostropheCMS is an open-source Node.js content management system. Prior to 3.6.2, the import-export module in packages/import-export/lib/formats/gzip.js constructs an attachment source path from the attacker-controlled _id, name, and extension fields in aposAttachments.json without ensuring that the resolved path remains under the extracted attachments directory, allowing an authenticated contributor to import a crafted archive, read a host file with an allowed extension, and publish the copied file at an unauthenticated uploads URL. This issue is fixed in version 3.6.2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63667">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c71ed91447c44a51825881cada940b50</td>
-       <td>CVE-2026-63670</td>
-       <td>2026-08-17 19:49:51</td>
-       <td>ApostropheCMS is an open-source Node.js content management system. Prior to 2.17.6, sanitizeHtml() can pass disallowed executable markup through packages/sanitize-html/index.js when textarea or xmp is included in allowedTags because a literal solidus after the raw-text end-tag name is treated as text by htmlparser2 and the ontext handler emits that content without escaping, while a browser parses the following img onerror markup as active HTML. This issue is fixed in version 2.17.6.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63670">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ed607c52446188905c2ff3a6b47c4178</td>
-       <td>CVE-2026-75014</td>
-       <td>2026-08-17 19:45:09</td>
-       <td>A flaw has been found in SourceCodester Pet Grooming Management Software 1.0. This vulnerability affects unknown code of the file /admin/get_barcode_data.php. This manipulation of the argument barcode causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75014">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>65b2331b8bf386898f1fee471df65aba</td>
-       <td>CVE-2026-63669</td>
-       <td>2026-08-17 19:41:52</td>
-       <td>ApostropheCMS is an open-source Node.js content management system. Prior to 4.32.0, the page module's move() operation fails to enforce the destination parent's _create permission because its oldParent archive condition disables the check for ordinary moves, allowing an authenticated editor or contributor to use _targetId and _position through the page REST update endpoint to move a controlled page into a restricted subtree and make nudgeNewPeers() updateMany re-rank protected sibling pages. This issue is fixed in version 4.32.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63669">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>df6524fd25f5f7807f24f53dda1449e8</td>
-       <td>CVE-2026-74234</td>
-       <td>2026-08-17 19:38:05</td>
-       <td>Legora before 2026-08-14 contains a cross-site scripting vulnerability that allows attackers to achieve arbitrary JavaScript execution in a victim's browser by embedding a Mermaid block prefixed with a gray-matter JavaScript front-matter directive, causing the front-matter parser to invoke eval() before any SVG sanitization occurs. Attackers can exploit this flaw through influenced Mermaid diagram content to execute arbitrary JavaScript in the user's browser context, with elevated impact on Word and Outlook add-in surfaces where bearer session tokens are persisted in localStorage.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74234">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>24295fd8c859a476c613d549cf2ac0ac</td>
-       <td>CVE-2026-57485</td>
-       <td>2026-08-17 19:31:30</td>
-       <td>Stirling-PDF is a locally hosted web application that facilitates various operations on PDF files. Prior to 2.9.0, the /api/v1/pipeline/handleData endpoint in app/core/src/main/java/stirling/software/SPDF/controller/api/pipeline/PipelineProcessor.java injects the STIRLING-PDF-BACKEND-API-USER API key into pipeline subrequests, allowing an authenticated ROLE_USER to retrieve the key through /api/v1/user/get-api-key, impersonate the internal service account, bypass normal rate limits, and access internal endpoints including /api/v1/info/requests/all and /api/v1/info/load/all. This issue is fixed in version 2.9.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57485">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d51cf061d557ee7167913fda29e7f7a7</td>
-       <td>CVE-2026-75013</td>
-       <td>2026-08-17 19:30:11</td>
-       <td>A vulnerability was detected in TOTOLINK EX1200L 9.3.5u.6146_B20201023. This affects the function setWizardCfg of the file /cgi-bin/cstecgi.cgi. The manipulation results in null pointer dereference. The attack can be launched remotely. The exploit is now public and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75013">详情</a></td>
       </tr>
 
      </tbody>
