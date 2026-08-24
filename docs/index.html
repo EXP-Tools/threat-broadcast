@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-21 12:58:40 -->
+<!-- RELEASE TIME : 2026-08-24 13:01:15 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3a91c06938a67afad51c05225e4a2ea5</td>
+       <td>CVE-2026-78317</td>
+       <td>2026-08-24 10:16:40 <img src="imgs/new.gif" /></td>
+       <td>SQL Injection in Delta DIAEnergie v1.11.00.002 allows attacker to remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78317">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a697acd84f089694ba5fd9789ba10287</td>
+       <td>CVE-2026-78316</td>
+       <td>2026-08-24 10:16:40 <img src="imgs/new.gif" /></td>
+       <td>SQL Injection in Delta DIAEnergie v1.11.00.002 allows attacker to remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78316">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>34e3422acaafebde03558b9ffc7a2393</td>
+       <td>CVE-2026-78315</td>
+       <td>2026-08-24 10:16:40 <img src="imgs/new.gif" /></td>
+       <td>SQL Injection in Delta DIAEnergie v1.11.00.002 allows attacker to remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78315">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4c20d12d384ebfe85aa1e8de7a1957b5</td>
+       <td>CVE-2026-78314</td>
+       <td>2026-08-24 10:16:40 <img src="imgs/new.gif" /></td>
+       <td>SQL Injection in Delta DIAEnergie v1.11.00.002 allows attacker to remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78314">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>99aa76dda83c23dacefea9470f1adf00</td>
+       <td>CVE-2026-75975</td>
+       <td>2026-08-24 10:16:40 <img src="imgs/new.gif" /></td>
+       <td>fast-uri is a URI parser for Node.js. Its custom parser for bracketed IPv6 literals does not validate the complete IPv6 grammar, so invalid trailing text in an authority can be silently discarded and a malformed attacker-controlled host is turned into a different valid IPv6 destination. For example, a bracketed literal with invalid trailing characters is normalized to the unspecified address, which a Node HTTP client then connects to a local service over loopback, and other malformed literals collapse to private-range addresses. No error is set on the parsed result, so an application checking the error field cannot detect the rewrite. An application that normalizes untrusted URLs before outbound requests, redirects, proxy routing, or address-policy enforcement can be redirected to a local or private IPv6 target, giving a server-side request forgery and address-policy bypass primitive. The affected versions are 2.3.1 up to but not including 2.4.5, 3.0.0 up to but not including 3.1.6, and 4.0.0 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which validate bracketed IP literals against the full grammar and mark malformed literals as authority errors. Users should upgrade to a patched version.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75975">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6fde37677079db8c3422cce1e5319164</td>
+       <td>CVE-2026-75931</td>
+       <td>2026-08-24 10:16:40 <img src="imgs/new.gif" /></td>
+       <td>fast-uri is a URI parser for Node.js. It canonicalizes a host to its ASCII form only when the input carries an explicit scheme, so a scheme-relative reference such as a host preceded by two slashes is returned with its host verbatim and no error set. As a result fast-uri's own entry points disagree with each other: parse, resolve, normalize, and equal can yield different hosts for the same input depending only on whether a scheme is written out, and equal can return opposite verdicts for the same pair of hosts. An application that extracts a host with fast-uri to check it against a policy list and then resolves the same reference can make its decision on one host while the destination is another, enabling host confusion and policy bypass. The affected versions are 2.4.2 up to but not including 2.4.5, 3.1.3 up to but not including 3.1.6, and 4.0.1 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which canonicalize the host consistently across the resolve path. Users should upgrade to a patched version.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75931">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>48f2782afaf2ac46ef3bf81024a27aec</td>
+       <td>CVE-2026-75899</td>
+       <td>2026-08-24 10:16:39 <img src="imgs/new.gif" /></td>
+       <td>fast-uri is a URI parser for Node.js. It decodes percent escapes in a hostname during parsing and then decodes the parsed hostname a second time during authority recomposition, so a single call to normalize or resolve can turn nested percent-encoded input into a different network destination such as a loopback hostname or address. For example, a doubly encoded host that spells out a loopback name decodes to that live host in one operation, which contradicts RFC 3986 section 2.4 that an implementation must not decode the same string more than once. An application that normalizes or resolves an untrusted HTTP-family URI before outbound routing, redirect validation, or a host-policy check can receive a destination different from the one the original encoded host represented, giving a server-side request forgery and host-policy bypass primitive. This is an incomplete-fix variant of CVE-2026-6322. The affected versions are 2.4.1 up to but not including 2.4.5, 3.1.2 up to but not including 3.1.6, and 4.0.0 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which normalize percent escapes once and preserve encoded percent signs. Users should upgrade to a patched version.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75899">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ea7951113b98013f179fbeff1ea688b7</td>
+       <td>CVE-2026-66897</td>
+       <td>2026-08-24 10:16:39 <img src="imgs/new.gif" /></td>
+       <td>A path traversal vulnerability in LXD's instance template processing allows an attacker with container edit permissions, or any user launching a crafted image, to overwrite arbitrary files on the host system as root. When processing target template paths specified in metadata.yaml, LXD validates the path against a confined os.Root directory handle but subsequently opens and creates the file using os.Create with an unconfined string path. This discrepancy between path resolution checks and file creation allows an attacker to escape directory confinement, overwrite root-owned host files, and achieve host root code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66897">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0fd71689af26fd62c102556cea9f036b</td>
+       <td>CVE-2026-16249</td>
+       <td>2026-08-24 10:16:38 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID is a duplicate of CVE-2026-15303 and was never published. Both IDs were assigned to the same vulnerability in the 6Storage Rentals WordPress plugin. All CVE users should reference CVE-2026-15303 instead of this ID.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16249">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e4db1239bf5c3b5d285f4e51e3dd1d85</td>
+       <td>CVE-2026-78321</td>
+       <td>2026-08-24 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>The HTTP media server on DJI drones does not enforce sufficient limits on incoming connections or request rates. An attacker with access to the drone's internal network can exhaust the server's connection pool by repeatedly requesting a stored media file, preventing the server from handling legitimate requests and causing a denial of service that prevents the DJI Fly application from retrieving photos and videos from the aircraft in QuickTransfer mode. Affected models are DJI Neo until 01.00.0400, DJI Neo 2 until 01.00.0500, DJI Flip until 01.00.1200, DJI Air 3 until 01.00.1600, DJI Air 3S until 01.00.1400, DJI Avata 2 until 01.00.0400, DJI Avata 360 until 01.00.0300, DJI Mavic 3 until 01.00.1400, DJI Mavic 3 Classic until 01.00.0800, DJI Mavic 3 Pro until 01.01.0700, DJI Mavic 4 Pro until 01.00.0500, DJI Mini 2 until 01.07.0200, DJI Mini 3 until 01.00.0500, DJI Mini 3 Pro until 01.00.0900, DJI Mini 4 Pro until 01.00.1100, and DJI Mini 5 Pro until 01.00.0600. Remediation requires a firmware update from the vendor.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78321">详情</a></td>
+      </tr>
+
+      <tr>
        <td>046ffb0144a75bc73e47e8a5f217209b</td>
        <td>CVE-2026-66797</td>
-       <td>2026-08-21 09:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:40</td>
        <td>Improper access control in CloudStack's annotation functionality allows unauthorized comment creation and disclosure. The addAnnotation and listAnnotation APIs perform an ownership check when an entity's UUID is specified, but fail to honor its result correctly. This lets any authenticated user write annotations to, and disclose existing annotations/comments on, an entity they don't own by simply supplying its UUID. This issue affects Apache CloudStack: from 4.15.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66797">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>85e3508afcbdabed6abf157c609c01af</td>
        <td>CVE-2026-66721</td>
-       <td>2026-08-21 09:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:40</td>
        <td>Missing authorization issue for domain admins in CloudStack's host tags listing functionality. Domain Admins, by default, have permission to call the listHostTags API, but the API returns host tags for every host in the environment without domain scoping. It should instead be restricted to only the hosts dedicated to that admin's domain. This issue affects Apache CloudStack: from 4.12.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-66721">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>d7e5497781f1f0a72be6ef52e6f107b7</td>
        <td>CVE-2026-65613</td>
-       <td>2026-08-21 09:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:40</td>
        <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache CloudStack's Webhook module while listing and deleting deliveries. This issue affects Apache CloudStack: from 4.20.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65613">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>2dec29e2027e3e5d7370130732cb2084</td>
        <td>CVE-2026-63046</td>
-       <td>2026-08-21 09:16:40 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:40</td>
        <td>Improper Neutralization of Argument Delimiters in a Command ('Argument Injection') vulnerability in Apache InLong. Agent Installer's ModuleManager executes arbitrary shell commands via ExcuteLinux.exeCmd() with no filtering or whitelist validation. This issue affects Apache InLong: from 2.0.0 before 2.4.0. Users are advised to upgrade to Apache InLong's 2.4.0 or cherry-pick [1]/[2] to solve it. [1] https://github.com/apache/inlong/pull/12151 . [2] https://github.com/apache/inlong/pull/12155 .</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-63046">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>5a979eb79cce72a16797eedd63e6a424</td>
        <td>CVE-2026-62440</td>
-       <td>2026-08-21 09:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:39</td>
        <td>Improper Access Control vulnerability in Apache CloudStack's Kubernetes Service (CKS) plugin, allowing cross-tenant manipulation of the Kubernetes cluster while adding and removing nodes. This issue affects Apache CloudStack: from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62440">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>fa78cbcb5058f36eb24afb611363c713</td>
        <td>CVE-2026-61400</td>
-       <td>2026-08-21 09:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:39</td>
        <td>Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability in Apache CloudStack's run and get diagnostics functionality for the system VMs and virtual routers. An authenticated user holding the permissions required to invoke either `getDiagnosticsData` or `runDiagnostics` can achieve arbitrary command execution on the system VM and/or Virtual Router instances, with commands running as root (or as the diagnostics-process user, at minimum). This represents a full compromise of the affected instance and, depending on network segmentation, may provide a foothold for lateral movement within the CloudStack-managed infrastructure, including access to guest network traffic handled by the compromised Virtual Router. The getDiagnosticsData and runDiagnostics APIs are restricted to only Admin role accounts by default. This issue affects Apache CloudStack: from 4.20.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61400">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>78ad8b991193e993b7a81bb14d81f517</td>
        <td>CVE-2026-61398</td>
-       <td>2026-08-21 09:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:39</td>
        <td>Improper Encoding or Escaping of Output vulnerability in Apache CloudStack's UI while using Instance Reset Password functionality. This issue affects Apache CloudStack: from 4.15.1.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61398">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>a074fdf1fc8356964839230c9dd9e694</td>
        <td>CVE-2026-61397</td>
-       <td>2026-08-21 09:16:39 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:39</td>
        <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache CloudStack's OAuth2 authentication plugin and Google OAuth integration. This issue affects Apache CloudStack: from 4.19.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61397">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>5c226ab230fef11a943a04faa5ef4f71</td>
        <td>CVE-2026-59799</td>
-       <td>2026-08-21 09:16:38 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:38</td>
        <td>Improper Privilege Management vulnerability in Apache CloudStack's Two-factor authentication plugin allowing bypass of the two-factor authentication disable flow. This issue affects Apache CloudStack: from 4.18.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59799">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>f74ee4fbb1572392a9dc3f961f999dae</td>
        <td>CVE-2026-59655</td>
-       <td>2026-08-21 09:16:38 <img src="imgs/new.gif" /></td>
+       <td>2026-08-21 09:16:38</td>
        <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache CloudStack's OAuth authentication plugin while listing OAuth providers. This issue affects Apache CloudStack: from 4.19.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59655">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>440ff79d3f0a0611f9df4b15e26c4bc8</td>
        <td>CVE-2026-18917</td>
-       <td>2026-08-20 09:54:50 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:54:50</td>
        <td>A flaw was found in libvirt. An unprivileged local user could exploit an integer overflow vulnerability in the NodeGetFreePages RPC handler. This flaw allows crafted values to bypass a size check, leading to an undersized memory buffer. Subsequently, real NUMA node data can overwrite this buffer. This heap buffer overflow can corrupt the root libvirt daemon's memory, potentially leading to a denial of service or local privilege escalation.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18917">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>0a52e9a997cb8f93bf0e1a1f41d96e48</td>
        <td>CVE-2026-77014</td>
-       <td>2026-08-20 09:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:48</td>
        <td>A flaw was found in libsoup's SoupServer HTTP Range header processing. The sort_ranges() comparator in soup-message-headers.c truncates a 64-bit subtraction result to 32-bit int, flipping the sign for range offsets differing by more than INT_MAX. This causes silent omission of requested byte ranges from HTTP 206 Partial Content responses on resources larger than approximately 2 GB.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77014">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>3aed10fddb7f89233f83cb424861e6f2</td>
        <td>CVE-2026-76610</td>
-       <td>2026-08-20 09:16:48 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:48</td>
        <td>Joomla Extension - yootheme.com - Unauthenticated tag modifications in Zoo < 4.1.65 - The comment controller endpoint lacked ACL checks, allowing unauthorized tag modifications by unauthenticated users.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-76610">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>3e158303c9df875c33f3c7fb76add164</td>
        <td>CVE-2026-14953</td>
-       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:47</td>
        <td>A low-privileged remote attacker can enumerate all configured users and identify which accounts hold elevated privileges using the endpoint /api/user/fetch-all.php.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14953">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>25015730ab9ab365c7f7c21ab5834c78</td>
        <td>CVE-2026-14952</td>
-       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:47</td>
        <td>An unauthenticated remote attacker can retrieve sensible files from the FDS Web server, such as the backup archive at /FdsBackup.zip and additional files under /downloads/*, directly over HTTP without a valid session. These files disclose detailed railway signaling and track layout information that should not be available to unauthenticated users.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14952">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>56cbc9a938c064095cc779bc7150c93f</td>
        <td>CVE-2026-14951</td>
-       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:47</td>
        <td>An low privileged remote attacker can cause authenticated users to perform unintended actions in the FDS Web interface using malicious web pages.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14951">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>26a1510868a95f1fdcec8dc66e956be1</td>
        <td>CVE-2026-14950</td>
-       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:47</td>
        <td>An unauthenticated remote attacker in possession of a valid session identifier is able to continue using the session after it should have expired. This increases the risk associated with stolen, leaked, shared, or unattended sessions and may enable unauthorized continued access to the FDS web interface.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14950">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>d059a44f86b3392547d5200612874d01</td>
        <td>CVE-2026-14949</td>
-       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:47</td>
        <td>A low privileged remote attacker with a valid session can submit a request to the user creation functionality exposed through /api/user/add.php to create new accounts with arbitrary role values, including the highest privilege level used by the application.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14949">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>76a6a6ba5b6f98c85d806f8aa60d5743</td>
        <td>CVE-2026-14948</td>
-       <td>2026-08-20 09:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:47</td>
        <td>A low privileged remote attacker can hijack an active administrative session without needing to know the administrator password by extracting live plaintext session identifiers for authenticated users from downloadable error log archives.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14948">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>13d66b8c982c1b996b4c6664d80dc215</td>
        <td>CVE-2026-14947</td>
-       <td>2026-08-20 09:16:46 <img src="imgs/new.gif" /></td>
+       <td>2026-08-20 09:16:46</td>
        <td>A high-privileged remote attacker can upload malicious ZIP archive containing directory traversal sequences such as ../ can escape the intended extraction directory and write files to arbitrary locations on the server, potentially achieve arbitrary code execution due to improper validation of archive entry paths before writing files to disk which could result in full system compromise.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14947">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f040d3ecd7b36d9bf036805a723e8475</td>
-       <td>CVE-2026-75981</td>
-       <td>2026-08-19 07:16:59</td>
-       <td>The TranslatePress – Translate Multilingual sites with AI Translation plugin for WordPress is vulnerable to unauthenticated Stored Cross-Site Scripting in versions up to and including 3.2.5. The special gettext markers '#!trpst#' and '#!trpen#' are unconditionally rewritten to '<' and '>' by translate_page() in includes/class-translation-render.php (lines 538-539). Because those markers are plain text with no HTML-special characters, an unauthenticated attacker can embed them in a comment; the markers survive wp_kses, and when the post is viewed in a secondary language the substitution turns the attacker's '#!trpst#img ... #!trpen#' into a real <img> tag. remove_tags_from_output() only strips <script>/<style>, so an <img onerror=...> executes in the visitor's browser.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75981">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9c5fa435499949a2e0440736d2c07d9f</td>
-       <td>CVE-2026-49423</td>
-       <td>2026-08-19 07:16:28</td>
-       <td>When building the iovec array for a received TLS 1.2 CBC record, ktls_ocf_tls_cbc_decrypt() incremented the iovec index for every mbuf in the chain, including mbufs that were skipped because they contained only TLS header bytes. This left uninitialized entries in the iovec array. The iovec array was allocated without zeroing. A remote TLS peer can cause the kernel to read from uninitialized iovec entries during HMAC computation, resulting in a kernel panic. The peer must be able to control TCP segmentation such that the first mbuf of a CBC record contains only the 5-byte TLS record header.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49423">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b54ade23146a7f46e130db108cbc1796</td>
-       <td>CVE-2026-15780</td>
-       <td>2026-08-19 07:16:27</td>
-       <td>The WP Statistics – Simple, privacy-friendly Google Analytics alternative plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'utm_campaign' parameter in all versions up to, and including, 14.16.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload can be planted without authentication via the public /wp-statistics/v2/hit REST endpoint, because the required signature is exposed on the public homepage and a base64-encoded page_uri POST parameter overrides the previously sanitized REQUEST_URI, allowing the malicious utm_campaign value to bypass sanitization and be stored in the database.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15780">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c1c662934d16e4612d572beeb7c65a64</td>
-       <td>CVE-2026-15446</td>
-       <td>2026-08-19 07:16:27</td>
-       <td>The EWWW Image Optimizer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'data-script' Lazy Load Attribute in Post Content in all versions up to, and including, 8.7.3 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit is achieved by embedding a crafted img element with class='lazyload' and a data-script attribute pointing to an attacker-controlled URL in post content, which the plugin's bundled lazysizes ls.unveilhooks addon then uses to dynamically create and insert a script element into the DOM at page view time.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-15446">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5c76594b5b2f400608bbb9f553ba3fc3</td>
-       <td>CVE-2026-8810</td>
-       <td>2026-08-19 06:17:43</td>
-       <td>On ARM platforms, a vulnerability in the architecture design of HDD Password could allow an attacker to retrieve HDD Password from UEFI variables.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8810">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>921e2061cf2b7e2a0a69858a1fad6c12</td>
-       <td>CVE-2026-49431</td>
-       <td>2026-08-19 06:17:43</td>
-       <td>The ZFS_IOC_SET_PROP ioctl, used by zfs-set(8), incorrectly validated the calling user such that an unprivileged user is able to set metadata on a dataset indicating that the dataset has received properties from a zfs-recv(8) stream. Any local user can set the internal ZFS metadata flag "$hasrecvd" on datasets via ZFS_IOC_SET_PROP.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49431">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>338293b633fdbd03a575bcfab6f7706d</td>
-       <td>CVE-2026-49429</td>
-       <td>2026-08-19 06:17:42</td>
-       <td>The ZFS_IOC_USERSPACE_MANY ioctl, used by zfs-userspace(8), truncated a 64-bit output buffer size to a 32-bit integer for the kernel allocation, but used the original 64-bit size as the buffer limit when writing records. A local user with the "userused" delegated ZFS permission can trigger a kernel heap overflow via the ZFS_IOC_USERSPACE_MANY ioctl, potentially escalating privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49429">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4df36e71b6d19c44fa4ac11766506e5b</td>
-       <td>CVE-2026-49428</td>
-       <td>2026-08-19 06:17:42</td>
-       <td>Certain system calls, such open(2) with the O_TRUNC flag set, and fspacectl(2), could incorrectly free memory in largepage objects. These operations are not permitted on largepage objects, but the implementation did not verify this. An unprivileged local user can abuse the bug to access freed kernel memory. This can be exploited to escalate privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49428">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7dd18050101196f0d2cebdf73c5aa756</td>
-       <td>CVE-2026-49427</td>
-       <td>2026-08-19 06:17:41</td>
-       <td>Pages belonging to largepage shared memory objects were not explicitly wired. When sendfile(2) transmitted such an object with the SF_NOCACHE flag, it freed the underlying pages after transmission even though existing mappings still referred to them. An unprivileged local user can abuse the bug to access freed kernel memory. This can be exploited to escalate privileges.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49427">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a7c59c7f48f39ebb0cd52c62716d0e6</td>
-       <td>CVE-2026-49426</td>
-       <td>2026-08-19 06:17:41</td>
-       <td>When auditing a system call executed via ptrace(PT_SC_REMOTE), the kernel passed the return value of an internal setup function to AUDIT_SYSCALL_EXIT() rather than the actual result of the executed system call. As a result, committed audit records for system calls which returned an error do not reflect the true outcome of the operation. That is, they indicate that the operation succeeded when it in fact failed. Audit records for system calls executed via ptrace(PT_SC_REMOTE) may show an incorrect error status. An attacker with the ability to debug a process could use this to produce misleading audit trails, potentially undermining audit-based Intrusion Detection Systems (IDS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49426">详情</a></td>
       </tr>
 
      </tbody>
