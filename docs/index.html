@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-24 13:01:15 -->
+<!-- RELEASE TIME : 2026-08-25 12:57:29 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0813c2f87744b5f84bf291fc6ed865ee</td>
+       <td>CVE-2026-79652</td>
+       <td>2026-08-25 11:16:54 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in the JWT Bearer authorization grant implementation within the keycloak-services component of Red Hat Build of Keycloak. This component handles various OAuth2 and OpenID Connect grant types used for issuing access tokens. The issue occurs because the JWT Bearer grant fails to check if a client requires user consent before issuing a token. This allows an authenticated attacker with valid client credentials and a trusted identity provider assertion to bypass the consent requirement and obtain unauthorized access to a user account at a consent-gated client.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-79652">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2372edc92014321cd9bc338d3c0150f7</td>
+       <td>CVE-2026-78863</td>
+       <td>2026-08-25 11:16:54 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in liketrek TREK up to 3.0.22. Impacted is the function loginUser of the file server/src/services/authService.ts of the component Pre-2FA mfa_token Handler. The manipulation results in improper authentication. The attack may be performed from remote. Upgrading to version 3.1.0 is recommended to address this issue. Upgrading the affected component is recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78863">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f07c65857580179f386c4ea7b23dc1c7</td>
+       <td>CVE-2026-59335</td>
+       <td>2026-08-25 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>Improper handling of case sensitivity (CWE-178) in the identity zone authorization check in the Identity Zone Endpoint in Cloud Foundry UAA allows a remote authenticated attacker holding only the zones.write authority to bypass the intended restriction that this authority does not grant access to the privileged uaa (system) identity zone, by referring to the zone identifier in a non-lowercase form (e.g. UAA) in the request path and body. The authorization layer performs a case-sensitive comparison against the system zone identifier, while the underlying MySQL persistence layer resolves identifiers case-insensitively under its default collation, so the request is authorized incorrectly and is then resolved against the real system zone record. This allows the attacker to overwrite the system zone's JWT signing key with attacker-controlled key material, forge JWTs claiming the admin client and administrator scopes, and fully compromise UAA and any Cloud Foundry deployment that trusts it. This issue only affects UAA deployments backed by MySQL using its default collation; PostgreSQL and HSQLDB backends are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59335">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>12a41c1346e98a0ed1a7a0a0e1c7569f</td>
+       <td>CVE-2026-55976</td>
+       <td>2026-08-25 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>Server-Side Request Forgery (SSRF) in Avro SerDe schema resolution in Apache Hive before 4.2.1 allows an authenticated remote attacker with CREATE TABLE privilege to cause the Hive server to fetch an attacker-controlled URL when resolving the avro.schema.url table property on an Avro table that is subsequently queried. This can expose cloud instance metadata, internal network services, or local server files to the Hive process identity. Users are recommended to upgrade to version 4.2.1, which fixes this issue. Attacker access requirements: * Network access to HiveServer2 / Metastore: required (remote attacker model). * Valid Hive authentication: required. * CREATE TABLE (or equivalent) privilege: required, so the attacker can set avro.schema.url in table properties. * SELECT privilege on the malicious table: not required for the creator, who can typically query their own table; any other user granted SELECT can also trigger the fetch. * Write access to the table LOCATION: not required; the attack uses the schema URL, not the data path. * Admin / superuser privileges: not required; an ordinary authenticated user with DDL rights is sufficient. * External tables enabled: typically required in practice, and enabled by default in most deployments. Detection guidance: * Inspect metastore / Hive table metadata for Avro tables whose avro.schema.url uses unexpected schemes such as http, https, file, or ftp, or points at link-local / cloud metadata addresses (for example 169.254.169.254) or other internal hosts. * Review HiveServer2 and Metastore logs around CREATE/ALTER TABLE and queries against Avro tables for schema-resolution failures or outbound fetches of avro.schema.url. * Correlate CREATE TABLE / ALTER TABLE activity that sets avro.schema.url with subsequent SELECT activity on the same table, especially when the URL target is unusual for schema distribution. * On cloud deployments, check instance / VPC flow logs and metadata service access logs for unexpected requests from Hive host identities shortly after Avro DDL or query activity.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55976">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3bb7ccd1ea16b2613c7fff40ddab4649</td>
+       <td>CVE-2026-53561</td>
+       <td>2026-08-25 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>An improper authentication vulnerability in HiveServer2 SAML bearer-token validation in Apache Hive 4.0.0 through 4.2.0 (and later unreleased branches) on deployments using HTTP transport with hive.server2.authentication=SAML allows an unauthenticated network attacker to authenticate as an arbitrary Hive user and obtain an authenticated HiveServer2 session via a forged Authorization: Bearer token sent to the /cliservice HTTP endpoint. Users are recommended to upgrade to 4.2.1 version that includes the fix for this issue. Access / authorization required: No Hive credentials, SAML IdP login, or knowledge of the server signing secret is required. The attacker only needs network reachability to the HiveServer2 HTTP port (typically /cliservice), directly or through a reverse proxy such as Apache Knox that forwards unauthenticated requests to HS2. The instance must have SAML authentication enabled in HTTP mode. Deployments where Knox handles SSO and HiveServer2 uses LDAP/Kerberos (not native SAML mode) are not affected by this specific issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53561">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f087b166151411e2cedef4ae0369b911</td>
+       <td>CVE-2026-49845</td>
+       <td>2026-08-25 11:16:53 <img src="imgs/new.gif" /></td>
+       <td>SQL injection in Hive Metastore direct SQL partition-name resolution in Apache Hive before 4.2.1 on all platforms allows authenticated users with access to Hive Metastore APIs to read, modify, or affect unintended partition metadata (including statistics updates, truncation targets, and file-metadata cache operations) via crafted partition names in metastore RPC requests when direct SQL is enabled (the default). Users are recommended to upgrade to version 4.2.1, which fixes this issue. Details about the issue: Several Hive Metastore RPCs resolve partitions by full partition name (PART_NAME) through direct-SQL helpers. In those paths, client-supplied partition names are embedded into SQL using string concatenation (DirectSqlUpdatePart.quoteString() → '...') instead of bind parameters. A partition name containing a single quote (and crafted SQL) can alter the generated WHERE clause so that lookups intended for one partition match additional rows. That can affect reads, stats updates, truncate targets, metadata-cache targets, and related operations when metastore.try.direct.sql is enabled (default: true). An authenticated or network-trusted caller with the ability to invoke Hive Metastore partition-name APIs against a target table (directly or via Hive/other clients), when direct SQL is enabled can perform this attack. Also, the impact is mainly within table & partition targeting (read/update/truncate/drop/cache the wrong partitions in a table they can reference), not arbitrary cross-database access via this bug alone.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49845">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>40039668b84273a436bbd090a7cb8e44</td>
+       <td>CVE-2026-21758</td>
+       <td>2026-08-25 11:16:51 <img src="imgs/new.gif" /></td>
+       <td>HCL Hive is affected by an information disclosure vulnerability, which could lead to an attacker gathering sensitive information about the host environment.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21758">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7986629b58725a6f970e51ca471f1d95</td>
+       <td>CVE-2026-21754</td>
+       <td>2026-08-25 11:16:51 <img src="imgs/new.gif" /></td>
+       <td>HCL Hive is affected by multiple infrastructure and network configuration vulnerabilities, which could lead to unauthorized lateral movement, container breakout, and sensitive data exposure within internal communications.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21754">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d2df3b17211763cf02d4e03808832622</td>
+       <td>CVE-2026-21753</td>
+       <td>2026-08-25 11:16:51 <img src="imgs/new.gif" /></td>
+       <td>HCL Hive is affected by weak software supply chain governance, which could lead to the inclusion of vulnerable, unmaintained, or malicious third-party dependencies within the application environment.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21753">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>77f5f8d4135eb4dceeb103cca0f94cd9</td>
+       <td>CVE-2026-12600</td>
+       <td>2026-08-25 11:16:50 <img src="imgs/new.gif" /></td>
+       <td>Denial-of-service (DoS) vulnerability in the internal JPEG2000 (JPX) decoding implementation of the Poppler fork developed by Innodata Labs. When an application processes an untrusted PDF file containing specially crafted JPXDecode images, a remote attacker can cause uncontrolled memory consumption. The flaw occurs in the JPXStream::readCodestream() function, where values controlled from the SIZ segment (such as img.nComps) are used for the memory allocation of tiles and components without adequate validation. This allows an attacker to force excessive memory allocation and cause a resource exhaustion, ultimately causing the pdftoppm process to terminate due to out-of-memory (OOM) conditions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12600">详情</a></td>
+      </tr>
+
+      <tr>
        <td>3a91c06938a67afad51c05225e4a2ea5</td>
        <td>CVE-2026-78317</td>
        <td>2026-08-24 10:16:40 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-08-21 09:16:38</td>
        <td>Exposure of Sensitive Information to an Unauthorized Actor vulnerability in Apache CloudStack's OAuth authentication plugin while listing OAuth providers. This issue affects Apache CloudStack: from 4.19.0.0 through 4.20.3.0 and from 4.21.0.0 through 4.22.1.0. Users are recommended to upgrade to version 4.20.3.1 or 4.22.1.1 or later, which fixes the issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59655">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>440ff79d3f0a0611f9df4b15e26c4bc8</td>
-       <td>CVE-2026-18917</td>
-       <td>2026-08-20 09:54:50</td>
-       <td>A flaw was found in libvirt. An unprivileged local user could exploit an integer overflow vulnerability in the NodeGetFreePages RPC handler. This flaw allows crafted values to bypass a size check, leading to an undersized memory buffer. Subsequently, real NUMA node data can overwrite this buffer. This heap buffer overflow can corrupt the root libvirt daemon's memory, potentially leading to a denial of service or local privilege escalation.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-18917">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0a52e9a997cb8f93bf0e1a1f41d96e48</td>
-       <td>CVE-2026-77014</td>
-       <td>2026-08-20 09:16:48</td>
-       <td>A flaw was found in libsoup's SoupServer HTTP Range header processing. The sort_ranges() comparator in soup-message-headers.c truncates a 64-bit subtraction result to 32-bit int, flipping the sign for range offsets differing by more than INT_MAX. This causes silent omission of requested byte ranges from HTTP 206 Partial Content responses on resources larger than approximately 2 GB.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77014">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3aed10fddb7f89233f83cb424861e6f2</td>
-       <td>CVE-2026-76610</td>
-       <td>2026-08-20 09:16:48</td>
-       <td>Joomla Extension - yootheme.com - Unauthenticated tag modifications in Zoo < 4.1.65 - The comment controller endpoint lacked ACL checks, allowing unauthorized tag modifications by unauthenticated users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-76610">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3e158303c9df875c33f3c7fb76add164</td>
-       <td>CVE-2026-14953</td>
-       <td>2026-08-20 09:16:47</td>
-       <td>A low-privileged remote attacker can enumerate all configured users and identify which accounts hold elevated privileges using the endpoint /api/user/fetch-all.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14953">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25015730ab9ab365c7f7c21ab5834c78</td>
-       <td>CVE-2026-14952</td>
-       <td>2026-08-20 09:16:47</td>
-       <td>An unauthenticated remote attacker can retrieve sensible files from the FDS Web server, such as the backup archive at /FdsBackup.zip and additional files under /downloads/*, directly over HTTP without a valid session. These files disclose detailed railway signaling and track layout information that should not be available to unauthenticated users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14952">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>56cbc9a938c064095cc779bc7150c93f</td>
-       <td>CVE-2026-14951</td>
-       <td>2026-08-20 09:16:47</td>
-       <td>An low privileged remote attacker can cause authenticated users to perform unintended actions in the FDS Web interface using malicious web pages.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14951">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>26a1510868a95f1fdcec8dc66e956be1</td>
-       <td>CVE-2026-14950</td>
-       <td>2026-08-20 09:16:47</td>
-       <td>An unauthenticated remote attacker in possession of a valid session identifier is able to continue using the session after it should have expired. This increases the risk associated with stolen, leaked, shared, or unattended sessions and may enable unauthorized continued access to the FDS web interface.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14950">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d059a44f86b3392547d5200612874d01</td>
-       <td>CVE-2026-14949</td>
-       <td>2026-08-20 09:16:47</td>
-       <td>A low privileged remote attacker with a valid session can submit a request to the user creation functionality exposed through /api/user/add.php to create new accounts with arbitrary role values, including the highest privilege level used by the application.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14949">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>76a6a6ba5b6f98c85d806f8aa60d5743</td>
-       <td>CVE-2026-14948</td>
-       <td>2026-08-20 09:16:47</td>
-       <td>A low privileged remote attacker can hijack an active administrative session without needing to know the administrator password by extracting live plaintext session identifiers for authenticated users from downloadable error log archives.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14948">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>13d66b8c982c1b996b4c6664d80dc215</td>
-       <td>CVE-2026-14947</td>
-       <td>2026-08-20 09:16:46</td>
-       <td>A high-privileged remote attacker can upload malicious ZIP archive containing directory traversal sequences such as ../ can escape the intended extraction directory and write files to arbitrary locations on the server, potentially achieve arbitrary code execution due to improper validation of archive entry paths before writing files to disk which could result in full system compromise.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14947">详情</a></td>
       </tr>
 
      </tbody>
