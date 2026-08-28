@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-27 14:01:15 -->
+<!-- RELEASE TIME : 2026-08-28 15:12:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>936b7121c215d266339df0ea59d3373c</td>
+       <td>CVE-2026-9548</td>
+       <td>2026-08-28 08:16:59 <img src="imgs/new.gif" /></td>
+       <td>An improper neutralization of input during web page generation ('Cross-site Scripting') vulnerability in extract domain in Synology Chat Server before 2.4.5-22148 allows remote authenticated users, via a UI interaction, to read or write restricted files and conduct limited denial-of-service attacks in DSM.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9548">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a53c8354de2f04183354b80f95c9825a</td>
+       <td>CVE-2026-9491</td>
+       <td>2026-08-28 08:16:58 <img src="imgs/new.gif" /></td>
+       <td>A server-ide request forgery (SSRF) vulnerability in webhook in Synology Chat Server before 2.4.5-22148 allows remote authenticated users to obtain non-sensitive information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb0097c62dfb501124e06f6fb4529595</td>
+       <td>CVE-2026-82123</td>
+       <td>2026-08-28 08:16:58 <img src="imgs/new.gif" /></td>
+       <td>Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Tangible Loops & Logic.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82123">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8b10819dfd58e8ee0e3d390d333686b2</td>
+       <td>CVE-2026-80724</td>
+       <td>2026-08-28 08:16:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: ptp: vmclock: prevent read-only mappings from becoming writable vmclock_miscdev_mmap() rejects writable mappings of the shared vmclock ABI page with -EROFS, but leaves VM_MAYWRITE set. Userspace can map the page read-only and then upgrade it to writable with mprotect(), after which the guest can corrupt the host-written timekeeping data (sequence counter, UTC time, TSC offset) that the vmclock ABI defines as read-only. Clear VM_MAYWRITE on the read-only path so the mapping cannot be upgraded, as i915 does for its read-only objects and as fixed in drm/vc4 (CVE-2026-68445) and drm/panthor (CVE-2024-53071).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80724">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>878cb7ca33ea57b27c0800083a249837</td>
+       <td>CVE-2026-80723</td>
+       <td>2026-08-28 08:16:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: of: reserved_mem: prevent OOB when too many dynamic regions are defined On boot, fdt_scan_reserved_mem() saves each dynamically-placed /reserved-memory subnode into a local array of size MAX_RESERVED_REGIONS. If the device tree defines more than MAX_RESERVED_REGIONS dynamically-placed regions, fdt_scan_reserved_mem() writes past the end of the local array. Add a bounds check that logs an error and skips the excess regions, restoring the original behavior.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80723">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>706d80c6e601839ad810ff3c620539c3</td>
+       <td>CVE-2026-80722</td>
+       <td>2026-08-28 08:16:58 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: wifi: mac80211: validate individual TWT params before driver setup ieee80211_process_rx_twt_action() only partially validates a received S1G TWT setup frame before queueing it. An individual agreement can therefore reach ieee80211_s1g_rx_twt_setup() with twt->length too short for the full struct ieee80211_twt_params. The individual path passes twt to drv_add_twt_setup(). Both the tracepoint and the driver callback consume the complete parameters block, not merely req_type. Do not pass a short individual agreement to the driver. Broadcast agreements remain unchanged because they are rejected locally after accessing only req_type. [edit commit message to not overclaim lack of validation nor understate driver impact]</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80722">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>248ba7039b766dfec3d5d45322e4c701</td>
+       <td>CVE-2026-80721</td>
+       <td>2026-08-28 08:16:57 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: Bluetooth: ISO: ensure no dangling hcon references in iso_conn After iso_conn_del(), ISO sockets should not dereference the hcon any more. Currently, clearing iso_conn::hcon relies on iso_conn_del() releasing the last reference to the iso_conn. Simplify this by explicitly clearing conn->hcon in iso_conn_del(), to avoid more complex reasoning on races about who holds the last reference.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80721">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>681853ac4f88120b26925077ba61be6a</td>
+       <td>CVE-2026-80720</td>
+       <td>2026-08-28 08:16:57 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: iomap: add a separate bio_set for iomap_split_ioend iomap_split_ioend can split bios that already come from iomap_ioend_bioset and thus deadlock when the bioset is exhausted. Add a separate bio_set to avoid this deadlock. Christian Brauner <brauner@kernel.org> says: Mark iomap_ioend_split_bioset static as it is only used in ioend.c, fixing the sparse warning reported by the kernel test robot.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80720">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b64fbec0f9f317dd0c5f90b2f78d8f55</td>
+       <td>CVE-2026-80719</td>
+       <td>2026-08-28 08:16:57 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm: mglru: fix stale batch updates after memcg reparenting The mglru page table walker batches per-generation size deltas in walk->nr_pages while walking page tables without holding the lruvec lock. The reset_batch_size() later folds those deltas into walk->lruvec under the lruvec lock. The page table walker can run concurrently with the memcg reparenting path as follows: CPU0 CPU1 ==== ==== walk_mm --> walk_page_range --> update_batch_size --> walk->nr_pages += delta mem_cgroup_css_offline --> memcg_reparent_objcgs --> lock lruvec lru_gen_reparent_memcg --> reparent child folios to parent unlock lruvec lock lruvec reset_batch_size --> child lrugen->nr_pages += delta This will trigger the following warning in lru_gen_exit_memcg(): VM_WARN_ON_ONCE(memchr_inv(lruvec->lrugen.nr_pages, 0, sizeof(lruvec->lrugen.nr_pages))); And the user-visible impact of underestimated nr_pages in MGLRU was premature OOMs because MGLRU does not try to reclaim memory when nr_pages reaches zero, but there are still more pages. To fix it, make reset_batch_size() check CSS_DYING under RCU before flushing the pending batch. A non-dying memcg keeps the original lruvec stable against RCU-delayed offlining; a dying memcg redirects the deltas to the first non-dying ancestor.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80719">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c519b657e5074705f347b793e1738f6a</td>
+       <td>CVE-2026-80718</td>
+       <td>2026-08-28 08:16:57 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: mm/percpu-km: fix bitmap overflow and accounting in pcpu_create_chunk() In pcpu_create_chunk(), nr_pages is the total contiguous backing allocation, i.e., nr_units * pcpu_unit_pages, but pcpu_chunk_populated() uses it to set chunk->populated, whose size is pcpu_unit_pages, bitmap. Since bit N in chunk->populated means page offset N inside every unit is backed. When nr_units > 1, the function writes beyond chunk->populated. Fix it by using chunk->nr_pages. It also fixes the global pcpu_nr_empty_pop_pages accounting, since pcpu_balance_free() only iterates up to chunk->nr_pages. Commit a63d4ac4ab609 ("percpu: make percpu-km set chunk->populated bitmap properly") introduced the bitmap overflow issue. Later, commit b539b87fed37f ("percpu: implmeent pcpu_nr_empty_pop_pages and chunk->nr_populated") added pcpu_nr_empty_pop_pages and caused the accounting issue.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80718">详情</a></td>
+      </tr>
+
+      <tr>
        <td>13f6abd9b06568fa75c22c41d012dfc2</td>
        <td>CVE-2026-78333</td>
        <td>2026-08-27 06:17:29 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>606f1985c23b3d981c47059bca7aae1f</td>
        <td>CVE-2026-77553</td>
-       <td>2026-08-26 10:42:54 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:42:54</td>
        <td>A malicious actor with access to the network and low privileges could exploit an Improper Access Control vulnerability found in UniFi Access Application to escalate privileges on the host device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77553">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>84c80227a49e688f571e5971198ff088</td>
        <td>CVE-2026-77550</td>
-       <td>2026-08-26 10:33:29 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:33:29</td>
        <td>A malicious actor with access to the network could exploit an Improper Neutralization of CRLF Sequences vulnerability found in certain devices running UniFi OS to bypass authentication to such UniFi OS devices or instances.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77550">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>d382f5c220c882bef23fb4db292980a3</td>
        <td>CVE-2026-80206</td>
-       <td>2026-08-26 10:28:15 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:28:15</td>
        <td>NLTK before 3.10.3 contains a regular expression denial of service (ReDoS) vulnerability in the tgrep module. The _tgrep_node_action function compiles user-supplied regular expressions embedded in /regex/ pattern nodes and executes them via re.search against tree node labels without any validation or timeout. An attacker who controls the tgrep pattern (e.g., via tgrep_positions() or tgrep_compile() exposed to external input) can supply a pattern that triggers catastrophic backtracking, causing indefinite CPU saturation that blocks the Python process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80206">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>05f05dd198991c23a142082e8cbe09db</td>
        <td>CVE-2026-80205</td>
-       <td>2026-08-26 10:28:14 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:28:14</td>
        <td>NLTK versions before 3.10.0 contain a regular expression denial of service vulnerability in Text.findall() and TokenSearcher.findall() methods that accept user-supplied regular expressions without validation or timeout. Attackers can supply crafted regex patterns that cause catastrophic backtracking, resulting in indefinite CPU saturation and denial of service to all users of the Python process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80205">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>a35ce26000d09ad8ce19f74b6dc208dd</td>
        <td>CVE-2026-80204</td>
-       <td>2026-08-26 10:28:13 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:28:13</td>
        <td>The Grav API plugin (getgrav/grav-plugin-api) before 1.0.18 does not apply the API-key scope cap in the injectSecurityTab() function of BlueprintController when deciding whether a page's security/permissions blueprint section is editable. Because the function performs raw isSuperAdmin()/hasPermission() checks without a request parameter, it cannot enforce scopeAllows(). A caller holding a scoped API key may therefore see (and potentially edit) page permission fields beyond the scope granted to the key. The end-to-end write-time impact was not fully confirmed by the reporter.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80204">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>f1292c725bc9890a8982a9f0a8a33033</td>
        <td>CVE-2026-80203</td>
-       <td>2026-08-26 10:28:12 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:28:12</td>
        <td>The getgrav/grav-plugin-api plugin before 1.0.18 does not enforce API-key scope in the requireNotSuperTarget() function in UsersController.php across seven sensitive user-management endpoints. The check uses isSuperAdmin() on the acting account rather than verifying whether the specific API key carries super authority (via isSuperWithinScope()). As a result, an API key scoped below full super authority but belonging to a super-admin account can act against other super-admin accounts—disabling their 2FA, deleting their avatar, minting new API keys under their identity, or deleting their existing API keys.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80203">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>933b6055bb2b464f4552e69da32f6b39</td>
        <td>CVE-2026-77548</td>
-       <td>2026-08-26 10:23:37 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:23:37</td>
        <td>A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in UniFi Protect Application to execute a Command Injection on the host device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77548">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>3977c45e6bc99868732c565277223b5a</td>
        <td>CVE-2026-77547</td>
-       <td>2026-08-26 10:20:14 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:20:14</td>
        <td>A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in UniFi Access Application to execute a Command Injection on the host device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77547">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>6ae4b758e77f62e1a3ab24068054dfc5</td>
        <td>CVE-2026-77546</td>
-       <td>2026-08-26 10:16:47 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:16:47</td>
        <td>A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in UniFi Access Application to execute a Command Injection on the host device.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77546">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>219c0ee1ed10bd48948ae188c08d2feb</td>
        <td>CVE-2026-77545</td>
-       <td>2026-08-26 10:13:43 <img src="imgs/new.gif" /></td>
+       <td>2026-08-26 10:13:43</td>
        <td>A malicious actor with access to the network, low privileges and under certain conditions could exploit an Active Debug Code vulnerability found in certain devices running UniFi OS to escalate privileges within such UniFi OS devices or instances.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77545">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0813c2f87744b5f84bf291fc6ed865ee</td>
-       <td>CVE-2026-79652</td>
-       <td>2026-08-25 11:16:54</td>
-       <td>A flaw was found in the JWT Bearer authorization grant implementation within the keycloak-services component of Red Hat Build of Keycloak. This component handles various OAuth2 and OpenID Connect grant types used for issuing access tokens. The issue occurs because the JWT Bearer grant fails to check if a client requires user consent before issuing a token. This allows an authenticated attacker with valid client credentials and a trusted identity provider assertion to bypass the consent requirement and obtain unauthorized access to a user account at a consent-gated client.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-79652">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2372edc92014321cd9bc338d3c0150f7</td>
-       <td>CVE-2026-78863</td>
-       <td>2026-08-25 11:16:54</td>
-       <td>A vulnerability was found in liketrek TREK up to 3.0.22. Impacted is the function loginUser of the file server/src/services/authService.ts of the component Pre-2FA mfa_token Handler. The manipulation results in improper authentication. The attack may be performed from remote. Upgrading to version 3.1.0 is recommended to address this issue. Upgrading the affected component is recommended.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78863">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f07c65857580179f386c4ea7b23dc1c7</td>
-       <td>CVE-2026-59335</td>
-       <td>2026-08-25 11:16:53</td>
-       <td>Improper handling of case sensitivity (CWE-178) in the identity zone authorization check in the Identity Zone Endpoint in Cloud Foundry UAA allows a remote authenticated attacker holding only the zones.write authority to bypass the intended restriction that this authority does not grant access to the privileged uaa (system) identity zone, by referring to the zone identifier in a non-lowercase form (e.g. UAA) in the request path and body. The authorization layer performs a case-sensitive comparison against the system zone identifier, while the underlying MySQL persistence layer resolves identifiers case-insensitively under its default collation, so the request is authorized incorrectly and is then resolved against the real system zone record. This allows the attacker to overwrite the system zone's JWT signing key with attacker-controlled key material, forge JWTs claiming the admin client and administrator scopes, and fully compromise UAA and any Cloud Foundry deployment that trusts it. This issue only affects UAA deployments backed by MySQL using its default collation; PostgreSQL and HSQLDB backends are not affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59335">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>12a41c1346e98a0ed1a7a0a0e1c7569f</td>
-       <td>CVE-2026-55976</td>
-       <td>2026-08-25 11:16:53</td>
-       <td>Server-Side Request Forgery (SSRF) in Avro SerDe schema resolution in Apache Hive before 4.2.1 allows an authenticated remote attacker with CREATE TABLE privilege to cause the Hive server to fetch an attacker-controlled URL when resolving the avro.schema.url table property on an Avro table that is subsequently queried. This can expose cloud instance metadata, internal network services, or local server files to the Hive process identity. Users are recommended to upgrade to version 4.2.1, which fixes this issue. Attacker access requirements: * Network access to HiveServer2 / Metastore: required (remote attacker model). * Valid Hive authentication: required. * CREATE TABLE (or equivalent) privilege: required, so the attacker can set avro.schema.url in table properties. * SELECT privilege on the malicious table: not required for the creator, who can typically query their own table; any other user granted SELECT can also trigger the fetch. * Write access to the table LOCATION: not required; the attack uses the schema URL, not the data path. * Admin / superuser privileges: not required; an ordinary authenticated user with DDL rights is sufficient. * External tables enabled: typically required in practice, and enabled by default in most deployments. Detection guidance: * Inspect metastore / Hive table metadata for Avro tables whose avro.schema.url uses unexpected schemes such as http, https, file, or ftp, or points at link-local / cloud metadata addresses (for example 169.254.169.254) or other internal hosts. * Review HiveServer2 and Metastore logs around CREATE/ALTER TABLE and queries against Avro tables for schema-resolution failures or outbound fetches of avro.schema.url. * Correlate CREATE TABLE / ALTER TABLE activity that sets avro.schema.url with subsequent SELECT activity on the same table, especially when the URL target is unusual for schema distribution. * On cloud deployments, check instance / VPC flow logs and metadata service access logs for unexpected requests from Hive host identities shortly after Avro DDL or query activity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55976">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3bb7ccd1ea16b2613c7fff40ddab4649</td>
-       <td>CVE-2026-53561</td>
-       <td>2026-08-25 11:16:53</td>
-       <td>An improper authentication vulnerability in HiveServer2 SAML bearer-token validation in Apache Hive 4.0.0 through 4.2.0 (and later unreleased branches) on deployments using HTTP transport with hive.server2.authentication=SAML allows an unauthenticated network attacker to authenticate as an arbitrary Hive user and obtain an authenticated HiveServer2 session via a forged Authorization: Bearer token sent to the /cliservice HTTP endpoint. Users are recommended to upgrade to 4.2.1 version that includes the fix for this issue. Access / authorization required: No Hive credentials, SAML IdP login, or knowledge of the server signing secret is required. The attacker only needs network reachability to the HiveServer2 HTTP port (typically /cliservice), directly or through a reverse proxy such as Apache Knox that forwards unauthenticated requests to HS2. The instance must have SAML authentication enabled in HTTP mode. Deployments where Knox handles SSO and HiveServer2 uses LDAP/Kerberos (not native SAML mode) are not affected by this specific issue.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-53561">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f087b166151411e2cedef4ae0369b911</td>
-       <td>CVE-2026-49845</td>
-       <td>2026-08-25 11:16:53</td>
-       <td>SQL injection in Hive Metastore direct SQL partition-name resolution in Apache Hive before 4.2.1 on all platforms allows authenticated users with access to Hive Metastore APIs to read, modify, or affect unintended partition metadata (including statistics updates, truncation targets, and file-metadata cache operations) via crafted partition names in metastore RPC requests when direct SQL is enabled (the default). Users are recommended to upgrade to version 4.2.1, which fixes this issue. Details about the issue: Several Hive Metastore RPCs resolve partitions by full partition name (PART_NAME) through direct-SQL helpers. In those paths, client-supplied partition names are embedded into SQL using string concatenation (DirectSqlUpdatePart.quoteString() → '...') instead of bind parameters. A partition name containing a single quote (and crafted SQL) can alter the generated WHERE clause so that lookups intended for one partition match additional rows. That can affect reads, stats updates, truncate targets, metadata-cache targets, and related operations when metastore.try.direct.sql is enabled (default: true). An authenticated or network-trusted caller with the ability to invoke Hive Metastore partition-name APIs against a target table (directly or via Hive/other clients), when direct SQL is enabled can perform this attack. Also, the impact is mainly within table & partition targeting (read/update/truncate/drop/cache the wrong partitions in a table they can reference), not arbitrary cross-database access via this bug alone.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-49845">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>40039668b84273a436bbd090a7cb8e44</td>
-       <td>CVE-2026-21758</td>
-       <td>2026-08-25 11:16:51</td>
-       <td>HCL Hive is affected by an information disclosure vulnerability, which could lead to an attacker gathering sensitive information about the host environment.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21758">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7986629b58725a6f970e51ca471f1d95</td>
-       <td>CVE-2026-21754</td>
-       <td>2026-08-25 11:16:51</td>
-       <td>HCL Hive is affected by multiple infrastructure and network configuration vulnerabilities, which could lead to unauthorized lateral movement, container breakout, and sensitive data exposure within internal communications.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21754">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d2df3b17211763cf02d4e03808832622</td>
-       <td>CVE-2026-21753</td>
-       <td>2026-08-25 11:16:51</td>
-       <td>HCL Hive is affected by weak software supply chain governance, which could lead to the inclusion of vulnerable, unmaintained, or malicious third-party dependencies within the application environment.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-21753">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77f5f8d4135eb4dceeb103cca0f94cd9</td>
-       <td>CVE-2026-12600</td>
-       <td>2026-08-25 11:16:50</td>
-       <td>Denial-of-service (DoS) vulnerability in the internal JPEG2000 (JPX) decoding implementation of the Poppler fork developed by Innodata Labs. When an application processes an untrusted PDF file containing specially crafted JPXDecode images, a remote attacker can cause uncontrolled memory consumption. The flaw occurs in the JPXStream::readCodestream() function, where values controlled from the SIZ segment (such as img.nComps) are used for the memory allocation of tiles and components without adequate validation. This allows an attacker to force excessive memory allocation and cause a resource exhaustion, ultimately causing the pdftoppm process to terminate due to out-of-memory (OOM) conditions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12600">详情</a></td>
       </tr>
 
      </tbody>
