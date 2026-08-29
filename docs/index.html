@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-08-28 15:12:28 -->
+<!-- RELEASE TIME : 2026-08-29 16:34:08 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b67e952628fc755765619d2db8598ef9</td>
+       <td>CVE-2026-14494</td>
+       <td>2026-08-29 12:16:41 <img src="imgs/new.gif" /></td>
+       <td>The Sigma Forms Pro plugin for WordPress is vulnerable to Remote Code Execution in all versions up to, and including, 1.4.5 via the handle_form_submission function. This is due to the plugin dynamically granting the unfiltered_upload capability to all users during form submissions and bypassing MIME type validation when allowed_file_types is not configured. This makes it possible for unauthenticated attackers to execute code on the server. Several default pre-built templates including Job Application, Support Ticket, and Wholesale Application have file upload fields with no file type restrictions configured by design, making this vulnerability immediately exploitable upon installation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14494">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce2eb0586fde5828d15267c34f8e1425</td>
+       <td>CVE-2026-82364</td>
+       <td>2026-08-29 11:16:47 <img src="imgs/new.gif" /></td>
+       <td>A security vulnerability has been detected in macrozheng mall up to 1.0.3. This impacts an unknown function of the file /order/submit of the component Order Submission. The manipulation leads to race condition. It is possible to initiate the attack remotely. The attack is considered to have high complexity. The exploitability is said to be difficult. The vendor deleted the GitHub issue for this vulnerability without and explanation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82364">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f97ebb98535cb77811f5c82d17ada76d</td>
+       <td>CVE-2026-80725</td>
+       <td>2026-08-29 07:16:54 <img src="imgs/new.gif" /></td>
+       <td>In the Linux kernel, the following vulnerability has been resolved: net: gro: properly validate BIG TCP aggregation criteria When GRO attempts to aggregate packets beyond GRO_LEGACY_MAX_SIZE (64KB), BIG TCP should only be permitted for plain IPv4 TCP and plain IPv6 TCP (with sufficient MAC header room to insert the temporary HBH jumbo header). However, commit b1a78b9b9886 ("net: add support for ipv4 big tcp") loosened the check in skb_gro_receive(), leading to several issues: 1. skb_gro_receive() checked skb_headroom(p) instead of the actual space before the MAC header (p->mac_header). Because skb_headroom(p) includes mac_len, crafted frames (e.g. injected via AF_PACKET) can pass the check with p->mac_header < 8 bytes. When ipv6_gro_complete() inserts the temporary HBH jumbo header, the memmove() starts before skb->head, causing an out-of-bounds write and wrapping skb->mac_header. 2. It allowed non-IP protocols such as software VLAN (ETH_P_8021Q / ETH_P_8021AD) to aggregate beyond 64KB because p->protocol != ETH_P_IPV6 was true. 3. It checked p->encapsulation instead of NAPI_GRO_CB(skb)->encap_mark, allowing encapsulated flows (e.g. SIT / IPv6-in-IPv4) to aggregate beyond 64KB. Fix skb_gro_receive() to strictly enforce: - NAPI_GRO_CB(skb)->proto == IPPROTO_TCP - Not encapsulated (!NAPI_GRO_CB(skb)->encap_mark && !p->encapsulation) - Protocol must be either ETH_P_IP or ETH_P_IPV6 - If ETH_P_IPV6, p->mac_header must be at least sizeof(struct hop_jumbo_hdr) Returning -E2BIG from skb_gro_receive() ensures that packets which cannot become BIG TCP are cleanly flushed at <= 64KB and delivered intact without dropping. This issue does not exist in mainline (7.0+) because the subsystem was rewritten in commit 81be30c1f5f2 ("net/ipv6: Drop HBH for BIG TCP on RX side"), making this fix relevant only for older stable branches like 6.18.y.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80725">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c93cadf8cc9efc17288c973864a8947d</td>
+       <td>CVE-2026-81346</td>
+       <td>2026-08-29 06:18:02 <img src="imgs/new.gif" /></td>
+       <td>The Frontend Admin by DynamiApps WordPress plugin before 3.29.11 does not perform a capability check on one of its AJAX actions, allowing any authenticated user, such as a subscriber, to delete arbitrary membership plans.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81346">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9a77f4674aba26f353d3f97d9decdb1d</td>
+       <td>CVE-2026-81342</td>
+       <td>2026-08-29 06:17:58 <img src="imgs/new.gif" /></td>
+       <td>The MasterStudy LMS WordPress Plugin WordPress plugin before 3.7.43 does not validate a redirect parameter supplied during user registration before using it, allowing unauthenticated attackers to redirect users to arbitrary external URLs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81342">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8455ea2e47c36699b9db1d446d2ff62a</td>
+       <td>CVE-2026-81200</td>
+       <td>2026-08-29 06:17:58 <img src="imgs/new.gif" /></td>
+       <td>The MasterStudy LMS WordPress Plugin WordPress plugin before 3.7.42 does not correctly restrict access to order information, allowing any user with the instructor role to read other users' order billing details, including name, email address, phone number and postal address, by enumerating order IDs.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81200">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0d3617c4252432b30a6d3d152e7c8ce4</td>
+       <td>CVE-2026-81026</td>
+       <td>2026-08-29 06:17:55 <img src="imgs/new.gif" /></td>
+       <td>The MasterStudy LMS WordPress Plugin WordPress plugin before 3.7.40 does not verify the amount, receiver, currency or status of a payment notification before marking the corresponding order completed, allowing unauthenticated users to complete full-price orders and gain access to paid content by paying only a token amount.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81026">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>20b89791ff604e55d6248c4eca25e791</td>
+       <td>CVE-2026-80488</td>
+       <td>2026-08-29 06:17:49 <img src="imgs/new.gif" /></td>
+       <td>The WP Ultimate CSV Importer WordPress plugin before 9.0 does not properly sanitise and escape imported field values before using them in a SQL statement, which could allow high privilege users such as admin to perform SQL injection attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80488">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>253b57253d68abd627f5d53936259c24</td>
+       <td>CVE-2026-80311</td>
+       <td>2026-08-29 06:17:49 <img src="imgs/new.gif" /></td>
+       <td>The Stripe Payment Forms by WP Full Pay WordPress plugin before 8.5.5 does not verify that a subscription belongs to the customer bound to the requesting customer-portal session before cancelling it, allowing a user with a confirmed portal session to cancel subscriptions belonging to other customers. Exploitation requires the attacker to know the target subscription's identifier, which is high-entropy and not enumerable through the Stripe Payment Forms by WP Full Pay WordPress plugin before 8.5.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80311">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e4ce68eb1690333f2a5d19277139efa6</td>
+       <td>CVE-2026-77786</td>
+       <td>2026-08-29 06:17:44 <img src="imgs/new.gif" /></td>
+       <td>The Rank Math SEO WordPress plugin before 1.0.277 does not check that the user requesting an automated SEO fix holds the capability WordPress itself requires for the settings being changed, allowing users with the Editor role to modify site-wide core WordPress settings that are reserved to administrators.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77786">详情</a></td>
+      </tr>
+
+      <tr>
        <td>936b7121c215d266339df0ea59d3373c</td>
        <td>CVE-2026-9548</td>
        <td>2026-08-28 08:16:59 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>13f6abd9b06568fa75c22c41d012dfc2</td>
        <td>CVE-2026-78333</td>
-       <td>2026-08-27 06:17:29 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:29</td>
        <td>The 12 Step Meeting List WordPress plugin before 3.19.17 does not sanitise and escape a value submitted by unauthenticated users before storing it in its activity log and outputting it back in an admin area page, leading to a Stored Cross-Site Scripting issue which could be used against high privilege users such as admin.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78333">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>5e7d16a46094d7bc592f70f6c240c5f4</td>
        <td>CVE-2026-78139</td>
-       <td>2026-08-27 06:17:29 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:29</td>
        <td>The Notifima WordPress plugin before 3.1.4 does not verify that the caller owns the subscription being modified on one of its REST endpoints in all versions up to, and including, 3.1.3, allowing authenticated attackers with Subscriber-level access to unsubscribe arbitrary customers from product stock-alert notifications.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78139">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>5aab864c51803f0c34ae857034774c63</td>
        <td>CVE-2026-78138</td>
-       <td>2026-08-27 06:17:29 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:29</td>
        <td>The Finale Lite WordPress plugin before 2.21.0 does not perform a capability check on an AJAX action that returns a sales-campaign's configuration for an arbitrary post ID, allowing any authenticated user (Subscriber and above) to read the Finale Lite WordPress plugin before 2.21.0's campaign configuration and scheduling data.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78138">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>c0327a7e246e9fa65048fbb68eee3067</td>
        <td>CVE-2026-78137</td>
-       <td>2026-08-27 06:17:29 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:29</td>
        <td>The StoreGrowth WordPress plugin before 2.1.2 does not validate a browser-supplied product price on two of its unauthenticated actions, allowing unauthenticated attackers to add a product to the cart at an arbitrary, attacker-chosen price that carries through to the checkout total when the BOGO offer feature is enabled.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78137">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>0a1f2d8a07bcf8639edf683363e0a8db</td>
        <td>CVE-2026-78125</td>
-       <td>2026-08-27 06:17:29 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:29</td>
        <td>The LearnPress WordPress plugin before 4.0.3 does not perform any authorization check on one of its REST endpoints in all versions up to, and including, 4.0.2, allowing unauthenticated attackers to disclose the payment status of arbitrary orders by enumerating order identifiers.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78125">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>33cf317f46637288ba12465dca41b553</td>
        <td>CVE-2026-77991</td>
-       <td>2026-08-27 06:17:28 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:28</td>
        <td>Joomla Extension - joomlaeventmanager.net - Privileged remote code execution in Joomla Event Manager < 5.0.1 - The administrator source model allows to write dangerous file type incl. PHP, leading to remote code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77991">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>3aeea095683629561b183188d4a83b34</td>
        <td>CVE-2026-77990</td>
-       <td>2026-08-27 06:17:28 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:28</td>
        <td>Joomla Extension - joomlaeventmanager.net - Attendee lists readable by any logged-in user in Joomla Event Manager < 5.0.1 - A non-manager can therefore read attendee names, usernames, registration dates and statuses for events they do not manage, including lists belonging to unpublished events.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77990">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>230e6fd4dbceeaae5dc9db97ca84bcd7</td>
        <td>CVE-2026-77989</td>
-       <td>2026-08-27 06:17:28 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:28</td>
        <td>Joomla Extension - joomlaeventmanager.net - Reflected XSS via the PDF export link in Joomla Events Manager < 5.0.1 - buildCurrentPdfLink copies the current request query string into the PDF button URL, and pdfbutton() echoes it unescaped, leading to an reflected XSS vector.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77989">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>cf59aa795cd515174fa53594a4f52382</td>
        <td>CVE-2026-77035</td>
-       <td>2026-08-27 06:17:28 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:28</td>
        <td>Joomla Extension - joomlaeventmanager.net - Cross-user event and venue takeover through forged form fields in Joomla Event Manager < 5.0.1 - A registered user with edit-own rights (the eventowner=1 setting or core.edit.own) can POST another user's record id together with their own id as created_by and take over that record.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77035">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>d48169781267e56340af6b02b20ab972</td>
        <td>CVE-2026-77034</td>
-       <td>2026-08-27 06:17:27 <img src="imgs/new.gif" /></td>
+       <td>2026-08-27 06:17:27</td>
        <td>Joomla Extension - joomlaeventmanager.net - Unauthenticated article overwrite and force-publish in Joomla Event Manager < 5.0.1 - Any visitor holding their own session token can republish and overwrite an article associated with an event.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77034">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>606f1985c23b3d981c47059bca7aae1f</td>
-       <td>CVE-2026-77553</td>
-       <td>2026-08-26 10:42:54</td>
-       <td>A malicious actor with access to the network and low privileges could exploit an Improper Access Control vulnerability found in UniFi Access Application to escalate privileges on the host device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77553">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>84c80227a49e688f571e5971198ff088</td>
-       <td>CVE-2026-77550</td>
-       <td>2026-08-26 10:33:29</td>
-       <td>A malicious actor with access to the network could exploit an Improper Neutralization of CRLF Sequences vulnerability found in certain devices running UniFi OS to bypass authentication to such UniFi OS devices or instances.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77550">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d382f5c220c882bef23fb4db292980a3</td>
-       <td>CVE-2026-80206</td>
-       <td>2026-08-26 10:28:15</td>
-       <td>NLTK before 3.10.3 contains a regular expression denial of service (ReDoS) vulnerability in the tgrep module. The _tgrep_node_action function compiles user-supplied regular expressions embedded in /regex/ pattern nodes and executes them via re.search against tree node labels without any validation or timeout. An attacker who controls the tgrep pattern (e.g., via tgrep_positions() or tgrep_compile() exposed to external input) can supply a pattern that triggers catastrophic backtracking, causing indefinite CPU saturation that blocks the Python process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80206">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>05f05dd198991c23a142082e8cbe09db</td>
-       <td>CVE-2026-80205</td>
-       <td>2026-08-26 10:28:14</td>
-       <td>NLTK versions before 3.10.0 contain a regular expression denial of service vulnerability in Text.findall() and TokenSearcher.findall() methods that accept user-supplied regular expressions without validation or timeout. Attackers can supply crafted regex patterns that cause catastrophic backtracking, resulting in indefinite CPU saturation and denial of service to all users of the Python process.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80205">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a35ce26000d09ad8ce19f74b6dc208dd</td>
-       <td>CVE-2026-80204</td>
-       <td>2026-08-26 10:28:13</td>
-       <td>The Grav API plugin (getgrav/grav-plugin-api) before 1.0.18 does not apply the API-key scope cap in the injectSecurityTab() function of BlueprintController when deciding whether a page's security/permissions blueprint section is editable. Because the function performs raw isSuperAdmin()/hasPermission() checks without a request parameter, it cannot enforce scopeAllows(). A caller holding a scoped API key may therefore see (and potentially edit) page permission fields beyond the scope granted to the key. The end-to-end write-time impact was not fully confirmed by the reporter.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80204">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f1292c725bc9890a8982a9f0a8a33033</td>
-       <td>CVE-2026-80203</td>
-       <td>2026-08-26 10:28:12</td>
-       <td>The getgrav/grav-plugin-api plugin before 1.0.18 does not enforce API-key scope in the requireNotSuperTarget() function in UsersController.php across seven sensitive user-management endpoints. The check uses isSuperAdmin() on the acting account rather than verifying whether the specific API key carries super authority (via isSuperWithinScope()). As a result, an API key scoped below full super authority but belonging to a super-admin account can act against other super-admin accounts—disabling their 2FA, deleting their avatar, minting new API keys under their identity, or deleting their existing API keys.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-80203">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>933b6055bb2b464f4552e69da32f6b39</td>
-       <td>CVE-2026-77548</td>
-       <td>2026-08-26 10:23:37</td>
-       <td>A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in UniFi Protect Application to execute a Command Injection on the host device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77548">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3977c45e6bc99868732c565277223b5a</td>
-       <td>CVE-2026-77547</td>
-       <td>2026-08-26 10:20:14</td>
-       <td>A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in UniFi Access Application to execute a Command Injection on the host device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77547">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6ae4b758e77f62e1a3ab24068054dfc5</td>
-       <td>CVE-2026-77546</td>
-       <td>2026-08-26 10:16:47</td>
-       <td>A malicious actor with access to the network and low privileges could exploit an Improper Input Validation vulnerability found in UniFi Access Application to execute a Command Injection on the host device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77546">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>219c0ee1ed10bd48948ae188c08d2feb</td>
-       <td>CVE-2026-77545</td>
-       <td>2026-08-26 10:13:43</td>
-       <td>A malicious actor with access to the network, low privileges and under certain conditions could exploit an Active Debug Code vulnerability found in certain devices running UniFi OS to escalate privileges within such UniFi OS devices or instances.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77545">详情</a></td>
       </tr>
 
      </tbody>
