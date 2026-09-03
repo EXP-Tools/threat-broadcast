@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-09-03 16:13:22 -->
+<!-- RELEASE TIME : 2026-09-03 20:51:11 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>a825ade98bccde23e545b5d15c771286</td>
+       <td>CVE-2026-9852</td>
+       <td>2026-09-03 13:06:25 <img src="imgs/new.gif" /></td>
+       <td>A CSV injection vulnerability exists in SYS600. Injected malicious formulas can add or modify data to the spreadsheet, insert links, exfiltrate data, and in some cases, depending on how the user has their environment configured, execute malicious code on the user’s machine. To exploit this issue attackers would need a way to create arbitrary log messages. This could be achieved through normal functionality via SCIL scripts, a log injection vulnerability, or via the SYS600 broker. This vulnerability affects all Windows users regardless of their privilege level who can run the Notify service and export the log.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9852">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>10ae0df09f476d4d2d3a94fcae3e4ee7</td>
+       <td>CVE-2026-85175</td>
+       <td>2026-09-03 13:06:25 <img src="imgs/new.gif" /></td>
+       <td>SiYuan versions <= 3.8.1 (fixed in v3.8.2) contain an incomplete blocklist in the IsForbiddenAbsPath() function (kernel/util/path_guard.go), which only blocks conf/conf.json by exact match and does not restrict the TLS private key (conf/key.pem) or CA private key (conf/ca.key) stored in the same conf/ directory. Because the getFile handler skips the blocklist for RoleAdministrator and all authenticated users receive RoleAdministrator in v3.8.1, any user (or any client on a default no-auth-code instance) can retrieve these private keys via POST /api/file/getFile. On deployments with TLS enabled, this allows decryption of captured HTTPS traffic (key.pem) and forging of certificates trusted by clients that imported SiYuan's CA (ca.key).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85175">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>abb9a911133ceb21de13dfbd1da3f966</td>
+       <td>CVE-2026-85172</td>
+       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>n8n versions before 2.34.1 contain a server-side request forgery vulnerability in the legacy request helper function exposed to Code and Function nodes. The validation logic checks the uri property for SSRF safety while the underlying HTTP client uses the url property when both are present, allowing attackers to bypass validation by supplying a safe uri alongside a malicious url to access internal addresses.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85172">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ae7bc4fcbda94bf38eb7d35c7e86a94</td>
+       <td>CVE-2026-85171</td>
+       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>n8n before 1.123.73, 2.35.4, and 2.36.2 contains a credential exposure vulnerability in the Strapi, SeaTable, and Mailcheck nodes. These nodes send their decrypted credentials to the authentication endpoint via the raw legacy HTTP helper outside any error handling, causing the plaintext secret to be persisted in execution error data. Any authenticated user can read the plaintext secret from their own execution through the REST API, bypassing the blank-value redaction enforced by the credentials API.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85171">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5c368fecc2e9d5198049fa285ec1259e</td>
+       <td>CVE-2026-85169</td>
+       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>n8n versions before 1.123.73, 2.35.4, and 2.36.2 contain an expression sandbox escape in the $fromAI handler. $fromAI resolved a caller-supplied placeholder name without requiring it to be an own property and admitted reserved keys; against a primitive input value it returned a live host-prototype reference. An attacker with workflow-build privilege can walk the prototype chain to the Function constructor and compile/execute arbitrary code in the main n8n process, leading to remote code execution.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85169">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bb21ea3d5623d05f10c936a84df90c26</td>
+       <td>CVE-2026-85167</td>
+       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>n8n before 2.35.4 and 2.36.x before 2.36.2 contain a query injection vulnerability in the Elasticsearch Document Get All and Google Cloud Firestore Document Query operations, which build their JSON query by interpolating expression values directly into the query string before parsing. A value containing quote and brace characters can close the intended field and introduce new query operators, turning an intended single-document lookup into a full-collection read.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85167">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>db7dc007e0883ccef260fffa72dbd26d</td>
+       <td>CVE-2026-85166</td>
+       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>n8n before 2.35.4 and 2.36.x before 2.36.2 does not validate credential references in the inline workflow JSON of nodes that execute an inline sub-workflow (e.g., the Workflow Tool node). A shared-workflow editor, or any user creating/updating a workflow via the REST API, Public API, or MCP, can persist a node referencing a credential they do not own. When the workflow is later executed under an identity that holds the credential, the inline sub-workflow resolves the secret and can send it to an attacker-controlled endpoint, resulting in credential exfiltration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85166">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ea4782f7b4419468e3a376b36b57374b</td>
+       <td>CVE-2026-85164</td>
+       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo through commit c91b5975d contains a server-side request forgery vulnerability in the set_api_userImages API endpoint that fails to validate profileImg and backgroundImg URLs before fetching them. Authenticated API clients can supply internal URLs to fetch cloud metadata or internal services, with responses written to publicly accessible web paths for retrieval.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85164">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6f8314c0f027cd94852b3dee14218a42</td>
+       <td>CVE-2026-85162</td>
+       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>AVideo through commit c91b5975d contains a cross-site request forgery vulnerability in plugin/Live/saveLive.php that lacks forbidIfNotPost and forbidIfInvalidToken protections. Attackers can craft malicious image tags to overwrite authenticated streamers' RTMP keys, passwords, and titles, hijacking live broadcasts.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85162">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cbf34b032d9c2ac4c28a1c3c82206cf8</td>
+       <td>CVE-2026-85161</td>
+       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>AVideo through commit c91b5975d contains a cross-site request forgery vulnerability in removePoster.php that lacks forbidIfNotPost or forbidIfInvalidToken checks. Attackers can craft malicious image tags to delete authenticated victims' live poster and thumbnail files via GET requests.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85161">详情</a></td>
+      </tr>
+
+      <tr>
        <td>e5326de94a4e3ce7964ded0a349263c2</td>
        <td>CVE-2026-84799</td>
        <td>2026-09-02 12:31:31 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-09-01 10:17:11</td>
        <td>The Live Composer – Free WordPress Website Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via dslc_module_projects_output Shortcode in all versions up to, and including, 2.1.19 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. WordPress's shortcode-aware kses handling preserves the serialized shortcode body as a placeholder before content filtering runs, allowing attacker-controlled values such as view_all_link, main_heading_link_title, main_filter_title_all, and button_text to reach render-time sinks entirely unescaped.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16788">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>09971e8011dc178c3c0d6be9187df7fd</td>
-       <td>CVE-2026-82881</td>
-       <td>2026-08-31 11:16:43</td>
-       <td>Aix-DB through 1.2.4 renders markdown with raw HTML enabled into v-html bindings without sanitization, allowing stored cross-site scripting attacks. Attackers can inject malicious HTML and JavaScript through markdown content in chat responses, skill descriptions, or knowledge messages that execute in users' browsers when viewed.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82881">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d1b37f7e95ca11dc3870b38c34867ed9</td>
-       <td>CVE-2026-82880</td>
-       <td>2026-08-31 11:16:41</td>
-       <td>YaCy Search Server through 1.941 contains an XML external entity injection vulnerability in SVG, FreeMind, and OpenSearch parsers that fail to disable external entity resolution. Attackers can publish malicious documents with DOCTYPE declarations containing SYSTEM entities pointing to local files, causing the crawler to exfiltrate file contents into the searchable index.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82880">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2e557c3aa01edca3dd356151bf68ba41</td>
-       <td>CVE-2026-82879</td>
-       <td>2026-08-31 11:16:41</td>
-       <td>DataEase before 2.10.26 contains multiple access control defects in the sharing link module. Tickets are not bound to the target share UUID, so a valid ticket issued for one share can be reused against another (ShareTicketManage.validateTicket / POST /de2api/share/proxyInfo). The POST /de2api/share/validate endpoint issues a LinkToken after password verification without requiring a ticket, bypassing the 'ticket mandatory' policy. Additionally, the ticket create and delete endpoints (POST /de2api/ticket/saveTicket, POST /de2api/ticket/delTicket) lack share-ownership checks, allowing an authenticated user who knows another user's ticket to modify, rebind, or delete it (denial of service), and GET /de2api/share/queryRelationByUserId/{uid} allows authenticated users to enumerate other users' share mappings.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82879">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>abe7751ec0513c84c429fb2d4701c95d</td>
-       <td>CVE-2026-82878</td>
-       <td>2026-08-31 11:16:41</td>
-       <td>DataEase versions before 2.10.26 omit object-level authorization checks on geographic information, dashboard linkage, and chart detail REST endpoints, allowing authenticated users to access resources belonging to other users. Attackers can overwrite or delete map geometry, modify dashboard linkages, and retrieve chart metadata and configuration for resources they do not own by supplying arbitrary identifiers in requests.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82878">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d43c00b8ba5b1600d34fccd82b1040c</td>
-       <td>CVE-2026-82877</td>
-       <td>2026-08-31 11:16:41</td>
-       <td>ILIAS versions before 9.22, 10.0 through 10.9, and 11.0 through 11.2 contain an arbitrary file read vulnerability in the SOAP addFile method that allows authenticated users to read server files by supplying crafted XML with COPY-mode imports. Attackers can construct absolute file paths through an unsandboxed import directory and retrieve sensitive files including configuration files containing database credentials and setup passwords.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82877">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1d5f6a339aee048cef84b55a14c8a6ee</td>
-       <td>CVE-2026-82876</td>
-       <td>2026-08-31 11:16:41</td>
-       <td>Phison PS3111-S11 controller firmware verifies RSA signatures using a public modulus embedded within the firmware image itself rather than anchored in immutable storage. Attackers can generate arbitrary RSA key pairs, sign modified firmware with the private key, embed the matching modulus in the signature segment, and the controller accepts the tampered firmware as valid.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82876">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f97edd9248b245700566a9a90eafcbc6</td>
-       <td>CVE-2026-82688</td>
-       <td>2026-08-31 11:16:40</td>
-       <td>A security vulnerability has been detected in D-Link DNS-340L and DNS-345 1.01B04/1.03B06/1.04.B02/1.05b04. This impacts an unknown function of the file /cgi-bin/virtual_vol.cgi of the component Virtual Volume Handler. The manipulation of the argument f_sharename/f_target/f_name leads to os command injection. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82688">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>94e42ba7038dbc8e2ffd34fb5a77e055</td>
-       <td>CVE-2026-82680</td>
-       <td>2026-08-31 11:16:40</td>
-       <td>A weakness has been identified in D-Link DSM-G600 1.01. This affects an unknown function of the file /load_file.cgi of the component Multipart Handler. Executing a manipulation can lead to out-of-bounds write. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82680">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>effaeb216aaa8134a148ca151d64a7bd</td>
-       <td>CVE-2026-82679</td>
-       <td>2026-08-31 11:16:40</td>
-       <td>A security flaw has been discovered in diem-project diem up to 5.1.3. The impacted element is an unknown function of the file dmFrontPlugin/lib/dmWidget/media/dmWidgetContentBaseMediaForm.php of the component Widget Editor. Performing a manipulation results in unrestricted upload. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82679">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>47bfa092a4975d235cda0cdd880d6356</td>
-       <td>CVE-2026-82678</td>
-       <td>2026-08-31 11:16:39</td>
-       <td>A vulnerability was identified in diem-project diem up to 5.1.3. The affected element is the function executeCommand of the file dmAdminPlugin/modules/dmConsole/actions/actions.class.php of the component Administrative Console. Such manipulation of the argument dm_command leads to os command injection. The attack can be launched remotely. The exploit is publicly available and might be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82678">详情</a></td>
       </tr>
 
      </tbody>
