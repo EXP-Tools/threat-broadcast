@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-09-03 20:51:11 -->
+<!-- RELEASE TIME : 2026-09-04 16:08:21 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>baea922a847da5c80039492578dbf7e9</td>
+       <td>CVE-2026-85649</td>
+       <td>2026-09-04 13:20:11 <img src="imgs/new.gif" /></td>
+       <td>(Holloway) Chew, Kean Ho's Actualizer v1.2.0 and earlier contains a fail-open password validation vulnerability in the Alpha user and root user password loops of Shell/debian-minbase-install.sh. The installer invokes mkpasswd to generate yescrypt password hashes but does not check the command's return value and unconditionally accepts the result. If mkpasswd fails to generate a yescrypt hash, for example because an incompatible mkpasswd implementation or an environment without yescrypt support is used, the resulting password hash variable can be empty and the build proceeds. The resulting image can therefore contain empty password fields for the root and alpha accounts, potentially permitting passwordless authentication depending on the authentication configuration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85649">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>56240d05b142c44c4d6197a3e9312a94</td>
+       <td>CVE-2026-85617</td>
+       <td>2026-09-04 12:17:25 <img src="imgs/new.gif" /></td>
+       <td>snipe-it versions before 8.6.3 contain an authorization bypass vulnerability in the bulk delete functionality that allows restricted users to soft-delete users outside their authorized scope. Attackers can include unauthorized user IDs in bulk delete requests to bypass instance-level restrictions and modify or disable accounts they should not access.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85617">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2728304fc1ff47aa72dd2df8fb01a69b</td>
+       <td>CVE-2026-85616</td>
+       <td>2026-09-04 12:17:25 <img src="imgs/new.gif" /></td>
+       <td>Snipe-IT versions before 8.6.2 contain an authorization bypass vulnerability in checkout-acceptance report actions when Full Multiple Company Support is enabled. Authenticated users with reports.view permission can enumerate sequential acceptance IDs and soft-delete or trigger reminder emails for acceptances belonging to other companies by exploiting a null check on the legacy users.company_id column.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85616">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>84de59a36ff04e8e3e2ebad1b20a244d</td>
+       <td>CVE-2026-85615</td>
+       <td>2026-09-04 12:17:25 <img src="imgs/new.gif" /></td>
+       <td>Openpanel before 2.3.0 contains an insecure direct object reference vulnerability in the report.getLayouts and report.resetLayout tRPC procedures that fail to bind dashboardId to the authorized projectId. Authenticated attackers can supply an arbitrary victim dashboardId with their own projectId to read report layouts and configurations or delete dashboard grid arrangements across tenants.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85615">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eea22f2864a9f487dc850ff4f1e60809</td>
+       <td>CVE-2026-85614</td>
+       <td>2026-09-04 12:17:24 <img src="imgs/new.gif" /></td>
+       <td>OpenPanel before 2.3.0 contains an unauthenticated server-side request forgery vulnerability in the GET /tools/site-checker endpoint that accepts a fully client-controlled URL parameter with no private IP filtering or DNS-rebinding protection. Attackers can make the OpenPanel server issue requests to internal services, localhost, and cloud metadata endpoints, reading internal HTTP response titles, headers, status codes, and SSL certificate information.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85614">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>42449862d36ef713a5012b8bab2c4453</td>
+       <td>CVE-2026-85613</td>
+       <td>2026-09-04 12:17:24 <img src="imgs/new.gif" /></td>
+       <td>OpenPanel before 2.3.0 contains a cross-site scripting vulnerability in the unauthenticated favicon proxy endpoint GET /misc/favicon that allows remote attackers to execute scripts by supplying an SVG file URL. Attackers can host malicious SVG files with embedded scripts that execute in the victim's browser on the API origin, enabling same-origin credentialed requests to authenticated endpoints.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85613">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>eeb3ee3daf348219a2dab47c8ff3749b</td>
+       <td>CVE-2026-85612</td>
+       <td>2026-09-04 12:17:24 <img src="imgs/new.gif" /></td>
+       <td>OpenPanel before 2.3.0 contains an unauthenticated server-side request forgery vulnerability in the /misc/favicon and /misc/og endpoints that accept an attacker-supplied url parameter with insufficient validation. Attackers can force the API to fetch arbitrary internal hosts and cloud metadata endpoints, with small responses returned verbatim enabling credential theft and internal service enumeration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85612">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d495ee3ed3dba9e830ad0cd3342179a7</td>
+       <td>CVE-2026-85611</td>
+       <td>2026-09-04 12:17:24 <img src="imgs/new.gif" /></td>
+       <td>OpenPanel before 2.3.0 contains a cross-tenant broken object level authorization vulnerability in the report.getLayouts and report.resetLayout tRPC procedures that fail to scope dashboard queries to the caller's project. Authenticated attackers can supply their own projectId with a victim organization's guessable dashboardId to read confidential report definitions or permanently delete dashboard layouts across tenant boundaries.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85611">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cd7a35ec721d5db3b9978ebe12bf3fc3</td>
+       <td>CVE-2026-85610</td>
+       <td>2026-09-04 12:17:24 <img src="imgs/new.gif" /></td>
+       <td>OpenPanel before 2.3.0 fails to properly validate chart formula expressions, allowing authenticated project members with read access to execute arbitrary code by recovering the native JavaScript Function constructor through mathjs matrix objects. Attackers can use the recovered constructor to load Node.js built-ins and execute operating system commands with the privileges of the API process, bypassing organization authorization boundaries.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85610">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>042cfe44c394b855c796745c192ea794</td>
+       <td>CVE-2026-85609</td>
+       <td>2026-09-04 12:17:24 <img src="imgs/new.gif" /></td>
+       <td>Openpanel before 2.3.0 contains an unauthenticated full-read server-side request forgery (SSRF) vulnerability in the GET /tools/site-checker endpoint (apps/api/src/controllers/tools.controller.ts). The endpoint passes a user-supplied url query parameter to fetchWithRedirects() and performs server-side HTTP requests to arbitrary URLs without any SSRF/IP validation. An unauthenticated remote attacker can access cloud instance metadata endpoints, probe internal services, scan internal network ports, and read returned content (status code, page size, timing, and parsed HTML metadata), and leak internal IP addresses (via getIPInfo() to a third party).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85609">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a825ade98bccde23e545b5d15c771286</td>
        <td>CVE-2026-9852</td>
        <td>2026-09-03 13:06:25 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>e5326de94a4e3ce7964ded0a349263c2</td>
        <td>CVE-2026-84799</td>
-       <td>2026-09-02 12:31:31 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 12:31:31</td>
        <td>Craft CMS before 5.11.0 fails to enforce user-group scope filters on native GraphQL user...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84799">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>680338853d9b4d6b46e80a31118fd55f</td>
        <td>CVE-2026-84781</td>
-       <td>2026-09-02 12:31:30 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 12:31:30</td>
        <td>Contributor Cross Site Scripting (XSS) in Gallery PhotoBlocks <= 1.3.4 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84781">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>55e387ae08885220771999e84f728dad</td>
        <td>CVE-2026-84217</td>
-       <td>2026-09-02 12:31:30 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 12:31:30</td>
        <td>Missing Authorization vulnerability in Mamunur Rashid Classified Listing allows Accessing...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84217">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>1886023f137a9b9f47e28fa98921f105</td>
        <td>CVE-2026-83562</td>
-       <td>2026-09-02 12:31:30 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 12:31:30</td>
        <td>Contributor Cross Site Scripting (XSS) in WCFM Marketplace <= 3.8.2 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-83562">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>68fac7bbfa3779acc0dc976734494ebe</td>
        <td>CVE-2026-81774</td>
-       <td>2026-09-02 12:31:30 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 12:31:30</td>
        <td>Unauthenticated Sensitive Data Exposure in WooCommerce Product Attachment <= 2.3.3 versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81774">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>298c1a90cbbdbbf70617fd1479e9d847</td>
        <td>CVE-2026-23591</td>
-       <td>2026-09-02 09:31:30 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 09:31:30</td>
        <td>Rejected reason: Withdrawn by requester.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23591">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>1866b9b2ef3f7c942d8121400828b4ed</td>
        <td>CVE-2026-14828</td>
-       <td>2026-09-02 09:31:29 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 09:31:29</td>
        <td>Zohocorp ManageEngine Password Manager Pro versions before 13235, PAM360 versions before 8561,...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14828">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>1a2331b3cb1dbe90bbbf5124e1d1952e</td>
        <td>CVE-2026-3850</td>
-       <td>2026-09-02 07:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 07:16:36</td>
        <td>The Divi theme for WordPress is vulnerable to Stored Cross-Site Scripting via the `redirect_url` parameter of the `et_pb_contact_form` shortcode in all versions up to, and including, 4.27.6. This is due to the `redirect_url` attribute being sanitized with `esc_attr()` instead of `esc_url()` before being rendered into the `data-redirect_url` HTML data attribute. Additionally, `redirect_url` is absent from the hardcoded `$url_options` array in `class-et-builder-element.php`, so it does not receive `esc_url_raw()` sanitization during shortcode parsing. After a successful form submission, client-side JavaScript reads this data attribute and passes it directly to `window.location.href`, executing arbitrary JavaScript from a `javascript:` URI. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that execute whenever a user submits the contact form.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3850">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>0ae43df30245aa8a5e9a40bc21beeaf2</td>
        <td>CVE-2026-82883</td>
-       <td>2026-09-02 06:52:38 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 06:52:38</td>
        <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Marcus Login With Ajax allows Reflected XSS. This issue affects Login With Ajax: from n/a through 4.5.1.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82883">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>1b36026c52bad93d23cafbdf71d8f778</td>
        <td>CVE-2026-81428</td>
-       <td>2026-09-02 06:31:16 <img src="imgs/new.gif" /></td>
+       <td>2026-09-02 06:31:16</td>
        <td>The WC Vendors  WordPress plugin before 2.7.2.1 does not verify ownership or the object type of...</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81428">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>907c9c186a427495de0f9b398ce12e1f</td>
-       <td>CVE-2026-84165</td>
-       <td>2026-09-01 11:16:45</td>
-       <td>A vulnerability relating to incorrect access control in OpenNebula by OpenNebula Systems, affecting all versions prior to 7.4. This vulnerability could allow an authenticated user with basic permissions to execute commands on virtual machines belonging to other users via the `one.vm.exec` function, without proper verification of access permissions. To exploit the vulnerability, it is only necessary to know the virtual machine’s identifier and for qemu-agent to be enabled on that machine. Exploitation could allow commands to be executed and compromise the confidentiality, integrity and availability of the affected virtual machines.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84165">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a69504efd00de5932919b4e4ff08280</td>
-       <td>CVE-2026-84059</td>
-       <td>2026-09-01 11:16:45</td>
-       <td>A flaw has been found in ICP DAS UA-2200 and UA-5200 up to 20260704. The affected element is the function ArmAngstromInstructionSet of the file /CGI?RestApi=SetHostname. Executing a manipulation of the argument ParameterArray can lead to command injection. The attack can be executed remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84059">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0525107127acbeb838a80f848521922e</td>
-       <td>CVE-2026-82927</td>
-       <td>2026-09-01 11:16:45</td>
-       <td>Untrusted pointer dereference vulnerability in Samsung Open Source mTower allows Pointer Manipulation. This issue affects mTower: before 06994e303637512e39062f3e037c222e8448e57e.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82927">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c825477e69797be6151be97f8eb292ba</td>
-       <td>CVE-2026-82926</td>
-       <td>2026-09-01 11:16:45</td>
-       <td>NULL pointer dereference vulnerability in Samsung Open Source mTower allows Pointer Manipulation. This issue affects mTower: before afef59aa6f55c5d5ebf9b14bc020bf1c2c37489a.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82926">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0c8f6d533a8d06dbe857cee9a1ce1f08</td>
-       <td>CVE-2026-4813</td>
-       <td>2026-09-01 11:16:44</td>
-       <td>A vulnerability in the Lutece Core XSL export management module up to version 7.1.7, which allows authenticated administrators to execute code remotely. The XML/XSLT processing configuration does not enable secure processing mode (FEATURE_SECURE_PROCESSING), allowing Java extension functions to be executed from malicious XSL stylesheets. An attacker with administrator privileges can upload a manipulated XSL transformation file and trigger its execution during user export operations, resulting in the execution of arbitrary code on the server.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-4813">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8276a53460e155751ce702b1b78efaa8</td>
-       <td>CVE-2026-59681</td>
-       <td>2026-09-01 10:17:13</td>
-       <td>A OS command injection vulnerability in yast2-auth-client allows an attacker who controls Active Directory configuration values to execute arbitrary commands as root on the configured host. Auth::AuthConf in src/lib/auth/authconf.rb assembles the Samba net ads join, net ads lookup -S and net ads testjoin invocations by interpolating configuration values into a single command string and passing that string to Open3.popen2 / Open3.capture2, which causes Ruby to run it through /bin/sh. The Organizational Unit (ou), dnshostname, AD user name and AD domain name values are neither validated nor shell-quoted.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59681">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a02523dc4ffd8f8f06d22a349bf4ba8a</td>
-       <td>CVE-2026-59680</td>
-       <td>2026-09-01 10:17:13</td>
-       <td>An OS command injection vulnerability was found in yast2-users. When displaying the "Password Settings" tab of a user, get_password_term() in src/include/users/dialogs.rb read the shadowLastChange and shadowExpire fields with GetString(), which performs no numeric validation, and passed the resulting string to format_days_after_epoch(). That helper interpolated the value into a shell command executed via Ruby backticks without quoting or escaping. Impact: an administrator who manages users against an external/federated LDAP directory via `yast2 users` triggers root command execution the moment they view or edit that particular user's "Password Settings" tab. No "join domain" or trust setup is required, just browsing/editing one user entry. This issue affects yast2-users through 5.0.8.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-59680">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1f50e1af74f2707abb7152073023ffdf</td>
-       <td>CVE-2026-25706</td>
-       <td>2026-09-01 10:17:12</td>
-       <td>Improper neutralization of special elements used in an OS command in yast2-samba-client allows an attacker who controls the content of an Active Directory directory tree - a rogue domain controller, or a directory user delegated the right to create objects - to execute arbitrary commands as root on a machine being joined to that domain. This issue affects yast2-samba-client through 5.0.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-25706">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>74a313a34da0a5ad86b5f6c96f28d09a</td>
-       <td>CVE-2026-19914</td>
-       <td>2026-09-01 10:17:12</td>
-       <td>The Welcart e-Commerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_order' parameter in all versions up to, and including, 2.12.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is delivered via the guest checkout form, requiring no authentication, and executes when an administrator views the affected order in the WordPress admin panel.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-19914">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>46f6c46c517de5b06de0417ddb3e1dfd</td>
-       <td>CVE-2026-16788</td>
-       <td>2026-09-01 10:17:11</td>
-       <td>The Live Composer – Free WordPress Website Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via dslc_module_projects_output Shortcode in all versions up to, and including, 2.1.19 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. WordPress's shortcode-aware kses handling preserves the serialized shortcode body as a placeholder before content filtering runs, allowing attacker-controlled values such as view_all_link, main_heading_link_title, main_filter_title_all, and button_text to reach render-time sinks entirely unescaped.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-16788">详情</a></td>
       </tr>
 
      </tbody>
