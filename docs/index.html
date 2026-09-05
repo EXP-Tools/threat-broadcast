@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-09-04 16:08:21 -->
+<!-- RELEASE TIME : 2026-09-05 17:15:31 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>c3c8e29a7619c1331a931e29bdaa8292</td>
+       <td>CVE-2026-86197</td>
+       <td>2026-09-05 13:18:15 <img src="imgs/new.gif" /></td>
+       <td>Grav before 2.0.20 contains a cross-site scripting vulnerability in the Twig sandbox policy that allowlists addJs and addCss methods on Grav\Common\Assets without proper output escaping. Page editors can inject arbitrary script by registering malicious assets or injecting attributes, which are rendered unescaped into document head tags and executed for all visitors including administrators.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86197">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>98e3050a3e404a2bbf893a0302a4333e</td>
+       <td>CVE-2026-86196</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>Grav API plugin versions before 1.0.20 build password reset links from the untrusted Host header in the forgot-password endpoint, allowing unauthenticated attackers to redirect reset tokens to attacker-controlled domains. Attackers can send password reset requests for any account with a malicious Host header, intercept the reset token from victim emails, and complete account takeover including super-admin accounts.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86196">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ce605fd63a24d2f30d9d066ed29e9a29</td>
+       <td>CVE-2026-86195</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>grav-plugin-api versions before 1.0.20 contain a privilege escalation vulnerability in the InvitationsController where the stripSuperFlags() method only removes nested super flags but fails to strip dot-keyed equivalents like api.super. A non-super user manager with api.access and api.users.write permissions can create an invitation with a dot-keyed super flag in the access payload that bypasses the guard and persists to the new account. Attackers can accept the invitation through the public endpoint without real invitee interaction to create a super-admin account and immediately receive a valid JWT for full site control.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86195">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bcb33085ad3a6e253d6aa735107df769</td>
+       <td>CVE-2026-86194</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>Grav Form Plugin before 9.1.22 fails to verify page authorization when resolving forms by name across pages, allowing anonymous visitors to execute form actions defined on login-restricted or unpublished pages. Attackers can POST to any public page with a restricted form's name to trigger save, upload, email, or call actions without authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86194">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>304c1cdd0a2bcc1c15c7e7b6c20b7497</td>
+       <td>CVE-2026-86193</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>grav-plugin-api before 1.0.20 fails to validate group-inherited super permissions in user-management guards, allowing non-super user managers to modify super-admin accounts. Attackers with api.access and api.users.write can patch password fields on group-super accounts to gain full administrative control.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86193">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>638ede994f028bef16834b911bff0ea4</td>
+       <td>CVE-2026-86192</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>SiYuan versions before v3.8.2 fail to properly filter private attribute-view cell values in the getAttributeViewKeys endpoint. Publish readers can retrieve hidden KeyValues payloads from rows bound to inaccessible documents, exposing private database contents without authorization.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86192">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>cc8639adb86bd485434ad8dd7570ad55</td>
+       <td>CVE-2026-86191</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>SiYuan versions before v3.8.2 contain an information disclosure vulnerability in the getAttributeViewKeysByID endpoint that allows publish readers to enumerate private attribute view key definitions without verifying parent database visibility. Attackers can access the endpoint to retrieve complete key schemas including sensitive field names and relation definitions from hidden databases.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86191">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c4aa3fdd7f80a5850e9a63b230ff3ab6</td>
+       <td>CVE-2026-86190</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo contains a broken access control vulnerability in videoViewsInfo endpoints that returns complete user records including password hashes, recovery tokens, and live session identifiers to unauthenticated callers when a hash parameter is provided. Attackers can use the disclosed session identifier to hijack viewer sessions, including administrator accounts, and obtain sensitive personal data for all video viewers.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86190">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fb63201c2f9b2b39abdc221d106972e4</td>
+       <td>CVE-2026-86189</td>
+       <td>2026-09-05 13:18:14 <img src="imgs/new.gif" /></td>
+       <td>WWBN AVideo contains a path traversal vulnerability in notify.ffmpeg.json.php that allows unauthenticated attackers to write files to arbitrary locations by supplying a caller-chosen path in the avideoRelativePath parameter. Attackers can replay any previously issued ciphertext as a notifyCode token, which is decrypted but never validated, to bypass authentication and write files to the application root and subdirectories.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86189">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2779dc2cabf5bd0566046588144f1802</td>
+       <td>CVE-2026-86188</td>
+       <td>2026-09-05 13:18:13 <img src="imgs/new.gif" /></td>
+       <td>AVideo with YPTSocket plugin enabled contains a cross-site scripting vulnerability allowing unauthenticated attackers to execute arbitrary JavaScript in other users' browsers via the websocket callback mechanism. Attackers can send crafted socket messages with callback names resolving to global functions like avideoConfirmHTML that accept untrusted data and assign it to innerHTML, achieving script execution in the victim's origin without authentication or user interaction.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86188">详情</a></td>
+      </tr>
+
+      <tr>
        <td>baea922a847da5c80039492578dbf7e9</td>
        <td>CVE-2026-85649</td>
        <td>2026-09-04 13:20:11 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>a825ade98bccde23e545b5d15c771286</td>
        <td>CVE-2026-9852</td>
-       <td>2026-09-03 13:06:25 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:25</td>
        <td>A CSV injection vulnerability exists in SYS600. Injected malicious formulas can add or modify data to the spreadsheet, insert links, exfiltrate data, and in some cases, depending on how the user has their environment configured, execute malicious code on the user’s machine. To exploit this issue attackers would need a way to create arbitrary log messages. This could be achieved through normal functionality via SCIL scripts, a log injection vulnerability, or via the SYS600 broker. This vulnerability affects all Windows users regardless of their privilege level who can run the Notify service and export the log.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-9852">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>10ae0df09f476d4d2d3a94fcae3e4ee7</td>
        <td>CVE-2026-85175</td>
-       <td>2026-09-03 13:06:25 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:25</td>
        <td>SiYuan versions <= 3.8.1 (fixed in v3.8.2) contain an incomplete blocklist in the IsForbiddenAbsPath() function (kernel/util/path_guard.go), which only blocks conf/conf.json by exact match and does not restrict the TLS private key (conf/key.pem) or CA private key (conf/ca.key) stored in the same conf/ directory. Because the getFile handler skips the blocklist for RoleAdministrator and all authenticated users receive RoleAdministrator in v3.8.1, any user (or any client on a default no-auth-code instance) can retrieve these private keys via POST /api/file/getFile. On deployments with TLS enabled, this allows decryption of captured HTTPS traffic (key.pem) and forging of certificates trusted by clients that imported SiYuan's CA (ca.key).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85175">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>abb9a911133ceb21de13dfbd1da3f966</td>
        <td>CVE-2026-85172</td>
-       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:24</td>
        <td>n8n versions before 2.34.1 contain a server-side request forgery vulnerability in the legacy request helper function exposed to Code and Function nodes. The validation logic checks the uri property for SSRF safety while the underlying HTTP client uses the url property when both are present, allowing attackers to bypass validation by supplying a safe uri alongside a malicious url to access internal addresses.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85172">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>0ae7bc4fcbda94bf38eb7d35c7e86a94</td>
        <td>CVE-2026-85171</td>
-       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:24</td>
        <td>n8n before 1.123.73, 2.35.4, and 2.36.2 contains a credential exposure vulnerability in the Strapi, SeaTable, and Mailcheck nodes. These nodes send their decrypted credentials to the authentication endpoint via the raw legacy HTTP helper outside any error handling, causing the plaintext secret to be persisted in execution error data. Any authenticated user can read the plaintext secret from their own execution through the REST API, bypassing the blank-value redaction enforced by the credentials API.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85171">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>5c368fecc2e9d5198049fa285ec1259e</td>
        <td>CVE-2026-85169</td>
-       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:24</td>
        <td>n8n versions before 1.123.73, 2.35.4, and 2.36.2 contain an expression sandbox escape in the $fromAI handler. $fromAI resolved a caller-supplied placeholder name without requiring it to be an own property and admitted reserved keys; against a primitive input value it returned a live host-prototype reference. An attacker with workflow-build privilege can walk the prototype chain to the Function constructor and compile/execute arbitrary code in the main n8n process, leading to remote code execution.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85169">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>bb21ea3d5623d05f10c936a84df90c26</td>
        <td>CVE-2026-85167</td>
-       <td>2026-09-03 13:06:24 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:24</td>
        <td>n8n before 2.35.4 and 2.36.x before 2.36.2 contain a query injection vulnerability in the Elasticsearch Document Get All and Google Cloud Firestore Document Query operations, which build their JSON query by interpolating expression values directly into the query string before parsing. A value containing quote and brace characters can close the intended field and introduce new query operators, turning an intended single-document lookup into a full-collection read.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85167">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>db7dc007e0883ccef260fffa72dbd26d</td>
        <td>CVE-2026-85166</td>
-       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:23</td>
        <td>n8n before 2.35.4 and 2.36.x before 2.36.2 does not validate credential references in the inline workflow JSON of nodes that execute an inline sub-workflow (e.g., the Workflow Tool node). A shared-workflow editor, or any user creating/updating a workflow via the REST API, Public API, or MCP, can persist a node referencing a credential they do not own. When the workflow is later executed under an identity that holds the credential, the inline sub-workflow resolves the secret and can send it to an attacker-controlled endpoint, resulting in credential exfiltration.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85166">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>ea4782f7b4419468e3a376b36b57374b</td>
        <td>CVE-2026-85164</td>
-       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:23</td>
        <td>WWBN AVideo through commit c91b5975d contains a server-side request forgery vulnerability in the set_api_userImages API endpoint that fails to validate profileImg and backgroundImg URLs before fetching them. Authenticated API clients can supply internal URLs to fetch cloud metadata or internal services, with responses written to publicly accessible web paths for retrieval.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85164">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>6f8314c0f027cd94852b3dee14218a42</td>
        <td>CVE-2026-85162</td>
-       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:23</td>
        <td>AVideo through commit c91b5975d contains a cross-site request forgery vulnerability in plugin/Live/saveLive.php that lacks forbidIfNotPost and forbidIfInvalidToken protections. Attackers can craft malicious image tags to overwrite authenticated streamers' RTMP keys, passwords, and titles, hijacking live broadcasts.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85162">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>cbf34b032d9c2ac4c28a1c3c82206cf8</td>
        <td>CVE-2026-85161</td>
-       <td>2026-09-03 13:06:23 <img src="imgs/new.gif" /></td>
+       <td>2026-09-03 13:06:23</td>
        <td>AVideo through commit c91b5975d contains a cross-site request forgery vulnerability in removePoster.php that lacks forbidIfNotPost or forbidIfInvalidToken checks. Attackers can craft malicious image tags to delete authenticated victims' live poster and thumbnail files via GET requests.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85161">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e5326de94a4e3ce7964ded0a349263c2</td>
-       <td>CVE-2026-84799</td>
-       <td>2026-09-02 12:31:31</td>
-       <td>Craft CMS before 5.11.0 fails to enforce user-group scope filters on native GraphQL user...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84799">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>680338853d9b4d6b46e80a31118fd55f</td>
-       <td>CVE-2026-84781</td>
-       <td>2026-09-02 12:31:30</td>
-       <td>Contributor Cross Site Scripting (XSS) in Gallery PhotoBlocks <= 1.3.4 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84781">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55e387ae08885220771999e84f728dad</td>
-       <td>CVE-2026-84217</td>
-       <td>2026-09-02 12:31:30</td>
-       <td>Missing Authorization vulnerability in Mamunur Rashid Classified Listing allows Accessing...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84217">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1886023f137a9b9f47e28fa98921f105</td>
-       <td>CVE-2026-83562</td>
-       <td>2026-09-02 12:31:30</td>
-       <td>Contributor Cross Site Scripting (XSS) in WCFM Marketplace <= 3.8.2 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-83562">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>68fac7bbfa3779acc0dc976734494ebe</td>
-       <td>CVE-2026-81774</td>
-       <td>2026-09-02 12:31:30</td>
-       <td>Unauthenticated Sensitive Data Exposure in WooCommerce Product Attachment <= 2.3.3 versions.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81774">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>298c1a90cbbdbbf70617fd1479e9d847</td>
-       <td>CVE-2026-23591</td>
-       <td>2026-09-02 09:31:30</td>
-       <td>Rejected reason: Withdrawn by requester.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-23591">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1866b9b2ef3f7c942d8121400828b4ed</td>
-       <td>CVE-2026-14828</td>
-       <td>2026-09-02 09:31:29</td>
-       <td>Zohocorp ManageEngine Password Manager Pro versions before 13235, PAM360 versions before 8561,...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-14828">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1a2331b3cb1dbe90bbbf5124e1d1952e</td>
-       <td>CVE-2026-3850</td>
-       <td>2026-09-02 07:16:36</td>
-       <td>The Divi theme for WordPress is vulnerable to Stored Cross-Site Scripting via the `redirect_url` parameter of the `et_pb_contact_form` shortcode in all versions up to, and including, 4.27.6. This is due to the `redirect_url` attribute being sanitized with `esc_attr()` instead of `esc_url()` before being rendered into the `data-redirect_url` HTML data attribute. Additionally, `redirect_url` is absent from the hardcoded `$url_options` array in `class-et-builder-element.php`, so it does not receive `esc_url_raw()` sanitization during shortcode parsing. After a successful form submission, client-side JavaScript reads this data attribute and passes it directly to `window.location.href`, executing arbitrary JavaScript from a `javascript:` URI. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that execute whenever a user submits the contact form.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-3850">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0ae43df30245aa8a5e9a40bc21beeaf2</td>
-       <td>CVE-2026-82883</td>
-       <td>2026-09-02 06:52:38</td>
-       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Marcus Login With Ajax allows Reflected XSS. This issue affects Login With Ajax: from n/a through 4.5.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82883">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1b36026c52bad93d23cafbdf71d8f778</td>
-       <td>CVE-2026-81428</td>
-       <td>2026-09-02 06:31:16</td>
-       <td>The WC Vendors  WordPress plugin before 2.7.2.1 does not verify ownership or the object type of...</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-81428">详情</a></td>
       </tr>
 
      </tbody>
