@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-09-13 23:03:19 -->
+<!-- RELEASE TIME : 2026-09-14 23:47:56 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>0becda74c76be4391310d416e682d794</td>
+       <td>CVE-2026-90816</td>
+       <td>2026-09-14 20:17:03 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in FFmpeg 8.0.x. This affects the function parse_playlist of the file libavformat/hlsproto.c of the component Duration Parser. Performing a manipulation of the argument duration/target_duration results in denial of service. The attack is possible to be carried out remotely. Upgrading to version 8.1 and 9.0 is able to mitigate this issue. The patch is named 64fafd63f0b4. Upgrading the affected component is recommended.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90816">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c4a5a79362ae1d0c05ddd5d21bd2d23e</td>
+       <td>CVE-2026-90815</td>
+       <td>2026-09-14 20:17:02 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in FFmpeg up to 4.4.6/5.1.8/6.1.4/7.1.3/8.0.1. Affected by this issue is the function setup_3x3 of the file libavfilter/vf_convolution.c of the component Convolution Filter. Such manipulation leads to out-of-bounds read. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 4.4.7, 5.1.9, 6.1.5, 7.1.4, 8.0.2, 8.1.1 and 9.0 can resolve this issue. The name of the patch is 8970658472/e24b9820b4. It is suggested to upgrade the affected component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90815">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4197cf2ff9747a944410d38e7189e6f6</td>
+       <td>CVE-2026-90814</td>
+       <td>2026-09-14 20:17:02 <img src="imgs/new.gif" /></td>
+       <td>A flaw has been found in cosmicstack-labs mercury-agent up to 1.1.13. Affected by this vulnerability is the function githubRequest of the file src/utils/github.ts of the component GitHub API Handler. This manipulation of the argument path causes server-side request forgery. Remote exploitation of the attack is possible. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90814">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0b0c8246411112511f043bd99b7f7ed4</td>
+       <td>CVE-2026-90813</td>
+       <td>2026-09-14 20:17:02 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was detected in cosmicstack-labs mercury-agent up to 1.1.13. Affected is the function checkShellCommand of the file src/capabilities/permissions.ts of the component Shell Command Execution. The manipulation results in incorrect behavior order: validate before canonicalize. The attack may be launched remotely. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90813">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>03074eb0ba58e32db2dacc988b37cd5b</td>
+       <td>CVE-2026-82028</td>
+       <td>2026-09-14 20:16:54 <img src="imgs/new.gif" /></td>
+       <td>Magistrala before 1.0.0 contains a SQL injection vulnerability in the timescale-reader and postgres-reader HTTP API services that allows authenticated attackers to inject arbitrary SQL by supplying a malicious format query parameter that is interpolated directly into the FROM clause without parameterization or identifier quoting. Attackers with a self-registered account can substitute arbitrary subqueries to achieve cross-tenant database reads, extract pg_shadow password hashes, read and write arbitrary files, and execute arbitrary code as the postgres OS user by loading attacker-supplied shared objects, with all injected SQL executing at superuser privilege due to the default PostgreSQL role configuration.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82028">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>23361ab7bbd1d7d075157636238ea23e</td>
+       <td>CVE-2026-73497</td>
+       <td>2026-09-14 20:16:50 <img src="imgs/new.gif" /></td>
+       <td>MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). From 0.17.0 until 0.22.0, validate_url_for_ssrf resolves the attacker-controlled X-Atlassian-Jira-Url and X-Atlassian-Confluence-Url header host once at middleware time, but the outbound request is built with the raw hostname and resolves it again at connection time with no IP pinning. An attacker-controlled DNS-rebinding name can return a public IP during validation and 169.254.169.254 or another internal IP during connection, enabling unauthenticated server-side requests to cloud metadata or internal services. The flaw spans src/mcp_atlassian/utils/urls.py, src/mcp_atlassian/servers/main.py, and src/mcp_atlassian/servers/dependencies.py; validate_url_for_ssrf returns only a verdict rather than a pinned IP, UserTokenMiddleware processes the attacker-controlled headers before fetcher creation, and the Jira and Confluence fetchers use the raw hostname. This issue is fixed in version 0.22.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73497">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3b9d6158d812f13d3c8105a36bd9b50b</td>
+       <td>CVE-2026-73496</td>
+       <td>2026-09-14 20:16:50 <img src="imgs/new.gif" /></td>
+       <td>MCP Atlassian is a Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira). Prior to 0.22.0, the confluence_upload_attachment and confluence_upload_attachments tools pass a client-controlled file_path through src/mcp_atlassian/confluence/attachments.py upload_attachment, and the jira_update_issue attachments parameter reaches src/mcp_atlassian/jira/attachments.py upload_attachment, without confining either path to an approved server workspace. In a remote HTTP, SSE, or multi-user deployment, absolute or traversing paths are resolved on the MCP server and uploaded to Atlassian, allowing a client with write-tool access to disclose server files, environment-held Atlassian credentials, or another tenant's data. A local single-user stdio deployment does not cross this trust boundary because the server runs in the caller's environment. This issue is fixed in version 0.22.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-73496">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>bbda83bd3e4ee314b18762d8aaf54509</td>
+       <td>CVE-2026-65838</td>
+       <td>2026-09-14 20:16:49 <img src="imgs/new.gif" /></td>
+       <td>Skipper is an HTTP router and reverse proxy for service composition. Prior to 0.27.35, the opaAuthorizeRequestWithBody filter in filters/openpolicyagent/openpolicyagent.go can allow an oversized declared Content-Length request to bypass a deny-on-presence Rego policy because ExtractHttpBodyOptionally leaves OPA with an empty parsed_body while forwarding the complete request body upstream. This incomplete remediation of CVE-2026-50197 affects deployments that authorize request-body content and exceed -open-policy-agent-max-request-body-size, which defaults to 1 MB. Policy logic that does not reject input.attributes.request.http.truncated_body can therefore fail open and permit a forbidden payload to reach the protected service, while small bodies and the previously fixed chunked-body case are evaluated normally. This issue is fixed in version 0.27.35.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65838">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d68d0b7197acf4bc4e69268035dc2c28</td>
+       <td>CVE-2026-55244</td>
+       <td>2026-09-14 20:16:47 <img src="imgs/new.gif" /></td>
+       <td>ASTEVAL is an evaluator of Python expressions and statements. Prior to 1.0.9, FROM_PY in asteval/astutils.py exposes BaseException, SystemExit, KeyboardInterrupt, and GeneratorExit to expressions evaluated by asteval.Interpreter.eval(), while run() and eval() in asteval/asteval.py catch Exception rather than these non-Exception BaseException subclasses. When an attacker-controlled expression raises one of these classes, on_raise() passes the class to raise_exception(), and the resulting exception bypasses the interpreter's safety handlers and propagates into the calling application. A consuming service that evaluates untrusted expressions can therefore be terminated or have signal and cleanup handling disrupted, causing denial of service. The separately documented read-only open() capability is not part of this vulnerability. This issue is fixed in version 1.0.9.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55244">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9a20beb841e4dcf985b76e9a6b9329bc</td>
+       <td>CVE-2026-55209</td>
+       <td>2026-09-14 20:16:47 <img src="imgs/new.gif" /></td>
+       <td>resdata is software for reading and writing result files from the Eclipse reservoir simulator. Prior to 6.2.9, resdata insufficiently validates numeric fields, grid dimensions, keyword sizes, and array indexes while parsing untrusted GRDECL files in lib/resdata/rd_kw_grdecl.cpp and lib/resdata/rd_grid.cpp. Malformed COORD, ZCORN, CORSNUM, ACTNUM, or MAPAXES data can reach rd_grid_alloc_GRDECL_kw__ with inconsistent lengths, while unbounded floating-point conversion can exceed the intended parser buffer. In a network service that accepts untrusted GRDECL files, these conditions can cause a classic buffer overflow, out-of-bounds reads, invalid array access, NULL pointer dereference, memory corruption, or service termination. This issue is fixed in version 6.2.9.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-55209">详情</a></td>
+      </tr>
+
+      <tr>
        <td>23c77b892ea057fbf397a11b8effef7f</td>
        <td>CVE-2026-90571</td>
        <td>2026-09-13 17:16:58 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>67cc66266198b49592af409d24a6b3db</td>
        <td>CVE-2026-90560</td>
-       <td>2026-09-12 18:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 18:16:44</td>
        <td>zstd-jni versions 1.2.0 through 1.5.7-13 contain an out-of-bounds read vulnerability in the ZstdDictDecompress constructor because offset and length arguments are never validated against the dictionary array bounds. Attackers can supply arbitrary offset or length values to read memory past the end of the supplied array, potentially causing JVM termination.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90560">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>a4df3e03c53a73333387690dc35db632</td>
        <td>CVE-2026-90559</td>
-       <td>2026-09-12 18:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 18:16:44</td>
        <td>snappy-java through 1.1.10.8 contains an out-of-bounds write vulnerability in Snappy.uncompress(ByteBuffer, ByteBuffer) because destination buffer capacity is never validated against decompressed size. Attackers can supply valid compressed data that decompresses larger than the destination buffer, causing writes past buffer boundaries and JVM termination.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90559">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>a4363fe39233289ec75c30427e9b2e28</td>
        <td>CVE-2026-90558</td>
-       <td>2026-09-12 18:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 18:16:44</td>
        <td>sngrep through 1.8.4 contains stack buffer overflow vulnerabilities in SIP attribute formatting routines when header values exceed the 255-byte buffer limit. Attackers can craft malicious SIP packets with oversized Call-ID, X-Call-ID, or other header fields to overflow stack buffers and cause crashes or execute arbitrary code during packet parsing and rendering.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90558">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>b0ca06ae58e0b2dae214b2a85abe47f8</td>
        <td>CVE-2026-90557</td>
-       <td>2026-09-12 18:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 18:16:44</td>
        <td>Freeciv versions 3.1.0 through 3.2.5 contain an out-of-bounds read vulnerability in sg_load_player_unit() when processing savegame files with invalid unit activity indices. An attacker can craft a malicious savegame file with an out-of-range activity index that bypasses bounds checking and causes a crash or limited heap memory exposure when loaded.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90557">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>34b7d62a2bc405f33a5fa406441a2597</td>
        <td>CVE-2026-90556</td>
-       <td>2026-09-12 18:16:44 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 18:16:44</td>
        <td>Freeciv versions before 3.2.6 contain a heap buffer overflow in worklist_load() when processing savegame files with declared worklist lengths exceeding the fixed array bound of 64 elements. Attackers can craft malicious savegame files that write past the entries array into adjacent heap-allocated struct fields, potentially corrupting memory when a user or server operator loads the file.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90556">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>5fdd466084eae4ceb6dac1d1921bc0de</td>
        <td>CVE-2026-90555</td>
-       <td>2026-09-12 13:16:54 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 13:16:54</td>
        <td>vLLM versions before 0.28.0 fail to validate audio sample rate headers in the transcription endpoint, allowing authenticated clients to bypass duration checks. Attackers can submit forged FLAC headers with inflated sample rates to trigger excessive memory allocation and crash the API server process affecting all tenants.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90555">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>b6f975d146aa3cf837f4af819376baff</td>
        <td>CVE-2026-90554</td>
-       <td>2026-09-12 13:16:54 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 13:16:54</td>
        <td>vLLM versions >=0.10.2 and <0.28.0 do not apply any audio decode-size or duration limit when extracting audio from video input for NanoNemotronVL models. In nano_nemotron_vl.py, _extract_audio_from_videos calls load_audio_pyav(BytesIO(video_bytes)) without the max_duration_s or max_decode_bytes parameters, so neither VLLM_MAX_AUDIO_DECODE_DURATION_S nor VLLM_MAX_AUDIO_DECODE_BYTES is enforced (unlike the direct audio upload path in AudioMediaIO). When a NanoNemotronVL model is served with use_audio_in_video=True, an attacker who supplies a small, highly compressed video as multimodal input can force the server to allocate gigabytes of memory during audio decoding, resulting in a denial of service. Fixed in vLLM 0.28.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90554">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>b185383382311d80dc44ad607740793b</td>
        <td>CVE-2026-90553</td>
-       <td>2026-09-12 13:16:53 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 13:16:53</td>
        <td>vLLM before 0.28.0 contains a remote code execution vulnerability in the LlavaOnevision2 processor loader that ignores the trust_remote_code parameter when loading remote processor classes. Attackers can craft a malicious model with arbitrary code in processing_llava_onevision2.py that executes with vLLM process authority even when trust_remote_code is set to False.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90553">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>ab5b29dd2845a67d03004183e9e5dc06</td>
        <td>CVE-2026-90552</td>
-       <td>2026-09-12 13:16:53 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 13:16:53</td>
        <td>WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 fails to validate playlist ownership in the Playlists_schedules/list.json.php and Live/calendar.json.php endpoints, allowing authenticated and unauthenticated users to read private playlist schedule metadata. Attackers with canStream privileges or no authentication can retrieve schedule names, descriptions, timestamps, and playlist identifiers by querying these endpoints without ownership checks.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90552">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>c178cc0f8cd1fb5c15d055daa0f63de4</td>
        <td>CVE-2026-90551</td>
-       <td>2026-09-12 13:16:53 <img src="imgs/new.gif" /></td>
+       <td>2026-09-12 13:16:53</td>
        <td>WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 fails to validate playlist ownership in the video_from_program API endpoint, allowing unauthenticated access to private playlist contents. Attackers can query the API without authentication to enumerate private playlist names, owner information, and video titles including password-protected content.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-90551">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0c09a1948cc5f20c710c38e40099ef51</td>
-       <td>CVE-2026-89265</td>
-       <td>2026-09-11 16:17:51</td>
-       <td>MoguBlog through 6.2 contains an authorization bypass vulnerability in the POST /pictureSort/getPictureSortByUid endpoint, which omits the @AuthorityVerify annotation required to enforce role-based permissions. Authenticated back-office users without image-category permissions can supply a category uid to retrieve restricted image-category records including metadata such as name, cover file uid, sort order and timestamps.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89265">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>91cbd66b3e338ff669351e911e821b94</td>
-       <td>CVE-2026-89264</td>
-       <td>2026-09-11 16:17:51</td>
-       <td>MoguBlog through 6.2 fails to validate the comment author identity in the POST /web/comment/add endpoint, allowing authenticated users to post comments attributed to any other user. Attackers can supply arbitrary userUid values in the request body to impersonate other accounts including administrators.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89264">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>712290b09d82aed992ac0bde364bca46</td>
-       <td>CVE-2026-89263</td>
-       <td>2026-09-11 16:17:51</td>
-       <td>MoguBlog through 6.2 fails to authenticate requests to the /web/comment/closeEmailNotification endpoint, allowing unauthenticated attackers to disable email notifications for arbitrary users. Remote callers can modify the startEmailNotification flag in Redis cache for any user identifier to suppress reply notifications without authorization.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89263">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>59c619c79b6143159df297d4531716b3</td>
-       <td>CVE-2026-8304</td>
-       <td>2026-09-11 16:17:51</td>
-       <td>Missing Authorization vulnerability in TUBITAK BILGEM Software Technologies Research Institute Pardus About allows Exploiting Incorrectly Configured Access Control Security Levels. This issue affects Pardus About: from 1.2.1 before 1.2.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-8304">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>477ba44a93a43971d96daebf54c5b527</td>
-       <td>CVE-2026-89262</td>
-       <td>2026-09-11 16:17:50</td>
-       <td>MoguBlog through 6.2 contains an authorization bypass vulnerability in the comment deletion endpoint that performs ownership checks against request-body fields instead of the authenticated principal. Attackers can delete arbitrary comments and their replies by supplying comment UIDs and author UIDs obtained from unauthenticated listing endpoints.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89262">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7892a4eb30d1b1ed24dbe3fd8274a32b</td>
-       <td>CVE-2026-89261</td>
-       <td>2026-09-11 16:17:50</td>
-       <td>MoguBlog through 6.2 exposes Elasticsearch index management endpoints in the mogu_search service without authentication, allowing remote attackers to delete, recreate, or alter the blog search index. Attackers can invoke POST endpoints to wipe the entire search index, delete specific documents, or inject malicious index entries, causing search functionality to return incorrect or no results.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89261">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>96a4e9f3acce3bbe6ecf61dee4d9b08b</td>
-       <td>CVE-2026-89260</td>
-       <td>2026-09-11 16:17:50</td>
-       <td>MoguBlog through 6.2 contains an XML external entity injection vulnerability in the WeChat callback handler at POST /wechat/wechatCheck. The WechatRestApi.index() method passes the raw request body to SignUtil.xmlToMap(), which uses an unhardened dom4j SAXReader without DTD or external-entity restrictions. Unauthenticated remote attackers can submit DOCTYPE declarations with external parameter entities to read arbitrary local files or trigger outbound HTTP requests, with resolved entities reflected in error responses.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89260">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>354032fc907ca31059d3d42eace94a20</td>
-       <td>CVE-2026-89066</td>
-       <td>2026-09-11 16:17:49</td>
-       <td>Improper neutralization of special elements used in an OS command in the task synthesis component in projen before 0.103.0 might allow context-dependent attackers to execute arbitrary commands on a developer workstation or continuous integration runner via shell metacharacters in project configuration values and repository file names that are interpolated into generated task definitions. To remediate this issue, users should upgrade to version 0.103.0 and then re-synthesize the project so that .projen/tasks.json is regenerated with the corrected task definitions. Upgrading alone is not sufficient because the generated task definition file is committed to the repository.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89066">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a52e0c87de31dd04f5249902cd562d20</td>
-       <td>CVE-2026-89065</td>
-       <td>2026-09-11 16:17:49</td>
-       <td>Relative path traversal in the generated file manifest cleanup component in projen before 0.101.37 might allow context-dependent attackers to recursively delete files and directories outside the project directory that are writable by the environment running projen, via crafted entries in the version-controlled generated file manifest that is consumed during project synthesis. To remediate this issue, users should upgrade to version 0.101.37. The corrected containment check is automatically applied by the projen runtime next time you run it.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89065">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>43b0870a28994c0b4be3ccc94e5ded74</td>
-       <td>CVE-2026-89013</td>
-       <td>2026-09-11 16:17:48</td>
-       <td>Dolibarr 23.0.4 before 24.0.1 ontains an authorization bypass vulnerability that allows unauthenticated attackers to read arbitrary files through the document storage endpoints by supplying a crafted hashp parameter value. Attackers can send a request with hashp=shared to skip token validation while satisfying the authorization condition in htdocs/document.php and htdocs/viewimage.php, gaining access to application logs, uploaded business documents, database backups containing password hashes, and files belonging to other multicompany entities.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89013">详情</a></td>
       </tr>
 
      </tbody>
