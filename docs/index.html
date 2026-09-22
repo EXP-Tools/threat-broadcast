@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-09-21 04:27:04 -->
+<!-- RELEASE TIME : 2026-09-22 04:42:40 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>d3b063b39bc58a6b8039d0eeb43fe87f</td>
+       <td>CVE-2026-94627</td>
+       <td>2026-09-21 22:17:01 <img src="imgs/new.gif" /></td>
+       <td>vLLM Mooncake connector through 0.29.0 fails to properly manage GPU KV cache block ownership when concurrent child requests share a single transfer ID in prefill/decode disaggregated deployments. Attackers can trigger GPU memory exhaustion by submitting completion requests with multiple prompts, causing orphaned KV cache blocks to accumulate until process restart and eventually preventing legitimate requests from executing.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94627">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c1678cc8a9e5577693356db239080aea</td>
+       <td>CVE-2026-94626</td>
+       <td>2026-09-21 22:17:01 <img src="imgs/new.gif" /></td>
+       <td>vLLM through 0.29.0 fails to validate the tp_size parameter in kv_transfer_params on OpenAI-compatible completion endpoints, allowing attackers to allocate unbounded memory. Attackers can supply arbitrary tp_size values in prefill/decode disaggregated deployments to exhaust memory and trigger kernel OOM-kill of the decode worker process.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94626">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f379de002bdb908133583dcd9a21db72</td>
+       <td>CVE-2026-94625</td>
+       <td>2026-09-21 22:17:01 <img src="imgs/new.gif" /></td>
+       <td>vLLM through 0.29.0 contains a resource exhaustion vulnerability in MooncakeConnector where rejected prefill requests create ownerless transfer placeholders that are never reclaimed. Attackers can send rejected requests to exhaust sender task pools, causing valid requests to be delayed by up to 480 seconds while health checks continue returning success.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94625">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9f5d76e26ba8506c3a65c2461f42d65a</td>
+       <td>CVE-2026-94624</td>
+       <td>2026-09-21 22:17:01 <img src="imgs/new.gif" /></td>
+       <td>vLLM through 0.29.0 contains a denial of service vulnerability in P2P KV offloading when OffloadingConnector is configured with TieringOffloadingSpec and a peer-to-peer secondary tier. Attackers can supply arbitrary remote host and port values in kv_transfer_params to create unreachable peer sessions that retain ZeroMQ sockets until the context quota is exhausted, causing an uncaught ZMQError that crashes EngineCore and stops all inference.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94624">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a0f63cc56b7b0f50f3cd50c0b8d5f0e3</td>
+       <td>CVE-2026-94623</td>
+       <td>2026-09-21 22:17:01 <img src="imgs/new.gif" /></td>
+       <td>vLLM through 0.29.0 contains a denial of service vulnerability in the NIXL connector's prefix caching implementation that fails to properly validate block counts across multi-prompt completion requests in prefill/decode disaggregated deployments. Attackers can trigger an assertion failure in NixlBaseConnectorWorker._apply_prefix_caching by submitting completion requests with multiple prompts of varying lengths, causing the decode worker to terminate and become unavailable until restarted.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94623">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>561be82cbdd06949f04fc47fe261b130</td>
+       <td>CVE-2026-94622</td>
+       <td>2026-09-21 22:17:00 <img src="imgs/new.gif" /></td>
+       <td>vLLM versions through 0.29.0 contain a denial of service vulnerability in the NIXL connector's metadata handling for prefill/decode disaggregated deployments. Attackers can send requests with incomplete kv_transfer_params dictionary entries to trigger an uncaught KeyError in EngineCore scheduling, causing the decode engine to terminate and making all routed requests fail until manual restart.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94622">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>90e0d3142807a4a7897087ad4a214d17</td>
+       <td>CVE-2026-94540</td>
+       <td>2026-09-21 22:17:00 <img src="imgs/new.gif" /></td>
+       <td>DesktopSMS 1.11.0 by MrPear contains an unauthorized access vulnerability that allows local attackers to transmit SMS, retrieve SMS-derived content, and persist an attacker-selected paired identity by interacting with the application's local service without any pairing confirmation or user interaction. Attackers can exploit the unauthenticated local service through same-device loopback to perform privileged SMS operations using the victim application's permissions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94540">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a48110b901b4570e9f085570f4c751ea</td>
+       <td>CVE-2026-94536</td>
+       <td>2026-09-21 22:17:00 <img src="imgs/new.gif" /></td>
+       <td>lamp-cloud through 5.10.0 fails to validate the employeeId parameter in the /anyone/visible/resource endpoint, allowing authenticated users to read any employee's roles and permissions. Attackers can supply arbitrary employeeId values to enumerate other employees' role codes, permission codes, and complete front-end router trees without authorization checks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94536">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6e28f70c958aa03cb842dfb94080f968</td>
+       <td>CVE-2026-94535</td>
+       <td>2026-09-21 22:17:00 <img src="imgs/new.gif" /></td>
+       <td>lamp-cloud through 5.10.0 contains an authorization bypass vulnerability in the deleteMyNotice endpoint that allows authenticated users to delete other users' notifications. Attackers can call the DELETE /anyone/extendNotice/deleteMyNotice endpoint with arbitrary notice IDs to permanently remove notifications belonging to other users without recipient validation.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94535">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9431bf72cf26f8e5fbc51adc84ceb99d</td>
+       <td>CVE-2026-94534</td>
+       <td>2026-09-21 22:17:00 <img src="imgs/new.gif" /></td>
+       <td>lamp-cloud through 5.10.0 fails to validate user identity in PUT /anyone/baseInfo and PUT /anyone/avatar endpoints, allowing authenticated attackers to modify arbitrary user profiles. Attackers can supply target user IDs in request bodies to rewrite profile fields including nickname, ID card, sex, nation, education, work description, and avatar attachments of other users.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94534">详情</a></td>
+      </tr>
+
+      <tr>
        <td>f6efab69153f1afefff6faad120af6c7</td>
        <td>CVE-2026-94090</td>
-       <td>2026-09-20 22:16:30 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 22:16:30</td>
        <td>A security flaw has been discovered in JusticeRage Manalyze 1.0.0. The affected element is the function PE::_parse_debug of the file manape/pe.cpp of the component PE Parser. The manipulation of the argument misc.Length results in integer underflow. The attack may be performed from remote. The patch is identified as 3e299685759f4f767088871de58c5d07f98ee382. A patch should be applied to remediate this issue.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94090">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>706887d9e7ad099ef7846b3735f3c90f</td>
        <td>CVE-2026-94089</td>
-       <td>2026-09-20 21:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 21:16:55</td>
        <td>A vulnerability was determined in D-Link DIR-868L 2.01b05. This issue affects the function strcpy of the file /webfa_authentication.cgi of the component Authentication Handler. Executing a manipulation of the argument id/password can lead to stack-based buffer overflow. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94089">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>ca7eca134842164f4ad838a3c9373a22</td>
        <td>CVE-2026-94051</td>
-       <td>2026-09-20 21:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 21:16:55</td>
        <td>A vulnerability was found in 0717376 cowork_bench up to d943e75bc0fc8e3b27141979300cd8cbcd1e890d. Affected by this vulnerability is the function ControlFlowNode of the file local_servers/pdf-tools-mcp/pdf_tools_mcp/server.py of the component pdf-tools-mcp. Performing a manipulation of the argument pdf_file_path results in server-side request forgery. It is possible to initiate the attack remotely. The exploit has been made public and could be used. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94051">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>3d75b78526c61090e8169d8b9728b9b5</td>
        <td>CVE-2026-94050</td>
-       <td>2026-09-20 21:16:55 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 21:16:55</td>
        <td>A vulnerability has been found in D-Link DIR-X1860Z up to 1.0.2.220120.165402. Affected is the function routerd.wificfg_get/routerd.get_rand_key of the component ubus JSON-RPC interface. Such manipulation leads to information disclosure. The attack must be carried out from within the local network. Upgrading to version 1.0.7.260821.161908 is able to address this issue. It is suggested to upgrade the affected component. This vulnerability only affects products that are no longer supported by the maintainer.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94050">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>b01ad06a5af6af35a4a04db42ae7f7a0</td>
        <td>CVE-2026-94049</td>
-       <td>2026-09-20 20:16:54 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 20:16:54</td>
        <td>A flaw has been found in 06ketan slideshot up to 4.4.0. This impacts the function render_slides of the file packages/cli/src/renderer.ts. This manipulation of the argument htmlPath causes path traversal. The attack is possible to be carried out remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94049">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>caa087181948b04a6272d6dc44e5866e</td>
        <td>CVE-2026-94048</td>
-       <td>2026-09-20 20:16:54 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 20:16:54</td>
        <td>A vulnerability was detected in CodeAstro QR Code Attendance Management System 1.0. This affects the function Save of the file app/Controllers/UserController.php. The manipulation of the argument role_id results in improper privilege management. The attack can be executed remotely. The exploit is now public and may be used.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94048">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>0e62cae8a54b83c78911481e3530e726</td>
        <td>CVE-2026-94047</td>
-       <td>2026-09-20 20:16:53 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 20:16:53</td>
        <td>A security vulnerability has been detected in samanhappy MCPHub up to 1.0.32. The impacted element is the function importTemplate of the file src/services/templateService.ts of the component Template Import Endpoint. The manipulation leads to improper privilege management. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. Upgrading to version 1.0.33 is sufficient to resolve this issue. The identifier of the patch is 18a4467bc4ec6390b1f841d8a468a37e9922f837. It is advisable to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94047">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>b7911552b94da095c074e67107cf5ff4</td>
        <td>CVE-2026-94046</td>
-       <td>2026-09-20 19:17:13 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 19:17:13</td>
        <td>A weakness has been identified in 0215AndrewFeng ACE-MCP up to 4.10.8. The affected element is the function get_file_snippet of the file getFileSnippet.ts of the component MCP Tool. Executing a manipulation of the argument projectRootPath/filePath can lead to path traversal. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. isPathInsideProjectRoot only blocks filePath escaping the attacker-chosen projectRootPath; the root itself is untrusted client input - set projectRootPath=/etc, filePath=hosts and the guard passes. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94046">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>3db0f5df17404cb337adc45a74b58b3f</td>
        <td>CVE-2026-94045</td>
-       <td>2026-09-20 19:17:13 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 19:17:13</td>
        <td>A security flaw has been discovered in newbee-ltd newbee-mall up to 1.0.0. Impacted is an unknown function of the file controller/common/UploadController.java of the component Goods Save Endpoint. Performing a manipulation of the argument goodsName results in cross site scripting. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. ImageIO.read() is a format-agnostic read - it returns non-null for a polyglot PNG|<img onerror> payload, which is exactly why the "image-only" guard is bypassable; the attacker-controlled suffix + /upload/** static mapping is what turns the upload into persisted XSS rather than a one-shot. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94045">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>e3d36aac0c9a7c8050f52d63d087cc1c</td>
        <td>CVE-2026-94044</td>
-       <td>2026-09-20 19:17:12 <img src="imgs/new.gif" /></td>
+       <td>2026-09-20 19:17:12</td>
        <td>A vulnerability was identified in 03-lovepreetSingh MCP up to f95d035c5317fad81af9828286631053ccb23546. This issue affects the function create_file of the file app/api/mcp/route.ts. Such manipulation of the argument filePath/content leads to path traversal. The attack can be launched remotely. The exploit is publicly available and might be used. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94044">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-09-19 12:16:41</td>
        <td>OpenPanel tracking API through commit bad75bddc74d12d36cfb843f4531d3b830a8d994 fails to verify client secret cryptographic hash before authorizing revenue events and bot filtering. Attackers with only a public client ID can supply arbitrary dummy secrets to inject forged revenue metrics and bypass bot detection filters.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93984">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>43706946298de6402d57f20562f9aaa3</td>
-       <td>CVE-2026-93740</td>
-       <td>2026-09-18 22:17:10</td>
-       <td>A vulnerability was identified in Totolink A3002MU Hh-B20211125.1046. Affected is the function formWlEncrypt of the file /boafrm/formWlEncrypt. The manipulation of the argument submit-url leads to buffer overflow. It is possible to initiate the attack remotely. The exploit is publicly available and might be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93740">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c1fc49d4a5bb338f3709d2384d284ed9</td>
-       <td>CVE-2026-93739</td>
-       <td>2026-09-18 22:17:10</td>
-       <td>A vulnerability was determined in Totolink A3002MU Hh-B20211125.1046. This impacts the function formWlAc of the file /boafrm/formWlAc. Executing a manipulation of the argument submit-url can lead to buffer overflow. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93739">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d6a421333cbc3ffff24d765f3839068a</td>
-       <td>CVE-2026-75885</td>
-       <td>2026-09-18 22:17:10</td>
-       <td>A flaw was found in the OpenShift console. Unauthenticated access to the `/api/devfile/` and `/api/devfile/samples/` endpoints allows a remote attacker to send crafted devfile payloads. This can lead to Server-Side Request Forgery (SSRF), where the console pod makes requests to internal services and reflects partial responses to the attacker. Additionally, by sending repeated large requests without a specified content length, an attacker can cause unbounded memory growth, leading to a Denial of Service (DoS).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75885">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>eaee79f81aacbfbec0715bccbadd6fff</td>
-       <td>CVE-2026-93894</td>
-       <td>2026-09-18 21:18:49</td>
-       <td>In Vinyl Cache before 9.0,2, workspace buffer overflow vulnerability was found in the .upper() and .lower() string type methods of VCL. This can be used as a remote denial of service (DoS) vector to make the child process segfault or assert, and then restart. Effectively exploiting this vulnerability requires prior knowledge about the VCL in use and the ability to craft a request that contains a string that is long enough to fill the remaining workspace at the call site while staying under the different request size limits (http_req_size, http_req_hdr_len, etc.).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93894">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>2a8ef30a0d2eae2214f6e1b3d948d8af</td>
-       <td>CVE-2026-93738</td>
-       <td>2026-09-18 21:18:48</td>
-       <td>A vulnerability was found in Totolink A3002MU Hh-B20211125.1046. This affects the function formSchedule of the file /boafrm/formSchedule. Performing a manipulation of the argument webpage results in buffer overflow. The attack is possible to be carried out remotely. The exploit has been made public and could be used.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93738">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8e7b6a533c594bdec7c62e2a2b961420</td>
-       <td>CVE-2026-93574</td>
-       <td>2026-09-18 21:18:48</td>
-       <td>A flaw was found in Netty's `netty-codec-http` component. A remote attacker could exploit this vulnerability by sending a specially crafted HTTP/1.1 chunk-size token that includes post-digit whitespace. This incorrect parsing of the chunk size can lead to HTTP request smuggling. This allows an attacker to bypass security controls or access unauthorized resources in proxy/backend deployments.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93574">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>93bcfa0ac6d10bd6c28707ea11ce62da</td>
-       <td>CVE-2026-93562</td>
-       <td>2026-09-18 21:18:46</td>
-       <td>A flaw was found in Netty's HTTP/1 decoder. Incomplete validation of malformed Transfer-Encoding headers allows a remote attacker to perform HTTP request smuggling. By sending specially crafted HTTP requests, an attacker can inject arbitrary HTTP requests, potentially bypassing security controls or accessing unauthorized resources.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93562">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>89a0c866eb7ec113ec187160e982a1d6</td>
-       <td>CVE-2026-88097</td>
-       <td>2026-09-18 21:18:45</td>
-       <td>Use after free in Microsoft Edge (Chromium-based) allows an unauthorized attacker to elevate privileges locally.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88097">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1ffebb3d4a3ee548efd981a56266fff8</td>
-       <td>CVE-2026-85272</td>
-       <td>2026-09-18 21:18:44</td>
-       <td>Open edX Platform enables the authoring and delivery of online learning at any scale. From Aspen.1 until Ulmo and Verawood.1, openedx/core/lib/extract_archive.py uses _is_bad_path to validate safe_extractall targets by comparing resolved path strings with startswith instead of comparing path components. A course author or staff user with course import permission can submit a crafted .tar.gz archive through the import_olx flow initiated by cms.djangoapps.contentstore.views.import_export.import_handler. An archive member can therefore escape into a sibling course staging directory whose name shares the attacker's base64 directory prefix, causing limited cross-tenant file corruption. Zip archives are not practically affected because ZipFile.extractall strips parent traversal segments, and the advisory does not establish arbitrary filesystem writes, file reads, or direct code execution. This issue is fixed in Ulmo and Verawood.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85272">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>955c0164ffc916c3b0b493c8bba76cdf</td>
-       <td>CVE-2026-85271</td>
-       <td>2026-09-18 21:18:44</td>
-       <td>Open edX Platform enables the authoring and delivery of online learning at any scale. From Redwood until Ulmo and Verawood.1, the add_additional_attributes_to_notifications function in openedx/core/djangoapps/notifications/email/utils.py assigns notification content without sanitizing discussion-title values produced by get_notification_content in openedx/core/djangoapps/notifications/base_notification.py. An enrolled student can place CSS-capable markup in the post_title value supplied by lms/djangoapps/discussion/rest_api/discussions_notifications.py. Digest and batched-email rendering then passes that value through openedx/core/djangoapps/notifications/templates/notifications/digest_content.html as safe HTML, allowing email-open tracking and content spoofing or phishing when another learner opens a CSS-rendering client. The immediate-email path is not affected because it strips title markup and renders a separately sanitized body. This issue is fixed in Ulmo and Verawood.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85271">详情</a></td>
       </tr>
 
      </tbody>
