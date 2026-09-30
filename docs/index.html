@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-09-29 05:18:17 -->
+<!-- RELEASE TIME : 2026-09-30 00:15:13 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>b43d7694eebb3e0eba78918d1d91cf30</td>
+       <td>CVE-2026-71973</td>
+       <td>2026-09-29 22:18:22 <img src="imgs/new.gif" /></td>
+       <td>U-Boot before 2026.10-rc4 contains an integer overflow vulnerability in sqfs_read_directory_table() function when allocating the directory table buffer. Attackers can supply a crafted SquashFS image with an attacker-controlled superblock metablks_count value that causes heap buffer under-allocation and out-of-bounds writes, corrupting heap memory and crashing the bootloader.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71973">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b4c8804820167fbc57f6b81e73ba8df3</td>
+       <td>CVE-2026-102621</td>
+       <td>2026-09-29 22:17:07 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was identified in Freedesktop Poppler up to 26.08.0. Affected is the function SplashClip::clipToPath of the file splash/SplashClip.cc. Such manipulation leads to integer overflow. The attack can only be performed from a local environment. The exploit is publicly available and might be used. Upgrading to version 26.09.0 is able to address this issue. The name of the patch is 323c91036d99926a8b90dc14329f7b40aece22f8. It is recommended to upgrade the affected component.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102621">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f50a9bf63868f750bf7752fcb570eeb2</td>
+       <td>CVE-2026-74221</td>
+       <td>2026-09-29 21:29:23 <img src="imgs/new.gif" /></td>
+       <td>U-Boot before 2026.10-rc5 contains a buffer overflow in nfs_readlink_reply() function in net/nfs-common.c when processing NFS server responses. A malicious NFS server can send crafted READLINK replies with negative or oversized symlink length values to corrupt memory and crash the bootloader.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74221">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b38b402de909e21ea5e5f07c83080dc4</td>
+       <td>CVE-2026-71971</td>
+       <td>2026-09-29 21:29:20 <img src="imgs/new.gif" /></td>
+       <td>U-Boot before 2026.10-rc3 with CONFIG_IP_DEFRAG enabled contains an out-of-bounds write vulnerability in the __net_defragment() function in net/net.c. Remote attackers can send a crafted IP fragment with non-zero offset and More-Fragments flag set during netboot to corrupt adjacent memory and crash the bootloader.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71971">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>257ebe7061d65884ec50c91f27fdd3fc</td>
+       <td>CVE-2026-94204</td>
+       <td>2026-09-29 21:19:39 <img src="imgs/new.gif" /></td>
+       <td>The central cloud storage backend for the entire dashcam platform is misconfigured with public-read permissions, allowing unrestricted access to all stored objects. Because this bucket serves as shared storage for the platform, sensitive user records, live dashcam footage, application packages, and firmware files are exposed to anyone on the internet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94204">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0ab538b517622684a9cf853a4a769196</td>
+       <td>CVE-2026-102938</td>
+       <td>2026-09-29 21:17:19 <img src="imgs/new.gif" /></td>
+       <td>virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.11, PyEnvCfg.write() writes prompt values verbatim to the line-oriented pyvenv.cfg format while PyEnvCfg._read_values() parses the file with str.splitlines() and accepts the last value for duplicate keys. An attacker who influences --prompt, VIRTUALENV_PROMPT, or configuration input can insert a recognized line boundary and additional keys, including home, causing consumers to use an attacker-selected base interpreter or corrupted environment metadata. The security impact requires prompt input from outside the operator's trust boundary; directly supplied prompt content primarily corrupts the operator's own environment. This issue is fixed in version 21.7.11.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102938">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f6c3edfddd255c2111e85d68c0a00c13</td>
+       <td>CVE-2026-102925</td>
+       <td>2026-09-29 21:17:18 <img src="imgs/new.gif" /></td>
+       <td>virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.13, the generated activate (bash and zsh) and activate.fish scripts place values already escaped by shlex.quote inside an additional quoted context. In the bash and zsh script, a crafted virtual environment path reaches __VIRTUAL_ENV__ when a relocated environment's recorded directory is absent; in the fish script, crafted Tcl or Tk library paths reach __TCL_LIBRARY__ or __TK_LIBRARY__. The surplus quotes can terminate the data-only quoted run and leave shell metacharacters parsed as commands when a user sources the activation script, allowing code execution with that user's privileges. This issue is fixed in version 21.7.13.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102925">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dedb82cb071d9fb59955ed19eb424cc3</td>
+       <td>CVE-2026-102904</td>
+       <td>2026-09-29 21:17:18 <img src="imgs/new.gif" /></td>
+       <td>JupyterLab is an extensible environment for interactive and reproducible computing, based on the Jupyter Notebook Architecture. From JupyterLab 4.0.0 until 4.5.11 and 4.6.4, the PyPI Extension Manager uninstall request reaches ExtensionHandler.post, which validates extension names for installation but passes uninstall names to PyPIExtensionManager.uninstall and python -m pip uninstall without rejecting option-like values. The security impact requires that the PyPI Extension Manager is enabled, the account can call the extension API, and kernels and terminals are disabled or delegated to remote hosts; otherwise the user can already read files and make outbound requests directly. An authenticated user with extension API access can supply a pip requirements option to make the server read a local file or fetch an internal URL, and reflected parse errors can return the first unparsable line or response content. A pip log option can also create or corrupt a chosen path with pip-generated log text, but the requester cannot select an arbitrary disclosed line or arbitrary file content, and the injection does not add code execution or availability impact beyond ordinary package removal. This issue is fixed in JupyterLab 4.5.11 and 4.6.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102904">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a63061913f59004dd22a6cda0365e937</td>
+       <td>CVE-2026-93853</td>
+       <td>2026-09-29 20:55:51 <img src="imgs/new.gif" /></td>
+       <td>Unverified ownership in Barman snapshot backup deletion allows a principal who can write the backup catalog to cause Barman to delete unrelated cloud snapshots. When a snapshot backup is deleted, either explicitly or by retention policy enforcement, Barman reads the snapshot identifiers from the backup.info file and passes them to the cloud provider's delete API using Barman's own credentials, without verifying that the snapshots belong to that backup. An attacker who can overwrite backup.info but lacks snapshot delete permissions can substitute the identifiers of other snapshots, causing Barman to delete any snapshot its cloud identity can reach on AWS, Microsoft Azure, or Google Cloud. Exploitation requires a deployment where the principal that writes the backup catalog is separate from the identity Barman uses to delete snapshots. Barman versions from 3.4.0 (Google Cloud), 3.6.0 (Azure), and 3.7.0 (AWS) up to and including 3.20.0 are affected. The issue is fixed in Barman 3.20.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93853">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c3f8883a6c7101ab4ca961b06a8d8691</td>
+       <td>CVE-2026-102930</td>
+       <td>2026-09-29 20:53:36 <img src="imgs/new.gif" /></td>
+       <td>virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.12, download_wheel() accepts pip and setuptools seed wheels fetched for periodic updates or the --download option without checking their bytes against an authoritative digest equivalent to the embedded wheels' BUNDLE_SHA256 verification. A compromised index, stale mirror, or intercepted TLS connection can substitute a different wheel under the requested distribution, version, and filename, after which virtualenv caches and seeds the attacker-controlled wheel into subsequently created environments. The verification applies to the default PyPI path and is intentionally skipped when PIP_INDEX_URL, PIP_EXTRA_INDEX_URL, or PIP_INDEX configures a custom index that may legitimately publish rebuilt wheels. This issue is fixed in version 21.7.12.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102930">详情</a></td>
+      </tr>
+
+      <tr>
        <td>948078e11b9b18935fd5201e06cf1927</td>
        <td>CVE-2026-101204</td>
-       <td>2026-09-28 21:45:07 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:45:07</td>
        <td>A vulnerability was found in FastStone Image Viewer up to 8.3. This affects an unknown function of the file FSViewer.exe of the component TGA Image Handler. The manipulation results in out-of-bounds read. The attack can be launched remotely. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-101204">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>34878792dfa7daf354ee9775d1432747</td>
        <td>CVE-2024-42002</td>
-       <td>2026-09-28 21:38:08 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:38:08</td>
        <td>A code injection vulnerability has been discovered in the Robot Operating System 2 (ROS 2) 'ros2topic' command-line tool, affecting all ROS 2 distributions from Crystal Clemmys up to and including Lyrical Luth and Rolling Ridley. The vulnerability lies in the 'hz' verb, which reports the publishing rate of a topic and accepts a user-provided Python expression via the --filter option. This input is passed directly to the eval() function without sanitization, allowing a local user to craft and execute arbitrary code.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2024-42002">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>452008f1b492524ade5a051d1b5ce82c</td>
        <td>CVE-2026-101203</td>
-       <td>2026-09-28 21:30:08 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:30:08</td>
        <td>A vulnerability has been found in FastStone Image Viewer up to 8.3. The impacted element is an unknown function of the component 1bpp RLE Decoder. The manipulation leads to out-of-bounds write. The attack can be initiated remotely. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-101203">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>705e91f69617031af989aeb0e74006fe</td>
        <td>CVE-2026-102281</td>
-       <td>2026-09-28 21:21:25 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:21:25</td>
        <td>Nest is a framework for building scalable Node.js server-side applications. Prior to 11.2.4 and 12.0.2, a single message with a deeply nested object in its pattern can terminate a NestJS microservice using the TCP or RabbitMQ transport. ServerTCP#handleMessage and ServerRMQ#handleMessage pass a client-controlled non-string pattern to JSON.stringify to derive the handler lookup key; sufficiently deep nesting throws RangeError: Maximum call stack size exceeded, and the unhandled promise rejection terminates Node.js under its default behavior. An attacker who can reach the TCP port or publish to the consumed RabbitMQ queue or exchange can crash the service on demand; other transports are not affected because their patterns arrive as strings. This issue is fixed in versions 11.2.4 and 12.0.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102281">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>e33f9f2ca4ed99d2aca881c25c19744e</td>
        <td>CVE-2026-97027</td>
-       <td>2026-09-28 21:17:20 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:17:20</td>
        <td>Flatpak passes through arbitrary vendor-extension keys unmodified when exporting an application's Desktop Entry (.desktop) and D-Bus Service (.service) files, instead of validating against an allowlist. A malicious Flatpak app can use this to cause denial of service (e.g. forced application restart loops) or to influence host D-Bus/systemd activation behavior beyond what the sandbox is intended to permit.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97027">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>007e4067aed29de2d1a01ae5a5f663e4</td>
        <td>CVE-2026-97026</td>
-       <td>2026-09-28 21:17:19 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:17:19</td>
        <td>Flatpak creates temporary child repository directories under the user cache with world-writable permissions (0777). On multi-user systems with a permissive umask, other local users could read or modify the temporary directory used while installing apps or runtimes, potentially causing installation failures (denial of service); tampered content would fail signature/digest verification rather than being trusted.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97026">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>689c5bf0ca19254b40c619141f53695a</td>
        <td>CVE-2026-97025</td>
-       <td>2026-09-28 21:17:19 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:17:19</td>
        <td>Flatpak writes the OCI repository authentication token with world-readable permissions (0644) in the system-helper's cache directory, allowing other local users on a multi-user system to read the token and impersonate the authenticated user against the OCI repository. Only OCI-based sources (e.g. as used by Fedora) are affected; libostree-based sources such as Flathub are not.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97025">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>9d17b3e352b360c756eaa8ba39c7f021</td>
        <td>CVE-2026-91096</td>
-       <td>2026-09-28 21:17:19 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:17:19</td>
        <td>In proxygen from v2024.10.28.00 until v2026.09.28.00, WebTransportImpl::terminateSessionStreams (WebTransportImpl::destroy in releases before v2025.08.18.00) failed to unregister read callbacks for streams that were no longer open before destroying them. The transport could then invoke a read callback that had been freed.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-91096">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>15531446e448553f1e0abd213ef8ddd2</td>
        <td>CVE-2026-91095</td>
-       <td>2026-09-28 21:17:19 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:17:19</td>
        <td>In proxygen from v2024.10.28.00 until v2026.09.28.00, the HTTPTransaction::onWebTransportUniStream and HTTPTransaction::onWebTransportBidiStream APIs could return stream handles that the stream handler had already freed. HQSession then installed those handles as transport read callbacks, which could lead to use of freed memory.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-91095">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>bcb2c06a54bab8dd0e233ac8738dfb65</td>
        <td>CVE-2026-84895</td>
-       <td>2026-09-28 21:17:19 <img src="imgs/new.gif" /></td>
+       <td>2026-09-28 21:17:19</td>
        <td>In proxygen from v2026.04.06.00 until v2026.09.28.00, QuicWtSession::closeSession accesses its member fields after calling the base QuicWtSessionBase::closeSession method. The base method notifies the session handler, which may release the last reference to the session and destroy it.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84895">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-09-27 18:16:31</td>
        <td>utcp-mcp (the MCP plugin of python-utcp) through 1.1.2 connects to the HTTP and WebSocket MCP server URLs given in a call template's mcpServers configuration without the ensure_secure_url validation that the HTTP-family plugins apply, so the HTTPS/WSS-or-loopback rule is not enforced. A call template naming a plain-HTTP, non-loopback MCP server URL is dialed as configured, exposing the MCP handshake to network interception and permitting cleartext connections to internal hosts. The mcpServers configuration is operator-authored rather than remote data, and the connection is an MCP handshake rather than an arbitrary request returning a body, which limits practical exploitation; the OAuth2 token_url credential path described in the original report was not reachable in the affected versions, because the OAuth2 handler was never invoked and the call template's auth field was not read. Fixed in utcp-mcp 1.1.3, which validates server URLs before any connection is made.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-101057">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5a4df95f3af82fb1fd96089c22bf82c3</td>
-       <td>CVE-2026-97163</td>
-       <td>2026-09-26 15:16:55</td>
-       <td>Joomla Extension - lomart.fr - Unauthenticated remote code installation in UP plugin extension 5.0.0-5.2.0, 6.0.0-6.0.29</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97163">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f44b55e29a6c41c72f8c09d804d96281</td>
-       <td>CVE-2026-97162</td>
-       <td>2026-09-26 15:16:55</td>
-       <td>Joomla Extension - lomart.fr - Various SQL injection vectors in UP plugin extension 5.0.0-5.2.0, 6.0.0-6.0.29</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97162">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>03c4d8a9b930eb550af5a7766783ec50</td>
-       <td>CVE-2026-97161</td>
-       <td>2026-09-26 15:16:55</td>
-       <td>Joomla Extension - lomart.fr - Various path traversal / file access vectors in UP plugin extension 5.0.0-5.2.0, 6.0.0-6.0.29</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97161">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>994cb4de1f09ad561cd9c74d126321a3</td>
-       <td>CVE-2026-97160</td>
-       <td>2026-09-26 15:16:55</td>
-       <td>Joomla Extension - lomart.fr - Authenticated, privileged PHP command injection in UP plugin extension 5.0.0-5.2.0, 6.0.0-6.0.29</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97160">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a5247fe3672fe35b1c1f1fceb387cc62</td>
-       <td>CVE-2026-94132</td>
-       <td>2026-09-26 15:16:55</td>
-       <td>Joomla Extension - acymailing.com - Remote Code Execution vulnerability in mailbox action feature in AcyMailing Enterprise extension < 11.1.0 - MIME parts of incoming emails were saved to media/com_acym/upload/ with no extension check, so anyone who could email the monitored mailbox could write a PHP file into the web root.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94132">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>e602b439e73272257069b2d1563320fd</td>
-       <td>CVE-2026-94131</td>
-       <td>2026-09-26 15:16:54</td>
-       <td>Joomla Extension - acymailing.com - Unauthenticated arbitrary file deletion in AcyMailing Enterprise extension < 11.1.0 - A subscriber could store a path in a file-type custom field and have AcyMailing delete that file when the field was cleared, including files outside the upload folder such as configuration.php.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94131">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>50b6bbe10cda4276324459db0d1412bb</td>
-       <td>CVE-2026-94130</td>
-       <td>2026-09-26 14:17:00</td>
-       <td>Joomla Extension - joomlaboat.com - Unauthenticated SQL injection in YouTube Gallery extension < 5.7.3 - An SQL injection vulnerability in video search functionality and sorting allowed attackers to inject SQL commands in read queries.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94130">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f405fc23cdb312190aae162277801993</td>
-       <td>CVE-2026-100720</td>
-       <td>2026-09-26 14:16:58</td>
-       <td>Froxlor 2.0.0 through 2.3.10 is vulnerable to stored cross-site scripting. When a customer (the lowest-privileged authenticated role) uploads an SSL certificate for one of their own domains, the Certificates API add()/update() methods parse it with openssl_x509_parse() and store the issuer organization (issuer['O']) value verbatim without sanitization. Froxlor's table-listing renderer then emits scalar cells through Twig's `raw` filter, disabling HTML auto-escaping, so when an administrator or reseller opens Domains > SSL certificates the attacker-supplied issuer value executes as script in the privileged user's session. This crosses a privilege boundary from customer to admin and can result in full administrator account takeover; because a Froxlor admin controls webserver, DNS, and PHP configuration applied by a cron job running as root, the issue can be further escalated to command execution as root on the managed server. The issue is fixed in Froxlor 2.3.12.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-100720">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1dc049d4bc2734590b5f8d6cf0af03a7</td>
-       <td>CVE-2026-100719</td>
-       <td>2026-09-26 14:16:58</td>
-       <td>Froxlor versions before 2.3.12 contain a credential disclosure vulnerability in the DirProtections.listing API command that returns htpasswd password hashes. Authenticated API users can retrieve bcrypt password hashes for protected-directory users, enabling offline cracking attempts and exposure of reused credentials.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-100719">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a68831916e316253e7b55b375f8a7410</td>
-       <td>CVE-2026-100718</td>
-       <td>2026-09-26 14:16:57</td>
-       <td>Froxlor through 2.3.10 does not enforce the mail.allow_external_domains policy in the EmailSender.add API command. When an administrator has enabled the allowed-sender feature but disabled external allowed-sender domains (mail.enable_allow_sender = 1, mail.allow_external_domains = 0), an authenticated customer with API access can still use EmailSender.add to register an arbitrary external sender address for their mailbox, which is stored despite the policy. This creates a bypass between the UI/administrator configuration and the API, and — where the generated mail configuration consumes the allowed-sender table — allows a customer to authorize sender identities outside their hosted domains, facilitating sender spoofing. Fixed in 2.3.12.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-100718">详情</a></td>
       </tr>
 
      </tbody>
