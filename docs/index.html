@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-02 09:34:49 -->
+<!-- RELEASE TIME : 2026-10-03 04:51:19 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>3bd4f15e06e8ebeec902e1cfa64b94ee</td>
+       <td>CVE-2026-82045</td>
+       <td>2026-10-02 21:16:57 <img src="imgs/new.gif" /></td>
+       <td>UTMStack before 11.2.16 contains a JPQL injection vulnerability that allows authenticated attackers to read arbitrary entity data by exploiting UtmNetworkScanService.searchPropertyValues(), which builds a JPQL query with String.format() and executes it via em.createQuery() without parameter binding. Attackers can inject malicious JPQL through the value parameter in the GET /api/utm-network-scans/searchPropertyValues endpoint to extract sensitive data including credential tables such as jhi_user.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82045">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>afca4ecadca52fa3adb9c240e40a64df</td>
+       <td>CVE-2026-82044</td>
+       <td>2026-10-02 21:16:56 <img src="imgs/new.gif" /></td>
+       <td>UTMStack before 11.2.16 contains a server-side request forgery vulnerability that allows authenticated attackers to make the server request arbitrary internal resources by supplying an unvalidated url parameter to the PdfService.downloadPdf() method exposed via GET /api/generate-pdf-report. Attackers can leverage this to force the web-pdf microservice to fetch internal backend endpoints, the OpenSearch cluster, or the cloud instance-metadata service, exposing sensitive internal data rendered into the returned PDF.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82044">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>331ad1585a76966b20e5d7ca661f7bca</td>
+       <td>CVE-2026-82043</td>
+       <td>2026-10-02 21:16:56 <img src="imgs/new.gif" /></td>
+       <td>UTMStack before 11.2.16 contains an account enumeration vulnerability that allows unauthenticated attackers to determine registered email addresses by observing differing HTTP responses from the POST /api/account/reset-password/init endpoint. Attackers can submit arbitrary email addresses and distinguish registered accounts, which return 200 OK, from unregistered accounts, which trigger a 500 Internal Server Error with backend error details, enabling targeted phishing or credential attacks.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82043">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d1c78c353e21ab0cd535fe18829f57a9</td>
+       <td>CVE-2026-82042</td>
+       <td>2026-10-02 21:16:56 <img src="imgs/new.gif" /></td>
+       <td>UTMStack before 11.2.16 contains an authentication bypass vulnerability that allows remote attackers to gain full administrative API access by presenting a valid Utm-Internal-Key header matching the INTERNAL_KEY environment variable value, which the InternalApiKeyFilter accepts for any endpoint without path restriction, constant-time comparison, rate limiting, or audit logging. Attackers who obtain the key value can authenticate without a user account or JWT to create accounts, manage users, exfiltrate data, and modify security rules.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82042">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>642c8e76263fc68d1e2c144c1bf67137</td>
+       <td>CVE-2026-82041</td>
+       <td>2026-10-02 21:16:56 <img src="imgs/new.gif" /></td>
+       <td>UTMStack before 11.2.16 contains a missing authorization vulnerability in UTMIncidentCommandWebsocket.processCommand(), the handler mapped to the /command/{hostname} STOMP destination, where no role check or command allowlist is applied before forwarding supplied commands. Any authenticated user, regardless of role, can send arbitrary operating-system commands over gRPC to any connected agent, resulting in command execution on monitored endpoints where agent processes commonly run as root or SYSTEM.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82041">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d5b75219c9360c04112709855023bcd</td>
+       <td>CVE-2026-75937</td>
+       <td>2026-10-02 21:16:56 <img src="imgs/new.gif" /></td>
+       <td>A specially crafted HTTP POST request to the web administration interface allows an unauthenticated attacker to execute arbitrary operating system commands with root privileges on the affected device. Disable the web server when not configuring the device.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75937">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>69e167c18e5b08d22b5b68e02aaeb443</td>
+       <td>CVE-2026-104874</td>
+       <td>2026-10-02 21:16:54 <img src="imgs/new.gif" /></td>
+       <td>Multidict is an implementation of a multidict data structure. From 6.7.0 until 6.9.1, the C extension's items-view reflected union operation, operand | d.items(), in multidict_itemsview_or2_impl and subtraction operation, d.items() - operand, in multidict_itemsview_sub1_impl fail to release new key-identity and value references returned for each operand element. Applications that perform these operations over attacker-influenced sequences can leak two strong references per element, and garbage collection cannot reclaim them, so repeated operations can cause unbounded process memory growth and denial of service. Forward union, intersection, non-tuple operand elements, and pure-Python builds are not affected by this reference leak. This issue is fixed in version 6.9.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104874">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b351dde9b780e0bcd099c7d81c125958</td>
+       <td>CVE-2026-104055</td>
+       <td>2026-10-02 21:16:54 <img src="imgs/new.gif" /></td>
+       <td>The postgresql-operator charm runs a Prometheus postgres_exporter to collect database metrics using a dedicated "monitoring" PostgreSQL user. On database connection errors, the exporter writes the monitoring user's password in cleartext to its logs. Any actor able to read those logs can recover the password, which grants read-only pg_monitor access to PostgreSQL. This is fixed in the dev track (14/edge) in revisions 1189 (arm64) and 1190 (amd64), and in the stable track (14/stable) in revisions 1216 (arm64) and 1217 (amd64).</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104055">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d6043aec4b8510a383005e6840dfc6bc</td>
+       <td>CVE-2026-82040</td>
+       <td>2026-10-02 20:17:04 <img src="imgs/new.gif" /></td>
+       <td>UTMStack before 11.2.16 contains a server-side request forgery vulnerability in IdentityProviderService.validateMetadataUrl() that allows authenticated attackers to make the server send requests to arbitrary internal or cloud metadata hosts by supplying a malicious metadata URL to the identity-providers endpoint. Attackers can exploit the POST/PUT /api/identity-providers endpoint with no validation of target host, IP, or scheme to perform internal network port scanning and access cloud instance-metadata services.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82040">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5c9c6c4dbf1f1eec211360e3ce03fd17</td>
+       <td>CVE-2026-82039</td>
+       <td>2026-10-02 20:17:04 <img src="imgs/new.gif" /></td>
+       <td>UTMStack before 11.2.16 contains a SQL injection vulnerability in UtmAssetGroupService.searchQueryBuilder() that allows authenticated attackers to inject arbitrary SQL by supplying malicious assetType and groupName values that are inserted unsanitized into a native PostgreSQL query via String.format(). Attackers can exploit the GET /api/utm-asset-groups/searchGroupsByFilter endpoint to execute arbitrary SQL with DBA privileges, enabling full database read, data modification, and potential filesystem access.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82039">详情</a></td>
+      </tr>
+
+      <tr>
        <td>6b205630a5e7354e5ad7487b010856b1</td>
        <td>CVE-2026-71454</td>
-       <td>2026-10-01 22:17:05 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:05</td>
        <td>Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in CWE-79 - Cross-site Scripting CAPEC-63 allows Cross-Site Scripting (XSS). This issue affects CAPEC-63: before 3.0b63.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71454">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>e4caa29974c87f3767af859d598be20d</td>
        <td>CVE-2026-71453</td>
-       <td>2026-10-01 22:17:05 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:05</td>
        <td>- External Control of File Name or Path vulnerability in Johnson Controls EasyIO FS32 allows - traversal attack. This issue affects EasyIO FS32: before 3.0b63.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71453">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>3a006215e756d8c7c7ec04f79805a8cd</td>
        <td>CVE-2026-71452</td>
-       <td>2026-10-01 22:17:05 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:05</td>
        <td>- OS Command Injection vulnerability in Johnson Controls EasyIO FS32 allows OS Command Injection. This issue affects EasyIO FS32: before 3.0b63.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71452">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>72b0f71a868c41d95440077817261724</td>
        <td>CVE-2026-71449</td>
-       <td>2026-10-01 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:04</td>
        <td>: Use of Hard-coded Cryptographic Key vulnerability in Johnson Controls EasyIO FS32 allows : Retrieve Embedded Sensitive Data. This issue affects EasyIO FS32: before 3.0b63.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71449">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>81b32e2f8f62f808d83636972e5710d0</td>
        <td>CVE-2026-71448</td>
-       <td>2026-10-01 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:04</td>
        <td>: Insecure Default Initialization of Resource vulnerability in Johnson Controls EasyIO FS32 allows : Authentication Abuse. This issue affects EasyIO FS32: before 3.0b63.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71448">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>01faf8ede21724773d84638c60d92cd8</td>
        <td>CVE-2026-64892</td>
-       <td>2026-10-01 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:04</td>
        <td>- Exposure of Sensitive Information vulnerability in Johnson Controls Easy IO Neo allows Collect Data from Common Resource Locations. This issue affects Easy IO Neo: before 3.3b63.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-64892">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>db4a580f4b6f80627b6bca585ab61470</td>
        <td>CVE-2026-51897</td>
-       <td>2026-10-01 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:04</td>
        <td>RAGFlow 0.24.0 contains improper access control in get_dataset (api/apps/evaluation_app). Depending on the exposed entry, an attacker can trigger attacker-controlled code or command execution</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-51897">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>555434f4a2052c147874b051a376fd56</td>
        <td>CVE-2026-51895</td>
-       <td>2026-10-01 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:04</td>
        <td>Ragflow 0.24.0 and prior contains improper access control in update_metadata_setting (api/apps/kb_app.py). Depending on the exposed entry, an attacker can perform unauthorized cross-session or privilege-crossing operations.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-51895">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>ec352e1dc7861932ce13e9b8ca55b173</td>
        <td>CVE-2026-51893</td>
-       <td>2026-10-01 22:17:03 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:03</td>
        <td>infiniflow ragflow 0.24.0 is vulnerable to Incorrect Access Control via trace_mindmap. An externally reachable path accepts a caller-selected object or tenant identifier and reaches a data-access operation without a visible owner, tenant, workspace, or membership binding on that object.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-51893">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>558762f7fec502272ae00a5993f55b93</td>
        <td>CVE-2026-51892</td>
-       <td>2026-10-01 22:17:03 <img src="imgs/new.gif" /></td>
+       <td>2026-10-01 22:17:03</td>
        <td>infiniflow ragflow 0.24.0 is vulnerable to Incorrect Access Control via /v1/document/get/<doc_id>.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-51892">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-09-30 21:17:11</td>
        <td>In camel-ai camel 0.2.91a1, v0.2.91a2 and v0.2.91a3, CodeExecutionToolkit can run model-produced Python code through SubprocessInterpreter without an approval boundary.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-51857">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b43d7694eebb3e0eba78918d1d91cf30</td>
-       <td>CVE-2026-71973</td>
-       <td>2026-09-29 22:18:22</td>
-       <td>U-Boot before 2026.10-rc4 contains an integer overflow vulnerability in sqfs_read_directory_table() function when allocating the directory table buffer. Attackers can supply a crafted SquashFS image with an attacker-controlled superblock metablks_count value that causes heap buffer under-allocation and out-of-bounds writes, corrupting heap memory and crashing the bootloader.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71973">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b4c8804820167fbc57f6b81e73ba8df3</td>
-       <td>CVE-2026-102621</td>
-       <td>2026-09-29 22:17:07</td>
-       <td>A vulnerability was identified in Freedesktop Poppler up to 26.08.0. Affected is the function SplashClip::clipToPath of the file splash/SplashClip.cc. Such manipulation leads to integer overflow. The attack can only be performed from a local environment. The exploit is publicly available and might be used. Upgrading to version 26.09.0 is able to address this issue. The name of the patch is 323c91036d99926a8b90dc14329f7b40aece22f8. It is recommended to upgrade the affected component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102621">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f50a9bf63868f750bf7752fcb570eeb2</td>
-       <td>CVE-2026-74221</td>
-       <td>2026-09-29 21:29:23</td>
-       <td>U-Boot before 2026.10-rc5 contains a buffer overflow in nfs_readlink_reply() function in net/nfs-common.c when processing NFS server responses. A malicious NFS server can send crafted READLINK replies with negative or oversized symlink length values to corrupt memory and crash the bootloader.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-74221">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b38b402de909e21ea5e5f07c83080dc4</td>
-       <td>CVE-2026-71971</td>
-       <td>2026-09-29 21:29:20</td>
-       <td>U-Boot before 2026.10-rc3 with CONFIG_IP_DEFRAG enabled contains an out-of-bounds write vulnerability in the __net_defragment() function in net/net.c. Remote attackers can send a crafted IP fragment with non-zero offset and More-Fragments flag set during netboot to corrupt adjacent memory and crash the bootloader.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71971">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>257ebe7061d65884ec50c91f27fdd3fc</td>
-       <td>CVE-2026-94204</td>
-       <td>2026-09-29 21:19:39</td>
-       <td>The central cloud storage backend for the entire dashcam platform is misconfigured with public-read permissions, allowing unrestricted access to all stored objects. Because this bucket serves as shared storage for the platform, sensitive user records, live dashcam footage, application packages, and firmware files are exposed to anyone on the internet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94204">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0ab538b517622684a9cf853a4a769196</td>
-       <td>CVE-2026-102938</td>
-       <td>2026-09-29 21:17:19</td>
-       <td>virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.11, PyEnvCfg.write() writes prompt values verbatim to the line-oriented pyvenv.cfg format while PyEnvCfg._read_values() parses the file with str.splitlines() and accepts the last value for duplicate keys. An attacker who influences --prompt, VIRTUALENV_PROMPT, or configuration input can insert a recognized line boundary and additional keys, including home, causing consumers to use an attacker-selected base interpreter or corrupted environment metadata. The security impact requires prompt input from outside the operator's trust boundary; directly supplied prompt content primarily corrupts the operator's own environment. This issue is fixed in version 21.7.11.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102938">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f6c3edfddd255c2111e85d68c0a00c13</td>
-       <td>CVE-2026-102925</td>
-       <td>2026-09-29 21:17:18</td>
-       <td>virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.13, the generated activate (bash and zsh) and activate.fish scripts place values already escaped by shlex.quote inside an additional quoted context. In the bash and zsh script, a crafted virtual environment path reaches __VIRTUAL_ENV__ when a relocated environment's recorded directory is absent; in the fish script, crafted Tcl or Tk library paths reach __TCL_LIBRARY__ or __TK_LIBRARY__. The surplus quotes can terminate the data-only quoted run and leave shell metacharacters parsed as commands when a user sources the activation script, allowing code execution with that user's privileges. This issue is fixed in version 21.7.13.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102925">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dedb82cb071d9fb59955ed19eb424cc3</td>
-       <td>CVE-2026-102904</td>
-       <td>2026-09-29 21:17:18</td>
-       <td>JupyterLab is an extensible environment for interactive and reproducible computing, based on the Jupyter Notebook Architecture. From JupyterLab 4.0.0 until 4.5.11 and 4.6.4, the PyPI Extension Manager uninstall request reaches ExtensionHandler.post, which validates extension names for installation but passes uninstall names to PyPIExtensionManager.uninstall and python -m pip uninstall without rejecting option-like values. The security impact requires that the PyPI Extension Manager is enabled, the account can call the extension API, and kernels and terminals are disabled or delegated to remote hosts; otherwise the user can already read files and make outbound requests directly. An authenticated user with extension API access can supply a pip requirements option to make the server read a local file or fetch an internal URL, and reflected parse errors can return the first unparsable line or response content. A pip log option can also create or corrupt a chosen path with pip-generated log text, but the requester cannot select an arbitrary disclosed line or arbitrary file content, and the injection does not add code execution or availability impact beyond ordinary package removal. This issue is fixed in JupyterLab 4.5.11 and 4.6.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102904">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a63061913f59004dd22a6cda0365e937</td>
-       <td>CVE-2026-93853</td>
-       <td>2026-09-29 20:55:51</td>
-       <td>Unverified ownership in Barman snapshot backup deletion allows a principal who can write the backup catalog to cause Barman to delete unrelated cloud snapshots. When a snapshot backup is deleted, either explicitly or by retention policy enforcement, Barman reads the snapshot identifiers from the backup.info file and passes them to the cloud provider's delete API using Barman's own credentials, without verifying that the snapshots belong to that backup. An attacker who can overwrite backup.info but lacks snapshot delete permissions can substitute the identifiers of other snapshots, causing Barman to delete any snapshot its cloud identity can reach on AWS, Microsoft Azure, or Google Cloud. Exploitation requires a deployment where the principal that writes the backup catalog is separate from the identity Barman uses to delete snapshots. Barman versions from 3.4.0 (Google Cloud), 3.6.0 (Azure), and 3.7.0 (AWS) up to and including 3.20.0 are affected. The issue is fixed in Barman 3.20.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93853">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c3f8883a6c7101ab4ca961b06a8d8691</td>
-       <td>CVE-2026-102930</td>
-       <td>2026-09-29 20:53:36</td>
-       <td>virtualenv is a tool for creating isolated virtual python environments. Prior to 21.7.12, download_wheel() accepts pip and setuptools seed wheels fetched for periodic updates or the --download option without checking their bytes against an authoritative digest equivalent to the embedded wheels' BUNDLE_SHA256 verification. A compromised index, stale mirror, or intercepted TLS connection can substitute a different wheel under the requested distribution, version, and filename, after which virtualenv caches and seeds the attacker-controlled wheel into subsequently created environments. The verification applies to the default PyPI path and is intentionally skipped when PIP_INDEX_URL, PIP_EXTRA_INDEX_URL, or PIP_INDEX configures a custom index that may legitimately publish rebuilt wheels. This issue is fixed in version 21.7.12.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-102930">详情</a></td>
       </tr>
 
      </tbody>
