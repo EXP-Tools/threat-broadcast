@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-05 05:07:10 -->
+<!-- RELEASE TIME : 2026-10-06 05:53:45 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>7f39b440018026dca5ec379b18b0c3e6</td>
+       <td>CVE-2026-86671</td>
+       <td>2026-10-05 17:17:16 <img src="imgs/new.gif" /></td>
+       <td>In Eclipse Che versions 7.29.0 and later, the GET `/api/scm/resolve` and `POST /api/factory/resolver` endpoints pass an attacker-controlled URL to `URLFetcher.fetch()`, which calls `new URL(url).openConnection()` with no scheme or host allow-list and returns the response body to the caller. Any authenticated Che user can read arbitrary local files via the file:// scheme (including the pod's Kubernetes service-account token at `file:///var/run/secrets/kubernetes.io/serviceaccount/token`), reach internal HTTP services and cloud instance metadata endpoints (169.254.169.254), and have their stored SCM personal access token attached as an `Authorization` header to a host of their choosing. The same credential-forwarding behavior also fires when a victim opens a workspace from a malicious devfile whose `parent.uri` points to an attacker-controlled server, enabling exfiltration of the victim's SCM PAT without direct API access. No fix is available.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86671">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6977663392fc69d18a6b55cc99b6b2c7</td>
+       <td>CVE-2026-78412</td>
+       <td>2026-10-05 17:17:16 <img src="imgs/new.gif" /></td>
+       <td>Velociraptor's WatchEvent gRPC API can specify the OrgId of the org from which events should be streamed. The server checks the API permissions against the caller's Org instead of the requested Org. This allows a user with API access in one org to read events from another org for which they have no access.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78412">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d301f5f25720a03e2d38df7d85c81d0</td>
+       <td>CVE-2026-12171</td>
+       <td>2026-10-05 17:17:14 <img src="imgs/new.gif" /></td>
+       <td>auto-changelog before 2.6.1 merges configuration from inside the target repository (the .auto-changelog file and the auto-changelog key in package.json) into its options, and honors security-sensitive options from that untrusted source. The handlebarsSetup option is passed to require(), so running auto-changelog over attacker-controlled repository content (for example, in a CI workflow that checks out an untrusted pull request head, or locally on a forked or third-party repository) executes attacker-chosen code with the privileges of the invoking user or CI job, including access to workflow secrets, without the repository dependencies ever being installed. The plugins option similarly loads attacker-controlled modules from the repository. Under the same conditions, appendGitLog/appendGitTag allow git argument injection (e.g. --output= to write arbitrary files), output allows writing attacker-influenced content to arbitrary paths, and template causes an outbound request to an attacker-chosen URL. Version 2.6.1 treats in-repository configuration as untrusted and refuses to run when it sets these options, unless the new --unsafe-config flag is passed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-12171">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>68b799efccf6751a1bee8b45d4dea650</td>
+       <td>CVE-2026-105383</td>
+       <td>2026-10-05 17:17:14 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been found in onetwothreeneth HospitalManagementSystem up to 9ef91ed6007314b6473110ed699dff76d158f61d. This impacts an unknown function of the file php/controller.php. Such manipulation of the argument transaction_idS leads to sql injection. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105383">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>949bb057ce8cf5bdb5f6e25d125c25f2</td>
+       <td>CVE-2026-105382</td>
+       <td>2026-10-05 17:17:14 <img src="imgs/new.gif" /></td>
+       <td>A flaw has been found in onetwothreeneth HospitalManagementSystem up to 9ef91ed6007314b6473110ed699dff76d158f61d. This affects the function update_subaccount of the file php/controller.php of the component Account Administration. This manipulation of the argument user_id causes improper authorization. Remote exploitation of the attack is possible. The exploit has been published and may be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The project was informed of the problem early through an issue report but has not responded yet.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105382">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3ba227d5b6458ccda9a04ec3e4a0e09d</td>
+       <td>CVE-2026-104970</td>
+       <td>2026-10-05 17:17:12 <img src="imgs/new.gif" /></td>
+       <td>Plane is an open-source project management tool. From 0.13 until 1.4.0, InstanceAdminSignUpEndpoint in apps/api/plane/license/api/views/admin.py:89-117, 173-229 uses InstanceAdmin.objects.first() for the first-admin check and performs account creation without an atomic transaction, row lock, uniqueness guard, or advisory lock. Two concurrent unauthenticated requests with different email addresses can both observe that no instance administrator exists, create separate User and InstanceAdmin rows, and receive sessions with instance-admin authority. This allows an attacker to share unrestricted instance administration with the legitimate operator. This issue is fixed in 1.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104970">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>7f0059a8e2a5f7ae6c773daf27f96d50</td>
+       <td>CVE-2026-104969</td>
+       <td>2026-10-05 17:17:12 <img src="imgs/new.gif" /></td>
+       <td>Plane is an open-source project management tool. Prior to 1.4.0, the cycle-issues endpoint accepts issue UUIDs in the request body without validating that they belong to the caller's workspace. An authenticated user can add issues from any workspace to a cycle they control. If a victim issue is already assigned to a cycle, the operation removes it from the victim's cycle, causing a destructive cross-tenant write. This issue is fixed in 1.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104969">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55419afa202116baad9a428795b77e18</td>
+       <td>CVE-2026-104968</td>
+       <td>2026-10-05 17:17:12 <img src="imgs/new.gif" /></td>
+       <td>Plane is an open-source project management tool. Prior to 1.4.0, GET /api/workspaces/{slug}/entity-search/?query_type=user_mention returns workspace-member display names, UUIDs, and avatar URLs to any authenticated user who knows the workspace slug, even when the caller is not a workspace member. The endpoint also exposes ProjectMember rows under the same condition. SearchEndpoint in apps/api/plane/app/views/search/base.py inherits BaseAPIView with only permission_classes = [IsAuthenticated] and performs no workspace-membership check. This issue is fixed in 1.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104968">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>19ecc96e679f0eec1870094823dfa7d3</td>
+       <td>CVE-2026-104967</td>
+       <td>2026-10-05 17:17:12 <img src="imgs/new.gif" /></td>
+       <td>Plane is an open-source project management tool. Prior to 1.4.0, BulkDeleteIssuesEndpoint and SubIssuesEndpoint in apps/api/plane/app/views/issue/ accept body- or URL-supplied issue IDs and operate on them without checking that the IDs belong to the caller's workspace and project. The permission decorator on each endpoint validates only that the caller is a member or administrator of the workspace and project named in the URL. BulkDeleteIssuesEndpoint can destroy CycleIssue and ModuleIssue associations belonging to foreign issues. SubIssuesEndpoint can re-parent foreign issues under an attacker-selected issue and return the foreign issues' metadata. This issue is fixed in 1.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104967">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f01f210d9010084cb0f8fc6807192f77</td>
+       <td>CVE-2026-104966</td>
+       <td>2026-10-05 17:17:12 <img src="imgs/new.gif" /></td>
+       <td>Plane is an open-source project management tool. Prior to 1.4.0, two endpoint families fail to verify that nested resource identifiers belong to the workspace and project named in the URL. An authenticated user can read or modify estimates from another workspace through PATCH /api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/, and can inject comments into an issue from another workspace through POST /api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/. ProjectEntityPermission verifies membership in the workspace and project from the URL, but estimate_id and issue_id are fetched by primary key without confirming the same scope. The list, retrieve, and destroy handlers correctly scope their queries, demonstrating the inconsistency. This issue is fixed in 1.4.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104966">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a43cfd34504fe3c1acf25f302ef635ef</td>
        <td>CVE-2026-105222</td>
-       <td>2026-10-04 23:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 23:16:59</td>
        <td>The alexpechkarev/google-maps Laravel package through 12.16 disables TLS certificate verification by default because the bundled config sets ssl_verify_peer to FALSE, which is passed to CURLOPT_SSL_VERIFYPEER. On-path attackers can present any certificate to intercept Google Maps web-service requests, steal the API key from the query string, and tamper with responses.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105222">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>b1dcea6e8555131e2e7e4035d8aab989</td>
        <td>CVE-2026-105221</td>
-       <td>2026-10-04 23:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 23:16:59</td>
        <td>The gist RubyGem before 6.1.0 contains an improper certificate validation vulnerability that allows on-path attackers to intercept HTTPS traffic because http_connection in lib/gist.rb sets VERIFY_NONE. Attackers can present any certificate to read or modify GitHub API traffic, stealing OAuth tokens and login credentials to read and modify the victim's gists.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105221">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>401d7ee0044ad5d60c0e336716c3c136</td>
        <td>CVE-2026-105220</td>
-       <td>2026-10-04 23:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 23:16:59</td>
        <td>Twine 2 desktop through 2.12.0 contains a cross-site scripting vulnerability in importStories() that executes markup from imported story files in the editor window. Attackers can craft a story file whose script calls the twineElectron openWithScratchFile IPC bridge to write and open a .bat file, executing code as the user.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105220">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>4ccbc35e45347879175e5f70fb3ce97a</td>
        <td>CVE-2026-105167</td>
-       <td>2026-10-04 23:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 23:16:59</td>
        <td>A vulnerability was determined in kishor-23 food-waste-management-system 411989e3ecb82895e53dca7865f72145f03d7d93/b3a70b2c492dc9904de5be1ad9389bd79b87f82c. The impacted element is an unknown function of the file admin/donate.php. Executing a manipulation of the argument location can lead to sql injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105167">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>3b7a9ddbfb38e55472911de190208b98</td>
        <td>CVE-2026-105166</td>
-       <td>2026-10-04 23:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 23:16:59</td>
        <td>A vulnerability was found in kishor-23 food-waste-management-system 411989e3ecb82895e53dca7865f72145f03d7d93/b3a70b2c492dc9904de5be1ad9389bd79b87f82c. The affected element is the function insert of the file fooddonateform.php of the component Food Donation Form. Performing a manipulation of the argument image-choice results in sql injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used. This product adopts a rolling release strategy to maintain continuous delivery. Therefore, version details for affected or updated releases cannot be specified. The project was informed of the problem early through an issue report but has not responded yet.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105166">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>c30928cd08e15f73cbe991aa2deac8fc</td>
        <td>CVE-2026-105165</td>
-       <td>2026-10-04 23:16:58 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 23:16:58</td>
        <td>A vulnerability has been found in devopspolis secrets-replicator up to 0.4.0. Impacted is the function process_single_secret of the file src/handler.py of the component AssumeRole Handler. Such manipulation of the argument external_id leads to incorrect permission assignment. The attack can be executed remotely. Upgrading to version 0.5.0 is recommended to address this issue. The name of the patch is b42239405fbf4fae3c3f0048fc0b4225112edceb. It is suggested to upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105165">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>f0490607d23ee379b698c751e17c7d68</td>
        <td>CVE-2026-105164</td>
-       <td>2026-10-04 22:16:59 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 22:16:59</td>
        <td>A flaw has been found in NASA cFS up to 7.0.1. This issue affects the function CFE_FS_ParseInputFileNameEx of the file cfe/modules/fs/fsw/src/cfe_fs_api.c. This manipulation causes out-of-bounds read. Remote exploitation of the attack is possible. The pull request to fix this issue awaits acceptance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105164">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>cbb9b521be3d49a8894c7e4ff6d39dc3</td>
        <td>CVE-2026-105163</td>
-       <td>2026-10-04 22:16:58 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 22:16:58</td>
        <td>A vulnerability was detected in crossplane crossplane-runtime up to 2.2.2/2.3.2. This vulnerability affects the function Get of the file pkg/xpkg/client.go of the component ImageConfig. The manipulation results in time-of-check time-of-use. The attack may be launched remotely. Upgrading to version 2.2.3, 2.3.3 and 2.4.0-rc.1 is able to resolve this issue. The patch is identified as bee99c6cd6ca81878acca2940a2f0a02169fc208. You should upgrade the affected component.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105163">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>0992fda9bc82d7ea0313fe25f8212efa</td>
        <td>CVE-2026-105219</td>
-       <td>2026-10-04 18:16:34 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 18:16:34</td>
        <td>Mammoth.js 1.3.0 before 1.12.3 contains a regular expression denial of service vulnerability in the style map tokeniser in lib/styles/parser/tokeniser.js due to overlapping regex alternatives. Attackers can supply a crafted .docx with an unterminated quoted string of repeated backslash escapes in mammoth/style-map to block the Node.js event loop.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105219">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>c5980ed8935a62d20b234bc072de2cac</td>
        <td>CVE-2026-105218</td>
-       <td>2026-10-04 18:16:34 <img src="imgs/new.gif" /></td>
+       <td>2026-10-04 18:16:34</td>
        <td>gopay before 1.5.119 disables TLS certificate verification in defaultClient() in pkg/xhttp/client.go, allowing man-in-the-middle attackers to impersonate payment provider APIs. Attackers can present any certificate to read merchant credentials, signatures and transaction data, and modify payment, refund and order query responses.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105218">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-10-03 14:16:38</td>
        <td>OpenAM before 16.1.3 contains a latent cross-site scripting defect that places the SAML message, relay state and target URL unencoded into the load-balancer cookie bounce auto-submit page. If reachable with cookieHashRedirectEnabled set, crafted requests could execute script in the OpenAM origin, though an unrelated HTTP 500 failure prevents exploitation in released versions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105116">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3bd4f15e06e8ebeec902e1cfa64b94ee</td>
-       <td>CVE-2026-82045</td>
-       <td>2026-10-02 21:16:57</td>
-       <td>UTMStack before 11.2.16 contains a JPQL injection vulnerability that allows authenticated attackers to read arbitrary entity data by exploiting UtmNetworkScanService.searchPropertyValues(), which builds a JPQL query with String.format() and executes it via em.createQuery() without parameter binding. Attackers can inject malicious JPQL through the value parameter in the GET /api/utm-network-scans/searchPropertyValues endpoint to extract sensitive data including credential tables such as jhi_user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82045">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>afca4ecadca52fa3adb9c240e40a64df</td>
-       <td>CVE-2026-82044</td>
-       <td>2026-10-02 21:16:56</td>
-       <td>UTMStack before 11.2.16 contains a server-side request forgery vulnerability that allows authenticated attackers to make the server request arbitrary internal resources by supplying an unvalidated url parameter to the PdfService.downloadPdf() method exposed via GET /api/generate-pdf-report. Attackers can leverage this to force the web-pdf microservice to fetch internal backend endpoints, the OpenSearch cluster, or the cloud instance-metadata service, exposing sensitive internal data rendered into the returned PDF.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82044">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>331ad1585a76966b20e5d7ca661f7bca</td>
-       <td>CVE-2026-82043</td>
-       <td>2026-10-02 21:16:56</td>
-       <td>UTMStack before 11.2.16 contains an account enumeration vulnerability that allows unauthenticated attackers to determine registered email addresses by observing differing HTTP responses from the POST /api/account/reset-password/init endpoint. Attackers can submit arbitrary email addresses and distinguish registered accounts, which return 200 OK, from unregistered accounts, which trigger a 500 Internal Server Error with backend error details, enabling targeted phishing or credential attacks.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82043">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d1c78c353e21ab0cd535fe18829f57a9</td>
-       <td>CVE-2026-82042</td>
-       <td>2026-10-02 21:16:56</td>
-       <td>UTMStack before 11.2.16 contains an authentication bypass vulnerability that allows remote attackers to gain full administrative API access by presenting a valid Utm-Internal-Key header matching the INTERNAL_KEY environment variable value, which the InternalApiKeyFilter accepts for any endpoint without path restriction, constant-time comparison, rate limiting, or audit logging. Attackers who obtain the key value can authenticate without a user account or JWT to create accounts, manage users, exfiltrate data, and modify security rules.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82042">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>642c8e76263fc68d1e2c144c1bf67137</td>
-       <td>CVE-2026-82041</td>
-       <td>2026-10-02 21:16:56</td>
-       <td>UTMStack before 11.2.16 contains a missing authorization vulnerability in UTMIncidentCommandWebsocket.processCommand(), the handler mapped to the /command/{hostname} STOMP destination, where no role check or command allowlist is applied before forwarding supplied commands. Any authenticated user, regardless of role, can send arbitrary operating-system commands over gRPC to any connected agent, resulting in command execution on monitored endpoints where agent processes commonly run as root or SYSTEM.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82041">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4d5b75219c9360c04112709855023bcd</td>
-       <td>CVE-2026-75937</td>
-       <td>2026-10-02 21:16:56</td>
-       <td>A specially crafted HTTP POST request to the web administration interface allows an unauthenticated attacker to execute arbitrary operating system commands with root privileges on the affected device. Disable the web server when not configuring the device.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-75937">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69e167c18e5b08d22b5b68e02aaeb443</td>
-       <td>CVE-2026-104874</td>
-       <td>2026-10-02 21:16:54</td>
-       <td>Multidict is an implementation of a multidict data structure. From 6.7.0 until 6.9.1, the C extension's items-view reflected union operation, operand | d.items(), in multidict_itemsview_or2_impl and subtraction operation, d.items() - operand, in multidict_itemsview_sub1_impl fail to release new key-identity and value references returned for each operand element. Applications that perform these operations over attacker-influenced sequences can leak two strong references per element, and garbage collection cannot reclaim them, so repeated operations can cause unbounded process memory growth and denial of service. Forward union, intersection, non-tuple operand elements, and pure-Python builds are not affected by this reference leak. This issue is fixed in version 6.9.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104874">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b351dde9b780e0bcd099c7d81c125958</td>
-       <td>CVE-2026-104055</td>
-       <td>2026-10-02 21:16:54</td>
-       <td>The postgresql-operator charm runs a Prometheus postgres_exporter to collect database metrics using a dedicated "monitoring" PostgreSQL user. On database connection errors, the exporter writes the monitoring user's password in cleartext to its logs. Any actor able to read those logs can recover the password, which grants read-only pg_monitor access to PostgreSQL. This is fixed in the dev track (14/edge) in revisions 1189 (arm64) and 1190 (amd64), and in the stable track (14/stable) in revisions 1216 (arm64) and 1217 (amd64).</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104055">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d6043aec4b8510a383005e6840dfc6bc</td>
-       <td>CVE-2026-82040</td>
-       <td>2026-10-02 20:17:04</td>
-       <td>UTMStack before 11.2.16 contains a server-side request forgery vulnerability in IdentityProviderService.validateMetadataUrl() that allows authenticated attackers to make the server send requests to arbitrary internal or cloud metadata hosts by supplying a malicious metadata URL to the identity-providers endpoint. Attackers can exploit the POST/PUT /api/identity-providers endpoint with no validation of target host, IP, or scheme to perform internal network port scanning and access cloud instance-metadata services.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82040">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5c9c6c4dbf1f1eec211360e3ce03fd17</td>
-       <td>CVE-2026-82039</td>
-       <td>2026-10-02 20:17:04</td>
-       <td>UTMStack before 11.2.16 contains a SQL injection vulnerability in UtmAssetGroupService.searchQueryBuilder() that allows authenticated attackers to inject arbitrary SQL by supplying malicious assetType and groupName values that are inserted unsanitized into a native PostgreSQL query via String.format(). Attackers can exploit the GET /api/utm-asset-groups/searchGroupsByFilter endpoint to execute arbitrary SQL with DBA privileges, enabling full database read, data modification, and potential filesystem access.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82039">详情</a></td>
       </tr>
 
      </tbody>
