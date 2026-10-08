@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-07 10:04:21 -->
+<!-- RELEASE TIME : 2026-10-08 10:18:09 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>8773b3f58ab880cb74be582ebb55996e</td>
+       <td>CVE-2026-97664</td>
+       <td>2026-10-07 23:17:01 <img src="imgs/new.gif" /></td>
+       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97664">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fcbc26cb6bd450ccfbf6f1ab9f807d34</td>
+       <td>CVE-2026-89322</td>
+       <td>2026-10-07 23:17:01 <img src="imgs/new.gif" /></td>
+       <td>Vault and Vault Enterprise did not consistently evaluate ACL policies against the canonical form of resource and policy names. This may allow an authenticated user with delegated permissions to bypass an explicit deny restriction and access a protected resource or assign a denied policy, potentially leading to privilege escalation. This vulnerability (CVE-2026-89322) is fixed in Vault Community Edition 2.1.2, and Vault Enterprise 2.1.2, 1.21.12, 1.20.17, and 1.19.23.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89322">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a70ae2a40b2d601c07d3848ae89f37b5</td>
+       <td>CVE-2026-107314</td>
+       <td>2026-10-07 23:17:00 <img src="imgs/new.gif" /></td>
+       <td>pgjdbc, the PostgreSQL JDBC Driver, versions 42.7.11 through 42.7.13 enforce no restriction when the requireAuth connection property excludes all six authentication methods the driver knows, for example requireAuth=!password,!md5,!gss,!sspi,!scram-sha-256,!none. The driver then accepts any method the server asks for, including cleartext password authentication. A value without a method in it, such as requireAuth=, (a single comma), is affected the same way. An attacker positioned between the application and its server can ask for cleartext password authentication and receive the database password. A positive list such as requireAuth=scram-sha-256, and a partial exclusion such as requireAuth=!password,!md5, are enforced correctly. The property has no default value, so a deployment that does not set it is not affected. 42.7.14 fixes the problem: such a connection is refused with SQLState 08004, and a value without a method in it is rejected as invalid.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107314">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2d3964b84dc21f89288ff00827b48ff7</td>
+       <td>CVE-2026-107285</td>
+       <td>2026-10-07 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. Prior to 3.0.12 and 2.16.1, a proxied ws request is carried through CONNECT, but NettyRequestFactory.newNettyRequest and requestUri decide whether to attach proxy authentication and an absolute-form target only from whether the URI is secure. Because ws is not marked secure, the tunneled WebSocket upgrade sent to the origin includes the proxy's Proxy-Authorization value. Basic credentials are directly recoverable and Digest responses can be replayed or cracked offline. This issue is fixed in versions 3.0.12 and 2.16.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107285">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f898f4aa2005bc6cbbf36e3c8ebdbbf2</td>
+       <td>CVE-2026-107284</td>
+       <td>2026-10-07 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. Prior to 3.0.12 and 2.16.1, WebSocketHandler.upgrade aborts a handshake whose Sec-WebSocket-Accept value is missing or invalid but continues into pipeline installation and onOpen delivery. Frames coalesced with the invalid 101 response can be decoded and delivered from a peer that did not prove the handshake, although the request future fails and the channel closes. This issue is fixed in versions 3.0.12 and 2.16.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107284">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>259b39f4b73d89cd5b8bedb045e0bee8</td>
+       <td>CVE-2026-107283</td>
+       <td>2026-10-07 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. Prior to 3.0.12 and 2.16.1, Realm.Builder generates the HTTP Digest client nonce with ThreadLocalRandom rather than a cryptographically secure random source. Digest relies on an unpredictable cnonce to resist chosen-plaintext and credential precomputation attacks, so an observer able to infer generator state can reduce the protection of the authentication exchange. This issue is fixed in versions 3.0.12 and 2.16.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107283">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>515eca2fd392232f1c7b55ac752736db</td>
+       <td>CVE-2026-107282</td>
+       <td>2026-10-07 22:17:04 <img src="imgs/new.gif" /></td>
+       <td>The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. Prior to 3.0.13 and 2.16.1, cross-host request replay updates the current request but leaves the target request and related proxy context pointing at the original origin. Connection-pool selection, CONNECT handling, realm selection, and TLS setup can consequently send the original host's path, Host header, Authorization credentials, or plaintext request to the replay destination. Documented ResponseFilter failover and retry paths can trigger the replay. This issue is fixed in versions 3.0.13 and 2.16.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107282">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8159b01ef809881f86fe6ef829ad0a18</td>
+       <td>CVE-2026-107281</td>
+       <td>2026-10-07 22:17:03 <img src="imgs/new.gif" /></td>
+       <td>The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. Prior to 3.0.13 and 2.16.1, the HTTP/1.1 connection-pool key excludes the authenticated principal for connection-oriented NTLM and Negotiate authentication. A pooled socket authenticated for one request can be reused by a request carrying another principal, and the server executes that later request as the first identity. Basic and Digest are not affected because they authenticate each request. This issue is fixed in versions 3.0.13 and 2.16.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107281">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>e88bdd2715fc0d0cec5fcb7ea3bdae01</td>
+       <td>CVE-2026-107280</td>
+       <td>2026-10-07 22:17:03 <img src="imgs/new.gif" /></td>
+       <td>The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. Prior to 3.0.13 and 2.16.1, ThreadSafeCookieStore validates Domain attributes with domain matching but does not reject public suffixes. A host beneath a suffix such as co.uk can set a cookie for that suffix, after which the shared cookie store sends it to unrelated hosts under the suffix. This can inject or overwrite session-relevant cookie values across origins. This issue is fixed in versions 3.0.13 and 2.16.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107280">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>40761b98d0373d476de457f2da68adf0</td>
+       <td>CVE-2026-107279</td>
+       <td>2026-10-07 22:17:03 <img src="imgs/new.gif" /></td>
+       <td>The AsyncHttpClient (AHC) library allows Java applications to easily execute HTTP requests and asynchronously process HTTP responses. In 3.0.12, a peer offering only Digest qop=auth-int causes mutual-authentication verification to be skipped. AuthenticatorUtils.computeExpectedRspAuth returns no expected value for auth-int, and Interceptors treats that result as unverifiable but nonfatal, so a response with an invalid rspauth value is accepted. A peer that does not know the shared secret can therefore be accepted as the authenticated server. This issue is fixed in version 3.0.13.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107279">详情</a></td>
+      </tr>
+
+      <tr>
        <td>20555de8f7a1b1f08f5be81888fb3899</td>
        <td>CVE-2026-97626</td>
-       <td>2026-10-06 22:17:08 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:08</td>
        <td>Requesting a user or organization profile page (`GET /{username}`) with an `Accept: application/rss+xml` or `Accept: application/atom+xml` header returned the owner's activity feed without the visibility check that the profile page and the `.rss` and `.atom` routes apply. Anonymous users, restricted users and non-members could confirm the existence of limited or private users and private organizations and read their profile details and public activity, also when `[other] ENABLE_FEED` was disabled. Activity in private repositories was not included.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97626">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>bc6f136c2f992c151bed9ab30ce4fdd0</td>
        <td>CVE-2026-97208</td>
-       <td>2026-10-06 22:17:07 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:07</td>
        <td>The Gitea API endpoint for creating push mirrors (`POST /api/v1/repos/{owner}/{repo}/push_mirrors`) checked only whether mirroring was enabled and not the `[mirror] DISABLE_NEW_PUSH` setting that the web interface enforces. A repository administrator could therefore create new push mirrors on instances where the site administrator had disabled them. A push mirror pushes all refs of the repository to a remote chosen by the caller, on each commit or on a schedule.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97208">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>c33edde3552340b42a93ce93e9a5e899</td>
        <td>CVE-2026-96594</td>
-       <td>2026-10-06 22:17:07 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:07</td>
        <td>The Gitea API endpoint `GET /api/v1/repos/{owner}/{repo}/media/{filepath}` wrote files of up to 1 KiB that are stored directly in Git, not in LFS, to the response without the content type and disposition headers Gitea uses for user content. An HTML file committed to a repository was therefore rendered by the browser on the Gitea origin. A user who can push to a repository could run JavaScript in the session of a victim who opens the media URL and act with the victim's permissions.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96594">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>c651fc2a9e7fb697e9d585dd259ba600</td>
        <td>CVE-2026-89182</td>
-       <td>2026-10-06 22:17:07 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:07</td>
        <td>With `[repository] FORCE_PRIVATE = true`, Gitea creates new repositories as private, but the post-receive hook still applied the `repo.private=false` push option to an empty repository created by push. Any user who can create repositories could make their new repository public in violation of the instance policy. The default configuration is not affected.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89182">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>44fc2856ca8a64513e7834096e155b00</td>
        <td>CVE-2026-86684</td>
-       <td>2026-10-06 22:17:07 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:07</td>
        <td>The Gitea push mirror API checked whether the repository owner, instead of the requesting user, may use local file system paths. On instances with `[security] IMPORT_LOCAL_PATHS = true`, a repository administrator who is not allowed to import local paths could add a push mirror to a local path on the server when the repository owner has that permission. Gitea then pushed the repository's refs into an existing Git repository at that path with the permissions of the Gitea process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86684">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>d0f1c9d18ef2bb2f198542b0a6637a8d</td>
        <td>CVE-2026-65142</td>
-       <td>2026-10-06 22:17:07 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:07</td>
        <td>NVIDIA Model-Optimizer contains a vulnerability where an attacker may cause deserialization of untrusted data. A successful exploit of this vulnerability might lead to code execution, data tampering, denial of service, and information disclosure.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65142">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>0d9ad8d8fc40801cddd0cbef26d58ffd</td>
        <td>CVE-2026-65122</td>
-       <td>2026-10-06 22:17:07 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:07</td>
        <td>NVIDIA TensorRT contains a vulnerability where an attacker can cause an out of bounds read. A successful exploit of this vulnerability may lead to denial of service.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-65122">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>13f356b724393b44ea5e65622516f72b</td>
        <td>CVE-2026-106589</td>
-       <td>2026-10-06 22:17:06 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:06</td>
        <td>In sshd in OpenSSH through 10.6, in certain environments such as QNX 6 and SCO OpenServer 5, sshd-session can unexpectedly have root privileges. This is related to the GatewayPorts and StreamLocalForwarding configuration options, and lack of support for file-descriptor passing and unprivileged allocation of PTY devices.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-106589">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>5854e1fa9bdcda55473564642d0ff35f</td>
        <td>CVE-2026-106588</td>
-       <td>2026-10-06 22:17:06 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:06</td>
        <td>In sshd in OpenSSH through 10.6, use of the macOS 27 (or later) SDK has the side effect of loss of sandboxing, which is potentially unexpected.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-106588">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>31184e346ec27305a9f40bc5f8cf7789</td>
        <td>CVE-2026-106587</td>
-       <td>2026-10-06 22:17:06 <img src="imgs/new.gif" /></td>
+       <td>2026-10-06 22:17:06</td>
        <td>In sshd in OpenSSH before 10.6, the value "none" for a configuration option is sometimes interpreted as a filename but was intended to mean that a feature is disabled.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-106587">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-10-05 17:17:12</td>
        <td>Plane is an open-source project management tool. Prior to 1.4.0, two endpoint families fail to verify that nested resource identifiers belong to the workspace and project named in the URL. An authenticated user can read or modify estimates from another workspace through PATCH /api/workspaces/{slug}/projects/{project_id}/estimates/{estimate_id}/, and can inject comments into an issue from another workspace through POST /api/workspaces/{slug}/projects/{project_id}/issues/{issue_id}/comments/. ProjectEntityPermission verifies membership in the workspace and project from the URL, but estimate_id and issue_id are fetched by primary key without confirming the same scope. The list, retrieve, and destroy handlers correctly scope their queries, demonstrating the inconsistency. This issue is fixed in 1.4.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104966">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a43cfd34504fe3c1acf25f302ef635ef</td>
-       <td>CVE-2026-105222</td>
-       <td>2026-10-04 23:16:59</td>
-       <td>The alexpechkarev/google-maps Laravel package through 12.16 disables TLS certificate verification by default because the bundled config sets ssl_verify_peer to FALSE, which is passed to CURLOPT_SSL_VERIFYPEER. On-path attackers can present any certificate to intercept Google Maps web-service requests, steal the API key from the query string, and tamper with responses.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105222">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1dcea6e8555131e2e7e4035d8aab989</td>
-       <td>CVE-2026-105221</td>
-       <td>2026-10-04 23:16:59</td>
-       <td>The gist RubyGem before 6.1.0 contains an improper certificate validation vulnerability that allows on-path attackers to intercept HTTPS traffic because http_connection in lib/gist.rb sets VERIFY_NONE. Attackers can present any certificate to read or modify GitHub API traffic, stealing OAuth tokens and login credentials to read and modify the victim's gists.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105221">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>401d7ee0044ad5d60c0e336716c3c136</td>
-       <td>CVE-2026-105220</td>
-       <td>2026-10-04 23:16:59</td>
-       <td>Twine 2 desktop through 2.12.0 contains a cross-site scripting vulnerability in importStories() that executes markup from imported story files in the editor window. Attackers can craft a story file whose script calls the twineElectron openWithScratchFile IPC bridge to write and open a .bat file, executing code as the user.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105220">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>4ccbc35e45347879175e5f70fb3ce97a</td>
-       <td>CVE-2026-105167</td>
-       <td>2026-10-04 23:16:59</td>
-       <td>A vulnerability was determined in kishor-23 food-waste-management-system 411989e3ecb82895e53dca7865f72145f03d7d93/b3a70b2c492dc9904de5be1ad9389bd79b87f82c. The impacted element is an unknown function of the file admin/donate.php. Executing a manipulation of the argument location can lead to sql injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105167">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3b7a9ddbfb38e55472911de190208b98</td>
-       <td>CVE-2026-105166</td>
-       <td>2026-10-04 23:16:59</td>
-       <td>A vulnerability was found in kishor-23 food-waste-management-system 411989e3ecb82895e53dca7865f72145f03d7d93/b3a70b2c492dc9904de5be1ad9389bd79b87f82c. The affected element is the function insert of the file fooddonateform.php of the component Food Donation Form. Performing a manipulation of the argument image-choice results in sql injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used. This product adopts a rolling release strategy to maintain continuous delivery. Therefore, version details for affected or updated releases cannot be specified. The project was informed of the problem early through an issue report but has not responded yet.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105166">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c30928cd08e15f73cbe991aa2deac8fc</td>
-       <td>CVE-2026-105165</td>
-       <td>2026-10-04 23:16:58</td>
-       <td>A vulnerability has been found in devopspolis secrets-replicator up to 0.4.0. Impacted is the function process_single_secret of the file src/handler.py of the component AssumeRole Handler. Such manipulation of the argument external_id leads to incorrect permission assignment. The attack can be executed remotely. Upgrading to version 0.5.0 is recommended to address this issue. The name of the patch is b42239405fbf4fae3c3f0048fc0b4225112edceb. It is suggested to upgrade the affected component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105165">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f0490607d23ee379b698c751e17c7d68</td>
-       <td>CVE-2026-105164</td>
-       <td>2026-10-04 22:16:59</td>
-       <td>A flaw has been found in NASA cFS up to 7.0.1. This issue affects the function CFE_FS_ParseInputFileNameEx of the file cfe/modules/fs/fsw/src/cfe_fs_api.c. This manipulation causes out-of-bounds read. Remote exploitation of the attack is possible. The pull request to fix this issue awaits acceptance.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105164">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>cbb9b521be3d49a8894c7e4ff6d39dc3</td>
-       <td>CVE-2026-105163</td>
-       <td>2026-10-04 22:16:58</td>
-       <td>A vulnerability was detected in crossplane crossplane-runtime up to 2.2.2/2.3.2. This vulnerability affects the function Get of the file pkg/xpkg/client.go of the component ImageConfig. The manipulation results in time-of-check time-of-use. The attack may be launched remotely. Upgrading to version 2.2.3, 2.3.3 and 2.4.0-rc.1 is able to resolve this issue. The patch is identified as bee99c6cd6ca81878acca2940a2f0a02169fc208. You should upgrade the affected component.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105163">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0992fda9bc82d7ea0313fe25f8212efa</td>
-       <td>CVE-2026-105219</td>
-       <td>2026-10-04 18:16:34</td>
-       <td>Mammoth.js 1.3.0 before 1.12.3 contains a regular expression denial of service vulnerability in the style map tokeniser in lib/styles/parser/tokeniser.js due to overlapping regex alternatives. Attackers can supply a crafted .docx with an unterminated quoted string of repeated backslash escapes in mammoth/style-map to block the Node.js event loop.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105219">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c5980ed8935a62d20b234bc072de2cac</td>
-       <td>CVE-2026-105218</td>
-       <td>2026-10-04 18:16:34</td>
-       <td>gopay before 1.5.119 disables TLS certificate verification in defaultClient() in pkg/xhttp/client.go, allowing man-in-the-middle attackers to impersonate payment provider APIs. Attackers can present any certificate to read merchant credentials, signatures and transaction data, and modify payment, refund and order query responses.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105218">详情</a></td>
       </tr>
 
      </tbody>
