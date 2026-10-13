@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-13 06:25:56 -->
+<!-- RELEASE TIME : 2026-10-13 22:30:44 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>aa07d2969506bc10d087f642ae87c2dd</td>
+       <td>CVE-2026-94603</td>
+       <td>2026-10-13 17:17:49 <img src="imgs/new.gif" /></td>
+       <td>Podman is a tool for managing OCI containers and pods. From 4.4.0 until 5.8.8 and 6.1.3, podman run treats an image carrying the io.podman.annotations.checkpoint.runtime.name annotation as a checkpoint and silently ignores user-supplied container creation restrictions such as --cap-drop=ALL, allowing image-controlled checkpoint state to select weaker sandbox settings and capabilities. Rootless containers are not affected because checkpoint and restore are unavailable in that mode. This issue is fixed in versions 5.8.8 and 6.1.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94603">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b1f9afb297084bf2f5f50d8bab77e6b0</td>
+       <td>CVE-2026-88838</td>
+       <td>2026-10-13 17:17:48 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in BusyBox's mount utility. A non-root user can bypass mount security restrictions set in /etc/fstab by specifying clearing-mask options on the command line. These options pass the non-root flag filter and are merged with fstab options as strings; when the combined options are re-parsed, clearing options can override nosuid, nodev, and noexec protections the administrator intended to enforce.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88838">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>1f1f935041622a735f7d02a35f9663ad</td>
+       <td>CVE-2026-88834</td>
+       <td>2026-10-13 17:17:48 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in BusyBox's httpd web server. When configured with system password authentication, a user existence oracle may exist in certain build configurations. An attacker could distinguish existing from non-existing usernames by observing authentication failure behavior. Impact is limited to username enumeration and requires non-default compile options or uncommon password file states; default BusyBox builds with shadow password support are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88834">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a8d57b2fe5d56fce13ee7f26c7168284</td>
+       <td>CVE-2026-88833</td>
+       <td>2026-10-13 17:17:48 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in BusyBox's udhcpc DHCP client. When processing raw DHCP packets, the client replaces the validated packet length with an attacker-controlled value from the IP header without re-validating the minimum size. This leads to an integer underflow when subtracting header sizes, causing a subsequent memory copy with a massively oversized length. An attacker on the same network segment can send a specially crafted packet to crash the DHCP client, resulting in denial of service and loss of network connectivity.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88833">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>487e6414413063b1c988b1bf65aa85ac</td>
+       <td>CVE-2026-85990</td>
+       <td>2026-10-13 17:17:47 <img src="imgs/new.gif" /></td>
+       <td>Leantime is an open source project management system. Prior to 3.10.0, for the provisionally grouped account-creation and plugin-management surfaces, Leantime's JSON-RPC dispatcher in app/Domain/Api/Controllers/Jsonrpc.php exposes public API service methods, while PermissionEnforcer::enforce allows methods that lack a RequiresPermission attribute. A low-privilege authenticated user with an ordinary browser session can send the required X-Requested-With: XMLHttpRequest header and call leantime.rpc.api.api.createApiKeyWithProjects, which reaches Api::createApiKeyWithProjects, with an attacker-chosen role to create an interactive administrator account. The same missing per-method authorization exposes Plugins::installPlugin, Plugins::enablePlugin, Plugins::disablePlugin, and Plugins::removePlugin to ordinary authenticated users, permitting unauthorized plugin management. The complete provisionally grouped issue is fixed in version 3.10.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85990">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>071129a407fd131415435490c190426c</td>
+       <td>CVE-2026-85733</td>
+       <td>2026-10-13 17:17:47 <img src="imgs/new.gif" /></td>
+       <td>FrankenPHP is a modern application server for PHP. Prior to 1.12.5, the official FrankenPHP Debian and Alpine Docker images include a default /app/public/index.php that executes phpinfo(). A derived image that does not overwrite this placeholder serves the diagnostics page in production and can disclose environment variables used for secrets, PHP configuration directives, loaded extensions, software versions, and system paths. Images built using the documented pattern with their own /app/public/index.php are not affected, and already derived images must be rebuilt or supplied with an application index to remove the exposed placeholder. This issue is fixed in version 1.12.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85733">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>960544f2aacbcdcf92ecb487b9e8fa01</td>
+       <td>CVE-2026-82416</td>
+       <td>2026-10-13 17:17:47 <img src="imgs/new.gif" /></td>
+       <td>FrankenPHP is a modern application server for PHP. Prior to 1.12.5, FrankenPHP worker mode can retain PHP session state between requests when the session extension is loaded as a shared module and is unavailable through HAVE_PHP_SESSION at compile time. In this build configuration, frankenphp_reset_session_state() is compiled out, PS(id) can survive a request boundary, and a subsequent session_start() can ignore the new request's cookie because an identifier is already present. Under concurrent requests, session_id() can therefore return another client's identifier or a stale identifier from a previous request on the same worker thread, causing cross-user session exposure, possible session hijacking, and intermittent logout behavior. Builds with the session extension statically linked, including the official static binaries and Docker images, are not affected. This issue is fixed in version 1.12.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82416">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55da5b4d671648f8bdeb90a6c6f4fe02</td>
+       <td>CVE-2026-78799</td>
+       <td>2026-10-13 17:17:46 <img src="imgs/new.gif" /></td>
+       <td>Directory Traversal vulnerability in Quanxun Huiju Network Technology (Beijing) Co., Ltd IK-Q3000 Enterprise-grade Wi-Fi 6 wireless router Enterprise Edition: <= iKuai8_3.7.23_Enterprise Build 202606021825 - Free Edition: <= iKuai 8_4.0.304-beta allows a remote attacker to execute arbitrary code.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78799">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c40c3a672196df627103c3472a0ffe3</td>
+       <td>CVE-2026-77459</td>
+       <td>2026-10-13 17:17:46 <img src="imgs/new.gif" /></td>
+       <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. From 2.10.0 until 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2, Argo CD creates PostDelete resource hooks without applying the AppProject destination and resource authorization checks used during ordinary synchronization. The omitted checks include cluster-scoped and namespaced resource allow/deny lists. A user who can write to an Application's Git repository can commit a delete hook targeting a forbidden namespace, server, group, kind, or resource name, and deletion of the Application causes the application-controller to create that resource with its destination-cluster credentials. The reachable impact is bounded by the controller's cluster access but can include cluster-scoped resources, disallowed namespaces, persistent hook objects, and secondary objects created by a hook Job. PreSync, Sync, PostSync, and SyncFail hooks continue to use the normal project checks. This issue is fixed in versions 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77459">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5ae89c444c900e011ba09dd5a58856d5</td>
+       <td>CVE-2026-69227</td>
+       <td>2026-10-13 17:17:45 <img src="imgs/new.gif" /></td>
+       <td>A flaw in Portal for ArcGIS allows unauthenticated access to certain /portaladmin/local API endpoints under specific conditions. This could enable an attacker to access administrative functionality that should require authentication.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69227">详情</a></td>
+      </tr>
+
+      <tr>
        <td>fa063ab198497e97822cd5bd411a5684</td>
        <td>CVE-2026-93892</td>
        <td>2026-10-12 23:17:45 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-10-12 00:17:01 <img src="imgs/new.gif" /></td>
        <td>A flaw has been found in erzhongxmu JEEWMS up to 2026.09.27-W39. The affected element is the function getbinall/getbinallagv of the file src/main/java/com/zzjee/md/controller/MdBinController.java. Executing a manipulation of the argument binstore/binid/des/cengshu can lead to sql injection. The attack may be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108774">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>83b180a72e856dd57ab7eaa8a1d2cd2e</td>
-       <td>CVE-2026-104841</td>
-       <td>2026-10-10 23:16:26</td>
-       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-104841">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c7ab28336c1522953938a4ff41f228ab</td>
-       <td>CVE-2026-108680</td>
-       <td>2026-10-10 22:16:45</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability that allows any authenticated user to send template notifications by calling POST /sys/api/sendTemplateAnnouncement. Low-privileged attackers can supply forged sender, recipients, title, and template parameters to deliver messages appearing to come from admin or system accounts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108680">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>05e124ee01eaede110632676222a9d30</td>
-       <td>CVE-2026-108679</td>
-       <td>2026-10-10 22:16:45</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability in the sendBusAnnouncement handler of SystemApiController that allows any authenticated user to send announcements without the required permissions. Low-privileged attackers can POST crafted bodies to /sys/api/sendBusAnnouncement with forged sender, recipients, title and content to deliver spoofed admin or system messages for phishing.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108679">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fd8e2f12ef234a2934334b612df25c9d</td>
-       <td>CVE-2026-108678</td>
-       <td>2026-10-10 22:16:44</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability in the queryUserRoles handler of SystemApiController that lets authenticated users read any user's role codes. Low-privileged attackers can send GET requests to /sys/api/queryUserRoles with an arbitrary username to enumerate role assignments and identify administrator accounts.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108678">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a1de7a1496de4c906d27f0dbdb432d44</td>
-       <td>CVE-2026-108677</td>
-       <td>2026-10-10 22:16:44</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability in GET /sys/api/getUserByName that allows low-privileged authenticated users to retrieve any user's stored password value. Attackers can decrypt the AES-CBC protected response using the hard-coded key exposed by /sys/getEncryptedString to obtain administrators' password ciphertexts for offline guessing.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108677">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c18adfa140d03c9b7383b6c82cbb15a8</td>
-       <td>CVE-2026-108676</td>
-       <td>2026-10-10 22:16:44</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability in the SysAnnouncementController downLoadFiles handler that allows low-privileged authenticated users to download announcement attachments. Attackers can supply a known announcement id to retrieve a ZIP of attachments from unreleased announcements or those addressed only to other users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108676">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>69e830ccee4c8b48fcbe634cb0eb7362</td>
-       <td>CVE-2026-108675</td>
-       <td>2026-10-10 22:16:44</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability in the SysAnnouncementController editIzTop handler that allows low-privileged authenticated users to change announcement pin status. Attackers can send POST or PUT requests with any announcement id to pin or unpin system notices shown at the top for all users.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108675">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1498165d379561613bc8ae506260950d</td>
-       <td>CVE-2026-108674</td>
-       <td>2026-10-10 22:16:44</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability in the OpenApiController queryById handler that allows low-privileged authenticated users to read OpenAPI definitions without openapi permissions. Attackers can request GET /openapi/queryById with an entry id to obtain internal origin URLs, virtual paths, IP whitelists, and header and parameter templates.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108674">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>f06e68f7c29d59d6f295496886370f10</td>
-       <td>CVE-2026-108673</td>
-       <td>2026-10-10 22:16:44</td>
-       <td>JeecgBoot through 3.9.5 contains a missing authorization vulnerability in the AiragPromptsController exportXls handler that allows any authenticated user to export all AI prompts. Low-privileged attackers can request /airag/prompts/exportXls to download every user's prompts, including prompt content, model ids, and parameters, as an Excel workbook.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108673">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6a6b96f34420cce598ade8cb59d2f9f0</td>
-       <td>CVE-2026-108672</td>
-       <td>2026-10-10 22:16:44</td>
-       <td>JeecgBoot through 3.9.5 contains an authorization bypass vulnerability in the getVideoRecords handler of VideoGenerationController that allows authenticated users to read other users' records via the userId parameter. Low-privileged attackers can supply another user id to retrieve their AI video generation history, including prompts, task ids, video URLs and cover URLs.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108672">详情</a></td>
       </tr>
 
      </tbody>
