@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-14 21:29:18 -->
+<!-- RELEASE TIME : 2026-10-15 21:11:00 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>441af0b04a499fc1ce1d8392f0e21f30</td>
+       <td>CVE-2026-93953</td>
+       <td>2026-10-15 17:59:52 <img src="imgs/new.gif" /></td>
+       <td>The Backuply – Backup, Restore, Migrate and Clone plugin for WordPress is vulnerable to SQL Injection via the Biographical Info field (second-order, via restore) in all versions up to, and including, 1.5.8 due to insufficient escaping on the user supplied parameter and the lack of sufficient preparation on an existing SQL query. Backuply exports the Biographical Info value verbatim inside an INSERT statement written to the backup's SQL dump (wp_usermeta). When an Administrator later restores such a backup, the crafted payload breaks out of that INSERT statement and appends attacker-controlled SQL that executes with full database privileges. This makes it possible for authenticated attackers, with subscriber-level access and above, to write arbitrary data to the database — in particular to update the default_role option in wp_options to administrator (and enable open user registration) — so that a subsequently registered account is automatically granted the Administrator role, resulting in privilege escalation and full site takeover. Because the injection executes inside an INSERT during restore with no response returned to the attacker, the primitive is used to modify database records rather than to read existing data directly.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93953">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>dde7dd1babcf00f0b5c4b2b12063fc70</td>
+       <td>CVE-2026-85634</td>
+       <td>2026-10-15 17:17:29 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in the ContentRepositoryImpl.copyExplodedContent function of the wildfly-core library, which is used by WildFly and JBoss EAP to manage server deployments. The issue occurs when the library processes an unsanitized deployment name. Due to a missing containment check, an attacker with the Deployer RBAC role can use path traversal sequences to access files outside the restricted deployment directory. This can allow the attacker to delete arbitrary directories or create files with arbitrary content, leading to a full privilege escalation to the management SuperUser role.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85634">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>55440f42aeb17b9bfbd9629f8c85fa7f</td>
+       <td>CVE-2026-78851</td>
+       <td>2026-10-15 17:17:28 <img src="imgs/new.gif" /></td>
+       <td>Directory Traversal vulnerability in Grav CMS 2.0.3 through 2.0.6 allows a remote attacker to obtain sensitive information via the GravExtension.php and the mediaDirFunc method.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78851">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>38462ed3f0aa6920e3a2c727e91bdad3</td>
+       <td>CVE-2026-78850</td>
+       <td>2026-10-15 17:17:28 <img src="imgs/new.gif" /></td>
+       <td>An issue in Matomo v.5.11.2 allows a remote attacker to obtain sensitive information via the SiteContentDetector / SitesManager component</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78850">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>958dce2a213ac4d0a050b84406cc1b89</td>
+       <td>CVE-2026-77470</td>
+       <td>2026-10-15 17:17:27 <img src="imgs/new.gif" /></td>
+       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.1, the Supporter or Pro webshop POST /api/v2/Shop/Checkout/Process flow accepts an unrestricted additional_data array and CheckoutService::preparePurchaseParameters() merges it after server-computed purchase parameters. Because later string keys overwrite earlier keys, an unauthenticated buyer can replace amount, currency, returnUrl, cancelUrl, or transactionId before CheckoutService::processPayment() passes the parameters to a non-PayPal Omnipay gateway. An attacker can therefore make a gateway accept a successful payment for an attacker-selected amount and obtain auto-fulfilled goods while underpaying the merchant. The issue requires an enabled webshop, a purchasable item, and an affected Omnipay gateway. This issue is fixed in version 7.7.1.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77470">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6d9a52b38e2fe2b360a617ed7c3ab008</td>
+       <td>CVE-2026-77468</td>
+       <td>2026-10-15 17:17:27 <img src="imgs/new.gif" /></td>
+       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.0, GET /docs/api exposes the Scramble-generated OpenAPI documentation configured by config/scramble.php to unauthenticated callers after installation, with observed response size and latency suggesting that the schema is regenerated without an application-level cache. A remote attacker can repeatedly request the unthrottled route to consume server CPU and obtain a detailed map of the API surface and parameter schema. This issue is fixed in version 7.7.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77468">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0d7a2bc7c167f7669b2ba35a2f7f3975</td>
+       <td>CVE-2026-77467</td>
+       <td>2026-10-15 17:17:27 <img src="imgs/new.gif" /></td>
+       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.0, Lychee enables ImageMagick PDF support with Ghostscript but does not apply an effective pre-render limit to PDF page dimensions in ImagickHandler::loadPdf(). An authenticated user who can upload a small PDF with an oversized /MediaBox can cause Imagick::readImage() to consume substantial CPU before failing to produce an image. When QUEUE_CONNECTION selects synchronous processing the request can occupy a web worker, while the official asynchronous Docker configuration can clog the shared image-processing queue and delay other work. The advisory did not identify a Ghostscript sandbox escape. This issue is fixed in version 7.7.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77467">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9e79d6bd957b6578eb554357689ebe01</td>
+       <td>CVE-2026-77466</td>
+       <td>2026-10-15 17:17:27 <img src="imgs/new.gif" /></td>
+       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.0, Lychee hides the Omnipay Dummy test provider from the checkout options in production through OmnipayFactory::get_supported_providers(), but CreateSessionRequest validates only that the submitted provider is an OmnipayProviderType and does not enforce OmnipayProviderType::isAllowed(). A buyer, including a guest when webshop_allow_guest_checkout is enabled, can submit Dummy directly and complete the test gateway flow without a real payment. When webshop_auto_fulfill_enabled is enabled, OrderCompletedListener::fullfillOrder() can then release the purchasable item. The issue requires access to the Supporter or Pro webshop and an enabled purchasable item. Testing bypassed the closed-source license middleware, so whether the real license layer performs additional payment-provider validation remains unverified. The payment finalize status check itself is not the root cause. This issue is fixed in version 7.7.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77466">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a845b82add9312cd498ac327cf8ff637</td>
+       <td>CVE-2026-62679</td>
+       <td>2026-10-15 17:17:26 <img src="imgs/new.gif" /></td>
+       <td>Lychee is a free, open-source photo-management tool. Prior to 7.6.4, SecurePathController, which serves GET /image/{path}, concatenates the attacker-controlled path with the local storage root and performs a string-prefix check before canonicalizing dot segments. Under the supported non-default configuration with temporary_image_link_enabled enabled, temporary_image_link_when_logged_in disabled, and secure_image_link_enabled disabled, any authenticated user can submit encoded traversal segments that pass the prefix check and are later resolved by filesystem operations. This permits reading files available to the web process, including application configuration and other users' private images, and disclosed APP_KEY or database credentials can enable further compromise. This issue is fixed in version 7.6.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62679">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>fdce6200859d81005f040e0fe9483f4b</td>
+       <td>CVE-2026-61838</td>
+       <td>2026-10-15 17:17:26 <img src="imgs/new.gif" /></td>
+       <td>Lychee is a free, open-source photo-management tool. Prior to 7.6.3, GET /api/v2/Zip authorizes album and photo archives through AlbumPolicy::canDownload() and PhotoPolicy::canDownload() without first enforcing AlbumPolicy::canAccess(). For a public, password-protected album with grants_download enabled, an unauthenticated attacker who knows the shared album identifier can download a ZIP archive without supplying the password or unlocking the album, even though browsing endpoints deny access. The archive exposes the album's photos and can include full-resolution originals and associated metadata when grants_full_photo_access is enabled. This issue is fixed in version 7.6.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61838">详情</a></td>
+      </tr>
+
+      <tr>
        <td>ae761733a4566213ae6a928de99c6282</td>
        <td>CVE-2026-96596</td>
        <td>2026-10-14 17:20:28 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>aa07d2969506bc10d087f642ae87c2dd</td>
        <td>CVE-2026-94603</td>
-       <td>2026-10-13 17:17:49 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:49</td>
        <td>Podman is a tool for managing OCI containers and pods. From 4.4.0 until 5.8.8 and 6.1.3, podman run treats an image carrying the io.podman.annotations.checkpoint.runtime.name annotation as a checkpoint and silently ignores user-supplied container creation restrictions such as --cap-drop=ALL, allowing image-controlled checkpoint state to select weaker sandbox settings and capabilities. Rootless containers are not affected because checkpoint and restore are unavailable in that mode. This issue is fixed in versions 5.8.8 and 6.1.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94603">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>b1f9afb297084bf2f5f50d8bab77e6b0</td>
        <td>CVE-2026-88838</td>
-       <td>2026-10-13 17:17:48 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:48</td>
        <td>A flaw was found in BusyBox's mount utility. A non-root user can bypass mount security restrictions set in /etc/fstab by specifying clearing-mask options on the command line. These options pass the non-root flag filter and are merged with fstab options as strings; when the combined options are re-parsed, clearing options can override nosuid, nodev, and noexec protections the administrator intended to enforce.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88838">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>1f1f935041622a735f7d02a35f9663ad</td>
        <td>CVE-2026-88834</td>
-       <td>2026-10-13 17:17:48 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:48</td>
        <td>A flaw was found in BusyBox's httpd web server. When configured with system password authentication, a user existence oracle may exist in certain build configurations. An attacker could distinguish existing from non-existing usernames by observing authentication failure behavior. Impact is limited to username enumeration and requires non-default compile options or uncommon password file states; default BusyBox builds with shadow password support are not affected.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88834">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>a8d57b2fe5d56fce13ee7f26c7168284</td>
        <td>CVE-2026-88833</td>
-       <td>2026-10-13 17:17:48 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:48</td>
        <td>A flaw was found in BusyBox's udhcpc DHCP client. When processing raw DHCP packets, the client replaces the validated packet length with an attacker-controlled value from the IP header without re-validating the minimum size. This leads to an integer underflow when subtracting header sizes, causing a subsequent memory copy with a massively oversized length. An attacker on the same network segment can send a specially crafted packet to crash the DHCP client, resulting in denial of service and loss of network connectivity.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88833">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>487e6414413063b1c988b1bf65aa85ac</td>
        <td>CVE-2026-85990</td>
-       <td>2026-10-13 17:17:47 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:47</td>
        <td>Leantime is an open source project management system. Prior to 3.10.0, for the provisionally grouped account-creation and plugin-management surfaces, Leantime's JSON-RPC dispatcher in app/Domain/Api/Controllers/Jsonrpc.php exposes public API service methods, while PermissionEnforcer::enforce allows methods that lack a RequiresPermission attribute. A low-privilege authenticated user with an ordinary browser session can send the required X-Requested-With: XMLHttpRequest header and call leantime.rpc.api.api.createApiKeyWithProjects, which reaches Api::createApiKeyWithProjects, with an attacker-chosen role to create an interactive administrator account. The same missing per-method authorization exposes Plugins::installPlugin, Plugins::enablePlugin, Plugins::disablePlugin, and Plugins::removePlugin to ordinary authenticated users, permitting unauthorized plugin management. The complete provisionally grouped issue is fixed in version 3.10.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85990">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>071129a407fd131415435490c190426c</td>
        <td>CVE-2026-85733</td>
-       <td>2026-10-13 17:17:47 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:47</td>
        <td>FrankenPHP is a modern application server for PHP. Prior to 1.12.5, the official FrankenPHP Debian and Alpine Docker images include a default /app/public/index.php that executes phpinfo(). A derived image that does not overwrite this placeholder serves the diagnostics page in production and can disclose environment variables used for secrets, PHP configuration directives, loaded extensions, software versions, and system paths. Images built using the documented pattern with their own /app/public/index.php are not affected, and already derived images must be rebuilt or supplied with an application index to remove the exposed placeholder. This issue is fixed in version 1.12.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85733">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>960544f2aacbcdcf92ecb487b9e8fa01</td>
        <td>CVE-2026-82416</td>
-       <td>2026-10-13 17:17:47 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:47</td>
        <td>FrankenPHP is a modern application server for PHP. Prior to 1.12.5, FrankenPHP worker mode can retain PHP session state between requests when the session extension is loaded as a shared module and is unavailable through HAVE_PHP_SESSION at compile time. In this build configuration, frankenphp_reset_session_state() is compiled out, PS(id) can survive a request boundary, and a subsequent session_start() can ignore the new request's cookie because an identifier is already present. Under concurrent requests, session_id() can therefore return another client's identifier or a stale identifier from a previous request on the same worker thread, causing cross-user session exposure, possible session hijacking, and intermittent logout behavior. Builds with the session extension statically linked, including the official static binaries and Docker images, are not affected. This issue is fixed in version 1.12.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82416">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>55da5b4d671648f8bdeb90a6c6f4fe02</td>
        <td>CVE-2026-78799</td>
-       <td>2026-10-13 17:17:46 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:46</td>
        <td>Directory Traversal vulnerability in Quanxun Huiju Network Technology (Beijing) Co., Ltd IK-Q3000 Enterprise-grade Wi-Fi 6 wireless router Enterprise Edition: <= iKuai8_3.7.23_Enterprise Build 202606021825 - Free Edition: <= iKuai 8_4.0.304-beta allows a remote attacker to execute arbitrary code.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78799">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>3c40c3a672196df627103c3472a0ffe3</td>
        <td>CVE-2026-77459</td>
-       <td>2026-10-13 17:17:46 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:46</td>
        <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. From 2.10.0 until 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2, Argo CD creates PostDelete resource hooks without applying the AppProject destination and resource authorization checks used during ordinary synchronization. The omitted checks include cluster-scoped and namespaced resource allow/deny lists. A user who can write to an Application's Git repository can commit a delete hook targeting a forbidden namespace, server, group, kind, or resource name, and deletion of the Application causes the application-controller to create that resource with its destination-cluster credentials. The reachable impact is bounded by the controller's cluster access but can include cluster-scoped resources, disallowed namespaces, persistent hook objects, and secondary objects created by a hook Job. PreSync, Sync, PostSync, and SyncFail hooks continue to use the normal project checks. This issue is fixed in versions 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77459">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>5ae89c444c900e011ba09dd5a58856d5</td>
        <td>CVE-2026-69227</td>
-       <td>2026-10-13 17:17:45 <img src="imgs/new.gif" /></td>
+       <td>2026-10-13 17:17:45</td>
        <td>A flaw in Portal for ArcGIS allows unauthenticated access to certain /portaladmin/local API endpoints under specific conditions. This could enable an attacker to access administrative functionality that should require authentication.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69227">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fa063ab198497e97822cd5bd411a5684</td>
-       <td>CVE-2026-93892</td>
-       <td>2026-10-12 23:17:45</td>
-       <td>IBM TRIRIGA Application Platform 5.0.0 through 5.0.8 could allow a remote authenticated attacker to obtain sensitive information due to exposure of session tokens in the HTML response.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93892">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>db48e7b0be69975557cd5cfe974bc827</td>
-       <td>CVE-2026-93891</td>
-       <td>2026-10-12 23:17:45</td>
-       <td>IBM TRIRIGA Application Platform 5.0.0 through 5.0.8 could allow a remote authenticated attacker to obtain sensitive information due to an XML external entity (XXE) injection flaw.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93891">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>365fe376ee370e51dc8183e85f1f9698</td>
-       <td>CVE-2026-92832</td>
-       <td>2026-10-12 23:17:45</td>
-       <td>IBM Aspera Enterprise WebApps 1.0.0 through 1.0.6 could allow a local attacker to obtain sensitive information due to cleartext transmission of sensitive information.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-92832">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9b1de9445af3beedb28f7af113b28bc2</td>
-       <td>CVE-2026-85457</td>
-       <td>2026-10-12 23:17:45</td>
-       <td>IBM Planning Analytics 2.0, and 2.1 could allow a remote authenticated attacker to execute arbitrary code due to a stack-based buffer overflow.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85457">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1a7173e08ad129ed101e12ead8a1f4d7</td>
-       <td>CVE-2026-84418</td>
-       <td>2026-10-12 23:17:45</td>
-       <td>IBM DataStage on Cloud Pak for Data 5.4.0.0 can allow a man-in-the-middle attacker to present a forged TLS certificate, intercept the connection, and capture the IAM bearer Authorization header automatically attached by the session adapter. The captured token grants full platform-scope tenant API access, enabling the attacker to read and manipulate the victim's DataStage projects, flows, assets, and pipeline definitions. This is client-side SDK code running on the user's own machine, so exploitation requires an external network interceptor rather than a co-tenant in the shared cluster.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-84418">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d6343a5f0eb5889d798b30eadabd604a</td>
-       <td>CVE-2026-82110</td>
-       <td>2026-10-12 23:17:42</td>
-       <td>IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary code due to improper validation of pathname during a path traversal.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82110">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>30650846c974bafb560de7fd546b68fb</td>
-       <td>CVE-2026-82108</td>
-       <td>2026-10-12 23:17:42</td>
-       <td>IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary code due to improper neutralization of special elements used in an OS command.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82108">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>683f9245ee88b04bc10875b85bd31267</td>
-       <td>CVE-2026-82103</td>
-       <td>2026-10-12 23:17:42</td>
-       <td>IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain sensitive information due to an exposure of sensitive information to an unauthorized actor.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82103">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>600f9cfe4ebe546b01bba7791a9ed785</td>
-       <td>CVE-2026-82101</td>
-       <td>2026-10-12 23:17:41</td>
-       <td>IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to cause a denial of service due to a path traversal vulnerability.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82101">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>7c4ff46eae7a9696e5acd10d28020646</td>
-       <td>CVE-2026-82096</td>
-       <td>2026-10-12 23:17:41</td>
-       <td>IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary commands due to improper neutralization of special elements used in an OS command.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82096">详情</a></td>
       </tr>
 
      </tbody>
