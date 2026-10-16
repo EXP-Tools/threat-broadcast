@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-15 21:11:00 -->
+<!-- RELEASE TIME : 2026-10-16 23:23:28 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>f6c38b8fcf3a2cc0ab88d9c7b4a8f6e9</td>
+       <td>CVE-2026-96425</td>
+       <td>2026-10-16 16:22:52 <img src="imgs/new.gif" /></td>
+       <td>Incorrect DBus policy for lomiri-download-manager allows arbitrary user to run arbitrary command as root over DBus</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96425">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9eb5da6e2af9f8f615ce61a8938009e7</td>
+       <td>CVE-2026-96424</td>
+       <td>2026-10-16 16:22:52 <img src="imgs/new.gif" /></td>
+       <td>Incorrect DBus policy for lomiri-upload-manager (part of lomiri-download-manager) allows arbitrary user to read arbitrary file as root over DBus</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96424">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f63114de90d1c1186d65f67f36fa061c</td>
+       <td>CVE-2026-95859</td>
+       <td>2026-10-16 16:22:44 <img src="imgs/new.gif" /></td>
+       <td>libp2p-rust is the official Rust language implementation of the libp2p networking stack. Prior to 0.49.5, Gossipsub GRAFT control-message handling unconditionally adds attacker-supplied topic hashes to connected_peer.topics without confirming that the peer previously subscribed to those topics. A remote unauthenticated peer that can reach a Gossipsub listener can repeatedly send novel GRAFT topics, causing cumulative per-peer memory growth that is not bounded by subscription filters, peer scoring, or per-message size limits. This can exhaust process memory and cause a denial of service. This issue is fixed in version 0.49.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-95859">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4d6268ad5dd5a184403fd34bdd008b79</td>
+       <td>CVE-2026-92263</td>
+       <td>2026-10-16 16:22:43 <img src="imgs/new.gif" /></td>
+       <td>SparkyFitness is a self-hosted, AI-powered health and fitness tracker for families. Prior to 1.6.0, the api/admin/backup/restore endpoint interpolates an uploaded filename into a shell command. An authenticated global administrator uploads a restore archive with a crafted filename. The administrator can supply a restore archive with a filename containing shell metacharacters. Successful exploitation can execute arbitrary operating-system commands with the server process privileges. This issue is fixed in version 1.6.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-92263">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b458b66b0c71c4bed41c1735f54c7353</td>
+       <td>CVE-2026-77630</td>
+       <td>2026-10-16 16:21:03 <img src="imgs/new.gif" /></td>
+       <td>pupnp is an SDK for development of UPnP device and control point applications. Prior to 22.0.4, parse_hostport in upnp/src/genlib/net/uri/uri.c synchronously calls getaddrinfo while parse_uri is processing attacker-supplied hostnames from inbound HTTP request targets in upnp/src/genlib/net/http/httpparser.c and GENA SUBSCRIBE CALLBACK headers handled by create_url_list in upnp/src/gena/gena_device.c. A remote unauthenticated peer can choose a slow or nonresponsive hostname and block a bounded miniserver worker for the resolver timeout, allowing a small number of requests to exhaust the thread pool and deny UPnP service. This issue is fixed in 22.0.4.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77630">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>8cc7c6f798bb972a5f9d9a6ae3945077</td>
+       <td>CVE-2026-68908</td>
+       <td>2026-10-16 16:20:01 <img src="imgs/new.gif" /></td>
+       <td>libIEC61850 is an open-source implementation of IEC 61850 client and server protocols including MMS, GOOSE, Sampled Values, and R-Session. Prior to 1.6.2, Reporting_RCBWriteAccessHandler accepts an RptID longer than 129 bytes in the report-control-block write path. When GI later causes sendNextReportEntrySegment to serialize the report, the function wraps rptIdBuf[130] as a temporary MmsValue and passes it to MmsValue_setVisibleString. The setter's resize path frees the stack-backed buffer, allowing a remote client to trigger an invalid free and server crash by writing the oversized RptID and then generating a report. This issue is fixed in version 1.6.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68908">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>b98d724942172cb879fbd38aea4dcc69</td>
+       <td>CVE-2026-68907</td>
+       <td>2026-10-16 16:20:00 <img src="imgs/new.gif" /></td>
+       <td>libIEC61850 is an open-source implementation of IEC 61850 client and server protocols including MMS, GOOSE, Sampled Values, and R-Session. Prior to 1.6.2, checkDataSetAccess reverses the source and destination arguments to StringUtils_copyStringToBuffer while constructing an MMS_ASSOCIATION_SPECIFIC dataset reference. The helper treats uninitialized dataSetRef[130] storage as a source string, causing strlen to read beyond the stack buffer, and then copies those bytes into the caller-owned listName buffer. A remote defineNamedVariableList request can crash servers that have dynamic dataset service enabled and a dataset access handler installed; the advisory also observes caller stack corruption but establishes denial of service as the primary impact. This issue is fixed in version 1.6.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68907">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>ccdeee458ef443eb19a87b510f856d30</td>
+       <td>CVE-2026-68906</td>
+       <td>2026-10-16 16:20:00 <img src="imgs/new.gif" /></td>
+       <td>libIEC61850 is an open-source implementation of IEC 61850 client and server protocols including MMS, GOOSE, Sampled Values, and R-Session. Prior to 1.6.2, parseUserInformation in src/mms/iso_acse/acse.c checks len for zero before validating the negative bufPos returned by BerDecoder_decodeLength for a truncated long-form length. The continue path therefore swallows the error, reads buffer[-1], resets parsing to the beginning, and repeats the same malformed state. An unauthenticated remote peer can send a malformed AARE PDU during association to cause an infinite CPU loop under a normal allocator or a one-byte out-of-bounds read and process abort when the preceding byte is inaccessible. This issue is fixed in version 1.6.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68906">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5a48ccfa69894e6cc0f672abd7ea41e4</td>
+       <td>CVE-2026-57488</td>
+       <td>2026-10-16 16:18:44 <img src="imgs/new.gif" /></td>
+       <td>pupnp is an SDK for development of UPnP device and control point applications. Prior to 2.0.2, raw_to_int in upnp/src/genlib/net/http/httpparser.c parses Content-Length with strtol and casts the resulting long to a 32-bit int before the caller stores it as unsigned int. On LP64 systems, values greater than INT_MAX can truncate or wrap, so the HTTP parser can accept a body length different from the declared value. A remote adjacent-network peer can use the resulting parser disagreement to leave bytes to be interpreted as another request in persistent or proxied contexts, or can make a worker wait for an extremely large body and cause denial of service. This issue is fixed in 2.0.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57488">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5173d20fcab46177b76b26e84d3a8113</td>
+       <td>CVE-2026-57487</td>
+       <td>2026-10-16 16:18:44 <img src="imgs/new.gif" /></td>
+       <td>pupnp is an SDK for development of UPnP device and control point applications. Prior to 2.0.2, Transfer-Encoding: chunked causes the HTTP parser in upnp/src/genlib/net/http/httpparser.c to leave parser->content_length at zero while parser_parse_chunky_entity and parser_parse_chunky_body accumulate decoded bytes in parser->msg.entity. The g_maxContentLength checks in http_RecvMessage in upnp/src/genlib/net/http/httpreadwrite.c therefore reject oversized numeric Content-Length bodies but do not enforce the same limit on decoded chunked bodies. A remote peer that can reach a SOAP, GENA, miniserver, or control-point HTTP response path can make the process buffer an entity larger than the configured maximum, causing resource exhaustion and denial of service. This issue is fixed in 2.0.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57487">详情</a></td>
+      </tr>
+
+      <tr>
        <td>441af0b04a499fc1ce1d8392f0e21f30</td>
        <td>CVE-2026-93953</td>
        <td>2026-10-15 17:59:52 <img src="imgs/new.gif" /></td>
@@ -366,7 +446,7 @@
       <tr>
        <td>ae761733a4566213ae6a928de99c6282</td>
        <td>CVE-2026-96596</td>
-       <td>2026-10-14 17:20:28 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:28</td>
        <td>Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability in Erlang OTP stdlib (erl_tar module), hexpm hex_core (hex_erl_tar module), hexpm hex (mix_hex_erl_tar module) and erlang rebar3 (r3_hex_erl_tar module) allows an attacker who supplies a tar archive to cause a denial of service via a crafted GNU sparse member. When erl_tar:extract/1,2 writes a member to disk, erl_tar:stream_to_file_loop/3 reads it in chunks of 65536 bytes by default. For a GNU sparse member whose sparse map ends before its real size, erl_tar:do_sparse_read/3 matches its trailing-hole clause before its zero-length clause. After the chunk is used up, the trailing-hole clause reads zero bytes, does not advance the position, and recurses forever. A 2048-byte archive keeps the extracting process and one scheduler busy until the process is killed. The {max_size, N} option prevents this only when N is below the real size of the member. Extraction with the memory option is not affected. hex_core ships its own copy of erl_tar as hex_erl_tar, and Hex and rebar3 ship hex_core with prefixed module names (mix_hex_erl_tar and r3_hex_erl_tar). These copies contain the same code and do not call stdlib's erl_tar, so they are affected on any OTP version. OTP 28 is not affected, but an application running on OTP 28 is affected if it extracts archives through an affected version of hex_core, Hex or rebar3. This issue affects OTP from OTP 29.0 before OTP 29.1.2, corresponding to stdlib from 8.0 before 8.1.1, and rebar3 from 3.27.1 onward, and hex from 2.4.2 onward; hex_core: from 0.14.0 onward.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96596">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>6ad49fb6bd800a1072ef1877af5572b9</td>
        <td>CVE-2026-94200</td>
-       <td>2026-10-14 17:20:21 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:21</td>
        <td>Improper Validation of Consistency within Input vulnerability in Erlang OTP ssl (tls_handshake_1_3, ssl_handshake and tls_client_ticket_store modules) allows a malicious TLS 1.3 server to cause a denial of service of the ssl application on the client node. The TLS 1.3 client decodes the extensions of a NewSessionTicket message as if they came from EncryptedExtensions. It therefore accepts a 0-length early_data extension, a form that is only valid in ClientHello and EncryptedExtensions. With {session_tickets, auto}, the client stores the ticket in the node-global tls_client_ticket_store. On the next automatic resumption, tls_handshake_1_3:get_max_early_data/1 crashes the store with a case_clause. Repeated crashes can exceed the restart intensity of the ssl supervisors, which use the rest_for_one strategy, and take down ssl for all connections on the node. This issue affects OTP from OTP 23.3 before OTP 27.3.4.19, OTP 28.5.0.8, and OTP 29.1.2, corresponding to ssl from 10.3 before 11.2.12.14, 11.6.0.7, and 11.7.8.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94200">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>14767b77d1c4d75a662e285602c9dd9a</td>
        <td>CVE-2026-93637</td>
-       <td>2026-10-14 17:20:21 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:21</td>
        <td>An authentication rate-limit bypass in Zimbra Collaboration Suite 10.1.0 through 10.1.21 allows unauthenticated attackers to make repeated password guesses through GraphQL without incrementing Zimbra’s source-IP failure counter. GraphQL aliases allow multiple authentication attempts in one HTTP request.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93637">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>882370957d815f89231f1126a7f87dbc</td>
        <td>CVE-2026-93635</td>
-       <td>2026-10-14 17:20:21 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:21</td>
        <td>LDAP filter injection in Zimbra Collaboration Suite 10.1.0 through 10.1.21 allows unauthenticated attackers to alter external LDAP search filters. On domains using search-filter authentication and lazy provisioning, this creates a password oracle for external directory users. Authenticated S/MIME lookups can also return certificates and identity data for unintended directory entries.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93635">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>6b0e816b1088435fe99bb337632713a1</td>
        <td>CVE-2026-92153</td>
-       <td>2026-10-14 17:20:21 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:21</td>
        <td>F´ (F Prime) is a framework that enables development and deployment of spaceflight and other embedded software applications. Prior to 4.3.0, Svc::FileUplink handling of Fw::FilePacket::StartPacket destination paths FileUplink copies the packet-controlled destinationPath and opens it for writing without canonicalization or confinement to an upload directory. When a peer able to send file-uplink packets supplies an absolute, traversing, or otherwise attacker-selected writable destination path, files can be created or overwritten at attacker-selected writable filesystem locations, affecting integrity and potentially availability. This issue is fixed in version 4.3.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-92153">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>1894cfe7269e648b2f0863494201b389</td>
        <td>CVE-2026-92151</td>
-       <td>2026-10-14 17:20:20 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:20</td>
        <td>F´ (F Prime) is a framework that enables development and deployment of spaceflight and other embedded software applications. Prior to 4.2.0, Svc::Ccsds::SpacePacketDeframer dataIn_handler is vulnerable because the handler treats the minimum packet-length condition as FW_ASSERT rather than rejecting and returning the buffer. When a CCSDS telecommand frame leaves a payload of six bytes or fewer after TcDeframer removes its header and trailer, the assertion aborts or resets the flight-software process, causing denial of service. This issue is fixed in version 4.2.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-92151">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>51945d4dc85fb4de1532fb33788a12cb</td>
        <td>CVE-2026-86565</td>
-       <td>2026-10-14 17:20:05 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:05</td>
        <td>A flaw was found in DPDK lib/vhost. A guest can desynchronize virtqueue size from inflight descriptor table size, causing an out-of-bounds write in the host vhost process.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86565">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>530a06d0be4de93a947387afad6cd5c5</td>
        <td>CVE-2026-86563</td>
-       <td>2026-10-14 17:20:05 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:05</td>
        <td>A flaw was found in DPDK lib/vhost. A double-offset bug in vhost log mapping calculation can lead to incorrect memory access.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86563">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>3ff57893c7e06758a5e7b22fd28ce217</td>
        <td>CVE-2026-86562</td>
-       <td>2026-10-14 17:20:05 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:20:05</td>
        <td>A flaw was found in DPDK lib/vhost. A TOCTOU double-fetch of control-queue descriptors allows a heap buffer overflow with attacker-controlled content in the VDUSE control-queue handler.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-86562">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>b18cd045f4ab46628d1c4a2107e812b2</td>
        <td>CVE-2026-77564</td>
-       <td>2026-10-14 17:19:11 <img src="imgs/new.gif" /></td>
+       <td>2026-10-14 17:19:11</td>
        <td>Talos Linux is a Linux distribution built for Kubernetes deployments. Prior to 1.12.9 and 1.13.3, talosctl support includes the auth field from resources/registryconfigs.cri.talos.dev.yaml and sensitive content from etcfilespecs.files.talos.dev.yaml in generated support bundles instead of marking or redacting those resources. An operator who shares a bundle with an unintended party can therefore disclose private registry authentication parameters, with impact depending on the registry's network exposure and credential privileges. Talos 1.14 and later encrypt support bundles by default, which reduces but does not replace the need for redaction. This issue is fixed in versions 1.12.9 and 1.13.3.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77564">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>aa07d2969506bc10d087f642ae87c2dd</td>
-       <td>CVE-2026-94603</td>
-       <td>2026-10-13 17:17:49</td>
-       <td>Podman is a tool for managing OCI containers and pods. From 4.4.0 until 5.8.8 and 6.1.3, podman run treats an image carrying the io.podman.annotations.checkpoint.runtime.name annotation as a checkpoint and silently ignores user-supplied container creation restrictions such as --cap-drop=ALL, allowing image-controlled checkpoint state to select weaker sandbox settings and capabilities. Rootless containers are not affected because checkpoint and restore are unavailable in that mode. This issue is fixed in versions 5.8.8 and 6.1.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-94603">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1f9afb297084bf2f5f50d8bab77e6b0</td>
-       <td>CVE-2026-88838</td>
-       <td>2026-10-13 17:17:48</td>
-       <td>A flaw was found in BusyBox's mount utility. A non-root user can bypass mount security restrictions set in /etc/fstab by specifying clearing-mask options on the command line. These options pass the non-root flag filter and are merged with fstab options as strings; when the combined options are re-parsed, clearing options can override nosuid, nodev, and noexec protections the administrator intended to enforce.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88838">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>1f1f935041622a735f7d02a35f9663ad</td>
-       <td>CVE-2026-88834</td>
-       <td>2026-10-13 17:17:48</td>
-       <td>A flaw was found in BusyBox's httpd web server. When configured with system password authentication, a user existence oracle may exist in certain build configurations. An attacker could distinguish existing from non-existing usernames by observing authentication failure behavior. Impact is limited to username enumeration and requires non-default compile options or uncommon password file states; default BusyBox builds with shadow password support are not affected.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88834">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a8d57b2fe5d56fce13ee7f26c7168284</td>
-       <td>CVE-2026-88833</td>
-       <td>2026-10-13 17:17:48</td>
-       <td>A flaw was found in BusyBox's udhcpc DHCP client. When processing raw DHCP packets, the client replaces the validated packet length with an attacker-controlled value from the IP header without re-validating the minimum size. This leads to an integer underflow when subtracting header sizes, causing a subsequent memory copy with a massively oversized length. An attacker on the same network segment can send a specially crafted packet to crash the DHCP client, resulting in denial of service and loss of network connectivity.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-88833">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>487e6414413063b1c988b1bf65aa85ac</td>
-       <td>CVE-2026-85990</td>
-       <td>2026-10-13 17:17:47</td>
-       <td>Leantime is an open source project management system. Prior to 3.10.0, for the provisionally grouped account-creation and plugin-management surfaces, Leantime's JSON-RPC dispatcher in app/Domain/Api/Controllers/Jsonrpc.php exposes public API service methods, while PermissionEnforcer::enforce allows methods that lack a RequiresPermission attribute. A low-privilege authenticated user with an ordinary browser session can send the required X-Requested-With: XMLHttpRequest header and call leantime.rpc.api.api.createApiKeyWithProjects, which reaches Api::createApiKeyWithProjects, with an attacker-chosen role to create an interactive administrator account. The same missing per-method authorization exposes Plugins::installPlugin, Plugins::enablePlugin, Plugins::disablePlugin, and Plugins::removePlugin to ordinary authenticated users, permitting unauthorized plugin management. The complete provisionally grouped issue is fixed in version 3.10.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85990">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>071129a407fd131415435490c190426c</td>
-       <td>CVE-2026-85733</td>
-       <td>2026-10-13 17:17:47</td>
-       <td>FrankenPHP is a modern application server for PHP. Prior to 1.12.5, the official FrankenPHP Debian and Alpine Docker images include a default /app/public/index.php that executes phpinfo(). A derived image that does not overwrite this placeholder serves the diagnostics page in production and can disclose environment variables used for secrets, PHP configuration directives, loaded extensions, software versions, and system paths. Images built using the documented pattern with their own /app/public/index.php are not affected, and already derived images must be rebuilt or supplied with an application index to remove the exposed placeholder. This issue is fixed in version 1.12.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85733">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>960544f2aacbcdcf92ecb487b9e8fa01</td>
-       <td>CVE-2026-82416</td>
-       <td>2026-10-13 17:17:47</td>
-       <td>FrankenPHP is a modern application server for PHP. Prior to 1.12.5, FrankenPHP worker mode can retain PHP session state between requests when the session extension is loaded as a shared module and is unavailable through HAVE_PHP_SESSION at compile time. In this build configuration, frankenphp_reset_session_state() is compiled out, PS(id) can survive a request boundary, and a subsequent session_start() can ignore the new request's cookie because an identifier is already present. Under concurrent requests, session_id() can therefore return another client's identifier or a stale identifier from a previous request on the same worker thread, causing cross-user session exposure, possible session hijacking, and intermittent logout behavior. Builds with the session extension statically linked, including the official static binaries and Docker images, are not affected. This issue is fixed in version 1.12.5.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82416">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55da5b4d671648f8bdeb90a6c6f4fe02</td>
-       <td>CVE-2026-78799</td>
-       <td>2026-10-13 17:17:46</td>
-       <td>Directory Traversal vulnerability in Quanxun Huiju Network Technology (Beijing) Co., Ltd IK-Q3000 Enterprise-grade Wi-Fi 6 wireless router Enterprise Edition: <= iKuai8_3.7.23_Enterprise Build 202606021825 - Free Edition: <= iKuai 8_4.0.304-beta allows a remote attacker to execute arbitrary code.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78799">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>3c40c3a672196df627103c3472a0ffe3</td>
-       <td>CVE-2026-77459</td>
-       <td>2026-10-13 17:17:46</td>
-       <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. From 2.10.0 until 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2, Argo CD creates PostDelete resource hooks without applying the AppProject destination and resource authorization checks used during ordinary synchronization. The omitted checks include cluster-scoped and namespaced resource allow/deny lists. A user who can write to an Application's Git repository can commit a delete hook targeting a forbidden namespace, server, group, kind, or resource name, and deletion of the Application causes the application-controller to create that resource with its destination-cluster credentials. The reachable impact is bounded by the controller's cluster access but can include cluster-scoped resources, disallowed namespaces, persistent hook objects, and secondary objects created by a hook Job. PreSync, Sync, PostSync, and SyncFail hooks continue to use the normal project checks. This issue is fixed in versions 3.3.15, 3.4.10, 3.5.4, and 3.6.0-rc2.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77459">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>5ae89c444c900e011ba09dd5a58856d5</td>
-       <td>CVE-2026-69227</td>
-       <td>2026-10-13 17:17:45</td>
-       <td>A flaw in Portal for ArcGIS allows unauthenticated access to certain /portaladmin/local API endpoints under specific conditions. This could enable an attacker to access administrative functionality that should require authentication.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-69227">详情</a></td>
       </tr>
 
      </tbody>
