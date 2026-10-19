@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-17 22:58:50 -->
+<!-- RELEASE TIME : 2026-10-19 04:11:35 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>62c050b077bd2e9311ecad05111b2485</td>
+       <td>CVE-2026-97859</td>
+       <td>2026-10-18 19:16:33 <img src="imgs/new.gif" /></td>
+       <td>Seven Gitea API routes under `/api/v1/users/{username}` (followers, following, following/{target}, starred, subscriptions, keys and gpg_keys) were registered without the `individualPermsChecker` middleware that enforces the visibility of the target user. An authenticated user could therefore read the followers, following list, starred and watched repositories and public SSH and GPG keys of a user with limited or private visibility, whom they could not otherwise see. The issue was fixed in 1.27.3 and 28.0.0 and disclosed with 28.2.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97859">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>02ef543975d748f284ab5ad7805fe765</td>
+       <td>CVE-2026-97204</td>
+       <td>2026-10-18 19:16:33 <img src="imgs/new.gif" /></td>
+       <td>Deleting a label compared the ID of the repository in the request against the organization ID of organization labels, and the two ID sequences overlap. A user with write access to the issues of a repository could therefore delete the labels of an organization that has the same numeric ID as that repository. Labels are now deleted only within their own repository or organization.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97204">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>17f9262ab27905d6b80746d2afa09a27</td>
+       <td>CVE-2026-110494</td>
+       <td>2026-10-18 19:16:33 <img src="imgs/new.gif" /></td>
+       <td>Adding attachments to a release checked the repository and release of an attachment but not whether it was already linked to an issue or comment. A user with write access to the releases of a repository, who knew the UUID of an attachment in that repository, could link it to a release. This exposed the file name, size and download count of the attachment through the release and allowed the user to rename or delete it.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-110494">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>a6572db928c2fa8b4877f33f626fe39c</td>
+       <td>CVE-2026-110324</td>
+       <td>2026-10-18 19:16:33 <img src="imgs/new.gif" /></td>
+       <td>The visibility check of Gitea user profiles was applied to GET requests only, while `POST /{username}` (follow and unfollow) required only a signed-in user. Any authenticated user could therefore obtain the full name, location, website and description of a user with a private profile from the response. The issue was fixed in 28.1.0 and disclosed with 28.2.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-110324">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9eedda1e07774e47fe9d26accc3200b4</td>
+       <td>CVE-2026-110311</td>
+       <td>2026-10-18 19:16:33 <img src="imgs/new.gif" /></td>
+       <td>Creating a draft release through the API returned an `assets` list that was built from a release without an ID, which matched every attachment that was not linked to a release. A user who could create a draft release in a repository therefore received the metadata (file name, UUID, upload time, size and download count) of issue and comment attachments of repositories they could not read, and of abandoned uploads.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-110311">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>13fe1ef5fb13c85b4c4ae293a6643dc3</td>
+       <td>CVE-2026-109844</td>
+       <td>2026-10-18 19:16:33 <img src="imgs/new.gif" /></td>
+       <td>`GET /api/v1/user/subscriptions` returned the metadata of every repository a user was watching without checking that the user still had access to it. A user who watched a private repository while having access, and later lost it, for example through a team permission downgrade, could still read its name, description, clone URLs, owner and counters. The issue was fixed in 1.27.0 and 28.0.0 and disclosed with 28.2.0.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-109844">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3bf84c059ab8864dce28f91afbf11956</td>
+       <td>CVE-2026-109553</td>
+       <td>2026-10-18 19:16:32 <img src="imgs/new.gif" /></td>
+       <td>Gitea resolved the principals of an SSH certificate by searching the content of all stored public keys instead of only principal keys. When Gitea trusts a user certificate authority (`SSH_TRUSTED_USER_CA_KEYS`) and accepts arbitrary principals (`SSH_AUTHORIZED_PRINCIPALS_ALLOW=anything`), a user could register another user's public key line as their own principal, or a holder of a certificate signed by that authority could list it, and then authenticate as the owner of that key through the HTTP signature API and the built-in SSH server. Instances that do not trust a user certificate authority are not affected.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-109553">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d5a49266ccaa2232ab513f3950a38564</td>
+       <td>CVE-2026-107686</td>
+       <td>2026-10-18 19:16:32 <img src="imgs/new.gif" /></td>
+       <td>The Gitea web handlers for adding and removing reactions on issues and comments did not refuse locked issues for users without write access, although the API did. A signed-in user who could read an issue could therefore add or remove reactions on a locked issue and its comments, bypassing the interaction restriction of the lock. Only reactions were affected; no content could be changed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107686">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>d07ec5f484c833e56316ac96827de31e</td>
+       <td>CVE-2026-107618</td>
+       <td>2026-10-18 19:16:32 <img src="imgs/new.gif" /></td>
+       <td>`POST /{owner}/{repo}/topics` was registered without the sign-in middleware that provides the cross-origin protection, so a request issued by a third-party site was not rejected. A repository administrator who visited a malicious page could have the topics of their repository changed. No other repository settings were reachable through this route.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107618">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>5413589428b393e500d306902d421e46</td>
+       <td>CVE-2026-105964</td>
+       <td>2026-10-18 19:16:32 <img src="imgs/new.gif" /></td>
+       <td>The Gitea Actions artifact v4 (Twirp) handlers read the whole request body into memory without a size limit. A user who can run a workflow and obtains the runner token of that run could send an oversized request to the artifact service and exhaust the memory of the server, which terminates the Gitea process. The request body is now limited to 1 MiB.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-105964">详情</a></td>
+      </tr>
+
+      <tr>
        <td>4fe9233a3c64cbe365ff68a9dff009a9</td>
        <td>CVE-2026-111934</td>
-       <td>2026-10-17 19:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:36</td>
        <td>Coder before 2.34.7 contains an IP spoofing vulnerability in the ExtractRealIPAddress middleware that trusts the leftmost, client-supplied X-Forwarded-For value instead of the client IP appended by a reverse proxy. Attackers can send forged X-Forwarded-For values through appending proxies to bypass per-IP rate limits on login, one-time passcode, and password validation endpoints, enabling brute-force attacks, and to falsify IP addresses recorded in audit logs.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111934">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>b65bd3c04c23235330d13bafa33448f0</td>
        <td>CVE-2026-111933</td>
-       <td>2026-10-17 19:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:36</td>
        <td>Coder before 2.29.17, 2.30.0 before 2.32.7, 2.33.0 before 2.33.8, and 2.34.0 before 2.34.2 contains a user enumeration vulnerability because userpassword.Compare() substitutes a placeholder hash derived from the string "hunter2" when a stored password hash is empty. Unauthenticated attackers can submit logins with the password "hunter2" and distinguish HTTP 403 from 401 responses to enumerate valid accounts and reveal the authentication provider of SSO-only users.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111933">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>e72a2285eb14a7e863dab3d83d6c109d</td>
        <td>CVE-2026-111932</td>
-       <td>2026-10-17 19:16:36 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:36</td>
        <td>Coder before 2.29.17, 2.30.0 before 2.32.7, 2.33.0 before 2.33.8, and 2.34.0 before 2.34.2 contains a stored HTML injection vulnerability because the ApplicationName and LogoURL appearance settings are rendered into HTML output without sufficient escaping. Attackers with the Owner role can store HTML markup in these settings that renders in the Coder dashboard and in SMTP notification emails sent to other deployment users.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111932">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>095ec06e78f25276446c0bcc161db3c4</td>
        <td>CVE-2026-111930</td>
-       <td>2026-10-17 19:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:35</td>
        <td>Coder from 2.26.0 before 2.34.8 contains an incorrect authorization flaw in the GET /api/v2/workspaces/{id}/acl endpoint, which checks only workspace read access and then fetches group members using an elevated system context. Authenticated users granted workspace use access can query the endpoint to harvest group members' emails, login types, status, and last-seen and creation timestamps.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111930">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>39905c32d44d2b750dfa077962c6d03a</td>
        <td>CVE-2026-111929</td>
-       <td>2026-10-17 19:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:35</td>
        <td>Coder from 2.30.0 before 2.34.8 contains an authorization bypass vulnerability in the provisioner daemon DownloadFile gRPC handler that allows authenticated provisioner daemons to download other organizations' cached Terraform module archives. Attackers with an org-scoped provisioner key and a known file UUID can retrieve module source code exposing infrastructure topology or embedded secrets.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111929">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>73284b49226f72d9f44ed6559ff66726</td>
        <td>CVE-2026-111928</td>
-       <td>2026-10-17 19:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:35</td>
        <td>Coder from 2.0.0 before 2.34.8 contains an incorrect authorization vulnerability in the acl_allow rule of coderd/rbac/policy.rego, which does not verify organization membership for per-user ACL entries, and organization member removal does not scrub those entries. Authenticated users removed from an organization can keep accessing previously granted org-scoped resources such as templates and workspaces via the API.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111928">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>110665a5ea27addc6062c04205b40247</td>
        <td>CVE-2026-111926</td>
-       <td>2026-10-17 19:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:35</td>
        <td>Coder from 2.10.0 before 2.34.8 has an unauthenticated agent debug HTTP server on 127.0.0.1:2113 whose /debug/manifest handler returns the full agent manifest, including template-provided environment variable values. A lower-privileged Unix user or process in the same workspace can query this endpoint to read credentials such as cloud keys or registry tokens.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111926">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>454489c0bc7a94c49dca3548ca7661d3</td>
        <td>CVE-2026-111924</td>
-       <td>2026-10-17 19:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:35</td>
        <td>Fleet before 4.83.0 contains a denial of service vulnerability that allows unauthenticated attackers to exhaust server memory by sending gzip-compressed request bodies. Attackers can send small, highly compressed requests with Content-Encoding: gzip to unauthenticated endpoints that expand during decoding, crashing the entire Fleet instance.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111924">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>419319fa14478c993864b649612ae20c</td>
        <td>CVE-2026-111923</td>
-       <td>2026-10-17 19:16:35 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:35</td>
        <td>Fleet before 4.89.0 contains an unbounded recursion vulnerability in Apple MDM enrollment property list parsing that allows unauthenticated attackers to crash the server. Attackers can send a crafted binary plist payload of about 150 bytes to the enrollment endpoints, triggering exponential allocation or infinite recursion that exhausts CPU and memory.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111923">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>081bf20d17d82e232d568d7e91979b66</td>
        <td>CVE-2026-111922</td>
-       <td>2026-10-17 19:16:34 <img src="imgs/new.gif" /></td>
+       <td>2026-10-17 19:16:34</td>
        <td>Vikunja from 2.2.0 before 2.7.0 contains a permissive CORS configuration that trusts every localhost and 127.0.0.1 port with credentials, even when service.publicurl is set. Attackers controlling a page on any localhost port can send a credentialed request to the token refresh endpoint and read the returned bearer JWT to take over the logged-in user's account.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-111922">详情</a></td>
       </tr>
@@ -366,7 +446,7 @@
       <tr>
        <td>f6c38b8fcf3a2cc0ab88d9c7b4a8f6e9</td>
        <td>CVE-2026-96425</td>
-       <td>2026-10-16 16:22:52 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:22:52</td>
        <td>Incorrect DBus policy for lomiri-download-manager allows arbitrary user to run arbitrary command as root over DBus</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96425">详情</a></td>
       </tr>
@@ -374,7 +454,7 @@
       <tr>
        <td>9eb5da6e2af9f8f615ce61a8938009e7</td>
        <td>CVE-2026-96424</td>
-       <td>2026-10-16 16:22:52 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:22:52</td>
        <td>Incorrect DBus policy for lomiri-upload-manager (part of lomiri-download-manager) allows arbitrary user to read arbitrary file as root over DBus</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96424">详情</a></td>
       </tr>
@@ -382,7 +462,7 @@
       <tr>
        <td>f63114de90d1c1186d65f67f36fa061c</td>
        <td>CVE-2026-95859</td>
-       <td>2026-10-16 16:22:44 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:22:44</td>
        <td>libp2p-rust is the official Rust language implementation of the libp2p networking stack. Prior to 0.49.5, Gossipsub GRAFT control-message handling unconditionally adds attacker-supplied topic hashes to connected_peer.topics without confirming that the peer previously subscribed to those topics. A remote unauthenticated peer that can reach a Gossipsub listener can repeatedly send novel GRAFT topics, causing cumulative per-peer memory growth that is not bounded by subscription filters, peer scoring, or per-message size limits. This can exhaust process memory and cause a denial of service. This issue is fixed in version 0.49.5.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-95859">详情</a></td>
       </tr>
@@ -390,7 +470,7 @@
       <tr>
        <td>4d6268ad5dd5a184403fd34bdd008b79</td>
        <td>CVE-2026-92263</td>
-       <td>2026-10-16 16:22:43 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:22:43</td>
        <td>SparkyFitness is a self-hosted, AI-powered health and fitness tracker for families. Prior to 1.6.0, the api/admin/backup/restore endpoint interpolates an uploaded filename into a shell command. An authenticated global administrator uploads a restore archive with a crafted filename. The administrator can supply a restore archive with a filename containing shell metacharacters. Successful exploitation can execute arbitrary operating-system commands with the server process privileges. This issue is fixed in version 1.6.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-92263">详情</a></td>
       </tr>
@@ -398,7 +478,7 @@
       <tr>
        <td>b458b66b0c71c4bed41c1735f54c7353</td>
        <td>CVE-2026-77630</td>
-       <td>2026-10-16 16:21:03 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:21:03</td>
        <td>pupnp is an SDK for development of UPnP device and control point applications. Prior to 22.0.4, parse_hostport in upnp/src/genlib/net/uri/uri.c synchronously calls getaddrinfo while parse_uri is processing attacker-supplied hostnames from inbound HTTP request targets in upnp/src/genlib/net/http/httpparser.c and GENA SUBSCRIBE CALLBACK headers handled by create_url_list in upnp/src/gena/gena_device.c. A remote unauthenticated peer can choose a slow or nonresponsive hostname and block a bounded miniserver worker for the resolver timeout, allowing a small number of requests to exhaust the thread pool and deny UPnP service. This issue is fixed in 22.0.4.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77630">详情</a></td>
       </tr>
@@ -406,7 +486,7 @@
       <tr>
        <td>8cc7c6f798bb972a5f9d9a6ae3945077</td>
        <td>CVE-2026-68908</td>
-       <td>2026-10-16 16:20:01 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:20:01</td>
        <td>libIEC61850 is an open-source implementation of IEC 61850 client and server protocols including MMS, GOOSE, Sampled Values, and R-Session. Prior to 1.6.2, Reporting_RCBWriteAccessHandler accepts an RptID longer than 129 bytes in the report-control-block write path. When GI later causes sendNextReportEntrySegment to serialize the report, the function wraps rptIdBuf[130] as a temporary MmsValue and passes it to MmsValue_setVisibleString. The setter's resize path frees the stack-backed buffer, allowing a remote client to trigger an invalid free and server crash by writing the oversized RptID and then generating a report. This issue is fixed in version 1.6.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68908">详情</a></td>
       </tr>
@@ -414,7 +494,7 @@
       <tr>
        <td>b98d724942172cb879fbd38aea4dcc69</td>
        <td>CVE-2026-68907</td>
-       <td>2026-10-16 16:20:00 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:20:00</td>
        <td>libIEC61850 is an open-source implementation of IEC 61850 client and server protocols including MMS, GOOSE, Sampled Values, and R-Session. Prior to 1.6.2, checkDataSetAccess reverses the source and destination arguments to StringUtils_copyStringToBuffer while constructing an MMS_ASSOCIATION_SPECIFIC dataset reference. The helper treats uninitialized dataSetRef[130] storage as a source string, causing strlen to read beyond the stack buffer, and then copies those bytes into the caller-owned listName buffer. A remote defineNamedVariableList request can crash servers that have dynamic dataset service enabled and a dataset access handler installed; the advisory also observes caller stack corruption but establishes denial of service as the primary impact. This issue is fixed in version 1.6.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68907">详情</a></td>
       </tr>
@@ -422,7 +502,7 @@
       <tr>
        <td>ccdeee458ef443eb19a87b510f856d30</td>
        <td>CVE-2026-68906</td>
-       <td>2026-10-16 16:20:00 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:20:00</td>
        <td>libIEC61850 is an open-source implementation of IEC 61850 client and server protocols including MMS, GOOSE, Sampled Values, and R-Session. Prior to 1.6.2, parseUserInformation in src/mms/iso_acse/acse.c checks len for zero before validating the negative bufPos returned by BerDecoder_decodeLength for a truncated long-form length. The continue path therefore swallows the error, reads buffer[-1], resets parsing to the beginning, and repeats the same malformed state. An unauthenticated remote peer can send a malformed AARE PDU during association to cause an infinite CPU loop under a normal allocator or a one-byte out-of-bounds read and process abort when the preceding byte is inaccessible. This issue is fixed in version 1.6.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-68906">详情</a></td>
       </tr>
@@ -430,7 +510,7 @@
       <tr>
        <td>5a48ccfa69894e6cc0f672abd7ea41e4</td>
        <td>CVE-2026-57488</td>
-       <td>2026-10-16 16:18:44 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:18:44</td>
        <td>pupnp is an SDK for development of UPnP device and control point applications. Prior to 2.0.2, raw_to_int in upnp/src/genlib/net/http/httpparser.c parses Content-Length with strtol and casts the resulting long to a 32-bit int before the caller stores it as unsigned int. On LP64 systems, values greater than INT_MAX can truncate or wrap, so the HTTP parser can accept a body length different from the declared value. A remote adjacent-network peer can use the resulting parser disagreement to leave bytes to be interpreted as another request in persistent or proxied contexts, or can make a worker wait for an extremely large body and cause denial of service. This issue is fixed in 2.0.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57488">详情</a></td>
       </tr>
@@ -438,89 +518,9 @@
       <tr>
        <td>5173d20fcab46177b76b26e84d3a8113</td>
        <td>CVE-2026-57487</td>
-       <td>2026-10-16 16:18:44 <img src="imgs/new.gif" /></td>
+       <td>2026-10-16 16:18:44</td>
        <td>pupnp is an SDK for development of UPnP device and control point applications. Prior to 2.0.2, Transfer-Encoding: chunked causes the HTTP parser in upnp/src/genlib/net/http/httpparser.c to leave parser->content_length at zero while parser_parse_chunky_entity and parser_parse_chunky_body accumulate decoded bytes in parser->msg.entity. The g_maxContentLength checks in http_RecvMessage in upnp/src/genlib/net/http/httpreadwrite.c therefore reject oversized numeric Content-Length bodies but do not enforce the same limit on decoded chunked bodies. A remote peer that can reach a SOAP, GENA, miniserver, or control-point HTTP response path can make the process buffer an entity larger than the configured maximum, causing resource exhaustion and denial of service. This issue is fixed in 2.0.2.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-57487">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>441af0b04a499fc1ce1d8392f0e21f30</td>
-       <td>CVE-2026-93953</td>
-       <td>2026-10-15 17:59:52</td>
-       <td>The Backuply – Backup, Restore, Migrate and Clone plugin for WordPress is vulnerable to SQL Injection via the Biographical Info field (second-order, via restore) in all versions up to, and including, 1.5.8 due to insufficient escaping on the user supplied parameter and the lack of sufficient preparation on an existing SQL query. Backuply exports the Biographical Info value verbatim inside an INSERT statement written to the backup's SQL dump (wp_usermeta). When an Administrator later restores such a backup, the crafted payload breaks out of that INSERT statement and appends attacker-controlled SQL that executes with full database privileges. This makes it possible for authenticated attackers, with subscriber-level access and above, to write arbitrary data to the database — in particular to update the default_role option in wp_options to administrator (and enable open user registration) — so that a subsequently registered account is automatically granted the Administrator role, resulting in privilege escalation and full site takeover. Because the injection executes inside an INSERT during restore with no response returned to the attacker, the primitive is used to modify database records rather than to read existing data directly.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-93953">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>dde7dd1babcf00f0b5c4b2b12063fc70</td>
-       <td>CVE-2026-85634</td>
-       <td>2026-10-15 17:17:29</td>
-       <td>A flaw was found in the ContentRepositoryImpl.copyExplodedContent function of the wildfly-core library, which is used by WildFly and JBoss EAP to manage server deployments. The issue occurs when the library processes an unsanitized deployment name. Due to a missing containment check, an attacker with the Deployer RBAC role can use path traversal sequences to access files outside the restricted deployment directory. This can allow the attacker to delete arbitrary directories or create files with arbitrary content, leading to a full privilege escalation to the management SuperUser role.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-85634">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>55440f42aeb17b9bfbd9629f8c85fa7f</td>
-       <td>CVE-2026-78851</td>
-       <td>2026-10-15 17:17:28</td>
-       <td>Directory Traversal vulnerability in Grav CMS 2.0.3 through 2.0.6 allows a remote attacker to obtain sensitive information via the GravExtension.php and the mediaDirFunc method.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78851">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>38462ed3f0aa6920e3a2c727e91bdad3</td>
-       <td>CVE-2026-78850</td>
-       <td>2026-10-15 17:17:28</td>
-       <td>An issue in Matomo v.5.11.2 allows a remote attacker to obtain sensitive information via the SiteContentDetector / SitesManager component</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-78850">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>958dce2a213ac4d0a050b84406cc1b89</td>
-       <td>CVE-2026-77470</td>
-       <td>2026-10-15 17:17:27</td>
-       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.1, the Supporter or Pro webshop POST /api/v2/Shop/Checkout/Process flow accepts an unrestricted additional_data array and CheckoutService::preparePurchaseParameters() merges it after server-computed purchase parameters. Because later string keys overwrite earlier keys, an unauthenticated buyer can replace amount, currency, returnUrl, cancelUrl, or transactionId before CheckoutService::processPayment() passes the parameters to a non-PayPal Omnipay gateway. An attacker can therefore make a gateway accept a successful payment for an attacker-selected amount and obtain auto-fulfilled goods while underpaying the merchant. The issue requires an enabled webshop, a purchasable item, and an affected Omnipay gateway. This issue is fixed in version 7.7.1.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77470">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>6d9a52b38e2fe2b360a617ed7c3ab008</td>
-       <td>CVE-2026-77468</td>
-       <td>2026-10-15 17:17:27</td>
-       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.0, GET /docs/api exposes the Scramble-generated OpenAPI documentation configured by config/scramble.php to unauthenticated callers after installation, with observed response size and latency suggesting that the schema is regenerated without an application-level cache. A remote attacker can repeatedly request the unthrottled route to consume server CPU and obtain a detailed map of the API surface and parameter schema. This issue is fixed in version 7.7.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77468">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>0d7a2bc7c167f7669b2ba35a2f7f3975</td>
-       <td>CVE-2026-77467</td>
-       <td>2026-10-15 17:17:27</td>
-       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.0, Lychee enables ImageMagick PDF support with Ghostscript but does not apply an effective pre-render limit to PDF page dimensions in ImagickHandler::loadPdf(). An authenticated user who can upload a small PDF with an oversized /MediaBox can cause Imagick::readImage() to consume substantial CPU before failing to produce an image. When QUEUE_CONNECTION selects synchronous processing the request can occupy a web worker, while the official asynchronous Docker configuration can clog the shared image-processing queue and delay other work. The advisory did not identify a Ghostscript sandbox escape. This issue is fixed in version 7.7.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77467">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9e79d6bd957b6578eb554357689ebe01</td>
-       <td>CVE-2026-77466</td>
-       <td>2026-10-15 17:17:27</td>
-       <td>Lychee is a free, open-source photo-management tool. Prior to 7.7.0, Lychee hides the Omnipay Dummy test provider from the checkout options in production through OmnipayFactory::get_supported_providers(), but CreateSessionRequest validates only that the submitted provider is an OmnipayProviderType and does not enforce OmnipayProviderType::isAllowed(). A buyer, including a guest when webshop_allow_guest_checkout is enabled, can submit Dummy directly and complete the test gateway flow without a real payment. When webshop_auto_fulfill_enabled is enabled, OrderCompletedListener::fullfillOrder() can then release the purchasable item. The issue requires access to the Supporter or Pro webshop and an enabled purchasable item. Testing bypassed the closed-source license middleware, so whether the real license layer performs additional payment-provider validation remains unverified. The payment finalize status check itself is not the root cause. This issue is fixed in version 7.7.0.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-77466">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>a845b82add9312cd498ac327cf8ff637</td>
-       <td>CVE-2026-62679</td>
-       <td>2026-10-15 17:17:26</td>
-       <td>Lychee is a free, open-source photo-management tool. Prior to 7.6.4, SecurePathController, which serves GET /image/{path}, concatenates the attacker-controlled path with the local storage root and performs a string-prefix check before canonicalizing dot segments. Under the supported non-default configuration with temporary_image_link_enabled enabled, temporary_image_link_when_logged_in disabled, and secure_image_link_enabled disabled, any authenticated user can submit encoded traversal segments that pass the prefix check and are later resolved by filesystem operations. This permits reading files available to the web process, including application configuration and other users' private images, and disclosed APP_KEY or database credentials can enable further compromise. This issue is fixed in version 7.6.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-62679">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fdce6200859d81005f040e0fe9483f4b</td>
-       <td>CVE-2026-61838</td>
-       <td>2026-10-15 17:17:26</td>
-       <td>Lychee is a free, open-source photo-management tool. Prior to 7.6.3, GET /api/v2/Zip authorizes album and photo archives through AlbumPolicy::canDownload() and PhotoPolicy::canDownload() without first enforcing AlbumPolicy::canAccess(). For a public, password-protected album with grants_download enabled, an unauthenticated attacker who knows the shared album identifier can download a ZIP archive without supplying the password or unlocking the album, even though browsing endpoints deny access. The archive exposes the album's photos and can include full-resolution originals and associated metadata when grants_full_photo_access is enabled. This issue is fixed in version 7.6.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-61838">详情</a></td>
       </tr>
 
      </tbody>
