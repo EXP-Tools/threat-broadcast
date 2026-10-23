@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-22 04:14:19 -->
+<!-- RELEASE TIME : 2026-10-23 04:18:08 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,9 +284,89 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>21c78c9b3e8790a302a9259b02d19b95</td>
+       <td>CVE-2026-92450</td>
+       <td>2026-10-22 23:20:33 <img src="imgs/new.gif" /></td>
+       <td>The authentication framework used by affected Kiloview E3 NDI encoder firmware signs session JSON Web Tokens using an HMAC-SHA256 secret hardcoded as a static string within the firmware image, identical across all deployed devices. An attacker with access to the publicly distributed firmware can recover this secret and forge arbitrary session tokens, including administrative tokens, without valid credentials, enabling unauthenticated access to privileged device functions.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-92450">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>575aaeabe6c4ec76ea0dcc71cc669534</td>
+       <td>CVE-2026-110825</td>
+       <td>2026-10-22 23:18:22 <img src="imgs/new.gif" /></td>
+       <td>The ONVIF device service on affected Kiloview E3 NDI encoder firmware accepts hostname, DNS, and NTP configuration write operations without requiring authentication, regardless of the device's configured authentication setting for this service. A remote, unauthenticated attacker can alter the device hostname, redirect DNS resolution, or modify the configured time source, enabling follow on attacks such as traffic interception or certificate validation bypass.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-110825">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>544a14e88b216511d1bc951c41a8bdc5</td>
+       <td>CVE-2026-110491</td>
+       <td>2026-10-22 23:18:22 <img src="imgs/new.gif" /></td>
+       <td>The ONVIF service on the E3 can be rendered unresponsive by sending malformed or incomplete requests to certain operations. The affected service stops accepting new connections while the rest of the device continues operating normally, and will recover automatically after a period. This can be triggered repeatedly by any unauthenticated party with network access to the device.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-110491">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>285f371e67e8c26da8c0fb44e37a457c</td>
+       <td>CVE-2026-110243</td>
+       <td>2026-10-22 23:18:22 <img src="imgs/new.gif" /></td>
+       <td>The network management service on affected Kiloview E3 NDI encoder firmware fails to validate the network interface name accepted by its link maintenance address configuration endpoint before passing it to a shell command, unlike sibling handlers that perform the same validation. An authenticated web user with permission to configure network settings can exploit this to execute arbitrary operating system commands as root.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-110243">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9b2109630c3e82f4d02f458a216821a0</td>
+       <td>CVE-2026-107861</td>
+       <td>2026-10-22 23:18:17 <img src="imgs/new.gif" /></td>
+       <td>The system control service on affected Kiloview E3 NDI encoder firmware fails to sanitize the hostname parameter accepted by its device naming endpoint, passing it unquoted into a shell command. An authenticated web user with access to this function can embed characters to execute arbitrary operating system commands as root, resulting in full device compromise.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-107861">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>818e82118de01352b3af83cd2af25f0f</td>
+       <td>CVE-2026-97785</td>
+       <td>2026-10-22 22:20:13 <img src="imgs/new.gif" /></td>
+       <td>Improper authentication in AAD App Proxy allows an unauthorized attacker to elevate privileges over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-97785">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>654d152c7b2aee24da21d97cc95bd663</td>
+       <td>CVE-2026-96616</td>
+       <td>2026-10-22 22:20:01 <img src="imgs/new.gif" /></td>
+       <td>Authentication tokens issued by the E3's web management interface on login are given an expiration time far beyond any reasonable session lifetime, effectively making them non-expiring. A token obtained through interception or device compromise remains valid for authenticated access for an extended period.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96616">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f4855a94fac88b235f88a784f03ab139</td>
+       <td>CVE-2026-96185</td>
+       <td>2026-10-22 22:19:53 <img src="imgs/new.gif" /></td>
+       <td>Stack-based buffer overflow in Microsoft Exchange Online allows an authorized attacker to execute code over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96185">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>0438d2f0c7fd289c5bbb391a15273ba5</td>
+       <td>CVE-2026-83938</td>
+       <td>2026-10-22 22:19:18 <img src="imgs/new.gif" /></td>
+       <td>Missing authentication for critical function in Azure Kubernetes Configuration Service allows an unauthorized attacker to elevate privileges over a network.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-83938">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6db75f3195885106fefdb59ac9c7b846</td>
+       <td>CVE-2026-115449</td>
+       <td>2026-10-22 22:18:06 <img src="imgs/new.gif" /></td>
+       <td>A flaw was found in libslirp. When handling ICMP echo requests, the reply length is not updated to match the actual data received from the host. Under specific conditions where the normal ICMP socket is unavailable, this length mismatch causes the host's real IP address to be leaked to the guest in the echo reply, breaking the NAT isolation that user-mode networking is expected to provide.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115449">详情</a></td>
+      </tr>
+
+      <tr>
        <td>a360d767d01576673ffe513d8c4c390a</td>
        <td>CVE-2026-96778</td>
-       <td>2026-10-21 21:20:33 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:33</td>
        <td>Pillow is a Python imaging library. From 9.4.0 until 13.0.0, ImagingJpegEncode() in src/libImaging/JpegEncode.c can call jpeg_write_marker() for a JPEG COM comment when an ICC profile has exactly filled the 65536-byte encoder buffer. libjpeg writes one byte before checking the exhausted free_in_buffer counter, which then wraps and permits the attacker-controlled comment and subsequent compressed image data to overwrite adjacent heap memory. Re-saving an untrusted image as JPEG while preserving its ICC profile and forwarded comment can crash the process and may enable code execution in suitable runtime and heap layouts. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96778">详情</a></td>
       </tr>
@@ -294,7 +374,7 @@
       <tr>
        <td>f6f1082781ed5ab4e3d0a073282f39e4</td>
        <td>CVE-2026-96644</td>
-       <td>2026-10-21 21:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:32</td>
        <td>Pillow is a Python imaging library. Prior to 13.0.0 on Windows, src/PIL/WmfImagePlugin.py passes unchecked 32-bit WMF or EMF dimensions to the native drawwmf handler in src/display.c. The handler sizes a DIB allocation from 16-bit-truncated bcWidth and bcHeight fields but copies pixel data using the original full dimensions. A crafted wide, short metafile can pass the pixel-count decompression-bomb check and make the Windows-only renderer read beyond the heap buffer, potentially disclosing memory or crashing the process. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96644">详情</a></td>
       </tr>
@@ -302,7 +382,7 @@
       <tr>
        <td>d17a2fcc95ecf5924bf54999837361f6</td>
        <td>CVE-2026-96643</td>
-       <td>2026-10-21 21:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:32</td>
        <td>Pillow is a Python imaging library. From 11.0.0 until 13.0.0, Exif.load() in src/PIL/Image.py repeatedly slices the remaining EXIF data while it begins with the six-byte Exif header. src/PIL/PngImagePlugin.py accepts an uncapped PNG eXIf chunk, so a file filled with repeated headers causes a new shrinking copy on every iteration and quadratic CPU work. The condition is reachable through Image.getexif(), Image._getexif(), and ImageOps.exif_transpose(), including common photo-upload rotation workflows. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96643">详情</a></td>
       </tr>
@@ -310,7 +390,7 @@
       <tr>
        <td>e1d059c404adfaf9af277cc3a6951eca</td>
        <td>CVE-2026-96642</td>
-       <td>2026-10-21 21:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:32</td>
        <td>Pillow is a Python imaging library. Prior to 13.0.0, the TarIO initializer in src/PIL/TarIO.py accepts a negative octal member size and computes a backward seek that returns to the same 512-byte header. When the requested member name does not match, the parser repeatedly reads that header, consumes a full CPU core, and never returns. TarIO is reached only when an application directly uses PIL.TarIO.TarIO rather than the default Image.open() path. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96642">详情</a></td>
       </tr>
@@ -318,7 +398,7 @@
       <tr>
        <td>ad3abc70635dc040065517fc7995862e</td>
        <td>CVE-2026-96641</td>
-       <td>2026-10-21 21:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:32</td>
        <td>Pillow is a Python imaging library. Prior to 13.0.0, PILfont text-width accumulation in src/_imaging.c checks positive glyph advances against INT_MAX but does not check negative advances against INT_MIN. Repeating a signed 16-bit advance of -32768 can therefore execute a signed C integer overflow in xsize += dx, producing a large positive width from a negative mathematical result. Applications that use getlength(), getsize(), or derived layout, quota, serialization, or allocation calculations can experience logic-integrity errors or resource consumption, while the high-level mask path commonly retains a decompression-bomb check. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96641">详情</a></td>
       </tr>
@@ -326,7 +406,7 @@
       <tr>
        <td>75ed4b45b2f03c464e9cec14cad7aaa9</td>
        <td>CVE-2026-96640</td>
-       <td>2026-10-21 21:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:32</td>
        <td>Pillow is a Python imaging library. From 5.1.0 until 13.0.0, PdfParser.linearize_page_tree() in src/PIL/PdfParser.py treats a PDF /Pages graph as a tree without tracking duplicate indirect references. When Image.save(..., format="PDF", append=True) processes an attacker-controlled existing PDF whose /Kids arrays repeatedly reference the same child /Pages node, Pillow expands the shared subtree as distinct pages. A compact malformed PDF can therefore create exponentially many page references and consume disproportionate CPU before the append completes. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96640">详情</a></td>
       </tr>
@@ -334,7 +414,7 @@
       <tr>
        <td>1fc96b269c6da6fa0e48e2c420de25cd</td>
        <td>CVE-2026-96639</td>
-       <td>2026-10-21 21:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:32</td>
        <td>Pillow is a Python imaging library. From 11.0.0 until 13.0.0, multi-frame loaders can retain an ImagingCore allocation created for a narrow frame mode while a later frame of the same dimensions changes the logical mode and decoder tiles to wider RGB or CMYK data. ImageFile.load_prepare() reuses the stale native storage because _im is non-null without verifying that its mode and size still match. Crafted PSD, MPO, DCX, or MIC frame transitions can then write wider pixels into the narrow allocation, causing native out-of-bounds writes and crashes. The MPO path can also cause a native over-read and, in demonstrated runtime-specific profiles, command execution. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96639">详情</a></td>
       </tr>
@@ -342,7 +422,7 @@
       <tr>
        <td>954d40daaa700d1e02b61ae8e1ea9f2a</td>
        <td>CVE-2026-96638</td>
-       <td>2026-10-21 21:20:32 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:32</td>
        <td>Pillow is a Python imaging library. From 9.1.0 until 13.0.0, BmpRleDecoder.decode() in src/PIL/BmpImagePlugin.py permits crafted RLE BMP delta escapes and absolute-mode runs to append beyond the remaining dest_length without a per-branch cap. A delta can add roughly 255 image rows in one iteration, so a kilobyte-sized file with a large but permitted width can expand the data bytearray to hundreds of megabytes or more, causing memory-exhaustion denial of service. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96638">详情</a></td>
       </tr>
@@ -350,7 +430,7 @@
       <tr>
        <td>0da081c05b6dcd5dc42ea9479442909b</td>
        <td>CVE-2026-96637</td>
-       <td>2026-10-21 21:20:31 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:31</td>
        <td>Pillow is a Python imaging library. Prior to 13.0.0, SpiderImageFile.seek() in src/PIL/SpiderImagePlugin.py reparses a later SPIDER stack frame and replaces self._size without rerunning Image._decompression_bomb_check(). A tiny file can use a safe first frame to pass Image.open() and then declare very large dimensions in a later mode F frame. Loading that frame allocates approximately four bytes per attacker-declared pixel and can consume multiple gigabytes of memory. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96637">详情</a></td>
       </tr>
@@ -358,7 +438,7 @@
       <tr>
        <td>1959d6331f7464b71eaaf9af993a50d5</td>
        <td>CVE-2026-96636</td>
-       <td>2026-10-21 21:20:31 <img src="imgs/new.gif" /></td>
+       <td>2026-10-21 21:20:31</td>
        <td>Pillow is a Python imaging library. Prior to 13.0.0, MpoImageFile.seek() and DcxImageFile.seek() reparse later MPO or DCX frames and replace self._size without rerunning Image._decompression_bomb_check(). A crafted multi-frame image can use a tiny first frame to pass Image.open() and then declare an over-limit later frame. Normal frame iteration through seek(), load(), or ImageSequence.Iterator can decode that frame and commit hundreds of megabytes or more, causing memory-exhaustion denial of service. This issue is fixed in version 13.0.0.</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-96636">详情</a></td>
       </tr>
@@ -441,86 +521,6 @@
        <td>2026-10-20 22:21:06</td>
        <td>Vulnerability in Oracle Essbase (component: Security). The supported version that is affected is 21.8.3.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via TCP to compromise Oracle Essbase. Successful attacks of this vulnerability can result in unauthorized ability to cause a hang or frequently repeatable crash (complete DOS) of Oracle Essbase. CVSS 3.1 Base Score 7.5 (Availability impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-91664">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>d993d6db2339dcc9add15272efd90b16</td>
-       <td>CVE-2026-82166</td>
-       <td>2026-10-19 20:20:06</td>
-       <td>Dell Application Store, versions prior to 26.05.0.7, contain a Missing Authentication for Critical Function vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to arbitrary code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-82166">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>8dee4de57436d8c094a3635195800a6d</td>
-       <td>CVE-2026-71170</td>
-       <td>2026-10-19 20:20:03</td>
-       <td>Dell Application Store, versions prior to 26.05.0.7, contains an Uncontrolled Path Element vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to an Elevation of Privilege and arbitrary code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71170">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>53722c786342c9fcf1a8b1f48d47695b</td>
-       <td>CVE-2026-71169</td>
-       <td>2026-10-19 20:20:03</td>
-       <td>Dell Application Store, versions prior to 26.05.0.7, contain an Incorrect Permission Assignment for Critical Resource vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Disclosure of sensitive information</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-71169">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b1d853e2210d3d8c9a6929343017fa05</td>
-       <td>CVE-2026-112782</td>
-       <td>2026-10-19 20:17:55</td>
-       <td>Grav 1.7.53 before 1.7.53.5 and 2.0.0-rc.8 before 2.2.2 contains a resource exhaustion vulnerability that allows anonymous visitors to bypass the system.images.max_pixels limit when system.images.url_actions is enabled. Attackers can send single-dimension or percentage forceResize, zoomCrop, or chained image actions to make GD allocate multi-gigabyte canvases, exhausting server memory and taking the site down.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-112782">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>109e6965e86ea109de5d0e5a43defefa</td>
-       <td>CVE-2026-112781</td>
-       <td>2026-10-19 20:17:55</td>
-       <td>Grav from 2.0.0 before 2.2.2 contains an information disclosure vulnerability that allows page editors to read protected configuration by adding config-*@ directives to page frontmatter forms. Attackers with page-edit permission can bypass the Twig sandbox config_denied_paths redaction to expose security.salt, plugin credentials, and Redis passwords to all visitors.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-112781">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c4d250d5c4945992e152c121b4167cf5</td>
-       <td>CVE-2026-112780</td>
-       <td>2026-10-19 20:17:55</td>
-       <td>Grav from 2.0.15 before 2.2.2 contains an allowlist bypass vulnerability that allows page editors to call arbitrary public static methods by renaming Flex form fields with replace-name@. Attackers with page-edit permission can smuggle data-*@ directives past the callable check to invoke Folder::delete, Folder::move, or Utils::download, deleting directories, overwriting files, or reading files.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-112780">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>77ea6e7d46462fa64379cea3e04e045f</td>
-       <td>CVE-2026-112779</td>
-       <td>2026-10-19 20:17:55</td>
-       <td>Grav API plugin (grav-plugin-api) 1.0.40 before 1.0.42 caches a full translation dictionary for every well-formed language code sent to the unauthenticated GET /api/v1/translations/{lang} endpoint, and 1.0.16 before 1.0.42 fails to check target and destination page rules in the sync and batch copy endpoints. Unauthenticated attackers can send small requests that each store about 560 KB to exhaust disk or APCu, while accounts with api.pages.write can overwrite translations or create pages that page-level rules deny.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-112779">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fe50928e15eab15c947b0e1295abe6a4</td>
-       <td>CVE-2026-112778</td>
-       <td>2026-10-19 20:17:55</td>
-       <td>Traefik before 2.11.46, 3.x before 3.6.17, and 3.7.0 lack namespace validation for Ingress and Service annotations in the Kubernetes Ingress provider, allowing references to Middlewares, ServersTransports, and TLSOptions in other namespaces. Attackers able to create or update Ingress or Service resources in one namespace can set router.middlewares or service.serverstransport annotations to obtain another tenant's injected credentials or reuse its client certificates, bypassing namespace-based tenant isolation.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-112778">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>477251222fe54caad8de64822ec89dd9</td>
-       <td>CVE-2026-112777</td>
-       <td>2026-10-19 20:17:55</td>
-       <td>Craft CMS 4.x before 4.18.8 and 5.x before 5.11.0 contains a blocklist bypass in the Twig create() function because its class-name checks are case-sensitive while PHP class resolution is not. Attackers with template-execution rights, such as Control Panel administrators, can instantiate SplFileObject via a lowercase class name to read .env secrets or write a PHP file into the webroot for remote code execution.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-112777">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fd59f2a70794a332a39b06d5a00eea89</td>
-       <td>CVE-2026-112776</td>
-       <td>2026-10-19 20:17:54</td>
-       <td>Craft CMS from 5.0.0 before 5.11.0 contains an authorization bypass vulnerability that allows site-scoped GraphQL tokens to mutate other sites' content because requireAllowedSite() is not enforced. Attackers holding a site-A token can create entries in site B via supplied siteId and delete entries, categories, tags, and assets shared across sites.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-112776">详情</a></td>
       </tr>
 
      </tbody>
