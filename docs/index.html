@@ -1,4 +1,4 @@
-<!-- RELEASE TIME : 2026-10-26 04:15:53 -->
+<!-- RELEASE TIME : 2026-10-26 20:23:30 -->
 <html lang="zh-cn">
 
  <head>
@@ -284,6 +284,86 @@
        <th width="5%">URL</th>
       </tr>
       <tr>
+       <td>bf4d4923b496df39737d6850d04b7b57</td>
+       <td>CVE-2026-89209</td>
+       <td>2026-10-26 11:16:38 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability has been identified in Mendix SAML (Mendix 10 compatible) (All versions < V4.2.4), Mendix SAML (Mendix 11 compatible) (All versions < V4.2.4), Mendix SAML (Mendix 9 compatible) (All versions < V3.6.29). Affected versions of the module do not properly protect against SAML assertion replay in IdP-initiated authentication flows. This could allow unauthenticated remote attackers to gain unauthorized access to the application by replaying a valid SAML response.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-89209">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>aafe2cd2fc7b4c349cee0a704c2fb7ee</td>
+       <td>CVE-2026-116469</td>
+       <td>2026-10-26 11:16:37 <img src="imgs/new.gif" /></td>
+       <td>MISP Guard, a proxy-based security filter for MISP (Malware Information Sharing Platform) feed distribution, contains a case-sensitivity flaw in multiple policy enforcement checks. The functions check_required_taxonomy_exists, check_required_taxonomy_tags_allowed, check_blocked_attribute_categories, and check_blocked_analyst_data_sharing_groups_uuids performed case-sensitive string comparisons when matching event tags, attribute categories, and sharing-group UUIDs against configured allow/block lists. An attacker with the ability to create or modify events in a MISP instance (or a connected instance that pushes events through the guard) could craft events using different letter case in taxonomy tag names, attribute categories, or sharing-group UUIDs to bypass the configured security policies. For example, if the policy requires the 'tlp' taxonomy with only 'tlp:clear' allowed, an event tagged 'TLP:AMBER' would not be recognized as belonging to the 'tlp' taxonomy and would therefore not be checked against the allowed-tags list, resulting in the event being forwarded to feed consumers. Similarly, a blocked attribute category such as 'Person' would not match a configured block entry of 'person', allowing the attribute to pass through the filter. The security impact is unauthorized disclosure of threat-intelligence data that the operator intended to restrict. Events carrying non-allowed TLP (Traffic Light Protocol) markings, blocked attribute categories, or blocked sharing-group associations are forwarded to downstream feed consumers in violation of the configured distribution policy. This undermines the confidentiality controls that MISP Guard is designed to enforce. The vulnerability is trivially exploitable: the attacker only needs to alter the letter case of a tag, category, or UUID string. No authentication beyond normal MISP event-creation privileges is required, and no user interaction is needed.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-116469">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>2fd0a750e7eeb28498c4b8880ccf453b</td>
+       <td>CVE-2026-116259</td>
+       <td>2026-10-26 11:16:37 <img src="imgs/new.gif" /></td>
+       <td>A security flaw has been discovered in libimobiledevice up to 1.4.0. This vulnerability affects the function afc_get_device_info_key of the file src/afc.c of the component Device Info Handler. Performing a manipulation of the argument Value results in memory corruption. The attack requires a local approach. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-116259">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>6b005c4ba57043f6defdb3010b0b4243</td>
+       <td>CVE-2026-116258</td>
+       <td>2026-10-26 11:16:37 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was identified in libimobiledevice up to 1.4.0. This affects an unknown part of the file src/afc.c of the component AFC. Such manipulation leads to heap-based buffer overflow. The attack can be executed remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-116258">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>9e5b863d0d86b5998e750d5b64587919</td>
+       <td>CVE-2026-116257</td>
+       <td>2026-10-26 11:16:37 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was determined in BillaBear up to 2025.01.03. Affected by this issue is the function processInstall of the file src/BillaBear/Controller/InstallController.php of the component Installation Handler. This manipulation causes missing authentication. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-116257">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3ec64c32b3b39f65c728c9fe373eeac6</td>
+       <td>CVE-2026-116256</td>
+       <td>2026-10-26 11:16:37 <img src="imgs/new.gif" /></td>
+       <td>A vulnerability was found in geesondog RhaPHP up to 7ae639ccf8dcb627faace096d030bd4cb4cfb905. Affected by this vulnerability is the function image of the file application/mp/controller/Show.php of the component Mp Module Media Proxy. The manipulation of the argument url results in server-side request forgery. The attack may be launched remotely. The exploit has been made public and could be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The vendor was contacted early about this disclosure but did not respond in any way.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-116256">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>c32725381d1b7d445dca4d84e5b0d327</td>
+       <td>CVE-2026-115961</td>
+       <td>2026-10-26 11:16:36 <img src="imgs/new.gif" /></td>
+       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in bPlugins B Slider b-slider allows Stored XSS.This issue affects B Slider: from n/a through 2.2.2.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115961">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>f0d291198f294748f0a4b32c97d35f2b</td>
+       <td>CVE-2026-115960</td>
+       <td>2026-10-26 11:16:36 <img src="imgs/new.gif" /></td>
+       <td>Missing Authorization vulnerability in WPExperts APIExperts Square for WooCommerce woosquare allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects APIExperts Square for WooCommerce: from n/a through 4.7.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115960">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>4b9e05eb5c49847346d2fbb02643038d</td>
+       <td>CVE-2026-115959</td>
+       <td>2026-10-26 11:16:36 <img src="imgs/new.gif" /></td>
+       <td>Missing Authorization vulnerability in WPExperts APIExperts Square for WooCommerce woosquare allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects APIExperts Square for WooCommerce: from n/a through 4.7.5.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115959">详情</a></td>
+      </tr>
+
+      <tr>
+       <td>3c05998734b6d4b5b95dc9378b6fcb83</td>
+       <td>CVE-2026-115956</td>
+       <td>2026-10-26 11:16:36 <img src="imgs/new.gif" /></td>
+       <td>Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in bPlugins Panorama Viewer – 360 Degree Image + Video Viewer panorama allows Stored XSS.This issue affects Panorama Viewer – 360 Degree Image + Video Viewer: from n/a through 1.8.3.</td>
+       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115956">详情</a></td>
+      </tr>
+
+      <tr>
        <td>5af673daba6cd013606263836706021c</td>
        <td>CVE-2026-116099</td>
        <td>2026-10-26 00:17:14 <img src="imgs/new.gif" /></td>
@@ -441,86 +521,6 @@
        <td>2026-10-24 19:17:04</td>
        <td>Vulnerability in the Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition product of Oracle Java SE (component: JSSE). Supported versions that are affected are Oracle Java SE: 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2; Oracle GraalVM for JDK: 17.0.21.0.2 and 21.0.13.0.2; Oracle GraalVM Enterprise Edition: 21.3.20.0.2. Easily exploitable vulnerability allows unauthenticated attacker with network access via multiple protocols to compromise Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition. Successful attacks of this vulnerability can result in unauthorized creation, deletion or modification access to critical data or all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data as well as unauthorized access to critical data or complete access to all Oracle Java SE, Oracle GraalVM for JDK, Oracle GraalVM Enterprise Edition accessible data. Note: This vulnerability can be exploited by using APIs in the specified Component, e.g., through a web service which supplies data to the APIs. This vulnerability also applies to Java deployments, typically in clients running sandboxed Java Web Start applications or sandboxed Java applets, that load and run untrusted code (e.g., code that comes from the internet) and rely on the Java sandbox for security. CVSS 3.1 Base Score 9.1 (Confidentiality and Integrity impacts). CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N).</td>
        <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-114820">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>ce54b9002d765ab3076a3750c4c133ce</td>
-       <td>CVE-2026-115931</td>
-       <td>2026-10-23 23:17:43</td>
-       <td>Postiz lets a signed-in user ask the backend to run a function on one of their connected channels. The backend did not restrict which functions can be requested, so a user could call internal helper functions that were never meant to be reachable from the web interface. One of those helpers reads a file from the server's disk. A user who connects a channel whose stored token is a file path can have the backend return the contents of any file it can read, including its environment, which holds the secret used to sign login sessions, the database address and the credentials of connected services. Another helper makes the backend process exit with a single request. Self-registration is open by default, so no existing account and no action by another user is needed.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115931">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>664ce2c892dc6e86ef7dad0c3ae11eab</td>
-       <td>CVE-2026-110814</td>
-       <td>2026-10-23 23:17:42</td>
-       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-110814">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>74139ea3022a362257d922cf19814bfd</td>
-       <td>CVE-2026-108793</td>
-       <td>2026-10-23 23:17:41</td>
-       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108793">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>c4250df42c09e87d8f2c835df4805533</td>
-       <td>CVE-2026-108537</td>
-       <td>2026-10-23 23:17:41</td>
-       <td>Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-108537">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>18195d8cd58e8fd866eb8d34fce305c4</td>
-       <td>CVE-2026-115938</td>
-       <td>2026-10-23 22:16:59</td>
-       <td>Craft CMS allows any authenticated control panel user to submit an element-search condition whose element selector is evaluated as a sandboxed Twig object template. Craft’s allowed column filter delegates property lookup to Yii ArrayHelper, outside Twig’s SecurityPolicy. Repeated single-segment lookups therefore bypass the sandbox’s empty property/method allowlists. The vulnerable condition value is ultimately cast to an integer. That does not protect the secret: the template can return author ID 1 when a guessed key character is correct and an impossible ID otherwise. The JSON endpoint returns entries for the first case and an empty array for the second, forming a stable remote character oracle. After recovering GeneralConfig::securityKey, the same user can compute Craft’s generic HMAC wire format offline. Signed parameters such as redirect are then accepted and passed to unsandboxed View::renderObjectTemplate(), where Twig’s string-callable form can invoke native PHP callables. The regression proof uses the harmless substr() callback and observes abcdef becoming cdef; it does not execute an OS command.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115938">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>9934155f171f70104cc4cb776241971b</td>
-       <td>CVE-2026-115937</td>
-       <td>2026-10-23 22:16:59</td>
-       <td>The Mollie webhook endpoint accepts two independent, attacker-controlled parameters and never verifies that they belong together: * commerceTransactionHash — selects which Craft Commerce transaction is completed * id — selects which Mollie payment is queried for its status An unauthenticated attacker holding any paid Mollie payment ID from the merchant’s account can pair it with any transaction hash. Commerce queries Mollie, sees status: paid, and marks the target transaction successful for that transaction’s full amount, regardless of how much was actually paid.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115937">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>25211a6d87390c4ec951273b5b80074a</td>
-       <td>CVE-2026-115935</td>
-       <td>2026-10-23 22:16:59</td>
-       <td>The app/process-api-response-headers action accepts fake Craft API response headers from any authenticated control panel user. A non-admin user with only accessCp can place newline characters in X-Craft-Plugin-Licenses. Craft passes this value to its .env writer without removing the newlines. This lets the user insert a new attacker-known CRAFT_SECURITY_KEY into .env. After Craft loads that key, the user can forge a signed login redirect containing a Twig system() callback. This is different from the previous report. That report reads the existing key through a Twig sandbox bypass. This report replaces the key through fake API headers and CRLF injection. Fixing either source does not fix the other.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115935">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>fa6419594d2a1f1bd22917016ebae6fd</td>
-       <td>CVE-2026-115897</td>
-       <td>2026-10-23 22:16:59</td>
-       <td>Serialize JavaScript serializes JavaScript values to a superset of JSON that includes regular expressions and functions. Prior to 7.1.3, the function-source escaping logic does not neutralize a bare closing-script prefix when attacker-influenced function source text ends exactly at that prefix. Because each function body is escaped independently, a delimiter supplied by surrounding serialized output can terminate an HTML script element, and a later serialized value supplies injected markup that becomes a live element in the page. Exploitation requires control of a serialized function's source text, such as through a spoofed toString(). This issue is fixed in version 7.1.3.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115897">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>b92bdfce35e00c1dbc534323a882e3d0</td>
-       <td>CVE-2026-115895</td>
-       <td>2026-10-23 22:16:58</td>
-       <td>Happy DOM is a JavaScript implementation of a web browser without its graphical user interface. From 17.0.0 until 21.0.4, packages/happy-dom/src/module/ECMAScriptModuleCompiler.ts accepts a named ESM import alias without validating that it is a JavaScript binding identifier before inserting it into a generated destructuring binding. With enableJavaScriptEvaluation enabled, attacker-controlled HTML or module source can use an invalid alias that becomes a valid default initializer after compilation, causing the generated JavaScript to execute in the Node.js host process. The demonstrated reachable path uses a JSON module import attribute, which prevents the malicious alias from being emitted again in a later ESM circular-import assignment and keeps the generated function syntactically valid. This incomplete fix for CVE-2026-33943 is a distinct residual path because the earlier remediation validated the local export importName path but not the named-import alias. This issue is fixed in version 21.0.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115895">详情</a></td>
-      </tr>
-
-      <tr>
-       <td>139a483618041e90a5b59e1e2252b6cc</td>
-       <td>CVE-2026-115893</td>
-       <td>2026-10-23 22:16:58</td>
-       <td>Wasmtime is a runtime for WebAssembly. Prior to 36.0.19, 48.0.7, and 49.0.4, the Cranelift compiler backend on aarch64 can compile a Wasm br_table instruction with more than approximately 256,000 targets so that it has an incorrect conditional branch target. The branch can then jump to arbitrary other code at a user-controlled offset, allowing a user-controlled Wasm module to escape the sandbox on aarch64 engines using the default Cranelift backend. This issue is fixed in versions 36.0.19, 48.0.7, and 49.0.4.</td>
-       <td><a target="_blank" href="https://www.tenable.com/cve/CVE-2026-115893">详情</a></td>
       </tr>
 
      </tbody>
