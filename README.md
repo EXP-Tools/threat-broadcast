@@ -19,6 +19,36 @@
 
 ![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
 
+### 本地运行与检查
+
+建议使用独立虚拟环境安装依赖，避免直接运行时出现 `ModuleNotFoundError`：
+
+```bash
+python -m venv .venv
+# Linux/macOS 使用 .venv/bin/python；Windows 使用 .venv\Scripts\python
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python main.py --check
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+`--check` 只对已启用来源执行真实联网抓取，不写数据库、缓存或发送通知；任一来源失败时退出码为 1。
+正常采集时，单个来源失败会记录异常类型和原因并继续其他来源；全部已启用来源失败时程序返回错误。
+空响应、解析失败和超过 `crawler.max_age_days` 的停更数据不会再被当作采集成功。
+
+2026-11-01 核验后，默认启用 **绿盟、NVD、Tenable**。绿盟已切换到 HTTPS JSON 接口，NVD 已切换到官方 [CVE API 2.0](https://nvd.nist.gov/developers/vulnerabilities)，获取最近 7 天内最新的 10 条记录；这不是全量 CVE 同步。
+
+以下来源在 `config/settings.yml` 的 `crawler.disabled_sources` 中暂时停用，每次启动会输出原因：
+
+| 来源 | 本次核验结果 |
+| --- | --- |
+| 360 | HTTPS 证书过期 |
+| 红后 | 旧接口跳转到登录页面 |
+| 斗象 | 旧站域名无法解析、数据接口 TLS 连接失败 |
+| CNNVD | 旧页面返回 403，新接口要求签名校验 |
+| 奇安信 | 旧 advisory 列表最新记录为 2020-07-15 |
+
+上述来源并未恢复采集。站点恢复或完成新接口适配后，删除配置中的对应项即可重新启用，再运行 `--check` 确认。程序保留 HTTPS 证书校验。
+
 
 ## 项目介绍
 

@@ -1,18 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Author : EXP
-# @Time   : 2020/4/25 22:17
-# @File   : redqueen.py
-# -----------------------------------------------
-# NVD：https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml
-# -----------------------------------------------
+# NVD CVE API: https://nvd.nist.gov/developers/vulnerabilities
 
+import time
+from datetime import datetime, timedelta, timezone
+import requests
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
-from color_log.clog import log
-import requests
-import re
-from lxml import etree
 
 
 class NVD(BaseCrawler):
@@ -22,60 +16,59 @@ class NVD(BaseCrawler):
         self.name_ch = '美国国家漏洞数据库（NVD）'
         self.name_en = 'NVD'
         self.home_page = 'https://nvd.nist.gov/'
-        self.url_list = 'https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml'
-        self.url_cve = 'https://web.nvd.nist.gov/view/vuln/detail?vulnId='
-
+        self.url_list = 'https://services.nvd.nist.gov/rest/json/cves/2.0'
+        self.url_cve = 'https://nvd.nist.gov/vuln/detail/'
 
     def NAME_CH(self):
         return self.name_ch
 
-
     def NAME_EN(self):
         return self.name_en
-
 
     def HOME_PAGE(self):
         return self.home_page
 
+    def get_cves(self, limit=10):
+        if limit <= 0:
+            return []
+        limit = min(limit, 2000)
+        now = datetime.now(timezone.utc)
+        params = {
+            'pubStartDate': (now - timedelta(days=7)).isoformat(timespec='milliseconds'),
+            'pubEndDate': now.isoformat(timespec='milliseconds'),
+            'noRejected': '',
+            'resultsPerPage': limit,
+        }
+        data = self.query(params)
+        total = data['totalResults']
+        if total > limit:
+            # NVD returns oldest first; fetch the tail, respecting its keyless rate limit.
+            time.sleep(6)
+            params['startIndex'] = total - limit
+            data = self.query(params)
+        records = [entry['cve'] for entry in data['vulnerabilities']]
+        records.sort(key=lambda record: record['published'], reverse=True)
+        return [self.to_cve(record) for record in records
+                if record.get('vulnStatus') != 'Rejected'][:limit]
 
-    def get_cves(self, limit = 10):
-        response = requests.get(
-            self.url_list,
-            headers = self.headers(),
-            timeout = self.timeout
-        )
+    def query(self, params):
+        response = requests.get(self.url_list, headers=self.headers(),
+                                params=params, timeout=self.timeout)
+        response.raise_for_status()
+        data = response.json()
+        if not isinstance(data.get('vulnerabilities'), list) or 'totalResults' not in data:
+            raise ValueError('NVD API 返回格式异常')
+        return data
 
-        cves = []
-        if response.status_code == 200:
-            data = ''.join(response.text.split('\n')[1:])
-            data = re.sub(r'dc:date', 'dc_date', data)
-            rdf = etree.HTML(data)
-            items = rdf.xpath("//item")
-
-            cnt = 0
-            for item in reversed(items) :
-                cve = self.to_cve(item)
-                if cve.is_vaild():
-                    if cnt < limit :
-                        cves.append(cve)
-                        # log.debug(cve)
-                        cnt += 1
-        else:
-            log.warn('获取 [%s] 威胁情报失败： [HTTP Error %i]' % (self.NAME_CH(), response.status_code))
-        return cves
-
-
-    def to_cve(self, item):
+    def to_cve(self, record):
         cve = CVEInfo()
         cve.src = self.NAME_CH()
-
-        _id = item.xpath("./title")[0].text
-        cve.id = re.sub(r' \(.*?\)', '', _id)
+        cve.id = record['id']
         cve.url = self.url_cve + cve.id
-
-        _time = item.xpath("./dc_date")[0].text
-        cve.time = _time.replace('T', ' ').replace('Z', ' ')
-
-        cve.info = item.xpath("./description")[0].text
-        cve.title = cve.info
+        cve.time = record['published'].replace('T', ' ').rstrip('Z')
+        descriptions = record.get('descriptions', [])
+        cve.info = next((item['value'] for item in descriptions if item['lang'] == 'en'), '')
+        if not cve.info and descriptions:
+            cve.info = descriptions[0]['value']
+        cve.title = cve.info or cve.id
         return cve

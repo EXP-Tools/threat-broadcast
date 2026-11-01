@@ -13,7 +13,8 @@ from color_log.clog import log
 import requests
 import re
 from lxml import etree
-from datetime import datetime
+from datetime import timezone
+from email.utils import parsedate_to_datetime
 
 
 class Tenable(BaseCrawler):
@@ -44,11 +45,12 @@ class Tenable(BaseCrawler):
             headers = self.headers(),
             timeout = self.timeout
         )
+        response.raise_for_status()
 
         cves = []
         if response.status_code == 200:
-            data = ''.join(response.text.split('\n')[1:])
-            rss = etree.XML(data)
+            rss = etree.fromstring(response.content, parser=etree.XMLParser(
+                resolve_entities=False, no_network=True))
             items = rss.xpath("//item")
 
             cnt = 0
@@ -71,7 +73,7 @@ class Tenable(BaseCrawler):
         cve.url = item.xpath("./link")[0].text
 
         _time = item.xpath("./pubDate")[0].text
-        cve.time = datetime.strptime(_time, '%a, %d %b %Y %H:%M:%S GMT')
+        cve.time = parsedate_to_datetime(_time).astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
 
         _desc = item.xpath("./description")[0].text
         _desc = _desc.replace('\r', '').replace('\n', '')

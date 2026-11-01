@@ -34,6 +34,8 @@ def to_page(top_limit = 10):
     srcs = query_srcs(conn)
     for src in srcs:
         cves = query_cves(conn, src, top_limit)
+        if not cves:
+            continue
 
         rows = []
         for cve in cves:
@@ -102,12 +104,12 @@ def query_srcs(conn):
 
 def query_cves(conn, src, limit):
     dao = TCvesDao()
-    where = "and %s = '%s' order by %s desc limit %d" % (TCves.s_src, src, TCves.s_time, limit)
+    where = "and %s = ? order by %s desc limit ?" % (TCves.s_src, TCves.s_time)
     sql = TCvesDao.SQL_SELECT + where
     beans = []
     try:
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (src, limit))
         rows = cursor.fetchall()
         for row in rows:
             bean = dao._to_bean(row)

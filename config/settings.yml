@@ -12,6 +12,15 @@ github:
   
 crawler:
   top: 30                                 # 播报时每个来源最多取最新的前 top 个 CVE
+  timeout: 20                             # 每次网络请求的超时秒数
+  max_age_days: 90                         # 拒绝把停更来源的旧情报当作新数据；0 为关闭检查
+  # 2026-11-01 联网核验：以下来源暂不可用；恢复后删除对应项即可重新启用。
+  disabled_sources:
+    'Cert 360': 'HTTPS 证书已过期，等待站点修复'
+    RedQueen: '旧公开接口跳转到登录页，不再返回情报 JSON'
+    vas: '旧站域名无法解析，数据接口 TLS 连接失败'
+    CNNVD: '旧页面返回 403；新接口要求签名校验，暂不支持匿名采集'
+    QiAnXin: '当前公开 advisory 列表停更，最新情报日期为 2020-07-15'
 
 notify:
   mail_smtp: 'smtp.qq.com'

@@ -15,7 +15,7 @@ class TCvesDao(BaseDao):
 
     TABLE_NAME = "t_cves"
     SQL_COUNT = "select count(1) from t_cves"
-    SQL_TRUNCATE = "truncate table t_cves"
+    SQL_TRUNCATE = "delete from t_cves"
     SQL_INSERT = "insert into t_cves(s_md5, s_src, s_cves, s_title, s_time, s_info, s_url) values (?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "delete from t_cves where 1 = 1 "
     SQL_UPDATE = "update t_cves set s_md5 = ?, s_src = ?, s_cves = ?, s_title = ?, s_time = ?, s_info = ?, s_url = ? where 1 = 1 "

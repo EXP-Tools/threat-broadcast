@@ -119,7 +119,7 @@ class BaseDao:
         try:
             cursor = conn.cursor()
             sql = self._append(self.SQL_DELETE, wheres.keys())
-            cursor.execute(sql, wheres.values())
+            cursor.execute(sql, tuple(wheres.values()))
             conn.commit()
             cursor.close()
             is_ok = True
@@ -169,7 +169,7 @@ class BaseDao:
         try:
             cursor = conn.cursor()
             sql = self._append(self.SQL_SELECT, wheres.keys())
-            cursor.execute(sql, wheres.values())
+            cursor.execute(sql, tuple(wheres.values()))
             rows = cursor.fetchall()
             for row in rows:
                 bean = self._to_bean(row)
@@ -191,7 +191,7 @@ class BaseDao:
         try:
             cursor = conn.cursor()
             sql = self._append(self.SQL_SELECT, wheres.keys())
-            cursor.execute(sql, wheres.values())
+            cursor.execute(sql, tuple(wheres.values()))
             row = cursor.fetchone()
             bean = self._to_bean(row)
             conn.commit()

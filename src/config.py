@@ -25,6 +25,10 @@ class Config :
                 self.github = context.get('github')
                 self.crawler = context.get('crawler')
                 self.notify = context.get('notify')
+                for key in ('dbpath', 'sqlpath'):
+                    path = self.database.get(key)
+                    if path and not os.path.isabs(path):
+                        self.database[key] = os.path.normpath(os.path.join(PRJ_DIR, path))
 
 
 settings = Config(SETTINGS_PATH, CHARSET)
