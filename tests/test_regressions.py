@@ -5,6 +5,7 @@ import tempfile
 import types
 import unittest
 from pathlib import Path
+from datetime import datetime, timezone
 from unittest.mock import Mock, patch
 
 
@@ -29,6 +30,7 @@ with patch.dict(sys.modules, {
     nvd_module = importlib.import_module('src.crawler.nvd')
     nsfocus_module = importlib.import_module('src.crawler.nsfocus')
     tenable_module = importlib.import_module('src.crawler.tenable')
+    ai_module = importlib.import_module('src.crawler.ai_discoveries')
     main_module = importlib.import_module('main')
 
 from src.bean.cve_info import CVEInfo
@@ -47,7 +49,7 @@ class DatabaseTests(unittest.TestCase):
         self.bean.md5 = 'sample'
         self.bean.src = "Vendor's feed"
         self.bean.title = 'Test vulnerability'
-        self.bean.time = '2026-11-01'
+        self.bean.time = datetime.now(timezone.utc).strftime('%Y-%m-%d')
         self.assertTrue(self.dao.insert(self.conn, self.bean))
 
     def test_query_some_with_and_without_filters(self):
@@ -100,6 +102,20 @@ class DatabaseTests(unittest.TestCase):
             self.assertIn('q=&quot;test&quot;', output)
             self.assertNotIn('<script>alert(1)</script>', output)
 
+    def test_stale_and_invalid_sources_are_hidden_without_deleting_history(self):
+        old = TCves()
+        old.src, old.time, old.md5 = 'retired', '2000-01-01', 'old'
+        self.assertTrue(self.dao.insert(self.conn, old))
+        old.src, old.time, old.md5 = 'invalid', 'yt', 'invalid'
+        self.assertTrue(self.dao.insert(self.conn, old))
+        with patch.dict(config.settings.crawler, {'max_age_days': 90}):
+            self.assertEqual(page.query_srcs(self.conn), [self.bean.src])
+        self.assertEqual(self.dao.count(self.conn), 3)
+
+    def test_disabled_source_is_hidden_even_when_its_archive_is_recent(self):
+        self.assertEqual(page.query_srcs(self.conn, ['other active source']), [])
+        self.assertEqual(page.query_srcs(self.conn, []), [])
+
 
 class CrawlerTests(unittest.TestCase):
     def setUp(self):
@@ -114,6 +130,7 @@ class CrawlerTests(unittest.TestCase):
     def test_failed_insert_is_not_cached_or_announced(self):
         with patch.object(crawler_module, 'SqliteDBC') as db, \
                 patch.object(crawler_module, 'TCvesDao') as dao:
+            dao.return_value.query_one.return_value = None
             dao.return_value.insert.return_value = False
             self.assertEqual(self.crawler.cves(), [])
             self.crawler.to_cache.assert_not_called()
@@ -142,6 +159,7 @@ class CrawlerTests(unittest.TestCase):
     def test_duplicates_in_one_response_are_stored_once(self):
         with patch.object(crawler_module, 'SqliteDBC'), \
                 patch.object(crawler_module, 'TCvesDao') as dao:
+            dao.return_value.query_one.return_value = None
             dao.return_value.insert.return_value = True
             self.assertEqual(self.crawler.cves(), [self.cve])
             dao.return_value.insert.assert_called_once()
@@ -150,7 +168,8 @@ class CrawlerTests(unittest.TestCase):
     def test_connection_closes_after_cache_failure(self):
         self.crawler.to_cache.side_effect = OSError('disk full')
         with patch.object(crawler_module, 'SqliteDBC') as db, \
-                patch.object(crawler_module, 'TCvesDao'):
+                patch.object(crawler_module, 'TCvesDao') as dao:
+            dao.return_value.query_one.return_value = None
             with self.assertRaises(OSError):
                 self.crawler.cves()
             db.return_value.close.assert_called_once()
@@ -163,6 +182,104 @@ class CrawlerTests(unittest.TestCase):
             result = crawler_module.BaseCrawler.load_cache(self.crawler)
             self.assertEqual(result, {str(i) for i in range(250, 350)})
             self.assertEqual(len(cache.read_text().splitlines()), 100)
+
+    def test_persisted_record_is_not_inserted_again_when_cache_expires(self):
+        with patch.object(crawler_module, 'SqliteDBC'), \
+                patch.object(crawler_module, 'TCvesDao') as dao:
+            dao.return_value.query_one.return_value = TCves()
+            self.assertEqual(self.crawler.cves(), [])
+            dao.return_value.insert.assert_not_called()
+
+
+class AIDiscoveryTests(unittest.TestCase):
+    def test_aisle_catalog_extracts_only_cves_in_recent_months(self):
+        month = datetime.now(timezone.utc).strftime('%B %Y')
+        content = '''<section data-wall-section><header><h2>%s</h2></header>
+        <li data-cve data-product="Example"><a href="/cve-discoveries/cve-2026-12345">
+        <p>Overflow &amp; read</p></a></li>
+        <li data-cve><a href="https://unrelated.example.com/"><p>Other</p></a></li>
+        </section><section data-wall-section><header><h2>January 2000</h2></header>
+        <li data-cve><a href="/cve-discoveries/cve-2000-12345"><p>Old</p></a></li></section>''' % month
+        records = ai_module.AISLE().parse_catalog(content)
+        self.assertEqual(records, [('CVE-2026-12345', 'Example: Overflow & read',
+                                   'https://aisle.com/cve-discoveries/cve-2026-12345')])
+
+    def test_aisle_detail_uses_disclosure_date_and_requires_ai_attribution(self):
+        import json
+        data = {'@type': 'TechArticle', 'headline': 'CVE-2026-12345 — Discovered by AISLE',
+                'datePublished': '2026-10-03T08:51:53Z', 'description': 'Description'}
+        content = '<script type="application/ld+json">%s</script>' % json.dumps(data)
+        cve = ai_module.AISLE().parse_detail(content, 'CVE-2026-12345', 'Title', 'https://aisle.com/test')
+        self.assertEqual(cve.time, '2026-10-03 08:51:53')
+        self.assertIn('AISLE', cve.info)
+        with self.assertRaises(ValueError):
+            ai_module.AISLE().parse_detail(content, 'CVE-2026-99999', 'Title', 'https://aisle.com/test')
+
+    def test_aisle_catalog_changes_raise_instead_of_silent_empty_success(self):
+        with self.assertRaises(ValueError):
+            ai_module.AISLE().parse_catalog('<html>Login required</html>')
+
+    def test_aisle_reuses_archive_without_requesting_known_detail_pages(self):
+        source = ai_module.AISLE()
+        url = 'https://aisle.com/cve-discoveries/cve-2026-12345'
+        cve = CVEInfo()
+        cve.time = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+        with patch.object(ai_module.requests, 'get') as get, \
+                patch.object(source, 'parse_catalog', return_value=[('CVE-2026-12345', 'Title', url)]), \
+                patch.object(source, 'load_archived', return_value={url: cve}):
+            self.assertEqual(source.get_cves(), [cve])
+            get.assert_called_once()
+
+    def test_mozilla_requires_explicit_ai_agent_credit(self):
+        data = {'announced': 'October 27, 2026', 'fixed_in': ['Firefox 159'], 'advisories': {
+            'CVE-2026-12345': {'title': 'AI discovered bug', 'reporter': 'OpenAI Codex Security (kylebot)'},
+            'CVE-2026-12346': {'title': 'Human discovery', 'reporter': 'Researcher of OpenAI'},
+            'CVE-2026-12347': {'title': 'Bug in AI library', 'reporter': 'Independent researcher'},
+            'CVE-2026-12348': {'title': 'Claude finding', 'reporter': ['Researcher', 'Claude Opus 4.6']},
+        }}
+        cves = ai_module.MozillaAI().parse_advisory(data, 'mfsa2026-120')
+        self.assertEqual([c.id for c in cves], ['CVE-2026-12345', 'CVE-2026-12348'])
+        self.assertEqual(cves[0].time, '2026-10-27')
+        self.assertEqual(cves[0].url,
+                         'https://www.mozilla.org/en-US/security/advisories/mfsa2026-120/#CVE-2026-12345')
+
+    def test_mozilla_invalid_advisory_is_reported(self):
+        with self.assertRaises(ValueError):
+            ai_module.MozillaAI().parse_advisory({'login': True}, 'mfsa2026-120')
+
+    def test_mozilla_sorts_advisory_numbers_and_deduplicates_shared_cves(self):
+        import yaml
+        data = {'announced': datetime.now(timezone.utc).strftime('%B %d, %Y'),
+                'fixed_in': ['Firefox'], 'advisories': {
+                    'CVE-2026-12345': {'title': 'Title', 'reporter': 'Claude Opus 4.6'}}}
+        directory = Mock()
+        year = datetime.now(timezone.utc).year
+        directory.json.return_value = [{'name': 'mfsa%s-%s.yml' % (year, number)}
+                                       for number in (9, 121, 122)]
+        document = Mock(content=yaml.safe_dump(data).encode())
+        with patch.object(ai_module.requests, 'get', side_effect=[directory, document, document, document]) as get:
+            records = ai_module.MozillaAI().get_cves()
+            self.assertEqual(len(records), 1)
+            self.assertIn('mfsa%s-122' % year, records[0].url)
+            self.assertIn('mfsa%s-122.yml' % year, get.call_args_list[1].args[0])
+
+    def test_aisle_reads_archived_details_without_changing_database(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory, 'test.db')
+            conn = sqlite3.connect(path)
+            try:
+                conn.executescript(Path(config.PRJ_DIR, 'script/cves-create.sql').read_text())
+                bean = TCves()
+                bean.src, bean.md5, bean.cves = 'AISLE（AI 发现）', 'test', 'CVE-2026-12345'
+                bean.title, bean.time, bean.info, bean.url = 'Title', '2026-10-03', 'AI attribution', 'https://aisle.com/test'
+                self.assertTrue(TCvesDao().insert(conn, bean))
+            finally:
+                conn.close()
+            before = path.read_bytes()
+            with patch.dict(config.settings.database, {'dbpath': str(path)}):
+                known = ai_module.AISLE().load_archived()
+            self.assertEqual(known[bean.url].id, bean.cves)
+            self.assertEqual(path.read_bytes(), before)
 
 
 class SourceTests(unittest.TestCase):
@@ -199,6 +316,25 @@ class SourceTests(unittest.TestCase):
             get.return_value.raise_for_status.side_effect = RuntimeError('HTTP 403')
             with self.assertRaisesRegex(RuntimeError, 'HTTP 403'):
                 nvd_module.NVD().get_cves()
+
+    def test_nvd_retries_transient_service_errors(self):
+        unavailable = Mock(status_code=503)
+        healthy = Mock(status_code=200)
+        healthy.json.return_value = {'totalResults': 0, 'vulnerabilities': []}
+        with patch.object(nvd_module.requests, 'get', side_effect=[unavailable, healthy]) as get, \
+                patch.object(nvd_module.time, 'sleep') as sleep:
+            self.assertEqual(nvd_module.NVD().query({})['totalResults'], 0)
+            self.assertEqual(get.call_count, 2)
+            sleep.assert_called_once_with(6)
+
+    def test_nvd_retry_attempts_are_bounded(self):
+        unavailable = Mock(status_code=503)
+        unavailable.raise_for_status.side_effect = RuntimeError('HTTP 503')
+        with patch.object(nvd_module.requests, 'get', return_value=unavailable) as get, \
+                patch.object(nvd_module.time, 'sleep'):
+            with self.assertRaisesRegex(RuntimeError, 'HTTP 503'):
+                nvd_module.NVD().query({})
+            self.assertEqual(get.call_count, 3)
 
     def test_nsfocus_parses_new_api_and_preserves_source_date(self):
         with patch.object(nsfocus_module.requests, 'get') as get:
@@ -278,6 +414,7 @@ class SourceTests(unittest.TestCase):
 
     def test_no_notify_still_generates_page_without_sending_or_caching_notifications(self):
         source = Mock(last_error=None)
+        source.NAME_CH.return_value = 'test'
         source.cves.return_value = [Mock()]
         with patch.object(main_module, 'get_sources', return_value=[source]), \
                 patch.object(main_module.page, 'to_page') as page_write, \
@@ -286,10 +423,21 @@ class SourceTests(unittest.TestCase):
                 patch.object(main_module.wechat, 'to_wechat') as wechat:
             main_module.main(10, False, '', '', '', '', '', '', notify=False)
             source.cves.assert_called_once()
-            page_write.assert_called_once_with(10)
+            page_write.assert_called_once_with(10, active_sources=['test'])
             mail.assert_not_called()
             qq.assert_not_called()
             wechat.assert_not_called()
+
+    def test_page_is_rebuilt_without_new_vulnerabilities(self):
+        source = Mock(last_error=None)
+        source.NAME_CH.return_value = 'test'
+        source.cves.return_value = []
+        with patch.object(main_module, 'get_sources', return_value=[source]), \
+                patch.object(main_module.page, 'to_page') as page_write, \
+                patch.object(main_module.mail, 'to_mail') as mail:
+            main_module.main(10, False, '', '', '', '', '', '')
+            page_write.assert_called_once_with(10, active_sources=['test'])
+            mail.assert_not_called()
 
     def test_database_paths_are_resolved_from_project_directory(self):
         actual_config = importlib.import_module('src.config')

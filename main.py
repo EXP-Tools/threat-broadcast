@@ -17,6 +17,7 @@ from src.crawler.vas import Vas
 from src.crawler.nvd import NVD
 from src.crawler.cnnvd import CNNVD
 from src.crawler.tenable import Tenable
+from src.crawler.ai_discoveries import AISLE, MozillaAI
 
 import src.notice.page as page
 import src.notice.mail as mail
@@ -85,7 +86,9 @@ def get_sources():
         Vas(), 
         NVD(), 
         CNNVD(), 
-        Tenable() 
+        Tenable(),
+        AISLE(),
+        MozillaAI()
     ]
     disabled = settings.crawler.get('disabled_sources', {})
     active = []
@@ -127,8 +130,10 @@ def main(top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pas
         if len(failed) == len(srcs):
             raise RuntimeError('所有已启用情报源均失败，本次采集未成功')
 
+    # Rebuild even without new CVEs, so retired/stale sources disappear on time.
+    page.to_page(top, active_sources=[src.NAME_CH() for src in srcs])
+
     if all_cves:
-        page.to_page(top)
         if notify:
             mail.to_mail(gtk, all_cves, mail_smtp, mail_user, mail_pass)
             qq.to_group(all_cves, qq_user, qq_pass)

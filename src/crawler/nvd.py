@@ -5,6 +5,7 @@
 import time
 from datetime import datetime, timedelta, timezone
 import requests
+from color_log.clog import log
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
 
@@ -52,8 +53,20 @@ class NVD(BaseCrawler):
                 if record.get('vulnStatus') != 'Rejected'][:limit]
 
     def query(self, params):
-        response = requests.get(self.url_list, headers=self.headers(),
-                                params=params, timeout=self.timeout)
+        for attempt in range(3):
+            try:
+                response = requests.get(self.url_list, headers=self.headers(),
+                                        params=params, timeout=self.timeout)
+            except (requests.Timeout, requests.ConnectionError) as exc:
+                if attempt == 2:
+                    raise
+                log.warn('[NVD] 网络请求失败，6 秒后重试：%s' % exc)
+                time.sleep(6)
+                continue
+            if response.status_code not in (429, 500, 502, 503, 504) or attempt == 2:
+                break
+            log.warn('[NVD] HTTP %s，6 秒后重试' % response.status_code)
+            time.sleep(6)
         response.raise_for_status()
         data = response.json()
         if not isinstance(data.get('vulnerabilities'), list) or 'totalResults' not in data:

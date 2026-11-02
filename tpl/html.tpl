@@ -17,7 +17,7 @@
    <h2><a href="https://exp-blog.com" target="_blank">眈眈探求</a> | <a href="https://github.com/lyy289065406/threat-broadcast">威胁情报播报</a></h2>
    <br />
 
-   <p>页面生成时间：%(datetime)s。各来源的情报日期见 TIME 列；已停用来源保留历史记录。</p>
+   <p>页面生成时间：%(datetime)s。各来源的情报日期见 TIME 列；仅展示已启用且近期有有效情报的来源。</p>
    %(source_status)s
 
 %(table)s

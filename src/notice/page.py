@@ -22,7 +22,7 @@ TABLE_TPL_PATH = '%s/tpl/table.tpl' % config.PRJ_DIR
 ROW_TPL_PATH = '%s/tpl/row.tpl' % config.PRJ_DIR
 
 
-def to_page(top_limit = 10):
+def to_page(top_limit = 10, active_sources=None):
     today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
     yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     tormorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d') 
@@ -32,7 +32,7 @@ def to_page(top_limit = 10):
     conn = sdbc.conn()
 
     tables = []
-    srcs = query_srcs(conn)
+    srcs = query_srcs(conn, active_sources)
     for src in srcs:
         cves = query_cves(conn, src, top_limit)
         if not cves:
@@ -73,7 +73,7 @@ def format_source_status():
         return ''
     rows = ['<li>%s：%s</li>' % (escape(name), escape(reason))
             for name, reason in disabled.items()]
-    return ('<details><summary>暂停更新的来源（下方保留历史情报）</summary>'
+    return ('<details><summary>暂停更新的来源（已从页面隐藏）</summary>'
             '<ul>%s</ul></details>' % ''.join(rows))
 
 
@@ -98,12 +98,23 @@ def create_html(html):
 
 
 
-def query_srcs(conn):
-    sql = 'select %s from %s group by %s' % (TCves.s_src, TCves.table_name, TCves.s_src)
+def query_srcs(conn, active_sources=None):
+    sql = 'select %s from %s' % (TCves.s_src, TCves.table_name)
+    params = []
+    if active_sources is not None:
+        if not active_sources:
+            return []
+        sql += ' where %s in (%s)' % (TCves.s_src, ','.join('?' for _ in active_sources))
+        params.extend(active_sources)
+    sql += ' group by %s' % TCves.s_src
+    max_age = config.settings.crawler.get('max_age_days', 90)
+    if max_age:
+        sql += ' having max(date(%s)) >= date(\'now\', ?)' % TCves.s_time
+        params.append('-%d days' % max_age)
     srcs = []
     try:
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, params)
         rows = cursor.fetchall()
         for row in rows:
             srcs.append(row[0])

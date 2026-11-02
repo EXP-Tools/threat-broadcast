@@ -37,7 +37,7 @@ python -m venv .venv
 正常采集时，单个来源失败会记录异常类型和原因并继续其他来源；全部已启用来源失败时程序返回错误。
 空响应、解析失败和超过 `crawler.max_age_days` 的停更数据不会再被当作采集成功。
 
-2026-11-01 核验后，默认启用 **绿盟、NVD、Tenable**。绿盟已切换到 HTTPS JSON 接口，NVD 已切换到官方 [CVE API 2.0](https://nvd.nist.gov/developers/vulnerabilities)，获取最近 7 天内最新的 10 条记录；这不是全量 CVE 同步。
+默认启用 **绿盟、NVD、Tenable、AISLE（AI 发现）、Mozilla（AI 发现）**。绿盟已切换到 HTTPS JSON 接口，NVD 已切换到官方 [CVE API 2.0](https://nvd.nist.gov/developers/vulnerabilities)，获取最近 7 天内最新的 10 条记录；这不是全量 CVE 同步。
 
 以下来源在 `config/settings.yml` 的 `crawler.disabled_sources` 中暂时停用，每次启动会输出原因：
 
@@ -49,7 +49,20 @@ python -m venv .venv
 | CNNVD | 旧页面返回 403，新接口要求签名校验 |
 | 奇安信 | 旧 advisory 列表最新记录为 2020-07-15 |
 
-上述来源并未恢复采集。站点恢复或完成新接口适配后，删除配置中的对应项即可重新启用，再运行 `--check` 确认。程序保留 HTTPS 证书校验。
+上述来源不再采集，也不再展示其历史漏洞表格；历史数据仍保留在 SQLite 归档中。页面仅展示已启用且最近 `crawler.max_age_days` 天内有有效情报的来源（默认 90 天），每次正常采集完成后都会重新生成页面，即使没有新增漏洞也会移除过期来源。站点恢复或完成新接口适配后，删除配置中的对应项即可重新启用，再运行 `--check` 确认。程序保留 HTTPS 证书校验。
+
+### AI 发现的漏洞情报
+
+[`src/crawler/ai_discoveries.py`](src/crawler/ai_discoveries.py) 已接入以下公开来源，随 `main.py` 和定时任务一起运行：
+
+| 来源 | 收录依据 | 采集范围 |
+| --- | --- | --- |
+| [AISLE CVE Discoveries](https://aisle.com/cve-discoveries) | 官方目录明确标注由 AISLE 的 AI 引擎发现，单条披露有 CVE 编号与发布日期 | 最近 90 天的公开 CVE；首次抓取详情限 3 个并发，后续复用本地数据库已归档的详情 |
+| [Mozilla 官方安全通告](https://www.mozilla.org/en-US/security/advisories/) / [通告 YAML](https://github.com/mozilla/foundation-security-advisories) | `reporter` 明确标注 Claude、Mythos、Codex Security、Big Sleep 或 CodeMender 等 AI 工具 | 最近 6 份官方通告中、最近 90 天披露的符合条件的 CVE；相同 CVE 跨 Firefox/Thunderbird 通告去重 |
+
+这里的“AI 发现”指公开披露明确署名 AI 工具参与发现的真实软件漏洞，不会因为漏洞发生在 AI 产品中、报告者来自 AI 公司，或新闻中提到 AI 就自动收录。每条记录保存原始披露链接、披露日期和归因依据；不采集尚未公开的漏洞。AISLE 首次采集需要读取较多公开披露，后续只下载新条目的详情。
+
+新来源继续使用现有数据库、缓存、页面及通知流程；入库时还会检查数据库中的历史记录，避免缓存裁剪后重复归档。可用 `python main.py --no-notify` 在本地入库和更新页面，或用 `python main.py --check` 只检查抓取。
 
 
 ## 项目介绍

@@ -88,6 +88,9 @@ class BaseCrawler:
         try:
             for cve in new_cves:
                 if cve.MD5() not in old_cves:
+                    if dao.query_one(conn, {'s_md5 =': cve.MD5(), 's_src =': cve.src}):
+                        old_cves.add(cve.MD5())
+                        continue
                     if self.to_db(conn, dao, cve):
                         self.to_cache(cve)
                         old_cves.add(cve.MD5())
