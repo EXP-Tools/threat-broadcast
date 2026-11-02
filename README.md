@@ -28,10 +28,12 @@ python -m venv .venv
 # Linux/macOS 使用 .venv/bin/python；Windows 使用 .venv\Scripts\python
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python main.py --check
+.venv/bin/python main.py --no-notify
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
 `--check` 只对已启用来源执行真实联网抓取，不写数据库、缓存或发送通知；任一来源失败时退出码为 1。
+`--no-notify` 会实际更新数据库、缓存和播报页面，但不生成邮件缓存或发送任何通知。
 正常采集时，单个来源失败会记录异常类型和原因并继续其他来源；全部已启用来源失败时程序返回错误。
 空响应、解析失败和超过 `crawler.max_age_days` 的停更数据不会再被当作采集成功。
 
@@ -139,10 +141,10 @@ python -m venv .venv
     - `MAIL_SMTP`： SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
     - `MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
     - `MAIL_PASS`： 邮箱密码
-    - `GRAPAQL_TOKEN`： 用于调用 Github GraphQL 接口加载收件人，可于个人 `Settings` 生成
+    - `GRAPHQL_TOKEN`： 用于调用 Github GraphQL 接口加载收件人，可于个人 `Settings` 生成（兼容旧名称 `GRAPAQL_TOKEN`；未设置时使用当前仓库的 `github.token`）
 - 启用 Settings --> Actions 功能
 
-> 尔后程序便会每小时执行一次，并自动生成 [Github Page](https://lyy289065406.github.io/threat-broadcast/) 播报页面（若要调整执行频率，可修改 [`autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 触发时点）
+> 配置 `CRAWL_PWD` 后，程序每 3 小时执行一次并更新播报页面（频率由 [`autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 设置）。`CRAWL_PWD` 必须匹配 `main.py` 中的 `GIT_CRAWL_PWD`，用于保留 Fork 仓库的启动保护。PR 和代码推送只执行测试，不抓取、不发送通知、不提交数据。手动运行默认只检查来源；取消 `check_only` 才会采集并提交数据。工作流目前未启用实际邮件发送。
 
 ![](imgs/secrets.png)
 

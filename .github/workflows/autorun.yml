@@ -1,70 +1,103 @@
-name: Automatically crawl CVEs 
+name: Automatically crawl CVEs
+
 on:
   pull_request:
-    branches:
-      - master
+    branches: [master]
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/**'
+      - 'main.py'
+      - 'src/**'
+      - 'tests/**'
+      - 'config/**'
+      - 'requirements.txt'
   workflow_dispatch:
-    branches:
-      - master
+    inputs:
+      check_only:
+        description: 'Only check sources; do not update data or generate notifications'
+        type: boolean
+        default: true
   schedule:
     - cron: '0 0/3 * * *'
 
+permissions:
+  contents: read
+
+concurrency:
+  group: cves-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  validate:
     runs-on: ubuntu-latest
-    # 当仓库隶属组织时，赋予流水线“写权限”以便提交变更
-    permissions:
-      contents: write
-    
+    timeout-minutes: 10
     steps:
       - name: Check out repo
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v7
         with:
-          python-version: 3.8
-      - uses: actions/cache@v3
-        name: Configure pip caching
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements.txt
       - name: Install Python dependencies
-        run: |
-          python -m pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt
+      - name: Check dependencies
+        run: python -m pip check
+      - name: Run regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Check CLI imports
+        run: python main.py --help
 
+  build-and-deploy:
+    needs: validate
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    concurrency:
+      group: cves-publish-master
+      cancel-in-progress: false
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v7
+        with:
+          ref: master
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install Python dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Check sources
+        if: github.event_name == 'workflow_dispatch' && inputs.check_only
+        run: python main.py --check
       - name: Crawl CVEs
-        run: |-
-          python main.py -g "${{ secrets.CRAWL_PWD }}" --gtk ${{ secrets.GRAPAQL_TOKEN }}
-
-      # 若该时间段没有 CVE， 则 file://cache/mail.dat 文件不会生成，此时不会发送邮件
-      # - name: Send mail
-      #   if: ${{ secrets.CRAWL_PWD != '' && github.event_name != 'pull_request' }}
-      #   uses: lyy289065406/action-send-mail@master
-      #   with:
-      #     server_address: ${{ secrets.MAIL_SMTP }}
-      #     server_port: 465
-      #     username: ${{ secrets.MAIL_USER }}
-      #     password: ${{ secrets.MAIL_PASS }}
-      #     from: ${{ secrets.MAIL_USER }}
-      #     to: file://cache/mail_recvs.dat
-      #     body: file://cache/mail_content.dat
-      #     content_type: text/html
-      #     subject: 威胁情报播报
-
-      # 如果不希望污染 commit 记录，user.email 和 user.name 随便填即可
-      # Github Runner 是有权限提交到仓库的，只要 user 不是 owner ，当次 commit 不会被记录
-      - name: Commit and push Github page (if changed)
-        if: ${{ github.event_name != 'pull_request' }}
-        run: |-
-          git diff
-          git config --global user.email "github-bot@example.com"
-          git config --global user.name "Github-Bot"
-          git add -A
-          git commit -m "Updated by Github Bot" || exit 0
-          git push origin master
-
+        if: github.event_name == 'schedule' || !inputs.check_only
+        env:
+          CRAWL_PWD: ${{ secrets.CRAWL_PWD }}
+          GTK: ${{ secrets.GRAPHQL_TOKEN || secrets.GRAPAQL_TOKEN || github.token }}
+        run: |
+          if [ -z "$CRAWL_PWD" ]; then
+            echo "::notice::CRAWL_PWD is not configured; scheduled collection is disabled."
+            exit 0
+          fi
+          python main.py -g "$CRAWL_PWD" --gtk "$GTK"
+      - name: Commit and push generated files
+        if: github.event_name == 'schedule' || !inputs.check_only
+        run: |
+          git config user.email "github-bot@example.com"
+          git config user.name "Github-Bot"
+          git add -- data/cves.db docs/index.html cache/
+          if git diff --cached --quiet; then
+            echo "No generated data changed."
+            exit 0
+          fi
+          git commit -m "Update vulnerability intelligence"
+          git push origin HEAD:master

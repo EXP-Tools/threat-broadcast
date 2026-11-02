@@ -8,6 +8,7 @@
 # -----------------------------------------------
 
 import time
+from html import escape
 from datetime import datetime, timedelta
 import src.config as config
 from color_log.clog import log
@@ -40,17 +41,17 @@ def to_page(top_limit = 10):
         rows = []
         for cve in cves:
             row = row_tpl % {
-                'md5': cve.md5,
-                'id': cve.cves,
-                'time': cve.time,
+                'md5': escape(cve.md5 or ''),
+                'id': escape(cve.cves or ''),
+                'time': escape(cve.time or ''),
                 'new_flag': ' <img src="imgs/new.gif" />' if (cve.time.startswith(today) or cve.time.startswith(yesterday) or cve.time.startswith(tormorrow)) else '', 
-                'title': cve.title,
-                'url': cve.url
+                'title': escape(cve.title or ''),
+                'url': escape(cve.url or '')
             }
             rows.append(row)
 
         table = table_tpl % {
-            'src': cves[0].src,
+            'src': escape(cves[0].src or ''),
             'top': top_limit,
             'rows': '\n'.join(rows)
         }
@@ -58,11 +59,22 @@ def to_page(top_limit = 10):
 
     html = html_tpl % {
         'datetime': time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) ,
+        'source_status': format_source_status(),
         'table': '\n\n'.join(tables)
     }
     sdbc.close()
 
     create_html(html)
+
+
+def format_source_status():
+    disabled = config.settings.crawler.get('disabled_sources', {})
+    if not disabled:
+        return ''
+    rows = ['<li>%s：%s</li>' % (escape(name), escape(reason))
+            for name, reason in disabled.items()]
+    return ('<details><summary>暂停更新的来源（下方保留历史情报）</summary>'
+            '<ul>%s</ul></details>' % ''.join(rows))
 
 
 
@@ -81,7 +93,7 @@ def load_tpl():
 
 
 def create_html(html):
-    with open(HTML_PATH, 'w', encoding=config.CHARSET) as file:
+    with open(HTML_PATH, 'w', encoding=config.CHARSET, newline='\n') as file:
         file.write(html)
 
 

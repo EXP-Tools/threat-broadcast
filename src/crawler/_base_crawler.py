@@ -111,7 +111,7 @@ class BaseCrawler:
 
     def load_cache(self):
         if not os.path.exists(self.CACHE_PATH()):
-            with open(self.CACHE_PATH(), 'w+') as file:
+            with open(self.CACHE_PATH(), 'w+', newline='\n') as file:
                  pass   # 创建空文件
 
         lines = []
@@ -122,13 +122,13 @@ class BaseCrawler:
         # 缓存超过 200 时，保留最后的 100 条缓存
         if len(lines) > 200:
             lines = lines[-100:]
-            with open(self.CACHE_PATH(), 'w+') as file:
+            with open(self.CACHE_PATH(), 'w+', newline='\n') as file:
                 file.write('\n'.join(lines) + '\n')
         return set(lines)
 
 
     def to_cache(self, cve):
-        with open(self.CACHE_PATH(), 'a+') as file:
+        with open(self.CACHE_PATH(), 'a+', newline='\n') as file:
             file.write(cve.MD5() + '\n')
 
 

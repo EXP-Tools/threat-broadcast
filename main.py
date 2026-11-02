@@ -41,6 +41,7 @@ def args() :
     parser.add_argument('-g', '--git', dest='git', type=str, default=GIT_CRAWL_PWD, help='Github Action 的启动密码（避免被 Fork 时别人可以直接运行，导致目标站点被 DDos）')
     parser.add_argument('-t', '--top', dest='top', type=int, default=30, help='播报时每个来源最多取最新的前 N 个 CVE')
     parser.add_argument('--check', action='store_true', help='只联网检查已启用的情报源，不写入数据库、缓存或发送通知')
+    parser.add_argument('--no-notify', action='store_true', help='更新数据库和页面，但不生成或发送通知')
     parser.add_argument('-ac', '--auto_commit', dest='auto_commit', action='store_true', default=False, help='自动提交变更到仓库（因使用 Github Actions ，故默认关闭）')
     parser.add_argument('-k', '--gtk', dest='gtk', type=str, default='', help='Github Token，若非空值则使用 Github Actions 发送播报邮件')
     parser.add_argument('-ms', '--mail_smtp', dest='mail_smtp', type=str, default='smtp.qq.com', help='用于发送播报信息的邮箱 SMTP 服务器')
@@ -111,7 +112,7 @@ def check_sources():
     return 1 if failures else 0
 
 
-def main(top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pass):
+def main(top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pass, notify=True):
     all_cves = {}
     srcs = get_sources()
     for src in srcs:
@@ -128,9 +129,10 @@ def main(top, auto_commit, gtk, mail_smtp, mail_user, mail_pass, qq_user, qq_pas
 
     if all_cves:
         page.to_page(top)
-        mail.to_mail(gtk, all_cves, mail_smtp, mail_user, mail_pass)
-        qq.to_group(all_cves, qq_user, qq_pass)
-        wechat.to_wechat(all_cves)
+        if notify:
+            mail.to_mail(gtk, all_cves, mail_smtp, mail_user, mail_pass)
+            qq.to_group(all_cves, qq_user, qq_pass)
+            wechat.to_wechat(all_cves)
 
         if auto_commit:
             git.auto_commit()
@@ -148,7 +150,7 @@ if __name__ == '__main__':
     if parsed.check:
         raise SystemExit(check_sources())
     init()
-    main(*values)
+    main(*values, notify=not parsed.no_notify)
 
 
 

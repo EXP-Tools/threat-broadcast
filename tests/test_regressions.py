@@ -81,6 +81,25 @@ class DatabaseTests(unittest.TestCase):
             page.to_page(0)
             write.assert_called_once()
 
+    def test_page_shows_disabled_source_reasons_as_text(self):
+        with patch.dict(config.settings.crawler, {'disabled_sources': {'test': '<login required>'}}):
+            status = page.format_source_status()
+            self.assertIn('暂停更新', status)
+            self.assertIn('&lt;login required&gt;', status)
+            self.assertNotIn('<login required>', status)
+
+    def test_page_escapes_vulnerability_text_and_links(self):
+        self.conn.execute("update t_cves set s_title = ?, s_url = ?",
+                          ('<script>alert(1)</script>', 'https://example.com/?q="test"'))
+        with patch.object(page, 'SqliteDBC') as db, \
+                patch.object(page, 'create_html') as write:
+            db.return_value.conn.return_value = self.conn
+            page.to_page(10)
+            output = write.call_args.args[0]
+            self.assertIn('&lt;script&gt;alert(1)&lt;/script&gt;', output)
+            self.assertIn('q=&quot;test&quot;', output)
+            self.assertNotIn('<script>alert(1)</script>', output)
+
 
 class CrawlerTests(unittest.TestCase):
     def setUp(self):
@@ -256,6 +275,21 @@ class SourceTests(unittest.TestCase):
             db.return_value.exec_script.return_value = False
             with self.assertRaisesRegex(RuntimeError, '数据库初始化失败'):
                 main_module.init()
+
+    def test_no_notify_still_generates_page_without_sending_or_caching_notifications(self):
+        source = Mock(last_error=None)
+        source.cves.return_value = [Mock()]
+        with patch.object(main_module, 'get_sources', return_value=[source]), \
+                patch.object(main_module.page, 'to_page') as page_write, \
+                patch.object(main_module.mail, 'to_mail') as mail, \
+                patch.object(main_module.qq, 'to_group') as qq, \
+                patch.object(main_module.wechat, 'to_wechat') as wechat:
+            main_module.main(10, False, '', '', '', '', '', '', notify=False)
+            source.cves.assert_called_once()
+            page_write.assert_called_once_with(10)
+            mail.assert_not_called()
+            qq.assert_not_called()
+            wechat.assert_not_called()
 
     def test_database_paths_are_resolved_from_project_directory(self):
         actual_config = importlib.import_module('src.config')
