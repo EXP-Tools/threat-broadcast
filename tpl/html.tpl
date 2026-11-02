@@ -6,8 +6,8 @@
   <meta name="description" content="公开漏洞情报与 AI 发现的漏洞归档，按来源、漏洞等级和披露时间筛选。">
   <title>Threat Broadcast · 漏洞情报</title>
   <link rel="icon" href="data:image/svg+xml,%%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%%3E%%3Crect width='64' height='64' rx='12' fill='%%23101820'/%%3E%%3Ctext x='12' y='44' fill='%%2369b7c0' font-family='monospace' font-size='38'%%3E!%%3C/text%%3E%%3C/svg%%3E">
-  <link rel="stylesheet" href="css/intelligence.css">
-  <script defer src="js/app.js"></script>
+  <link rel="stylesheet" href="css/intelligence.css?v=%(css_version)s">
+  <script defer src="js/app.js?v=%(js_version)s"></script>
 </head>
 <body>
   <a class="skip-link" href="#intelligence">跳到漏洞列表</a>

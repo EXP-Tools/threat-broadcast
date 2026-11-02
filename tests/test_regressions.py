@@ -144,6 +144,8 @@ class DatabaseTests(unittest.TestCase):
             self.assertIn('漏洞等级', output)
             self.assertIn('severity-critical', output)
             self.assertIn('严重', output)
+            self.assertIn('css/intelligence.css?v=' + page.asset_version('css/intelligence.css'), output)
+            self.assertIn('js/app.js?v=' + page.asset_version('js/app.js'), output)
 
     def test_dashboard_payload_contains_records_beyond_initial_top_limit(self):
         import json

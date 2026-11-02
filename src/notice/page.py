@@ -8,6 +8,8 @@
 # -----------------------------------------------
 
 import json
+import hashlib
+from pathlib import Path
 from html import escape
 from datetime import datetime, timezone
 import src.config as config
@@ -21,6 +23,10 @@ HTML_PATH = '%s/docs/index.html' % config.PRJ_DIR
 HTML_TPL_PATH = '%s/tpl/html.tpl' % config.PRJ_DIR
 TABLE_TPL_PATH = '%s/tpl/table.tpl' % config.PRJ_DIR
 ROW_TPL_PATH = '%s/tpl/row.tpl' % config.PRJ_DIR
+
+
+def asset_version(relative_path):
+    return hashlib.sha256(Path(config.PRJ_DIR, 'docs', relative_path).read_bytes()).hexdigest()[:12]
 
 
 def to_page(top_limit=10, active_sources=None):
@@ -66,6 +72,8 @@ def to_page(top_limit=10, active_sources=None):
         'top_limit': top_limit,
         'table': table_tpl % {'rows': '\n'.join(rows)},
         'records_json': records_json,
+        'css_version': asset_version('css/intelligence.css'),
+        'js_version': asset_version('js/app.js'),
     })
 
 
