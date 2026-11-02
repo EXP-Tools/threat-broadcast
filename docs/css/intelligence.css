@@ -51,9 +51,23 @@ h2 { margin: 0; font-size: 14px; font-weight: 600; }
 .section-code { margin-left: 10px; font: 10px var(--mono); letter-spacing: .07em; color: var(--muted); font-weight: 400; }
 .text-button { border: 0; background: transparent; color: var(--muted); padding: 4px 0 4px 12px; font-size: 12px; }
 .text-button:hover { color: var(--text); }
-.filter-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; margin: 15px 0 18px; }
+.filter-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; margin: 15px 0 18px; align-items: start; }
 .filter-grid label { display: grid; gap: 7px; min-width: 0; }
 .filter-grid label > span { color: var(--muted); font-size: 11px; }
+.filter-field { display: grid; gap: 7px; min-width: 0; }
+.filter-field > span { color: var(--muted); font-size: 11px; }
+.multiselect { position: relative; }
+.multiselect-trigger { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; min-height: 41px; border: 1px solid #354956; border-radius: 4px; background: var(--bg); color: var(--text); padding: 7px 12px; text-align: left; }
+#severity-selection { display: flex; flex-wrap: wrap; gap: 4px; }
+.selected-grade { background: #29414e; color: #b6e1e5; border-radius: 2px; padding: 1px 6px; font-size: 11px; }
+.multiselect-popup { position: absolute; z-index: 3; top: calc(100% + 6px); right: 0; width: max(100%, 250px); max-width: calc(100vw - 48px); background: var(--surface); border: 1px solid #42636f; border-radius: 5px; box-shadow: 0 12px 28px #08121bcc; padding: 5px; }
+#severity-options [role=option] { display: flex; justify-content: space-between; width: 100%; padding: 8px 10px; border: 0; border-radius: 3px; text-align: left; background: transparent; color: var(--text); }
+#severity-options [role=option] > span { visibility: hidden; }
+#severity-options [aria-selected=true] { background: #253e48; color: #b6e1e5; }
+#severity-options [aria-selected=true] > span { visibility: visible; }
+#severity-options [role=option]:hover { background: var(--raised); }
+.multiselect-footer { display: flex; justify-content: space-between; gap: 10px; align-items: center; border-top: 1px solid var(--line); padding: 8px 6px 3px; font-size: 10px; color: var(--muted); }
+.multiselect-footer button { background: transparent; color: var(--accent); border: 0; font-size: 11px; }
 input, select { width: 100%; min-width: 0; height: 41px; border: 1px solid #354956; border-radius: 4px; background: var(--bg); color: var(--text); padding: 8px 12px; }
 input::placeholder { color: #6e8796; }
 .time-filter { display: flex; align-items: center; gap: 16px; font-size: 11px; color: var(--muted); flex-wrap: wrap; }

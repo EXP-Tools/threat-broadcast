@@ -29,3 +29,10 @@ test('time boundaries are inclusive and future or invalid dates do not match', (
   assert.equal(matches({ time: '2026-11-03 12:00:00' }, { days: 1 }, now), false);
   assert.equal(matches({ time: 'not a date' }, { days: 7 }, now), false);
 });
+test('multiple severity choices use OR and combine with other filters using AND', () => {
+  assert.equal(filterRecords(records, { severity: ['CRITICAL', 'HIGH'] }, now).length, 2);
+  assert.equal(filterRecords(records, { severity: ['CRITICAL', 'HIGH'], source: 'AISLE', days: 7 }, now).length, 1);
+  assert.equal(filterRecords(records, { severity: ['HIGH', 'UNKNOWN'] }, now).length, 2);
+  assert.equal(filterRecords(records, { severity: [] }, now).length, 3);
+  assert.equal(filterRecords(records, { severity: ['LOW', 'MEDIUM'] }, now).length, 0);
+});

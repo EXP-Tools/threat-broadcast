@@ -31,7 +31,21 @@
       <div class="filter-grid">
         <label class="search-field"><span>关键词</span><input id="search" type="search" placeholder="搜索 CVE 编号、产品或漏洞描述" autocomplete="off"></label>
         <label><span>漏洞来源</span><select id="source-filter"><option value="">全部来源</option>%(source_options)s</select></label>
-        <label><span>漏洞等级</span><select id="severity-filter"><option value="">全部等级</option><option value="CRITICAL">严重</option><option value="HIGH">高危</option><option value="MEDIUM">中危</option><option value="LOW">低危</option><option value="NONE">无危害</option><option value="UNKNOWN">未知</option></select></label>
+        <div class="filter-field multiselect" id="severity-multiselect">
+          <span id="severity-label">漏洞等级</span>
+          <button type="button" id="severity-filter" class="multiselect-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="severity-options" aria-labelledby="severity-label severity-selection"><span id="severity-selection">全部等级</span><span aria-hidden="true">⌄</span></button>
+          <div id="severity-popup" class="multiselect-popup" hidden>
+            <div id="severity-options" role="listbox" aria-labelledby="severity-label" aria-multiselectable="true">
+              <button type="button" role="option" data-severity="CRITICAL" aria-selected="false" tabindex="-1">严重<span aria-hidden="true">✓</span></button>
+              <button type="button" role="option" data-severity="HIGH" aria-selected="false" tabindex="-1">高危<span aria-hidden="true">✓</span></button>
+              <button type="button" role="option" data-severity="MEDIUM" aria-selected="false" tabindex="-1">中危<span aria-hidden="true">✓</span></button>
+              <button type="button" role="option" data-severity="LOW" aria-selected="false" tabindex="-1">低危<span aria-hidden="true">✓</span></button>
+              <button type="button" role="option" data-severity="NONE" aria-selected="false" tabindex="-1">无危害<span aria-hidden="true">✓</span></button>
+              <button type="button" role="option" data-severity="UNKNOWN" aria-selected="false" tabindex="-1">未知<span aria-hidden="true">✓</span></button>
+            </div>
+            <div class="multiselect-footer"><span>可继续选择，再次点击取消</span><button type="button" id="clear-severity">清空</button></div>
+          </div>
+        </div>
       </div>
       <div class="time-filter"><span>披露时间</span><div role="group" aria-label="披露时间范围"><button type="button" data-days="0" aria-pressed="true">全部</button><button type="button" data-days="1" aria-pressed="false">最近一天</button><button type="button" data-days="7" aria-pressed="false">最近一周</button><button type="button" data-days="30" aria-pressed="false">最近一月</button></div><span class="time-hint">按披露时间计算，最近一月为 30 天</span></div>
     </section>

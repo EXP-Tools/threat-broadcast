@@ -14,7 +14,8 @@
   function matches(record, filters, now = Date.now()) {
     const severity = record.severity || 'UNKNOWN';
     if (filters.source && record.source !== filters.source) return false;
-    if (filters.severity && severity !== filters.severity) return false;
+    const selected = filters.severity ? [].concat(filters.severity) : [];
+    if (selected.length && !selected.includes(severity)) return false;
     if (Number(filters.days)) {
       const time = timestamp(record.time);
       if (!Number.isFinite(time) || time > now || time < now - Number(filters.days) * 86400000) return false;
@@ -37,7 +38,14 @@
     const search = byId('search'), source = byId('source-filter'), severity = byId('severity-filter');
     const timeButtons = Array.from(document.querySelectorAll('[data-days]'));
     const tbody = byId('vulnerability-rows');
-    const state = { days: 0, page: 1 };
+    const state = { days: 0, page: 1, severities: [] };
+    const severityOptions = Array.from(document.querySelectorAll('[data-severity]'));
+    const severityPopup = byId('severity-popup');
+    function openSeverity(open, focusOption = false) {
+      severityPopup.hidden = !open;
+      severity.setAttribute('aria-expanded', String(open));
+      if (open && focusOption) (severityOptions.find(option => state.severities.includes(option.dataset.severity)) || severityOptions[0]).focus();
+    }
     const create = (tag, className, text) => {
       const element = document.createElement(tag);
       if (className) element.className = className;
@@ -84,7 +92,13 @@
     }
 
     function render() {
-      const filtered = filterRecords(records, { source: source.value, severity: severity.value, days: state.days, query: search.value });
+      const filtered = filterRecords(records, { source: source.value, severity: state.severities, days: state.days, query: search.value });
+      const selection = byId('severity-selection');
+      selection.replaceChildren();
+      const selectedLevels = levels.filter(level => state.severities.includes(level));
+      if (!selectedLevels.length) selection.textContent = '全部等级';
+      selectedLevels.forEach(level => selection.append(create('span', 'selected-grade', labels[level])));
+      severityOptions.forEach(option => option.setAttribute('aria-selected', String(state.severities.includes(option.dataset.severity))));
       const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
       state.page = Math.max(1, Math.min(state.page, pages));
       const start = (state.page - 1) * pageSize;
@@ -102,10 +116,34 @@
     }
 
     function changed() { state.page = 1; render(); }
-    function reset() { search.value = ''; source.value = ''; severity.value = ''; state.days = 0; changed(); }
+    function reset() { search.value = ''; source.value = ''; state.severities = []; state.days = 0; openSeverity(false); changed(); }
     search.addEventListener('input', changed);
     source.addEventListener('change', changed);
-    severity.addEventListener('change', changed);
+    severity.addEventListener('click', () => openSeverity(severityPopup.hidden));
+    severity.addEventListener('keydown', event => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') { event.preventDefault(); openSeverity(true, true); }
+    });
+    severityOptions.forEach((option, index) => {
+      option.addEventListener('click', () => {
+        const value = option.dataset.severity;
+        state.severities = state.severities.includes(value) ? state.severities.filter(level => level !== value) : [...state.severities, value];
+        changed();
+      });
+      option.addEventListener('keydown', event => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          severityOptions[(index + (event.key === 'ArrowDown' ? 1 : -1) + severityOptions.length) % severityOptions.length].focus();
+        } else if (event.key === 'Home' || event.key === 'End') {
+          event.preventDefault(); severityOptions[event.key === 'Home' ? 0 : severityOptions.length - 1].focus();
+        }
+      });
+    });
+    byId('clear-severity').addEventListener('click', () => { state.severities = []; changed(); });
+    document.addEventListener('click', event => { if (!byId('severity-multiselect').contains(event.target)) openSeverity(false); });
+    byId('severity-multiselect').addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); openSeverity(false); severity.focus(); }
+      if (event.key === 'Tab') openSeverity(false);
+    });
     timeButtons.forEach(button => button.addEventListener('click', () => { state.days = Number(button.dataset.days); changed(); }));
     byId('reset-filters').addEventListener('click', reset);
     byId('empty-reset').addEventListener('click', reset);
