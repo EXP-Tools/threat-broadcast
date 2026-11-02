@@ -36,6 +36,7 @@ with patch.dict(sys.modules, {
 from src.bean.cve_info import CVEInfo
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
+from src.utils.severity import normalize, from_score, from_nvd
 
 
 class DatabaseTests(unittest.TestCase):
@@ -116,6 +117,51 @@ class DatabaseTests(unittest.TestCase):
         self.assertEqual(page.query_srcs(self.conn, ['other active source']), [])
         self.assertEqual(page.query_srcs(self.conn, []), [])
 
+    def test_severity_migration_is_idempotent_and_preserves_existing_rows(self):
+        self.conn.execute('drop table t_cves')
+        self.conn.execute('create table t_cves(s_md5 text, s_src text)')
+        self.conn.execute("insert into t_cves values ('old', 'source')")
+        self.conn.commit()
+        TCvesDao.ensure_schema(self.conn)
+        TCvesDao.ensure_schema(self.conn)
+        self.assertEqual(self.conn.execute('select * from t_cves').fetchall(), [('old', 'source', '')])
+
+    def test_existing_severity_is_updated_without_inserting_duplicate_or_erasing_known_grade(self):
+        cve = CVEInfo()
+        cve.md5, cve.src, cve.severity = 'sample', self.bean.src, 'HIGH'
+        self.dao.set_severity(self.conn, cve)
+        cve.severity = ''
+        self.dao.set_severity(self.conn, cve)
+        self.assertEqual(self.dao.count(self.conn), 1)
+        self.assertEqual(self.dao.query_one(self.conn, {'s_md5 =': 'sample'}).severity, 'HIGH')
+
+    def test_severity_column_renders_label_and_color_class(self):
+        self.conn.execute("update t_cves set s_severity = 'CRITICAL'")
+        with patch.object(page, 'SqliteDBC') as db, patch.object(page, 'create_html') as write:
+            db.return_value.conn.return_value = self.conn
+            page.to_page(10)
+            output = write.call_args.args[0]
+            self.assertIn('漏洞等级', output)
+            self.assertIn('severity-critical', output)
+            self.assertIn('严重', output)
+
+    def test_dashboard_payload_contains_records_beyond_initial_top_limit(self):
+        import json
+        from lxml import html
+        self.bean.md5 = 'second'
+        self.bean.title = '</script><script>alert(1)</script>'
+        self.assertTrue(self.dao.insert(self.conn, self.bean))
+        with patch.object(page, 'SqliteDBC') as db, patch.object(page, 'create_html') as write:
+            db.return_value.conn.return_value = self.conn
+            page.to_page(1)
+            output = write.call_args.args[0]
+            doc = html.fromstring(output)
+            records = json.loads(doc.xpath('string(//script[@id="intelligence-data"])'))
+            self.assertEqual(len(records), 2)
+            self.assertEqual(len(doc.xpath('//tbody[@id="vulnerability-rows"]/tr')), 1)
+            self.assertTrue(any(record['title'] == self.bean.title for record in records))
+            self.assertNotIn('</script><script>alert(1)</script>', output)
+
 
 class CrawlerTests(unittest.TestCase):
     def setUp(self):
@@ -190,6 +236,14 @@ class CrawlerTests(unittest.TestCase):
             self.assertEqual(self.crawler.cves(), [])
             dao.return_value.insert.assert_not_called()
 
+    def test_cached_record_still_receives_updated_severity(self):
+        self.cve.severity = 'HIGH'
+        self.crawler.load_cache.return_value = {self.cve.MD5()}
+        with patch.object(crawler_module, 'SqliteDBC'), patch.object(crawler_module, 'TCvesDao') as dao:
+            self.assertEqual(self.crawler.cves(), [])
+            self.assertEqual(dao.return_value.set_severity.call_count, 2)
+            dao.return_value.insert.assert_not_called()
+
 
 class AIDiscoveryTests(unittest.TestCase):
     def test_aisle_catalog_extracts_only_cves_in_recent_months(self):
@@ -202,7 +256,7 @@ class AIDiscoveryTests(unittest.TestCase):
         <li data-cve><a href="/cve-discoveries/cve-2000-12345"><p>Old</p></a></li></section>''' % month
         records = ai_module.AISLE().parse_catalog(content)
         self.assertEqual(records, [('CVE-2026-12345', 'Example: Overflow & read',
-                                   'https://aisle.com/cve-discoveries/cve-2026-12345')])
+                                   'https://aisle.com/cve-discoveries/cve-2026-12345', '')])
 
     def test_aisle_detail_uses_disclosure_date_and_requires_ai_attribution(self):
         import json
@@ -225,14 +279,14 @@ class AIDiscoveryTests(unittest.TestCase):
         cve = CVEInfo()
         cve.time = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
         with patch.object(ai_module.requests, 'get') as get, \
-                patch.object(source, 'parse_catalog', return_value=[('CVE-2026-12345', 'Title', url)]), \
+                patch.object(source, 'parse_catalog', return_value=[('CVE-2026-12345', 'Title', url, 'HIGH')]), \
                 patch.object(source, 'load_archived', return_value={url: cve}):
             self.assertEqual(source.get_cves(), [cve])
             get.assert_called_once()
 
     def test_mozilla_requires_explicit_ai_agent_credit(self):
         data = {'announced': 'October 27, 2026', 'fixed_in': ['Firefox 159'], 'advisories': {
-            'CVE-2026-12345': {'title': 'AI discovered bug', 'reporter': 'OpenAI Codex Security (kylebot)'},
+            'CVE-2026-12345': {'title': 'AI discovered bug', 'reporter': 'OpenAI Codex Security (kylebot)', 'impact': 'high'},
             'CVE-2026-12346': {'title': 'Human discovery', 'reporter': 'Researcher of OpenAI'},
             'CVE-2026-12347': {'title': 'Bug in AI library', 'reporter': 'Independent researcher'},
             'CVE-2026-12348': {'title': 'Claude finding', 'reporter': ['Researcher', 'Claude Opus 4.6']},
@@ -240,6 +294,7 @@ class AIDiscoveryTests(unittest.TestCase):
         cves = ai_module.MozillaAI().parse_advisory(data, 'mfsa2026-120')
         self.assertEqual([c.id for c in cves], ['CVE-2026-12345', 'CVE-2026-12348'])
         self.assertEqual(cves[0].time, '2026-10-27')
+        self.assertEqual(cves[0].severity, 'HIGH')
         self.assertEqual(cves[0].url,
                          'https://www.mozilla.org/en-US/security/advisories/mfsa2026-120/#CVE-2026-12345')
 
@@ -286,6 +341,23 @@ class SourceTests(unittest.TestCase):
     def record(self, identifier, published):
         return {'id': identifier, 'published': published,
                 'descriptions': [{'lang': 'en', 'value': 'Test vulnerability'}]}
+
+    def test_cvss_mapping_and_unknown_values(self):
+        self.assertEqual([from_score(s) for s in (0, 0.1, 4, 7, 9, 10)],
+                         ['NONE', 'LOW', 'MEDIUM', 'HIGH', 'CRITICAL', 'CRITICAL'])
+        self.assertEqual(from_score(9.8, '2.0'), 'HIGH')
+        for value in (None, 'not rated', -1, 11, float('nan')):
+            self.assertEqual(from_score(value), '')
+        self.assertEqual(normalize('moderate'), 'MEDIUM')
+        self.assertEqual(normalize('<script>'), '')
+
+    def test_nvd_prefers_primary_metrics_and_preserves_unknown(self):
+        metrics = {'cvssMetricV31': [
+            {'type': 'Secondary', 'cvssData': {'baseSeverity': 'MEDIUM'}},
+            {'type': 'Primary', 'cvssData': {'baseScore': 9.8, 'version': '3.1'}},
+        ]}
+        self.assertEqual(from_nvd(metrics), 'CRITICAL')
+        self.assertEqual(from_nvd({}), '')
 
     def test_nvd_fetches_latest_page_instead_of_oldest(self):
         source = nvd_module.NVD()
@@ -359,7 +431,7 @@ class SourceTests(unittest.TestCase):
         rss = b'''<rss><channel><item><title>CVE-2026-10000</title>
         <link>https://www.tenable.com/cve/CVE-2026-10000</link>
         <pubDate>Sun, 01 Nov 2026 10:00:00 +0000</pubDate>
-        <description><![CDATA[<h3>Description</h3><p>Test vulnerability</p>]]></description>
+        <description><![CDATA[<p>Critical Severity</p><h3>Description</h3><p>Test vulnerability</p>]]></description>
         </item></channel></rss>'''
         with patch.object(tenable_module.requests, 'get') as get:
             get.return_value.status_code = 200
@@ -368,6 +440,7 @@ class SourceTests(unittest.TestCase):
             self.assertEqual(len(cves), 1)
             self.assertEqual(cves[0].time, '2026-11-01 10:00:00')
             self.assertEqual(cves[0].title, 'Test vulnerability')
+            self.assertEqual(cves[0].severity, 'CRITICAL')
 
     def test_tenable_http_failure_is_not_hidden(self):
         with patch.object(tenable_module.requests, 'get') as get:

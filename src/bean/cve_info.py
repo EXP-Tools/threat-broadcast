@@ -19,6 +19,7 @@ class CVEInfo:
         self.title = ''
         self.info = ''
         self.md5 = ''
+        self.severity = ''
 
 
     def is_vaild(self):

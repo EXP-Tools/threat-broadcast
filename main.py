@@ -8,6 +8,7 @@ import argparse
 from src.config import settings
 from color_log.clog import log
 from pypdm.dbc._sqlite import SqliteDBC
+from src.dao.t_cves import TCvesDao
 
 from src.crawler.cert360 import Cert360
 from src.crawler.nsfocus import Nsfocus
@@ -75,6 +76,10 @@ def init():
     sdbc = SqliteDBC(options=settings.database)
     if not sdbc.exec_script(settings.database['sqlpath']):
         raise RuntimeError('数据库初始化失败，请检查数据库和 SQL 脚本路径及权限')
+    try:
+        TCvesDao.ensure_schema(sdbc.conn())
+    finally:
+        sdbc.close()
 
 
 def get_sources():

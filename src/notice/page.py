@@ -7,14 +7,15 @@
 # 从数据库读取最新 CVE 生成 GitHub 播报页面
 # -----------------------------------------------
 
-import time
+import json
 from html import escape
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 import src.config as config
 from color_log.clog import log
 from pypdm.dbc._sqlite import SqliteDBC
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
+from src.utils.severity import LABELS, normalize
 
 HTML_PATH = '%s/docs/index.html' % config.PRJ_DIR
 HTML_TPL_PATH = '%s/tpl/html.tpl' % config.PRJ_DIR
@@ -22,49 +23,50 @@ TABLE_TPL_PATH = '%s/tpl/table.tpl' % config.PRJ_DIR
 ROW_TPL_PATH = '%s/tpl/row.tpl' % config.PRJ_DIR
 
 
-def to_page(top_limit = 10, active_sources=None):
-    today = time.strftime('%Y-%m-%d', time.localtime(time.time()))
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    tormorrow = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d') 
-
+def to_page(top_limit=10, active_sources=None):
+    now = datetime.now(timezone.utc)
     html_tpl, table_tpl, row_tpl = load_tpl()
     sdbc = SqliteDBC(options=config.settings.database)
-    conn = sdbc.conn()
-
-    tables = []
-    srcs = query_srcs(conn, active_sources)
-    for src in srcs:
-        cves = query_cves(conn, src, top_limit)
-        if not cves:
-            continue
-
-        rows = []
-        for cve in cves:
-            row = row_tpl % {
-                'md5': escape(cve.md5 or ''),
-                'id': escape(cve.cves or ''),
-                'time': escape(cve.time or ''),
-                'new_flag': ' <img src="imgs/new.gif" />' if (cve.time.startswith(today) or cve.time.startswith(yesterday) or cve.time.startswith(tormorrow)) else '', 
-                'title': escape(cve.title or ''),
-                'url': escape(cve.url or '')
-            }
-            rows.append(row)
-
-        table = table_tpl % {
-            'src': escape(cves[0].src or ''),
-            'top': top_limit,
-            'rows': '\n'.join(rows)
-        }
-        tables.append(table)
-
-    html = html_tpl % {
-        'datetime': time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) ,
+    records, initial = [], []
+    try:
+        conn = sdbc.conn()
+        for src in query_srcs(conn, active_sources):
+            cves = query_cves(conn, src, -1, recent_only=True)
+            source_records = []
+            for cve in cves:
+                source_records.append({
+                    'id': cve.cves or '', 'md5': cve.md5 or '',
+                    'title': cve.title or '', 'source': cve.src or '',
+                    'time': cve.time or '', 'url': cve.url or '',
+                    'severity': normalize(cve.severity),
+                })
+            records.extend(source_records)
+            initial.extend(source_records[:max(0, top_limit)])
+    finally:
+        sdbc.close()
+    records.sort(key=lambda record: record['time'], reverse=True)
+    initial.sort(key=lambda record: record['time'], reverse=True)
+    rows = []
+    for record in initial:
+        values = {key: escape(str(value)) for key, value in record.items()}
+        values['severity'] = LABELS[record['severity']]
+        values['severity_class'] = record['severity'].lower() or 'unknown'
+        rows.append(row_tpl % values)
+    sources = sorted({record['source'] for record in records})
+    records_json = json.dumps(records, ensure_ascii=False, separators=(',', ':')).replace('<', chr(92) + 'u003c')
+    create_html(html_tpl % {
+        'datetime': now.strftime('%Y-%m-%d %H:%M:%S'),
+        'generated_iso': now.isoformat(),
+        'window_days': config.settings.crawler.get('max_age_days', 90) or 90,
+        'total_count': len(records),
+        'high_count': sum(record['severity'] in ('CRITICAL', 'HIGH') for record in records),
+        'source_count': len(sources),
+        'source_options': ''.join('<option value="%s">%s</option>' % (escape(src), escape(src)) for src in sources),
         'source_status': format_source_status(),
-        'table': '\n\n'.join(tables)
-    }
-    sdbc.close()
-
-    create_html(html)
+        'top_limit': top_limit,
+        'table': table_tpl % {'rows': '\n'.join(rows)},
+        'records_json': records_json,
+    })
 
 
 def format_source_status():
@@ -125,14 +127,21 @@ def query_srcs(conn, active_sources=None):
 
 
 
-def query_cves(conn, src, limit):
+def query_cves(conn, src, limit, recent_only=False):
     dao = TCvesDao()
     where = "and %s = ? order by %s desc limit ?" % (TCves.s_src, TCves.s_time)
+    params = [src]
+    if recent_only:
+        days = config.settings.crawler.get('max_age_days', 90) or 90
+        where = "and %s = ? and date(%s) >= date('now', ?) order by %s desc limit ?" % (
+            TCves.s_src, TCves.s_time, TCves.s_time)
+        params.append('-%d days' % days)
+    params.append(limit)
     sql = TCvesDao.SQL_SELECT + where
     beans = []
     try:
         cursor = conn.cursor()
-        cursor.execute(sql, (src, limit))
+        cursor.execute(sql, params)
         rows = cursor.fetchall()
         for row in rows:
             bean = dao._to_bean(row)

@@ -16,6 +16,7 @@ class TCves:
     s_time = "s_time"
     s_info = "s_info"
     s_url = "s_url"
+    s_severity = "s_severity"
 
 
     def __init__(self):
@@ -26,6 +27,7 @@ class TCves:
         self.time = None
         self.info = None
         self.url = None
+        self.severity = ''
 
 
     def params(self):
@@ -37,6 +39,7 @@ class TCves:
             self.time,
             self.info,
             self.url,
+            self.severity,
         )
 
 

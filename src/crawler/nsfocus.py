@@ -6,6 +6,7 @@ import re
 import requests
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
+from src.utils.severity import normalize
 
 
 class Nsfocus(BaseCrawler):
@@ -48,4 +49,5 @@ class Nsfocus(BaseCrawler):
         title = item['bug_name']
         cve.title = re.sub(r'\(CVE-\d+-\d+\)|（CVE-\d+-\d+）', '', title).strip()
         cve.id = ', '.join(re.findall(r'CVE-\d+-\d+', title))
+        cve.severity = normalize(item.get('severity'))
         return cve

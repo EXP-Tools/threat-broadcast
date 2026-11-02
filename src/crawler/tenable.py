@@ -15,6 +15,7 @@ import re
 from lxml import etree
 from datetime import timezone
 from email.utils import parsedate_to_datetime
+from src.utils.severity import normalize
 
 
 class Tenable(BaseCrawler):
@@ -77,6 +78,10 @@ class Tenable(BaseCrawler):
 
         _desc = item.xpath("./description")[0].text
         _desc = _desc.replace('\r', '').replace('\n', '')
+        description_html = etree.HTML(_desc)
+        rating = description_html.xpath('string((//p)[1])').strip()
+        match = re.fullmatch(r'(Critical|High|Medium|Moderate|Low|None)\s+Severity', rating, re.I)
+        cve.severity = normalize(match[1]) if match else ''
         cve.info = re.findall(r'Description</h3>\s*<p>(.*?)</p>', _desc, re.DOTALL)[0].strip()
         cve.title = cve.info
         return cve

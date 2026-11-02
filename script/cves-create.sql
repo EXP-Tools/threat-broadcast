@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS `t_cves` (
   `s_title`  TEXT(256),
   `s_time`  TEXT(20),
   `s_info`  TEXT(2048),
-  `s_url`  TEXT(256)
+  `s_url`  TEXT(256),
+  `s_severity` TEXT(16) NOT NULL DEFAULT ''
 );

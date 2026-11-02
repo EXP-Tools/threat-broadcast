@@ -87,6 +87,8 @@ class BaseCrawler:
         _cves = []
         try:
             for cve in new_cves:
+                if cve.severity:
+                    dao.set_severity(conn, cve)
                 if cve.MD5() not in old_cves:
                     if dao.query_one(conn, {'s_md5 =': cve.MD5(), 's_src =': cve.src}):
                         old_cves.add(cve.MD5())
@@ -144,4 +146,5 @@ class BaseCrawler:
         tcve.info = cve.info
         tcve.time = cve.time
         tcve.url = cve.url
+        tcve.severity = cve.severity
         return dao.insert(conn, tcve)

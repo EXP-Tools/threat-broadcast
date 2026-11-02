@@ -19,6 +19,7 @@ from color_log.clog import log
 import src.config as config
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
+from src.utils.severity import normalize
 
 
 class AISLE(BaseCrawler):
@@ -40,13 +41,16 @@ class AISLE(BaseCrawler):
         known = self.load_archived()
 
         def fetch(candidate):
-            identifier, title, url = candidate
+            identifier, title, url, severity = candidate
             if url in known:
+                known[url].severity = severity or known[url].severity
                 return known[url]
             try:
                 response = requests.get(url, headers=self.headers(), timeout=self.timeout)
                 response.raise_for_status()
-                return self.parse_detail(response.content, identifier, title, url)
+                cve = self.parse_detail(response.content, identifier, title, url)
+                cve.severity = severity
+                return cve
             except Exception as exc:
                 log.warn('[AISLE] %s 抓取失败：%s: %s' % (identifier, type(exc).__name__, exc))
                 return None
@@ -83,7 +87,8 @@ class AISLE(BaseCrawler):
                 if not title:
                     raise ValueError('AISLE %s 缺少漏洞标题' % identifier)
                 url = urljoin(self.HOME_PAGE(), links[0])
-                candidates[url] = (identifier, '%s: %s' % (product, title), url)
+                candidates[url] = (identifier, '%s: %s' % (product, title), url,
+                                   normalize(item.get('data-severity')))
         return list(candidates.values())
 
     def parse_detail(self, content, identifier, title, url):
@@ -111,12 +116,13 @@ class AISLE(BaseCrawler):
             uri = Path(dbpath).resolve().as_uri() + '?mode=ro'
             with closing(sqlite3.connect(uri, uri=True)) as conn:
                 rows = conn.execute(
-                    'select s_cves,s_title,s_time,s_info,s_url from t_cves where s_src = ?',
+                    'select s_cves,s_title,s_time,s_info,s_url,s_severity from t_cves where s_src = ?',
                     (self.NAME_CH(),)).fetchall()
-            for identifier, title, published, info, url in rows:
+            for identifier, title, published, info, url, severity in rows:
                 cve = CVEInfo()
                 cve.src, cve.id, cve.title = self.NAME_CH(), identifier, title
                 cve.time, cve.info, cve.url = published, info, url
+                cve.severity = normalize(severity)
                 known[url] = cve
         except sqlite3.OperationalError as exc:
             log.warn('[AISLE] 无法读取已有归档，将直接读取披露：%s' % exc)
@@ -179,6 +185,7 @@ class MozillaAI(BaseCrawler):
                 continue
             cve = CVEInfo()
             cve.src, cve.id, cve.title, cve.time = self.NAME_CH(), identifier, item['title'], published
+            cve.severity = normalize(item.get('impact'))
             cve.url = '%s%s/#%s' % (self.HOME_PAGE(), advisory, identifier)
             cve.info = '官方通告发现者：%s\n修复版本：%s\n%s' % (
                 reporter, ', '.join(data.get('fixed_in', [])), item.get('description', '') or '')

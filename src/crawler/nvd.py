@@ -8,6 +8,7 @@ import requests
 from color_log.clog import log
 from src.bean.cve_info import CVEInfo
 from src.crawler._base_crawler import BaseCrawler
+from src.utils.severity import from_nvd
 
 
 class NVD(BaseCrawler):
@@ -84,4 +85,5 @@ class NVD(BaseCrawler):
         if not cve.info and descriptions:
             cve.info = descriptions[0]['value']
         cve.title = cve.info or cve.id
+        cve.severity = from_nvd(record.get('metrics', {}))
         return cve
