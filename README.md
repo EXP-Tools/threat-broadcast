@@ -1,255 +1,182 @@
 # Threat-Broadcast
 
-> 威胁情报播报
+> 聚合公开漏洞情报，归档到 SQLite，并生成可筛选的 GitHub Pages 情报看板。
 
-------
+[![CI](https://github.com/EXP-Tools/threat-broadcast/actions/workflows/autorun.yml/badge.svg)](https://github.com/EXP-Tools/threat-broadcast/actions/workflows/autorun.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/EXP-Tools/threat-broadcast?style=social)](https://github.com/EXP-Tools/threat-broadcast)
 
-![fork](https://img.shields.io/github/forks/lyy289065406/threat-broadcast?style=social)
-![star](https://img.shields.io/github/stars/lyy289065406/threat-broadcast?style=social)
+**[查看情报看板](https://exp-tools.github.io/threat-broadcast/)** · [采集与验证任务](https://github.com/EXP-Tools/threat-broadcast/actions/workflows/autorun.yml) · [反馈问题](https://github.com/EXP-Tools/threat-broadcast/issues)
 
-![commit](https://img.shields.io/github/last-commit/lyy289065406/threat-broadcast)
-![Contributors](https://img.shields.io/github/contributors-anon/lyy289065406/threat-broadcast) 
+## 功能
 
-[![license](https://img.shields.io/badge/GPLv3-License-blue)](./LICENSE)
-[![release](https://img.shields.io/badge/release-v3.0-blue)](https://github.com/lyy289065406/threat-broadcast/releases)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/lyy289065406/threat-broadcast/pulls) 
+- 聚合安全厂商、国家漏洞库、AI 发现披露和公开漏洞 Wiki，保存原文链接。
+- 按漏洞来源、等级、时间和关键词组合筛选；等级支持下拉连续多选。
+- 展示严重、高危、中危、低危、无危害或未知等级，不推测缺失评分。
+- SQLite 持久归档，结合数据库和缓存去重，避免缓存裁剪后重复入库。
+- 默认每 3 小时自动采集；失效来源可停用，过期情报从页面隐藏，历史归档保留。
+- 页面为静态 HTML/CSS/JavaScript，无需后端或第三方 CDN。
 
+## 情报来源
 
-## 运行环境
+### 默认启用
 
-![](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg) 
+| 来源 | 采集范围与时间 | 等级依据 |
+| --- | --- | --- |
+| [绿盟](https://www.nsfocus.net/) | HTTPS JSON 接口返回的最新漏洞，使用来源更新时间 | 当前公开接口未提供，显示未知 |
+| [NVD](https://nvd.nist.gov/) | 官方 CVE API 2.0，最近 7 天内最新的 10 条记录 | 优先采用 CVSS 4.0、3.1、3.0、2.0，同版本优先 Primary 评分 |
+| [Tenable (Nessus)](https://www.tenable.com/cve/feeds?sort=newest) | 官方 CVE RSS，使用条目发布时间 | RSS 明示的 Severity |
+| [AISLE（AI 发现）](https://aisle.com/cve-discoveries) | 近 90 天的公开 CVE，使用详情页发布日期 | 官方目录原始等级 |
+| [Mozilla（AI 发现）](https://www.mozilla.org/en-US/security/advisories/) | 最近 6 份候选官方通告中，近 90 天披露且明确署名 AI 工具的 CVE | 单条漏洞的 impact |
+| [Vulnerability-Wiki-PoC](https://github.com/SourByte05/Vulnerability-Wiki-PoC) | 近 90 天新增且仍存在的漏洞 Markdown 文档，使用新增提交的 UTC 时间 | 未提供，显示未知 |
 
-### 本地运行与检查
+本项目用于跟踪近期公开情报，**不是全量 CVE 镜像**，也包含没有 CVE 编号的漏洞文档。需要完整 CVE 数据集可使用 [CVE List V5](https://github.com/CVEProject/cvelistV5)。
 
-建议使用独立虚拟环境安装依赖，避免直接运行时出现 `ModuleNotFoundError`：
+### AI 发现的漏洞
+
+“AI 发现”要求公开披露明确署名 AI 工具参与发现，不能仅因为漏洞发生在 AI 产品中或报告者来自 AI 公司就收录。
+
+- **AISLE**：官方目录明确标注 AI 引擎发现，详情提供 CVE 和发布日期。首次采集最多 3 个并发读取详情，后续复用数据库已归档内容。
+- **Mozilla**：读取[官方通告 YAML](https://github.com/mozilla/foundation-security-advisories)，匹配 reporter 中明确标注的 Claude、Mythos、Codex Security、Big Sleep 或 CodeMender；相同 CVE 跨 Firefox/Thunderbird 通告去重。
+
+实现见 [ai_discoveries.py](src/crawler/ai_discoveries.py)，每条记录保存原文链接、日期和归因依据。
+
+### Vulnerability-Wiki-PoC
+
+实现见 [vulnerability_wiki.py](src/crawler/vulnerability_wiki.py)。通过 GitHub API 读取目录及提交记录，仅索引漏洞文档的标题和原文链接，不执行 PoC。
+
+- 忽略图片、脚本、README 和普通内容修改。
+- 按标题合并当前采集窗口内的跨月重复文档，保留较早的收录时间。
+- 从标题提取 CVE；标题没有编号时保留为空。
+- **收录时间不代表原始漏洞披露日期**，不会将月份目录伪装成精确披露日期。
+- GitHub API 限流或请求失败会记录为来源失败，已有归档保留。
+
+### 暂停采集的来源
+
+以下为适配时的核验结果，停用原因保存在 [config/settings.yml](config/settings.yml) 的 crawler.disabled_sources 中：
+
+| 来源 | 停用原因 |
+| --- | --- |
+| 360 | HTTPS 证书过期 |
+| 红后 | 旧公开接口跳转到登录页面 |
+| 斗象 | 旧站域名无法解析、数据接口 TLS 连接失败 |
+| CNNVD | 旧页面返回 403，新接口要求签名校验 |
+| 奇安信 | 旧 advisory 列表停更，最新记录为 2020-07-15 |
+
+安全客和 CNVD 的旧采集实现也未启用。停用来源不发起采集、不在页面展示，数据库中的历史记录保留。来源恢复并完成适配后，删除相应停用配置，再运行 `--check` 验证。程序保留 HTTPS 证书校验。
+
+## 页面与筛选
+
+[GitHub Pages 看板](https://exp-tools.github.io/threat-broadcast/) 默认展示已启用来源近 90 天的有效归档，每页 25 条。
+
+| 筛选项 | 规则 |
+| --- | --- |
+| 关键词 | 搜索 CVE 编号、漏洞标题和来源 |
+| 漏洞来源 | 选择单个来源，或显示全部来源 |
+| 漏洞等级 | 下拉选中后保持展开，可继续选择；再次点击取消，清空后显示全部等级 |
+| 披露时间 | 全部、最近一天、最近一周、最近一月；分别对应展示窗口、过去 24 小时、7 天和 30 天 |
+
+多个等级之间取并集，与来源、时间和关键词条件取交集。时间统一按 UTC 解析；Wiki 来源使用仓库收录时间。缺少原始等级的历史记录显示“未知”。
+
+筛选覆盖展示窗口内的全部记录，不局限于每个来源 TOP30。禁用 JavaScript 时仍可查看各来源的前 N 条记录（由 `--top` 控制，默认 30）。CSS 和脚本链接带内容版本号，避免部署后旧缓存造成样式错位。
+
+每次正常采集完成后都会重新生成页面，即使没有新增情报也会移除过期记录和来源。默认窗口由 crawler.max_age_days 配置；SQLite 历史记录不会因此删除。旧数据库会在初始化时自动增加等级列；重新采集可补充已有记录的等级，不重复入库，也不以未知等级覆盖已知等级。
+
+## 本地运行
+
+建议使用 **Python 3.11**（与 CI 一致）及独立虚拟环境。Git 用于拉取代码、提交和发布；Node.js 用于运行前端筛选测试。
 
 ```bash
+git clone https://github.com/EXP-Tools/threat-broadcast.git
+cd threat-broadcast
 python -m venv .venv
-# Linux/macOS 使用 .venv/bin/python；Windows 使用 .venv\Scripts\python
+```
+
+Linux / macOS：
+
+```bash
 .venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python main.py --check
 .venv/bin/python main.py --no-notify
-.venv/bin/python -m unittest discover -s tests -v
 ```
 
-`--check` 只对已启用来源执行真实联网抓取，不写数据库、缓存或发送通知；任一来源失败时退出码为 1。
-`--no-notify` 会实际更新数据库、缓存和播报页面，但不生成邮件缓存或发送任何通知。
-正常采集时，单个来源失败会记录异常类型和原因并继续其他来源；全部已启用来源失败时程序返回错误。
-空响应、解析失败和超过 `crawler.max_age_days` 的停更数据不会再被当作采集成功。
+Windows PowerShell：
 
-默认启用 **绿盟、NVD、Tenable、AISLE（AI 发现）、Mozilla（AI 发现）、Vulnerability-Wiki-PoC**。绿盟已切换到 HTTPS JSON 接口，NVD 已切换到官方 [CVE API 2.0](https://nvd.nist.gov/developers/vulnerabilities)，获取最近 7 天内最新的 10 条记录；这不是全量 CVE 同步。
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe main.py --check
+.\.venv\Scripts\python.exe main.py --no-notify
+```
 
-[Vulnerability-Wiki-PoC](https://github.com/SourByte05/Vulnerability-Wiki-PoC) 通过 GitHub API 收录近 90 天新增且仍存在的漏洞 Markdown 文档，忽略图片、脚本和普通修改，并按标题合并跨月重复文档。时间采用文档新增提交的 UTC 时间（仓库收录时间，不代表原始披露日期）；从标题提取 CVE，未提供的等级显示“未知”。仅保存索引和原文链接，不下载或执行 PoC。该来源同时参与定时采集、来源筛选和停更隐藏；GitHub 限流会记录为来源失败，不覆盖已有归档。
-
-以下来源在 `config/settings.yml` 的 `crawler.disabled_sources` 中暂时停用，每次启动会输出原因：
-
-| 来源 | 本次核验结果 |
+| 参数 | 用途 |
 | --- | --- |
-| 360 | HTTPS 证书过期 |
-| 红后 | 旧接口跳转到登录页面 |
-| 斗象 | 旧站域名无法解析、数据接口 TLS 连接失败 |
-| CNNVD | 旧页面返回 403，新接口要求签名校验 |
-| 奇安信 | 旧 advisory 列表最新记录为 2020-07-15 |
+| `--check` | 联网检查所有启用来源，不写数据库或缓存、不生成页面、不发送通知；任一来源失败时退出码为 1 |
+| `--no-notify` | 实际更新数据库、缓存和页面，不生成邮件缓存或发送通知 |
+| `-t N` / `--top N` | 设置无 JavaScript 页面中每个来源的展示条数，不限制交互筛选的数据总量 |
+| `-h` / `--help` | 查看全部参数 |
 
-上述来源不再采集，也不再展示其历史漏洞表格；历史数据仍保留在 SQLite 归档中。页面仅展示已启用且最近 `crawler.max_age_days` 天内有有效情报的来源（默认 90 天），每次正常采集完成后都会重新生成页面，即使没有新增漏洞也会移除过期来源。站点恢复或完成新接口适配后，删除配置中的对应项即可重新启用，再运行 `--check` 确认。程序保留 HTTPS 证书校验。
+普通采集中，单个来源失败会记录异常并继续其他来源；全部启用来源失败时程序返回错误。空响应、解析失败和超过有效期的停更数据不会被当作成功。
 
-### AI 发现的漏洞情报
+本地预览（在项目根目录执行）：
 
-[`src/crawler/ai_discoveries.py`](src/crawler/ai_discoveries.py) 已接入以下公开来源，随 `main.py` 和定时任务一起运行：
-
-| 来源 | 收录依据 | 采集范围 |
-| --- | --- | --- |
-| [AISLE CVE Discoveries](https://aisle.com/cve-discoveries) | 官方目录明确标注由 AISLE 的 AI 引擎发现，单条披露有 CVE 编号与发布日期 | 最近 90 天的公开 CVE；首次抓取详情限 3 个并发，后续复用本地数据库已归档的详情 |
-| [Mozilla 官方安全通告](https://www.mozilla.org/en-US/security/advisories/) / [通告 YAML](https://github.com/mozilla/foundation-security-advisories) | `reporter` 明确标注 Claude、Mythos、Codex Security、Big Sleep 或 CodeMender 等 AI 工具 | 最近 6 份官方通告中、最近 90 天披露的符合条件的 CVE；相同 CVE 跨 Firefox/Thunderbird 通告去重 |
-
-这里的“AI 发现”指公开披露明确署名 AI 工具参与发现的真实软件漏洞，不会因为漏洞发生在 AI 产品中、报告者来自 AI 公司，或新闻中提到 AI 就自动收录。每条记录保存原始披露链接、披露日期和归因依据；不采集尚未公开的漏洞。AISLE 首次采集需要读取较多公开披露，后续只下载新条目的详情。
-
-新来源继续使用现有数据库、缓存、页面及通知流程；入库时还会检查数据库中的历史记录，避免缓存裁剪后重复归档。可用 `python main.py --no-notify` 在本地入库和更新页面，或用 `python main.py --check` 只检查抓取。
-
-### 漏洞等级
-
-页面的“漏洞等级”列显示严重、高危、中危、低危、无危害或未知，并配有颜色标识。AISLE 使用目录原始等级，Mozilla 使用单条漏洞的 `impact`，Tenable 使用 RSS 明示的 Severity；NVD 优先使用 CVSS 4.0、3.1、3.0、2.0 指标及 Primary 评分。缺少等级时显示“未知”，不从标题或描述推断。绿盟当前公开接口未提供等级。
-
-程序初始化会自动为旧数据库添加 `s_severity` 列并保留历史记录。已有记录再次采集时也会补充等级，不重复入库；来源没有提供新等级时不会清除已知等级。
-
-页面支持按来源、等级（下拉多选）、最近一天／一周／一月及关键词组合筛选，并按每页 25 条分页。筛选覆盖已启用来源近 90 天的全部有效归档，不局限于原来的各来源 TOP30；“最近一天／一周／一月”分别指过去 24 小时、7 天和 30 天，时间统一按 UTC 解析。没有原始等级的历史记录仍显示“未知”。页面无需后端服务或第三方 CDN，禁用 JavaScript 时仍可查看各来源的前 N 条记录。
-
-等级下拉框选中后保持展开，可以继续选择；多个等级取并集，与来源和时间条件组合时取交集。未选等级或清空选择时显示全部等级。
-
-前端筛选逻辑可通过 `node --test tests/filters.test.cjs` 验证。
-
-
-## 项目介绍
-
-从以下公开的威胁情报来源爬取并整合最新信息：
-
-- 360：https://cert.360.cn/warning
-- 奇安信：https://ti.qianxin.com/advisory/
-- 红后：https://redqueen.tj-un.com/IntelHome.html
-- 绿盟：http://www.nsfocus.net/index.php
-- 斗象：https://vas.riskivy.com/vuln
-- NVD：https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss-analyzed.xml
-- CNNVD：http://www.cnnvd.org.cn/web/vulnerability/querylist.tag
-- Tenable (Nessus)：https://www.tenable.com/cve/feeds?sort=newest
-- ~~安全客：https://www.anquanke.com/vul~~ （该平台已经不做 CVE 分析了）
-- ~~CNVD：https://www.cnvd.org.cn/flaw/list~~ （该平台不断升级反爬机制，表示尊重）
-
-<details>
-<summary><b>关于 CVE 收录的完整性问题说明</b></summary>
-<br/>
-
-
-本程序只收录国内外安全厂商已收录并分析的 CVE，并不收录所有 CVE，需要全量 CVE 的同学可自行去以下站点下载：
-
-- CVEs 官网： https://cve.mitre.org/
-- GitHub（CVEs 实时同步）： https://github.com/CVEProject/cvelist
-- CIRCL（CVEs 实时同步）： https://cve.circl.lu/ 或 https://cve.circl.lu/api/browse
-- 每日 CVE： https://cassandra.cerias.purdue.edu/CVE_changes/today.html
-
-</details>
-
-爬取到的 CVE 情报会作如下处理：
-
-- 【邮件播报】 接收播报信息的邮箱配置： [recv/mail_*.dat](recv/mail.dat)
-- 【邮件播报】 对所有 open 状态的 <a href="https://github.com/lyy289065406/threat-broadcast/issues/new?title=Your+Email&amp;body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">Issues</a> 标题中的邮箱地址发送播报信息
-- 【~~实时播报~~】 接收播报信息的 QQ 群： `283212984`
-- 【~~实时播报~~】 接收播报信息的 WeChat 公众号： [\[名称\]`EXP技术` \[微信号\]`exp-blog`](imgs/wechat.png)
-- 【页面播报】 最新的 TOP30 威胁情报会更新到 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
-- 【情报归档】 所有威胁情报会归档到 [sqlite](data/cves.db)
-
-
-> 目前最有效的推送方式是邮件推送（建议使用手机邮箱，如 [139](https://appmail.mail.10086.cn) 可触发短信通知）
-<br/> 因 QQ 机器人已停止服务，暂无法实现 QQ 群自动推送
-<br/> 因 WeChat 公众号停止个人号群发服务，现只能用户自己手动获取推送
-
-<details>
-<summary>播报效果</summary>
-<br/>
-
-![](https://github.com/lyy289065406/threat-broadcast/blob/master/imgs/email.png)
-
-</details>
-
-
-## 订阅方式
-
-- 【开发者订阅】 可自行 Fork 项目，通过配置定时任务向自己的邮箱推送即可
-- 【个人订阅】 在 <a href="https://github.com/lyy289065406/threat-broadcast/issues/new?title=Your+Email&amp;body=Just+push+%27Submit+new+issue%27.+You+don%27t+need+to+do+anything+else.">Issues</a> 标题留下你的邮箱即可接收播报信息（若希望取消订阅，请 close issue）
-- 【~~个人订阅~~】 加入 QQ 群： 283212984
-- 【~~个人订阅~~】 关注 WeChat 公众号：
-<br/>　　**名称**： 眈眈探求
-<br/>![](https://github.com/lyy289065406/threat-broadcast/blob/master/imgs/wechat.png)
-
-
-## 威胁情报推送源
-
-- QQ 群： 283212984
-- WeChat 公众号： [\[名称\]`眈眈探求`](imgs/wechat.png)
-- 邮箱： 
-<br/>　　ThreatBroadcast@126.com
-<br/>　　threatbroadcast@qq.com
-<br/>　　threatbroadcast@foxmail.com
-
-
-> 认准我的推送源，勿点击来历不明链接，慎防钓鱼
-
-
-
-## 开发者部署
-
-<details>
-<summary><b>无服务器方式（推荐）</b></summary>
-<br/>
-
-本项目已配置 [Github Actions](https://docs.github.com/cn/actions/configuring-and-managing-workflows/configuring-a-workflow)，因此你只需轻松几步即可实现部署：
-
-- [Fork 本项目](https://github.com/lyy289065406/threat-broadcast) 到你的代码仓库
-- 通过 Settings --> Secrets 配置用于 **发送** 威胁情报邮件的 3 个环境变量：
-    - `MAIL_SMTP`： SMTP 服务器（国内推荐 QQ），如 `smtp.qq.com`
-    - `MAIL_USER`： 邮箱账号，如 `threatbroadcast@qq.com`
-    - `MAIL_PASS`： 邮箱密码
-    - `GRAPHQL_TOKEN`： 用于调用 Github GraphQL 接口加载收件人，可于个人 `Settings` 生成（兼容旧名称 `GRAPAQL_TOKEN`；未设置时使用当前仓库的 `github.token`）
-- 启用 Settings --> Actions 功能
-
-> 配置 `CRAWL_PWD` 后，程序每 3 小时执行一次并更新播报页面（频率由 [`autorun.yml`](.github/workflows/autorun.yml) 的 `schedule` 设置）。`CRAWL_PWD` 必须匹配 `main.py` 中的 `GIT_CRAWL_PWD`，用于保留 Fork 仓库的启动保护。PR 和代码推送只执行测试，不抓取、不发送通知、不提交数据。手动运行默认只检查来源；取消 `check_only` 才会采集并提交数据。工作流目前未启用实际邮件发送。
-
-![](imgs/secrets.png)
-
-
-</details>
-
-
-<details>
-<summary><b>有服务器方式</b></summary>
-<br/>
-
-### 安装
-
-- 任意找一台 Linux 服务器（阿里云、腾讯云等）
-- 安装 python 3.8
-- 安装 python 依赖： `python -m pip install -r requirements.txt`
-- 把仓库 checkout 到服务器本地： `git clone https://github.com/lyy289065406/threat-broadcast`
-- 安装 python 依赖： `python -m pip install -r requirements.txt`
-
-> 国内的云主机（阿里云/腾讯云等）为了避免滥发邮件默认关闭了对 SMTP 25 端口的出口流量，直接导致邮件无法发送。 解封需要到控制台申请，例如 《[阿里云 25 端口解封](https://help.aliyun.com/knowledge_detail/56130.html?spm=a2c4e.11153940.0.0.50664791wrBD3D&source=5176.11533457&userCode=r3yteowb&type=copy)》、 《[腾讯云 25 端口解封](https://cloud.tencent.com/document/product/213/40436)》
-
-
-### 配置定时任务
-
-- 修改 crontab 配置文件，设置定时任务： `vim /etc/crontab`
-- 设置定时任务命令（每小时）： `0 * * * * root python ${workspace}/threat-broadcast/main.py [-any_args]`
-- 注意脚本位置需使用绝对路径，根据实际 checkout 的位置修改即可
-- 保存 crontab 配置文件后会自动生效，查看日志： `tail -10f /var/log/cron`
-
-> 程序运行参数可通过 [`main.py -h`](main.py) 查看帮助文档
-
-
-### 自动生成 Github Page 播报页面
-
-- 安装 git 命令行客户端
-- 打开项目目录： `cd ${workspace}/threat-broadcast`
-- 设置使用 SSH 与 Github 连接（避免提交内容时要输入账密），详见 [这里](https://help.github.com/en/articles/connecting-to-github-with-ssh)
-- 若设置 SSH 后还要输入密码才能提交，则还需要把仓库的 https 协议改成 ssh，详见 [这里](https://help.github.com/en/articles/changing-a-remotes-url#switching-remote-urls-from-https-to-ssh)
-- 在 [`main.py`](main.py) 添加运行参数 `-ac` 可自动提交变更到仓库
-
-
-> 只要爬取到新的威胁情报则会刷新 [`docs/index.html`](docs/index.html)，将其提交到仓库会自动更新 [Github Page](https://lyy289065406.github.io/threat-broadcast/)
-
-</details>
-
-
-## RoadMap
-
-1. 增加供应链情报：某些很基础且被大量应用的第三方构件，突然有个很旧的历史版本放出更新，尤其是 rc 版本，则推送情报。（如 log4j）
-2. ....
-
-
-
-## 目录说明
-
-```
-threat-broadcast
-├── README.md ............................... [项目说明]
-├── main.py ................................. [程序运行入口]
-├── cache ................................... [威胁情报缓存]
-├── data
-│   └── cves.db ............................. [sqlite: 威胁情报归档]
-├── docs .................................... [Github Page 威胁情报总览]
-├── recv
-│   ├── mail_*.dat .......................... [接收威胁情报的邮箱]
-│   └── qq_group.dat ........................ [接收威胁情报的 QQ 群]
-├── src ..................................... [项目源码]
-├── script .................................. [数据库脚本]
-├── tpl ..................................... [模板文件]
-├── imgs .................................... [项目图片]
-└── logs .................................... [项目日志]
+```bash
+python -m http.server 8765 --directory docs
 ```
 
+浏览器打开 <http://localhost:8765/>。数据保存在 [data/cves.db](data/cves.db)，页面为 [docs/index.html](docs/index.html)。
 
-## 版权声明
+## GitHub Actions 与 Pages 部署
 
-　[![Copyright (C) EXP,2016](https://img.shields.io/badge/Copyright%20(C)-EXP%202016-blue.svg)](http://exp-blog.com)　[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+工作流见 [autorun.yml](.github/workflows/autorun.yml)，使用 Python 3.11。
 
-- Site: [https://exp-blog.com](https://exp-blog.com) 
-- Mail: <a href="mailto:289065406@qq.com?subject=[EXP's Github]%20Your%20Question%20（请写下您的疑问）&amp;body=What%20can%20I%20help%20you?%20（需要我提供什么帮助吗？）">289065406@qq.com</a>
+1. Fork 本仓库并启用 Actions。
+2. 在仓库 **Settings → Secrets and variables → Actions** 中添加 `CRAWL_PWD`，值应与 [main.py](main.py) 的 `GIT_CRAWL_PWD` 一致，用于保留 Fork 启动保护。未配置时跳过自动采集。
+3. 确保工作流拥有写入仓库内容的权限，以便提交生成的数据。
+4. 在 **Settings → Pages** 中选择从 `master` 分支的 `/docs` 目录部署。
+5. 在 Actions 手动运行采集工作流：默认 `check_only` 为 true，仅检查来源；取消勾选后才实际采集和提交。
 
+定时任务为 `0 0/3 * * *`（UTC，每 3 小时），先验证，再采集，最后仅提交数据库、页面和来源缓存。PR 和涉及代码的 push 执行验证，不采集、不提交数据。GitHub 的定时任务可能延迟执行。
+
+可选的 `GRAPHQL_TOKEN` 用于读取 Issue 收件人，兼容旧名称 `GRAPAQL_TOKEN`；未设置时工作流使用 `github.token`。若使用 Issue 收件人功能，应核对配置中的 github.owner / github.repo 指向自己的仓库。
+
+### 通知状态
+
+**当前 Actions 工作流没有实际邮件发送步骤，留下 Issue 邮箱不会自动获得邮件订阅。** 提供 GitHub Token 时，程序只生成邮件内容和收件人缓存；本地不提供 Token 时保留 SMTP 发送路径，需要自行配置发件账号和收件人。QQ 和 WeChat 推送函数目前为空实现。
+
+只更新数据库和页面时使用 `--no-notify`。如需自行部署通知，可参考 [src/notice](src/notice) 和 [recv](recv)，并按自己的部署环境配置；不要把邮箱密码或 Token 提交到仓库。
+
+服务器部署可用系统定时任务执行虚拟环境中的 `main.py --no-notify`，再提交 `data/cves.db`、`docs/index.html` 和来源缓存，推送到自己的 Pages 分支。程序每次正常采集都会重建页面。
+
+## 验证
+
+```bash
+python -m pip check
+python -m unittest discover -s tests -v
+node --test tests/filters.test.cjs
+python main.py --help
+```
+
+使用虚拟环境时，将上面的 python 替换为对应解释器路径。单元测试离线运行；真实来源可用 `--check` 单独检查。
+
+## 目录
+
+```text
+threat-broadcast/
+├── main.py                    # 运行入口
+├── config/settings.yml        # 数据库、来源与通知配置
+├── src/crawler/               # 情报来源适配器
+├── src/dao/                   # SQLite 数据访问
+├── src/notice/                # 页面及通知生成
+├── data/cves.db               # 历史情报归档
+├── cache/                     # 来源去重缓存
+├── docs/                      # Pages 页面、样式和筛选脚本
+├── tpl/                       # 页面与邮件模板
+├── script/                    # 数据库初始化脚本
+├── tests/                     # Python 与前端筛选测试
+├── recv/                      # 本地收件人配置
+└── .github/workflows/         # 自动验证与采集任务
+```
+
+## 版权与反馈
+
+项目采用 [GPL-3.0](LICENSE) 许可证。原作者：[EXP](https://exp-blog.com)，邮箱：[289065406@qq.com](mailto:289065406@qq.com)。漏洞内容以原始来源为准，引用时请保留来源链接。问题和来源适配建议请提交至本仓库 [Issues](https://github.com/EXP-Tools/threat-broadcast/issues)。
