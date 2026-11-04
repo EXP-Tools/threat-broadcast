@@ -7,6 +7,8 @@
 # DAO: t_cves
 # -----------------------------------------------
 
+import json
+
 from src.bean.t_cves import TCves
 from src.dao._base import BaseDao
 from src.utils.severity import normalize
@@ -17,10 +19,10 @@ class TCvesDao(BaseDao):
     TABLE_NAME = "t_cves"
     SQL_COUNT = "select count(1) from t_cves"
     SQL_TRUNCATE = "delete from t_cves"
-    SQL_INSERT = "insert into t_cves(s_md5, s_src, s_cves, s_title, s_time, s_info, s_url, s_severity) values (?, ?, ?, ?, ?, ?, ?, ?)"
+    SQL_INSERT = "insert into t_cves(s_md5, s_src, s_cves, s_title, s_time, s_info, s_url, s_severity, s_metadata) values (?, ?, ?, ?, ?, ?, ?, ?, ?)"
     SQL_DELETE = "delete from t_cves where 1 = 1 "
-    SQL_UPDATE = "update t_cves set s_md5 = ?, s_src = ?, s_cves = ?, s_title = ?, s_time = ?, s_info = ?, s_url = ?, s_severity = ? where 1 = 1 "
-    SQL_SELECT = "select s_md5, s_src, s_cves, s_title, s_time, s_info, s_url, s_severity from t_cves where 1 = 1 "
+    SQL_UPDATE = "update t_cves set s_md5 = ?, s_src = ?, s_cves = ?, s_title = ?, s_time = ?, s_info = ?, s_url = ?, s_severity = ?, s_metadata = ? where 1 = 1 "
+    SQL_SELECT = "select s_md5, s_src, s_cves, s_title, s_time, s_info, s_url, s_severity, s_metadata from t_cves where 1 = 1 "
 
 
     def __init__(self):
@@ -32,7 +34,38 @@ class TCvesDao(BaseDao):
         columns = {row[1] for row in conn.execute('pragma table_info(t_cves)')}
         if 's_severity' not in columns:
             conn.execute("alter table t_cves add column s_severity TEXT(16) NOT NULL DEFAULT ''")
+        if 's_metadata' not in columns:
+            conn.execute("alter table t_cves add column s_metadata TEXT NOT NULL DEFAULT '{}'")
+        conn.commit()
+
+
+    def refresh_metadata(self, conn, cve):
+        if not cve.metadata:
+            return
+        row = conn.execute('select s_metadata, s_title, s_info, s_cves, s_time from t_cves where s_md5 = ? and s_src = ?',
+                           (cve.MD5(), cve.src)).fetchone()
+        if row is None:
+            return
+        old = self.decode_metadata(row[0])
+        if old.get('collection_status') == 'detail' and cve.metadata.get('collection_status') == 'summary_only':
+            return
+        old.update({key: value for key, value in cve.metadata.items()
+                    if value is not None and value != '' and value != []})
+        encoded = json.dumps(old, ensure_ascii=False, sort_keys=True)
+        values = (encoded, cve.title, cve.info, cve.id or row[3], cve.time)
+        if values != tuple(row):
+            conn.execute('update t_cves set s_metadata = ?, s_title = ?, s_info = ?, s_cves = ?, s_time = ? '
+                         'where s_md5 = ? and s_src = ?',
+                         (*values, cve.MD5(), cve.src))
             conn.commit()
+
+    @staticmethod
+    def decode_metadata(value):
+        try:
+            data = json.loads(value or '{}')
+            return data if isinstance(data, dict) else {}
+        except (ValueError, TypeError):
+            return {}
 
 
     def set_severity(self, conn, cve):
@@ -56,5 +89,6 @@ class TCvesDao(BaseDao):
             bean.info = self._to_val(row, 5)
             bean.url = self._to_val(row, 6)
             bean.severity = normalize(self._to_val(row, 7))
+            bean.metadata = self.decode_metadata(self._to_val(row, 8))
         return bean
 

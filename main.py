@@ -20,6 +20,7 @@ from src.crawler.cnnvd import CNNVD
 from src.crawler.tenable import Tenable
 from src.crawler.ai_discoveries import AISLE, MozillaAI
 from src.crawler.vulnerability_wiki import VulnerabilityWiki
+from src.crawler.vendor_advisories import PaloAlto, Fortinet, ZDI, MSRC, RedHat, Cisco
 
 import src.notice.page as page
 import src.notice.mail as mail
@@ -95,7 +96,8 @@ def get_sources():
         Tenable(),
         AISLE(),
         MozillaAI(),
-        VulnerabilityWiki()
+        VulnerabilityWiki(),
+        PaloAlto(), Fortinet(), ZDI(), MSRC(), RedHat(), Cisco()
     ]
     disabled = settings.crawler.get('disabled_sources', {})
     active = []

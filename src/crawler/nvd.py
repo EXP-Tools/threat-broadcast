@@ -86,4 +86,16 @@ class NVD(BaseCrawler):
             cve.info = descriptions[0]['value']
         cve.title = cve.info or cve.id
         cve.severity = from_nvd(record.get('metrics', {}))
+        cve.metadata = {'publisher': 'NVD', 'published_at': cve.time,
+                        'updated_at': record.get('lastModified', '').replace('T', ' ').rstrip('Z'),
+                        'time_kind': 'published', 'advisory_id': cve.id,
+                        'references': [item['url'] for item in record.get('references', []) if item.get('url')]}
+        metrics = record.get('metrics', {})
+        for key in ('cvssMetricV40', 'cvssMetricV31', 'cvssMetricV30', 'cvssMetricV2'):
+            entries = sorted(metrics.get(key, []), key=lambda item: item.get('type') != 'Primary')
+            if entries:
+                cvss = entries[0].get('cvssData', {})
+                cve.metadata.update(cvss_score=cvss.get('baseScore'), cvss_vector=cvss.get('vectorString', ''),
+                                    cvss_version=cvss.get('version', ''))
+                break
         return cve

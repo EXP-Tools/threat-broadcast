@@ -7,6 +7,9 @@
 # PDM: t_cves
 # -----------------------------------------------
 
+import json
+
+
 class TCves:
     table_name = "t_cves"
     s_md5 = "s_md5"
@@ -17,6 +20,7 @@ class TCves:
     s_info = "s_info"
     s_url = "s_url"
     s_severity = "s_severity"
+    s_metadata = "s_metadata"
 
 
     def __init__(self):
@@ -28,6 +32,7 @@ class TCves:
         self.info = None
         self.url = None
         self.severity = ''
+        self.metadata = {}
 
 
     def params(self):
@@ -40,6 +45,7 @@ class TCves:
             self.info,
             self.url,
             self.severity,
+            json.dumps(self.metadata, ensure_ascii=False, sort_keys=True),
         )
 
 

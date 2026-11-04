@@ -45,6 +45,7 @@ def to_page(top_limit=10, active_sources=None):
                     'title': cve.title or '', 'source': cve.src or '',
                     'time': cve.time or '', 'url': cve.url or '',
                     'severity': normalize(cve.severity),
+                    'metadata': cve.metadata,
                 })
             records.extend(source_records)
             initial.extend(source_records[:max(0, top_limit)])

@@ -21,7 +21,10 @@
       if (!Number.isFinite(time) || time > now || time < now - Number(filters.days) * 86400000) return false;
     }
     const query = String(filters.query || '').trim().toLocaleLowerCase();
-    return !query || [record.id, record.title, record.source].join(' ').toLocaleLowerCase().includes(query);
+    const meta = record.metadata || {};
+    return !query || [record.id, record.title, record.source, meta.advisory_id,
+      ...(meta.affected_products || []), ...(meta.vendors || []), ...(meta.cwe ? [].concat(meta.cwe) : [])]
+      .join(' ').toLocaleLowerCase().includes(query);
   }
 
   function filterRecords(records, filters, now = Date.now()) {
@@ -29,11 +32,24 @@
       .sort((a, b) => (timestamp(b.time) || 0) - (timestamp(a.time) || 0));
   }
 
-  if (typeof module !== 'undefined' && module.exports) module.exports = { timestamp, matches, filterRecords };
+  function relatedRecords(records) {
+    const index = new Map();
+    records.forEach(record => {
+      const ids = [...new Set(String(record.id || '').toUpperCase().match(/\bCVE-\d{4}-\d{4,}\b/g) || [])];
+      ids.forEach(id => { if (!index.has(id)) index.set(id, []); index.get(id).push(record); });
+    });
+    return record => {
+      const ids = String(record.id || '').toUpperCase().match(/\bCVE-\d{4}-\d{4,}\b/g) || [];
+      return [...new Set(ids.flatMap(id => index.get(id) || []))].filter(other => other !== record && other.source !== record.source);
+    };
+  }
+
+  if (typeof module !== 'undefined' && module.exports) module.exports = { timestamp, matches, filterRecords, relatedRecords };
   if (typeof document === 'undefined') return;
 
   function init() {
     const records = JSON.parse(document.getElementById('intelligence-data').textContent);
+    const related = relatedRecords(records);
     const byId = id => document.getElementById(id);
     const search = byId('search'), source = byId('source-filter'), severity = byId('severity-filter');
     const timeButtons = Array.from(document.querySelectorAll('[data-days]'));
@@ -71,6 +87,75 @@
       const titleText = create('div', 'title-text', record.title);
       titleText.title = record.title;
       title.append(titleText);
+      const meta = record.metadata || {};
+      const others = related(record);
+      if (Object.keys(meta).length || others.length) {
+        const details = create('details', 'intel-details');
+        const sourceCount = new Set(others.map(other => other.source)).size;
+        details.append(create('summary', '', '情报详情' + (sourceCount ? ` · 另 ${sourceCount} 个来源` : '')));
+        const list = create('dl', 'intel-metadata');
+        const field = (label, value) => {
+          if (value === undefined || value === null || value === '' || (Array.isArray(value) && !value.length)) return;
+          const names = { product: '产品', product_name: '产品', products: '产品', package_name: '软件包',
+            package: '修复包', affected: '受影响版本', fixed: '修复版本', fixed_build: '修复构建',
+            fix_state: '修复状态', description: '说明', advisory: '修复通告', url: '链接', cpe: 'CPE', impact: '影响等级',
+            version: '产品版本', solution: '修复建议' };
+          const readable = item => item && typeof item === 'object' ? Object.entries(item)
+            .filter(([, v]) => v !== '' && v !== null && v !== undefined)
+            .map(([key, v]) => `${names[key] || key}：${Array.isArray(v) ? v.join('、') : v}`).join(' · ') : String(item);
+          const text = Array.isArray(value) ? value.map(readable).join('\n') : String(value);
+          list.append(create('dt', '', label), create('dd', '', text));
+        };
+        field('发布方', meta.publisher);
+        field('通告编号', meta.advisory_id);
+        field('受影响厂商', meta.vendors);
+        const cvssVersion = meta.cvss_version || (String(meta.cvss_vector || '').match(/^CVSS:([\d.]+)/) || [])[1];
+        field('CVSS', meta.cvss_score === undefined || meta.cvss_score === null ? '' : `${meta.cvss_score}${cvssVersion ? ' / v' + cvssVersion : ''}`);
+        field('评分向量', meta.cvss_vector);
+        field('首次披露（UTC）', meta.published_at);
+        field('更新（UTC）', meta.updated_at);
+        field('仓库收录（UTC）', meta.collected_at);
+        field('时间依据', ({ published: '首次披露', updated: '通告更新', collected: '仓库收录' })[meta.time_kind]);
+        field('日期来源', meta.date_basis);
+        field('受影响产品', meta.affected_products);
+        field('产品状态', meta.product_status);
+        field('已修复产品', meta.fixed_products);
+        field('修复记录', meta.fixes);
+        field('修复建议', meta.remediation);
+        field('缓解措施', meta.workaround);
+        field('CWE', meta.cwe);
+        field('已知在野利用', typeof meta.known_exploited === 'boolean' ? (meta.known_exploited ? '来源明确标注：是' : '来源明确标注：否') : '');
+        if (meta.collection_status === 'summary_only') field('采集说明', '详情暂不可用，当前仅收录官方列表或 RSS 摘要');
+        details.append(list);
+        if (meta.references && meta.references.length) {
+          const references = create('ul', 'related-records');
+          meta.references.filter(url => /^https?:\/\//i.test(url)).forEach(url => {
+            const item = create('li');
+            const link = create('a', '', url);
+            link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+            item.append(link); references.append(item);
+          });
+          if (references.children.length) {
+            details.append(create('p', 'related-heading', '参考链接'), references);
+          }
+        }
+        if (others.length) {
+          details.append(create('p', 'related-heading', '相同 CVE 的其他来源（当前展示窗口内）'));
+          const links = create('ul', 'related-records');
+          const seen = new Set();
+          others.forEach(other => {
+            const key = other.source + other.url;
+            if (seen.has(key) || !/^https?:\/\//i.test(other.url)) return;
+            seen.add(key);
+            const item = create('li');
+            const link = create('a', '', `${other.source} · ${other.id} · ${labels[other.severity || 'UNKNOWN']}`);
+            link.href = other.url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+            item.append(link); links.append(item);
+          });
+          details.append(links);
+        }
+        title.append(details);
+      }
       const grade = record.severity || 'UNKNOWN';
       const severityCell = create('td');
       severityCell.append(create('span', 'severity severity-' + grade.toLowerCase(), labels[grade] || labels.UNKNOWN));
@@ -78,6 +163,8 @@
       sourceCell.append(create('span', 'source-name', record.source));
       const time = create('td', 'disclosed-at', record.time.slice(0, 10));
       time.title = record.time + ' UTC';
+      if (meta.time_kind === 'updated') time.title += '（通告更新时间）';
+      if (meta.time_kind === 'collected') time.title += '（仓库收录时间）';
       const linkCell = create('td');
       if (/^https?:\/\//i.test(record.url)) {
         const link = create('a', 'detail-link', '查看 ↗');

@@ -119,3 +119,14 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
 @media (max-width: 600px) { .overview > div { grid-template-columns: 1fr; min-width: 0; } }
 @media (max-width: 360px) { .topbar { padding-inline: 12px; gap: 10px; }.wordmark { font-size: 10px; gap: 7px; }.repo-link { font-size: 9px; } }
+/* Disclosure metadata stays inside the title column and wraps on small screens. */
+.intel-details { margin-top: 8px; font-size: 12px; line-height: 1.6; }
+.intel-details summary { color: #8ccad7; cursor: pointer; width: fit-content; }
+.intel-details[open] summary { margin-bottom: 12px; }
+.intel-details[open] { max-height: 420px; overflow-y: auto; overscroll-behavior: contain; padding-right: 8px; scrollbar-width: thin; }
+tr:has(.intel-details[open]) > td { vertical-align: top; }
+.intel-metadata { margin: 0; display: grid; grid-template-columns: 1fr; gap: 4px; }
+.intel-metadata dt { color: #8da5b5; margin-top: 6px; }
+.intel-metadata dd { margin: 0; color: #cedbe3; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; }
+.related-heading { color: #8da5b5; margin: 14px 0 6px; }
+.related-records { margin: 0; padding-left: 16px; overflow-wrap: anywhere; }

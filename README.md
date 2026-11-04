@@ -29,6 +29,16 @@
 | [AISLE（AI 发现）](https://aisle.com/cve-discoveries) | 近 90 天的公开 CVE，使用详情页发布日期 | 官方目录原始等级 |
 | [Mozilla（AI 发现）](https://www.mozilla.org/en-US/security/advisories/) | 最近 6 份候选官方通告中，近 90 天披露且明确署名 AI 工具的 CVE | 单条漏洞的 impact |
 | [Vulnerability-Wiki-PoC](https://github.com/SourByte05/Vulnerability-Wiki-PoC) | 近 90 天新增且仍存在的漏洞 Markdown 文档，使用新增提交的 UTC 时间 | 未提供，显示未知 |
+| [Palo Alto Networks](https://security.paloaltonetworks.com/api) | 官方 `/json` 通告，使用首次披露时间 | 官方 baseSeverity / baseScore |
+| [Fortinet](https://fortiguard.fortinet.com/psirt) | 官方 PSIRT RSS 与详情页，使用 Published Date | 官方严重性及 CVSSv3 |
+| [ZDI](https://www.zerodayinitiative.com/rss/) | Published Advisories RSS 与详情页，只收录公开通告 | 官方详情 CVSS |
+| [Microsoft MSRC](https://github.com/microsoft/MSRC-Microsoft-Security-Updates-API) | 官方 CVRF API，读取窗口内发布的月度文档，优先单条 ReleaseDate，否则使用最早修订日期 | 官方产品严重性，缺失时使用 CVSS |
+| [Red Hat](https://access.redhat.com/security/data) | 官方 Security Data API 的近期 CVE 与详情 | 官方 threat severity、CVSS3 |
+| [Cisco](https://sec.cloudapps.cisco.com/security/center/rss.x) | 官方 PSIRT RSS 发现通告，公开 CSAF 解析单个 CVE | CSAF CVSS；详情失败时保留 RSS 明示等级 |
+
+六个新增厂商来源默认每次最多收录 100 条（`crawler.vendor_limit`，可配置 1–500），同时遵守近 90 天窗口；RSS 来源还受订阅源自身保留范围限制。Red Hat 获取列表最新一页，MSRC 跨月按 CVE 合并，其他来源按通告保留记录；均不承诺全量同步。详情请求最多 3 个并发。Cisco 使用公开 RSS/CSAF，无需 OAuth；未调用需要凭据的 openVuln API。
+
+各厂商的首次披露时间指该来源提供的发布日期，并不保证是漏洞在全球最早公开的日期。MSRC 缺少明确 ReleaseDate 时标明使用最早修订日期，不直接套用月度文档日期。
 
 本项目用于跟踪近期公开情报，**不是全量 CVE 镜像**，也包含没有 CVE 编号的漏洞文档。需要完整 CVE 数据集可使用 [CVE List V5](https://github.com/CVEProject/cvelistV5)。
 
@@ -77,6 +87,16 @@
 | 披露时间 | 全部、最近一天、最近一周、最近一月；分别对应展示窗口、过去 24 小时、7 天和 30 天 |
 
 多个等级之间取并集，与来源、时间和关键词条件取交集。时间统一按 UTC 解析；Wiki 来源使用仓库收录时间。缺少原始等级的历史记录显示“未知”。
+
+### 情报元信息与 CVE 关联
+
+列表标题下可展开“情报详情”，按来源提供的数据展示发布方、通告编号、CVSS 分数／版本／向量、首次披露和更新时间、受影响产品、版本状态、修复记录、缓解措施、CWE、参考链接及明确标注的在野利用状态。未提供的字段留空，不根据标题推测；“未提供”不等于“未受影响”或“未被利用”。关键词还支持搜索通告编号、受影响产品、厂商和 CWE。
+
+同一 CVE 在不同来源的记录和评分分别保留，详情内列出当前页面展示窗口中其他来源的原文链接；不会强行合并成一个评分。没有 CVE 的通告不建立猜测关联。
+
+元信息保存在 SQLite 的 `s_metadata` JSON 列，旧数据库初始化时自动迁移。使用稳定标识的厂商记录再次采集会更新详情，不因标题变更重复入库。已有完整详情不会被暂时失败的摘要采集覆盖；旧记录中没有的数据需重新采集后逐步补齐。
+
+Fortinet、ZDI、Cisco 和 Red Hat 的详情暂不可用时，仍可保存有效的官方 RSS／列表摘要，并在详情明确标记“仅摘要”。Cisco RSS 日期是通告更新时间，只有取得 CSAF 后才填入首次披露时间；不会将更新时间冒充首次披露日期。Red Hat 安全数据按其 [CC BY 4.0 说明](https://access.redhat.com/security/data) 保留来源归属和原文链接。
 
 筛选覆盖展示窗口内的全部记录，不局限于每个来源 TOP30。禁用 JavaScript 时仍可查看各来源的前 N 条记录（由 `--top` 控制，默认 30）。CSS 和脚本链接带内容版本号，避免部署后旧缓存造成样式错位。
 

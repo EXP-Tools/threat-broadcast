@@ -32,6 +32,7 @@ with patch.dict(sys.modules, {
     tenable_module = importlib.import_module('src.crawler.tenable')
     ai_module = importlib.import_module('src.crawler.ai_discoveries')
     wiki_module = importlib.import_module('src.crawler.vulnerability_wiki')
+    vendor_module = importlib.import_module('src.crawler.vendor_advisories')
     main_module = importlib.import_module('main')
 
 from src.bean.cve_info import CVEInfo
@@ -93,6 +94,116 @@ class WikiTests(unittest.TestCase):
         self.assertEqual(records[0].time, '2026-10-14 00:00:00')
 
 
+class VendorTests(unittest.TestCase):
+    def test_dates_normalize_cisco_fraction_and_timezones(self):
+        self.assertEqual(vendor_module.utc('2026-11-03 17:05:12.0'), '2026-11-03 17:05:12')
+        self.assertEqual(vendor_module.utc('Tue, 03 Nov 2026 00:00:00 -0600'), '2026-11-03 06:00:00')
+
+    def test_palo_alto_product_versions_and_stable_identity(self):
+        data = {'ID': 'CVE-2026-12345', 'title': 'Old title', 'date': '2026-10-01T00:00:00Z',
+                'updated': '2026-11-01T00:00:00Z', 'baseScore': 9.2, 'baseSeverity': 'CRITICAL',
+                'version': ['PAN-OS 12'], 'affected': ['<12.1'], 'fixed': ['>=12.1']}
+        first = vendor_module.PaloAlto().parse(data)
+        data['title'] = 'Edited title'
+        second = vendor_module.PaloAlto().parse(data)
+        self.assertEqual(first.MD5(), second.MD5())
+        self.assertEqual(first.metadata['product_status'][0]['fixed'], '>=12.1')
+        self.assertEqual(first.severity, 'CRITICAL')
+
+    def test_cisco_csaf_uses_original_date_and_separate_cves(self):
+        data = {'document': {'title': 'Advisory', 'tracking': {'id': 'cisco-sa-test',
+                'initial_release_date': '2026-09-01T00:00:00Z', 'current_release_date': '2026-11-01T00:00:00Z'}},
+                'product_tree': {'branches': [{'name': 'Cisco', 'branches': [{'name': 'Router',
+                    'product': {'name': '1.0', 'product_id': 'p1'}}]}]},
+                'vulnerabilities': [{'cve': 'CVE-2026-12345', 'product_status': {'known_affected': ['p1']},
+                    'scores': [{'cvss_v3': {'version': '3.1', 'baseScore': 8.8, 'baseSeverity': 'HIGH'}}]},
+                    {'cve': 'CVE-2026-12346'}]}
+        records = vendor_module.Cisco().parse_csaf(data, 'https://example.com/advisory')
+        self.assertEqual(len(records), 2)
+        self.assertEqual(records[0].time, '2026-09-01 00:00:00')
+        self.assertIn('Router', records[0].metadata['affected_products'][0])
+        self.assertNotEqual(records[0].MD5(), records[1].MD5())
+        self.assertEqual(records[1].severity, '')
+
+    def test_fortinet_detail_cve_is_authoritative(self):
+        content = '''<table><tr><td>IR Number</td><td>FG-IR-test</td></tr>
+            <tr><td>Published Date</td><td>Oct 01, 2026</td></tr>
+            <tr><td>Severity</td><td>High</td></tr><tr><td>CVSSv3 Score</td><td>8.8</td></tr>
+            <tr><td>CVE ID</td><td>CVE-2026-12345</td></tr>
+            <tr><td>Known Exploited</td><td>No</td></tr></table>'''
+        source = vendor_module.Fortinet()
+        cve = source.record('CVE-2026-99999', 'Title', 'https://example.com', '2026-10-01')
+        result = source.parse_detail(content, cve)
+        self.assertEqual(result.id, 'CVE-2026-12345')
+        self.assertIs(result.metadata['known_exploited'], False)
+
+    def test_msrc_product_mapping_and_revision_date_not_month(self):
+        data = {'ProductTree': {'FullProductName': [{'ProductID': 'p1', 'Value': 'Windows'}]},
+                'Vulnerability': [{'CVE': 'CVE-2026-12345', 'Title': {'Value': 'Example'},
+                    'ReleaseDateSpecified': False, 'RevisionHistory': [{'Date': '2026-08-20T00:00:00'},
+                        {'Date': '2026-10-01T00:00:00'}],
+                    'ProductStatuses': [{'Type': 3, 'ProductID': ['p1']}],
+                    'Threats': [{'Type': 3, 'Description': {'Value': 'Important'}}],
+                    'CVSSScoreSets': [{'BaseScore': 8.8}],
+                    'Remediations': [{'Type': 2, 'FixedBuild': '123', 'ProductID': ['p1']}]}]}
+        cve = vendor_module.MSRC().parse_document(data, '2026-Oct')[0]
+        self.assertEqual(cve.time, '2026-08-20 00:00:00')
+        self.assertEqual(cve.metadata['updated_at'], '2026-10-01 00:00:00')
+        self.assertEqual(cve.metadata['affected_products'], ['Windows'])
+        self.assertEqual(cve.metadata['fixes'][0]['fixed_build'], '123')
+
+    def test_zdi_missing_cve_does_not_invent_identifier(self):
+        source = vendor_module.ZDI()
+        cve = source.record('', 'ZDI-test', 'https://example.com', '2026-11-01')
+        content = '<div class="metadata-row"><p class="metadata-label">CVSS Score</p><span class="metadata-value">4.7</span></div>'
+        result = source.parse_detail(content, cve)
+        self.assertEqual(result.id, '')
+        self.assertEqual(result.severity, 'MEDIUM')
+
+    def test_msrc_cross_month_merge_keeps_earliest_date_and_latest_details(self):
+        source = vendor_module.MSRC()
+        older = source.record('CVE-2026-12345', 'Old title', 'https://example.com', '2026-09-01',
+                              updated_at='2026-09-01 00:00:00', affected_products=['Windows'], fixes=[])
+        newer = source.record('CVE-2026-12345', 'New title', 'https://example.com', '2026-10-01',
+                              updated_at='2026-10-02 00:00:00', affected_products=['Server'], fixes=[])
+        response = Mock()
+        response.json.return_value = {'value': [{'ID': 'new', 'InitialReleaseDate': '2026-10-01'},
+                                               {'ID': 'old', 'InitialReleaseDate': '2026-09-01'}]}
+        with patch.object(source, 'request', return_value=response), patch.object(source, 'recent', return_value=True), \
+                patch.object(source, 'parse_document', side_effect=[[newer], [older]]):
+            records = source.get_cves()
+        self.assertEqual(len(records), 1)
+        self.assertEqual(records[0].time, '2026-09-01 00:00:00')
+        self.assertEqual(records[0].title, 'New title')
+        self.assertEqual(set(records[0].metadata['affected_products']), {'Windows', 'Server'})
+
+    def test_redhat_product_fix_states_are_preserved(self):
+        source = vendor_module.RedHat()
+        cve = source.record('CVE-2026-12345', 'Title', 'https://example.com', '2026-11-01')
+        result = source.parse_detail({'name': cve.id, 'package_state': [
+            {'product_name': 'RHEL', 'fix_state': 'Not affected'},
+            {'product_name': 'Satellite', 'fix_state': 'Affected'}]}, cve)
+        self.assertEqual(result.metadata['affected_products'], ['Satellite'])
+        self.assertEqual(len(result.metadata['product_status']), 2)
+
+    def test_reject_login_pages_and_preserve_summary_on_detail_failure(self):
+        source = vendor_module.Cisco()
+        item = vendor_module.etree.fromstring(b'<item><title>Title</title><link>https://example.com/cisco-sa-test</link><description>Security Impact Rating: High CVE: CVE-2026-12345</description><pubDate>2026-11-03 17:05:12.0</pubDate></item>')
+        with patch.object(source, 'request', side_effect=RuntimeError('HTTP 503')):
+            cve = source.fetch_detail(item)[0]
+        self.assertEqual(cve.metadata['collection_status'], 'summary_only')
+        self.assertEqual(cve.metadata['time_kind'], 'updated')
+        self.assertNotIn('published_at', cve.metadata)
+        self.assertEqual(cve.severity, 'HIGH')
+
+    def test_cisco_advance_notice_is_not_a_vulnerability(self):
+        source = vendor_module.Cisco()
+        item = vendor_module.etree.fromstring(b'<item><title>Upcoming advisories</title><link>https://example.com/notice</link><description>Informational publication notice</description><pubDate>2026-11-03 17:05:12.0</pubDate></item>')
+        with patch.object(source, 'request') as request:
+            self.assertEqual(source.fetch_detail(item), [])
+            request.assert_not_called()
+
+
 class DatabaseTests(unittest.TestCase):
     def setUp(self):
         self.conn = sqlite3.connect(':memory:')
@@ -116,6 +227,20 @@ class DatabaseTests(unittest.TestCase):
         row = self.dao.query_one(self.conn, {'s_md5 =': 'sample'})
         self.assertIsNotNone(row)
         self.assertEqual(row.src, self.bean.src)
+
+    def test_metadata_refresh_preserves_identity_and_enriches_missing_cve(self):
+        cve = CVEInfo()
+        cve.md5, cve.src, cve.id = 'sample', self.bean.src, 'CVE-2026-12345'
+        cve.title, cve.time = 'Updated title', self.bean.time
+        cve.metadata = {'cvss_score': 8.8, 'collection_status': 'detail'}
+        self.dao.refresh_metadata(self.conn, cve)
+        row = self.dao.query_one(self.conn, {'s_md5 =': 'sample'})
+        self.assertEqual(row.metadata['cvss_score'], 8.8)
+        self.assertEqual(row.cves, cve.id)
+        cve.metadata = {'collection_status': 'summary_only'}
+        self.dao.refresh_metadata(self.conn, cve)
+        self.assertEqual(self.dao.query_one(self.conn, {'s_md5 =': 'sample'}).metadata['collection_status'], 'detail')
+        self.assertEqual(self.dao.count(self.conn), 1)
 
     def test_delete(self):
         self.assertTrue(self.dao.delete(self.conn, {'s_md5 =': 'sample'}))
@@ -178,7 +303,7 @@ class DatabaseTests(unittest.TestCase):
         self.conn.commit()
         TCvesDao.ensure_schema(self.conn)
         TCvesDao.ensure_schema(self.conn)
-        self.assertEqual(self.conn.execute('select * from t_cves').fetchall(), [('old', 'source', '')])
+        self.assertEqual(self.conn.execute('select * from t_cves').fetchall(), [('old', 'source', '', '{}')])
 
     def test_existing_severity_is_updated_without_inserting_duplicate_or_erasing_known_grade(self):
         cve = CVEInfo()
