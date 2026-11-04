@@ -19,6 +19,7 @@ from src.crawler.nvd import NVD
 from src.crawler.cnnvd import CNNVD
 from src.crawler.tenable import Tenable
 from src.crawler.ai_discoveries import AISLE, MozillaAI
+from src.crawler.vulnerability_wiki import VulnerabilityWiki
 
 import src.notice.page as page
 import src.notice.mail as mail
@@ -93,7 +94,8 @@ def get_sources():
         CNNVD(), 
         Tenable(),
         AISLE(),
-        MozillaAI()
+        MozillaAI(),
+        VulnerabilityWiki()
     ]
     disabled = settings.crawler.get('disabled_sources', {})
     active = []

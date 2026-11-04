@@ -37,7 +37,9 @@ python -m venv .venv
 正常采集时，单个来源失败会记录异常类型和原因并继续其他来源；全部已启用来源失败时程序返回错误。
 空响应、解析失败和超过 `crawler.max_age_days` 的停更数据不会再被当作采集成功。
 
-默认启用 **绿盟、NVD、Tenable、AISLE（AI 发现）、Mozilla（AI 发现）**。绿盟已切换到 HTTPS JSON 接口，NVD 已切换到官方 [CVE API 2.0](https://nvd.nist.gov/developers/vulnerabilities)，获取最近 7 天内最新的 10 条记录；这不是全量 CVE 同步。
+默认启用 **绿盟、NVD、Tenable、AISLE（AI 发现）、Mozilla（AI 发现）、Vulnerability-Wiki-PoC**。绿盟已切换到 HTTPS JSON 接口，NVD 已切换到官方 [CVE API 2.0](https://nvd.nist.gov/developers/vulnerabilities)，获取最近 7 天内最新的 10 条记录；这不是全量 CVE 同步。
+
+[Vulnerability-Wiki-PoC](https://github.com/SourByte05/Vulnerability-Wiki-PoC) 通过 GitHub API 收录近 90 天新增且仍存在的漏洞 Markdown 文档，忽略图片、脚本和普通修改，并按标题合并跨月重复文档。时间采用文档新增提交的 UTC 时间（仓库收录时间，不代表原始披露日期）；从标题提取 CVE，未提供的等级显示“未知”。仅保存索引和原文链接，不下载或执行 PoC。该来源同时参与定时采集、来源筛选和停更隐藏；GitHub 限流会记录为来源失败，不覆盖已有归档。
 
 以下来源在 `config/settings.yml` 的 `crawler.disabled_sources` 中暂时停用，每次启动会输出原因：
 

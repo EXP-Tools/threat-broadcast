@@ -31,12 +31,66 @@ with patch.dict(sys.modules, {
     nsfocus_module = importlib.import_module('src.crawler.nsfocus')
     tenable_module = importlib.import_module('src.crawler.tenable')
     ai_module = importlib.import_module('src.crawler.ai_discoveries')
+    wiki_module = importlib.import_module('src.crawler.vulnerability_wiki')
     main_module = importlib.import_module('main')
 
 from src.bean.cve_info import CVEInfo
 from src.bean.t_cves import TCves
 from src.dao.t_cves import TCvesDao
 from src.utils.severity import normalize, from_score, from_nvd
+
+
+class WikiTests(unittest.TestCase):
+    def test_document_metadata_and_encoded_link(self):
+        source = wiki_module.VulnerabilityWiki()
+        cve = source.parse_file({'filename': '2026/11/产品/产品 CVE-2026-12345 漏洞.md',
+                                 'status': 'added'}, '2026-11-03T12:44:14Z')
+        self.assertEqual(cve.time, '2026-11-03 12:44:14')
+        self.assertEqual(cve.id, 'CVE-2026-12345')
+        self.assertEqual(cve.severity, '')
+        self.assertIn('%20', cve.url)
+        self.assertIn('收录时间', cve.info)
+
+    def test_ignore_edits_assets_readme_and_executable_files(self):
+        source = wiki_module.VulnerabilityWiki()
+        for path, status in [('README.md', 'added'), ('2026/11/X/X.md', 'modified'),
+                             ('2026/11/X/assets/image.png', 'added'),
+                             ('2026/11/X/exploit.py', 'added')]:
+            self.assertIsNone(source.parse_file({'filename': path, 'status': status},
+                                               '2026-11-03T12:44:14Z'))
+
+    def test_api_pagination_and_http_failure(self):
+        source = wiki_module.VulnerabilityWiki()
+        session = Mock()
+        first, second = Mock(), Mock()
+        first.json.return_value = ['first']
+        first.links = {'next': {'url': source.API + '/commits?page=2'}}
+        second.json.return_value = ['second']
+        second.links = {}
+        session.get.side_effect = [first, second]
+        self.assertEqual(list(source.pages(session, '/commits')), [['first'], ['second']])
+        second.raise_for_status.side_effect = RuntimeError('rate limited')
+        session.get.side_effect = [second]
+        with self.assertRaisesRegex(RuntimeError, 'rate limited'):
+            list(source.pages(session, '/commits'))
+
+    def test_cross_month_duplicates_and_deleted_documents(self):
+        source = wiki_module.VulnerabilityWiki()
+        old, new = '2026/10/X/X.md', '2026/11/X/X.md'
+        removed = '2026/10/Y/Y.md'
+        commits = [{'sha': 'new', 'commit': {'committer': {'date': '2026-11-03T00:00:00Z'}}},
+                   {'sha': 'old', 'commit': {'committer': {'date': '2026-10-14T00:00:00Z'}}}]
+        def pages(session, endpoint, params=None):
+            if endpoint == '/commits':
+                return iter([commits])
+            paths = [new] if endpoint.endswith('/new') else [old, removed]
+            return iter([{'files': [{'filename': path, 'status': 'added'} for path in paths]}])
+        with patch.object(wiki_module.requests, 'Session') as session, patch.object(source, 'pages', side_effect=pages):
+            session.return_value.__enter__.return_value.get.return_value.json.return_value = {
+                'truncated': False, 'tree': [{'path': path, 'type': 'blob'} for path in [old, new]]}
+            records = source.get_cves()
+        self.assertEqual(len(records), 1)
+        self.assertEqual(records[0].time, '2026-10-14 00:00:00')
 
 
 class DatabaseTests(unittest.TestCase):
